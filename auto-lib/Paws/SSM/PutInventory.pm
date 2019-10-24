@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::PutInventory;
-  use Moose;
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryItem/;
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Items => (is => 'ro', isa => ArrayRef[SSM_InventoryItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutInventory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::PutInventoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutInventory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::PutInventoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::SSM::InventoryItem',
+                            'type' => 'ArrayRef[SSM_InventoryItem]'
+                          },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Items' => 1,
+                    'InstanceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +95,7 @@ items.
 
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::SSM::InventoryItem>]
+=head2 B<REQUIRED> Items => ArrayRef[SSM_InventoryItem]
 
 The inventory items that you want to add or update on instances.
 

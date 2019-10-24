@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::EnvironmentResourcesDescription;
-  use Moose;
-  has LoadBalancer => (is => 'ro', isa => 'Paws::ElasticBeanstalk::LoadBalancerDescription');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_LoadBalancerDescription/;
+  has LoadBalancer => (is => 'ro', isa => ElasticBeanstalk_LoadBalancerDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancer' => {
+                                   'class' => 'Paws::ElasticBeanstalk::LoadBalancerDescription',
+                                   'type' => 'ElasticBeanstalk_LoadBalancerDescription'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ not live data.
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancer => L<Paws::ElasticBeanstalk::LoadBalancerDescription>
+=head2 LoadBalancer => ElasticBeanstalk_LoadBalancerDescription
 
   Describes the LoadBalancer.
 

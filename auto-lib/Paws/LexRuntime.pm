@@ -1,14 +1,15 @@
 package Paws::LexRuntime;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'runtime.lex' }
   sub signing_name { 'lex' }
   sub version { '2016-11-28' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -204,9 +205,9 @@ Context (http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html).
 
 =item UserId => Str
 
-=item [RequestAttributes => L<Paws::LexRuntime::StringMap>]
+=item [RequestAttributes => LexRuntime_StringMap]
 
-=item [SessionAttributes => L<Paws::LexRuntime::StringMap>]
+=item [SessionAttributes => LexRuntime_StringMap]
 
 
 =back

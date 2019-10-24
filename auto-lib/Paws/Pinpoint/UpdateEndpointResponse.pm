@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::UpdateEndpointResponse;
-  use Moose;
-  has MessageBody => (is => 'ro', isa => 'Paws::Pinpoint::MessageBody', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MessageBody/;
+  has MessageBody => (is => 'ro', isa => Pinpoint_MessageBody, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageBody' => {
+                                  'class' => 'Paws::Pinpoint::MessageBody',
+                                  'type' => 'Pinpoint_MessageBody'
+                                }
+             },
+  'IsRequired' => {
+                    'MessageBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MessageBody => L<Paws::Pinpoint::MessageBody>
+=head2 B<REQUIRED> MessageBody => Pinpoint_MessageBody
 
   
 

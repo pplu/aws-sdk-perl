@@ -1,16 +1,70 @@
+# Generated from default/object.tt
 package Paws::AppStream::Stack;
-  use Moose;
-  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettingsResponse');
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FeedbackURL => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RedirectURL => (is => 'ro', isa => 'Str');
-  has StackErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StackError]');
-  has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
-  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_UserSetting AppStream_StorageConnector AppStream_ApplicationSettingsResponse AppStream_StackError/;
+  has ApplicationSettings => (is => 'ro', isa => AppStream_ApplicationSettingsResponse);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has FeedbackURL => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RedirectURL => (is => 'ro', isa => Str);
+  has StackErrors => (is => 'ro', isa => ArrayRef[AppStream_StackError]);
+  has StorageConnectors => (is => 'ro', isa => ArrayRef[AppStream_StorageConnector]);
+  has UserSettings => (is => 'ro', isa => ArrayRef[AppStream_UserSetting]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'FeedbackURL' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationSettings' => {
+                                          'class' => 'Paws::AppStream::ApplicationSettingsResponse',
+                                          'type' => 'AppStream_ApplicationSettingsResponse'
+                                        },
+               'UserSettings' => {
+                                   'class' => 'Paws::AppStream::UserSetting',
+                                   'type' => 'ArrayRef[AppStream_UserSetting]'
+                                 },
+               'StackErrors' => {
+                                  'class' => 'Paws::AppStream::StackError',
+                                  'type' => 'ArrayRef[AppStream_StackError]'
+                                },
+               'RedirectURL' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'StorageConnectors' => {
+                                        'class' => 'Paws::AppStream::StorageConnector',
+                                        'type' => 'ArrayRef[AppStream_StorageConnector]'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +100,7 @@ Describes a stack.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettingsResponse>
+=head2 ApplicationSettings => AppStream_ApplicationSettingsResponse
 
   The persistent application settings for users of the stack.
 
@@ -88,17 +142,17 @@ link. If no URL is specified, no Send Feedback link is displayed.
 ends.
 
 
-=head2 StackErrors => ArrayRef[L<Paws::AppStream::StackError>]
+=head2 StackErrors => ArrayRef[AppStream_StackError]
 
   The errors for the stack.
 
 
-=head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
+=head2 StorageConnectors => ArrayRef[AppStream_StorageConnector]
 
   The storage connectors to enable.
 
 
-=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+=head2 UserSettings => ArrayRef[AppStream_UserSetting]
 
   The actions that are enabled or disabled for users during their
 streaming sessions. By default these actions are enabled.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::ThrottleSettings;
-  use Moose;
-  has BurstLimit => (is => 'ro', isa => 'Int', request_name => 'burstLimit', traits => ['NameInRequest']);
-  has RateLimit => (is => 'ro', isa => 'Num', request_name => 'rateLimit', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::ApiGateway::Types qw//;
+  has BurstLimit => (is => 'ro', isa => Int);
+  has RateLimit => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RateLimit' => {
+                                'type' => 'Num'
+                              },
+               'BurstLimit' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'RateLimit' => 'rateLimit',
+                       'BurstLimit' => 'burstLimit'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

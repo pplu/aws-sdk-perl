@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginGroups;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::OriginGroup]', request_name => 'OriginGroup', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginGroup/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_OriginGroup]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::OriginGroup',
+                            'type' => 'ArrayRef[CloudFront_OriginGroup]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'OriginGroup'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ A complex data type for the origin groups specified for a distribution.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::OriginGroup>]
+=head2 Items => ArrayRef[CloudFront_OriginGroup]
 
   The items (origin groups) in a distribution.
 

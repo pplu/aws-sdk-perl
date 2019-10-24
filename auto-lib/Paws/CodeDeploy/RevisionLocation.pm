@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::RevisionLocation;
-  use Moose;
-  has AppSpecContent => (is => 'ro', isa => 'Paws::CodeDeploy::AppSpecContent', request_name => 'appSpecContent', traits => ['NameInRequest']);
-  has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', request_name => 'gitHubLocation', traits => ['NameInRequest']);
-  has RevisionType => (is => 'ro', isa => 'Str', request_name => 'revisionType', traits => ['NameInRequest']);
-  has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
-  has String => (is => 'ro', isa => 'Paws::CodeDeploy::RawString', request_name => 'string', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RawString CodeDeploy_GitHubLocation CodeDeploy_AppSpecContent CodeDeploy_S3Location/;
+  has AppSpecContent => (is => 'ro', isa => CodeDeploy_AppSpecContent);
+  has GitHubLocation => (is => 'ro', isa => CodeDeploy_GitHubLocation);
+  has RevisionType => (is => 'ro', isa => Str);
+  has S3Location => (is => 'ro', isa => CodeDeploy_S3Location);
+  has String => (is => 'ro', isa => CodeDeploy_RawString);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'String' => {
+                             'class' => 'Paws::CodeDeploy::RawString',
+                             'type' => 'CodeDeploy_RawString'
+                           },
+               'RevisionType' => {
+                                   'type' => 'Str'
+                                 },
+               'S3Location' => {
+                                 'class' => 'Paws::CodeDeploy::S3Location',
+                                 'type' => 'CodeDeploy_S3Location'
+                               },
+               'GitHubLocation' => {
+                                     'class' => 'Paws::CodeDeploy::GitHubLocation',
+                                     'type' => 'CodeDeploy_GitHubLocation'
+                                   },
+               'AppSpecContent' => {
+                                     'class' => 'Paws::CodeDeploy::AppSpecContent',
+                                     'type' => 'CodeDeploy_AppSpecContent'
+                                   }
+             },
+  'NameInRequest' => {
+                       'String' => 'string',
+                       'RevisionType' => 'revisionType',
+                       'S3Location' => 's3Location',
+                       'GitHubLocation' => 'gitHubLocation',
+                       'AppSpecContent' => 'appSpecContent'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,14 +80,14 @@ Information about the location of an application revision.
 =head1 ATTRIBUTES
 
 
-=head2 AppSpecContent => L<Paws::CodeDeploy::AppSpecContent>
+=head2 AppSpecContent => CodeDeploy_AppSpecContent
 
   The content of an AppSpec file for an AWS Lambda or Amazon ECS
 deployment. The content is formatted as JSON or YAML and stored as a
 RawString.
 
 
-=head2 GitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
+=head2 GitHubLocation => CodeDeploy_GitHubLocation
 
   Information about the location of application artifacts stored in
 GitHub.
@@ -77,12 +117,12 @@ deployments only).
 
 
 
-=head2 S3Location => L<Paws::CodeDeploy::S3Location>
+=head2 S3Location => CodeDeploy_S3Location
 
   Information about the location of a revision stored in Amazon S3.
 
 
-=head2 String => L<Paws::CodeDeploy::RawString>
+=head2 String => CodeDeploy_RawString
 
   Information about the location of an AWS Lambda deployment revision
 stored as a RawString.

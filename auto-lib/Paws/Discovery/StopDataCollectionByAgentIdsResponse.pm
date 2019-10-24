@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::StopDataCollectionByAgentIdsResponse;
-  use Moose;
-  has AgentsConfigurationStatus => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentConfigurationStatus]', traits => ['NameInRequest'], request_name => 'agentsConfigurationStatus' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_AgentConfigurationStatus/;
+  has AgentsConfigurationStatus => (is => 'ro', isa => ArrayRef[Discovery_AgentConfigurationStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentsConfigurationStatus' => {
+                                                'class' => 'Paws::Discovery::AgentConfigurationStatus',
+                                                'type' => 'ArrayRef[Discovery_AgentConfigurationStatus]'
+                                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AgentsConfigurationStatus' => 'agentsConfigurationStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Discovery::StopDataCollectionByAgentIdsResponse
 =head1 ATTRIBUTES
 
 
-=head2 AgentsConfigurationStatus => ArrayRef[L<Paws::Discovery::AgentConfigurationStatus>]
+=head2 AgentsConfigurationStatus => ArrayRef[Discovery_AgentConfigurationStatus]
 
 Information about the agents or connector that were instructed to stop
 collecting data. Information includes the agent/connector ID, a

@@ -1,11 +1,37 @@
+# Generated from callresult_class.tt
 
 package Paws::STS::GetFederationTokenResponse;
-  use Moose;
-  has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
-  has FederatedUser => (is => 'ro', isa => 'Paws::STS::FederatedUser');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::STS::Types qw/STS_FederatedUser STS_Credentials/;
+  has Credentials => (is => 'ro', isa => STS_Credentials);
+  has FederatedUser => (is => 'ro', isa => STS_FederatedUser);
+  has PackedPolicySize => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FederatedUser' => {
+                                    'class' => 'Paws::STS::FederatedUser',
+                                    'type' => 'STS_FederatedUser'
+                                  },
+               'Credentials' => {
+                                  'class' => 'Paws::STS::Credentials',
+                                  'type' => 'STS_Credentials'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PackedPolicySize' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +43,7 @@ Paws::STS::GetFederationTokenResponse
 =head1 ATTRIBUTES
 
 
-=head2 Credentials => L<Paws::STS::Credentials>
+=head2 Credentials => STS_Credentials
 
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security (or session) token.
@@ -27,7 +53,7 @@ fixed. We strongly recommend that you make no assumptions about the
 maximum size.
 
 
-=head2 FederatedUser => L<Paws::STS::FederatedUser>
+=head2 FederatedUser => STS_FederatedUser
 
 Identifiers for the federated user associated with the credentials
 (such as C<arn:aws:sts::123456789012:federated-user/Bob> or

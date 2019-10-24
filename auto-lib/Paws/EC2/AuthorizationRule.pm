@@ -8,7 +8,7 @@ package Paws::EC2::AuthorizationRule;
   has GroupId => (is => 'ro', isa => Str);
   has Status => (is => 'ro', isa => EC2_ClientVpnAuthorizationRuleStatus);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AccessAll' => {
@@ -41,8 +41,8 @@ package Paws::EC2::AuthorizationRule;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

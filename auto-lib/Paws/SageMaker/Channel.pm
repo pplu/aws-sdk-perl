@@ -1,12 +1,53 @@
+# Generated from default/object.tt
 package Paws::SageMaker::Channel;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', required => 1);
-  has CompressionType => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has DataSource => (is => 'ro', isa => 'Paws::SageMaker::DataSource', required => 1);
-  has InputMode => (is => 'ro', isa => 'Str');
-  has RecordWrapperType => (is => 'ro', isa => 'Str');
-  has ShuffleConfig => (is => 'ro', isa => 'Paws::SageMaker::ShuffleConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_DataSource SageMaker_ShuffleConfig/;
+  has ChannelName => (is => 'ro', isa => Str, required => 1);
+  has CompressionType => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has DataSource => (is => 'ro', isa => SageMaker_DataSource, required => 1);
+  has InputMode => (is => 'ro', isa => Str);
+  has RecordWrapperType => (is => 'ro', isa => Str);
+  has ShuffleConfig => (is => 'ro', isa => SageMaker_ShuffleConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputMode' => {
+                                'type' => 'Str'
+                              },
+               'DataSource' => {
+                                 'class' => 'Paws::SageMaker::DataSource',
+                                 'type' => 'SageMaker_DataSource'
+                               },
+               'RecordWrapperType' => {
+                                        'type' => 'Str'
+                                      },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CompressionType' => {
+                                      'type' => 'Str'
+                                    },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'ShuffleConfig' => {
+                                    'class' => 'Paws::SageMaker::ShuffleConfig',
+                                    'type' => 'SageMaker_ShuffleConfig'
+                                  }
+             },
+  'IsRequired' => {
+                    'DataSource' => 1,
+                    'ChannelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +100,7 @@ mode, leave this field unset or set it to None.
   The MIME type of the data.
 
 
-=head2 B<REQUIRED> DataSource => L<Paws::SageMaker::DataSource>
+=head2 B<REQUIRED> DataSource => SageMaker_DataSource
 
   The location of the channel data.
 
@@ -92,7 +133,7 @@ attribute. For more information, see Create a Dataset Using RecordIO
 In File mode, leave this field unset or set it to None.
 
 
-=head2 ShuffleConfig => L<Paws::SageMaker::ShuffleConfig>
+=head2 ShuffleConfig => SageMaker_ShuffleConfig
 
   A configuration for a shuffle option for input data in a channel. If
 you use C<S3Prefix> for C<S3DataType>, this shuffles the results of the

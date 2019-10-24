@@ -6,7 +6,7 @@ package Paws::EC2::ActiveInstance;
   has InstanceType => (is => 'ro', isa => Str);
   has SpotInstanceRequestId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -30,8 +30,8 @@ package Paws::EC2::ActiveInstance;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

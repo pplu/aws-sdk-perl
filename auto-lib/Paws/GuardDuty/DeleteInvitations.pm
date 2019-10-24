@@ -1,14 +1,35 @@
 
 package Paws::GuardDuty::DeleteInvitations;
-  use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'accountIds', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteInvitations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/invitation/delete');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::DeleteInvitationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteInvitations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/invitation/delete');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::DeleteInvitationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'AccountIds' => 'accountIds'
+                     },
+  'IsRequired' => {
+                    'AccountIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

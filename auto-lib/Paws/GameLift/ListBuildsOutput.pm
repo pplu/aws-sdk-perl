@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::ListBuildsOutput;
-  use Moose;
-  has Builds => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Build]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Build/;
+  has Builds => (is => 'ro', isa => ArrayRef[GameLift_Build]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Builds' => {
+                             'class' => 'Paws::GameLift::Build',
+                             'type' => 'ArrayRef[GameLift_Build]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::ListBuildsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Builds => ArrayRef[L<Paws::GameLift::Build>]
+=head2 Builds => ArrayRef[GameLift_Build]
 
 Collection of build records that match the request.
 

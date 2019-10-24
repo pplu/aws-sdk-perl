@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::SetSubnets;
-  use Moose;
-  has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_SubnetMapping/;
+  has LoadBalancerArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetMappings => (is => 'ro', isa => ArrayRef[ELBv2_SubnetMapping], predicate => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetSubnets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::SetSubnetsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetSubnetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetSubnets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::SetSubnetsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'SetSubnetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SubnetMappings' => {
+                                     'class' => 'Paws::ELBv2::SubnetMapping',
+                                     'type' => 'ArrayRef[ELBv2_SubnetMapping]'
+                                   }
+             },
+  'IsRequired' => {
+                    'LoadBalancerArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +81,7 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 
 
-=head2 SubnetMappings => ArrayRef[L<Paws::ELBv2::SubnetMapping>]
+=head2 SubnetMappings => ArrayRef[ELBv2_SubnetMapping]
 
 The IDs of the public subnets. You must specify subnets from at least
 two Availability Zones. You can specify only one subnet per

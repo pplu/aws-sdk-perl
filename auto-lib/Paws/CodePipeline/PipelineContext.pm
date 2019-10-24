@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineContext;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::CodePipeline::ActionContext', request_name => 'action', traits => ['NameInRequest']);
-  has PipelineArn => (is => 'ro', isa => 'Str', request_name => 'pipelineArn', traits => ['NameInRequest']);
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
-  has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', request_name => 'stage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionContext CodePipeline_StageContext/;
+  has Action => (is => 'ro', isa => CodePipeline_ActionContext);
+  has PipelineArn => (is => 'ro', isa => Str);
+  has PipelineExecutionId => (is => 'ro', isa => Str);
+  has PipelineName => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => CodePipeline_StageContext);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'Action' => {
+                             'class' => 'Paws::CodePipeline::ActionContext',
+                             'type' => 'CodePipeline_ActionContext'
+                           },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'Stage' => {
+                            'class' => 'Paws::CodePipeline::StageContext',
+                            'type' => 'CodePipeline_StageContext'
+                          },
+               'PipelineArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PipelineName' => 'pipelineName',
+                       'Action' => 'action',
+                       'PipelineExecutionId' => 'pipelineExecutionId',
+                       'Stage' => 'stage',
+                       'PipelineArn' => 'pipelineArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +82,7 @@ fields are not populated for ThirdParty action jobs.
 =head1 ATTRIBUTES
 
 
-=head2 Action => L<Paws::CodePipeline::ActionContext>
+=head2 Action => CodePipeline_ActionContext
 
   The context of an action to a job worker within the stage of a
 pipeline.
@@ -67,7 +105,7 @@ names must be unique across all pipeline names under an Amazon Web
 Services account.
 
 
-=head2 Stage => L<Paws::CodePipeline::StageContext>
+=head2 Stage => CodePipeline_StageContext
 
   The stage of the pipeline.
 

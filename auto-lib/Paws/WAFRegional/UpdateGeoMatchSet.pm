@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateGeoMatchSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has GeoMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::GeoMatchSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_GeoMatchSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GeoMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_GeoMatchSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGeoMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateGeoMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGeoMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateGeoMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAFRegional::GeoMatchSetUpdate',
+                              'type' => 'ArrayRef[WAFRegional_GeoMatchSetUpdate]'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'GeoMatchSetId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'ChangeToken' => 1,
+                    'GeoMatchSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +101,7 @@ ListGeoMatchSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::GeoMatchSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_GeoMatchSetUpdate]
 
 An array of C<GeoMatchSetUpdate> objects that you want to insert into
 or delete from an GeoMatchSet. For more information, see the applicable

@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ServiceUpdate;
-  use Moose;
-  has AutoUpdateAfterRecommendedApplyByDate => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has EstimatedUpdateTime => (is => 'ro', isa => 'Str');
-  has ServiceUpdateDescription => (is => 'ro', isa => 'Str');
-  has ServiceUpdateEndDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
-  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateReleaseDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateSeverity => (is => 'ro', isa => 'Str');
-  has ServiceUpdateStatus => (is => 'ro', isa => 'Str');
-  has ServiceUpdateType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::ElastiCache::Types qw//;
+  has AutoUpdateAfterRecommendedApplyByDate => (is => 'ro', isa => Bool);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has EstimatedUpdateTime => (is => 'ro', isa => Str);
+  has ServiceUpdateDescription => (is => 'ro', isa => Str);
+  has ServiceUpdateEndDate => (is => 'ro', isa => Str);
+  has ServiceUpdateName => (is => 'ro', isa => Str);
+  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => Str);
+  has ServiceUpdateReleaseDate => (is => 'ro', isa => Str);
+  has ServiceUpdateSeverity => (is => 'ro', isa => Str);
+  has ServiceUpdateStatus => (is => 'ro', isa => Str);
+  has ServiceUpdateType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceUpdateSeverity' => {
+                                            'type' => 'Str'
+                                          },
+               'ServiceUpdateRecommendedApplyByDate' => {
+                                                          'type' => 'Str'
+                                                        },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceUpdateStatus' => {
+                                          'type' => 'Str'
+                                        },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'EstimatedUpdateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'ServiceUpdateType' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceUpdateDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'AutoUpdateAfterRecommendedApplyByDate' => {
+                                                            'type' => 'Bool'
+                                                          },
+               'ServiceUpdateEndDate' => {
+                                           'type' => 'Str'
+                                         },
+               'ServiceUpdateReleaseDate' => {
+                                               'type' => 'Str'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

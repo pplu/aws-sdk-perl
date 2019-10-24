@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LogEvent;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::DeleteLoadBalancer;
-  use Moose;
-  has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELBv2::Types qw//;
+  has LoadBalancerArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::DeleteLoadBalancerOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLoadBalancerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::DeleteLoadBalancerOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteLoadBalancerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'LoadBalancerArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

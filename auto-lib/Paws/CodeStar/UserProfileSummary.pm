@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeStar::UserProfileSummary;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
-  has EmailAddress => (is => 'ro', isa => 'Str', request_name => 'emailAddress', traits => ['NameInRequest']);
-  has SshPublicKey => (is => 'ro', isa => 'Str', request_name => 'sshPublicKey', traits => ['NameInRequest']);
-  has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+  has SshPublicKey => (is => 'ro', isa => Str);
+  has UserArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'SshPublicKey' => 'sshPublicKey',
+                       'DisplayName' => 'displayName',
+                       'EmailAddress' => 'emailAddress'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,27 +1,88 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::UpdateFleet;
-  use Moose;
-  has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ComputeCapacity => (is => 'ro', isa => 'Paws::AppStream::ComputeCapacity');
-  has DeleteVpcConfig => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
-  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
-  has ImageArn => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::AppStream::Types qw/AppStream_ComputeCapacity AppStream_VpcConfig AppStream_DomainJoinInfo/;
+  has AttributesToDelete => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ComputeCapacity => (is => 'ro', isa => AppStream_ComputeCapacity, predicate => 1);
+  has DeleteVpcConfig => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisconnectTimeoutInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has DomainJoinInfo => (is => 'ro', isa => AppStream_DomainJoinInfo, predicate => 1);
+  has EnableDefaultInternetAccess => (is => 'ro', isa => Bool, predicate => 1);
+  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has ImageArn => (is => 'ro', isa => Str, predicate => 1);
+  has ImageName => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxUserDurationInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => AppStream_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::UpdateFleetResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::UpdateFleetResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnableDefaultInternetAccess' => {
+                                                  'type' => 'Bool'
+                                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'DomainJoinInfo' => {
+                                     'class' => 'Paws::AppStream::DomainJoinInfo',
+                                     'type' => 'AppStream_DomainJoinInfo'
+                                   },
+               'ImageArn' => {
+                               'type' => 'Str'
+                             },
+               'ImageName' => {
+                                'type' => 'Str'
+                              },
+               'DeleteVpcConfig' => {
+                                      'type' => 'Bool'
+                                    },
+               'AttributesToDelete' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ComputeCapacity' => {
+                                      'class' => 'Paws::AppStream::ComputeCapacity',
+                                      'type' => 'AppStream_ComputeCapacity'
+                                    },
+               'IdleDisconnectTimeoutInSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'VpcConfig' => {
+                                'class' => 'Paws::AppStream::VpcConfig',
+                                'type' => 'AppStream_VpcConfig'
+                              },
+               'DisconnectTimeoutInSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'MaxUserDurationInSeconds' => {
+                                               'type' => 'Int'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +154,7 @@ The fleet attributes to delete.
 
 
 
-=head2 ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
+=head2 ComputeCapacity => AppStream_ComputeCapacity
 
 The desired capacity for the fleet.
 
@@ -129,7 +190,7 @@ The fleet name to display.
 
 
 
-=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+=head2 DomainJoinInfo => AppStream_DomainJoinInfo
 
 The name of the directory and organizational unit (OU) to use to join
 the fleet to a Microsoft Active Directory domain.
@@ -293,7 +354,7 @@ A unique name for the fleet.
 
 
 
-=head2 VpcConfig => L<Paws::AppStream::VpcConfig>
+=head2 VpcConfig => AppStream_VpcConfig
 
 The VPC configuration for the fleet.
 

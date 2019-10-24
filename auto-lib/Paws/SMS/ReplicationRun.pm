@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::SMS::ReplicationRun;
-  use Moose;
-  has AmiId => (is => 'ro', isa => 'Str', request_name => 'amiId', traits => ['NameInRequest']);
-  has CompletedTime => (is => 'ro', isa => 'Str', request_name => 'completedTime', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has ReplicationRunId => (is => 'ro', isa => 'Str', request_name => 'replicationRunId', traits => ['NameInRequest']);
-  has ScheduledStartTime => (is => 'ro', isa => 'Str', request_name => 'scheduledStartTime', traits => ['NameInRequest']);
-  has StageDetails => (is => 'ro', isa => 'Paws::SMS::ReplicationRunStageDetails', request_name => 'stageDetails', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SMS::Types qw/SMS_ReplicationRunStageDetails/;
+  has AmiId => (is => 'ro', isa => Str);
+  has CompletedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has ReplicationRunId => (is => 'ro', isa => Str);
+  has ScheduledStartTime => (is => 'ro', isa => Str);
+  has StageDetails => (is => 'ro', isa => SMS_ReplicationRunStageDetails);
+  has State => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ReplicationRunId' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CompletedTime' => {
+                                    'type' => 'Str'
+                                  },
+               'ScheduledStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'StageDetails' => {
+                                   'class' => 'Paws::SMS::ReplicationRunStageDetails',
+                                   'type' => 'SMS_ReplicationRunStageDetails'
+                                 },
+               'AmiId' => {
+                            'type' => 'Str'
+                          },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'ReplicationRunId' => 'replicationRunId',
+                       'KmsKeyId' => 'kmsKeyId',
+                       'Encrypted' => 'encrypted',
+                       'Type' => 'type',
+                       'CompletedTime' => 'completedTime',
+                       'ScheduledStartTime' => 'scheduledStartTime',
+                       'StageDetails' => 'stageDetails',
+                       'AmiId' => 'amiId',
+                       'StatusMessage' => 'statusMessage',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +168,7 @@ customer's default KMS key for EBS is used.
   The start time of the next replication run.
 
 
-=head2 StageDetails => L<Paws::SMS::ReplicationRunStageDetails>
+=head2 StageDetails => SMS_ReplicationRunStageDetails
 
   Details of the current stage of the replication run.
 

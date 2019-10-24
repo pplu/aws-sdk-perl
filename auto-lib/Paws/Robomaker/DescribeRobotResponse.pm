@@ -1,18 +1,75 @@
 
 package Paws::Robomaker::DescribeRobotResponse;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'architecture');
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has FleetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleetArn');
-  has GreengrassGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'greengrassGroupId');
-  has LastDeploymentJob => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentJob');
-  has LastDeploymentTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentTime');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_TagMap/;
+  has Architecture => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FleetArn => (is => 'ro', isa => Str);
+  has GreengrassGroupId => (is => 'ro', isa => Str);
+  has LastDeploymentJob => (is => 'ro', isa => Str);
+  has LastDeploymentTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastDeploymentJob' => {
+                                        'type' => 'Str'
+                                      },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastDeploymentTime' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'GreengrassGroupId' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LastDeploymentJob' => 'lastDeploymentJob',
+                       'FleetArn' => 'fleetArn',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'LastDeploymentTime' => 'lastDeploymentTime',
+                       'Tags' => 'tags',
+                       'GreengrassGroupId' => 'greengrassGroupId',
+                       'Architecture' => 'architecture',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +126,7 @@ The name of the robot.
 The status of the fleet.
 
 Valid values are: C<"Available">, C<"Registered">, C<"PendingNewDeployment">, C<"Deploying">, C<"Failed">, C<"InSync">, C<"NoResponse">
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the specified robot.
 

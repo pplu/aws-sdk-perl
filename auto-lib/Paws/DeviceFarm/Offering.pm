@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Offering;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RecurringCharge]', request_name => 'recurringCharges', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_RecurringCharge/;
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[DeviceFarm_RecurringCharge]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::DeviceFarm::RecurringCharge',
+                                       'type' => 'ArrayRef[DeviceFarm_RecurringCharge]'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Platform' => 'platform',
+                       'Id' => 'id',
+                       'RecurringCharges' => 'recurringCharges',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +92,7 @@ Represents the metadata of a device offering.
   The platform of the device (e.g., ANDROID or IOS).
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::DeviceFarm::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[DeviceFarm_RecurringCharge]
 
   Specifies whether there are recurring charges for the offering.
 

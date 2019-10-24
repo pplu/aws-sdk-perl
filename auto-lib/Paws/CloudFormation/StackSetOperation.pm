@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSetOperation;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has EndTimestamp => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str');
-  has OperationPreferences => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperationPreferences');
-  has RetainStacks => (is => 'ro', isa => 'Bool');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperationPreferences/;
+  has Action => (is => 'ro', isa => Str);
+  has AdministrationRoleARN => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has EndTimestamp => (is => 'ro', isa => Str);
+  has ExecutionRoleName => (is => 'ro', isa => Str);
+  has OperationId => (is => 'ro', isa => Str);
+  has OperationPreferences => (is => 'ro', isa => CloudFormation_StackSetOperationPreferences);
+  has RetainStacks => (is => 'ro', isa => Bool);
+  has StackSetId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'EndTimestamp' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RetainStacks' => {
+                                   'type' => 'Bool'
+                                 },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'OperationPreferences' => {
+                                           'class' => 'Paws::CloudFormation::StackSetOperationPreferences',
+                                           'type' => 'CloudFormation_StackSetOperationPreferences'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +143,7 @@ and groups can include in their stack sets.
   The unique ID of a stack set operation.
 
 
-=head2 OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>
+=head2 OperationPreferences => CloudFormation_StackSetOperationPreferences
 
   The preferences for how AWS CloudFormation performs this stack set
 operation.

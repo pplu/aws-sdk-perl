@@ -1,16 +1,49 @@
 
 package Paws::PinpointEmail::GetDomainStatisticsReport;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Domain', required => 1);
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'EndDate', required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'StartDate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDomainStatisticsReport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/deliverability-dashboard/statistics-report/{Domain}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::GetDomainStatisticsReportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDomainStatisticsReport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/deliverability-dashboard/statistics-report/{Domain}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::GetDomainStatisticsReportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'Domain' => 'Domain'
+                  },
+  'ParamInQuery' => {
+                      'EndDate' => 'EndDate',
+                      'StartDate' => 'StartDate'
+                    },
+  'IsRequired' => {
+                    'EndDate' => 1,
+                    'Domain' => 1,
+                    'StartDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

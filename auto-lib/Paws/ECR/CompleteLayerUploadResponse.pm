@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::CompleteLayerUploadResponse;
-  use Moose;
-  has LayerDigest => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'layerDigest' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has LayerDigest => (is => 'ro', isa => Str);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'LayerDigest' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'LayerDigest' => 'layerDigest',
+                       'UploadId' => 'uploadId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

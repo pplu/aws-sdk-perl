@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Batch::ArrayPropertiesDetail;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int', request_name => 'index', traits => ['NameInRequest']);
-  has Size => (is => 'ro', isa => 'Int', request_name => 'size', traits => ['NameInRequest']);
-  has StatusSummary => (is => 'ro', isa => 'Paws::Batch::ArrayJobStatusSummary', request_name => 'statusSummary', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Batch::Types qw/Batch_ArrayJobStatusSummary/;
+  has Index => (is => 'ro', isa => Int);
+  has Size => (is => 'ro', isa => Int);
+  has StatusSummary => (is => 'ro', isa => Batch_ArrayJobStatusSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'StatusSummary' => {
+                                    'class' => 'Paws::Batch::ArrayJobStatusSummary',
+                                    'type' => 'Batch_ArrayJobStatusSummary'
+                                  },
+               'Index' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Size' => 'size',
+                       'StatusSummary' => 'statusSummary',
+                       'Index' => 'index'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +79,7 @@ parameter is returned for array job children.
 jobs.
 
 
-=head2 StatusSummary => L<Paws::Batch::ArrayJobStatusSummary>
+=head2 StatusSummary => Batch_ArrayJobStatusSummary
 
   A summary of the number of array job children in each available job
 status. This parameter is returned for parent array jobs.

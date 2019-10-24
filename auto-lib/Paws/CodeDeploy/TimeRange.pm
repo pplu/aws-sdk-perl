@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TimeRange;
-  use Moose;
-  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has End => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Start' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'End' => 'end',
+                       'Start' => 'start'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

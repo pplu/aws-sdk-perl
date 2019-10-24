@@ -12,7 +12,7 @@ package Paws::EC2::Address;
   has PublicIpv4Pool => (is => 'ro', isa => Str);
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -61,8 +61,8 @@ package Paws::EC2::Address;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

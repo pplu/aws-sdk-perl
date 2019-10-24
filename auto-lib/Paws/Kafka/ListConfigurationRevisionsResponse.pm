@@ -1,10 +1,35 @@
 
 package Paws::Kafka::ListConfigurationRevisionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::ConfigurationRevision]', traits => ['NameInRequest'], request_name => 'revisions');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_ConfigurationRevision/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Revisions => (is => 'ro', isa => ArrayRef[Kafka_ConfigurationRevision]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revisions' => {
+                                'class' => 'Paws::Kafka::ConfigurationRevision',
+                                'type' => 'ArrayRef[Kafka_ConfigurationRevision]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Revisions' => 'revisions',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::Kafka::ListConfigurationRevisionsResponse
 Paginated results marker.
 
 
-=head2 Revisions => ArrayRef[L<Paws::Kafka::ConfigurationRevision>]
+=head2 Revisions => ArrayRef[Kafka_ConfigurationRevision]
 
 List of ConfigurationRevision objects.
 

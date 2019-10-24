@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::AppMesh::ServiceDiscovery;
-  use Moose;
-  has AwsCloudMap => (is => 'ro', isa => 'Paws::AppMesh::AwsCloudMapServiceDiscovery', request_name => 'awsCloudMap', traits => ['NameInRequest']);
-  has Dns => (is => 'ro', isa => 'Paws::AppMesh::DnsServiceDiscovery', request_name => 'dns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_DnsServiceDiscovery AppMesh_AwsCloudMapServiceDiscovery/;
+  has AwsCloudMap => (is => 'ro', isa => AppMesh_AwsCloudMapServiceDiscovery);
+  has Dns => (is => 'ro', isa => AppMesh_DnsServiceDiscovery);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dns' => {
+                          'class' => 'Paws::AppMesh::DnsServiceDiscovery',
+                          'type' => 'AppMesh_DnsServiceDiscovery'
+                        },
+               'AwsCloudMap' => {
+                                  'class' => 'Paws::AppMesh::AwsCloudMapServiceDiscovery',
+                                  'type' => 'AppMesh_AwsCloudMapServiceDiscovery'
+                                }
+             },
+  'NameInRequest' => {
+                       'Dns' => 'dns',
+                       'AwsCloudMap' => 'awsCloudMap'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +64,12 @@ node.
 =head1 ATTRIBUTES
 
 
-=head2 AwsCloudMap => L<Paws::AppMesh::AwsCloudMapServiceDiscovery>
+=head2 AwsCloudMap => AppMesh_AwsCloudMapServiceDiscovery
 
   Specifies any AWS Cloud Map information for the virtual node.
 
 
-=head2 Dns => L<Paws::AppMesh::DnsServiceDiscovery>
+=head2 Dns => AppMesh_DnsServiceDiscovery
 
   Specifies the DNS information for the virtual node.
 

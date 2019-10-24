@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointBatchRequest;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointBatchItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointBatchItem/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_EndpointBatchItem], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::EndpointBatchItem',
+                           'type' => 'ArrayRef[Pinpoint_EndpointBatchItem]'
+                         }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ attributes to set or change for each endpoint.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::EndpointBatchItem>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_EndpointBatchItem]
 
   An array that defines the endpoints to create or update and, for each
 endpoint, the property values to set or change. An array can contain a

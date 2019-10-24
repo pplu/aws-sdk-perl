@@ -1,11 +1,34 @@
 
 package Paws::WorkLink::DescribeCompanyNetworkConfigurationResponse;
-  use Moose;
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkLink::Types qw//;
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

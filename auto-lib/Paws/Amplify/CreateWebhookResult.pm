@@ -1,9 +1,33 @@
 
 package Paws::Amplify::CreateWebhookResult;
-  use Moose;
-  has Webhook => (is => 'ro', isa => 'Paws::Amplify::Webhook', traits => ['NameInRequest'], request_name => 'webhook', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw/Amplify_Webhook/;
+  has Webhook => (is => 'ro', isa => Amplify_Webhook, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Webhook' => {
+                              'class' => 'Paws::Amplify::Webhook',
+                              'type' => 'Amplify_Webhook'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Webhook' => 'webhook'
+                     },
+  'IsRequired' => {
+                    'Webhook' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::Amplify::CreateWebhookResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Webhook => L<Paws::Amplify::Webhook>
+=head2 B<REQUIRED> Webhook => Amplify_Webhook
 
 Webhook structure.
 

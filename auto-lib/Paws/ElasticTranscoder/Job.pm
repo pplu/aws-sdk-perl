@@ -1,17 +1,74 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Job;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput');
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobInput]');
-  has Output => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobOutput');
-  has OutputKeyPrefix => (is => 'ro', isa => 'Str');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobOutput]');
-  has PipelineId => (is => 'ro', isa => 'Str');
-  has Playlists => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Playlist]');
-  has Status => (is => 'ro', isa => 'Str');
-  has Timing => (is => 'ro', isa => 'Paws::ElasticTranscoder::Timing');
-  has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_JobInput ElasticTranscoder_Timing ElasticTranscoder_UserMetadata ElasticTranscoder_JobOutput ElasticTranscoder_Playlist/;
+  has Arn => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => ElasticTranscoder_JobInput);
+  has Inputs => (is => 'ro', isa => ArrayRef[ElasticTranscoder_JobInput]);
+  has Output => (is => 'ro', isa => ElasticTranscoder_JobOutput);
+  has OutputKeyPrefix => (is => 'ro', isa => Str);
+  has Outputs => (is => 'ro', isa => ArrayRef[ElasticTranscoder_JobOutput]);
+  has PipelineId => (is => 'ro', isa => Str);
+  has Playlists => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Playlist]);
+  has Status => (is => 'ro', isa => Str);
+  has Timing => (is => 'ro', isa => ElasticTranscoder_Timing);
+  has UserMetadata => (is => 'ro', isa => ElasticTranscoder_UserMetadata);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timing' => {
+                             'class' => 'Paws::ElasticTranscoder::Timing',
+                             'type' => 'ElasticTranscoder_Timing'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OutputKeyPrefix' => {
+                                      'type' => 'Str'
+                                    },
+               'UserMetadata' => {
+                                   'class' => 'Paws::ElasticTranscoder::UserMetadata',
+                                   'type' => 'ElasticTranscoder_UserMetadata'
+                                 },
+               'Playlists' => {
+                                'class' => 'Paws::ElasticTranscoder::Playlist',
+                                'type' => 'ArrayRef[ElasticTranscoder_Playlist]'
+                              },
+               'Outputs' => {
+                              'class' => 'Paws::ElasticTranscoder::JobOutput',
+                              'type' => 'ArrayRef[ElasticTranscoder_JobOutput]'
+                            },
+               'Inputs' => {
+                             'class' => 'Paws::ElasticTranscoder::JobInput',
+                             'type' => 'ArrayRef[ElasticTranscoder_JobInput]'
+                           },
+               'Output' => {
+                             'class' => 'Paws::ElasticTranscoder::JobOutput',
+                             'type' => 'ElasticTranscoder_JobOutput'
+                           },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Input' => {
+                            'class' => 'Paws::ElasticTranscoder::JobInput',
+                            'type' => 'ElasticTranscoder_JobInput'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,20 +116,20 @@ that is created.
 this value to get settings for the job or to delete the job.
 
 
-=head2 Input => L<Paws::ElasticTranscoder::JobInput>
+=head2 Input => ElasticTranscoder_JobInput
 
   A section of the request or response body that provides information
 about the file that is being transcoded.
 
 
-=head2 Inputs => ArrayRef[L<Paws::ElasticTranscoder::JobInput>]
+=head2 Inputs => ArrayRef[ElasticTranscoder_JobInput]
 
   Information about the files that you're transcoding. If you specified
 multiple files for this job, Elastic Transcoder stitches the files
 together to make one output.
 
 
-=head2 Output => L<Paws::ElasticTranscoder::JobOutput>
+=head2 Output => ElasticTranscoder_JobOutput
 
   If you specified one output for a job, information about that output.
 If you specified multiple outputs for a job, the Output object lists
@@ -93,7 +150,7 @@ thumbnails, and playlists. We recommend that you add a / or some other
 delimiter to the end of the C<OutputKeyPrefix>.
 
 
-=head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::JobOutput>]
+=head2 Outputs => ArrayRef[ElasticTranscoder_JobOutput]
 
   Information about the output files. We recommend that you use the
 C<Outputs> syntax for all jobs, even when you want Elastic Transcoder
@@ -115,7 +172,7 @@ transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
 
-=head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::Playlist>]
+=head2 Playlists => ArrayRef[ElasticTranscoder_Playlist]
 
   Outputs in Fragmented MP4 or MPEG-TS format only.
 
@@ -133,12 +190,12 @@ The maximum number of master playlists in a job is 30.
 C<Canceled>, or C<Error>.
 
 
-=head2 Timing => L<Paws::ElasticTranscoder::Timing>
+=head2 Timing => ElasticTranscoder_Timing
 
   Details about the timing of a job.
 
 
-=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
+=head2 UserMetadata => ElasticTranscoder_UserMetadata
 
   User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can

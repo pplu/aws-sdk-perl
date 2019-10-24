@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetDeviceResponse;
-  use Moose;
-  has Device => (is => 'ro', isa => 'Paws::AlexaForBusiness::Device');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Device/;
+  has Device => (is => 'ro', isa => AlexaForBusiness_Device);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Device' => {
+                             'class' => 'Paws::AlexaForBusiness::Device',
+                             'type' => 'AlexaForBusiness_Device'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetDeviceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Device => L<Paws::AlexaForBusiness::Device>
+=head2 Device => AlexaForBusiness_Device
 
 The details of the device requested. Required.
 

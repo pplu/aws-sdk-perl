@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::CreateTable;
   use Moo;
@@ -20,7 +21,7 @@ package Paws::DynamoDB::CreateTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BillingMode' => {
@@ -61,11 +62,16 @@ package Paws::DynamoDB::CreateTable;
                                             'class' => 'Paws::DynamoDB::ProvisionedThroughput',
                                             'type' => 'DynamoDB_ProvisionedThroughput'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'AttributeDefinitions' => 1,
+                    'KeySchema' => 1,
+                    'TableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

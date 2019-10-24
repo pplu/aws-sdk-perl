@@ -1,17 +1,53 @@
 
 package Paws::Batch::CreateJobQueue;
-  use Moose;
-  has ComputeEnvironmentOrder => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ComputeEnvironmentOrder]', traits => ['NameInRequest'], request_name => 'computeEnvironmentOrder', required => 1);
-  has JobQueueName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueName', required => 1);
-  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority', required => 1);
-  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Batch::Types qw/Batch_ComputeEnvironmentOrder/;
+  has ComputeEnvironmentOrder => (is => 'ro', isa => ArrayRef[Batch_ComputeEnvironmentOrder], required => 1, predicate => 1);
+  has JobQueueName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJobQueue');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/createjobqueue');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::CreateJobQueueResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJobQueue');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/createjobqueue');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::CreateJobQueueResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputeEnvironmentOrder' => {
+                                              'class' => 'Paws::Batch::ComputeEnvironmentOrder',
+                                              'type' => 'ArrayRef[Batch_ComputeEnvironmentOrder]'
+                                            },
+               'JobQueueName' => {
+                                   'type' => 'Str'
+                                 },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ComputeEnvironmentOrder' => 'computeEnvironmentOrder',
+                       'JobQueueName' => 'jobQueueName',
+                       'Priority' => 'priority',
+                       'State' => 'state'
+                     },
+  'IsRequired' => {
+                    'ComputeEnvironmentOrder' => 1,
+                    'JobQueueName' => 1,
+                    'Priority' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +122,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ComputeEnvironmentOrder => ArrayRef[L<Paws::Batch::ComputeEnvironmentOrder>]
+=head2 B<REQUIRED> ComputeEnvironmentOrder => ArrayRef[Batch_ComputeEnvironmentOrder]
 
 The set of compute environments mapped to a job queue and their order
 relative to each other. The job scheduler uses this parameter to

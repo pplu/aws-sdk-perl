@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::EMR::StepConfig;
-  use Moose;
-  has ActionOnFailure => (is => 'ro', isa => 'Str');
-  has HadoopJarStep => (is => 'ro', isa => 'Paws::EMR::HadoopJarStepConfig', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_HadoopJarStepConfig/;
+  has ActionOnFailure => (is => 'ro', isa => Str);
+  has HadoopJarStep => (is => 'ro', isa => EMR_HadoopJarStepConfig, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'HadoopJarStep' => {
+                                    'class' => 'Paws::EMR::HadoopJarStepConfig',
+                                    'type' => 'EMR_HadoopJarStepConfig'
+                                  },
+               'ActionOnFailure' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'HadoopJarStep' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +74,7 @@ provided for backward compatibility. We recommend using
 TERMINATE_CLUSTER instead.
 
 
-=head2 B<REQUIRED> HadoopJarStep => L<Paws::EMR::HadoopJarStepConfig>
+=head2 B<REQUIRED> HadoopJarStep => EMR_HadoopJarStepConfig
 
   The JAR file used for the step.
 

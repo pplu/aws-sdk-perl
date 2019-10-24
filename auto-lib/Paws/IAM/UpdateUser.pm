@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateUser;
   use Moo;
@@ -25,7 +26,10 @@ package Paws::IAM::UpdateUser;
                'NewPath' => {
                               'type' => 'Str'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

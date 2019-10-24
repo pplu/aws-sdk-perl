@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::EnvironmentPlatform;
-  use Moose;
-  has Languages => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::EnvironmentLanguage]', request_name => 'languages', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CodeBuild::Types qw/CodeBuild_EnvironmentLanguage/;
+  has Languages => (is => 'ro', isa => ArrayRef[CodeBuild_EnvironmentLanguage]);
+  has Platform => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Languages' => {
+                                'class' => 'Paws::CodeBuild::EnvironmentLanguage',
+                                'type' => 'ArrayRef[CodeBuild_EnvironmentLanguage]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Platform' => 'platform',
+                       'Languages' => 'languages'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ AWS CodeBuild.
 =head1 ATTRIBUTES
 
 
-=head2 Languages => ArrayRef[L<Paws::CodeBuild::EnvironmentLanguage>]
+=head2 Languages => ArrayRef[CodeBuild_EnvironmentLanguage]
 
   The list of programming languages that are available for the specified
 platform.

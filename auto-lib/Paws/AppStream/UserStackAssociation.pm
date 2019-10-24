@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::AppStream::UserStackAssociation;
-  use Moose;
-  has AuthenticationType => (is => 'ro', isa => 'Str', required => 1);
-  has SendEmailNotification => (is => 'ro', isa => 'Bool');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AppStream::Types qw//;
+  has AuthenticationType => (is => 'ro', isa => Str, required => 1);
+  has SendEmailNotification => (is => 'ro', isa => Bool);
+  has StackName => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'SendEmailNotification' => {
+                                            'type' => 'Bool'
+                                          },
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       },
+               'StackName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'AuthenticationType' => 1,
+                    'StackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

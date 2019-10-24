@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Organizations::Root;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PolicyTypes => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicyTypeSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_PolicyTypeSummary/;
+  has Arn => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PolicyTypes => (is => 'ro', isa => ArrayRef[Organizations_PolicyTypeSummary]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyTypes' => {
+                                  'class' => 'Paws::Organizations::PolicyTypeSummary',
+                                  'type' => 'ArrayRef[Organizations_PolicyTypeSummary]'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +99,7 @@ validate this parameter is a string of any of the characters in the
 ASCII character range.
 
 
-=head2 PolicyTypes => ArrayRef[L<Paws::Organizations::PolicyTypeSummary>]
+=head2 PolicyTypes => ArrayRef[Organizations_PolicyTypeSummary]
 
   The types of policies that are currently enabled for the root and
 therefore can be attached to the root or to its OUs or accounts.

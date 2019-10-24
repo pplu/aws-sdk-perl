@@ -1,25 +1,91 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudTrail::GetTrailStatusResponse;
-  use Moose;
-  has IsLogging => (is => 'ro', isa => 'Bool');
-  has LatestCloudWatchLogsDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestCloudWatchLogsDeliveryTime => (is => 'ro', isa => 'Str');
-  has LatestDeliveryAttemptSucceeded => (is => 'ro', isa => 'Str');
-  has LatestDeliveryAttemptTime => (is => 'ro', isa => 'Str');
-  has LatestDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestDeliveryTime => (is => 'ro', isa => 'Str');
-  has LatestDigestDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestDigestDeliveryTime => (is => 'ro', isa => 'Str');
-  has LatestNotificationAttemptSucceeded => (is => 'ro', isa => 'Str');
-  has LatestNotificationAttemptTime => (is => 'ro', isa => 'Str');
-  has LatestNotificationError => (is => 'ro', isa => 'Str');
-  has LatestNotificationTime => (is => 'ro', isa => 'Str');
-  has StartLoggingTime => (is => 'ro', isa => 'Str');
-  has StopLoggingTime => (is => 'ro', isa => 'Str');
-  has TimeLoggingStarted => (is => 'ro', isa => 'Str');
-  has TimeLoggingStopped => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudTrail::Types qw//;
+  has IsLogging => (is => 'ro', isa => Bool);
+  has LatestCloudWatchLogsDeliveryError => (is => 'ro', isa => Str);
+  has LatestCloudWatchLogsDeliveryTime => (is => 'ro', isa => Str);
+  has LatestDeliveryAttemptSucceeded => (is => 'ro', isa => Str);
+  has LatestDeliveryAttemptTime => (is => 'ro', isa => Str);
+  has LatestDeliveryError => (is => 'ro', isa => Str);
+  has LatestDeliveryTime => (is => 'ro', isa => Str);
+  has LatestDigestDeliveryError => (is => 'ro', isa => Str);
+  has LatestDigestDeliveryTime => (is => 'ro', isa => Str);
+  has LatestNotificationAttemptSucceeded => (is => 'ro', isa => Str);
+  has LatestNotificationAttemptTime => (is => 'ro', isa => Str);
+  has LatestNotificationError => (is => 'ro', isa => Str);
+  has LatestNotificationTime => (is => 'ro', isa => Str);
+  has StartLoggingTime => (is => 'ro', isa => Str);
+  has StopLoggingTime => (is => 'ro', isa => Str);
+  has TimeLoggingStarted => (is => 'ro', isa => Str);
+  has TimeLoggingStopped => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsLogging' => {
+                                'type' => 'Bool'
+                              },
+               'StartLoggingTime' => {
+                                       'type' => 'Str'
+                                     },
+               'StopLoggingTime' => {
+                                      'type' => 'Str'
+                                    },
+               'LatestDigestDeliveryTime' => {
+                                               'type' => 'Str'
+                                             },
+               'LatestNotificationTime' => {
+                                             'type' => 'Str'
+                                           },
+               'LatestCloudWatchLogsDeliveryError' => {
+                                                        'type' => 'Str'
+                                                      },
+               'LatestNotificationError' => {
+                                              'type' => 'Str'
+                                            },
+               'LatestDeliveryAttemptSucceeded' => {
+                                                     'type' => 'Str'
+                                                   },
+               'LatestDeliveryError' => {
+                                          'type' => 'Str'
+                                        },
+               'LatestNotificationAttemptTime' => {
+                                                    'type' => 'Str'
+                                                  },
+               'LatestDigestDeliveryError' => {
+                                                'type' => 'Str'
+                                              },
+               'LatestDeliveryAttemptTime' => {
+                                                'type' => 'Str'
+                                              },
+               'LatestNotificationAttemptSucceeded' => {
+                                                         'type' => 'Str'
+                                                       },
+               'TimeLoggingStopped' => {
+                                         'type' => 'Str'
+                                       },
+               'LatestDeliveryTime' => {
+                                         'type' => 'Str'
+                                       },
+               'TimeLoggingStarted' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LatestCloudWatchLogsDeliveryTime' => {
+                                                       'type' => 'Str'
+                                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

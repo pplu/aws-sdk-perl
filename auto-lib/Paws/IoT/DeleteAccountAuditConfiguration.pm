@@ -1,14 +1,32 @@
 
 package Paws::IoT::DeleteAccountAuditConfiguration;
-  use Moose;
-  has DeleteScheduledAudits => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'deleteScheduledAudits');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has DeleteScheduledAudits => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAccountAuditConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteAccountAuditConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAccountAuditConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteAccountAuditConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeleteScheduledAudits' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'ParamInQuery' => {
+                      'DeleteScheduledAudits' => 'deleteScheduledAudits'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

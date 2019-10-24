@@ -7,7 +7,7 @@ package Paws::EC2::OnDemandOptionsRequest;
   has SingleAvailabilityZone => (is => 'ro', isa => Bool);
   has SingleInstanceType => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'MaxTotalPrice' => {
@@ -28,8 +28,8 @@ package Paws::EC2::OnDemandOptionsRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

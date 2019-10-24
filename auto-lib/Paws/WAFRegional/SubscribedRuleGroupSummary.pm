@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SubscribedRuleGroupSummary;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RuleGroupId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RuleGroupId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'RuleGroupId' => 1,
+                    'Name' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Lambda::Environment;
-  use Moose;
-  has Variables => (is => 'ro', isa => 'Paws::Lambda::EnvironmentVariables');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Lambda::Types qw/Lambda_EnvironmentVariables/;
+  has Variables => (is => 'ro', isa => Lambda_EnvironmentVariables);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Variables' => {
+                                'class' => 'Paws::Lambda::EnvironmentVariables',
+                                'type' => 'Lambda_EnvironmentVariables'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ A function's environment variable settings.
 =head1 ATTRIBUTES
 
 
-=head2 Variables => L<Paws::Lambda::EnvironmentVariables>
+=head2 Variables => Lambda_EnvironmentVariables
 
   Environment variable key-value pairs.
 

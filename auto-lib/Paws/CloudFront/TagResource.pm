@@ -1,17 +1,42 @@
 
 package Paws::CloudFront::TagResource;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', query_name => 'Resource', traits => ['ParamInQuery'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_Tags/;
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CloudFront_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/tagging?Operation=Tag');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/tagging?Operation=Tag');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::CloudFront::Tags',
+                           'type' => 'CloudFront_Tags'
+                         }
+             },
+  'ParamInQuery' => {
+                      'Resource' => 'Resource'
+                    },
+  'IsRequired' => {
+                    'Resource' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +82,7 @@ An ARN of a CloudFront resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CloudFront::Tags>
+=head2 B<REQUIRED> Tags => CloudFront_Tags
 
 A complex type that contains zero or more C<Tag> elements.
 

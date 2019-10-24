@@ -1,16 +1,76 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::InsertableImage;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has FadeIn => (is => 'ro', isa => 'Int', request_name => 'fadeIn', traits => ['NameInRequest']);
-  has FadeOut => (is => 'ro', isa => 'Int', request_name => 'fadeOut', traits => ['NameInRequest']);
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has ImageInserterInput => (is => 'ro', isa => 'Str', request_name => 'imageInserterInput', traits => ['NameInRequest']);
-  has ImageX => (is => 'ro', isa => 'Int', request_name => 'imageX', traits => ['NameInRequest']);
-  has ImageY => (is => 'ro', isa => 'Int', request_name => 'imageY', traits => ['NameInRequest']);
-  has Layer => (is => 'ro', isa => 'Int', request_name => 'layer', traits => ['NameInRequest']);
-  has Opacity => (is => 'ro', isa => 'Int', request_name => 'opacity', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Duration => (is => 'ro', isa => Int);
+  has FadeIn => (is => 'ro', isa => Int);
+  has FadeOut => (is => 'ro', isa => Int);
+  has Height => (is => 'ro', isa => Int);
+  has ImageInserterInput => (is => 'ro', isa => Str);
+  has ImageX => (is => 'ro', isa => Int);
+  has ImageY => (is => 'ro', isa => Int);
+  has Layer => (is => 'ro', isa => Int);
+  has Opacity => (is => 'ro', isa => Int);
+  has StartTime => (is => 'ro', isa => Str);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'FadeOut' => {
+                              'type' => 'Int'
+                            },
+               'ImageY' => {
+                             'type' => 'Int'
+                           },
+               'Layer' => {
+                            'type' => 'Int'
+                          },
+               'FadeIn' => {
+                             'type' => 'Int'
+                           },
+               'ImageInserterInput' => {
+                                         'type' => 'Str'
+                                       },
+               'ImageX' => {
+                             'type' => 'Int'
+                           },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Opacity' => {
+                              'type' => 'Int'
+                            },
+               'Duration' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Height' => 'height',
+                       'Width' => 'width',
+                       'FadeOut' => 'fadeOut',
+                       'ImageY' => 'imageY',
+                       'Layer' => 'layer',
+                       'FadeIn' => 'fadeIn',
+                       'ImageInserterInput' => 'imageInserterInput',
+                       'ImageX' => 'imageX',
+                       'StartTime' => 'startTime',
+                       'Opacity' => 'opacity',
+                       'Duration' => 'duration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

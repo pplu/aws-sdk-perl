@@ -1,11 +1,58 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionConfiguration;
-  use Moose;
-  has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest'], required => 1);
-  has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'executionStartToCloseTimeout', traits => ['NameInRequest'], required => 1);
-  has LambdaRole => (is => 'ro', isa => 'Str', request_name => 'lambdaRole', traits => ['NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest'], required => 1);
-  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
-  has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has ChildPolicy => (is => 'ro', isa => Str, required => 1);
+  has ExecutionStartToCloseTimeout => (is => 'ro', isa => Str, required => 1);
+  has LambdaRole => (is => 'ro', isa => Str);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, required => 1);
+  has TaskPriority => (is => 'ro', isa => Str);
+  has TaskStartToCloseTimeout => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'LambdaRole' => {
+                                 'type' => 'Str'
+                               },
+               'TaskStartToCloseTimeout' => {
+                                              'type' => 'Str'
+                                            },
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 },
+               'ExecutionStartToCloseTimeout' => {
+                                                   'type' => 'Str'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'LambdaRole' => 'lambdaRole',
+                       'TaskStartToCloseTimeout' => 'taskStartToCloseTimeout',
+                       'ChildPolicy' => 'childPolicy',
+                       'TaskPriority' => 'taskPriority',
+                       'ExecutionStartToCloseTimeout' => 'executionStartToCloseTimeout'
+                     },
+  'IsRequired' => {
+                    'TaskList' => 1,
+                    'TaskStartToCloseTimeout' => 1,
+                    'ChildPolicy' => 1,
+                    'ExecutionStartToCloseTimeout' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +134,7 @@ to C<0>. You can use C<NONE> to specify unlimited duration.
   The IAM role attached to the child workflow execution.
 
 
-=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => SimpleWorkflow_TaskList
 
   The task list used for the decision tasks generated for this workflow
 execution.

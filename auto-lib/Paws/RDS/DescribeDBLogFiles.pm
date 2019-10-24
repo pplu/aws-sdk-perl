@@ -1,19 +1,57 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeDBLogFiles;
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has FileLastWritten => (is => 'ro', isa => 'Int');
-  has FilenameContains => (is => 'ro', isa => 'Str');
-  has FileSize => (is => 'ro', isa => 'Int');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FileLastWritten => (is => 'ro', isa => Int, predicate => 1);
+  has FilenameContains => (is => 'ro', isa => Str, predicate => 1);
+  has FileSize => (is => 'ro', isa => Int, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFiles');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DescribeDBLogFilesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBLogFilesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBLogFiles');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DescribeDBLogFilesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBLogFilesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilenameContains' => {
+                                       'type' => 'Str'
+                                     },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'Filters' => {
+                              'class' => 'Paws::RDS::Filter',
+                              'type' => 'ArrayRef[RDS_Filter]'
+                            },
+               'FileLastWritten' => {
+                                      'type' => 'Int'
+                                    },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'FileSize' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +128,7 @@ size.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 This parameter is not currently supported.
 

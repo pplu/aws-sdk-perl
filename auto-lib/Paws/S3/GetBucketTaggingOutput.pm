@@ -17,7 +17,10 @@ package Paws::S3::GetBucketTaggingOutput;
                '_request_id' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'TagSet' => 1
+                  }
 }
 ;
     return $Params_map;

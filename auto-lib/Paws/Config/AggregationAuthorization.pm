@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Config::AggregationAuthorization;
-  use Moose;
-  has AggregationAuthorizationArn => (is => 'ro', isa => 'Str');
-  has AuthorizedAccountId => (is => 'ro', isa => 'Str');
-  has AuthorizedAwsRegion => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has AggregationAuthorizationArn => (is => 'ro', isa => Str);
+  has AuthorizedAccountId => (is => 'ro', isa => Str);
+  has AuthorizedAwsRegion => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizedAwsRegion' => {
+                                          'type' => 'Str'
+                                        },
+               'AggregationAuthorizationArn' => {
+                                                  'type' => 'Str'
+                                                },
+               'AuthorizedAccountId' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

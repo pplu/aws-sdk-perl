@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::BuildPhase;
-  use Moose;
-  has Contexts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::PhaseContext]', request_name => 'contexts', traits => ['NameInRequest']);
-  has DurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'durationInSeconds', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has PhaseStatus => (is => 'ro', isa => 'Str', request_name => 'phaseStatus', traits => ['NameInRequest']);
-  has PhaseType => (is => 'ro', isa => 'Str', request_name => 'phaseType', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::CodeBuild::Types qw/CodeBuild_PhaseContext/;
+  has Contexts => (is => 'ro', isa => ArrayRef[CodeBuild_PhaseContext]);
+  has DurationInSeconds => (is => 'ro', isa => Int);
+  has EndTime => (is => 'ro', isa => Str);
+  has PhaseStatus => (is => 'ro', isa => Str);
+  has PhaseType => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DurationInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'Contexts' => {
+                               'class' => 'Paws::CodeBuild::PhaseContext',
+                               'type' => 'ArrayRef[CodeBuild_PhaseContext]'
+                             },
+               'PhaseStatus' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'PhaseType' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'DurationInSeconds' => 'durationInSeconds',
+                       'Contexts' => 'contexts',
+                       'PhaseStatus' => 'phaseStatus',
+                       'StartTime' => 'startTime',
+                       'PhaseType' => 'phaseType',
+                       'EndTime' => 'endTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +82,7 @@ Information about a stage for a build.
 =head1 ATTRIBUTES
 
 
-=head2 Contexts => ArrayRef[L<Paws::CodeBuild::PhaseContext>]
+=head2 Contexts => ArrayRef[CodeBuild_PhaseContext]
 
   Additional information about a build phase, especially to help
 troubleshoot a failed build.

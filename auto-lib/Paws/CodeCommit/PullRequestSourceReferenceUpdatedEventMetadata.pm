@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestSourceReferenceUpdatedEventMetadata;
-  use Moose;
-  has AfterCommitId => (is => 'ro', isa => 'Str', request_name => 'afterCommitId', traits => ['NameInRequest']);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', request_name => 'beforeCommitId', traits => ['NameInRequest']);
-  has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has AfterCommitId => (is => 'ro', isa => Str);
+  has BeforeCommitId => (is => 'ro', isa => Str);
+  has MergeBase => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'MergeBase' => {
+                                'type' => 'Str'
+                              },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'MergeBase' => 'mergeBase',
+                       'AfterCommitId' => 'afterCommitId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

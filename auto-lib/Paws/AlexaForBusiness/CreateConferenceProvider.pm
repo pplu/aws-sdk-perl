@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::CreateConferenceProvider;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has ConferenceProviderName => (is => 'ro', isa => 'Str', required => 1);
-  has ConferenceProviderType => (is => 'ro', isa => 'Str', required => 1);
-  has IPDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::IPDialIn');
-  has MeetingSetting => (is => 'ro', isa => 'Paws::AlexaForBusiness::MeetingSetting', required => 1);
-  has PSTNDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::PSTNDialIn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_MeetingSetting AlexaForBusiness_PSTNDialIn AlexaForBusiness_IPDialIn/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ConferenceProviderName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConferenceProviderType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IPDialIn => (is => 'ro', isa => AlexaForBusiness_IPDialIn, predicate => 1);
+  has MeetingSetting => (is => 'ro', isa => AlexaForBusiness_MeetingSetting, required => 1, predicate => 1);
+  has PSTNDialIn => (is => 'ro', isa => AlexaForBusiness_PSTNDialIn, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConferenceProvider');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::CreateConferenceProviderResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConferenceProvider');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::CreateConferenceProviderResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'MeetingSetting' => {
+                                     'class' => 'Paws::AlexaForBusiness::MeetingSetting',
+                                     'type' => 'AlexaForBusiness_MeetingSetting'
+                                   },
+               'IPDialIn' => {
+                               'class' => 'Paws::AlexaForBusiness::IPDialIn',
+                               'type' => 'AlexaForBusiness_IPDialIn'
+                             },
+               'ConferenceProviderType' => {
+                                             'type' => 'Str'
+                                           },
+               'ConferenceProviderName' => {
+                                             'type' => 'Str'
+                                           },
+               'PSTNDialIn' => {
+                                 'class' => 'Paws::AlexaForBusiness::PSTNDialIn',
+                                 'type' => 'AlexaForBusiness_PSTNDialIn'
+                               }
+             },
+  'IsRequired' => {
+                    'MeetingSetting' => 1,
+                    'ConferenceProviderType' => 1,
+                    'ConferenceProviderName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,19 +123,19 @@ Represents a type within a list of predefined types.
 
 Valid values are: C<"CHIME">, C<"BLUEJEANS">, C<"FUZE">, C<"GOOGLE_HANGOUTS">, C<"POLYCOM">, C<"RINGCENTRAL">, C<"SKYPE_FOR_BUSINESS">, C<"WEBEX">, C<"ZOOM">, C<"CUSTOM">
 
-=head2 IPDialIn => L<Paws::AlexaForBusiness::IPDialIn>
+=head2 IPDialIn => AlexaForBusiness_IPDialIn
 
 The IP endpoint and protocol for calling.
 
 
 
-=head2 B<REQUIRED> MeetingSetting => L<Paws::AlexaForBusiness::MeetingSetting>
+=head2 B<REQUIRED> MeetingSetting => AlexaForBusiness_MeetingSetting
 
 The meeting settings for the conference provider.
 
 
 
-=head2 PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>
+=head2 PSTNDialIn => AlexaForBusiness_PSTNDialIn
 
 The information for PSTN conferencing.
 

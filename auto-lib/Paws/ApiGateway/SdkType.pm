@@ -1,12 +1,45 @@
 
 package Paws::ApiGateway::SdkType;
-  use Moose;
-  has ConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::SdkConfigurationProperty]', traits => ['NameInRequest'], request_name => 'configurationProperties');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has FriendlyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'friendlyName');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_SdkConfigurationProperty/;
+  has ConfigurationProperties => (is => 'ro', isa => ArrayRef[ApiGateway_SdkConfigurationProperty]);
+  has Description => (is => 'ro', isa => Str);
+  has FriendlyName => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FriendlyName' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigurationProperties' => {
+                                              'class' => 'Paws::ApiGateway::SdkConfigurationProperty',
+                                              'type' => 'ArrayRef[ApiGateway_SdkConfigurationProperty]'
+                                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FriendlyName' => 'friendlyName',
+                       'ConfigurationProperties' => 'configurationProperties',
+                       'Id' => 'id',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +51,7 @@ Paws::ApiGateway::SdkType
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationProperties => ArrayRef[L<Paws::ApiGateway::SdkConfigurationProperty>]
+=head2 ConfigurationProperties => ArrayRef[ApiGateway_SdkConfigurationProperty]
 
 A list of configuration properties of an SdkType.
 

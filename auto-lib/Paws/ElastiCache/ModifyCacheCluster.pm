@@ -1,29 +1,96 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ModifyCacheCluster;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AZMode => (is => 'ro', isa => 'Str');
-  has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NewAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NotificationTopicStatus => (is => 'ro', isa => 'Str');
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::ElastiCache::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AZMode => (is => 'ro', isa => Str, predicate => 1);
+  has CacheClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CacheNodeIdsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CacheNodeType => (is => 'ro', isa => Str, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NewAvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicStatus => (is => 'ro', isa => Str, predicate => 1);
+  has NumCacheNodes => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotWindow => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCacheCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyCacheClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NotificationTopicStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'NewAvailabilityZones' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'CacheSecurityGroupNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'CacheNodeIdsToRemove' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'AZMode' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'CacheClusterId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

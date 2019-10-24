@@ -9,7 +9,7 @@ package Paws::EC2::VpnGateway;
   has VpcAttachments => (is => 'ro', isa => ArrayRef[EC2_VpcAttachment]);
   has VpnGatewayId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Type' => {
@@ -47,8 +47,8 @@ package Paws::EC2::VpnGateway;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

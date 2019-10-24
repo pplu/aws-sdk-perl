@@ -1,12 +1,37 @@
 
 package Paws::CloudFront::GetStreamingDistributionResult;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has StreamingDistribution => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistribution');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistribution/;
+  has ETag => (is => 'ro', isa => Str);
+  has StreamingDistribution => (is => 'ro', isa => CloudFront_StreamingDistribution);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'StreamingDistribution');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamingDistribution' => {
+                                            'class' => 'Paws::CloudFront::StreamingDistribution',
+                                            'type' => 'CloudFront_StreamingDistribution'
+                                          },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInHeader' => {
+                       'ETag' => 'ETag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ example: C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
+=head2 StreamingDistribution => CloudFront_StreamingDistribution
 
 The streaming distribution's information.
 

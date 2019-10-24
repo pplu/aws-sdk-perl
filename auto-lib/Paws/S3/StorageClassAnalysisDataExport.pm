@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::StorageClassAnalysisDataExport;
   use Moo;
   use Types::Standard qw/Str/;
@@ -15,7 +16,11 @@ package Paws::S3::StorageClassAnalysisDataExport;
                'OutputSchemaVersion' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'Destination' => 1,
+                    'OutputSchemaVersion' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -9,7 +9,7 @@ package Paws::EC2::VpcEndpointConnection;
   has VpcEndpointOwner => (is => 'ro', isa => Str);
   has VpcEndpointState => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcEndpointOwner' => {
@@ -46,8 +46,8 @@ package Paws::EC2::VpcEndpointConnection;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

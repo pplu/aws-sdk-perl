@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::Metric;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Namespace => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension]);
+  has MetricName => (is => 'ro', isa => Str);
+  has Namespace => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Represents a specific metric.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
   The dimensions for the metric.
 

@@ -1,18 +1,80 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ExportJobResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has CompletedPieces => (is => 'ro', isa => 'Int');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ExportJobResource', required => 1);
-  has FailedPieces => (is => 'ro', isa => 'Int');
-  has Failures => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has TotalFailures => (is => 'ro', isa => 'Int');
-  has TotalPieces => (is => 'ro', isa => 'Int');
-  has TotalProcessed => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ExportJobResource/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CompletedPieces => (is => 'ro', isa => Int);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has Definition => (is => 'ro', isa => Pinpoint_ExportJobResource, required => 1);
+  has FailedPieces => (is => 'ro', isa => Int);
+  has Failures => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has JobStatus => (is => 'ro', isa => Str, required => 1);
+  has TotalFailures => (is => 'ro', isa => Int);
+  has TotalPieces => (is => 'ro', isa => Int);
+  has TotalProcessed => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Definition' => {
+                                 'class' => 'Paws::Pinpoint::ExportJobResource',
+                                 'type' => 'Pinpoint_ExportJobResource'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Failures' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'FailedPieces' => {
+                                   'type' => 'Int'
+                                 },
+               'CompletedPieces' => {
+                                      'type' => 'Int'
+                                    },
+               'TotalProcessed' => {
+                                     'type' => 'Int'
+                                   },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'TotalFailures' => {
+                                    'type' => 'Int'
+                                  },
+               'TotalPieces' => {
+                                  'type' => 'Int'
+                                },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'Type' => 1,
+                    'Definition' => 1,
+                    'Id' => 1,
+                    'CreationDate' => 1,
+                    'JobStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +136,7 @@ the export job, as of the time of the request.
   The date, in ISO 8601 format, when the export job was created.
 
 
-=head2 B<REQUIRED> Definition => L<Paws::Pinpoint::ExportJobResource>
+=head2 B<REQUIRED> Definition => Pinpoint_ExportJobResource
 
   The resource settings that apply to the export job.
 

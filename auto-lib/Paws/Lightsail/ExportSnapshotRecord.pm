@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Lightsail::ExportSnapshotRecord;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DestinationInfo => (is => 'ro', isa => 'Paws::Lightsail::DestinationInfo', request_name => 'destinationInfo', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SourceInfo => (is => 'ro', isa => 'Paws::Lightsail::ExportSnapshotRecordSourceInfo', request_name => 'sourceInfo', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_ExportSnapshotRecordSourceInfo Lightsail_ResourceLocation Lightsail_DestinationInfo/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DestinationInfo => (is => 'ro', isa => Lightsail_DestinationInfo);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SourceInfo => (is => 'ro', isa => Lightsail_ExportSnapshotRecordSourceInfo);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationInfo' => {
+                                      'class' => 'Paws::Lightsail::DestinationInfo',
+                                      'type' => 'Lightsail_DestinationInfo'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SourceInfo' => {
+                                 'class' => 'Paws::Lightsail::ExportSnapshotRecordSourceInfo',
+                                 'type' => 'Lightsail_ExportSnapshotRecordSourceInfo'
+                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'DestinationInfo' => 'destinationInfo',
+                       'State' => 'state',
+                       'SourceInfo' => 'sourceInfo',
+                       'CreatedAt' => 'createdAt',
+                       'ResourceType' => 'resourceType',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,13 +104,13 @@ Describes an export snapshot record.
   The date when the export snapshot record was created.
 
 
-=head2 DestinationInfo => L<Paws::Lightsail::DestinationInfo>
+=head2 DestinationInfo => Lightsail_DestinationInfo
 
   A list of objects describing the destination of the export snapshot
 record.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region and Availability Zone where the export snapshot record
 is located.
@@ -75,7 +126,7 @@ is located.
   The Lightsail resource type (e.g., C<ExportSnapshotRecord>).
 
 
-=head2 SourceInfo => L<Paws::Lightsail::ExportSnapshotRecordSourceInfo>
+=head2 SourceInfo => Lightsail_ExportSnapshotRecordSourceInfo
 
   A list of objects describing the source of the export snapshot record.
 

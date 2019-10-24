@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::UpdateVirtualInterfaceAttributes;
-  use Moose;
-  has Mtu => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'mtu' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has Mtu => (is => 'ro', isa => Int, predicate => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVirtualInterfaceAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVirtualInterfaceAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Mtu' => {
+                          'type' => 'Int'
+                        },
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Mtu' => 'mtu',
+                       'VirtualInterfaceId' => 'virtualInterfaceId'
+                     },
+  'IsRequired' => {
+                    'VirtualInterfaceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

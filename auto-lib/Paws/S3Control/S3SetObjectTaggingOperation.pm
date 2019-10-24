@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3SetObjectTaggingOperation;
-  use Moose;
-  has TagSet => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Tag]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::S3Control::Types qw/S3Control_S3Tag/;
+  has TagSet => (is => 'ro', isa => ArrayRef[S3Control_S3Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagSet' => {
+                             'class' => 'Paws::S3Control::S3Tag',
+                             'type' => 'ArrayRef[S3Control_S3Tag]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +58,7 @@ parameters for this operation, see PUT Object tagging
 =head1 ATTRIBUTES
 
 
-=head2 TagSet => ArrayRef[L<Paws::S3Control::S3Tag>]
+=head2 TagSet => ArrayRef[S3Control_S3Tag]
 
   
 

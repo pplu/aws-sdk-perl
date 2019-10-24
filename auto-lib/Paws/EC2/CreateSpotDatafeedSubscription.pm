@@ -13,7 +13,7 @@ package Paws::EC2::CreateSpotDatafeedSubscription;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateSpotDatafeedSubscriptionResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Prefix' => {
@@ -30,11 +30,14 @@ package Paws::EC2::CreateSpotDatafeedSubscription;
                        'Prefix' => 'prefix',
                        'DryRun' => 'dryRun',
                        'Bucket' => 'bucket'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

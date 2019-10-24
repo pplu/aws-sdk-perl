@@ -1,21 +1,73 @@
 
 package Paws::ApiGatewayV2::CreateApi;
-  use Moose;
-  has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySelectionExpression');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DisableSchemaValidation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableSchemaValidation');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ProtocolType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocolType', required => 1);
-  has RouteSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeSelectionExpression', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_Tags/;
+  has ApiKeySelectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisableSchemaValidation => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProtocolType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteSelectionExpression => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::CreateApiResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::CreateApiResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiKeySelectionExpression' => {
+                                                'type' => 'Str'
+                                              },
+               'DisableSchemaValidation' => {
+                                              'type' => 'Bool'
+                                            },
+               'RouteSelectionExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ProtocolType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::ApiGatewayV2::Tags',
+                           'type' => 'ApiGatewayV2_Tags'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ApiKeySelectionExpression' => 'apiKeySelectionExpression',
+                       'DisableSchemaValidation' => 'disableSchemaValidation',
+                       'RouteSelectionExpression' => 'routeSelectionExpression',
+                       'Version' => 'version',
+                       'ProtocolType' => 'protocolType',
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RouteSelectionExpression' => 1,
+                    'ProtocolType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +159,7 @@ The route selection expression for the API.
 
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

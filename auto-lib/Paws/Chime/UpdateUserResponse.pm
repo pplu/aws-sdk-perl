@@ -1,9 +1,27 @@
 
 package Paws::Chime::UpdateUserResponse;
-  use Moose;
-  has User => (is => 'ro', isa => 'Paws::Chime::User');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_User/;
+  has User => (is => 'ro', isa => Chime_User);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'User' => {
+                           'class' => 'Paws::Chime::User',
+                           'type' => 'Chime_User'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Chime::UpdateUserResponse
 =head1 ATTRIBUTES
 
 
-=head2 User => L<Paws::Chime::User>
+=head2 User => Chime_User
 
 The updated user details.
 

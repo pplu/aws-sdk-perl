@@ -1,14 +1,36 @@
 
 package Paws::IoTEventsData::BatchPutMessage;
-  use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::Message]', traits => ['NameInRequest'], request_name => 'messages', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_Message/;
+  has Messages => (is => 'ro', isa => ArrayRef[IoTEventsData_Message], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutMessage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/inputs/messages');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEventsData::BatchPutMessageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchPutMessage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/inputs/messages');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEventsData::BatchPutMessageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Messages' => {
+                               'class' => 'Paws::IoTEventsData::Message',
+                               'type' => 'ArrayRef[IoTEventsData_Message]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Messages' => 'messages'
+                     },
+  'IsRequired' => {
+                    'Messages' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Messages => ArrayRef[L<Paws::IoTEventsData::Message>]
+=head2 B<REQUIRED> Messages => ArrayRef[IoTEventsData_Message]
 
 The list of messages to send. Each message has the following format:
 C<'{ "messageId": "string", "inputName": "string", "payload":

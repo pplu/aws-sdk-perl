@@ -1,9 +1,30 @@
 
 package Paws::IoTEvents::UpdateInputResponse;
-  use Moose;
-  has InputConfiguration => (is => 'ro', isa => 'Paws::IoTEvents::InputConfiguration', traits => ['NameInRequest'], request_name => 'inputConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_InputConfiguration/;
+  has InputConfiguration => (is => 'ro', isa => IoTEvents_InputConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InputConfiguration' => {
+                                         'class' => 'Paws::IoTEvents::InputConfiguration',
+                                         'type' => 'IoTEvents_InputConfiguration'
+                                       }
+             },
+  'NameInRequest' => {
+                       'InputConfiguration' => 'inputConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoTEvents::UpdateInputResponse
 =head1 ATTRIBUTES
 
 
-=head2 InputConfiguration => L<Paws::IoTEvents::InputConfiguration>
+=head2 InputConfiguration => IoTEvents_InputConfiguration
 
 Information about the configuration of the input.
 

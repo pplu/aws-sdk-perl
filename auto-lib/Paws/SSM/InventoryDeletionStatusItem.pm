@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryDeletionStatusItem;
-  use Moose;
-  has DeletionId => (is => 'ro', isa => 'Str');
-  has DeletionStartTime => (is => 'ro', isa => 'Str');
-  has DeletionSummary => (is => 'ro', isa => 'Paws::SSM::InventoryDeletionSummary');
-  has LastStatus => (is => 'ro', isa => 'Str');
-  has LastStatusMessage => (is => 'ro', isa => 'Str');
-  has LastStatusUpdateTime => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_InventoryDeletionSummary/;
+  has DeletionId => (is => 'ro', isa => Str);
+  has DeletionStartTime => (is => 'ro', isa => Str);
+  has DeletionSummary => (is => 'ro', isa => SSM_InventoryDeletionSummary);
+  has LastStatus => (is => 'ro', isa => Str);
+  has LastStatusMessage => (is => 'ro', isa => Str);
+  has LastStatusUpdateTime => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastStatusMessage' => {
+                                        'type' => 'Str'
+                                      },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'DeletionId' => {
+                                 'type' => 'Str'
+                               },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'LastStatusUpdateTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DeletionSummary' => {
+                                      'class' => 'Paws::SSM::InventoryDeletionSummary',
+                                      'type' => 'SSM_InventoryDeletionSummary'
+                                    },
+               'DeletionStartTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +88,7 @@ Status information returned by the C<DeleteInventory> action.
   The UTC timestamp when the delete operation started.
 
 
-=head2 DeletionSummary => L<Paws::SSM::InventoryDeletionSummary>
+=head2 DeletionSummary => SSM_InventoryDeletionSummary
 
   Information about the delete operation. For more information about this
 summary, see Understanding the Delete Inventory Summary

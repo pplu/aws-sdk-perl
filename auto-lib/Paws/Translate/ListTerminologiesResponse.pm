@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Translate::ListTerminologiesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TerminologyPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Translate::TerminologyProperties]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Translate::Types qw/Translate_TerminologyProperties/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TerminologyPropertiesList => (is => 'ro', isa => ArrayRef[Translate_TerminologyProperties]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TerminologyPropertiesList' => {
+                                                'class' => 'Paws::Translate::TerminologyProperties',
+                                                'type' => 'ArrayRef[Translate_TerminologyProperties]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ If the response to the ListTerminologies was truncated, the NextToken
 fetches the next group of custom terminologies.
 
 
-=head2 TerminologyPropertiesList => ArrayRef[L<Paws::Translate::TerminologyProperties>]
+=head2 TerminologyPropertiesList => ArrayRef[Translate_TerminologyProperties]
 
 The properties list of the custom terminologies returned on the list
 request.

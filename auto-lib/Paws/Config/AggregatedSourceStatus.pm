@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Config::AggregatedSourceStatus;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str');
-  has LastErrorCode => (is => 'ro', isa => 'Str');
-  has LastErrorMessage => (is => 'ro', isa => 'Str');
-  has LastUpdateStatus => (is => 'ro', isa => 'Str');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
-  has SourceId => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str);
+  has LastErrorCode => (is => 'ro', isa => Str);
+  has LastErrorMessage => (is => 'ro', isa => Str);
+  has LastUpdateStatus => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has SourceId => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'LastErrorCode' => {
+                                    'type' => 'Str'
+                                  },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'LastErrorMessage' => {
+                                       'type' => 'Str'
+                                     },
+               'SourceId' => {
+                               'type' => 'Str'
+                             },
+               'LastUpdateStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

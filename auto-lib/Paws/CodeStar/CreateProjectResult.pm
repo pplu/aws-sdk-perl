@@ -1,12 +1,49 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::CreateProjectResult;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has ProjectTemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectTemplateId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has ProjectTemplateId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ProjectTemplateId' => {
+                                        'type' => 'Str'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'ProjectTemplateId' => 'projectTemplateId',
+                       'Id' => 'id',
+                       'Arn' => 'arn'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

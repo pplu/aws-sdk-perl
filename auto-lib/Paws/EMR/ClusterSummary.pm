@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::EMR::ClusterSummary;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Paws::EMR::ClusterStatus');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EMR::Types qw/EMR_ClusterStatus/;
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NormalizedInstanceHours => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => EMR_ClusterStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NormalizedInstanceHours' => {
+                                              'type' => 'Int'
+                                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'class' => 'Paws::EMR::ClusterStatus',
+                             'type' => 'EMR_ClusterStatus'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +86,7 @@ normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
 
-=head2 Status => L<Paws::EMR::ClusterStatus>
+=head2 Status => EMR_ClusterStatus
 
   The details about the current status of the cluster.
 

@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::StartTimerDecisionAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has StartToFireTimeout => (is => 'ro', isa => 'Str', request_name => 'startToFireTimeout', traits => ['NameInRequest'], required => 1);
-  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has StartToFireTimeout => (is => 'ro', isa => Str, required => 1);
+  has TimerId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartToFireTimeout' => {
+                                         'type' => 'Str'
+                                       },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'TimerId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'StartToFireTimeout' => 'startToFireTimeout',
+                       'Control' => 'control',
+                       'TimerId' => 'timerId'
+                     },
+  'IsRequired' => {
+                    'StartToFireTimeout' => 1,
+                    'TimerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Transcribe::TranscriptionJobSummary;
-  use Moose;
-  has CompletionTime => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has OutputLocationType => (is => 'ro', isa => 'Str');
-  has TranscriptionJobName => (is => 'ro', isa => 'Str');
-  has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transcribe::Types qw//;
+  has CompletionTime => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has OutputLocationType => (is => 'ro', isa => Str);
+  has TranscriptionJobName => (is => 'ro', isa => Str);
+  has TranscriptionJobStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'OutputLocationType' => {
+                                         'type' => 'Str'
+                                       },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'CompletionTime' => {
+                                     'type' => 'Str'
+                                   },
+               'TranscriptionJobStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'TranscriptionJobName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

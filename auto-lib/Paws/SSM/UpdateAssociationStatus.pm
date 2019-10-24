@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateAssociationStatus;
-  use Moose;
-  has AssociationStatus => (is => 'ro', isa => 'Paws::SSM::AssociationStatus', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AssociationStatus/;
+  has AssociationStatus => (is => 'ro', isa => SSM_AssociationStatus, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAssociationStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateAssociationStatusResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAssociationStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateAssociationStatusResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AssociationStatus' => {
+                                        'class' => 'Paws::SSM::AssociationStatus',
+                                        'type' => 'SSM_AssociationStatus'
+                                      }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'Name' => 1,
+                    'AssociationStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssociationStatus => L<Paws::SSM::AssociationStatus>
+=head2 B<REQUIRED> AssociationStatus => SSM_AssociationStatus
 
 The association status.
 

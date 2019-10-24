@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::StaticKeySettings;
-  use Moose;
-  has KeyProviderServer => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'keyProviderServer', traits => ['NameInRequest']);
-  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has KeyProviderServer => (is => 'ro', isa => MediaLive_InputLocation);
+  has StaticKeyValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StaticKeyValue' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyProviderServer' => {
+                                        'class' => 'Paws::MediaLive::InputLocation',
+                                        'type' => 'MediaLive_InputLocation'
+                                      }
+             },
+  'NameInRequest' => {
+                       'StaticKeyValue' => 'staticKeyValue',
+                       'KeyProviderServer' => 'keyProviderServer'
+                     },
+  'IsRequired' => {
+                    'StaticKeyValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ Static Key Settings
 =head1 ATTRIBUTES
 
 
-=head2 KeyProviderServer => L<Paws::MediaLive::InputLocation>
+=head2 KeyProviderServer => MediaLive_InputLocation
 
   The URL of the license server used for protecting content.
 

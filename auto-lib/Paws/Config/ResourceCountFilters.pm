@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Config::ResourceCountFilters;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

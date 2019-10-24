@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::GameLift::FleetCapacity;
-  use Moose;
-  has FleetId => (is => 'ro', isa => 'Str');
-  has InstanceCounts => (is => 'ro', isa => 'Paws::GameLift::EC2InstanceCounts');
-  has InstanceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_EC2InstanceCounts/;
+  has FleetId => (is => 'ro', isa => Str);
+  has InstanceCounts => (is => 'ro', isa => GameLift_EC2InstanceCounts);
+  has InstanceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceCounts' => {
+                                     'class' => 'Paws::GameLift::EC2InstanceCounts',
+                                     'type' => 'GameLift_EC2InstanceCounts'
+                                   },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'FleetId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -139,7 +163,7 @@ StopFleetActions
   Unique identifier for a fleet.
 
 
-=head2 InstanceCounts => L<Paws::GameLift::EC2InstanceCounts>
+=head2 InstanceCounts => GameLift_EC2InstanceCounts
 
   Current status of fleet capacity.
 

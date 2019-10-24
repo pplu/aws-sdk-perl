@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::MappingParameters;
-  use Moose;
-  has CSVMappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::CSVMappingParameters');
-  has JSONMappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::JSONMappingParameters');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_JSONMappingParameters KinesisAnalyticsV2_CSVMappingParameters/;
+  has CSVMappingParameters => (is => 'ro', isa => KinesisAnalyticsV2_CSVMappingParameters);
+  has JSONMappingParameters => (is => 'ro', isa => KinesisAnalyticsV2_JSONMappingParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JSONMappingParameters' => {
+                                            'class' => 'Paws::KinesisAnalyticsV2::JSONMappingParameters',
+                                            'type' => 'KinesisAnalyticsV2_JSONMappingParameters'
+                                          },
+               'CSVMappingParameters' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::CSVMappingParameters',
+                                           'type' => 'KinesisAnalyticsV2_CSVMappingParameters'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,13 +63,13 @@ the streaming source.
 =head1 ATTRIBUTES
 
 
-=head2 CSVMappingParameters => L<Paws::KinesisAnalyticsV2::CSVMappingParameters>
+=head2 CSVMappingParameters => KinesisAnalyticsV2_CSVMappingParameters
 
   Provides additional mapping information when the record format uses
 delimiters (for example, CSV).
 
 
-=head2 JSONMappingParameters => L<Paws::KinesisAnalyticsV2::JSONMappingParameters>
+=head2 JSONMappingParameters => KinesisAnalyticsV2_JSONMappingParameters
 
   Provides additional mapping information when JSON is the record format
 on the streaming source.

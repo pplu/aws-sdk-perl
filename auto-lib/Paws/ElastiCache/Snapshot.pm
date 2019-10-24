@@ -1,29 +1,119 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::Snapshot;
-  use Moose;
-  has AutomaticFailover => (is => 'ro', isa => 'Str');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]', request_name => 'NodeSnapshot', traits => ['NameInRequest']);
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
-  has NumNodeGroups => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SnapshotName => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotSource => (is => 'ro', isa => 'Str');
-  has SnapshotStatus => (is => 'ro', isa => 'Str');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::ElastiCache::Types qw/ElastiCache_NodeSnapshot/;
+  has AutomaticFailover => (is => 'ro', isa => Str);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has CacheClusterCreateTime => (is => 'ro', isa => Str);
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has CacheNodeType => (is => 'ro', isa => Str);
+  has CacheParameterGroupName => (is => 'ro', isa => Str);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has NodeSnapshots => (is => 'ro', isa => ArrayRef[ElastiCache_NodeSnapshot]);
+  has NumCacheNodes => (is => 'ro', isa => Int);
+  has NumNodeGroups => (is => 'ro', isa => Int);
+  has Port => (is => 'ro', isa => Int);
+  has PreferredAvailabilityZone => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has ReplicationGroupDescription => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has SnapshotName => (is => 'ro', isa => Str);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int);
+  has SnapshotSource => (is => 'ro', isa => Str);
+  has SnapshotStatus => (is => 'ro', isa => Str);
+  has SnapshotWindow => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'PreferredAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'AutomaticFailover' => {
+                                        'type' => 'Str'
+                                      },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'CacheClusterCreateTime' => {
+                                             'type' => 'Str'
+                                           },
+               'SnapshotStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'NodeSnapshots' => {
+                                    'class' => 'Paws::ElastiCache::NodeSnapshot',
+                                    'type' => 'ArrayRef[ElastiCache_NodeSnapshot]'
+                                  },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'ReplicationGroupDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'SnapshotSource' => {
+                                     'type' => 'Str'
+                                   },
+               'NumNodeGroups' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NodeSnapshots' => 'NodeSnapshot'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -242,7 +332,7 @@ source cluster.
 cluster.
 
 
-=head2 NodeSnapshots => ArrayRef[L<Paws::ElastiCache::NodeSnapshot>]
+=head2 NodeSnapshots => ArrayRef[ElastiCache_NodeSnapshot]
 
   A list of the cache nodes in the source cluster.
 

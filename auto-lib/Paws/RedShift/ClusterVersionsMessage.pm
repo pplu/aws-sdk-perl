@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ClusterVersionsMessage;
-  use Moose;
-  has ClusterVersions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterVersion]', request_name => 'ClusterVersion', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_ClusterVersion/;
+  has ClusterVersions => (is => 'ro', isa => ArrayRef[RedShift_ClusterVersion]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterVersions' => {
+                                      'class' => 'Paws::RedShift::ClusterVersion',
+                                      'type' => 'ArrayRef[RedShift_ClusterVersion]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ClusterVersions' => 'ClusterVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::ClusterVersionsMessage
 =head1 ATTRIBUTES
 
 
-=head2 ClusterVersions => ArrayRef[L<Paws::RedShift::ClusterVersion>]
+=head2 ClusterVersions => ArrayRef[RedShift_ClusterVersion]
 
 A list of C<Version> elements.
 

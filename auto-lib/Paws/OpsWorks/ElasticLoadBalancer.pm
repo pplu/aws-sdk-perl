@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::ElasticLoadBalancer;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DnsName => (is => 'ro', isa => 'Str');
-  has Ec2InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ElasticLoadBalancerName => (is => 'ro', isa => 'Str');
-  has LayerId => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::OpsWorks::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DnsName => (is => 'ro', isa => Str);
+  has Ec2InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ElasticLoadBalancerName => (is => 'ro', isa => Str);
+  has LayerId => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticLoadBalancerName' => {
+                                              'type' => 'Str'
+                                            },
+               'DnsName' => {
+                              'type' => 'Str'
+                            },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'LayerId' => {
+                              'type' => 'Str'
+                            },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Ec2InstanceIds' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Comprehend::BatchDetectSyntaxItemResult;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int');
-  has SyntaxTokens => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::SyntaxToken]');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_SyntaxToken/;
+  has Index => (is => 'ro', isa => Int);
+  has SyntaxTokens => (is => 'ro', isa => ArrayRef[Comprehend_SyntaxToken]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyntaxTokens' => {
+                                   'class' => 'Paws::Comprehend::SyntaxToken',
+                                   'type' => 'ArrayRef[Comprehend_SyntaxToken]'
+                                 },
+               'Index' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ that is successfully processed by the operation.
   The zero-based index of the document in the input list.
 
 
-=head2 SyntaxTokens => ArrayRef[L<Paws::Comprehend::SyntaxToken>]
+=head2 SyntaxTokens => ArrayRef[Comprehend_SyntaxToken]
 
   The syntax tokens for the words in the document, one token for each
 word.

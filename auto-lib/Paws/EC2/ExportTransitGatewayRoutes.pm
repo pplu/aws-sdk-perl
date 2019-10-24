@@ -14,7 +14,7 @@ package Paws::EC2::ExportTransitGatewayRoutes;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ExportTransitGatewayRoutesResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -33,11 +33,15 @@ package Paws::EC2::ExportTransitGatewayRoutes;
              },
   'NameInRequest' => {
                        'Filters' => 'Filter'
-                     }
+                     },
+  'IsRequired' => {
+                    'TransitGatewayRouteTableId' => 1,
+                    'S3Bucket' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,14 +1,69 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HlsManifestCreateOrUpdateParameters;
-  use Moose;
-  has AdMarkers => (is => 'ro', isa => 'Str', request_name => 'adMarkers', traits => ['NameInRequest']);
-  has AdsOnDeliveryRestrictions => (is => 'ro', isa => 'Str', request_name => 'adsOnDeliveryRestrictions', traits => ['NameInRequest']);
-  has AdTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adTriggers', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has IncludeIframeOnlyStream => (is => 'ro', isa => 'Bool', request_name => 'includeIframeOnlyStream', traits => ['NameInRequest']);
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has PlaylistType => (is => 'ro', isa => 'Str', request_name => 'playlistType', traits => ['NameInRequest']);
-  has PlaylistWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'playlistWindowSeconds', traits => ['NameInRequest']);
-  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::MediaPackage::Types qw//;
+  has AdMarkers => (is => 'ro', isa => Str);
+  has AdsOnDeliveryRestrictions => (is => 'ro', isa => Str);
+  has AdTriggers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has IncludeIframeOnlyStream => (is => 'ro', isa => Bool);
+  has ManifestName => (is => 'ro', isa => Str);
+  has PlaylistType => (is => 'ro', isa => Str);
+  has PlaylistWindowSeconds => (is => 'ro', isa => Int);
+  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlaylistType' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IncludeIframeOnlyStream' => {
+                                              'type' => 'Bool'
+                                            },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgramDateTimeIntervalSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'AdsOnDeliveryRestrictions' => {
+                                                'type' => 'Str'
+                                              },
+               'AdMarkers' => {
+                                'type' => 'Str'
+                              },
+               'PlaylistWindowSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'AdTriggers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'PlaylistType' => 'playlistType',
+                       'Id' => 'id',
+                       'IncludeIframeOnlyStream' => 'includeIframeOnlyStream',
+                       'ManifestName' => 'manifestName',
+                       'ProgramDateTimeIntervalSeconds' => 'programDateTimeIntervalSeconds',
+                       'AdsOnDeliveryRestrictions' => 'adsOnDeliveryRestrictions',
+                       'AdMarkers' => 'adMarkers',
+                       'PlaylistWindowSeconds' => 'playlistWindowSeconds',
+                       'AdTriggers' => 'adTriggers'
+                     },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

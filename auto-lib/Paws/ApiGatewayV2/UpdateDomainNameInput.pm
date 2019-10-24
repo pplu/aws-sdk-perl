@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::UpdateDomainNameInput;
-  use Moose;
-  has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_DomainNameConfiguration/;
+  has DomainNameConfigurations => (is => 'ro', isa => ArrayRef[ApiGatewayV2_DomainNameConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainNameConfigurations' => {
+                                               'class' => 'Paws::ApiGatewayV2::DomainNameConfiguration',
+                                               'type' => 'ArrayRef[ApiGatewayV2_DomainNameConfiguration]'
+                                             }
+             },
+  'NameInRequest' => {
+                       'DomainNameConfigurations' => 'domainNameConfigurations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Represents the input parameters for an UpdateDomainName request.
 =head1 ATTRIBUTES
 
 
-=head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
+=head2 DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]
 
   The domain name configurations.
 

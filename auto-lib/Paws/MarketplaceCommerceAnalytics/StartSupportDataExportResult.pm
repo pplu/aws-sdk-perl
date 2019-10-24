@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MarketplaceCommerceAnalytics::StartSupportDataExportResult;
-  use Moose;
-  has DataSetRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetRequestId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceCommerceAnalytics::Types qw//;
+  has DataSetRequestId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSetRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DataSetRequestId' => 'dataSetRequestId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

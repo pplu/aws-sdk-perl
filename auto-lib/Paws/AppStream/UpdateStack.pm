@@ -1,22 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::UpdateStack;
-  use Moose;
-  has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
-  has AttributesToDelete => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DeleteStorageConnectors => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FeedbackURL => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RedirectURL => (is => 'ro', isa => 'Str');
-  has StorageConnectors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::StorageConnector]');
-  has UserSettings => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::UserSetting]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::AppStream::Types qw/AppStream_UserSetting AppStream_StorageConnector AppStream_ApplicationSettings/;
+  has ApplicationSettings => (is => 'ro', isa => AppStream_ApplicationSettings, predicate => 1);
+  has AttributesToDelete => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DeleteStorageConnectors => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has FeedbackURL => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RedirectURL => (is => 'ro', isa => Str, predicate => 1);
+  has StorageConnectors => (is => 'ro', isa => ArrayRef[AppStream_StorageConnector], predicate => 1);
+  has UserSettings => (is => 'ro', isa => ArrayRef[AppStream_UserSetting], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStack');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::UpdateStackResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateStack');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::UpdateStackResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FeedbackURL' => {
+                                  'type' => 'Str'
+                                },
+               'AttributesToDelete' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ApplicationSettings' => {
+                                          'class' => 'Paws::AppStream::ApplicationSettings',
+                                          'type' => 'AppStream_ApplicationSettings'
+                                        },
+               'UserSettings' => {
+                                   'class' => 'Paws::AppStream::UserSetting',
+                                   'type' => 'ArrayRef[AppStream_UserSetting]'
+                                 },
+               'DeleteStorageConnectors' => {
+                                              'type' => 'Bool'
+                                            },
+               'RedirectURL' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'StorageConnectors' => {
+                                        'class' => 'Paws::AppStream::StorageConnector',
+                                        'type' => 'ArrayRef[AppStream_StorageConnector]'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +133,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
+=head2 ApplicationSettings => AppStream_ApplicationSettings
 
 The persistent application settings for users of a stack. When these
 settings are enabled, changes that users make to applications and
@@ -138,13 +187,13 @@ ends.
 
 
 
-=head2 StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]
+=head2 StorageConnectors => ArrayRef[AppStream_StorageConnector]
 
 The storage connectors to enable.
 
 
 
-=head2 UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]
+=head2 UserSettings => ArrayRef[AppStream_UserSetting]
 
 The actions that are enabled or disabled for users during their
 streaming sessions. By default, these actions are enabled.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ImportJobsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ImportJobResponse]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ImportJobResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_ImportJobResponse], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::ImportJobResponse',
+                           'type' => 'ArrayRef[Pinpoint_ImportJobResponse]'
+                         }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ is a job that imports endpoint definitions from one or more files.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::ImportJobResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_ImportJobResponse]
 
   An array of responses, one for each import job that's associated with
 the application (Import Jobs resource) or segment (Segment Import Jobs

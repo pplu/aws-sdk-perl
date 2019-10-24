@@ -1,14 +1,69 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectArtifacts;
-  use Moose;
-  has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
-  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has NamespaceType => (is => 'ro', isa => 'Str', request_name => 'namespaceType', traits => ['NameInRequest']);
-  has OverrideArtifactName => (is => 'ro', isa => 'Bool', request_name => 'overrideArtifactName', traits => ['NameInRequest']);
-  has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeBuild::Types qw//;
+  has ArtifactIdentifier => (is => 'ro', isa => Str);
+  has EncryptionDisabled => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NamespaceType => (is => 'ro', isa => Str);
+  has OverrideArtifactName => (is => 'ro', isa => Bool);
+  has Packaging => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamespaceType' => {
+                                    'type' => 'Str'
+                                  },
+               'Packaging' => {
+                                'type' => 'Str'
+                              },
+               'OverrideArtifactName' => {
+                                           'type' => 'Bool'
+                                         },
+               'ArtifactIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'EncryptionDisabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'NamespaceType' => 'namespaceType',
+                       'Packaging' => 'packaging',
+                       'OverrideArtifactName' => 'overrideArtifactName',
+                       'ArtifactIdentifier' => 'artifactIdentifier',
+                       'Type' => 'type',
+                       'EncryptionDisabled' => 'encryptionDisabled',
+                       'Path' => 'path',
+                       'Location' => 'location',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

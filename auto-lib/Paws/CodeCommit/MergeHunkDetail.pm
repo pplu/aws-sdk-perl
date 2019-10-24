@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::MergeHunkDetail;
-  use Moose;
-  has EndLine => (is => 'ro', isa => 'Int', request_name => 'endLine', traits => ['NameInRequest']);
-  has HunkContent => (is => 'ro', isa => 'Str', request_name => 'hunkContent', traits => ['NameInRequest']);
-  has StartLine => (is => 'ro', isa => 'Int', request_name => 'startLine', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CodeCommit::Types qw//;
+  has EndLine => (is => 'ro', isa => Int);
+  has HunkContent => (is => 'ro', isa => Str);
+  has StartLine => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HunkContent' => {
+                                  'type' => 'Str'
+                                },
+               'EndLine' => {
+                              'type' => 'Int'
+                            },
+               'StartLine' => {
+                                'type' => 'Int'
+                              }
+             },
+  'NameInRequest' => {
+                       'HunkContent' => 'hunkContent',
+                       'EndLine' => 'endLine',
+                       'StartLine' => 'startLine'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

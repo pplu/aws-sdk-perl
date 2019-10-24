@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::EMR::KerberosAttributes;
-  use Moose;
-  has ADDomainJoinPassword => (is => 'ro', isa => 'Str');
-  has ADDomainJoinUser => (is => 'ro', isa => 'Str');
-  has CrossRealmTrustPrincipalPassword => (is => 'ro', isa => 'Str');
-  has KdcAdminPassword => (is => 'ro', isa => 'Str', required => 1);
-  has Realm => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has ADDomainJoinPassword => (is => 'ro', isa => Str);
+  has ADDomainJoinUser => (is => 'ro', isa => Str);
+  has CrossRealmTrustPrincipalPassword => (is => 'ro', isa => Str);
+  has KdcAdminPassword => (is => 'ro', isa => Str, required => 1);
+  has Realm => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KdcAdminPassword' => {
+                                       'type' => 'Str'
+                                     },
+               'CrossRealmTrustPrincipalPassword' => {
+                                                       'type' => 'Str'
+                                                     },
+               'ADDomainJoinPassword' => {
+                                           'type' => 'Str'
+                                         },
+               'Realm' => {
+                            'type' => 'Str'
+                          },
+               'ADDomainJoinUser' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'KdcAdminPassword' => 1,
+                    'Realm' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

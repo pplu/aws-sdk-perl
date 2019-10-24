@@ -1,16 +1,78 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::HlsPackage;
-  use Moose;
-  has AdMarkers => (is => 'ro', isa => 'Str', request_name => 'adMarkers', traits => ['NameInRequest']);
-  has AdsOnDeliveryRestrictions => (is => 'ro', isa => 'Str', request_name => 'adsOnDeliveryRestrictions', traits => ['NameInRequest']);
-  has AdTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adTriggers', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::HlsEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has IncludeIframeOnlyStream => (is => 'ro', isa => 'Bool', request_name => 'includeIframeOnlyStream', traits => ['NameInRequest']);
-  has PlaylistType => (is => 'ro', isa => 'Str', request_name => 'playlistType', traits => ['NameInRequest']);
-  has PlaylistWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'playlistWindowSeconds', traits => ['NameInRequest']);
-  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
-  has UseAudioRenditionGroup => (is => 'ro', isa => 'Bool', request_name => 'useAudioRenditionGroup', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::MediaPackage::Types qw/MediaPackage_StreamSelection MediaPackage_HlsEncryption/;
+  has AdMarkers => (is => 'ro', isa => Str);
+  has AdsOnDeliveryRestrictions => (is => 'ro', isa => Str);
+  has AdTriggers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Encryption => (is => 'ro', isa => MediaPackage_HlsEncryption);
+  has IncludeIframeOnlyStream => (is => 'ro', isa => Bool);
+  has PlaylistType => (is => 'ro', isa => Str);
+  has PlaylistWindowSeconds => (is => 'ro', isa => Int);
+  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => Int);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+  has StreamSelection => (is => 'ro', isa => MediaPackage_StreamSelection);
+  has UseAudioRenditionGroup => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlaylistType' => {
+                                   'type' => 'Str'
+                                 },
+               'IncludeIframeOnlyStream' => {
+                                              'type' => 'Bool'
+                                            },
+               'UseAudioRenditionGroup' => {
+                                             'type' => 'Bool'
+                                           },
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackage::StreamSelection',
+                                      'type' => 'MediaPackage_StreamSelection'
+                                    },
+               'ProgramDateTimeIntervalSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'AdsOnDeliveryRestrictions' => {
+                                                'type' => 'Str'
+                                              },
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'AdMarkers' => {
+                                'type' => 'Str'
+                              },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaPackage::HlsEncryption',
+                                 'type' => 'MediaPackage_HlsEncryption'
+                               },
+               'PlaylistWindowSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'AdTriggers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'NameInRequest' => {
+                       'PlaylistType' => 'playlistType',
+                       'IncludeIframeOnlyStream' => 'includeIframeOnlyStream',
+                       'UseAudioRenditionGroup' => 'useAudioRenditionGroup',
+                       'StreamSelection' => 'streamSelection',
+                       'ProgramDateTimeIntervalSeconds' => 'programDateTimeIntervalSeconds',
+                       'AdsOnDeliveryRestrictions' => 'adsOnDeliveryRestrictions',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'AdMarkers' => 'adMarkers',
+                       'Encryption' => 'encryption',
+                       'PlaylistWindowSeconds' => 'playlistWindowSeconds',
+                       'AdTriggers' => 'adTriggers'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +128,7 @@ blackout tags based on SCTE-35 messages in the input source.
   
 
 
-=head2 Encryption => L<Paws::MediaPackage::HlsEncryption>
+=head2 Encryption => MediaPackage_HlsEncryption
 
   
 
@@ -107,7 +169,7 @@ output.
 rounded to the nearest multiple of the source fragment duration.
 
 
-=head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>
+=head2 StreamSelection => MediaPackage_StreamSelection
 
   
 

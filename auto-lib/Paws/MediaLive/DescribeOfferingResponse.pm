@@ -1,19 +1,80 @@
 
 package Paws::MediaLive::DescribeOfferingResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CurrencyCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currencyCode');
-  has Duration => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'duration');
-  has DurationUnits => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'durationUnits');
-  has FixedPrice => (is => 'ro', isa => 'Num', traits => ['NameInRequest'], request_name => 'fixedPrice');
-  has OfferingDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringDescription');
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId');
-  has OfferingType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringType');
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region');
-  has ResourceSpecification => (is => 'ro', isa => 'Paws::MediaLive::ReservationResourceSpecification', traits => ['NameInRequest'], request_name => 'resourceSpecification');
-  has UsagePrice => (is => 'ro', isa => 'Num', traits => ['NameInRequest'], request_name => 'usagePrice');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaLive::Types qw/MediaLive_ReservationResourceSpecification/;
+  has Arn => (is => 'ro', isa => Str);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has DurationUnits => (is => 'ro', isa => Str);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has OfferingDescription => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has OfferingType => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ResourceSpecification => (is => 'ro', isa => MediaLive_ReservationResourceSpecification);
+  has UsagePrice => (is => 'ro', isa => Num);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'DurationUnits' => {
+                                    'type' => 'Str'
+                                  },
+               'OfferingDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'ResourceSpecification' => {
+                                            'class' => 'Paws::MediaLive::ReservationResourceSpecification',
+                                            'type' => 'MediaLive_ReservationResourceSpecification'
+                                          },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'OfferingType' => 'offeringType',
+                       'OfferingId' => 'offeringId',
+                       'DurationUnits' => 'durationUnits',
+                       'OfferingDescription' => 'offeringDescription',
+                       'ResourceSpecification' => 'resourceSpecification',
+                       'CurrencyCode' => 'currencyCode',
+                       'Arn' => 'arn',
+                       'FixedPrice' => 'fixedPrice',
+                       'Region' => 'region',
+                       'Duration' => 'duration',
+                       'UsagePrice' => 'usagePrice'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +135,7 @@ Valid values are: C<"NO_UPFRONT">
 AWS region, e.g. 'us-west-2'
 
 
-=head2 ResourceSpecification => L<Paws::MediaLive::ReservationResourceSpecification>
+=head2 ResourceSpecification => MediaLive_ReservationResourceSpecification
 
 Resource configuration details
 

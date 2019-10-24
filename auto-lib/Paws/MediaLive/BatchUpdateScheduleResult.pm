@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::BatchUpdateScheduleResult;
-  use Moose;
-  has Creates => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionCreateResult', request_name => 'creates', traits => ['NameInRequest']);
-  has Deletes => (is => 'ro', isa => 'Paws::MediaLive::BatchScheduleActionDeleteResult', request_name => 'deletes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_BatchScheduleActionDeleteResult MediaLive_BatchScheduleActionCreateResult/;
+  has Creates => (is => 'ro', isa => MediaLive_BatchScheduleActionCreateResult);
+  has Deletes => (is => 'ro', isa => MediaLive_BatchScheduleActionDeleteResult);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Creates' => {
+                              'class' => 'Paws::MediaLive::BatchScheduleActionCreateResult',
+                              'type' => 'MediaLive_BatchScheduleActionCreateResult'
+                            },
+               'Deletes' => {
+                              'class' => 'Paws::MediaLive::BatchScheduleActionDeleteResult',
+                              'type' => 'MediaLive_BatchScheduleActionDeleteResult'
+                            }
+             },
+  'NameInRequest' => {
+                       'Creates' => 'creates',
+                       'Deletes' => 'deletes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Results of a batch schedule update.
 =head1 ATTRIBUTES
 
 
-=head2 Creates => L<Paws::MediaLive::BatchScheduleActionCreateResult>
+=head2 Creates => MediaLive_BatchScheduleActionCreateResult
 
   Schedule actions created in the schedule.
 
 
-=head2 Deletes => L<Paws::MediaLive::BatchScheduleActionDeleteResult>
+=head2 Deletes => MediaLive_BatchScheduleActionDeleteResult
 
   Schedule actions deleted from the schedule.
 

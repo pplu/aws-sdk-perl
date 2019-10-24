@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputChannelLevel;
-  use Moose;
-  has Gain => (is => 'ro', isa => 'Int', request_name => 'gain', traits => ['NameInRequest'], required => 1);
-  has InputChannel => (is => 'ro', isa => 'Int', request_name => 'inputChannel', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has Gain => (is => 'ro', isa => Int, required => 1);
+  has InputChannel => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Gain' => {
+                           'type' => 'Int'
+                         },
+               'InputChannel' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Gain' => 'gain',
+                       'InputChannel' => 'inputChannel'
+                     },
+  'IsRequired' => {
+                    'Gain' => 1,
+                    'InputChannel' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

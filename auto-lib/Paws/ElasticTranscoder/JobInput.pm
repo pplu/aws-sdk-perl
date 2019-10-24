@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::JobInput;
-  use Moose;
-  has AspectRatio => (is => 'ro', isa => 'Str');
-  has Container => (is => 'ro', isa => 'Str');
-  has DetectedProperties => (is => 'ro', isa => 'Paws::ElasticTranscoder::DetectedProperties');
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has FrameRate => (is => 'ro', isa => 'Str');
-  has InputCaptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::InputCaptions');
-  has Interlaced => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has Resolution => (is => 'ro', isa => 'Str');
-  has TimeSpan => (is => 'ro', isa => 'Paws::ElasticTranscoder::TimeSpan');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Encryption ElasticTranscoder_TimeSpan ElasticTranscoder_InputCaptions ElasticTranscoder_DetectedProperties/;
+  has AspectRatio => (is => 'ro', isa => Str);
+  has Container => (is => 'ro', isa => Str);
+  has DetectedProperties => (is => 'ro', isa => ElasticTranscoder_DetectedProperties);
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has FrameRate => (is => 'ro', isa => Str);
+  has InputCaptions => (is => 'ro', isa => ElasticTranscoder_InputCaptions);
+  has Interlaced => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Resolution => (is => 'ro', isa => Str);
+  has TimeSpan => (is => 'ro', isa => ElasticTranscoder_TimeSpan);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Interlaced' => {
+                                 'type' => 'Str'
+                               },
+               'InputCaptions' => {
+                                    'class' => 'Paws::ElasticTranscoder::InputCaptions',
+                                    'type' => 'ElasticTranscoder_InputCaptions'
+                                  },
+               'Resolution' => {
+                                 'type' => 'Str'
+                               },
+               'TimeSpan' => {
+                               'class' => 'Paws::ElasticTranscoder::TimeSpan',
+                               'type' => 'ElasticTranscoder_TimeSpan'
+                             },
+               'DetectedProperties' => {
+                                         'class' => 'Paws::ElasticTranscoder::DetectedProperties',
+                                         'type' => 'ElasticTranscoder_DetectedProperties'
+                                       },
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'FrameRate' => {
+                                'type' => 'Str'
+                              },
+               'AspectRatio' => {
+                                  'type' => 'Str'
+                                },
+               'Container' => {
+                                'type' => 'Str'
+                              },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,12 +118,12 @@ C<mov>, C<mp3>, C<mp4>, C<mpeg>, C<mpeg-ps>, C<mpeg-ts>, C<mxf>,
 C<ogg>, C<vob>, C<wav>, C<webm>
 
 
-=head2 DetectedProperties => L<Paws::ElasticTranscoder::DetectedProperties>
+=head2 DetectedProperties => ElasticTranscoder_DetectedProperties
 
   The detected properties of the input file.
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that are used for decrypting your
 input files. If your input file is encrypted, you must specify the mode
@@ -95,7 +143,7 @@ If you specify a value other than C<auto>, Elastic Transcoder disables
 automatic detection of the frame rate.
 
 
-=head2 InputCaptions => L<Paws::ElasticTranscoder::InputCaptions>
+=head2 InputCaptions => ElasticTranscoder_InputCaptions
 
   You can configure Elastic Transcoder to transcode captions, or
 subtitles, from one format to another. All captions must be in UTF-8.
@@ -187,7 +235,7 @@ bucket, Elastic Transcoder returns an error.
 automatically detect the resolution of the input file.
 
 
-=head2 TimeSpan => L<Paws::ElasticTranscoder::TimeSpan>
+=head2 TimeSpan => ElasticTranscoder_TimeSpan
 
   Settings for clipping an input. Each input can have different clip
 settings.

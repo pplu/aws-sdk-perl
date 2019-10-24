@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::Amplify::AutoBranchCreationConfig;
-  use Moose;
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
-  has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
-  has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest']);
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest']);
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest']);
-  has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Amplify::Types qw/Amplify_EnvironmentVariables/;
+  has BasicAuthCredentials => (is => 'ro', isa => Str);
+  has BuildSpec => (is => 'ro', isa => Str);
+  has EnableAutoBuild => (is => 'ro', isa => Bool);
+  has EnableBasicAuth => (is => 'ro', isa => Bool);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables);
+  has Framework => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Amplify::EnvironmentVariables',
+                                           'type' => 'Amplify_EnvironmentVariables'
+                                         },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'EnableAutoBuild' => {
+                                      'type' => 'Bool'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Framework' => 'framework',
+                       'BuildSpec' => 'buildSpec',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'Stage' => 'stage',
+                       'EnableAutoBuild' => 'enableAutoBuild'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +107,7 @@ Structure with auto branch creation config.
   Enables Basic Auth for the auto created branch.
 
 
-=head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 EnvironmentVariables => Amplify_EnvironmentVariables
 
   Environment Variables for the auto created branch.
 

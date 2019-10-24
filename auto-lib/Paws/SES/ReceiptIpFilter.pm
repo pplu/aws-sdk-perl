@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptIpFilter;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::SES::ReceiptIpFilter;
                'Cidr' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Policy' => 1,
+                    'Cidr' => 1
+                  }
 }
 ;
     return $Params_map;

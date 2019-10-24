@@ -1,16 +1,47 @@
 
 package Paws::ApiGatewayV2::CreateDomainName;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
-  has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_DomainNameConfiguration ApiGatewayV2_Tags/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainNameConfigurations => (is => 'ro', isa => ArrayRef[ApiGatewayV2_DomainNameConfiguration], predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomainName');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/domainnames');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::CreateDomainNameResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDomainName');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/domainnames');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::CreateDomainNameResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::ApiGatewayV2::Tags',
+                           'type' => 'ApiGatewayV2_Tags'
+                         },
+               'DomainNameConfigurations' => {
+                                               'class' => 'Paws::ApiGatewayV2::DomainNameConfiguration',
+                                               'type' => 'ArrayRef[ApiGatewayV2_DomainNameConfiguration]'
+                                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'DomainNameConfigurations' => 'domainNameConfigurations',
+                       'DomainName' => 'domainName'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,13 +105,13 @@ The domain name.
 
 
 
-=head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
+=head2 DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]
 
 The domain name configurations.
 
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

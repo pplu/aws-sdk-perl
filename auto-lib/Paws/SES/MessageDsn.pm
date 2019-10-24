@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::MessageDsn;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -19,7 +20,10 @@ package Paws::SES::MessageDsn;
                                       'class' => 'Paws::SES::ExtensionField',
                                       'type' => 'ArrayRef[SES_ExtensionField]'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'ReportingMta' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,17 +1,43 @@
 
 package Paws::CloudFront::DeleteStreamingDistribution;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/streaming-distribution/{Id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteStreamingDistribution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/streaming-distribution/{Id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

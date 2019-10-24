@@ -1,17 +1,53 @@
 
 package Paws::IoT::StartThingRegistrationTask;
-  use Moose;
-  has InputFileBucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputFileBucket', required => 1);
-  has InputFileKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputFileKey', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has InputFileBucket => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputFileKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartThingRegistrationTask');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-registration-tasks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::StartThingRegistrationTaskResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartThingRegistrationTask');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-registration-tasks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::StartThingRegistrationTaskResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'InputFileKey' => {
+                                   'type' => 'Str'
+                                 },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'InputFileBucket' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'InputFileKey' => 'inputFileKey',
+                       'TemplateBody' => 'templateBody',
+                       'InputFileBucket' => 'inputFileBucket'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'InputFileKey' => 1,
+                    'TemplateBody' => 1,
+                    'InputFileBucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheParameterGroup;
-  use Moose;
-  has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheParameterGroupFamily => (is => 'ro', isa => Str);
+  has CacheParameterGroupName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheParameterGroupFamily' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

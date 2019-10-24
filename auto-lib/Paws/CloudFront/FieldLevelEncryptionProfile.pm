@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudFront::FieldLevelEncryptionProfile;
-  use Moose;
-  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfileConfig/;
+  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionProfileConfig, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'FieldLevelEncryptionProfileConfig' => {
+                                                        'class' => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig',
+                                                        'type' => 'CloudFront_FieldLevelEncryptionProfileConfig'
+                                                      }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'LastModifiedTime' => 1,
+                    'FieldLevelEncryptionProfileConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ A complex data type for field-level encryption profiles.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
   A complex data type that includes the profile name and the encryption
 entities for the field-level encryption profile.

@@ -1,22 +1,82 @@
 
 package Paws::ApiGateway::TestInvokeMethod;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'headers');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
-  has MultiValueHeaders => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'multiValueHeaders');
-  has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_MapOfStringToList/;
+  has Body => (is => 'ro', isa => Str, predicate => 1);
+  has ClientCertificateId => (is => 'ro', isa => Str, predicate => 1);
+  has Headers => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has HttpMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MultiValueHeaders => (is => 'ro', isa => ApiGateway_MapOfStringToList, predicate => 1);
+  has PathWithQueryString => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageVariables => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestInvokeMethod');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::TestInvokeMethodResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestInvokeMethod');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::TestInvokeMethodResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'PathWithQueryString' => {
+                                          'type' => 'Str'
+                                        },
+               'Headers' => {
+                              'class' => 'Paws::ApiGateway::MapOfStringToString',
+                              'type' => 'ApiGateway_MapOfStringToString'
+                            },
+               'StageVariables' => {
+                                     'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                     'type' => 'ApiGateway_MapOfStringToString'
+                                   },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'MultiValueHeaders' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToList',
+                                        'type' => 'ApiGateway_MapOfStringToList'
+                                      }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'ResourceId' => 'resource_id',
+                    'HttpMethod' => 'http_method'
+                  },
+  'NameInRequest' => {
+                       'PathWithQueryString' => 'pathWithQueryString',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'Headers' => 'headers',
+                       'StageVariables' => 'stageVariables',
+                       'MultiValueHeaders' => 'multiValueHeaders',
+                       'Body' => 'body'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'ResourceId' => 1,
+                    'HttpMethod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +138,7 @@ defined back-end endpoint.
 
 
 
-=head2 Headers => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Headers => ApiGateway_MapOfStringToString
 
 A key-value map of headers to simulate an incoming invocation request.
 
@@ -90,7 +150,7 @@ A key-value map of headers to simulate an incoming invocation request.
 
 
 
-=head2 MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>
+=head2 MultiValueHeaders => ApiGateway_MapOfStringToList
 
 The headers as a map from string to list of values to simulate an
 incoming invocation request.
@@ -117,7 +177,7 @@ parameters.
 
 
 
-=head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 StageVariables => ApiGateway_MapOfStringToString
 
 A key-value map of stage variables to simulate an invocation on a
 deployed Stage.

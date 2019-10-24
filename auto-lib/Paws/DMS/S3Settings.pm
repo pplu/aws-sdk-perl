@@ -1,22 +1,87 @@
+# Generated from default/object.tt
 package Paws::DMS::S3Settings;
-  use Moose;
-  has BucketFolder => (is => 'ro', isa => 'Str');
-  has BucketName => (is => 'ro', isa => 'Str');
-  has CdcInsertsOnly => (is => 'ro', isa => 'Bool');
-  has CompressionType => (is => 'ro', isa => 'Str');
-  has CsvDelimiter => (is => 'ro', isa => 'Str');
-  has CsvRowDelimiter => (is => 'ro', isa => 'Str');
-  has DataFormat => (is => 'ro', isa => 'Str');
-  has DataPageSize => (is => 'ro', isa => 'Int');
-  has DictPageSizeLimit => (is => 'ro', isa => 'Int');
-  has EnableStatistics => (is => 'ro', isa => 'Bool');
-  has EncodingType => (is => 'ro', isa => 'Str');
-  has EncryptionMode => (is => 'ro', isa => 'Str');
-  has ExternalTableDefinition => (is => 'ro', isa => 'Str');
-  has ParquetVersion => (is => 'ro', isa => 'Str');
-  has RowGroupLength => (is => 'ro', isa => 'Int');
-  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::DMS::Types qw//;
+  has BucketFolder => (is => 'ro', isa => Str);
+  has BucketName => (is => 'ro', isa => Str);
+  has CdcInsertsOnly => (is => 'ro', isa => Bool);
+  has CompressionType => (is => 'ro', isa => Str);
+  has CsvDelimiter => (is => 'ro', isa => Str);
+  has CsvRowDelimiter => (is => 'ro', isa => Str);
+  has DataFormat => (is => 'ro', isa => Str);
+  has DataPageSize => (is => 'ro', isa => Int);
+  has DictPageSizeLimit => (is => 'ro', isa => Int);
+  has EnableStatistics => (is => 'ro', isa => Bool);
+  has EncodingType => (is => 'ro', isa => Str);
+  has EncryptionMode => (is => 'ro', isa => Str);
+  has ExternalTableDefinition => (is => 'ro', isa => Str);
+  has ParquetVersion => (is => 'ro', isa => Str);
+  has RowGroupLength => (is => 'ro', isa => Int);
+  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => Str);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DictPageSizeLimit' => {
+                                        'type' => 'Int'
+                                      },
+               'DataFormat' => {
+                                 'type' => 'Str'
+                               },
+               'EnableStatistics' => {
+                                       'type' => 'Bool'
+                                     },
+               'RowGroupLength' => {
+                                     'type' => 'Int'
+                                   },
+               'BucketFolder' => {
+                                   'type' => 'Str'
+                                 },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'CsvDelimiter' => {
+                                   'type' => 'Str'
+                                 },
+               'CompressionType' => {
+                                      'type' => 'Str'
+                                    },
+               'ParquetVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'DataPageSize' => {
+                                   'type' => 'Int'
+                                 },
+               'ServerSideEncryptionKmsKeyId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'ExternalTableDefinition' => {
+                                              'type' => 'Str'
+                                            },
+               'EncryptionMode' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'CdcInsertsOnly' => {
+                                     'type' => 'Bool'
+                                   },
+               'EncodingType' => {
+                                   'type' => 'Str'
+                                 },
+               'CsvRowDelimiter' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::Backup::BackupSelection;
-  use Moose;
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has ListOfTags => (is => 'ro', isa => 'ArrayRef[Paws::Backup::Condition]');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SelectionName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Backup::Types qw/Backup_Condition/;
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1);
+  has ListOfTags => (is => 'ro', isa => ArrayRef[Backup_Condition]);
+  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SelectionName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ListOfTags' => {
+                                 'class' => 'Paws::Backup::Condition',
+                                 'type' => 'ArrayRef[Backup_Condition]'
+                               },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'Resources' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'SelectionName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'IamRoleArn' => 1,
+                    'SelectionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +77,7 @@ restoring the target resource; for example,
 C<arn:aws:iam::123456789012:role/S3Access>.
 
 
-=head2 ListOfTags => ArrayRef[L<Paws::Backup::Condition>]
+=head2 ListOfTags => ArrayRef[Backup_Condition]
 
   An array of conditions used to specify a set of resources to assign to
 a backup plan; for example, C<"StringEquals":

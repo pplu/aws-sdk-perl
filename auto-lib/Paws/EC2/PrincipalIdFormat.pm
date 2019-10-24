@@ -4,7 +4,7 @@ package Paws::EC2::PrincipalIdFormat;
   has Arn => (is => 'ro', isa => Str);
   has Statuses => (is => 'ro', isa => ArrayRef[EC2_IdFormat]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Statuses' => {
@@ -21,8 +21,8 @@ package Paws::EC2::PrincipalIdFormat;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,15 +1,63 @@
 
 package Paws::MediaLive::UpdateChannelResponse;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputAttachment MediaLive_EncoderSettings MediaLive_OutputDestination MediaLive_InputSpecification/;
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination]);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment]);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification);
+  has LogLevel => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncoderSettings' => {
+                                      'class' => 'Paws::MediaLive::EncoderSettings',
+                                      'type' => 'MediaLive_EncoderSettings'
+                                    },
+               'InputSpecification' => {
+                                         'class' => 'Paws::MediaLive::InputSpecification',
+                                         'type' => 'MediaLive_InputSpecification'
+                                       },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::OutputDestination',
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InputAttachments' => {
+                                       'class' => 'Paws::MediaLive::InputAttachment',
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'EncoderSettings' => 'encoderSettings',
+                       'Destinations' => 'destinations',
+                       'InputAttachments' => 'inputAttachments',
+                       'InputSpecification' => 'inputSpecification',
+                       'Name' => 'name',
+                       'LogLevel' => 'logLevel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,22 +69,22 @@ Paws::MediaLive::UpdateChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
 A list of output destinations for this channel.
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
 The encoder settings for this channel.
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
 
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
 Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)

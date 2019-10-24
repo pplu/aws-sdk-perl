@@ -5,7 +5,7 @@ package Paws::EC2::ImportSnapshotTask;
   has ImportTaskId => (is => 'ro', isa => Str);
   has SnapshotTaskDetail => (is => 'ro', isa => EC2_SnapshotTaskDetail);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ImportTaskId' => {
@@ -26,8 +26,8 @@ package Paws::EC2::ImportSnapshotTask;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

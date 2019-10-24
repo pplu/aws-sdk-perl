@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::RDS::ReservedDBInstancesOffering;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Num');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OfferingType => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
-  has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_RecurringCharge/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has OfferingType => (is => 'ro', isa => Str);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[RDS_RecurringCharge]);
+  has ReservedDBInstancesOfferingId => (is => 'ro', isa => Str);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'ReservedDBInstancesOfferingId' => {
+                                                    'type' => 'Str'
+                                                  },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::RDS::RecurringCharge',
+                                       'type' => 'ArrayRef[RDS_RecurringCharge]'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'RecurringCharges' => 'RecurringCharge'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +129,7 @@ C<DescribeReservedDBInstancesOfferings> action.
   The database engine used by the offering.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::RDS::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[RDS_RecurringCharge]
 
   The recurring price charged to run this reserved DB instance.
 

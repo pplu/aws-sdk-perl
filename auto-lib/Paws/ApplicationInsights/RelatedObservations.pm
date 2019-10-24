@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::ApplicationInsights::RelatedObservations;
-  use Moose;
-  has ObservationList => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationInsights::Observation]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_Observation/;
+  has ObservationList => (is => 'ro', isa => ArrayRef[ApplicationInsights_Observation]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObservationList' => {
+                                      'class' => 'Paws::ApplicationInsights::Observation',
+                                      'type' => 'ArrayRef[ApplicationInsights_Observation]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Describes observations related to the problem.
 =head1 ATTRIBUTES
 
 
-=head2 ObservationList => ArrayRef[L<Paws::ApplicationInsights::Observation>]
+=head2 ObservationList => ArrayRef[ApplicationInsights_Observation]
 
   The list of observations related to the problem.
 

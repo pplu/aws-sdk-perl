@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::MQ::BrokerSummary;
-  use Moose;
-  has BrokerArn => (is => 'ro', isa => 'Str', request_name => 'brokerArn', traits => ['NameInRequest']);
-  has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
-  has BrokerName => (is => 'ro', isa => 'Str', request_name => 'brokerName', traits => ['NameInRequest']);
-  has BrokerState => (is => 'ro', isa => 'Str', request_name => 'brokerState', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has DeploymentMode => (is => 'ro', isa => 'Str', request_name => 'deploymentMode', traits => ['NameInRequest']);
-  has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has BrokerArn => (is => 'ro', isa => Str);
+  has BrokerId => (is => 'ro', isa => Str);
+  has BrokerName => (is => 'ro', isa => Str);
+  has BrokerState => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has DeploymentMode => (is => 'ro', isa => Str);
+  has HostInstanceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerName' => {
+                                 'type' => 'Str'
+                               },
+               'BrokerArn' => {
+                                'type' => 'Str'
+                              },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'BrokerState' => {
+                                  'type' => 'Str'
+                                },
+               'HostInstanceType' => {
+                                       'type' => 'Str'
+                                     },
+               'DeploymentMode' => {
+                                     'type' => 'Str'
+                                   },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'BrokerName' => 'brokerName',
+                       'BrokerArn' => 'brokerArn',
+                       'Created' => 'created',
+                       'BrokerState' => 'brokerState',
+                       'HostInstanceType' => 'hostInstanceType',
+                       'DeploymentMode' => 'deploymentMode',
+                       'BrokerId' => 'brokerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::ChangeMessageVisibilityBatch;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::SQS::ChangeMessageVisibilityBatch;
              },
   'NameInRequest' => {
                        'Entries' => 'ChangeMessageVisibilityBatchRequestEntry'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'Entries' => 1
+                  }
 }
 ;
     return $Params_map;

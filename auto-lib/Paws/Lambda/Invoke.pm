@@ -1,19 +1,63 @@
 
 package Paws::Lambda::Invoke;
-  use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Client-Context');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has InvocationType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Invocation-Type');
-  has LogType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Type');
-  has Payload => (is => 'ro', isa => 'Str');
-  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has ClientContext => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InvocationType => (is => 'ro', isa => Str, predicate => 1);
+  has LogType => (is => 'ro', isa => Str, predicate => 1);
+  has Payload => (is => 'ro', isa => Str, predicate => 1);
+  has Qualifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Invoke');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvocationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Invoke');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::InvocationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Qualifier' => {
+                                'type' => 'Str'
+                              },
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'LogType' => {
+                              'type' => 'Str'
+                            },
+               'InvocationType' => {
+                                     'type' => 'Str'
+                                   },
+               'ClientContext' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  },
+  'ParamInQuery' => {
+                      'Qualifier' => 'Qualifier'
+                    },
+  'ParamInHeader' => {
+                       'LogType' => 'X-Amz-Log-Type',
+                       'InvocationType' => 'X-Amz-Invocation-Type',
+                       'ClientContext' => 'X-Amz-Client-Context'
+                     },
+  'IsRequired' => {
+                    'FunctionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

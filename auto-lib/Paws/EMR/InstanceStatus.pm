@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceStatus;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::InstanceStateChangeReason');
-  has Timeline => (is => 'ro', isa => 'Paws::EMR::InstanceTimeline');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceStateChangeReason EMR_InstanceTimeline/;
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_InstanceStateChangeReason);
+  has Timeline => (is => 'ro', isa => EMR_InstanceTimeline);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateChangeReason' => {
+                                        'class' => 'Paws::EMR::InstanceStateChangeReason',
+                                        'type' => 'EMR_InstanceStateChangeReason'
+                                      },
+               'Timeline' => {
+                               'class' => 'Paws::EMR::InstanceTimeline',
+                               'type' => 'EMR_InstanceTimeline'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +68,12 @@ The instance status details.
   The current state of the instance.
 
 
-=head2 StateChangeReason => L<Paws::EMR::InstanceStateChangeReason>
+=head2 StateChangeReason => EMR_InstanceStateChangeReason
 
   The details of the status change reason for the instance.
 
 
-=head2 Timeline => L<Paws::EMR::InstanceTimeline>
+=head2 Timeline => EMR_InstanceTimeline
 
   The timeline of the instance status over time.
 

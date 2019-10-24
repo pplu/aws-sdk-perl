@@ -4,7 +4,7 @@ package Paws::EC2::CapacityReservationSpecification;
   has CapacityReservationPreference => (is => 'ro', isa => Str);
   has CapacityReservationTarget => (is => 'ro', isa => EC2_CapacityReservationTarget);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CapacityReservationPreference' => {
@@ -17,8 +17,8 @@ package Paws::EC2::CapacityReservationSpecification;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

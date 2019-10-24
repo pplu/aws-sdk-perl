@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::DescribeTrails;
-  use Moose;
-  has IncludeShadowTrails => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeShadowTrails' );
-  has TrailNameList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'trailNameList' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::CloudTrail::Types qw//;
+  has IncludeShadowTrails => (is => 'ro', isa => Bool, predicate => 1);
+  has TrailNameList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrails');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::DescribeTrailsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTrails');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::DescribeTrailsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncludeShadowTrails' => {
+                                          'type' => 'Bool'
+                                        },
+               'TrailNameList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'IncludeShadowTrails' => 'includeShadowTrails',
+                       'TrailNameList' => 'trailNameList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -29,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudtrail = Paws->service('CloudTrail');
     my $DescribeTrailsResponse = $cloudtrail->DescribeTrails(
-      IncludeShadowTrails => 1,                      # OPTIONAL
-      TrailNameList       => [ 'MyString', ... ],    # OPTIONAL
+      IncludeShadowTrails => 1,                # OPTIONAL
+      TrailNameList => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:

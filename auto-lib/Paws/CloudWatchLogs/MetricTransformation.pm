@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::MetricTransformation;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Num', request_name => 'defaultValue', traits => ['NameInRequest']);
-  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest'], required => 1);
-  has MetricNamespace => (is => 'ro', isa => 'Str', request_name => 'metricNamespace', traits => ['NameInRequest'], required => 1);
-  has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has DefaultValue => (is => 'ro', isa => Num);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has MetricNamespace => (is => 'ro', isa => Str, required => 1);
+  has MetricValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricValue' => {
+                                  'type' => 'Str'
+                                },
+               'MetricNamespace' => {
+                                      'type' => 'Str'
+                                    },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'DefaultValue' => {
+                                   'type' => 'Num'
+                                 }
+             },
+  'NameInRequest' => {
+                       'MetricValue' => 'metricValue',
+                       'MetricNamespace' => 'metricNamespace',
+                       'MetricName' => 'metricName',
+                       'DefaultValue' => 'defaultValue'
+                     },
+  'IsRequired' => {
+                    'MetricValue' => 1,
+                    'MetricNamespace' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,52 @@
 
 package Paws::DLM::UpdateLifecyclePolicy;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails');
-  has PolicyId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyId', required => 1);
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_PolicyDetails/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyDetails => (is => 'ro', isa => DLM_PolicyDetails, predicate => 1);
+  has PolicyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLifecyclePolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DLM::UpdateLifecyclePolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateLifecyclePolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies/{policyId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DLM::UpdateLifecyclePolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyDetails' => {
+                                    'class' => 'Paws::DLM::PolicyDetails',
+                                    'type' => 'DLM_PolicyDetails'
+                                  },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'PolicyId' => 'policyId'
+                  },
+  'IsRequired' => {
+                    'PolicyId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +142,7 @@ operations specified by the lifecycle policy.
 
 
 
-=head2 PolicyDetails => L<Paws::DLM::PolicyDetails>
+=head2 PolicyDetails => DLM_PolicyDetails
 
 The configuration of the lifecycle policy.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::SendDataPoint;
   use Moo;
   use Types::Standard qw/Int Str/;

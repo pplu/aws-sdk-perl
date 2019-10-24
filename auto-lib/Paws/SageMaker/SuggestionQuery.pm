@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SageMaker::SuggestionQuery;
-  use Moose;
-  has PropertyNameQuery => (is => 'ro', isa => 'Paws::SageMaker::PropertyNameQuery');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_PropertyNameQuery/;
+  has PropertyNameQuery => (is => 'ro', isa => SageMaker_PropertyNameQuery);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PropertyNameQuery' => {
+                                        'class' => 'Paws::SageMaker::PropertyNameQuery',
+                                        'type' => 'SageMaker_PropertyNameQuery'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Limits the property names that are included in the response.
 =head1 ATTRIBUTES
 
 
-=head2 PropertyNameQuery => L<Paws::SageMaker::PropertyNameQuery>
+=head2 PropertyNameQuery => SageMaker_PropertyNameQuery
 
   A type of C<SuggestionQuery>. Defines a property name hint. Only
 property names that match the specified hint are included in the

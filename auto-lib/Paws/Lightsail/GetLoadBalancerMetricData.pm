@@ -1,19 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::GetLoadBalancerMetricData;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' , required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'metricName' , required => 1);
-  has Period => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'period' , required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
-  has Statistics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'statistics' , required => 1);
-  has Unit => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'unit' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Lightsail::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Period => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Statistics => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Unit => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLoadBalancerMetricData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::GetLoadBalancerMetricDataResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLoadBalancerMetricData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::GetLoadBalancerMetricDataResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistics' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Statistics' => 'statistics',
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'Unit' => 'unit',
+                       'Period' => 'period',
+                       'MetricName' => 'metricName'
+                     },
+  'IsRequired' => {
+                    'Statistics' => 1,
+                    'LoadBalancerName' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'Unit' => 1,
+                    'Period' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

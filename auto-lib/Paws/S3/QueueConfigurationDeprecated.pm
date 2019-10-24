@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::QueueConfigurationDeprecated;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;

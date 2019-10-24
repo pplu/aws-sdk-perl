@@ -1,14 +1,35 @@
 
 package Paws::PinpointEmail::GetEmailIdentity;
-  use Moose;
-  has EmailIdentity => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EmailIdentity', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has EmailIdentity => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEmailIdentity');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/identities/{EmailIdentity}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::GetEmailIdentityResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEmailIdentity');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/identities/{EmailIdentity}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::GetEmailIdentityResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailIdentity' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'EmailIdentity' => 'EmailIdentity'
+                  },
+  'IsRequired' => {
+                    'EmailIdentity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

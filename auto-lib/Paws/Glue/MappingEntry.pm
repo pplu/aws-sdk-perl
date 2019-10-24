@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::MappingEntry;
-  use Moose;
-  has SourcePath => (is => 'ro', isa => 'Str');
-  has SourceTable => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has TargetPath => (is => 'ro', isa => 'Str');
-  has TargetTable => (is => 'ro', isa => 'Str');
-  has TargetType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has SourcePath => (is => 'ro', isa => Str);
+  has SourceTable => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+  has TargetPath => (is => 'ro', isa => Str);
+  has TargetTable => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetTable' => {
+                                  'type' => 'Str'
+                                },
+               'TargetPath' => {
+                                 'type' => 'Str'
+                               },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'SourceTable' => {
+                                  'type' => 'Str'
+                                },
+               'SourcePath' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

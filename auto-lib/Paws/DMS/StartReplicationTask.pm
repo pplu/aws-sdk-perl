@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::StartReplicationTask;
-  use Moose;
-  has CdcStartPosition => (is => 'ro', isa => 'Str');
-  has CdcStartTime => (is => 'ro', isa => 'Str');
-  has CdcStopPosition => (is => 'ro', isa => 'Str');
-  has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
-  has StartReplicationTaskType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has CdcStartPosition => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStartTime => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStopPosition => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationTaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartReplicationTaskType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartReplicationTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::StartReplicationTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartReplicationTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::StartReplicationTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationTaskArn' => {
+                                         'type' => 'Str'
+                                       },
+               'StartReplicationTaskType' => {
+                                               'type' => 'Str'
+                                             },
+               'CdcStopPosition' => {
+                                      'type' => 'Str'
+                                    },
+               'CdcStartPosition' => {
+                                       'type' => 'Str'
+                                     },
+               'CdcStartTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ReplicationTaskArn' => 1,
+                    'StartReplicationTaskType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

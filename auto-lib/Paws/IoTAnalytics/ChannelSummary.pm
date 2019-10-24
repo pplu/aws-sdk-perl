@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ChannelSummary;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest']);
-  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorageSummary', request_name => 'channelStorage', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_ChannelStorageSummary/;
+  has ChannelName => (is => 'ro', isa => Str);
+  has ChannelStorage => (is => 'ro', isa => IoTAnalytics_ChannelStorageSummary);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'ChannelStorage' => {
+                                     'class' => 'Paws::IoTAnalytics::ChannelStorageSummary',
+                                     'type' => 'IoTAnalytics_ChannelStorageSummary'
+                                   }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'Status' => 'status',
+                       'ChannelName' => 'channelName',
+                       'ChannelStorage' => 'channelStorage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +82,7 @@ A summary of information about a channel.
   The name of the channel.
 
 
-=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorageSummary>
+=head2 ChannelStorage => IoTAnalytics_ChannelStorageSummary
 
   Where channel data is stored.
 

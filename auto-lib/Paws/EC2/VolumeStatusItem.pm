@@ -7,7 +7,7 @@ package Paws::EC2::VolumeStatusItem;
   has VolumeId => (is => 'ro', isa => Str);
   has VolumeStatus => (is => 'ro', isa => EC2_VolumeStatusInfo);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VolumeStatus' => {
@@ -38,8 +38,8 @@ package Paws::EC2::VolumeStatusItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::Datapoint;
-  use Moose;
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::AutoScalingPlans::Types qw//;
+  has Timestamp => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

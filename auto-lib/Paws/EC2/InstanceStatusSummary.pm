@@ -4,7 +4,7 @@ package Paws::EC2::InstanceStatusSummary;
   has Details => (is => 'ro', isa => ArrayRef[EC2_InstanceStatusDetails]);
   has Status => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Details' => {
@@ -21,8 +21,8 @@ package Paws::EC2::InstanceStatusSummary;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

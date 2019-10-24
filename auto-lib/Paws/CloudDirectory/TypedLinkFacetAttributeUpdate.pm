@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedLinkFacetAttributeUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has Attribute => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkAttributeDefinition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkAttributeDefinition/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has Attribute => (is => 'ro', isa => CloudDirectory_TypedLinkAttributeDefinition, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attribute' => {
+                                'class' => 'Paws::CloudDirectory::TypedLinkAttributeDefinition',
+                                'type' => 'CloudDirectory_TypedLinkAttributeDefinition'
+                              },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Attribute' => 1,
+                    'Action' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ A typed link facet attribute update.
   The action to perform when updating the attribute.
 
 
-=head2 B<REQUIRED> Attribute => L<Paws::CloudDirectory::TypedLinkAttributeDefinition>
+=head2 B<REQUIRED> Attribute => CloudDirectory_TypedLinkAttributeDefinition
 
   The attribute to update.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Backup::Condition;
-  use Moose;
-  has ConditionKey => (is => 'ro', isa => 'Str', required => 1);
-  has ConditionType => (is => 'ro', isa => 'Str', required => 1);
-  has ConditionValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has ConditionKey => (is => 'ro', isa => Str, required => 1);
+  has ConditionType => (is => 'ro', isa => Str, required => 1);
+  has ConditionValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConditionValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ConditionType' => {
+                                    'type' => 'Str'
+                                  },
+               'ConditionKey' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ConditionValue' => 1,
+                    'ConditionType' => 1,
+                    'ConditionKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,47 @@
 
 package Paws::IoT::RemoveThingFromBillingGroup;
-  use Moose;
-  has BillingGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupArn');
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
-  has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has BillingGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has BillingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ThingArn => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveThingFromBillingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/billing-groups/removeThingFromBillingGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RemoveThingFromBillingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveThingFromBillingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/billing-groups/removeThingFromBillingGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::RemoveThingFromBillingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'BillingGroupArn' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'BillingGroupName' => 'billingGroupName',
+                       'ThingArn' => 'thingArn',
+                       'ThingName' => 'thingName',
+                       'BillingGroupArn' => 'billingGroupArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

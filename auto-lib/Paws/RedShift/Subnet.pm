@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::RedShift::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::RedShift::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw/RedShift_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => RedShift_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+  has SubnetStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetAvailabilityZone' => {
+                                             'class' => 'Paws::RedShift::AvailabilityZone',
+                                             'type' => 'RedShift_AvailabilityZone'
+                                           },
+               'SubnetStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Describes a subnet.
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::RedShift::AvailabilityZone>
+=head2 SubnetAvailabilityZone => RedShift_AvailabilityZone
 
   
 

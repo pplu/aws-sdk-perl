@@ -1,14 +1,49 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::GetLabelDetectionResponse;
-  use Moose;
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has LabelModelVersion => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::LabelDetection]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_VideoMetadata Rekognition_LabelDetection/;
+  has JobStatus => (is => 'ro', isa => Str);
+  has LabelModelVersion => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Rekognition_LabelDetection]);
+  has NextToken => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has VideoMetadata => (is => 'ro', isa => Rekognition_VideoMetadata);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Labels' => {
+                             'class' => 'Paws::Rekognition::LabelDetection',
+                             'type' => 'ArrayRef[Rekognition_LabelDetection]'
+                           },
+               'LabelModelVersion' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VideoMetadata' => {
+                                    'class' => 'Paws::Rekognition::VideoMetadata',
+                                    'type' => 'Rekognition_VideoMetadata'
+                                  },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -30,7 +65,7 @@ Version number of the label detection model that was used to detect
 labels.
 
 
-=head2 Labels => ArrayRef[L<Paws::Rekognition::LabelDetection>]
+=head2 Labels => ArrayRef[Rekognition_LabelDetection]
 
 An array of labels detected in the video. Each element contains the
 detected label and the time, in milliseconds from the start of the
@@ -50,7 +85,7 @@ If the job fails, C<StatusMessage> provides a descriptive error
 message.
 
 
-=head2 VideoMetadata => L<Paws::Rekognition::VideoMetadata>
+=head2 VideoMetadata => Rekognition_VideoMetadata
 
 Information about a video that Amazon Rekognition Video analyzed.
 C<Videometadata> is returned in every page of paginated responses from

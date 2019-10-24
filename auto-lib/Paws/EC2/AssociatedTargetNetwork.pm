@@ -4,7 +4,7 @@ package Paws::EC2::AssociatedTargetNetwork;
   has NetworkId => (is => 'ro', isa => Str);
   has NetworkType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NetworkId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::AssociatedTargetNetwork;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

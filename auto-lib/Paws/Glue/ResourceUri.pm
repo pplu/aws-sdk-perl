@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glue::ResourceUri;
-  use Moose;
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Uri => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has ResourceType => (is => 'ro', isa => Str);
+  has Uri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Uri' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

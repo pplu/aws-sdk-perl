@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::DefaultWorkspaceCreationProperties;
-  use Moose;
-  has CustomSecurityGroupId => (is => 'ro', isa => 'Str');
-  has DefaultOu => (is => 'ro', isa => 'Str');
-  has EnableInternetAccess => (is => 'ro', isa => 'Bool');
-  has EnableWorkDocs => (is => 'ro', isa => 'Bool');
-  has UserEnabledAsLocalAdministrator => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkSpaces::Types qw//;
+  has CustomSecurityGroupId => (is => 'ro', isa => Str);
+  has DefaultOu => (is => 'ro', isa => Str);
+  has EnableInternetAccess => (is => 'ro', isa => Bool);
+  has EnableWorkDocs => (is => 'ro', isa => Bool);
+  has UserEnabledAsLocalAdministrator => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnableInternetAccess' => {
+                                           'type' => 'Bool'
+                                         },
+               'DefaultOu' => {
+                                'type' => 'Str'
+                              },
+               'EnableWorkDocs' => {
+                                     'type' => 'Bool'
+                                   },
+               'CustomSecurityGroupId' => {
+                                            'type' => 'Str'
+                                          },
+               'UserEnabledAsLocalAdministrator' => {
+                                                      'type' => 'Bool'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

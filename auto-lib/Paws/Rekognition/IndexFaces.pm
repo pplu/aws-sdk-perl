@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::IndexFaces;
-  use Moose;
-  has CollectionId => (is => 'ro', isa => 'Str', required => 1);
-  has DetectionAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ExternalImageId => (is => 'ro', isa => 'Str');
-  has Image => (is => 'ro', isa => 'Paws::Rekognition::Image', required => 1);
-  has MaxFaces => (is => 'ro', isa => 'Int');
-  has QualityFilter => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Rekognition::Types qw/Rekognition_Image/;
+  has CollectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DetectionAttributes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ExternalImageId => (is => 'ro', isa => Str, predicate => 1);
+  has Image => (is => 'ro', isa => Rekognition_Image, required => 1, predicate => 1);
+  has MaxFaces => (is => 'ro', isa => Int, predicate => 1);
+  has QualityFilter => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'IndexFaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::IndexFacesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'IndexFaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::IndexFacesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QualityFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'CollectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxFaces' => {
+                               'type' => 'Int'
+                             },
+               'Image' => {
+                            'class' => 'Paws::Rekognition::Image',
+                            'type' => 'Rekognition_Image'
+                          },
+               'DetectionAttributes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'ExternalImageId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'CollectionId' => 1,
+                    'Image' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +126,7 @@ The ID you want to assign to all the faces detected in the image.
 
 
 
-=head2 B<REQUIRED> Image => L<Paws::Rekognition::Image>
+=head2 B<REQUIRED> Image => Rekognition_Image
 
 The input image as base64-encoded bytes or an S3 object. If you use the
 AWS CLI to call Amazon Rekognition operations, passing base64-encoded

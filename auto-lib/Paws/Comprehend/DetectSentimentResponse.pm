@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DetectSentimentResponse;
-  use Moose;
-  has Sentiment => (is => 'ro', isa => 'Str');
-  has SentimentScore => (is => 'ro', isa => 'Paws::Comprehend::SentimentScore');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_SentimentScore/;
+  has Sentiment => (is => 'ro', isa => Str);
+  has SentimentScore => (is => 'ro', isa => Comprehend_SentimentScore);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Sentiment' => {
+                                'type' => 'Str'
+                              },
+               'SentimentScore' => {
+                                     'class' => 'Paws::Comprehend::SentimentScore',
+                                     'type' => 'Comprehend_SentimentScore'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The inferred sentiment that Amazon Comprehend has the highest level of
 confidence in.
 
 Valid values are: C<"POSITIVE">, C<"NEGATIVE">, C<"NEUTRAL">, C<"MIXED">
-=head2 SentimentScore => L<Paws::Comprehend::SentimentScore>
+=head2 SentimentScore => Comprehend_SentimentScore
 
 An object that lists the sentiments, and their corresponding confidence
 levels.

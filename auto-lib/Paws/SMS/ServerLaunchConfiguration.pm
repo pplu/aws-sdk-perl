@@ -1,14 +1,68 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerLaunchConfiguration;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associatePublicIpAddress', traits => ['NameInRequest']);
-  has Ec2KeyName => (is => 'ro', isa => 'Str', request_name => 'ec2KeyName', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has LogicalId => (is => 'ro', isa => 'Str', request_name => 'logicalId', traits => ['NameInRequest']);
-  has SecurityGroup => (is => 'ro', isa => 'Str', request_name => 'securityGroup', traits => ['NameInRequest']);
-  has Server => (is => 'ro', isa => 'Paws::SMS::Server', request_name => 'server', traits => ['NameInRequest']);
-  has Subnet => (is => 'ro', isa => 'Str', request_name => 'subnet', traits => ['NameInRequest']);
-  has UserData => (is => 'ro', isa => 'Paws::SMS::UserData', request_name => 'userData', traits => ['NameInRequest']);
-  has Vpc => (is => 'ro', isa => 'Str', request_name => 'vpc', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::SMS::Types qw/SMS_Server SMS_UserData/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has Ec2KeyName => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LogicalId => (is => 'ro', isa => Str);
+  has SecurityGroup => (is => 'ro', isa => Str);
+  has Server => (is => 'ro', isa => SMS_Server);
+  has Subnet => (is => 'ro', isa => Str);
+  has UserData => (is => 'ro', isa => SMS_UserData);
+  has Vpc => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Server' => {
+                             'class' => 'Paws::SMS::Server',
+                             'type' => 'SMS_Server'
+                           },
+               'LogicalId' => {
+                                'type' => 'Str'
+                              },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'SecurityGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Vpc' => {
+                          'type' => 'Str'
+                        },
+               'UserData' => {
+                               'class' => 'Paws::SMS::UserData',
+                               'type' => 'SMS_UserData'
+                             },
+               'Ec2KeyName' => {
+                                 'type' => 'Str'
+                               },
+               'Subnet' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Server' => 'server',
+                       'LogicalId' => 'logicalId',
+                       'AssociatePublicIpAddress' => 'associatePublicIpAddress',
+                       'SecurityGroup' => 'securityGroup',
+                       'InstanceType' => 'instanceType',
+                       'Vpc' => 'vpc',
+                       'UserData' => 'userData',
+                       'Ec2KeyName' => 'ec2KeyName',
+                       'Subnet' => 'subnet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +125,7 @@ server.
   Identifier of the security group that applies to the launched server.
 
 
-=head2 Server => L<Paws::SMS::Server>
+=head2 Server => SMS_Server
 
   Identifier of the server the launch configuration is associated with.
 
@@ -81,7 +135,7 @@ server.
   Identifier of the subnet the server should be launched into.
 
 
-=head2 UserData => L<Paws::SMS::UserData>
+=head2 UserData => SMS_UserData
 
   Location of the user-data script to be executed when launching the
 server.

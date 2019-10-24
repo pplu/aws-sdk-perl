@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::ResultField;
-  use Moose;
-  has Field => (is => 'ro', isa => 'Str', request_name => 'field', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Field => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Field' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Field' => 'field'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

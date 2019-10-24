@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CustomOriginConfig;
-  use Moose;
-  has HTTPPort => (is => 'ro', isa => 'Int', required => 1);
-  has HTTPSPort => (is => 'ro', isa => 'Int', required => 1);
-  has OriginKeepaliveTimeout => (is => 'ro', isa => 'Int');
-  has OriginProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
-  has OriginReadTimeout => (is => 'ro', isa => 'Int');
-  has OriginSslProtocols => (is => 'ro', isa => 'Paws::CloudFront::OriginSslProtocols');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginSslProtocols/;
+  has HTTPPort => (is => 'ro', isa => Int, required => 1);
+  has HTTPSPort => (is => 'ro', isa => Int, required => 1);
+  has OriginKeepaliveTimeout => (is => 'ro', isa => Int);
+  has OriginProtocolPolicy => (is => 'ro', isa => Str, required => 1);
+  has OriginReadTimeout => (is => 'ro', isa => Int);
+  has OriginSslProtocols => (is => 'ro', isa => CloudFront_OriginSslProtocols);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OriginSslProtocols' => {
+                                         'class' => 'Paws::CloudFront::OriginSslProtocols',
+                                         'type' => 'CloudFront_OriginSslProtocols'
+                                       },
+               'OriginReadTimeout' => {
+                                        'type' => 'Int'
+                                      },
+               'HTTPSPort' => {
+                                'type' => 'Int'
+                              },
+               'HTTPPort' => {
+                               'type' => 'Int'
+                             },
+               'OriginKeepaliveTimeout' => {
+                                             'type' => 'Int'
+                                           },
+               'OriginProtocolPolicy' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'HTTPSPort' => 1,
+                    'HTTPPort' => 1,
+                    'OriginProtocolPolicy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +117,7 @@ If you need to increase the maximum time limit, contact the AWS Support
 Center (https://console.aws.amazon.com/support/home#/).
 
 
-=head2 OriginSslProtocols => L<Paws::CloudFront::OriginSslProtocols>
+=head2 OriginSslProtocols => CloudFront_OriginSslProtocols
 
   The SSL/TLS protocols that you want CloudFront to use when
 communicating with your origin over HTTPS.

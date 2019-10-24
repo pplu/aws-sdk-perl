@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::DescribeContainerInstances;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
-  has Include => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'include' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerInstances => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Include => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeContainerInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeContainerInstancesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeContainerInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::DescribeContainerInstancesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Include' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'ContainerInstances' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Include' => 'include',
+                       'Cluster' => 'cluster',
+                       'ContainerInstances' => 'containerInstances'
+                     },
+  'IsRequired' => {
+                    'ContainerInstances' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

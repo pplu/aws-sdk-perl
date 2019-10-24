@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ArtifactStore;
-  use Moose;
-  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', request_name => 'encryptionKey', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_EncryptionKey/;
+  has EncryptionKey => (is => 'ro', isa => CodePipeline_EncryptionKey);
+  has Location => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'EncryptionKey' => {
+                                    'class' => 'Paws::CodePipeline::EncryptionKey',
+                                    'type' => 'CodePipeline_EncryptionKey'
+                                  },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'EncryptionKey' => 'encryptionKey',
+                       'Location' => 'location'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Location' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +71,7 @@ The Amazon S3 bucket where artifacts are stored for the pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
+=head2 EncryptionKey => CodePipeline_EncryptionKey
 
   The encryption key used to encrypt the data in the artifact store, such
 as an AWS Key Management Service (AWS KMS) key. If this is undefined,

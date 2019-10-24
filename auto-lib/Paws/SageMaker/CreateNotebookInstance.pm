@@ -1,26 +1,87 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateNotebookInstance;
-  use Moose;
-  has AcceleratorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
-  has DirectInternetAccess => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LifecycleConfigName => (is => 'ro', isa => 'Str');
-  has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has RootAccess => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SageMaker::Types qw/SageMaker_Tag/;
+  has AcceleratorTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AdditionalCodeRepositories => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DefaultCodeRepository => (is => 'ro', isa => Str, predicate => 1);
+  has DirectInternetAccess => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LifecycleConfigName => (is => 'ro', isa => Str, predicate => 1);
+  has NotebookInstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RootAccess => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
+  has VolumeSizeInGB => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNotebookInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateNotebookInstanceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNotebookInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateNotebookInstanceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AcceleratorTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'RootAccess' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AdditionalCodeRepositories' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'NotebookInstanceName' => {
+                                           'type' => 'Str'
+                                         },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'DefaultCodeRepository' => {
+                                            'type' => 'Str'
+                                          },
+               'VolumeSizeInGB' => {
+                                     'type' => 'Int'
+                                   },
+               'LifecycleConfigName' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         },
+               'DirectInternetAccess' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'NotebookInstanceName' => 1,
+                    'InstanceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -212,7 +273,7 @@ connectivity from your ML compute instance.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 A list of tags to associate with the notebook instance. You can add
 tags later by using the C<CreateTags> API.

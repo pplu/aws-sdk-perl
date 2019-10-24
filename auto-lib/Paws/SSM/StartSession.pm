@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::StartSession;
-  use Moose;
-  has DocumentName => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::SessionManagerParameters');
-  has Target => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_SessionManagerParameters/;
+  has DocumentName => (is => 'ro', isa => Str, predicate => 1);
+  has Parameters => (is => 'ro', isa => SSM_SessionManagerParameters, predicate => 1);
+  has Target => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::StartSessionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::StartSessionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::SessionManagerParameters',
+                                 'type' => 'SSM_SessionManagerParameters'
+                               },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Target' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +87,7 @@ default.
 
 
 
-=head2 Parameters => L<Paws::SSM::SessionManagerParameters>
+=head2 Parameters => SSM_SessionManagerParameters
 
 Reserved for future use.
 

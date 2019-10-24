@@ -16,7 +16,10 @@ package Paws::ES::DescribeElasticsearchDomainConfigResponse;
                                    'class' => 'Paws::ES::ElasticsearchDomainConfig',
                                    'type' => 'ES_ElasticsearchDomainConfig'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'DomainConfig' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Health;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'health' }
   sub signing_name { 'health' }
   sub version { '2016-08-04' }
   sub target_prefix { 'AWSHealth_20160804' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -221,10 +223,10 @@ plan causes a C<SubscriptionRequiredException>.
 
 For authentication of requests, AWS Health uses the Signature Version 4
 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 See the AWS Health User Guide
-(http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
+(https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
 for information about how to use the API.
 
 B<Service Endpoint>
@@ -249,7 +251,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/hea
 
 =over
 
-=item Filter => L<Paws::Health::EntityFilter>
+=item Filter => Health_EntityFilter
 
 =item [Locale => Str]
 
@@ -299,7 +301,7 @@ affected entities are returned.
 
 =item AggregateField => Str
 
-=item [Filter => L<Paws::Health::EventFilter>]
+=item [Filter => Health_EventFilter]
 
 =item [MaxResults => Int]
 
@@ -347,7 +349,7 @@ for that event.
 
 =over
 
-=item [Filter => L<Paws::Health::EventFilter>]
+=item [Filter => Health_EventFilter]
 
 =item [Locale => Str]
 
@@ -376,7 +378,7 @@ are sorted by C<lastModifiedTime>, starting with the most recent.
 
 =over
 
-=item [Filter => L<Paws::Health::EventTypeFilter>]
+=item [Filter => Health_EventTypeFilter]
 
 =item [Locale => Str]
 
@@ -402,9 +404,9 @@ particular order.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllAffectedEntities(sub { },Filter => L<Paws::Health::EntityFilter>, [Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAffectedEntities(sub { },Filter => Health_EntityFilter, [Locale => Str, MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAffectedEntities(Filter => L<Paws::Health::EntityFilter>, [Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAffectedEntities(Filter => Health_EntityFilter, [Locale => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -414,9 +416,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Health::DescribeAffectedEntitiesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventAggregates(sub { },AggregateField => Str, [Filter => L<Paws::Health::EventFilter>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEventAggregates(sub { },AggregateField => Str, [Filter => Health_EventFilter, MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllEventAggregates(AggregateField => Str, [Filter => L<Paws::Health::EventFilter>, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEventAggregates(AggregateField => Str, [Filter => Health_EventFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -426,9 +428,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Health::DescribeEventAggregatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEvents(sub { },[Filter => L<Paws::Health::EventFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEvents(sub { },[Filter => Health_EventFilter, Locale => Str, MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllEvents([Filter => L<Paws::Health::EventFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEvents([Filter => Health_EventFilter, Locale => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -438,9 +440,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Health::DescribeEventsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventTypes(sub { },[Filter => L<Paws::Health::EventTypeFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEventTypes(sub { },[Filter => Health_EventTypeFilter, Locale => Str, MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllEventTypes([Filter => L<Paws::Health::EventTypeFilter>, Locale => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeAllEventTypes([Filter => Health_EventTypeFilter, Locale => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

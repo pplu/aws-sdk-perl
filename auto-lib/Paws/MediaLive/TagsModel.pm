@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::TagsModel;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Tags/;
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Placeholder documentation for TagsModel
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   
 

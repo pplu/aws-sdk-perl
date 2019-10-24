@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::PendingMaintenanceActionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has PendingMaintenanceActions => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::ResourcePendingMaintenanceActions]', request_name => 'ResourcePendingMaintenanceActions', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_ResourcePendingMaintenanceActions/;
+  has Marker => (is => 'ro', isa => Str);
+  has PendingMaintenanceActions => (is => 'ro', isa => ArrayRef[DocDB_ResourcePendingMaintenanceActions]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PendingMaintenanceActions' => {
+                                                'class' => 'Paws::DocDB::ResourcePendingMaintenanceActions',
+                                                'type' => 'ArrayRef[DocDB_ResourcePendingMaintenanceActions]'
+                                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'PendingMaintenanceActions' => 'ResourcePendingMaintenanceActions'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +48,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 PendingMaintenanceActions => ArrayRef[L<Paws::DocDB::ResourcePendingMaintenanceActions>]
+=head2 PendingMaintenanceActions => ArrayRef[DocDB_ResourcePendingMaintenanceActions]
 
 The maintenance actions to be applied.
 

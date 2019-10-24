@@ -1,14 +1,35 @@
 
 package Paws::GroundStation::DeleteDataflowEndpointGroup;
-  use Moose;
-  has DataflowEndpointGroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'dataflowEndpointGroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has DataflowEndpointGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDataflowEndpointGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/dataflowEndpointGroup/{dataflowEndpointGroupId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::DataflowEndpointGroupIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDataflowEndpointGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/dataflowEndpointGroup/{dataflowEndpointGroupId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::DataflowEndpointGroupIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataflowEndpointGroupId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'ParamInURI' => {
+                    'DataflowEndpointGroupId' => 'dataflowEndpointGroupId'
+                  },
+  'IsRequired' => {
+                    'DataflowEndpointGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

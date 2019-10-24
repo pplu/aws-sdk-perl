@@ -1,14 +1,15 @@
 package Paws::KinesisVideo;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kinesisvideo' }
   sub signing_name { 'kinesisvideo' }
   sub version { '2017-09-30' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -139,7 +140,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =item [MediaType => Str]
 
-=item [Tags => L<Paws::KinesisVideo::ResourceTags>]
+=item [Tags => KinesisVideo_ResourceTags]
 
 
 =back
@@ -248,7 +249,7 @@ C<StreamARN>.
 
 =item [NextToken => Str]
 
-=item [StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>]
+=item [StreamNameCondition => KinesisVideo_StreamNameCondition]
 
 
 =back
@@ -289,7 +290,7 @@ C<StreamARN>.
 
 =over
 
-=item Tags => L<Paws::KinesisVideo::ResourceTags>
+=item Tags => KinesisVideo_ResourceTags
 
 =item [StreamARN => Str]
 
@@ -440,9 +441,9 @@ complete.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllStreams(sub { },[MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+=head2 ListAllStreams(sub { },[MaxResults => Int, NextToken => Str, StreamNameCondition => KinesisVideo_StreamNameCondition])
 
-=head2 ListAllStreams([MaxResults => Int, NextToken => Str, StreamNameCondition => L<Paws::KinesisVideo::StreamNameCondition>])
+=head2 ListAllStreams([MaxResults => Int, NextToken => Str, StreamNameCondition => KinesisVideo_StreamNameCondition])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

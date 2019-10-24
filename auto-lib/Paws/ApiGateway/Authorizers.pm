@@ -1,10 +1,35 @@
 
 package Paws::ApiGateway::Authorizers;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Authorizer]', traits => ['NameInRequest'], request_name => 'item');
-  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_Authorizer/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGateway_Authorizer]);
+  has Position => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'Items' => {
+                            'class' => 'Paws::ApiGateway::Authorizer',
+                            'type' => 'ArrayRef[ApiGateway_Authorizer]'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Position' => 'position',
+                       'Items' => 'item'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ApiGateway::Authorizers
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGateway::Authorizer>]
+=head2 Items => ArrayRef[ApiGateway_Authorizer]
 
 The current page of elements from this collection.
 

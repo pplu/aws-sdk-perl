@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::BusinessReportS3Location;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has BucketName => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

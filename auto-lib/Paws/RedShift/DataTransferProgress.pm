@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::RedShift::DataTransferProgress;
-  use Moose;
-  has CurrentRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
-  has DataTransferredInMegaBytes => (is => 'ro', isa => 'Int');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
-  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has TotalDataInMegaBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::RedShift::Types qw//;
+  has CurrentRateInMegaBytesPerSecond => (is => 'ro', isa => Num);
+  has DataTransferredInMegaBytes => (is => 'ro', isa => Int);
+  has ElapsedTimeInSeconds => (is => 'ro', isa => Int);
+  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has TotalDataInMegaBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedTimeToCompletionInSeconds' => {
+                                                         'type' => 'Int'
+                                                       },
+               'CurrentRateInMegaBytesPerSecond' => {
+                                                      'type' => 'Num'
+                                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TotalDataInMegaBytes' => {
+                                           'type' => 'Int'
+                                         },
+               'ElapsedTimeInSeconds' => {
+                                           'type' => 'Int'
+                                         },
+               'DataTransferredInMegaBytes' => {
+                                                 'type' => 'Int'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

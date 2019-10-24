@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::AttributesResource;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AttributeType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has Attributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AttributeType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeType' => {
+                                    'type' => 'Str'
+                                  },
+               'Attributes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'AttributeType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

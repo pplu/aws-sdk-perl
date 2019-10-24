@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Firehose::KinesisStreamSourceConfiguration;
-  use Moose;
-  has KinesisStreamARN => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw//;
+  has KinesisStreamARN => (is => 'ro', isa => Str, required => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisStreamARN' => {
+                                       'type' => 'Str'
+                                     },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'KinesisStreamARN' => 1,
+                    'RoleARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Face;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Confidence => (is => 'ro', isa => 'Num');
-  has ExternalImageId => (is => 'ro', isa => 'Str');
-  has FaceId => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::Rekognition::Types qw/Rekognition_BoundingBox/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Confidence => (is => 'ro', isa => Num);
+  has ExternalImageId => (is => 'ro', isa => Str);
+  has FaceId => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'FaceId' => {
+                             'type' => 'Str'
+                           },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                },
+               'ExternalImageId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +71,7 @@ ID of the input image, and external image ID that you assigned.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box of the face.
 

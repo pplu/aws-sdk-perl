@@ -1,16 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ListDocuments;
-  use Moose;
-  has DocumentFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentFilter]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentKeyValuesFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_DocumentFilter SSM_DocumentKeyValuesFilter/;
+  has DocumentFilterList => (is => 'ro', isa => ArrayRef[SSM_DocumentFilter], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_DocumentKeyValuesFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDocuments');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListDocumentsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDocuments');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ListDocumentsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::DocumentKeyValuesFilter',
+                              'type' => 'ArrayRef[SSM_DocumentKeyValuesFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'DocumentFilterList' => {
+                                         'class' => 'Paws::SSM::DocumentFilter',
+                                         'type' => 'ArrayRef[SSM_DocumentFilter]'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,14 +91,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]
+=head2 DocumentFilterList => ArrayRef[SSM_DocumentFilter]
 
 One or more filters. Use a filter to return a more specific list of
 results.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>]
+=head2 Filters => ArrayRef[SSM_DocumentKeyValuesFilter]
 
 One or more filters. Use a filter to return a more specific list of
 results.

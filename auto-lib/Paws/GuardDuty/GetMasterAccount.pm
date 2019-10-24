@@ -1,14 +1,35 @@
 
 package Paws::GuardDuty::GetMasterAccount;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMasterAccount');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/master');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::GetMasterAccountResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMasterAccount');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/master');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::GetMasterAccountResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'IsRequired' => {
+                    'DetectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,26 +1,146 @@
+# Generated from default/object.tt
 package Paws::Amplify::Branch;
-  use Moose;
-  has ActiveJobId => (is => 'ro', isa => 'Str', request_name => 'activeJobId', traits => ['NameInRequest'], required => 1);
-  has AssociatedResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'associatedResources', traits => ['NameInRequest']);
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
-  has BranchArn => (is => 'ro', isa => 'Str', request_name => 'branchArn', traits => ['NameInRequest'], required => 1);
-  has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
-  has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
-  has CustomDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'customDomains', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest'], required => 1);
-  has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest'], required => 1);
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
-  has EnableNotification => (is => 'ro', isa => 'Bool', request_name => 'enableNotification', traits => ['NameInRequest'], required => 1);
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
-  has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest'], required => 1);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
-  has TotalNumberOfJobs => (is => 'ro', isa => 'Str', request_name => 'totalNumberOfJobs', traits => ['NameInRequest'], required => 1);
-  has Ttl => (is => 'ro', isa => 'Str', request_name => 'ttl', traits => ['NameInRequest'], required => 1);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Amplify::Types qw/Amplify_TagMap Amplify_EnvironmentVariables/;
+  has ActiveJobId => (is => 'ro', isa => Str, required => 1);
+  has AssociatedResources => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BasicAuthCredentials => (is => 'ro', isa => Str);
+  has BranchArn => (is => 'ro', isa => Str, required => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1);
+  has BuildSpec => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has CustomDomains => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has DisplayName => (is => 'ro', isa => Str, required => 1);
+  has EnableAutoBuild => (is => 'ro', isa => Bool, required => 1);
+  has EnableBasicAuth => (is => 'ro', isa => Bool, required => 1);
+  has EnableNotification => (is => 'ro', isa => Bool, required => 1);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables, required => 1);
+  has Framework => (is => 'ro', isa => Str, required => 1);
+  has Stage => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Amplify_TagMap);
+  has ThumbnailUrl => (is => 'ro', isa => Str);
+  has TotalNumberOfJobs => (is => 'ro', isa => Str, required => 1);
+  has Ttl => (is => 'ro', isa => Str, required => 1);
+  has UpdateTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'TotalNumberOfJobs' => {
+                                        'type' => 'Str'
+                                      },
+               'Ttl' => {
+                          'type' => 'Str'
+                        },
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Amplify::EnvironmentVariables',
+                                           'type' => 'Amplify_EnvironmentVariables'
+                                         },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'ActiveJobId' => {
+                                  'type' => 'Str'
+                                },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'CustomDomains' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ThumbnailUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'BranchArn' => {
+                                'type' => 'Str'
+                              },
+               'AssociatedResources' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::Amplify::TagMap',
+                           'type' => 'Amplify_TagMap'
+                         },
+               'EnableNotification' => {
+                                         'type' => 'Bool'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EnableAutoBuild' => {
+                                      'type' => 'Bool'
+                                    }
+             },
+  'NameInRequest' => {
+                       'BuildSpec' => 'buildSpec',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'BranchName' => 'branchName',
+                       'TotalNumberOfJobs' => 'totalNumberOfJobs',
+                       'Ttl' => 'ttl',
+                       'Framework' => 'framework',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'UpdateTime' => 'updateTime',
+                       'DisplayName' => 'displayName',
+                       'ActiveJobId' => 'activeJobId',
+                       'CreateTime' => 'createTime',
+                       'Stage' => 'stage',
+                       'CustomDomains' => 'customDomains',
+                       'ThumbnailUrl' => 'thumbnailUrl',
+                       'BranchArn' => 'branchArn',
+                       'AssociatedResources' => 'associatedResources',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'Tags' => 'tags',
+                       'EnableNotification' => 'enableNotification',
+                       'Description' => 'description',
+                       'EnableAutoBuild' => 'enableAutoBuild'
+                     },
+  'IsRequired' => {
+                    'BranchName' => 1,
+                    'TotalNumberOfJobs' => 1,
+                    'Ttl' => 1,
+                    'Framework' => 1,
+                    'EnvironmentVariables' => 1,
+                    'UpdateTime' => 1,
+                    'DisplayName' => 1,
+                    'ActiveJobId' => 1,
+                    'CreateTime' => 1,
+                    'Stage' => 1,
+                    'CustomDomains' => 1,
+                    'BranchArn' => 1,
+                    'EnableBasicAuth' => 1,
+                    'EnableNotification' => 1,
+                    'Description' => 1,
+                    'EnableAutoBuild' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -121,7 +241,7 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Enables notifications for a branch, part of an Amplify App.
 
 
-=head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 B<REQUIRED> EnvironmentVariables => Amplify_EnvironmentVariables
 
   Environment Variables specific to a branch, part of an Amplify App.
 
@@ -136,7 +256,7 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Stage for a branch, part of an Amplify App.
 
 
-=head2 Tags => L<Paws::Amplify::TagMap>
+=head2 Tags => Amplify_TagMap
 
   Tag for branch for Amplify App.
 

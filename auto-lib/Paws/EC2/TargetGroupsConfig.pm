@@ -3,7 +3,7 @@ package Paws::EC2::TargetGroupsConfig;
   use Paws::EC2::Types qw/EC2_TargetGroup/;
   has TargetGroups => (is => 'ro', isa => ArrayRef[EC2_TargetGroup]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TargetGroups' => {
@@ -16,8 +16,8 @@ package Paws::EC2::TargetGroupsConfig;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

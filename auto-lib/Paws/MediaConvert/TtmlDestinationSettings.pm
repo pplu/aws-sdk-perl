@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::TtmlDestinationSettings;
-  use Moose;
-  has StylePassthrough => (is => 'ro', isa => 'Str', request_name => 'stylePassthrough', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has StylePassthrough => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StylePassthrough' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StylePassthrough' => 'stylePassthrough'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

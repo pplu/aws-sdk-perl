@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListObjectParentsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ParentLinks => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectIdentifierAndLinkNameTuple]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectIdentifierAndLinkNameTuple/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ParentLinks => (is => 'ro', isa => ArrayRef[CloudDirectory_ObjectIdentifierAndLinkNameTuple]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParentLinks' => {
+                                  'class' => 'Paws::CloudDirectory::ObjectIdentifierAndLinkNameTuple',
+                                  'type' => 'ArrayRef[CloudDirectory_ObjectIdentifierAndLinkNameTuple]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ This class has no description
   
 
 
-=head2 ParentLinks => ArrayRef[L<Paws::CloudDirectory::ObjectIdentifierAndLinkNameTuple>]
+=head2 ParentLinks => ArrayRef[CloudDirectory_ObjectIdentifierAndLinkNameTuple]
 
   
 

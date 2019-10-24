@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PutWebhook;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has Webhook => (is => 'ro', isa => 'Paws::CodePipeline::WebhookDefinition', traits => ['NameInRequest'], request_name => 'webhook' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_Tag CodePipeline_WebhookDefinition/;
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag], predicate => 1);
+  has Webhook => (is => 'ro', isa => CodePipeline_WebhookDefinition, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutWebhook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PutWebhookOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutWebhook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::PutWebhookOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Webhook' => {
+                              'class' => 'Paws::CodePipeline::WebhookDefinition',
+                              'type' => 'CodePipeline_WebhookDefinition'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Webhook' => 'webhook',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Webhook' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,13 +99,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 Tags => ArrayRef[CodePipeline_Tag]
 
 The tags for the webhook.
 
 
 
-=head2 B<REQUIRED> Webhook => L<Paws::CodePipeline::WebhookDefinition>
+=head2 B<REQUIRED> Webhook => CodePipeline_WebhookDefinition
 
 The detail provided in an input file to create the webhook, such as the
 webhook name, the pipeline name, and the action name. Give the webhook

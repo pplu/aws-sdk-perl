@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DS::DirectoryConnectSettingsDescription;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ConnectIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CustomerUserName => (is => 'ro', isa => 'Str');
-  has SecurityGroupId => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DS::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ConnectIps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CustomerUserName => (is => 'ro', isa => Str);
+  has SecurityGroupId => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'CustomerUserName' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ConnectIps' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'SecurityGroupId' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

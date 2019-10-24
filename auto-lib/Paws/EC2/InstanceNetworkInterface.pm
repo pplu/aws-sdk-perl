@@ -18,7 +18,7 @@ package Paws::EC2::InstanceNetworkInterface;
   has SubnetId => (is => 'ro', isa => Str);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6Addresses' => {
@@ -95,8 +95,8 @@ package Paws::EC2::InstanceNetworkInterface;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

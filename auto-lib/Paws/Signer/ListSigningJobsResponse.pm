@@ -1,10 +1,35 @@
 
 package Paws::Signer::ListSigningJobsResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::Signer::SigningJob]', traits => ['NameInRequest'], request_name => 'jobs');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Signer::Types qw/Signer_SigningJob/;
+  has Jobs => (is => 'ro', isa => ArrayRef[Signer_SigningJob]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Jobs' => {
+                           'class' => 'Paws::Signer::SigningJob',
+                           'type' => 'ArrayRef[Signer_SigningJob]'
+                         }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Jobs' => 'jobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Signer::ListSigningJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::Signer::SigningJob>]
+=head2 Jobs => ArrayRef[Signer_SigningJob]
 
 A list of your signing jobs.
 

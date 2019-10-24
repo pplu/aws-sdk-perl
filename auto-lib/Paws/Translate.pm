@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Translate;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'translate' }
   sub signing_name { 'translate' }
   sub version { '2017-07-01' }
   sub target_prefix { 'AWSShineFrontendService_20170701' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -144,11 +146,11 @@ Retrieves a custom terminology.
 
 =item Name => Str
 
-=item TerminologyData => L<Paws::Translate::TerminologyData>
+=item TerminologyData => Translate_TerminologyData
 
 =item [Description => Str]
 
-=item [EncryptionKey => L<Paws::Translate::EncryptionKey>]
+=item [EncryptionKey => Translate_EncryptionKey]
 
 
 =back

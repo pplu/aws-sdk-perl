@@ -1,19 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::ListApplicationRevisions;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has Deployed => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deployed' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has S3Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3Bucket' );
-  has S3KeyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3KeyPrefix' );
-  has SortBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortBy' );
-  has SortOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortOrder' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Deployed => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has S3Bucket => (is => 'ro', isa => Str, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has SortBy => (is => 'ro', isa => Str, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListApplicationRevisions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListApplicationRevisionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListApplicationRevisions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::ListApplicationRevisionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'SortBy' => {
+                             'type' => 'Str'
+                           },
+               'Deployed' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'S3KeyPrefix' => 's3KeyPrefix',
+                       'S3Bucket' => 's3Bucket',
+                       'NextToken' => 'nextToken',
+                       'ApplicationName' => 'applicationName',
+                       'SortOrder' => 'sortOrder',
+                       'SortBy' => 'sortBy',
+                       'Deployed' => 'deployed'
+                     },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

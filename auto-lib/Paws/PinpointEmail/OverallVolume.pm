@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::OverallVolume;
-  use Moose;
-  has DomainIspPlacements => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainIspPlacement]');
-  has ReadRatePercent => (is => 'ro', isa => 'Num');
-  has VolumeStatistics => (is => 'ro', isa => 'Paws::PinpointEmail::VolumeStatistics');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_VolumeStatistics PinpointEmail_DomainIspPlacement/;
+  has DomainIspPlacements => (is => 'ro', isa => ArrayRef[PinpointEmail_DomainIspPlacement]);
+  has ReadRatePercent => (is => 'ro', isa => Num);
+  has VolumeStatistics => (is => 'ro', isa => PinpointEmail_VolumeStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainIspPlacements' => {
+                                          'class' => 'Paws::PinpointEmail::DomainIspPlacement',
+                                          'type' => 'ArrayRef[PinpointEmail_DomainIspPlacement]'
+                                        },
+               'ReadRatePercent' => {
+                                      'type' => 'Num'
+                                    },
+               'VolumeStatistics' => {
+                                       'class' => 'Paws::PinpointEmail::VolumeStatistics',
+                                       'type' => 'PinpointEmail_VolumeStatistics'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ selected domain.
 =head1 ATTRIBUTES
 
 
-=head2 DomainIspPlacements => ArrayRef[L<Paws::PinpointEmail::DomainIspPlacement>]
+=head2 DomainIspPlacements => ArrayRef[PinpointEmail_DomainIspPlacement]
 
   An object that contains inbox and junk mail placement metrics for
 individual email providers.
@@ -51,7 +76,7 @@ individual email providers.
 by their recipients.
 
 
-=head2 VolumeStatistics => L<Paws::PinpointEmail::VolumeStatistics>
+=head2 VolumeStatistics => PinpointEmail_VolumeStatistics
 
   An object that contains information about the numbers of messages that
 arrived in recipients' inboxes and junk mail folders.

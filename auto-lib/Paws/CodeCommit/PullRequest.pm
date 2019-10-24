@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequest;
-  use Moose;
-  has AuthorArn => (is => 'ro', isa => 'Str', request_name => 'authorArn', traits => ['NameInRequest']);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastActivityDate => (is => 'ro', isa => 'Str', request_name => 'lastActivityDate', traits => ['NameInRequest']);
-  has PullRequestId => (is => 'ro', isa => 'Str', request_name => 'pullRequestId', traits => ['NameInRequest']);
-  has PullRequestStatus => (is => 'ro', isa => 'Str', request_name => 'pullRequestStatus', traits => ['NameInRequest']);
-  has PullRequestTargets => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::PullRequestTarget]', request_name => 'pullRequestTargets', traits => ['NameInRequest']);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_PullRequestTarget/;
+  has AuthorArn => (is => 'ro', isa => Str);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastActivityDate => (is => 'ro', isa => Str);
+  has PullRequestId => (is => 'ro', isa => Str);
+  has PullRequestStatus => (is => 'ro', isa => Str);
+  has PullRequestTargets => (is => 'ro', isa => ArrayRef[CodeCommit_PullRequestTarget]);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'AuthorArn' => {
+                                'type' => 'Str'
+                              },
+               'PullRequestTargets' => {
+                                         'class' => 'Paws::CodeCommit::PullRequestTarget',
+                                         'type' => 'ArrayRef[CodeCommit_PullRequestTarget]'
+                                       },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastActivityDate' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'PullRequestStatus' => 'pullRequestStatus',
+                       'PullRequestId' => 'pullRequestId',
+                       'Title' => 'title',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'AuthorArn' => 'authorArn',
+                       'PullRequestTargets' => 'pullRequestTargets',
+                       'CreationDate' => 'creationDate',
+                       'Description' => 'description',
+                       'LastActivityDate' => 'lastActivityDate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +142,7 @@ request, in timestamp format.
 from C<OPEN> to C<CLOSED>.
 
 
-=head2 PullRequestTargets => ArrayRef[L<Paws::CodeCommit::PullRequestTarget>]
+=head2 PullRequestTargets => ArrayRef[CodeCommit_PullRequestTarget]
 
   The targets of the pull request, including the source branch and
 destination branch for the pull request.

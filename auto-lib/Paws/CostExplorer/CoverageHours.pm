@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::CoverageHours;
-  use Moose;
-  has CoverageHoursPercentage => (is => 'ro', isa => 'Str');
-  has OnDemandHours => (is => 'ro', isa => 'Str');
-  has ReservedHours => (is => 'ro', isa => 'Str');
-  has TotalRunningHours => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CoverageHoursPercentage => (is => 'ro', isa => Str);
+  has OnDemandHours => (is => 'ro', isa => Str);
+  has ReservedHours => (is => 'ro', isa => Str);
+  has TotalRunningHours => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalRunningHours' => {
+                                        'type' => 'Str'
+                                      },
+               'OnDemandHours' => {
+                                    'type' => 'Str'
+                                  },
+               'CoverageHoursPercentage' => {
+                                              'type' => 'Str'
+                                            },
+               'ReservedHours' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

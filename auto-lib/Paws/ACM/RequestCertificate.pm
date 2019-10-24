@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::RequestCertificate;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidationOption]');
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ValidationMethod => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ACM::Types qw/ACM_DomainValidationOption ACM_CertificateOptions/;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainValidationOptions => (is => 'ro', isa => ArrayRef[ACM_DomainValidationOption], predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has Options => (is => 'ro', isa => ACM_CertificateOptions, predicate => 1);
+  has SubjectAlternativeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ValidationMethod => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACM::RequestCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RequestCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACM::RequestCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidationMethod' => {
+                                       'type' => 'Str'
+                                     },
+               'Options' => {
+                              'class' => 'Paws::ACM::CertificateOptions',
+                              'type' => 'ACM_CertificateOptions'
+                            },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'SubjectAlternativeNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'DomainValidationOptions' => {
+                                              'class' => 'Paws::ACM::DomainValidationOption',
+                                              'type' => 'ArrayRef[ACM_DomainValidationOption]'
+                                            }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +134,7 @@ be up to 253 octets in length.
 
 
 
-=head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]
+=head2 DomainValidationOptions => ArrayRef[ACM_DomainValidationOption]
 
 The domain name that you want ACM to use to send you emails so that you
 can validate domain ownership.
@@ -114,7 +153,7 @@ requesting multiple certificates.
 
 
 
-=head2 Options => L<Paws::ACM::CertificateOptions>
+=head2 Options => ACM_CertificateOptions
 
 Currently, you can use this parameter to specify whether to add the
 certificate to a certificate transparency log. Certificate transparency

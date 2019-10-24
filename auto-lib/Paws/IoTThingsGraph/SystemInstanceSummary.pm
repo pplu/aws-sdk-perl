@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::SystemInstanceSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has GreengrassGroupId => (is => 'ro', isa => 'Str', request_name => 'greengrassGroupId', traits => ['NameInRequest']);
-  has GreengrassGroupName => (is => 'ro', isa => 'Str', request_name => 'greengrassGroupName', traits => ['NameInRequest']);
-  has GreengrassGroupVersionId => (is => 'ro', isa => 'Str', request_name => 'greengrassGroupVersionId', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has GreengrassGroupId => (is => 'ro', isa => Str);
+  has GreengrassGroupName => (is => 'ro', isa => Str);
+  has GreengrassGroupVersionId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'GreengrassGroupVersionId' => {
+                                               'type' => 'Str'
+                                             },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'GreengrassGroupId' => {
+                                        'type' => 'Str'
+                                      },
+               'GreengrassGroupName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Target' => 'target',
+                       'Id' => 'id',
+                       'Status' => 'status',
+                       'GreengrassGroupVersionId' => 'greengrassGroupVersionId',
+                       'UpdatedAt' => 'updatedAt',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'GreengrassGroupId' => 'greengrassGroupId',
+                       'GreengrassGroupName' => 'greengrassGroupName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

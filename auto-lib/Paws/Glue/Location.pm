@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Glue::Location;
-  use Moose;
-  has DynamoDB => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
-  has Jdbc => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
-  has S3 => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_CodeGenNodeArg/;
+  has DynamoDB => (is => 'ro', isa => ArrayRef[Glue_CodeGenNodeArg]);
+  has Jdbc => (is => 'ro', isa => ArrayRef[Glue_CodeGenNodeArg]);
+  has S3 => (is => 'ro', isa => ArrayRef[Glue_CodeGenNodeArg]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DynamoDB' => {
+                               'class' => 'Paws::Glue::CodeGenNodeArg',
+                               'type' => 'ArrayRef[Glue_CodeGenNodeArg]'
+                             },
+               'Jdbc' => {
+                           'class' => 'Paws::Glue::CodeGenNodeArg',
+                           'type' => 'ArrayRef[Glue_CodeGenNodeArg]'
+                         },
+               'S3' => {
+                         'class' => 'Paws::Glue::CodeGenNodeArg',
+                         'type' => 'ArrayRef[Glue_CodeGenNodeArg]'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ The location of resources.
 =head1 ATTRIBUTES
 
 
-=head2 DynamoDB => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
+=head2 DynamoDB => ArrayRef[Glue_CodeGenNodeArg]
 
   An Amazon DynamoDB table location.
 
 
-=head2 Jdbc => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
+=head2 Jdbc => ArrayRef[Glue_CodeGenNodeArg]
 
   A JDBC location.
 
 
-=head2 S3 => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
+=head2 S3 => ArrayRef[Glue_CodeGenNodeArg]
 
   An Amazon Simple Storage Service (Amazon S3) location.
 

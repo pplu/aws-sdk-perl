@@ -4,7 +4,7 @@ package Paws::EC2::InstanceMonitoring;
   has InstanceId => (is => 'ro', isa => Str);
   has Monitoring => (is => 'ro', isa => EC2_Monitoring);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -21,8 +21,8 @@ package Paws::EC2::InstanceMonitoring;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

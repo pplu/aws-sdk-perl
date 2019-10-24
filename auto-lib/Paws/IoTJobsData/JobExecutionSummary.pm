@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoTJobsData::JobExecutionSummary;
-  use Moose;
-  has ExecutionNumber => (is => 'ro', isa => 'Int', request_name => 'executionNumber', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Int', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has QueuedAt => (is => 'ro', isa => 'Int', request_name => 'queuedAt', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoTJobsData::Types qw//;
+  has ExecutionNumber => (is => 'ro', isa => Int);
+  has JobId => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Int);
+  has QueuedAt => (is => 'ro', isa => Int);
+  has StartedAt => (is => 'ro', isa => Int);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'StartedAt' => {
+                                'type' => 'Int'
+                              },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'LastUpdatedAt' => {
+                                    'type' => 'Int'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'QueuedAt' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'VersionNumber' => 'versionNumber',
+                       'StartedAt' => 'startedAt',
+                       'ExecutionNumber' => 'executionNumber',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'JobId' => 'jobId',
+                       'QueuedAt' => 'queuedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

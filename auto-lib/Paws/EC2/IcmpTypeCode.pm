@@ -4,7 +4,7 @@ package Paws::EC2::IcmpTypeCode;
   has Code => (is => 'ro', isa => Int);
   has Type => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Code' => {
@@ -20,8 +20,8 @@ package Paws::EC2::IcmpTypeCode;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

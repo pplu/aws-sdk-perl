@@ -1,10 +1,35 @@
 
 package Paws::LexModels::GetBotsResponse;
-  use Moose;
-  has Bots => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotMetadata]', traits => ['NameInRequest'], request_name => 'bots');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_BotMetadata/;
+  has Bots => (is => 'ro', isa => ArrayRef[LexModels_BotMetadata]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Bots' => {
+                           'class' => 'Paws::LexModels::BotMetadata',
+                           'type' => 'ArrayRef[LexModels_BotMetadata]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Bots' => 'bots'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::LexModels::GetBotsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Bots => ArrayRef[L<Paws::LexModels::BotMetadata>]
+=head2 Bots => ArrayRef[LexModels_BotMetadata]
 
 An array of C<botMetadata> objects, with one entry for each bot.
 

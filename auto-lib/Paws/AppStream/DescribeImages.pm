@@ -1,17 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::DescribeImages;
-  use Moose;
-  has Arns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::AppStream::Types qw//;
+  has Arns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeImages');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::DescribeImagesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeImages');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::DescribeImagesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Arns' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

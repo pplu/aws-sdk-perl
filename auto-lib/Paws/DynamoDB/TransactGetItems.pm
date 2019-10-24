@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::TransactGetItems;
   use Moo;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::TransactGetItems;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::TransactGetItemsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TransactItems' => {
@@ -22,11 +23,14 @@ package Paws::DynamoDB::TransactGetItems;
                'ReturnConsumedCapacity' => {
                                              'type' => 'Str'
                                            }
-             }
+             },
+  'IsRequired' => {
+                    'TransactItems' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

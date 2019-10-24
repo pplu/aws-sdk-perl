@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::Budgets::CostTypes;
-  use Moose;
-  has IncludeCredit => (is => 'ro', isa => 'Bool');
-  has IncludeDiscount => (is => 'ro', isa => 'Bool');
-  has IncludeOtherSubscription => (is => 'ro', isa => 'Bool');
-  has IncludeRecurring => (is => 'ro', isa => 'Bool');
-  has IncludeRefund => (is => 'ro', isa => 'Bool');
-  has IncludeSubscription => (is => 'ro', isa => 'Bool');
-  has IncludeSupport => (is => 'ro', isa => 'Bool');
-  has IncludeTax => (is => 'ro', isa => 'Bool');
-  has IncludeUpfront => (is => 'ro', isa => 'Bool');
-  has UseAmortized => (is => 'ro', isa => 'Bool');
-  has UseBlended => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Budgets::Types qw//;
+  has IncludeCredit => (is => 'ro', isa => Bool);
+  has IncludeDiscount => (is => 'ro', isa => Bool);
+  has IncludeOtherSubscription => (is => 'ro', isa => Bool);
+  has IncludeRecurring => (is => 'ro', isa => Bool);
+  has IncludeRefund => (is => 'ro', isa => Bool);
+  has IncludeSubscription => (is => 'ro', isa => Bool);
+  has IncludeSupport => (is => 'ro', isa => Bool);
+  has IncludeTax => (is => 'ro', isa => Bool);
+  has IncludeUpfront => (is => 'ro', isa => Bool);
+  has UseAmortized => (is => 'ro', isa => Bool);
+  has UseBlended => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncludeDiscount' => {
+                                      'type' => 'Bool'
+                                    },
+               'UseAmortized' => {
+                                   'type' => 'Bool'
+                                 },
+               'IncludeUpfront' => {
+                                     'type' => 'Bool'
+                                   },
+               'IncludeCredit' => {
+                                    'type' => 'Bool'
+                                  },
+               'IncludeSupport' => {
+                                     'type' => 'Bool'
+                                   },
+               'IncludeSubscription' => {
+                                          'type' => 'Bool'
+                                        },
+               'UseBlended' => {
+                                 'type' => 'Bool'
+                               },
+               'IncludeTax' => {
+                                 'type' => 'Bool'
+                               },
+               'IncludeOtherSubscription' => {
+                                               'type' => 'Bool'
+                                             },
+               'IncludeRecurring' => {
+                                       'type' => 'Bool'
+                                     },
+               'IncludeRefund' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

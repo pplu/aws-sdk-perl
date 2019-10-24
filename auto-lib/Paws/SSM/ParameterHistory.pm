@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::SSM::ParameterHistory;
-  use Moose;
-  has AllowedPattern => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has LastModifiedUser => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterInlinePolicy]');
-  has Tier => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SSM::Types qw/SSM_ParameterInlinePolicy/;
+  has AllowedPattern => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has KeyId => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has LastModifiedUser => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => ArrayRef[SSM_ParameterInlinePolicy]);
+  has Tier => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'AllowedPattern' => {
+                                     'type' => 'Str'
+                                   },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Policies' => {
+                               'class' => 'Paws::SSM::ParameterInlinePolicy',
+                               'type' => 'ArrayRef[SSM_ParameterInlinePolicy]'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedUser' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +136,7 @@ parameter.
   The name of the parameter.
 
 
-=head2 Policies => ArrayRef[L<Paws::SSM::ParameterInlinePolicy>]
+=head2 Policies => ArrayRef[SSM_ParameterInlinePolicy]
 
   Information about the policies assigned to a parameter.
 

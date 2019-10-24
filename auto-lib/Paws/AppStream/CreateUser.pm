@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::CreateUser;
-  use Moose;
-  has AuthenticationType => (is => 'ro', isa => 'Str', required => 1);
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has MessageAction => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has AuthenticationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FirstName => (is => 'ro', isa => Str, predicate => 1);
+  has LastName => (is => 'ro', isa => Str, predicate => 1);
+  has MessageAction => (is => 'ro', isa => Str, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::CreateUserResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::CreateUserResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'FirstName' => {
+                                'type' => 'Str'
+                              },
+               'LastName' => {
+                               'type' => 'Str'
+                             },
+               'MessageAction' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'AuthenticationType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

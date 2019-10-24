@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::CreateBusinessReportSchedule;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has ContentRange => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportContentRange', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has Recurrence => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportRecurrence');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has ScheduleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_BusinessReportContentRange AlexaForBusiness_BusinessReportRecurrence/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has ContentRange => (is => 'ro', isa => AlexaForBusiness_BusinessReportContentRange, required => 1, predicate => 1);
+  has Format => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Recurrence => (is => 'ro', isa => AlexaForBusiness_BusinessReportRecurrence, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduleName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBusinessReportSchedule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::CreateBusinessReportScheduleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBusinessReportSchedule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::CreateBusinessReportScheduleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentRange' => {
+                                   'class' => 'Paws::AlexaForBusiness::BusinessReportContentRange',
+                                   'type' => 'AlexaForBusiness_BusinessReportContentRange'
+                                 },
+               'ScheduleName' => {
+                                   'type' => 'Str'
+                                 },
+               'Recurrence' => {
+                                 'class' => 'Paws::AlexaForBusiness::BusinessReportRecurrence',
+                                 'type' => 'AlexaForBusiness_BusinessReportRecurrence'
+                               },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ContentRange' => 1,
+                    'Format' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +105,7 @@ The client request token.
 
 
 
-=head2 B<REQUIRED> ContentRange => L<Paws::AlexaForBusiness::BusinessReportContentRange>
+=head2 B<REQUIRED> ContentRange => AlexaForBusiness_BusinessReportContentRange
 
 The content range of the reports.
 
@@ -78,7 +118,7 @@ files of individual files).
 
 Valid values are: C<"CSV">, C<"CSV_ZIP">
 
-=head2 Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>
+=head2 Recurrence => AlexaForBusiness_BusinessReportRecurrence
 
 The recurrence of the reports. If this isn't specified, the report will
 only be delivered one time when the API is called.

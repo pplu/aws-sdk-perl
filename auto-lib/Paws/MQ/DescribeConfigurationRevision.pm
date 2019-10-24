@@ -1,15 +1,41 @@
 
 package Paws::MQ::DescribeConfigurationRevision;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configuration-id', required => 1);
-  has ConfigurationRevision => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'configuration-revision', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigurationRevision => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationRevision');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations/{configuration-id}/revisions/{configuration-revision}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::DescribeConfigurationRevisionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationRevision');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations/{configuration-id}/revisions/{configuration-revision}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::DescribeConfigurationRevisionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'ConfigurationRevision' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'ParamInURI' => {
+                    'ConfigurationId' => 'configuration-id',
+                    'ConfigurationRevision' => 'configuration-revision'
+                  },
+  'IsRequired' => {
+                    'ConfigurationId' => 1,
+                    'ConfigurationRevision' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

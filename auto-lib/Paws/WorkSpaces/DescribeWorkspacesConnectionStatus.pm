@@ -1,14 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::DescribeWorkspacesConnectionStatus;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WorkspaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkSpaces::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has WorkspaceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeWorkspacesConnectionStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeWorkspacesConnectionStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'WorkspaceIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

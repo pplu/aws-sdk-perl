@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::HealthCheckCustomConfig;
-  use Moose;
-  has FailureThreshold => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ServiceDiscovery::Types qw//;
+  has FailureThreshold => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureThreshold' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

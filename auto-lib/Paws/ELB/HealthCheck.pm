@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::ELB::HealthCheck;
-  use Moose;
-  has HealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
-  has Interval => (is => 'ro', isa => 'Int', required => 1);
-  has Target => (is => 'ro', isa => 'Str', required => 1);
-  has Timeout => (is => 'ro', isa => 'Int', required => 1);
-  has UnhealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ELB::Types qw//;
+  has HealthyThreshold => (is => 'ro', isa => Int, required => 1);
+  has Interval => (is => 'ro', isa => Int, required => 1);
+  has Target => (is => 'ro', isa => Str, required => 1);
+  has Timeout => (is => 'ro', isa => Int, required => 1);
+  has UnhealthyThreshold => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'UnhealthyThreshold' => {
+                                         'type' => 'Int'
+                                       },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'HealthyThreshold' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'Target' => 1,
+                    'Interval' => 1,
+                    'UnhealthyThreshold' => 1,
+                    'Timeout' => 1,
+                    'HealthyThreshold' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

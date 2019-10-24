@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::WAF::SampledHTTPRequest;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Request => (is => 'ro', isa => 'Paws::WAF::HTTPRequest', required => 1);
-  has RuleWithinRuleGroup => (is => 'ro', isa => 'Str');
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Weight => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WAF::Types qw/WAF_HTTPRequest/;
+  has Action => (is => 'ro', isa => Str);
+  has Request => (is => 'ro', isa => WAF_HTTPRequest, required => 1);
+  has RuleWithinRuleGroup => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Weight => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'RuleWithinRuleGroup' => {
+                                          'type' => 'Str'
+                                        },
+               'Request' => {
+                              'class' => 'Paws::WAF::HTTPRequest',
+                              'type' => 'WAF_HTTPRequest'
+                            },
+               'Weight' => {
+                             'type' => 'Int'
+                           }
+             },
+  'IsRequired' => {
+                    'Request' => 1,
+                    'Weight' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +84,7 @@ C<GetSampledRequests>.
 C<BLOCK>, or C<COUNT>.
 
 
-=head2 B<REQUIRED> Request => L<Paws::WAF::HTTPRequest>
+=head2 B<REQUIRED> Request => WAF_HTTPRequest
 
   A complex type that contains detailed information about the request.
 

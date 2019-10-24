@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::AppSync::OpenIDConnectConfig;
-  use Moose;
-  has AuthTTL => (is => 'ro', isa => 'Int', request_name => 'authTTL', traits => ['NameInRequest']);
-  has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
-  has IatTTL => (is => 'ro', isa => 'Int', request_name => 'iatTTL', traits => ['NameInRequest']);
-  has Issuer => (is => 'ro', isa => 'Str', request_name => 'issuer', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::AppSync::Types qw//;
+  has AuthTTL => (is => 'ro', isa => Int);
+  has ClientId => (is => 'ro', isa => Str);
+  has IatTTL => (is => 'ro', isa => Int);
+  has Issuer => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IatTTL' => {
+                             'type' => 'Int'
+                           },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'Issuer' => {
+                             'type' => 'Str'
+                           },
+               'AuthTTL' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'IatTTL' => 'iatTTL',
+                       'ClientId' => 'clientId',
+                       'Issuer' => 'issuer',
+                       'AuthTTL' => 'authTTL'
+                     },
+  'IsRequired' => {
+                    'Issuer' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

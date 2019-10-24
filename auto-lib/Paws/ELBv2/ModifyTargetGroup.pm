@@ -1,22 +1,69 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::ModifyTargetGroup;
-  use Moose;
-  has HealthCheckEnabled => (is => 'ro', isa => 'Bool');
-  has HealthCheckIntervalSeconds => (is => 'ro', isa => 'Int');
-  has HealthCheckPath => (is => 'ro', isa => 'Str');
-  has HealthCheckPort => (is => 'ro', isa => 'Str');
-  has HealthCheckProtocol => (is => 'ro', isa => 'Str');
-  has HealthCheckTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has HealthyThresholdCount => (is => 'ro', isa => 'Int');
-  has Matcher => (is => 'ro', isa => 'Paws::ELBv2::Matcher');
-  has TargetGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has UnhealthyThresholdCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::ELBv2::Types qw/ELBv2_Matcher/;
+  has HealthCheckEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has HealthCheckIntervalSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has HealthCheckPath => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckPort => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckProtocol => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckTimeoutSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has HealthyThresholdCount => (is => 'ro', isa => Int, predicate => 1);
+  has Matcher => (is => 'ro', isa => ELBv2_Matcher, predicate => 1);
+  has TargetGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UnhealthyThresholdCount => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyTargetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::ModifyTargetGroupOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyTargetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyTargetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::ModifyTargetGroupOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyTargetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthCheckTimeoutSeconds' => {
+                                                'type' => 'Int'
+                                              },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    },
+               'UnhealthyThresholdCount' => {
+                                              'type' => 'Int'
+                                            },
+               'HealthCheckProtocol' => {
+                                          'type' => 'Str'
+                                        },
+               'TargetGroupArn' => {
+                                     'type' => 'Str'
+                                   },
+               'HealthCheckEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'HealthCheckPort' => {
+                                      'type' => 'Str'
+                                    },
+               'Matcher' => {
+                              'class' => 'Paws::ELBv2::Matcher',
+                              'type' => 'ELBv2_Matcher'
+                            },
+               'HealthCheckIntervalSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'HealthyThresholdCount' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'TargetGroupArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +165,7 @@ considering an unhealthy target healthy.
 
 
 
-=head2 Matcher => L<Paws::ELBv2::Matcher>
+=head2 Matcher => ELBv2_Matcher
 
 [HTTP/HTTPS health checks] The HTTP codes to use when checking for a
 successful response from a target.

@@ -1,13 +1,49 @@
 
 package Paws::IoT::CreateOTAUpdateResponse;
-  use Moose;
-  has AwsIotJobArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsIotJobArn');
-  has AwsIotJobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsIotJobId');
-  has OtaUpdateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'otaUpdateArn');
-  has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'otaUpdateId');
-  has OtaUpdateStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'otaUpdateStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AwsIotJobArn => (is => 'ro', isa => Str);
+  has AwsIotJobId => (is => 'ro', isa => Str);
+  has OtaUpdateArn => (is => 'ro', isa => Str);
+  has OtaUpdateId => (is => 'ro', isa => Str);
+  has OtaUpdateStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OtaUpdateArn' => {
+                                   'type' => 'Str'
+                                 },
+               'OtaUpdateStatus' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AwsIotJobArn' => {
+                                   'type' => 'Str'
+                                 },
+               'OtaUpdateId' => {
+                                  'type' => 'Str'
+                                },
+               'AwsIotJobId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'OtaUpdateArn' => 'otaUpdateArn',
+                       'OtaUpdateStatus' => 'otaUpdateStatus',
+                       'AwsIotJobArn' => 'awsIotJobArn',
+                       'OtaUpdateId' => 'otaUpdateId',
+                       'AwsIotJobId' => 'awsIotJobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

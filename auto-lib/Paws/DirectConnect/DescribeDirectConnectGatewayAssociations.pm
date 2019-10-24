@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DescribeDirectConnectGatewayAssociations;
-  use Moose;
-  has AssociatedGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associatedGatewayId' );
-  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has AssociatedGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has AssociationId => (is => 'ro', isa => Str, predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualGatewayId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDirectConnectGatewayAssociations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDirectConnectGatewayAssociations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'AssociatedGatewayId' => {
+                                          'type' => 'Str'
+                                        },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId',
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'NextToken' => 'nextToken',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'AssociatedGatewayId' => 'associatedGatewayId',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

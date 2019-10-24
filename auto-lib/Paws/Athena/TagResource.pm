@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::TagResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Athena::Types qw/Athena_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Athena_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::TagResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::TagResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Athena::Tag',
+                           'type' => 'ArrayRef[Athena_Tag]'
+                         },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ workgroup) for the specified ARN.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Athena::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Athena_Tag]
 
 One or more tags, separated by commas, to be added to the resource,
 such as a workgroup.

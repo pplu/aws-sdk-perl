@@ -1,15 +1,37 @@
 
 package Paws::ApiGateway::GetDomainNames;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDomainNames');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainNames');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDomainNames');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DomainNames');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'Limit' => {
+                            'type' => 'Int'
+                          }
+             },
+  'ParamInQuery' => {
+                      'Position' => 'position',
+                      'Limit' => 'limit'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

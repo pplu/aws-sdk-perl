@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListPoliciesGrantingServiceAccess;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::ListPoliciesGrantingServiceAccess;
                'Marker' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'ServiceNamespaces' => 1,
+                    'Arn' => 1
+                  }
 }
 ;
     return $Params_map;

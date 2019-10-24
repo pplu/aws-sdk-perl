@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::CloudTrail::Event;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str');
-  has CloudTrailEvent => (is => 'ro', isa => 'Str');
-  has EventId => (is => 'ro', isa => 'Str');
-  has EventName => (is => 'ro', isa => 'Str');
-  has EventSource => (is => 'ro', isa => 'Str');
-  has EventTime => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_Resource/;
+  has AccessKeyId => (is => 'ro', isa => Str);
+  has CloudTrailEvent => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str);
+  has EventName => (is => 'ro', isa => Str);
+  has EventSource => (is => 'ro', isa => Str);
+  has EventTime => (is => 'ro', isa => Str);
+  has ReadOnly => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[CloudTrail_Resource]);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadOnly' => {
+                               'type' => 'Str'
+                             },
+               'CloudTrailEvent' => {
+                                      'type' => 'Str'
+                                    },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'Resources' => {
+                                'class' => 'Paws::CloudTrail::Resource',
+                                'type' => 'ArrayRef[CloudTrail_Resource]'
+                              },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'EventTime' => {
+                                'type' => 'Str'
+                              },
+               'EventName' => {
+                                'type' => 'Str'
+                              },
+               'EventSource' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +124,7 @@ of the temporary credentials.
   Information about whether the event is a write event or a read event.
 
 
-=head2 Resources => ArrayRef[L<Paws::CloudTrail::Resource>]
+=head2 Resources => ArrayRef[CloudTrail_Resource]
 
   A list of resources referenced by the event returned.
 

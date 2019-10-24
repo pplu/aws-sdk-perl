@@ -1,17 +1,51 @@
 
 package Paws::RDSData::BeginTransaction;
-  use Moose;
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDSData::Types qw//;
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SecretArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BeginTransaction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/BeginTransaction');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::BeginTransactionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BeginTransaction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/BeginTransaction');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::BeginTransactionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'ResourceArn' => 'resourceArn',
+                       'Database' => 'database',
+                       'SecretArn' => 'secretArn'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'SecretArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

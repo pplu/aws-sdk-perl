@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::PutActionRevisionOutput;
-  use Moose;
-  has NewRevision => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'newRevision' );
-  has PipelineExecutionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineExecutionId' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodePipeline::Types qw//;
+  has NewRevision => (is => 'ro', isa => Bool);
+  has PipelineExecutionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewRevision' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PipelineExecutionId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'NewRevision' => 'newRevision',
+                       'PipelineExecutionId' => 'pipelineExecutionId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

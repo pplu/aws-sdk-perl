@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::PutAggregationAuthorizationResponse;
-  use Moose;
-  has AggregationAuthorization => (is => 'ro', isa => 'Paws::Config::AggregationAuthorization');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_AggregationAuthorization/;
+  has AggregationAuthorization => (is => 'ro', isa => Config_AggregationAuthorization);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AggregationAuthorization' => {
+                                               'class' => 'Paws::Config::AggregationAuthorization',
+                                               'type' => 'Config_AggregationAuthorization'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Config::PutAggregationAuthorizationResponse
 =head1 ATTRIBUTES
 
 
-=head2 AggregationAuthorization => L<Paws::Config::AggregationAuthorization>
+=head2 AggregationAuthorization => Config_AggregationAuthorization
 
 Returns an AggregationAuthorization object.
 

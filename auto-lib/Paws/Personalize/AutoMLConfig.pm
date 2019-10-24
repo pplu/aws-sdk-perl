@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Personalize::AutoMLConfig;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest']);
-  has RecipeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'recipeList', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Personalize::Types qw//;
+  has MetricName => (is => 'ro', isa => Str);
+  has RecipeList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecipeList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'RecipeList' => 'recipeList',
+                       'MetricName' => 'metricName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

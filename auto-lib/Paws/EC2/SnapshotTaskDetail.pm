@@ -13,7 +13,7 @@ package Paws::EC2::SnapshotTaskDetail;
   has Url => (is => 'ro', isa => Str);
   has UserBucket => (is => 'ro', isa => EC2_UserBucketDetails);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DiskImageSize' => {
@@ -66,8 +66,8 @@ package Paws::EC2::SnapshotTaskDetail;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

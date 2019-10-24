@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::DeleteReceiptRule;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::DeleteReceiptRule;
                'RuleSetName' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'RuleName' => 1,
+                    'RuleSetName' => 1
+                  }
 }
 ;
     return $Params_map;

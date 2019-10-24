@@ -1,14 +1,29 @@
 
 package Paws::SecurityHub::DescribeHub;
-  use Moose;
-  has HubArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has HubArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeHub');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::DescribeHubResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeHub');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::DescribeHubResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HubArn' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

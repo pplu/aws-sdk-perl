@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateEndpointsBatch;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EndpointBatchRequest => (is => 'ro', isa => 'Paws::Pinpoint::EndpointBatchRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointBatchRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointBatchRequest => (is => 'ro', isa => Pinpoint_EndpointBatchRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EndpointBatchRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpointsBatch');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateEndpointsBatchResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEndpointsBatch');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/endpoints');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateEndpointsBatchResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EndpointBatchRequest' => {
+                                           'class' => 'Paws::Pinpoint::EndpointBatchRequest',
+                                           'type' => 'Pinpoint_EndpointBatchRequest'
+                                         }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'EndpointBatchRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +119,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> EndpointBatchRequest => L<Paws::Pinpoint::EndpointBatchRequest>
+=head2 B<REQUIRED> EndpointBatchRequest => Pinpoint_EndpointBatchRequest
 
 
 

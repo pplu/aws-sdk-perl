@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::EnvironmentInfoDescription;
-  use Moose;
-  has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has InfoType => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has SampleTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has InfoType => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has SampleTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'InfoType' => {
+                               'type' => 'Str'
+                             },
+               'SampleTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

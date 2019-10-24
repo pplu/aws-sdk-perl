@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::InstanceProfile;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -31,7 +32,15 @@ package Paws::IAM::InstanceProfile;
                'InstanceProfileId' => {
                                         'type' => 'Str'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'CreateDate' => 1,
+                    'InstanceProfileName' => 1,
+                    'Roles' => 1,
+                    'Path' => 1,
+                    'Arn' => 1,
+                    'InstanceProfileId' => 1
+                  }
 }
 ;
     return $Params_map;

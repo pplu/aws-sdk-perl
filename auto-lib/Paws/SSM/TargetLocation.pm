@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SSM::TargetLocation;
-  use Moose;
-  has Accounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TargetLocationMaxConcurrency => (is => 'ro', isa => 'Str');
-  has TargetLocationMaxErrors => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::SSM::Types qw//;
+  has Accounts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ExecutionRoleName => (is => 'ro', isa => Str);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TargetLocationMaxConcurrency => (is => 'ro', isa => Str);
+  has TargetLocationMaxErrors => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetLocationMaxErrors' => {
+                                              'type' => 'Str'
+                                            },
+               'TargetLocationMaxConcurrency' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'Accounts' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::TeletextDestinationSettings;
-  use Moose;
-  has PageNumber => (is => 'ro', isa => 'Str', request_name => 'pageNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has PageNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageNumber' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'PageNumber' => 'pageNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

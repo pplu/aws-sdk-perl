@@ -1,10 +1,35 @@
 
 package Paws::AppSync::ListResolversResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Resolvers => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::Resolver]', traits => ['NameInRequest'], request_name => 'resolvers');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_Resolver/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Resolvers => (is => 'ro', isa => ArrayRef[AppSync_Resolver]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resolvers' => {
+                                'class' => 'Paws::AppSync::Resolver',
+                                'type' => 'ArrayRef[AppSync_Resolver]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Resolvers' => 'resolvers',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ An identifier to be passed in the next request to this operation to
 return the next set of items in the list.
 
 
-=head2 Resolvers => ArrayRef[L<Paws::AppSync::Resolver>]
+=head2 Resolvers => ArrayRef[AppSync_Resolver]
 
 The C<Resolver> objects.
 

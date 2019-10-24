@@ -8,7 +8,7 @@ package Paws::EC2::LaunchTemplatePlacementRequest;
   has SpreadDomain => (is => 'ro', isa => Str);
   has Tenancy => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'GroupName' => {
@@ -32,8 +32,8 @@ package Paws::EC2::LaunchTemplatePlacementRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

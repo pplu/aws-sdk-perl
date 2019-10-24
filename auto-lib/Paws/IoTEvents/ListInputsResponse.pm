@@ -1,10 +1,35 @@
 
 package Paws::IoTEvents::ListInputsResponse;
-  use Moose;
-  has InputSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::InputSummary]', traits => ['NameInRequest'], request_name => 'inputSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_InputSummary/;
+  has InputSummaries => (is => 'ro', isa => ArrayRef[IoTEvents_InputSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InputSummaries' => {
+                                     'class' => 'Paws::IoTEvents::InputSummary',
+                                     'type' => 'ArrayRef[IoTEvents_InputSummary]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'InputSummaries' => 'inputSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTEvents::ListInputsResponse
 =head1 ATTRIBUTES
 
 
-=head2 InputSummaries => ArrayRef[L<Paws::IoTEvents::InputSummary>]
+=head2 InputSummaries => ArrayRef[IoTEvents_InputSummary]
 
 Summary information about the inputs.
 

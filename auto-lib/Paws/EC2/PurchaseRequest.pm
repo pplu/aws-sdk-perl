@@ -4,7 +4,7 @@ package Paws::EC2::PurchaseRequest;
   has InstanceCount => (is => 'ro', isa => Int, required => 1);
   has PurchaseToken => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PurchaseToken' => {
@@ -13,11 +13,15 @@ package Paws::EC2::PurchaseRequest;
                'InstanceCount' => {
                                     'type' => 'Int'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'PurchaseToken' => 1,
+                    'InstanceCount' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

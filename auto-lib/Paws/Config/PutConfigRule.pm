@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutConfigRule;
-  use Moose;
-  has ConfigRule => (is => 'ro', isa => 'Paws::Config::ConfigRule', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Config::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_Tag Config_ConfigRule/;
+  has ConfigRule => (is => 'ro', isa => Config_ConfigRule, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Config_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConfigRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConfigRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Config::Tag',
+                           'type' => 'ArrayRef[Config_Tag]'
+                         },
+               'ConfigRule' => {
+                                 'class' => 'Paws::Config::ConfigRule',
+                                 'type' => 'Config_ConfigRule'
+                               }
+             },
+  'IsRequired' => {
+                    'ConfigRule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,13 +104,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigRule => L<Paws::Config::ConfigRule>
+=head2 B<REQUIRED> ConfigRule => Config_ConfigRule
 
 The rule that you want to add to your account.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Config::Tag>]
+=head2 Tags => ArrayRef[Config_Tag]
 
 
 

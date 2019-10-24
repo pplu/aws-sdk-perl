@@ -1,19 +1,59 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::CreateLoadBalancer;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Listener]', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ELB::Types qw/ELB_Listener ELB_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Listeners => (is => 'ro', isa => ArrayRef[ELB_Listener], required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Scheme => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ELB_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::CreateAccessPointOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::CreateAccessPointOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLoadBalancerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'Scheme' => {
+                             'type' => 'Str'
+                           },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::ELB::Tag',
+                           'type' => 'ArrayRef[ELB_Tag]'
+                         },
+               'Listeners' => {
+                                'class' => 'Paws::ELB::Listener',
+                                'type' => 'ArrayRef[ELB_Listener]'
+                              },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'Listeners' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +215,7 @@ using EnableAvailabilityZonesForLoadBalancer.
 
 
 
-=head2 B<REQUIRED> Listeners => ArrayRef[L<Paws::ELB::Listener>]
+=head2 B<REQUIRED> Listeners => ArrayRef[ELB_Listener]
 
 The listeners.
 
@@ -226,7 +266,7 @@ C<AvailabilityZones>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
+=head2 Tags => ArrayRef[ELB_Tag]
 
 A list of tags to assign to the load balancer.
 

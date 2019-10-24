@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Commit;
-  use Moose;
-  has AdditionalData => (is => 'ro', isa => 'Str', request_name => 'additionalData', traits => ['NameInRequest']);
-  has Author => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'author', traits => ['NameInRequest']);
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
-  has Committer => (is => 'ro', isa => 'Paws::CodeCommit::UserInfo', request_name => 'committer', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Parents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'parents', traits => ['NameInRequest']);
-  has TreeId => (is => 'ro', isa => 'Str', request_name => 'treeId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_UserInfo/;
+  has AdditionalData => (is => 'ro', isa => Str);
+  has Author => (is => 'ro', isa => CodeCommit_UserInfo);
+  has CommitId => (is => 'ro', isa => Str);
+  has Committer => (is => 'ro', isa => CodeCommit_UserInfo);
+  has Message => (is => 'ro', isa => Str);
+  has Parents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TreeId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TreeId' => {
+                             'type' => 'Str'
+                           },
+               'Parents' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'AdditionalData' => {
+                                     'type' => 'Str'
+                                   },
+               'Committer' => {
+                                'class' => 'Paws::CodeCommit::UserInfo',
+                                'type' => 'CodeCommit_UserInfo'
+                              },
+               'Author' => {
+                             'class' => 'Paws::CodeCommit::UserInfo',
+                             'type' => 'CodeCommit_UserInfo'
+                           }
+             },
+  'NameInRequest' => {
+                       'TreeId' => 'treeId',
+                       'Parents' => 'parents',
+                       'Message' => 'message',
+                       'CommitId' => 'commitId',
+                       'AdditionalData' => 'additionalData',
+                       'Committer' => 'committer',
+                       'Author' => 'author'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +93,7 @@ Returns information about a specific commit.
   Any additional data associated with the specified commit.
 
 
-=head2 Author => L<Paws::CodeCommit::UserInfo>
+=head2 Author => CodeCommit_UserInfo
 
   Information about the author of the specified commit. Information
 includes the date in timestamp format with GMT offset, the name of the
@@ -59,7 +105,7 @@ author, and the email address for the author, as configured in Git.
   The full SHA of the specified commit.
 
 
-=head2 Committer => L<Paws::CodeCommit::UserInfo>
+=head2 Committer => CodeCommit_UserInfo
 
   Information about the person who committed the specified commit, also
 known as the committer. Information includes the date in timestamp

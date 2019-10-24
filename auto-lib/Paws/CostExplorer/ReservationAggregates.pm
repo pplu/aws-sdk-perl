@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ReservationAggregates;
-  use Moose;
-  has AmortizedRecurringFee => (is => 'ro', isa => 'Str');
-  has AmortizedUpfrontFee => (is => 'ro', isa => 'Str');
-  has NetRISavings => (is => 'ro', isa => 'Str');
-  has OnDemandCostOfRIHoursUsed => (is => 'ro', isa => 'Str');
-  has PurchasedHours => (is => 'ro', isa => 'Str');
-  has PurchasedUnits => (is => 'ro', isa => 'Str');
-  has TotalActualHours => (is => 'ro', isa => 'Str');
-  has TotalActualUnits => (is => 'ro', isa => 'Str');
-  has TotalAmortizedFee => (is => 'ro', isa => 'Str');
-  has TotalPotentialRISavings => (is => 'ro', isa => 'Str');
-  has UnusedHours => (is => 'ro', isa => 'Str');
-  has UnusedUnits => (is => 'ro', isa => 'Str');
-  has UtilizationPercentage => (is => 'ro', isa => 'Str');
-  has UtilizationPercentageInUnits => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has AmortizedRecurringFee => (is => 'ro', isa => Str);
+  has AmortizedUpfrontFee => (is => 'ro', isa => Str);
+  has NetRISavings => (is => 'ro', isa => Str);
+  has OnDemandCostOfRIHoursUsed => (is => 'ro', isa => Str);
+  has PurchasedHours => (is => 'ro', isa => Str);
+  has PurchasedUnits => (is => 'ro', isa => Str);
+  has TotalActualHours => (is => 'ro', isa => Str);
+  has TotalActualUnits => (is => 'ro', isa => Str);
+  has TotalAmortizedFee => (is => 'ro', isa => Str);
+  has TotalPotentialRISavings => (is => 'ro', isa => Str);
+  has UnusedHours => (is => 'ro', isa => Str);
+  has UnusedUnits => (is => 'ro', isa => Str);
+  has UtilizationPercentage => (is => 'ro', isa => Str);
+  has UtilizationPercentageInUnits => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalAmortizedFee' => {
+                                        'type' => 'Str'
+                                      },
+               'PurchasedUnits' => {
+                                     'type' => 'Str'
+                                   },
+               'TotalActualUnits' => {
+                                       'type' => 'Str'
+                                     },
+               'TotalActualHours' => {
+                                       'type' => 'Str'
+                                     },
+               'AmortizedRecurringFee' => {
+                                            'type' => 'Str'
+                                          },
+               'OnDemandCostOfRIHoursUsed' => {
+                                                'type' => 'Str'
+                                              },
+               'UtilizationPercentage' => {
+                                            'type' => 'Str'
+                                          },
+               'UnusedHours' => {
+                                  'type' => 'Str'
+                                },
+               'AmortizedUpfrontFee' => {
+                                          'type' => 'Str'
+                                        },
+               'UnusedUnits' => {
+                                  'type' => 'Str'
+                                },
+               'NetRISavings' => {
+                                   'type' => 'Str'
+                                 },
+               'TotalPotentialRISavings' => {
+                                              'type' => 'Str'
+                                            },
+               'UtilizationPercentageInUnits' => {
+                                                   'type' => 'Str'
+                                                 },
+               'PurchasedHours' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,42 @@
 
 package Paws::Route53::CreateVPCAssociationAuthorization;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has VPC => (is => 'ro', isa => 'Paws::Route53::VPC', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_VPC/;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VPC => (is => 'ro', isa => Route53_VPC, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVPCAssociationAuthorization');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzone/{Id}/authorizevpcassociation');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateVPCAssociationAuthorizationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVPCAssociationAuthorization');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzone/{Id}/authorizevpcassociation');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::CreateVPCAssociationAuthorizationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VPC' => {
+                          'class' => 'Paws::Route53::VPC',
+                          'type' => 'Route53_VPC'
+                        },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'HostedZoneId' => 'Id'
+                  },
+  'IsRequired' => {
+                    'VPC' => 1,
+                    'HostedZoneId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +86,7 @@ associating a VPC with.
 
 
 
-=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
+=head2 B<REQUIRED> VPC => Route53_VPC
 
 A complex type that contains the VPC ID and region for the VPC that you
 want to authorize associating with your hosted zone.

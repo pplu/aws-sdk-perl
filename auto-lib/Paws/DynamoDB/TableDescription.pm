@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TableDescription;
   use Moo;
   use Types::Standard qw/ArrayRef Str Int/;
@@ -21,7 +22,7 @@ package Paws::DynamoDB::TableDescription;
   has TableSizeBytes => (is => 'ro', isa => Int);
   has TableStatus => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BillingModeSummary' => {
@@ -90,8 +91,8 @@ package Paws::DynamoDB::TableDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

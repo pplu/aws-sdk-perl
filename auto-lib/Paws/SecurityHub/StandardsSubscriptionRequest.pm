@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::StandardsSubscriptionRequest;
-  use Moose;
-  has StandardsArn => (is => 'ro', isa => 'Str', required => 1);
-  has StandardsInput => (is => 'ro', isa => 'Paws::SecurityHub::StandardsInputParameterMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_StandardsInputParameterMap/;
+  has StandardsArn => (is => 'ro', isa => Str, required => 1);
+  has StandardsInput => (is => 'ro', isa => SecurityHub_StandardsInputParameterMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StandardsInput' => {
+                                     'class' => 'Paws::SecurityHub::StandardsInputParameterMap',
+                                     'type' => 'SecurityHub_StandardsInputParameterMap'
+                                   },
+               'StandardsArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'StandardsArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +72,7 @@ Its ARN is
 C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0>.
 
 
-=head2 StandardsInput => L<Paws::SecurityHub::StandardsInputParameterMap>
+=head2 StandardsInput => SecurityHub_StandardsInputParameterMap
 
   A key-value pair of input for the standard.
 

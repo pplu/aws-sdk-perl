@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::MergeHunk;
-  use Moose;
-  has Base => (is => 'ro', isa => 'Paws::CodeCommit::MergeHunkDetail', request_name => 'base', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::CodeCommit::MergeHunkDetail', request_name => 'destination', traits => ['NameInRequest']);
-  has IsConflict => (is => 'ro', isa => 'Bool', request_name => 'isConflict', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::CodeCommit::MergeHunkDetail', request_name => 'source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_MergeHunkDetail/;
+  has Base => (is => 'ro', isa => CodeCommit_MergeHunkDetail);
+  has Destination => (is => 'ro', isa => CodeCommit_MergeHunkDetail);
+  has IsConflict => (is => 'ro', isa => Bool);
+  has Source => (is => 'ro', isa => CodeCommit_MergeHunkDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsConflict' => {
+                                 'type' => 'Bool'
+                               },
+               'Base' => {
+                           'class' => 'Paws::CodeCommit::MergeHunkDetail',
+                           'type' => 'CodeCommit_MergeHunkDetail'
+                         },
+               'Source' => {
+                             'class' => 'Paws::CodeCommit::MergeHunkDetail',
+                             'type' => 'CodeCommit_MergeHunkDetail'
+                           },
+               'Destination' => {
+                                  'class' => 'Paws::CodeCommit::MergeHunkDetail',
+                                  'type' => 'CodeCommit_MergeHunkDetail'
+                                }
+             },
+  'NameInRequest' => {
+                       'IsConflict' => 'isConflict',
+                       'Base' => 'base',
+                       'Source' => 'source',
+                       'Destination' => 'destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +74,13 @@ Information about merge hunks in a merge or pull request operation.
 =head1 ATTRIBUTES
 
 
-=head2 Base => L<Paws::CodeCommit::MergeHunkDetail>
+=head2 Base => CodeCommit_MergeHunkDetail
 
   Information about the merge hunk in the base of a merge or pull
 request.
 
 
-=head2 Destination => L<Paws::CodeCommit::MergeHunkDetail>
+=head2 Destination => CodeCommit_MergeHunkDetail
 
   Information about the merge hunk in the destination of a merge or pull
 request.
@@ -62,7 +97,7 @@ a line conflict. File mode conflicts in a merge will not set this to be
 true.
 
 
-=head2 Source => L<Paws::CodeCommit::MergeHunkDetail>
+=head2 Source => CodeCommit_MergeHunkDetail
 
   Information about the merge hunk in the source of a merge or pull
 request.

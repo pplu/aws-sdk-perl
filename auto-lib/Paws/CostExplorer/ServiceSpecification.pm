@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ServiceSpecification;
-  use Moose;
-  has EC2Specification => (is => 'ro', isa => 'Paws::CostExplorer::EC2Specification');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_EC2Specification/;
+  has EC2Specification => (is => 'ro', isa => CostExplorer_EC2Specification);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2Specification' => {
+                                       'class' => 'Paws::CostExplorer::EC2Specification',
+                                       'type' => 'CostExplorer_EC2Specification'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ for.
 =head1 ATTRIBUTES
 
 
-=head2 EC2Specification => L<Paws::CostExplorer::EC2Specification>
+=head2 EC2Specification => CostExplorer_EC2Specification
 
   The Amazon EC2 hardware specifications that you want AWS to provide
 recommendations for.

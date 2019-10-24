@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::SystemStatus;
-  use Moose;
-  has CPUUtilization => (is => 'ro', isa => 'Paws::ElasticBeanstalk::CPUUtilization');
-  has LoadAverage => (is => 'ro', isa => 'ArrayRef[Num]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_CPUUtilization/;
+  has CPUUtilization => (is => 'ro', isa => ElasticBeanstalk_CPUUtilization);
+  has LoadAverage => (is => 'ro', isa => ArrayRef[Num]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CPUUtilization' => {
+                                     'class' => 'Paws::ElasticBeanstalk::CPUUtilization',
+                                     'type' => 'ElasticBeanstalk_CPUUtilization'
+                                   },
+               'LoadAverage' => {
+                                  'type' => 'ArrayRef[Num]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ CPU utilization and load average metrics for an Amazon EC2 instance.
 =head1 ATTRIBUTES
 
 
-=head2 CPUUtilization => L<Paws::ElasticBeanstalk::CPUUtilization>
+=head2 CPUUtilization => ElasticBeanstalk_CPUUtilization
 
   CPU utilization metrics for the instance.
 

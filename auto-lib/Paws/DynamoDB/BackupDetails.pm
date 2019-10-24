@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BackupDetails;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -10,7 +11,7 @@ package Paws::DynamoDB::BackupDetails;
   has BackupStatus => (is => 'ro', isa => Str, required => 1);
   has BackupType => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BackupType' => {
@@ -34,11 +35,18 @@ package Paws::DynamoDB::BackupDetails;
                'BackupStatus' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'BackupType' => 1,
+                    'BackupName' => 1,
+                    'BackupArn' => 1,
+                    'BackupCreationDateTime' => 1,
+                    'BackupStatus' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

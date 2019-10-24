@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeInstancePatchStatesResult;
-  use Moose;
-  has InstancePatchStates => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InstancePatchState]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InstancePatchState/;
+  has InstancePatchStates => (is => 'ro', isa => ArrayRef[SSM_InstancePatchState]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstancePatchStates' => {
+                                          'class' => 'Paws::SSM::InstancePatchState',
+                                          'type' => 'ArrayRef[SSM_InstancePatchState]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeInstancePatchStatesResult
 =head1 ATTRIBUTES
 
 
-=head2 InstancePatchStates => ArrayRef[L<Paws::SSM::InstancePatchState>]
+=head2 InstancePatchStates => ArrayRef[SSM_InstancePatchState]
 
 The high-level patch state for the requested instances.
 

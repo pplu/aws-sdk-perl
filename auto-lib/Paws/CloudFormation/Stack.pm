@@ -1,27 +1,117 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::Stack;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ChangeSetId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has DeletionTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisableRollback => (is => 'ro', isa => 'Bool');
-  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackDriftInformation');
-  has EnableTerminationProtection => (is => 'ro', isa => 'Bool');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
-  has RootId => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatus => (is => 'ro', isa => 'Str', required => 1);
-  has StackStatusReason => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool Int/;
+  use Paws::CloudFormation::Types qw/CloudFormation_RollbackConfiguration CloudFormation_Parameter CloudFormation_Tag CloudFormation_Output CloudFormation_StackDriftInformation/;
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has DeletionTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisableRollback => (is => 'ro', isa => Bool);
+  has DriftInformation => (is => 'ro', isa => CloudFormation_StackDriftInformation);
+  has EnableTerminationProtection => (is => 'ro', isa => Bool);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has NotificationARNs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Outputs => (is => 'ro', isa => ArrayRef[CloudFormation_Output]);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter]);
+  has ParentId => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+  has RollbackConfiguration => (is => 'ro', isa => CloudFormation_RollbackConfiguration);
+  has RootId => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str, required => 1);
+  has StackStatus => (is => 'ro', isa => Str, required => 1);
+  has StackStatusReason => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag]);
+  has TimeoutInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnableTerminationProtection' => {
+                                                  'type' => 'Bool'
+                                                },
+               'RootId' => {
+                             'type' => 'Str'
+                           },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'StackStatusReason' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TimeoutInMinutes' => {
+                                       'type' => 'Int'
+                                     },
+               'DriftInformation' => {
+                                       'class' => 'Paws::CloudFormation::StackDriftInformation',
+                                       'type' => 'CloudFormation_StackDriftInformation'
+                                     },
+               'DisableRollback' => {
+                                      'type' => 'Bool'
+                                    },
+               'Outputs' => {
+                              'class' => 'Paws::CloudFormation::Output',
+                              'type' => 'ArrayRef[CloudFormation_Output]'
+                            },
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'DeletionTime' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'StackStatus' => {
+                                  'type' => 'Str'
+                                },
+               'NotificationARNs' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RollbackConfiguration' => {
+                                            'class' => 'Paws::CloudFormation::RollbackConfiguration',
+                                            'type' => 'CloudFormation_RollbackConfiguration'
+                                          }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'StackStatus' => 1,
+                    'StackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +190,7 @@ C<false>: enable rollback
 
 
 
-=head2 DriftInformation => L<Paws::CloudFormation::StackDriftInformation>
+=head2 DriftInformation => CloudFormation_StackDriftInformation
 
   Information on whether a stack's actual configuration differs, or has
 I<drifted>, from it's expected configuration, as defined in the stack
@@ -134,12 +224,12 @@ if the stack has been updated at least once.
   SNS topic ARNs to which stack related events are published.
 
 
-=head2 Outputs => ArrayRef[L<Paws::CloudFormation::Output>]
+=head2 Outputs => ArrayRef[CloudFormation_Output]
 
   A list of output structures.
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
   A list of C<Parameter> structures.
 
@@ -163,7 +253,7 @@ AWS CloudFormation uses this role's credentials to make calls on your
 behalf.
 
 
-=head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
+=head2 RollbackConfiguration => CloudFormation_RollbackConfiguration
 
   The rollback triggers for AWS CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
@@ -201,7 +291,7 @@ in the I<AWS CloudFormation User Guide>.
   Success/failure message associated with the stack status.
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
   A list of C<Tag>s that specify information about the stack.
 

@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::GetWorkflowRun;
-  use Moose;
-  has IncludeGraph => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RunId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Glue::Types qw//;
+  has IncludeGraph => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RunId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetWorkflowRun');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetWorkflowRunResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetWorkflowRun');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::GetWorkflowRunResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'IncludeGraph' => {
+                                   'type' => 'Bool'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'RunId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

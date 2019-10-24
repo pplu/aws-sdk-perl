@@ -13,7 +13,7 @@ package Paws::EC2::AssignIpv6Addresses;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssignIpv6AddressesResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6Addresses' => {
@@ -30,11 +30,14 @@ package Paws::EC2::AssignIpv6Addresses;
                        'Ipv6Addresses' => 'ipv6Addresses',
                        'NetworkInterfaceId' => 'networkInterfaceId',
                        'Ipv6AddressCount' => 'ipv6AddressCount'
-                     }
+                     },
+  'IsRequired' => {
+                    'NetworkInterfaceId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

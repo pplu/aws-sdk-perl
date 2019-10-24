@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Connect::Credentials;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
-  has AccessTokenExpiration => (is => 'ro', isa => 'Str');
-  has RefreshToken => (is => 'ro', isa => 'Str');
-  has RefreshTokenExpiration => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str);
+  has AccessTokenExpiration => (is => 'ro', isa => Str);
+  has RefreshToken => (is => 'ro', isa => Str);
+  has RefreshTokenExpiration => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RefreshToken' => {
+                                   'type' => 'Str'
+                                 },
+               'AccessTokenExpiration' => {
+                                            'type' => 'Str'
+                                          },
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'RefreshTokenExpiration' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

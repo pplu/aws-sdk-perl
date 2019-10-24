@@ -9,7 +9,7 @@ package Paws::EC2::TrafficMirrorTarget;
   has TrafficMirrorTargetId => (is => 'ro', isa => Str);
   has Type => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Type' => {
@@ -46,8 +46,8 @@ package Paws::EC2::TrafficMirrorTarget;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

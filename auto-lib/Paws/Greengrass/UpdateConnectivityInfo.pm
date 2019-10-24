@@ -1,15 +1,40 @@
 
 package Paws::Greengrass::UpdateConnectivityInfo;
-  use Moose;
-  has ConnectivityInfo => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ConnectivityInfo]');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ThingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_ConnectivityInfo/;
+  has ConnectivityInfo => (is => 'ro', isa => ArrayRef[Greengrass_ConnectivityInfo], predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConnectivityInfo');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/things/{ThingName}/connectivityInfo');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateConnectivityInfoResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConnectivityInfo');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/things/{ThingName}/connectivityInfo');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::UpdateConnectivityInfoResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectivityInfo' => {
+                                       'class' => 'Paws::Greengrass::ConnectivityInfo',
+                                       'type' => 'ArrayRef[Greengrass_ConnectivityInfo]'
+                                     },
+               'ThingName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'ThingName'
+                  },
+  'IsRequired' => {
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gre
 =head1 ATTRIBUTES
 
 
-=head2 ConnectivityInfo => ArrayRef[L<Paws::Greengrass::ConnectivityInfo>]
+=head2 ConnectivityInfo => ArrayRef[Greengrass_ConnectivityInfo]
 
 A list of connectivity info.
 

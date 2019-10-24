@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::StageDeclaration;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionDeclaration]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
-  has Blockers => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::BlockerDeclaration]', request_name => 'blockers', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionDeclaration CodePipeline_BlockerDeclaration/;
+  has Actions => (is => 'ro', isa => ArrayRef[CodePipeline_ActionDeclaration], required => 1);
+  has Blockers => (is => 'ro', isa => ArrayRef[CodePipeline_BlockerDeclaration]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Blockers' => {
+                               'class' => 'Paws::CodePipeline::BlockerDeclaration',
+                               'type' => 'ArrayRef[CodePipeline_BlockerDeclaration]'
+                             },
+               'Actions' => {
+                              'class' => 'Paws::CodePipeline::ActionDeclaration',
+                              'type' => 'ArrayRef[CodePipeline_ActionDeclaration]'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Blockers' => 'blockers',
+                       'Actions' => 'actions',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Actions' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +72,12 @@ Represents information about a stage and its definition.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => ArrayRef[L<Paws::CodePipeline::ActionDeclaration>]
+=head2 B<REQUIRED> Actions => ArrayRef[CodePipeline_ActionDeclaration]
 
   The actions included in a stage.
 
 
-=head2 Blockers => ArrayRef[L<Paws::CodePipeline::BlockerDeclaration>]
+=head2 Blockers => ArrayRef[CodePipeline_BlockerDeclaration]
 
   Reserved for future use.
 

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::StatisticalThreshold;
-  use Moose;
-  has Statistic => (is => 'ro', isa => 'Str', request_name => 'statistic', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Statistic => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistic' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Statistic' => 'statistic'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

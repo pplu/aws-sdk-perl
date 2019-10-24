@@ -1,18 +1,51 @@
 
 package Paws::Backup::StartRestoreJob;
-  use Moose;
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Paws::Backup::Metadata', required => 1);
-  has RecoveryPointArn => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_Metadata/;
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has Metadata => (is => 'ro', isa => Backup_Metadata, required => 1, predicate => 1);
+  has RecoveryPointArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartRestoreJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restore-jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::StartRestoreJobOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartRestoreJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restore-jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::StartRestoreJobOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Metadata' => {
+                               'class' => 'Paws::Backup::Metadata',
+                               'type' => 'Backup_Metadata'
+                             }
+             },
+  'IsRequired' => {
+                    'IamRoleArn' => 1,
+                    'RecoveryPointArn' => 1,
+                    'Metadata' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +104,7 @@ requesting to start multiple restores.
 
 
 
-=head2 B<REQUIRED> Metadata => L<Paws::Backup::Metadata>
+=head2 B<REQUIRED> Metadata => Backup_Metadata
 
 A set of metadata key-value pairs. Lists the metadata that the recovery
 point was created with.

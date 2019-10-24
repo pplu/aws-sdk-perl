@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::Config::AggregateEvaluationResult;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has Annotation => (is => 'ro', isa => 'Str');
-  has AwsRegion => (is => 'ro', isa => 'Str');
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str');
-  has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier');
-  has ResultRecordedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_EvaluationResultIdentifier/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Annotation => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str);
+  has ComplianceType => (is => 'ro', isa => Str);
+  has ConfigRuleInvokedTime => (is => 'ro', isa => Str);
+  has EvaluationResultIdentifier => (is => 'ro', isa => Config_EvaluationResultIdentifier);
+  has ResultRecordedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'ConfigRuleInvokedTime' => {
+                                            'type' => 'Str'
+                                          },
+               'Annotation' => {
+                                 'type' => 'Str'
+                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'ResultRecordedTime' => {
+                                         'type' => 'Str'
+                                       },
+               'EvaluationResultIdentifier' => {
+                                                 'class' => 'Paws::Config::EvaluationResultIdentifier',
+                                                 'type' => 'Config_EvaluationResultIdentifier'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +111,7 @@ the C<NOT_APPLICABLE> and C<INSUFFICIENT_DATA> value.
   The time when the AWS Config rule evaluated the AWS resource.
 
 
-=head2 EvaluationResultIdentifier => L<Paws::Config::EvaluationResultIdentifier>
+=head2 EvaluationResultIdentifier => Config_EvaluationResultIdentifier
 
   Uniquely identifies the evaluation result.
 

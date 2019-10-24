@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::SageMaker;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'api.sagemaker' }
   sub signing_name { 'sagemaker' }
   sub version { '2017-07-24' }
   sub target_prefix { 'SageMaker' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -871,7 +873,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=item Tags => ArrayRef[SageMaker_Tag]
 
 
 =back
@@ -906,15 +908,15 @@ the C<Tags> parameter of CreateHyperParameterTuningJob
 
 =item AlgorithmName => Str
 
-=item TrainingSpecification => L<Paws::SageMaker::TrainingSpecification>
+=item TrainingSpecification => SageMaker_TrainingSpecification
 
 =item [AlgorithmDescription => Str]
 
 =item [CertifyForMarketplace => Bool]
 
-=item [InferenceSpecification => L<Paws::SageMaker::InferenceSpecification>]
+=item [InferenceSpecification => SageMaker_InferenceSpecification]
 
-=item [ValidationSpecification => L<Paws::SageMaker::AlgorithmValidationSpecification>]
+=item [ValidationSpecification => SageMaker_AlgorithmValidationSpecification]
 
 
 =back
@@ -933,7 +935,7 @@ SageMaker and list in the AWS Marketplace.
 
 =item CodeRepositoryName => Str
 
-=item GitConfig => L<Paws::SageMaker::GitConfig>
+=item GitConfig => SageMaker_GitConfig
 
 
 =back
@@ -961,13 +963,13 @@ or in any other Git repository.
 
 =item CompilationJobName => Str
 
-=item InputConfig => L<Paws::SageMaker::InputConfig>
+=item InputConfig => SageMaker_InputConfig
 
-=item OutputConfig => L<Paws::SageMaker::OutputConfig>
+=item OutputConfig => SageMaker_OutputConfig
 
 =item RoleArn => Str
 
-=item StoppingCondition => L<Paws::SageMaker::StoppingCondition>
+=item StoppingCondition => SageMaker_StoppingCondition
 
 
 =back
@@ -1027,7 +1029,7 @@ compilation jobs, use ListCompilationJobs.
 
 =item EndpointName => Str
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 
 =back
@@ -1087,11 +1089,11 @@ in the I<AWS Identity and Access Management User Guide>.
 
 =item EndpointConfigName => Str
 
-=item ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
+=item ProductionVariants => ArrayRef[SageMaker_ProductionVariant]
 
 =item [KmsKeyId => Str]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 
 =back
@@ -1128,15 +1130,15 @@ model B.
 
 =over
 
-=item HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
+=item HyperParameterTuningJobConfig => SageMaker_HyperParameterTuningJobConfig
 
 =item HyperParameterTuningJobName => Str
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
-=item [TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
+=item [TrainingJobDefinition => SageMaker_HyperParameterTrainingJobDefinition]
 
-=item [WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>]
+=item [WarmStartConfig => SageMaker_HyperParameterTuningJobWarmStartConfig]
 
 
 =back
@@ -1157,25 +1159,25 @@ objective metric that you choose.
 
 =over
 
-=item HumanTaskConfig => L<Paws::SageMaker::HumanTaskConfig>
+=item HumanTaskConfig => SageMaker_HumanTaskConfig
 
-=item InputConfig => L<Paws::SageMaker::LabelingJobInputConfig>
+=item InputConfig => SageMaker_LabelingJobInputConfig
 
 =item LabelAttributeName => Str
 
 =item LabelingJobName => Str
 
-=item OutputConfig => L<Paws::SageMaker::LabelingJobOutputConfig>
+=item OutputConfig => SageMaker_LabelingJobOutputConfig
 
 =item RoleArn => Str
 
 =item [LabelCategoryConfigS3Uri => Str]
 
-=item [LabelingJobAlgorithmsConfig => L<Paws::SageMaker::LabelingJobAlgorithmsConfig>]
+=item [LabelingJobAlgorithmsConfig => SageMaker_LabelingJobAlgorithmsConfig]
 
-=item [StoppingConditions => L<Paws::SageMaker::LabelingJobStoppingConditions>]
+=item [StoppingConditions => SageMaker_LabelingJobStoppingConditions]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 
 =back
@@ -1235,15 +1237,15 @@ as training data for your machine learning models.
 
 =item ModelName => Str
 
-=item [Containers => ArrayRef[L<Paws::SageMaker::ContainerDefinition>]]
+=item [Containers => ArrayRef[SageMaker_ContainerDefinition]]
 
 =item [EnableNetworkIsolation => Bool]
 
-=item [PrimaryContainer => L<Paws::SageMaker::ContainerDefinition>]
+=item [PrimaryContainer => SageMaker_ContainerDefinition]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
-=item [VpcConfig => L<Paws::SageMaker::VpcConfig>]
+=item [VpcConfig => SageMaker_VpcConfig]
 
 
 =back
@@ -1290,13 +1292,13 @@ grant necessary permissions via this role.
 
 =item [CertifyForMarketplace => Bool]
 
-=item [InferenceSpecification => L<Paws::SageMaker::InferenceSpecification>]
+=item [InferenceSpecification => SageMaker_InferenceSpecification]
 
 =item [ModelPackageDescription => Str]
 
-=item [SourceAlgorithmSpecification => L<Paws::SageMaker::SourceAlgorithmSpecification>]
+=item [SourceAlgorithmSpecification => SageMaker_SourceAlgorithmSpecification]
 
-=item [ValidationSpecification => L<Paws::SageMaker::ModelPackageValidationSpecification>]
+=item [ValidationSpecification => SageMaker_ModelPackageValidationSpecification]
 
 
 =back
@@ -1345,7 +1347,7 @@ AWS Marketplace, provide a value for C<SourceAlgorithmSpecification>.
 
 =item [SubnetId => Str]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 =item [VolumeSizeInGB => Int]
 
@@ -1414,9 +1416,9 @@ For more information, see How It Works
 
 =item NotebookInstanceLifecycleConfigName => Str
 
-=item [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+=item [OnCreate => ArrayRef[SageMaker_NotebookInstanceLifecycleHook]]
 
-=item [OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+=item [OnStart => ArrayRef[SageMaker_NotebookInstanceLifecycleHook]]
 
 
 =back
@@ -1487,15 +1489,15 @@ to the AWS console sign-in page.
 
 =over
 
-=item AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>
+=item AlgorithmSpecification => SageMaker_AlgorithmSpecification
 
-=item OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
+=item OutputDataConfig => SageMaker_OutputDataConfig
 
-=item ResourceConfig => L<Paws::SageMaker::ResourceConfig>
+=item ResourceConfig => SageMaker_ResourceConfig
 
 =item RoleArn => Str
 
-=item StoppingCondition => L<Paws::SageMaker::StoppingCondition>
+=item StoppingCondition => SageMaker_StoppingCondition
 
 =item TrainingJobName => Str
 
@@ -1503,13 +1505,13 @@ to the AWS console sign-in page.
 
 =item [EnableNetworkIsolation => Bool]
 
-=item [HyperParameters => L<Paws::SageMaker::HyperParameters>]
+=item [HyperParameters => SageMaker_HyperParameters]
 
-=item [InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]]
+=item [InputDataConfig => ArrayRef[SageMaker_Channel]]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
-=item [VpcConfig => L<Paws::SageMaker::VpcConfig>]
+=item [VpcConfig => SageMaker_VpcConfig]
 
 
 =back
@@ -1585,25 +1587,25 @@ For more information about Amazon SageMaker, see How It Works
 
 =item ModelName => Str
 
-=item TransformInput => L<Paws::SageMaker::TransformInput>
+=item TransformInput => SageMaker_TransformInput
 
 =item TransformJobName => Str
 
-=item TransformOutput => L<Paws::SageMaker::TransformOutput>
+=item TransformOutput => SageMaker_TransformOutput
 
-=item TransformResources => L<Paws::SageMaker::TransformResources>
+=item TransformResources => SageMaker_TransformResources
 
 =item [BatchStrategy => Str]
 
-=item [DataProcessing => L<Paws::SageMaker::DataProcessing>]
+=item [DataProcessing => SageMaker_DataProcessing]
 
-=item [Environment => L<Paws::SageMaker::TransformEnvironmentMap>]
+=item [Environment => SageMaker_TransformEnvironmentMap]
 
 =item [MaxConcurrentTransforms => Int]
 
 =item [MaxPayloadInMB => Int]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 
 =back
@@ -1662,13 +1664,13 @@ SageMaker, see How It Works
 
 =item Description => Str
 
-=item MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
+=item MemberDefinitions => ArrayRef[SageMaker_MemberDefinition]
 
 =item WorkteamName => Str
 
-=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
+=item [NotificationConfiguration => SageMaker_NotificationConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
+=item [Tags => ArrayRef[SageMaker_Tag]]
 
 
 =back
@@ -2136,7 +2138,7 @@ and the work team's Amazon Resource Name (ARN).
 
 =item Resource => Str
 
-=item [SuggestionQuery => L<Paws::SageMaker::SuggestionQuery>]
+=item [SuggestionQuery => SageMaker_SuggestionQuery]
 
 
 =back
@@ -2711,9 +2713,9 @@ C<NameContains> parameter.
 
 =item RoleArn => Str
 
-=item Task => L<Paws::SageMaker::RenderableTask>
+=item Task => SageMaker_RenderableTask
 
-=item UiTemplate => L<Paws::SageMaker::UiTemplate>
+=item UiTemplate => SageMaker_UiTemplate
 
 
 =back
@@ -2736,7 +2738,7 @@ experience.
 
 =item [NextToken => Str]
 
-=item [SearchExpression => L<Paws::SageMaker::SearchExpression>]
+=item [SearchExpression => SageMaker_SearchExpression]
 
 =item [SortBy => Str]
 
@@ -2921,7 +2923,7 @@ in Amazon S3.
 
 =item CodeRepositoryName => Str
 
-=item [GitConfig => L<Paws::SageMaker::GitConfigForUpdate>]
+=item [GitConfig => SageMaker_GitConfigForUpdate]
 
 
 =back
@@ -2970,7 +2972,7 @@ a new C<EndpointConfig>.
 
 =over
 
-=item DesiredWeightsAndCapacities => ArrayRef[L<Paws::SageMaker::DesiredWeightAndCapacity>]
+=item DesiredWeightsAndCapacities => ArrayRef[SageMaker_DesiredWeightAndCapacity]
 
 =item EndpointName => Str
 
@@ -3039,9 +3041,9 @@ to accommodate changes in your workload requirements.
 
 =item NotebookInstanceLifecycleConfigName => Str
 
-=item [OnCreate => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+=item [OnCreate => ArrayRef[SageMaker_NotebookInstanceLifecycleHook]]
 
-=item [OnStart => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleHook>]]
+=item [OnStart => ArrayRef[SageMaker_NotebookInstanceLifecycleHook]]
 
 
 =back
@@ -3062,9 +3064,9 @@ CreateNotebookInstanceLifecycleConfig API.
 
 =item [Description => Str]
 
-=item [MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]]
+=item [MemberDefinitions => ArrayRef[SageMaker_MemberDefinition]]
 
-=item [NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>]
+=item [NotificationConfiguration => SageMaker_NotificationConfiguration]
 
 
 =back
@@ -3299,9 +3301,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SageMaker::ListWorkteamsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAll(sub { },Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => L<Paws::SageMaker::SearchExpression>, SortBy => Str, SortOrder => Str])
+=head2 SearchAll(sub { },Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => SageMaker_SearchExpression, SortBy => Str, SortOrder => Str])
 
-=head2 SearchAll(Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => L<Paws::SageMaker::SearchExpression>, SortBy => Str, SortOrder => Str])
+=head2 SearchAll(Resource => Str, [MaxResults => Int, NextToken => Str, SearchExpression => SageMaker_SearchExpression, SortBy => Str, SortOrder => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

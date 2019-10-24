@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::DeprecateActivityType;
-  use Moose;
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_ActivityType/;
+  has ActivityType => (is => 'ro', isa => SimpleWorkflow_ActivityType, required => 1, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateActivityType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeprecateActivityType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivityType' => {
+                                   'class' => 'Paws::SimpleWorkflow::ActivityType',
+                                   'type' => 'SimpleWorkflow_ActivityType'
+                                 },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ActivityType' => 'activityType',
+                       'Domain' => 'domain'
+                     },
+  'IsRequired' => {
+                    'ActivityType' => 1,
+                    'Domain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => SimpleWorkflow_ActivityType
 
 The activity type to deprecate.
 

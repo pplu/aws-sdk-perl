@@ -9,7 +9,7 @@ package Paws::EC2::VpcPeeringConnectionVpcInfo;
   has Region => (is => 'ro', isa => Str);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -48,8 +48,8 @@ package Paws::EC2::VpcPeeringConnectionVpcInfo;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

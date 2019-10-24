@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::EMR::AutoScalingPolicyStatus;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyStateChangeReason');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_AutoScalingPolicyStateChangeReason/;
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_AutoScalingPolicyStateChangeReason);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateChangeReason' => {
+                                        'class' => 'Paws::EMR::AutoScalingPolicyStateChangeReason',
+                                        'type' => 'EMR_AutoScalingPolicyStateChangeReason'
+                                      },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The status of an automatic scaling policy.
   Indicates the status of the automatic scaling policy.
 
 
-=head2 StateChangeReason => L<Paws::EMR::AutoScalingPolicyStateChangeReason>
+=head2 StateChangeReason => EMR_AutoScalingPolicyStateChangeReason
 
   The reason for a change in status.
 

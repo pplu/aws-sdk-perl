@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::CmafPackage;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::HlsManifest]', request_name => 'hlsManifests', traits => ['NameInRequest'], required => 1);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_HlsManifest MediaPackageVod_CmafEncryption/;
+  has Encryption => (is => 'ro', isa => MediaPackageVod_CmafEncryption);
+  has HlsManifests => (is => 'ro', isa => ArrayRef[MediaPackageVod_HlsManifest], required => 1);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HlsManifests' => {
+                                   'class' => 'Paws::MediaPackageVod::HlsManifest',
+                                   'type' => 'ArrayRef[MediaPackageVod_HlsManifest]'
+                                 },
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaPackageVod::CmafEncryption',
+                                 'type' => 'MediaPackageVod_CmafEncryption'
+                               }
+             },
+  'NameInRequest' => {
+                       'HlsManifests' => 'hlsManifests',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'Encryption' => 'encryption'
+                     },
+  'IsRequired' => {
+                    'HlsManifests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +71,12 @@ A CMAF packaging configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaPackageVod::CmafEncryption>
+=head2 Encryption => MediaPackageVod_CmafEncryption
 
   
 
 
-=head2 B<REQUIRED> HlsManifests => ArrayRef[L<Paws::MediaPackageVod::HlsManifest>]
+=head2 B<REQUIRED> HlsManifests => ArrayRef[MediaPackageVod_HlsManifest]
 
   A list of HLS manifest configurations.
 

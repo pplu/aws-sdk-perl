@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::UpdateDeviceStatus;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
-  has DeviceKey => (is => 'ro', isa => 'Str', required => 1);
-  has DeviceRememberedStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceRememberedStatus => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeviceStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::UpdateDeviceStatusResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeviceStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::UpdateDeviceStatusResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'DeviceRememberedStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'DeviceKey' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccessToken' => 1,
+                    'DeviceKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

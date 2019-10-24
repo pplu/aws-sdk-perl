@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AccountTakeoverActionsType;
-  use Moose;
-  has HighAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
-  has LowAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
-  has MediumAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AccountTakeoverActionType/;
+  has HighAction => (is => 'ro', isa => CognitoIdp_AccountTakeoverActionType);
+  has LowAction => (is => 'ro', isa => CognitoIdp_AccountTakeoverActionType);
+  has MediumAction => (is => 'ro', isa => CognitoIdp_AccountTakeoverActionType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LowAction' => {
+                                'class' => 'Paws::CognitoIdp::AccountTakeoverActionType',
+                                'type' => 'CognitoIdp_AccountTakeoverActionType'
+                              },
+               'HighAction' => {
+                                 'class' => 'Paws::CognitoIdp::AccountTakeoverActionType',
+                                 'type' => 'CognitoIdp_AccountTakeoverActionType'
+                               },
+               'MediumAction' => {
+                                   'class' => 'Paws::CognitoIdp::AccountTakeoverActionType',
+                                   'type' => 'CognitoIdp_AccountTakeoverActionType'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ Account takeover actions type.
 =head1 ATTRIBUTES
 
 
-=head2 HighAction => L<Paws::CognitoIdp::AccountTakeoverActionType>
+=head2 HighAction => CognitoIdp_AccountTakeoverActionType
 
   Action to take for a high risk.
 
 
-=head2 LowAction => L<Paws::CognitoIdp::AccountTakeoverActionType>
+=head2 LowAction => CognitoIdp_AccountTakeoverActionType
 
   Action to take for a low risk.
 
 
-=head2 MediumAction => L<Paws::CognitoIdp::AccountTakeoverActionType>
+=head2 MediumAction => CognitoIdp_AccountTakeoverActionType
 
   Action to take for a medium risk.
 

@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::PinpointSMSVoice::VoiceMessageContent;
-  use Moose;
-  has CallInstructionsMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::CallInstructionsMessageType');
-  has PlainTextMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::PlainTextMessageType');
-  has SSMLMessage => (is => 'ro', isa => 'Paws::PinpointSMSVoice::SSMLMessageType');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PinpointSMSVoice::Types qw/PinpointSMSVoice_PlainTextMessageType PinpointSMSVoice_CallInstructionsMessageType PinpointSMSVoice_SSMLMessageType/;
+  has CallInstructionsMessage => (is => 'ro', isa => PinpointSMSVoice_CallInstructionsMessageType);
+  has PlainTextMessage => (is => 'ro', isa => PinpointSMSVoice_PlainTextMessageType);
+  has SSMLMessage => (is => 'ro', isa => PinpointSMSVoice_SSMLMessageType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlainTextMessage' => {
+                                       'class' => 'Paws::PinpointSMSVoice::PlainTextMessageType',
+                                       'type' => 'PinpointSMSVoice_PlainTextMessageType'
+                                     },
+               'SSMLMessage' => {
+                                  'class' => 'Paws::PinpointSMSVoice::SSMLMessageType',
+                                  'type' => 'PinpointSMSVoice_SSMLMessageType'
+                                },
+               'CallInstructionsMessage' => {
+                                              'class' => 'Paws::PinpointSMSVoice::CallInstructionsMessageType',
+                                              'type' => 'PinpointSMSVoice_CallInstructionsMessageType'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +65,17 @@ recipient that you want to send it to.
 =head1 ATTRIBUTES
 
 
-=head2 CallInstructionsMessage => L<Paws::PinpointSMSVoice::CallInstructionsMessageType>
+=head2 CallInstructionsMessage => PinpointSMSVoice_CallInstructionsMessageType
 
   
 
 
-=head2 PlainTextMessage => L<Paws::PinpointSMSVoice::PlainTextMessageType>
+=head2 PlainTextMessage => PinpointSMSVoice_PlainTextMessageType
 
   
 
 
-=head2 SSMLMessage => L<Paws::PinpointSMSVoice::SSMLMessageType>
+=head2 SSMLMessage => PinpointSMSVoice_SSMLMessageType
 
   
 

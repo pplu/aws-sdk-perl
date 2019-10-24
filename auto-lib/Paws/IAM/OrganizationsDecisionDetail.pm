@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::OrganizationsDecisionDetail;
   use Moo;
   use Types::Standard qw/Bool/;

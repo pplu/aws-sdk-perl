@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CreateApplicationRequest;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string/;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +71,7 @@ with the application.
 B<Project name> on the Amazon Pinpoint console.
 
 
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 Tags => Pinpoint_MapOf__string
 
   A string-to-string map of key-value pairs that defines the tags to
 associate with the application. Each tag consists of a required tag key

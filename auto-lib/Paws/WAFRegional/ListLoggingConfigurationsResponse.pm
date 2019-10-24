@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListLoggingConfigurationsResponse;
-  use Moose;
-  has LoggingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::LoggingConfiguration]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_LoggingConfiguration/;
+  has LoggingConfigurations => (is => 'ro', isa => ArrayRef[WAFRegional_LoggingConfiguration]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'LoggingConfigurations' => {
+                                            'class' => 'Paws::WAFRegional::LoggingConfiguration',
+                                            'type' => 'ArrayRef[WAFRegional_LoggingConfiguration]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAFRegional::ListLoggingConfigurationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 LoggingConfigurations => ArrayRef[L<Paws::WAFRegional::LoggingConfiguration>]
+=head2 LoggingConfigurations => ArrayRef[WAFRegional_LoggingConfiguration]
 
 An array of LoggingConfiguration objects.
 

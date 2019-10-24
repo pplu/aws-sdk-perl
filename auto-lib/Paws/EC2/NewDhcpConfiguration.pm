@@ -4,7 +4,7 @@ package Paws::EC2::NewDhcpConfiguration;
   has Key => (is => 'ro', isa => Str);
   has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Values' => {
@@ -20,8 +20,8 @@ package Paws::EC2::NewDhcpConfiguration;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

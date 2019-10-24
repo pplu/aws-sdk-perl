@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::CreateLoadBalancerPolicy;
-  use Moose;
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ELB::PolicyAttribute]');
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyTypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_PolicyAttribute/;
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyAttributes => (is => 'ro', isa => ArrayRef[ELB_PolicyAttribute], predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyTypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::CreateLoadBalancerPolicyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerPolicyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancerPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::CreateLoadBalancerPolicyOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLoadBalancerPolicyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyTypeName' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyAttributes' => {
+                                       'class' => 'Paws::ELB::PolicyAttribute',
+                                       'type' => 'ArrayRef[ELB_PolicyAttribute]'
+                                     },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'PolicyTypeName' => 1,
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +125,7 @@ The name of the load balancer.
 
 
 
-=head2 PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]
+=head2 PolicyAttributes => ArrayRef[ELB_PolicyAttribute]
 
 The policy attributes.
 

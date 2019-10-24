@@ -1,18 +1,72 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::CachediSCSIVolume;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has SourceSnapshotId => (is => 'ro', isa => 'Str');
-  has TargetName => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str');
-  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
-  has VolumeId => (is => 'ro', isa => 'Str');
-  has VolumeiSCSIAttributes => (is => 'ro', isa => 'Paws::StorageGateway::VolumeiSCSIAttributes');
-  has VolumeProgress => (is => 'ro', isa => 'Num');
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
-  has VolumeStatus => (is => 'ro', isa => 'Str');
-  has VolumeType => (is => 'ro', isa => 'Str');
-  has VolumeUsedInBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Num Int/;
+  use Paws::StorageGateway::Types qw/StorageGateway_VolumeiSCSIAttributes/;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has KMSKey => (is => 'ro', isa => Str);
+  has SourceSnapshotId => (is => 'ro', isa => Str);
+  has TargetName => (is => 'ro', isa => Str);
+  has VolumeARN => (is => 'ro', isa => Str);
+  has VolumeAttachmentStatus => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeiSCSIAttributes => (is => 'ro', isa => StorageGateway_VolumeiSCSIAttributes);
+  has VolumeProgress => (is => 'ro', isa => Num);
+  has VolumeSizeInBytes => (is => 'ro', isa => Int);
+  has VolumeStatus => (is => 'ro', isa => Str);
+  has VolumeType => (is => 'ro', isa => Str);
+  has VolumeUsedInBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'VolumeiSCSIAttributes' => {
+                                            'class' => 'Paws::StorageGateway::VolumeiSCSIAttributes',
+                                            'type' => 'StorageGateway_VolumeiSCSIAttributes'
+                                          },
+               'TargetName' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'VolumeUsedInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceSnapshotId' => {
+                                       'type' => 'Str'
+                                     },
+               'VolumeAttachmentStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'VolumeProgress' => {
+                                     'type' => 'Num'
+                                   },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +150,7 @@ to a Different Gateway
   The unique identifier of the volume, e.g. vol-AE4B946D.
 
 
-=head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>
+=head2 VolumeiSCSIAttributes => StorageGateway_VolumeiSCSIAttributes
 
   An VolumeiSCSIAttributes object that represents a collection of iSCSI
 attributes for one stored volume.

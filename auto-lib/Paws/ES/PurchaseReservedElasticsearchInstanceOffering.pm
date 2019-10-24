@@ -26,7 +26,11 @@ package Paws::ES::PurchaseReservedElasticsearchInstanceOffering;
                'ReservedElasticsearchInstanceOfferingId' => {
                                                               'type' => 'Str'
                                                             }
-             }
+             },
+  'IsRequired' => {
+                    'ReservationName' => 1,
+                    'ReservedElasticsearchInstanceOfferingId' => 1
+                  }
 }
 ;
     return $Params_map;

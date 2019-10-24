@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Comprehend;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'comprehend' }
   sub signing_name { 'comprehend' }
   sub version { '2017-11-27' }
   sub target_prefix { 'Comprehend_20171127' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -570,19 +572,19 @@ For more information, see how-syntax.
 
 =item DocumentClassifierName => Str
 
-=item InputDataConfig => L<Paws::Comprehend::DocumentClassifierInputDataConfig>
+=item InputDataConfig => Comprehend_DocumentClassifierInputDataConfig
 
 =item LanguageCode => Str
 
 =item [ClientRequestToken => Str]
 
-=item [OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>]
+=item [OutputDataConfig => Comprehend_DocumentClassifierOutputDataConfig]
 
-=item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
+=item [Tags => ArrayRef[Comprehend_Tag]]
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -605,7 +607,7 @@ how-document-classification.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::EntityRecognizerInputDataConfig>
+=item InputDataConfig => Comprehend_EntityRecognizerInputDataConfig
 
 =item LanguageCode => Str
 
@@ -613,11 +615,11 @@ how-document-classification.
 
 =item [ClientRequestToken => Str]
 
-=item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
+=item [Tags => ArrayRef[Comprehend_Tag]]
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -915,7 +917,7 @@ document. For more information, how-syntax.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>]
+=item [Filter => Comprehend_DocumentClassificationJobFilter]
 
 =item [MaxResults => Int]
 
@@ -936,7 +938,7 @@ submitted.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::DocumentClassifierFilter>]
+=item [Filter => Comprehend_DocumentClassifierFilter]
 
 =item [MaxResults => Int]
 
@@ -956,7 +958,7 @@ Gets a list of the document classifiers that you have created.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>]
+=item [Filter => Comprehend_DominantLanguageDetectionJobFilter]
 
 =item [MaxResults => Int]
 
@@ -977,7 +979,7 @@ submitted.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>]
+=item [Filter => Comprehend_EntitiesDetectionJobFilter]
 
 =item [MaxResults => Int]
 
@@ -997,7 +999,7 @@ Gets a list of the entity detection jobs that you have submitted.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::EntityRecognizerFilter>]
+=item [Filter => Comprehend_EntityRecognizerFilter]
 
 =item [MaxResults => Int]
 
@@ -1024,7 +1026,7 @@ the list and sort locally if needed.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>]
+=item [Filter => Comprehend_KeyPhrasesDetectionJobFilter]
 
 =item [MaxResults => Int]
 
@@ -1044,7 +1046,7 @@ Get a list of key phrase detection jobs that you have submitted.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>]
+=item [Filter => Comprehend_SentimentDetectionJobFilter]
 
 =item [MaxResults => Int]
 
@@ -1080,7 +1082,7 @@ Lists all tags associated with a given Amazon Comprehend resource.
 
 =over
 
-=item [Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>]
+=item [Filter => Comprehend_TopicsDetectionJobFilter]
 
 =item [MaxResults => Int]
 
@@ -1104,9 +1106,9 @@ Gets a list of the topic detection jobs that you have submitted.
 
 =item DocumentClassifierArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1114,7 +1116,7 @@ Gets a list of the topic detection jobs that you have submitted.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1133,9 +1135,9 @@ to track the progress of the job.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1143,7 +1145,7 @@ to track the progress of the job.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1162,11 +1164,11 @@ of documents. Use the operation to track the status of a job.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
 =item LanguageCode => Str
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1176,7 +1178,7 @@ of documents. Use the operation to track the status of a job.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1200,11 +1202,11 @@ access to the recognizer being used to detect the custom entity.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
 =item LanguageCode => Str
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1212,7 +1214,7 @@ access to the recognizer being used to detect the custom entity.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1231,11 +1233,11 @@ documents. Use the operation to track the status of a job.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
 =item LanguageCode => Str
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1243,7 +1245,7 @@ documents. Use the operation to track the status of a job.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1262,9 +1264,9 @@ documents. use the operation to track the status of a job.
 
 =item DataAccessRoleArn => Str
 
-=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=item InputDataConfig => Comprehend_InputDataConfig
 
-=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=item OutputDataConfig => Comprehend_OutputDataConfig
 
 =item [ClientRequestToken => Str]
 
@@ -1274,7 +1276,7 @@ documents. use the operation to track the status of a job.
 
 =item [VolumeKmsKeyId => Str]
 
-=item [VpcConfig => L<Paws::Comprehend::VpcConfig>]
+=item [VpcConfig => Comprehend_VpcConfig]
 
 
 =back
@@ -1451,7 +1453,7 @@ HTTP body.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::Comprehend::Tag>]
+=item Tags => ArrayRef[Comprehend_Tag]
 
 
 =back
@@ -1490,9 +1492,9 @@ Removes a specific tag associated with an Amazon Comprehend resource.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllDocumentClassificationJobs(sub { },[Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDocumentClassificationJobs(sub { },[Filter => Comprehend_DocumentClassificationJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDocumentClassificationJobs([Filter => L<Paws::Comprehend::DocumentClassificationJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDocumentClassificationJobs([Filter => Comprehend_DocumentClassificationJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1502,9 +1504,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListDocumentClassificationJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDocumentClassifiers(sub { },[Filter => L<Paws::Comprehend::DocumentClassifierFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDocumentClassifiers(sub { },[Filter => Comprehend_DocumentClassifierFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDocumentClassifiers([Filter => L<Paws::Comprehend::DocumentClassifierFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDocumentClassifiers([Filter => Comprehend_DocumentClassifierFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1514,9 +1516,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListDocumentClassifiersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDominantLanguageDetectionJobs(sub { },[Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDominantLanguageDetectionJobs(sub { },[Filter => Comprehend_DominantLanguageDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllDominantLanguageDetectionJobs([Filter => L<Paws::Comprehend::DominantLanguageDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllDominantLanguageDetectionJobs([Filter => Comprehend_DominantLanguageDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1526,9 +1528,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListDominantLanguageDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllEntitiesDetectionJobs(sub { },[Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllEntitiesDetectionJobs(sub { },[Filter => Comprehend_EntitiesDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllEntitiesDetectionJobs([Filter => L<Paws::Comprehend::EntitiesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllEntitiesDetectionJobs([Filter => Comprehend_EntitiesDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1538,9 +1540,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListEntitiesDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllEntityRecognizers(sub { },[Filter => L<Paws::Comprehend::EntityRecognizerFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllEntityRecognizers(sub { },[Filter => Comprehend_EntityRecognizerFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllEntityRecognizers([Filter => L<Paws::Comprehend::EntityRecognizerFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllEntityRecognizers([Filter => Comprehend_EntityRecognizerFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1550,9 +1552,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListEntityRecognizersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllKeyPhrasesDetectionJobs(sub { },[Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllKeyPhrasesDetectionJobs(sub { },[Filter => Comprehend_KeyPhrasesDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllKeyPhrasesDetectionJobs([Filter => L<Paws::Comprehend::KeyPhrasesDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllKeyPhrasesDetectionJobs([Filter => Comprehend_KeyPhrasesDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1562,9 +1564,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllSentimentDetectionJobs(sub { },[Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllSentimentDetectionJobs(sub { },[Filter => Comprehend_SentimentDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllSentimentDetectionJobs([Filter => L<Paws::Comprehend::SentimentDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllSentimentDetectionJobs([Filter => Comprehend_SentimentDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1574,9 +1576,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Comprehend::ListSentimentDetectionJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTopicsDetectionJobs(sub { },[Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllTopicsDetectionJobs(sub { },[Filter => Comprehend_TopicsDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllTopicsDetectionJobs([Filter => L<Paws::Comprehend::TopicsDetectionJobFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllTopicsDetectionJobs([Filter => Comprehend_TopicsDetectionJobFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

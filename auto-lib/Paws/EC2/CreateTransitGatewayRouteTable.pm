@@ -13,7 +13,7 @@ package Paws::EC2::CreateTransitGatewayRouteTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTransitGatewayRouteTableResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TransitGatewayId' => {
@@ -26,11 +26,14 @@ package Paws::EC2::CreateTransitGatewayRouteTable;
                                         'class' => 'Paws::EC2::TagSpecification',
                                         'type' => 'ArrayRef[EC2_TagSpecification]'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'TransitGatewayId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Condition;
   use Moo;
   use Types::Standard qw/ArrayRef Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::Condition;
   has AttributeValueList => (is => 'ro', isa => ArrayRef[DynamoDB_AttributeValue]);
   has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AttributeValueList' => {
@@ -15,11 +16,14 @@ package Paws::DynamoDB::Condition;
                'ComparisonOperator' => {
                                          'type' => 'Str'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'ComparisonOperator' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

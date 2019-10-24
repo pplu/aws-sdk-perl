@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Health::DescribeEventAggregates;
-  use Moose;
-  has AggregateField => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'aggregateField' , required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::Health::EventFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Health::Types qw/Health_EventFilter/;
+  has AggregateField => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filter => (is => 'ro', isa => Health_EventFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventAggregates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Health::DescribeEventAggregatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventAggregates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Health::DescribeEventAggregatesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::Health::EventFilter',
+                             'type' => 'Health_EventFilter'
+                           },
+               'AggregateField' => {
+                                     'type' => 'Str'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Filter' => 'filter',
+                       'AggregateField' => 'aggregateField',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults'
+                     },
+  'IsRequired' => {
+                    'AggregateField' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AggregateField => 'eventTypeCategory',
       Filter         => {
         AvailabilityZones => [ 'MyavailabilityZone', ... ],    # OPTIONAL
-        EndTimes          => [
+        EndTimes => [
           {
             From => '1970-01-01T01:00:00',                     # OPTIONAL
             To   => '1970-01-01T01:00:00',                     # OPTIONAL
@@ -55,7 +90,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                        # min: 1, max: 6; OPTIONAL
         EventTypeCategories => [
           'issue',
-          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+          ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
         EventTypeCodes => [
           'MyeventType', ...    # min: 3, max: 100
@@ -67,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],                                    # min: 1, max: 10; OPTIONAL
-        Regions  => [ 'Myregion', ... ],      # min: 1, max: 10; OPTIONAL
+        Regions => [ 'Myregion', ... ],       # min: 1, max: 10; OPTIONAL
         Services => [
           'Myservice', ...                    # min: 2, max: 30
         ],                                    # min: 1, max: 10; OPTIONAL
@@ -107,7 +142,7 @@ The only currently supported value is C<eventTypeCategory>.
 
 Valid values are: C<"eventTypeCategory">
 
-=head2 Filter => L<Paws::Health::EventFilter>
+=head2 Filter => Health_EventFilter
 
 Values to narrow the results returned.
 

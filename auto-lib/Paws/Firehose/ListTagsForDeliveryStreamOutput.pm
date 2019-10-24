@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Firehose::ListTagsForDeliveryStreamOutput;
-  use Moose;
-  has HasMoreTags => (is => 'ro', isa => 'Bool', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Firehose::Types qw/Firehose_Tag/;
+  has HasMoreTags => (is => 'ro', isa => Bool, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Firehose_Tag], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Firehose::Tag',
+                           'type' => 'ArrayRef[Firehose_Tag]'
+                         },
+               'HasMoreTags' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'HasMoreTags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ the remaining tags, set C<ExclusiveStartTagKey> to the key of the last
 tag returned and call C<ListTagsForDeliveryStream> again.
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Firehose::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Firehose_Tag]
 
 A list of tags associated with C<DeliveryStreamName>, starting with the
 first tag after C<ExclusiveStartTagKey> and up to the specified

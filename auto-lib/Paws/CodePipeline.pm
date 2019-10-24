@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CodePipeline;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codepipeline' }
   sub signing_name { 'codepipeline' }
   sub version { '2015-07-09' }
   sub target_prefix { 'CodePipeline_20150709' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -629,19 +631,19 @@ partner actions.
 
 =item Category => Str
 
-=item InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=item InputArtifactDetails => CodePipeline_ArtifactDetails
 
-=item OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=item OutputArtifactDetails => CodePipeline_ArtifactDetails
 
 =item Provider => Str
 
 =item Version => Str
 
-=item [ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]]
+=item [ConfigurationProperties => ArrayRef[CodePipeline_ActionConfigurationProperty]]
 
-=item [Settings => L<Paws::CodePipeline::ActionTypeSettings>]
+=item [Settings => CodePipeline_ActionTypeSettings]
 
-=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+=item [Tags => ArrayRef[CodePipeline_Tag]]
 
 
 =back
@@ -658,9 +660,9 @@ associated with the AWS account. Only used for custom actions.
 
 =over
 
-=item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+=item Pipeline => CodePipeline_PipelineDeclaration
 
-=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+=item [Tags => ArrayRef[CodePipeline_Tag]]
 
 
 =back
@@ -913,7 +915,7 @@ the action.
 
 =item PipelineName => Str
 
-=item [Filter => L<Paws::CodePipeline::ActionExecutionFilter>]
+=item [Filter => CodePipeline_ActionExecutionFilter]
 
 =item [MaxResults => Int]
 
@@ -1029,11 +1031,11 @@ the configuration for each webhook.
 
 =over
 
-=item ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=item ActionTypeId => CodePipeline_ActionTypeId
 
 =item [MaxBatchSize => Int]
 
-=item [QueryParam => L<Paws::CodePipeline::QueryParamMap>]
+=item [QueryParam => CodePipeline_QueryParamMap]
 
 
 =back
@@ -1058,7 +1060,7 @@ the action.
 
 =over
 
-=item ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=item ActionTypeId => CodePipeline_ActionTypeId
 
 =item [MaxBatchSize => Int]
 
@@ -1084,7 +1086,7 @@ artifacts.
 
 =item ActionName => Str
 
-=item ActionRevision => L<Paws::CodePipeline::ActionRevision>
+=item ActionRevision => CodePipeline_ActionRevision
 
 =item PipelineName => Str
 
@@ -1109,7 +1111,7 @@ source.
 
 =item PipelineName => Str
 
-=item Result => L<Paws::CodePipeline::ApprovalResult>
+=item Result => CodePipeline_ApprovalResult
 
 =item StageName => Str
 
@@ -1130,7 +1132,7 @@ Valid responses include Approved and Rejected.
 
 =over
 
-=item FailureDetails => L<Paws::CodePipeline::FailureDetails>
+=item FailureDetails => CodePipeline_FailureDetails
 
 =item JobId => Str
 
@@ -1153,9 +1155,9 @@ worker. Only used for custom actions.
 
 =item [ContinuationToken => Str]
 
-=item [CurrentRevision => L<Paws::CodePipeline::CurrentRevision>]
+=item [CurrentRevision => CodePipeline_CurrentRevision]
 
-=item [ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>]
+=item [ExecutionDetails => CodePipeline_ExecutionDetails]
 
 
 =back
@@ -1174,7 +1176,7 @@ worker. Only used for custom actions.
 
 =item ClientToken => Str
 
-=item FailureDetails => L<Paws::CodePipeline::FailureDetails>
+=item FailureDetails => CodePipeline_FailureDetails
 
 =item JobId => Str
 
@@ -1199,9 +1201,9 @@ by a job worker. Only used for partner actions.
 
 =item [ContinuationToken => Str]
 
-=item [CurrentRevision => L<Paws::CodePipeline::CurrentRevision>]
+=item [CurrentRevision => CodePipeline_CurrentRevision]
 
-=item [ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>]
+=item [ExecutionDetails => CodePipeline_ExecutionDetails]
 
 
 =back
@@ -1218,9 +1220,9 @@ by a job worker. Only used for partner actions.
 
 =over
 
-=item Webhook => L<Paws::CodePipeline::WebhookDefinition>
+=item Webhook => CodePipeline_WebhookDefinition
 
-=item [Tags => ArrayRef[L<Paws::CodePipeline::Tag>]]
+=item [Tags => ArrayRef[CodePipeline_Tag]]
 
 
 =back
@@ -1305,7 +1307,7 @@ latest commit to the source location specified as part of the pipeline.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=item Tags => ArrayRef[CodePipeline_Tag]
 
 
 =back
@@ -1340,7 +1342,7 @@ Removes tags from an AWS resource.
 
 =over
 
-=item Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+=item Pipeline => CodePipeline_PipelineDeclaration
 
 
 =back
@@ -1362,9 +1364,9 @@ Updating the pipeline increases the version number of the pipeline by
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllActionExecutions(sub { },PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllActionExecutions(sub { },PipelineName => Str, [Filter => CodePipeline_ActionExecutionFilter, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllActionExecutions(PipelineName => Str, [Filter => L<Paws::CodePipeline::ActionExecutionFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAllActionExecutions(PipelineName => Str, [Filter => CodePipeline_ActionExecutionFilter, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

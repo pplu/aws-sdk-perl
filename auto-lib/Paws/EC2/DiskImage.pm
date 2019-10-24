@@ -5,7 +5,7 @@ package Paws::EC2::DiskImage;
   has Image => (is => 'ro', isa => EC2_DiskImageDetail);
   has Volume => (is => 'ro', isa => EC2_VolumeDetail);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Volume' => {
@@ -22,8 +22,8 @@ package Paws::EC2::DiskImage;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

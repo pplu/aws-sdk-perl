@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::SetSecurityTokenServicePreferences;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::SetSecurityTokenServicePreferences;
                'GlobalEndpointTokenVersion' => {
                                                  'type' => 'Str'
                                                }
-             }
+             },
+  'IsRequired' => {
+                    'GlobalEndpointTokenVersion' => 1
+                  }
 }
 ;
     return $Params_map;

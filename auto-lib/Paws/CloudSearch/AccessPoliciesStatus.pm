@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::AccessPoliciesStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::CloudSearch::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw/CloudSearch_OptionStatus/;
+  has Options => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => CloudSearch_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'class' => 'Paws::CloudSearch::OptionStatus',
+                             'type' => 'CloudSearch_OptionStatus'
+                           }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ endpoints, and the current status of those rules.
   
 
 
-=head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
+=head2 B<REQUIRED> Status => CloudSearch_OptionStatus
 
   
 

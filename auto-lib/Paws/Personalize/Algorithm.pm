@@ -1,15 +1,75 @@
+# Generated from default/object.tt
 package Paws::Personalize::Algorithm;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str', request_name => 'algorithmArn', traits => ['NameInRequest']);
-  has AlgorithmImage => (is => 'ro', isa => 'Paws::Personalize::AlgorithmImage', request_name => 'algorithmImage', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DefaultHyperParameterRanges => (is => 'ro', isa => 'Paws::Personalize::DefaultHyperParameterRanges', request_name => 'defaultHyperParameterRanges', traits => ['NameInRequest']);
-  has DefaultHyperParameters => (is => 'ro', isa => 'Paws::Personalize::HyperParameters', request_name => 'defaultHyperParameters', traits => ['NameInRequest']);
-  has DefaultResourceConfig => (is => 'ro', isa => 'Paws::Personalize::ResourceConfig', request_name => 'defaultResourceConfig', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has TrainingInputMode => (is => 'ro', isa => 'Str', request_name => 'trainingInputMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_AlgorithmImage Personalize_ResourceConfig Personalize_DefaultHyperParameterRanges Personalize_HyperParameters/;
+  has AlgorithmArn => (is => 'ro', isa => Str);
+  has AlgorithmImage => (is => 'ro', isa => Personalize_AlgorithmImage);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DefaultHyperParameterRanges => (is => 'ro', isa => Personalize_DefaultHyperParameterRanges);
+  has DefaultHyperParameters => (is => 'ro', isa => Personalize_HyperParameters);
+  has DefaultResourceConfig => (is => 'ro', isa => Personalize_ResourceConfig);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has TrainingInputMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultHyperParameters' => {
+                                             'class' => 'Paws::Personalize::HyperParameters',
+                                             'type' => 'Personalize_HyperParameters'
+                                           },
+               'DefaultResourceConfig' => {
+                                            'class' => 'Paws::Personalize::ResourceConfig',
+                                            'type' => 'Personalize_ResourceConfig'
+                                          },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'TrainingInputMode' => {
+                                        'type' => 'Str'
+                                      },
+               'DefaultHyperParameterRanges' => {
+                                                  'class' => 'Paws::Personalize::DefaultHyperParameterRanges',
+                                                  'type' => 'Personalize_DefaultHyperParameterRanges'
+                                                },
+               'AlgorithmImage' => {
+                                     'class' => 'Paws::Personalize::AlgorithmImage',
+                                     'type' => 'Personalize_AlgorithmImage'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DefaultHyperParameters' => 'defaultHyperParameters',
+                       'DefaultResourceConfig' => 'defaultResourceConfig',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'CreationDateTime' => 'creationDateTime',
+                       'RoleArn' => 'roleArn',
+                       'TrainingInputMode' => 'trainingInputMode',
+                       'DefaultHyperParameterRanges' => 'defaultHyperParameterRanges',
+                       'AlgorithmImage' => 'algorithmImage',
+                       'Name' => 'name',
+                       'AlgorithmArn' => 'algorithmArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +110,7 @@ Describes a custom algorithm.
   The Amazon Resource Name (ARN) of the algorithm.
 
 
-=head2 AlgorithmImage => L<Paws::Personalize::AlgorithmImage>
+=head2 AlgorithmImage => Personalize_AlgorithmImage
 
   The URI of the Docker container for the algorithm image.
 
@@ -60,19 +120,19 @@ Describes a custom algorithm.
   The date and time (in Unix time) that the algorithm was created.
 
 
-=head2 DefaultHyperParameterRanges => L<Paws::Personalize::DefaultHyperParameterRanges>
+=head2 DefaultHyperParameterRanges => Personalize_DefaultHyperParameterRanges
 
   Specifies the default hyperparameters, their ranges, and whether they
 are tunable. A tunable hyperparameter can have its value determined
 during hyperparameter optimization (HPO).
 
 
-=head2 DefaultHyperParameters => L<Paws::Personalize::HyperParameters>
+=head2 DefaultHyperParameters => Personalize_HyperParameters
 
   Specifies the default hyperparameters.
 
 
-=head2 DefaultResourceConfig => L<Paws::Personalize::ResourceConfig>
+=head2 DefaultResourceConfig => Personalize_ResourceConfig
 
   Specifies the default maximum number of training jobs and parallel
 training jobs.

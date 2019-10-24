@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::SearchRoomsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Rooms => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::RoomData]');
-  has TotalCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_RoomData/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Rooms => (is => 'ro', isa => ArrayRef[AlexaForBusiness_RoomData]);
+  has TotalCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Rooms' => {
+                            'class' => 'Paws::AlexaForBusiness::RoomData',
+                            'type' => 'ArrayRef[AlexaForBusiness_RoomData]'
+                          },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +46,7 @@ Paws::AlexaForBusiness::SearchRoomsResponse
 The token returned to indicate that there is more data available.
 
 
-=head2 Rooms => ArrayRef[L<Paws::AlexaForBusiness::RoomData>]
+=head2 Rooms => ArrayRef[AlexaForBusiness_RoomData]
 
 The rooms that meet the specified set of filter criteria, in sort
 order.

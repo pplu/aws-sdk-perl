@@ -1,14 +1,35 @@
 
 package Paws::Greengrass::GetResourceDefinition;
-  use Moose;
-  has ResourceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceDefinitionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has ResourceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/resources/{ResourceDefinitionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetResourceDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/resources/{ResourceDefinitionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetResourceDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceDefinitionId' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'ParamInURI' => {
+                    'ResourceDefinitionId' => 'ResourceDefinitionId'
+                  },
+  'IsRequired' => {
+                    'ResourceDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

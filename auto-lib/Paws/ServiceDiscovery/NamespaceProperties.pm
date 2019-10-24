@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::NamespaceProperties;
-  use Moose;
-  has DnsProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsProperties');
-  has HttpProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::HttpProperties');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_HttpProperties ServiceDiscovery_DnsProperties/;
+  has DnsProperties => (is => 'ro', isa => ServiceDiscovery_DnsProperties);
+  has HttpProperties => (is => 'ro', isa => ServiceDiscovery_HttpProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HttpProperties' => {
+                                     'class' => 'Paws::ServiceDiscovery::HttpProperties',
+                                     'type' => 'ServiceDiscovery_HttpProperties'
+                                   },
+               'DnsProperties' => {
+                                    'class' => 'Paws::ServiceDiscovery::DnsProperties',
+                                    'type' => 'ServiceDiscovery_DnsProperties'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ namespace type.
 =head1 ATTRIBUTES
 
 
-=head2 DnsProperties => L<Paws::ServiceDiscovery::DnsProperties>
+=head2 DnsProperties => ServiceDiscovery_DnsProperties
 
   A complex type that contains the ID for the Route 53 hosted zone that
 AWS Cloud Map creates when you create a namespace.
 
 
-=head2 HttpProperties => L<Paws::ServiceDiscovery::HttpProperties>
+=head2 HttpProperties => ServiceDiscovery_HttpProperties
 
   A complex type that contains the name of an HTTP namespace.
 

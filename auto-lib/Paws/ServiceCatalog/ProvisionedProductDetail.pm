@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisionedProductDetail;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has LastRecordId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IdempotencyToken => (is => 'ro', isa => Str);
+  has LastRecordId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastRecordId' => {
+                                   'type' => 'Str'
+                                 },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

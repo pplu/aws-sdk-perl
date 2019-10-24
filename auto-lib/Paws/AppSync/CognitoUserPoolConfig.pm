@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::AppSync::CognitoUserPoolConfig;
-  use Moose;
-  has AppIdClientRegex => (is => 'ro', isa => 'Str', request_name => 'appIdClientRegex', traits => ['NameInRequest']);
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest'], required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', request_name => 'userPoolId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has AppIdClientRegex => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str, required => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'AppIdClientRegex' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'UserPoolId' => 'userPoolId',
+                       'AwsRegion' => 'awsRegion',
+                       'AppIdClientRegex' => 'appIdClientRegex'
+                     },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'AwsRegion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingRuleRecord;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has ModifiedAt => (is => 'ro', isa => 'Str');
-  has SamplingRule => (is => 'ro', isa => 'Paws::XRay::SamplingRule');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw/XRay_SamplingRule/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has ModifiedAt => (is => 'ro', isa => Str);
+  has SamplingRule => (is => 'ro', isa => XRay_SamplingRule);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'SamplingRule' => {
+                                   'class' => 'Paws::XRay::SamplingRule',
+                                   'type' => 'XRay_SamplingRule'
+                                 },
+               'ModifiedAt' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +72,7 @@ A SamplingRule and its metadata.
   When the rule was last modified.
 
 
-=head2 SamplingRule => L<Paws::XRay::SamplingRule>
+=head2 SamplingRule => XRay_SamplingRule
 
   The sampling rule.
 

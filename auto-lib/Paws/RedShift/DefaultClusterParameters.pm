@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::DefaultClusterParameters;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has ParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', request_name => 'Parameter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Parameter/;
+  has Marker => (is => 'ro', isa => Str);
+  has ParameterGroupFamily => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[RedShift_Parameter]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::RedShift::Parameter',
+                                 'type' => 'ArrayRef[RedShift_Parameter]'
+                               },
+               'ParameterGroupFamily' => {
+                                           'type' => 'Str'
+                                         },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'Parameter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ for the request.
 default parameters apply.
 
 
-=head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+=head2 Parameters => ArrayRef[RedShift_Parameter]
 
   The list of cluster default parameters.
 

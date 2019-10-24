@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::DetectorModel;
-  use Moose;
-  has DetectorModelConfiguration => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelConfiguration', request_name => 'detectorModelConfiguration', traits => ['NameInRequest']);
-  has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', request_name => 'detectorModelDefinition', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTEvents::Types qw/IoTEvents_DetectorModelConfiguration IoTEvents_DetectorModelDefinition/;
+  has DetectorModelConfiguration => (is => 'ro', isa => IoTEvents_DetectorModelConfiguration);
+  has DetectorModelDefinition => (is => 'ro', isa => IoTEvents_DetectorModelDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorModelDefinition' => {
+                                              'class' => 'Paws::IoTEvents::DetectorModelDefinition',
+                                              'type' => 'IoTEvents_DetectorModelDefinition'
+                                            },
+               'DetectorModelConfiguration' => {
+                                                 'class' => 'Paws::IoTEvents::DetectorModelConfiguration',
+                                                 'type' => 'IoTEvents_DetectorModelConfiguration'
+                                               }
+             },
+  'NameInRequest' => {
+                       'DetectorModelDefinition' => 'detectorModelDefinition',
+                       'DetectorModelConfiguration' => 'detectorModelConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Information about the detector model.
 =head1 ATTRIBUTES
 
 
-=head2 DetectorModelConfiguration => L<Paws::IoTEvents::DetectorModelConfiguration>
+=head2 DetectorModelConfiguration => IoTEvents_DetectorModelConfiguration
 
   Information about how the detector is configured.
 
 
-=head2 DetectorModelDefinition => L<Paws::IoTEvents::DetectorModelDefinition>
+=head2 DetectorModelDefinition => IoTEvents_DetectorModelDefinition
 
   Information that defines how a detector operates.
 

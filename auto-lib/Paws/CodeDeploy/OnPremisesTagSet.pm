@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::OnPremisesTagSet;
-  use Moose;
-  has OnPremisesTagSetList => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeDeploy::TagFilter]]', request_name => 'onPremisesTagSetList', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TagFilter/;
+  has OnPremisesTagSetList => (is => 'ro', isa => ArrayRef[ArrayRef[CodeDeploy_TagFilter]]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OnPremisesTagSetList' => {
+                                           'class' => 'Paws::CodeDeploy::TagFilter',
+                                           'type' => 'ArrayRef[ArrayRef[CodeDeploy_TagFilter]]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'OnPremisesTagSetList' => 'onPremisesTagSetList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Information about groups of on-premises instance tags.
 =head1 ATTRIBUTES
 
 
-=head2 OnPremisesTagSetList => ArrayRef[L<ArrayRef[Paws::CodeDeploy::TagFilter]>]
+=head2 OnPremisesTagSetList => ArrayRef[ArrayRef[CodeDeploy_TagFilter]]
 
   A list that contains other lists of on-premises instance tag groups.
 For an instance to be included in the deployment group, it must be

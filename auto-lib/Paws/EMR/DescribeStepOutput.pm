@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::EMR::DescribeStepOutput;
-  use Moose;
-  has Step => (is => 'ro', isa => 'Paws::EMR::Step');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_Step/;
+  has Step => (is => 'ro', isa => EMR_Step);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Step' => {
+                           'class' => 'Paws::EMR::Step',
+                           'type' => 'EMR_Step'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::EMR::DescribeStepOutput
 =head1 ATTRIBUTES
 
 
-=head2 Step => L<Paws::EMR::Step>
+=head2 Step => EMR_Step
 
 The step details for the requested step identifier.
 

@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::ELB::Policies;
-  use Moose;
-  has AppCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELB::AppCookieStickinessPolicy]');
-  has LBCookieStickinessPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELB::LBCookieStickinessPolicy]');
-  has OtherPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ELB::Types qw/ELB_LBCookieStickinessPolicy ELB_AppCookieStickinessPolicy/;
+  has AppCookieStickinessPolicies => (is => 'ro', isa => ArrayRef[ELB_AppCookieStickinessPolicy]);
+  has LBCookieStickinessPolicies => (is => 'ro', isa => ArrayRef[ELB_LBCookieStickinessPolicy]);
+  has OtherPolicies => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OtherPolicies' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'LBCookieStickinessPolicies' => {
+                                                 'class' => 'Paws::ELB::LBCookieStickinessPolicy',
+                                                 'type' => 'ArrayRef[ELB_LBCookieStickinessPolicy]'
+                                               },
+               'AppCookieStickinessPolicies' => {
+                                                  'class' => 'Paws::ELB::AppCookieStickinessPolicy',
+                                                  'type' => 'ArrayRef[ELB_AppCookieStickinessPolicy]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +63,12 @@ The policies for a load balancer.
 =head1 ATTRIBUTES
 
 
-=head2 AppCookieStickinessPolicies => ArrayRef[L<Paws::ELB::AppCookieStickinessPolicy>]
+=head2 AppCookieStickinessPolicies => ArrayRef[ELB_AppCookieStickinessPolicy]
 
   The stickiness policies created using CreateAppCookieStickinessPolicy.
 
 
-=head2 LBCookieStickinessPolicies => ArrayRef[L<Paws::ELB::LBCookieStickinessPolicy>]
+=head2 LBCookieStickinessPolicies => ArrayRef[ELB_LBCookieStickinessPolicy]
 
   The stickiness policies created using CreateLBCookieStickinessPolicy.
 

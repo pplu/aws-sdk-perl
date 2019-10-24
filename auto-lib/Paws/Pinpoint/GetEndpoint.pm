@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::GetEndpoint;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EndpointId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'endpoint-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::EndpointResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::EndpointResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EndpointId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id',
+                    'EndpointId' => 'endpoint-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'EndpointId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

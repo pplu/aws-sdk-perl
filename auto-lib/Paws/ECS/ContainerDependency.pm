@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ECS::ContainerDependency;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Str', request_name => 'condition', traits => ['NameInRequest'], required => 1);
-  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Condition => (is => 'ro', isa => Str, required => 1);
+  has ContainerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Condition' => {
+                                'type' => 'Str'
+                              },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Condition' => 'condition',
+                       'ContainerName' => 'containerName'
+                     },
+  'IsRequired' => {
+                    'Condition' => 1,
+                    'ContainerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

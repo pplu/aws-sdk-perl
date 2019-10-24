@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Lambda::LayerVersionContentInput;
-  use Moose;
-  has S3Bucket => (is => 'ro', isa => 'Str');
-  has S3Key => (is => 'ro', isa => 'Str');
-  has S3ObjectVersion => (is => 'ro', isa => 'Str');
-  has ZipFile => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has S3Bucket => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
+  has S3ObjectVersion => (is => 'ro', isa => Str);
+  has ZipFile => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'S3ObjectVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'ZipFile' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

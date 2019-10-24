@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DescribeLimitsOutput;
   use Moo;
@@ -9,7 +10,7 @@ package Paws::DynamoDB::DescribeLimitsOutput;
   has TableMaxWriteCapacityUnits => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TableMaxWriteCapacityUnits' => {
@@ -21,14 +22,17 @@ package Paws::DynamoDB::DescribeLimitsOutput;
                'TableMaxReadCapacityUnits' => {
                                                 'type' => 'Int'
                                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'AccountMaxWriteCapacityUnits' => {
                                                    'type' => 'Int'
                                                  }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

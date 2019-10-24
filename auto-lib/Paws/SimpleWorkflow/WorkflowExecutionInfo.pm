@@ -1,14 +1,75 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionInfo;
-  use Moose;
-  has CancelRequested => (is => 'ro', isa => 'Bool', request_name => 'cancelRequested', traits => ['NameInRequest']);
-  has CloseStatus => (is => 'ro', isa => 'Str', request_name => 'closeStatus', traits => ['NameInRequest']);
-  has CloseTimestamp => (is => 'ro', isa => 'Str', request_name => 'closeTimestamp', traits => ['NameInRequest']);
-  has Execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'execution', traits => ['NameInRequest'], required => 1);
-  has ExecutionStatus => (is => 'ro', isa => 'Str', request_name => 'executionStatus', traits => ['NameInRequest'], required => 1);
-  has Parent => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'parent', traits => ['NameInRequest']);
-  has StartTimestamp => (is => 'ro', isa => 'Str', request_name => 'startTimestamp', traits => ['NameInRequest'], required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagList', traits => ['NameInRequest']);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType SimpleWorkflow_WorkflowExecution/;
+  has CancelRequested => (is => 'ro', isa => Bool);
+  has CloseStatus => (is => 'ro', isa => Str);
+  has CloseTimestamp => (is => 'ro', isa => Str);
+  has Execution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
+  has ExecutionStatus => (is => 'ro', isa => Str, required => 1);
+  has Parent => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution);
+  has StartTimestamp => (is => 'ro', isa => Str, required => 1);
+  has TagList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Execution' => {
+                                'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                                'type' => 'SimpleWorkflow_WorkflowExecution'
+                              },
+               'Parent' => {
+                             'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                             'type' => 'SimpleWorkflow_WorkflowExecution'
+                           },
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'WorkflowType' => {
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType',
+                                   'type' => 'SimpleWorkflow_WorkflowType'
+                                 },
+               'CancelRequested' => {
+                                      'type' => 'Bool'
+                                    },
+               'TagList' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ExecutionStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'CloseStatus' => {
+                                  'type' => 'Str'
+                                },
+               'CloseTimestamp' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Execution' => 'execution',
+                       'Parent' => 'parent',
+                       'StartTimestamp' => 'startTimestamp',
+                       'WorkflowType' => 'workflowType',
+                       'CancelRequested' => 'cancelRequested',
+                       'TagList' => 'tagList',
+                       'ExecutionStatus' => 'executionStatus',
+                       'CloseStatus' => 'closeStatus',
+                       'CloseTimestamp' => 'closeTimestamp'
+                     },
+  'IsRequired' => {
+                    'StartTimestamp' => 1,
+                    'WorkflowType' => 1,
+                    'ExecutionStatus' => 1,
+                    'Execution' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +155,7 @@ started to carry on the workflow.
 execution status is CLOSED.
 
 
-=head2 B<REQUIRED> Execution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> Execution => SimpleWorkflow_WorkflowExecution
 
   The workflow execution this information is about.
 
@@ -104,7 +165,7 @@ execution status is CLOSED.
   The current status of the execution.
 
 
-=head2 Parent => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 Parent => SimpleWorkflow_WorkflowExecution
 
   If this workflow execution is a child of another execution then
 contains the workflow execution that started this execution.
@@ -122,7 +183,7 @@ used to identify and list workflow executions of interest through the
 visibility APIs. A workflow execution can have a maximum of 5 tags.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The type of the workflow execution.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceHealthSummary;
-  use Moose;
-  has InstanceHealth => (is => 'ro', isa => 'Str', request_name => 'instanceHealth', traits => ['NameInRequest']);
-  has InstanceHealthReason => (is => 'ro', isa => 'Str', request_name => 'instanceHealthReason', traits => ['NameInRequest']);
-  has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has InstanceHealth => (is => 'ro', isa => Str);
+  has InstanceHealthReason => (is => 'ro', isa => Str);
+  has InstanceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceHealthReason' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceHealth' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'InstanceName' => 'instanceName',
+                       'InstanceHealthReason' => 'instanceHealthReason',
+                       'InstanceHealth' => 'instanceHealth'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

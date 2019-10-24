@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ApplicationMetrics;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int');
-  has Latency => (is => 'ro', isa => 'Paws::ElasticBeanstalk::Latency');
-  has RequestCount => (is => 'ro', isa => 'Int');
-  has StatusCodes => (is => 'ro', isa => 'Paws::ElasticBeanstalk::StatusCodes');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_StatusCodes ElasticBeanstalk_Latency/;
+  has Duration => (is => 'ro', isa => Int);
+  has Latency => (is => 'ro', isa => ElasticBeanstalk_Latency);
+  has RequestCount => (is => 'ro', isa => Int);
+  has StatusCodes => (is => 'ro', isa => ElasticBeanstalk_StatusCodes);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Latency' => {
+                              'class' => 'Paws::ElasticBeanstalk::Latency',
+                              'type' => 'ElasticBeanstalk_Latency'
+                            },
+               'StatusCodes' => {
+                                  'class' => 'Paws::ElasticBeanstalk::StatusCodes',
+                                  'type' => 'ElasticBeanstalk_StatusCodes'
+                                },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'RequestCount' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +74,7 @@ example, you might have 5 requests (C<request_count>) within the most
 recent time slice of 10 seconds (C<duration>).
 
 
-=head2 Latency => L<Paws::ElasticBeanstalk::Latency>
+=head2 Latency => ElasticBeanstalk_Latency
 
   Represents the average latency for the slowest X percent of requests
 over the last 10 seconds. Latencies are in seconds with one millisecond
@@ -59,7 +87,7 @@ resolution.
 the last 10 seconds.
 
 
-=head2 StatusCodes => L<Paws::ElasticBeanstalk::StatusCodes>
+=head2 StatusCodes => ElasticBeanstalk_StatusCodes
 
   Represents the percentage of requests over the last 10 seconds that
 resulted in each type of status code response.

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoT::Denied;
-  use Moose;
-  has ExplicitDeny => (is => 'ro', isa => 'Paws::IoT::ExplicitDeny', request_name => 'explicitDeny', traits => ['NameInRequest']);
-  has ImplicitDeny => (is => 'ro', isa => 'Paws::IoT::ImplicitDeny', request_name => 'implicitDeny', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_ImplicitDeny IoT_ExplicitDeny/;
+  has ExplicitDeny => (is => 'ro', isa => IoT_ExplicitDeny);
+  has ImplicitDeny => (is => 'ro', isa => IoT_ImplicitDeny);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImplicitDeny' => {
+                                   'class' => 'Paws::IoT::ImplicitDeny',
+                                   'type' => 'IoT_ImplicitDeny'
+                                 },
+               'ExplicitDeny' => {
+                                   'class' => 'Paws::IoT::ExplicitDeny',
+                                   'type' => 'IoT_ExplicitDeny'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ImplicitDeny' => 'implicitDeny',
+                       'ExplicitDeny' => 'explicitDeny'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Contains information that denied the authorization.
 =head1 ATTRIBUTES
 
 
-=head2 ExplicitDeny => L<Paws::IoT::ExplicitDeny>
+=head2 ExplicitDeny => IoT_ExplicitDeny
 
   Information that explicitly denies the authorization.
 
 
-=head2 ImplicitDeny => L<Paws::IoT::ImplicitDeny>
+=head2 ImplicitDeny => IoT_ImplicitDeny
 
   Information that implicitly denies the authorization. When a policy
 doesn't explicitly deny or allow an action on a resource it is

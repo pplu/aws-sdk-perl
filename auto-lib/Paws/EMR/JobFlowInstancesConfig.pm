@@ -1,22 +1,90 @@
+# Generated from default/object.tt
 package Paws::EMR::JobFlowInstancesConfig;
-  use Moose;
-  has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Ec2KeyName => (is => 'ro', isa => 'Str');
-  has Ec2SubnetId => (is => 'ro', isa => 'Str');
-  has Ec2SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EmrManagedMasterSecurityGroup => (is => 'ro', isa => 'Str');
-  has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => 'Str');
-  has HadoopVersion => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has InstanceFleets => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceFleetConfig]');
-  has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroupConfig]');
-  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Bool');
-  has MasterInstanceType => (is => 'ro', isa => 'Str');
-  has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
-  has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
-  has SlaveInstanceType => (is => 'ro', isa => 'Str');
-  has TerminationProtected => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int Bool/;
+  use Paws::EMR::Types qw/EMR_PlacementType EMR_InstanceFleetConfig EMR_InstanceGroupConfig/;
+  has AdditionalMasterSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Ec2KeyName => (is => 'ro', isa => Str);
+  has Ec2SubnetId => (is => 'ro', isa => Str);
+  has Ec2SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EmrManagedMasterSecurityGroup => (is => 'ro', isa => Str);
+  has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => Str);
+  has HadoopVersion => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceFleets => (is => 'ro', isa => ArrayRef[EMR_InstanceFleetConfig]);
+  has InstanceGroups => (is => 'ro', isa => ArrayRef[EMR_InstanceGroupConfig]);
+  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => Bool);
+  has MasterInstanceType => (is => 'ro', isa => Str);
+  has Placement => (is => 'ro', isa => EMR_PlacementType);
+  has ServiceAccessSecurityGroup => (is => 'ro', isa => Str);
+  has SlaveInstanceType => (is => 'ro', isa => Str);
+  has TerminationProtected => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmrManagedMasterSecurityGroup' => {
+                                                    'type' => 'Str'
+                                                  },
+               'AdditionalSlaveSecurityGroups' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'MasterInstanceType' => {
+                                         'type' => 'Str'
+                                       },
+               'InstanceFleets' => {
+                                     'class' => 'Paws::EMR::InstanceFleetConfig',
+                                     'type' => 'ArrayRef[EMR_InstanceFleetConfig]'
+                                   },
+               'HadoopVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Ec2SubnetId' => {
+                                  'type' => 'Str'
+                                },
+               'TerminationProtected' => {
+                                           'type' => 'Bool'
+                                         },
+               'AdditionalMasterSecurityGroups' => {
+                                                     'type' => 'ArrayRef[Str|Undef]'
+                                                   },
+               'Ec2SubnetIds' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'InstanceGroups' => {
+                                     'class' => 'Paws::EMR::InstanceGroupConfig',
+                                     'type' => 'ArrayRef[EMR_InstanceGroupConfig]'
+                                   },
+               'Ec2KeyName' => {
+                                 'type' => 'Str'
+                               },
+               'Placement' => {
+                                'class' => 'Paws::EMR::PlacementType',
+                                'type' => 'EMR_PlacementType'
+                              },
+               'ServiceAccessSecurityGroup' => {
+                                                 'type' => 'Str'
+                                               },
+               'SlaveInstanceType' => {
+                                        'type' => 'Str'
+                                      },
+               'KeepJobFlowAliveWhenNoSteps' => {
+                                                  'type' => 'Bool'
+                                                },
+               'EmrManagedSlaveSecurityGroup' => {
+                                                   'type' => 'Str'
+                                                 },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +193,7 @@ which case the default version of Hadoop for that AMI version is used.
   The number of EC2 instances in the cluster.
 
 
-=head2 InstanceFleets => ArrayRef[L<Paws::EMR::InstanceFleetConfig>]
+=head2 InstanceFleets => ArrayRef[EMR_InstanceFleetConfig]
 
   The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
@@ -134,7 +202,7 @@ Describes the EC2 instances and instance configurations for clusters
 that use the instance fleet configuration.
 
 
-=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
+=head2 InstanceGroups => ArrayRef[EMR_InstanceGroupConfig]
 
   Configuration for the instance groups in a cluster.
 
@@ -150,7 +218,7 @@ all steps.
   The EC2 instance type of the master node.
 
 
-=head2 Placement => L<Paws::EMR::PlacementType>
+=head2 Placement => EMR_PlacementType
 
   The Availability Zone in which the cluster runs.
 

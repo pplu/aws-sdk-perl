@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::IoTJobsData::JobExecutionState;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusDetails => (is => 'ro', isa => 'Paws::IoTJobsData::DetailsMap', request_name => 'statusDetails', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTJobsData::Types qw/IoTJobsData_DetailsMap/;
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => IoTJobsData_DetailsMap);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusDetails' => {
+                                    'class' => 'Paws::IoTJobsData::DetailsMap',
+                                    'type' => 'IoTJobsData_DetailsMap'
+                                  }
+             },
+  'NameInRequest' => {
+                       'VersionNumber' => 'versionNumber',
+                       'Status' => 'status',
+                       'StatusDetails' => 'statusDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +74,7 @@ Contains data about the state of a job execution.
 "REMOVED".
 
 
-=head2 StatusDetails => L<Paws::IoTJobsData::DetailsMap>
+=head2 StatusDetails => IoTJobsData_DetailsMap
 
   A collection of name/value pairs that describe the status of the job
 execution.

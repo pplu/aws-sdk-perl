@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Athena::Row;
-  use Moose;
-  has Data => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Datum]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Athena::Types qw/Athena_Datum/;
+  has Data => (is => 'ro', isa => ArrayRef[Athena_Datum]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Data' => {
+                           'class' => 'Paws::Athena::Datum',
+                           'type' => 'ArrayRef[Athena_Datum]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The rows that comprise a query result table.
 =head1 ATTRIBUTES
 
 
-=head2 Data => ArrayRef[L<Paws::Athena::Datum>]
+=head2 Data => ArrayRef[Athena_Datum]
 
   The data that populates a row in a query result table.
 

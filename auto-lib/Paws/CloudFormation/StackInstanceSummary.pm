@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackInstanceSummary;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has Account => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackSetId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Account' => {
+                              'type' => 'Str'
+                            },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

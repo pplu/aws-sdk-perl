@@ -24,7 +24,10 @@ package Paws::S3::GetObjectTaggingOutput;
              },
   'ParamInHeader' => {
                        'VersionId' => 'x-amz-version-id'
-                     }
+                     },
+  'IsRequired' => {
+                    'TagSet' => 1
+                  }
 }
 ;
     return $Params_map;

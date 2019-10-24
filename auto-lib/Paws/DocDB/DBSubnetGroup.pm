@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupArn => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_Subnet/;
+  has DBSubnetGroupArn => (is => 'ro', isa => Str);
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has SubnetGroupStatus => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[DocDB_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'Subnets' => {
+                              'class' => 'Paws::DocDB::Subnet',
+                              'type' => 'ArrayRef[DocDB_Subnet]'
+                            },
+               'DBSubnetGroupArn' => {
+                                       'type' => 'Str'
+                                     },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'SubnetGroupStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Subnets' => 'Subnet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +97,7 @@ Detailed information about a DB subnet group.
   Provides the status of the DB subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::DocDB::Subnet>]
+=head2 Subnets => ArrayRef[DocDB_Subnet]
 
   Detailed information about one or more subnets within a DB subnet
 group.

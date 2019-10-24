@@ -1,9 +1,34 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::RefreshTrustedAdvisorCheckResponse;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckRefreshStatus', traits => ['NameInRequest'], request_name => 'status' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw/Support_TrustedAdvisorCheckRefreshStatus/;
+  has Status => (is => 'ro', isa => Support_TrustedAdvisorCheckRefreshStatus, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'class' => 'Paws::Support::TrustedAdvisorCheckRefreshStatus',
+                             'type' => 'Support_TrustedAdvisorCheckRefreshStatus'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status'
+                     },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +39,7 @@ Paws::Support::RefreshTrustedAdvisorCheckResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Status => L<Paws::Support::TrustedAdvisorCheckRefreshStatus>
+=head2 B<REQUIRED> Status => Support_TrustedAdvisorCheckRefreshStatus
 
 The current refresh status for a check, including the amount of time
 until the check is eligible for refresh.

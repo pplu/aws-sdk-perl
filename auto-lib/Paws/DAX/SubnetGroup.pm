@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::DAX::SubnetGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has SubnetGroupName => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Subnet]');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_Subnet/;
+  has Description => (is => 'ro', isa => Str);
+  has SubnetGroupName => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[DAX_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Subnets' => {
+                              'class' => 'Paws::DAX::Subnet',
+                              'type' => 'ArrayRef[DAX_Subnet]'
+                            },
+               'SubnetGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +89,7 @@ I<ModifySubnetGroup>
   The name of the subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::DAX::Subnet>]
+=head2 Subnets => ArrayRef[DAX_Subnet]
 
   A list of subnets associated with the subnet group.
 

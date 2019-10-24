@@ -1,41 +1,152 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBClusterFromS3;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has S3IngestionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Prefix => (is => 'ro', isa => 'Str');
-  has SourceEngine => (is => 'ro', isa => 'Str', required => 1);
-  has SourceEngineVersion => (is => 'ro', isa => 'Str', required => 1);
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BacktrackWindow => (is => 'ro', isa => Int, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CharacterSetName => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3IngestionRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has SourceEngine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceEngineVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromS3');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromS3Result');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromS3Result');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromS3');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromS3Result');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromS3Result');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'S3IngestionRoleArn' => {
+                                         'type' => 'Str'
+                                       },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'S3Prefix' => {
+                               'type' => 'Str'
+                             },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'SourceEngineVersion' => {
+                                          'type' => 'Str'
+                                        },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceEngine' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'MasterUserPassword' => 1,
+                    'Engine' => 1,
+                    'SourceEngineVersion' => 1,
+                    'S3IngestionRoleArn' => 1,
+                    'S3BucketName' => 1,
+                    'DBClusterIdentifier' => 1,
+                    'MasterUsername' => 1,
+                    'SourceEngine' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -458,7 +569,7 @@ A value that indicates whether the restored DB cluster is encrypted.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

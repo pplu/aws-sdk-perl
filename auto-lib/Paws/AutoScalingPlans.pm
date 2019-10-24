@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::AutoScalingPlans;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'autoscaling' }
   sub signing_name { 'autoscaling-plans' }
   sub version { '2018-01-06' }
   sub target_prefix { 'AnyScaleScalingPlannerFrontendService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -147,9 +149,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =over
 
-=item ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>
+=item ApplicationSource => AutoScalingPlans_ApplicationSource
 
-=item ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
+=item ScalingInstructions => ArrayRef[AutoScalingPlans_ScalingInstruction]
 
 =item ScalingPlanName => Str
 
@@ -213,7 +215,7 @@ Describes the scalable resources in the specified scaling plan.
 
 =over
 
-=item [ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>]]
+=item [ApplicationSources => ArrayRef[AutoScalingPlans_ApplicationSource]]
 
 =item [MaxResults => Int]
 
@@ -275,9 +277,9 @@ CloudWatch load metric. Data points are available for up to 56 days.
 
 =item ScalingPlanVersion => Int
 
-=item [ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>]
+=item [ApplicationSource => AutoScalingPlans_ApplicationSource]
 
-=item [ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]]
+=item [ScalingInstructions => ArrayRef[AutoScalingPlans_ScalingInstruction]]
 
 
 =back
@@ -310,9 +312,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AutoScalingPlans::DescribeScalingPlanResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllScalingPlans(sub { },[ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
+=head2 DescribeAllScalingPlans(sub { },[ApplicationSources => ArrayRef[AutoScalingPlans_ApplicationSource], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
 
-=head2 DescribeAllScalingPlans([ApplicationSources => ArrayRef[L<Paws::AutoScalingPlans::ApplicationSource>], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
+=head2 DescribeAllScalingPlans([ApplicationSources => ArrayRef[AutoScalingPlans_ApplicationSource], MaxResults => Int, NextToken => Str, ScalingPlanNames => ArrayRef[Str|Undef], ScalingPlanVersion => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

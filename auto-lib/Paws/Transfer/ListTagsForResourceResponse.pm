@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::ListTagsForResourceResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Transfer_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Transfer::Tag',
+                           'type' => 'ArrayRef[Transfer_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -29,7 +54,7 @@ pass in a subsequent command the C<NextToken> parameter to continue
 listing additional tags.
 
 
-=head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=head2 Tags => ArrayRef[Transfer_Tag]
 
 Key-value pairs that are assigned to a resource, usually for the
 purpose of grouping and searching for items. Tags are metadata that you

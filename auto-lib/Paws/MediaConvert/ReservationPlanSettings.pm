@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ReservationPlanSettings;
-  use Moose;
-  has Commitment => (is => 'ro', isa => 'Str', request_name => 'commitment', traits => ['NameInRequest'], required => 1);
-  has RenewalType => (is => 'ro', isa => 'Str', request_name => 'renewalType', traits => ['NameInRequest'], required => 1);
-  has ReservedSlots => (is => 'ro', isa => 'Int', request_name => 'reservedSlots', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Commitment => (is => 'ro', isa => Str, required => 1);
+  has RenewalType => (is => 'ro', isa => Str, required => 1);
+  has ReservedSlots => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RenewalType' => {
+                                  'type' => 'Str'
+                                },
+               'Commitment' => {
+                                 'type' => 'Str'
+                               },
+               'ReservedSlots' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'RenewalType' => 'renewalType',
+                       'Commitment' => 'commitment',
+                       'ReservedSlots' => 'reservedSlots'
+                     },
+  'IsRequired' => {
+                    'RenewalType' => 1,
+                    'Commitment' => 1,
+                    'ReservedSlots' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

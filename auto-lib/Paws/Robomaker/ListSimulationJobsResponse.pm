@@ -1,10 +1,38 @@
 
 package Paws::Robomaker::ListSimulationJobsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SimulationJobSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationJobSummary]', traits => ['NameInRequest'], request_name => 'simulationJobSummaries', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_SimulationJobSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SimulationJobSummaries => (is => 'ro', isa => ArrayRef[Robomaker_SimulationJobSummary], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SimulationJobSummaries' => {
+                                             'class' => 'Paws::Robomaker::SimulationJobSummary',
+                                             'type' => 'ArrayRef[Robomaker_SimulationJobSummary]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SimulationJobSummaries' => 'simulationJobSummaries'
+                     },
+  'IsRequired' => {
+                    'SimulationJobSummaries' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +53,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 B<REQUIRED> SimulationJobSummaries => ArrayRef[L<Paws::Robomaker::SimulationJobSummary>]
+=head2 B<REQUIRED> SimulationJobSummaries => ArrayRef[Robomaker_SimulationJobSummary]
 
 A list of simulation job summaries that meet the criteria of the
 request.

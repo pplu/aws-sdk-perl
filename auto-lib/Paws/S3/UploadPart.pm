@@ -80,7 +80,13 @@ use MooX::ClassAttribute;
                        'ContentLength' => 'Content-Length',
                        'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key',
                        'RequestPayer' => 'x-amz-request-payer'
-                     }
+                     },
+  'IsRequired' => {
+                    'PartNumber' => 1,
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,23 +1,87 @@
 
 package Paws::Pinpoint::EndpointResponse;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has ChannelType => (is => 'ro', isa => 'Str');
-  has CohortId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Demographic => (is => 'ro', isa => 'Paws::Pinpoint::EndpointDemographic');
-  has EffectiveDate => (is => 'ro', isa => 'Str');
-  has EndpointStatus => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Paws::Pinpoint::EndpointLocation');
-  has Metrics => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__double');
-  has OptOut => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has User => (is => 'ro', isa => 'Paws::Pinpoint::EndpointUser');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointDemographic Pinpoint_EndpointUser Pinpoint_MapOfListOf__string Pinpoint_MapOf__double Pinpoint_EndpointLocation/;
+  has Address => (is => 'ro', isa => Str);
+  has ApplicationId => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has ChannelType => (is => 'ro', isa => Str);
+  has CohortId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Demographic => (is => 'ro', isa => Pinpoint_EndpointDemographic);
+  has EffectiveDate => (is => 'ro', isa => Str);
+  has EndpointStatus => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Pinpoint_EndpointLocation);
+  has Metrics => (is => 'ro', isa => Pinpoint_MapOf__double);
+  has OptOut => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has User => (is => 'ro', isa => Pinpoint_EndpointUser);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'User' => {
+                           'class' => 'Paws::Pinpoint::EndpointUser',
+                           'type' => 'Pinpoint_EndpointUser'
+                         },
+               'Metrics' => {
+                              'class' => 'Paws::Pinpoint::MapOf__double',
+                              'type' => 'Pinpoint_MapOf__double'
+                            },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Location' => {
+                               'class' => 'Paws::Pinpoint::EndpointLocation',
+                               'type' => 'Pinpoint_EndpointLocation'
+                             },
+               'ChannelType' => {
+                                  'type' => 'Str'
+                                },
+               'CohortId' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'EffectiveDate' => {
+                                    'type' => 'Str'
+                                  },
+               'Attributes' => {
+                                 'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                 'type' => 'Pinpoint_MapOfListOf__string'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OptOut' => {
+                             'type' => 'Str'
+                           },
+               'Demographic' => {
+                                  'class' => 'Paws::Pinpoint::EndpointDemographic',
+                                  'type' => 'Pinpoint_EndpointDemographic'
+                                },
+               'EndpointStatus' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +111,7 @@ The unique identifier for the application that's associated with the
 endpoint.
 
 
-=head2 Attributes => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Attributes => Pinpoint_MapOfListOf__string
 
 One or more custom attributes that describe the endpoint by associating
 a name with an array of values. For example, the value of a custom
@@ -75,7 +139,7 @@ treatment allocations for campaigns.
 The date and time, in ISO 8601 format, when the endpoint was created.
 
 
-=head2 Demographic => L<Paws::Pinpoint::EndpointDemographic>
+=head2 Demographic => Pinpoint_EndpointDemographic
 
 The demographic information for the endpoint, such as the time zone and
 platform.
@@ -100,12 +164,12 @@ conflict with other endpoint identifiers that are associated with the
 application.
 
 
-=head2 Location => L<Paws::Pinpoint::EndpointLocation>
+=head2 Location => Pinpoint_EndpointLocation
 
 The geographic information for the endpoint.
 
 
-=head2 Metrics => L<Paws::Pinpoint::MapOf__double>
+=head2 Metrics => Pinpoint_MapOf__double
 
 One or more custom metrics that your app reports to Amazon Pinpoint for
 the endpoint.
@@ -126,7 +190,7 @@ The unique identifier for the most recent request to update the
 endpoint.
 
 
-=head2 User => L<Paws::Pinpoint::EndpointUser>
+=head2 User => Pinpoint_EndpointUser
 
 One or more custom user attributes that your app reports to Amazon
 Pinpoint for the user who's associated with the endpoint.

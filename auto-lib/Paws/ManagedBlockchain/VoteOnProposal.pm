@@ -1,17 +1,51 @@
 
 package Paws::ManagedBlockchain::VoteOnProposal;
-  use Moose;
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
-  has ProposalId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'proposalId', required => 1);
-  has Vote => (is => 'ro', isa => 'Str', required => 1);
-  has VoterMemberId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProposalId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Vote => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VoterMemberId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'VoteOnProposal');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/proposals/{proposalId}/votes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::VoteOnProposalOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'VoteOnProposal');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/proposals/{proposalId}/votes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::VoteOnProposalOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'Vote' => {
+                           'type' => 'Str'
+                         },
+               'VoterMemberId' => {
+                                    'type' => 'Str'
+                                  },
+               'ProposalId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'NetworkId' => 'networkId',
+                    'ProposalId' => 'proposalId'
+                  },
+  'IsRequired' => {
+                    'NetworkId' => 1,
+                    'Vote' => 1,
+                    'VoterMemberId' => 1,
+                    'ProposalId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

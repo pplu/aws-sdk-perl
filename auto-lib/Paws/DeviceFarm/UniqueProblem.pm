@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::UniqueProblem;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Problems => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Problem]', request_name => 'problems', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Problem/;
+  has Message => (is => 'ro', isa => Str);
+  has Problems => (is => 'ro', isa => ArrayRef[DeviceFarm_Problem]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Problems' => {
+                               'class' => 'Paws::DeviceFarm::Problem',
+                               'type' => 'ArrayRef[DeviceFarm_Problem]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'Problems' => 'problems'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ A collection of one or more problems, grouped by their result.
   A message about the unique problems' result.
 
 
-=head2 Problems => ArrayRef[L<Paws::DeviceFarm::Problem>]
+=head2 Problems => ArrayRef[DeviceFarm_Problem]
 
   Information about the problems.
 

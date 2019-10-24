@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::TaggedResourceListMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has TaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::TaggedResource]', request_name => 'TaggedResource', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_TaggedResource/;
+  has Marker => (is => 'ro', isa => Str);
+  has TaggedResources => (is => 'ro', isa => ArrayRef[RedShift_TaggedResource]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'TaggedResources' => {
+                                      'class' => 'Paws::RedShift::TaggedResource',
+                                      'type' => 'ArrayRef[RedShift_TaggedResource]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'TaggedResources' => 'TaggedResource'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 TaggedResources => ArrayRef[L<Paws::RedShift::TaggedResource>]
+=head2 TaggedResources => ArrayRef[RedShift_TaggedResource]
 
 A list of tags with their associated resources.
 

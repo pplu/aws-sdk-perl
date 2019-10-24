@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListAttachedRolePolicies;
   use Moo;
@@ -29,7 +30,10 @@ package Paws::IAM::ListAttachedRolePolicies;
                'Marker' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

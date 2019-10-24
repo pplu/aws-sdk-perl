@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::Kafka::ConfigurationRevision;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'Revision' => 'revision',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'Revision' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

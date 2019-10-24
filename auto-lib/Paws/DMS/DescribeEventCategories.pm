@@ -1,14 +1,34 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::DescribeEventCategories;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Filter]');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[DMS_Filter], predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::DescribeEventCategoriesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventCategories');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::DescribeEventCategoriesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::DMS::Filter',
+                              'type' => 'ArrayRef[DMS_Filter]'
+                            },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
+=head2 Filters => ArrayRef[DMS_Filter]
 
 Filters applied to the action.
 

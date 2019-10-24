@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::EKS::Logging;
-  use Moose;
-  has ClusterLogging => (is => 'ro', isa => 'ArrayRef[Paws::EKS::LogSetup]', request_name => 'clusterLogging', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::EKS::Types qw/EKS_LogSetup/;
+  has ClusterLogging => (is => 'ro', isa => ArrayRef[EKS_LogSetup]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterLogging' => {
+                                     'class' => 'Paws::EKS::LogSetup',
+                                     'type' => 'ArrayRef[EKS_LogSetup]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ClusterLogging' => 'clusterLogging'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ cluster.
 =head1 ATTRIBUTES
 
 
-=head2 ClusterLogging => ArrayRef[L<Paws::EKS::LogSetup>]
+=head2 ClusterLogging => ArrayRef[EKS_LogSetup]
 
   The cluster control plane logging configuration for your cluster.
 

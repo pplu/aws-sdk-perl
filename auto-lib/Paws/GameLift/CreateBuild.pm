@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreateBuild;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_S3Location/;
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has OperatingSystem => (is => 'ro', isa => Str, predicate => 1);
+  has StorageLocation => (is => 'ro', isa => GameLift_S3Location, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBuild');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreateBuildOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBuild');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreateBuildOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageLocation' => {
+                                      'class' => 'Paws::GameLift::S3Location',
+                                      'type' => 'GameLift_S3Location'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +99,7 @@ specified when creating a build, Amazon GameLift uses the default value
 
 Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
 
-=head2 StorageLocation => L<Paws::GameLift::S3Location>
+=head2 StorageLocation => GameLift_S3Location
 
 Information indicating where your game build files are stored. Use this
 parameter only when creating a build with files stored in an Amazon S3

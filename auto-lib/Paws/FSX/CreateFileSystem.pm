@@ -1,21 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::CreateFileSystem;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has FileSystemType => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::CreateFileSystemLustreConfiguration');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StorageCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
-  has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::CreateFileSystemWindowsConfiguration');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::FSX::Types qw/FSX_CreateFileSystemWindowsConfiguration FSX_Tag FSX_CreateFileSystemLustreConfiguration/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has FileSystemType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LustreConfiguration => (is => 'ro', isa => FSX_CreateFileSystemLustreConfiguration, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StorageCapacity => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag], predicate => 1);
+  has WindowsConfiguration => (is => 'ro', isa => FSX_CreateFileSystemWindowsConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFileSystem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::CreateFileSystemResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFileSystem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::CreateFileSystemResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WindowsConfiguration' => {
+                                           'class' => 'Paws::FSX::CreateFileSystemWindowsConfiguration',
+                                           'type' => 'FSX_CreateFileSystemWindowsConfiguration'
+                                         },
+               'FileSystemType' => {
+                                     'type' => 'Str'
+                                   },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'LustreConfiguration' => {
+                                          'class' => 'Paws::FSX::CreateFileSystemLustreConfiguration',
+                                          'type' => 'FSX_CreateFileSystemLustreConfiguration'
+                                        },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::FSX::Tag',
+                           'type' => 'ArrayRef[FSX_Tag]'
+                         },
+               'StorageCapacity' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'IsRequired' => {
+                    'FileSystemType' => 1,
+                    'SubnetIds' => 1,
+                    'StorageCapacity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +161,7 @@ Valid values are: C<"WINDOWS">, C<"LUSTRE">
 
 
 
-=head2 LustreConfiguration => L<Paws::FSX::CreateFileSystemLustreConfiguration>
+=head2 LustreConfiguration => FSX_CreateFileSystemLustreConfiguration
 
 
 
@@ -147,14 +195,14 @@ in that subnet's Availability Zone.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
 The tags to apply to the file system being created. The key value of
 the C<Name> tag appears in the console as the file system name.
 
 
 
-=head2 WindowsConfiguration => L<Paws::FSX::CreateFileSystemWindowsConfiguration>
+=head2 WindowsConfiguration => FSX_CreateFileSystemWindowsConfiguration
 
 The Microsoft Windows configuration for the file system being created.
 This value is required if C<FileSystemType> is set to C<WINDOWS>.

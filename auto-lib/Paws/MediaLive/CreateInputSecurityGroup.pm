@@ -1,15 +1,39 @@
 
 package Paws::MediaLive::CreateInputSecurityGroup;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
-  has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', traits => ['NameInRequest'], request_name => 'whitelistRules');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputWhitelistRuleCidr MediaLive_Tags/;
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
+  has WhitelistRules => (is => 'ro', isa => ArrayRef[MediaLive_InputWhitelistRuleCidr], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInputSecurityGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/inputSecurityGroups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::CreateInputSecurityGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInputSecurityGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/inputSecurityGroups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::CreateInputSecurityGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WhitelistRules' => {
+                                     'class' => 'Paws::MediaLive::InputWhitelistRuleCidr',
+                                     'type' => 'ArrayRef[MediaLive_InputWhitelistRuleCidr]'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         }
+             },
+  'NameInRequest' => {
+                       'WhitelistRules' => 'whitelistRules',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,13 +69,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 
 
 
-=head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]
+=head2 WhitelistRules => ArrayRef[MediaLive_InputWhitelistRuleCidr]
 
 List of IPv4 CIDR addresses to whitelist
 

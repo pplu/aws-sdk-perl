@@ -1,3 +1,4 @@
+# Generated from default/map_enum.tt
 package Paws::IAM::SummaryMapType;
   use Moo;
   with 'Paws::API::MapParser';
@@ -6,6 +7,7 @@ package Paws::IAM::SummaryMapType;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
   use Types::Standard qw/Int/;
+  use Paws::IAM::Types qw//;
   has AccessKeysPerUserQuota => (is => 'ro', isa => Int);
   has AccountAccessKeysPresent => (is => 'ro', isa => Int);
   has AccountMFAEnabled => (is => 'ro', isa => Int);
@@ -37,83 +39,57 @@ package Paws::IAM::SummaryMapType;
     our $Params_map ||= {
                     types => {
                                'AccessKeysPerUserQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AccountAccessKeysPresent' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AccountMFAEnabled' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AccountSigningCertificatesPresent' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AttachedPoliciesPerGroupQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AttachedPoliciesPerRoleQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'AttachedPoliciesPerUserQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'GlobalEndpointTokenVersion' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'GroupPolicySizeQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'Groups' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'GroupsPerUserQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'GroupsQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'MFADevices' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'MFADevicesInUse' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'Policies' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'PoliciesQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'PolicySizeQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'PolicyVersionsInUse' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'PolicyVersionsInUseQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'ServerCertificates' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'ServerCertificatesQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'SigningCertificatesPerUserQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'UserPolicySizeQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'Users' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'UsersQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                                'VersionsPerPolicyQuota' => {
-                                          type => 'Int',
-                                        },
+                                          type => 'Int',                                        },
                              },
                   };
     return $Params_map;

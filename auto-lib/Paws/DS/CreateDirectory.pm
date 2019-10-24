@@ -1,19 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::CreateDirectory;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has ShortName => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DS::Tag]');
-  has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettings');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_Tag DS_DirectoryVpcSettings/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShortName => (is => 'ro', isa => Str, predicate => 1);
+  has Size => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DS_Tag], predicate => 1);
+  has VpcSettings => (is => 'ro', isa => DS_DirectoryVpcSettings, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDirectory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateDirectoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDirectory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::CreateDirectoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'Size' => {
+                           'type' => 'Str'
+                         },
+               'ShortName' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::DS::Tag',
+                           'type' => 'ArrayRef[DS_Tag]'
+                         },
+               'VpcSettings' => {
+                                  'class' => 'Paws::DS::DirectoryVpcSettings',
+                                  'type' => 'DS_DirectoryVpcSettings'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Password' => 1,
+                    'Size' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,13 +139,13 @@ The size of the directory.
 
 Valid values are: C<"Small">, C<"Large">
 
-=head2 Tags => ArrayRef[L<Paws::DS::Tag>]
+=head2 Tags => ArrayRef[DS_Tag]
 
 The tags to be assigned to the Simple AD directory.
 
 
 
-=head2 VpcSettings => L<Paws::DS::DirectoryVpcSettings>
+=head2 VpcSettings => DS_DirectoryVpcSettings
 
 A DirectoryVpcSettings object that contains additional information for
 the operation.

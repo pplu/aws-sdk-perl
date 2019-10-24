@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::DimensionGroup;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Group => (is => 'ro', isa => 'Str', required => 1);
-  has Limit => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::PerformanceInsights::Types qw//;
+  has Dimensions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Group => (is => 'ro', isa => Str, required => 1);
+  has Limit => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Group' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Group' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

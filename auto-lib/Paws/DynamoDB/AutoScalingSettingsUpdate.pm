@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AutoScalingSettingsUpdate;
   use Moo;
   use Types::Standard qw/Bool Str Int/;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::AutoScalingSettingsUpdate;
   has MinimumUnits => (is => 'ro', isa => Int);
   has ScalingPolicyUpdate => (is => 'ro', isa => DynamoDB_AutoScalingPolicyUpdate);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ScalingPolicyUpdate' => {
@@ -30,8 +31,8 @@ package Paws::DynamoDB::AutoScalingSettingsUpdate;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

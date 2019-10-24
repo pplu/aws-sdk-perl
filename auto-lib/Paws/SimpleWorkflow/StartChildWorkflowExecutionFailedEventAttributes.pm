@@ -1,11 +1,59 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType/;
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has InitiatedEventId => (is => 'ro', isa => Int, required => 1);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkflowType' => {
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType',
+                                   'type' => 'SimpleWorkflow_WorkflowType'
+                                 },
+               'InitiatedEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'WorkflowType' => 'workflowType',
+                       'InitiatedEventId' => 'initiatedEventId',
+                       'Control' => 'control',
+                       'WorkflowId' => 'workflowId',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'WorkflowType' => 1,
+                    'InitiatedEventId' => 1,
+                    'WorkflowId' => 1,
+                    'DecisionTaskCompletedEventId' => 1,
+                    'Cause' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +133,7 @@ C<StartChildWorkflowExecutionInitiated> event doesn't exist.
   The C<workflowId> of the child workflow execution.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The workflow type provided in the C<StartChildWorkflowExecution>
 Decision that failed.

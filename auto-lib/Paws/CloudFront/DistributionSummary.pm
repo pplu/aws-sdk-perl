@@ -1,25 +1,131 @@
+# Generated from default/object.tt
 package Paws::CloudFront::DistributionSummary;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
-  has AliasICPRecordals => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::AliasICPRecordal]', request_name => 'AliasICPRecordal', traits => ['NameInRequest']);
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has CacheBehaviors => (is => 'ro', isa => 'Paws::CloudFront::CacheBehaviors', required => 1);
-  has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has CustomErrorResponses => (is => 'ro', isa => 'Paws::CloudFront::CustomErrorResponses', required => 1);
-  has DefaultCacheBehavior => (is => 'ro', isa => 'Paws::CloudFront::DefaultCacheBehavior', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has HttpVersion => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has IsIPV6Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has OriginGroups => (is => 'ro', isa => 'Paws::CloudFront::OriginGroups');
-  has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
-  has PriceClass => (is => 'ro', isa => 'Str', required => 1);
-  has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate', required => 1);
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_AliasICPRecordal CloudFront_Origins CloudFront_CustomErrorResponses CloudFront_CacheBehaviors CloudFront_OriginGroups CloudFront_Restrictions CloudFront_DefaultCacheBehavior CloudFront_Aliases CloudFront_ViewerCertificate/;
+  has Aliases => (is => 'ro', isa => CloudFront_Aliases, required => 1);
+  has AliasICPRecordals => (is => 'ro', isa => ArrayRef[CloudFront_AliasICPRecordal]);
+  has ARN => (is => 'ro', isa => Str, required => 1);
+  has CacheBehaviors => (is => 'ro', isa => CloudFront_CacheBehaviors, required => 1);
+  has Comment => (is => 'ro', isa => Str, required => 1);
+  has CustomErrorResponses => (is => 'ro', isa => CloudFront_CustomErrorResponses, required => 1);
+  has DefaultCacheBehavior => (is => 'ro', isa => CloudFront_DefaultCacheBehavior, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has HttpVersion => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has IsIPV6Enabled => (is => 'ro', isa => Bool, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has OriginGroups => (is => 'ro', isa => CloudFront_OriginGroups);
+  has Origins => (is => 'ro', isa => CloudFront_Origins, required => 1);
+  has PriceClass => (is => 'ro', isa => Str, required => 1);
+  has Restrictions => (is => 'ro', isa => CloudFront_Restrictions, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has ViewerCertificate => (is => 'ro', isa => CloudFront_ViewerCertificate, required => 1);
+  has WebACLId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OriginGroups' => {
+                                   'class' => 'Paws::CloudFront::OriginGroups',
+                                   'type' => 'CloudFront_OriginGroups'
+                                 },
+               'IsIPV6Enabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Origins' => {
+                              'class' => 'Paws::CloudFront::Origins',
+                              'type' => 'CloudFront_Origins'
+                            },
+               'ViewerCertificate' => {
+                                        'class' => 'Paws::CloudFront::ViewerCertificate',
+                                        'type' => 'CloudFront_ViewerCertificate'
+                                      },
+               'DefaultCacheBehavior' => {
+                                           'class' => 'Paws::CloudFront::DefaultCacheBehavior',
+                                           'type' => 'CloudFront_DefaultCacheBehavior'
+                                         },
+               'HttpVersion' => {
+                                  'type' => 'Str'
+                                },
+               'CacheBehaviors' => {
+                                     'class' => 'Paws::CloudFront::CacheBehaviors',
+                                     'type' => 'CloudFront_CacheBehaviors'
+                                   },
+               'Aliases' => {
+                              'class' => 'Paws::CloudFront::Aliases',
+                              'type' => 'CloudFront_Aliases'
+                            },
+               'CustomErrorResponses' => {
+                                           'class' => 'Paws::CloudFront::CustomErrorResponses',
+                                           'type' => 'CloudFront_CustomErrorResponses'
+                                         },
+               'AliasICPRecordals' => {
+                                        'class' => 'Paws::CloudFront::AliasICPRecordal',
+                                        'type' => 'ArrayRef[CloudFront_AliasICPRecordal]'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'PriceClass' => {
+                                 'type' => 'Str'
+                               },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Restrictions' => {
+                                   'class' => 'Paws::CloudFront::Restrictions',
+                                   'type' => 'CloudFront_Restrictions'
+                                 }
+             },
+  'NameInRequest' => {
+                       'AliasICPRecordals' => 'AliasICPRecordal'
+                     },
+  'IsRequired' => {
+                    'IsIPV6Enabled' => 1,
+                    'Status' => 1,
+                    'Origins' => 1,
+                    'ViewerCertificate' => 1,
+                    'DefaultCacheBehavior' => 1,
+                    'HttpVersion' => 1,
+                    'CacheBehaviors' => 1,
+                    'Aliases' => 1,
+                    'CustomErrorResponses' => 1,
+                    'Id' => 1,
+                    'Enabled' => 1,
+                    'Comment' => 1,
+                    'WebACLId' => 1,
+                    'ARN' => 1,
+                    'LastModifiedTime' => 1,
+                    'PriceClass' => 1,
+                    'DomainName' => 1,
+                    'Restrictions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,13 +161,13 @@ A summary of the information about a CloudFront distribution.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Aliases => L<Paws::CloudFront::Aliases>
+=head2 B<REQUIRED> Aliases => CloudFront_Aliases
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
 
-=head2 AliasICPRecordals => ArrayRef[L<Paws::CloudFront::AliasICPRecordal>]
+=head2 AliasICPRecordals => ArrayRef[CloudFront_AliasICPRecordal]
 
   AWS services in China customers must file for an Internet Content
 Provider (ICP) recordal if they want to serve content publicly on an
@@ -82,7 +188,7 @@ C<arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5>, where
 C<123456789012> is your AWS account ID.
 
 
-=head2 B<REQUIRED> CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
+=head2 B<REQUIRED> CacheBehaviors => CloudFront_CacheBehaviors
 
   A complex type that contains zero or more C<CacheBehavior> elements.
 
@@ -92,13 +198,13 @@ C<123456789012> is your AWS account ID.
   The comment originally specified when this distribution was created.
 
 
-=head2 B<REQUIRED> CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
+=head2 B<REQUIRED> CustomErrorResponses => CloudFront_CustomErrorResponses
 
   A complex type that contains zero or more C<CustomErrorResponses>
 elements.
 
 
-=head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
+=head2 B<REQUIRED> DefaultCacheBehavior => CloudFront_DefaultCacheBehavior
 
   A complex type that describes the default cache behavior if you don't
 specify a C<CacheBehavior> element or if files don't match any of the
@@ -142,13 +248,13 @@ for your distribution.
   The date and time the distribution was last modified.
 
 
-=head2 OriginGroups => L<Paws::CloudFront::OriginGroups>
+=head2 OriginGroups => CloudFront_OriginGroups
 
   A complex type that contains information about origin groups for this
 distribution.
 
 
-=head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
+=head2 B<REQUIRED> Origins => CloudFront_Origins
 
   A complex type that contains information about origins for this
 distribution.
@@ -160,7 +266,7 @@ distribution.
 streaming distribution.
 
 
-=head2 B<REQUIRED> Restrictions => L<Paws::CloudFront::Restrictions>
+=head2 B<REQUIRED> Restrictions => CloudFront_Restrictions
 
   A complex type that identifies ways in which you want to restrict
 distribution of your content.
@@ -173,7 +279,7 @@ the distribution's information is propagated to all CloudFront edge
 locations.
 
 
-=head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
+=head2 B<REQUIRED> ViewerCertificate => CloudFront_ViewerCertificate
 
   A complex type that specifies whether you want viewers to use HTTP or
 HTTPS to request your objects, whether you're using an alternate domain

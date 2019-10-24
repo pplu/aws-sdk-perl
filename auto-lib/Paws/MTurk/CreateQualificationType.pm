@@ -1,22 +1,70 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::CreateQualificationType;
-  use Moose;
-  has AnswerKey => (is => 'ro', isa => 'Str');
-  has AutoGranted => (is => 'ro', isa => 'Bool');
-  has AutoGrantedValue => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Keywords => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has QualificationTypeStatus => (is => 'ro', isa => 'Str', required => 1);
-  has RetryDelayInSeconds => (is => 'ro', isa => 'Int');
-  has Test => (is => 'ro', isa => 'Str');
-  has TestDurationInSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::MTurk::Types qw//;
+  has AnswerKey => (is => 'ro', isa => Str, predicate => 1);
+  has AutoGranted => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoGrantedValue => (is => 'ro', isa => Int, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Keywords => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QualificationTypeStatus => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RetryDelayInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Test => (is => 'ro', isa => Str, predicate => 1);
+  has TestDurationInSeconds => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateQualificationType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::CreateQualificationTypeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateQualificationType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::CreateQualificationTypeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetryDelayInSeconds' => {
+                                          'type' => 'Int'
+                                        },
+               'QualificationTypeStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'TestDurationInSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'AutoGranted' => {
+                                  'type' => 'Bool'
+                                },
+               'Keywords' => {
+                               'type' => 'Str'
+                             },
+               'AnswerKey' => {
+                                'type' => 'Str'
+                              },
+               'AutoGrantedValue' => {
+                                       'type' => 'Int'
+                                     },
+               'Test' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'QualificationTypeStatus' => 1,
+                    'Name' => 1,
+                    'Description' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

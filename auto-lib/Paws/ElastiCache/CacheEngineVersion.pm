@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheEngineVersion;
-  use Moose;
-  has CacheEngineDescription => (is => 'ro', isa => 'Str');
-  has CacheEngineVersionDescription => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheEngineDescription => (is => 'ro', isa => Str);
+  has CacheEngineVersionDescription => (is => 'ro', isa => Str);
+  has CacheParameterGroupFamily => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'CacheParameterGroupFamily' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheEngineVersionDescription' => {
+                                                    'type' => 'Str'
+                                                  },
+               'CacheEngineDescription' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

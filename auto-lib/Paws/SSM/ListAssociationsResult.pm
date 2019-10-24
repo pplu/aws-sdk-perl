@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListAssociationsResult;
-  use Moose;
-  has Associations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Association]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Association/;
+  has Associations => (is => 'ro', isa => ArrayRef[SSM_Association]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Associations' => {
+                                   'class' => 'Paws::SSM::Association',
+                                   'type' => 'ArrayRef[SSM_Association]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::ListAssociationsResult
 =head1 ATTRIBUTES
 
 
-=head2 Associations => ArrayRef[L<Paws::SSM::Association>]
+=head2 Associations => ArrayRef[SSM_Association]
 
 The associations.
 

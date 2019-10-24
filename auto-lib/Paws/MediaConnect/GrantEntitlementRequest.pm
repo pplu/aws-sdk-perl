@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::GrantEntitlementRequest;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Encryption/;
+  has Description => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has Name => (is => 'ro', isa => Str);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscribers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConnect::Encryption',
+                                 'type' => 'MediaConnect_Encryption'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Subscribers' => 'subscribers',
+                       'Encryption' => 'encryption',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Subscribers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +82,7 @@ AWS Elemental MediaConnect console and will not be seen by the
 subscriber or end user.
 
 
-=head2 Encryption => L<Paws::MediaConnect::Encryption>
+=head2 Encryption => MediaConnect_Encryption
 
   The type of encryption that will be used on the output that is
 associated with this entitlement.

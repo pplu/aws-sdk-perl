@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::ListTagsForResourceOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Tags => (is => 'ro', isa => 'Paws::CodeCommit::TagsMap', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_TagsMap/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => CodeCommit_TagsMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::CodeCommit::TagsMap',
+                           'type' => 'CodeCommit_TagsMap'
+                         }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ An enumeration token that allows the operation to batch the next
 results of the operation.
 
 
-=head2 Tags => L<Paws::CodeCommit::TagsMap>
+=head2 Tags => CodeCommit_TagsMap
 
 A list of tag key and value pairs associated with the specified
 resource.

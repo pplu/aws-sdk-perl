@@ -1,14 +1,35 @@
 
 package Paws::Chime::GetVoiceConnectorOrigination;
-  use Moose;
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetVoiceConnectorOrigination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}/origination');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::GetVoiceConnectorOriginationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetVoiceConnectorOrigination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}/origination');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::GetVoiceConnectorOriginationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  },
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

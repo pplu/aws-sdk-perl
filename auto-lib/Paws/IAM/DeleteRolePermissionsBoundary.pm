@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteRolePermissionsBoundary;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteRolePermissionsBoundary;
                'RoleName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

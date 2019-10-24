@@ -1,12 +1,49 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserType;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
-  has UserCreateDate => (is => 'ro', isa => 'Str');
-  has UserLastModifiedDate => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
-  has UserStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType CognitoIdp_MFAOptionType/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType]);
+  has Enabled => (is => 'ro', isa => Bool);
+  has MFAOptions => (is => 'ro', isa => ArrayRef[CognitoIdp_MFAOptionType]);
+  has UserCreateDate => (is => 'ro', isa => Str);
+  has UserLastModifiedDate => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+  has UserStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserStatus' => {
+                                 'type' => 'Str'
+                               },
+               'Attributes' => {
+                                 'class' => 'Paws::CognitoIdp::AttributeType',
+                                 'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'MFAOptions' => {
+                                 'class' => 'Paws::CognitoIdp::MFAOptionType',
+                                 'type' => 'ArrayRef[CognitoIdp_MFAOptionType]'
+                               },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'UserCreateDate' => {
+                                     'type' => 'Str'
+                                   },
+               'UserLastModifiedDate' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +79,7 @@ The user type.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 Attributes => ArrayRef[CognitoIdp_AttributeType]
 
   A container with information about the user type attributes.
 
@@ -52,7 +89,7 @@ The user type.
   Specifies whether the user is enabled.
 
 
-=head2 MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=head2 MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
   The MFA options for the user.
 

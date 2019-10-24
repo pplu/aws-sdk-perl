@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::StartSessionResponse;
-  use Moose;
-  has SessionId => (is => 'ro', isa => 'Str');
-  has StreamUrl => (is => 'ro', isa => 'Str');
-  has TokenValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has SessionId => (is => 'ro', isa => Str);
+  has StreamUrl => (is => 'ro', isa => Str);
+  has TokenValue => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamUrl' => {
+                                'type' => 'Str'
+                              },
+               'SessionId' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TokenValue' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::AnalyticsS3BucketDestination;
   use Moo;
   use Types::Standard qw/Str/;
@@ -22,7 +23,11 @@ package Paws::S3::AnalyticsS3BucketDestination;
                'Format' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Format' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListDocumentsResult;
-  use Moose;
-  has DocumentIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentIdentifier]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_DocumentIdentifier/;
+  has DocumentIdentifiers => (is => 'ro', isa => ArrayRef[SSM_DocumentIdentifier]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DocumentIdentifiers' => {
+                                          'class' => 'Paws::SSM::DocumentIdentifier',
+                                          'type' => 'ArrayRef[SSM_DocumentIdentifier]'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::ListDocumentsResult
 =head1 ATTRIBUTES
 
 
-=head2 DocumentIdentifiers => ArrayRef[L<Paws::SSM::DocumentIdentifier>]
+=head2 DocumentIdentifiers => ArrayRef[SSM_DocumentIdentifier]
 
 The names of the Systems Manager documents.
 

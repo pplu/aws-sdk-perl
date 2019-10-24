@@ -1,17 +1,53 @@
 
 package Paws::PersonalizeEvents::PutEvents;
-  use Moose;
-  has EventList => (is => 'ro', isa => 'ArrayRef[Paws::PersonalizeEvents::Event]', traits => ['NameInRequest'], request_name => 'eventList', required => 1);
-  has SessionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sessionId', required => 1);
-  has TrackingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trackingId', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PersonalizeEvents::Types qw/PersonalizeEvents_Event/;
+  has EventList => (is => 'ro', isa => ArrayRef[PersonalizeEvents_Event], required => 1, predicate => 1);
+  has SessionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TrackingId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/events');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEvents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/events');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrackingId' => {
+                                 'type' => 'Str'
+                               },
+               'SessionId' => {
+                                'type' => 'Str'
+                              },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'EventList' => {
+                                'class' => 'Paws::PersonalizeEvents::Event',
+                                'type' => 'ArrayRef[PersonalizeEvents_Event]'
+                              }
+             },
+  'NameInRequest' => {
+                       'TrackingId' => 'trackingId',
+                       'SessionId' => 'sessionId',
+                       'UserId' => 'userId',
+                       'EventList' => 'eventList'
+                     },
+  'IsRequired' => {
+                    'TrackingId' => 1,
+                    'SessionId' => 1,
+                    'EventList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventList => ArrayRef[L<Paws::PersonalizeEvents::Event>]
+=head2 B<REQUIRED> EventList => ArrayRef[PersonalizeEvents_Event]
 
 A list of event data from the session.
 

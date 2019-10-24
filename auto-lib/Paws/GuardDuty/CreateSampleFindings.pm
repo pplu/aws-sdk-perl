@@ -1,15 +1,42 @@
 
 package Paws::GuardDuty::CreateSampleFindings;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingTypes');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSampleFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings/create');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreateSampleFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSampleFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings/create');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreateSampleFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindingTypes' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'FindingTypes' => 'findingTypes'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

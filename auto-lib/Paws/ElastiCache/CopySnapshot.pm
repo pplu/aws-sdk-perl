@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CopySnapshot;
-  use Moose;
-  has SourceSnapshotName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetBucket => (is => 'ro', isa => 'Str');
-  has TargetSnapshotName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has SourceSnapshotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetBucket => (is => 'ro', isa => Str, predicate => 1);
+  has TargetSnapshotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CopySnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopySnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopySnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CopySnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopySnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetBucket' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceSnapshotName' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetSnapshotName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'SourceSnapshotName' => 1,
+                    'TargetSnapshotName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

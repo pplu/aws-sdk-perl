@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CloudTrail;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cloudtrail' }
   sub signing_name { 'cloudtrail' }
   sub version { '2013-11-01' }
   sub target_prefix { 'com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -222,7 +224,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =item ResourceId => Str
 
-=item [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]]
+=item [TagsList => ArrayRef[CloudTrail_Tag]]
 
 
 =back
@@ -427,7 +429,7 @@ Lists the tags for the trail in the current region.
 
 =item [EndTime => Str]
 
-=item [LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]]
+=item [LookupAttributes => ArrayRef[CloudTrail_LookupAttribute]]
 
 =item [MaxResults => Int]
 
@@ -500,7 +502,7 @@ events occurred.
 
 =over
 
-=item EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
+=item EventSelectors => ArrayRef[CloudTrail_EventSelector]
 
 =item TrailName => Str
 
@@ -570,7 +572,7 @@ in the I<AWS CloudTrail User Guide>.
 
 =item ResourceId => Str
 
-=item [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]]
+=item [TagsList => ArrayRef[CloudTrail_Tag]]
 
 
 =back
@@ -697,9 +699,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudTrail::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[CloudTrail_LookupAttribute], MaxResults => Int, NextToken => Str, StartTime => Str])
 
-=head2 LookupAllEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupAllEvents([EndTime => Str, LookupAttributes => ArrayRef[CloudTrail_LookupAttribute], MaxResults => Int, NextToken => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

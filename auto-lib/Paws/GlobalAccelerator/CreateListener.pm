@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GlobalAccelerator::CreateListener;
-  use Moose;
-  has AcceleratorArn => (is => 'ro', isa => 'Str', required => 1);
-  has ClientAffinity => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has PortRanges => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortRange]', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_PortRange/;
+  has AcceleratorArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientAffinity => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PortRanges => (is => 'ro', isa => ArrayRef[GlobalAccelerator_PortRange], required => 1, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateListener');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::CreateListenerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateListener');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GlobalAccelerator::CreateListenerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientAffinity' => {
+                                     'type' => 'Str'
+                                   },
+               'AcceleratorArn' => {
+                                     'type' => 'Str'
+                                   },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'PortRanges' => {
+                                 'class' => 'Paws::GlobalAccelerator::PortRange',
+                                 'type' => 'ArrayRef[GlobalAccelerator_PortRange]'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'AcceleratorArn' => 1,
+                    'IdempotencyToken' => 1,
+                    'PortRanges' => 1,
+                    'Protocol' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +131,7 @@ idempotencyE<mdash>that is, the uniquenessE<mdash>of the request.
 
 
 
-=head2 B<REQUIRED> PortRanges => ArrayRef[L<Paws::GlobalAccelerator::PortRange>]
+=head2 B<REQUIRED> PortRanges => ArrayRef[GlobalAccelerator_PortRange]
 
 The list of port ranges to support for connections from clients to your
 accelerator.

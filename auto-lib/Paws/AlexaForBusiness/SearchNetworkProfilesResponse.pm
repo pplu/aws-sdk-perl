@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::SearchNetworkProfilesResponse;
-  use Moose;
-  has NetworkProfiles => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::NetworkProfileData]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TotalCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_NetworkProfileData/;
+  has NetworkProfiles => (is => 'ro', isa => ArrayRef[AlexaForBusiness_NetworkProfileData]);
+  has NextToken => (is => 'ro', isa => Str);
+  has TotalCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkProfiles' => {
+                                      'class' => 'Paws::AlexaForBusiness::NetworkProfileData',
+                                      'type' => 'ArrayRef[AlexaForBusiness_NetworkProfileData]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::AlexaForBusiness::SearchNetworkProfilesResponse
 =head1 ATTRIBUTES
 
 
-=head2 NetworkProfiles => ArrayRef[L<Paws::AlexaForBusiness::NetworkProfileData>]
+=head2 NetworkProfiles => ArrayRef[AlexaForBusiness_NetworkProfileData]
 
 The network profiles that meet the specified set of filter criteria, in
 sort order. It is a list of NetworkProfileData objects.

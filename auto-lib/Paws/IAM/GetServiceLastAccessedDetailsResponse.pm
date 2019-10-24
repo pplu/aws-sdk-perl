@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetServiceLastAccessedDetailsResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str Bool ArrayRef/;
   use Paws::IAM::Types qw/IAM_ErrorDetails IAM_ServiceLastAccessed/;
   has Error => (is => 'ro', isa => IAM_ErrorDetails);

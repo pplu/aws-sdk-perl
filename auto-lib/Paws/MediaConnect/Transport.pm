@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Transport;
-  use Moose;
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
-  has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
-  has StreamId => (is => 'ro', isa => 'Str', request_name => 'streamId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConnect::Types qw//;
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MaxLatency => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has SmoothingLatency => (is => 'ro', isa => Int);
+  has StreamId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'SmoothingLatency' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StreamId' => 'streamId',
+                       'MaxLatency' => 'maxLatency',
+                       'MaxBitrate' => 'maxBitrate',
+                       'Protocol' => 'protocol',
+                       'SmoothingLatency' => 'smoothingLatency'
+                     },
+  'IsRequired' => {
+                    'Protocol' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

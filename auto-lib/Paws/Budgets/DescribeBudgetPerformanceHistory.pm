@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::DescribeBudgetPerformanceHistory;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Budgets::Types qw/Budgets_TimePeriod/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BudgetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TimePeriod => (is => 'ro', isa => Budgets_TimePeriod, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBudgetPerformanceHistory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::DescribeBudgetPerformanceHistoryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBudgetPerformanceHistory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::DescribeBudgetPerformanceHistoryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               },
+               'TimePeriod' => {
+                                 'class' => 'Paws::Budgets::TimePeriod',
+                                 'type' => 'Budgets_TimePeriod'
+                               }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'BudgetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +113,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bud
 
 
 
-=head2 TimePeriod => L<Paws::Budgets::TimePeriod>
+=head2 TimePeriod => Budgets_TimePeriod
 
 Retrieves how often the budget went into an C<ALARM> state for the
 specified time period.

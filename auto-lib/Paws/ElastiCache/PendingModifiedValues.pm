@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::PendingModifiedValues;
-  use Moose;
-  has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NumCacheNodes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheNodeIdsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CacheNodeType => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has NumCacheNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumCacheNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'CacheNodeIdsToRemove' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'CacheNodeIdsToRemove' => 'CacheNodeId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

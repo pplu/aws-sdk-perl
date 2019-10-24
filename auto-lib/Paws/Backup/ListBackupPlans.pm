@@ -1,16 +1,42 @@
 
 package Paws::Backup::ListBackupPlans;
-  use Moose;
-  has IncludeDeleted => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeDeleted');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Backup::Types qw//;
+  has IncludeDeleted => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBackupPlans');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup/plans/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::ListBackupPlansOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBackupPlans');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup/plans/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::ListBackupPlansOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'IncludeDeleted' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'IncludeDeleted' => 'includeDeleted'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

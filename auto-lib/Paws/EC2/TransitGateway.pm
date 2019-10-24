@@ -10,7 +10,7 @@ package Paws::EC2::TransitGateway;
   has TransitGatewayArn => (is => 'ro', isa => Str);
   has TransitGatewayId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CreationTime' => {
@@ -52,8 +52,8 @@ package Paws::EC2::TransitGateway;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

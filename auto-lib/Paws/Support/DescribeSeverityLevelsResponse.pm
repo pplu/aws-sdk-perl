@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::DescribeSeverityLevelsResponse;
-  use Moose;
-  has SeverityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]', traits => ['NameInRequest'], request_name => 'severityLevels' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Support::Types qw/Support_SeverityLevel/;
+  has SeverityLevels => (is => 'ro', isa => ArrayRef[Support_SeverityLevel]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SeverityLevels' => {
+                                     'class' => 'Paws::Support::SeverityLevel',
+                                     'type' => 'ArrayRef[Support_SeverityLevel]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SeverityLevels' => 'severityLevels'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Support::DescribeSeverityLevelsResponse
 =head1 ATTRIBUTES
 
 
-=head2 SeverityLevels => ArrayRef[L<Paws::Support::SeverityLevel>]
+=head2 SeverityLevels => ArrayRef[Support_SeverityLevel]
 
 The available severity levels for the support case. Available severity
 levels are defined by your service level agreement with AWS.

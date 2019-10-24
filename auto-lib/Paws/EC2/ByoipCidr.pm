@@ -6,7 +6,7 @@ package Paws::EC2::ByoipCidr;
   has State => (is => 'ro', isa => Str);
   has StatusMessage => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Cidr' => {
@@ -30,8 +30,8 @@ package Paws::EC2::ByoipCidr;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteServiceLinkedRole;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteServiceLinkedRole;
                'RoleName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -13,7 +13,7 @@ package Paws::EC2::ImportInstanceLaunchSpecification;
   has SubnetId => (is => 'ro', isa => Str);
   has UserData => (is => 'ro', isa => EC2_UserData);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceType' => {
@@ -67,8 +67,8 @@ package Paws::EC2::ImportInstanceLaunchSpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

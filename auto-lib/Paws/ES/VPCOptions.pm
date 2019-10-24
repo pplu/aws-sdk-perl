@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::VPCOptions;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;

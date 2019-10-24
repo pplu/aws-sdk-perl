@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::PutInvitationConfiguration;
-  use Moose;
-  has ContactEmail => (is => 'ro', isa => 'Str');
-  has OrganizationName => (is => 'ro', isa => 'Str', required => 1);
-  has PrivateSkillIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has ContactEmail => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PrivateSkillIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutInvitationConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::PutInvitationConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutInvitationConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::PutInvitationConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateSkillIds' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'OrganizationName' => {
+                                       'type' => 'Str'
+                                     },
+               'ContactEmail' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'OrganizationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

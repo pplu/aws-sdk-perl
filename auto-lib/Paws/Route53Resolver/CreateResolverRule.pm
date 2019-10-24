@@ -1,19 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::CreateResolverRule;
-  use Moose;
-  has CreatorRequestId => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has ResolverEndpointId => (is => 'ro', isa => 'Str');
-  has RuleType => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::Tag]');
-  has TargetIps => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::TargetAddress]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_Tag Route53Resolver_TargetAddress/;
+  has CreatorRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ResolverEndpointId => (is => 'ro', isa => Str, predicate => 1);
+  has RuleType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Route53Resolver_Tag], predicate => 1);
+  has TargetIps => (is => 'ro', isa => ArrayRef[Route53Resolver_TargetAddress], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResolverRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::CreateResolverRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResolverRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::CreateResolverRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResolverEndpointId' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetIps' => {
+                                'class' => 'Paws::Route53Resolver::TargetAddress',
+                                'type' => 'ArrayRef[Route53Resolver_TargetAddress]'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Route53Resolver::Tag',
+                           'type' => 'ArrayRef[Route53Resolver_Tag]'
+                         },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'RuleType' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'CreatorRequestId' => 1,
+                    'RuleType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,14 +146,14 @@ Specify C<FORWARD>. Other resolver rule types aren't supported.
 
 Valid values are: C<"FORWARD">, C<"SYSTEM">, C<"RECURSIVE">
 
-=head2 Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]
+=head2 Tags => ArrayRef[Route53Resolver_Tag]
 
 A list of the tag keys and values that you want to associate with the
 endpoint.
 
 
 
-=head2 TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]
+=head2 TargetIps => ArrayRef[Route53Resolver_TargetAddress]
 
 The IPs that you want Resolver to forward DNS queries to. You can
 specify only IPv4 addresses. Separate IP addresses with a comma.

@@ -1,18 +1,92 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::InputTemplate;
-  use Moose;
-  has AudioSelectorGroups => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelectorGroup', request_name => 'audioSelectorGroups', traits => ['NameInRequest']);
-  has AudioSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfAudioSelector', request_name => 'audioSelectors', traits => ['NameInRequest']);
-  has CaptionSelectors => (is => 'ro', isa => 'Paws::MediaConvert::__mapOfCaptionSelector', request_name => 'captionSelectors', traits => ['NameInRequest']);
-  has DeblockFilter => (is => 'ro', isa => 'Str', request_name => 'deblockFilter', traits => ['NameInRequest']);
-  has DenoiseFilter => (is => 'ro', isa => 'Str', request_name => 'denoiseFilter', traits => ['NameInRequest']);
-  has FilterEnable => (is => 'ro', isa => 'Str', request_name => 'filterEnable', traits => ['NameInRequest']);
-  has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
-  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
-  has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
-  has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
-  has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
-  has TimecodeSource => (is => 'ro', isa => 'Str', request_name => 'timecodeSource', traits => ['NameInRequest']);
-  has VideoSelector => (is => 'ro', isa => 'Paws::MediaConvert::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_InputClipping MediaConvert_VideoSelector MediaConvert___mapOfCaptionSelector MediaConvert___mapOfAudioSelectorGroup MediaConvert_ImageInserter MediaConvert___mapOfAudioSelector/;
+  has AudioSelectorGroups => (is => 'ro', isa => MediaConvert___mapOfAudioSelectorGroup);
+  has AudioSelectors => (is => 'ro', isa => MediaConvert___mapOfAudioSelector);
+  has CaptionSelectors => (is => 'ro', isa => MediaConvert___mapOfCaptionSelector);
+  has DeblockFilter => (is => 'ro', isa => Str);
+  has DenoiseFilter => (is => 'ro', isa => Str);
+  has FilterEnable => (is => 'ro', isa => Str);
+  has FilterStrength => (is => 'ro', isa => Int);
+  has ImageInserter => (is => 'ro', isa => MediaConvert_ImageInserter);
+  has InputClippings => (is => 'ro', isa => ArrayRef[MediaConvert_InputClipping]);
+  has ProgramNumber => (is => 'ro', isa => Int);
+  has PsiControl => (is => 'ro', isa => Str);
+  has TimecodeSource => (is => 'ro', isa => Str);
+  has VideoSelector => (is => 'ro', isa => MediaConvert_VideoSelector);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PsiControl' => {
+                                 'type' => 'Str'
+                               },
+               'InputClippings' => {
+                                     'class' => 'Paws::MediaConvert::InputClipping',
+                                     'type' => 'ArrayRef[MediaConvert_InputClipping]'
+                                   },
+               'ImageInserter' => {
+                                    'class' => 'Paws::MediaConvert::ImageInserter',
+                                    'type' => 'MediaConvert_ImageInserter'
+                                  },
+               'AudioSelectorGroups' => {
+                                          'class' => 'Paws::MediaConvert::__mapOfAudioSelectorGroup',
+                                          'type' => 'MediaConvert___mapOfAudioSelectorGroup'
+                                        },
+               'VideoSelector' => {
+                                    'class' => 'Paws::MediaConvert::VideoSelector',
+                                    'type' => 'MediaConvert_VideoSelector'
+                                  },
+               'TimecodeSource' => {
+                                     'type' => 'Str'
+                                   },
+               'DenoiseFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'AudioSelectors' => {
+                                     'class' => 'Paws::MediaConvert::__mapOfAudioSelector',
+                                     'type' => 'MediaConvert___mapOfAudioSelector'
+                                   },
+               'DeblockFilter' => {
+                                    'type' => 'Str'
+                                  },
+               'FilterEnable' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgramNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'CaptionSelectors' => {
+                                       'class' => 'Paws::MediaConvert::__mapOfCaptionSelector',
+                                       'type' => 'MediaConvert___mapOfCaptionSelector'
+                                     },
+               'FilterStrength' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'PsiControl' => 'psiControl',
+                       'InputClippings' => 'inputClippings',
+                       'ImageInserter' => 'imageInserter',
+                       'AudioSelectorGroups' => 'audioSelectorGroups',
+                       'VideoSelector' => 'videoSelector',
+                       'TimecodeSource' => 'timecodeSource',
+                       'DenoiseFilter' => 'denoiseFilter',
+                       'AudioSelectors' => 'audioSelectors',
+                       'DeblockFilter' => 'deblockFilter',
+                       'FilterEnable' => 'filterEnable',
+                       'ProgramNumber' => 'programNumber',
+                       'CaptionSelectors' => 'captionSelectors',
+                       'FilterStrength' => 'filterStrength'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,21 +122,21 @@ Specified video input in a template.
 =head1 ATTRIBUTES
 
 
-=head2 AudioSelectorGroups => L<Paws::MediaConvert::__mapOfAudioSelectorGroup>
+=head2 AudioSelectorGroups => MediaConvert___mapOfAudioSelectorGroup
 
   Specifies set of audio selectors within an input to combine. An input
 may have multiple audio selector groups. See "Audio Selector
 Group":#inputs-audio_selector_group for more information.
 
 
-=head2 AudioSelectors => L<Paws::MediaConvert::__mapOfAudioSelector>
+=head2 AudioSelectors => MediaConvert___mapOfAudioSelector
 
   Use Audio selectors (AudioSelectors) to specify a track or set of
 tracks from the input that you will use in your outputs. You can use
 mutiple Audio selectors per input.
 
 
-=head2 CaptionSelectors => L<Paws::MediaConvert::__mapOfCaptionSelector>
+=head2 CaptionSelectors => MediaConvert___mapOfCaptionSelector
 
   Use Captions selectors (CaptionSelectors) to specify the captions data
 from the input that you will use in your outputs. You can use mutiple
@@ -102,14 +176,14 @@ filter settings (Deblock and Denoise). The range is -5 to 5. Default is
 0.
 
 
-=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+=head2 ImageInserter => MediaConvert_ImageInserter
 
   Enable the image inserter feature to include a graphic overlay on your
 video. Enable or disable this feature for each input individually. This
 setting is disabled by default.
 
 
-=head2 InputClippings => ArrayRef[L<Paws::MediaConvert::InputClipping>]
+=head2 InputClippings => ArrayRef[MediaConvert_InputClipping]
 
   (InputClippings) contains sets of start and end times that together
 specify a portion of the input to be used in the outputs. If you
@@ -148,7 +222,7 @@ HH:MM:SS;FF, where FF is the frame number. Only set this to EMBEDDED if
 your source video has embedded timecodes.
 
 
-=head2 VideoSelector => L<Paws::MediaConvert::VideoSelector>
+=head2 VideoSelector => MediaConvert_VideoSelector
 
   Selector for video.
 

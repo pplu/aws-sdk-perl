@@ -1,10 +1,54 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::PlacementDescription;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementAttributeMap', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest'], required => 1);
-  has PlacementName => (is => 'ro', isa => 'Str', request_name => 'placementName', traits => ['NameInRequest'], required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest'], required => 1);
-  has UpdatedDate => (is => 'ro', isa => 'Str', request_name => 'updatedDate', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementAttributeMap/;
+  has Attributes => (is => 'ro', isa => IoT1ClickProjects_PlacementAttributeMap, required => 1);
+  has CreatedDate => (is => 'ro', isa => Str, required => 1);
+  has PlacementName => (is => 'ro', isa => Str, required => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1);
+  has UpdatedDate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlacementName' => {
+                                    'type' => 'Str'
+                                  },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT1ClickProjects::PlacementAttributeMap',
+                                 'type' => 'IoT1ClickProjects_PlacementAttributeMap'
+                               },
+               'UpdatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PlacementName' => 'placementName',
+                       'CreatedDate' => 'createdDate',
+                       'Attributes' => 'attributes',
+                       'UpdatedDate' => 'updatedDate',
+                       'ProjectName' => 'projectName'
+                     },
+  'IsRequired' => {
+                    'PlacementName' => 1,
+                    'CreatedDate' => 1,
+                    'Attributes' => 1,
+                    'UpdatedDate' => 1,
+                    'ProjectName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +84,7 @@ An object describing a project's placement.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::IoT1ClickProjects::PlacementAttributeMap>
+=head2 B<REQUIRED> Attributes => IoT1ClickProjects_PlacementAttributeMap
 
   The user-defined attributes associated with the placement.
 

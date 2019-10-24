@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DAX::ParameterGroupStatus;
-  use Moose;
-  has NodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DAX::Types qw//;
+  has NodeIdsToReboot => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+  has ParameterGroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'NodeIdsToReboot' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

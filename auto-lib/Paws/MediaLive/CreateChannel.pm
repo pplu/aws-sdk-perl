@@ -1,24 +1,87 @@
 
 package Paws::MediaLive::CreateChannel;
-  use Moose;
-  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
-  has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
-  has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
-  has InputSpecification => (is => 'ro', isa => 'Paws::MediaLive::InputSpecification', traits => ['NameInRequest'], request_name => 'inputSpecification');
-  has LogLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logLevel');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
-  has Reserved => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reserved');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputAttachment MediaLive_EncoderSettings MediaLive_OutputDestination MediaLive_Tags MediaLive_InputSpecification/;
+  has ChannelClass => (is => 'ro', isa => Str, predicate => 1);
+  has Destinations => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestination], predicate => 1);
+  has EncoderSettings => (is => 'ro', isa => MediaLive_EncoderSettings, predicate => 1);
+  has InputAttachments => (is => 'ro', isa => ArrayRef[MediaLive_InputAttachment], predicate => 1);
+  has InputSpecification => (is => 'ro', isa => MediaLive_InputSpecification, predicate => 1);
+  has LogLevel => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RequestId => (is => 'ro', isa => Str, predicate => 1);
+  has Reserved => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/channels');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::CreateChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/channels');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::CreateChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'EncoderSettings' => {
+                                      'class' => 'Paws::MediaLive::EncoderSettings',
+                                      'type' => 'MediaLive_EncoderSettings'
+                                    },
+               'Reserved' => {
+                               'type' => 'Str'
+                             },
+               'InputSpecification' => {
+                                         'class' => 'Paws::MediaLive::InputSpecification',
+                                         'type' => 'MediaLive_InputSpecification'
+                                       },
+               'LogLevel' => {
+                               'type' => 'Str'
+                             },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ChannelClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Destinations' => {
+                                   'class' => 'Paws::MediaLive::OutputDestination',
+                                   'type' => 'ArrayRef[MediaLive_OutputDestination]'
+                                 },
+               'InputAttachments' => {
+                                       'class' => 'Paws::MediaLive::InputAttachment',
+                                       'type' => 'ArrayRef[MediaLive_InputAttachment]'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RequestId' => 'requestId',
+                       'EncoderSettings' => 'encoderSettings',
+                       'Reserved' => 'reserved',
+                       'InputSpecification' => 'inputSpecification',
+                       'LogLevel' => 'logLevel',
+                       'RoleArn' => 'roleArn',
+                       'ChannelClass' => 'channelClass',
+                       'Destinations' => 'destinations',
+                       'InputAttachments' => 'inputAttachments',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -858,7 +921,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191
+                    Pid => 1,    # max: 8191; OPTIONAL
 
                   },    # OPTIONAL
                 },    # OPTIONAL
@@ -919,7 +982,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191
+                  Pid => 1,                  # max: 8191; OPTIONAL
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536
@@ -974,25 +1037,25 @@ or SINGLE_PIPELINE for a channel with one pipeline.
 
 Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
 
-=head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
+=head2 Destinations => ArrayRef[MediaLive_OutputDestination]
 
 
 
 
 
-=head2 EncoderSettings => L<Paws::MediaLive::EncoderSettings>
+=head2 EncoderSettings => MediaLive_EncoderSettings
 
 
 
 
 
-=head2 InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]
+=head2 InputAttachments => ArrayRef[MediaLive_InputAttachment]
 
 List of input attachments for channel.
 
 
 
-=head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
+=head2 InputSpecification => MediaLive_InputSpecification
 
 Specification of input for this channel (max. bitrate, resolution,
 codec, etc.)
@@ -1031,7 +1094,7 @@ running the Channel.
 
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs.
 

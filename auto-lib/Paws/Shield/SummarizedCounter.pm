@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Shield::SummarizedCounter;
-  use Moose;
-  has Average => (is => 'ro', isa => 'Num');
-  has Max => (is => 'ro', isa => 'Num');
-  has N => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has Sum => (is => 'ro', isa => 'Num');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::Shield::Types qw//;
+  has Average => (is => 'ro', isa => Num);
+  has Max => (is => 'ro', isa => Num);
+  has N => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Sum => (is => 'ro', isa => Num);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'Max' => {
+                          'type' => 'Num'
+                        },
+               'Average' => {
+                              'type' => 'Num'
+                            },
+               'N' => {
+                        'type' => 'Int'
+                      },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

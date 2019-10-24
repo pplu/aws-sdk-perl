@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::CreateSegment;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has WriteSegmentRequest => (is => 'ro', isa => 'Paws::Pinpoint::WriteSegmentRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_WriteSegmentRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WriteSegmentRequest => (is => 'ro', isa => Pinpoint_WriteSegmentRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'WriteSegmentRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSegment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::SegmentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSegment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/segments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::SegmentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'WriteSegmentRequest' => {
+                                          'class' => 'Paws::Pinpoint::WriteSegmentRequest',
+                                          'type' => 'Pinpoint_WriteSegmentRequest'
+                                        }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'WriteSegmentRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -242,7 +268,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> WriteSegmentRequest => L<Paws::Pinpoint::WriteSegmentRequest>
+=head2 B<REQUIRED> WriteSegmentRequest => Pinpoint_WriteSegmentRequest
 
 
 

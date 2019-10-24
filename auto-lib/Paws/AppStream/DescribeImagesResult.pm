@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AppStream::DescribeImagesResult;
-  use Moose;
-  has Images => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::Image]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_Image/;
+  has Images => (is => 'ro', isa => ArrayRef[AppStream_Image]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Images' => {
+                             'class' => 'Paws::AppStream::Image',
+                             'type' => 'ArrayRef[AppStream_Image]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::AppStream::DescribeImagesResult
 =head1 ATTRIBUTES
 
 
-=head2 Images => ArrayRef[L<Paws::AppStream::Image>]
+=head2 Images => ArrayRef[AppStream_Image]
 
 Information about the images.
 

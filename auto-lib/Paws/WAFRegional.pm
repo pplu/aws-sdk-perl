@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::WAFRegional;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'waf-regional' }
   sub signing_name { 'waf-regional' }
   sub version { '2016-11-28' }
   sub target_prefix { 'AWSWAF_Regional_20161128' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -655,7 +657,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RateLimit => Int
 
-=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+=item [Tags => ArrayRef[WAFRegional_Tag]]
 
 
 =back
@@ -884,7 +886,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+=item [Tags => ArrayRef[WAFRegional_Tag]]
 
 
 =back
@@ -967,7 +969,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+=item [Tags => ArrayRef[WAFRegional_Tag]]
 
 
 =back
@@ -1116,13 +1118,13 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item ChangeToken => Str
 
-=item DefaultAction => L<Paws::WAFRegional::WafAction>
+=item DefaultAction => WAFRegional_WafAction
 
 =item MetricName => Str
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAFRegional::Tag>]]
+=item [Tags => ArrayRef[WAFRegional_Tag]]
 
 
 =back
@@ -2050,7 +2052,7 @@ To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 
 =item RuleId => Str
 
-=item TimeWindow => L<Paws::WAFRegional::TimeWindow>
+=item TimeWindow => WAFRegional_TimeWindow
 
 =item WebAclId => Str
 
@@ -2471,7 +2473,7 @@ Returns an array of XssMatchSet objects.
 
 =over
 
-=item LoggingConfiguration => L<Paws::WAFRegional::LoggingConfiguration>
+=item LoggingConfiguration => WAFRegional_LoggingConfiguration
 
 
 =back
@@ -2587,7 +2589,7 @@ below.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+=item Tags => ArrayRef[WAFRegional_Tag]
 
 
 =back
@@ -2625,7 +2627,7 @@ Returns: a L<Paws::WAFRegional::UntagResourceResponse> instance
 
 =item ChangeToken => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::ByteMatchSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_ByteMatchSetUpdate]
 
 
 =back
@@ -2706,7 +2708,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item GeoMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::GeoMatchSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_GeoMatchSetUpdate]
 
 
 =back
@@ -2775,7 +2777,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item IPSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::IPSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_IPSetUpdate]
 
 
 =back
@@ -2884,7 +2886,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>]
+=item Updates => ArrayRef[WAFRegional_RuleUpdate]
 
 
 =back
@@ -2962,7 +2964,7 @@ requests to your login page without affecting the rest of your site.
 
 =item RegexMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::RegexMatchSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_RegexMatchSetUpdate]
 
 
 =back
@@ -3042,7 +3044,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RegexPatternSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::RegexPatternSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_RegexPatternSetUpdate]
 
 
 =back
@@ -3126,7 +3128,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>]
+=item Updates => ArrayRef[WAFRegional_RuleUpdate]
 
 
 =back
@@ -3206,7 +3208,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleGroupId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::RuleGroupUpdate>]
+=item Updates => ArrayRef[WAFRegional_RuleGroupUpdate]
 
 
 =back
@@ -3263,7 +3265,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item SizeConstraintSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_SizeConstraintSetUpdate]
 
 
 =back
@@ -3354,7 +3356,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item SqlInjectionMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_SqlInjectionMatchSetUpdate]
 
 
 =back
@@ -3432,9 +3434,9 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item WebACLId => Str
 
-=item [DefaultAction => L<Paws::WAFRegional::WafAction>]
+=item [DefaultAction => WAFRegional_WafAction]
 
-=item [Updates => ArrayRef[L<Paws::WAFRegional::WebACLUpdate>]]
+=item [Updates => ArrayRef[WAFRegional_WebACLUpdate]]
 
 
 =back
@@ -3539,7 +3541,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item ChangeToken => Str
 
-=item Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>]
+=item Updates => ArrayRef[WAFRegional_XssMatchSetUpdate]
 
 =item XssMatchSetId => Str
 

@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::KinesisVideoMedia::StartSelector;
-  use Moose;
-  has AfterFragmentNumber => (is => 'ro', isa => 'Str');
-  has ContinuationToken => (is => 'ro', isa => 'Str');
-  has StartSelectorType => (is => 'ro', isa => 'Str', required => 1);
-  has StartTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoMedia::Types qw//;
+  has AfterFragmentNumber => (is => 'ro', isa => Str);
+  has ContinuationToken => (is => 'ro', isa => Str);
+  has StartSelectorType => (is => 'ro', isa => Str, required => 1);
+  has StartTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'StartSelectorType' => {
+                                        'type' => 'Str'
+                                      },
+               'ContinuationToken' => {
+                                        'type' => 'Str'
+                                      },
+               'AfterFragmentNumber' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'StartSelectorType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

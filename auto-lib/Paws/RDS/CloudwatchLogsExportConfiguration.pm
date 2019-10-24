@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDS::CloudwatchLogsExportConfiguration;
-  use Moose;
-  has DisableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::RDS::Types qw//;
+  has DisableLogTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EnableLogTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisableLogTypes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'EnableLogTypes' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

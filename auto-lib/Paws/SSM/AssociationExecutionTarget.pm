@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationExecutionTarget;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has DetailedStatus => (is => 'ro', isa => 'Str');
-  has ExecutionId => (is => 'ro', isa => 'Str');
-  has LastExecutionDate => (is => 'ro', isa => 'Str');
-  has OutputSource => (is => 'ro', isa => 'Paws::SSM::OutputSource');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_OutputSource/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has DetailedStatus => (is => 'ro', isa => Str);
+  has ExecutionId => (is => 'ro', isa => Str);
+  has LastExecutionDate => (is => 'ro', isa => Str);
+  has OutputSource => (is => 'ro', isa => SSM_OutputSource);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionId' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'OutputSource' => {
+                                   'class' => 'Paws::SSM::OutputSource',
+                                   'type' => 'SSM_OutputSource'
+                                 },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'DetailedStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'LastExecutionDate' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +111,7 @@ Includes information about the specified association execution.
   The date of the last execution.
 
 
-=head2 OutputSource => L<Paws::SSM::OutputSource>
+=head2 OutputSource => SSM_OutputSource
 
   The location where the association details are saved.
 

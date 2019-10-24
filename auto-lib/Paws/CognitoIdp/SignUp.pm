@@ -1,20 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::SignUp;
-  use Moose;
-  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has SecretHash => (is => 'ro', isa => 'Str');
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has ValidationData => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserContextDataType CognitoIdp_AttributeType CognitoIdp_AnalyticsMetadataType/;
+  has AnalyticsMetadata => (is => 'ro', isa => CognitoIdp_AnalyticsMetadataType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecretHash => (is => 'ro', isa => Str, predicate => 1);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
+  has UserContextData => (is => 'ro', isa => CognitoIdp_UserContextDataType, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidationData => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SignUp');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::SignUpResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SignUp');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::SignUpResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretHash' => {
+                                 'type' => 'Str'
+                               },
+               'AnalyticsMetadata' => {
+                                        'class' => 'Paws::CognitoIdp::AnalyticsMetadataType',
+                                        'type' => 'CognitoIdp_AnalyticsMetadataType'
+                                      },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'UserAttributes' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'UserContextData' => {
+                                      'class' => 'Paws::CognitoIdp::UserContextDataType',
+                                      'type' => 'CognitoIdp_UserContextDataType'
+                                    },
+               'ValidationData' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   }
+             },
+  'IsRequired' => {
+                    'Password' => 1,
+                    'ClientId' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +120,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+=head2 AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType
 
 The Amazon Pinpoint analytics metadata for collecting metrics for
 C<SignUp> calls.
@@ -101,7 +147,7 @@ message.
 
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs representing user attributes.
 
@@ -110,7 +156,7 @@ attribute name.
 
 
 
-=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+=head2 UserContextData => CognitoIdp_UserContextDataType
 
 Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon
@@ -124,7 +170,7 @@ The user name of the user you wish to register.
 
 
 
-=head2 ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 ValidationData => ArrayRef[CognitoIdp_AttributeType]
 
 The validation data in the request to register a user.
 

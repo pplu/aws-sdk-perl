@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::SendMessageBatchRequestEntry;
   use Moo;
   use Types::Standard qw/Int Str/;
@@ -34,7 +35,11 @@ package Paws::SQS::SendMessageBatchRequestEntry;
              },
   'NameInRequest' => {
                        'MessageAttributes' => 'MessageAttribute'
-                     }
+                     },
+  'IsRequired' => {
+                    'MessageBody' => 1,
+                    'Id' => 1
+                  }
 }
 ;
     return $Params_map;

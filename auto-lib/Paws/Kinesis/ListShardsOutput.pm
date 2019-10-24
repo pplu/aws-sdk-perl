@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::ListShardsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Shards => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Shard]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_Shard/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Shards => (is => 'ro', isa => ArrayRef[Kinesis_Shard]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Shards' => {
+                             'class' => 'Paws::Kinesis::Shard',
+                             'type' => 'ArrayRef[Kinesis_Shard]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -32,7 +54,7 @@ seconds to use that value. If you specify an expired token in a call to
 C<ListShards>, you get C<ExpiredNextTokenException>.
 
 
-=head2 Shards => ArrayRef[L<Paws::Kinesis::Shard>]
+=head2 Shards => ArrayRef[Kinesis_Shard]
 
 An array of JSON objects. Each object represents one shard and
 specifies the IDs of the shard, the shard's parent, and the shard

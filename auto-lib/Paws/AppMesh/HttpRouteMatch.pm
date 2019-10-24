@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::AppMesh::HttpRouteMatch;
-  use Moose;
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Prefix' => 'prefix'
+                     },
+  'IsRequired' => {
+                    'Prefix' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

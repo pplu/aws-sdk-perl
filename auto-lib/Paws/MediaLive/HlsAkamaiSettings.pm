@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsAkamaiSettings;
-  use Moose;
-  has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has FilecacheDuration => (is => 'ro', isa => 'Int', request_name => 'filecacheDuration', traits => ['NameInRequest']);
-  has HttpTransferMode => (is => 'ro', isa => 'Str', request_name => 'httpTransferMode', traits => ['NameInRequest']);
-  has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
-  has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
-  has Salt => (is => 'ro', isa => 'Str', request_name => 'salt', traits => ['NameInRequest']);
-  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has ConnectionRetryInterval => (is => 'ro', isa => Int);
+  has FilecacheDuration => (is => 'ro', isa => Int);
+  has HttpTransferMode => (is => 'ro', isa => Str);
+  has NumRetries => (is => 'ro', isa => Int);
+  has RestartDelay => (is => 'ro', isa => Int);
+  has Salt => (is => 'ro', isa => Str);
+  has Token => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilecacheDuration' => {
+                                        'type' => 'Int'
+                                      },
+               'ConnectionRetryInterval' => {
+                                              'type' => 'Int'
+                                            },
+               'HttpTransferMode' => {
+                                       'type' => 'Str'
+                                     },
+               'RestartDelay' => {
+                                   'type' => 'Int'
+                                 },
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'NumRetries' => {
+                                 'type' => 'Int'
+                               },
+               'Salt' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'FilecacheDuration' => 'filecacheDuration',
+                       'ConnectionRetryInterval' => 'connectionRetryInterval',
+                       'HttpTransferMode' => 'httpTransferMode',
+                       'RestartDelay' => 'restartDelay',
+                       'Token' => 'token',
+                       'NumRetries' => 'numRetries',
+                       'Salt' => 'salt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

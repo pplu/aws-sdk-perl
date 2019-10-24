@@ -1,14 +1,68 @@
+# Generated from default/object.tt
 package Paws::MQ::Configuration;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw/MQ___mapOf__string MQ_ConfigurationRevision/;
+  has Arn => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EngineType => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LatestRevision => (is => 'ro', isa => MQ_ConfigurationRevision);
+  has Name => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MQ___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'EngineType' => {
+                                 'type' => 'Str'
+                               },
+               'LatestRevision' => {
+                                     'class' => 'Paws::MQ::ConfigurationRevision',
+                                     'type' => 'MQ_ConfigurationRevision'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::MQ::__mapOf__string',
+                           'type' => 'MQ___mapOf__string'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'Id' => 'id',
+                       'EngineType' => 'engineType',
+                       'LatestRevision' => 'latestRevision',
+                       'Arn' => 'arn',
+                       'Created' => 'created',
+                       'Tags' => 'tags',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +131,7 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
   Required. The unique ID that Amazon MQ generates for the configuration.
 
 
-=head2 LatestRevision => L<Paws::MQ::ConfigurationRevision>
+=head2 LatestRevision => MQ_ConfigurationRevision
 
   Required. The latest revision of the configuration.
 
@@ -89,7 +143,7 @@ alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
 
 
-=head2 Tags => L<Paws::MQ::__mapOf__string>
+=head2 Tags => MQ___mapOf__string
 
   The list of all tags associated with this configuration.
 

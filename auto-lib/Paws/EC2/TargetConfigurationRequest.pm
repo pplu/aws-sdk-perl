@@ -4,7 +4,7 @@ package Paws::EC2::TargetConfigurationRequest;
   has InstanceCount => (is => 'ro', isa => Int);
   has OfferingId => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OfferingId' => {
@@ -13,11 +13,14 @@ package Paws::EC2::TargetConfigurationRequest;
                'InstanceCount' => {
                                     'type' => 'Int'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'OfferingId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

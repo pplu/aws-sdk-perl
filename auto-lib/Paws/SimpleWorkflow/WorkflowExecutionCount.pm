@@ -1,10 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::WorkflowExecutionCount;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' , required => 1);
-  has Truncated => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'truncated' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Truncated' => 'truncated',
+                       'Count' => 'count'
+                     },
+  'IsRequired' => {
+                    'Count' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

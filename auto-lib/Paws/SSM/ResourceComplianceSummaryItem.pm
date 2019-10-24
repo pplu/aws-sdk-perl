@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceComplianceSummaryItem;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has CompliantSummary => (is => 'ro', isa => 'Paws::SSM::CompliantSummary');
-  has ExecutionSummary => (is => 'ro', isa => 'Paws::SSM::ComplianceExecutionSummary');
-  has NonCompliantSummary => (is => 'ro', isa => 'Paws::SSM::NonCompliantSummary');
-  has OverallSeverity => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ComplianceExecutionSummary SSM_NonCompliantSummary SSM_CompliantSummary/;
+  has ComplianceType => (is => 'ro', isa => Str);
+  has CompliantSummary => (is => 'ro', isa => SSM_CompliantSummary);
+  has ExecutionSummary => (is => 'ro', isa => SSM_ComplianceExecutionSummary);
+  has NonCompliantSummary => (is => 'ro', isa => SSM_NonCompliantSummary);
+  has OverallSeverity => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionSummary' => {
+                                       'class' => 'Paws::SSM::ComplianceExecutionSummary',
+                                       'type' => 'SSM_ComplianceExecutionSummary'
+                                     },
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'NonCompliantSummary' => {
+                                          'class' => 'Paws::SSM::NonCompliantSummary',
+                                          'type' => 'SSM_NonCompliantSummary'
+                                        },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'OverallSeverity' => {
+                                      'type' => 'Str'
+                                    },
+               'CompliantSummary' => {
+                                       'class' => 'Paws::SSM::CompliantSummary',
+                                       'type' => 'SSM_CompliantSummary'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,17 +89,17 @@ Compliance summary information for a specific resource.
   The compliance type.
 
 
-=head2 CompliantSummary => L<Paws::SSM::CompliantSummary>
+=head2 CompliantSummary => SSM_CompliantSummary
 
   A list of items that are compliant for the resource.
 
 
-=head2 ExecutionSummary => L<Paws::SSM::ComplianceExecutionSummary>
+=head2 ExecutionSummary => SSM_ComplianceExecutionSummary
 
   Information about the execution.
 
 
-=head2 NonCompliantSummary => L<Paws::SSM::NonCompliantSummary>
+=head2 NonCompliantSummary => SSM_NonCompliantSummary
 
   A list of items that aren't compliant for the resource.
 

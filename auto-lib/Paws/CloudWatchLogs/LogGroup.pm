@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::LogGroup;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
-  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has MetricFilterCount => (is => 'ro', isa => 'Int', request_name => 'metricFilterCount', traits => ['NameInRequest']);
-  has RetentionInDays => (is => 'ro', isa => 'Int', request_name => 'retentionInDays', traits => ['NameInRequest']);
-  has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has MetricFilterCount => (is => 'ro', isa => Int);
+  has RetentionInDays => (is => 'ro', isa => Int);
+  has StoredBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StoredBytes' => {
+                                  'type' => 'Int'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'MetricFilterCount' => {
+                                        'type' => 'Int'
+                                      },
+               'RetentionInDays' => {
+                                      'type' => 'Int'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'StoredBytes' => 'storedBytes',
+                       'CreationTime' => 'creationTime',
+                       'LogGroupName' => 'logGroupName',
+                       'MetricFilterCount' => 'metricFilterCount',
+                       'RetentionInDays' => 'retentionInDays',
+                       'Arn' => 'arn',
+                       'KmsKeyId' => 'kmsKeyId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

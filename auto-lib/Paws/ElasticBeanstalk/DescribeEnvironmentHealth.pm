@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeEnvironmentHealth;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnvironmentId => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentHealth');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEnvironmentHealthResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEnvironmentHealth');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEnvironmentHealthResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

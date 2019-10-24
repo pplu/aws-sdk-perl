@@ -5,7 +5,7 @@ package Paws::EC2::SecurityGroupReference;
   has ReferencingVpcId => (is => 'ro', isa => Str);
   has VpcPeeringConnectionId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'GroupId' => {
@@ -25,8 +25,8 @@ package Paws::EC2::SecurityGroupReference;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

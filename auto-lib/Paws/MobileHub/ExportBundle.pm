@@ -1,16 +1,47 @@
 
 package Paws::MobileHub::ExportBundle;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'bundleId', required => 1);
-  has Platform => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platform');
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has BundleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Platform => (is => 'ro', isa => Str, predicate => 1);
+  has ProjectId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportBundle');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bundles/{bundleId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MobileHub::ExportBundleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportBundle');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bundles/{bundleId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MobileHub::ExportBundleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'ProjectId' => {
+                                'type' => 'Str'
+                              },
+               'BundleId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'BundleId' => 'bundleId'
+                  },
+  'ParamInQuery' => {
+                      'Platform' => 'platform',
+                      'ProjectId' => 'projectId'
+                    },
+  'IsRequired' => {
+                    'BundleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

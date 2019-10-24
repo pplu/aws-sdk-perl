@@ -1,14 +1,65 @@
+# Generated from default/object.tt
 package Paws::Firehose::SplunkDestinationConfiguration;
-  use Moose;
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has HECAcknowledgmentTimeoutInSeconds => (is => 'ro', isa => 'Int');
-  has HECEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has HECEndpointType => (is => 'ro', isa => 'Str', required => 1);
-  has HECToken => (is => 'ro', isa => 'Str', required => 1);
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::SplunkRetryOptions');
-  has S3BackupMode => (is => 'ro', isa => 'Str');
-  has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Firehose::Types qw/Firehose_ProcessingConfiguration Firehose_CloudWatchLoggingOptions Firehose_S3DestinationConfiguration Firehose_SplunkRetryOptions/;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has HECAcknowledgmentTimeoutInSeconds => (is => 'ro', isa => Int);
+  has HECEndpoint => (is => 'ro', isa => Str, required => 1);
+  has HECEndpointType => (is => 'ro', isa => Str, required => 1);
+  has HECToken => (is => 'ro', isa => Str, required => 1);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RetryOptions => (is => 'ro', isa => Firehose_SplunkRetryOptions);
+  has S3BackupMode => (is => 'ro', isa => Str);
+  has S3Configuration => (is => 'ro', isa => Firehose_S3DestinationConfiguration, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProcessingConfiguration' => {
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration',
+                                              'type' => 'Firehose_ProcessingConfiguration'
+                                            },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'S3BackupMode' => {
+                                   'type' => 'Str'
+                                 },
+               'HECAcknowledgmentTimeoutInSeconds' => {
+                                                        'type' => 'Int'
+                                                      },
+               'RetryOptions' => {
+                                   'class' => 'Paws::Firehose::SplunkRetryOptions',
+                                   'type' => 'Firehose_SplunkRetryOptions'
+                                 },
+               'HECEndpoint' => {
+                                  'type' => 'Str'
+                                },
+               'S3Configuration' => {
+                                      'class' => 'Paws::Firehose::S3DestinationConfiguration',
+                                      'type' => 'Firehose_S3DestinationConfiguration'
+                                    },
+               'HECToken' => {
+                               'type' => 'Str'
+                             },
+               'HECEndpointType' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'S3Configuration' => 1,
+                    'HECToken' => 1,
+                    'HECEndpointType' => 1,
+                    'HECEndpoint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +95,7 @@ Describes the configuration of a destination in Splunk.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The Amazon CloudWatch logging options for your delivery stream.
 
@@ -74,12 +125,12 @@ sends your data.
 a new HEC endpoint.
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
 
-=head2 RetryOptions => L<Paws::Firehose::SplunkRetryOptions>
+=head2 RetryOptions => Firehose_SplunkRetryOptions
 
   The retry behavior in case Kinesis Data Firehose is unable to deliver
 data to Splunk, or if it doesn't receive an acknowledgment of receipt
@@ -96,7 +147,7 @@ to Amazon S3, and also writes failed documents to Amazon S3. Default
 value is C<FailedDocumentsOnly>.
 
 
-=head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
+=head2 B<REQUIRED> S3Configuration => Firehose_S3DestinationConfiguration
 
   The configuration for the backup Amazon S3 location.
 

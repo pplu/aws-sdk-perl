@@ -1,28 +1,106 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::EnvironmentDescription;
-  use Moose;
-  has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has CNAME => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EndpointURL => (is => 'ro', isa => 'Str');
-  has EnvironmentArn => (is => 'ro', isa => 'Str');
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has EnvironmentLinks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentLink]');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has Health => (is => 'ro', isa => 'Str');
-  has HealthStatus => (is => 'ro', isa => 'Str');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has Resources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourcesDescription');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
-  has Tier => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentTier');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_EnvironmentResourcesDescription ElasticBeanstalk_EnvironmentLink ElasticBeanstalk_EnvironmentTier/;
+  has AbortableOperationInProgress => (is => 'ro', isa => Bool);
+  has ApplicationName => (is => 'ro', isa => Str);
+  has CNAME => (is => 'ro', isa => Str);
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateUpdated => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EndpointURL => (is => 'ro', isa => Str);
+  has EnvironmentArn => (is => 'ro', isa => Str);
+  has EnvironmentId => (is => 'ro', isa => Str);
+  has EnvironmentLinks => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_EnvironmentLink]);
+  has EnvironmentName => (is => 'ro', isa => Str);
+  has Health => (is => 'ro', isa => Str);
+  has HealthStatus => (is => 'ro', isa => Str);
+  has PlatformArn => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ElasticBeanstalk_EnvironmentResourcesDescription);
+  has SolutionStackName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str);
+  has Tier => (is => 'ro', isa => ElasticBeanstalk_EnvironmentTier);
+  has VersionLabel => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EnvironmentLinks' => {
+                                       'class' => 'Paws::ElasticBeanstalk::EnvironmentLink',
+                                       'type' => 'ArrayRef[ElasticBeanstalk_EnvironmentLink]'
+                                     },
+               'AbortableOperationInProgress' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'Resources' => {
+                                'class' => 'Paws::ElasticBeanstalk::EnvironmentResourcesDescription',
+                                'type' => 'ElasticBeanstalk_EnvironmentResourcesDescription'
+                              },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'Health' => {
+                             'type' => 'Str'
+                           },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tier' => {
+                           'class' => 'Paws::ElasticBeanstalk::EnvironmentTier',
+                           'type' => 'ElasticBeanstalk_EnvironmentTier'
+                         },
+               'EnvironmentArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CNAME' => {
+                            'type' => 'Str'
+                          },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointURL' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'DateUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -87,7 +165,7 @@ other API requests that require an ARN.
 The ID of this environment.
 
 
-=head2 EnvironmentLinks => ArrayRef[L<Paws::ElasticBeanstalk::EnvironmentLink>]
+=head2 EnvironmentLinks => ArrayRef[ElasticBeanstalk_EnvironmentLink]
 
 A list of links to other environments in the same group.
 
@@ -142,7 +220,7 @@ Valid values are: C<"NoData">, C<"Unknown">, C<"Pending">, C<"Ok">, C<"Info">, C
 The ARN of the platform.
 
 
-=head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
+=head2 Resources => ElasticBeanstalk_EnvironmentResourcesDescription
 
 The description of the AWS resources used by this environment.
 
@@ -190,7 +268,7 @@ The name of the configuration template used to originally launch this
 environment.
 
 
-=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
+=head2 Tier => ElasticBeanstalk_EnvironmentTier
 
 Describes the current tier of this environment.
 

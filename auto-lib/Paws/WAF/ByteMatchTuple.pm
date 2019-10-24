@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::WAF::ByteMatchTuple;
-  use Moose;
-  has FieldToMatch => (is => 'ro', isa => 'Paws::WAF::FieldToMatch', required => 1);
-  has PositionalConstraint => (is => 'ro', isa => 'Str', required => 1);
-  has TargetString => (is => 'ro', isa => 'Str', required => 1);
-  has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_FieldToMatch/;
+  has FieldToMatch => (is => 'ro', isa => WAF_FieldToMatch, required => 1);
+  has PositionalConstraint => (is => 'ro', isa => Str, required => 1);
+  has TargetString => (is => 'ro', isa => Str, required => 1);
+  has TextTransformation => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetString' => {
+                                   'type' => 'Str'
+                                 },
+               'FieldToMatch' => {
+                                   'class' => 'Paws::WAF::FieldToMatch',
+                                   'type' => 'WAF_FieldToMatch'
+                                 },
+               'TextTransformation' => {
+                                         'type' => 'Str'
+                                       },
+               'PositionalConstraint' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'TargetString' => 1,
+                    'FieldToMatch' => 1,
+                    'TextTransformation' => 1,
+                    'PositionalConstraint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +74,7 @@ requests that you want AWS WAF to search, and other settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
+=head2 B<REQUIRED> FieldToMatch => WAF_FieldToMatch
 
   The part of a web request that you want AWS WAF to search, such as a
 specified header or a query string. For more information, see

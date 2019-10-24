@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::LambdaFunctionConfiguration;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
@@ -27,7 +28,11 @@ package Paws::S3::LambdaFunctionConfiguration;
   'NameInRequest' => {
                        'Events' => 'Event',
                        'LambdaFunctionArn' => 'CloudFunction'
-                     }
+                     },
+  'IsRequired' => {
+                    'Events' => 1,
+                    'LambdaFunctionArn' => 1
+                  }
 }
 ;
     return $Params_map;

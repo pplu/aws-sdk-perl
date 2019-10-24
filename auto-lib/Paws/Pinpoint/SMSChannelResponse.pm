@@ -1,19 +1,78 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SMSChannelResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has HasCredential => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has IsArchived => (is => 'ro', isa => 'Bool');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Platform => (is => 'ro', isa => 'Str', required => 1);
-  has PromotionalMessagesPerSecond => (is => 'ro', isa => 'Int');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has ShortCode => (is => 'ro', isa => 'Str');
-  has TransactionalMessagesPerSecond => (is => 'ro', isa => 'Int');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has HasCredential => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has IsArchived => (is => 'ro', isa => Bool);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str, required => 1);
+  has PromotionalMessagesPerSecond => (is => 'ro', isa => Int);
+  has SenderId => (is => 'ro', isa => Str);
+  has ShortCode => (is => 'ro', isa => Str);
+  has TransactionalMessagesPerSecond => (is => 'ro', isa => Int);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SenderId' => {
+                               'type' => 'Str'
+                             },
+               'PromotionalMessagesPerSecond' => {
+                                                   'type' => 'Int'
+                                                 },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'HasCredential' => {
+                                    'type' => 'Bool'
+                                  },
+               'IsArchived' => {
+                                 'type' => 'Bool'
+                               },
+               'TransactionalMessagesPerSecond' => {
+                                                     'type' => 'Int'
+                                                   },
+               'ShortCode' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Platform' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

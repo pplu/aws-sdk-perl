@@ -1,21 +1,102 @@
+# Generated from default/object.tt
 package Paws::SMS::AppSummary;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', request_name => 'appId', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
-  has LatestReplicationTime => (is => 'ro', isa => 'Str', request_name => 'latestReplicationTime', traits => ['NameInRequest']);
-  has LaunchDetails => (is => 'ro', isa => 'Paws::SMS::LaunchDetails', request_name => 'launchDetails', traits => ['NameInRequest']);
-  has LaunchStatus => (is => 'ro', isa => 'Str', request_name => 'launchStatus', traits => ['NameInRequest']);
-  has LaunchStatusMessage => (is => 'ro', isa => 'Str', request_name => 'launchStatusMessage', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ReplicationStatus => (is => 'ro', isa => 'Str', request_name => 'replicationStatus', traits => ['NameInRequest']);
-  has ReplicationStatusMessage => (is => 'ro', isa => 'Str', request_name => 'replicationStatusMessage', traits => ['NameInRequest']);
-  has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has TotalServerGroups => (is => 'ro', isa => 'Int', request_name => 'totalServerGroups', traits => ['NameInRequest']);
-  has TotalServers => (is => 'ro', isa => 'Int', request_name => 'totalServers', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SMS::Types qw/SMS_LaunchDetails/;
+  has AppId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has LatestReplicationTime => (is => 'ro', isa => Str);
+  has LaunchDetails => (is => 'ro', isa => SMS_LaunchDetails);
+  has LaunchStatus => (is => 'ro', isa => Str);
+  has LaunchStatusMessage => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ReplicationStatus => (is => 'ro', isa => Str);
+  has ReplicationStatusMessage => (is => 'ro', isa => Str);
+  has RoleName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has TotalServerGroups => (is => 'ro', isa => Int);
+  has TotalServers => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'LatestReplicationTime' => {
+                                            'type' => 'Str'
+                                          },
+               'TotalServers' => {
+                                   'type' => 'Int'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LaunchStatusMessage' => {
+                                          'type' => 'Str'
+                                        },
+               'TotalServerGroups' => {
+                                        'type' => 'Int'
+                                      },
+               'LaunchStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'AppId' => {
+                            'type' => 'Str'
+                          },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ReplicationStatusMessage' => {
+                                               'type' => 'Str'
+                                             },
+               'LaunchDetails' => {
+                                    'class' => 'Paws::SMS::LaunchDetails',
+                                    'type' => 'SMS_LaunchDetails'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ReplicationStatus' => 'replicationStatus',
+                       'LatestReplicationTime' => 'latestReplicationTime',
+                       'TotalServers' => 'totalServers',
+                       'Status' => 'status',
+                       'LaunchStatusMessage' => 'launchStatusMessage',
+                       'TotalServerGroups' => 'totalServerGroups',
+                       'LaunchStatus' => 'launchStatus',
+                       'RoleName' => 'roleName',
+                       'StatusMessage' => 'statusMessage',
+                       'AppId' => 'appId',
+                       'LastModified' => 'lastModified',
+                       'CreationTime' => 'creationTime',
+                       'ReplicationStatusMessage' => 'replicationStatusMessage',
+                       'LaunchDetails' => 'launchDetails',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +157,7 @@ Information about the application.
   Timestamp of the application's most recent successful replication.
 
 
-=head2 LaunchDetails => L<Paws::SMS::LaunchDetails>
+=head2 LaunchDetails => SMS_LaunchDetails
 
   Details about the latest launch of the application.
 

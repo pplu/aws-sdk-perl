@@ -1,13 +1,49 @@
 
 package Paws::Route53::ListHostedZonesResponse;
-  use Moose;
-  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Route53::Types qw/Route53_HostedZone/;
+  has HostedZones => (is => 'ro', isa => ArrayRef[Route53_HostedZone], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Marker => (is => 'ro', isa => Str);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'HostedZones' => {
+                                  'class' => 'Paws::Route53::HostedZone',
+                                  'type' => 'ArrayRef[Route53_HostedZone]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'HostedZones' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +55,7 @@ Paws::Route53::ListHostedZonesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
+=head2 B<REQUIRED> HostedZones => ArrayRef[Route53_HostedZone]
 
 A complex type that contains general information about the hosted zone.
 

@@ -1,12 +1,44 @@
 
 package Paws::ApiGateway::RequestValidator;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ValidateRequestBody => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestBody');
-  has ValidateRequestParameters => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestParameters');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ValidateRequestBody => (is => 'ro', isa => Bool);
+  has ValidateRequestParameters => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidateRequestParameters' => {
+                                                'type' => 'Bool'
+                                              },
+               'ValidateRequestBody' => {
+                                          'type' => 'Bool'
+                                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ValidateRequestParameters' => 'validateRequestParameters',
+                       'ValidateRequestBody' => 'validateRequestBody',
+                       'Id' => 'id',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::GetTemplateOutput;
-  use Moose;
-  has StagesAvailable => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute',]);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw//;
+  has StagesAvailable => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TemplateBody => (is => 'ro', isa => Str);
+  has Template => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json($self->TemplateBody); });
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StagesAvailable' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

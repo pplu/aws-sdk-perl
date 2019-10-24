@@ -1,11 +1,41 @@
 
 package Paws::ApiGateway::MethodResponse;
-  use Moose;
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseModels');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToBoolean ApiGateway_MapOfStringToString/;
+  has ResponseModels => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has ResponseParameters => (is => 'ro', isa => ApiGateway_MapOfStringToBoolean);
+  has StatusCode => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'ResponseModels' => {
+                                     'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                     'type' => 'ApiGateway_MapOfStringToString'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGateway::MapOfStringToBoolean',
+                                         'type' => 'ApiGateway_MapOfStringToBoolean'
+                                       }
+             },
+  'NameInRequest' => {
+                       'StatusCode' => 'statusCode',
+                       'ResponseModels' => 'responseModels',
+                       'ResponseParameters' => 'responseParameters'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,14 +47,14 @@ Paws::ApiGateway::MethodResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResponseModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseModels => ApiGateway_MapOfStringToString
 
 Specifies the Model resources used for the response's content-type.
 Response models are represented as a key/value map, with a content-type
 as the key and a Model name as the value.
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 ResponseParameters => ApiGateway_MapOfStringToBoolean
 
 A key-value map specifying required or optional response parameters
 that API Gateway can send back to the caller. A key defines a method

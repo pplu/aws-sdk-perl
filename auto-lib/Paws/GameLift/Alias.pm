@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::GameLift::Alias;
-  use Moose;
-  has AliasArn => (is => 'ro', isa => 'Str');
-  has AliasId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_RoutingStrategy/;
+  has AliasArn => (is => 'ro', isa => Str);
+  has AliasId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoutingStrategy => (is => 'ro', isa => GameLift_RoutingStrategy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AliasId' => {
+                              'type' => 'Str'
+                            },
+               'AliasArn' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'RoutingStrategy' => {
+                                      'class' => 'Paws::GameLift::RoutingStrategy',
+                                      'type' => 'GameLift_RoutingStrategy'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -107,7 +143,7 @@ is a number expressed in Unix time as milliseconds (for example
 need to be unique.
 
 
-=head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
+=head2 RoutingStrategy => GameLift_RoutingStrategy
 
   Alias configuration for the alias, including routing type and settings.
 

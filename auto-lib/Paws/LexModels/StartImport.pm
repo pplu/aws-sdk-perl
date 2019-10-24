@@ -1,16 +1,47 @@
 
 package Paws::LexModels::StartImport;
-  use Moose;
-  has MergeStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeStrategy', required => 1);
-  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has MergeStrategy => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Payload => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartImport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/imports/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::StartImportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartImport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/imports/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::StartImportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'MergeStrategy' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Payload' => 'payload',
+                       'ResourceType' => 'resourceType',
+                       'MergeStrategy' => 'mergeStrategy'
+                     },
+  'IsRequired' => {
+                    'Payload' => 1,
+                    'ResourceType' => 1,
+                    'MergeStrategy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

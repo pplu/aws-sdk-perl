@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentGroup;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentDimensions]');
-  has SourceSegments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentReference]');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_SegmentReference Pinpoint_SegmentDimensions/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[Pinpoint_SegmentDimensions]);
+  has SourceSegments => (is => 'ro', isa => ArrayRef[Pinpoint_SegmentReference]);
+  has SourceType => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceSegments' => {
+                                     'class' => 'Paws::Pinpoint::SegmentReference',
+                                     'type' => 'ArrayRef[Pinpoint_SegmentReference]'
+                                   },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Dimensions' => {
+                                 'class' => 'Paws::Pinpoint::SegmentDimensions',
+                                 'type' => 'ArrayRef[Pinpoint_SegmentDimensions]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +68,12 @@ relationships between these base segments and dimensions.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::Pinpoint::SegmentDimensions>]
+=head2 Dimensions => ArrayRef[Pinpoint_SegmentDimensions]
 
   An array that defines the dimensions for the segment.
 
 
-=head2 SourceSegments => ArrayRef[L<Paws::Pinpoint::SegmentReference>]
+=head2 SourceSegments => ArrayRef[Pinpoint_SegmentReference]
 
   The base segment to build the segment on. A base segment, also referred
 to as a I<source segment>, defines the initial population of endpoints

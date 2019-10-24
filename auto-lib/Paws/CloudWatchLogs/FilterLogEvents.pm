@@ -1,21 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::FilterLogEvents;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' );
-  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' );
-  has Interleaved => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'interleaved' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamNamePrefix' );
-  has LogStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'logStreamNames' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has EndTime => (is => 'ro', isa => Int, predicate => 1);
+  has FilterPattern => (is => 'ro', isa => Str, predicate => 1);
+  has Interleaved => (is => 'ro', isa => Bool, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogStreamNamePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has LogStreamNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'FilterLogEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::FilterLogEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'FilterLogEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::FilterLogEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'LogStreamNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterPattern' => {
+                                    'type' => 'Str'
+                                  },
+               'StartTime' => {
+                                'type' => 'Int'
+                              },
+               'EndTime' => {
+                              'type' => 'Int'
+                            },
+               'Interleaved' => {
+                                  'type' => 'Bool'
+                                },
+               'LogStreamNamePrefix' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Limit' => 'limit',
+                       'LogStreamNames' => 'logStreamNames',
+                       'LogGroupName' => 'logGroupName',
+                       'FilterPattern' => 'filterPattern',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'Interleaved' => 'interleaved',
+                       'LogStreamNamePrefix' => 'logStreamNamePrefix'
+                     },
+  'IsRequired' => {
+                    'LogGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

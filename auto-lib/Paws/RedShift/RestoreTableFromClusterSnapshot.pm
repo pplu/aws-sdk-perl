@@ -1,20 +1,64 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::RestoreTableFromClusterSnapshot;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has NewTableName => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SourceDatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has SourceSchemaName => (is => 'ro', isa => 'Str');
-  has SourceTableName => (is => 'ro', isa => 'Str', required => 1);
-  has TargetDatabaseName => (is => 'ro', isa => 'Str');
-  has TargetSchemaName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceSchemaName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceTableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetDatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has TargetSchemaName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreTableFromClusterSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::RestoreTableFromClusterSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreTableFromClusterSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreTableFromClusterSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::RestoreTableFromClusterSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreTableFromClusterSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'SourceDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'NewTableName' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceTableName' => {
+                                      'type' => 'Str'
+                                    },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'SourceSchemaName' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetSchemaName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SourceTableName' => 1,
+                    'ClusterIdentifier' => 1,
+                    'SnapshotIdentifier' => 1,
+                    'SourceDatabaseName' => 1,
+                    'NewTableName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

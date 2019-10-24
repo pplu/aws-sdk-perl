@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::ASN1Subject;
-  use Moose;
-  has CommonName => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has DistinguishedNameQualifier => (is => 'ro', isa => 'Str');
-  has GenerationQualifier => (is => 'ro', isa => 'Str');
-  has GivenName => (is => 'ro', isa => 'Str');
-  has Initials => (is => 'ro', isa => 'Str');
-  has Locality => (is => 'ro', isa => 'Str');
-  has Organization => (is => 'ro', isa => 'Str');
-  has OrganizationalUnit => (is => 'ro', isa => 'Str');
-  has Pseudonym => (is => 'ro', isa => 'Str');
-  has SerialNumber => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Surname => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw//;
+  has CommonName => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has DistinguishedNameQualifier => (is => 'ro', isa => Str);
+  has GenerationQualifier => (is => 'ro', isa => Str);
+  has GivenName => (is => 'ro', isa => Str);
+  has Initials => (is => 'ro', isa => Str);
+  has Locality => (is => 'ro', isa => Str);
+  has Organization => (is => 'ro', isa => Str);
+  has OrganizationalUnit => (is => 'ro', isa => Str);
+  has Pseudonym => (is => 'ro', isa => Str);
+  has SerialNumber => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Surname => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pseudonym' => {
+                                'type' => 'Str'
+                              },
+               'Initials' => {
+                               'type' => 'Str'
+                             },
+               'Surname' => {
+                              'type' => 'Str'
+                            },
+               'SerialNumber' => {
+                                   'type' => 'Str'
+                                 },
+               'GivenName' => {
+                                'type' => 'Str'
+                              },
+               'OrganizationalUnit' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Locality' => {
+                               'type' => 'Str'
+                             },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'GenerationQualifier' => {
+                                          'type' => 'Str'
+                                        },
+               'CommonName' => {
+                                 'type' => 'Str'
+                               },
+               'DistinguishedNameQualifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'Organization' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

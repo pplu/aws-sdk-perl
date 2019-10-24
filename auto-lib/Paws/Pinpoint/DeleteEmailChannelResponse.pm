@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::DeleteEmailChannelResponse;
-  use Moose;
-  has EmailChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::EmailChannelResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EmailChannelResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EmailChannelResponse/;
+  has EmailChannelResponse => (is => 'ro', isa => Pinpoint_EmailChannelResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailChannelResponse' => {
+                                           'class' => 'Paws::Pinpoint::EmailChannelResponse',
+                                           'type' => 'Pinpoint_EmailChannelResponse'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'EmailChannelResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::DeleteEmailChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EmailChannelResponse => L<Paws::Pinpoint::EmailChannelResponse>
+=head2 B<REQUIRED> EmailChannelResponse => Pinpoint_EmailChannelResponse
 
 
 

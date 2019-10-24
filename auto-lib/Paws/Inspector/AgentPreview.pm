@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Inspector::AgentPreview;
-  use Moose;
-  has AgentHealth => (is => 'ro', isa => 'Str', request_name => 'agentHealth', traits => ['NameInRequest']);
-  has AgentId => (is => 'ro', isa => 'Str', request_name => 'agentId', traits => ['NameInRequest'], required => 1);
-  has AgentVersion => (is => 'ro', isa => 'Str', request_name => 'agentVersion', traits => ['NameInRequest']);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', request_name => 'autoScalingGroup', traits => ['NameInRequest']);
-  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
-  has Ipv4Address => (is => 'ro', isa => 'Str', request_name => 'ipv4Address', traits => ['NameInRequest']);
-  has KernelVersion => (is => 'ro', isa => 'Str', request_name => 'kernelVersion', traits => ['NameInRequest']);
-  has OperatingSystem => (is => 'ro', isa => 'Str', request_name => 'operatingSystem', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AgentHealth => (is => 'ro', isa => Str);
+  has AgentId => (is => 'ro', isa => Str, required => 1);
+  has AgentVersion => (is => 'ro', isa => Str);
+  has AutoScalingGroup => (is => 'ro', isa => Str);
+  has Hostname => (is => 'ro', isa => Str);
+  has Ipv4Address => (is => 'ro', isa => Str);
+  has KernelVersion => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'KernelVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Ipv4Address' => {
+                                  'type' => 'Str'
+                                },
+               'AgentHealth' => {
+                                  'type' => 'Str'
+                                },
+               'AutoScalingGroup' => {
+                                       'type' => 'Str'
+                                     },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'AgentId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Hostname' => 'hostname',
+                       'KernelVersion' => 'kernelVersion',
+                       'Ipv4Address' => 'ipv4Address',
+                       'AgentHealth' => 'agentHealth',
+                       'AutoScalingGroup' => 'autoScalingGroup',
+                       'AgentVersion' => 'agentVersion',
+                       'OperatingSystem' => 'operatingSystem',
+                       'AgentId' => 'agentId'
+                     },
+  'IsRequired' => {
+                    'AgentId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

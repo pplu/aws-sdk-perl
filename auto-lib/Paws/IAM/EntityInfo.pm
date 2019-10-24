@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::EntityInfo;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,13 @@ package Paws::IAM::EntityInfo;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Id' => 1,
+                    'Arn' => 1,
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

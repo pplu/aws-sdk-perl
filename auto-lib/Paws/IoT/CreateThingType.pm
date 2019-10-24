@@ -1,16 +1,49 @@
 
 package Paws::IoT::CreateThingType;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingTypeName', required => 1);
-  has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', traits => ['NameInRequest'], request_name => 'thingTypeProperties');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_ThingTypeProperties/;
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
+  has ThingTypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingTypeProperties => (is => 'ro', isa => IoT_ThingTypeProperties, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateThingType');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-types/{thingTypeName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateThingTypeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateThingType');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-types/{thingTypeName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateThingTypeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingTypeProperties' => {
+                                          'class' => 'Paws::IoT::ThingTypeProperties',
+                                          'type' => 'IoT_ThingTypeProperties'
+                                        },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         }
+             },
+  'ParamInURI' => {
+                    'ThingTypeName' => 'thingTypeName'
+                  },
+  'NameInRequest' => {
+                       'ThingTypeProperties' => 'thingTypeProperties',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ThingTypeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the thing type.
 
@@ -72,7 +105,7 @@ The name of the thing type.
 
 
 
-=head2 ThingTypeProperties => L<Paws::IoT::ThingTypeProperties>
+=head2 ThingTypeProperties => IoT_ThingTypeProperties
 
 The ThingTypeProperties for the thing type to create. It contains
 information about the new thing type including a description, and a

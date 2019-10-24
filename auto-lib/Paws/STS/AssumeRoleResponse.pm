@@ -1,11 +1,37 @@
+# Generated from callresult_class.tt
 
 package Paws::STS::AssumeRoleResponse;
-  use Moose;
-  has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
-  has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::STS::Types qw/STS_AssumedRoleUser STS_Credentials/;
+  has AssumedRoleUser => (is => 'ro', isa => STS_AssumedRoleUser);
+  has Credentials => (is => 'ro', isa => STS_Credentials);
+  has PackedPolicySize => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Credentials' => {
+                                  'class' => 'Paws::STS::Credentials',
+                                  'type' => 'STS_Credentials'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AssumedRoleUser' => {
+                                      'class' => 'Paws::STS::AssumedRoleUser',
+                                      'type' => 'STS_AssumedRoleUser'
+                                    },
+               'PackedPolicySize' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +43,7 @@ Paws::STS::AssumeRoleResponse
 =head1 ATTRIBUTES
 
 
-=head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
+=head2 AssumedRoleUser => STS_AssumedRoleUser
 
 The Amazon Resource Name (ARN) and the assumed role ID, which are
 identifiers that you can use to refer to the resulting temporary
@@ -27,7 +53,7 @@ role ID. The ARN and ID include the C<RoleSessionName> that you
 specified when you called C<AssumeRole>.
 
 
-=head2 Credentials => L<Paws::STS::Credentials>
+=head2 Credentials => STS_Credentials
 
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security (or session) token.

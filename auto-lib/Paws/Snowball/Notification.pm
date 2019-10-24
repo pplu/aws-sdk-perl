@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Snowball::Notification;
-  use Moose;
-  has JobStatesToNotify => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NotifyAll => (is => 'ro', isa => 'Bool');
-  has SnsTopicARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool/;
+  use Paws::Snowball::Types qw//;
+  has JobStatesToNotify => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NotifyAll => (is => 'ro', isa => Bool);
+  has SnsTopicARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnsTopicARN' => {
+                                  'type' => 'Str'
+                                },
+               'NotifyAll' => {
+                                'type' => 'Bool'
+                              },
+               'JobStatesToNotify' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

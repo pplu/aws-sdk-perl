@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsInputSettings;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Int', request_name => 'bandwidth', traits => ['NameInRequest']);
-  has BufferSegments => (is => 'ro', isa => 'Int', request_name => 'bufferSegments', traits => ['NameInRequest']);
-  has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
-  has RetryInterval => (is => 'ro', isa => 'Int', request_name => 'retryInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has Bandwidth => (is => 'ro', isa => Int);
+  has BufferSegments => (is => 'ro', isa => Int);
+  has Retries => (is => 'ro', isa => Int);
+  has RetryInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bandwidth' => {
+                                'type' => 'Int'
+                              },
+               'Retries' => {
+                              'type' => 'Int'
+                            },
+               'BufferSegments' => {
+                                     'type' => 'Int'
+                                   },
+               'RetryInterval' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Bandwidth' => 'bandwidth',
+                       'Retries' => 'retries',
+                       'BufferSegments' => 'bufferSegments',
+                       'RetryInterval' => 'retryInterval'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginGroup;
-  use Moose;
-  has FailoverCriteria => (is => 'ro', isa => 'Paws::CloudFront::OriginGroupFailoverCriteria', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Members => (is => 'ro', isa => 'Paws::CloudFront::OriginGroupMembers', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_OriginGroupMembers CloudFront_OriginGroupFailoverCriteria/;
+  has FailoverCriteria => (is => 'ro', isa => CloudFront_OriginGroupFailoverCriteria, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Members => (is => 'ro', isa => CloudFront_OriginGroupMembers, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Members' => {
+                              'class' => 'Paws::CloudFront::OriginGroupMembers',
+                              'type' => 'CloudFront_OriginGroupMembers'
+                            },
+               'FailoverCriteria' => {
+                                       'class' => 'Paws::CloudFront::OriginGroupFailoverCriteria',
+                                       'type' => 'CloudFront_OriginGroupFailoverCriteria'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Members' => 1,
+                    'FailoverCriteria' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +74,7 @@ you've chosen.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FailoverCriteria => L<Paws::CloudFront::OriginGroupFailoverCriteria>
+=head2 B<REQUIRED> FailoverCriteria => CloudFront_OriginGroupFailoverCriteria
 
   A complex type that contains information about the failover criteria
 for an origin group.
@@ -55,7 +85,7 @@ for an origin group.
   The origin group's ID.
 
 
-=head2 B<REQUIRED> Members => L<Paws::CloudFront::OriginGroupMembers>
+=head2 B<REQUIRED> Members => CloudFront_OriginGroupMembers
 
   A complex type that contains information about the origins in an origin
 group.

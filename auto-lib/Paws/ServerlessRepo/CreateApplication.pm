@@ -1,28 +1,107 @@
 
 package Paws::ServerlessRepo::CreateApplication;
-  use Moose;
-  has Author => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'author', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description', required => 1);
-  has HomePageUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'homePageUrl');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels');
-  has LicenseBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseBody');
-  has LicenseUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'licenseUrl');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ReadmeBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeBody');
-  has ReadmeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'readmeUrl');
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeArchiveUrl');
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeUrl');
-  has SpdxLicenseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spdxLicenseId');
-  has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
-  has TemplateUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateUrl');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServerlessRepo::Types qw//;
+  has Author => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HomePageUrl => (is => 'ro', isa => Str, predicate => 1);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has LicenseBody => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseUrl => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReadmeBody => (is => 'ro', isa => Str, predicate => 1);
+  has ReadmeUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, predicate => 1);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceCodeUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SpdxLicenseId => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateUrl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::CreateApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::CreateApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'ReadmeBody' => {
+                                 'type' => 'Str'
+                               },
+               'LicenseBody' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'SpdxLicenseId' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'LicenseUrl' => {
+                                 'type' => 'Str'
+                               },
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'ReadmeUrl' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Author' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'HomePageUrl' => 'homePageUrl',
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'ReadmeBody' => 'readmeBody',
+                       'LicenseBody' => 'licenseBody',
+                       'TemplateUrl' => 'templateUrl',
+                       'SpdxLicenseId' => 'spdxLicenseId',
+                       'TemplateBody' => 'templateBody',
+                       'Labels' => 'labels',
+                       'SemanticVersion' => 'semanticVersion',
+                       'LicenseUrl' => 'licenseUrl',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl',
+                       'ReadmeUrl' => 'readmeUrl',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Author' => 'author'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Description' => 1,
+                    'Author' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

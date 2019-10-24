@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::ListEventSubscriptionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Subscription]', traits => ['NameInRequest'], request_name => 'subscriptions' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_Subscription/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Subscriptions => (is => 'ro', isa => ArrayRef[Inspector_Subscription], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Subscriptions' => {
+                                    'class' => 'Paws::Inspector::Subscription',
+                                    'type' => 'ArrayRef[Inspector_Subscription]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Subscriptions' => 'subscriptions'
+                     },
+  'IsRequired' => {
+                    'Subscriptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +52,7 @@ the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to null.
 
 
-=head2 B<REQUIRED> Subscriptions => ArrayRef[L<Paws::Inspector::Subscription>]
+=head2 B<REQUIRED> Subscriptions => ArrayRef[Inspector_Subscription]
 
 Details of the returned event subscriptions.
 

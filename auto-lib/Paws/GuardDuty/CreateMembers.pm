@@ -1,15 +1,44 @@
 
 package Paws::GuardDuty::CreateMembers;
-  use Moose;
-  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::AccountDetail]', traits => ['NameInRequest'], request_name => 'accountDetails', required => 1);
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_AccountDetail/;
+  has AccountDetails => (is => 'ro', isa => ArrayRef[GuardDuty_AccountDetail], required => 1, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/member');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreateMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/member');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreateMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'AccountDetails' => {
+                                     'class' => 'Paws::GuardDuty::AccountDetail',
+                                     'type' => 'ArrayRef[GuardDuty_AccountDetail]'
+                                   }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'AccountDetails' => 'accountDetails'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'AccountDetails' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
+=head2 B<REQUIRED> AccountDetails => ArrayRef[GuardDuty_AccountDetail]
 
 A list of account ID and email address pairs of the accounts that you
 want to associate with the master GuardDuty account.

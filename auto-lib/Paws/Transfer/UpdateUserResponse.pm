@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::UpdateUserResponse;
-  use Moose;
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw//;
+  has ServerId => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetCampaignsResponse;
-  use Moose;
-  has CampaignsResponse => (is => 'ro', isa => 'Paws::Pinpoint::CampaignsResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'CampaignsResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignsResponse/;
+  has CampaignsResponse => (is => 'ro', isa => Pinpoint_CampaignsResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CampaignsResponse' => {
+                                        'class' => 'Paws::Pinpoint::CampaignsResponse',
+                                        'type' => 'Pinpoint_CampaignsResponse'
+                                      }
+             },
+  'IsRequired' => {
+                    'CampaignsResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetCampaignsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CampaignsResponse => L<Paws::Pinpoint::CampaignsResponse>
+=head2 B<REQUIRED> CampaignsResponse => Pinpoint_CampaignsResponse
 
 
 

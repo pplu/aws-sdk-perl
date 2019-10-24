@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::DeleteRepository;
-  use Moose;
-  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ECR::Types qw//;
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::DeleteRepositoryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::DeleteRepositoryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'Force' => {
+                            'type' => 'Bool'
+                          },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'Force' => 'force',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

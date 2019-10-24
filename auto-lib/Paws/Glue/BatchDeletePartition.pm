@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::BatchDeletePartition;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has PartitionsToDelete => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PartitionValueList]', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_PartitionValueList/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartitionsToDelete => (is => 'ro', isa => ArrayRef[Glue_PartitionValueList], required => 1, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDeletePartition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::BatchDeletePartitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDeletePartition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::BatchDeletePartitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PartitionsToDelete' => {
+                                         'class' => 'Paws::Glue::PartitionValueList',
+                                         'type' => 'ArrayRef[Glue_PartitionValueList]'
+                                       },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'PartitionsToDelete' => 1,
+                    'TableName' => 1,
+                    'DatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +101,7 @@ resides.
 
 
 
-=head2 B<REQUIRED> PartitionsToDelete => ArrayRef[L<Paws::Glue::PartitionValueList>]
+=head2 B<REQUIRED> PartitionsToDelete => ArrayRef[Glue_PartitionValueList]
 
 A list of C<PartitionInput> structures that define the partitions to be
 deleted.

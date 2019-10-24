@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::FSX::WindowsFileSystemConfiguration;
-  use Moose;
-  has ActiveDirectoryId => (is => 'ro', isa => 'Str');
-  has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
-  has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
-  has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
-  has MaintenanceOperationsInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryAttributes');
-  has ThroughputCapacity => (is => 'ro', isa => 'Int');
-  has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::FSX::Types qw/FSX_SelfManagedActiveDirectoryAttributes/;
+  has ActiveDirectoryId => (is => 'ro', isa => Str);
+  has AutomaticBackupRetentionDays => (is => 'ro', isa => Int);
+  has CopyTagsToBackups => (is => 'ro', isa => Bool);
+  has DailyAutomaticBackupStartTime => (is => 'ro', isa => Str);
+  has MaintenanceOperationsInProgress => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => FSX_SelfManagedActiveDirectoryAttributes);
+  has ThroughputCapacity => (is => 'ro', isa => Int);
+  has WeeklyMaintenanceStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActiveDirectoryId' => {
+                                        'type' => 'Str'
+                                      },
+               'SelfManagedActiveDirectoryConfiguration' => {
+                                                              'class' => 'Paws::FSX::SelfManagedActiveDirectoryAttributes',
+                                                              'type' => 'FSX_SelfManagedActiveDirectoryAttributes'
+                                                            },
+               'WeeklyMaintenanceStartTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'AutomaticBackupRetentionDays' => {
+                                                   'type' => 'Int'
+                                                 },
+               'DailyAutomaticBackupStartTime' => {
+                                                    'type' => 'Str'
+                                                  },
+               'MaintenanceOperationsInProgress' => {
+                                                      'type' => 'ArrayRef[Str|Undef]'
+                                                    },
+               'ThroughputCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'CopyTagsToBackups' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +116,7 @@ zone.
   The list of maintenance operations in progress for this file system.
 
 
-=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryAttributes>
+=head2 SelfManagedActiveDirectoryConfiguration => FSX_SelfManagedActiveDirectoryAttributes
 
   
 

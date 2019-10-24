@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::BlockDeviceMapping;
-  use Moose;
-  has DeviceName => (is => 'ro', isa => 'Str', required => 1);
-  has Ebs => (is => 'ro', isa => 'Paws::AutoScaling::Ebs');
-  has NoDevice => (is => 'ro', isa => 'Bool');
-  has VirtualName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AutoScaling::Types qw/AutoScaling_Ebs/;
+  has DeviceName => (is => 'ro', isa => Str, required => 1);
+  has Ebs => (is => 'ro', isa => AutoScaling_Ebs);
+  has NoDevice => (is => 'ro', isa => Bool);
+  has VirtualName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ebs' => {
+                          'class' => 'Paws::AutoScaling::Ebs',
+                          'type' => 'AutoScaling_Ebs'
+                        },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'VirtualName' => {
+                                  'type' => 'Str'
+                                },
+               'NoDevice' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'IsRequired' => {
+                    'DeviceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +77,7 @@ or C<xvdh>). For more information, see Device Naming on Linux Instances
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
-=head2 Ebs => L<Paws::AutoScaling::Ebs>
+=head2 Ebs => AutoScaling_Ebs
 
   The information about the Amazon EBS volume.
 

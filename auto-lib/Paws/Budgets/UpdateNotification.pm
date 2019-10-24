@@ -1,16 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::UpdateNotification;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
-  has NewNotification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
-  has OldNotification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw/Budgets_Notification/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BudgetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewNotification => (is => 'ro', isa => Budgets_Notification, required => 1, predicate => 1);
+  has OldNotification => (is => 'ro', isa => Budgets_Notification, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNotification');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::UpdateNotificationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNotification');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::UpdateNotificationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               },
+               'OldNotification' => {
+                                      'class' => 'Paws::Budgets::Notification',
+                                      'type' => 'Budgets_Notification'
+                                    },
+               'NewNotification' => {
+                                      'class' => 'Paws::Budgets::Notification',
+                                      'type' => 'Budgets_Notification'
+                                    }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'BudgetName' => 1,
+                    'OldNotification' => 1,
+                    'NewNotification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,13 +106,13 @@ The name of the budget whose notification you want to update.
 
 
 
-=head2 B<REQUIRED> NewNotification => L<Paws::Budgets::Notification>
+=head2 B<REQUIRED> NewNotification => Budgets_Notification
 
 The updated notification to be associated with a budget.
 
 
 
-=head2 B<REQUIRED> OldNotification => L<Paws::Budgets::Notification>
+=head2 B<REQUIRED> OldNotification => Budgets_Notification
 
 The previous notification that is associated with a budget.
 

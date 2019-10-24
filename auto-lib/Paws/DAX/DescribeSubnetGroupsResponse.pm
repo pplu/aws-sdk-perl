@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::DescribeSubnetGroupsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SubnetGroups => (is => 'ro', isa => 'ArrayRef[Paws::DAX::SubnetGroup]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_SubnetGroup/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SubnetGroups => (is => 'ro', isa => ArrayRef[DAX_SubnetGroup]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetGroups' => {
+                                   'class' => 'Paws::DAX::SubnetGroup',
+                                   'type' => 'ArrayRef[DAX_SubnetGroup]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::DAX::DescribeSubnetGroupsResponse
 Provides an identifier to allow retrieval of paginated results.
 
 
-=head2 SubnetGroups => ArrayRef[L<Paws::DAX::SubnetGroup>]
+=head2 SubnetGroups => ArrayRef[DAX_SubnetGroup]
 
 An array of subnet groups. Each element in the array represents a
 single subnet group.

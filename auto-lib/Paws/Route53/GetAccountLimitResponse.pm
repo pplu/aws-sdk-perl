@@ -1,10 +1,36 @@
 
 package Paws::Route53::GetAccountLimitResponse;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', required => 1);
-  has Limit => (is => 'ro', isa => 'Paws::Route53::AccountLimit', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw/Route53_AccountLimit/;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has Limit => (is => 'ro', isa => Route53_AccountLimit, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Limit' => {
+                            'class' => 'Paws::Route53::AccountLimit',
+                            'type' => 'Route53_AccountLimit'
+                          },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'IsRequired' => {
+                    'Limit' => 1,
+                    'Count' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +52,7 @@ account.
 
 
 
-=head2 B<REQUIRED> Limit => L<Paws::Route53::AccountLimit>
+=head2 B<REQUIRED> Limit => Route53_AccountLimit
 
 The current setting for the specified limit. For example, if you
 specified C<MAX_HEALTH_CHECKS_BY_OWNER> for the value of C<Type> in the

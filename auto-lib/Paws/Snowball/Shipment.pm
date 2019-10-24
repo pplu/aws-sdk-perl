@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Snowball::Shipment;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Str');
-  has TrackingNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw//;
+  has Status => (is => 'ro', isa => Str);
+  has TrackingNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrackingNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

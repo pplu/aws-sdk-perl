@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Snowball::JobLogs;
-  use Moose;
-  has JobCompletionReportURI => (is => 'ro', isa => 'Str');
-  has JobFailureLogURI => (is => 'ro', isa => 'Str');
-  has JobSuccessLogURI => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw//;
+  has JobCompletionReportURI => (is => 'ro', isa => Str);
+  has JobFailureLogURI => (is => 'ro', isa => Str);
+  has JobSuccessLogURI => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobFailureLogURI' => {
+                                       'type' => 'Str'
+                                     },
+               'JobSuccessLogURI' => {
+                                       'type' => 'Str'
+                                     },
+               'JobCompletionReportURI' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

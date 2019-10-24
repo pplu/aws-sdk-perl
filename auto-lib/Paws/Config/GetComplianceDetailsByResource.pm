@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::GetComplianceDetailsByResource;
-  use Moose;
-  has ComplianceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Config::Types qw//;
+  has ComplianceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetComplianceDetailsByResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::GetComplianceDetailsByResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetComplianceDetailsByResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::GetComplianceDetailsByResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ComplianceTypes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ResourceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

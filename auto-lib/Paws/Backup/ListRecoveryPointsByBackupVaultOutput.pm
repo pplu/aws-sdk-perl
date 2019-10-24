@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListRecoveryPointsByBackupVaultOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RecoveryPoints => (is => 'ro', isa => 'ArrayRef[Paws::Backup::RecoveryPointByBackupVault]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_RecoveryPointByBackupVault/;
+  has NextToken => (is => 'ro', isa => Str);
+  has RecoveryPoints => (is => 'ro', isa => ArrayRef[Backup_RecoveryPointByBackupVault]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RecoveryPoints' => {
+                                     'class' => 'Paws::Backup::RecoveryPointByBackupVault',
+                                     'type' => 'ArrayRef[Backup_RecoveryPointByBackupVault]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +45,7 @@ C<NextToken> allows you to return more items in your list starting at
 the location pointed to by the next token.
 
 
-=head2 RecoveryPoints => ArrayRef[L<Paws::Backup::RecoveryPointByBackupVault>]
+=head2 RecoveryPoints => ArrayRef[Backup_RecoveryPointByBackupVault]
 
 An array of objects that contain detailed information about recovery
 points saved in a backup vault.

@@ -1,14 +1,15 @@
 package Paws::PinpointSMSVoice;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sms-voice.pinpoint' }
   sub signing_name { 'sms-voice' }
   sub version { '2018-09-05' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -115,7 +116,7 @@ you can add one or more event destinations to it.
 
 =item ConfigurationSetName => Str
 
-=item [EventDestination => L<Paws::PinpointSMSVoice::EventDestinationDefinition>]
+=item [EventDestination => PinpointSMSVoice_EventDestinationDefinition]
 
 =item [EventDestinationName => Str]
 
@@ -208,7 +209,7 @@ account in the current region.
 
 =item [ConfigurationSetName => Str]
 
-=item [Content => L<Paws::PinpointSMSVoice::VoiceMessageContent>]
+=item [Content => PinpointSMSVoice_VoiceMessageContent]
 
 =item [DestinationPhoneNumber => Str]
 
@@ -232,7 +233,7 @@ Create a new voice message and send it to a recipient's phone number.
 
 =item EventDestinationName => Str
 
-=item [EventDestination => L<Paws::PinpointSMSVoice::EventDestinationDefinition>]
+=item [EventDestination => PinpointSMSVoice_EventDestinationDefinition]
 
 
 =back

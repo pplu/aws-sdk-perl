@@ -1,19 +1,84 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroupDetail;
-  use Moose;
-  has BidPrice => (is => 'ro', isa => 'Str');
-  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has InstanceGroupId => (is => 'ro', isa => 'Str');
-  has InstanceRequestCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceRunningCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has LastStateChangeReason => (is => 'ro', isa => 'Str');
-  has Market => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has ReadyDateTime => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EMR::Types qw//;
+  has BidPrice => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str, required => 1);
+  has EndDateTime => (is => 'ro', isa => Str);
+  has InstanceGroupId => (is => 'ro', isa => Str);
+  has InstanceRequestCount => (is => 'ro', isa => Int, required => 1);
+  has InstanceRole => (is => 'ro', isa => Str, required => 1);
+  has InstanceRunningCount => (is => 'ro', isa => Int, required => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has LastStateChangeReason => (is => 'ro', isa => Str);
+  has Market => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+  has ReadyDateTime => (is => 'ro', isa => Str);
+  has StartDateTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LastStateChangeReason' => {
+                                            'type' => 'Str'
+                                          },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceGroupId' => {
+                                      'type' => 'Str'
+                                    },
+               'StartDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'InstanceRequestCount' => {
+                                           'type' => 'Int'
+                                         },
+               'InstanceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'Market' => {
+                             'type' => 'Str'
+                           },
+               'BidPrice' => {
+                               'type' => 'Str'
+                             },
+               'ReadyDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'InstanceRunningCount' => {
+                                           'type' => 'Int'
+                                         },
+               'EndDateTime' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'InstanceRole' => 1,
+                    'Market' => 1,
+                    'InstanceType' => 1,
+                    'CreationDateTime' => 1,
+                    'State' => 1,
+                    'InstanceRunningCount' => 1,
+                    'InstanceRequestCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

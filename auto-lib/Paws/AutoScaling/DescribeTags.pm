@@ -1,15 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribeTags;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Filter]');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AutoScaling::Types qw/AutoScaling_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[AutoScaling_Filter], predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::TagsType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::TagsType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeTagsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::AutoScaling::Filter',
+                              'type' => 'ArrayRef[AutoScaling_Filter]'
+                            },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::AutoScaling::Filter>]
+=head2 Filters => ArrayRef[AutoScaling_Filter]
 
 One or more filters to scope the tags to return. The maximum number of
 filters per filter type (for example, C<auto-scaling-group>) is 1000.

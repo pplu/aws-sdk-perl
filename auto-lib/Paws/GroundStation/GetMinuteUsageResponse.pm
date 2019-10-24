@@ -1,13 +1,49 @@
 
 package Paws::GroundStation::GetMinuteUsageResponse;
-  use Moose;
-  has EstimatedMinutesRemaining => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'estimatedMinutesRemaining');
-  has IsReservedMinutesCustomer => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isReservedMinutesCustomer');
-  has TotalReservedMinuteAllocation => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'totalReservedMinuteAllocation');
-  has TotalScheduledMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'totalScheduledMinutes');
-  has UpcomingMinutesScheduled => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'upcomingMinutesScheduled');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::GroundStation::Types qw//;
+  has EstimatedMinutesRemaining => (is => 'ro', isa => Int);
+  has IsReservedMinutesCustomer => (is => 'ro', isa => Bool);
+  has TotalReservedMinuteAllocation => (is => 'ro', isa => Int);
+  has TotalScheduledMinutes => (is => 'ro', isa => Int);
+  has UpcomingMinutesScheduled => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalScheduledMinutes' => {
+                                            'type' => 'Int'
+                                          },
+               'EstimatedMinutesRemaining' => {
+                                                'type' => 'Int'
+                                              },
+               'UpcomingMinutesScheduled' => {
+                                               'type' => 'Int'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IsReservedMinutesCustomer' => {
+                                                'type' => 'Bool'
+                                              },
+               'TotalReservedMinuteAllocation' => {
+                                                    'type' => 'Int'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'TotalScheduledMinutes' => 'totalScheduledMinutes',
+                       'EstimatedMinutesRemaining' => 'estimatedMinutesRemaining',
+                       'UpcomingMinutesScheduled' => 'upcomingMinutesScheduled',
+                       'IsReservedMinutesCustomer' => 'isReservedMinutesCustomer',
+                       'TotalReservedMinuteAllocation' => 'totalReservedMinuteAllocation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

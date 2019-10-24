@@ -1,20 +1,62 @@
 
 package Paws::Chime::SearchAvailablePhoneNumbers;
-  use Moose;
-  has AreaCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'area-code');
-  has City => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'city');
-  has Country => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'country');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
-  has State => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'state');
-  has TollFreePrefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'toll-free-prefix');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has AreaCode => (is => 'ro', isa => Str, predicate => 1);
+  has City => (is => 'ro', isa => Str, predicate => 1);
+  has Country => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
+  has TollFreePrefix => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchAvailablePhoneNumbers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/search?type=phone-numbers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::SearchAvailablePhoneNumbersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchAvailablePhoneNumbers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/search?type=phone-numbers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::SearchAvailablePhoneNumbersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TollFreePrefix' => {
+                                     'type' => 'Str'
+                                   },
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AreaCode' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInQuery' => {
+                      'Country' => 'country',
+                      'NextToken' => 'next-token',
+                      'TollFreePrefix' => 'toll-free-prefix',
+                      'City' => 'city',
+                      'State' => 'state',
+                      'MaxResults' => 'max-results',
+                      'AreaCode' => 'area-code'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

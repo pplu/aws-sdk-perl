@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Notifications;
-  use Moose;
-  has Completed => (is => 'ro', isa => 'Str');
-  has Error => (is => 'ro', isa => 'Str');
-  has Progressing => (is => 'ro', isa => 'Str');
-  has Warning => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Completed => (is => 'ro', isa => Str);
+  has Error => (is => 'ro', isa => Str);
+  has Progressing => (is => 'ro', isa => Str);
+  has Warning => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Error' => {
+                            'type' => 'Str'
+                          },
+               'Warning' => {
+                              'type' => 'Str'
+                            },
+               'Completed' => {
+                                'type' => 'Str'
+                              },
+               'Progressing' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

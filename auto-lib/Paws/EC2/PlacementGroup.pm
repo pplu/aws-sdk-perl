@@ -6,7 +6,7 @@ package Paws::EC2::PlacementGroup;
   has State => (is => 'ro', isa => Str);
   has Strategy => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'GroupName' => {
@@ -30,8 +30,8 @@ package Paws::EC2::PlacementGroup;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

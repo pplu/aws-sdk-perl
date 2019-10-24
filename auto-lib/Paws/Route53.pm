@@ -1,15 +1,16 @@
 package Paws::Route53;
   warn "Paws::Route53 is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'route53' }
   sub signing_name { 'route53' }
   sub version { '2013-04-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'Throttling' },
        sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'PriorRequestNotComplete' },
   ] });
@@ -494,7 +495,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =item HostedZoneId => Str
 
-=item VPC => L<Paws::Route53::VPC>
+=item VPC => Route53_VPC
 
 =item [Comment => Str]
 
@@ -523,7 +524,7 @@ C<AssociateVPCWithHostedZone> request.
 
 =over
 
-=item ChangeBatch => L<Paws::Route53::ChangeBatch>
+=item ChangeBatch => Route53_ChangeBatch
 
 =item HostedZoneId => Str
 
@@ -641,7 +642,7 @@ in the I<Amazon Route 53 Developer Guide>.
 
 =item ResourceType => Str
 
-=item [AddTags => ArrayRef[L<Paws::Route53::Tag>]]
+=item [AddTags => ArrayRef[Route53_Tag]]
 
 =item [RemoveTagKeys => ArrayRef[Str|Undef]]
 
@@ -666,7 +667,7 @@ in the I<AWS Billing and Cost Management User Guide>.
 
 =item CallerReference => Str
 
-=item HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
+=item HealthCheckConfig => Route53_HealthCheckConfig
 
 
 =back
@@ -735,9 +736,9 @@ Guide
 
 =item [DelegationSetId => Str]
 
-=item [HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>]
+=item [HostedZoneConfig => Route53_HostedZoneConfig]
 
-=item [VPC => L<Paws::Route53::VPC>]
+=item [VPC => Route53_VPC]
 
 
 =back
@@ -1153,7 +1154,7 @@ to create another version, you'll need to start a new traffic policy.
 
 =item HostedZoneId => Str
 
-=item VPC => L<Paws::Route53::VPC>
+=item VPC => Route53_VPC
 
 
 =back
@@ -1369,7 +1370,7 @@ records.
 
 =item HostedZoneId => Str
 
-=item VPC => L<Paws::Route53::VPC>
+=item VPC => Route53_VPC
 
 
 =back
@@ -1398,7 +1399,7 @@ C<DisassociateVPCFromHostedZone>.
 
 =item HostedZoneId => Str
 
-=item VPC => L<Paws::Route53::VPC>
+=item VPC => Route53_VPC
 
 =item [Comment => Str]
 
@@ -2347,7 +2348,7 @@ address, and a subnet mask.
 
 =item HealthCheckId => Str
 
-=item [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>]
+=item [AlarmIdentifier => Route53_AlarmIdentifier]
 
 =item [ChildHealthChecks => ArrayRef[Str|Undef]]
 

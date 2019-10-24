@@ -4,7 +4,7 @@ package Paws::EC2::TargetReservationValue;
   has ReservationValue => (is => 'ro', isa => EC2_ReservationValue);
   has TargetConfiguration => (is => 'ro', isa => EC2_TargetConfiguration);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReservationValue' => {
@@ -22,8 +22,8 @@ package Paws::EC2::TargetReservationValue;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

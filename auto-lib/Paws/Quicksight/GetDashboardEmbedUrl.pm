@@ -1,20 +1,69 @@
 
 package Paws::Quicksight::GetDashboardEmbedUrl;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has DashboardId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DashboardId', required => 1);
-  has IdentityType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'creds-type', required => 1);
-  has ResetDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'reset-disabled');
-  has SessionLifetimeInMinutes => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'session-lifetime');
-  has UndoRedoDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'undo-redo-disabled');
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'user-arn');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DashboardId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResetDisabled => (is => 'ro', isa => Bool, predicate => 1);
+  has SessionLifetimeInMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has UndoRedoDisabled => (is => 'ro', isa => Bool, predicate => 1);
+  has UserArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDashboardEmbedUrl');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/dashboards/{DashboardId}/embed-url');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::GetDashboardEmbedUrlResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDashboardEmbedUrl');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/dashboards/{DashboardId}/embed-url');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::GetDashboardEmbedUrlResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'SessionLifetimeInMinutes' => {
+                                               'type' => 'Int'
+                                             },
+               'ResetDisabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'DashboardId' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'UndoRedoDisabled' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'ParamInURI' => {
+                    'DashboardId' => 'DashboardId',
+                    'AwsAccountId' => 'AwsAccountId'
+                  },
+  'ParamInQuery' => {
+                      'UserArn' => 'user-arn',
+                      'SessionLifetimeInMinutes' => 'session-lifetime',
+                      'ResetDisabled' => 'reset-disabled',
+                      'IdentityType' => 'creds-type',
+                      'UndoRedoDisabled' => 'undo-redo-disabled'
+                    },
+  'IsRequired' => {
+                    'DashboardId' => 1,
+                    'IdentityType' => 1,
+                    'AwsAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

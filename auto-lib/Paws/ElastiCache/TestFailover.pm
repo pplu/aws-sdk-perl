@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::TestFailover;
-  use Moose;
-  has NodeGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has NodeGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestFailover');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::TestFailoverResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TestFailoverResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestFailover');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::TestFailoverResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'TestFailoverResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'NodeGroupId' => 1,
+                    'ReplicationGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

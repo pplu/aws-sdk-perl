@@ -4,7 +4,7 @@ package Paws::EC2::CancelledSpotInstanceRequest;
   has SpotInstanceRequestId => (is => 'ro', isa => Str);
   has State => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'State' => {
@@ -20,8 +20,8 @@ package Paws::EC2::CancelledSpotInstanceRequest;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

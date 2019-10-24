@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::HsmClientCertificateMessage;
-  use Moose;
-  has HsmClientCertificates => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmClientCertificate]', request_name => 'HsmClientCertificate', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_HsmClientCertificate/;
+  has HsmClientCertificates => (is => 'ro', isa => ArrayRef[RedShift_HsmClientCertificate]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmClientCertificates' => {
+                                            'class' => 'Paws::RedShift::HsmClientCertificate',
+                                            'type' => 'ArrayRef[RedShift_HsmClientCertificate]'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'HsmClientCertificates' => 'HsmClientCertificate'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::HsmClientCertificateMessage
 =head1 ATTRIBUTES
 
 
-=head2 HsmClientCertificates => ArrayRef[L<Paws::RedShift::HsmClientCertificate>]
+=head2 HsmClientCertificates => ArrayRef[RedShift_HsmClientCertificate]
 
 A list of the identifiers for one or more HSM client certificates used
 by Amazon Redshift clusters to store and retrieve database encryption

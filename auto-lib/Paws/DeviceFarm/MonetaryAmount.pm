@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::MonetaryAmount;
-  use Moose;
-  has Amount => (is => 'ro', isa => 'Num', request_name => 'amount', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has Amount => (is => 'ro', isa => Num);
+  has CurrencyCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Amount' => {
+                             'type' => 'Num'
+                           },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Amount' => 'amount',
+                       'CurrencyCode' => 'currencyCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

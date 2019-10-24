@@ -1,20 +1,77 @@
 
 package Paws::MediaTailor::GetPlaybackConfigurationResponse;
-  use Moose;
-  has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
-  has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
-  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfiguration');
-  has HlsConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::HlsConfiguration');
-  has Name => (is => 'ro', isa => 'Str');
-  has PlaybackConfigurationArn => (is => 'ro', isa => 'Str');
-  has PlaybackEndpointPrefix => (is => 'ro', isa => 'Str');
-  has SessionInitializationEndpointPrefix => (is => 'ro', isa => 'Str');
-  has SlateAdUrl => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
-  has TranscodeProfileName => (is => 'ro', isa => 'Str');
-  has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw/MediaTailor___mapOf__string MediaTailor_DashConfiguration MediaTailor_HlsConfiguration MediaTailor_CdnConfiguration/;
+  has AdDecisionServerUrl => (is => 'ro', isa => Str);
+  has CdnConfiguration => (is => 'ro', isa => MediaTailor_CdnConfiguration);
+  has DashConfiguration => (is => 'ro', isa => MediaTailor_DashConfiguration);
+  has HlsConfiguration => (is => 'ro', isa => MediaTailor_HlsConfiguration);
+  has Name => (is => 'ro', isa => Str);
+  has PlaybackConfigurationArn => (is => 'ro', isa => Str);
+  has PlaybackEndpointPrefix => (is => 'ro', isa => Str);
+  has SessionInitializationEndpointPrefix => (is => 'ro', isa => Str);
+  has SlateAdUrl => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaTailor___mapOf__string);
+  has TranscodeProfileName => (is => 'ro', isa => Str);
+  has VideoContentSourceUrl => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SessionInitializationEndpointPrefix' => {
+                                                          'type' => 'Str'
+                                                        },
+               'VideoContentSourceUrl' => {
+                                            'type' => 'Str'
+                                          },
+               'PlaybackConfigurationArn' => {
+                                               'type' => 'Str'
+                                             },
+               'HlsConfiguration' => {
+                                       'class' => 'Paws::MediaTailor::HlsConfiguration',
+                                       'type' => 'MediaTailor_HlsConfiguration'
+                                     },
+               'DashConfiguration' => {
+                                        'class' => 'Paws::MediaTailor::DashConfiguration',
+                                        'type' => 'MediaTailor_DashConfiguration'
+                                      },
+               'AdDecisionServerUrl' => {
+                                          'type' => 'Str'
+                                        },
+               'CdnConfiguration' => {
+                                       'class' => 'Paws::MediaTailor::CdnConfiguration',
+                                       'type' => 'MediaTailor_CdnConfiguration'
+                                     },
+               'SlateAdUrl' => {
+                                 'type' => 'Str'
+                               },
+               'PlaybackEndpointPrefix' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TranscodeProfileName' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::MediaTailor::__mapOf__string',
+                           'type' => 'MediaTailor___mapOf__string'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,18 +93,18 @@ Alternately, for testing, you can provide a static VAST URL. The
 maximum length is 25,000 characters.
 
 
-=head2 CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>
+=head2 CdnConfiguration => MediaTailor_CdnConfiguration
 
 The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.
 
 
-=head2 DashConfiguration => L<Paws::MediaTailor::DashConfiguration>
+=head2 DashConfiguration => MediaTailor_DashConfiguration
 
 The configuration for DASH content.
 
 
-=head2 HlsConfiguration => L<Paws::MediaTailor::HlsConfiguration>
+=head2 HlsConfiguration => MediaTailor_HlsConfiguration
 
 The configuration for HLS content.
 
@@ -85,7 +142,7 @@ content. The slate must be a high-quality asset that contains both
 audio and video.
 
 
-=head2 Tags => L<Paws::MediaTailor::__mapOf__string>
+=head2 Tags => MediaTailor___mapOf__string
 
 The tags assigned to the playback configuration.
 

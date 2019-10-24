@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Glue::CrawlerTargets;
-  use Moose;
-  has CatalogTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CatalogTarget]');
-  has DynamoDBTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::DynamoDBTarget]');
-  has JdbcTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JdbcTarget]');
-  has S3Targets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Target]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_S3Target Glue_DynamoDBTarget Glue_CatalogTarget Glue_JdbcTarget/;
+  has CatalogTargets => (is => 'ro', isa => ArrayRef[Glue_CatalogTarget]);
+  has DynamoDBTargets => (is => 'ro', isa => ArrayRef[Glue_DynamoDBTarget]);
+  has JdbcTargets => (is => 'ro', isa => ArrayRef[Glue_JdbcTarget]);
+  has S3Targets => (is => 'ro', isa => ArrayRef[Glue_S3Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DynamoDBTargets' => {
+                                      'class' => 'Paws::Glue::DynamoDBTarget',
+                                      'type' => 'ArrayRef[Glue_DynamoDBTarget]'
+                                    },
+               'JdbcTargets' => {
+                                  'class' => 'Paws::Glue::JdbcTarget',
+                                  'type' => 'ArrayRef[Glue_JdbcTarget]'
+                                },
+               'S3Targets' => {
+                                'class' => 'Paws::Glue::S3Target',
+                                'type' => 'ArrayRef[Glue_S3Target]'
+                              },
+               'CatalogTargets' => {
+                                     'class' => 'Paws::Glue::CatalogTarget',
+                                     'type' => 'ArrayRef[Glue_CatalogTarget]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +69,22 @@ Specifies data stores to crawl.
 =head1 ATTRIBUTES
 
 
-=head2 CatalogTargets => ArrayRef[L<Paws::Glue::CatalogTarget>]
+=head2 CatalogTargets => ArrayRef[Glue_CatalogTarget]
 
   Specifies AWS Glue Data Catalog targets.
 
 
-=head2 DynamoDBTargets => ArrayRef[L<Paws::Glue::DynamoDBTarget>]
+=head2 DynamoDBTargets => ArrayRef[Glue_DynamoDBTarget]
 
   Specifies Amazon DynamoDB targets.
 
 
-=head2 JdbcTargets => ArrayRef[L<Paws::Glue::JdbcTarget>]
+=head2 JdbcTargets => ArrayRef[Glue_JdbcTarget]
 
   Specifies JDBC targets.
 
 
-=head2 S3Targets => ArrayRef[L<Paws::Glue::S3Target>]
+=head2 S3Targets => ArrayRef[Glue_S3Target]
 
   Specifies Amazon Simple Storage Service (Amazon S3) targets.
 

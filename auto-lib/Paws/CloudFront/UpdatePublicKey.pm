@@ -1,18 +1,49 @@
 
 package Paws::CloudFront::UpdatePublicKey;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
-  has PublicKeyConfig => (is => 'ro', isa => 'Paws::CloudFront::PublicKeyConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_PublicKeyConfig/;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has PublicKeyConfig => (is => 'ro', isa => CloudFront_PublicKeyConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePublicKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/public-key/{Id}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdatePublicKeyResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePublicKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/public-key/{Id}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::UpdatePublicKeyResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'PublicKeyConfig' => {
+                                      'class' => 'Paws::CloudFront::PublicKeyConfig',
+                                      'type' => 'CloudFront_PublicKeyConfig'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     },
+  'IsRequired' => {
+                    'PublicKeyConfig' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +99,7 @@ public key to update. For example: C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 B<REQUIRED> PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+=head2 B<REQUIRED> PublicKeyConfig => CloudFront_PublicKeyConfig
 
 Request to update public key information.
 

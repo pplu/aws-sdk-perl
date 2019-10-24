@@ -1,17 +1,42 @@
 
 package Paws::Route53::GetReusableDelegationSetLimit;
-  use Moose;
-  has DelegationSetId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', uri_name => 'Type', traits => ['ParamInURI'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has DelegationSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetReusableDelegationSetLimit');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetReusableDelegationSetLimitResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetReusableDelegationSetLimit');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::GetReusableDelegationSetLimitResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'DelegationSetId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'Type' => 'Type',
+                    'DelegationSetId' => 'Id'
+                  },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'DelegationSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

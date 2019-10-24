@@ -1,9 +1,30 @@
 
 package Paws::Amplify::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw/Amplify_TagMap/;
+  has Tags => (is => 'ro', isa => Amplify_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Amplify::TagMap',
+                           'type' => 'Amplify_TagMap'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::Amplify::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::Amplify::TagMap>
+=head2 Tags => Amplify_TagMap
 
 Tags result for response.
 

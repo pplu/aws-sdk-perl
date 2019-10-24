@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalytics::TagResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[KinesisAnalytics_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalytics::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalytics::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::KinesisAnalytics::Tag',
+                           'type' => 'ArrayRef[KinesisAnalytics_Tag]'
+                         },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The ARN of the application to assign the tags.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[KinesisAnalytics_Tag]
 
 The key-value tags to assign to the application.
 

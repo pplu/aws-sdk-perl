@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionExecutionConfig;
-  use Moose;
-  has IsolationMode => (is => 'ro', isa => 'Str');
-  has RunAs => (is => 'ro', isa => 'Paws::Greengrass::FunctionRunAsConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionRunAsConfig/;
+  has IsolationMode => (is => 'ro', isa => Str);
+  has RunAs => (is => 'ro', isa => Greengrass_FunctionRunAsConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunAs' => {
+                            'class' => 'Paws::Greengrass::FunctionRunAsConfig',
+                            'type' => 'Greengrass_FunctionRunAsConfig'
+                          },
+               'IsolationMode' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Configuration information that specifies how a Lambda function runs.
   
 
 
-=head2 RunAs => L<Paws::Greengrass::FunctionRunAsConfig>
+=head2 RunAs => Greengrass_FunctionRunAsConfig
 
   
 

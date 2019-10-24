@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DirectConnect;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'directconnect' }
   sub signing_name { 'directconnect' }
   sub version { '2012-10-25' }
   sub target_prefix { 'OvertureService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -406,7 +408,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =item ProposalId => Str
 
-=item [OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [OverrideAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
 
 =back
@@ -464,7 +466,7 @@ Intended for use by AWS Direct Connect Partners only.
 
 =item Vlan => Int
 
-=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+=item [Tags => ArrayRef[DirectConnect_Tag]]
 
 
 =back
@@ -491,7 +493,7 @@ Intended for use by AWS Direct Connect Partners only.
 
 =item ConnectionId => Str
 
-=item NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>
+=item NewPrivateVirtualInterfaceAllocation => DirectConnect_NewPrivateVirtualInterfaceAllocation
 
 =item OwnerAccount => Str
 
@@ -517,7 +519,7 @@ traffic.
 
 =item ConnectionId => Str
 
-=item NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
+=item NewPublicVirtualInterfaceAllocation => DirectConnect_NewPublicVirtualInterfaceAllocation
 
 =item OwnerAccount => Str
 
@@ -551,7 +553,7 @@ addresses.
 
 =item ConnectionId => Str
 
-=item NewTransitVirtualInterfaceAllocation => L<Paws::DirectConnect::NewTransitVirtualInterfaceAllocation>
+=item NewTransitVirtualInterfaceAllocation => DirectConnect_NewTransitVirtualInterfaceAllocation
 
 =item OwnerAccount => Str
 
@@ -760,7 +762,7 @@ handle traffic.
 
 =over
 
-=item [NewBGPPeer => L<Paws::DirectConnect::NewBGPPeer>]
+=item [NewBGPPeer => DirectConnect_NewBGPPeer]
 
 =item [VirtualInterfaceId => Str]
 
@@ -801,7 +803,7 @@ be private or already whitelisted for the virtual interface.
 
 =item [LagId => Str]
 
-=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+=item [Tags => ArrayRef[DirectConnect_Tag]]
 
 
 =back
@@ -858,7 +860,7 @@ located, and pass traffic between them.
 
 =item DirectConnectGatewayId => Str
 
-=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
 =item [GatewayId => Str]
 
@@ -886,9 +888,9 @@ and must not be associated with another Direct Connect gateway.
 
 =item GatewayId => Str
 
-=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
-=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
 
 =back
@@ -918,7 +920,7 @@ or transit gateway have the same AWS Payer ID.
 
 =item [LagId => Str]
 
-=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+=item [Tags => ArrayRef[DirectConnect_Tag]]
 
 
 =back
@@ -965,11 +967,11 @@ Intended for use by AWS Direct Connect Partners only.
 
 =item NumberOfConnections => Int
 
-=item [ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+=item [ChildConnectionTags => ArrayRef[DirectConnect_Tag]]
 
 =item [ConnectionId => Str]
 
-=item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
+=item [Tags => ArrayRef[DirectConnect_Tag]]
 
 
 =back
@@ -1012,7 +1014,7 @@ interfaces cannot be directly configured.
 
 =item ConnectionId => Str
 
-=item NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>
+=item NewPrivateVirtualInterface => DirectConnect_NewPrivateVirtualInterface
 
 
 =back
@@ -1037,7 +1039,7 @@ within the same Region.
 
 =item ConnectionId => Str
 
-=item NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
+=item NewPublicVirtualInterface => DirectConnect_NewPublicVirtualInterface
 
 
 =back
@@ -1061,7 +1063,7 @@ use auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
 
 =item ConnectionId => Str
 
-=item NewTransitVirtualInterface => L<Paws::DirectConnect::NewTransitVirtualInterface>
+=item NewTransitVirtualInterface => DirectConnect_NewTransitVirtualInterface
 
 
 =back
@@ -1638,7 +1640,7 @@ physical connections.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=item Tags => ArrayRef[DirectConnect_Tag]
 
 
 =back
@@ -1678,11 +1680,11 @@ resource.
 
 =over
 
-=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [AddAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
 =item [AssociationId => Str]
 
-=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]]
+=item [RemoveAllowedPrefixesToDirectConnectGateway => ArrayRef[DirectConnect_RouteFilterPrefix]]
 
 
 =back

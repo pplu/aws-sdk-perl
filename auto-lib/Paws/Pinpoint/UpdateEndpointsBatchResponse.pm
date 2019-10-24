@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::UpdateEndpointsBatchResponse;
-  use Moose;
-  has MessageBody => (is => 'ro', isa => 'Paws::Pinpoint::MessageBody', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'MessageBody');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MessageBody/;
+  has MessageBody => (is => 'ro', isa => Pinpoint_MessageBody, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageBody' => {
+                                  'class' => 'Paws::Pinpoint::MessageBody',
+                                  'type' => 'Pinpoint_MessageBody'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'MessageBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::UpdateEndpointsBatchResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MessageBody => L<Paws::Pinpoint::MessageBody>
+=head2 B<REQUIRED> MessageBody => Pinpoint_MessageBody
 
 
 

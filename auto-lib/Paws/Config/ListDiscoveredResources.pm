@@ -1,18 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::ListDiscoveredResources;
-  use Moose;
-  has IncludeDeletedResources => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeletedResources' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceIds' );
-  has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::Config::Types qw//;
+  has IncludeDeletedResources => (is => 'ro', isa => Bool, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceName => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDiscoveredResources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::ListDiscoveredResourcesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDiscoveredResources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::ListDiscoveredResourcesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'IncludeDeletedResources' => {
+                                              'type' => 'Bool'
+                                            }
+             },
+  'NameInRequest' => {
+                       'ResourceName' => 'resourceName',
+                       'ResourceIds' => 'resourceIds',
+                       'ResourceType' => 'resourceType',
+                       'NextToken' => 'nextToken',
+                       'Limit' => 'limit',
+                       'IncludeDeletedResources' => 'includeDeletedResources'
+                     },
+  'IsRequired' => {
+                    'ResourceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

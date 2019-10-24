@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryItem;
-  use Moose;
-  has CaptureTime => (is => 'ro', isa => 'Str', required => 1);
-  has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemEntry]');
-  has ContentHash => (is => 'ro', isa => 'Str');
-  has Context => (is => 'ro', isa => 'Paws::SSM::InventoryItemContentContext');
-  has SchemaVersion => (is => 'ro', isa => 'Str', required => 1);
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryItemContentContext SSM_InventoryItemEntry/;
+  has CaptureTime => (is => 'ro', isa => Str, required => 1);
+  has Content => (is => 'ro', isa => ArrayRef[SSM_InventoryItemEntry]);
+  has ContentHash => (is => 'ro', isa => Str);
+  has Context => (is => 'ro', isa => SSM_InventoryItemContentContext);
+  has SchemaVersion => (is => 'ro', isa => Str, required => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptureTime' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ContentHash' => {
+                                  'type' => 'Str'
+                                },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'Content' => {
+                              'class' => 'Paws::SSM::InventoryItemEntry',
+                              'type' => 'ArrayRef[SSM_InventoryItemEntry]'
+                            },
+               'Context' => {
+                              'class' => 'Paws::SSM::InventoryItemContentContext',
+                              'type' => 'SSM_InventoryItemContentContext'
+                            }
+             },
+  'IsRequired' => {
+                    'CaptureTime' => 1,
+                    'SchemaVersion' => 1,
+                    'TypeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +86,7 @@ policy document
   The time the inventory information was collected.
 
 
-=head2 Content => ArrayRef[L<Paws::SSM::InventoryItemEntry>]
+=head2 Content => ArrayRef[SSM_InventoryItemEntry]
 
   The inventory data of the inventory type.
 
@@ -60,7 +99,7 @@ API does not update the inventory item type contents if the MD5 hash
 has not changed since last update.
 
 
-=head2 Context => L<Paws::SSM::InventoryItemContentContext>
+=head2 Context => SSM_InventoryItemContentContext
 
   A map of associated properties for a specified inventory type. For
 example, with this attribute, you can specify the C<ExecutionId>,

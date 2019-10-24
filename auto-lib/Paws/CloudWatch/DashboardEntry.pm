@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::DashboardEntry;
-  use Moose;
-  has DashboardArn => (is => 'ro', isa => 'Str');
-  has DashboardName => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatch::Types qw//;
+  has DashboardArn => (is => 'ro', isa => Str);
+  has DashboardName => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'DashboardName' => {
+                                    'type' => 'Str'
+                                  },
+               'DashboardArn' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

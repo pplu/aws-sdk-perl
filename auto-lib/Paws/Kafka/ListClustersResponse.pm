@@ -1,10 +1,35 @@
 
 package Paws::Kafka::ListClustersResponse;
-  use Moose;
-  has ClusterInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::ClusterInfo]', traits => ['NameInRequest'], request_name => 'clusterInfoList');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_ClusterInfo/;
+  has ClusterInfoList => (is => 'ro', isa => ArrayRef[Kafka_ClusterInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterInfoList' => {
+                                      'class' => 'Paws::Kafka::ClusterInfo',
+                                      'type' => 'ArrayRef[Kafka_ClusterInfo]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClusterInfoList' => 'clusterInfoList',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Kafka::ListClustersResponse
 =head1 ATTRIBUTES
 
 
-=head2 ClusterInfoList => ArrayRef[L<Paws::Kafka::ClusterInfo>]
+=head2 ClusterInfoList => ArrayRef[Kafka_ClusterInfo]
 
 Information on each of the MSK clusters in the response.
 

@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionFilter;
-  use Moose;
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'WorkflowId' => 'workflowId'
+                     },
+  'IsRequired' => {
+                    'WorkflowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

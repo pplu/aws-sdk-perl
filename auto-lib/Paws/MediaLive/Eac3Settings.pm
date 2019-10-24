@@ -1,25 +1,121 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Eac3Settings;
-  use Moose;
-  has AttenuationControl => (is => 'ro', isa => 'Str', request_name => 'attenuationControl', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Num', request_name => 'bitrate', traits => ['NameInRequest']);
-  has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has DcFilter => (is => 'ro', isa => 'Str', request_name => 'dcFilter', traits => ['NameInRequest']);
-  has Dialnorm => (is => 'ro', isa => 'Int', request_name => 'dialnorm', traits => ['NameInRequest']);
-  has DrcLine => (is => 'ro', isa => 'Str', request_name => 'drcLine', traits => ['NameInRequest']);
-  has DrcRf => (is => 'ro', isa => 'Str', request_name => 'drcRf', traits => ['NameInRequest']);
-  has LfeControl => (is => 'ro', isa => 'Str', request_name => 'lfeControl', traits => ['NameInRequest']);
-  has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
-  has LoRoCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoCenterMixLevel', traits => ['NameInRequest']);
-  has LoRoSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'loRoSurroundMixLevel', traits => ['NameInRequest']);
-  has LtRtCenterMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtCenterMixLevel', traits => ['NameInRequest']);
-  has LtRtSurroundMixLevel => (is => 'ro', isa => 'Num', request_name => 'ltRtSurroundMixLevel', traits => ['NameInRequest']);
-  has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
-  has PassthroughControl => (is => 'ro', isa => 'Str', request_name => 'passthroughControl', traits => ['NameInRequest']);
-  has PhaseControl => (is => 'ro', isa => 'Str', request_name => 'phaseControl', traits => ['NameInRequest']);
-  has StereoDownmix => (is => 'ro', isa => 'Str', request_name => 'stereoDownmix', traits => ['NameInRequest']);
-  has SurroundExMode => (is => 'ro', isa => 'Str', request_name => 'surroundExMode', traits => ['NameInRequest']);
-  has SurroundMode => (is => 'ro', isa => 'Str', request_name => 'surroundMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num Int/;
+  use Paws::MediaLive::Types qw//;
+  has AttenuationControl => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Num);
+  has BitstreamMode => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has DcFilter => (is => 'ro', isa => Str);
+  has Dialnorm => (is => 'ro', isa => Int);
+  has DrcLine => (is => 'ro', isa => Str);
+  has DrcRf => (is => 'ro', isa => Str);
+  has LfeControl => (is => 'ro', isa => Str);
+  has LfeFilter => (is => 'ro', isa => Str);
+  has LoRoCenterMixLevel => (is => 'ro', isa => Num);
+  has LoRoSurroundMixLevel => (is => 'ro', isa => Num);
+  has LtRtCenterMixLevel => (is => 'ro', isa => Num);
+  has LtRtSurroundMixLevel => (is => 'ro', isa => Num);
+  has MetadataControl => (is => 'ro', isa => Str);
+  has PassthroughControl => (is => 'ro', isa => Str);
+  has PhaseControl => (is => 'ro', isa => Str);
+  has StereoDownmix => (is => 'ro', isa => Str);
+  has SurroundExMode => (is => 'ro', isa => Str);
+  has SurroundMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LfeFilter' => {
+                                'type' => 'Str'
+                              },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'StereoDownmix' => {
+                                    'type' => 'Str'
+                                  },
+               'AttenuationControl' => {
+                                         'type' => 'Str'
+                                       },
+               'PassthroughControl' => {
+                                         'type' => 'Str'
+                                       },
+               'BitstreamMode' => {
+                                    'type' => 'Str'
+                                  },
+               'LtRtCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'PhaseControl' => {
+                                   'type' => 'Str'
+                                 },
+               'Bitrate' => {
+                              'type' => 'Num'
+                            },
+               'LoRoSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'LoRoCenterMixLevel' => {
+                                         'type' => 'Num'
+                                       },
+               'DrcRf' => {
+                            'type' => 'Str'
+                          },
+               'MetadataControl' => {
+                                      'type' => 'Str'
+                                    },
+               'DrcLine' => {
+                              'type' => 'Str'
+                            },
+               'LfeControl' => {
+                                 'type' => 'Str'
+                               },
+               'LtRtSurroundMixLevel' => {
+                                           'type' => 'Num'
+                                         },
+               'DcFilter' => {
+                               'type' => 'Str'
+                             },
+               'Dialnorm' => {
+                               'type' => 'Int'
+                             },
+               'SurroundMode' => {
+                                   'type' => 'Str'
+                                 },
+               'SurroundExMode' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'LfeFilter' => 'lfeFilter',
+                       'CodingMode' => 'codingMode',
+                       'StereoDownmix' => 'stereoDownmix',
+                       'AttenuationControl' => 'attenuationControl',
+                       'PassthroughControl' => 'passthroughControl',
+                       'BitstreamMode' => 'bitstreamMode',
+                       'LtRtCenterMixLevel' => 'ltRtCenterMixLevel',
+                       'PhaseControl' => 'phaseControl',
+                       'Bitrate' => 'bitrate',
+                       'LoRoSurroundMixLevel' => 'loRoSurroundMixLevel',
+                       'LoRoCenterMixLevel' => 'loRoCenterMixLevel',
+                       'DrcRf' => 'drcRf',
+                       'MetadataControl' => 'metadataControl',
+                       'DrcLine' => 'drcLine',
+                       'LfeControl' => 'lfeControl',
+                       'LtRtSurroundMixLevel' => 'ltRtSurroundMixLevel',
+                       'DcFilter' => 'dcFilter',
+                       'Dialnorm' => 'dialnorm',
+                       'SurroundMode' => 'surroundMode',
+                       'SurroundExMode' => 'surroundExMode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

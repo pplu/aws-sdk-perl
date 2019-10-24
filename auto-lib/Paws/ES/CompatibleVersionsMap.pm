@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::CompatibleVersionsMap;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;

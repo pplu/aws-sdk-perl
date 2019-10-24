@@ -1,17 +1,72 @@
+# Generated from default/object.tt
 package Paws::Glue::StorageDescriptor;
-  use Moose;
-  has BucketColumns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Columns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Column]');
-  has Compressed => (is => 'ro', isa => 'Bool');
-  has InputFormat => (is => 'ro', isa => 'Str');
-  has Location => (is => 'ro', isa => 'Str');
-  has NumberOfBuckets => (is => 'ro', isa => 'Int');
-  has OutputFormat => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
-  has SerdeInfo => (is => 'ro', isa => 'Paws::Glue::SerDeInfo');
-  has SkewedInfo => (is => 'ro', isa => 'Paws::Glue::SkewedInfo');
-  has SortColumns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Order]');
-  has StoredAsSubDirectories => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool Int/;
+  use Paws::Glue::Types qw/Glue_Column Glue_SerDeInfo Glue_ParametersMap Glue_Order Glue_SkewedInfo/;
+  has BucketColumns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Columns => (is => 'ro', isa => ArrayRef[Glue_Column]);
+  has Compressed => (is => 'ro', isa => Bool);
+  has InputFormat => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
+  has NumberOfBuckets => (is => 'ro', isa => Int);
+  has OutputFormat => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+  has SerdeInfo => (is => 'ro', isa => Glue_SerDeInfo);
+  has SkewedInfo => (is => 'ro', isa => Glue_SkewedInfo);
+  has SortColumns => (is => 'ro', isa => ArrayRef[Glue_Order]);
+  has StoredAsSubDirectories => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkewedInfo' => {
+                                 'class' => 'Paws::Glue::SkewedInfo',
+                                 'type' => 'Glue_SkewedInfo'
+                               },
+               'SortColumns' => {
+                                  'class' => 'Paws::Glue::Order',
+                                  'type' => 'ArrayRef[Glue_Order]'
+                                },
+               'Columns' => {
+                              'class' => 'Paws::Glue::Column',
+                              'type' => 'ArrayRef[Glue_Column]'
+                            },
+               'OutputFormat' => {
+                                   'type' => 'Str'
+                                 },
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::ParametersMap',
+                                 'type' => 'Glue_ParametersMap'
+                               },
+               'BucketColumns' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'InputFormat' => {
+                                  'type' => 'Str'
+                                },
+               'NumberOfBuckets' => {
+                                      'type' => 'Int'
+                                    },
+               'SerdeInfo' => {
+                                'class' => 'Paws::Glue::SerDeInfo',
+                                'type' => 'Glue_SerDeInfo'
+                              },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'StoredAsSubDirectories' => {
+                                             'type' => 'Bool'
+                                           },
+               'Compressed' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +108,7 @@ Describes the physical storage of table data.
 columns in the table.
 
 
-=head2 Columns => ArrayRef[L<Paws::Glue::Column>]
+=head2 Columns => ArrayRef[Glue_Column]
 
   A list of the C<Columns> in the table.
 
@@ -87,23 +142,23 @@ warehouse, followed by the table name.
 C<IgnoreKeyTextOutputFormat>, or a custom format.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   User-supplied properties in key-value form.
 
 
-=head2 SerdeInfo => L<Paws::Glue::SerDeInfo>
+=head2 SerdeInfo => Glue_SerDeInfo
 
   Serialization/deserialization (SerDe) information.
 
 
-=head2 SkewedInfo => L<Paws::Glue::SkewedInfo>
+=head2 SkewedInfo => Glue_SkewedInfo
 
   Information about values that appear very frequently in a column
 (skewed values).
 
 
-=head2 SortColumns => ArrayRef[L<Paws::Glue::Order>]
+=head2 SortColumns => ArrayRef[Glue_Order]
 
   A list specifying the sort order of each bucket in the table.
 

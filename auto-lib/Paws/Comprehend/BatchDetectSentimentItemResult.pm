@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Comprehend::BatchDetectSentimentItemResult;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int');
-  has Sentiment => (is => 'ro', isa => 'Str');
-  has SentimentScore => (is => 'ro', isa => 'Paws::Comprehend::SentimentScore');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Comprehend::Types qw/Comprehend_SentimentScore/;
+  has Index => (is => 'ro', isa => Int);
+  has Sentiment => (is => 'ro', isa => Str);
+  has SentimentScore => (is => 'ro', isa => Comprehend_SentimentScore);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sentiment' => {
+                                'type' => 'Str'
+                              },
+               'Index' => {
+                            'type' => 'Int'
+                          },
+               'SentimentScore' => {
+                                     'class' => 'Paws::Comprehend::SentimentScore',
+                                     'type' => 'Comprehend_SentimentScore'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +73,7 @@ for each document that is successfully processed by the operation.
   The sentiment detected in the document.
 
 
-=head2 SentimentScore => L<Paws::Comprehend::SentimentScore>
+=head2 SentimentScore => Comprehend_SentimentScore
 
   The level of confidence that Amazon Comprehend has in the accuracy of
 its sentiment detection.

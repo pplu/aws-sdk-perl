@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Config::EvaluationResultIdentifier;
-  use Moose;
-  has EvaluationResultQualifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultQualifier');
-  has OrderingTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_EvaluationResultQualifier/;
+  has EvaluationResultQualifier => (is => 'ro', isa => Config_EvaluationResultQualifier);
+  has OrderingTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluationResultQualifier' => {
+                                                'class' => 'Paws::Config::EvaluationResultQualifier',
+                                                'type' => 'Config_EvaluationResultQualifier'
+                                              },
+               'OrderingTimestamp' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Uniquely identifies an evaluation result.
 =head1 ATTRIBUTES
 
 
-=head2 EvaluationResultQualifier => L<Paws::Config::EvaluationResultQualifier>
+=head2 EvaluationResultQualifier => Config_EvaluationResultQualifier
 
   Identifies an AWS Config rule used to evaluate an AWS resource, and
 provides the type and ID of the evaluated resource.

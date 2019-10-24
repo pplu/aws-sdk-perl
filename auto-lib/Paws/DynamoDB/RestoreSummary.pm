@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::RestoreSummary;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::RestoreSummary;
   has SourceBackupArn => (is => 'ro', isa => Str);
   has SourceTableArn => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SourceTableArn' => {
@@ -22,11 +23,15 @@ package Paws::DynamoDB::RestoreSummary;
                'RestoreDateTime' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'RestoreInProgress' => 1,
+                    'RestoreDateTime' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

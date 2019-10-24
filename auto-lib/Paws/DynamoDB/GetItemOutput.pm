@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::GetItemOutput;
   use Moo;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::GetItemOutput;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Item' => {
@@ -17,12 +18,15 @@ package Paws::DynamoDB::GetItemOutput;
                'ConsumedCapacity' => {
                                        'class' => 'Paws::DynamoDB::ConsumedCapacity',
                                        'type' => 'DynamoDB_ConsumedCapacity'
-                                     }
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

@@ -1,24 +1,107 @@
 
 package Paws::LexModels::PutBotResponse;
-  use Moose;
-  has AbortStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'abortStatement');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has ChildDirected => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'childDirected');
-  has ClarificationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', traits => ['NameInRequest'], request_name => 'clarificationPrompt');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
-  has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_Intent LexModels_Prompt LexModels_Statement/;
+  has AbortStatement => (is => 'ro', isa => LexModels_Statement);
+  has Checksum => (is => 'ro', isa => Str);
+  has ChildDirected => (is => 'ro', isa => Bool);
+  has ClarificationPrompt => (is => 'ro', isa => LexModels_Prompt);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has CreateVersion => (is => 'ro', isa => Bool);
+  has Description => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has IdleSessionTTLInSeconds => (is => 'ro', isa => Int);
+  has Intents => (is => 'ro', isa => ArrayRef[LexModels_Intent]);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Locale => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+  has VoiceId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreateVersion' => {
+                                    'type' => 'Bool'
+                                  },
+               'ChildDirected' => {
+                                    'type' => 'Bool'
+                                  },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Intents' => {
+                              'class' => 'Paws::LexModels::Intent',
+                              'type' => 'ArrayRef[LexModels_Intent]'
+                            },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'ClarificationPrompt' => {
+                                          'class' => 'Paws::LexModels::Prompt',
+                                          'type' => 'LexModels_Prompt'
+                                        },
+               'AbortStatement' => {
+                                     'class' => 'Paws::LexModels::Statement',
+                                     'type' => 'LexModels_Statement'
+                                   },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdleSessionTTLInSeconds' => {
+                                              'type' => 'Int'
+                                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CreateVersion' => 'createVersion',
+                       'ChildDirected' => 'childDirected',
+                       'FailureReason' => 'failureReason',
+                       'Intents' => 'intents',
+                       'Checksum' => 'checksum',
+                       'ClarificationPrompt' => 'clarificationPrompt',
+                       'AbortStatement' => 'abortStatement',
+                       'Locale' => 'locale',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'VoiceId' => 'voiceId',
+                       'CreatedDate' => 'createdDate',
+                       'Version' => 'version',
+                       'IdleSessionTTLInSeconds' => 'idleSessionTTLInSeconds',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +113,7 @@ Paws::LexModels::PutBotResponse
 =head1 ATTRIBUTES
 
 
-=head2 AbortStatement => L<Paws::LexModels::Statement>
+=head2 AbortStatement => LexModels_Statement
 
 The message that Amazon Lex uses to abort a conversation. For more
 information, see PutBot.
@@ -70,7 +153,7 @@ targeted, in whole or in part, to children under age 13, see the Amazon
 Lex FAQ. (https://aws.amazon.com/lex/faqs#data-security)
 
 
-=head2 ClarificationPrompt => L<Paws::LexModels::Prompt>
+=head2 ClarificationPrompt => LexModels_Prompt
 
 The prompts that Amazon Lex uses when it doesn't understand the user's
 intent. For more information, see PutBot.
@@ -103,7 +186,7 @@ The maximum length of time that Amazon Lex retains the data gathered in
 a conversation. For more information, see PutBot.
 
 
-=head2 Intents => ArrayRef[L<Paws::LexModels::Intent>]
+=head2 Intents => ArrayRef[LexModels_Intent]
 
 An array of C<Intent> objects. For more information, see PutBot.
 

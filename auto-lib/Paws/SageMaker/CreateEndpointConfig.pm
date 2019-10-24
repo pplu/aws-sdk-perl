@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateEndpointConfig;
-  use Moose;
-  has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariant]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_Tag SageMaker_ProductionVariant/;
+  has EndpointConfigName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has ProductionVariants => (is => 'ro', isa => ArrayRef[SageMaker_ProductionVariant], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEndpointConfig');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateEndpointConfigOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEndpointConfig');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateEndpointConfigOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         },
+               'EndpointConfigName' => {
+                                         'type' => 'Str'
+                                       },
+               'ProductionVariants' => {
+                                         'class' => 'Paws::SageMaker::ProductionVariant',
+                                         'type' => 'ArrayRef[SageMaker_ProductionVariant]'
+                                       },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'EndpointConfigName' => 1,
+                    'ProductionVariants' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,14 +115,14 @@ the ML compute instance that hosts the endpoint.
 
 
 
-=head2 B<REQUIRED> ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]
+=head2 B<REQUIRED> ProductionVariants => ArrayRef[SageMaker_ProductionVariant]
 
 An list of C<ProductionVariant> objects, one for each model that you
 want to host at this endpoint.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 A list of key-value pairs. For more information, see Using Cost
 Allocation Tags

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Health::EventTypeFilter;
-  use Moose;
-  has EventTypeCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCategories', traits => ['NameInRequest']);
-  has EventTypeCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCodes', traits => ['NameInRequest']);
-  has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Health::Types qw//;
+  has EventTypeCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventTypeCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Services => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Services' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'EventTypeCodes' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'EventTypeCategories' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Services' => 'services',
+                       'EventTypeCodes' => 'eventTypeCodes',
+                       'EventTypeCategories' => 'eventTypeCategories'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

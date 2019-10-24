@@ -1,10 +1,35 @@
 
 package Paws::AppSync::ListDataSourcesResponse;
-  use Moose;
-  has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::AppSync::DataSource]', traits => ['NameInRequest'], request_name => 'dataSources');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AppSync::Types qw/AppSync_DataSource/;
+  has DataSources => (is => 'ro', isa => ArrayRef[AppSync_DataSource]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DataSources' => {
+                                  'class' => 'Paws::AppSync::DataSource',
+                                  'type' => 'ArrayRef[AppSync_DataSource]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'DataSources' => 'dataSources'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AppSync::ListDataSourcesResponse
 =head1 ATTRIBUTES
 
 
-=head2 DataSources => ArrayRef[L<Paws::AppSync::DataSource>]
+=head2 DataSources => ArrayRef[AppSync_DataSource]
 
 The C<DataSource> objects.
 

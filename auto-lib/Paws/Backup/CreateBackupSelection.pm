@@ -1,16 +1,45 @@
 
 package Paws::Backup::CreateBackupSelection;
-  use Moose;
-  has BackupPlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupPlanId', required => 1);
-  has BackupSelection => (is => 'ro', isa => 'Paws::Backup::BackupSelection', required => 1);
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupSelection/;
+  has BackupPlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BackupSelection => (is => 'ro', isa => Backup_BackupSelection, required => 1, predicate => 1);
+  has CreatorRequestId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBackupSelection');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup/plans/{backupPlanId}/selections/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::CreateBackupSelectionOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBackupSelection');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup/plans/{backupPlanId}/selections/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::CreateBackupSelectionOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupSelection' => {
+                                      'class' => 'Paws::Backup::BackupSelection',
+                                      'type' => 'Backup_BackupSelection'
+                                    },
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'BackupPlanId' => 'backupPlanId'
+                  },
+  'IsRequired' => {
+                    'BackupSelection' => 1,
+                    'BackupPlanId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +98,7 @@ of resources.
 
 
 
-=head2 B<REQUIRED> BackupSelection => L<Paws::Backup::BackupSelection>
+=head2 B<REQUIRED> BackupSelection => Backup_BackupSelection
 
 Specifies the body of a request to assign a set of resources to a
 backup plan.

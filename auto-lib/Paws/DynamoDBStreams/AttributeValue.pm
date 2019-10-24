@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::AttributeValue;
-  use Moose;
-  has B => (is => 'ro', isa => 'Str');
-  has BOOL => (is => 'ro', isa => 'Bool');
-  has BS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has L => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::AttributeValue]');
-  has M => (is => 'ro', isa => 'Paws::DynamoDBStreams::MapAttributeValue');
-  has N => (is => 'ro', isa => 'Str');
-  has NS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NULL => (is => 'ro', isa => 'Bool');
-  has S => (is => 'ro', isa => 'Str');
-  has SS => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_MapAttributeValue DynamoDBStreams_AttributeValue/;
+  has B => (is => 'ro', isa => Str);
+  has BOOL => (is => 'ro', isa => Bool);
+  has BS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has L => (is => 'ro', isa => ArrayRef[DynamoDBStreams_AttributeValue]);
+  has M => (is => 'ro', isa => DynamoDBStreams_MapAttributeValue);
+  has N => (is => 'ro', isa => Str);
+  has NS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NULL => (is => 'ro', isa => Bool);
+  has S => (is => 'ro', isa => Str);
+  has SS => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S' => {
+                        'type' => 'Str'
+                      },
+               'BOOL' => {
+                           'type' => 'Bool'
+                         },
+               'NULL' => {
+                           'type' => 'Bool'
+                         },
+               'N' => {
+                        'type' => 'Str'
+                      },
+               'NS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'BS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'B' => {
+                        'type' => 'Str'
+                      },
+               'M' => {
+                        'class' => 'Paws::DynamoDBStreams::MapAttributeValue',
+                        'type' => 'DynamoDBStreams_MapAttributeValue'
+                      },
+               'SS' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'L' => {
+                        'class' => 'Paws::DynamoDBStreams::AttributeValue',
+                        'type' => 'ArrayRef[DynamoDBStreams_AttributeValue]'
+                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,12 +113,12 @@ allowed.
   A Binary Set data type.
 
 
-=head2 L => ArrayRef[L<Paws::DynamoDBStreams::AttributeValue>]
+=head2 L => ArrayRef[DynamoDBStreams_AttributeValue]
 
   A List data type.
 
 
-=head2 M => L<Paws::DynamoDBStreams::MapAttributeValue>
+=head2 M => DynamoDBStreams_MapAttributeValue
 
   A Map data type.
 

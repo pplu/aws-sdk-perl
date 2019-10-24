@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SimpleEmail;
-  use Moose;
-  has HtmlPart => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
-  has Subject => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
-  has TextPart => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmailPart');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_SimpleEmailPart/;
+  has HtmlPart => (is => 'ro', isa => Pinpoint_SimpleEmailPart);
+  has Subject => (is => 'ro', isa => Pinpoint_SimpleEmailPart);
+  has TextPart => (is => 'ro', isa => Pinpoint_SimpleEmailPart);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subject' => {
+                              'class' => 'Paws::Pinpoint::SimpleEmailPart',
+                              'type' => 'Pinpoint_SimpleEmailPart'
+                            },
+               'TextPart' => {
+                               'class' => 'Paws::Pinpoint::SimpleEmailPart',
+                               'type' => 'Pinpoint_SimpleEmailPart'
+                             },
+               'HtmlPart' => {
+                               'class' => 'Paws::Pinpoint::SimpleEmailPart',
+                               'type' => 'Pinpoint_SimpleEmailPart'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +65,19 @@ text part, and an HTML part.
 =head1 ATTRIBUTES
 
 
-=head2 HtmlPart => L<Paws::Pinpoint::SimpleEmailPart>
+=head2 HtmlPart => Pinpoint_SimpleEmailPart
 
   The body of the email message, in HTML format. We recommend using an
 HTML part for email clients that support HTML. You can include links,
 formatted text, and more in an HTML message.
 
 
-=head2 Subject => L<Paws::Pinpoint::SimpleEmailPart>
+=head2 Subject => Pinpoint_SimpleEmailPart
 
   The subject line, or title, of the email.
 
 
-=head2 TextPart => L<Paws::Pinpoint::SimpleEmailPart>
+=head2 TextPart => Pinpoint_SimpleEmailPart
 
   The body of the email message, in text format. We recommend using a
 text part for email clients that don't support HTML and clients that

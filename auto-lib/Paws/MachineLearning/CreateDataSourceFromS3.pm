@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::CreateDataSourceFromS3;
-  use Moose;
-  has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str');
-  has DataSpec => (is => 'ro', isa => 'Paws::MachineLearning::S3DataSpec', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MachineLearning::Types qw/MachineLearning_S3DataSpec/;
+  has ComputeStatistics => (is => 'ro', isa => Bool, predicate => 1);
+  has DataSourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSourceName => (is => 'ro', isa => Str, predicate => 1);
+  has DataSpec => (is => 'ro', isa => MachineLearning_S3DataSpec, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromS3');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromS3Output');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataSourceFromS3');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromS3Output');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'ComputeStatistics' => {
+                                        'type' => 'Bool'
+                                      },
+               'DataSpec' => {
+                               'class' => 'Paws::MachineLearning::S3DataSpec',
+                               'type' => 'MachineLearning_S3DataSpec'
+                             },
+               'DataSourceId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'DataSpec' => 1,
+                    'DataSourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +105,7 @@ A user-supplied name or description of the C<DataSource>.
 
 
 
-=head2 B<REQUIRED> DataSpec => L<Paws::MachineLearning::S3DataSpec>
+=head2 B<REQUIRED> DataSpec => MachineLearning_S3DataSpec
 
 The data specification of a C<DataSource>:
 

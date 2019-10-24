@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::TimecodeBurnin;
-  use Moose;
-  has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
-  has Position => (is => 'ro', isa => 'Str', request_name => 'position', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has FontSize => (is => 'ro', isa => Int);
+  has Position => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'FontSize' => {
+                               'type' => 'Int'
+                             },
+               'Position' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Prefix' => 'prefix',
+                       'FontSize' => 'fontSize',
+                       'Position' => 'position'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -17,7 +17,7 @@ package Paws::EC2::ReservedInstancesOffering;
   has Scope => (is => 'ro', isa => Str);
   has UsagePrice => (is => 'ro', isa => Num);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OfferingType' => {
@@ -87,8 +87,8 @@ package Paws::EC2::ReservedInstancesOffering;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

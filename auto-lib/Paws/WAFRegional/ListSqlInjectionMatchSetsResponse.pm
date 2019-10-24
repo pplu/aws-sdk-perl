@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListSqlInjectionMatchSetsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has SqlInjectionMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::SqlInjectionMatchSetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SqlInjectionMatchSetSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has SqlInjectionMatchSets => (is => 'ro', isa => ArrayRef[WAFRegional_SqlInjectionMatchSetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SqlInjectionMatchSets' => {
+                                            'class' => 'Paws::WAFRegional::SqlInjectionMatchSetSummary',
+                                            'type' => 'ArrayRef[WAFRegional_SqlInjectionMatchSetSummary]'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -25,7 +47,7 @@ C<NextMarker> value from the response in the C<NextMarker> value in the
 next request.
 
 
-=head2 SqlInjectionMatchSets => ArrayRef[L<Paws::WAFRegional::SqlInjectionMatchSetSummary>]
+=head2 SqlInjectionMatchSets => ArrayRef[WAFRegional_SqlInjectionMatchSetSummary]
 
 An array of SqlInjectionMatchSetSummary objects.
 

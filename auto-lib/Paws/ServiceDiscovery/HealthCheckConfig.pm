@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::HealthCheckConfig;
-  use Moose;
-  has FailureThreshold => (is => 'ro', isa => 'Int');
-  has ResourcePath => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ServiceDiscovery::Types qw//;
+  has FailureThreshold => (is => 'ro', isa => Int);
+  has ResourcePath => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ResourcePath' => {
+                                   'type' => 'Str'
+                                 },
+               'FailureThreshold' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

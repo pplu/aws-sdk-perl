@@ -1,9 +1,27 @@
 
 package Paws::ManagedBlockchain::GetNetworkOutput;
-  use Moose;
-  has Network => (is => 'ro', isa => 'Paws::ManagedBlockchain::Network');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_Network/;
+  has Network => (is => 'ro', isa => ManagedBlockchain_Network);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Network' => {
+                              'class' => 'Paws::ManagedBlockchain::Network',
+                              'type' => 'ManagedBlockchain_Network'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::ManagedBlockchain::GetNetworkOutput
 =head1 ATTRIBUTES
 
 
-=head2 Network => L<Paws::ManagedBlockchain::Network>
+=head2 Network => ManagedBlockchain_Network
 
 An object containing network configuration parameters.
 

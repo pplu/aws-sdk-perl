@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeTimeBasedAutoScalingResult;
-  use Moose;
-  has TimeBasedAutoScalingConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::TimeBasedAutoScalingConfiguration]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_TimeBasedAutoScalingConfiguration/;
+  has TimeBasedAutoScalingConfigurations => (is => 'ro', isa => ArrayRef[OpsWorks_TimeBasedAutoScalingConfiguration]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeBasedAutoScalingConfigurations' => {
+                                                         'class' => 'Paws::OpsWorks::TimeBasedAutoScalingConfiguration',
+                                                         'type' => 'ArrayRef[OpsWorks_TimeBasedAutoScalingConfiguration]'
+                                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeTimeBasedAutoScalingResult
 =head1 ATTRIBUTES
 
 
-=head2 TimeBasedAutoScalingConfigurations => ArrayRef[L<Paws::OpsWorks::TimeBasedAutoScalingConfiguration>]
+=head2 TimeBasedAutoScalingConfigurations => ArrayRef[OpsWorks_TimeBasedAutoScalingConfiguration]
 
 An array of C<TimeBasedAutoScalingConfiguration> objects that describe
 the configuration for the specified instances.

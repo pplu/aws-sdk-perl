@@ -1,16 +1,57 @@
+# Generated from callresult_class.tt
 
 package Paws::STS::AssumeRoleWithSAMLResponse;
-  use Moose;
-  has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
-  has Audience => (is => 'ro', isa => 'Str');
-  has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
-  has Issuer => (is => 'ro', isa => 'Str');
-  has NameQualifier => (is => 'ro', isa => 'Str');
-  has PackedPolicySize => (is => 'ro', isa => 'Int');
-  has Subject => (is => 'ro', isa => 'Str');
-  has SubjectType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::STS::Types qw/STS_AssumedRoleUser STS_Credentials/;
+  has AssumedRoleUser => (is => 'ro', isa => STS_AssumedRoleUser);
+  has Audience => (is => 'ro', isa => Str);
+  has Credentials => (is => 'ro', isa => STS_Credentials);
+  has Issuer => (is => 'ro', isa => Str);
+  has NameQualifier => (is => 'ro', isa => Str);
+  has PackedPolicySize => (is => 'ro', isa => Int);
+  has Subject => (is => 'ro', isa => Str);
+  has SubjectType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'Credentials' => {
+                                  'class' => 'Paws::STS::Credentials',
+                                  'type' => 'STS_Credentials'
+                                },
+               'SubjectType' => {
+                                  'type' => 'Str'
+                                },
+               'Audience' => {
+                               'type' => 'Str'
+                             },
+               'AssumedRoleUser' => {
+                                      'class' => 'Paws::STS::AssumedRoleUser',
+                                      'type' => 'STS_AssumedRoleUser'
+                                    },
+               'PackedPolicySize' => {
+                                       'type' => 'Int'
+                                     },
+               'NameQualifier' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Issuer' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +63,7 @@ Paws::STS::AssumeRoleWithSAMLResponse
 =head1 ATTRIBUTES
 
 
-=head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
+=head2 AssumedRoleUser => STS_AssumedRoleUser
 
 The identifiers for the temporary security credentials that the
 operation returns.
@@ -34,7 +75,7 @@ The value of the C<Recipient> attribute of the
 C<SubjectConfirmationData> element of the SAML assertion.
 
 
-=head2 Credentials => L<Paws::STS::Credentials>
+=head2 Credentials => STS_Credentials
 
 The temporary security credentials, which include an access key ID, a
 secret access key, and a security (or session) token.

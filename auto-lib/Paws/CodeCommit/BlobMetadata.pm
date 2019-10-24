@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::BlobMetadata;
-  use Moose;
-  has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
-  has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has BlobId => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlobId' => {
+                             'type' => 'Str'
+                           },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Mode' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'BlobId' => 'blobId',
+                       'Path' => 'path',
+                       'Mode' => 'mode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

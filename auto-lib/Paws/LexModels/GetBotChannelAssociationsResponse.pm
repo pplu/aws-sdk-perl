@@ -1,10 +1,35 @@
 
 package Paws::LexModels::GetBotChannelAssociationsResponse;
-  use Moose;
-  has BotChannelAssociations => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BotChannelAssociation]', traits => ['NameInRequest'], request_name => 'botChannelAssociations');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_BotChannelAssociation/;
+  has BotChannelAssociations => (is => 'ro', isa => ArrayRef[LexModels_BotChannelAssociation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BotChannelAssociations' => {
+                                             'class' => 'Paws::LexModels::BotChannelAssociation',
+                                             'type' => 'ArrayRef[LexModels_BotChannelAssociation]'
+                                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'BotChannelAssociations' => 'botChannelAssociations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::LexModels::GetBotChannelAssociationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BotChannelAssociations => ArrayRef[L<Paws::LexModels::BotChannelAssociation>]
+=head2 BotChannelAssociations => ArrayRef[LexModels_BotChannelAssociation]
 
 An array of objects, one for each association, that provides
 information about the Amazon Lex bot and its association with the

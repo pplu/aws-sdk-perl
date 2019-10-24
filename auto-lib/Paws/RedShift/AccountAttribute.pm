@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::AccountAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::AttributeValueTarget]', request_name => 'AttributeValueTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_AttributeValueTarget/;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeValues => (is => 'ro', isa => ArrayRef[RedShift_AttributeValueTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeValues' => {
+                                      'class' => 'Paws::RedShift::AttributeValueTarget',
+                                      'type' => 'ArrayRef[RedShift_AttributeValueTarget]'
+                                    },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AttributeValues' => 'AttributeValueTarget'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ A name value pair that describes an aspect of an account.
   The name of the attribute.
 
 
-=head2 AttributeValues => ArrayRef[L<Paws::RedShift::AttributeValueTarget>]
+=head2 AttributeValues => ArrayRef[RedShift_AttributeValueTarget]
 
   A list of attribute values.
 

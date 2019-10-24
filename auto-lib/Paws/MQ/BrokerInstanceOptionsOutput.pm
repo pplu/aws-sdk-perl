@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MQ::BrokerInstanceOptionsOutput;
-  use Moose;
-  has BrokerInstanceOptions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerInstanceOption]', request_name => 'brokerInstanceOptions', traits => ['NameInRequest']);
-  has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::MQ::Types qw/MQ_BrokerInstanceOption/;
+  has BrokerInstanceOptions => (is => 'ro', isa => ArrayRef[MQ_BrokerInstanceOption]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BrokerInstanceOptions' => {
+                                            'class' => 'Paws::MQ::BrokerInstanceOption',
+                                            'type' => 'ArrayRef[MQ_BrokerInstanceOption]'
+                                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'BrokerInstanceOptions' => 'brokerInstanceOptions',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Returns a list of broker instance options.
 =head1 ATTRIBUTES
 
 
-=head2 BrokerInstanceOptions => ArrayRef[L<Paws::MQ::BrokerInstanceOption>]
+=head2 BrokerInstanceOptions => ArrayRef[MQ_BrokerInstanceOption]
 
   List of available broker instance options.
 

@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeSMBSettingsOutput;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has SMBGuestPasswordSet => (is => 'ro', isa => 'Bool');
-  has SMBSecurityStrategy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::StorageGateway::Types qw//;
+  has DomainName => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has SMBGuestPasswordSet => (is => 'ro', isa => Bool);
+  has SMBSecurityStrategy => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SMBSecurityStrategy' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'SMBGuestPasswordSet' => {
+                                          'type' => 'Bool'
+                                        },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

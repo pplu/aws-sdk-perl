@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::TagResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::TagResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ResourceArn' => 'resourceArn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ The Amazon Resource Name (ARN) of the resource you want to add tags to.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[CodePipeline_Tag]
 
 The tags you want to modify or add to the resource.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityMailFromDomainAttributes;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,12 @@ package Paws::SES::IdentityMailFromDomainAttributes;
                'MailFromDomain' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'BehaviorOnMXFailure' => 1,
+                    'MailFromDomainStatus' => 1,
+                    'MailFromDomain' => 1
+                  }
 }
 ;
     return $Params_map;

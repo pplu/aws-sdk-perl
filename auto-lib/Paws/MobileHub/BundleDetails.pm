@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MobileHub::BundleDetails;
-  use Moose;
-  has AvailablePlatforms => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availablePlatforms', traits => ['NameInRequest']);
-  has BundleId => (is => 'ro', isa => 'Str', request_name => 'bundleId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has IconUrl => (is => 'ro', isa => 'Str', request_name => 'iconUrl', traits => ['NameInRequest']);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::MobileHub::Types qw//;
+  has AvailablePlatforms => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BundleId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IconUrl => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'IconUrl' => {
+                              'type' => 'Str'
+                            },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'AvailablePlatforms' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'IconUrl' => 'iconUrl',
+                       'BundleId' => 'bundleId',
+                       'Description' => 'description',
+                       'Title' => 'title',
+                       'AvailablePlatforms' => 'availablePlatforms'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

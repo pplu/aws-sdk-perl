@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::ProcessDetails;
-  use Moose;
-  has LaunchedAt => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ParentPid => (is => 'ro', isa => 'Int');
-  has Path => (is => 'ro', isa => 'Str');
-  has Pid => (is => 'ro', isa => 'Int');
-  has TerminatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SecurityHub::Types qw//;
+  has LaunchedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ParentPid => (is => 'ro', isa => Int);
+  has Path => (is => 'ro', isa => Str);
+  has Pid => (is => 'ro', isa => Int);
+  has TerminatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pid' => {
+                          'type' => 'Int'
+                        },
+               'LaunchedAt' => {
+                                 'type' => 'Str'
+                               },
+               'TerminatedAt' => {
+                                   'type' => 'Str'
+                                 },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'ParentPid' => {
+                                'type' => 'Int'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

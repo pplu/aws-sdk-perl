@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::PutConferencePreference;
-  use Moose;
-  has ConferencePreference => (is => 'ro', isa => 'Paws::AlexaForBusiness::ConferencePreference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_ConferencePreference/;
+  has ConferencePreference => (is => 'ro', isa => AlexaForBusiness_ConferencePreference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutConferencePreference');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::PutConferencePreferenceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutConferencePreference');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::PutConferencePreferenceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConferencePreference' => {
+                                           'class' => 'Paws::AlexaForBusiness::ConferencePreference',
+                                           'type' => 'AlexaForBusiness_ConferencePreference'
+                                         }
+             },
+  'IsRequired' => {
+                    'ConferencePreference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +60,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConferencePreference => L<Paws::AlexaForBusiness::ConferencePreference>
+=head2 B<REQUIRED> ConferencePreference => AlexaForBusiness_ConferencePreference
 
 The conference preference of a specific conference provider.
 

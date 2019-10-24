@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::SNSDestination;
   use Moo;
   use Types::Standard qw/Str/;
@@ -10,7 +11,10 @@ package Paws::SES::SNSDestination;
                'TopicARN' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'TopicARN' => 1
+                  }
 }
 ;
     return $Params_map;

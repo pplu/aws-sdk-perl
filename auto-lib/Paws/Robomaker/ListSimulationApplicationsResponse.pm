@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::ListSimulationApplicationsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SimulationApplicationSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationSummary]', traits => ['NameInRequest'], request_name => 'simulationApplicationSummaries');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_SimulationApplicationSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SimulationApplicationSummaries => (is => 'ro', isa => ArrayRef[Robomaker_SimulationApplicationSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SimulationApplicationSummaries' => {
+                                                     'class' => 'Paws::Robomaker::SimulationApplicationSummary',
+                                                     'type' => 'ArrayRef[Robomaker_SimulationApplicationSummary]'
+                                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SimulationApplicationSummaries' => 'simulationApplicationSummaries',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ retrieve the next page of results. This value is C<null> when there are
 no more results to return.
 
 
-=head2 SimulationApplicationSummaries => ArrayRef[L<Paws::Robomaker::SimulationApplicationSummary>]
+=head2 SimulationApplicationSummaries => ArrayRef[Robomaker_SimulationApplicationSummary]
 
 A list of simulation application summaries that meet the criteria of
 the request.

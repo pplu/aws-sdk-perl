@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Kinesis::EnhancedMetrics;
-  use Moose;
-  has ShardLevelMetrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Kinesis::Types qw//;
+  has ShardLevelMetrics => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShardLevelMetrics' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -4,7 +4,7 @@ package Paws::EC2::FleetLaunchTemplateConfigRequest;
   has LaunchTemplateSpecification => (is => 'ro', isa => EC2_FleetLaunchTemplateSpecificationRequest);
   has Overrides => (is => 'ro', isa => ArrayRef[EC2_FleetLaunchTemplateOverridesRequest]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Overrides' => {
@@ -18,8 +18,8 @@ package Paws::EC2::FleetLaunchTemplateConfigRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

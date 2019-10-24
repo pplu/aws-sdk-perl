@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::UpdateContact;
-  use Moose;
-  has ContactArn => (is => 'ro', isa => 'Str', required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has PhoneNumber => (is => 'ro', isa => 'Str');
-  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::PhoneNumber]');
-  has SipAddresses => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::SipAddress]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_SipAddress AlexaForBusiness_PhoneNumber/;
+  has ContactArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has FirstName => (is => 'ro', isa => Str, predicate => 1);
+  has LastName => (is => 'ro', isa => Str, predicate => 1);
+  has PhoneNumber => (is => 'ro', isa => Str, predicate => 1);
+  has PhoneNumbers => (is => 'ro', isa => ArrayRef[AlexaForBusiness_PhoneNumber], predicate => 1);
+  has SipAddresses => (is => 'ro', isa => ArrayRef[AlexaForBusiness_SipAddress], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateContact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::UpdateContactResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateContact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::UpdateContactResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FirstName' => {
+                                'type' => 'Str'
+                              },
+               'ContactArn' => {
+                                 'type' => 'Str'
+                               },
+               'PhoneNumbers' => {
+                                   'class' => 'Paws::AlexaForBusiness::PhoneNumber',
+                                   'type' => 'ArrayRef[AlexaForBusiness_PhoneNumber]'
+                                 },
+               'PhoneNumber' => {
+                                  'type' => 'Str'
+                                },
+               'LastName' => {
+                               'type' => 'Str'
+                             },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'SipAddresses' => {
+                                   'class' => 'Paws::AlexaForBusiness::SipAddress',
+                                   'type' => 'ArrayRef[AlexaForBusiness_SipAddress]'
+                                 }
+             },
+  'IsRequired' => {
+                    'ContactArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,13 +135,13 @@ number type and multiple numbers.
 
 
 
-=head2 PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]
+=head2 PhoneNumbers => ArrayRef[AlexaForBusiness_PhoneNumber]
 
 The list of phone numbers for the contact.
 
 
 
-=head2 SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]
+=head2 SipAddresses => ArrayRef[AlexaForBusiness_SipAddress]
 
 The list of SIP addresses for the contact.
 

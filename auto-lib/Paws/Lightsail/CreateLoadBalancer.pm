@@ -1,19 +1,67 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateLoadBalancer;
-  use Moose;
-  has CertificateAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'certificateAlternativeNames' );
-  has CertificateDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateDomainName' );
-  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName' );
-  has HealthCheckPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'healthCheckPath' );
-  has InstancePort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'instancePort' , required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag/;
+  has CertificateAlternativeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CertificateDomainName => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateName => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckPath => (is => 'ro', isa => Str, predicate => 1);
+  has InstancePort => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateLoadBalancerResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateLoadBalancerResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateDomainName' => {
+                                            'type' => 'Str'
+                                          },
+               'InstancePort' => {
+                                   'type' => 'Int'
+                                 },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateAlternativeNames' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'HealthCheckPath' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CertificateDomainName' => 'certificateDomainName',
+                       'InstancePort' => 'instancePort',
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'CertificateName' => 'certificateName',
+                       'CertificateAlternativeNames' => 'certificateAlternativeNames',
+                       'Tags' => 'tags',
+                       'HealthCheckPath' => 'healthCheckPath'
+                     },
+  'IsRequired' => {
+                    'InstancePort' => 1,
+                    'LoadBalancerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +159,7 @@ The name of your load balancer.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::UpdateParameterGroup;
-  use Moose;
-  has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Paws::DAX::ParameterNameValue]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_ParameterNameValue/;
+  has ParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ParameterNameValues => (is => 'ro', isa => ArrayRef[DAX_ParameterNameValue], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::UpdateParameterGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::UpdateParameterGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'ParameterNameValues' => {
+                                          'class' => 'Paws::DAX::ParameterNameValue',
+                                          'type' => 'ArrayRef[DAX_ParameterNameValue]'
+                                        }
+             },
+  'IsRequired' => {
+                    'ParameterGroupName' => 1,
+                    'ParameterNameValues' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +81,7 @@ The name of the parameter group.
 
 
 
-=head2 B<REQUIRED> ParameterNameValues => ArrayRef[L<Paws::DAX::ParameterNameValue>]
+=head2 B<REQUIRED> ParameterNameValues => ArrayRef[DAX_ParameterNameValue]
 
 An array of name-value pairs for the parameters in the group. Each
 element in the array represents a single parameter.

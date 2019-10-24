@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppSync::LogConfig;
-  use Moose;
-  has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str', request_name => 'cloudWatchLogsRoleArn', traits => ['NameInRequest'], required => 1);
-  has FieldLogLevel => (is => 'ro', isa => 'Str', request_name => 'fieldLogLevel', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has CloudWatchLogsRoleArn => (is => 'ro', isa => Str, required => 1);
+  has FieldLogLevel => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldLogLevel' => {
+                                    'type' => 'Str'
+                                  },
+               'CloudWatchLogsRoleArn' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'FieldLogLevel' => 'fieldLogLevel',
+                       'CloudWatchLogsRoleArn' => 'cloudWatchLogsRoleArn'
+                     },
+  'IsRequired' => {
+                    'FieldLogLevel' => 1,
+                    'CloudWatchLogsRoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

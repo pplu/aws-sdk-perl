@@ -1,19 +1,79 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::UpdateAction;
-  use Moose;
-  has EstimatedUpdateTime => (is => 'ro', isa => 'Str');
-  has NodeGroupUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupUpdateStatus]', request_name => 'NodeGroupUpdateStatus', traits => ['NameInRequest']);
-  has NodesUpdated => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
-  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateReleaseDate => (is => 'ro', isa => 'Str');
-  has ServiceUpdateSeverity => (is => 'ro', isa => 'Str');
-  has ServiceUpdateStatus => (is => 'ro', isa => 'Str');
-  has ServiceUpdateType => (is => 'ro', isa => 'Str');
-  has SlaMet => (is => 'ro', isa => 'Str');
-  has UpdateActionAvailableDate => (is => 'ro', isa => 'Str');
-  has UpdateActionStatus => (is => 'ro', isa => 'Str');
-  has UpdateActionStatusModifiedDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_NodeGroupUpdateStatus/;
+  has EstimatedUpdateTime => (is => 'ro', isa => Str);
+  has NodeGroupUpdateStatus => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroupUpdateStatus]);
+  has NodesUpdated => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has ServiceUpdateName => (is => 'ro', isa => Str);
+  has ServiceUpdateRecommendedApplyByDate => (is => 'ro', isa => Str);
+  has ServiceUpdateReleaseDate => (is => 'ro', isa => Str);
+  has ServiceUpdateSeverity => (is => 'ro', isa => Str);
+  has ServiceUpdateStatus => (is => 'ro', isa => Str);
+  has ServiceUpdateType => (is => 'ro', isa => Str);
+  has SlaMet => (is => 'ro', isa => Str);
+  has UpdateActionAvailableDate => (is => 'ro', isa => Str);
+  has UpdateActionStatus => (is => 'ro', isa => Str);
+  has UpdateActionStatusModifiedDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpdateActionAvailableDate' => {
+                                                'type' => 'Str'
+                                              },
+               'ServiceUpdateSeverity' => {
+                                            'type' => 'Str'
+                                          },
+               'ServiceUpdateRecommendedApplyByDate' => {
+                                                          'type' => 'Str'
+                                                        },
+               'ServiceUpdateStatus' => {
+                                          'type' => 'Str'
+                                        },
+               'NodeGroupUpdateStatus' => {
+                                            'class' => 'Paws::ElastiCache::NodeGroupUpdateStatus',
+                                            'type' => 'ArrayRef[ElastiCache_NodeGroupUpdateStatus]'
+                                          },
+               'UpdateActionStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'EstimatedUpdateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'ServiceUpdateType' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'NodesUpdated' => {
+                                   'type' => 'Str'
+                                 },
+               'UpdateActionStatusModifiedDate' => {
+                                                     'type' => 'Str'
+                                                   },
+               'SlaMet' => {
+                             'type' => 'Str'
+                           },
+               'ServiceUpdateReleaseDate' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'NameInRequest' => {
+                       'NodeGroupUpdateStatus' => 'NodeGroupUpdateStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +114,7 @@ The status of the service update for a specific replication group
   The estimated length of time for the update to complete
 
 
-=head2 NodeGroupUpdateStatus => ArrayRef[L<Paws::ElastiCache::NodeGroupUpdateStatus>]
+=head2 NodeGroupUpdateStatus => ArrayRef[ElastiCache_NodeGroupUpdateStatus]
 
   The status of the service update on the node group
 

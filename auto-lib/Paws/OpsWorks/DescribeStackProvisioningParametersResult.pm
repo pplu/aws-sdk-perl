@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeStackProvisioningParametersResult;
-  use Moose;
-  has AgentInstallerUrl => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_Parameters/;
+  has AgentInstallerUrl => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => OpsWorks_Parameters);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::OpsWorks::Parameters',
+                                 'type' => 'OpsWorks_Parameters'
+                               },
+               'AgentInstallerUrl' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::OpsWorks::DescribeStackProvisioningParametersResult
 The AWS OpsWorks Stacks agent installer's URL.
 
 
-=head2 Parameters => L<Paws::OpsWorks::Parameters>
+=head2 Parameters => OpsWorks_Parameters
 
 An embedded object that contains the provisioning parameters.
 

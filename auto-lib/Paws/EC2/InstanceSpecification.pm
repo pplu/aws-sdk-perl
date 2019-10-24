@@ -4,7 +4,7 @@ package Paws::EC2::InstanceSpecification;
   has ExcludeBootVolume => (is => 'ro', isa => Bool);
   has InstanceId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -16,8 +16,8 @@ package Paws::EC2::InstanceSpecification;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

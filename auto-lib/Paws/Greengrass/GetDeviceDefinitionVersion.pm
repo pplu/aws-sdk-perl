@@ -1,16 +1,48 @@
 
 package Paws::Greengrass::GetDeviceDefinitionVersion;
-  use Moose;
-  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId', required => 1);
-  has DeviceDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionVersionId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has DeviceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceDefinitionVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDeviceDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetDeviceDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDeviceDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetDeviceDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceDefinitionVersionId' => {
+                                                'type' => 'Str'
+                                              },
+               'DeviceDefinitionId' => {
+                                         'type' => 'Str'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'DeviceDefinitionVersionId' => 'DeviceDefinitionVersionId',
+                    'DeviceDefinitionId' => 'DeviceDefinitionId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken'
+                    },
+  'IsRequired' => {
+                    'DeviceDefinitionVersionId' => 1,
+                    'DeviceDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

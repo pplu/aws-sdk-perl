@@ -1,18 +1,49 @@
 
 package Paws::CloudFront::UpdateStreamingDistribution;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
-  has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistributionConfig/;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
+  has StreamingDistributionConfig => (is => 'ro', isa => CloudFront_StreamingDistributionConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/streaming-distribution/{Id}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateStreamingDistributionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateStreamingDistribution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/streaming-distribution/{Id}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::UpdateStreamingDistributionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'StreamingDistributionConfig' => {
+                                                  'class' => 'Paws::CloudFront::StreamingDistributionConfig',
+                                                  'type' => 'CloudFront_StreamingDistributionConfig'
+                                                }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'StreamingDistributionConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +122,7 @@ streaming distribution's configuration. For example: C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+=head2 B<REQUIRED> StreamingDistributionConfig => CloudFront_StreamingDistributionConfig
 
 The streaming distribution's configuration information.
 

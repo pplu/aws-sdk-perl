@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::LoginProfile;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -18,7 +19,11 @@ package Paws::IAM::LoginProfile;
                'PasswordResetRequired' => {
                                             'type' => 'Bool'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'CreateDate' => 1
+                  }
 }
 ;
     return $Params_map;

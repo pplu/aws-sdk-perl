@@ -1,16 +1,43 @@
 
 package Paws::PinpointEmail::PutEmailIdentityMailFromAttributes;
-  use Moose;
-  has BehaviorOnMxFailure => (is => 'ro', isa => 'Str');
-  has EmailIdentity => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EmailIdentity', required => 1);
-  has MailFromDomain => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has BehaviorOnMxFailure => (is => 'ro', isa => Str, predicate => 1);
+  has EmailIdentity => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MailFromDomain => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEmailIdentityMailFromAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/identities/{EmailIdentity}/mail-from');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::PutEmailIdentityMailFromAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEmailIdentityMailFromAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/identities/{EmailIdentity}/mail-from');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::PutEmailIdentityMailFromAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailIdentity' => {
+                                    'type' => 'Str'
+                                  },
+               'BehaviorOnMxFailure' => {
+                                          'type' => 'Str'
+                                        },
+               'MailFromDomain' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInURI' => {
+                    'EmailIdentity' => 'EmailIdentity'
+                  },
+  'IsRequired' => {
+                    'EmailIdentity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,60 @@
 
 package Paws::Glacier::UploadArchive;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description');
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ArchiveDescription => (is => 'ro', isa => Str, predicate => 1);
+  has Body => (is => 'ro', isa => Str, predicate => 1);
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadArchive');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/archives');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadArchive');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/archives');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ArchiveDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'Checksum' => {
+                               'type' => 'Str'
+                             },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName'
+                  },
+  'ParamInHeader' => {
+                       'ArchiveDescription' => 'x-amz-archive-description',
+                       'Checksum' => 'x-amz-sha256-tree-hash'
+                     },
+  'NameInRequest' => {
+                       'Body' => 'body'
+                     },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

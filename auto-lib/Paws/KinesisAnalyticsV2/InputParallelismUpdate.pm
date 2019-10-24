@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::InputParallelismUpdate;
-  use Moose;
-  has CountUpdate => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has CountUpdate => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CountUpdate' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'IsRequired' => {
+                    'CountUpdate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

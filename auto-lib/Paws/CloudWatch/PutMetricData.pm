@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::PutMetricData;
-  use Moose;
-  has MetricData => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricDatum]', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_MetricDatum/;
+  has MetricData => (is => 'ro', isa => ArrayRef[CloudWatch_MetricDatum], required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricData');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMetricData');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'MetricData' => {
+                                 'class' => 'Paws::CloudWatch::MetricDatum',
+                                 'type' => 'ArrayRef[CloudWatch_MetricDatum]'
+                               }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'MetricData' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MetricData => [
         {
           MetricName => 'MyMetricName',    # min: 1, max: 255
-          Counts     => [ 1, ... ],        # OPTIONAL
+          Counts     => [
+            1, ...                         # OPTIONAL
+          ],                               # OPTIONAL
           Dimensions => [
             {
               Name  => 'MyDimensionName',     # min: 1, max: 255
@@ -42,18 +68,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],                                  # max: 10; OPTIONAL
           StatisticValues => {
-            Maximum     => 1,
-            Minimum     => 1,
-            SampleCount => 1,
-            Sum         => 1,
+            Maximum     => 1,                 # OPTIONAL
+            Minimum     => 1,                 # OPTIONAL
+            SampleCount => 1,                 # OPTIONAL
+            Sum         => 1,                 # OPTIONAL
 
-          },                                  # OPTIONAL
+          },    # OPTIONAL
           StorageResolution => 1,                        # min: 1; OPTIONAL
           Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
           Unit              => 'Seconds'
           , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
-          Value  => 1,
-          Values => [ 1, ... ],    # OPTIONAL
+          Value  => 1,    # OPTIONAL
+          Values => [
+            1, ...        # OPTIONAL
+          ],              # OPTIONAL
         },
         ...
       ],
@@ -67,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>]
+=head2 B<REQUIRED> MetricData => ArrayRef[CloudWatch_MetricDatum]
 
 The data for the metric. The array can include no more than 20 metrics
 per call.

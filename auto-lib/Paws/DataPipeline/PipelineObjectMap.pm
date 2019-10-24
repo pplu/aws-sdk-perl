@@ -1,8 +1,23 @@
 package Paws::DataPipeline::PipelineObjectMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_PipelineObject/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::DataPipeline::PipelineObject]');
+  has Map => (is => 'ro', isa => HashRef[DataPipeline_PipelineObject]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[DataPipeline_PipelineObject]',
+                                          class => 'Paws::DataPipeline::PipelineObject',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::DataPipeline::PipelineObject>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

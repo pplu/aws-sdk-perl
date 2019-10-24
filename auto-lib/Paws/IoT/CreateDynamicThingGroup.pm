@@ -1,19 +1,65 @@
 
 package Paws::IoT::CreateDynamicThingGroup;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString', required => 1);
-  has QueryVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryVersion');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
-  has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_ThingGroupProperties/;
+  has IndexName => (is => 'ro', isa => Str, predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingGroupProperties => (is => 'ro', isa => IoT_ThingGroupProperties, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDynamicThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/dynamic-thing-groups/{thingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateDynamicThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDynamicThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/dynamic-thing-groups/{thingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateDynamicThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ThingGroupProperties' => {
+                                           'class' => 'Paws::IoT::ThingGroupProperties',
+                                           'type' => 'IoT_ThingGroupProperties'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ThingGroupName' => 'thingGroupName'
+                  },
+  'NameInRequest' => {
+                       'QueryVersion' => 'queryVersion',
+                       'IndexName' => 'indexName',
+                       'ThingGroupProperties' => 'thingGroupProperties',
+                       'Tags' => 'tags',
+                       'QueryString' => 'queryString'
+                     },
+  'IsRequired' => {
+                    'ThingGroupName' => 1,
+                    'QueryString' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +147,7 @@ specified, the query version defaults to this value.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the dynamic thing group.
 
@@ -113,7 +159,7 @@ The dynamic thing group name to create.
 
 
 
-=head2 ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=head2 ThingGroupProperties => IoT_ThingGroupProperties
 
 The dynamic thing group properties.
 

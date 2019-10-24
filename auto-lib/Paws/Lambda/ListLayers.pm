@@ -1,16 +1,42 @@
 
 package Paws::Lambda::ListLayers;
-  use Moose;
-  has CompatibleRuntime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CompatibleRuntime');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has CompatibleRuntime => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLayers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListLayersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListLayers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListLayersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'CompatibleRuntime' => {
+                                        'type' => 'Str'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'CompatibleRuntime' => 'CompatibleRuntime',
+                      'Marker' => 'Marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

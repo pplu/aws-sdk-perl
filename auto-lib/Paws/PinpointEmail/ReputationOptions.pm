@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::ReputationOptions;
-  use Moose;
-  has LastFreshStart => (is => 'ro', isa => 'Str');
-  has ReputationMetricsEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::PinpointEmail::Types qw//;
+  has LastFreshStart => (is => 'ro', isa => Str);
+  has ReputationMetricsEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastFreshStart' => {
+                                     'type' => 'Str'
+                                   },
+               'ReputationMetricsEnabled' => {
+                                               'type' => 'Bool'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

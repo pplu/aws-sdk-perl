@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::MessageConfiguration;
-  use Moose;
-  has ADMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
-  has APNSMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
-  has BaiduMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
-  has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
-  has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEmailMessage');
-  has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
-  has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignSmsMessage');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_Message Pinpoint_CampaignEmailMessage Pinpoint_CampaignSmsMessage/;
+  has ADMMessage => (is => 'ro', isa => Pinpoint_Message);
+  has APNSMessage => (is => 'ro', isa => Pinpoint_Message);
+  has BaiduMessage => (is => 'ro', isa => Pinpoint_Message);
+  has DefaultMessage => (is => 'ro', isa => Pinpoint_Message);
+  has EmailMessage => (is => 'ro', isa => Pinpoint_CampaignEmailMessage);
+  has GCMMessage => (is => 'ro', isa => Pinpoint_Message);
+  has SMSMessage => (is => 'ro', isa => Pinpoint_CampaignSmsMessage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GCMMessage' => {
+                                 'class' => 'Paws::Pinpoint::Message',
+                                 'type' => 'Pinpoint_Message'
+                               },
+               'BaiduMessage' => {
+                                   'class' => 'Paws::Pinpoint::Message',
+                                   'type' => 'Pinpoint_Message'
+                                 },
+               'EmailMessage' => {
+                                   'class' => 'Paws::Pinpoint::CampaignEmailMessage',
+                                   'type' => 'Pinpoint_CampaignEmailMessage'
+                                 },
+               'SMSMessage' => {
+                                 'class' => 'Paws::Pinpoint::CampaignSmsMessage',
+                                 'type' => 'Pinpoint_CampaignSmsMessage'
+                               },
+               'APNSMessage' => {
+                                  'class' => 'Paws::Pinpoint::Message',
+                                  'type' => 'Pinpoint_Message'
+                                },
+               'ADMMessage' => {
+                                 'class' => 'Paws::Pinpoint::Message',
+                                 'type' => 'Pinpoint_Message'
+                               },
+               'DefaultMessage' => {
+                                     'class' => 'Paws::Pinpoint::Message',
+                                     'type' => 'Pinpoint_Message'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,37 +84,37 @@ Specifies the message configuration settings for a campaign.
 =head1 ATTRIBUTES
 
 
-=head2 ADMMessage => L<Paws::Pinpoint::Message>
+=head2 ADMMessage => Pinpoint_Message
 
   The message that the campaign sends through the ADM (Amazon Device
 Messaging) channel. This message overrides the default message.
 
 
-=head2 APNSMessage => L<Paws::Pinpoint::Message>
+=head2 APNSMessage => Pinpoint_Message
 
   The message that the campaign sends through the APNs (Apple Push
 Notification service) channel. This message overrides the default
 message.
 
 
-=head2 BaiduMessage => L<Paws::Pinpoint::Message>
+=head2 BaiduMessage => Pinpoint_Message
 
   The message that the campaign sends through the Baidu (Baidu Cloud
 Push) channel. This message overrides the default message.
 
 
-=head2 DefaultMessage => L<Paws::Pinpoint::Message>
+=head2 DefaultMessage => Pinpoint_Message
 
   The default message that the campaign sends through all the channels
 that are configured for the campaign.
 
 
-=head2 EmailMessage => L<Paws::Pinpoint::CampaignEmailMessage>
+=head2 EmailMessage => Pinpoint_CampaignEmailMessage
 
   The message that the campaign sends through the email channel.
 
 
-=head2 GCMMessage => L<Paws::Pinpoint::Message>
+=head2 GCMMessage => Pinpoint_Message
 
   The message that the campaign sends through the GCM channel, which
 enables Amazon Pinpoint to send push notifications through the Firebase
@@ -80,7 +122,7 @@ Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service.
 This message overrides the default message.
 
 
-=head2 SMSMessage => L<Paws::Pinpoint::CampaignSmsMessage>
+=head2 SMSMessage => Pinpoint_CampaignSmsMessage
 
   The message that the campaign sends through the SMS channel.
 

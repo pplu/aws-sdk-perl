@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GCMChannelRequest;
-  use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw//;
+  has ApiKey => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiKey' => {
+                             'type' => 'Str'
+                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'ApiKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Cloud9::CreateEnvironmentEC2Result;
-  use Moose;
-  has EnvironmentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw//;
+  has EnvironmentId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'EnvironmentId' => 'environmentId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

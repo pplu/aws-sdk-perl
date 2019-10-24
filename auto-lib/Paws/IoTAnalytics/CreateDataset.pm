@@ -1,20 +1,72 @@
 
 package Paws::IoTAnalytics::CreateDataset;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', traits => ['NameInRequest'], request_name => 'actions', required => 1);
-  has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', traits => ['NameInRequest'], request_name => 'contentDeliveryRules');
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetName', required => 1);
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', traits => ['NameInRequest'], request_name => 'triggers');
-  has VersioningConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::VersioningConfiguration', traits => ['NameInRequest'], request_name => 'versioningConfiguration');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetTrigger IoTAnalytics_VersioningConfiguration IoTAnalytics_DatasetContentDeliveryRule IoTAnalytics_RetentionPeriod IoTAnalytics_DatasetAction IoTAnalytics_Tag/;
+  has Actions => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetAction], required => 1, predicate => 1);
+  has ContentDeliveryRules => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule], predicate => 1);
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTAnalytics_Tag], predicate => 1);
+  has Triggers => (is => 'ro', isa => ArrayRef[IoTAnalytics_DatasetTrigger], predicate => 1);
+  has VersioningConfiguration => (is => 'ro', isa => IoTAnalytics_VersioningConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/datasets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::CreateDatasetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/datasets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::CreateDatasetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'Triggers' => {
+                               'class' => 'Paws::IoTAnalytics::DatasetTrigger',
+                               'type' => 'ArrayRef[IoTAnalytics_DatasetTrigger]'
+                             },
+               'Actions' => {
+                              'class' => 'Paws::IoTAnalytics::DatasetAction',
+                              'type' => 'ArrayRef[IoTAnalytics_DatasetAction]'
+                            },
+               'VersioningConfiguration' => {
+                                              'class' => 'Paws::IoTAnalytics::VersioningConfiguration',
+                                              'type' => 'IoTAnalytics_VersioningConfiguration'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::IoTAnalytics::Tag',
+                           'type' => 'ArrayRef[IoTAnalytics_Tag]'
+                         },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'ContentDeliveryRules' => {
+                                           'class' => 'Paws::IoTAnalytics::DatasetContentDeliveryRule',
+                                           'type' => 'ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'Triggers' => 'triggers',
+                       'Actions' => 'actions',
+                       'VersioningConfiguration' => 'versioningConfiguration',
+                       'Tags' => 'tags',
+                       'DatasetName' => 'datasetName',
+                       'ContentDeliveryRules' => 'contentDeliveryRules'
+                     },
+  'IsRequired' => {
+                    'Actions' => 1,
+                    'DatasetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -146,13 +198,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+=head2 B<REQUIRED> Actions => ArrayRef[IoTAnalytics_DatasetAction]
 
 A list of actions that create the data set contents.
 
 
 
-=head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
+=head2 ContentDeliveryRules => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]
 
 When data set contents are created they are delivered to destinations
 specified here.
@@ -165,7 +217,7 @@ The name of the data set.
 
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
 [Optional] How long, in days, versions of data set contents are kept
 for the data set. If not specified or set to null, versions of data set
@@ -176,13 +228,13 @@ https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#a
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+=head2 Tags => ArrayRef[IoTAnalytics_Tag]
 
 Metadata which can be used to manage the data set.
 
 
 
-=head2 Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]
+=head2 Triggers => ArrayRef[IoTAnalytics_DatasetTrigger]
 
 A list of triggers. A trigger causes data set contents to be populated
 at a specified time interval or when another data set's contents are
@@ -191,7 +243,7 @@ B<DataSetTrigger> objects.
 
 
 
-=head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
+=head2 VersioningConfiguration => IoTAnalytics_VersioningConfiguration
 
 [Optional] How many versions of data set contents are kept. If not
 specified or set to null, only the latest version plus the latest

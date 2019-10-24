@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryGroup;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryFilter]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SSM::Types qw/SSM_InventoryFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_InventoryFilter], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::SSM::InventoryFilter',
+                              'type' => 'ArrayRef[SSM_InventoryFilter]'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Filters' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +64,7 @@ match the specified criteria.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]
+=head2 B<REQUIRED> Filters => ArrayRef[SSM_InventoryFilter]
 
   Filters define the criteria for the group. The C<matchingCount> field
 displays the number of resources that match the criteria. The

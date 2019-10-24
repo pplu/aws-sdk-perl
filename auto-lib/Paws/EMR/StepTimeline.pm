@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::StepTimeline;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has EndDateTime => (is => 'ro', isa => Str);
+  has StartDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'StartDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'EndDateTime' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

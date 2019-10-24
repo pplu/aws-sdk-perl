@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::S3Control::PublicAccessBlockConfiguration;
-  use Moose;
-  has BlockPublicAcls => (is => 'ro', isa => 'Bool', request_name => 'BlockPublicAcls', traits => ['NameInRequest']);
-  has BlockPublicPolicy => (is => 'ro', isa => 'Bool', request_name => 'BlockPublicPolicy', traits => ['NameInRequest']);
-  has IgnorePublicAcls => (is => 'ro', isa => 'Bool', request_name => 'IgnorePublicAcls', traits => ['NameInRequest']);
-  has RestrictPublicBuckets => (is => 'ro', isa => 'Bool', request_name => 'RestrictPublicBuckets', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::S3Control::Types qw//;
+  has BlockPublicAcls => (is => 'ro', isa => Bool);
+  has BlockPublicPolicy => (is => 'ro', isa => Bool);
+  has IgnorePublicAcls => (is => 'ro', isa => Bool);
+  has RestrictPublicBuckets => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlockPublicAcls' => {
+                                      'type' => 'Bool'
+                                    },
+               'RestrictPublicBuckets' => {
+                                            'type' => 'Bool'
+                                          },
+               'BlockPublicPolicy' => {
+                                        'type' => 'Bool'
+                                      },
+               'IgnorePublicAcls' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'BlockPublicAcls' => 'BlockPublicAcls',
+                       'RestrictPublicBuckets' => 'RestrictPublicBuckets',
+                       'BlockPublicPolicy' => 'BlockPublicPolicy',
+                       'IgnorePublicAcls' => 'IgnorePublicAcls'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

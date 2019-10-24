@@ -1,16 +1,34 @@
 
 package Paws::CloudFront::CreateStreamingDistributionWithTags;
-  use Moose;
-  has StreamingDistributionConfigWithTags => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfigWithTags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistributionConfigWithTags/;
+  has StreamingDistributionConfigWithTags => (is => 'ro', isa => CloudFront_StreamingDistributionConfigWithTags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistributionWithTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/streaming-distribution?WithTags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionWithTagsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStreamingDistributionWithTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/streaming-distribution?WithTags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionWithTagsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamingDistributionConfigWithTags' => {
+                                                          'class' => 'Paws::CloudFront::StreamingDistributionConfigWithTags',
+                                                          'type' => 'CloudFront_StreamingDistributionConfigWithTags'
+                                                        }
+             },
+  'IsRequired' => {
+                    'StreamingDistributionConfigWithTags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +106,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>
+=head2 B<REQUIRED> StreamingDistributionConfigWithTags => CloudFront_StreamingDistributionConfigWithTags
 
 The streaming distribution's configuration information.
 

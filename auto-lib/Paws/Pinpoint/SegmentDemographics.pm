@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentDemographics;
-  use Moose;
-  has AppVersion => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has Channel => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has DeviceType => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has Make => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has Model => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
-  has Platform => (is => 'ro', isa => 'Paws::Pinpoint::SetDimension');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_SetDimension/;
+  has AppVersion => (is => 'ro', isa => Pinpoint_SetDimension);
+  has Channel => (is => 'ro', isa => Pinpoint_SetDimension);
+  has DeviceType => (is => 'ro', isa => Pinpoint_SetDimension);
+  has Make => (is => 'ro', isa => Pinpoint_SetDimension);
+  has Model => (is => 'ro', isa => Pinpoint_SetDimension);
+  has Platform => (is => 'ro', isa => Pinpoint_SetDimension);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'class' => 'Paws::Pinpoint::SetDimension',
+                               'type' => 'Pinpoint_SetDimension'
+                             },
+               'DeviceType' => {
+                                 'class' => 'Paws::Pinpoint::SetDimension',
+                                 'type' => 'Pinpoint_SetDimension'
+                               },
+               'Make' => {
+                           'class' => 'Paws::Pinpoint::SetDimension',
+                           'type' => 'Pinpoint_SetDimension'
+                         },
+               'AppVersion' => {
+                                 'class' => 'Paws::Pinpoint::SetDimension',
+                                 'type' => 'Pinpoint_SetDimension'
+                               },
+               'Channel' => {
+                              'class' => 'Paws::Pinpoint::SetDimension',
+                              'type' => 'Pinpoint_SetDimension'
+                            },
+               'Model' => {
+                            'class' => 'Paws::Pinpoint::SetDimension',
+                            'type' => 'Pinpoint_SetDimension'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,32 +81,32 @@ characteristics of endpoint devices, such as platform, make, and model.
 =head1 ATTRIBUTES
 
 
-=head2 AppVersion => L<Paws::Pinpoint::SetDimension>
+=head2 AppVersion => Pinpoint_SetDimension
 
   The app version criteria for the segment.
 
 
-=head2 Channel => L<Paws::Pinpoint::SetDimension>
+=head2 Channel => Pinpoint_SetDimension
 
   The channel criteria for the segment.
 
 
-=head2 DeviceType => L<Paws::Pinpoint::SetDimension>
+=head2 DeviceType => Pinpoint_SetDimension
 
   The device type criteria for the segment.
 
 
-=head2 Make => L<Paws::Pinpoint::SetDimension>
+=head2 Make => Pinpoint_SetDimension
 
   The device make criteria for the segment.
 
 
-=head2 Model => L<Paws::Pinpoint::SetDimension>
+=head2 Model => Pinpoint_SetDimension
 
   The device model criteria for the segment.
 
 
-=head2 Platform => L<Paws::Pinpoint::SetDimension>
+=head2 Platform => Pinpoint_SetDimension
 
   The device platform criteria for the segment.
 

@@ -1,17 +1,52 @@
 
 package Paws::IoT::ListPolicyPrincipals;
-  use Moose;
-  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-iot-policy', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::IoT::Types qw//;
+  has AscendingOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPolicyPrincipals');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policy-principals');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListPolicyPrincipalsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPolicyPrincipals');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policy-principals');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListPolicyPrincipalsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'AscendingOrder' => {
+                                     'type' => 'Bool'
+                                   },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInHeader' => {
+                       'PolicyName' => 'x-amzn-iot-policy'
+                     },
+  'ParamInQuery' => {
+                      'PageSize' => 'pageSize',
+                      'AscendingOrder' => 'isAscendingOrder',
+                      'Marker' => 'marker'
+                    },
+  'IsRequired' => {
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

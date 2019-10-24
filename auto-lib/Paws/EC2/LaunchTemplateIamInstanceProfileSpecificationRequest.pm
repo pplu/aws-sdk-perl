@@ -4,7 +4,7 @@ package Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest;
   has Arn => (is => 'ro', isa => Str);
   has Name => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Arn' => {
@@ -16,8 +16,8 @@ package Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

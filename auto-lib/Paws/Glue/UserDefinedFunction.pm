@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::Glue::UserDefinedFunction;
-  use Moose;
-  has ClassName => (is => 'ro', isa => 'Str');
-  has CreateTime => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str');
-  has OwnerName => (is => 'ro', isa => 'Str');
-  has OwnerType => (is => 'ro', isa => 'Str');
-  has ResourceUris => (is => 'ro', isa => 'ArrayRef[Paws::Glue::ResourceUri]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_ResourceUri/;
+  has ClassName => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has FunctionName => (is => 'ro', isa => Str);
+  has OwnerName => (is => 'ro', isa => Str);
+  has OwnerType => (is => 'ro', isa => Str);
+  has ResourceUris => (is => 'ro', isa => ArrayRef[Glue_ResourceUri]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClassName' => {
+                                'type' => 'Str'
+                              },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'OwnerType' => {
+                                'type' => 'Str'
+                              },
+               'ResourceUris' => {
+                                   'class' => 'Paws::Glue::ResourceUri',
+                                   'type' => 'ArrayRef[Glue_ResourceUri]'
+                                 },
+               'OwnerName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +100,7 @@ definition.
   The owner type.
 
 
-=head2 ResourceUris => ArrayRef[L<Paws::Glue::ResourceUri>]
+=head2 ResourceUris => ArrayRef[Glue_ResourceUri]
 
   The resource URIs for the function.
 

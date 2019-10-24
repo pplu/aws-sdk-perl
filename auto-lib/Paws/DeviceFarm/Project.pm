@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Project;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has DefaultJobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'defaultJobTimeoutMinutes', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has DefaultJobTimeoutMinutes => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DefaultJobTimeoutMinutes' => {
+                                               'type' => 'Int'
+                                             }
+             },
+  'NameInRequest' => {
+                       'Created' => 'created',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'DefaultJobTimeoutMinutes' => 'defaultJobTimeoutMinutes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::LabelDetection;
-  use Moose;
-  has Label => (is => 'ro', isa => 'Paws::Rekognition::Label');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_Label/;
+  has Label => (is => 'ro', isa => Rekognition_Label);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Label' => {
+                            'class' => 'Paws::Rekognition::Label',
+                            'type' => 'Rekognition_Label'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ time the label was detected in the video.
 =head1 ATTRIBUTES
 
 
-=head2 Label => L<Paws::Rekognition::Label>
+=head2 Label => Rekognition_Label
 
   Details about the detected label.
 

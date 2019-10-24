@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListSAMLProvidersResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef/;
   use Paws::IAM::Types qw/IAM_SAMLProviderListEntry/;
   has SAMLProviderList => (is => 'ro', isa => ArrayRef[IAM_SAMLProviderListEntry]);

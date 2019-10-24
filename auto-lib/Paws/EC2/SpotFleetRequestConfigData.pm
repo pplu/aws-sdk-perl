@@ -24,7 +24,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has ValidFrom => (is => 'ro', isa => Str);
   has ValidUntil => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OnDemandMaxTotalPrice' => {
@@ -120,11 +120,15 @@ package Paws::EC2::SpotFleetRequestConfigData;
                        'IamFleetRole' => 'iamFleetRole',
                        'OnDemandAllocationStrategy' => 'onDemandAllocationStrategy',
                        'InstancePoolsToUseCount' => 'instancePoolsToUseCount'
-                     }
+                     },
+  'IsRequired' => {
+                    'TargetCapacity' => 1,
+                    'IamFleetRole' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

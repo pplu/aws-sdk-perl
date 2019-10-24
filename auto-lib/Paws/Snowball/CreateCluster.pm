@@ -1,22 +1,74 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Snowball::CreateCluster;
-  use Moose;
-  has AddressId => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has ForwardingAddressId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyARN => (is => 'ro', isa => 'Str');
-  has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
-  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has ShippingOption => (is => 'ro', isa => 'Str', required => 1);
-  has SnowballType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_JobResource Snowball_Notification/;
+  has AddressId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ForwardingAddressId => (is => 'ro', isa => Str, predicate => 1);
+  has JobType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KmsKeyARN => (is => 'ro', isa => Str, predicate => 1);
+  has Notification => (is => 'ro', isa => Snowball_Notification, predicate => 1);
+  has Resources => (is => 'ro', isa => Snowball_JobResource, required => 1, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShippingOption => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SnowballType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Snowball::CreateClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Snowball::CreateClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShippingOption' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyARN' => {
+                                'type' => 'Str'
+                              },
+               'Notification' => {
+                                   'class' => 'Paws::Snowball::Notification',
+                                   'type' => 'Snowball_Notification'
+                                 },
+               'AddressId' => {
+                                'type' => 'Str'
+                              },
+               'ForwardingAddressId' => {
+                                          'type' => 'Str'
+                                        },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'Resources' => {
+                                'class' => 'Paws::Snowball::JobResource',
+                                'type' => 'Snowball_JobResource'
+                              },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'SnowballType' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ShippingOption' => 1,
+                    'Resources' => 1,
+                    'JobType' => 1,
+                    'RoleARN' => 1,
+                    'AddressId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -115,14 +167,14 @@ API action in AWS Key Management Service (AWS KMS).
 
 
 
-=head2 Notification => L<Paws::Snowball::Notification>
+=head2 Notification => Snowball_Notification
 
 The Amazon Simple Notification Service (Amazon SNS) notification
 settings for this cluster.
 
 
 
-=head2 B<REQUIRED> Resources => L<Paws::Snowball::JobResource>
+=head2 B<REQUIRED> Resources => Snowball_JobResource
 
 The resources associated with the cluster job. These resources include
 Amazon S3 buckets and optional AWS Lambda functions written in the

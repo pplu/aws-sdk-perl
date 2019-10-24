@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::TimerDefinition;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Seconds => (is => 'ro', isa => 'Int', request_name => 'seconds', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTEventsData::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Seconds => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Seconds' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Seconds' => 'seconds'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Seconds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

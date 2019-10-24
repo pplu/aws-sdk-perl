@@ -1,18 +1,64 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::UploadLayerPart;
-  use Moose;
-  has LayerPartBlob => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'layerPartBlob' , required => 1);
-  has PartFirstByte => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'partFirstByte' , required => 1);
-  has PartLastByte => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'partLastByte' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECR::Types qw//;
+  has LayerPartBlob => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartFirstByte => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has PartLastByte => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadLayerPart');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::UploadLayerPartResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadLayerPart');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::UploadLayerPartResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'LayerPartBlob' => {
+                                    'type' => 'Str'
+                                  },
+               'PartFirstByte' => {
+                                    'type' => 'Int'
+                                  },
+               'PartLastByte' => {
+                                   'type' => 'Int'
+                                 },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'LayerPartBlob' => 'layerPartBlob',
+                       'PartFirstByte' => 'partFirstByte',
+                       'PartLastByte' => 'partLastByte',
+                       'UploadId' => 'uploadId',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'LayerPartBlob' => 1,
+                    'PartFirstByte' => 1,
+                    'PartLastByte' => 1,
+                    'UploadId' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

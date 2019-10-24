@@ -7,7 +7,7 @@ package Paws::EC2::AvailabilityZone;
   has ZoneId => (is => 'ro', isa => Str);
   has ZoneName => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ZoneId' => {
@@ -36,8 +36,8 @@ package Paws::EC2::AvailabilityZone;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

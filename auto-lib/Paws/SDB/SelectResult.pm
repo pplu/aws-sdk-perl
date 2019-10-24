@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::SDB::SelectResult;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Item]', request_name => 'Item', traits => ['NameInRequest',]);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SDB::Types qw/SDB_Item/;
+  has Items => (is => 'ro', isa => ArrayRef[SDB_Item]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::SDB::Item',
+                            'type' => 'ArrayRef[SDB_Item]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Item'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::SDB::SelectResult
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::SDB::Item>]
+=head2 Items => ArrayRef[SDB_Item]
 
 A list of items that match the select expression.
 

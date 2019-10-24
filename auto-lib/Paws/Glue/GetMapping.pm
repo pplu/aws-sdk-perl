@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::GetMapping;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Paws::Glue::Location');
-  has Sinks => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CatalogEntry]');
-  has Source => (is => 'ro', isa => 'Paws::Glue::CatalogEntry', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Location Glue_CatalogEntry/;
+  has Location => (is => 'ro', isa => Glue_Location, predicate => 1);
+  has Sinks => (is => 'ro', isa => ArrayRef[Glue_CatalogEntry], predicate => 1);
+  has Source => (is => 'ro', isa => Glue_CatalogEntry, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMapping');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::GetMappingResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMapping');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::GetMappingResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'class' => 'Paws::Glue::CatalogEntry',
+                             'type' => 'Glue_CatalogEntry'
+                           },
+               'Sinks' => {
+                            'class' => 'Paws::Glue::CatalogEntry',
+                            'type' => 'ArrayRef[Glue_CatalogEntry]'
+                          },
+               'Location' => {
+                               'class' => 'Paws::Glue::Location',
+                               'type' => 'Glue_Location'
+                             }
+             },
+  'IsRequired' => {
+                    'Source' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,19 +110,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 Location => L<Paws::Glue::Location>
+=head2 Location => Glue_Location
 
 Parameters for the mapping.
 
 
 
-=head2 Sinks => ArrayRef[L<Paws::Glue::CatalogEntry>]
+=head2 Sinks => ArrayRef[Glue_CatalogEntry]
 
 A list of target tables.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::Glue::CatalogEntry>
+=head2 B<REQUIRED> Source => Glue_CatalogEntry
 
 Specifies the source table.
 

@@ -1,21 +1,89 @@
+# Generated from default/object.tt
 package Paws::AppStream::Image;
-  use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::Application]');
-  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has BaseImageArn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has ImageBuilderName => (is => 'ro', isa => 'Str');
-  has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
-  has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Platform => (is => 'ro', isa => 'Str');
-  has PublicBaseImageReleasedDate => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageStateChangeReason');
-  has Visibility => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::AppStream::Types qw/AppStream_ImageStateChangeReason AppStream_ImagePermissions AppStream_Application/;
+  has Applications => (is => 'ro', isa => ArrayRef[AppStream_Application]);
+  has AppstreamAgentVersion => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has BaseImageArn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has ImageBuilderName => (is => 'ro', isa => Str);
+  has ImageBuilderSupported => (is => 'ro', isa => Bool);
+  has ImagePermissions => (is => 'ro', isa => AppStream_ImagePermissions);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Platform => (is => 'ro', isa => Str);
+  has PublicBaseImageReleasedDate => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => AppStream_ImageStateChangeReason);
+  has Visibility => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'BaseImageArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Applications' => {
+                                   'class' => 'Paws::AppStream::Application',
+                                   'type' => 'ArrayRef[AppStream_Application]'
+                                 },
+               'AppstreamAgentVersion' => {
+                                            'type' => 'Str'
+                                          },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ImageBuilderName' => {
+                                       'type' => 'Str'
+                                     },
+               'Visibility' => {
+                                 'type' => 'Str'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'ImageBuilderSupported' => {
+                                            'type' => 'Bool'
+                                          },
+               'PublicBaseImageReleasedDate' => {
+                                                  'type' => 'Str'
+                                                },
+               'StateChangeReason' => {
+                                        'class' => 'Paws::AppStream::ImageStateChangeReason',
+                                        'type' => 'AppStream_ImageStateChangeReason'
+                                      },
+               'ImagePermissions' => {
+                                       'class' => 'Paws::AppStream::ImagePermissions',
+                                       'type' => 'AppStream_ImagePermissions'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +119,7 @@ Describes an image.
 =head1 ATTRIBUTES
 
 
-=head2 Applications => ArrayRef[L<Paws::AppStream::Application>]
+=head2 Applications => ArrayRef[AppStream_Application]
 
   The applications associated with the image.
 
@@ -98,7 +166,7 @@ image. If the image is shared, this value is null.
   Indicates whether an image builder can be launched from this image.
 
 
-=head2 ImagePermissions => L<Paws::AppStream::ImagePermissions>
+=head2 ImagePermissions => AppStream_ImagePermissions
 
   The permissions to provide to the destination AWS account for the
 specified image.
@@ -128,7 +196,7 @@ the state is C<AVAILABLE>. If image creation fails, the state is
 C<FAILED>.
 
 
-=head2 StateChangeReason => L<Paws::AppStream::ImageStateChangeReason>
+=head2 StateChangeReason => AppStream_ImageStateChangeReason
 
   The reason why the last state change occurred.
 

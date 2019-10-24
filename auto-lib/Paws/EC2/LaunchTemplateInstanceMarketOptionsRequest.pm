@@ -4,7 +4,7 @@ package Paws::EC2::LaunchTemplateInstanceMarketOptionsRequest;
   has MarketType => (is => 'ro', isa => Str);
   has SpotOptions => (is => 'ro', isa => EC2_LaunchTemplateSpotMarketOptionsRequest);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'MarketType' => {
@@ -17,8 +17,8 @@ package Paws::EC2::LaunchTemplateInstanceMarketOptionsRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SSM::ComplianceExecutionSummary;
-  use Moose;
-  has ExecutionId => (is => 'ro', isa => 'Str');
-  has ExecutionTime => (is => 'ro', isa => 'Str', required => 1);
-  has ExecutionType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has ExecutionId => (is => 'ro', isa => Str);
+  has ExecutionTime => (is => 'ro', isa => Str, required => 1);
+  has ExecutionType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionTime' => {
+                                    'type' => 'Str'
+                                  },
+               'ExecutionId' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionType' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ExecutionTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

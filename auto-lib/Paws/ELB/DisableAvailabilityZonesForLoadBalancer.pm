@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::DisableAvailabilityZonesForLoadBalancer;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ELB::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::RemoveAvailabilityZonesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancerResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::RemoveAvailabilityZonesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DisableAvailabilityZonesForLoadBalancerResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'AvailabilityZones' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateServiceLinkedRole;
   use Moo;
@@ -25,7 +26,10 @@ package Paws::IAM::CreateServiceLinkedRole;
                'AWSServiceName' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'AWSServiceName' => 1
+                  }
 }
 ;
     return $Params_map;

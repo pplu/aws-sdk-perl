@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::InstanceIdentity;
-  use Moose;
-  has Document => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Document => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               'Document' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

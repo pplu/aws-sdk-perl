@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::BounceAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,12 @@ package Paws::SES::BounceAction;
                'Sender' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Message' => 1,
+                    'SmtpReplyCode' => 1,
+                    'Sender' => 1
+                  }
 }
 ;
     return $Params_map;

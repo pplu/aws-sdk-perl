@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::NumberAttributeConstraintsType;
-  use Moose;
-  has MaxValue => (is => 'ro', isa => 'Str');
-  has MinValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has MaxValue => (is => 'ro', isa => Str);
+  has MinValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxValue' => {
+                               'type' => 'Str'
+                             },
+               'MinValue' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

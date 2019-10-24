@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioNormalizationSettings;
-  use Moose;
-  has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
-  has AlgorithmControl => (is => 'ro', isa => 'Str', request_name => 'algorithmControl', traits => ['NameInRequest']);
-  has TargetLkfs => (is => 'ro', isa => 'Num', request_name => 'targetLkfs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::MediaLive::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str);
+  has AlgorithmControl => (is => 'ro', isa => Str);
+  has TargetLkfs => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlgorithmControl' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetLkfs' => {
+                                 'type' => 'Num'
+                               },
+               'Algorithm' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'AlgorithmControl' => 'algorithmControl',
+                       'TargetLkfs' => 'targetLkfs',
+                       'Algorithm' => 'algorithm'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::DescribeProblemResponse;
-  use Moose;
-  has Problem => (is => 'ro', isa => 'Paws::ApplicationInsights::Problem');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_Problem/;
+  has Problem => (is => 'ro', isa => ApplicationInsights_Problem);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Problem' => {
+                              'class' => 'Paws::ApplicationInsights::Problem',
+                              'type' => 'ApplicationInsights_Problem'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ApplicationInsights::DescribeProblemResponse
 =head1 ATTRIBUTES
 
 
-=head2 Problem => L<Paws::ApplicationInsights::Problem>
+=head2 Problem => ApplicationInsights_Problem
 
 Information about the problem.
 

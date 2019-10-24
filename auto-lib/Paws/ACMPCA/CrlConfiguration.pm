@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::CrlConfiguration;
-  use Moose;
-  has CustomCname => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has ExpirationInDays => (is => 'ro', isa => 'Int');
-  has S3BucketName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::ACMPCA::Types qw//;
+  has CustomCname => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has ExpirationInDays => (is => 'ro', isa => Int);
+  has S3BucketName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpirationInDays' => {
+                                       'type' => 'Int'
+                                     },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'CustomCname' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

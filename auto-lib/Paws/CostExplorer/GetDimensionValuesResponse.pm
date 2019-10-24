@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CostExplorer::GetDimensionValuesResponse;
-  use Moose;
-  has DimensionValues => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::DimensionValuesWithAttributes]', required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has ReturnSize => (is => 'ro', isa => 'Int', required => 1);
-  has TotalSize => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DimensionValuesWithAttributes/;
+  has DimensionValues => (is => 'ro', isa => ArrayRef[CostExplorer_DimensionValuesWithAttributes], required => 1);
+  has NextPageToken => (is => 'ro', isa => Str);
+  has ReturnSize => (is => 'ro', isa => Int, required => 1);
+  has TotalSize => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnSize' => {
+                                 'type' => 'Int'
+                               },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'DimensionValues' => {
+                                      'class' => 'Paws::CostExplorer::DimensionValuesWithAttributes',
+                                      'type' => 'ArrayRef[CostExplorer_DimensionValuesWithAttributes]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TotalSize' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'ReturnSize' => 1,
+                    'DimensionValues' => 1,
+                    'TotalSize' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,7 +50,7 @@ Paws::CostExplorer::GetDimensionValuesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DimensionValues => ArrayRef[L<Paws::CostExplorer::DimensionValuesWithAttributes>]
+=head2 B<REQUIRED> DimensionValues => ArrayRef[CostExplorer_DimensionValuesWithAttributes]
 
 The filters that you used to filter your request. Some dimensions are
 available only for a specific context.

@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::Glacier::SelectParameters;
-  use Moose;
-  has Expression => (is => 'ro', isa => 'Str');
-  has ExpressionType => (is => 'ro', isa => 'Str');
-  has InputSerialization => (is => 'ro', isa => 'Paws::Glacier::InputSerialization');
-  has OutputSerialization => (is => 'ro', isa => 'Paws::Glacier::OutputSerialization');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_OutputSerialization Glacier_InputSerialization/;
+  has Expression => (is => 'ro', isa => Str);
+  has ExpressionType => (is => 'ro', isa => Str);
+  has InputSerialization => (is => 'ro', isa => Glacier_InputSerialization);
+  has OutputSerialization => (is => 'ro', isa => Glacier_OutputSerialization);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expression' => {
+                                 'type' => 'Str'
+                               },
+               'OutputSerialization' => {
+                                          'class' => 'Paws::Glacier::OutputSerialization',
+                                          'type' => 'Glacier_OutputSerialization'
+                                        },
+               'InputSerialization' => {
+                                         'class' => 'Paws::Glacier::InputSerialization',
+                                         'type' => 'Glacier_InputSerialization'
+                                       },
+               'ExpressionType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,12 +77,12 @@ Contains information about the parameters used for a select.
   The type of the provided expression, for example C<SQL>.
 
 
-=head2 InputSerialization => L<Paws::Glacier::InputSerialization>
+=head2 InputSerialization => Glacier_InputSerialization
 
   Describes the serialization format of the object.
 
 
-=head2 OutputSerialization => L<Paws::Glacier::OutputSerialization>
+=head2 OutputSerialization => Glacier_OutputSerialization
 
   Describes how the results of the select job are serialized.
 

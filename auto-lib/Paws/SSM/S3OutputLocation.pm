@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::S3OutputLocation;
-  use Moose;
-  has OutputS3BucketName => (is => 'ro', isa => 'Str');
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has OutputS3Region => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has OutputS3BucketName => (is => 'ro', isa => Str);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str);
+  has OutputS3Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputS3Region' => {
+                                     'type' => 'Str'
+                                   },
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

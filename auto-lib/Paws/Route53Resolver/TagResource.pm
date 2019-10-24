@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Route53Resolver_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Route53Resolver::Tag',
+                           'type' => 'ArrayRef[Route53Resolver_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +107,7 @@ ListResolverRules
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Route53Resolver_Tag]
 
 The tags that you want to add to the specified resource.
 

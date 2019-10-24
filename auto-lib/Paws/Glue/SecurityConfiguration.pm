@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Glue::SecurityConfiguration;
-  use Moose;
-  has CreatedTimeStamp => (is => 'ro', isa => 'Str');
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Glue::EncryptionConfiguration');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_EncryptionConfiguration/;
+  has CreatedTimeStamp => (is => 'ro', isa => Str);
+  has EncryptionConfiguration => (is => 'ro', isa => Glue_EncryptionConfiguration);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Glue::EncryptionConfiguration',
+                                              'type' => 'Glue_EncryptionConfiguration'
+                                            },
+               'CreatedTimeStamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Specifies a security configuration.
   The time at which this security configuration was created.
 
 
-=head2 EncryptionConfiguration => L<Paws::Glue::EncryptionConfiguration>
+=head2 EncryptionConfiguration => Glue_EncryptionConfiguration
 
   The encryption configuration associated with this security
 configuration.

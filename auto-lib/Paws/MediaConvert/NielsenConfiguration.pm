@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NielsenConfiguration;
-  use Moose;
-  has BreakoutCode => (is => 'ro', isa => 'Int', request_name => 'breakoutCode', traits => ['NameInRequest']);
-  has DistributorId => (is => 'ro', isa => 'Str', request_name => 'distributorId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has BreakoutCode => (is => 'ro', isa => Int);
+  has DistributorId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BreakoutCode' => {
+                                   'type' => 'Int'
+                                 },
+               'DistributorId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'BreakoutCode' => 'breakoutCode',
+                       'DistributorId' => 'distributorId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::UpdateRepositoryName;
-  use Moose;
-  has NewName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newName' , required => 1);
-  has OldName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'oldName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has NewName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OldName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRepositoryName');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRepositoryName');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OldName' => {
+                              'type' => 'Str'
+                            },
+               'NewName' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'OldName' => 'oldName',
+                       'NewName' => 'newName'
+                     },
+  'IsRequired' => {
+                    'OldName' => 1,
+                    'NewName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

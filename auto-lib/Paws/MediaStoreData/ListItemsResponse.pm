@@ -1,10 +1,31 @@
 
 package Paws::MediaStoreData::ListItemsResponse;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::MediaStoreData::Item]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStoreData::Types qw/MediaStoreData_Item/;
+  has Items => (is => 'ro', isa => ArrayRef[MediaStoreData_Item]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::MediaStoreData::Item',
+                            'type' => 'ArrayRef[MediaStoreData_Item]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::MediaStoreData::ListItemsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::MediaStoreData::Item>]
+=head2 Items => ArrayRef[MediaStoreData_Item]
 
 The metadata entries for the folders and objects at the requested path.
 

@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::SendMessages;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has MessageRequest => (is => 'ro', isa => 'Paws::Pinpoint::MessageRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MessageRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MessageRequest => (is => 'ro', isa => Pinpoint_MessageRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'MessageRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendMessages');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/messages');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendMessages');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/messages');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::MessageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'MessageRequest' => {
+                                     'class' => 'Paws::Pinpoint::MessageRequest',
+                                     'type' => 'Pinpoint_MessageRequest'
+                                   }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'MessageRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -173,14 +199,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             BodyOverride => 'My__string',
             ChannelType  => 'GCM'
             , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
-            Context    => { 'My__string' => 'My__string', },    # OPTIONAL
+            Context => { 'My__string' => 'My__string', },    # OPTIONAL
             RawContent => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }
-            ,                                                   # OPTIONAL
+            ,                                                # OPTIONAL
             TitleOverride => 'My__string',
           },
         },    # OPTIONAL
-        Context   => { 'My__string' => 'My__string', },    # OPTIONAL
+        Context => { 'My__string' => 'My__string', },    # OPTIONAL
         Endpoints => {
           'My__string' => {
             BodyOverride => 'My__string',
@@ -217,7 +243,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> MessageRequest => L<Paws::Pinpoint::MessageRequest>
+=head2 B<REQUIRED> MessageRequest => Pinpoint_MessageRequest
 
 
 

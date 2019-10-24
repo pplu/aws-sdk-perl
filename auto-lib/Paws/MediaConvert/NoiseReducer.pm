@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NoiseReducer;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
-  has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
-  has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_NoiseReducerSpatialFilterSettings MediaConvert_NoiseReducerFilterSettings/;
+  has Filter => (is => 'ro', isa => Str);
+  has FilterSettings => (is => 'ro', isa => MediaConvert_NoiseReducerFilterSettings);
+  has SpatialFilterSettings => (is => 'ro', isa => MediaConvert_NoiseReducerSpatialFilterSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'type' => 'Str'
+                           },
+               'SpatialFilterSettings' => {
+                                            'class' => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings',
+                                            'type' => 'MediaConvert_NoiseReducerSpatialFilterSettings'
+                                          },
+               'FilterSettings' => {
+                                     'class' => 'Paws::MediaConvert::NoiseReducerFilterSettings',
+                                     'type' => 'MediaConvert_NoiseReducerFilterSettings'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Filter' => 'filter',
+                       'SpatialFilterSettings' => 'spatialFilterSettings',
+                       'FilterSettings' => 'filterSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,12 +83,12 @@ noise reduction filter. * Spatial is a frequency-domain filter based on
 JND principles.
 
 
-=head2 FilterSettings => L<Paws::MediaConvert::NoiseReducerFilterSettings>
+=head2 FilterSettings => MediaConvert_NoiseReducerFilterSettings
 
   Settings for a noise reducer filter
 
 
-=head2 SpatialFilterSettings => L<Paws::MediaConvert::NoiseReducerSpatialFilterSettings>
+=head2 SpatialFilterSettings => MediaConvert_NoiseReducerSpatialFilterSettings
 
   Noise reducer filter settings for spatial filter.
 

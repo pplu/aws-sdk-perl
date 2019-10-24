@@ -1,24 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateDevEndpoint;
-  use Moose;
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
-  has EndpointName => (is => 'ro', isa => 'Str', required => 1);
-  has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
-  has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has PublicKey => (is => 'ro', isa => 'Str');
-  has PublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_TagsMap Glue_MapValue/;
+  has Arguments => (is => 'ro', isa => Glue_MapValue, predicate => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExtraJarsS3Path => (is => 'ro', isa => Str, predicate => 1);
+  has ExtraPythonLibsS3Path => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfNodes => (is => 'ro', isa => Int, predicate => 1);
+  has PublicKey => (is => 'ro', isa => Str, predicate => 1);
+  has PublicKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDevEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateDevEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDevEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateDevEndpointResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'Arguments' => {
+                                'class' => 'Paws::Glue::MapValue',
+                                'type' => 'Glue_MapValue'
+                              },
+               'ExtraJarsS3Path' => {
+                                      'type' => 'Str'
+                                    },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'PublicKeys' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::Glue::TagsMap',
+                           'type' => 'Glue_TagsMap'
+                         },
+               'PublicKey' => {
+                                'type' => 'Str'
+                              },
+               'ExtraPythonLibsS3Path' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'EndpointName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +139,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 Arguments => L<Paws::Glue::MapValue>
+=head2 Arguments => Glue_MapValue
 
 A map of arguments used to configure the DevEndpoint.
 
@@ -172,7 +227,7 @@ The subnet ID for the new DevEndpoint to use.
 
 
 
-=head2 Tags => L<Paws::Glue::TagsMap>
+=head2 Tags => Glue_TagsMap
 
 The tags to use with this DevEndpoint. You may use tags to limit access
 to the DevEndpoint. For more information about tags in AWS Glue, see

@@ -22,7 +22,7 @@ package Paws::EC2::CreateTrafficMirrorFilterRule;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTrafficMirrorFilterRuleResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -63,11 +63,19 @@ package Paws::EC2::CreateTrafficMirrorFilterRule;
                'Description' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'RuleAction' => 1,
+                    'RuleNumber' => 1,
+                    'TrafficMirrorFilterId' => 1,
+                    'TrafficDirection' => 1,
+                    'DestinationCidrBlock' => 1,
+                    'SourceCidrBlock' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::SipAddress;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Uri' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Uri' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

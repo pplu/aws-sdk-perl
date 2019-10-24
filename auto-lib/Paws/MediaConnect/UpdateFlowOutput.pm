@@ -1,23 +1,84 @@
 
 package Paws::MediaConnect::UpdateFlowOutput;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Destination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destination');
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'encryption');
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
-  has MaxLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxLatency');
-  has OutputArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'outputArn', required => 1);
-  has Port => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'port');
-  has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol');
-  has SmoothingLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'smoothingLatency');
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_UpdateEncryption/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Destination => (is => 'ro', isa => Str, predicate => 1);
+  has Encryption => (is => 'ro', isa => MediaConnect_UpdateEncryption, predicate => 1);
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxLatency => (is => 'ro', isa => Int, predicate => 1);
+  has OutputArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, predicate => 1);
+  has SmoothingLatency => (is => 'ro', isa => Int, predicate => 1);
+  has StreamId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFlowOutput');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/outputs/{outputArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::UpdateFlowOutputResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFlowOutput');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/outputs/{outputArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::UpdateFlowOutputResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'SmoothingLatency' => {
+                                       'type' => 'Int'
+                                     },
+               'OutputArn' => {
+                                'type' => 'Str'
+                              },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConnect::UpdateEncryption',
+                                 'type' => 'MediaConnect_UpdateEncryption'
+                               },
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'OutputArn' => 'outputArn',
+                    'FlowArn' => 'flowArn'
+                  },
+  'NameInRequest' => {
+                       'Port' => 'port',
+                       'Destination' => 'destination',
+                       'SmoothingLatency' => 'smoothingLatency',
+                       'StreamId' => 'streamId',
+                       'Encryption' => 'encryption',
+                       'MaxLatency' => 'maxLatency',
+                       'Protocol' => 'protocol',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'OutputArn' => 1,
+                    'FlowArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +146,7 @@ The IP address where you want to send the output.
 
 
 
-=head2 Encryption => L<Paws::MediaConnect::UpdateEncryption>
+=head2 Encryption => MediaConnect_UpdateEncryption
 
 The type of key used for the encryption. If no keyType is provided, the
 service will use the default setting (static-key).

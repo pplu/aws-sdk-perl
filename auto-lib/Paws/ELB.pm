@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::ELB;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticloadbalancing' }
   sub signing_name { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -277,7 +279,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =item LoadBalancerNames => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::ELB::Tag>]
+=item Tags => ArrayRef[ELB_Tag]
 
 
 =back
@@ -351,7 +353,7 @@ in the I<Classic Load Balancers Guide>.
 
 =over
 
-=item HealthCheck => L<Paws::ELB::HealthCheck>
+=item HealthCheck => ELB_HealthCheck
 
 =item LoadBalancerName => Str
 
@@ -450,7 +452,7 @@ in the I<Classic Load Balancers Guide>.
 
 =over
 
-=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+=item Listeners => ArrayRef[ELB_Listener]
 
 =item LoadBalancerName => Str
 
@@ -462,7 +464,7 @@ in the I<Classic Load Balancers Guide>.
 
 =item [Subnets => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::ELB::Tag>]]
+=item [Tags => ArrayRef[ELB_Tag]]
 
 
 =back
@@ -493,7 +495,7 @@ in the I<Classic Load Balancers Guide>.
 
 =over
 
-=item Listeners => ArrayRef[L<Paws::ELB::Listener>]
+=item Listeners => ArrayRef[ELB_Listener]
 
 =item LoadBalancerName => Str
 
@@ -524,7 +526,7 @@ in the I<Classic Load Balancers Guide>.
 
 =item PolicyTypeName => Str
 
-=item [PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]]
+=item [PolicyAttributes => ArrayRef[ELB_PolicyAttribute]]
 
 
 =back
@@ -607,7 +609,7 @@ policy must not be enabled for any listeners.
 
 =over
 
-=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+=item Instances => ArrayRef[ELB_Instance]
 
 =item LoadBalancerName => Str
 
@@ -659,7 +661,7 @@ in the I<Classic Load Balancers Guide>.
 
 =item LoadBalancerName => Str
 
-=item [Instances => ArrayRef[L<Paws::ELB::Instance>]]
+=item [Instances => ArrayRef[ELB_Instance]]
 
 
 =back
@@ -871,7 +873,7 @@ in the I<Classic Load Balancers Guide>.
 
 =over
 
-=item LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
+=item LoadBalancerAttributes => ELB_LoadBalancerAttributes
 
 =item LoadBalancerName => Str
 
@@ -923,7 +925,7 @@ Idle Connection Timeout
 
 =over
 
-=item Instances => ArrayRef[L<Paws::ELB::Instance>]
+=item Instances => ArrayRef[ELB_Instance]
 
 =item LoadBalancerName => Str
 
@@ -968,7 +970,7 @@ in the I<Classic Load Balancers Guide>.
 
 =item LoadBalancerNames => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>]
+=item Tags => ArrayRef[ELB_TagKeyOnly]
 
 
 =back

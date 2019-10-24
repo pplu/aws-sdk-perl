@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::PropertyGroup;
-  use Moose;
-  has PropertyGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has PropertyMap => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::PropertyMap', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_PropertyMap/;
+  has PropertyGroupId => (is => 'ro', isa => Str, required => 1);
+  has PropertyMap => (is => 'ro', isa => KinesisAnalyticsV2_PropertyMap, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PropertyMap' => {
+                                  'class' => 'Paws::KinesisAnalyticsV2::PropertyMap',
+                                  'type' => 'KinesisAnalyticsV2_PropertyMap'
+                                },
+               'PropertyGroupId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'PropertyMap' => 1,
+                    'PropertyGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ Analytics application.
   Describes the key of an application execution property key-value pair.
 
 
-=head2 B<REQUIRED> PropertyMap => L<Paws::KinesisAnalyticsV2::PropertyMap>
+=head2 B<REQUIRED> PropertyMap => KinesisAnalyticsV2_PropertyMap
 
   Describes the value of an application execution property key-value
 pair.

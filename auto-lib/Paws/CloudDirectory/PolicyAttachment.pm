@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::PolicyAttachment;
-  use Moose;
-  has ObjectIdentifier => (is => 'ro', isa => 'Str');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has PolicyType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has ObjectIdentifier => (is => 'ro', isa => Str);
+  has PolicyId => (is => 'ro', isa => Str);
+  has PolicyType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

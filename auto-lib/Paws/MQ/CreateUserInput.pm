@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MQ::CreateUserInput;
-  use Moose;
-  has ConsoleAccess => (is => 'ro', isa => 'Bool', request_name => 'consoleAccess', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
-  has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::MQ::Types qw//;
+  has ConsoleAccess => (is => 'ro', isa => Bool);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Password => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'ConsoleAccess' => {
+                                    'type' => 'Bool'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groups',
+                       'Password' => 'password',
+                       'ConsoleAccess' => 'consoleAccess'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

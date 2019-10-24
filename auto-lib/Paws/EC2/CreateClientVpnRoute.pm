@@ -16,7 +16,7 @@ package Paws::EC2::CreateClientVpnRoute;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateClientVpnRouteResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -37,11 +37,16 @@ package Paws::EC2::CreateClientVpnRoute;
                'Description' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'TargetVpcSubnetId' => 1,
+                    'DestinationCidrBlock' => 1,
+                    'ClientVpnEndpointId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

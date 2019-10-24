@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::CreateWebACL;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has DefaultAction => (is => 'ro', isa => 'Paws::WAFRegional::WafAction', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_WafAction WAFRegional_Tag/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultAction => (is => 'ro', isa => WAFRegional_WafAction, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WAFRegional_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWebACL');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::CreateWebACLResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWebACL');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::CreateWebACLResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::WAFRegional::Tag',
+                           'type' => 'ArrayRef[WAFRegional_Tag]'
+                         },
+               'DefaultAction' => {
+                                    'class' => 'Paws::WAFRegional::WafAction',
+                                    'type' => 'WAFRegional_WafAction'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'DefaultAction' => 1,
+                    'Name' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +96,7 @@ The value returned by the most recent call to GetChangeToken.
 
 
 
-=head2 B<REQUIRED> DefaultAction => L<Paws::WAFRegional::WafAction>
+=head2 B<REQUIRED> DefaultAction => WAFRegional_WafAction
 
 The action that you want AWS WAF to take when a request doesn't match
 the criteria specified in any of the C<Rule> objects that are
@@ -86,7 +122,7 @@ after you create the C<WebACL>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+=head2 Tags => ArrayRef[WAFRegional_Tag]
 
 
 

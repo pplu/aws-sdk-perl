@@ -1,15 +1,41 @@
 
 package Paws::Greengrass::GetGroupVersion;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
-  has GroupVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupVersionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GroupVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroupVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/versions/{GroupVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetGroupVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetGroupVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/versions/{GroupVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetGroupVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'GroupVersionId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId',
+                    'GroupVersionId' => 'GroupVersionId'
+                  },
+  'IsRequired' => {
+                    'GroupId' => 1,
+                    'GroupVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationTaskStats;
-  use Moose;
-  has ElapsedTimeMillis => (is => 'ro', isa => 'Int');
-  has FullLoadProgressPercent => (is => 'ro', isa => 'Int');
-  has TablesErrored => (is => 'ro', isa => 'Int');
-  has TablesLoaded => (is => 'ro', isa => 'Int');
-  has TablesLoading => (is => 'ro', isa => 'Int');
-  has TablesQueued => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::DMS::Types qw//;
+  has ElapsedTimeMillis => (is => 'ro', isa => Int);
+  has FullLoadProgressPercent => (is => 'ro', isa => Int);
+  has TablesErrored => (is => 'ro', isa => Int);
+  has TablesLoaded => (is => 'ro', isa => Int);
+  has TablesLoading => (is => 'ro', isa => Int);
+  has TablesQueued => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TablesQueued' => {
+                                   'type' => 'Int'
+                                 },
+               'FullLoadProgressPercent' => {
+                                              'type' => 'Int'
+                                            },
+               'TablesLoaded' => {
+                                   'type' => 'Int'
+                                 },
+               'TablesLoading' => {
+                                    'type' => 'Int'
+                                  },
+               'TablesErrored' => {
+                                    'type' => 'Int'
+                                  },
+               'ElapsedTimeMillis' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

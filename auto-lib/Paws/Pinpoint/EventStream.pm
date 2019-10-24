@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventStream;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationStreamArn => (is => 'ro', isa => 'Str', required => 1);
-  has ExternalId => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has LastUpdatedBy => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has DestinationStreamArn => (is => 'ro', isa => Str, required => 1);
+  has ExternalId => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has LastUpdatedBy => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'LastUpdatedBy' => {
+                                    'type' => 'Str'
+                                  },
+               'DestinationStreamArn' => {
+                                           'type' => 'Str'
+                                         },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'RoleArn' => 1,
+                    'DestinationStreamArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

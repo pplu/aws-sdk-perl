@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SQS::ListQueueTagsResult;
   use Moo;

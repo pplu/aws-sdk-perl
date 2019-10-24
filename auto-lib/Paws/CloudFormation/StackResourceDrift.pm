@@ -1,15 +1,68 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackResourceDrift;
-  use Moose;
-  has ActualProperties => (is => 'ro', isa => 'Str');
-  has ExpectedProperties => (is => 'ro', isa => 'Str');
-  has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has PhysicalResourceIdContext => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::PhysicalResourceIdContextKeyValuePair]');
-  has PropertyDifferences => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::PropertyDifference]');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has StackResourceDriftStatus => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_PropertyDifference CloudFormation_PhysicalResourceIdContextKeyValuePair/;
+  has ActualProperties => (is => 'ro', isa => Str);
+  has ExpectedProperties => (is => 'ro', isa => Str);
+  has LogicalResourceId => (is => 'ro', isa => Str, required => 1);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has PhysicalResourceIdContext => (is => 'ro', isa => ArrayRef[CloudFormation_PhysicalResourceIdContextKeyValuePair]);
+  has PropertyDifferences => (is => 'ro', isa => ArrayRef[CloudFormation_PropertyDifference]);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1);
+  has StackResourceDriftStatus => (is => 'ro', isa => Str, required => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'ExpectedProperties' => {
+                                         'type' => 'Str'
+                                       },
+               'StackResourceDriftStatus' => {
+                                               'type' => 'Str'
+                                             },
+               'PhysicalResourceIdContext' => {
+                                                'class' => 'Paws::CloudFormation::PhysicalResourceIdContextKeyValuePair',
+                                                'type' => 'ArrayRef[CloudFormation_PhysicalResourceIdContextKeyValuePair]'
+                                              },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ActualProperties' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'PropertyDifferences' => {
+                                          'class' => 'Paws::CloudFormation::PropertyDifference',
+                                          'type' => 'ArrayRef[CloudFormation_PropertyDifference]'
+                                        }
+             },
+  'IsRequired' => {
+                    'LogicalResourceId' => 1,
+                    'Timestamp' => 1,
+                    'StackResourceDriftStatus' => 1,
+                    'ResourceType' => 1,
+                    'StackId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +143,7 @@ structure will not be present.
 ID of a resource supported by AWS CloudFormation.
 
 
-=head2 PhysicalResourceIdContext => ArrayRef[L<Paws::CloudFormation::PhysicalResourceIdContextKeyValuePair>]
+=head2 PhysicalResourceIdContext => ArrayRef[CloudFormation_PhysicalResourceIdContextKeyValuePair]
 
   Context information that enables AWS CloudFormation to uniquely
 identify a resource. AWS CloudFormation uses context key-value pairs in
@@ -99,7 +152,7 @@ uniquely identify that resource. Each context key-value pair specifies
 a unique resource that contains the targeted resource.
 
 
-=head2 PropertyDifferences => ArrayRef[L<Paws::CloudFormation::PropertyDifference>]
+=head2 PropertyDifferences => ArrayRef[CloudFormation_PropertyDifference]
 
   A collection of the resource properties whose actual values differ from
 their expected values. These will be present only for resources whose

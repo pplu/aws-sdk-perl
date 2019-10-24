@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Details => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Details' => 'details'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

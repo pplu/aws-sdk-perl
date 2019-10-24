@@ -1,17 +1,50 @@
 
 package Paws::IoT::ListSecurityProfilesForTarget;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Recursive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'recursive');
-  has SecurityProfileTargetArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileTargetArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
+  has SecurityProfileTargetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSecurityProfilesForTarget');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/security-profiles-for-target');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListSecurityProfilesForTargetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSecurityProfilesForTarget');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/security-profiles-for-target');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListSecurityProfilesForTargetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityProfileTargetArn' => {
+                                               'type' => 'Str'
+                                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Recursive' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'ParamInQuery' => {
+                      'SecurityProfileTargetArn' => 'securityProfileTargetArn',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'Recursive' => 'recursive'
+                    },
+  'IsRequired' => {
+                    'SecurityProfileTargetArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

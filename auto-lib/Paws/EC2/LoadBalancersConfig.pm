@@ -4,7 +4,7 @@ package Paws::EC2::LoadBalancersConfig;
   has ClassicLoadBalancersConfig => (is => 'ro', isa => EC2_ClassicLoadBalancersConfig);
   has TargetGroupsConfig => (is => 'ro', isa => EC2_TargetGroupsConfig);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TargetGroupsConfig' => {
@@ -22,8 +22,8 @@ package Paws::EC2::LoadBalancersConfig;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

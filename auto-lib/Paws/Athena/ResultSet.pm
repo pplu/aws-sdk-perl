@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Athena::ResultSet;
-  use Moose;
-  has ResultSetMetadata => (is => 'ro', isa => 'Paws::Athena::ResultSetMetadata');
-  has Rows => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Row]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Athena::Types qw/Athena_ResultSetMetadata Athena_Row/;
+  has ResultSetMetadata => (is => 'ro', isa => Athena_ResultSetMetadata);
+  has Rows => (is => 'ro', isa => ArrayRef[Athena_Row]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResultSetMetadata' => {
+                                        'class' => 'Paws::Athena::ResultSetMetadata',
+                                        'type' => 'Athena_ResultSetMetadata'
+                                      },
+               'Rows' => {
+                           'class' => 'Paws::Athena::Row',
+                           'type' => 'ArrayRef[Athena_Row]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ describes the column structure and data types.
 =head1 ATTRIBUTES
 
 
-=head2 ResultSetMetadata => L<Paws::Athena::ResultSetMetadata>
+=head2 ResultSetMetadata => Athena_ResultSetMetadata
 
   The metadata that describes the column structure and data types of a
 table of query results.
 
 
-=head2 Rows => ArrayRef[L<Paws::Athena::Row>]
+=head2 Rows => ArrayRef[Athena_Row]
 
   The rows in the table.
 

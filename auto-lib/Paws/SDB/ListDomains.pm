@@ -1,14 +1,33 @@
+# Generated from callargs_class.tt
 
 package Paws::SDB::ListDomains;
-  use Moose;
-  has MaxNumberOfDomains => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SDB::Types qw//;
+  has MaxNumberOfDomains => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomains');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SDB::ListDomainsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDomains');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SDB::ListDomainsResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListDomainsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxNumberOfDomains' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

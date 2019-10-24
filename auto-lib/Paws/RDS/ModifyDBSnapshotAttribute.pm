@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyDBSnapshotAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RDS::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValuesToAdd => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ValuesToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBSnapshotAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBSnapshotAttributeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBSnapshotAttributeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBSnapshotAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyDBSnapshotAttributeResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBSnapshotAttributeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBSnapshotIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'ValuesToRemove' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'ValuesToAdd' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'IsRequired' => {
+                    'DBSnapshotIdentifier' => 1,
+                    'AttributeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

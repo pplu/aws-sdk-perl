@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatastoreStorage;
-  use Moose;
-  has CustomerManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage', request_name => 'customerManagedS3', traits => ['NameInRequest']);
-  has ServiceManagedS3 => (is => 'ro', isa => 'Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage', request_name => 'serviceManagedS3', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_CustomerManagedDatastoreS3Storage IoTAnalytics_ServiceManagedDatastoreS3Storage/;
+  has CustomerManagedS3 => (is => 'ro', isa => IoTAnalytics_CustomerManagedDatastoreS3Storage);
+  has ServiceManagedS3 => (is => 'ro', isa => IoTAnalytics_ServiceManagedDatastoreS3Storage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceManagedS3' => {
+                                       'class' => 'Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage',
+                                       'type' => 'IoTAnalytics_ServiceManagedDatastoreS3Storage'
+                                     },
+               'CustomerManagedS3' => {
+                                        'class' => 'Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage',
+                                        'type' => 'IoTAnalytics_CustomerManagedDatastoreS3Storage'
+                                      }
+             },
+  'NameInRequest' => {
+                       'ServiceManagedS3' => 'serviceManagedS3',
+                       'CustomerManagedS3' => 'customerManagedS3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Where data store data is stored.
 =head1 ATTRIBUTES
 
 
-=head2 CustomerManagedS3 => L<Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage>
+=head2 CustomerManagedS3 => IoTAnalytics_CustomerManagedDatastoreS3Storage
 
   Use this to store data store data in an S3 bucket that you manage.
 
 
-=head2 ServiceManagedS3 => L<Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage>
+=head2 ServiceManagedS3 => IoTAnalytics_ServiceManagedDatastoreS3Storage
 
   Use this to store data store data in an S3 bucket managed by the AWS
 IoT Analytics service.

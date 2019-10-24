@@ -1,14 +1,35 @@
 
 package Paws::GroundStation::DeleteMissionProfile;
-  use Moose;
-  has MissionProfileId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'missionProfileId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has MissionProfileId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMissionProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/missionprofile/{missionProfileId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::MissionProfileIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteMissionProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/missionprofile/{missionProfileId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::MissionProfileIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissionProfileId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'MissionProfileId' => 'missionProfileId'
+                  },
+  'IsRequired' => {
+                    'MissionProfileId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

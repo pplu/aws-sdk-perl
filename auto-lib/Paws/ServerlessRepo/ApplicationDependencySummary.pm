@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationDependencySummary;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ApplicationId' => 'applicationId',
+                       'SemanticVersion' => 'semanticVersion'
+                     },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'SemanticVersion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

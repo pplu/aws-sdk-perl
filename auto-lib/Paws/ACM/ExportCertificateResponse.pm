@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ACM::ExportCertificateResponse;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str');
-  has CertificateChain => (is => 'ro', isa => 'Str');
-  has PrivateKey => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw//;
+  has Certificate => (is => 'ro', isa => Str);
+  has CertificateChain => (is => 'ro', isa => Str);
+  has PrivateKey => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'CertificateChain' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

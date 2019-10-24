@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::WebhookFilter;
-  use Moose;
-  has ExcludeMatchedPattern => (is => 'ro', isa => 'Bool', request_name => 'excludeMatchedPattern', traits => ['NameInRequest']);
-  has Pattern => (is => 'ro', isa => 'Str', request_name => 'pattern', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CodeBuild::Types qw//;
+  has ExcludeMatchedPattern => (is => 'ro', isa => Bool);
+  has Pattern => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExcludeMatchedPattern' => {
+                                            'type' => 'Bool'
+                                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Pattern' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ExcludeMatchedPattern' => 'excludeMatchedPattern',
+                       'Type' => 'type',
+                       'Pattern' => 'pattern'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Pattern' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

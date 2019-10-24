@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::GetIdentityNotificationAttributesResponse;
   use Moo;
@@ -16,7 +17,10 @@ package Paws::SES::GetIdentityNotificationAttributesResponse;
                '_request_id' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'NotificationAttributes' => 1
+                  }
 }
 ;
     return $Params_map;

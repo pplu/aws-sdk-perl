@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::EventContextDataType;
-  use Moose;
-  has City => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has City => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has DeviceName => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'City' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DomainDeliverabilityCampaign;
-  use Moose;
-  has CampaignId => (is => 'ro', isa => 'Str');
-  has DeleteRate => (is => 'ro', isa => 'Num');
-  has Esps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has FirstSeenDateTime => (is => 'ro', isa => 'Str');
-  has FromAddress => (is => 'ro', isa => 'Str');
-  has ImageUrl => (is => 'ro', isa => 'Str');
-  has InboxCount => (is => 'ro', isa => 'Int');
-  has LastSeenDateTime => (is => 'ro', isa => 'Str');
-  has ProjectedVolume => (is => 'ro', isa => 'Int');
-  has ReadDeleteRate => (is => 'ro', isa => 'Num');
-  has ReadRate => (is => 'ro', isa => 'Num');
-  has SendingIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SpamCount => (is => 'ro', isa => 'Int');
-  has Subject => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num ArrayRef Undef Int/;
+  use Paws::PinpointEmail::Types qw//;
+  has CampaignId => (is => 'ro', isa => Str);
+  has DeleteRate => (is => 'ro', isa => Num);
+  has Esps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has FirstSeenDateTime => (is => 'ro', isa => Str);
+  has FromAddress => (is => 'ro', isa => Str);
+  has ImageUrl => (is => 'ro', isa => Str);
+  has InboxCount => (is => 'ro', isa => Int);
+  has LastSeenDateTime => (is => 'ro', isa => Str);
+  has ProjectedVolume => (is => 'ro', isa => Int);
+  has ReadDeleteRate => (is => 'ro', isa => Num);
+  has ReadRate => (is => 'ro', isa => Num);
+  has SendingIps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SpamCount => (is => 'ro', isa => Int);
+  has Subject => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FromAddress' => {
+                                  'type' => 'Str'
+                                },
+               'FirstSeenDateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'SpamCount' => {
+                                'type' => 'Int'
+                              },
+               'SendingIps' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'CampaignId' => {
+                                 'type' => 'Str'
+                               },
+               'InboxCount' => {
+                                 'type' => 'Int'
+                               },
+               'ImageUrl' => {
+                               'type' => 'Str'
+                             },
+               'DeleteRate' => {
+                                 'type' => 'Num'
+                               },
+               'ReadRate' => {
+                               'type' => 'Num'
+                             },
+               'Esps' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'ProjectedVolume' => {
+                                      'type' => 'Int'
+                                    },
+               'ReadDeleteRate' => {
+                                     'type' => 'Num'
+                                   },
+               'LastSeenDateTime' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

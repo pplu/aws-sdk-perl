@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Neptune::CharacterSet;
-  use Moose;
-  has CharacterSetDescription => (is => 'ro', isa => 'Str');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw//;
+  has CharacterSetDescription => (is => 'ro', isa => Str);
+  has CharacterSetName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'CharacterSetDescription' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::GameLift::GameSessionConnectionInfo;
-  use Moose;
-  has GameSessionArn => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has MatchedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::MatchedPlayerSession]');
-  has Port => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::GameLift::Types qw/GameLift_MatchedPlayerSession/;
+  has GameSessionArn => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has MatchedPlayerSessions => (is => 'ro', isa => ArrayRef[GameLift_MatchedPlayerSession]);
+  has Port => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameSessionArn' => {
+                                     'type' => 'Str'
+                                   },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'MatchedPlayerSessions' => {
+                                            'class' => 'Paws::GameLift::MatchedPlayerSession',
+                                            'type' => 'ArrayRef[GameLift_MatchedPlayerSession]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +85,7 @@ that is assigned to a game session and uniquely identifies it.
 server, an app needs both the IP address and port number.
 
 
-=head2 MatchedPlayerSessions => ArrayRef[L<Paws::GameLift::MatchedPlayerSession>]
+=head2 MatchedPlayerSessions => ArrayRef[GameLift_MatchedPlayerSession]
 
   Collection of player session IDs, one for each player ID that was
 included in the original matchmaking request.

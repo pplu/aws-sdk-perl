@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::OptionStatus;
   use Moo;
   use Types::Standard qw/Str Bool Int/;
@@ -26,7 +27,12 @@ package Paws::ES::OptionStatus;
                'PendingDeletion' => {
                                       'type' => 'Bool'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'CreationDate' => 1,
+                    'UpdateDate' => 1,
+                    'State' => 1
+                  }
 }
 ;
     return $Params_map;

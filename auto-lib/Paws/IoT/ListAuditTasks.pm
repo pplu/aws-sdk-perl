@@ -1,19 +1,61 @@
 
 package Paws::IoT::ListAuditTasks;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startTime', required => 1);
-  has TaskStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'taskStatus');
-  has TaskType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'taskType');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskStatus => (is => 'ro', isa => Str, predicate => 1);
+  has TaskType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAuditTasks');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/tasks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAuditTasksResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAuditTasks');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/tasks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAuditTasksResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'TaskType' => {
+                               'type' => 'Str'
+                             },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'TaskStatus' => 'taskStatus',
+                      'NextToken' => 'nextToken',
+                      'StartTime' => 'startTime',
+                      'EndTime' => 'endTime',
+                      'TaskType' => 'taskType',
+                      'MaxResults' => 'maxResults'
+                    },
+  'IsRequired' => {
+                    'StartTime' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

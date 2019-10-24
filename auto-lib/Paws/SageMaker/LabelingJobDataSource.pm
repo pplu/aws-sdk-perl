@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobDataSource;
-  use Moose;
-  has S3DataSource => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobS3DataSource', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobS3DataSource/;
+  has S3DataSource => (is => 'ro', isa => SageMaker_LabelingJobS3DataSource, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DataSource' => {
+                                   'class' => 'Paws::SageMaker::LabelingJobS3DataSource',
+                                   'type' => 'SageMaker_LabelingJobS3DataSource'
+                                 }
+             },
+  'IsRequired' => {
+                    'S3DataSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Provides information about the location of input data.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3DataSource => L<Paws::SageMaker::LabelingJobS3DataSource>
+=head2 B<REQUIRED> S3DataSource => SageMaker_LabelingJobS3DataSource
 
   The Amazon S3 location of the input data objects.
 

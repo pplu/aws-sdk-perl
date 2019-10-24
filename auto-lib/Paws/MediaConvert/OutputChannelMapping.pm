@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::OutputChannelMapping;
-  use Moose;
-  has InputChannels => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'inputChannels', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaConvert::Types qw//;
+  has InputChannels => (is => 'ro', isa => ArrayRef[Int]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputChannels' => {
+                                    'type' => 'ArrayRef[Int]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'InputChannels' => 'inputChannels'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

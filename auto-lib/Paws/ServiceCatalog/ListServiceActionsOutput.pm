@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::ListServiceActionsOutput;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has ServiceActionSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ServiceActionSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ServiceActionSummary/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has ServiceActionSummaries => (is => 'ro', isa => ArrayRef[ServiceCatalog_ServiceActionSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceActionSummaries' => {
+                                             'class' => 'Paws::ServiceCatalog::ServiceActionSummary',
+                                             'type' => 'ArrayRef[ServiceCatalog_ServiceActionSummary]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The page token to use to retrieve the next set of results. If there are
 no additional results, this value is null.
 
 
-=head2 ServiceActionSummaries => ArrayRef[L<Paws::ServiceCatalog::ServiceActionSummary>]
+=head2 ServiceActionSummaries => ArrayRef[ServiceCatalog_ServiceActionSummary]
 
 An object containing information about the service actions associated
 with the provisioning artifact.

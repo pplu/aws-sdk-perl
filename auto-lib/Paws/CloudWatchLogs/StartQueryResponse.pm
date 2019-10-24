@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::StartQueryResponse;
-  use Moose;
-  has QueryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has QueryId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'QueryId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'QueryId' => 'queryId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

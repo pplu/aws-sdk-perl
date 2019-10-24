@@ -7,7 +7,7 @@ package Paws::EC2::CreateRouteTableResult;
   has RouteTable => (is => 'ro', isa => EC2_RouteTable);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'RouteTable' => {
@@ -23,8 +23,8 @@ package Paws::EC2::CreateRouteTableResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationUpdate;
-  use Moose;
-  has SnapshotsEnabledUpdate => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has SnapshotsEnabledUpdate => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotsEnabledUpdate' => {
+                                             'type' => 'Bool'
+                                           }
+             },
+  'IsRequired' => {
+                    'SnapshotsEnabledUpdate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

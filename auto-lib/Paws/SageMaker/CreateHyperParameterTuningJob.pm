@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateHyperParameterTuningJob;
-  use Moose;
-  has HyperParameterTuningJobConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobConfig', required => 1);
-  has HyperParameterTuningJobName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has TrainingJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTrainingJobDefinition');
-  has WarmStartConfig => (is => 'ro', isa => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_HyperParameterTuningJobWarmStartConfig SageMaker_Tag SageMaker_HyperParameterTuningJobConfig SageMaker_HyperParameterTrainingJobDefinition/;
+  has HyperParameterTuningJobConfig => (is => 'ro', isa => SageMaker_HyperParameterTuningJobConfig, required => 1, predicate => 1);
+  has HyperParameterTuningJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
+  has TrainingJobDefinition => (is => 'ro', isa => SageMaker_HyperParameterTrainingJobDefinition, predicate => 1);
+  has WarmStartConfig => (is => 'ro', isa => SageMaker_HyperParameterTuningJobWarmStartConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHyperParameterTuningJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateHyperParameterTuningJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHyperParameterTuningJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateHyperParameterTuningJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrainingJobDefinition' => {
+                                            'class' => 'Paws::SageMaker::HyperParameterTrainingJobDefinition',
+                                            'type' => 'SageMaker_HyperParameterTrainingJobDefinition'
+                                          },
+               'WarmStartConfig' => {
+                                      'class' => 'Paws::SageMaker::HyperParameterTuningJobWarmStartConfig',
+                                      'type' => 'SageMaker_HyperParameterTuningJobWarmStartConfig'
+                                    },
+               'HyperParameterTuningJobName' => {
+                                                  'type' => 'Str'
+                                                },
+               'HyperParameterTuningJobConfig' => {
+                                                    'class' => 'Paws::SageMaker::HyperParameterTuningJobConfig',
+                                                    'type' => 'SageMaker_HyperParameterTuningJobConfig'
+                                                  },
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'HyperParameterTuningJobName' => 1,
+                    'HyperParameterTuningJobConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -185,7 +221,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HyperParameterTuningJobConfig => L<Paws::SageMaker::HyperParameterTuningJobConfig>
+=head2 B<REQUIRED> HyperParameterTuningJobConfig => SageMaker_HyperParameterTuningJobConfig
 
 The HyperParameterTuningJobConfig object that describes the tuning job,
 including the search strategy, the objective metric used to evaluate
@@ -204,7 +240,7 @@ unique within the same AWS account and AWS Region. The name must have {
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 An array of key-value pairs. You can use tags to categorize your AWS
 resources in different ways, for example, by purpose, owner, or
@@ -216,7 +252,7 @@ jobs that the tuning job launches.
 
 
 
-=head2 TrainingJobDefinition => L<Paws::SageMaker::HyperParameterTrainingJobDefinition>
+=head2 TrainingJobDefinition => SageMaker_HyperParameterTrainingJobDefinition
 
 The HyperParameterTrainingJobDefinition object that describes the
 training jobs that this tuning job launches, including static
@@ -225,7 +261,7 @@ resource configuration, and stopping condition.
 
 
 
-=head2 WarmStartConfig => L<Paws::SageMaker::HyperParameterTuningJobWarmStartConfig>
+=head2 WarmStartConfig => SageMaker_HyperParameterTuningJobWarmStartConfig
 
 Specifies the configuration for starting the hyperparameter tuning job
 using one or more previous tuning jobs as a starting point. The results

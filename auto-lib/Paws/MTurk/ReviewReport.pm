@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::MTurk::ReviewReport;
-  use Moose;
-  has ReviewActions => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ReviewActionDetail]');
-  has ReviewResults => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ReviewResultDetail]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MTurk::Types qw/MTurk_ReviewActionDetail MTurk_ReviewResultDetail/;
+  has ReviewActions => (is => 'ro', isa => ArrayRef[MTurk_ReviewActionDetail]);
+  has ReviewResults => (is => 'ro', isa => ArrayRef[MTurk_ReviewResultDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReviewActions' => {
+                                    'class' => 'Paws::MTurk::ReviewActionDetail',
+                                    'type' => 'ArrayRef[MTurk_ReviewActionDetail]'
+                                  },
+               'ReviewResults' => {
+                                    'class' => 'Paws::MTurk::ReviewResultDetail',
+                                    'type' => 'ArrayRef[MTurk_ReviewResultDetail]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ HIT.
 =head1 ATTRIBUTES
 
 
-=head2 ReviewActions => ArrayRef[L<Paws::MTurk::ReviewActionDetail>]
+=head2 ReviewActions => ArrayRef[MTurk_ReviewActionDetail]
 
   A list of ReviewAction objects for each action specified in the Review
 Policy.
 
 
-=head2 ReviewResults => ArrayRef[L<Paws::MTurk::ReviewResultDetail>]
+=head2 ReviewResults => ArrayRef[MTurk_ReviewResultDetail]
 
   A list of ReviewResults objects for each action specified in the Review
 Policy.

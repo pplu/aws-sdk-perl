@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::MediaLive::HlsCdnSettings;
-  use Moose;
-  has HlsAkamaiSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsAkamaiSettings', request_name => 'hlsAkamaiSettings', traits => ['NameInRequest']);
-  has HlsBasicPutSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsBasicPutSettings', request_name => 'hlsBasicPutSettings', traits => ['NameInRequest']);
-  has HlsMediaStoreSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsMediaStoreSettings', request_name => 'hlsMediaStoreSettings', traits => ['NameInRequest']);
-  has HlsWebdavSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsWebdavSettings', request_name => 'hlsWebdavSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_HlsAkamaiSettings MediaLive_HlsMediaStoreSettings MediaLive_HlsWebdavSettings MediaLive_HlsBasicPutSettings/;
+  has HlsAkamaiSettings => (is => 'ro', isa => MediaLive_HlsAkamaiSettings);
+  has HlsBasicPutSettings => (is => 'ro', isa => MediaLive_HlsBasicPutSettings);
+  has HlsMediaStoreSettings => (is => 'ro', isa => MediaLive_HlsMediaStoreSettings);
+  has HlsWebdavSettings => (is => 'ro', isa => MediaLive_HlsWebdavSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HlsBasicPutSettings' => {
+                                          'class' => 'Paws::MediaLive::HlsBasicPutSettings',
+                                          'type' => 'MediaLive_HlsBasicPutSettings'
+                                        },
+               'HlsMediaStoreSettings' => {
+                                            'class' => 'Paws::MediaLive::HlsMediaStoreSettings',
+                                            'type' => 'MediaLive_HlsMediaStoreSettings'
+                                          },
+               'HlsWebdavSettings' => {
+                                        'class' => 'Paws::MediaLive::HlsWebdavSettings',
+                                        'type' => 'MediaLive_HlsWebdavSettings'
+                                      },
+               'HlsAkamaiSettings' => {
+                                        'class' => 'Paws::MediaLive::HlsAkamaiSettings',
+                                        'type' => 'MediaLive_HlsAkamaiSettings'
+                                      }
+             },
+  'NameInRequest' => {
+                       'HlsBasicPutSettings' => 'hlsBasicPutSettings',
+                       'HlsMediaStoreSettings' => 'hlsMediaStoreSettings',
+                       'HlsWebdavSettings' => 'hlsWebdavSettings',
+                       'HlsAkamaiSettings' => 'hlsAkamaiSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +75,22 @@ Hls Cdn Settings
 =head1 ATTRIBUTES
 
 
-=head2 HlsAkamaiSettings => L<Paws::MediaLive::HlsAkamaiSettings>
+=head2 HlsAkamaiSettings => MediaLive_HlsAkamaiSettings
 
   
 
 
-=head2 HlsBasicPutSettings => L<Paws::MediaLive::HlsBasicPutSettings>
+=head2 HlsBasicPutSettings => MediaLive_HlsBasicPutSettings
 
   
 
 
-=head2 HlsMediaStoreSettings => L<Paws::MediaLive::HlsMediaStoreSettings>
+=head2 HlsMediaStoreSettings => MediaLive_HlsMediaStoreSettings
 
   
 
 
-=head2 HlsWebdavSettings => L<Paws::MediaLive::HlsWebdavSettings>
+=head2 HlsWebdavSettings => MediaLive_HlsWebdavSettings
 
   
 

@@ -1,20 +1,68 @@
 
 package Paws::RDSData::BatchExecuteStatement;
-  use Moose;
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has ParameterSets => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::RDSData::SqlParameter]]', traits => ['NameInRequest'], request_name => 'parameterSets');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
-  has Sql => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sql', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transactionId');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_SqlParameter/;
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterSets => (is => 'ro', isa => ArrayRef[ArrayRef[RDSData_SqlParameter]], predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SecretArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Sql => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransactionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchExecuteStatement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/BatchExecute');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::BatchExecuteStatementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchExecuteStatement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/BatchExecute');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::BatchExecuteStatementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'Sql' => {
+                          'type' => 'Str'
+                        },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              },
+               'ParameterSets' => {
+                                    'class' => 'Paws::RDSData::SqlParameter',
+                                    'type' => 'ArrayRef[ArrayRef[RDSData_SqlParameter]]'
+                                  },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'ResourceArn' => 'resourceArn',
+                       'Database' => 'database',
+                       'Sql' => 'sql',
+                       'SecretArn' => 'secretArn',
+                       'ParameterSets' => 'parameterSets',
+                       'TransactionId' => 'transactionId'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Sql' => 1,
+                    'SecretArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +125,7 @@ The name of the database.
 
 
 
-=head2 ParameterSets => ArrayRef[L<ArrayRef[Paws::RDSData::SqlParameter]>]
+=head2 ParameterSets => ArrayRef[ArrayRef[RDSData_SqlParameter]]
 
 The parameter set for the batch operation.
 

@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::UpdateVoiceChannelResponse;
-  use Moose;
-  has VoiceChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::VoiceChannelResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VoiceChannelResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_VoiceChannelResponse/;
+  has VoiceChannelResponse => (is => 'ro', isa => Pinpoint_VoiceChannelResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceChannelResponse' => {
+                                           'class' => 'Paws::Pinpoint::VoiceChannelResponse',
+                                           'type' => 'Pinpoint_VoiceChannelResponse'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'VoiceChannelResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::UpdateVoiceChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VoiceChannelResponse => L<Paws::Pinpoint::VoiceChannelResponse>
+=head2 B<REQUIRED> VoiceChannelResponse => Pinpoint_VoiceChannelResponse
 
 
 

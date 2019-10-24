@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeactivateMFADevice;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::DeactivateMFADevice;
                'SerialNumber' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'SerialNumber' => 1
+                  }
 }
 ;
     return $Params_map;

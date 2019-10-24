@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::IoT::TaskStatistics;
-  use Moose;
-  has CanceledChecks => (is => 'ro', isa => 'Int', request_name => 'canceledChecks', traits => ['NameInRequest']);
-  has CompliantChecks => (is => 'ro', isa => 'Int', request_name => 'compliantChecks', traits => ['NameInRequest']);
-  has FailedChecks => (is => 'ro', isa => 'Int', request_name => 'failedChecks', traits => ['NameInRequest']);
-  has InProgressChecks => (is => 'ro', isa => 'Int', request_name => 'inProgressChecks', traits => ['NameInRequest']);
-  has NonCompliantChecks => (is => 'ro', isa => 'Int', request_name => 'nonCompliantChecks', traits => ['NameInRequest']);
-  has TotalChecks => (is => 'ro', isa => 'Int', request_name => 'totalChecks', traits => ['NameInRequest']);
-  has WaitingForDataCollectionChecks => (is => 'ro', isa => 'Int', request_name => 'waitingForDataCollectionChecks', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has CanceledChecks => (is => 'ro', isa => Int);
+  has CompliantChecks => (is => 'ro', isa => Int);
+  has FailedChecks => (is => 'ro', isa => Int);
+  has InProgressChecks => (is => 'ro', isa => Int);
+  has NonCompliantChecks => (is => 'ro', isa => Int);
+  has TotalChecks => (is => 'ro', isa => Int);
+  has WaitingForDataCollectionChecks => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WaitingForDataCollectionChecks' => {
+                                                     'type' => 'Int'
+                                                   },
+               'NonCompliantChecks' => {
+                                         'type' => 'Int'
+                                       },
+               'InProgressChecks' => {
+                                       'type' => 'Int'
+                                     },
+               'CompliantChecks' => {
+                                      'type' => 'Int'
+                                    },
+               'FailedChecks' => {
+                                   'type' => 'Int'
+                                 },
+               'TotalChecks' => {
+                                  'type' => 'Int'
+                                },
+               'CanceledChecks' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'WaitingForDataCollectionChecks' => 'waitingForDataCollectionChecks',
+                       'NonCompliantChecks' => 'nonCompliantChecks',
+                       'InProgressChecks' => 'inProgressChecks',
+                       'CompliantChecks' => 'compliantChecks',
+                       'FailedChecks' => 'failedChecks',
+                       'TotalChecks' => 'totalChecks',
+                       'CanceledChecks' => 'canceledChecks'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

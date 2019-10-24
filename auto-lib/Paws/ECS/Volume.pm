@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::ECS::Volume;
-  use Moose;
-  has DockerVolumeConfiguration => (is => 'ro', isa => 'Paws::ECS::DockerVolumeConfiguration', request_name => 'dockerVolumeConfiguration', traits => ['NameInRequest']);
-  has Host => (is => 'ro', isa => 'Paws::ECS::HostVolumeProperties', request_name => 'host', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw/ECS_HostVolumeProperties ECS_DockerVolumeConfiguration/;
+  has DockerVolumeConfiguration => (is => 'ro', isa => ECS_DockerVolumeConfiguration);
+  has Host => (is => 'ro', isa => ECS_HostVolumeProperties);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DockerVolumeConfiguration' => {
+                                                'class' => 'Paws::ECS::DockerVolumeConfiguration',
+                                                'type' => 'ECS_DockerVolumeConfiguration'
+                                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Host' => {
+                           'class' => 'Paws::ECS::HostVolumeProperties',
+                           'type' => 'ECS_HostVolumeProperties'
+                         }
+             },
+  'NameInRequest' => {
+                       'DockerVolumeConfiguration' => 'dockerVolumeConfiguration',
+                       'Name' => 'name',
+                       'Host' => 'host'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +72,7 @@ For more information, see Using Data Volumes in Tasks
 =head1 ATTRIBUTES
 
 
-=head2 DockerVolumeConfiguration => L<Paws::ECS::DockerVolumeConfiguration>
+=head2 DockerVolumeConfiguration => ECS_DockerVolumeConfiguration
 
   This parameter is specified when you are using Docker volumes. Docker
 volumes are only supported when you are using the EC2 launch type.
@@ -50,7 +80,7 @@ Windows containers only support the use of the C<local> driver. To use
 bind mounts, specify a C<host> instead.
 
 
-=head2 Host => L<Paws::ECS::HostVolumeProperties>
+=head2 Host => ECS_HostVolumeProperties
 
   This parameter is specified when you are using bind mount host volumes.
 Bind mount host volumes are supported when you are using either the EC2

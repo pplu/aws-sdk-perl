@@ -1,30 +1,119 @@
+# Generated from default/object.tt
 package Paws::DMS::RedshiftSettings;
-  use Moose;
-  has AcceptAnyDate => (is => 'ro', isa => 'Bool');
-  has AfterConnectScript => (is => 'ro', isa => 'Str');
-  has BucketFolder => (is => 'ro', isa => 'Str');
-  has BucketName => (is => 'ro', isa => 'Str');
-  has ConnectionTimeout => (is => 'ro', isa => 'Int');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DateFormat => (is => 'ro', isa => 'Str');
-  has EmptyAsNull => (is => 'ro', isa => 'Bool');
-  has EncryptionMode => (is => 'ro', isa => 'Str');
-  has FileTransferUploadStreams => (is => 'ro', isa => 'Int');
-  has LoadTimeout => (is => 'ro', isa => 'Int');
-  has MaxFileSize => (is => 'ro', isa => 'Int');
-  has Password => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has RemoveQuotes => (is => 'ro', isa => 'Bool');
-  has ReplaceChars => (is => 'ro', isa => 'Str');
-  has ReplaceInvalidChars => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str');
-  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
-  has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
-  has TimeFormat => (is => 'ro', isa => 'Str');
-  has TrimBlanks => (is => 'ro', isa => 'Bool');
-  has TruncateColumns => (is => 'ro', isa => 'Bool');
-  has Username => (is => 'ro', isa => 'Str');
-  has WriteBufferSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::DMS::Types qw//;
+  has AcceptAnyDate => (is => 'ro', isa => Bool);
+  has AfterConnectScript => (is => 'ro', isa => Str);
+  has BucketFolder => (is => 'ro', isa => Str);
+  has BucketName => (is => 'ro', isa => Str);
+  has ConnectionTimeout => (is => 'ro', isa => Int);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DateFormat => (is => 'ro', isa => Str);
+  has EmptyAsNull => (is => 'ro', isa => Bool);
+  has EncryptionMode => (is => 'ro', isa => Str);
+  has FileTransferUploadStreams => (is => 'ro', isa => Int);
+  has LoadTimeout => (is => 'ro', isa => Int);
+  has MaxFileSize => (is => 'ro', isa => Int);
+  has Password => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has RemoveQuotes => (is => 'ro', isa => Bool);
+  has ReplaceChars => (is => 'ro', isa => Str);
+  has ReplaceInvalidChars => (is => 'ro', isa => Str);
+  has ServerName => (is => 'ro', isa => Str);
+  has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => Str);
+  has ServiceAccessRoleArn => (is => 'ro', isa => Str);
+  has TimeFormat => (is => 'ro', isa => Str);
+  has TrimBlanks => (is => 'ro', isa => Bool);
+  has TruncateColumns => (is => 'ro', isa => Bool);
+  has Username => (is => 'ro', isa => Str);
+  has WriteBufferSize => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxFileSize' => {
+                                  'type' => 'Int'
+                                },
+               'WriteBufferSize' => {
+                                      'type' => 'Int'
+                                    },
+               'BucketFolder' => {
+                                   'type' => 'Str'
+                                 },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'DateFormat' => {
+                                 'type' => 'Str'
+                               },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'LoadTimeout' => {
+                                  'type' => 'Int'
+                                },
+               'AcceptAnyDate' => {
+                                    'type' => 'Bool'
+                                  },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'ConnectionTimeout' => {
+                                        'type' => 'Int'
+                                      },
+               'TruncateColumns' => {
+                                      'type' => 'Bool'
+                                    },
+               'ReplaceChars' => {
+                                   'type' => 'Str'
+                                 },
+               'RemoveQuotes' => {
+                                   'type' => 'Bool'
+                                 },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'TrimBlanks' => {
+                                 'type' => 'Bool'
+                               },
+               'AfterConnectScript' => {
+                                         'type' => 'Str'
+                                       },
+               'ServerSideEncryptionKmsKeyId' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'EncryptionMode' => {
+                                     'type' => 'Str'
+                                   },
+               'ReplaceInvalidChars' => {
+                                          'type' => 'Str'
+                                        },
+               'ServiceAccessRoleArn' => {
+                                           'type' => 'Str'
+                                         },
+               'EmptyAsNull' => {
+                                  'type' => 'Bool'
+                                },
+               'TimeFormat' => {
+                                 'type' => 'Str'
+                               },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'FileTransferUploadStreams' => {
+                                                'type' => 'Int'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

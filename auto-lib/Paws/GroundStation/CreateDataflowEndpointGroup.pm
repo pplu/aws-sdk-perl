@@ -1,15 +1,42 @@
 
 package Paws::GroundStation::CreateDataflowEndpointGroup;
-  use Moose;
-  has EndpointDetails => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::EndpointDetails]', traits => ['NameInRequest'], request_name => 'endpointDetails', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_EndpointDetails GroundStation_TagsMap/;
+  has EndpointDetails => (is => 'ro', isa => ArrayRef[GroundStation_EndpointDetails], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataflowEndpointGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/dataflowEndpointGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::DataflowEndpointGroupIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataflowEndpointGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/dataflowEndpointGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::DataflowEndpointGroupIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointDetails' => {
+                                      'class' => 'Paws::GroundStation::EndpointDetails',
+                                      'type' => 'ArrayRef[GroundStation_EndpointDetails]'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::GroundStation::TagsMap',
+                           'type' => 'GroundStation_TagsMap'
+                         }
+             },
+  'NameInRequest' => {
+                       'EndpointDetails' => 'endpointDetails',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'EndpointDetails' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,13 +94,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gro
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EndpointDetails => ArrayRef[L<Paws::GroundStation::EndpointDetails>]
+=head2 B<REQUIRED> EndpointDetails => ArrayRef[GroundStation_EndpointDetails]
 
 Endpoint details of each endpoint in the dataflow endpoint group.
 
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags of a dataflow endpoint group.
 

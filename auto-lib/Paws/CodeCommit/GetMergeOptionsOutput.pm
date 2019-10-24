@@ -1,12 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetMergeOptionsOutput;
-  use Moose;
-  has BaseCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'baseCommitId' , required => 1);
-  has DestinationCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitId' , required => 1);
-  has MergeOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'mergeOptions' , required => 1);
-  has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeCommit::Types qw//;
+  has BaseCommitId => (is => 'ro', isa => Str, required => 1);
+  has DestinationCommitId => (is => 'ro', isa => Str, required => 1);
+  has MergeOptions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SourceCommitId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MergeOptions' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'BaseCommitId' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationCommitId' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'MergeOptions' => 'mergeOptions',
+                       'BaseCommitId' => 'baseCommitId',
+                       'SourceCommitId' => 'sourceCommitId',
+                       'DestinationCommitId' => 'destinationCommitId'
+                     },
+  'IsRequired' => {
+                    'MergeOptions' => 1,
+                    'BaseCommitId' => 1,
+                    'SourceCommitId' => 1,
+                    'DestinationCommitId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

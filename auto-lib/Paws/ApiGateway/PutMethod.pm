@@ -1,24 +1,92 @@
 
 package Paws::ApiGateway::PutMethod;
-  use Moose;
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
-  has AuthorizationScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'authorizationScopes');
-  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType', required => 1);
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
-  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestModels');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean', traits => ['NameInRequest'], request_name => 'requestParameters');
-  has RequestValidatorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestValidatorId');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToBoolean ApiGateway_MapOfStringToString/;
+  has ApiKeyRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has AuthorizationScopes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AuthorizationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthorizerId => (is => 'ro', isa => Str, predicate => 1);
+  has HttpMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OperationName => (is => 'ro', isa => Str, predicate => 1);
+  has RequestModels => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has RequestParameters => (is => 'ro', isa => ApiGateway_MapOfStringToBoolean, predicate => 1);
+  has RequestValidatorId => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMethod');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Method');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMethod');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Method');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'AuthorizationScopes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'OperationName' => {
+                                    'type' => 'Str'
+                                  },
+               'RequestValidatorId' => {
+                                         'type' => 'Str'
+                                       },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'RequestParameters' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToBoolean',
+                                        'type' => 'ApiGateway_MapOfStringToBoolean'
+                                      },
+               'RequestModels' => {
+                                    'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                    'type' => 'ApiGateway_MapOfStringToString'
+                                  },
+               'ApiKeyRequired' => {
+                                     'type' => 'Bool'
+                                   },
+               'AuthorizationType' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'ResourceId' => 'resource_id',
+                    'HttpMethod' => 'http_method'
+                  },
+  'NameInRequest' => {
+                       'AuthorizationScopes' => 'authorizationScopes',
+                       'OperationName' => 'operationName',
+                       'RequestValidatorId' => 'requestValidatorId',
+                       'AuthorizerId' => 'authorizerId',
+                       'RequestParameters' => 'requestParameters',
+                       'RequestModels' => 'requestModels',
+                       'ApiKeyRequired' => 'apiKeyRequired',
+                       'AuthorizationType' => 'authorizationType'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'ResourceId' => 1,
+                    'HttpMethod' => 1,
+                    'AuthorizationType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -124,7 +192,7 @@ method in the C<PetStore> example.
 
 
 
-=head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestModels => ApiGateway_MapOfStringToString
 
 Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
@@ -132,7 +200,7 @@ as the key and a Model name as the value.
 
 
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 RequestParameters => ApiGateway_MapOfStringToBoolean
 
 A key-value map defining required or optional method request parameters
 that can be accepted by API Gateway. A key defines a method request

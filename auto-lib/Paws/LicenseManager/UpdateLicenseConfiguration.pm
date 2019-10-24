@@ -1,19 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LicenseManager::UpdateLicenseConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has LicenseConfigurationArn => (is => 'ro', isa => 'Str', required => 1);
-  has LicenseConfigurationStatus => (is => 'ro', isa => 'Str');
-  has LicenseCount => (is => 'ro', isa => 'Int');
-  has LicenseCountHardLimit => (is => 'ro', isa => 'Bool');
-  has LicenseRules => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::LicenseManager::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseConfigurationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LicenseConfigurationStatus => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseCount => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseCountHardLimit => (is => 'ro', isa => Bool, predicate => 1);
+  has LicenseRules => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLicenseConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LicenseManager::UpdateLicenseConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateLicenseConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LicenseManager::UpdateLicenseConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseRules' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'LicenseCountHardLimit' => {
+                                            'type' => 'Bool'
+                                          },
+               'LicenseConfigurationArn' => {
+                                              'type' => 'Str'
+                                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LicenseConfigurationStatus' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LicenseCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'LicenseConfigurationArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

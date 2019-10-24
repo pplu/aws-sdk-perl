@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::Route53::HostedZone;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has Config => (is => 'ro', isa => 'Paws::Route53::HostedZoneConfig');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceRecordSetCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw/Route53_HostedZoneConfig Route53_LinkedService/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has Config => (is => 'ro', isa => Route53_HostedZoneConfig);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LinkedService => (is => 'ro', isa => Route53_LinkedService);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ResourceRecordSetCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkedService' => {
+                                    'class' => 'Paws::Route53::LinkedService',
+                                    'type' => 'Route53_LinkedService'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Config' => {
+                             'class' => 'Paws::Route53::HostedZoneConfig',
+                             'type' => 'Route53_HostedZoneConfig'
+                           },
+               'ResourceRecordSetCount' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'CallerReference' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +86,7 @@ A complex type that contains general information about the hosted zone.
 the hosted zone.
 
 
-=head2 Config => L<Paws::Route53::HostedZoneConfig>
+=head2 Config => Route53_HostedZoneConfig
 
   A complex type that includes the C<Comment> and C<PrivateZone>
 elements. If you omitted the C<HostedZoneConfig> and C<Comment>
@@ -61,7 +100,7 @@ appear in the response.
 created it.
 
 
-=head2 LinkedService => L<Paws::Route53::LinkedService>
+=head2 LinkedService => Route53_LinkedService
 
   If the hosted zone was created by another service, the service that
 created the hosted zone. When a hosted zone is created by another

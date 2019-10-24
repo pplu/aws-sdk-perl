@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningProfile;
-  use Moose;
-  has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
-  has ProfileName => (is => 'ro', isa => 'Str', request_name => 'profileName', traits => ['NameInRequest']);
-  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
-  has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', request_name => 'signingParameters', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw/Signer_SigningParameters Signer_SigningMaterial/;
+  has PlatformId => (is => 'ro', isa => Str);
+  has ProfileName => (is => 'ro', isa => Str);
+  has SigningMaterial => (is => 'ro', isa => Signer_SigningMaterial);
+  has SigningParameters => (is => 'ro', isa => Signer_SigningParameters);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningMaterial' => {
+                                      'class' => 'Paws::Signer::SigningMaterial',
+                                      'type' => 'Signer_SigningMaterial'
+                                    },
+               'SigningParameters' => {
+                                        'class' => 'Paws::Signer::SigningParameters',
+                                        'type' => 'Signer_SigningParameters'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'PlatformId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'SigningMaterial' => 'signingMaterial',
+                       'SigningParameters' => 'signingParameters',
+                       'Status' => 'status',
+                       'ProfileName' => 'profileName',
+                       'PlatformId' => 'platformId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,12 +89,12 @@ configuration parameters that can be used by a given AWS Signer user.
   The name of the AWS Signer profile.
 
 
-=head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
+=head2 SigningMaterial => Signer_SigningMaterial
 
   The ACM certificate that is available for use by a signing profile.
 
 
-=head2 SigningParameters => L<Paws::Signer::SigningParameters>
+=head2 SigningParameters => Signer_SigningParameters
 
   The parameters that are available for use by an AWS Signer user.
 

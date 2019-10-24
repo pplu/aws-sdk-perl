@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceDiscovery::CreateService;
-  use Moose;
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
-  has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
-  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NamespaceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_HealthCheckCustomConfig ServiceDiscovery_DnsConfig ServiceDiscovery_HealthCheckConfig/;
+  has CreatorRequestId => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DnsConfig => (is => 'ro', isa => ServiceDiscovery_DnsConfig, predicate => 1);
+  has HealthCheckConfig => (is => 'ro', isa => ServiceDiscovery_HealthCheckConfig, predicate => 1);
+  has HealthCheckCustomConfig => (is => 'ro', isa => ServiceDiscovery_HealthCheckCustomConfig, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NamespaceId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateService');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceDiscovery::CreateServiceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateService');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceDiscovery::CreateServiceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamespaceId' => {
+                                  'type' => 'Str'
+                                },
+               'DnsConfig' => {
+                                'class' => 'Paws::ServiceDiscovery::DnsConfig',
+                                'type' => 'ServiceDiscovery_DnsConfig'
+                              },
+               'HealthCheckCustomConfig' => {
+                                              'class' => 'Paws::ServiceDiscovery::HealthCheckCustomConfig',
+                                              'type' => 'ServiceDiscovery_HealthCheckCustomConfig'
+                                            },
+               'HealthCheckConfig' => {
+                                        'class' => 'Paws::ServiceDiscovery::HealthCheckConfig',
+                                        'type' => 'ServiceDiscovery_HealthCheckConfig'
+                                      },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +126,7 @@ A description for the service.
 
 
 
-=head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
+=head2 DnsConfig => ServiceDiscovery_DnsConfig
 
 A complex type that contains information about the Amazon Route 53
 records that you want AWS Cloud Map to create when you register an
@@ -94,7 +134,7 @@ instance.
 
 
 
-=head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
+=head2 HealthCheckConfig => ServiceDiscovery_HealthCheckConfig
 
 I<Public DNS namespaces only.> A complex type that contains settings
 for an optional Route 53 health check. If you specify settings for a
@@ -109,7 +149,7 @@ Pricing (http://aws.amazon.com/cloud-map/pricing/).
 
 
 
-=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+=head2 HealthCheckCustomConfig => ServiceDiscovery_HealthCheckCustomConfig
 
 A complex type that contains information about an optional custom
 health check.

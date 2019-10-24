@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::DocDB::OrderableDBInstanceOption;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has Vpc => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::DocDB::Types qw/DocDB_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[DocDB_AvailabilityZone]);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has Vpc => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'Vpc' => {
+                          'type' => 'Bool'
+                        },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::DocDB::AvailabilityZone',
+                                        'type' => 'ArrayRef[DocDB_AvailabilityZone]'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +77,7 @@ The options that are available for a DB instance.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::DocDB::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[DocDB_AvailabilityZone]
 
   A list of Availability Zones for a DB instance.
 

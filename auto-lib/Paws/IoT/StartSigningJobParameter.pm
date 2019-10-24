@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::IoT::StartSigningJobParameter;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Paws::IoT::Destination', request_name => 'destination', traits => ['NameInRequest']);
-  has SigningProfileName => (is => 'ro', isa => 'Str', request_name => 'signingProfileName', traits => ['NameInRequest']);
-  has SigningProfileParameter => (is => 'ro', isa => 'Paws::IoT::SigningProfileParameter', request_name => 'signingProfileParameter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_SigningProfileParameter IoT_Destination/;
+  has Destination => (is => 'ro', isa => IoT_Destination);
+  has SigningProfileName => (is => 'ro', isa => Str);
+  has SigningProfileParameter => (is => 'ro', isa => IoT_SigningProfileParameter);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningProfileName' => {
+                                         'type' => 'Str'
+                                       },
+               'SigningProfileParameter' => {
+                                              'class' => 'Paws::IoT::SigningProfileParameter',
+                                              'type' => 'IoT_SigningProfileParameter'
+                                            },
+               'Destination' => {
+                                  'class' => 'Paws::IoT::Destination',
+                                  'type' => 'IoT_Destination'
+                                }
+             },
+  'NameInRequest' => {
+                       'SigningProfileName' => 'signingProfileName',
+                       'SigningProfileParameter' => 'signingProfileParameter',
+                       'Destination' => 'destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +68,7 @@ Information required to start a signing job.
 =head1 ATTRIBUTES
 
 
-=head2 Destination => L<Paws::IoT::Destination>
+=head2 Destination => IoT_Destination
 
   The location to write the code-signed file.
 
@@ -48,7 +78,7 @@ Information required to start a signing job.
   The code-signing profile name.
 
 
-=head2 SigningProfileParameter => L<Paws::IoT::SigningProfileParameter>
+=head2 SigningProfileParameter => IoT_SigningProfileParameter
 
   Describes the code-signing profile.
 

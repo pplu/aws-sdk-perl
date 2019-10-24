@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ClustersMessage;
-  use Moose;
-  has Clusters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Cluster]', request_name => 'Cluster', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Cluster/;
+  has Clusters => (is => 'ro', isa => ArrayRef[RedShift_Cluster]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Clusters' => {
+                               'class' => 'Paws::RedShift::Cluster',
+                               'type' => 'ArrayRef[RedShift_Cluster]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Clusters' => 'Cluster'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::ClustersMessage
 =head1 ATTRIBUTES
 
 
-=head2 Clusters => ArrayRef[L<Paws::RedShift::Cluster>]
+=head2 Clusters => ArrayRef[RedShift_Cluster]
 
 A list of C<Cluster> objects, where each object describes one cluster.
 

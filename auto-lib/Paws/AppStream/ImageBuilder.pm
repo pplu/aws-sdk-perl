@@ -1,21 +1,91 @@
+# Generated from default/object.tt
 package Paws::AppStream::ImageBuilder;
-  use Moose;
-  has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
-  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has ImageArn => (is => 'ro', isa => 'Str');
-  has ImageBuilderErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NetworkAccessConfiguration => (is => 'ro', isa => 'Paws::AppStream::NetworkAccessConfiguration');
-  has Platform => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageBuilderStateChangeReason');
-  has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_ResourceError AppStream_ImageBuilderStateChangeReason AppStream_NetworkAccessConfiguration AppStream_VpcConfig AppStream_DomainJoinInfo/;
+  has AppstreamAgentVersion => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has DomainJoinInfo => (is => 'ro', isa => AppStream_DomainJoinInfo);
+  has EnableDefaultInternetAccess => (is => 'ro', isa => Bool);
+  has ImageArn => (is => 'ro', isa => Str);
+  has ImageBuilderErrors => (is => 'ro', isa => ArrayRef[AppStream_ResourceError]);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has NetworkAccessConfiguration => (is => 'ro', isa => AppStream_NetworkAccessConfiguration);
+  has Platform => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => AppStream_ImageBuilderStateChangeReason);
+  has VpcConfig => (is => 'ro', isa => AppStream_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'DomainJoinInfo' => {
+                                     'class' => 'Paws::AppStream::DomainJoinInfo',
+                                     'type' => 'AppStream_DomainJoinInfo'
+                                   },
+               'ImageArn' => {
+                               'type' => 'Str'
+                             },
+               'AppstreamAgentVersion' => {
+                                            'type' => 'Str'
+                                          },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ImageBuilderErrors' => {
+                                         'class' => 'Paws::AppStream::ResourceError',
+                                         'type' => 'ArrayRef[AppStream_ResourceError]'
+                                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EnableDefaultInternetAccess' => {
+                                                  'type' => 'Bool'
+                                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkAccessConfiguration' => {
+                                                 'class' => 'Paws::AppStream::NetworkAccessConfiguration',
+                                                 'type' => 'AppStream_NetworkAccessConfiguration'
+                                               },
+               'StateChangeReason' => {
+                                        'class' => 'Paws::AppStream::ImageBuilderStateChangeReason',
+                                        'type' => 'AppStream_ImageBuilderStateChangeReason'
+                                      },
+               'VpcConfig' => {
+                                'class' => 'Paws::AppStream::VpcConfig',
+                                'type' => 'AppStream_VpcConfig'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +147,7 @@ the image builder.
   The image builder name to display.
 
 
-=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+=head2 DomainJoinInfo => AppStream_DomainJoinInfo
 
   The name of the directory and organizational unit (OU) to use to join
 the image builder to a Microsoft Active Directory domain.
@@ -93,7 +163,7 @@ the image builder to a Microsoft Active Directory domain.
   The ARN of the image from which this builder was created.
 
 
-=head2 ImageBuilderErrors => ArrayRef[L<Paws::AppStream::ResourceError>]
+=head2 ImageBuilderErrors => ArrayRef[AppStream_ResourceError]
 
   The image builder errors.
 
@@ -108,7 +178,7 @@ the image builder to a Microsoft Active Directory domain.
   The name of the image builder.
 
 
-=head2 NetworkAccessConfiguration => L<Paws::AppStream::NetworkAccessConfiguration>
+=head2 NetworkAccessConfiguration => AppStream_NetworkAccessConfiguration
 
   
 
@@ -123,12 +193,12 @@ the image builder to a Microsoft Active Directory domain.
   The state of the image builder.
 
 
-=head2 StateChangeReason => L<Paws::AppStream::ImageBuilderStateChangeReason>
+=head2 StateChangeReason => AppStream_ImageBuilderStateChangeReason
 
   The reason why the last state change occurred.
 
 
-=head2 VpcConfig => L<Paws::AppStream::VpcConfig>
+=head2 VpcConfig => AppStream_VpcConfig
 
   The VPC configuration of the image builder.
 

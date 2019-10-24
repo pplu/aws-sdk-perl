@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::CreateJobOutput;
-  use Moose;
-  has AlbumArt => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobAlbumArt');
-  has Captions => (is => 'ro', isa => 'Paws::ElasticTranscoder::Captions');
-  has Composition => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Clip]');
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has Key => (is => 'ro', isa => 'Str');
-  has PresetId => (is => 'ro', isa => 'Str');
-  has Rotate => (is => 'ro', isa => 'Str');
-  has SegmentDuration => (is => 'ro', isa => 'Str');
-  has ThumbnailEncryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has ThumbnailPattern => (is => 'ro', isa => 'Str');
-  has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_JobWatermark ElasticTranscoder_Encryption ElasticTranscoder_Clip ElasticTranscoder_Captions ElasticTranscoder_JobAlbumArt/;
+  has AlbumArt => (is => 'ro', isa => ElasticTranscoder_JobAlbumArt);
+  has Captions => (is => 'ro', isa => ElasticTranscoder_Captions);
+  has Composition => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Clip]);
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has Key => (is => 'ro', isa => Str);
+  has PresetId => (is => 'ro', isa => Str);
+  has Rotate => (is => 'ro', isa => Str);
+  has SegmentDuration => (is => 'ro', isa => Str);
+  has ThumbnailEncryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has ThumbnailPattern => (is => 'ro', isa => Str);
+  has Watermarks => (is => 'ro', isa => ArrayRef[ElasticTranscoder_JobWatermark]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PresetId' => {
+                               'type' => 'Str'
+                             },
+               'Captions' => {
+                               'class' => 'Paws::ElasticTranscoder::Captions',
+                               'type' => 'ElasticTranscoder_Captions'
+                             },
+               'ThumbnailEncryption' => {
+                                          'class' => 'Paws::ElasticTranscoder::Encryption',
+                                          'type' => 'ElasticTranscoder_Encryption'
+                                        },
+               'SegmentDuration' => {
+                                      'type' => 'Str'
+                                    },
+               'ThumbnailPattern' => {
+                                       'type' => 'Str'
+                                     },
+               'AlbumArt' => {
+                               'class' => 'Paws::ElasticTranscoder::JobAlbumArt',
+                               'type' => 'ElasticTranscoder_JobAlbumArt'
+                             },
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'Rotate' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'Watermarks' => {
+                                 'class' => 'Paws::ElasticTranscoder::JobWatermark',
+                                 'type' => 'ArrayRef[ElasticTranscoder_JobWatermark]'
+                               },
+               'Composition' => {
+                                  'class' => 'Paws::ElasticTranscoder::Clip',
+                                  'type' => 'ArrayRef[ElasticTranscoder_Clip]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +99,7 @@ The C<CreateJobOutput> structure.
 =head1 ATTRIBUTES
 
 
-=head2 AlbumArt => L<Paws::ElasticTranscoder::JobAlbumArt>
+=head2 AlbumArt => ElasticTranscoder_JobAlbumArt
 
   Information about the album art that you want Elastic Transcoder to add
 to the file during transcoding. You can specify up to twenty album
@@ -54,7 +107,7 @@ artworks for each output. Settings for each artwork must be defined in
 the job for the current output.
 
 
-=head2 Captions => L<Paws::ElasticTranscoder::Captions>
+=head2 Captions => ElasticTranscoder_Captions
 
   You can configure Elastic Transcoder to transcode captions, or
 subtitles, from one format to another. All captions must be in UTF-8.
@@ -115,7 +168,7 @@ For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
 
-=head2 Composition => ArrayRef[L<Paws::ElasticTranscoder::Clip>]
+=head2 Composition => ArrayRef[ElasticTranscoder_Clip]
 
   You can create an output file that contains an excerpt from the input
 file. This excerpt, called a clip, can come from the beginning, middle,
@@ -125,7 +178,7 @@ only specify settings for a single clip per output file. The
 Composition object cannot be null.
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   You can specify encryption settings for any output files that you want
 to use for a transcoding job. This includes the output file and any
@@ -180,7 +233,7 @@ master playlist for this job, include it in the C<OutputKeys> of the
 associated playlist.
 
 
-=head2 ThumbnailEncryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 ThumbnailEncryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
@@ -233,7 +286,7 @@ specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
 
 
-=head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::JobWatermark>]
+=head2 Watermarks => ArrayRef[ElasticTranscoder_JobWatermark]
 
   Information about the watermarks that you want Elastic Transcoder to
 add to the video during transcoding. You can specify up to four

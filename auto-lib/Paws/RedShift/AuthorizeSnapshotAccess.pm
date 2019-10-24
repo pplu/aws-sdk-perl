@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::AuthorizeSnapshotAccess;
-  use Moose;
-  has AccountWithRestoreAccess => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has AccountWithRestoreAccess => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SnapshotClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccess');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::AuthorizeSnapshotAccessResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeSnapshotAccessResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AuthorizeSnapshotAccess');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::AuthorizeSnapshotAccessResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'AuthorizeSnapshotAccessResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'SnapshotClusterIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'AccountWithRestoreAccess' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'IsRequired' => {
+                    'SnapshotIdentifier' => 1,
+                    'AccountWithRestoreAccess' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

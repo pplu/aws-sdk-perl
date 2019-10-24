@@ -56,7 +56,10 @@ use MooX::ClassAttribute;
                       'Delimiter' => 'delimiter',
                       'MaxKeys' => 'max-keys',
                       'Marker' => 'marker'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

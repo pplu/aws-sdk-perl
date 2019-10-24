@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::Robomaker::VPCConfig;
-  use Moose;
-  has AssignPublicIp => (is => 'ro', isa => 'Bool', request_name => 'assignPublicIp', traits => ['NameInRequest']);
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::Robomaker::Types qw//;
+  has AssignPublicIp => (is => 'ro', isa => Bool);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Subnets => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subnets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'AssignPublicIp' => {
+                                     'type' => 'Bool'
+                                   },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Subnets' => 'subnets',
+                       'AssignPublicIp' => 'assignPublicIp',
+                       'SecurityGroups' => 'securityGroups'
+                     },
+  'IsRequired' => {
+                    'Subnets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

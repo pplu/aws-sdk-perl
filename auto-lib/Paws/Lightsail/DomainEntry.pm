@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::Lightsail::DomainEntry;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has IsAlias => (is => 'ro', isa => 'Bool', request_name => 'isAlias', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Options => (is => 'ro', isa => 'Paws::Lightsail::DomainEntryOptions', request_name => 'options', traits => ['NameInRequest']);
-  has Target => (is => 'ro', isa => 'Str', request_name => 'target', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_DomainEntryOptions/;
+  has Id => (is => 'ro', isa => Str);
+  has IsAlias => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => Lightsail_DomainEntryOptions);
+  has Target => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Options' => {
+                              'class' => 'Paws::Lightsail::DomainEntryOptions',
+                              'type' => 'Lightsail_DomainEntryOptions'
+                            },
+               'IsAlias' => {
+                              'type' => 'Bool'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Target' => 'target',
+                       'Options' => 'options',
+                       'IsAlias' => 'isAlias',
+                       'Id' => 'id',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +100,7 @@ traffic to your load balancer
   The name of the domain.
 
 
-=head2 Options => L<Paws::Lightsail::DomainEntryOptions>
+=head2 Options => Lightsail_DomainEntryOptions
 
   (Deprecated) The options for the domain entry.
 

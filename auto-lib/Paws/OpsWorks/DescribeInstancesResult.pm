@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeInstancesResult;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Instance]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_Instance/;
+  has Instances => (is => 'ro', isa => ArrayRef[OpsWorks_Instance]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instances' => {
+                                'class' => 'Paws::OpsWorks::Instance',
+                                'type' => 'ArrayRef[OpsWorks_Instance]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 Instances => ArrayRef[L<Paws::OpsWorks::Instance>]
+=head2 Instances => ArrayRef[OpsWorks_Instance]
 
 An array of C<Instance> objects that describe the instances.
 

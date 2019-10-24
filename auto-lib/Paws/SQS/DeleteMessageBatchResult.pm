@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SQS::DeleteMessageBatchResult;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::SQS::DeleteMessageBatchResult;
   'NameInRequest' => {
                        'Successful' => 'DeleteMessageBatchResultEntry',
                        'Failed' => 'BatchResultErrorEntry'
-                     }
+                     },
+  'IsRequired' => {
+                    'Successful' => 1,
+                    'Failed' => 1
+                  }
 }
 ;
     return $Params_map;

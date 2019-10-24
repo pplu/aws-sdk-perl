@@ -1,17 +1,81 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Condition;
-  use Moose;
-  has Eq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eq', traits => ['NameInRequest']);
-  has Equals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'equals', traits => ['NameInRequest']);
-  has GreaterThan => (is => 'ro', isa => 'Int', request_name => 'greaterThan', traits => ['NameInRequest']);
-  has GreaterThanOrEqual => (is => 'ro', isa => 'Int', request_name => 'greaterThanOrEqual', traits => ['NameInRequest']);
-  has Gt => (is => 'ro', isa => 'Int', request_name => 'gt', traits => ['NameInRequest']);
-  has Gte => (is => 'ro', isa => 'Int', request_name => 'gte', traits => ['NameInRequest']);
-  has LessThan => (is => 'ro', isa => 'Int', request_name => 'lessThan', traits => ['NameInRequest']);
-  has LessThanOrEqual => (is => 'ro', isa => 'Int', request_name => 'lessThanOrEqual', traits => ['NameInRequest']);
-  has Lt => (is => 'ro', isa => 'Int', request_name => 'lt', traits => ['NameInRequest']);
-  has Lte => (is => 'ro', isa => 'Int', request_name => 'lte', traits => ['NameInRequest']);
-  has Neq => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'neq', traits => ['NameInRequest']);
-  has NotEquals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'notEquals', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::GuardDuty::Types qw//;
+  has Eq => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Equals => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has GreaterThan => (is => 'ro', isa => Int);
+  has GreaterThanOrEqual => (is => 'ro', isa => Int);
+  has Gt => (is => 'ro', isa => Int);
+  has Gte => (is => 'ro', isa => Int);
+  has LessThan => (is => 'ro', isa => Int);
+  has LessThanOrEqual => (is => 'ro', isa => Int);
+  has Lt => (is => 'ro', isa => Int);
+  has Lte => (is => 'ro', isa => Int);
+  has Neq => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NotEquals => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotEquals' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Neq' => {
+                          'type' => 'ArrayRef[Str|Undef]'
+                        },
+               'Gt' => {
+                         'type' => 'Int'
+                       },
+               'Gte' => {
+                          'type' => 'Int'
+                        },
+               'Eq' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       },
+               'Lt' => {
+                         'type' => 'Int'
+                       },
+               'LessThan' => {
+                               'type' => 'Int'
+                             },
+               'GreaterThan' => {
+                                  'type' => 'Int'
+                                },
+               'GreaterThanOrEqual' => {
+                                         'type' => 'Int'
+                                       },
+               'Equals' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Lte' => {
+                          'type' => 'Int'
+                        },
+               'LessThanOrEqual' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NotEquals' => 'notEquals',
+                       'Neq' => 'neq',
+                       'Gt' => 'gt',
+                       'Gte' => 'gte',
+                       'Eq' => 'eq',
+                       'Lt' => 'lt',
+                       'LessThan' => 'lessThan',
+                       'GreaterThan' => 'greaterThan',
+                       'GreaterThanOrEqual' => 'greaterThanOrEqual',
+                       'Equals' => 'equals',
+                       'Lte' => 'lte',
+                       'LessThanOrEqual' => 'lessThanOrEqual'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

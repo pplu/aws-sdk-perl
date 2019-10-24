@@ -1,13 +1,22 @@
 
 package Paws::SecurityHub::DisableSecurityHub;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableSecurityHub');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::DisableSecurityHubResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisableSecurityHub');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::DisableSecurityHubResponse');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

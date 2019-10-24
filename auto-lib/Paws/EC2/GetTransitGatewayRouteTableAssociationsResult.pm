@@ -8,7 +8,7 @@ package Paws::EC2::GetTransitGatewayRouteTableAssociationsResult;
   has NextToken => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Associations' => {
@@ -28,8 +28,8 @@ package Paws::EC2::GetTransitGatewayRouteTableAssociationsResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

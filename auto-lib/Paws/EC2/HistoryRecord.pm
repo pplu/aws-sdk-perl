@@ -5,7 +5,7 @@ package Paws::EC2::HistoryRecord;
   has EventType => (is => 'ro', isa => Str);
   has Timestamp => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Timestamp' => {
@@ -26,8 +26,8 @@ package Paws::EC2::HistoryRecord;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

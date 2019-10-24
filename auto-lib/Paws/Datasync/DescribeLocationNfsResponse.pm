@@ -1,13 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeLocationNfsResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has LocationArn => (is => 'ro', isa => 'Str');
-  has LocationUri => (is => 'ro', isa => 'Str');
-  has MountOptions => (is => 'ro', isa => 'Paws::Datasync::NfsMountOptions');
-  has OnPremConfig => (is => 'ro', isa => 'Paws::Datasync::OnPremConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw/Datasync_OnPremConfig Datasync_NfsMountOptions/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has LocationArn => (is => 'ro', isa => Str);
+  has LocationUri => (is => 'ro', isa => Str);
+  has MountOptions => (is => 'ro', isa => Datasync_NfsMountOptions);
+  has OnPremConfig => (is => 'ro', isa => Datasync_OnPremConfig);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LocationArn' => {
+                                  'type' => 'Str'
+                                },
+               'MountOptions' => {
+                                   'class' => 'Paws::Datasync::NfsMountOptions',
+                                   'type' => 'Datasync_NfsMountOptions'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LocationUri' => {
+                                  'type' => 'Str'
+                                },
+               'OnPremConfig' => {
+                                   'class' => 'Paws::Datasync::OnPremConfig',
+                                   'type' => 'Datasync_OnPremConfig'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -33,12 +65,12 @@ The Amazon resource Name (ARN) of the NFS location that was described.
 The URL of the source NFS location that was described.
 
 
-=head2 MountOptions => L<Paws::Datasync::NfsMountOptions>
+=head2 MountOptions => Datasync_NfsMountOptions
 
 The NFS mount options that DataSync used to mount your NFS share.
 
 
-=head2 OnPremConfig => L<Paws::Datasync::OnPremConfig>
+=head2 OnPremConfig => Datasync_OnPremConfig
 
 
 

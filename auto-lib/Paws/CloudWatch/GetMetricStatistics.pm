@@ -1,21 +1,69 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::GetMetricStatistics;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has ExtendedStatistics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Period => (is => 'ro', isa => 'Int', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has Statistics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExtendedStatistics => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Period => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Statistics => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Unit => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMetricStatistics');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::GetMetricStatisticsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetMetricStatisticsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMetricStatistics');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::GetMetricStatisticsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetMetricStatisticsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistics' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'ExtendedStatistics' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'Period' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +116,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 The dimensions. If the metric contains multiple dimensions, you must
 include a value for each dimension. CloudWatch treats each unique

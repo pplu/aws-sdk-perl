@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBClusterSnapshotMessage;
-  use Moose;
-  has DBClusterSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterSnapshot]', request_name => 'DBClusterSnapshot', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBClusterSnapshot/;
+  has DBClusterSnapshots => (is => 'ro', isa => ArrayRef[RDS_DBClusterSnapshot]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterSnapshots' => {
+                                         'class' => 'Paws::RDS::DBClusterSnapshot',
+                                         'type' => 'ArrayRef[RDS_DBClusterSnapshot]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DBClusterSnapshots' => 'DBClusterSnapshot'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBClusterSnapshotMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterSnapshots => ArrayRef[L<Paws::RDS::DBClusterSnapshot>]
+=head2 DBClusterSnapshots => ArrayRef[RDS_DBClusterSnapshot]
 
 Provides a list of DB cluster snapshots for the user.
 

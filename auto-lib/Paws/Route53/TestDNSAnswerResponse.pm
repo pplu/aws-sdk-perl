@@ -1,14 +1,55 @@
 
 package Paws::Route53::TestDNSAnswerResponse;
-  use Moose;
-  has Nameserver => (is => 'ro', isa => 'Str', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has RecordData => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has RecordName => (is => 'ro', isa => 'Str', required => 1);
-  has RecordType => (is => 'ro', isa => 'Str', required => 1);
-  has ResponseCode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Route53::Types qw//;
+  has Nameserver => (is => 'ro', isa => Str, required => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+  has RecordData => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has RecordName => (is => 'ro', isa => Str, required => 1);
+  has RecordType => (is => 'ro', isa => Str, required => 1);
+  has ResponseCode => (is => 'ro', isa => Str, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResponseCode' => {
+                                   'type' => 'Str'
+                                 },
+               'RecordName' => {
+                                 'type' => 'Str'
+                               },
+               'RecordType' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Nameserver' => {
+                                 'type' => 'Str'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'RecordData' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'ResponseCode' => 1,
+                    'RecordName' => 1,
+                    'RecordType' => 1,
+                    'Nameserver' => 1,
+                    'Protocol' => 1,
+                    'RecordData' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

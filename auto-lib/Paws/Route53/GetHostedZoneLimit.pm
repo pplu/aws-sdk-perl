@@ -1,17 +1,42 @@
 
 package Paws::Route53::GetHostedZoneLimit;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', uri_name => 'Type', traits => ['ParamInURI'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetHostedZoneLimit');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzonelimit/{Id}/{Type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetHostedZoneLimitResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetHostedZoneLimit');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzonelimit/{Id}/{Type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::GetHostedZoneLimitResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'Type' => 'Type',
+                    'HostedZoneId' => 'Id'
+                  },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'HostedZoneId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

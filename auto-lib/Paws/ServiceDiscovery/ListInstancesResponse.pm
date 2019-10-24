@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::ListInstancesResponse;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::InstanceSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_InstanceSummary/;
+  has Instances => (is => 'ro', isa => ArrayRef[ServiceDiscovery_InstanceSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Instances' => {
+                                'class' => 'Paws::ServiceDiscovery::InstanceSummary',
+                                'type' => 'ArrayRef[ServiceDiscovery_InstanceSummary]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::ServiceDiscovery::ListInstancesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Instances => ArrayRef[L<Paws::ServiceDiscovery::InstanceSummary>]
+=head2 Instances => ArrayRef[ServiceDiscovery_InstanceSummary]
 
 Summary information about the instances that are associated with the
 specified service.

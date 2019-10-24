@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::KeysAndAttributes;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str Bool/;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::KeysAndAttributes;
   has Keys => (is => 'ro', isa => ArrayRef[DynamoDB_Key], required => 1);
   has ProjectionExpression => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Keys' => {
@@ -28,11 +29,14 @@ package Paws::DynamoDB::KeysAndAttributes;
                'ProjectionExpression' => {
                                            'type' => 'Str'
                                          }
-             }
+             },
+  'IsRequired' => {
+                    'Keys' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

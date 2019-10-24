@@ -1,24 +1,120 @@
+# Generated from default/object.tt
 package Paws::MediaLive::MsSmoothGroupSettings;
-  use Moose;
-  has AcquisitionPointId => (is => 'ro', isa => 'Str', request_name => 'acquisitionPointId', traits => ['NameInRequest']);
-  has AudioOnlyTimecodeControl => (is => 'ro', isa => 'Str', request_name => 'audioOnlyTimecodeControl', traits => ['NameInRequest']);
-  has CertificateMode => (is => 'ro', isa => 'Str', request_name => 'certificateMode', traits => ['NameInRequest']);
-  has ConnectionRetryInterval => (is => 'ro', isa => 'Int', request_name => 'connectionRetryInterval', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
-  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
-  has EventIdMode => (is => 'ro', isa => 'Str', request_name => 'eventIdMode', traits => ['NameInRequest']);
-  has EventStopBehavior => (is => 'ro', isa => 'Str', request_name => 'eventStopBehavior', traits => ['NameInRequest']);
-  has FilecacheDuration => (is => 'ro', isa => 'Int', request_name => 'filecacheDuration', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
-  has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
-  has NumRetries => (is => 'ro', isa => 'Int', request_name => 'numRetries', traits => ['NameInRequest']);
-  has RestartDelay => (is => 'ro', isa => 'Int', request_name => 'restartDelay', traits => ['NameInRequest']);
-  has SegmentationMode => (is => 'ro', isa => 'Str', request_name => 'segmentationMode', traits => ['NameInRequest']);
-  has SendDelayMs => (is => 'ro', isa => 'Int', request_name => 'sendDelayMs', traits => ['NameInRequest']);
-  has SparseTrackType => (is => 'ro', isa => 'Str', request_name => 'sparseTrackType', traits => ['NameInRequest']);
-  has StreamManifestBehavior => (is => 'ro', isa => 'Str', request_name => 'streamManifestBehavior', traits => ['NameInRequest']);
-  has TimestampOffset => (is => 'ro', isa => 'Str', request_name => 'timestampOffset', traits => ['NameInRequest']);
-  has TimestampOffsetMode => (is => 'ro', isa => 'Str', request_name => 'timestampOffsetMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputLocationRef/;
+  has AcquisitionPointId => (is => 'ro', isa => Str);
+  has AudioOnlyTimecodeControl => (is => 'ro', isa => Str);
+  has CertificateMode => (is => 'ro', isa => Str);
+  has ConnectionRetryInterval => (is => 'ro', isa => Int);
+  has Destination => (is => 'ro', isa => MediaLive_OutputLocationRef, required => 1);
+  has EventId => (is => 'ro', isa => Str);
+  has EventIdMode => (is => 'ro', isa => Str);
+  has EventStopBehavior => (is => 'ro', isa => Str);
+  has FilecacheDuration => (is => 'ro', isa => Int);
+  has FragmentLength => (is => 'ro', isa => Int);
+  has InputLossAction => (is => 'ro', isa => Str);
+  has NumRetries => (is => 'ro', isa => Int);
+  has RestartDelay => (is => 'ro', isa => Int);
+  has SegmentationMode => (is => 'ro', isa => Str);
+  has SendDelayMs => (is => 'ro', isa => Int);
+  has SparseTrackType => (is => 'ro', isa => Str);
+  has StreamManifestBehavior => (is => 'ro', isa => Str);
+  has TimestampOffset => (is => 'ro', isa => Str);
+  has TimestampOffsetMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampOffsetMode' => {
+                                          'type' => 'Str'
+                                        },
+               'TimestampOffset' => {
+                                      'type' => 'Str'
+                                    },
+               'ConnectionRetryInterval' => {
+                                              'type' => 'Int'
+                                            },
+               'InputLossAction' => {
+                                      'type' => 'Str'
+                                    },
+               'AcquisitionPointId' => {
+                                         'type' => 'Str'
+                                       },
+               'SparseTrackType' => {
+                                      'type' => 'Str'
+                                    },
+               'SegmentationMode' => {
+                                       'type' => 'Str'
+                                     },
+               'StreamManifestBehavior' => {
+                                             'type' => 'Str'
+                                           },
+               'EventStopBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'SendDelayMs' => {
+                                  'type' => 'Int'
+                                },
+               'Destination' => {
+                                  'class' => 'Paws::MediaLive::OutputLocationRef',
+                                  'type' => 'MediaLive_OutputLocationRef'
+                                },
+               'NumRetries' => {
+                                 'type' => 'Int'
+                               },
+               'CertificateMode' => {
+                                      'type' => 'Str'
+                                    },
+               'FilecacheDuration' => {
+                                        'type' => 'Int'
+                                      },
+               'EventIdMode' => {
+                                  'type' => 'Str'
+                                },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'AudioOnlyTimecodeControl' => {
+                                               'type' => 'Str'
+                                             },
+               'RestartDelay' => {
+                                   'type' => 'Int'
+                                 },
+               'FragmentLength' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'TimestampOffsetMode' => 'timestampOffsetMode',
+                       'TimestampOffset' => 'timestampOffset',
+                       'ConnectionRetryInterval' => 'connectionRetryInterval',
+                       'InputLossAction' => 'inputLossAction',
+                       'AcquisitionPointId' => 'acquisitionPointId',
+                       'SparseTrackType' => 'sparseTrackType',
+                       'SegmentationMode' => 'segmentationMode',
+                       'StreamManifestBehavior' => 'streamManifestBehavior',
+                       'EventStopBehavior' => 'eventStopBehavior',
+                       'SendDelayMs' => 'sendDelayMs',
+                       'Destination' => 'destination',
+                       'NumRetries' => 'numRetries',
+                       'CertificateMode' => 'certificateMode',
+                       'FilecacheDuration' => 'filecacheDuration',
+                       'EventIdMode' => 'eventIdMode',
+                       'EventId' => 'eventId',
+                       'AudioOnlyTimecodeControl' => 'audioOnlyTimecodeControl',
+                       'RestartDelay' => 'restartDelay',
+                       'FragmentLength' => 'fragmentLength'
+                     },
+  'IsRequired' => {
+                    'Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +179,7 @@ the cache will be be delivered to the IIS server once the connection is
 re-established.
 
 
-=head2 B<REQUIRED> Destination => L<Paws::MediaLive::OutputLocationRef>
+=head2 B<REQUIRED> Destination => MediaLive_OutputLocationRef
 
   Smooth Streaming publish point on an IIS server. Elemental Live acts as
 a "Push" encoder to IIS.

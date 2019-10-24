@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::Kinesis::StreamDescription;
-  use Moose;
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has EnhancedMonitoring => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::EnhancedMetrics]', required => 1);
-  has HasMoreShards => (is => 'ro', isa => 'Bool', required => 1);
-  has KeyId => (is => 'ro', isa => 'Str');
-  has RetentionPeriodHours => (is => 'ro', isa => 'Int', required => 1);
-  has Shards => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Shard]', required => 1);
-  has StreamARN => (is => 'ro', isa => 'Str', required => 1);
-  has StreamCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has StreamStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Int/;
+  use Paws::Kinesis::Types qw/Kinesis_Shard Kinesis_EnhancedMetrics/;
+  has EncryptionType => (is => 'ro', isa => Str);
+  has EnhancedMonitoring => (is => 'ro', isa => ArrayRef[Kinesis_EnhancedMetrics], required => 1);
+  has HasMoreShards => (is => 'ro', isa => Bool, required => 1);
+  has KeyId => (is => 'ro', isa => Str);
+  has RetentionPeriodHours => (is => 'ro', isa => Int, required => 1);
+  has Shards => (is => 'ro', isa => ArrayRef[Kinesis_Shard], required => 1);
+  has StreamARN => (is => 'ro', isa => Str, required => 1);
+  has StreamCreationTimestamp => (is => 'ro', isa => Str, required => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1);
+  has StreamStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'RetentionPeriodHours' => {
+                                           'type' => 'Int'
+                                         },
+               'Shards' => {
+                             'class' => 'Paws::Kinesis::Shard',
+                             'type' => 'ArrayRef[Kinesis_Shard]'
+                           },
+               'HasMoreShards' => {
+                                    'type' => 'Bool'
+                                  },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'StreamCreationTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'EnhancedMonitoring' => {
+                                         'class' => 'Paws::Kinesis::EnhancedMetrics',
+                                         'type' => 'ArrayRef[Kinesis_EnhancedMetrics]'
+                                       },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'StreamStatus' => 1,
+                    'RetentionPeriodHours' => 1,
+                    'Shards' => 1,
+                    'HasMoreShards' => 1,
+                    'StreamCreationTimestamp' => 1,
+                    'StreamARN' => 1,
+                    'EnhancedMonitoring' => 1,
+                    'StreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +121,7 @@ customer-managed AWS KMS key.
 
 
 
-=head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[L<Paws::Kinesis::EnhancedMetrics>]
+=head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[Kinesis_EnhancedMetrics]
 
   Represents the current enhanced monitoring settings of the stream.
 
@@ -116,7 +172,7 @@ Master key owned by Kinesis Data Streams: C<alias/aws/kinesis>
   The current retention period, in hours.
 
 
-=head2 B<REQUIRED> Shards => ArrayRef[L<Paws::Kinesis::Shard>]
+=head2 B<REQUIRED> Shards => ArrayRef[Kinesis_Shard]
 
   The shards that comprise the stream.
 

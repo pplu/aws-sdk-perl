@@ -1,16 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateUpload;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType' );
-  has EditContent => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'editContent' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContentType => (is => 'ro', isa => Str, predicate => 1);
+  has EditContent => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUpload');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateUploadResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUpload');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateUploadResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EditContent' => {
+                                  'type' => 'Bool'
+                                },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'EditContent' => 'editContent',
+                       'ContentType' => 'contentType',
+                       'Arn' => 'arn',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

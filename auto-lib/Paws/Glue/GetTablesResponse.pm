@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetTablesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TableList => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Table]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Table/;
+  has NextToken => (is => 'ro', isa => Str);
+  has TableList => (is => 'ro', isa => ArrayRef[Glue_Table]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableList' => {
+                                'class' => 'Paws::Glue::Table',
+                                'type' => 'ArrayRef[Glue_Table]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ A continuation token, present if the current list segment is not the
 last.
 
 
-=head2 TableList => ArrayRef[L<Paws::Glue::Table>]
+=head2 TableList => ArrayRef[Glue_Table]
 
 A list of the requested C<Table> objects.
 

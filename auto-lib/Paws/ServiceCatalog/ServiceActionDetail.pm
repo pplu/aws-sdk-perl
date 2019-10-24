@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ServiceActionDetail;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Paws::ServiceCatalog::ServiceActionDefinitionMap');
-  has ServiceActionSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ServiceActionSummary');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ServiceActionSummary ServiceCatalog_ServiceActionDefinitionMap/;
+  has Definition => (is => 'ro', isa => ServiceCatalog_ServiceActionDefinitionMap);
+  has ServiceActionSummary => (is => 'ro', isa => ServiceCatalog_ServiceActionSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceActionSummary' => {
+                                           'class' => 'Paws::ServiceCatalog::ServiceActionSummary',
+                                           'type' => 'ServiceCatalog_ServiceActionSummary'
+                                         },
+               'Definition' => {
+                                 'class' => 'Paws::ServiceCatalog::ServiceActionDefinitionMap',
+                                 'type' => 'ServiceCatalog_ServiceActionDefinitionMap'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ action.
 =head1 ATTRIBUTES
 
 
-=head2 Definition => L<Paws::ServiceCatalog::ServiceActionDefinitionMap>
+=head2 Definition => ServiceCatalog_ServiceActionDefinitionMap
 
   A map that defines the self-service action.
 
 
-=head2 ServiceActionSummary => L<Paws::ServiceCatalog::ServiceActionSummary>
+=head2 ServiceActionSummary => ServiceCatalog_ServiceActionSummary
 
   Summary information about the self-service action.
 

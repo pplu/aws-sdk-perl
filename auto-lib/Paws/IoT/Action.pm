@@ -1,21 +1,117 @@
+# Generated from default/object.tt
 package Paws::IoT::Action;
-  use Moose;
-  has CloudwatchAlarm => (is => 'ro', isa => 'Paws::IoT::CloudwatchAlarmAction', request_name => 'cloudwatchAlarm', traits => ['NameInRequest']);
-  has CloudwatchMetric => (is => 'ro', isa => 'Paws::IoT::CloudwatchMetricAction', request_name => 'cloudwatchMetric', traits => ['NameInRequest']);
-  has DynamoDB => (is => 'ro', isa => 'Paws::IoT::DynamoDBAction', request_name => 'dynamoDB', traits => ['NameInRequest']);
-  has DynamoDBv2 => (is => 'ro', isa => 'Paws::IoT::DynamoDBv2Action', request_name => 'dynamoDBv2', traits => ['NameInRequest']);
-  has Elasticsearch => (is => 'ro', isa => 'Paws::IoT::ElasticsearchAction', request_name => 'elasticsearch', traits => ['NameInRequest']);
-  has Firehose => (is => 'ro', isa => 'Paws::IoT::FirehoseAction', request_name => 'firehose', traits => ['NameInRequest']);
-  has IotAnalytics => (is => 'ro', isa => 'Paws::IoT::IotAnalyticsAction', request_name => 'iotAnalytics', traits => ['NameInRequest']);
-  has IotEvents => (is => 'ro', isa => 'Paws::IoT::IotEventsAction', request_name => 'iotEvents', traits => ['NameInRequest']);
-  has Kinesis => (is => 'ro', isa => 'Paws::IoT::KinesisAction', request_name => 'kinesis', traits => ['NameInRequest']);
-  has Lambda => (is => 'ro', isa => 'Paws::IoT::LambdaAction', request_name => 'lambda', traits => ['NameInRequest']);
-  has Republish => (is => 'ro', isa => 'Paws::IoT::RepublishAction', request_name => 'republish', traits => ['NameInRequest']);
-  has S3 => (is => 'ro', isa => 'Paws::IoT::S3Action', request_name => 's3', traits => ['NameInRequest']);
-  has Salesforce => (is => 'ro', isa => 'Paws::IoT::SalesforceAction', request_name => 'salesforce', traits => ['NameInRequest']);
-  has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
-  has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
-  has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_S3Action IoT_DynamoDBv2Action IoT_IotEventsAction IoT_CloudwatchAlarmAction IoT_IotAnalyticsAction IoT_SqsAction IoT_SalesforceAction IoT_KinesisAction IoT_SnsAction IoT_FirehoseAction IoT_LambdaAction IoT_StepFunctionsAction IoT_ElasticsearchAction IoT_DynamoDBAction IoT_CloudwatchMetricAction IoT_RepublishAction/;
+  has CloudwatchAlarm => (is => 'ro', isa => IoT_CloudwatchAlarmAction);
+  has CloudwatchMetric => (is => 'ro', isa => IoT_CloudwatchMetricAction);
+  has DynamoDB => (is => 'ro', isa => IoT_DynamoDBAction);
+  has DynamoDBv2 => (is => 'ro', isa => IoT_DynamoDBv2Action);
+  has Elasticsearch => (is => 'ro', isa => IoT_ElasticsearchAction);
+  has Firehose => (is => 'ro', isa => IoT_FirehoseAction);
+  has IotAnalytics => (is => 'ro', isa => IoT_IotAnalyticsAction);
+  has IotEvents => (is => 'ro', isa => IoT_IotEventsAction);
+  has Kinesis => (is => 'ro', isa => IoT_KinesisAction);
+  has Lambda => (is => 'ro', isa => IoT_LambdaAction);
+  has Republish => (is => 'ro', isa => IoT_RepublishAction);
+  has S3 => (is => 'ro', isa => IoT_S3Action);
+  has Salesforce => (is => 'ro', isa => IoT_SalesforceAction);
+  has Sns => (is => 'ro', isa => IoT_SnsAction);
+  has Sqs => (is => 'ro', isa => IoT_SqsAction);
+  has StepFunctions => (is => 'ro', isa => IoT_StepFunctionsAction);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IotAnalytics' => {
+                                   'class' => 'Paws::IoT::IotAnalyticsAction',
+                                   'type' => 'IoT_IotAnalyticsAction'
+                                 },
+               'StepFunctions' => {
+                                    'class' => 'Paws::IoT::StepFunctionsAction',
+                                    'type' => 'IoT_StepFunctionsAction'
+                                  },
+               'Sqs' => {
+                          'class' => 'Paws::IoT::SqsAction',
+                          'type' => 'IoT_SqsAction'
+                        },
+               'Lambda' => {
+                             'class' => 'Paws::IoT::LambdaAction',
+                             'type' => 'IoT_LambdaAction'
+                           },
+               'IotEvents' => {
+                                'class' => 'Paws::IoT::IotEventsAction',
+                                'type' => 'IoT_IotEventsAction'
+                              },
+               'CloudwatchMetric' => {
+                                       'class' => 'Paws::IoT::CloudwatchMetricAction',
+                                       'type' => 'IoT_CloudwatchMetricAction'
+                                     },
+               'Salesforce' => {
+                                 'class' => 'Paws::IoT::SalesforceAction',
+                                 'type' => 'IoT_SalesforceAction'
+                               },
+               'DynamoDBv2' => {
+                                 'class' => 'Paws::IoT::DynamoDBv2Action',
+                                 'type' => 'IoT_DynamoDBv2Action'
+                               },
+               'Republish' => {
+                                'class' => 'Paws::IoT::RepublishAction',
+                                'type' => 'IoT_RepublishAction'
+                              },
+               'CloudwatchAlarm' => {
+                                      'class' => 'Paws::IoT::CloudwatchAlarmAction',
+                                      'type' => 'IoT_CloudwatchAlarmAction'
+                                    },
+               'DynamoDB' => {
+                               'class' => 'Paws::IoT::DynamoDBAction',
+                               'type' => 'IoT_DynamoDBAction'
+                             },
+               'Sns' => {
+                          'class' => 'Paws::IoT::SnsAction',
+                          'type' => 'IoT_SnsAction'
+                        },
+               'Firehose' => {
+                               'class' => 'Paws::IoT::FirehoseAction',
+                               'type' => 'IoT_FirehoseAction'
+                             },
+               'Elasticsearch' => {
+                                    'class' => 'Paws::IoT::ElasticsearchAction',
+                                    'type' => 'IoT_ElasticsearchAction'
+                                  },
+               'Kinesis' => {
+                              'class' => 'Paws::IoT::KinesisAction',
+                              'type' => 'IoT_KinesisAction'
+                            },
+               'S3' => {
+                         'class' => 'Paws::IoT::S3Action',
+                         'type' => 'IoT_S3Action'
+                       }
+             },
+  'NameInRequest' => {
+                       'IotAnalytics' => 'iotAnalytics',
+                       'StepFunctions' => 'stepFunctions',
+                       'Sqs' => 'sqs',
+                       'Lambda' => 'lambda',
+                       'IotEvents' => 'iotEvents',
+                       'CloudwatchMetric' => 'cloudwatchMetric',
+                       'Salesforce' => 'salesforce',
+                       'DynamoDBv2' => 'dynamoDBv2',
+                       'Republish' => 'republish',
+                       'CloudwatchAlarm' => 'cloudwatchAlarm',
+                       'DynamoDB' => 'dynamoDB',
+                       'Sns' => 'sns',
+                       'Firehose' => 'firehose',
+                       'Elasticsearch' => 'elasticsearch',
+                       'Kinesis' => 'kinesis',
+                       'S3' => 's3'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,84 +147,84 @@ Describes the actions associated with a rule.
 =head1 ATTRIBUTES
 
 
-=head2 CloudwatchAlarm => L<Paws::IoT::CloudwatchAlarmAction>
+=head2 CloudwatchAlarm => IoT_CloudwatchAlarmAction
 
   Change the state of a CloudWatch alarm.
 
 
-=head2 CloudwatchMetric => L<Paws::IoT::CloudwatchMetricAction>
+=head2 CloudwatchMetric => IoT_CloudwatchMetricAction
 
   Capture a CloudWatch metric.
 
 
-=head2 DynamoDB => L<Paws::IoT::DynamoDBAction>
+=head2 DynamoDB => IoT_DynamoDBAction
 
   Write to a DynamoDB table.
 
 
-=head2 DynamoDBv2 => L<Paws::IoT::DynamoDBv2Action>
+=head2 DynamoDBv2 => IoT_DynamoDBv2Action
 
   Write to a DynamoDB table. This is a new version of the DynamoDB
 action. It allows you to write each attribute in an MQTT message
 payload into a separate DynamoDB column.
 
 
-=head2 Elasticsearch => L<Paws::IoT::ElasticsearchAction>
+=head2 Elasticsearch => IoT_ElasticsearchAction
 
   Write data to an Amazon Elasticsearch Service domain.
 
 
-=head2 Firehose => L<Paws::IoT::FirehoseAction>
+=head2 Firehose => IoT_FirehoseAction
 
   Write to an Amazon Kinesis Firehose stream.
 
 
-=head2 IotAnalytics => L<Paws::IoT::IotAnalyticsAction>
+=head2 IotAnalytics => IoT_IotAnalyticsAction
 
   Sends message data to an AWS IoT Analytics channel.
 
 
-=head2 IotEvents => L<Paws::IoT::IotEventsAction>
+=head2 IotEvents => IoT_IotEventsAction
 
   Sends an input to an AWS IoT Events detector.
 
 
-=head2 Kinesis => L<Paws::IoT::KinesisAction>
+=head2 Kinesis => IoT_KinesisAction
 
   Write data to an Amazon Kinesis stream.
 
 
-=head2 Lambda => L<Paws::IoT::LambdaAction>
+=head2 Lambda => IoT_LambdaAction
 
   Invoke a Lambda function.
 
 
-=head2 Republish => L<Paws::IoT::RepublishAction>
+=head2 Republish => IoT_RepublishAction
 
   Publish to another MQTT topic.
 
 
-=head2 S3 => L<Paws::IoT::S3Action>
+=head2 S3 => IoT_S3Action
 
   Write to an Amazon S3 bucket.
 
 
-=head2 Salesforce => L<Paws::IoT::SalesforceAction>
+=head2 Salesforce => IoT_SalesforceAction
 
   Send a message to a Salesforce IoT Cloud Input Stream.
 
 
-=head2 Sns => L<Paws::IoT::SnsAction>
+=head2 Sns => IoT_SnsAction
 
   Publish to an Amazon SNS topic.
 
 
-=head2 Sqs => L<Paws::IoT::SqsAction>
+=head2 Sqs => IoT_SqsAction
 
   Publish to an Amazon SQS queue.
 
 
-=head2 StepFunctions => L<Paws::IoT::StepFunctionsAction>
+=head2 StepFunctions => IoT_StepFunctionsAction
 
   Starts execution of a Step Functions state machine.
 

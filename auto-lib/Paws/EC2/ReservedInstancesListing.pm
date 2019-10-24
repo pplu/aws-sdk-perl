@@ -12,7 +12,7 @@ package Paws::EC2::ReservedInstancesListing;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has UpdateDate => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CreateDate' => {
@@ -63,8 +63,8 @@ package Paws::EC2::ReservedInstancesListing;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

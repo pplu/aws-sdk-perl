@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::DashManifest;
-  use Moose;
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has MinBufferTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'minBufferTimeSeconds', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackageVod::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_StreamSelection/;
+  has ManifestName => (is => 'ro', isa => Str);
+  has MinBufferTimeSeconds => (is => 'ro', isa => Int);
+  has Profile => (is => 'ro', isa => Str);
+  has StreamSelection => (is => 'ro', isa => MediaPackageVod_StreamSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackageVod::StreamSelection',
+                                      'type' => 'MediaPackageVod_StreamSelection'
+                                    },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'MinBufferTimeSeconds' => {
+                                           'type' => 'Int'
+                                         }
+             },
+  'NameInRequest' => {
+                       'StreamSelection' => 'streamSelection',
+                       'ManifestName' => 'manifestName',
+                       'Profile' => 'profile',
+                       'MinBufferTimeSeconds' => 'minBufferTimeSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ starting the presentation.
 to "HBBTV_1_5", HbbTV 1.5 compliant output is enabled.
 
 
-=head2 StreamSelection => L<Paws::MediaPackageVod::StreamSelection>
+=head2 StreamSelection => MediaPackageVod_StreamSelection
 
   
 

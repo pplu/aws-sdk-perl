@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationAggregationSource;
-  use Moose;
-  has AllAwsRegions => (is => 'ro', isa => 'Bool');
-  has AwsRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::Config::Types qw//;
+  has AllAwsRegions => (is => 'ro', isa => Bool);
+  has AwsRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllAwsRegions' => {
+                                    'type' => 'Bool'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AwsRegions' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

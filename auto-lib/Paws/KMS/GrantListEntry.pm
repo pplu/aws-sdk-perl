@@ -1,14 +1,56 @@
+# Generated from default/object.tt
 package Paws::KMS::GrantListEntry;
-  use Moose;
-  has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has GranteePrincipal => (is => 'ro', isa => 'Str');
-  has GrantId => (is => 'ro', isa => 'Str');
-  has IssuingAccount => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RetiringPrincipal => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KMS::Types qw/KMS_GrantConstraints/;
+  has Constraints => (is => 'ro', isa => KMS_GrantConstraints);
+  has CreationDate => (is => 'ro', isa => Str);
+  has GranteePrincipal => (is => 'ro', isa => Str);
+  has GrantId => (is => 'ro', isa => Str);
+  has IssuingAccount => (is => 'ro', isa => Str);
+  has KeyId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Operations => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RetiringPrincipal => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantId' => {
+                              'type' => 'Str'
+                            },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'Constraints' => {
+                                  'class' => 'Paws::KMS::GrantConstraints',
+                                  'type' => 'KMS_GrantConstraints'
+                                },
+               'RetiringPrincipal' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'GranteePrincipal' => {
+                                       'type' => 'Str'
+                                     },
+               'IssuingAccount' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Operations' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +86,7 @@ Contains information about an entry in a list of grants.
 =head1 ATTRIBUTES
 
 
-=head2 Constraints => L<Paws::KMS::GrantConstraints>
+=head2 Constraints => KMS_GrantConstraints
 
   A list of key-value pairs that must be present in the encryption
 context of certain subsequent operations that the grant allows.

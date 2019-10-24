@@ -1,11 +1,58 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::ExecutionListItem;
-  use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', request_name => 'executionArn', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', request_name => 'startDate', traits => ['NameInRequest'], required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', request_name => 'stateMachineArn', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has StopDate => (is => 'ro', isa => 'Str', request_name => 'stopDate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has ExecutionArn => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has StartDate => (is => 'ro', isa => Str, required => 1);
+  has StateMachineArn => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StopDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StopDate' => {
+                               'type' => 'Str'
+                             },
+               'StateMachineArn' => {
+                                      'type' => 'Str'
+                                    },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ExecutionArn' => 'executionArn',
+                       'Status' => 'status',
+                       'StopDate' => 'stopDate',
+                       'StateMachineArn' => 'stateMachineArn',
+                       'StartDate' => 'startDate',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'ExecutionArn' => 1,
+                    'Status' => 1,
+                    'StateMachineArn' => 1,
+                    'StartDate' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

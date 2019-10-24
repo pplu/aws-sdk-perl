@@ -1,16 +1,47 @@
 
 package Paws::Lambda::ListVersionsByFunction;
-  use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVersionsByFunction');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListVersionsByFunctionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListVersionsByFunction');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListVersionsByFunctionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'Marker' => 'Marker'
+                    },
+  'IsRequired' => {
+                    'FunctionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

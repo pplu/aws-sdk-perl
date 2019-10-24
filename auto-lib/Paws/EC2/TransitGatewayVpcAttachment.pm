@@ -11,7 +11,7 @@ package Paws::EC2::TransitGatewayVpcAttachment;
   has VpcId => (is => 'ro', isa => Str);
   has VpcOwnerId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CreationTime' => {
@@ -57,8 +57,8 @@ package Paws::EC2::TransitGatewayVpcAttachment;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

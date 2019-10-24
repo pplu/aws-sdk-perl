@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::DescribeSnapshotsListMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has Snapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Snapshot]', request_name => 'Snapshot', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Snapshot/;
+  has Marker => (is => 'ro', isa => Str);
+  has Snapshots => (is => 'ro', isa => ArrayRef[ElastiCache_Snapshot]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Snapshots' => {
+                                'class' => 'Paws::ElastiCache::Snapshot',
+                                'type' => 'ArrayRef[ElastiCache_Snapshot]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Snapshots' => 'Snapshot'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords>.
 
 
-=head2 Snapshots => ArrayRef[L<Paws::ElastiCache::Snapshot>]
+=head2 Snapshots => ArrayRef[ElastiCache_Snapshot]
 
 A list of snapshots. Each item in the list contains detailed
 information about one snapshot.

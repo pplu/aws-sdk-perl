@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::ClientPropertiesResult;
-  use Moose;
-  has ClientProperties => (is => 'ro', isa => 'Paws::WorkSpaces::ClientProperties');
-  has ResourceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_ClientProperties/;
+  has ClientProperties => (is => 'ro', isa => WorkSpaces_ClientProperties);
+  has ResourceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ClientProperties' => {
+                                       'class' => 'Paws::WorkSpaces::ClientProperties',
+                                       'type' => 'WorkSpaces_ClientProperties'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Information about the Amazon WorkSpaces client.
 =head1 ATTRIBUTES
 
 
-=head2 ClientProperties => L<Paws::WorkSpaces::ClientProperties>
+=head2 ClientProperties => WorkSpaces_ClientProperties
 
   Information about the Amazon WorkSpaces client.
 

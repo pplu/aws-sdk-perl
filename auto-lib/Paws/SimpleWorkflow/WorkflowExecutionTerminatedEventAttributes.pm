@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
-  has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest'], required => 1);
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Cause => (is => 'ro', isa => Str);
+  has ChildPolicy => (is => 'ro', isa => Str, required => 1);
+  has Details => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'Details' => 'details',
+                       'ChildPolicy' => 'childPolicy',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'ChildPolicy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

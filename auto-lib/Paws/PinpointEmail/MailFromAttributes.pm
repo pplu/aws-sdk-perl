@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::MailFromAttributes;
-  use Moose;
-  has BehaviorOnMxFailure => (is => 'ro', isa => 'Str', required => 1);
-  has MailFromDomain => (is => 'ro', isa => 'Str', required => 1);
-  has MailFromDomainStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has BehaviorOnMxFailure => (is => 'ro', isa => Str, required => 1);
+  has MailFromDomain => (is => 'ro', isa => Str, required => 1);
+  has MailFromDomainStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BehaviorOnMxFailure' => {
+                                          'type' => 'Str'
+                                        },
+               'MailFromDomainStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'MailFromDomain' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'BehaviorOnMxFailure' => 1,
+                    'MailFromDomainStatus' => 1,
+                    'MailFromDomain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

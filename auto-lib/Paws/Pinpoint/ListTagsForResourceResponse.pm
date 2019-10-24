@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::ListTagsForResourceResponse;
-  use Moose;
-  has TagsModel => (is => 'ro', isa => 'Paws::Pinpoint::TagsModel', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'TagsModel');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_TagsModel/;
+  has TagsModel => (is => 'ro', isa => Pinpoint_TagsModel, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagsModel' => {
+                                'class' => 'Paws::Pinpoint::TagsModel',
+                                'type' => 'Pinpoint_TagsModel'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'TagsModel' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TagsModel => L<Paws::Pinpoint::TagsModel>
+=head2 B<REQUIRED> TagsModel => Pinpoint_TagsModel
 
 
 

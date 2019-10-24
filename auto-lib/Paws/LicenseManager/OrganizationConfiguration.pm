@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::OrganizationConfiguration;
-  use Moose;
-  has EnableIntegration => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::LicenseManager::Types qw//;
+  has EnableIntegration => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnableIntegration' => {
+                                        'type' => 'Bool'
+                                      }
+             },
+  'IsRequired' => {
+                    'EnableIntegration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

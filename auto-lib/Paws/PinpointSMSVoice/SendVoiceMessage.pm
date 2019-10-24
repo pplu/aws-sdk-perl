@@ -1,18 +1,46 @@
 
 package Paws::PinpointSMSVoice::SendVoiceMessage;
-  use Moose;
-  has CallerId => (is => 'ro', isa => 'Str');
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'Paws::PinpointSMSVoice::VoiceMessageContent');
-  has DestinationPhoneNumber => (is => 'ro', isa => 'Str');
-  has OriginationPhoneNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw/PinpointSMSVoice_VoiceMessageContent/;
+  has CallerId => (is => 'ro', isa => Str, predicate => 1);
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => PinpointSMSVoice_VoiceMessageContent, predicate => 1);
+  has DestinationPhoneNumber => (is => 'ro', isa => Str, predicate => 1);
+  has OriginationPhoneNumber => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendVoiceMessage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/sms-voice/voice/message');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointSMSVoice::SendVoiceMessageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendVoiceMessage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/sms-voice/voice/message');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointSMSVoice::SendVoiceMessageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'OriginationPhoneNumber' => {
+                                             'type' => 'Str'
+                                           },
+               'DestinationPhoneNumber' => {
+                                             'type' => 'Str'
+                                           },
+               'CallerId' => {
+                               'type' => 'Str'
+                             },
+               'Content' => {
+                              'class' => 'Paws::PinpointSMSVoice::VoiceMessageContent',
+                              'type' => 'PinpointSMSVoice_VoiceMessageContent'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +107,7 @@ message.
 
 
 
-=head2 Content => L<Paws::PinpointSMSVoice::VoiceMessageContent>
+=head2 Content => PinpointSMSVoice_VoiceMessageContent
 
 
 

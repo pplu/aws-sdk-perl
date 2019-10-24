@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::TagsType;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::TagDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_TagDescription/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[AutoScaling_TagDescription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::AutoScaling::TagDescription',
+                           'type' => 'ArrayRef[AutoScaling_TagDescription]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +46,7 @@ this string for the C<NextToken> value when requesting the next set of
 items. This value is null when there are no more items to return.
 
 
-=head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
+=head2 Tags => ArrayRef[AutoScaling_TagDescription]
 
 One or more tags.
 

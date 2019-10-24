@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WorkspacesConnectionStatus => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceConnectionStatus]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceConnectionStatus/;
+  has NextToken => (is => 'ro', isa => Str);
+  has WorkspacesConnectionStatus => (is => 'ro', isa => ArrayRef[WorkSpaces_WorkspaceConnectionStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkspacesConnectionStatus' => {
+                                                 'class' => 'Paws::WorkSpaces::WorkspaceConnectionStatus',
+                                                 'type' => 'ArrayRef[WorkSpaces_WorkspaceConnectionStatus]'
+                                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use to retrieve the next set of results, or null if no
 more results are available.
 
 
-=head2 WorkspacesConnectionStatus => ArrayRef[L<Paws::WorkSpaces::WorkspaceConnectionStatus>]
+=head2 WorkspacesConnectionStatus => ArrayRef[WorkSpaces_WorkspaceConnectionStatus]
 
 Information about the connection status of the WorkSpace.
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Chime::VoiceConnector;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutboundHostName => (is => 'ro', isa => 'Str');
-  has RequireEncryption => (is => 'ro', isa => 'Bool');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has VoiceConnectorId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Chime::Types qw//;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutboundHostName => (is => 'ro', isa => Str);
+  has RequireEncryption => (is => 'ro', isa => Bool);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+  has VoiceConnectorId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     },
+               'RequireEncryption' => {
+                                        'type' => 'Bool'
+                                      },
+               'OutboundHostName' => {
+                                       'type' => 'Str'
+                                     },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

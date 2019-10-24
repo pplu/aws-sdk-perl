@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECS::Scale;
-  use Moose;
-  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::ECS::Types qw//;
+  has Unit => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Unit' => 'unit'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

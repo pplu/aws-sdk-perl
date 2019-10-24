@@ -49,7 +49,12 @@ use MooX::ClassAttribute;
                      },
   'NameInRequest' => {
                        'MultipartUpload' => 'CompleteMultipartUpload'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

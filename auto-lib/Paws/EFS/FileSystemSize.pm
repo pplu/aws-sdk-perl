@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::EFS::FileSystemSize;
-  use Moose;
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Int', required => 1);
-  has ValueInIA => (is => 'ro', isa => 'Int');
-  has ValueInStandard => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EFS::Types qw//;
+  has Timestamp => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Int, required => 1);
+  has ValueInIA => (is => 'ro', isa => Int);
+  has ValueInStandard => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValueInIA' => {
+                                'type' => 'Int'
+                              },
+               'Value' => {
+                            'type' => 'Int'
+                          },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ValueInStandard' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'IsRequired' => {
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

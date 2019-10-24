@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::RegisterTargetWithMaintenanceWindow;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
-  has WindowId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has OwnerInformation => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], required => 1, predicate => 1);
+  has WindowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterTargetWithMaintenanceWindow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::RegisterTargetWithMaintenanceWindowResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterTargetWithMaintenanceWindow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::RegisterTargetWithMaintenanceWindowResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'ResourceType' => 1,
+                    'WindowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +134,7 @@ The type of target being registered with the maintenance window.
 
 Valid values are: C<"INSTANCE">
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[SSM_Target]
 
 The targets to register with the maintenance window. In other words,
 the instances to run commands on when the maintenance window runs.

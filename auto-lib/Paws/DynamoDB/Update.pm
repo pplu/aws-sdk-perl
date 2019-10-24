@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Update;
   use Moo;
   use Types::Standard qw/Str/;
@@ -10,7 +11,7 @@ package Paws::DynamoDB::Update;
   has TableName => (is => 'ro', isa => Str, required => 1);
   has UpdateExpression => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReturnValuesOnConditionCheckFailure' => {
@@ -37,11 +38,16 @@ package Paws::DynamoDB::Update;
                'UpdateExpression' => {
                                        'type' => 'Str'
                                      }
-             }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1,
+                    'UpdateExpression' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

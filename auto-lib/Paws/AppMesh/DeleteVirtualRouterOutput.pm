@@ -1,10 +1,34 @@
 
 package Paws::AppMesh::DeleteVirtualRouterOutput;
-  use Moose;
-  has VirtualRouter => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterData', traits => ['NameInRequest'], request_name => 'virtualRouter', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VirtualRouter');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualRouterData/;
+  has VirtualRouter => (is => 'ro', isa => AppMesh_VirtualRouterData, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualRouter' => {
+                                    'class' => 'Paws::AppMesh::VirtualRouterData',
+                                    'type' => 'AppMesh_VirtualRouterData'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'VirtualRouter' => 'virtualRouter'
+                     },
+  'IsRequired' => {
+                    'VirtualRouter' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::AppMesh::DeleteVirtualRouterOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VirtualRouter => L<Paws::AppMesh::VirtualRouterData>
+=head2 B<REQUIRED> VirtualRouter => AppMesh_VirtualRouterData
 
 The virtual router that was deleted.
 

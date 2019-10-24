@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Cloud9::DescribeEnvironmentStatusResult;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw//;
+  has Message => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

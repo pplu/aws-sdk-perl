@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::DMS::Certificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateCreationDate => (is => 'ro', isa => 'Str');
-  has CertificateIdentifier => (is => 'ro', isa => 'Str');
-  has CertificateOwner => (is => 'ro', isa => 'Str');
-  has CertificatePem => (is => 'ro', isa => 'Str');
-  has CertificateWallet => (is => 'ro', isa => 'Str');
-  has KeyLength => (is => 'ro', isa => 'Int');
-  has SigningAlgorithm => (is => 'ro', isa => 'Str');
-  has ValidFromDate => (is => 'ro', isa => 'Str');
-  has ValidToDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DMS::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateCreationDate => (is => 'ro', isa => Str);
+  has CertificateIdentifier => (is => 'ro', isa => Str);
+  has CertificateOwner => (is => 'ro', isa => Str);
+  has CertificatePem => (is => 'ro', isa => Str);
+  has CertificateWallet => (is => 'ro', isa => Str);
+  has KeyLength => (is => 'ro', isa => Int);
+  has SigningAlgorithm => (is => 'ro', isa => Str);
+  has ValidFromDate => (is => 'ro', isa => Str);
+  has ValidToDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidToDate' => {
+                                  'type' => 'Str'
+                                },
+               'CertificateOwner' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificateWallet' => {
+                                        'type' => 'Str'
+                                      },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyLength' => {
+                                'type' => 'Int'
+                              },
+               'ValidFromDate' => {
+                                    'type' => 'Str'
+                                  },
+               'CertificateIdentifier' => {
+                                            'type' => 'Str'
+                                          },
+               'CertificateCreationDate' => {
+                                              'type' => 'Str'
+                                            },
+               'SigningAlgorithm' => {
+                                       'type' => 'Str'
+                                     },
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

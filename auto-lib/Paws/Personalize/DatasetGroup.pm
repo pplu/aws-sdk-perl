@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetGroup;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', request_name => 'datasetGroupArn', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has KmsKeyArn => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'CreationDateTime' => 'creationDateTime',
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'RoleArn' => 'roleArn',
+                       'FailureReason' => 'failureReason',
+                       'Name' => 'name',
+                       'KmsKeyArn' => 'kmsKeyArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,24 +1,92 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::CreateRemoteAccessSession;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientId' );
-  has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
-  has DeviceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deviceArn' , required => 1);
-  has InstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceArn' );
-  has InteractionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interactionMode' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
-  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteDebugEnabled' );
-  has RemoteRecordAppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteRecordAppArn' );
-  has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'remoteRecordEnabled' );
-  has SkipAppResign => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'skipAppResign' );
-  has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_CreateRemoteAccessSessionConfiguration/;
+  has ClientId => (is => 'ro', isa => Str, predicate => 1);
+  has Configuration => (is => 'ro', isa => DeviceFarm_CreateRemoteAccessSessionConfiguration, predicate => 1);
+  has DeviceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceArn => (is => 'ro', isa => Str, predicate => 1);
+  has InteractionMode => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ProjectArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RemoteDebugEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has RemoteRecordAppArn => (is => 'ro', isa => Str, predicate => 1);
+  has RemoteRecordEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has SkipAppResign => (is => 'ro', isa => Bool, predicate => 1);
+  has SshPublicKey => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRemoteAccessSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::CreateRemoteAccessSessionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRemoteAccessSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::CreateRemoteAccessSessionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configuration' => {
+                                    'class' => 'Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration',
+                                    'type' => 'DeviceFarm_CreateRemoteAccessSessionConfiguration'
+                                  },
+               'SkipAppResign' => {
+                                    'type' => 'Bool'
+                                  },
+               'RemoteRecordAppArn' => {
+                                         'type' => 'Str'
+                                       },
+               'InstanceArn' => {
+                                  'type' => 'Str'
+                                },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'InteractionMode' => {
+                                      'type' => 'Str'
+                                    },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceArn' => {
+                                'type' => 'Str'
+                              },
+               'RemoteDebugEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RemoteRecordEnabled' => {
+                                          'type' => 'Bool'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Configuration' => 'configuration',
+                       'SkipAppResign' => 'skipAppResign',
+                       'RemoteRecordAppArn' => 'remoteRecordAppArn',
+                       'InstanceArn' => 'instanceArn',
+                       'ClientId' => 'clientId',
+                       'InteractionMode' => 'interactionMode',
+                       'SshPublicKey' => 'sshPublicKey',
+                       'ProjectArn' => 'projectArn',
+                       'DeviceArn' => 'deviceArn',
+                       'RemoteDebugEnabled' => 'remoteDebugEnabled',
+                       'Name' => 'name',
+                       'RemoteRecordEnabled' => 'remoteRecordEnabled'
+                     },
+  'IsRequired' => {
+                    'ProjectArn' => 1,
+                    'DeviceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +140,7 @@ C<remoteDebugEnabled> is set to C<true>.
 
 
 
-=head2 Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>
+=head2 Configuration => DeviceFarm_CreateRemoteAccessSessionConfiguration
 
 The configuration information for the remote access session request.
 

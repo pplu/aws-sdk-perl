@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::SSM::ResourceDataSyncItem;
-  use Moose;
-  has LastStatus => (is => 'ro', isa => 'Str');
-  has LastSuccessfulSyncTime => (is => 'ro', isa => 'Str');
-  has LastSyncStatusMessage => (is => 'ro', isa => 'Str');
-  has LastSyncTime => (is => 'ro', isa => 'Str');
-  has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
-  has SyncCreatedTime => (is => 'ro', isa => 'Str');
-  has SyncName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncS3Destination/;
+  has LastStatus => (is => 'ro', isa => Str);
+  has LastSuccessfulSyncTime => (is => 'ro', isa => Str);
+  has LastSyncStatusMessage => (is => 'ro', isa => Str);
+  has LastSyncTime => (is => 'ro', isa => Str);
+  has S3Destination => (is => 'ro', isa => SSM_ResourceDataSyncS3Destination);
+  has SyncCreatedTime => (is => 'ro', isa => Str);
+  has SyncName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyncName' => {
+                               'type' => 'Str'
+                             },
+               'LastSyncTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastSuccessfulSyncTime' => {
+                                             'type' => 'Str'
+                                           },
+               'S3Destination' => {
+                                    'class' => 'Paws::SSM::ResourceDataSyncS3Destination',
+                                    'type' => 'SSM_ResourceDataSyncS3Destination'
+                                  },
+               'LastSyncStatusMessage' => {
+                                            'type' => 'Str'
+                                          },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'SyncCreatedTime' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +100,7 @@ current status and last successful sync.
   The last time the configuration attempted to sync (UTC).
 
 
-=head2 S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
+=head2 S3Destination => SSM_ResourceDataSyncS3Destination
 
   Configuration information for the target Amazon S3 bucket.
 

@@ -1,14 +1,36 @@
 
 package Paws::IoTAnalytics::PutLoggingOptions;
-  use Moose;
-  has LoggingOptions => (is => 'ro', isa => 'Paws::IoTAnalytics::LoggingOptions', traits => ['NameInRequest'], request_name => 'loggingOptions', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_LoggingOptions/;
+  has LoggingOptions => (is => 'ro', isa => IoTAnalytics_LoggingOptions, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLoggingOptions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/logging');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLoggingOptions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/logging');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingOptions' => {
+                                     'class' => 'Paws::IoTAnalytics::LoggingOptions',
+                                     'type' => 'IoTAnalytics_LoggingOptions'
+                                   }
+             },
+  'NameInRequest' => {
+                       'LoggingOptions' => 'loggingOptions'
+                     },
+  'IsRequired' => {
+                    'LoggingOptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoggingOptions => L<Paws::IoTAnalytics::LoggingOptions>
+=head2 B<REQUIRED> LoggingOptions => IoTAnalytics_LoggingOptions
 
 The new values of the AWS IoT Analytics logging options.
 

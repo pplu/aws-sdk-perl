@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::ListDocumentClassificationJobsResponse;
-  use Moose;
-  has DocumentClassificationJobPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::DocumentClassificationJobProperties]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_DocumentClassificationJobProperties/;
+  has DocumentClassificationJobPropertiesList => (is => 'ro', isa => ArrayRef[Comprehend_DocumentClassificationJobProperties]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentClassificationJobPropertiesList' => {
+                                                              'class' => 'Paws::Comprehend::DocumentClassificationJobProperties',
+                                                              'type' => 'ArrayRef[Comprehend_DocumentClassificationJobProperties]'
+                                                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Comprehend::ListDocumentClassificationJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DocumentClassificationJobPropertiesList => ArrayRef[L<Paws::Comprehend::DocumentClassificationJobProperties>]
+=head2 DocumentClassificationJobPropertiesList => ArrayRef[Comprehend_DocumentClassificationJobProperties]
 
 A list containing the properties of each job returned.
 

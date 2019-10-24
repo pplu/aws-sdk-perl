@@ -1,17 +1,69 @@
+# Generated from default/object.tt
 package Paws::EMR::Instance;
-  use Moose;
-  has EbsVolumes => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsVolume]');
-  has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceFleetId => (is => 'ro', isa => 'Str');
-  has InstanceGroupId => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has Market => (is => 'ro', isa => 'Str');
-  has PrivateDnsName => (is => 'ro', isa => 'Str');
-  has PrivateIpAddress => (is => 'ro', isa => 'Str');
-  has PublicDnsName => (is => 'ro', isa => 'Str');
-  has PublicIpAddress => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::EMR::InstanceStatus');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::EMR::Types qw/EMR_InstanceStatus EMR_EbsVolume/;
+  has EbsVolumes => (is => 'ro', isa => ArrayRef[EMR_EbsVolume]);
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceFleetId => (is => 'ro', isa => Str);
+  has InstanceGroupId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Market => (is => 'ro', isa => Str);
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+  has PublicDnsName => (is => 'ro', isa => Str);
+  has PublicIpAddress => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => EMR_InstanceStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'class' => 'Paws::EMR::InstanceStatus',
+                             'type' => 'EMR_InstanceStatus'
+                           },
+               'PublicIpAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceFleetId' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceGroupId' => {
+                                      'type' => 'Str'
+                                    },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Market' => {
+                             'type' => 'Str'
+                           },
+               'EbsVolumes' => {
+                                 'class' => 'Paws::EMR::EbsVolume',
+                                 'type' => 'ArrayRef[EMR_EbsVolume]'
+                               },
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'PublicDnsName' => {
+                                    'type' => 'Str'
+                                  },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +99,7 @@ Represents an EC2 instance provisioned as part of cluster.
 =head1 ATTRIBUTES
 
 
-=head2 EbsVolumes => ArrayRef[L<Paws::EMR::EbsVolume>]
+=head2 EbsVolumes => ArrayRef[EMR_EbsVolume]
 
   The list of EBS volumes that are attached to this instance.
 
@@ -104,7 +156,7 @@ C<SPOT>.
   The public IP address of the instance.
 
 
-=head2 Status => L<Paws::EMR::InstanceStatus>
+=head2 Status => EMR_InstanceStatus
 
   The current status of the instance.
 

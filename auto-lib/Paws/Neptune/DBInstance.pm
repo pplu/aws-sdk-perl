@@ -1,57 +1,246 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceArn => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DbInstancePort => (is => 'ro', isa => 'Int');
-  has DBInstanceStatus => (is => 'ro', isa => 'Str');
-  has DbiResourceId => (is => 'ro', isa => 'Str');
-  has DBName => (is => 'ro', isa => 'Str');
-  has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBParameterGroupStatus]', request_name => 'DBParameterGroup', traits => ['NameInRequest']);
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
-  has DBSubnetGroup => (is => 'ro', isa => 'Paws::Neptune::DBSubnetGroup');
-  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DomainMembership]', request_name => 'DomainMembership', traits => ['NameInRequest']);
-  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Endpoint => (is => 'ro', isa => 'Paws::Neptune::Endpoint');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has EnhancedMonitoringResourceArn => (is => 'ro', isa => 'Str');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::OptionGroupMembership]', request_name => 'OptionGroupMembership', traits => ['NameInRequest']);
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::Neptune::PendingModifiedValues');
-  has PerformanceInsightsEnabled => (is => 'ro', isa => 'Bool');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has ReadReplicaDBClusterIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaDBClusterIdentifier', traits => ['NameInRequest']);
-  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaDBInstanceIdentifier', traits => ['NameInRequest']);
-  has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has SecondaryAvailabilityZone => (is => 'ro', isa => 'Str');
-  has StatusInfos => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBInstanceStatusInfo]', request_name => 'DBInstanceStatusInfo', traits => ['NameInRequest']);
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Bool Str ArrayRef Undef/;
+  use Paws::Neptune::Types qw/Neptune_VpcSecurityGroupMembership Neptune_DBInstanceStatusInfo Neptune_DBSubnetGroup Neptune_PendingModifiedValues Neptune_OptionGroupMembership Neptune_DBParameterGroupStatus Neptune_DBSecurityGroupMembership Neptune_Endpoint Neptune_DomainMembership/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CACertificateIdentifier => (is => 'ro', isa => Str);
+  has CharacterSetName => (is => 'ro', isa => Str);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceArn => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DbInstancePort => (is => 'ro', isa => Int);
+  has DBInstanceStatus => (is => 'ro', isa => Str);
+  has DbiResourceId => (is => 'ro', isa => Str);
+  has DBName => (is => 'ro', isa => Str);
+  has DBParameterGroups => (is => 'ro', isa => ArrayRef[Neptune_DBParameterGroupStatus]);
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[Neptune_DBSecurityGroupMembership]);
+  has DBSubnetGroup => (is => 'ro', isa => Neptune_DBSubnetGroup);
+  has DomainMemberships => (is => 'ro', isa => ArrayRef[Neptune_DomainMembership]);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Endpoint => (is => 'ro', isa => Neptune_Endpoint);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has EnhancedMonitoringResourceArn => (is => 'ro', isa => Str);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has InstanceCreateTime => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has MonitoringInterval => (is => 'ro', isa => Int);
+  has MonitoringRoleArn => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has OptionGroupMemberships => (is => 'ro', isa => ArrayRef[Neptune_OptionGroupMembership]);
+  has PendingModifiedValues => (is => 'ro', isa => Neptune_PendingModifiedValues);
+  has PerformanceInsightsEnabled => (is => 'ro', isa => Bool);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has PromotionTier => (is => 'ro', isa => Int);
+  has PubliclyAccessible => (is => 'ro', isa => Bool);
+  has ReadReplicaDBClusterIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => Str);
+  has SecondaryAvailabilityZone => (is => 'ro', isa => Str);
+  has StatusInfos => (is => 'ro', isa => ArrayRef[Neptune_DBInstanceStatusInfo]);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has StorageType => (is => 'ro', isa => Str);
+  has TdeCredentialArn => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[Neptune_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcSecurityGroups' => {
+                                        'class' => 'Paws::Neptune::VpcSecurityGroupMembership',
+                                        'type' => 'ArrayRef[Neptune_VpcSecurityGroupMembership]'
+                                      },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'PerformanceInsightsEnabled' => {
+                                                 'type' => 'Bool'
+                                               },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DbInstancePort' => {
+                                     'type' => 'Int'
+                                   },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'OptionGroupMemberships' => {
+                                             'class' => 'Paws::Neptune::OptionGroupMembership',
+                                             'type' => 'ArrayRef[Neptune_OptionGroupMembership]'
+                                           },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'ReadReplicaSourceDBInstanceIdentifier' => {
+                                                            'type' => 'Str'
+                                                          },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'StatusInfos' => {
+                                  'class' => 'Paws::Neptune::DBInstanceStatusInfo',
+                                  'type' => 'ArrayRef[Neptune_DBInstanceStatusInfo]'
+                                },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'SecondaryAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'DBInstanceArn' => {
+                                    'type' => 'Str'
+                                  },
+               'ReadReplicaDBClusterIdentifiers' => {
+                                                      'type' => 'ArrayRef[Str|Undef]'
+                                                    },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DBSecurityGroups' => {
+                                       'class' => 'Paws::Neptune::DBSecurityGroupMembership',
+                                       'type' => 'ArrayRef[Neptune_DBSecurityGroupMembership]'
+                                     },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'DBSubnetGroup' => {
+                                    'class' => 'Paws::Neptune::DBSubnetGroup',
+                                    'type' => 'Neptune_DBSubnetGroup'
+                                  },
+               'DBInstanceStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'DomainMemberships' => {
+                                        'class' => 'Paws::Neptune::DomainMembership',
+                                        'type' => 'ArrayRef[Neptune_DomainMembership]'
+                                      },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'EnabledCloudwatchLogsExports' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'DBParameterGroups' => {
+                                        'class' => 'Paws::Neptune::DBParameterGroupStatus',
+                                        'type' => 'ArrayRef[Neptune_DBParameterGroupStatus]'
+                                      },
+               'EnhancedMonitoringResourceArn' => {
+                                                    'type' => 'Str'
+                                                  },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'ReadReplicaDBInstanceIdentifiers' => {
+                                                       'type' => 'ArrayRef[Str|Undef]'
+                                                     },
+               'DbiResourceId' => {
+                                    'type' => 'Str'
+                                  },
+               'PendingModifiedValues' => {
+                                            'class' => 'Paws::Neptune::PendingModifiedValues',
+                                            'type' => 'Neptune_PendingModifiedValues'
+                                          },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'Endpoint' => {
+                               'class' => 'Paws::Neptune::Endpoint',
+                               'type' => 'Neptune_Endpoint'
+                             },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'NameInRequest' => {
+                       'VpcSecurityGroups' => 'VpcSecurityGroupMembership',
+                       'ReadReplicaDBClusterIdentifiers' => 'ReadReplicaDBClusterIdentifier',
+                       'ReadReplicaDBInstanceIdentifiers' => 'ReadReplicaDBInstanceIdentifier',
+                       'OptionGroupMemberships' => 'OptionGroupMembership',
+                       'DBSecurityGroups' => 'DBSecurityGroup',
+                       'DBParameterGroups' => 'DBParameterGroup',
+                       'StatusInfos' => 'DBInstanceStatusInfo',
+                       'DomainMemberships' => 'DomainMembership'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -176,25 +365,25 @@ key for the DB instance is accessed.
   The database name.
 
 
-=head2 DBParameterGroups => ArrayRef[L<Paws::Neptune::DBParameterGroupStatus>]
+=head2 DBParameterGroups => ArrayRef[Neptune_DBParameterGroupStatus]
 
   Provides the list of DB parameter groups applied to this DB instance.
 
 
-=head2 DBSecurityGroups => ArrayRef[L<Paws::Neptune::DBSecurityGroupMembership>]
+=head2 DBSecurityGroups => ArrayRef[Neptune_DBSecurityGroupMembership]
 
   Provides List of DB security group elements containing only
 C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
 
 
-=head2 DBSubnetGroup => L<Paws::Neptune::DBSubnetGroup>
+=head2 DBSubnetGroup => Neptune_DBSubnetGroup
 
   Specifies information on the subnet group associated with the DB
 instance, including the name, description, and subnets in the subnet
 group.
 
 
-=head2 DomainMemberships => ArrayRef[L<Paws::Neptune::DomainMembership>]
+=head2 DomainMemberships => ArrayRef[Neptune_DomainMembership]
 
   Not supported
 
@@ -205,7 +394,7 @@ group.
 CloudWatch Logs.
 
 
-=head2 Endpoint => L<Paws::Neptune::Endpoint>
+=head2 Endpoint => Neptune_Endpoint
 
   Specifies the connection endpoint.
 
@@ -282,12 +471,12 @@ Monitoring metrics to Amazon CloudWatch Logs.
   Specifies if the DB instance is a Multi-AZ deployment.
 
 
-=head2 OptionGroupMemberships => ArrayRef[L<Paws::Neptune::OptionGroupMembership>]
+=head2 OptionGroupMemberships => ArrayRef[Neptune_OptionGroupMembership]
 
   Provides the list of option group memberships for this DB instance.
 
 
-=head2 PendingModifiedValues => L<Paws::Neptune::PendingModifiedValues>
+=head2 PendingModifiedValues => Neptune_PendingModifiedValues
 
   Specifies that changes to the DB instance are pending. This element is
 only included when changes are pending. Specific changes are identified
@@ -355,7 +544,7 @@ is a Read Replica.
 DB instance with multi-AZ support.
 
 
-=head2 StatusInfos => ArrayRef[L<Paws::Neptune::DBInstanceStatusInfo>]
+=head2 StatusInfos => ArrayRef[Neptune_DBInstanceStatusInfo]
 
   The status of a Read Replica. If the instance is not a Read Replica,
 this is blank.
@@ -383,7 +572,7 @@ TDE encryption.
   Not supported.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::Neptune::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[Neptune_VpcSecurityGroupMembership]
 
   Provides a list of VPC security group elements that the DB instance
 belongs to.

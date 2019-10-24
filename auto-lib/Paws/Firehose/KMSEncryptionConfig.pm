@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Firehose::KMSEncryptionConfig;
-  use Moose;
-  has AWSKMSKeyARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw//;
+  has AWSKMSKeyARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AWSKMSKeyARN' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'AWSKMSKeyARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

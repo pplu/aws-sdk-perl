@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::LogStream;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
-  has FirstEventTimestamp => (is => 'ro', isa => 'Int', request_name => 'firstEventTimestamp', traits => ['NameInRequest']);
-  has LastEventTimestamp => (is => 'ro', isa => 'Int', request_name => 'lastEventTimestamp', traits => ['NameInRequest']);
-  has LastIngestionTime => (is => 'ro', isa => 'Int', request_name => 'lastIngestionTime', traits => ['NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
-  has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
-  has UploadSequenceToken => (is => 'ro', isa => 'Str', request_name => 'uploadSequenceToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Int);
+  has FirstEventTimestamp => (is => 'ro', isa => Int);
+  has LastEventTimestamp => (is => 'ro', isa => Int);
+  has LastIngestionTime => (is => 'ro', isa => Int);
+  has LogStreamName => (is => 'ro', isa => Str);
+  has StoredBytes => (is => 'ro', isa => Int);
+  has UploadSequenceToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'LastEventTimestamp' => {
+                                         'type' => 'Int'
+                                       },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'StoredBytes' => {
+                                  'type' => 'Int'
+                                },
+               'UploadSequenceToken' => {
+                                          'type' => 'Str'
+                                        },
+               'LastIngestionTime' => {
+                                        'type' => 'Int'
+                                      },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'FirstEventTimestamp' => {
+                                          'type' => 'Int'
+                                        }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'LastEventTimestamp' => 'lastEventTimestamp',
+                       'LogStreamName' => 'logStreamName',
+                       'StoredBytes' => 'storedBytes',
+                       'UploadSequenceToken' => 'uploadSequenceToken',
+                       'LastIngestionTime' => 'lastIngestionTime',
+                       'Arn' => 'arn',
+                       'FirstEventTimestamp' => 'firstEventTimestamp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

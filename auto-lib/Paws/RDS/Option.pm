@@ -1,14 +1,63 @@
+# Generated from default/object.tt
 package Paws::RDS::Option;
-  use Moose;
-  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]', request_name => 'DBSecurityGroup', traits => ['NameInRequest']);
-  has OptionDescription => (is => 'ro', isa => 'Str');
-  has OptionName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]', request_name => 'OptionSetting', traits => ['NameInRequest']);
-  has OptionVersion => (is => 'ro', isa => 'Str');
-  has Permanent => (is => 'ro', isa => 'Bool');
-  has Persistent => (is => 'ro', isa => 'Bool');
-  has Port => (is => 'ro', isa => 'Int');
-  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool Int/;
+  use Paws::RDS::Types qw/RDS_OptionSetting RDS_DBSecurityGroupMembership RDS_VpcSecurityGroupMembership/;
+  has DBSecurityGroupMemberships => (is => 'ro', isa => ArrayRef[RDS_DBSecurityGroupMembership]);
+  has OptionDescription => (is => 'ro', isa => Str);
+  has OptionName => (is => 'ro', isa => Str);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[RDS_OptionSetting]);
+  has OptionVersion => (is => 'ro', isa => Str);
+  has Permanent => (is => 'ro', isa => Bool);
+  has Persistent => (is => 'ro', isa => Bool);
+  has Port => (is => 'ro', isa => Int);
+  has VpcSecurityGroupMemberships => (is => 'ro', isa => ArrayRef[RDS_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcSecurityGroupMemberships' => {
+                                                  'class' => 'Paws::RDS::VpcSecurityGroupMembership',
+                                                  'type' => 'ArrayRef[RDS_VpcSecurityGroupMembership]'
+                                                },
+               'Permanent' => {
+                                'type' => 'Bool'
+                              },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'OptionSettings' => {
+                                     'class' => 'Paws::RDS::OptionSetting',
+                                     'type' => 'ArrayRef[RDS_OptionSetting]'
+                                   },
+               'Persistent' => {
+                                 'type' => 'Bool'
+                               },
+               'OptionVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'OptionName' => {
+                                 'type' => 'Str'
+                               },
+               'DBSecurityGroupMemberships' => {
+                                                 'class' => 'Paws::RDS::DBSecurityGroupMembership',
+                                                 'type' => 'ArrayRef[RDS_DBSecurityGroupMembership]'
+                                               },
+               'OptionDescription' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'VpcSecurityGroupMemberships' => 'VpcSecurityGroupMembership',
+                       'OptionSettings' => 'OptionSetting',
+                       'DBSecurityGroupMemberships' => 'DBSecurityGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +93,7 @@ Option details.
 =head1 ATTRIBUTES
 
 
-=head2 DBSecurityGroupMemberships => ArrayRef[L<Paws::RDS::DBSecurityGroupMembership>]
+=head2 DBSecurityGroupMemberships => ArrayRef[RDS_DBSecurityGroupMembership]
 
   If the option requires access to a port, then this DB security group
 allows access to the port.
@@ -60,7 +109,7 @@ allows access to the port.
   The name of the option.
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
+=head2 OptionSettings => ArrayRef[RDS_OptionSetting]
 
   The option settings for this option.
 
@@ -85,7 +134,7 @@ allows access to the port.
   If required, the port configured for this option to use.
 
 
-=head2 VpcSecurityGroupMemberships => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroupMemberships => ArrayRef[RDS_VpcSecurityGroupMembership]
 
   If the option requires access to a port, then this VPC security group
 allows access to the port.

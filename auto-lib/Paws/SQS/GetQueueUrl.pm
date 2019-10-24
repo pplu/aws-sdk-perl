@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::GetQueueUrl;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::SQS::GetQueueUrl;
                'QueueOwnerAWSAccountId' => {
                                              'type' => 'Str'
                                            }
-             }
+             },
+  'IsRequired' => {
+                    'QueueName' => 1
+                  }
 }
 ;
     return $Params_map;

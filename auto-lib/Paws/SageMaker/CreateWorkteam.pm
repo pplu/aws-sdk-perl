@@ -1,17 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateWorkteam;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]', required => 1);
-  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
-  has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_Tag SageMaker_MemberDefinition SageMaker_NotificationConfiguration/;
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MemberDefinitions => (is => 'ro', isa => ArrayRef[SageMaker_MemberDefinition], required => 1, predicate => 1);
+  has NotificationConfiguration => (is => 'ro', isa => SageMaker_NotificationConfiguration, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SageMaker_Tag], predicate => 1);
+  has WorkteamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWorkteam');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateWorkteamResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWorkteam');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateWorkteamResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationConfiguration' => {
+                                                'class' => 'Paws::SageMaker::NotificationConfiguration',
+                                                'type' => 'SageMaker_NotificationConfiguration'
+                                              },
+               'MemberDefinitions' => {
+                                        'class' => 'Paws::SageMaker::MemberDefinition',
+                                        'type' => 'ArrayRef[SageMaker_MemberDefinition]'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::SageMaker::Tag',
+                           'type' => 'ArrayRef[SageMaker_Tag]'
+                         },
+               'WorkteamName' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'MemberDefinitions' => 1,
+                    'WorkteamName' => 1,
+                    'Description' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +111,7 @@ A description of the work team.
 
 
 
-=head2 B<REQUIRED> MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
+=head2 B<REQUIRED> MemberDefinitions => ArrayRef[SageMaker_MemberDefinition]
 
 A list of C<MemberDefinition> objects that contains objects that
 identify the Amazon Cognito user pool that makes up the work team. For
@@ -87,14 +123,14 @@ definition must have the same C<ClientId> and C<UserPool> values.
 
 
 
-=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+=head2 NotificationConfiguration => SageMaker_NotificationConfiguration
 
 Configures notification of workers regarding available or expiring work
 items.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+=head2 Tags => ArrayRef[SageMaker_Tag]
 
 
 

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::CheckDomainTransferabilityResponse;
-  use Moose;
-  has Transferability => (is => 'ro', isa => 'Paws::Route53Domains::DomainTransferability', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw/Route53Domains_DomainTransferability/;
+  has Transferability => (is => 'ro', isa => Route53Domains_DomainTransferability, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Transferability' => {
+                                      'class' => 'Paws::Route53Domains::DomainTransferability',
+                                      'type' => 'Route53Domains_DomainTransferability'
+                                    }
+             },
+  'IsRequired' => {
+                    'Transferability' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Route53Domains::CheckDomainTransferabilityResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Transferability => L<Paws::Route53Domains::DomainTransferability>
+=head2 B<REQUIRED> Transferability => Route53Domains_DomainTransferability
 
 A complex type that contains information about whether the specified
 domain can be transferred to Amazon Route 53.

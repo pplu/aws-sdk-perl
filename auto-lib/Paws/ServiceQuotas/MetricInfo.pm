@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::MetricInfo;
-  use Moose;
-  has MetricDimensions => (is => 'ro', isa => 'Paws::ServiceQuotas::MetricDimensionsMapDefinition');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has MetricNamespace => (is => 'ro', isa => 'Str');
-  has MetricStatisticRecommendation => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceQuotas::Types qw/ServiceQuotas_MetricDimensionsMapDefinition/;
+  has MetricDimensions => (is => 'ro', isa => ServiceQuotas_MetricDimensionsMapDefinition);
+  has MetricName => (is => 'ro', isa => Str);
+  has MetricNamespace => (is => 'ro', isa => Str);
+  has MetricStatisticRecommendation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricDimensions' => {
+                                       'class' => 'Paws::ServiceQuotas::MetricDimensionsMapDefinition',
+                                       'type' => 'ServiceQuotas_MetricDimensionsMapDefinition'
+                                     },
+               'MetricStatisticRecommendation' => {
+                                                    'type' => 'Str'
+                                                  },
+               'MetricNamespace' => {
+                                      'type' => 'Str'
+                                    },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +67,7 @@ service quota.
 =head1 ATTRIBUTES
 
 
-=head2 MetricDimensions => L<Paws::ServiceQuotas::MetricDimensionsMapDefinition>
+=head2 MetricDimensions => ServiceQuotas_MetricDimensionsMapDefinition
 
   A dimension is a name/value pair that is part of the identity of a
 metric. Every metric has specific characteristics that describe it, and

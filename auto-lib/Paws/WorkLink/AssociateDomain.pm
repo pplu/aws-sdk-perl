@@ -1,17 +1,46 @@
 
 package Paws::WorkLink::AssociateDomain;
-  use Moose;
-  has AcmCertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has AcmCertificateArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DisplayName => (is => 'ro', isa => Str, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateDomain');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/associateDomain');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::AssociateDomainResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateDomain');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/associateDomain');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::AssociateDomainResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'AcmCertificateArn' => {
+                                        'type' => 'Str'
+                                      },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'FleetArn' => 1,
+                    'AcmCertificateArn' => 1,
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::EmbeddedDestinationSettings;
-  use Moose;
-  has Destination608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'destination608ChannelNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Destination608ChannelNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Destination608ChannelNumber' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'NameInRequest' => {
+                       'Destination608ChannelNumber' => 'destination608ChannelNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

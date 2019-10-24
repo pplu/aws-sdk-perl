@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Video;
-  use Moose;
-  has S3Object => (is => 'ro', isa => 'Paws::Rekognition::S3Object');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Rekognition::Types qw/Rekognition_S3Object/;
+  has S3Object => (is => 'ro', isa => Rekognition_S3Object);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Object' => {
+                               'class' => 'Paws::Rekognition::S3Object',
+                               'type' => 'Rekognition_S3Object'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +56,7 @@ video for analysis. The supported file formats are .mp4, .mov and .avi.
 =head1 ATTRIBUTES
 
 
-=head2 S3Object => L<Paws::Rekognition::S3Object>
+=head2 S3Object => Rekognition_S3Object
 
   The Amazon S3 bucket name and file name for the video.
 

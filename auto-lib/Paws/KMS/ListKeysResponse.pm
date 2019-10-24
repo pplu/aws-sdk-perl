@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::ListKeysResponse;
-  use Moose;
-  has Keys => (is => 'ro', isa => 'ArrayRef[Paws::KMS::KeyListEntry]');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::KMS::Types qw/KMS_KeyListEntry/;
+  has Keys => (is => 'ro', isa => ArrayRef[KMS_KeyListEntry]);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               'Keys' => {
+                           'class' => 'Paws::KMS::KeyListEntry',
+                           'type' => 'ArrayRef[KMS_KeyListEntry]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::KMS::ListKeysResponse
 =head1 ATTRIBUTES
 
 
-=head2 Keys => ArrayRef[L<Paws::KMS::KeyListEntry>]
+=head2 Keys => ArrayRef[KMS_KeyListEntry]
 
 A list of customer master keys (CMKs).
 

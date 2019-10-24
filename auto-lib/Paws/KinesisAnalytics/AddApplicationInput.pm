@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalytics::AddApplicationInput;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has Input => (is => 'ro', isa => 'Paws::KinesisAnalytics::Input', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_Input/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Input => (is => 'ro', isa => KinesisAnalytics_Input, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddApplicationInput');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalytics::AddApplicationInputResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddApplicationInput');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalytics::AddApplicationInputResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Input' => {
+                            'class' => 'Paws::KinesisAnalytics::Input',
+                            'type' => 'KinesisAnalytics_Input'
+                          },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'Input' => 1,
+                    'CurrentApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +134,7 @@ operation to find the current application version.
 
 
 
-=head2 B<REQUIRED> Input => L<Paws::KinesisAnalytics::Input>
+=head2 B<REQUIRED> Input => KinesisAnalytics_Input
 
 The Input
 (https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html)

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentOverview;
-  use Moose;
-  has Failed => (is => 'ro', isa => 'Int');
-  has InProgress => (is => 'ro', isa => 'Int');
-  has Pending => (is => 'ro', isa => 'Int');
-  has Ready => (is => 'ro', isa => 'Int');
-  has Skipped => (is => 'ro', isa => 'Int');
-  has Succeeded => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has Failed => (is => 'ro', isa => Int);
+  has InProgress => (is => 'ro', isa => Int);
+  has Pending => (is => 'ro', isa => Int);
+  has Ready => (is => 'ro', isa => Int);
+  has Skipped => (is => 'ro', isa => Int);
+  has Succeeded => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Succeeded' => {
+                                'type' => 'Int'
+                              },
+               'Pending' => {
+                              'type' => 'Int'
+                            },
+               'Ready' => {
+                            'type' => 'Int'
+                          },
+               'InProgress' => {
+                                 'type' => 'Int'
+                               },
+               'Failed' => {
+                             'type' => 'Int'
+                           },
+               'Skipped' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

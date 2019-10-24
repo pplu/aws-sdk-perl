@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::KMS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kms' }
   sub signing_name { 'kms' }
   sub version { '2014-11-01' }
   sub target_prefix { 'TrentService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -653,7 +655,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item Operations => ArrayRef[Str|Undef]
 
-=item [Constraints => L<Paws::KMS::GrantConstraints>]
+=item [Constraints => KMS_GrantConstraints]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
@@ -706,7 +708,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item [Policy => Str]
 
-=item [Tags => ArrayRef[L<Paws::KMS::Tag>]]
+=item [Tags => ArrayRef[KMS_Tag]]
 
 
 =back
@@ -745,7 +747,7 @@ account.
 
 =item CiphertextBlob => Str
 
-=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [EncryptionContext => KMS_EncryptionContextType]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
@@ -1133,7 +1135,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item Plaintext => Str
 
-=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [EncryptionContext => KMS_EncryptionContextType]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
@@ -1188,7 +1190,7 @@ the key ARN or alias ARN in the value of the KeyId parameter.
 
 =item KeyId => Str
 
-=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [EncryptionContext => KMS_EncryptionContextType]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
@@ -1289,7 +1291,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item KeyId => Str
 
-=item [EncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [EncryptionContext => KMS_EncryptionContextType]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
@@ -1733,11 +1735,11 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item DestinationKeyId => Str
 
-=item [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [DestinationEncryptionContext => KMS_EncryptionContextType]
 
 =item [GrantTokens => ArrayRef[Str|Undef]]
 
-=item [SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>]
+=item [SourceEncryptionContext => KMS_EncryptionContextType]
 
 
 =back
@@ -1896,7 +1898,7 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =item KeyId => Str
 
-=item Tags => ArrayRef[L<Paws::KMS::Tag>]
+=item Tags => ArrayRef[KMS_Tag]
 
 
 =back

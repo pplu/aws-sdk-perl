@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Comprehend::PartOfSpeechTag;
-  use Moose;
-  has Score => (is => 'ro', isa => 'Num');
-  has Tag => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::Comprehend::Types qw//;
+  has Score => (is => 'ro', isa => Num);
+  has Tag => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Score' => {
+                            'type' => 'Num'
+                          },
+               'Tag' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

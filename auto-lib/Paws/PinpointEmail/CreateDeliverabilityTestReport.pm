@@ -1,17 +1,47 @@
 
 package Paws::PinpointEmail::CreateDeliverabilityTestReport;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Paws::PinpointEmail::EmailContent', required => 1);
-  has FromEmailAddress => (is => 'ro', isa => 'Str', required => 1);
-  has ReportName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_Tag PinpointEmail_EmailContent/;
+  has Content => (is => 'ro', isa => PinpointEmail_EmailContent, required => 1, predicate => 1);
+  has FromEmailAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReportName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[PinpointEmail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeliverabilityTestReport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/deliverability-dashboard/test');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::CreateDeliverabilityTestReportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeliverabilityTestReport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/deliverability-dashboard/test');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::CreateDeliverabilityTestReportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReportName' => {
+                                 'type' => 'Str'
+                               },
+               'FromEmailAddress' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::PinpointEmail::Tag',
+                           'type' => 'ArrayRef[PinpointEmail_Tag]'
+                         },
+               'Content' => {
+                              'class' => 'Paws::PinpointEmail::EmailContent',
+                              'type' => 'PinpointEmail_EmailContent'
+                            }
+             },
+  'IsRequired' => {
+                    'FromEmailAddress' => 1,
+                    'Content' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +111,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ema
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Content => L<Paws::PinpointEmail::EmailContent>
+=head2 B<REQUIRED> Content => PinpointEmail_EmailContent
 
 The HTML body of the message that you sent when you performed the
 predictive inbox placement test.
@@ -102,7 +132,7 @@ test when you retrieve the results.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+=head2 Tags => ArrayRef[PinpointEmail_Tag]
 
 An array of objects that define the tags (keys and values) that you
 want to associate with the predictive inbox placement test.

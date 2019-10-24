@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::BucketLoggingStatus;
   use Moo;
   use Types::Standard qw//;

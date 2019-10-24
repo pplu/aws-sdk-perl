@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ECS::HostEntry;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Hostname => (is => 'ro', isa => Str, required => 1);
+  has IpAddress => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Hostname' => 'hostname',
+                       'IpAddress' => 'ipAddress'
+                     },
+  'IsRequired' => {
+                    'Hostname' => 1,
+                    'IpAddress' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

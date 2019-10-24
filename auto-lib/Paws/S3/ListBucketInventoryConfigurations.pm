@@ -29,7 +29,10 @@ use MooX::ClassAttribute;
                   },
   'ParamInQuery' => {
                       'ContinuationToken' => 'continuation-token'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

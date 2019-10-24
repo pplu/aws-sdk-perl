@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Robomaker::ProgressDetail;
-  use Moose;
-  has CurrentProgress => (is => 'ro', isa => 'Str', request_name => 'currentProgress', traits => ['NameInRequest']);
-  has EstimatedTimeRemainingSeconds => (is => 'ro', isa => 'Int', request_name => 'estimatedTimeRemainingSeconds', traits => ['NameInRequest']);
-  has PercentDone => (is => 'ro', isa => 'Num', request_name => 'percentDone', traits => ['NameInRequest']);
-  has TargetResource => (is => 'ro', isa => 'Str', request_name => 'targetResource', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::Robomaker::Types qw//;
+  has CurrentProgress => (is => 'ro', isa => Str);
+  has EstimatedTimeRemainingSeconds => (is => 'ro', isa => Int);
+  has PercentDone => (is => 'ro', isa => Num);
+  has TargetResource => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedTimeRemainingSeconds' => {
+                                                    'type' => 'Int'
+                                                  },
+               'TargetResource' => {
+                                     'type' => 'Str'
+                                   },
+               'PercentDone' => {
+                                  'type' => 'Num'
+                                },
+               'CurrentProgress' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'EstimatedTimeRemainingSeconds' => 'estimatedTimeRemainingSeconds',
+                       'TargetResource' => 'targetResource',
+                       'PercentDone' => 'percentDone',
+                       'CurrentProgress' => 'currentProgress'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::ListUsersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has Users => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::ListedUser]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_ListedUser/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ServerId => (is => 'ro', isa => Str, required => 1);
+  has Users => (is => 'ro', isa => ArrayRef[Transfer_ListedUser], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Users' => {
+                            'class' => 'Paws::Transfer::ListedUser',
+                            'type' => 'ArrayRef[Transfer_ListedUser]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ServerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Users' => 1,
+                    'ServerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -30,7 +59,7 @@ A system-assigned unique identifier for an SFTP server that the users
 are assigned to.
 
 
-=head2 B<REQUIRED> Users => ArrayRef[L<Paws::Transfer::ListedUser>]
+=head2 B<REQUIRED> Users => ArrayRef[Transfer_ListedUser]
 
 Returns the user accounts and their properties for the C<ServerId>
 value that you specify.

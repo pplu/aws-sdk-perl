@@ -13,7 +13,7 @@ package Paws::EC2::ModifyHosts;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyHostsResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'HostRecovery' => {
@@ -29,11 +29,14 @@ package Paws::EC2::ModifyHosts;
   'NameInRequest' => {
                        'HostIds' => 'hostId',
                        'AutoPlacement' => 'autoPlacement'
-                     }
+                     },
+  'IsRequired' => {
+                    'HostIds' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

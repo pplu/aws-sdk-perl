@@ -5,7 +5,7 @@ package Paws::EC2::ClientVpnAuthenticationRequest;
   has MutualAuthentication => (is => 'ro', isa => EC2_CertificateAuthenticationRequest);
   has Type => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ActiveDirectory' => {
@@ -22,8 +22,8 @@ package Paws::EC2::ClientVpnAuthenticationRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

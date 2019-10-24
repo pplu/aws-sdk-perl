@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Rekognition::ComparedFace;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Confidence => (is => 'ro', isa => 'Num');
-  has Landmarks => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Landmark]');
-  has Pose => (is => 'ro', isa => 'Paws::Rekognition::Pose');
-  has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
+  use Moo;
+  use Types::Standard qw/Num ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_Pose Rekognition_BoundingBox Rekognition_Landmark Rekognition_ImageQuality/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Confidence => (is => 'ro', isa => Num);
+  has Landmarks => (is => 'ro', isa => ArrayRef[Rekognition_Landmark]);
+  has Pose => (is => 'ro', isa => Rekognition_Pose);
+  has Quality => (is => 'ro', isa => Rekognition_ImageQuality);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quality' => {
+                              'class' => 'Paws::Rekognition::ImageQuality',
+                              'type' => 'Rekognition_ImageQuality'
+                            },
+               'Pose' => {
+                           'class' => 'Paws::Rekognition::Pose',
+                           'type' => 'Rekognition_Pose'
+                         },
+               'Landmarks' => {
+                                'class' => 'Paws::Rekognition::Landmark',
+                                'type' => 'ArrayRef[Rekognition_Landmark]'
+                              },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +74,7 @@ C<CompareFaces> and C<RecognizeCelebrities>.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box of the face.
 
@@ -51,18 +84,18 @@ C<CompareFaces> and C<RecognizeCelebrities>.
   Level of confidence that what the bounding box contains is a face.
 
 
-=head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
+=head2 Landmarks => ArrayRef[Rekognition_Landmark]
 
   An array of facial landmarks.
 
 
-=head2 Pose => L<Paws::Rekognition::Pose>
+=head2 Pose => Rekognition_Pose
 
   Indicates the pose of the face as determined by its pitch, roll, and
 yaw.
 
 
-=head2 Quality => L<Paws::Rekognition::ImageQuality>
+=head2 Quality => Rekognition_ImageQuality
 
   Identifies face image brightness and sharpness.
 

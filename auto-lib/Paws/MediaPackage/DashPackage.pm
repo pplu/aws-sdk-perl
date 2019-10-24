@@ -1,18 +1,88 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::DashPackage;
-  use Moose;
-  has AdsOnDeliveryRestrictions => (is => 'ro', isa => 'Str', request_name => 'adsOnDeliveryRestrictions', traits => ['NameInRequest']);
-  has AdTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adTriggers', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::DashEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has ManifestLayout => (is => 'ro', isa => 'Str', request_name => 'manifestLayout', traits => ['NameInRequest']);
-  has ManifestWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'manifestWindowSeconds', traits => ['NameInRequest']);
-  has MinBufferTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'minBufferTimeSeconds', traits => ['NameInRequest']);
-  has MinUpdatePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'minUpdatePeriodSeconds', traits => ['NameInRequest']);
-  has PeriodTriggers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'periodTriggers', traits => ['NameInRequest']);
-  has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
-  has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
-  has SuggestedPresentationDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'suggestedPresentationDelaySeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::MediaPackage::Types qw/MediaPackage_StreamSelection MediaPackage_DashEncryption/;
+  has AdsOnDeliveryRestrictions => (is => 'ro', isa => Str);
+  has AdTriggers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Encryption => (is => 'ro', isa => MediaPackage_DashEncryption);
+  has ManifestLayout => (is => 'ro', isa => Str);
+  has ManifestWindowSeconds => (is => 'ro', isa => Int);
+  has MinBufferTimeSeconds => (is => 'ro', isa => Int);
+  has MinUpdatePeriodSeconds => (is => 'ro', isa => Int);
+  has PeriodTriggers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Profile => (is => 'ro', isa => Str);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+  has SegmentTemplateFormat => (is => 'ro', isa => Str);
+  has StreamSelection => (is => 'ro', isa => MediaPackage_StreamSelection);
+  has SuggestedPresentationDelaySeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentTemplateFormat' => {
+                                            'type' => 'Str'
+                                          },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'MinBufferTimeSeconds' => {
+                                           'type' => 'Int'
+                                         },
+               'PeriodTriggers' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ManifestWindowSeconds' => {
+                                            'type' => 'Int'
+                                          },
+               'ManifestLayout' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackage::StreamSelection',
+                                      'type' => 'MediaPackage_StreamSelection'
+                                    },
+               'AdsOnDeliveryRestrictions' => {
+                                                'type' => 'Str'
+                                              },
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaPackage::DashEncryption',
+                                 'type' => 'MediaPackage_DashEncryption'
+                               },
+               'AdTriggers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SuggestedPresentationDelaySeconds' => {
+                                                        'type' => 'Int'
+                                                      },
+               'MinUpdatePeriodSeconds' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'SegmentTemplateFormat' => 'segmentTemplateFormat',
+                       'Profile' => 'profile',
+                       'MinBufferTimeSeconds' => 'minBufferTimeSeconds',
+                       'PeriodTriggers' => 'periodTriggers',
+                       'ManifestWindowSeconds' => 'manifestWindowSeconds',
+                       'ManifestLayout' => 'manifestLayout',
+                       'StreamSelection' => 'streamSelection',
+                       'AdsOnDeliveryRestrictions' => 'adsOnDeliveryRestrictions',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'Encryption' => 'encryption',
+                       'AdTriggers' => 'adTriggers',
+                       'SuggestedPresentationDelaySeconds' => 'suggestedPresentationDelaySeconds',
+                       'MinUpdatePeriodSeconds' => 'minUpdatePeriodSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +128,7 @@ A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
   
 
 
-=head2 Encryption => L<Paws::MediaPackage::DashEncryption>
+=head2 Encryption => MediaPackage_DashEncryption
 
   
 
@@ -123,7 +193,7 @@ NUMBER_WITH_DURATION, only a duration is included in each
 SegmentTemplate, with $Number$ media URLs.
 
 
-=head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>
+=head2 StreamSelection => MediaPackage_StreamSelection
 
   
 

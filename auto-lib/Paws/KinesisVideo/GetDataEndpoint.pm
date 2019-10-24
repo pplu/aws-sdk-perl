@@ -1,16 +1,40 @@
 
 package Paws::KinesisVideo::GetDataEndpoint;
-  use Moose;
-  has APIName => (is => 'ro', isa => 'Str', required => 1);
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideo::Types qw//;
+  has APIName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDataEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getDataEndpoint');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::GetDataEndpointOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDataEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getDataEndpoint');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::GetDataEndpointOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'APIName' => {
+                              'type' => 'Str'
+                            },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'APIName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +75,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 The name of the API action for which to get an endpoint.
 
-Valid values are: C<"PUT_MEDIA">, C<"GET_MEDIA">, C<"LIST_FRAGMENTS">, C<"GET_MEDIA_FOR_FRAGMENT_LIST">, C<"GET_HLS_STREAMING_SESSION_URL">
+Valid values are: C<"PUT_MEDIA">, C<"GET_MEDIA">, C<"LIST_FRAGMENTS">, C<"GET_MEDIA_FOR_FRAGMENT_LIST">, C<"GET_HLS_STREAMING_SESSION_URL">, C<"GET_DASH_STREAMING_SESSION_URL">
 
 =head2 StreamARN => Str
 

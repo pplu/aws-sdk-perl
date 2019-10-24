@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Organizations::EnabledServicePrincipal;
-  use Moose;
-  has DateEnabled => (is => 'ro', isa => 'Str');
-  has ServicePrincipal => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw//;
+  has DateEnabled => (is => 'ro', isa => Str);
+  has ServicePrincipal => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServicePrincipal' => {
+                                       'type' => 'Str'
+                                     },
+               'DateEnabled' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,34 @@
 
 package Paws::AppMesh::UpdateVirtualNodeOutput;
-  use Moose;
-  has VirtualNode => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeData', traits => ['NameInRequest'], request_name => 'virtualNode', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VirtualNode');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualNodeData/;
+  has VirtualNode => (is => 'ro', isa => AppMesh_VirtualNodeData, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VirtualNode' => {
+                                  'class' => 'Paws::AppMesh::VirtualNodeData',
+                                  'type' => 'AppMesh_VirtualNodeData'
+                                }
+             },
+  'NameInRequest' => {
+                       'VirtualNode' => 'virtualNode'
+                     },
+  'IsRequired' => {
+                    'VirtualNode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::AppMesh::UpdateVirtualNodeOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> VirtualNode => L<Paws::AppMesh::VirtualNodeData>
+=head2 B<REQUIRED> VirtualNode => AppMesh_VirtualNodeData
 
 A full description of the virtual node that was updated.
 

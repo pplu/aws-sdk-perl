@@ -1,18 +1,78 @@
+# Generated from default/object.tt
 package Paws::EMR::JobFlowInstancesDetail;
-  use Moose;
-  has Ec2KeyName => (is => 'ro', isa => 'Str');
-  has Ec2SubnetId => (is => 'ro', isa => 'Str');
-  has HadoopVersion => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroupDetail]');
-  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Bool');
-  has MasterInstanceId => (is => 'ro', isa => 'Str');
-  has MasterInstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has MasterPublicDnsName => (is => 'ro', isa => 'Str');
-  has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
-  has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
-  has SlaveInstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has TerminationProtected => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::EMR::Types qw/EMR_PlacementType EMR_InstanceGroupDetail/;
+  has Ec2KeyName => (is => 'ro', isa => Str);
+  has Ec2SubnetId => (is => 'ro', isa => Str);
+  has HadoopVersion => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int, required => 1);
+  has InstanceGroups => (is => 'ro', isa => ArrayRef[EMR_InstanceGroupDetail]);
+  has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => Bool);
+  has MasterInstanceId => (is => 'ro', isa => Str);
+  has MasterInstanceType => (is => 'ro', isa => Str, required => 1);
+  has MasterPublicDnsName => (is => 'ro', isa => Str);
+  has NormalizedInstanceHours => (is => 'ro', isa => Int);
+  has Placement => (is => 'ro', isa => EMR_PlacementType);
+  has SlaveInstanceType => (is => 'ro', isa => Str, required => 1);
+  has TerminationProtected => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterInstanceType' => {
+                                         'type' => 'Str'
+                                       },
+               'MasterInstanceId' => {
+                                       'type' => 'Str'
+                                     },
+               'NormalizedInstanceHours' => {
+                                              'type' => 'Int'
+                                            },
+               'HadoopVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Ec2SubnetId' => {
+                                  'type' => 'Str'
+                                },
+               'TerminationProtected' => {
+                                           'type' => 'Bool'
+                                         },
+               'MasterPublicDnsName' => {
+                                          'type' => 'Str'
+                                        },
+               'SlaveInstanceType' => {
+                                        'type' => 'Str'
+                                      },
+               'KeepJobFlowAliveWhenNoSteps' => {
+                                                  'type' => 'Bool'
+                                                },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'Ec2KeyName' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceGroups' => {
+                                     'class' => 'Paws::EMR::InstanceGroupDetail',
+                                     'type' => 'ArrayRef[EMR_InstanceGroupDetail]'
+                                   },
+               'Placement' => {
+                                'class' => 'Paws::EMR::PlacementType',
+                                'type' => 'EMR_PlacementType'
+                              }
+             },
+  'IsRequired' => {
+                    'SlaveInstanceType' => 1,
+                    'MasterInstanceType' => 1,
+                    'InstanceCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +134,7 @@ the value is greater than 1, one instance is the master node and all
 others are core and task nodes.
 
 
-=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupDetail>]
+=head2 InstanceGroups => ArrayRef[EMR_InstanceGroupDetail]
 
   Details about the instance groups in a cluster.
 
@@ -112,7 +172,7 @@ normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
 
-=head2 Placement => L<Paws::EMR::PlacementType>
+=head2 Placement => EMR_PlacementType
 
   The Amazon EC2 Availability Zone for the cluster.
 

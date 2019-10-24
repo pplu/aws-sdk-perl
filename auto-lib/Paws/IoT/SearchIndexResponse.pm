@@ -1,11 +1,41 @@
 
 package Paws::IoT::SearchIndexResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ThingGroups => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingGroupDocument]', traits => ['NameInRequest'], request_name => 'thingGroups');
-  has Things => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingDocument]', traits => ['NameInRequest'], request_name => 'things');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_ThingDocument IoT_ThingGroupDocument/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ThingGroups => (is => 'ro', isa => ArrayRef[IoT_ThingGroupDocument]);
+  has Things => (is => 'ro', isa => ArrayRef[IoT_ThingDocument]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingGroups' => {
+                                  'class' => 'Paws::IoT::ThingGroupDocument',
+                                  'type' => 'ArrayRef[IoT_ThingGroupDocument]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Things' => {
+                             'class' => 'Paws::IoT::ThingDocument',
+                             'type' => 'ArrayRef[IoT_ThingDocument]'
+                           }
+             },
+  'NameInRequest' => {
+                       'ThingGroups' => 'thingGroups',
+                       'NextToken' => 'nextToken',
+                       'Things' => 'things'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -23,12 +53,12 @@ The token used to get the next set of results, or null if there are no
 additional results.
 
 
-=head2 ThingGroups => ArrayRef[L<Paws::IoT::ThingGroupDocument>]
+=head2 ThingGroups => ArrayRef[IoT_ThingGroupDocument]
 
 The thing groups that match the search query.
 
 
-=head2 Things => ArrayRef[L<Paws::IoT::ThingDocument>]
+=head2 Things => ArrayRef[IoT_ThingDocument]
 
 The things that match the search query.
 

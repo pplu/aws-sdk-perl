@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Kinesis::SubscribeToShardEvent;
-  use Moose;
-  has ContinuationSequenceNumber => (is => 'ro', isa => 'Str', required => 1);
-  has MillisBehindLatest => (is => 'ro', isa => 'Int', required => 1);
-  has Records => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Record]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_Record/;
+  has ContinuationSequenceNumber => (is => 'ro', isa => Str, required => 1);
+  has MillisBehindLatest => (is => 'ro', isa => Int, required => 1);
+  has Records => (is => 'ro', isa => ArrayRef[Kinesis_Record], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MillisBehindLatest' => {
+                                         'type' => 'Int'
+                                       },
+               'Records' => {
+                              'class' => 'Paws::Kinesis::Record',
+                              'type' => 'ArrayRef[Kinesis_Record]'
+                            },
+               'ContinuationSequenceNumber' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'MillisBehindLatest' => 1,
+                    'Records' => 1,
+                    'ContinuationSequenceNumber' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +82,7 @@ of zero indicates that record processing is caught up, and there are no
 new records to process at this moment.
 
 
-=head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::Record>]
+=head2 B<REQUIRED> Records => ArrayRef[Kinesis_Record]
 
   
 

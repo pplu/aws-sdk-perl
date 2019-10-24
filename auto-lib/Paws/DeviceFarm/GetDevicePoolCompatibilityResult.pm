@@ -1,10 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetDevicePoolCompatibilityResult;
-  use Moose;
-  has CompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['NameInRequest'], request_name => 'compatibleDevices' );
-  has IncompatibleDevices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]', traits => ['NameInRequest'], request_name => 'incompatibleDevices' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DevicePoolCompatibilityResult/;
+  has CompatibleDevices => (is => 'ro', isa => ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]);
+  has IncompatibleDevices => (is => 'ro', isa => ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CompatibleDevices' => {
+                                        'class' => 'Paws::DeviceFarm::DevicePoolCompatibilityResult',
+                                        'type' => 'ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]'
+                                      },
+               'IncompatibleDevices' => {
+                                          'class' => 'Paws::DeviceFarm::DevicePoolCompatibilityResult',
+                                          'type' => 'ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'CompatibleDevices' => 'compatibleDevices',
+                       'IncompatibleDevices' => 'incompatibleDevices'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +42,12 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 =head1 ATTRIBUTES
 
 
-=head2 CompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
+=head2 CompatibleDevices => ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]
 
 Information about compatible devices.
 
 
-=head2 IncompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
+=head2 IncompatibleDevices => ArrayRef[DeviceFarm_DevicePoolCompatibilityResult]
 
 Information about incompatible devices.
 

@@ -1,19 +1,65 @@
 
 package Paws::IoT::CreateSecurityProfile;
-  use Moose;
-  has AdditionalMetricsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetain');
-  has AlertTargets => (is => 'ro', isa => 'Paws::IoT::AlertTargets', traits => ['NameInRequest'], request_name => 'alertTargets');
-  has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors');
-  has SecurityProfileDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityProfileDescription');
-  has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'securityProfileName', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_Behavior IoT_Tag IoT_AlertTargets/;
+  has AdditionalMetricsToRetain => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AlertTargets => (is => 'ro', isa => IoT_AlertTargets, predicate => 1);
+  has Behaviors => (is => 'ro', isa => ArrayRef[IoT_Behavior], predicate => 1);
+  has SecurityProfileDescription => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityProfileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSecurityProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/security-profiles/{securityProfileName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateSecurityProfileResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSecurityProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/security-profiles/{securityProfileName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateSecurityProfileResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Behaviors' => {
+                                'class' => 'Paws::IoT::Behavior',
+                                'type' => 'ArrayRef[IoT_Behavior]'
+                              },
+               'AlertTargets' => {
+                                   'class' => 'Paws::IoT::AlertTargets',
+                                   'type' => 'IoT_AlertTargets'
+                                 },
+               'AdditionalMetricsToRetain' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         },
+               'SecurityProfileDescription' => {
+                                                 'type' => 'Str'
+                                               },
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInURI' => {
+                    'SecurityProfileName' => 'securityProfileName'
+                  },
+  'NameInRequest' => {
+                       'Behaviors' => 'behaviors',
+                       'AlertTargets' => 'alertTargets',
+                       'AdditionalMetricsToRetain' => 'additionalMetricsToRetain',
+                       'Tags' => 'tags',
+                       'SecurityProfileDescription' => 'securityProfileDescription'
+                     },
+  'IsRequired' => {
+                    'SecurityProfileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +146,7 @@ also retained for any metric specified here.
 
 
 
-=head2 AlertTargets => L<Paws::IoT::AlertTargets>
+=head2 AlertTargets => IoT_AlertTargets
 
 Specifies the destinations to which alerts are sent. (Alerts are always
 sent to the console.) Alerts are generated when a device (thing)
@@ -108,7 +154,7 @@ violates a behavior.
 
 
 
-=head2 Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+=head2 Behaviors => ArrayRef[IoT_Behavior]
 
 Specifies the behaviors that, when violated by a device (thing), cause
 an alert.
@@ -127,7 +173,7 @@ The name you are giving to the security profile.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the security profile.
 

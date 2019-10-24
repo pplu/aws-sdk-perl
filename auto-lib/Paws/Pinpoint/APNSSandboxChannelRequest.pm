@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::APNSSandboxChannelRequest;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str');
-  has Certificate => (is => 'ro', isa => 'Str');
-  has DefaultAuthenticationMethod => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has PrivateKey => (is => 'ro', isa => 'Str');
-  has TeamId => (is => 'ro', isa => 'Str');
-  has TokenKey => (is => 'ro', isa => 'Str');
-  has TokenKeyId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw//;
+  has BundleId => (is => 'ro', isa => Str);
+  has Certificate => (is => 'ro', isa => Str);
+  has DefaultAuthenticationMethod => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has PrivateKey => (is => 'ro', isa => Str);
+  has TeamId => (is => 'ro', isa => Str);
+  has TokenKey => (is => 'ro', isa => Str);
+  has TokenKeyId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TokenKeyId' => {
+                                 'type' => 'Str'
+                               },
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'PrivateKey' => {
+                                 'type' => 'Str'
+                               },
+               'TeamId' => {
+                             'type' => 'Str'
+                           },
+               'DefaultAuthenticationMethod' => {
+                                                  'type' => 'Str'
+                                                },
+               'TokenKey' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::MetricFilter;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
-  has FilterName => (is => 'ro', isa => 'Str', request_name => 'filterName', traits => ['NameInRequest']);
-  has FilterPattern => (is => 'ro', isa => 'Str', request_name => 'filterPattern', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', request_name => 'metricTransformations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_MetricTransformation/;
+  has CreationTime => (is => 'ro', isa => Int);
+  has FilterName => (is => 'ro', isa => Str);
+  has FilterPattern => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has MetricTransformations => (is => 'ro', isa => ArrayRef[CloudWatchLogs_MetricTransformation]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'MetricTransformations' => {
+                                            'class' => 'Paws::CloudWatchLogs::MetricTransformation',
+                                            'type' => 'ArrayRef[CloudWatchLogs_MetricTransformation]'
+                                          },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterPattern' => {
+                                    'type' => 'Str'
+                                  },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'MetricTransformations' => 'metricTransformations',
+                       'LogGroupName' => 'logGroupName',
+                       'FilterPattern' => 'filterPattern',
+                       'FilterName' => 'filterName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +100,7 @@ milliseconds after Jan 1, 1970 00:00:00 UTC.
   The name of the log group.
 
 
-=head2 MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+=head2 MetricTransformations => ArrayRef[CloudWatchLogs_MetricTransformation]
 
   The metric transformations.
 

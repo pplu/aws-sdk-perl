@@ -9,7 +9,7 @@ package Paws::EC2::ClientVpnRoute;
   has TargetSubnet => (is => 'ro', isa => Str);
   has Type => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Type' => {
@@ -46,8 +46,8 @@ package Paws::EC2::ClientVpnRoute;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

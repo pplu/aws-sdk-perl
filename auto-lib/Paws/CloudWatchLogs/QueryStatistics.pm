@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::QueryStatistics;
-  use Moose;
-  has BytesScanned => (is => 'ro', isa => 'Num', request_name => 'bytesScanned', traits => ['NameInRequest']);
-  has RecordsMatched => (is => 'ro', isa => 'Num', request_name => 'recordsMatched', traits => ['NameInRequest']);
-  has RecordsScanned => (is => 'ro', isa => 'Num', request_name => 'recordsScanned', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has BytesScanned => (is => 'ro', isa => Num);
+  has RecordsMatched => (is => 'ro', isa => Num);
+  has RecordsScanned => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BytesScanned' => {
+                                   'type' => 'Num'
+                                 },
+               'RecordsScanned' => {
+                                     'type' => 'Num'
+                                   },
+               'RecordsMatched' => {
+                                     'type' => 'Num'
+                                   }
+             },
+  'NameInRequest' => {
+                       'BytesScanned' => 'bytesScanned',
+                       'RecordsScanned' => 'recordsScanned',
+                       'RecordsMatched' => 'recordsMatched'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

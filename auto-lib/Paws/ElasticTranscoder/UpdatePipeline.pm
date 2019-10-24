@@ -1,21 +1,66 @@
 
 package Paws::ElasticTranscoder::UpdatePipeline;
-  use Moose;
-  has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
-  has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
-  has InputBucket => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications');
-  has Role => (is => 'ro', isa => 'Str');
-  has ThumbnailConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_PipelineOutputConfig ElasticTranscoder_Notifications/;
+  has AwsKmsKeyArn => (is => 'ro', isa => Str, predicate => 1);
+  has ContentConfig => (is => 'ro', isa => ElasticTranscoder_PipelineOutputConfig, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputBucket => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Notifications => (is => 'ro', isa => ElasticTranscoder_Notifications, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has ThumbnailConfig => (is => 'ro', isa => ElasticTranscoder_PipelineOutputConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipeline');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePipeline');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/pipelines/{Id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AwsKmsKeyArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ContentConfig' => {
+                                    'class' => 'Paws::ElasticTranscoder::PipelineOutputConfig',
+                                    'type' => 'ElasticTranscoder_PipelineOutputConfig'
+                                  },
+               'InputBucket' => {
+                                  'type' => 'Str'
+                                },
+               'Notifications' => {
+                                    'class' => 'Paws::ElasticTranscoder::Notifications',
+                                    'type' => 'ElasticTranscoder_Notifications'
+                                  },
+               'ThumbnailConfig' => {
+                                      'class' => 'Paws::ElasticTranscoder::PipelineOutputConfig',
+                                      'type' => 'ElasticTranscoder_PipelineOutputConfig'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +87,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Bucket      => 'MyBucketName',    # OPTIONAL
         Permissions => [
           {
-            Access  => [ 'MyAccessControl', ... ],  # max: 30; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
             GranteeType => 'MyGranteeType',         # OPTIONAL
           },
@@ -63,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Bucket      => 'MyBucketName',    # OPTIONAL
         Permissions => [
           {
-            Access  => [ 'MyAccessControl', ... ],  # max: 30; OPTIONAL
+            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
             GranteeType => 'MyGranteeType',         # OPTIONAL
           },
@@ -99,7 +144,7 @@ C<aes-ctr>, or C<aes-gcm>.
 
 
 
-=head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
+=head2 ContentConfig => ElasticTranscoder_PipelineOutputConfig
 
 The optional C<ContentConfig> object specifies information about the
 Amazon S3 bucket in which you want Elastic Transcoder to save
@@ -233,7 +278,7 @@ Constraints: Maximum 40 characters
 
 
 
-=head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
+=head2 Notifications => ElasticTranscoder_Notifications
 
 The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.
@@ -280,7 +325,7 @@ Transcoder to use to transcode jobs for this pipeline.
 
 
 
-=head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
+=head2 ThumbnailConfig => ElasticTranscoder_PipelineOutputConfig
 
 The C<ThumbnailConfig> object specifies several values, including the
 Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail

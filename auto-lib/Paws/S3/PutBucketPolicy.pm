@@ -48,7 +48,11 @@ use MooX::ClassAttribute;
   'ParamInHeader' => {
                        'ConfirmRemoveSelfBucketAccess' => 'x-amz-confirm-remove-self-bucket-access',
                        'ContentLength' => 'Content-Length'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Policy' => 1
+                  }
 }
 ;
     return $Params_map;

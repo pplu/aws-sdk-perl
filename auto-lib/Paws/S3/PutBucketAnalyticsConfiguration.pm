@@ -41,7 +41,12 @@ use MooX::ClassAttribute;
                     },
   'ParamInHeader' => {
                        'ContentLength' => 'Content-Length'
-                     }
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Bucket' => 1,
+                    'AnalyticsConfiguration' => 1
+                  }
 }
 ;
     return $Params_map;

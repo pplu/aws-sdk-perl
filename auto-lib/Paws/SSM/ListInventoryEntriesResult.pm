@@ -1,14 +1,48 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListInventoryEntriesResult;
-  use Moose;
-  has CaptureTime => (is => 'ro', isa => 'Str');
-  has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemEntry]');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SchemaVersion => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryItemEntry/;
+  has CaptureTime => (is => 'ro', isa => Str);
+  has Entries => (is => 'ro', isa => ArrayRef[SSM_InventoryItemEntry]);
+  has InstanceId => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has SchemaVersion => (is => 'ro', isa => Str);
+  has TypeName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entries' => {
+                              'class' => 'Paws::SSM::InventoryItemEntry',
+                              'type' => 'ArrayRef[SSM_InventoryItemEntry]'
+                            },
+               'CaptureTime' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TypeName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +58,7 @@ Paws::SSM::ListInventoryEntriesResult
 The time that inventory information was collected for the instance(s).
 
 
-=head2 Entries => ArrayRef[L<Paws::SSM::InventoryItemEntry>]
+=head2 Entries => ArrayRef[SSM_InventoryItemEntry]
 
 A list of inventory items on the instance(s).
 

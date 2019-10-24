@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Textract::Geometry;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Textract::BoundingBox');
-  has Polygon => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Point]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Textract::Types qw/Textract_Point Textract_BoundingBox/;
+  has BoundingBox => (is => 'ro', isa => Textract_BoundingBox);
+  has Polygon => (is => 'ro', isa => ArrayRef[Textract_Point]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Polygon' => {
+                              'class' => 'Paws::Textract::Point',
+                              'type' => 'ArrayRef[Textract_Point]'
+                            },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Textract::BoundingBox',
+                                  'type' => 'Textract_BoundingBox'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ cell is located on a document page.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Textract::BoundingBox>
+=head2 BoundingBox => Textract_BoundingBox
 
   An axis-aligned coarse representation of the location of the recognized
 text on the document page.
 
 
-=head2 Polygon => ArrayRef[L<Paws::Textract::Point>]
+=head2 Polygon => ArrayRef[Textract_Point]
 
   Within the bounding box, a fine-grained polygon around the recognized
 text.

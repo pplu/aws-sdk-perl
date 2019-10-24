@@ -26,7 +26,11 @@ package Paws::ES::UpgradeElasticsearchDomain;
                'DomainName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'TargetVersion' => 1,
+                    'DomainName' => 1
+                  }
 }
 ;
     return $Params_map;

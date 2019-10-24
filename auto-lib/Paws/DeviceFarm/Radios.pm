@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Radios;
-  use Moose;
-  has Bluetooth => (is => 'ro', isa => 'Bool', request_name => 'bluetooth', traits => ['NameInRequest']);
-  has Gps => (is => 'ro', isa => 'Bool', request_name => 'gps', traits => ['NameInRequest']);
-  has Nfc => (is => 'ro', isa => 'Bool', request_name => 'nfc', traits => ['NameInRequest']);
-  has Wifi => (is => 'ro', isa => 'Bool', request_name => 'wifi', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::DeviceFarm::Types qw//;
+  has Bluetooth => (is => 'ro', isa => Bool);
+  has Gps => (is => 'ro', isa => Bool);
+  has Nfc => (is => 'ro', isa => Bool);
+  has Wifi => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Wifi' => {
+                           'type' => 'Bool'
+                         },
+               'Bluetooth' => {
+                                'type' => 'Bool'
+                              },
+               'Nfc' => {
+                          'type' => 'Bool'
+                        },
+               'Gps' => {
+                          'type' => 'Bool'
+                        }
+             },
+  'NameInRequest' => {
+                       'Wifi' => 'wifi',
+                       'Bluetooth' => 'bluetooth',
+                       'Nfc' => 'nfc',
+                       'Gps' => 'gps'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

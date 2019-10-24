@@ -54,7 +54,10 @@ use MooX::ClassAttribute;
                       'EncodingType' => 'encoding-type',
                       'Delimiter' => 'delimiter',
                       'MaxUploads' => 'max-uploads'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

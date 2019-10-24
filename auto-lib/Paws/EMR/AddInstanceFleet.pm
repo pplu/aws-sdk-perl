@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::AddInstanceFleet;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceFleet => (is => 'ro', isa => 'Paws::EMR::InstanceFleetConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_InstanceFleetConfig/;
+  has ClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceFleet => (is => 'ro', isa => EMR_InstanceFleetConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceFleet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::AddInstanceFleetOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddInstanceFleet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::AddInstanceFleetOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceFleet' => {
+                                    'class' => 'Paws::EMR::InstanceFleetConfig',
+                                    'type' => 'EMR_InstanceFleetConfig'
+                                  },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'InstanceFleet' => 1,
+                    'ClusterId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +121,7 @@ The unique identifier of the cluster.
 
 
 
-=head2 B<REQUIRED> InstanceFleet => L<Paws::EMR::InstanceFleetConfig>
+=head2 B<REQUIRED> InstanceFleet => EMR_InstanceFleetConfig
 
 Specifies the configuration of the instance fleet.
 

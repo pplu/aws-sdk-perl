@@ -4,7 +4,7 @@ package Paws::EC2::PortRange;
   has From => (is => 'ro', isa => Int);
   has To => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'To' => {
@@ -20,8 +20,8 @@ package Paws::EC2::PortRange;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

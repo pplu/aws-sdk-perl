@@ -1,16 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::PutMetricFilter;
-  use Moose;
-  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
-  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', traits => ['NameInRequest'], request_name => 'metricTransformations' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_MetricTransformation/;
+  has FilterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilterPattern => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricTransformations => (is => 'ro', isa => ArrayRef[CloudWatchLogs_MetricTransformation], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutMetricFilter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutMetricFilter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricTransformations' => {
+                                            'class' => 'Paws::CloudWatchLogs::MetricTransformation',
+                                            'type' => 'ArrayRef[CloudWatchLogs_MetricTransformation]'
+                                          },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterPattern' => {
+                                    'type' => 'Str'
+                                  },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'MetricTransformations' => 'metricTransformations',
+                       'LogGroupName' => 'logGroupName',
+                       'FilterPattern' => 'filterPattern',
+                       'FilterName' => 'filterName'
+                     },
+  'IsRequired' => {
+                    'MetricTransformations' => 1,
+                    'LogGroupName' => 1,
+                    'FilterPattern' => 1,
+                    'FilterName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +108,7 @@ The name of the log group.
 
 
 
-=head2 B<REQUIRED> MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+=head2 B<REQUIRED> MetricTransformations => ArrayRef[CloudWatchLogs_MetricTransformation]
 
 A collection of information that defines how metric data gets emitted.
 

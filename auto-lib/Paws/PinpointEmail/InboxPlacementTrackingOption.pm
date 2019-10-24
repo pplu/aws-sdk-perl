@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::InboxPlacementTrackingOption;
-  use Moose;
-  has Global => (is => 'ro', isa => 'Bool');
-  has TrackedIsps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has Global => (is => 'ro', isa => Bool);
+  has TrackedIsps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Global' => {
+                             'type' => 'Bool'
+                           },
+               'TrackedIsps' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

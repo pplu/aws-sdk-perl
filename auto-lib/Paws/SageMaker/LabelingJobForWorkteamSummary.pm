@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobForWorkteamSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has JobReferenceCode => (is => 'ro', isa => 'Str', required => 1);
-  has LabelCounters => (is => 'ro', isa => 'Paws::SageMaker::LabelCountersForWorkteam');
-  has LabelingJobName => (is => 'ro', isa => 'Str');
-  has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => 'Int');
-  has WorkRequesterAccountId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelCountersForWorkteam/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has JobReferenceCode => (is => 'ro', isa => Str, required => 1);
+  has LabelCounters => (is => 'ro', isa => SageMaker_LabelCountersForWorkteam);
+  has LabelingJobName => (is => 'ro', isa => Str);
+  has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => Int);
+  has WorkRequesterAccountId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'JobReferenceCode' => {
+                                       'type' => 'Str'
+                                     },
+               'LabelCounters' => {
+                                    'class' => 'Paws::SageMaker::LabelCountersForWorkteam',
+                                    'type' => 'SageMaker_LabelCountersForWorkteam'
+                                  },
+               'NumberOfHumanWorkersPerDataObject' => {
+                                                        'type' => 'Int'
+                                                      },
+               'WorkRequesterAccountId' => {
+                                             'type' => 'Str'
+                                           },
+               'LabelingJobName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'JobReferenceCode' => 1,
+                    'WorkRequesterAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +90,7 @@ Provides summary information for a work team.
 specific labeling job.
 
 
-=head2 LabelCounters => L<Paws::SageMaker::LabelCountersForWorkteam>
+=head2 LabelCounters => SageMaker_LabelCountersForWorkteam
 
   Provides information about the progress of a labeling job.
 

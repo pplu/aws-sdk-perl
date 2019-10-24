@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::AddTags;
-  use Moose;
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_Tag/;
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DataPipeline_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::AddTagsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::AddTagsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::DataPipeline::Tag',
+                           'type' => 'ArrayRef[DataPipeline_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'PipelineId' => 'pipelineId',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'PipelineId' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ The ID of the pipeline.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[DataPipeline_Tag]
 
 The tags to add, as key/value pairs.
 

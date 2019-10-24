@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::EsamSignalProcessingNotification;
-  use Moose;
-  has SccXml => (is => 'ro', isa => 'Str', request_name => 'sccXml', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has SccXml => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SccXml' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'SccXml' => 'sccXml'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

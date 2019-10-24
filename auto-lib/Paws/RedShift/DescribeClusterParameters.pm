@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::DescribeClusterParameters;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Source => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has ParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Source => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupDetails');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeClusterParametersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeClusterParameters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupDetails');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeClusterParametersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

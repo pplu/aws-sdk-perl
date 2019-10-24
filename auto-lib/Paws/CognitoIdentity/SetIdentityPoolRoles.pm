@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::SetIdentityPoolRoles;
-  use Moose;
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleMappings => (is => 'ro', isa => 'Paws::CognitoIdentity::RoleMappingMap');
-  has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_RolesMap CognitoIdentity_RoleMappingMap/;
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleMappings => (is => 'ro', isa => CognitoIdentity_RoleMappingMap, predicate => 1);
+  has Roles => (is => 'ro', isa => CognitoIdentity_RolesMap, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityPoolRoles');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetIdentityPoolRoles');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Roles' => {
+                            'class' => 'Paws::CognitoIdentity::RolesMap',
+                            'type' => 'CognitoIdentity_RolesMap'
+                          },
+               'RoleMappings' => {
+                                   'class' => 'Paws::CognitoIdentity::RoleMappingMap',
+                                   'type' => 'CognitoIdentity_RoleMappingMap'
+                                 },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Roles' => 1,
+                    'IdentityPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +97,7 @@ An identity pool ID in the format REGION:GUID.
 
 
 
-=head2 RoleMappings => L<Paws::CognitoIdentity::RoleMappingMap>
+=head2 RoleMappings => CognitoIdentity_RoleMappingMap
 
 How users for a specific identity provider are to mapped to roles. This
 is a string to RoleMapping object map. The string identifies the
@@ -80,7 +108,7 @@ Up to 25 rules can be specified per identity provider.
 
 
 
-=head2 B<REQUIRED> Roles => L<Paws::CognitoIdentity::RolesMap>
+=head2 B<REQUIRED> Roles => CognitoIdentity_RolesMap
 
 The map of roles associated with this pool. For a given role, the key
 will be either "authenticated" or "unauthenticated" and the value will

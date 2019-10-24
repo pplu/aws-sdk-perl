@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeWorkteamResponse;
-  use Moose;
-  has Workteam => (is => 'ro', isa => 'Paws::SageMaker::Workteam', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_Workteam/;
+  has Workteam => (is => 'ro', isa => SageMaker_Workteam, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Workteam' => {
+                               'class' => 'Paws::SageMaker::Workteam',
+                               'type' => 'SageMaker_Workteam'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Workteam' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::SageMaker::DescribeWorkteamResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Workteam => L<Paws::SageMaker::Workteam>
+=head2 B<REQUIRED> Workteam => SageMaker_Workteam
 
 A C<Workteam> instance that contains information about the work team.
 

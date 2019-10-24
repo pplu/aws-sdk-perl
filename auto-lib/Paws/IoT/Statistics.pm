@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoT::Statistics;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoT::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Count' => 'count'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

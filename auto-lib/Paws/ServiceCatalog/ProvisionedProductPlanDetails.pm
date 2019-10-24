@@ -1,20 +1,81 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisionedProductPlanDetails;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has NotificationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PathId => (is => 'ro', isa => 'Str');
-  has PlanId => (is => 'ro', isa => 'Str');
-  has PlanName => (is => 'ro', isa => 'Str');
-  has PlanType => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UpdateProvisioningParameter]');
-  has ProvisionProductId => (is => 'ro', isa => 'Str');
-  has ProvisionProductName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
-  has UpdatedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag ServiceCatalog_UpdateProvisioningParameter/;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has NotificationArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PathId => (is => 'ro', isa => Str);
+  has PlanId => (is => 'ro', isa => Str);
+  has PlanName => (is => 'ro', isa => Str);
+  has PlanType => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has ProvisioningParameters => (is => 'ro', isa => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]);
+  has ProvisionProductId => (is => 'ro', isa => Str);
+  has ProvisionProductName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag]);
+  has UpdatedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PathId' => {
+                             'type' => 'Str'
+                           },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'UpdatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ProvisionProductId' => {
+                                         'type' => 'Str'
+                                       },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ProvisioningParameters' => {
+                                             'class' => 'Paws::ServiceCatalog::UpdateProvisioningParameter',
+                                             'type' => 'ArrayRef[ServiceCatalog_UpdateProvisioningParameter]'
+                                           },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'NotificationArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'PlanName' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::ServiceCatalog::Tag',
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                         },
+               'PlanId' => {
+                             'type' => 'Str'
+                           },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ProvisionProductName' => {
+                                           'type' => 'Str'
+                                         },
+               'PlanType' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +154,7 @@ one path. To list the paths for a product, use ListLaunchPaths.
   The identifier of the provisioning artifact.
 
 
-=head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
+=head2 ProvisioningParameters => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]
 
   Parameters specified by the administrator that are required for
 provisioning the product.
@@ -119,7 +180,7 @@ provisioning the product.
   The status message.
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
   One or more tags.
 

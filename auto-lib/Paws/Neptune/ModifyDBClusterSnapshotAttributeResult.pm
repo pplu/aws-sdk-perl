@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::ModifyDBClusterSnapshotAttributeResult;
-  use Moose;
-  has DBClusterSnapshotAttributesResult => (is => 'ro', isa => 'Paws::Neptune::DBClusterSnapshotAttributesResult');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw/Neptune_DBClusterSnapshotAttributesResult/;
+  has DBClusterSnapshotAttributesResult => (is => 'ro', isa => Neptune_DBClusterSnapshotAttributesResult);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterSnapshotAttributesResult' => {
+                                                        'class' => 'Paws::Neptune::DBClusterSnapshotAttributesResult',
+                                                        'type' => 'Neptune_DBClusterSnapshotAttributesResult'
+                                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::Neptune::ModifyDBClusterSnapshotAttributeResult
 =head1 ATTRIBUTES
 
 
-=head2 DBClusterSnapshotAttributesResult => L<Paws::Neptune::DBClusterSnapshotAttributesResult>
+=head2 DBClusterSnapshotAttributesResult => Neptune_DBClusterSnapshotAttributesResult
 
 
 

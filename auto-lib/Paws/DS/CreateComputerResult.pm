@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::CreateComputerResult;
-  use Moose;
-  has Computer => (is => 'ro', isa => 'Paws::DS::Computer');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw/DS_Computer/;
+  has Computer => (is => 'ro', isa => DS_Computer);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Computer' => {
+                               'class' => 'Paws::DS::Computer',
+                               'type' => 'DS_Computer'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DS::CreateComputerResult
 =head1 ATTRIBUTES
 
 
-=head2 Computer => L<Paws::DS::Computer>
+=head2 Computer => DS_Computer
 
 A Computer object that represents the computer account.
 

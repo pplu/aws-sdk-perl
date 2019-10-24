@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::CreateDBClusterParameterGroup;
-  use Moose;
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::CreateDBClusterParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::CreateDBClusterParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DBClusterParameterGroupName' => 1,
+                    'Description' => 1,
+                    'DBParameterGroupFamily' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +117,7 @@ The description for the DB cluster parameter group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the DB cluster parameter group.
 

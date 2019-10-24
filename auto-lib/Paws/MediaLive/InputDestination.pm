@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputDestination;
-  use Moose;
-  has Ip => (is => 'ro', isa => 'Str', request_name => 'ip', traits => ['NameInRequest']);
-  has Port => (is => 'ro', isa => 'Str', request_name => 'port', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
-  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputDestinationVpc', request_name => 'vpc', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputDestinationVpc/;
+  has Ip => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has Vpc => (is => 'ro', isa => MediaLive_InputDestinationVpc);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Vpc' => {
+                          'class' => 'Paws::MediaLive::InputDestinationVpc',
+                          'type' => 'MediaLive_InputDestinationVpc'
+                        },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Port' => {
+                           'type' => 'Str'
+                         },
+               'Ip' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'Vpc' => 'vpc',
+                       'Url' => 'url',
+                       'Port' => 'port',
+                       'Ip' => 'ip'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ for the lifetime of the input.
 to.
 
 
-=head2 Vpc => L<Paws::MediaLive::InputDestinationVpc>
+=head2 Vpc => MediaLive_InputDestinationVpc
 
   
 

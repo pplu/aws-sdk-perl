@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::AttachedPermissionsBoundary;
   use Moo;
   use Types::Standard qw/Str/;

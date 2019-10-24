@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::Event;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has SourceIdentifier => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'Date' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

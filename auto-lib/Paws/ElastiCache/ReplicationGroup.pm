@@ -1,21 +1,90 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ReplicationGroup;
-  use Moose;
-  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
-  has AutomaticFailover => (is => 'ro', isa => 'Str');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has ClusterEnabled => (is => 'ro', isa => 'Bool');
-  has ConfigurationEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
-  has Description => (is => 'ro', isa => 'Str');
-  has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ClusterId', traits => ['NameInRequest']);
-  has NodeGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroup]', request_name => 'NodeGroup', traits => ['NameInRequest']);
-  has PendingModifiedValues => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroupPendingModifiedValues');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshottingClusterId => (is => 'ro', isa => 'Str');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef Int/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ReplicationGroupPendingModifiedValues ElastiCache_Endpoint ElastiCache_NodeGroup/;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => Bool);
+  has AuthTokenEnabled => (is => 'ro', isa => Bool);
+  has AutomaticFailover => (is => 'ro', isa => Str);
+  has CacheNodeType => (is => 'ro', isa => Str);
+  has ClusterEnabled => (is => 'ro', isa => Bool);
+  has ConfigurationEndpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+  has Description => (is => 'ro', isa => Str);
+  has MemberClusters => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NodeGroups => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroup]);
+  has PendingModifiedValues => (is => 'ro', isa => ElastiCache_ReplicationGroupPendingModifiedValues);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int);
+  has SnapshottingClusterId => (is => 'ro', isa => Str);
+  has SnapshotWindow => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TransitEncryptionEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeGroups' => {
+                                 'class' => 'Paws::ElastiCache::NodeGroup',
+                                 'type' => 'ArrayRef[ElastiCache_NodeGroup]'
+                               },
+               'SnapshottingClusterId' => {
+                                            'type' => 'Str'
+                                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'AutomaticFailover' => {
+                                        'type' => 'Str'
+                                      },
+               'ConfigurationEndpoint' => {
+                                            'class' => 'Paws::ElastiCache::Endpoint',
+                                            'type' => 'ElastiCache_Endpoint'
+                                          },
+               'ClusterEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'TransitEncryptionEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'MemberClusters' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'PendingModifiedValues' => {
+                                            'class' => 'Paws::ElastiCache::ReplicationGroupPendingModifiedValues',
+                                            'type' => 'ElastiCache_ReplicationGroupPendingModifiedValues'
+                                          },
+               'AtRestEncryptionEnabled' => {
+                                              'type' => 'Bool'
+                                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AuthTokenEnabled' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'NodeGroups' => 'NodeGroup',
+                       'MemberClusters' => 'ClusterId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -114,7 +183,7 @@ shards (API/CLI: node groups).
 Valid values: C<true> | C<false>
 
 
-=head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
+=head2 ConfigurationEndpoint => ElastiCache_Endpoint
 
   The configuration endpoint for this replication group. Use the
 configuration endpoint to connect to this replication group.
@@ -131,7 +200,7 @@ configuration endpoint to connect to this replication group.
 group.
 
 
-=head2 NodeGroups => ArrayRef[L<Paws::ElastiCache::NodeGroup>]
+=head2 NodeGroups => ArrayRef[ElastiCache_NodeGroup]
 
   A list of node groups in this replication group. For Redis (cluster
 mode disabled) replication groups, this is a single-element list. For
@@ -139,7 +208,7 @@ Redis (cluster mode enabled) replication groups, the list contains an
 entry for each node group (shard).
 
 
-=head2 PendingModifiedValues => L<Paws::ElastiCache::ReplicationGroupPendingModifiedValues>
+=head2 PendingModifiedValues => ElastiCache_ReplicationGroupPendingModifiedValues
 
   A group of settings to be applied to the replication group, either
 immediately or during the next maintenance window.

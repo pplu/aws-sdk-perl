@@ -1,25 +1,103 @@
+# Generated from default/object.tt
 package Paws::Neptune::OrderableDBInstanceOption;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MaxIopsPerDbInstance => (is => 'ro', isa => 'Int');
-  has MaxIopsPerGib => (is => 'ro', isa => 'Num');
-  has MaxStorageSize => (is => 'ro', isa => 'Int');
-  has MinIopsPerDbInstance => (is => 'ro', isa => 'Int');
-  has MinIopsPerGib => (is => 'ro', isa => 'Num');
-  has MinStorageSize => (is => 'ro', isa => 'Int');
-  has MultiAZCapable => (is => 'ro', isa => 'Bool');
-  has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
-  has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has SupportsIops => (is => 'ro', isa => 'Bool');
-  has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
-  has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
-  has Vpc => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Num Bool/;
+  use Paws::Neptune::Types qw/Neptune_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Neptune_AvailabilityZone]);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MaxIopsPerDbInstance => (is => 'ro', isa => Int);
+  has MaxIopsPerGib => (is => 'ro', isa => Num);
+  has MaxStorageSize => (is => 'ro', isa => Int);
+  has MinIopsPerDbInstance => (is => 'ro', isa => Int);
+  has MinIopsPerGib => (is => 'ro', isa => Num);
+  has MinStorageSize => (is => 'ro', isa => Int);
+  has MultiAZCapable => (is => 'ro', isa => Bool);
+  has ReadReplicaCapable => (is => 'ro', isa => Bool);
+  has StorageType => (is => 'ro', isa => Str);
+  has SupportsEnhancedMonitoring => (is => 'ro', isa => Bool);
+  has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => Bool);
+  has SupportsIops => (is => 'ro', isa => Bool);
+  has SupportsPerformanceInsights => (is => 'ro', isa => Bool);
+  has SupportsStorageEncryption => (is => 'ro', isa => Bool);
+  has Vpc => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxStorageSize' => {
+                                     'type' => 'Int'
+                                   },
+               'Vpc' => {
+                          'type' => 'Bool'
+                        },
+               'SupportsStorageEncryption' => {
+                                                'type' => 'Bool'
+                                              },
+               'ReadReplicaCapable' => {
+                                         'type' => 'Bool'
+                                       },
+               'SupportsEnhancedMonitoring' => {
+                                                 'type' => 'Bool'
+                                               },
+               'MinIopsPerGib' => {
+                                    'type' => 'Num'
+                                  },
+               'SupportsPerformanceInsights' => {
+                                                  'type' => 'Bool'
+                                                },
+               'MultiAZCapable' => {
+                                     'type' => 'Bool'
+                                   },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxIopsPerGib' => {
+                                    'type' => 'Num'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::Neptune::AvailabilityZone',
+                                        'type' => 'ArrayRef[Neptune_AvailabilityZone]'
+                                      },
+               'MaxIopsPerDbInstance' => {
+                                           'type' => 'Int'
+                                         },
+               'MinIopsPerDbInstance' => {
+                                           'type' => 'Int'
+                                         },
+               'SupportsIAMDatabaseAuthentication' => {
+                                                        'type' => 'Bool'
+                                                      },
+               'MinStorageSize' => {
+                                     'type' => 'Int'
+                                   },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'SupportsIops' => {
+                                   'type' => 'Bool'
+                                 },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +136,7 @@ DescribeOrderableDBInstanceOptions action.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::Neptune::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[Neptune_AvailabilityZone]
 
   A list of Availability Zones for a DB instance.
 

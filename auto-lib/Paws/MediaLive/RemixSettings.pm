@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::RemixSettings;
-  use Moose;
-  has ChannelMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::AudioChannelMapping]', request_name => 'channelMappings', traits => ['NameInRequest'], required => 1);
-  has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
-  has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaLive::Types qw/MediaLive_AudioChannelMapping/;
+  has ChannelMappings => (is => 'ro', isa => ArrayRef[MediaLive_AudioChannelMapping], required => 1);
+  has ChannelsIn => (is => 'ro', isa => Int);
+  has ChannelsOut => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChannelMappings' => {
+                                      'class' => 'Paws::MediaLive::AudioChannelMapping',
+                                      'type' => 'ArrayRef[MediaLive_AudioChannelMapping]'
+                                    },
+               'ChannelsIn' => {
+                                 'type' => 'Int'
+                               },
+               'ChannelsOut' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'ChannelMappings' => 'channelMappings',
+                       'ChannelsIn' => 'channelsIn',
+                       'ChannelsOut' => 'channelsOut'
+                     },
+  'IsRequired' => {
+                    'ChannelMappings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +70,7 @@ Remix Settings
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ChannelMappings => ArrayRef[L<Paws::MediaLive::AudioChannelMapping>]
+=head2 B<REQUIRED> ChannelMappings => ArrayRef[MediaLive_AudioChannelMapping]
 
   Mapping of input channels to output channels, with appropriate gain
 adjustments.

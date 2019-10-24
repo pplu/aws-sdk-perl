@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Lambda::FunctionCodeLocation;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Str');
-  has RepositoryType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has Location => (is => 'ro', isa => Str);
+  has RepositoryType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryType' => {
+                                     'type' => 'Str'
+                                   },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

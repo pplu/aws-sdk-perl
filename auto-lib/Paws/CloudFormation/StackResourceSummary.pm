@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackResourceSummary;
-  use Moose;
-  has DriftInformation => (is => 'ro', isa => 'Paws::CloudFormation::StackResourceDriftInformationSummary');
-  has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceStatusReason => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackResourceDriftInformationSummary/;
+  has DriftInformation => (is => 'ro', isa => CloudFormation_StackResourceDriftInformationSummary);
+  has LastUpdatedTimestamp => (is => 'ro', isa => Str, required => 1);
+  has LogicalResourceId => (is => 'ro', isa => Str, required => 1);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has ResourceStatus => (is => 'ro', isa => Str, required => 1);
+  has ResourceStatusReason => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceStatusReason' => {
+                                           'type' => 'Str'
+                                         },
+               'LastUpdatedTimestamp' => {
+                                           'type' => 'Str'
+                                         },
+               'DriftInformation' => {
+                                       'class' => 'Paws::CloudFormation::StackResourceDriftInformationSummary',
+                                       'type' => 'CloudFormation_StackResourceDriftInformationSummary'
+                                     },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceStatus' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'LogicalResourceId' => 1,
+                    'ResourceType' => 1,
+                    'LastUpdatedTimestamp' => 1,
+                    'ResourceStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +84,7 @@ Contains high-level information about the specified stack resource.
 =head1 ATTRIBUTES
 
 
-=head2 DriftInformation => L<Paws::CloudFormation::StackResourceDriftInformationSummary>
+=head2 DriftInformation => CloudFormation_StackResourceDriftInformationSummary
 
   Information about whether the resource's actual configuration differs,
 or has I<drifted>, from its expected configuration, as defined in the

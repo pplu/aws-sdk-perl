@@ -1,22 +1,95 @@
+# Generated from default/object.tt
 package Paws::Route53::HealthCheckConfig;
-  use Moose;
-  has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
-  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ChildHealthCheck', traits => ['NameInRequest']);
-  has Disabled => (is => 'ro', isa => 'Bool');
-  has EnableSNI => (is => 'ro', isa => 'Bool');
-  has FailureThreshold => (is => 'ro', isa => 'Int');
-  has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
-  has HealthThreshold => (is => 'ro', isa => 'Int');
-  has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');
-  has Inverted => (is => 'ro', isa => 'Bool');
-  has IPAddress => (is => 'ro', isa => 'Str');
-  has MeasureLatency => (is => 'ro', isa => 'Bool');
-  has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Region', traits => ['NameInRequest']);
-  has RequestInterval => (is => 'ro', isa => 'Int');
-  has ResourcePath => (is => 'ro', isa => 'Str');
-  has SearchString => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool Int/;
+  use Paws::Route53::Types qw/Route53_AlarmIdentifier/;
+  has AlarmIdentifier => (is => 'ro', isa => Route53_AlarmIdentifier);
+  has ChildHealthChecks => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Disabled => (is => 'ro', isa => Bool);
+  has EnableSNI => (is => 'ro', isa => Bool);
+  has FailureThreshold => (is => 'ro', isa => Int);
+  has FullyQualifiedDomainName => (is => 'ro', isa => Str);
+  has HealthThreshold => (is => 'ro', isa => Int);
+  has InsufficientDataHealthStatus => (is => 'ro', isa => Str);
+  has Inverted => (is => 'ro', isa => Bool);
+  has IPAddress => (is => 'ro', isa => Str);
+  has MeasureLatency => (is => 'ro', isa => Bool);
+  has Port => (is => 'ro', isa => Int);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RequestInterval => (is => 'ro', isa => Int);
+  has ResourcePath => (is => 'ro', isa => Str);
+  has SearchString => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthThreshold' => {
+                                      'type' => 'Int'
+                                    },
+               'FailureThreshold' => {
+                                       'type' => 'Int'
+                                     },
+               'IPAddress' => {
+                                'type' => 'Str'
+                              },
+               'AlarmIdentifier' => {
+                                      'class' => 'Paws::Route53::AlarmIdentifier',
+                                      'type' => 'Route53_AlarmIdentifier'
+                                    },
+               'MeasureLatency' => {
+                                     'type' => 'Bool'
+                                   },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'RequestInterval' => {
+                                      'type' => 'Int'
+                                    },
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SearchString' => {
+                                   'type' => 'Str'
+                                 },
+               'ChildHealthChecks' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'InsufficientDataHealthStatus' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'FullyQualifiedDomainName' => {
+                                               'type' => 'Str'
+                                             },
+               'Inverted' => {
+                               'type' => 'Bool'
+                             },
+               'ResourcePath' => {
+                                   'type' => 'Str'
+                                 },
+               'EnableSNI' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'NameInRequest' => {
+                       'Regions' => 'Region',
+                       'ChildHealthChecks' => 'ChildHealthCheck'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +125,7 @@ A complex type that contains information about the health check.
 =head1 ATTRIBUTES
 
 
-=head2 AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>
+=head2 AlarmIdentifier => Route53_AlarmIdentifier
 
   A complex type that identifies the CloudWatch alarm that you want
 Amazon Route 53 health checkers to use to determine whether the

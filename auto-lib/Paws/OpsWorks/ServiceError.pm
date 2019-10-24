@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::ServiceError;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has ServiceErrorId => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ServiceErrorId => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceErrorId' => {
+                                     'type' => 'Str'
+                                   },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EmailMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has FeedbackForwardingAddress => (is => 'ro', isa => 'Str');
-  has FromAddress => (is => 'ro', isa => 'Str');
-  has RawEmail => (is => 'ro', isa => 'Paws::Pinpoint::RawEmail');
-  has ReplyToAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SimpleEmail => (is => 'ro', isa => 'Paws::Pinpoint::SimpleEmail');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_RawEmail Pinpoint_MapOfListOf__string Pinpoint_SimpleEmail/;
+  has Body => (is => 'ro', isa => Str);
+  has FeedbackForwardingAddress => (is => 'ro', isa => Str);
+  has FromAddress => (is => 'ro', isa => Str);
+  has RawEmail => (is => 'ro', isa => Pinpoint_RawEmail);
+  has ReplyToAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SimpleEmail => (is => 'ro', isa => Pinpoint_SimpleEmail);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FromAddress' => {
+                                  'type' => 'Str'
+                                },
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'SimpleEmail' => {
+                                  'class' => 'Paws::Pinpoint::SimpleEmail',
+                                  'type' => 'Pinpoint_SimpleEmail'
+                                },
+               'FeedbackForwardingAddress' => {
+                                                'type' => 'Str'
+                                              },
+               'ReplyToAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'RawEmail' => {
+                               'class' => 'Paws::Pinpoint::RawEmail',
+                               'type' => 'Pinpoint_RawEmail'
+                             },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +98,7 @@ forwarding is enabled.
 value is the FromAddress specified for the email channel.
 
 
-=head2 RawEmail => L<Paws::Pinpoint::RawEmail>
+=head2 RawEmail => Pinpoint_RawEmail
 
   The email message, represented as a raw MIME message.
 
@@ -71,13 +109,13 @@ value is the FromAddress specified for the email channel.
 replies to the email, each reply-to address receives the reply.
 
 
-=head2 SimpleEmail => L<Paws::Pinpoint::SimpleEmail>
+=head2 SimpleEmail => Pinpoint_SimpleEmail
 
   The email message, composed of a subject, a text part, and an HTML
 part.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The default message variables to use in the email message. You can
 override the default variables with individual address variables.

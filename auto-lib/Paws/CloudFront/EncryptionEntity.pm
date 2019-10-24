@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudFront::EncryptionEntity;
-  use Moose;
-  has FieldPatterns => (is => 'ro', isa => 'Paws::CloudFront::FieldPatterns', required => 1);
-  has ProviderId => (is => 'ro', isa => 'Str', required => 1);
-  has PublicKeyId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldPatterns/;
+  has FieldPatterns => (is => 'ro', isa => CloudFront_FieldPatterns, required => 1);
+  has ProviderId => (is => 'ro', isa => Str, required => 1);
+  has PublicKeyId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldPatterns' => {
+                                    'class' => 'Paws::CloudFront::FieldPatterns',
+                                    'type' => 'CloudFront_FieldPatterns'
+                                  },
+               'PublicKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'ProviderId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'FieldPatterns' => 1,
+                    'PublicKeyId' => 1,
+                    'ProviderId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ encryption key and field pattern specifications.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldPatterns => L<Paws::CloudFront::FieldPatterns>
+=head2 B<REQUIRED> FieldPatterns => CloudFront_FieldPatterns
 
   Field patterns in a field-level encryption content type profile specify
 the fields that you want to be encrypted. You can provide the full

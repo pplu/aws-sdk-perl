@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
-  has ValidationStatus => (is => 'ro', isa => 'Str', request_name => 'validationStatus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has DomainName => (is => 'ro', isa => Str);
+  has ValidationStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidationStatus' => {
+                                       'type' => 'Str'
+                                     },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ValidationStatus' => 'validationStatus',
+                       'DomainName' => 'domainName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

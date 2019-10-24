@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceAssociation;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has Content => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has Content => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

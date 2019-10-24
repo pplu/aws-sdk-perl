@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DeleteCertificateResponse;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Paws::DMS::Certificate');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_Certificate/;
+  has Certificate => (is => 'ro', isa => DMS_Certificate);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Certificate' => {
+                                  'class' => 'Paws::DMS::Certificate',
+                                  'type' => 'DMS_Certificate'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::DeleteCertificateResponse
 =head1 ATTRIBUTES
 
 
-=head2 Certificate => L<Paws::DMS::Certificate>
+=head2 Certificate => DMS_Certificate
 
 The Secure Sockets Layer (SSL) certificate.
 

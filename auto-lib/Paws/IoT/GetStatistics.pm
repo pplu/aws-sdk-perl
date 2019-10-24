@@ -1,17 +1,50 @@
 
 package Paws::IoT::GetStatistics;
-  use Moose;
-  has AggregationField => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'aggregationField');
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has QueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryString', required => 1);
-  has QueryVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queryVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AggregationField => (is => 'ro', isa => Str, predicate => 1);
+  has IndexName => (is => 'ro', isa => Str, predicate => 1);
+  has QueryString => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryVersion => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetStatistics');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/indices/statistics');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::GetStatisticsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetStatistics');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/indices/statistics');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::GetStatisticsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'AggregationField' => {
+                                       'type' => 'Str'
+                                     },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'QueryVersion' => 'queryVersion',
+                       'IndexName' => 'indexName',
+                       'AggregationField' => 'aggregationField',
+                       'QueryString' => 'queryString'
+                     },
+  'IsRequired' => {
+                    'QueryString' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

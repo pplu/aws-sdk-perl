@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::RebootClusterResult;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw/RedShift_Cluster/;
+  has Cluster => (is => 'ro', isa => RedShift_Cluster);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Cluster' => {
+                              'class' => 'Paws::RedShift::Cluster',
+                              'type' => 'RedShift_Cluster'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RedShift::RebootClusterResult
 =head1 ATTRIBUTES
 
 
-=head2 Cluster => L<Paws::RedShift::Cluster>
+=head2 Cluster => RedShift_Cluster
 
 
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Backup::BackupSelectionsListMember;
-  use Moose;
-  has BackupPlanId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has SelectionId => (is => 'ro', isa => 'Str');
-  has SelectionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupPlanId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has SelectionId => (is => 'ro', isa => Str);
+  has SelectionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'SelectionId' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'SelectionName' => {
+                                    'type' => 'Str'
+                                  },
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

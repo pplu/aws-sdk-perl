@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::Config::RemediationExecutionStatus;
-  use Moose;
-  has InvocationTime => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has ResourceKey => (is => 'ro', isa => 'Paws::Config::ResourceKey');
-  has State => (is => 'ro', isa => 'Str');
-  has StepDetails => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationExecutionStep]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_RemediationExecutionStep Config_ResourceKey/;
+  has InvocationTime => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has ResourceKey => (is => 'ro', isa => Config_ResourceKey);
+  has State => (is => 'ro', isa => Str);
+  has StepDetails => (is => 'ro', isa => ArrayRef[Config_RemediationExecutionStep]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'InvocationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ResourceKey' => {
+                                  'class' => 'Paws::Config::ResourceKey',
+                                  'type' => 'Config_ResourceKey'
+                                },
+               'StepDetails' => {
+                                  'class' => 'Paws::Config::RemediationExecutionStep',
+                                  'type' => 'ArrayRef[Config_RemediationExecutionStep]'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +82,7 @@ action for that resource.
   The time when the remediation execution was last updated.
 
 
-=head2 ResourceKey => L<Paws::Config::ResourceKey>
+=head2 ResourceKey => Config_ResourceKey
 
   
 
@@ -61,7 +92,7 @@ action for that resource.
   ENUM of the values.
 
 
-=head2 StepDetails => ArrayRef[L<Paws::Config::RemediationExecutionStep>]
+=head2 StepDetails => ArrayRef[Config_RemediationExecutionStep]
 
   Details of every step.
 

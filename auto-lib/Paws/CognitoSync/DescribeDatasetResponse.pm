@@ -1,9 +1,27 @@
 
 package Paws::CognitoSync::DescribeDatasetResponse;
-  use Moose;
-  has Dataset => (is => 'ro', isa => 'Paws::CognitoSync::Dataset');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw/CognitoSync_Dataset/;
+  has Dataset => (is => 'ro', isa => CognitoSync_Dataset);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Dataset' => {
+                              'class' => 'Paws::CognitoSync::Dataset',
+                              'type' => 'CognitoSync_Dataset'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::CognitoSync::DescribeDatasetResponse
 =head1 ATTRIBUTES
 
 
-=head2 Dataset => L<Paws::CognitoSync::Dataset>
+=head2 Dataset => CognitoSync_Dataset
 
 Meta data for a collection of data for an identity. An identity can
 have multiple datasets. A dataset can be general or associated with a

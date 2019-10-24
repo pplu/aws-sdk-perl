@@ -1,14 +1,64 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::ActivityTask;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'activityId' , required => 1);
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
-  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
-  has StartedEventId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startedEventId' , required => 1);
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['NameInRequest'], request_name => 'workflowExecution' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecution SimpleWorkflow_ActivityType/;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has ActivityType => (is => 'ro', isa => SimpleWorkflow_ActivityType, required => 1);
+  has Input => (is => 'ro', isa => Str);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TaskToken => (is => 'ro', isa => Str, required => 1);
+  has WorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'ActivityType' => {
+                                   'class' => 'Paws::SimpleWorkflow::ActivityType',
+                                   'type' => 'SimpleWorkflow_ActivityType'
+                                 },
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'WorkflowExecution' => {
+                                        'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                                        'type' => 'SimpleWorkflow_WorkflowExecution'
+                                      },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'TaskToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StartedEventId' => 'startedEventId',
+                       'ActivityType' => 'activityType',
+                       'ActivityId' => 'activityId',
+                       'WorkflowExecution' => 'workflowExecution',
+                       'Input' => 'input',
+                       'TaskToken' => 'taskToken'
+                     },
+  'IsRequired' => {
+                    'StartedEventId' => 1,
+                    'ActivityType' => 1,
+                    'ActivityId' => 1,
+                    'WorkflowExecution' => 1,
+                    'TaskToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +74,7 @@ Paws::SimpleWorkflow::ActivityTask
 The unique ID of the task.
 
 
-=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => SimpleWorkflow_ActivityType
 
 The type of this activity task.
 
@@ -48,7 +98,7 @@ workers to communicate progress and response information back to the
 system about the task.
 
 
-=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => SimpleWorkflow_WorkflowExecution
 
 The workflow execution that started this activity task.
 

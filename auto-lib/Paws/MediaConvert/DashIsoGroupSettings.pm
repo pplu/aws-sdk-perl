@@ -1,15 +1,73 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DashIsoGroupSettings;
-  use Moose;
-  has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
-  has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
-  has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
-  has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
-  has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DestinationSettings MediaConvert_DashIsoEncryptionSettings/;
+  has BaseUrl => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+  has Encryption => (is => 'ro', isa => MediaConvert_DashIsoEncryptionSettings);
+  has FragmentLength => (is => 'ro', isa => Int);
+  has HbbtvCompliance => (is => 'ro', isa => Str);
+  has MinBufferTime => (is => 'ro', isa => Int);
+  has SegmentControl => (is => 'ro', isa => Str);
+  has SegmentLength => (is => 'ro', isa => Int);
+  has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WriteSegmentTimelineInRepresentation' => {
+                                                           'type' => 'Str'
+                                                         },
+               'SegmentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'SegmentControl' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationSettings' => {
+                                          'class' => 'Paws::MediaConvert::DestinationSettings',
+                                          'type' => 'MediaConvert_DestinationSettings'
+                                        },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConvert::DashIsoEncryptionSettings',
+                                 'type' => 'MediaConvert_DashIsoEncryptionSettings'
+                               },
+               'HbbtvCompliance' => {
+                                      'type' => 'Str'
+                                    },
+               'MinBufferTime' => {
+                                    'type' => 'Int'
+                                  },
+               'FragmentLength' => {
+                                     'type' => 'Int'
+                                   },
+               'BaseUrl' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'WriteSegmentTimelineInRepresentation' => 'writeSegmentTimelineInRepresentation',
+                       'SegmentLength' => 'segmentLength',
+                       'Destination' => 'destination',
+                       'SegmentControl' => 'segmentControl',
+                       'DestinationSettings' => 'destinationSettings',
+                       'Encryption' => 'encryption',
+                       'HbbtvCompliance' => 'hbbtvCompliance',
+                       'MinBufferTime' => 'minBufferTime',
+                       'FragmentLength' => 'fragmentLength',
+                       'BaseUrl' => 'baseUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,13 +120,13 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination
 
 
-=head2 Encryption => L<Paws::MediaConvert::DashIsoEncryptionSettings>
+=head2 Encryption => MediaConvert_DashIsoEncryptionSettings
 
   DRM settings.
 

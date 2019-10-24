@@ -1,12 +1,44 @@
 
 package Paws::MQ::DescribeConfigurationRevisionResponse;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'configurationId');
-  has Created => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'created');
-  has Data => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'data');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ConfigurationId' => 'configurationId',
+                       'Created' => 'created',
+                       'Description' => 'description',
+                       'Data' => 'data'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

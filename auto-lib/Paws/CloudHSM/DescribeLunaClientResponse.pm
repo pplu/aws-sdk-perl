@@ -1,13 +1,43 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::DescribeLunaClientResponse;
-  use Moose;
-  has Certificate => (is => 'ro', isa => 'Str');
-  has CertificateFingerprint => (is => 'ro', isa => 'Str');
-  has ClientArn => (is => 'ro', isa => 'Str');
-  has Label => (is => 'ro', isa => 'Str');
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSM::Types qw//;
+  has Certificate => (is => 'ro', isa => Str);
+  has CertificateFingerprint => (is => 'ro', isa => Str);
+  has ClientArn => (is => 'ro', isa => Str);
+  has Label => (is => 'ro', isa => Str);
+  has LastModifiedTimestamp => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Certificate' => {
+                                  'type' => 'Str'
+                                },
+               'CertificateFingerprint' => {
+                                             'type' => 'Str'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedTimestamp' => {
+                                            'type' => 'Str'
+                                          },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'ClientArn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

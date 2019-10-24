@@ -1,16 +1,37 @@
 
 package Paws::KinesisVideo::ListTagsForStream;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideo::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listTagsForStream');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::ListTagsForStreamOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTagsForStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listTagsForStream');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::ListTagsForStreamOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -3,7 +3,7 @@ package Paws::EC2::LicenseConfigurationRequest;
   use Paws::EC2::Types qw//;
   has LicenseConfigurationArn => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LicenseConfigurationArn' => {
@@ -12,8 +12,8 @@ package Paws::EC2::LicenseConfigurationRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

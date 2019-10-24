@@ -23,7 +23,7 @@ package Paws::EC2::CreateCapacityReservation;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateCapacityReservationResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'EndDate' => {
@@ -66,11 +66,17 @@ package Paws::EC2::CreateCapacityReservation;
                'InstanceCount' => {
                                     'type' => 'Int'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'InstanceType' => 1,
+                    'InstanceCount' => 1,
+                    'InstancePlatform' => 1,
+                    'AvailabilityZone' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

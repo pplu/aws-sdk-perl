@@ -1,14 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::ListReviewPolicyResultsForHITResponse;
-  use Moose;
-  has AssignmentReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has AssignmentReviewReport => (is => 'ro', isa => 'Paws::MTurk::ReviewReport');
-  has HITId => (is => 'ro', isa => 'Str');
-  has HITReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has HITReviewReport => (is => 'ro', isa => 'Paws::MTurk::ReviewReport');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw/MTurk_ReviewPolicy MTurk_ReviewReport/;
+  has AssignmentReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy);
+  has AssignmentReviewReport => (is => 'ro', isa => MTurk_ReviewReport);
+  has HITId => (is => 'ro', isa => Str);
+  has HITReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy);
+  has HITReviewReport => (is => 'ro', isa => MTurk_ReviewReport);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'HITReviewPolicy' => {
+                                      'class' => 'Paws::MTurk::ReviewPolicy',
+                                      'type' => 'MTurk_ReviewPolicy'
+                                    },
+               'AssignmentReviewPolicy' => {
+                                             'class' => 'Paws::MTurk::ReviewPolicy',
+                                             'type' => 'MTurk_ReviewPolicy'
+                                           },
+               'HITId' => {
+                            'type' => 'Str'
+                          },
+               'AssignmentReviewReport' => {
+                                             'class' => 'Paws::MTurk::ReviewReport',
+                                             'type' => 'MTurk_ReviewReport'
+                                           },
+               'HITReviewReport' => {
+                                      'class' => 'Paws::MTurk::ReviewReport',
+                                      'type' => 'MTurk_ReviewReport'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -19,13 +56,13 @@ Paws::MTurk::ListReviewPolicyResultsForHITResponse
 =head1 ATTRIBUTES
 
 
-=head2 AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 AssignmentReviewPolicy => MTurk_ReviewPolicy
 
 The name of the Assignment-level Review Policy. This contains only the
 PolicyName element.
 
 
-=head2 AssignmentReviewReport => L<Paws::MTurk::ReviewReport>
+=head2 AssignmentReviewReport => MTurk_ReviewReport
 
 Contains both ReviewResult and ReviewAction elements for an Assignment.
 
@@ -35,13 +72,13 @@ Contains both ReviewResult and ReviewAction elements for an Assignment.
 The HITId of the HIT for which results have been returned.
 
 
-=head2 HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 HITReviewPolicy => MTurk_ReviewPolicy
 
 The name of the HIT-level Review Policy. This contains only the
 PolicyName element.
 
 
-=head2 HITReviewReport => L<Paws::MTurk::ReviewReport>
+=head2 HITReviewReport => MTurk_ReviewReport
 
 Contains both ReviewResult and ReviewAction elements for a particular
 HIT.

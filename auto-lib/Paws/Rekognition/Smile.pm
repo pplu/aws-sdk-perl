@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Smile;
-  use Moose;
-  has Confidence => (is => 'ro', isa => 'Num');
-  has Value => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Num Bool/;
+  use Paws::Rekognition::Types qw//;
+  has Confidence => (is => 'ro', isa => Num);
+  has Value => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Bool'
+                          },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

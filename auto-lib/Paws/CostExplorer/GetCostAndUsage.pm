@@ -1,18 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CostExplorer::GetCostAndUsage;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
-  has Granularity => (is => 'ro', isa => 'Str');
-  has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_GroupDefinition CostExplorer_Expression/;
+  has Filter => (is => 'ro', isa => CostExplorer_Expression, predicate => 1);
+  has Granularity => (is => 'ro', isa => Str, predicate => 1);
+  has GroupBy => (is => 'ro', isa => ArrayRef[CostExplorer_GroupDefinition], predicate => 1);
+  has Metrics => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCostAndUsage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetCostAndUsageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCostAndUsage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CostExplorer::GetCostAndUsageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupBy' => {
+                              'class' => 'Paws::CostExplorer::GroupDefinition',
+                              'type' => 'ArrayRef[CostExplorer_GroupDefinition]'
+                            },
+               'Filter' => {
+                             'class' => 'Paws::CostExplorer::Expression',
+                             'type' => 'CostExplorer_Expression'
+                           },
+               'Granularity' => {
+                                  'type' => 'Str'
+                                },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Metrics' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               }
+             },
+  'IsRequired' => {
+                    'TimePeriod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +114,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::CostExplorer::Expression>
+=head2 Filter => CostExplorer_Expression
 
 Filters AWS costs by different dimensions. For example, you can specify
 C<SERVICE> and C<LINKED_ACCOUNT> and get the costs that are associated
@@ -99,7 +136,7 @@ C<MONTHLY> granularities.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
-=head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
+=head2 GroupBy => ArrayRef[CostExplorer_GroupDefinition]
 
 You can group AWS costs using up to two different groups, either
 dimensions, tag keys, or both.
@@ -144,7 +181,7 @@ maximum page size.
 
 
 
-=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => CostExplorer_DateInterval
 
 Sets the start and end dates for retrieving AWS costs. The start date
 is inclusive, but the end date is exclusive. For example, if C<start>

@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingIndexingConfiguration;
-  use Moose;
-  has ThingConnectivityIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingConnectivityIndexingMode', traits => ['NameInRequest']);
-  has ThingIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingIndexingMode', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ThingConnectivityIndexingMode => (is => 'ro', isa => Str);
+  has ThingIndexingMode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingIndexingMode' => {
+                                        'type' => 'Str'
+                                      },
+               'ThingConnectivityIndexingMode' => {
+                                                    'type' => 'Str'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'ThingIndexingMode' => 'thingIndexingMode',
+                       'ThingConnectivityIndexingMode' => 'thingConnectivityIndexingMode'
+                     },
+  'IsRequired' => {
+                    'ThingIndexingMode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

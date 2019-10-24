@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::UpdateWorkteam;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has MemberDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MemberDefinition]');
-  has NotificationConfiguration => (is => 'ro', isa => 'Paws::SageMaker::NotificationConfiguration');
-  has WorkteamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_MemberDefinition SageMaker_NotificationConfiguration/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MemberDefinitions => (is => 'ro', isa => ArrayRef[SageMaker_MemberDefinition], predicate => 1);
+  has NotificationConfiguration => (is => 'ro', isa => SageMaker_NotificationConfiguration, predicate => 1);
+  has WorkteamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateWorkteam');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::UpdateWorkteamResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateWorkteam');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::UpdateWorkteamResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationConfiguration' => {
+                                                'class' => 'Paws::SageMaker::NotificationConfiguration',
+                                                'type' => 'SageMaker_NotificationConfiguration'
+                                              },
+               'MemberDefinitions' => {
+                                        'class' => 'Paws::SageMaker::MemberDefinition',
+                                        'type' => 'ArrayRef[SageMaker_MemberDefinition]'
+                                      },
+               'WorkteamName' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'WorkteamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,14 +96,14 @@ An updated description for the work team.
 
 
 
-=head2 MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
+=head2 MemberDefinitions => ArrayRef[SageMaker_MemberDefinition]
 
 A list of C<MemberDefinition> objects that contain the updated work
 team members.
 
 
 
-=head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
+=head2 NotificationConfiguration => SageMaker_NotificationConfiguration
 
 Configures SNS topic notifications for available or expiring work items
 

@@ -1,13 +1,29 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Shield::UpdateSubscription;
-  use Moose;
-  has AutoRenew => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Shield::Types qw//;
+  has AutoRenew => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSubscription');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Shield::UpdateSubscriptionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSubscription');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Shield::UpdateSubscriptionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoRenew' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

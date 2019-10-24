@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::VolumeInfo;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayId => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str');
-  has VolumeAttachmentStatus => (is => 'ro', isa => 'Str');
-  has VolumeId => (is => 'ro', isa => 'Str');
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
-  has VolumeType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GatewayId => (is => 'ro', isa => Str);
+  has VolumeARN => (is => 'ro', isa => Str);
+  has VolumeAttachmentStatus => (is => 'ro', isa => Str);
+  has VolumeId => (is => 'ro', isa => Str);
+  has VolumeSizeInBytes => (is => 'ro', isa => Int);
+  has VolumeType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'VolumeAttachmentStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'VolumeId' => {
+                               'type' => 'Str'
+                             },
+               'VolumeType' => {
+                                 'type' => 'Str'
+                               },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,20 +1,63 @@
 
 package Paws::IoT::ListAuditFindings;
-  use Moose;
-  has CheckName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkName');
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ResourceIdentifier => (is => 'ro', isa => 'Paws::IoT::ResourceIdentifier', traits => ['NameInRequest'], request_name => 'resourceIdentifier');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime');
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_ResourceIdentifier/;
+  has CheckName => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceIdentifier => (is => 'ro', isa => IoT_ResourceIdentifier, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAuditFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/findings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListAuditFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListAuditFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/findings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListAuditFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'class' => 'Paws::IoT::ResourceIdentifier',
+                                         'type' => 'IoT_ResourceIdentifier'
+                                       },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'CheckName' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'ResourceIdentifier' => 'resourceIdentifier',
+                       'TaskId' => 'taskId',
+                       'NextToken' => 'nextToken',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'CheckName' => 'checkName',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +136,7 @@ The token for the next set of results.
 
 
 
-=head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+=head2 ResourceIdentifier => IoT_ResourceIdentifier
 
 Information identifying the non-compliant resource.
 

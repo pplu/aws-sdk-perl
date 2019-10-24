@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::AppMesh::RouteSpec;
-  use Moose;
-  has HttpRoute => (is => 'ro', isa => 'Paws::AppMesh::HttpRoute', request_name => 'httpRoute', traits => ['NameInRequest']);
-  has TcpRoute => (is => 'ro', isa => 'Paws::AppMesh::TcpRoute', request_name => 'tcpRoute', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_TcpRoute AppMesh_HttpRoute/;
+  has HttpRoute => (is => 'ro', isa => AppMesh_HttpRoute);
+  has TcpRoute => (is => 'ro', isa => AppMesh_TcpRoute);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TcpRoute' => {
+                               'class' => 'Paws::AppMesh::TcpRoute',
+                               'type' => 'AppMesh_TcpRoute'
+                             },
+               'HttpRoute' => {
+                                'class' => 'Paws::AppMesh::HttpRoute',
+                                'type' => 'AppMesh_HttpRoute'
+                              }
+             },
+  'NameInRequest' => {
+                       'TcpRoute' => 'tcpRoute',
+                       'HttpRoute' => 'httpRoute'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ An object representing the specification of a route.
 =head1 ATTRIBUTES
 
 
-=head2 HttpRoute => L<Paws::AppMesh::HttpRoute>
+=head2 HttpRoute => AppMesh_HttpRoute
 
   The HTTP routing information for the route.
 
 
-=head2 TcpRoute => L<Paws::AppMesh::TcpRoute>
+=head2 TcpRoute => AppMesh_TcpRoute
 
   The TCP routing information for the route.
 

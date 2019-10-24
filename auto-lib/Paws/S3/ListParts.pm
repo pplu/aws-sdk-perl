@@ -51,7 +51,12 @@ use MooX::ClassAttribute;
                       'PartNumberMarker' => 'part-number-marker',
                       'MaxParts' => 'max-parts',
                       'UploadId' => 'uploadId'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

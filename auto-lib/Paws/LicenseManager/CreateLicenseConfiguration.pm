@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LicenseManager::CreateLicenseConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has LicenseCount => (is => 'ro', isa => 'Int');
-  has LicenseCountHardLimit => (is => 'ro', isa => 'Bool');
-  has LicenseCountingType => (is => 'ro', isa => 'Str', required => 1);
-  has LicenseRules => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_Tag/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseCount => (is => 'ro', isa => Int, predicate => 1);
+  has LicenseCountHardLimit => (is => 'ro', isa => Bool, predicate => 1);
+  has LicenseCountingType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LicenseRules => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[LicenseManager_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLicenseConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LicenseManager::CreateLicenseConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLicenseConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LicenseManager::CreateLicenseConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseRules' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'LicenseCountHardLimit' => {
+                                            'type' => 'Bool'
+                                          },
+               'LicenseCountingType' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::LicenseManager::Tag',
+                           'type' => 'ArrayRef[LicenseManager_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LicenseCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'LicenseCountingType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +139,7 @@ Name of the license configuration.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::LicenseManager::Tag>]
+=head2 Tags => ArrayRef[LicenseManager_Tag]
 
 The tags to apply to the resources during launch. You can only tag
 instances and volumes on launch. The specified tags are applied to all

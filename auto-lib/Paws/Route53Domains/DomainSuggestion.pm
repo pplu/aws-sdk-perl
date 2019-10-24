@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::DomainSuggestion;
-  use Moose;
-  has Availability => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw//;
+  has Availability => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Availability' => {
+                                   'type' => 'Str'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,22 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::CreateProfile;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str', required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DistanceUnit => (is => 'ro', isa => 'Str', required => 1);
-  has MaxVolumeLimit => (is => 'ro', isa => 'Int');
-  has ProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has PSTNEnabled => (is => 'ro', isa => 'Bool');
-  has SetupModeDisabled => (is => 'ro', isa => 'Bool');
-  has TemperatureUnit => (is => 'ro', isa => 'Str', required => 1);
-  has Timezone => (is => 'ro', isa => 'Str', required => 1);
-  has WakeWord => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Address => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DistanceUnit => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxVolumeLimit => (is => 'ro', isa => Int, predicate => 1);
+  has ProfileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PSTNEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has SetupModeDisabled => (is => 'ro', isa => Bool, predicate => 1);
+  has TemperatureUnit => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Timezone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WakeWord => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::CreateProfileResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::CreateProfileResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'SetupModeDisabled' => {
+                                        'type' => 'Bool'
+                                      },
+               'MaxVolumeLimit' => {
+                                     'type' => 'Int'
+                                   },
+               'TemperatureUnit' => {
+                                      'type' => 'Str'
+                                    },
+               'WakeWord' => {
+                               'type' => 'Str'
+                             },
+               'PSTNEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'DistanceUnit' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Timezone' => 1,
+                    'TemperatureUnit' => 1,
+                    'Address' => 1,
+                    'ProfileName' => 1,
+                    'WakeWord' => 1,
+                    'DistanceUnit' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

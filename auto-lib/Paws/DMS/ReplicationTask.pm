@@ -1,22 +1,88 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationTask;
-  use Moose;
-  has CdcStartPosition => (is => 'ro', isa => 'Str');
-  has CdcStopPosition => (is => 'ro', isa => 'Str');
-  has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has MigrationType => (is => 'ro', isa => 'Str');
-  has RecoveryCheckpoint => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
-  has ReplicationTaskArn => (is => 'ro', isa => 'Str');
-  has ReplicationTaskCreationDate => (is => 'ro', isa => 'Str');
-  has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
-  has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
-  has ReplicationTaskStartDate => (is => 'ro', isa => 'Str');
-  has ReplicationTaskStats => (is => 'ro', isa => 'Paws::DMS::ReplicationTaskStats');
-  has SourceEndpointArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StopReason => (is => 'ro', isa => 'Str');
-  has TableMappings => (is => 'ro', isa => 'Str');
-  has TargetEndpointArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationTaskStats/;
+  has CdcStartPosition => (is => 'ro', isa => Str);
+  has CdcStopPosition => (is => 'ro', isa => Str);
+  has LastFailureMessage => (is => 'ro', isa => Str);
+  has MigrationType => (is => 'ro', isa => Str);
+  has RecoveryCheckpoint => (is => 'ro', isa => Str);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str);
+  has ReplicationTaskArn => (is => 'ro', isa => Str);
+  has ReplicationTaskCreationDate => (is => 'ro', isa => Str);
+  has ReplicationTaskIdentifier => (is => 'ro', isa => Str);
+  has ReplicationTaskSettings => (is => 'ro', isa => Str);
+  has ReplicationTaskStartDate => (is => 'ro', isa => Str);
+  has ReplicationTaskStats => (is => 'ro', isa => DMS_ReplicationTaskStats);
+  has SourceEndpointArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StopReason => (is => 'ro', isa => Str);
+  has TableMappings => (is => 'ro', isa => Str);
+  has TargetEndpointArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TargetEndpointArn' => {
+                                        'type' => 'Str'
+                                      },
+               'SourceEndpointArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationTaskStats' => {
+                                           'class' => 'Paws::DMS::ReplicationTaskStats',
+                                           'type' => 'DMS_ReplicationTaskStats'
+                                         },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'MigrationType' => {
+                                    'type' => 'Str'
+                                  },
+               'RecoveryCheckpoint' => {
+                                         'type' => 'Str'
+                                       },
+               'LastFailureMessage' => {
+                                         'type' => 'Str'
+                                       },
+               'ReplicationTaskIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'ReplicationTaskArn' => {
+                                         'type' => 'Str'
+                                       },
+               'StopReason' => {
+                                 'type' => 'Str'
+                               },
+               'TableMappings' => {
+                                    'type' => 'Str'
+                                  },
+               'CdcStartPosition' => {
+                                       'type' => 'Str'
+                                     },
+               'ReplicationTaskStartDate' => {
+                                               'type' => 'Str'
+                                             },
+               'ReplicationTaskCreationDate' => {
+                                                  'type' => 'Str'
+                                                },
+               'CdcStopPosition' => {
+                                      'type' => 'Str'
+                                    },
+               'ReplicationTaskSettings' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -149,7 +215,7 @@ Cannot end with a hyphen or contain two consecutive hyphens.
   The date the replication task is scheduled to start.
 
 
-=head2 ReplicationTaskStats => L<Paws::DMS::ReplicationTaskStats>
+=head2 ReplicationTaskStats => DMS_ReplicationTaskStats
 
   The statistics for the task, including elapsed time, tables loaded, and
 table errors.

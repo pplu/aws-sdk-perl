@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentResponse]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_SegmentResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_SegmentResponse], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::SegmentResponse',
+                           'type' => 'ArrayRef[Pinpoint_SegmentResponse]'
+                         }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::SegmentResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_SegmentResponse]
 
   An array of responses, one for each segment that's associated with the
 application (Segments resource) or each version of a segment that's

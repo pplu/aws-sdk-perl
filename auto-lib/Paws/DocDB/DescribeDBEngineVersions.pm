@@ -1,21 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::DescribeDBEngineVersions;
-  use Moose;
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultOnly => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Filter]');
-  has ListSupportedCharacterSets => (is => 'ro', isa => 'Bool');
-  has ListSupportedTimezones => (is => 'ro', isa => 'Bool');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::DocDB::Types qw/DocDB_Filter/;
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[DocDB_Filter], predicate => 1);
+  has ListSupportedCharacterSets => (is => 'ro', isa => Bool, predicate => 1);
+  has ListSupportedTimezones => (is => 'ro', isa => Bool, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::DBEngineVersionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBEngineVersionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBEngineVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::DBEngineVersionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBEngineVersionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'ListSupportedCharacterSets' => {
+                                                 'type' => 'Bool'
+                                               },
+               'Filters' => {
+                              'class' => 'Paws::DocDB::Filter',
+                              'type' => 'ArrayRef[DocDB_Filter]'
+                            },
+               'ListSupportedTimezones' => {
+                                             'type' => 'Bool'
+                                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           },
+               'DefaultOnly' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -104,7 +145,7 @@ Example: C<5.1.49>
 
 
 
-=head2 Filters => ArrayRef[L<Paws::DocDB::Filter>]
+=head2 Filters => ArrayRef[DocDB_Filter]
 
 This parameter is not currently supported.
 

@@ -1,26 +1,105 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::RunTask;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
-  has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
-  has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
-  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
-  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
-  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
-  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
-  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
-  has PropagateTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'propagateTags' );
-  has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Tag ECS_TaskOverride ECS_PlacementConstraint ECS_PlacementStrategy ECS_NetworkConfiguration/;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has Count => (is => 'ro', isa => Int, predicate => 1);
+  has EnableECSManagedTags => (is => 'ro', isa => Bool, predicate => 1);
+  has Group => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchType => (is => 'ro', isa => Str, predicate => 1);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration, predicate => 1);
+  has Overrides => (is => 'ro', isa => ECS_TaskOverride, predicate => 1);
+  has PlacementConstraints => (is => 'ro', isa => ArrayRef[ECS_PlacementConstraint], predicate => 1);
+  has PlacementStrategy => (is => 'ro', isa => ArrayRef[ECS_PlacementStrategy], predicate => 1);
+  has PlatformVersion => (is => 'ro', isa => Str, predicate => 1);
+  has PropagateTags => (is => 'ro', isa => Str, predicate => 1);
+  has StartedBy => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag], predicate => 1);
+  has TaskDefinition => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RunTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RunTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::RunTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'Overrides' => {
+                                'class' => 'Paws::ECS::TaskOverride',
+                                'type' => 'ECS_TaskOverride'
+                              },
+               'Group' => {
+                            'type' => 'Str'
+                          },
+               'NetworkConfiguration' => {
+                                           'class' => 'Paws::ECS::NetworkConfiguration',
+                                           'type' => 'ECS_NetworkConfiguration'
+                                         },
+               'PlacementConstraints' => {
+                                           'class' => 'Paws::ECS::PlacementConstraint',
+                                           'type' => 'ArrayRef[ECS_PlacementConstraint]'
+                                         },
+               'PropagateTags' => {
+                                    'type' => 'Str'
+                                  },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'EnableECSManagedTags' => {
+                                           'type' => 'Bool'
+                                         },
+               'StartedBy' => {
+                                'type' => 'Str'
+                              },
+               'PlacementStrategy' => {
+                                        'class' => 'Paws::ECS::PlacementStrategy',
+                                        'type' => 'ArrayRef[ECS_PlacementStrategy]'
+                                      }
+             },
+  'NameInRequest' => {
+                       'LaunchType' => 'launchType',
+                       'PlatformVersion' => 'platformVersion',
+                       'TaskDefinition' => 'taskDefinition',
+                       'Overrides' => 'overrides',
+                       'Group' => 'group',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'PlacementConstraints' => 'placementConstraints',
+                       'PropagateTags' => 'propagateTags',
+                       'Count' => 'count',
+                       'Tags' => 'tags',
+                       'Cluster' => 'cluster',
+                       'EnableECSManagedTags' => 'enableECSManagedTags',
+                       'StartedBy' => 'startedBy',
+                       'PlacementStrategy' => 'placementStrategy'
+                     },
+  'IsRequired' => {
+                    'TaskDefinition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +178,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
 The network configuration for the task. This parameter is required for
 task definitions that use the C<awsvpc> network mode to receive their
@@ -110,7 +189,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 
-=head2 Overrides => L<Paws::ECS::TaskOverride>
+=head2 Overrides => ECS_TaskOverride
 
 A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should
@@ -125,7 +204,7 @@ includes the JSON formatting characters of the override structure.
 
 
 
-=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+=head2 PlacementConstraints => ArrayRef[ECS_PlacementConstraint]
 
 An array of placement constraint objects to use for the task. You can
 specify up to 10 constraints per task (including constraints in the
@@ -133,7 +212,7 @@ task definition and those specified at runtime).
 
 
 
-=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+=head2 PlacementStrategy => ArrayRef[ECS_PlacementStrategy]
 
 The placement strategy objects to use for the task. You can specify a
 maximum of five strategy rules per task.
@@ -178,7 +257,7 @@ parameter contains the deployment ID of the service that starts it.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
 The metadata that you apply to the task to help you categorize and
 organize them. Each tag consists of a key and an optional value, both

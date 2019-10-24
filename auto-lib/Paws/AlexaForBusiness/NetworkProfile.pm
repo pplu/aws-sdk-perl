@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::NetworkProfile;
-  use Moose;
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has CurrentPassword => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EapMethod => (is => 'ro', isa => 'Str');
-  has NetworkProfileArn => (is => 'ro', isa => 'Str');
-  has NetworkProfileName => (is => 'ro', isa => 'Str');
-  has NextPassword => (is => 'ro', isa => 'Str');
-  has SecurityType => (is => 'ro', isa => 'Str');
-  has Ssid => (is => 'ro', isa => 'Str');
-  has TrustAnchors => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has CertificateAuthorityArn => (is => 'ro', isa => Str);
+  has CurrentPassword => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EapMethod => (is => 'ro', isa => Str);
+  has NetworkProfileArn => (is => 'ro', isa => Str);
+  has NetworkProfileName => (is => 'ro', isa => Str);
+  has NextPassword => (is => 'ro', isa => Str);
+  has SecurityType => (is => 'ro', isa => Str);
+  has Ssid => (is => 'ro', isa => Str);
+  has TrustAnchors => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrustAnchors' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Ssid' => {
+                           'type' => 'Str'
+                         },
+               'EapMethod' => {
+                                'type' => 'Str'
+                              },
+               'NetworkProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'CurrentPassword' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'SecurityType' => {
+                                   'type' => 'Str'
+                                 },
+               'NetworkProfileName' => {
+                                         'type' => 'Str'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NextPassword' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

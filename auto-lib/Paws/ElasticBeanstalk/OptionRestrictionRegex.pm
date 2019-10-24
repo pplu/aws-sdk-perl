@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::OptionRestrictionRegex;
-  use Moose;
-  has Label => (is => 'ro', isa => 'Str');
-  has Pattern => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Label => (is => 'ro', isa => Str);
+  has Pattern => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pattern' => {
+                              'type' => 'Str'
+                            },
+               'Label' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ChannelMapping;
-  use Moose;
-  has OutputChannels => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputChannelMapping]', request_name => 'outputChannels', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_OutputChannelMapping/;
+  has OutputChannels => (is => 'ro', isa => ArrayRef[MediaConvert_OutputChannelMapping]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputChannels' => {
+                                     'class' => 'Paws::MediaConvert::OutputChannelMapping',
+                                     'type' => 'ArrayRef[MediaConvert_OutputChannelMapping]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'OutputChannels' => 'outputChannels'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +61,7 @@ amplification).
 =head1 ATTRIBUTES
 
 
-=head2 OutputChannels => ArrayRef[L<Paws::MediaConvert::OutputChannelMapping>]
+=head2 OutputChannels => ArrayRef[MediaConvert_OutputChannelMapping]
 
   List of output channels
 

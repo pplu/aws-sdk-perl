@@ -1,9 +1,14 @@
+# Generated from default/object.tt
 package Paws::IAM::RoleDetail;
   use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
   use Types::Standard qw/Str ArrayRef/;
   use Paws::IAM::Types qw/IAM_InstanceProfile IAM_AttachedPolicy IAM_Tag IAM_PolicyDetail IAM_AttachedPermissionsBoundary/;
   has Arn => (is => 'ro', isa => Str);
   has AssumeRolePolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->AssumeRolePolicyDocument)); });
   has AttachedManagedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);
   has CreateDate => (is => 'ro', isa => Str);
   has InstanceProfileList => (is => 'ro', isa => ArrayRef[IAM_InstanceProfile]);

@@ -1,9 +1,29 @@
 
 package Paws::Glacier::UploadMultipartPartOutput;
-  use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has Checksum => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Checksum' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInHeader' => {
+                       'Checksum' => 'x-amz-sha256-tree-hash'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

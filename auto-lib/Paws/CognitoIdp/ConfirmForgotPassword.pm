@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::ConfirmForgotPassword;
-  use Moose;
-  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ConfirmationCode => (is => 'ro', isa => 'Str', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has SecretHash => (is => 'ro', isa => 'Str');
-  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserContextDataType CognitoIdp_AnalyticsMetadataType/;
+  has AnalyticsMetadata => (is => 'ro', isa => CognitoIdp_AnalyticsMetadataType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfirmationCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecretHash => (is => 'ro', isa => Str, predicate => 1);
+  has UserContextData => (is => 'ro', isa => CognitoIdp_UserContextDataType, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmForgotPassword');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::ConfirmForgotPasswordResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConfirmForgotPassword');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::ConfirmForgotPasswordResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'ConfirmationCode' => {
+                                       'type' => 'Str'
+                                     },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'SecretHash' => {
+                                 'type' => 'Str'
+                               },
+               'AnalyticsMetadata' => {
+                                        'class' => 'Paws::CognitoIdp::AnalyticsMetadataType',
+                                        'type' => 'CognitoIdp_AnalyticsMetadataType'
+                                      },
+               'UserContextData' => {
+                                      'class' => 'Paws::CognitoIdp::UserContextDataType',
+                                      'type' => 'CognitoIdp_UserContextDataType'
+                                    }
+             },
+  'IsRequired' => {
+                    'Password' => 1,
+                    'ClientId' => 1,
+                    'ConfirmationCode' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+=head2 AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType
 
 The Amazon Pinpoint analytics metadata for collecting metrics for
 C<ConfirmForgotPassword> calls.
@@ -87,7 +129,7 @@ message.
 
 
 
-=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+=head2 UserContextData => CognitoIdp_UserContextDataType
 
 Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

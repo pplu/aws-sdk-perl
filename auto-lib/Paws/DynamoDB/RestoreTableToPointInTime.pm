@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::RestoreTableToPointInTime;
   use Moo;
@@ -14,7 +15,7 @@ package Paws::DynamoDB::RestoreTableToPointInTime;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::RestoreTableToPointInTimeOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SourceTableName' => {
@@ -29,11 +30,15 @@ package Paws::DynamoDB::RestoreTableToPointInTime;
                'TargetTableName' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'SourceTableName' => 1,
+                    'TargetTableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

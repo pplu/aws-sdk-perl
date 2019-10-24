@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::SequenceNumberRange;
-  use Moose;
-  has EndingSequenceNumber => (is => 'ro', isa => 'Str');
-  has StartingSequenceNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDBStreams::Types qw//;
+  has EndingSequenceNumber => (is => 'ro', isa => Str);
+  has StartingSequenceNumber => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndingSequenceNumber' => {
+                                           'type' => 'Str'
+                                         },
+               'StartingSequenceNumber' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

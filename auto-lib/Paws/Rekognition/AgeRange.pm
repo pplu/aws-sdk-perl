@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Rekognition::AgeRange;
-  use Moose;
-  has High => (is => 'ro', isa => 'Int');
-  has Low => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw//;
+  has High => (is => 'ro', isa => Int);
+  has Low => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Low' => {
+                          'type' => 'Int'
+                        },
+               'High' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

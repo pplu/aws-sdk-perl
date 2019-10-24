@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::RemoveTags;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has TagsList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_Tag/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagsList => (is => 'ro', isa => ArrayRef[CloudTrail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::RemoveTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::RemoveTagsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'TagsList' => {
+                               'class' => 'Paws::CloudTrail::Tag',
+                               'type' => 'ArrayRef[CloudTrail_Tag]'
+                             }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ C<arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail>
 
 
 
-=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
+=head2 TagsList => ArrayRef[CloudTrail_Tag]
 
 Specifies a list of tags to be removed.
 

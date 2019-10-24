@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::PersonalizeEvents::Event;
-  use Moose;
-  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
-  has EventType => (is => 'ro', isa => 'Str', request_name => 'eventType', traits => ['NameInRequest'], required => 1);
-  has Properties => (is => 'ro', isa => 'Str', request_name => 'properties', traits => ['NameInRequest'], required => 1);
-  has SentAt => (is => 'ro', isa => 'Str', request_name => 'sentAt', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PersonalizeEvents::Types qw//;
+  has EventId => (is => 'ro', isa => Str);
+  has EventType => (is => 'ro', isa => Str, required => 1);
+  has Properties => (is => 'ro', isa => Str, required => 1);
+  has SentAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SentAt' => {
+                             'type' => 'Str'
+                           },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'Properties' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'SentAt' => 'sentAt',
+                       'EventId' => 'eventId',
+                       'EventType' => 'eventType',
+                       'Properties' => 'properties'
+                     },
+  'IsRequired' => {
+                    'SentAt' => 1,
+                    'EventType' => 1,
+                    'Properties' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

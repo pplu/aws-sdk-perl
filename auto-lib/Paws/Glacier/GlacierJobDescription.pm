@@ -1,29 +1,109 @@
 
 package Paws::Glacier::GlacierJobDescription;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has ArchiveId => (is => 'ro', isa => 'Str');
-  has ArchiveSHA256TreeHash => (is => 'ro', isa => 'Str');
-  has ArchiveSizeInBytes => (is => 'ro', isa => 'Int');
-  has Completed => (is => 'ro', isa => 'Bool');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has InventoryRetrievalParameters => (is => 'ro', isa => 'Paws::Glacier::InventoryRetrievalJobDescription');
-  has InventorySizeInBytes => (is => 'ro', isa => 'Int');
-  has JobDescription => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobOutputPath => (is => 'ro', isa => 'Str');
-  has OutputLocation => (is => 'ro', isa => 'Paws::Glacier::OutputLocation');
-  has RetrievalByteRange => (is => 'ro', isa => 'Str');
-  has SelectParameters => (is => 'ro', isa => 'Paws::Glacier::SelectParameters');
-  has SHA256TreeHash => (is => 'ro', isa => 'Str');
-  has SNSTopic => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Tier => (is => 'ro', isa => 'Str');
-  has VaultARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Glacier::Types qw/Glacier_OutputLocation Glacier_InventoryRetrievalJobDescription Glacier_SelectParameters/;
+  has Action => (is => 'ro', isa => Str);
+  has ArchiveId => (is => 'ro', isa => Str);
+  has ArchiveSHA256TreeHash => (is => 'ro', isa => Str);
+  has ArchiveSizeInBytes => (is => 'ro', isa => Int);
+  has Completed => (is => 'ro', isa => Bool);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has InventoryRetrievalParameters => (is => 'ro', isa => Glacier_InventoryRetrievalJobDescription);
+  has InventorySizeInBytes => (is => 'ro', isa => Int);
+  has JobDescription => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has JobOutputPath => (is => 'ro', isa => Str);
+  has OutputLocation => (is => 'ro', isa => Glacier_OutputLocation);
+  has RetrievalByteRange => (is => 'ro', isa => Str);
+  has SelectParameters => (is => 'ro', isa => Glacier_SelectParameters);
+  has SHA256TreeHash => (is => 'ro', isa => Str);
+  has SNSTopic => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tier => (is => 'ro', isa => Str);
+  has VaultARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetrievalByteRange' => {
+                                         'type' => 'Str'
+                                       },
+               'Completed' => {
+                                'type' => 'Bool'
+                              },
+               'JobDescription' => {
+                                     'type' => 'Str'
+                                   },
+               'ArchiveSHA256TreeHash' => {
+                                            'type' => 'Str'
+                                          },
+               'ArchiveSizeInBytes' => {
+                                         'type' => 'Int'
+                                       },
+               'OutputLocation' => {
+                                     'class' => 'Paws::Glacier::OutputLocation',
+                                     'type' => 'Glacier_OutputLocation'
+                                   },
+               'JobOutputPath' => {
+                                    'type' => 'Str'
+                                  },
+               'ArchiveId' => {
+                                'type' => 'Str'
+                              },
+               'SHA256TreeHash' => {
+                                     'type' => 'Str'
+                                   },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'VaultARN' => {
+                               'type' => 'Str'
+                             },
+               'InventoryRetrievalParameters' => {
+                                                   'class' => 'Paws::Glacier::InventoryRetrievalJobDescription',
+                                                   'type' => 'Glacier_InventoryRetrievalJobDescription'
+                                                 },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'SNSTopic' => {
+                               'type' => 'Str'
+                             },
+               'SelectParameters' => {
+                                       'class' => 'Paws::Glacier::SelectParameters',
+                                       'type' => 'Glacier_SelectParameters'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   },
+               'InventorySizeInBytes' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +159,7 @@ representation of ISO 8601 date format, for example
 C<"2012-03-20T17:03:43.221Z">.
 
 
-=head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobDescription>
+=head2 InventoryRetrievalParameters => Glacier_InventoryRetrievalJobDescription
 
 Parameters used for range inventory retrieval.
 
@@ -106,7 +186,7 @@ An opaque string that identifies an Amazon S3 Glacier job.
 Contains the job output location.
 
 
-=head2 OutputLocation => L<Paws::Glacier::OutputLocation>
+=head2 OutputLocation => Glacier_OutputLocation
 
 Contains the location where the data from the select job is stored.
 
@@ -121,7 +201,7 @@ archive minus 1. For inventory retrieval or select jobs, this field is
 null.
 
 
-=head2 SelectParameters => L<Paws::Glacier::SelectParameters>
+=head2 SelectParameters => Glacier_SelectParameters
 
 Contains the parameters used for a select.
 

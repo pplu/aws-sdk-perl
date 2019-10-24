@@ -1,28 +1,107 @@
 
 package Paws::Lambda::FunctionConfiguration;
-  use Moose;
-  has CodeSha256 => (is => 'ro', isa => 'Str');
-  has CodeSize => (is => 'ro', isa => 'Int');
-  has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
-  has Description => (is => 'ro', isa => 'Str');
-  has Environment => (is => 'ro', isa => 'Paws::Lambda::EnvironmentResponse');
-  has FunctionArn => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str');
-  has Handler => (is => 'ro', isa => 'Str');
-  has KMSKeyArn => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Layers => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::Layer]');
-  has MasterArn => (is => 'ro', isa => 'Str');
-  has MemorySize => (is => 'ro', isa => 'Int');
-  has RevisionId => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has Runtime => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfigResponse');
-  has Version => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfigResponse');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Lambda::Types qw/Lambda_Layer Lambda_DeadLetterConfig Lambda_EnvironmentResponse Lambda_VpcConfigResponse Lambda_TracingConfigResponse/;
+  has CodeSha256 => (is => 'ro', isa => Str);
+  has CodeSize => (is => 'ro', isa => Int);
+  has DeadLetterConfig => (is => 'ro', isa => Lambda_DeadLetterConfig);
+  has Description => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => Lambda_EnvironmentResponse);
+  has FunctionArn => (is => 'ro', isa => Str);
+  has FunctionName => (is => 'ro', isa => Str);
+  has Handler => (is => 'ro', isa => Str);
+  has KMSKeyArn => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Layers => (is => 'ro', isa => ArrayRef[Lambda_Layer]);
+  has MasterArn => (is => 'ro', isa => Str);
+  has MemorySize => (is => 'ro', isa => Int);
+  has RevisionId => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has Runtime => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Int);
+  has TracingConfig => (is => 'ro', isa => Lambda_TracingConfigResponse);
+  has Version => (is => 'ro', isa => Str);
+  has VpcConfig => (is => 'ro', isa => Lambda_VpcConfigResponse);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TracingConfig' => {
+                                    'class' => 'Paws::Lambda::TracingConfigResponse',
+                                    'type' => 'Lambda_TracingConfigResponse'
+                                  },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Handler' => {
+                              'type' => 'Str'
+                            },
+               'DeadLetterConfig' => {
+                                       'class' => 'Paws::Lambda::DeadLetterConfig',
+                                       'type' => 'Lambda_DeadLetterConfig'
+                                     },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'Environment' => {
+                                  'class' => 'Paws::Lambda::EnvironmentResponse',
+                                  'type' => 'Lambda_EnvironmentResponse'
+                                },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Runtime' => {
+                              'type' => 'Str'
+                            },
+               'CodeSize' => {
+                               'type' => 'Int'
+                             },
+               'KMSKeyArn' => {
+                                'type' => 'Str'
+                              },
+               'MasterArn' => {
+                                'type' => 'Str'
+                              },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'MemorySize' => {
+                                 'type' => 'Int'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VpcConfig' => {
+                                'class' => 'Paws::Lambda::VpcConfigResponse',
+                                'type' => 'Lambda_VpcConfigResponse'
+                              },
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Layers' => {
+                             'class' => 'Paws::Lambda::Layer',
+                             'type' => 'ArrayRef[Lambda_Layer]'
+                           },
+               'CodeSha256' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +123,7 @@ The SHA256 hash of the function's deployment package.
 The size of the function's deployment package, in bytes.
 
 
-=head2 DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>
+=head2 DeadLetterConfig => Lambda_DeadLetterConfig
 
 The function's dead letter queue.
 
@@ -54,7 +133,7 @@ The function's dead letter queue.
 The function's description.
 
 
-=head2 Environment => L<Paws::Lambda::EnvironmentResponse>
+=head2 Environment => Lambda_EnvironmentResponse
 
 The function's environment variables.
 
@@ -88,7 +167,7 @@ format (https://www.w3.org/TR/NOTE-datetime)
 (YYYY-MM-DDThh:mm:ss.sTZD).
 
 
-=head2 Layers => ArrayRef[L<Paws::Lambda::Layer>]
+=head2 Layers => ArrayRef[Lambda_Layer]
 
 The function's layers
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
@@ -125,7 +204,7 @@ The amount of time that Lambda allows a function to run before stopping
 it.
 
 
-=head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>
+=head2 TracingConfig => Lambda_TracingConfigResponse
 
 The function's AWS X-Ray tracing configuration.
 
@@ -135,7 +214,7 @@ The function's AWS X-Ray tracing configuration.
 The version of the Lambda function.
 
 
-=head2 VpcConfig => L<Paws::Lambda::VpcConfigResponse>
+=head2 VpcConfig => Lambda_VpcConfigResponse
 
 The function's networking configuration.
 

@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::ECS::ContainerStateChange;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
-  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::ECS::Types qw/ECS_NetworkBinding/;
+  has ContainerName => (is => 'ro', isa => Str);
+  has ExitCode => (is => 'ro', isa => Int);
+  has NetworkBindings => (is => 'ro', isa => ArrayRef[ECS_NetworkBinding]);
+  has Reason => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'NetworkBindings' => {
+                                      'class' => 'Paws::ECS::NetworkBinding',
+                                      'type' => 'ArrayRef[ECS_NetworkBinding]'
+                                    },
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'NetworkBindings' => 'networkBindings',
+                       'ExitCode' => 'exitCode',
+                       'Status' => 'status',
+                       'ContainerName' => 'containerName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +88,7 @@ An object representing a change in state for a container.
 container exiting.
 
 
-=head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
+=head2 NetworkBindings => ArrayRef[ECS_NetworkBinding]
 
   Any network bindings associated with the container.
 

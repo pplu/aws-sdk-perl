@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Budgets::CalculatedSpend;
-  use Moose;
-  has ActualSpend => (is => 'ro', isa => 'Paws::Budgets::Spend', required => 1);
-  has ForecastedSpend => (is => 'ro', isa => 'Paws::Budgets::Spend');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Budgets::Types qw/Budgets_Spend/;
+  has ActualSpend => (is => 'ro', isa => Budgets_Spend, required => 1);
+  has ForecastedSpend => (is => 'ro', isa => Budgets_Spend);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForecastedSpend' => {
+                                      'class' => 'Paws::Budgets::Spend',
+                                      'type' => 'Budgets_Spend'
+                                    },
+               'ActualSpend' => {
+                                  'class' => 'Paws::Budgets::Spend',
+                                  'type' => 'Budgets_Spend'
+                                }
+             },
+  'IsRequired' => {
+                    'ActualSpend' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +69,12 @@ C<forecastedSpend> is C<75 USD>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActualSpend => L<Paws::Budgets::Spend>
+=head2 B<REQUIRED> ActualSpend => Budgets_Spend
 
   The amount of cost, usage, or RI units that you have used.
 
 
-=head2 ForecastedSpend => L<Paws::Budgets::Spend>
+=head2 ForecastedSpend => Budgets_Spend
 
   The amount of cost, usage, or RI units that you are forecasted to use.
 

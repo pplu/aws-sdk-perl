@@ -1,14 +1,15 @@
 package Paws::IoT1ClickProjects;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'projects.iot1click' }
   sub signing_name { 'iot1click' }
   sub version { '2018-05-14' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -208,7 +209,7 @@ Associates a physical device with a placement.
 
 =item ProjectName => Str
 
-=item [Attributes => L<Paws::IoT1ClickProjects::PlacementAttributeMap>]
+=item [Attributes => IoT1ClickProjects_PlacementAttributeMap]
 
 
 =back
@@ -228,9 +229,9 @@ Creates an empty placement.
 
 =item [Description => Str]
 
-=item [PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>]
+=item [PlacementTemplate => IoT1ClickProjects_PlacementTemplate]
 
-=item [Tags => L<Paws::IoT1ClickProjects::TagMap>]
+=item [Tags => IoT1ClickProjects_TagMap]
 
 
 =back
@@ -418,7 +419,7 @@ the resource.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::IoT1ClickProjects::TagMap>
+=item Tags => IoT1ClickProjects_TagMap
 
 
 =back
@@ -459,7 +460,7 @@ Removes one or more tags (metadata key/value pairs) from a resource.
 
 =item ProjectName => Str
 
-=item [Attributes => L<Paws::IoT1ClickProjects::PlacementAttributeMap>]
+=item [Attributes => IoT1ClickProjects_PlacementAttributeMap]
 
 
 =back
@@ -480,7 +481,7 @@ pass an empty value (i.e., "").
 
 =item [Description => Str]
 
-=item [PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>]
+=item [PlacementTemplate => IoT1ClickProjects_PlacementTemplate]
 
 
 =back

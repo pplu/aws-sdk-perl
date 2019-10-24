@@ -1,19 +1,64 @@
 
 package Paws::ApiGateway::GetUsage;
-  use Moose;
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endDate', required => 1);
-  has KeyId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'keyId');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startDate', required => 1);
-  has UsagePlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'usageplanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has EndDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsagePlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUsage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/usageplans/{usageplanId}/usage');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Usage');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetUsage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/usageplans/{usageplanId}/usage');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Usage');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'UsagePlanId' => {
+                                  'type' => 'Str'
+                                },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'UsagePlanId' => 'usageplanId'
+                  },
+  'ParamInQuery' => {
+                      'EndDate' => 'endDate',
+                      'Position' => 'position',
+                      'Limit' => 'limit',
+                      'KeyId' => 'keyId',
+                      'StartDate' => 'startDate'
+                    },
+  'IsRequired' => {
+                    'EndDate' => 1,
+                    'UsagePlanId' => 1,
+                    'StartDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

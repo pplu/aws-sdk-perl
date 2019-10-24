@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Discovery;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'discovery' }
   sub signing_name { 'discovery' }
   sub version { '2015-11-01' }
   sub target_prefix { 'AWSPoseidonService_V2015_11_01' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -454,7 +456,7 @@ Creates an application with the given name and description.
 
 =item ConfigurationIds => ArrayRef[Str|Undef]
 
-=item Tags => ArrayRef[L<Paws::Discovery::Tag>]
+=item Tags => ArrayRef[Discovery_Tag]
 
 
 =back
@@ -491,7 +493,7 @@ configuration items.
 
 =item ConfigurationIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::Discovery::Tag>]]
+=item [Tags => ArrayRef[Discovery_Tag]]
 
 
 =back
@@ -510,7 +512,7 @@ tags. This API accepts a list of multiple configuration items.
 
 =item [AgentIds => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::Discovery::Filter>]]
+=item [Filters => ArrayRef[Discovery_Filter]]
 
 =item [MaxResults => Int]
 
@@ -626,7 +628,7 @@ instead.
 
 =item [ExportIds => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]]
+=item [Filters => ArrayRef[Discovery_ExportFilter]]
 
 =item [MaxResults => Int]
 
@@ -647,7 +649,7 @@ status of up to 100 export tasks.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Discovery::ImportTaskFilter>]]
+=item [Filters => ArrayRef[Discovery_ImportTaskFilter]]
 
 =item [MaxResults => Int]
 
@@ -669,7 +671,7 @@ and more.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Discovery::TagFilter>]]
+=item [Filters => ArrayRef[Discovery_TagFilter]]
 
 =item [MaxResults => Int]
 
@@ -773,13 +775,13 @@ the command prompt as shown in the example.
 
 =item ConfigurationType => Str
 
-=item [Filters => ArrayRef[L<Paws::Discovery::Filter>]]
+=item [Filters => ArrayRef[Discovery_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]]
+=item [OrderBy => ArrayRef[Discovery_OrderByElement]]
 
 
 =back
@@ -857,7 +859,7 @@ Instructs the specified agents or connectors to start collecting data.
 
 =item [ExportDataFormat => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]]
+=item [Filters => ArrayRef[Discovery_ExportFilter]]
 
 =item [StartTime => Str]
 
@@ -1005,9 +1007,9 @@ Updates metadata about an application.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllAgents(sub { },[AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAgents(sub { },[AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[Discovery_Filter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllAgents([AgentIds => ArrayRef[Str|Undef], Filters => ArrayRef[Discovery_Filter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1041,9 +1043,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Discovery::DescribeExportConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllExportTasks(sub { },[ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllExportTasks(sub { },[ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[Discovery_ExportFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::Discovery::ExportFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllExportTasks([ExportIds => ArrayRef[Str|Undef], Filters => ArrayRef[Discovery_ExportFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1053,9 +1055,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Discovery::DescribeExportTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllTags(sub { },[Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllTags(sub { },[Filters => ArrayRef[Discovery_TagFilter], MaxResults => Int, NextToken => Str])
 
-=head2 DescribeAllTags([Filters => ArrayRef[L<Paws::Discovery::TagFilter>], MaxResults => Int, NextToken => Str])
+=head2 DescribeAllTags([Filters => ArrayRef[Discovery_TagFilter], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1065,9 +1067,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Discovery::DescribeTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllConfigurations(sub { },ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+=head2 ListAllConfigurations(sub { },ConfigurationType => Str, [Filters => ArrayRef[Discovery_Filter], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[Discovery_OrderByElement]])
 
-=head2 ListAllConfigurations(ConfigurationType => Str, [Filters => ArrayRef[L<Paws::Discovery::Filter>], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[L<Paws::Discovery::OrderByElement>]])
+=head2 ListAllConfigurations(ConfigurationType => Str, [Filters => ArrayRef[Discovery_Filter], MaxResults => Int, NextToken => Str, OrderBy => ArrayRef[Discovery_OrderByElement]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

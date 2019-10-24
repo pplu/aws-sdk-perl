@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListObjectAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKeyAndValue/;
+  has Attributes => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                 'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Represents the output of a ListObjectAttributes response operation.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 Attributes => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
   The attributes map that is associated with the object. C<AttributeArn>
 is the key; attribute value is the value.

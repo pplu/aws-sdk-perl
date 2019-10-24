@@ -1,30 +1,150 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LoadBalancerTlsCertificate;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest']);
-  has DomainValidationRecords => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationRecord]', request_name => 'domainValidationRecords', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
-  has IssuedAt => (is => 'ro', isa => 'Str', request_name => 'issuedAt', traits => ['NameInRequest']);
-  has Issuer => (is => 'ro', isa => 'Str', request_name => 'issuer', traits => ['NameInRequest']);
-  has KeyAlgorithm => (is => 'ro', isa => 'Str', request_name => 'keyAlgorithm', traits => ['NameInRequest']);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', request_name => 'loadBalancerName', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
-  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
-  has RenewalSummary => (is => 'ro', isa => 'Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary', request_name => 'renewalSummary', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has RevocationReason => (is => 'ro', isa => 'Str', request_name => 'revocationReason', traits => ['NameInRequest']);
-  has RevokedAt => (is => 'ro', isa => 'Str', request_name => 'revokedAt', traits => ['NameInRequest']);
-  has Serial => (is => 'ro', isa => 'Str', request_name => 'serial', traits => ['NameInRequest']);
-  has SignatureAlgorithm => (is => 'ro', isa => 'Str', request_name => 'signatureAlgorithm', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Subject => (is => 'ro', isa => 'Str', request_name => 'subject', traits => ['NameInRequest']);
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subjectAlternativeNames', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::Lightsail::Types qw/Lightsail_LoadBalancerTlsCertificateDomainValidationRecord Lightsail_ResourceLocation Lightsail_LoadBalancerTlsCertificateRenewalSummary Lightsail_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has DomainValidationRecords => (is => 'ro', isa => ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationRecord]);
+  has FailureReason => (is => 'ro', isa => Str);
+  has IsAttached => (is => 'ro', isa => Bool);
+  has IssuedAt => (is => 'ro', isa => Str);
+  has Issuer => (is => 'ro', isa => Str);
+  has KeyAlgorithm => (is => 'ro', isa => Str);
+  has LoadBalancerName => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+  has RenewalSummary => (is => 'ro', isa => Lightsail_LoadBalancerTlsCertificateRenewalSummary);
+  has ResourceType => (is => 'ro', isa => Str);
+  has RevocationReason => (is => 'ro', isa => Str);
+  has RevokedAt => (is => 'ro', isa => Str);
+  has Serial => (is => 'ro', isa => Str);
+  has SignatureAlgorithm => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str);
+  has SubjectAlternativeNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IssuedAt' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Serial' => {
+                             'type' => 'Str'
+                           },
+               'RevocationReason' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'RevokedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'KeyAlgorithm' => {
+                                   'type' => 'Str'
+                                 },
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              },
+               'IsAttached' => {
+                                 'type' => 'Bool'
+                               },
+               'SignatureAlgorithm' => {
+                                         'type' => 'Str'
+                                       },
+               'DomainValidationRecords' => {
+                                              'class' => 'Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationRecord',
+                                              'type' => 'ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationRecord]'
+                                            },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'SubjectAlternativeNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'Issuer' => {
+                             'type' => 'Str'
+                           },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RenewalSummary' => {
+                                     'class' => 'Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary',
+                                     'type' => 'Lightsail_LoadBalancerTlsCertificateRenewalSummary'
+                                   }
+             },
+  'NameInRequest' => {
+                       'IssuedAt' => 'issuedAt',
+                       'Status' => 'status',
+                       'Serial' => 'serial',
+                       'RevocationReason' => 'revocationReason',
+                       'ResourceType' => 'resourceType',
+                       'CreatedAt' => 'createdAt',
+                       'FailureReason' => 'failureReason',
+                       'RevokedAt' => 'revokedAt',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'KeyAlgorithm' => 'keyAlgorithm',
+                       'NotAfter' => 'notAfter',
+                       'Subject' => 'subject',
+                       'SupportCode' => 'supportCode',
+                       'NotBefore' => 'notBefore',
+                       'IsAttached' => 'isAttached',
+                       'SignatureAlgorithm' => 'signatureAlgorithm',
+                       'DomainValidationRecords' => 'domainValidationRecords',
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'SubjectAlternativeNames' => 'subjectAlternativeNames',
+                       'Tags' => 'tags',
+                       'Issuer' => 'issuer',
+                       'DomainName' => 'domainName',
+                       'Name' => 'name',
+                       'RenewalSummary' => 'renewalSummary'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +198,7 @@ TLS is just an updated, more secure version of Secure Socket Layer
   The domain name for your SSL/TLS certificate.
 
 
-=head2 DomainValidationRecords => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationRecord>]
+=head2 DomainValidationRecords => ArrayRef[Lightsail_LoadBalancerTlsCertificateDomainValidationRecord]
 
   An array of LoadBalancerTlsCertificateDomainValidationRecord objects
 describing the records.
@@ -116,7 +236,7 @@ private key).
   The load balancer name where your SSL/TLS certificate is attached.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region and Availability Zone where you created your
 certificate.
@@ -137,7 +257,7 @@ certificate.
   The timestamp when the SSL/TLS certificate is first valid.
 
 
-=head2 RenewalSummary => L<Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary>
+=head2 RenewalSummary => Lightsail_LoadBalancerTlsCertificateRenewalSummary
 
   An object containing information about the status of Lightsail's
 managed renewal for the certificate.
@@ -243,7 +363,7 @@ certificate. This code enables our support team to look up your
 Lightsail information more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

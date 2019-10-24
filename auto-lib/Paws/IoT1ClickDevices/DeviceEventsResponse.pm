@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::DeviceEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoT1ClickDevices::DeviceEvent]', request_name => 'events', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices_DeviceEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[IoT1ClickDevices_DeviceEvent]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Events' => {
+                             'class' => 'Paws::IoT1ClickDevices::DeviceEvent',
+                             'type' => 'ArrayRef[IoT1ClickDevices_DeviceEvent]'
+                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Events' => 'events'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::IoT1ClickDevices::DeviceEvent>]
+=head2 Events => ArrayRef[IoT1ClickDevices_DeviceEvent]
 
   An array of zero or more elements describing the event(s) associated
 with the device.

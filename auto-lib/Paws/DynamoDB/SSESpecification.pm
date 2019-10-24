@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::SSESpecification;
   use Moo;
   use Types::Standard qw/Bool Str/;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::SSESpecification;
   has KMSMasterKeyId => (is => 'ro', isa => Str);
   has SSEType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Enabled' => {
@@ -21,8 +22,8 @@ package Paws::DynamoDB::SSESpecification;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

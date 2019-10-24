@@ -1,11 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DownloadDBLogFilePortionDetails;
-  use Moose;
-  has AdditionalDataPending => (is => 'ro', isa => 'Bool');
-  has LogFileData => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RDS::Types qw//;
+  has AdditionalDataPending => (is => 'ro', isa => Bool);
+  has LogFileData => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'LogFileData' => {
+                                  'type' => 'Str'
+                                },
+               'AdditionalDataPending' => {
+                                            'type' => 'Bool'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

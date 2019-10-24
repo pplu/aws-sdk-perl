@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PullRequestTarget;
-  use Moose;
-  has DestinationCommit => (is => 'ro', isa => 'Str', request_name => 'destinationCommit', traits => ['NameInRequest']);
-  has DestinationReference => (is => 'ro', isa => 'Str', request_name => 'destinationReference', traits => ['NameInRequest']);
-  has MergeBase => (is => 'ro', isa => 'Str', request_name => 'mergeBase', traits => ['NameInRequest']);
-  has MergeMetadata => (is => 'ro', isa => 'Paws::CodeCommit::MergeMetadata', request_name => 'mergeMetadata', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
-  has SourceCommit => (is => 'ro', isa => 'Str', request_name => 'sourceCommit', traits => ['NameInRequest']);
-  has SourceReference => (is => 'ro', isa => 'Str', request_name => 'sourceReference', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_MergeMetadata/;
+  has DestinationCommit => (is => 'ro', isa => Str);
+  has DestinationReference => (is => 'ro', isa => Str);
+  has MergeBase => (is => 'ro', isa => Str);
+  has MergeMetadata => (is => 'ro', isa => CodeCommit_MergeMetadata);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has SourceCommit => (is => 'ro', isa => Str);
+  has SourceReference => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceReference' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceCommit' => {
+                                   'type' => 'Str'
+                                 },
+               'DestinationCommit' => {
+                                        'type' => 'Str'
+                                      },
+               'MergeBase' => {
+                                'type' => 'Str'
+                              },
+               'MergeMetadata' => {
+                                    'class' => 'Paws::CodeCommit::MergeMetadata',
+                                    'type' => 'CodeCommit_MergeMetadata'
+                                  },
+               'DestinationReference' => {
+                                           'type' => 'Str'
+                                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SourceReference' => 'sourceReference',
+                       'SourceCommit' => 'sourceCommit',
+                       'DestinationCommit' => 'destinationCommit',
+                       'MergeBase' => 'mergeBase',
+                       'MergeMetadata' => 'mergeMetadata',
+                       'DestinationReference' => 'destinationReference',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +105,7 @@ merged into. Also known as the destination branch.
 destination branch have in common.
 
 
-=head2 MergeMetadata => L<Paws::CodeCommit::MergeMetadata>
+=head2 MergeMetadata => CodeCommit_MergeMetadata
 
   Returns metadata about the state of the merge, including whether the
 merge has been made.

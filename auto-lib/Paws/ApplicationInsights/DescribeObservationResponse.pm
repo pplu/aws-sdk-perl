@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::DescribeObservationResponse;
-  use Moose;
-  has Observation => (is => 'ro', isa => 'Paws::ApplicationInsights::Observation');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_Observation/;
+  has Observation => (is => 'ro', isa => ApplicationInsights_Observation);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Observation' => {
+                                  'class' => 'Paws::ApplicationInsights::Observation',
+                                  'type' => 'ApplicationInsights_Observation'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ApplicationInsights::DescribeObservationResponse
 =head1 ATTRIBUTES
 
 
-=head2 Observation => L<Paws::ApplicationInsights::Observation>
+=head2 Observation => ApplicationInsights_Observation
 
 Information about the observation.
 

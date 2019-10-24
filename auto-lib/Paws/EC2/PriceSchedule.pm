@@ -6,7 +6,7 @@ package Paws::EC2::PriceSchedule;
   has Price => (is => 'ro', isa => Num);
   has Term => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CurrencyCode' => {
@@ -30,8 +30,8 @@ package Paws::EC2::PriceSchedule;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

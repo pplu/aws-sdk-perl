@@ -1,14 +1,34 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeEventCategories;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::EventCategoriesMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEventCategories');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::EventCategoriesMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEventCategoriesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::Neptune::Filter',
+                              'type' => 'ArrayRef[Neptune_Filter]'
+                            },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 This parameter is not currently supported.
 

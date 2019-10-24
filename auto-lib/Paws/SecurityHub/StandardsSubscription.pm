@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::StandardsSubscription;
-  use Moose;
-  has StandardsArn => (is => 'ro', isa => 'Str', required => 1);
-  has StandardsInput => (is => 'ro', isa => 'Paws::SecurityHub::StandardsInputParameterMap', required => 1);
-  has StandardsStatus => (is => 'ro', isa => 'Str', required => 1);
-  has StandardsSubscriptionArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_StandardsInputParameterMap/;
+  has StandardsArn => (is => 'ro', isa => Str, required => 1);
+  has StandardsInput => (is => 'ro', isa => SecurityHub_StandardsInputParameterMap, required => 1);
+  has StandardsStatus => (is => 'ro', isa => Str, required => 1);
+  has StandardsSubscriptionArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StandardsInput' => {
+                                     'class' => 'Paws::SecurityHub::StandardsInputParameterMap',
+                                     'type' => 'SecurityHub_StandardsInputParameterMap'
+                                   },
+               'StandardsStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'StandardsArn' => {
+                                   'type' => 'Str'
+                                 },
+               'StandardsSubscriptionArn' => {
+                                               'type' => 'Str'
+                                             }
+             },
+  'IsRequired' => {
+                    'StandardsInput' => 1,
+                    'StandardsStatus' => 1,
+                    'StandardsArn' => 1,
+                    'StandardsSubscriptionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +81,7 @@ standard, which uses the following ARN:
 C<arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.>
 
 
-=head2 B<REQUIRED> StandardsInput => L<Paws::SecurityHub::StandardsInputParameterMap>
+=head2 B<REQUIRED> StandardsInput => SecurityHub_StandardsInputParameterMap
 
   A key-value pair of input for the standard.
 

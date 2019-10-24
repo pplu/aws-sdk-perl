@@ -1,11 +1,59 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::PackagingConfigurationCreateParameters;
-  use Moose;
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafPackage', request_name => 'cmafPackage', traits => ['NameInRequest']);
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
-  has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_HlsPackage MediaPackageVod_DashPackage MediaPackageVod_MssPackage MediaPackageVod_CmafPackage/;
+  has CmafPackage => (is => 'ro', isa => MediaPackageVod_CmafPackage);
+  has DashPackage => (is => 'ro', isa => MediaPackageVod_DashPackage);
+  has HlsPackage => (is => 'ro', isa => MediaPackageVod_HlsPackage);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has MssPackage => (is => 'ro', isa => MediaPackageVod_MssPackage);
+  has PackagingGroupId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::MssPackage',
+                                 'type' => 'MediaPackageVod_MssPackage'
+                               },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::CmafPackage',
+                                  'type' => 'MediaPackageVod_CmafPackage'
+                                },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::HlsPackage',
+                                 'type' => 'MediaPackageVod_HlsPackage'
+                               },
+               'DashPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::DashPackage',
+                                  'type' => 'MediaPackageVod_DashPackage'
+                                }
+             },
+  'NameInRequest' => {
+                       'MssPackage' => 'mssPackage',
+                       'CmafPackage' => 'cmafPackage',
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'Id' => 'id',
+                       'HlsPackage' => 'hlsPackage',
+                       'DashPackage' => 'dashPackage'
+                     },
+  'IsRequired' => {
+                    'PackagingGroupId' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,17 +90,17 @@ resource.
 =head1 ATTRIBUTES
 
 
-=head2 CmafPackage => L<Paws::MediaPackageVod::CmafPackage>
+=head2 CmafPackage => MediaPackageVod_CmafPackage
 
   
 
 
-=head2 DashPackage => L<Paws::MediaPackageVod::DashPackage>
+=head2 DashPackage => MediaPackageVod_DashPackage
 
   
 
 
-=head2 HlsPackage => L<Paws::MediaPackageVod::HlsPackage>
+=head2 HlsPackage => MediaPackageVod_HlsPackage
 
   
 
@@ -62,7 +110,7 @@ resource.
   The ID of the PackagingConfiguration.
 
 
-=head2 MssPackage => L<Paws::MediaPackageVod::MssPackage>
+=head2 MssPackage => MediaPackageVod_MssPackage
 
   
 

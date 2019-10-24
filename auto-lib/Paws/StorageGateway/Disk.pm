@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::Disk;
-  use Moose;
-  has DiskAllocationResource => (is => 'ro', isa => 'Str');
-  has DiskAllocationType => (is => 'ro', isa => 'Str');
-  has DiskAttributeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DiskId => (is => 'ro', isa => 'Str');
-  has DiskNode => (is => 'ro', isa => 'Str');
-  has DiskPath => (is => 'ro', isa => 'Str');
-  has DiskSizeInBytes => (is => 'ro', isa => 'Int');
-  has DiskStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::StorageGateway::Types qw//;
+  has DiskAllocationResource => (is => 'ro', isa => Str);
+  has DiskAllocationType => (is => 'ro', isa => Str);
+  has DiskAttributeList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DiskId => (is => 'ro', isa => Str);
+  has DiskNode => (is => 'ro', isa => Str);
+  has DiskPath => (is => 'ro', isa => Str);
+  has DiskSizeInBytes => (is => 'ro', isa => Int);
+  has DiskStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiskPath' => {
+                               'type' => 'Str'
+                             },
+               'DiskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'DiskAllocationType' => {
+                                         'type' => 'Str'
+                                       },
+               'DiskSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'DiskNode' => {
+                               'type' => 'Str'
+                             },
+               'DiskId' => {
+                             'type' => 'Str'
+                           },
+               'DiskAllocationResource' => {
+                                             'type' => 'Str'
+                                           },
+               'DiskAttributeList' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

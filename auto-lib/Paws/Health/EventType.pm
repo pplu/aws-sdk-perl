@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Health::EventType;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Health::Types qw//;
+  has Category => (is => 'ro', isa => Str);
+  has Code => (is => 'ro', isa => Str);
+  has Service => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Service' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Code' => 'code',
+                       'Category' => 'category',
+                       'Service' => 'service'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

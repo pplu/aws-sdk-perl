@@ -1,3 +1,4 @@
+# Generated from service_class.tt
 package Paws::SES;
   use Moo;
   use Types::Standard qw/Int HashRef ArrayRef/;

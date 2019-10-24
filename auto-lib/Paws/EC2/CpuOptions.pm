@@ -4,7 +4,7 @@ package Paws::EC2::CpuOptions;
   has CoreCount => (is => 'ro', isa => Int);
   has ThreadsPerCore => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CoreCount' => {
@@ -20,8 +20,8 @@ package Paws::EC2::CpuOptions;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

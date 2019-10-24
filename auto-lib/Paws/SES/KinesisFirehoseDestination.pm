@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::KinesisFirehoseDestination;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::SES::KinesisFirehoseDestination;
                'DeliveryStreamARN' => {
                                         'type' => 'Str'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'IAMRoleARN' => 1,
+                    'DeliveryStreamARN' => 1
+                  }
 }
 ;
     return $Params_map;

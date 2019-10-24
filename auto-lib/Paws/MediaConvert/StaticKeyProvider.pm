@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::StaticKeyProvider;
-  use Moose;
-  has KeyFormat => (is => 'ro', isa => 'Str', request_name => 'keyFormat', traits => ['NameInRequest']);
-  has KeyFormatVersions => (is => 'ro', isa => 'Str', request_name => 'keyFormatVersions', traits => ['NameInRequest']);
-  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has KeyFormat => (is => 'ro', isa => Str);
+  has KeyFormatVersions => (is => 'ro', isa => Str);
+  has StaticKeyValue => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StaticKeyValue' => {
+                                     'type' => 'Str'
+                                   },
+               'KeyFormatVersions' => {
+                                        'type' => 'Str'
+                                      },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'KeyFormat' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StaticKeyValue' => 'staticKeyValue',
+                       'KeyFormatVersions' => 'keyFormatVersions',
+                       'Url' => 'url',
+                       'KeyFormat' => 'keyFormat'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

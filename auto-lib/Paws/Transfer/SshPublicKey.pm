@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Transfer::SshPublicKey;
-  use Moose;
-  has DateImported => (is => 'ro', isa => 'Str', required => 1);
-  has SshPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
-  has SshPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw//;
+  has DateImported => (is => 'ro', isa => Str, required => 1);
+  has SshPublicKeyBody => (is => 'ro', isa => Str, required => 1);
+  has SshPublicKeyId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DateImported' => {
+                                   'type' => 'Str'
+                                 },
+               'SshPublicKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'SshPublicKeyBody' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'DateImported' => 1,
+                    'SshPublicKeyId' => 1,
+                    'SshPublicKeyBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

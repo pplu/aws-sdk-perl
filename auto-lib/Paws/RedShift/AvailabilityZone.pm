@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::AvailabilityZone;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has SupportedPlatforms => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::SupportedPlatform]', request_name => 'SupportedPlatform', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_SupportedPlatform/;
+  has Name => (is => 'ro', isa => Str);
+  has SupportedPlatforms => (is => 'ro', isa => ArrayRef[RedShift_SupportedPlatform]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SupportedPlatforms' => {
+                                         'class' => 'Paws::RedShift::SupportedPlatform',
+                                         'type' => 'ArrayRef[RedShift_SupportedPlatform]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'SupportedPlatforms' => 'SupportedPlatform'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ Describes an availability zone.
   The name of the availability zone.
 
 
-=head2 SupportedPlatforms => ArrayRef[L<Paws::RedShift::SupportedPlatform>]
+=head2 SupportedPlatforms => ArrayRef[RedShift_SupportedPlatform]
 
   
 

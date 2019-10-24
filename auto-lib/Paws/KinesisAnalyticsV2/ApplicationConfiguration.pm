@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationConfiguration;
-  use Moose;
-  has ApplicationCodeConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationCodeConfiguration', required => 1);
-  has ApplicationSnapshotConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationSnapshotConfiguration');
-  has EnvironmentProperties => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::EnvironmentProperties');
-  has FlinkApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration');
-  has SqlApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfiguration');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_SqlApplicationConfiguration KinesisAnalyticsV2_ApplicationSnapshotConfiguration KinesisAnalyticsV2_EnvironmentProperties KinesisAnalyticsV2_ApplicationCodeConfiguration KinesisAnalyticsV2_FlinkApplicationConfiguration/;
+  has ApplicationCodeConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationCodeConfiguration, required => 1);
+  has ApplicationSnapshotConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationSnapshotConfiguration);
+  has EnvironmentProperties => (is => 'ro', isa => KinesisAnalyticsV2_EnvironmentProperties);
+  has FlinkApplicationConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_FlinkApplicationConfiguration);
+  has SqlApplicationConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_SqlApplicationConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationCodeConfiguration' => {
+                                                   'class' => 'Paws::KinesisAnalyticsV2::ApplicationCodeConfiguration',
+                                                   'type' => 'KinesisAnalyticsV2_ApplicationCodeConfiguration'
+                                                 },
+               'FlinkApplicationConfiguration' => {
+                                                    'class' => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration',
+                                                    'type' => 'KinesisAnalyticsV2_FlinkApplicationConfiguration'
+                                                  },
+               'SqlApplicationConfiguration' => {
+                                                  'class' => 'Paws::KinesisAnalyticsV2::SqlApplicationConfiguration',
+                                                  'type' => 'KinesisAnalyticsV2_SqlApplicationConfiguration'
+                                                },
+               'EnvironmentProperties' => {
+                                            'class' => 'Paws::KinesisAnalyticsV2::EnvironmentProperties',
+                                            'type' => 'KinesisAnalyticsV2_EnvironmentProperties'
+                                          },
+               'ApplicationSnapshotConfiguration' => {
+                                                       'class' => 'Paws::KinesisAnalyticsV2::ApplicationSnapshotConfiguration',
+                                                       'type' => 'KinesisAnalyticsV2_ApplicationSnapshotConfiguration'
+                                                     }
+             },
+  'IsRequired' => {
+                    'ApplicationCodeConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,31 +78,31 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ApplicationCodeConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationCodeConfiguration>
+=head2 B<REQUIRED> ApplicationCodeConfiguration => KinesisAnalyticsV2_ApplicationCodeConfiguration
 
   The code location and type parameters for a Java-based Kinesis Data
 Analytics application.
 
 
-=head2 ApplicationSnapshotConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationSnapshotConfiguration>
+=head2 ApplicationSnapshotConfiguration => KinesisAnalyticsV2_ApplicationSnapshotConfiguration
 
   Describes whether snapshots are enabled for a Java-based Kinesis Data
 Analytics application.
 
 
-=head2 EnvironmentProperties => L<Paws::KinesisAnalyticsV2::EnvironmentProperties>
+=head2 EnvironmentProperties => KinesisAnalyticsV2_EnvironmentProperties
 
   Describes execution properties for a Java-based Kinesis Data Analytics
 application.
 
 
-=head2 FlinkApplicationConfiguration => L<Paws::KinesisAnalyticsV2::FlinkApplicationConfiguration>
+=head2 FlinkApplicationConfiguration => KinesisAnalyticsV2_FlinkApplicationConfiguration
 
   The creation and update parameters for a Java-based Kinesis Data
 Analytics application.
 
 
-=head2 SqlApplicationConfiguration => L<Paws::KinesisAnalyticsV2::SqlApplicationConfiguration>
+=head2 SqlApplicationConfiguration => KinesisAnalyticsV2_SqlApplicationConfiguration
 
   The creation and update parameters for an SQL-based Kinesis Data
 Analytics application.

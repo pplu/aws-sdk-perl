@@ -20,7 +20,7 @@ package Paws::EC2::CreateVpcEndpoint;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateVpcEndpointResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -58,11 +58,15 @@ package Paws::EC2::CreateVpcEndpoint;
                        'SecurityGroupIds' => 'SecurityGroupId',
                        'SubnetIds' => 'SubnetId',
                        'RouteTableIds' => 'RouteTableId'
-                     }
+                     },
+  'IsRequired' => {
+                    'VpcId' => 1,
+                    'ServiceName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

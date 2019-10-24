@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::BulkEmailDestinationStatus;
   use Moo;
   use Types::Standard qw/Str/;

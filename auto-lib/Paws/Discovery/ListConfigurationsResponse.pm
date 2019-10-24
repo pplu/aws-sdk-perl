@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::ListConfigurationsResponse;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Configuration]', traits => ['NameInRequest'], request_name => 'configurations' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_Configuration/;
+  has Configurations => (is => 'ro', isa => ArrayRef[Discovery_Configuration]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::Discovery::Configuration',
+                                     'type' => 'ArrayRef[Discovery_Configuration]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Configurations' => 'configurations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Discovery::ListConfigurationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::Discovery::Configuration>]
+=head2 Configurations => ArrayRef[Discovery_Configuration]
 
 Returns configuration details, including the configuration ID,
 attribute names, and attribute values.

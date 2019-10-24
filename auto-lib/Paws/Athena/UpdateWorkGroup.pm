@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::UpdateWorkGroup;
-  use Moose;
-  has ConfigurationUpdates => (is => 'ro', isa => 'Paws::Athena::WorkGroupConfigurationUpdates');
-  has Description => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has WorkGroup => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw/Athena_WorkGroupConfigurationUpdates/;
+  has ConfigurationUpdates => (is => 'ro', isa => Athena_WorkGroupConfigurationUpdates, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
+  has WorkGroup => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateWorkGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::UpdateWorkGroupOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateWorkGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::UpdateWorkGroupOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'ConfigurationUpdates' => {
+                                           'class' => 'Paws::Athena::WorkGroupConfigurationUpdates',
+                                           'type' => 'Athena_WorkGroupConfigurationUpdates'
+                                         },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'WorkGroup' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ath
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationUpdates => L<Paws::Athena::WorkGroupConfigurationUpdates>
+=head2 ConfigurationUpdates => Athena_WorkGroupConfigurationUpdates
 
 The workgroup configuration that will be updated for the given
 workgroup.

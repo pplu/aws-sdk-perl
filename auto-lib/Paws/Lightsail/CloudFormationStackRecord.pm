@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Lightsail::CloudFormationStackRecord;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DestinationInfo => (is => 'ro', isa => 'Paws::Lightsail::DestinationInfo', request_name => 'destinationInfo', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SourceInfo => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::CloudFormationStackRecordSourceInfo]', request_name => 'sourceInfo', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_CloudFormationStackRecordSourceInfo Lightsail_ResourceLocation Lightsail_DestinationInfo/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DestinationInfo => (is => 'ro', isa => Lightsail_DestinationInfo);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SourceInfo => (is => 'ro', isa => ArrayRef[Lightsail_CloudFormationStackRecordSourceInfo]);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationInfo' => {
+                                      'class' => 'Paws::Lightsail::DestinationInfo',
+                                      'type' => 'Lightsail_DestinationInfo'
+                                    },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'SourceInfo' => {
+                                 'class' => 'Paws::Lightsail::CloudFormationStackRecordSourceInfo',
+                                 'type' => 'ArrayRef[Lightsail_CloudFormationStackRecordSourceInfo]'
+                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'DestinationInfo' => 'destinationInfo',
+                       'State' => 'state',
+                       'SourceInfo' => 'sourceInfo',
+                       'CreatedAt' => 'createdAt',
+                       'ResourceType' => 'resourceType',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,14 +109,14 @@ instance from an exported Lightsail instance snapshot.
   The date when the CloudFormation stack record was created.
 
 
-=head2 DestinationInfo => L<Paws::Lightsail::DestinationInfo>
+=head2 DestinationInfo => Lightsail_DestinationInfo
 
   A list of objects describing the destination service, which is AWS
 CloudFormation, and the Amazon Resource Name (ARN) of the AWS
 CloudFormation stack.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   A list of objects describing the Availability Zone and AWS Region of
 the CloudFormation stack record.
@@ -82,7 +133,7 @@ C<CloudFormationStackRecord> followed by a GUID.
   The Lightsail resource type (e.g., C<CloudFormationStackRecord>).
 
 
-=head2 SourceInfo => ArrayRef[L<Paws::Lightsail::CloudFormationStackRecordSourceInfo>]
+=head2 SourceInfo => ArrayRef[Lightsail_CloudFormationStackRecordSourceInfo]
 
   A list of objects describing the source of the CloudFormation stack
 record.

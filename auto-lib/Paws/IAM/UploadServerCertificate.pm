@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UploadServerCertificate;
   use Moo;
@@ -33,7 +34,12 @@ package Paws::IAM::UploadServerCertificate;
                'CertificateChain' => {
                                        'type' => 'Str'
                                      }
-             }
+             },
+  'IsRequired' => {
+                    'CertificateBody' => 1,
+                    'PrivateKey' => 1,
+                    'ServerCertificateName' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::JobExecutionStatusDetails;
-  use Moose;
-  has DetailsMap => (is => 'ro', isa => 'Paws::IoT::DetailsMap', request_name => 'detailsMap', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_DetailsMap/;
+  has DetailsMap => (is => 'ro', isa => IoT_DetailsMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetailsMap' => {
+                                 'class' => 'Paws::IoT::DetailsMap',
+                                 'type' => 'IoT_DetailsMap'
+                               }
+             },
+  'NameInRequest' => {
+                       'DetailsMap' => 'detailsMap'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Details of the job execution status.
 =head1 ATTRIBUTES
 
 
-=head2 DetailsMap => L<Paws::IoT::DetailsMap>
+=head2 DetailsMap => IoT_DetailsMap
 
   The job execution status.
 

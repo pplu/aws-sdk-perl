@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::BatchGetItemOutput;
   use Moo;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::BatchGetItemOutput;
   has UnprocessedKeys => (is => 'ro', isa => DynamoDB_BatchGetRequestMap);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UnprocessedKeys' => {
@@ -19,6 +20,9 @@ package Paws::DynamoDB::BatchGetItemOutput;
                                        'class' => 'Paws::DynamoDB::ConsumedCapacity',
                                        'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'Responses' => {
                                 'class' => 'Paws::DynamoDB::BatchGetResponseMap',
                                 'type' => 'DynamoDB_BatchGetResponseMap'
@@ -26,8 +30,8 @@ package Paws::DynamoDB::BatchGetItemOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

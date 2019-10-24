@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::SuggesterStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::CloudSearch::Suggester', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::CloudSearch::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudSearch::Types qw/CloudSearch_OptionStatus CloudSearch_Suggester/;
+  has Options => (is => 'ro', isa => CloudSearch_Suggester, required => 1);
+  has Status => (is => 'ro', isa => CloudSearch_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::CloudSearch::Suggester',
+                              'type' => 'CloudSearch_Suggester'
+                            },
+               'Status' => {
+                             'class' => 'Paws::CloudSearch::OptionStatus',
+                             'type' => 'CloudSearch_OptionStatus'
+                           }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The value of a C<Suggester> and its current status.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::CloudSearch::Suggester>
+=head2 B<REQUIRED> Options => CloudSearch_Suggester
 
   
 
 
-=head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
+=head2 B<REQUIRED> Status => CloudSearch_OptionStatus
 
   
 

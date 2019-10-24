@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Connect::CurrentMetricData;
-  use Moose;
-  has Metric => (is => 'ro', isa => 'Paws::Connect::CurrentMetric');
-  has Value => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Connect::Types qw/Connect_CurrentMetric/;
+  has Metric => (is => 'ro', isa => Connect_CurrentMetric);
+  has Value => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Metric' => {
+                             'class' => 'Paws::Connect::CurrentMetric',
+                             'type' => 'Connect_CurrentMetric'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ A C<CurrentMetricData> object.
 =head1 ATTRIBUTES
 
 
-=head2 Metric => L<Paws::Connect::CurrentMetric>
+=head2 Metric => Connect_CurrentMetric
 
   The metric in a C<CurrentMetricData> object.
 

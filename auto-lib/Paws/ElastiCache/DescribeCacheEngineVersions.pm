@@ -1,18 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::DescribeCacheEngineVersions;
-  use Moose;
-  has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has DefaultOnly => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheParameterGroupFamily => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheEngineVersionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheEngineVersionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeCacheEngineVersions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CacheEngineVersionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeCacheEngineVersionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'CacheParameterGroupFamily' => {
+                                                'type' => 'Str'
+                                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DefaultOnly' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

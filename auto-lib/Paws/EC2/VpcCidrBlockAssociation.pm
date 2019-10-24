@@ -5,7 +5,7 @@ package Paws::EC2::VpcCidrBlockAssociation;
   has CidrBlock => (is => 'ro', isa => Str);
   has CidrBlockState => (is => 'ro', isa => EC2_VpcCidrBlockState);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AssociationId' => {
@@ -26,8 +26,8 @@ package Paws::EC2::VpcCidrBlockAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::WorkflowRunStatistics;
-  use Moose;
-  has FailedActions => (is => 'ro', isa => 'Int');
-  has RunningActions => (is => 'ro', isa => 'Int');
-  has StoppedActions => (is => 'ro', isa => 'Int');
-  has SucceededActions => (is => 'ro', isa => 'Int');
-  has TimeoutActions => (is => 'ro', isa => 'Int');
-  has TotalActions => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Glue::Types qw//;
+  has FailedActions => (is => 'ro', isa => Int);
+  has RunningActions => (is => 'ro', isa => Int);
+  has StoppedActions => (is => 'ro', isa => Int);
+  has SucceededActions => (is => 'ro', isa => Int);
+  has TimeoutActions => (is => 'ro', isa => Int);
+  has TotalActions => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutActions' => {
+                                     'type' => 'Int'
+                                   },
+               'FailedActions' => {
+                                    'type' => 'Int'
+                                  },
+               'TotalActions' => {
+                                   'type' => 'Int'
+                                 },
+               'StoppedActions' => {
+                                     'type' => 'Int'
+                                   },
+               'SucceededActions' => {
+                                       'type' => 'Int'
+                                     },
+               'RunningActions' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

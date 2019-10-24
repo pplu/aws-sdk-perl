@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CampaignHook;
-  use Moose;
-  has LambdaFunctionName => (is => 'ro', isa => 'Str');
-  has Mode => (is => 'ro', isa => 'Str');
-  has WebUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has LambdaFunctionName => (is => 'ro', isa => Str);
+  has Mode => (is => 'ro', isa => Str);
+  has WebUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WebUrl' => {
+                             'type' => 'Str'
+                           },
+               'LambdaFunctionName' => {
+                                         'type' => 'Str'
+                                       },
+               'Mode' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

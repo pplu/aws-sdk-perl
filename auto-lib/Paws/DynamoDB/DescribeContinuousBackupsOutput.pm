@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DescribeContinuousBackupsOutput;
   use Moo;
@@ -6,9 +7,12 @@ package Paws::DynamoDB::DescribeContinuousBackupsOutput;
   has ContinuousBackupsDescription => (is => 'ro', isa => DynamoDB_ContinuousBackupsDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'ContinuousBackupsDescription' => {
                                                    'class' => 'Paws::DynamoDB::ContinuousBackupsDescription',
                                                    'type' => 'DynamoDB_ContinuousBackupsDescription'
@@ -16,8 +20,8 @@ package Paws::DynamoDB::DescribeContinuousBackupsOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

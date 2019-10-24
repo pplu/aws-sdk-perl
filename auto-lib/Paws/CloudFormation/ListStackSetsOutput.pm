@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::ListStackSetsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Summaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackSetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Summaries => (is => 'ro', isa => ArrayRef[CloudFormation_StackSetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Summaries' => {
+                                'class' => 'Paws::CloudFormation::StackSetSummary',
+                                'type' => 'ArrayRef[CloudFormation_StackSetSummary]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +47,7 @@ object's C<NextToken> parameter. If the request returns all results,
 C<NextToken> is set to C<null>.
 
 
-=head2 Summaries => ArrayRef[L<Paws::CloudFormation::StackSetSummary>]
+=head2 Summaries => ArrayRef[CloudFormation_StackSetSummary]
 
 A list of C<StackSetSummary> structures that contain information about
 the user's stack sets.

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::RegexMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has RegexMatchTuple => (is => 'ro', isa => 'Paws::WAF::RegexMatchTuple', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_RegexMatchTuple/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has RegexMatchTuple => (is => 'ro', isa => WAF_RegexMatchTuple, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'RegexMatchTuple' => {
+                                      'class' => 'Paws::WAF::RegexMatchTuple',
+                                      'type' => 'WAF_RegexMatchTuple'
+                                    }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'RegexMatchTuple' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ for the C<RegexMatchTuple>.
   Specifies whether to insert or delete a RegexMatchTuple.
 
 
-=head2 B<REQUIRED> RegexMatchTuple => L<Paws::WAF::RegexMatchTuple>
+=head2 B<REQUIRED> RegexMatchTuple => WAF_RegexMatchTuple
 
   Information about the part of a web request that you want AWS WAF to
 inspect and the identifier of the regular expression (regex) pattern

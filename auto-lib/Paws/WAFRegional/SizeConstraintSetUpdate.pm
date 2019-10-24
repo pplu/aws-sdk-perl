@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SizeConstraintSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has SizeConstraint => (is => 'ro', isa => 'Paws::WAFRegional::SizeConstraint', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SizeConstraint/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has SizeConstraint => (is => 'ro', isa => WAFRegional_SizeConstraint, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'SizeConstraint' => {
+                                     'class' => 'Paws::WAFRegional::SizeConstraint',
+                                     'type' => 'WAFRegional_SizeConstraint'
+                                   }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'SizeConstraint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +71,7 @@ SizeConstraintSet. Use C<DELETE> to remove a C<SizeConstraintSetUpdate>
 from a C<SizeConstraintSet>.
 
 
-=head2 B<REQUIRED> SizeConstraint => L<Paws::WAFRegional::SizeConstraint>
+=head2 B<REQUIRED> SizeConstraint => WAFRegional_SizeConstraint
 
   Specifies a constraint on the size of a part of the web request. AWS
 WAF uses the C<Size>, C<ComparisonOperator>, and C<FieldToMatch> to

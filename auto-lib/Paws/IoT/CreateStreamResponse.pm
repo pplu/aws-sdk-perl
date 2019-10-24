@@ -1,12 +1,44 @@
 
 package Paws::IoT::CreateStreamResponse;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has StreamArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamArn');
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
-  has StreamVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'streamVersion');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has StreamArn => (is => 'ro', isa => Str);
+  has StreamId => (is => 'ro', isa => Str);
+  has StreamVersion => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'StreamArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StreamVersion' => 'streamVersion',
+                       'StreamId' => 'streamId',
+                       'StreamArn' => 'streamArn',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Athena::DeleteWorkGroup;
-  use Moose;
-  has RecursiveDeleteOption => (is => 'ro', isa => 'Bool');
-  has WorkGroup => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Athena::Types qw//;
+  has RecursiveDeleteOption => (is => 'ro', isa => Bool, predicate => 1);
+  has WorkGroup => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteWorkGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Athena::DeleteWorkGroupOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteWorkGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Athena::DeleteWorkGroupOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'RecursiveDeleteOption' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'IsRequired' => {
+                    'WorkGroup' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,39 @@
 
 package Paws::Greengrass::UpdateFunctionDefinition;
-  use Moose;
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has FunctionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunctionDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateFunctionDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFunctionDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::UpdateFunctionDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FunctionDefinitionId' => {
+                                           'type' => 'Str'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'FunctionDefinitionId' => 'FunctionDefinitionId'
+                  },
+  'IsRequired' => {
+                    'FunctionDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

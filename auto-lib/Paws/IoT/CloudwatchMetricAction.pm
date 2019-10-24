@@ -1,11 +1,58 @@
+# Generated from default/object.tt
 package Paws::IoT::CloudwatchMetricAction;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest'], required => 1);
-  has MetricNamespace => (is => 'ro', isa => 'Str', request_name => 'metricNamespace', traits => ['NameInRequest'], required => 1);
-  has MetricTimestamp => (is => 'ro', isa => 'Str', request_name => 'metricTimestamp', traits => ['NameInRequest']);
-  has MetricUnit => (is => 'ro', isa => 'Str', request_name => 'metricUnit', traits => ['NameInRequest'], required => 1);
-  has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has MetricNamespace => (is => 'ro', isa => Str, required => 1);
+  has MetricTimestamp => (is => 'ro', isa => Str);
+  has MetricUnit => (is => 'ro', isa => Str, required => 1);
+  has MetricValue => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'MetricUnit' => {
+                                 'type' => 'Str'
+                               },
+               'MetricValue' => {
+                                  'type' => 'Str'
+                                },
+               'MetricNamespace' => {
+                                      'type' => 'Str'
+                                    },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'MetricTimestamp' => 'metricTimestamp',
+                       'RoleArn' => 'roleArn',
+                       'MetricUnit' => 'metricUnit',
+                       'MetricValue' => 'metricValue',
+                       'MetricNamespace' => 'metricNamespace',
+                       'MetricName' => 'metricName'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'MetricUnit' => 1,
+                    'MetricValue' => 1,
+                    'MetricNamespace' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

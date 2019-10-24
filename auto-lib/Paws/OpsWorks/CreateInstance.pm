@@ -1,30 +1,103 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::CreateInstance;
-  use Moose;
-  has AgentVersion => (is => 'ro', isa => 'Str');
-  has AmiId => (is => 'ro', isa => 'Str');
-  has Architecture => (is => 'ro', isa => 'Str');
-  has AutoScalingType => (is => 'ro', isa => 'Str');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::BlockDeviceMapping]');
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has Hostname => (is => 'ro', isa => 'Str');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Os => (is => 'ro', isa => 'Str');
-  has RootDeviceType => (is => 'ro', isa => 'Str');
-  has SshKeyName => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has Tenancy => (is => 'ro', isa => 'Str');
-  has VirtualizationType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_BlockDeviceMapping/;
+  has AgentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has AmiId => (is => 'ro', isa => Str, predicate => 1);
+  has Architecture => (is => 'ro', isa => Str, predicate => 1);
+  has AutoScalingType => (is => 'ro', isa => Str, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[OpsWorks_BlockDeviceMapping], predicate => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool, predicate => 1);
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has InstallUpdatesOnBoot => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LayerIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Os => (is => 'ro', isa => Str, predicate => 1);
+  has RootDeviceType => (is => 'ro', isa => Str, predicate => 1);
+  has SshKeyName => (is => 'ro', isa => Str, predicate => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
+  has Tenancy => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualizationType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorks::CreateInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualizationType' => {
+                                         'type' => 'Str'
+                                       },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'LayerIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Os' => {
+                         'type' => 'Str'
+                       },
+               'InstallUpdatesOnBoot' => {
+                                           'type' => 'Bool'
+                                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'RootDeviceType' => {
+                                     'type' => 'Str'
+                                   },
+               'AutoScalingType' => {
+                                      'type' => 'Str'
+                                    },
+               'SshKeyName' => {
+                                 'type' => 'Str'
+                               },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Tenancy' => {
+                              'type' => 'Str'
+                            },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::OpsWorks::BlockDeviceMapping',
+                                          'type' => 'ArrayRef[OpsWorks_BlockDeviceMapping]'
+                                        },
+               'AmiId' => {
+                            'type' => 'Str'
+                          },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'LayerIds' => 1,
+                    'InstanceType' => 1,
+                    'StackId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -152,7 +225,7 @@ Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
 
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[OpsWorks_BlockDeviceMapping]
 
 An array of C<BlockDeviceMapping> objects that specify the instance's
 block devices. For more information, see Block Device Mapping

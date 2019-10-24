@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::GetWebACLResponse;
-  use Moose;
-  has WebACL => (is => 'ro', isa => 'Paws::WAFRegional::WebACL');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_WebACL/;
+  has WebACL => (is => 'ro', isa => WAFRegional_WebACL);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WebACL' => {
+                             'class' => 'Paws::WAFRegional::WebACL',
+                             'type' => 'WAFRegional_WebACL'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAFRegional::GetWebACLResponse
 =head1 ATTRIBUTES
 
 
-=head2 WebACL => L<Paws::WAFRegional::WebACL>
+=head2 WebACL => WAFRegional_WebACL
 
 Information about the WebACL that you specified in the C<GetWebACL>
 request. For more information, see the following topics:

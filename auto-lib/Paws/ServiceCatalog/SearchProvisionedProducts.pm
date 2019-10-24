@@ -1,19 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::SearchProvisionedProducts;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has AccessLevelFilter => (is => 'ro', isa => 'Paws::ServiceCatalog::AccessLevelFilter');
-  has Filters => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisionedProductFilters');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PageToken => (is => 'ro', isa => 'Str');
-  has SortBy => (is => 'ro', isa => 'Str');
-  has SortOrder => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProvisionedProductFilters ServiceCatalog_AccessLevelFilter/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has AccessLevelFilter => (is => 'ro', isa => ServiceCatalog_AccessLevelFilter, predicate => 1);
+  has Filters => (is => 'ro', isa => ServiceCatalog_ProvisionedProductFilters, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortBy => (is => 'ro', isa => Str, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchProvisionedProducts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::SearchProvisionedProductsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchProvisionedProducts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::SearchProvisionedProductsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'Filters' => {
+                              'class' => 'Paws::ServiceCatalog::ProvisionedProductFilters',
+                              'type' => 'ServiceCatalog_ProvisionedProductFilters'
+                            },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'AccessLevelFilter' => {
+                                        'class' => 'Paws::ServiceCatalog::AccessLevelFilter',
+                                        'type' => 'ServiceCatalog_AccessLevelFilter'
+                                      },
+               'SortBy' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -87,13 +123,13 @@ C<zh> - Chinese
 
 
 
-=head2 AccessLevelFilter => L<Paws::ServiceCatalog::AccessLevelFilter>
+=head2 AccessLevelFilter => ServiceCatalog_AccessLevelFilter
 
 The access level to use to obtain results. The default is C<User>.
 
 
 
-=head2 Filters => L<Paws::ServiceCatalog::ProvisionedProductFilters>
+=head2 Filters => ServiceCatalog_ProvisionedProductFilters
 
 The search filters.
 

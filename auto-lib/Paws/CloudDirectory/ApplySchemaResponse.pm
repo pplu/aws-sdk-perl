@@ -1,10 +1,30 @@
 
 package Paws::CloudDirectory::ApplySchemaResponse;
-  use Moose;
-  has AppliedSchemaArn => (is => 'ro', isa => 'Str');
-  has DirectoryArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has AppliedSchemaArn => (is => 'ro', isa => Str);
+  has DirectoryArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AppliedSchemaArn' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

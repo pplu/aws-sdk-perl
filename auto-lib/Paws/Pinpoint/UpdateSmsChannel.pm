@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateSmsChannel;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has SMSChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::SMSChannelRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_SMSChannelRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SMSChannelRequest => (is => 'ro', isa => Pinpoint_SMSChannelRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'SMSChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSmsChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/sms');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateSmsChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSmsChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/sms');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateSmsChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SMSChannelRequest' => {
+                                        'class' => 'Paws::Pinpoint::SMSChannelRequest',
+                                        'type' => 'Pinpoint_SMSChannelRequest'
+                                      }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'SMSChannelRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> SMSChannelRequest => L<Paws::Pinpoint::SMSChannelRequest>
+=head2 B<REQUIRED> SMSChannelRequest => Pinpoint_SMSChannelRequest
 
 
 

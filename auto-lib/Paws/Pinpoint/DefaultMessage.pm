@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::DefaultMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfListOf__string/;
+  has Body => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ Specifies the default message to use for all channels.
 message.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The default message variables to use in the push notification, email,
 or SMS message. You can override these default variables with

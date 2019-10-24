@@ -1,23 +1,113 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Reservation;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has CurrencyCode => (is => 'ro', isa => 'Str', request_name => 'currencyCode', traits => ['NameInRequest']);
-  has Duration => (is => 'ro', isa => 'Int', request_name => 'duration', traits => ['NameInRequest']);
-  has DurationUnits => (is => 'ro', isa => 'Str', request_name => 'durationUnits', traits => ['NameInRequest']);
-  has End => (is => 'ro', isa => 'Str', request_name => 'end', traits => ['NameInRequest']);
-  has FixedPrice => (is => 'ro', isa => 'Num', request_name => 'fixedPrice', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OfferingDescription => (is => 'ro', isa => 'Str', request_name => 'offeringDescription', traits => ['NameInRequest']);
-  has OfferingId => (is => 'ro', isa => 'Str', request_name => 'offeringId', traits => ['NameInRequest']);
-  has OfferingType => (is => 'ro', isa => 'Str', request_name => 'offeringType', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has ReservationId => (is => 'ro', isa => 'Str', request_name => 'reservationId', traits => ['NameInRequest']);
-  has ResourceSpecification => (is => 'ro', isa => 'Paws::MediaLive::ReservationResourceSpecification', request_name => 'resourceSpecification', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has UsagePrice => (is => 'ro', isa => 'Num', request_name => 'usagePrice', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaLive::Types qw/MediaLive_Tags MediaLive_ReservationResourceSpecification/;
+  has Arn => (is => 'ro', isa => Str);
+  has Count => (is => 'ro', isa => Int);
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has DurationUnits => (is => 'ro', isa => Str);
+  has End => (is => 'ro', isa => Str);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has Name => (is => 'ro', isa => Str);
+  has OfferingDescription => (is => 'ro', isa => Str);
+  has OfferingId => (is => 'ro', isa => Str);
+  has OfferingType => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ReservationId => (is => 'ro', isa => Str);
+  has ResourceSpecification => (is => 'ro', isa => MediaLive_ReservationResourceSpecification);
+  has Start => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'OfferingId' => {
+                                 'type' => 'Str'
+                               },
+               'OfferingDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'ReservationId' => {
+                                    'type' => 'Str'
+                                  },
+               'DurationUnits' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceSpecification' => {
+                                            'class' => 'Paws::MediaLive::ReservationResourceSpecification',
+                                            'type' => 'MediaLive_ReservationResourceSpecification'
+                                          },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'OfferingType' => 'offeringType',
+                       'OfferingId' => 'offeringId',
+                       'OfferingDescription' => 'offeringDescription',
+                       'Start' => 'start',
+                       'State' => 'state',
+                       'End' => 'end',
+                       'Arn' => 'arn',
+                       'Region' => 'region',
+                       'Duration' => 'duration',
+                       'ReservationId' => 'reservationId',
+                       'DurationUnits' => 'durationUnits',
+                       'ResourceSpecification' => 'resourceSpecification',
+                       'CurrencyCode' => 'currencyCode',
+                       'FixedPrice' => 'fixedPrice',
+                       'Count' => 'count',
+                       'Tags' => 'tags',
+                       'Name' => 'name',
+                       'UsagePrice' => 'usagePrice'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -123,7 +213,7 @@ standard VQ in US West (Oregon)'
   Unique reservation ID, e.g. '1234567'
 
 
-=head2 ResourceSpecification => L<Paws::MediaLive::ReservationResourceSpecification>
+=head2 ResourceSpecification => MediaLive_ReservationResourceSpecification
 
   Resource configuration details
 
@@ -139,7 +229,7 @@ standard VQ in US West (Oregon)'
   Current state of reservation, e.g. 'ACTIVE'
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   A collection of key-value pairs
 

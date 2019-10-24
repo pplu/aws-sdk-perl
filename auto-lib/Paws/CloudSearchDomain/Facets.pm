@@ -1,8 +1,23 @@
 package Paws::CloudSearchDomain::Facets;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_BucketInfo/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::CloudSearchDomain::BucketInfo]');
+  has Map => (is => 'ro', isa => HashRef[CloudSearchDomain_BucketInfo]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[CloudSearchDomain_BucketInfo]',
+                                          class => 'Paws::CloudSearchDomain::BucketInfo',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::CloudSearchDomain::BucketInfo>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

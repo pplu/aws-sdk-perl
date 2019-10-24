@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3AccessControlPolicy;
-  use Moose;
-  has AccessControlList => (is => 'ro', isa => 'Paws::S3Control::S3AccessControlList');
-  has CannedAccessControlList => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw/S3Control_S3AccessControlList/;
+  has AccessControlList => (is => 'ro', isa => S3Control_S3AccessControlList);
+  has CannedAccessControlList => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CannedAccessControlList' => {
+                                              'type' => 'Str'
+                                            },
+               'AccessControlList' => {
+                                        'class' => 'Paws::S3Control::S3AccessControlList',
+                                        'type' => 'S3Control_S3AccessControlList'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlList => L<Paws::S3Control::S3AccessControlList>
+=head2 AccessControlList => S3Control_S3AccessControlList
 
   
 

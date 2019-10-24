@@ -5,7 +5,7 @@ package Paws::EC2::CancelSpotFleetRequestsSuccessItem;
   has PreviousSpotFleetRequestState => (is => 'ro', isa => Str);
   has SpotFleetRequestId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CurrentSpotFleetRequestState' => {
@@ -25,8 +25,8 @@ package Paws::EC2::CancelSpotFleetRequestsSuccessItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -6,7 +6,7 @@ package Paws::EC2::NatGatewayAddress;
   has PrivateIp => (is => 'ro', isa => Str);
   has PublicIp => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PublicIp' => {
@@ -30,8 +30,8 @@ package Paws::EC2::NatGatewayAddress;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

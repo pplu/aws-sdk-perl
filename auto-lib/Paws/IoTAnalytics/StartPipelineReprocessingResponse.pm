@@ -1,9 +1,29 @@
 
 package Paws::IoTAnalytics::StartPipelineReprocessingResponse;
-  use Moose;
-  has ReprocessingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reprocessingId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has ReprocessingId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReprocessingId' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ReprocessingId' => 'reprocessingId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,48 @@
 
 package Paws::Greengrass::GetFunctionDefinitionVersion;
-  use Moose;
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
-  has FunctionDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionVersionId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has FunctionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FunctionDefinitionVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFunctionDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetFunctionDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFunctionDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetFunctionDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FunctionDefinitionId' => {
+                                           'type' => 'Str'
+                                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FunctionDefinitionVersionId' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'ParamInURI' => {
+                    'FunctionDefinitionId' => 'FunctionDefinitionId',
+                    'FunctionDefinitionVersionId' => 'FunctionDefinitionVersionId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken'
+                    },
+  'IsRequired' => {
+                    'FunctionDefinitionId' => 1,
+                    'FunctionDefinitionVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

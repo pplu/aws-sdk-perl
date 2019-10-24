@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Organizations::Policy;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Str');
-  has PolicySummary => (is => 'ro', isa => 'Paws::Organizations::PolicySummary');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw/Organizations_PolicySummary/;
+  has Content => (is => 'ro', isa => Str);
+  has PolicySummary => (is => 'ro', isa => Organizations_PolicySummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicySummary' => {
+                                    'class' => 'Paws::Organizations::PolicySummary',
+                                    'type' => 'Organizations_PolicySummary'
+                                  },
+               'Content' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ accounts in those hierarchies.
   The text content of the policy.
 
 
-=head2 PolicySummary => L<Paws::Organizations::PolicySummary>
+=head2 PolicySummary => Organizations_PolicySummary
 
   A structure that contains additional details about the policy.
 

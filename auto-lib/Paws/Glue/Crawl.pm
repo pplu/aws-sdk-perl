@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::Crawl;
-  use Moose;
-  has CompletedOn => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has LogGroup => (is => 'ro', isa => 'Str');
-  has LogStream => (is => 'ro', isa => 'Str');
-  has StartedOn => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CompletedOn => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LogGroup => (is => 'ro', isa => Str);
+  has LogStream => (is => 'ro', isa => Str);
+  has StartedOn => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogGroup' => {
+                               'type' => 'Str'
+                             },
+               'LogStream' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'CompletedOn' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'StartedOn' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

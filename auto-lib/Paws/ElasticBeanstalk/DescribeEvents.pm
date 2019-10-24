@@ -1,24 +1,73 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeEvents;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EnvironmentId => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentId => (is => 'ro', isa => Str, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PlatformArn => (is => 'ro', isa => Str, predicate => 1);
+  has RequestId => (is => 'ro', isa => Str, predicate => 1);
+  has Severity => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, predicate => 1);
+  has VersionLabel => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EventDescriptionsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::EventDescriptionsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEventsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

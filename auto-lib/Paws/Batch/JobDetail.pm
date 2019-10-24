@@ -1,23 +1,128 @@
+# Generated from default/object.tt
 package Paws::Batch::JobDetail;
-  use Moose;
-  has ArrayProperties => (is => 'ro', isa => 'Paws::Batch::ArrayPropertiesDetail', request_name => 'arrayProperties', traits => ['NameInRequest']);
-  has Attempts => (is => 'ro', isa => 'ArrayRef[Paws::Batch::AttemptDetail]', request_name => 'attempts', traits => ['NameInRequest']);
-  has Container => (is => 'ro', isa => 'Paws::Batch::ContainerDetail', request_name => 'container', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Int', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDependency]', request_name => 'dependsOn', traits => ['NameInRequest']);
-  has JobDefinition => (is => 'ro', isa => 'Str', request_name => 'jobDefinition', traits => ['NameInRequest'], required => 1);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
-  has JobQueue => (is => 'ro', isa => 'Str', request_name => 'jobQueue', traits => ['NameInRequest'], required => 1);
-  has NodeDetails => (is => 'ro', isa => 'Paws::Batch::NodeDetails', request_name => 'nodeDetails', traits => ['NameInRequest']);
-  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
-  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', request_name => 'timeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::Batch::Types qw/Batch_RetryStrategy Batch_NodeDetails Batch_ParametersMap Batch_ContainerDetail Batch_ArrayPropertiesDetail Batch_JobTimeout Batch_AttemptDetail Batch_JobDependency Batch_NodeProperties/;
+  has ArrayProperties => (is => 'ro', isa => Batch_ArrayPropertiesDetail);
+  has Attempts => (is => 'ro', isa => ArrayRef[Batch_AttemptDetail]);
+  has Container => (is => 'ro', isa => Batch_ContainerDetail);
+  has CreatedAt => (is => 'ro', isa => Int);
+  has DependsOn => (is => 'ro', isa => ArrayRef[Batch_JobDependency]);
+  has JobDefinition => (is => 'ro', isa => Str, required => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1);
+  has JobName => (is => 'ro', isa => Str, required => 1);
+  has JobQueue => (is => 'ro', isa => Str, required => 1);
+  has NodeDetails => (is => 'ro', isa => Batch_NodeDetails);
+  has NodeProperties => (is => 'ro', isa => Batch_NodeProperties);
+  has Parameters => (is => 'ro', isa => Batch_ParametersMap);
+  has RetryStrategy => (is => 'ro', isa => Batch_RetryStrategy);
+  has StartedAt => (is => 'ro', isa => Int, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StatusReason => (is => 'ro', isa => Str);
+  has StoppedAt => (is => 'ro', isa => Int);
+  has Timeout => (is => 'ro', isa => Batch_JobTimeout);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DependsOn' => {
+                                'class' => 'Paws::Batch::JobDependency',
+                                'type' => 'ArrayRef[Batch_JobDependency]'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Int'
+                              },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'RetryStrategy' => {
+                                    'class' => 'Paws::Batch::RetryStrategy',
+                                    'type' => 'Batch_RetryStrategy'
+                                  },
+               'CreatedAt' => {
+                                'type' => 'Int'
+                              },
+               'NodeProperties' => {
+                                     'class' => 'Paws::Batch::NodeProperties',
+                                     'type' => 'Batch_NodeProperties'
+                                   },
+               'ArrayProperties' => {
+                                      'class' => 'Paws::Batch::ArrayPropertiesDetail',
+                                      'type' => 'Batch_ArrayPropertiesDetail'
+                                    },
+               'Container' => {
+                                'class' => 'Paws::Batch::ContainerDetail',
+                                'type' => 'Batch_ContainerDetail'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'StoppedAt' => {
+                                'type' => 'Int'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::Batch::ParametersMap',
+                                 'type' => 'Batch_ParametersMap'
+                               },
+               'JobDefinition' => {
+                                    'type' => 'Str'
+                                  },
+               'Attempts' => {
+                               'class' => 'Paws::Batch::AttemptDetail',
+                               'type' => 'ArrayRef[Batch_AttemptDetail]'
+                             },
+               'Timeout' => {
+                              'class' => 'Paws::Batch::JobTimeout',
+                              'type' => 'Batch_JobTimeout'
+                            },
+               'JobQueue' => {
+                               'type' => 'Str'
+                             },
+               'NodeDetails' => {
+                                  'class' => 'Paws::Batch::NodeDetails',
+                                  'type' => 'Batch_NodeDetails'
+                                }
+             },
+  'NameInRequest' => {
+                       'DependsOn' => 'dependsOn',
+                       'Status' => 'status',
+                       'StartedAt' => 'startedAt',
+                       'JobName' => 'jobName',
+                       'RetryStrategy' => 'retryStrategy',
+                       'CreatedAt' => 'createdAt',
+                       'NodeProperties' => 'nodeProperties',
+                       'ArrayProperties' => 'arrayProperties',
+                       'Container' => 'container',
+                       'JobId' => 'jobId',
+                       'StatusReason' => 'statusReason',
+                       'StoppedAt' => 'stoppedAt',
+                       'Parameters' => 'parameters',
+                       'JobDefinition' => 'jobDefinition',
+                       'Attempts' => 'attempts',
+                       'Timeout' => 'timeout',
+                       'JobQueue' => 'jobQueue',
+                       'NodeDetails' => 'nodeDetails'
+                     },
+  'IsRequired' => {
+                    'JobDefinition' => 1,
+                    'Status' => 1,
+                    'StartedAt' => 1,
+                    'JobQueue' => 1,
+                    'JobName' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,17 +158,17 @@ An object representing an AWS Batch job.
 =head1 ATTRIBUTES
 
 
-=head2 ArrayProperties => L<Paws::Batch::ArrayPropertiesDetail>
+=head2 ArrayProperties => Batch_ArrayPropertiesDetail
 
   The array properties of the job, if it is an array job.
 
 
-=head2 Attempts => ArrayRef[L<Paws::Batch::AttemptDetail>]
+=head2 Attempts => ArrayRef[Batch_AttemptDetail]
 
   A list of job attempts associated with this job.
 
 
-=head2 Container => L<Paws::Batch::ContainerDetail>
+=head2 Container => Batch_ContainerDetail
 
   An object representing the details of the container that is associated
 with the job.
@@ -78,7 +183,7 @@ array child jobs, this is when the child job was spawned by its parent
 and entered the C<PENDING> state.
 
 
-=head2 DependsOn => ArrayRef[L<Paws::Batch::JobDependency>]
+=head2 DependsOn => ArrayRef[Batch_JobDependency]
 
   A list of job names or IDs on which this job depends.
 
@@ -104,26 +209,26 @@ and entered the C<PENDING> state.
 associated.
 
 
-=head2 NodeDetails => L<Paws::Batch::NodeDetails>
+=head2 NodeDetails => Batch_NodeDetails
 
   An object representing the details of a node that is associated with a
 multi-node parallel job.
 
 
-=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+=head2 NodeProperties => Batch_NodeProperties
 
   An object representing the node properties of a multi-node parallel
 job.
 
 
-=head2 Parameters => L<Paws::Batch::ParametersMap>
+=head2 Parameters => Batch_ParametersMap
 
   Additional parameters passed to the job that replace parameter
 substitution placeholders or override any corresponding parameter
 defaults from the job definition.
 
 
-=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+=head2 RetryStrategy => Batch_RetryStrategy
 
   The retry strategy to use for this job if an attempt fails.
 
@@ -158,7 +263,7 @@ stopped (when the job transitioned from the C<RUNNING> state to a
 terminal state, such as C<SUCCEEDED> or C<FAILED>).
 
 
-=head2 Timeout => L<Paws::Batch::JobTimeout>
+=head2 Timeout => Batch_JobTimeout
 
   The timeout configuration for the job.
 

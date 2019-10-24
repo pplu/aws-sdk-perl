@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::DS::RadiusSettings;
-  use Moose;
-  has AuthenticationProtocol => (is => 'ro', isa => 'Str');
-  has DisplayLabel => (is => 'ro', isa => 'Str');
-  has RadiusPort => (is => 'ro', isa => 'Int');
-  has RadiusRetries => (is => 'ro', isa => 'Int');
-  has RadiusServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RadiusTimeout => (is => 'ro', isa => 'Int');
-  has SharedSecret => (is => 'ro', isa => 'Str');
-  has UseSameUsername => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef Bool/;
+  use Paws::DS::Types qw//;
+  has AuthenticationProtocol => (is => 'ro', isa => Str);
+  has DisplayLabel => (is => 'ro', isa => Str);
+  has RadiusPort => (is => 'ro', isa => Int);
+  has RadiusRetries => (is => 'ro', isa => Int);
+  has RadiusServers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RadiusTimeout => (is => 'ro', isa => Int);
+  has SharedSecret => (is => 'ro', isa => Str);
+  has UseSameUsername => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UseSameUsername' => {
+                                      'type' => 'Bool'
+                                    },
+               'SharedSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'RadiusPort' => {
+                                 'type' => 'Int'
+                               },
+               'AuthenticationProtocol' => {
+                                             'type' => 'Str'
+                                           },
+               'RadiusServers' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'DisplayLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'RadiusRetries' => {
+                                    'type' => 'Int'
+                                  },
+               'RadiusTimeout' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

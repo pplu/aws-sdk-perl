@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionConfiguration;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionConfigurationMap/;
+  has Configuration => (is => 'ro', isa => CodePipeline_ActionConfigurationMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configuration' => {
+                                    'class' => 'Paws::CodePipeline::ActionConfigurationMap',
+                                    'type' => 'CodePipeline_ActionConfigurationMap'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Configuration' => 'configuration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Represents information about an action configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => CodePipeline_ActionConfigurationMap
 
   The configuration data for the action.
 

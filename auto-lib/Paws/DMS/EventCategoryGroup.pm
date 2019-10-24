@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DMS::EventCategoryGroup;
-  use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DMS::Types qw//;
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,31 @@
 
 package Paws::Lambda::ListLayersResponse;
-  use Moose;
-  has Layers => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::LayersListItem]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lambda::Types qw/Lambda_LayersListItem/;
+  has Layers => (is => 'ro', isa => ArrayRef[Lambda_LayersListItem]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Layers' => {
+                             'class' => 'Paws::Lambda::LayersListItem',
+                             'type' => 'ArrayRef[Lambda_LayersListItem]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Lambda::ListLayersResponse
 =head1 ATTRIBUTES
 
 
-=head2 Layers => ArrayRef[L<Paws::Lambda::LayersListItem>]
+=head2 Layers => ArrayRef[Lambda_LayersListItem]
 
 A list of function layers.
 

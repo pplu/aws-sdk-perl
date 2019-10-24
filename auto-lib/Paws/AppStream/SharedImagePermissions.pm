@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::AppStream::SharedImagePermissions;
-  use Moose;
-  has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions', request_name => 'imagePermissions', traits => ['NameInRequest'], required => 1);
-  has SharedAccountId => (is => 'ro', isa => 'Str', request_name => 'sharedAccountId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw/AppStream_ImagePermissions/;
+  has ImagePermissions => (is => 'ro', isa => AppStream_ImagePermissions, required => 1);
+  has SharedAccountId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImagePermissions' => {
+                                       'class' => 'Paws::AppStream::ImagePermissions',
+                                       'type' => 'AppStream_ImagePermissions'
+                                     },
+               'SharedAccountId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ImagePermissions' => 'imagePermissions',
+                       'SharedAccountId' => 'sharedAccountId'
+                     },
+  'IsRequired' => {
+                    'ImagePermissions' => 1,
+                    'SharedAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ account for a shared image.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ImagePermissions => L<Paws::AppStream::ImagePermissions>
+=head2 B<REQUIRED> ImagePermissions => AppStream_ImagePermissions
 
   Describes the permissions for a shared image.
 

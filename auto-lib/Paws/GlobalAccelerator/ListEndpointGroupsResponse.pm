@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::ListEndpointGroupsResponse;
-  use Moose;
-  has EndpointGroups => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::EndpointGroup]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_EndpointGroup/;
+  has EndpointGroups => (is => 'ro', isa => ArrayRef[GlobalAccelerator_EndpointGroup]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EndpointGroups' => {
+                                     'class' => 'Paws::GlobalAccelerator::EndpointGroup',
+                                     'type' => 'ArrayRef[GlobalAccelerator_EndpointGroup]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GlobalAccelerator::ListEndpointGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 EndpointGroups => ArrayRef[L<Paws::GlobalAccelerator::EndpointGroup>]
+=head2 EndpointGroups => ArrayRef[GlobalAccelerator_EndpointGroup]
 
 The list of the endpoint groups associated with a listener.
 

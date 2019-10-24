@@ -18,7 +18,7 @@ package Paws::EC2::VpcEndpoint;
   has VpcEndpointType => (is => 'ro', isa => Str);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Groups' => {
@@ -93,8 +93,8 @@ package Paws::EC2::VpcEndpoint;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,17 +1,53 @@
 
 package Paws::Lambda::RemovePermission;
-  use Moose;
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier');
-  has RevisionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'RevisionId');
-  has StatementId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'StatementId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Qualifier => (is => 'ro', isa => Str, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has StatementId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemovePermission');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy/{StatementId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemovePermission');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy/{StatementId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Qualifier' => {
+                                'type' => 'Str'
+                              },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'StatementId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName',
+                    'StatementId' => 'StatementId'
+                  },
+  'ParamInQuery' => {
+                      'Qualifier' => 'Qualifier',
+                      'RevisionId' => 'RevisionId'
+                    },
+  'IsRequired' => {
+                    'FunctionName' => 1,
+                    'StatementId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

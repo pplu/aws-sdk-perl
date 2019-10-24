@@ -4,7 +4,7 @@ package Paws::EC2::IpRange;
   has CidrIp => (is => 'ro', isa => Str);
   has Description => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Description' => {
@@ -20,8 +20,8 @@ package Paws::EC2::IpRange;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

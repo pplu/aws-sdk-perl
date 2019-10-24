@@ -1,25 +1,80 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::UpdateNotebookInstance;
-  use Moose;
-  has AcceleratorTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
-  has DisassociateAcceleratorTypes => (is => 'ro', isa => 'Bool');
-  has DisassociateAdditionalCodeRepositories => (is => 'ro', isa => 'Bool');
-  has DisassociateDefaultCodeRepository => (is => 'ro', isa => 'Bool');
-  has DisassociateLifecycleConfig => (is => 'ro', isa => 'Bool');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LifecycleConfigName => (is => 'ro', isa => 'Str');
-  has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has RootAccess => (is => 'ro', isa => 'Str');
-  has VolumeSizeInGB => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::SageMaker::Types qw//;
+  has AcceleratorTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AdditionalCodeRepositories => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DefaultCodeRepository => (is => 'ro', isa => Str, predicate => 1);
+  has DisassociateAcceleratorTypes => (is => 'ro', isa => Bool, predicate => 1);
+  has DisassociateAdditionalCodeRepositories => (is => 'ro', isa => Bool, predicate => 1);
+  has DisassociateDefaultCodeRepository => (is => 'ro', isa => Bool, predicate => 1);
+  has DisassociateLifecycleConfig => (is => 'ro', isa => Bool, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has LifecycleConfigName => (is => 'ro', isa => Str, predicate => 1);
+  has NotebookInstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has RootAccess => (is => 'ro', isa => Str, predicate => 1);
+  has VolumeSizeInGB => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateNotebookInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::UpdateNotebookInstanceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateNotebookInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::UpdateNotebookInstanceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'DisassociateLifecycleConfig' => {
+                                                  'type' => 'Bool'
+                                                },
+               'DisassociateAcceleratorTypes' => {
+                                                   'type' => 'Bool'
+                                                 },
+               'DisassociateDefaultCodeRepository' => {
+                                                        'type' => 'Bool'
+                                                      },
+               'AcceleratorTypes' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DisassociateAdditionalCodeRepositories' => {
+                                                             'type' => 'Bool'
+                                                           },
+               'RootAccess' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AdditionalCodeRepositories' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'NotebookInstanceName' => {
+                                           'type' => 'Str'
+                                         },
+               'DefaultCodeRepository' => {
+                                            'type' => 'Str'
+                                          },
+               'VolumeSizeInGB' => {
+                                     'type' => 'Int'
+                                   },
+               'LifecycleConfigName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'NotebookInstanceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

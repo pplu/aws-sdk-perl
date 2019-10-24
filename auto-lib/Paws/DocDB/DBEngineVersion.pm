@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBEngineVersion;
-  use Moose;
-  has DBEngineDescription => (is => 'ro', isa => 'Str');
-  has DBEngineVersionDescription => (is => 'ro', isa => 'Str');
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has ExportableLogTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => 'Bool');
-  has ValidUpgradeTarget => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::UpgradeTarget]', request_name => 'UpgradeTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::DocDB::Types qw/DocDB_UpgradeTarget/;
+  has DBEngineDescription => (is => 'ro', isa => Str);
+  has DBEngineVersionDescription => (is => 'ro', isa => Str);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has ExportableLogTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportsLogExportsToCloudwatchLogs => (is => 'ro', isa => Bool);
+  has ValidUpgradeTarget => (is => 'ro', isa => ArrayRef[DocDB_UpgradeTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SupportsLogExportsToCloudwatchLogs' => {
+                                                         'type' => 'Bool'
+                                                       },
+               'ValidUpgradeTarget' => {
+                                         'class' => 'Paws::DocDB::UpgradeTarget',
+                                         'type' => 'ArrayRef[DocDB_UpgradeTarget]'
+                                       },
+               'DBEngineVersionDescription' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBEngineDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'ExportableLogTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'ValidUpgradeTarget' => 'UpgradeTarget'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +122,7 @@ Amazon CloudWatch Logs.
 the log types specified by C<ExportableLogTypes> to CloudWatch Logs.
 
 
-=head2 ValidUpgradeTarget => ArrayRef[L<Paws::DocDB::UpgradeTarget>]
+=head2 ValidUpgradeTarget => ArrayRef[DocDB_UpgradeTarget]
 
   A list of engine versions that this database engine version can be
 upgraded to.

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AutoScalingPlans::DescribeScalingPlansResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScalingPlans => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::ScalingPlan]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_ScalingPlan/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScalingPlans => (is => 'ro', isa => ArrayRef[AutoScalingPlans_ScalingPlan]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ScalingPlans' => {
+                                   'class' => 'Paws::AutoScalingPlans::ScalingPlan',
+                                   'type' => 'ArrayRef[AutoScalingPlans_ScalingPlan]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token required to get the next set of results. This value is
 C<null> if there are no more results to return.
 
 
-=head2 ScalingPlans => ArrayRef[L<Paws::AutoScalingPlans::ScalingPlan>]
+=head2 ScalingPlans => ArrayRef[AutoScalingPlans_ScalingPlan]
 
 Information about the scaling plans.
 

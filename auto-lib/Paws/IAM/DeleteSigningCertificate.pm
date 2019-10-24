@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteSigningCertificate;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::DeleteSigningCertificate;
                'CertificateId' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'CertificateId' => 1
+                  }
 }
 ;
     return $Params_map;

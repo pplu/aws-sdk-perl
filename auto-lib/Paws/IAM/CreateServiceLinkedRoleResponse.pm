@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreateServiceLinkedRoleResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_Role/;
   has Role => (is => 'ro', isa => IAM_Role);

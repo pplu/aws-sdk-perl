@@ -1,12 +1,44 @@
 
 package Paws::ServerlessRepo::CreateCloudFormationChangeSetResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationId');
-  has ChangeSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'changeSetId');
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has StackId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stackId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has ChangeSetId => (is => 'ro', isa => Str);
+  has SemanticVersion => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ChangeSetId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ApplicationId' => 'applicationId',
+                       'StackId' => 'stackId',
+                       'SemanticVersion' => 'semanticVersion',
+                       'ChangeSetId' => 'changeSetId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

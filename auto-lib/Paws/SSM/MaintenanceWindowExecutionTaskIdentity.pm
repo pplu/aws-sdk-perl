@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowExecutionTaskIdentity;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TaskArn => (is => 'ro', isa => 'Str');
-  has TaskExecutionId => (is => 'ro', isa => 'Str');
-  has TaskType => (is => 'ro', isa => 'Str');
-  has WindowExecutionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has EndTime => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
+  has TaskExecutionId => (is => 'ro', isa => Str);
+  has TaskType => (is => 'ro', isa => Str);
+  has WindowExecutionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TaskType' => {
+                               'type' => 'Str'
+                             },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'TaskExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'WindowExecutionId' => {
+                                        'type' => 'Str'
+                                      },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

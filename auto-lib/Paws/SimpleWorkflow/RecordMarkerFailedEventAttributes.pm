@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has MarkerName => (is => 'ro', isa => 'Str', request_name => 'markerName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has MarkerName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MarkerName' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'MarkerName' => 'markerName',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'MarkerName' => 1,
+                    'DecisionTaskCompletedEventId' => 1,
+                    'Cause' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

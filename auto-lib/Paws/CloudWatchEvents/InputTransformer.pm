@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::InputTransformer;
-  use Moose;
-  has InputPathsMap => (is => 'ro', isa => 'Paws::CloudWatchEvents::TransformerPaths');
-  has InputTemplate => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_TransformerPaths/;
+  has InputPathsMap => (is => 'ro', isa => CloudWatchEvents_TransformerPaths);
+  has InputTemplate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputTemplate' => {
+                                    'type' => 'Str'
+                                  },
+               'InputPathsMap' => {
+                                    'class' => 'Paws::CloudWatchEvents::TransformerPaths',
+                                    'type' => 'CloudWatchEvents_TransformerPaths'
+                                  }
+             },
+  'IsRequired' => {
+                    'InputTemplate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ target based on one or more pieces of data extracted from the event.
 =head1 ATTRIBUTES
 
 
-=head2 InputPathsMap => L<Paws::CloudWatchEvents::TransformerPaths>
+=head2 InputPathsMap => CloudWatchEvents_TransformerPaths
 
   Map of JSON paths to be extracted from the event. You can then insert
 these in the template in C<InputTemplate> to produce the output you

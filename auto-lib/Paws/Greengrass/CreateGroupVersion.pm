@@ -1,22 +1,70 @@
 
 package Paws::Greengrass::CreateGroupVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has ConnectorDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has CoreDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has DeviceDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has FunctionDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
-  has LoggerDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has ResourceDefinitionVersionArn => (is => 'ro', isa => 'Str');
-  has SubscriptionDefinitionVersionArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ConnectorDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has CoreDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has DeviceDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has GroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoggerDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
+  has SubscriptionDefinitionVersionArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroupVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/groups/{GroupId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateGroupVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroupVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/groups/{GroupId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateGroupVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionDefinitionVersionArn' => {
+                                                       'type' => 'Str'
+                                                     },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'ResourceDefinitionVersionArn' => {
+                                                   'type' => 'Str'
+                                                 },
+               'LoggerDefinitionVersionArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'DeviceDefinitionVersionArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'CoreDefinitionVersionArn' => {
+                                               'type' => 'Str'
+                                             },
+               'FunctionDefinitionVersionArn' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'ConnectorDefinitionVersionArn' => {
+                                                    'type' => 'Str'
+                                                  }
+             },
+  'ParamInURI' => {
+                    'GroupId' => 'GroupId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'GroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

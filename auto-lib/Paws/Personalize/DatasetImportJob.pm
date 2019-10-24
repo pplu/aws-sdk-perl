@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::Personalize::DatasetImportJob;
-  use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetArn => (is => 'ro', isa => 'Str', request_name => 'datasetArn', traits => ['NameInRequest']);
-  has DatasetImportJobArn => (is => 'ro', isa => 'Str', request_name => 'datasetImportJobArn', traits => ['NameInRequest']);
-  has DataSource => (is => 'ro', isa => 'Paws::Personalize::DataSource', request_name => 'dataSource', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_DataSource/;
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetImportJobArn => (is => 'ro', isa => Str);
+  has DataSource => (is => 'ro', isa => Personalize_DataSource);
+  has FailureReason => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'DatasetImportJobArn' => {
+                                          'type' => 'Str'
+                                        },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'DataSource' => {
+                                 'class' => 'Paws::Personalize::DataSource',
+                                 'type' => 'Personalize_DataSource'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'DatasetArn' => 'datasetArn',
+                       'Status' => 'status',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'CreationDateTime' => 'creationDateTime',
+                       'DatasetImportJobArn' => 'datasetImportJobArn',
+                       'JobName' => 'jobName',
+                       'DataSource' => 'dataSource',
+                       'RoleArn' => 'roleArn',
+                       'FailureReason' => 'failureReason'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +126,7 @@ imported data.
   The ARN of the dataset import job.
 
 
-=head2 DataSource => L<Paws::Personalize::DataSource>
+=head2 DataSource => Personalize_DataSource
 
   The Amazon S3 bucket that contains the training data to import.
 

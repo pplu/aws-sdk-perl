@@ -67,7 +67,15 @@ use MooX::ClassAttribute;
                        'SSECustomerKeyMD5' => 'x-amz-server-side-encryption-customer-key-MD5',
                        'SSECustomerAlgorithm' => 'x-amz-server-side-encryption-customer-algorithm',
                        'SSECustomerKey' => 'x-amz-server-side-encryption-customer-key'
-                     }
+                     },
+  'IsRequired' => {
+                    'Expression' => 1,
+                    'OutputSerialization' => 1,
+                    'Bucket' => 1,
+                    'InputSerialization' => 1,
+                    'ExpressionType' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoSync::CognitoStreams;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has StreamingStatus => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has RoleArn => (is => 'ro', isa => Str);
+  has StreamingStatus => (is => 'ro', isa => Str);
+  has StreamName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'StreamingStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

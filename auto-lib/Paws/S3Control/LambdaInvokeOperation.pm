@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::S3Control::LambdaInvokeOperation;
-  use Moose;
-  has FunctionArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has FunctionArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

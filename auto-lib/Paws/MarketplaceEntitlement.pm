@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MarketplaceEntitlement;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'entitlement.marketplace' }
   sub signing_name { 'aws-marketplace' }
   sub version { '2017-01-11' }
   sub target_prefix { 'AWSMPEntitlementService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -107,7 +109,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplaceenti
 
 =item ProductCode => Str
 
-=item [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>]
+=item [Filter => MarketplaceEntitlement_GetEntitlementFilters]
 
 =item [MaxResults => Int]
 
@@ -131,9 +133,9 @@ dimensions.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllEntitlements(sub { },ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+=head2 GetAllEntitlements(sub { },ProductCode => Str, [Filter => MarketplaceEntitlement_GetEntitlementFilters, MaxResults => Int, NextToken => Str])
 
-=head2 GetAllEntitlements(ProductCode => Str, [Filter => L<Paws::MarketplaceEntitlement::GetEntitlementFilters>, MaxResults => Int, NextToken => Str])
+=head2 GetAllEntitlements(ProductCode => Str, [Filter => MarketplaceEntitlement_GetEntitlementFilters, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

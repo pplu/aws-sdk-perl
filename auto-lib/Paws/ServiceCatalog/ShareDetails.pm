@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ShareDetails;
-  use Moose;
-  has ShareErrors => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ShareError]');
-  has SuccessfulShares => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ShareError/;
+  has ShareErrors => (is => 'ro', isa => ArrayRef[ServiceCatalog_ShareError]);
+  has SuccessfulShares => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SuccessfulShares' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ShareErrors' => {
+                                  'class' => 'Paws::ServiceCatalog::ShareError',
+                                  'type' => 'ArrayRef[ServiceCatalog_ShareError]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Information about the portfolio share operation.
 =head1 ATTRIBUTES
 
 
-=head2 ShareErrors => ArrayRef[L<Paws::ServiceCatalog::ShareError>]
+=head2 ShareErrors => ArrayRef[ServiceCatalog_ShareError]
 
   List of errors.
 

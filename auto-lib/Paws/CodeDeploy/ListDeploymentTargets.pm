@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::ListDeploymentTargets;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has TargetFilters => (is => 'ro', isa => 'Paws::CodeDeploy::TargetFilters', traits => ['NameInRequest'], request_name => 'targetFilters' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TargetFilters/;
+  has DeploymentId => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TargetFilters => (is => 'ro', isa => CodeDeploy_TargetFilters, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeploymentTargets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentTargetsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDeploymentTargets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentTargetsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetFilters' => {
+                                    'class' => 'Paws::CodeDeploy::TargetFilters',
+                                    'type' => 'CodeDeploy_TargetFilters'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TargetFilters' => 'targetFilters',
+                       'NextToken' => 'nextToken',
+                       'DeploymentId' => 'deploymentId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +92,7 @@ the list.
 
 
 
-=head2 TargetFilters => L<Paws::CodeDeploy::TargetFilters>
+=head2 TargetFilters => CodeDeploy_TargetFilters
 
 A key used to filter the returned targets.
 

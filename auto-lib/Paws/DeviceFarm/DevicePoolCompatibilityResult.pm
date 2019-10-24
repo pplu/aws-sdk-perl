@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DevicePoolCompatibilityResult;
-  use Moose;
-  has Compatible => (is => 'ro', isa => 'Bool', request_name => 'compatible', traits => ['NameInRequest']);
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
-  has IncompatibilityMessages => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]', request_name => 'incompatibilityMessages', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_IncompatibilityMessage DeviceFarm_Device/;
+  has Compatible => (is => 'ro', isa => Bool);
+  has Device => (is => 'ro', isa => DeviceFarm_Device);
+  has IncompatibilityMessages => (is => 'ro', isa => ArrayRef[DeviceFarm_IncompatibilityMessage]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Device' => {
+                             'class' => 'Paws::DeviceFarm::Device',
+                             'type' => 'DeviceFarm_Device'
+                           },
+               'Compatible' => {
+                                 'type' => 'Bool'
+                               },
+               'IncompatibilityMessages' => {
+                                              'class' => 'Paws::DeviceFarm::IncompatibilityMessage',
+                                              'type' => 'ArrayRef[DeviceFarm_IncompatibilityMessage]'
+                                            }
+             },
+  'NameInRequest' => {
+                       'Device' => 'device',
+                       'Compatible' => 'compatible',
+                       'IncompatibilityMessages' => 'incompatibilityMessages'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +73,12 @@ Represents a device pool compatibility result.
   Whether the result was compatible with the device pool.
 
 
-=head2 Device => L<Paws::DeviceFarm::Device>
+=head2 Device => DeviceFarm_Device
 
   The device (phone or tablet) that you wish to return information about.
 
 
-=head2 IncompatibilityMessages => ArrayRef[L<Paws::DeviceFarm::IncompatibilityMessage>]
+=head2 IncompatibilityMessages => ArrayRef[DeviceFarm_IncompatibilityMessage]
 
   Information about the compatibility.
 

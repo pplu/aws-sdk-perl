@@ -1,15 +1,42 @@
 
 package Paws::IoT::DeleteCertificate;
-  use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
-  has ForceDelete => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'forceDelete');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ForceDelete => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/certificates/{certificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteCertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/certificates/{certificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ForceDelete' => {
+                                  'type' => 'Bool'
+                                },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInURI' => {
+                    'CertificateId' => 'certificateId'
+                  },
+  'ParamInQuery' => {
+                      'ForceDelete' => 'forceDelete'
+                    },
+  'IsRequired' => {
+                    'CertificateId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

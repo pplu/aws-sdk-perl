@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SMSMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has Keyword => (is => 'ro', isa => 'Str');
-  has MessageType => (is => 'ro', isa => 'Str');
-  has OriginationNumber => (is => 'ro', isa => 'Str');
-  has SenderId => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfListOf__string/;
+  has Body => (is => 'ro', isa => Str);
+  has Keyword => (is => 'ro', isa => Str);
+  has MessageType => (is => 'ro', isa => Str);
+  has OriginationNumber => (is => 'ro', isa => Str);
+  has SenderId => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'SenderId' => {
+                               'type' => 'Str'
+                             },
+               'OriginationNumber' => {
+                                        'type' => 'Str'
+                                      },
+               'MessageType' => {
+                                  'type' => 'Str'
+                                },
+               'Keyword' => {
+                              'type' => 'Str'
+                            },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +109,7 @@ SMS message.
 device. Support for sender IDs varies by country or region.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The message variables to use in the SMS message. You can override the
 default variables with individual address variables.

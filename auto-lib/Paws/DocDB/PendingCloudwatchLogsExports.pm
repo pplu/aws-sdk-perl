@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::DocDB::PendingCloudwatchLogsExports;
-  use Moose;
-  has LogTypesToDisable => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LogTypesToEnable => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DocDB::Types qw//;
+  has LogTypesToDisable => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LogTypesToEnable => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogTypesToEnable' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'LogTypesToDisable' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

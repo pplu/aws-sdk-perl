@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateApnsVoipSandboxChannel;
-  use Moose;
-  has APNSVoipSandboxChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSVoipSandboxChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_APNSVoipSandboxChannelRequest/;
+  has APNSVoipSandboxChannelRequest => (is => 'ro', isa => Pinpoint_APNSVoipSandboxChannelRequest, required => 1, predicate => 1);
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSVoipSandboxChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApnsVoipSandboxChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns_voip_sandbox');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApnsVoipSandboxChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/apns_voip_sandbox');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateApnsVoipSandboxChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'APNSVoipSandboxChannelRequest' => {
+                                                    'class' => 'Paws::Pinpoint::APNSVoipSandboxChannelRequest',
+                                                    'type' => 'Pinpoint_APNSVoipSandboxChannelRequest'
+                                                  }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'APNSVoipSandboxChannelRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> APNSVoipSandboxChannelRequest => L<Paws::Pinpoint::APNSVoipSandboxChannelRequest>
+=head2 B<REQUIRED> APNSVoipSandboxChannelRequest => Pinpoint_APNSVoipSandboxChannelRequest
 
 
 

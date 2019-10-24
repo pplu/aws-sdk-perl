@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::ObjectAttributeRange;
-  use Moose;
-  has AttributeKey => (is => 'ro', isa => 'Paws::CloudDirectory::AttributeKey');
-  has Range => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValueRange');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValueRange CloudDirectory_AttributeKey/;
+  has AttributeKey => (is => 'ro', isa => CloudDirectory_AttributeKey);
+  has Range => (is => 'ro', isa => CloudDirectory_TypedAttributeValueRange);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Range' => {
+                            'class' => 'Paws::CloudDirectory::TypedAttributeValueRange',
+                            'type' => 'CloudDirectory_TypedAttributeValueRange'
+                          },
+               'AttributeKey' => {
+                                   'class' => 'Paws::CloudDirectory::AttributeKey',
+                                   'type' => 'CloudDirectory_AttributeKey'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ A range of attributes.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeKey => L<Paws::CloudDirectory::AttributeKey>
+=head2 AttributeKey => CloudDirectory_AttributeKey
 
   The key of the attribute that the attribute range covers.
 
 
-=head2 Range => L<Paws::CloudDirectory::TypedAttributeValueRange>
+=head2 Range => CloudDirectory_TypedAttributeValueRange
 
   The range of attribute values being selected.
 

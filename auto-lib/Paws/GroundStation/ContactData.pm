@@ -1,17 +1,83 @@
+# Generated from default/object.tt
 package Paws::GroundStation::ContactData;
-  use Moose;
-  has ContactId => (is => 'ro', isa => 'Str', request_name => 'contactId', traits => ['NameInRequest']);
-  has ContactStatus => (is => 'ro', isa => 'Str', request_name => 'contactStatus', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
-  has GroundStation => (is => 'ro', isa => 'Str', request_name => 'groundStation', traits => ['NameInRequest']);
-  has MaximumElevation => (is => 'ro', isa => 'Paws::GroundStation::Elevation', request_name => 'maximumElevation', traits => ['NameInRequest']);
-  has MissionProfileArn => (is => 'ro', isa => 'Str', request_name => 'missionProfileArn', traits => ['NameInRequest']);
-  has PostPassEndTime => (is => 'ro', isa => 'Str', request_name => 'postPassEndTime', traits => ['NameInRequest']);
-  has PrePassStartTime => (is => 'ro', isa => 'Str', request_name => 'prePassStartTime', traits => ['NameInRequest']);
-  has SatelliteArn => (is => 'ro', isa => 'Str', request_name => 'satelliteArn', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_TagsMap GroundStation_Elevation/;
+  has ContactId => (is => 'ro', isa => Str);
+  has ContactStatus => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has GroundStation => (is => 'ro', isa => Str);
+  has MaximumElevation => (is => 'ro', isa => GroundStation_Elevation);
+  has MissionProfileArn => (is => 'ro', isa => Str);
+  has PostPassEndTime => (is => 'ro', isa => Str);
+  has PrePassStartTime => (is => 'ro', isa => Str);
+  has SatelliteArn => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissionProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'GroundStation' => {
+                                    'type' => 'Str'
+                                  },
+               'PrePassStartTime' => {
+                                       'type' => 'Str'
+                                     },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'MaximumElevation' => {
+                                       'class' => 'Paws::GroundStation::Elevation',
+                                       'type' => 'GroundStation_Elevation'
+                                     },
+               'ContactStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'ContactId' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::GroundStation::TagsMap',
+                           'type' => 'GroundStation_TagsMap'
+                         },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SatelliteArn' => {
+                                   'type' => 'Str'
+                                 },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'PostPassEndTime' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'MissionProfileArn' => 'missionProfileArn',
+                       'GroundStation' => 'groundStation',
+                       'PrePassStartTime' => 'prePassStartTime',
+                       'ErrorMessage' => 'errorMessage',
+                       'MaximumElevation' => 'maximumElevation',
+                       'ContactStatus' => 'contactStatus',
+                       'ContactId' => 'contactId',
+                       'Tags' => 'tags',
+                       'StartTime' => 'startTime',
+                       'SatelliteArn' => 'satelliteArn',
+                       'EndTime' => 'endTime',
+                       'PostPassEndTime' => 'postPassEndTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +138,7 @@ Data describing a contact.
   Name of a ground station.
 
 
-=head2 MaximumElevation => L<Paws::GroundStation::Elevation>
+=head2 MaximumElevation => GroundStation_Elevation
 
   Maximum elevation angle of a contact.
 
@@ -104,7 +170,7 @@ CloudWatch event indicating an upcoming pass.
   Start time of a contact.
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
   Tags assigned to a contact.
 

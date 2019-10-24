@@ -1,18 +1,53 @@
 
 package Paws::Lambda::PublishLayerVersion;
-  use Moose;
-  has CompatibleRuntimes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Content => (is => 'ro', isa => 'Paws::Lambda::LayerVersionContentInput', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has LicenseInfo => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lambda::Types qw/Lambda_LayerVersionContentInput/;
+  has CompatibleRuntimes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Content => (is => 'ro', isa => Lambda_LayerVersionContentInput, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LicenseInfo => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PublishLayerVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::PublishLayerVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PublishLayerVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::PublishLayerVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'Content' => {
+                              'class' => 'Paws::Lambda::LayerVersionContentInput',
+                              'type' => 'Lambda_LayerVersionContentInput'
+                            },
+               'LicenseInfo' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CompatibleRuntimes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'ParamInURI' => {
+                    'LayerName' => 'LayerName'
+                  },
+  'IsRequired' => {
+                    'LayerName' => 1,
+                    'Content' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +109,7 @@ Used for filtering with ListLayers and ListLayerVersions.
 
 
 
-=head2 B<REQUIRED> Content => L<Paws::Lambda::LayerVersionContentInput>
+=head2 B<REQUIRED> Content => Lambda_LayerVersionContentInput
 
 The function layer archive.
 

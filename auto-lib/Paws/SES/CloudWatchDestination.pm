@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::CloudWatchDestination;
   use Moo;
   use Types::Standard qw/ArrayRef/;
@@ -11,7 +12,10 @@ package Paws::SES::CloudWatchDestination;
                                               'class' => 'Paws::SES::CloudWatchDimensionConfiguration',
                                               'type' => 'ArrayRef[SES_CloudWatchDimensionConfiguration]'
                                             }
-             }
+             },
+  'IsRequired' => {
+                    'DimensionConfigurations' => 1
+                  }
 }
 ;
     return $Params_map;

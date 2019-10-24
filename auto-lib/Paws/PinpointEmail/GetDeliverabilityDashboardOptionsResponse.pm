@@ -1,13 +1,47 @@
 
 package Paws::PinpointEmail::GetDeliverabilityDashboardOptionsResponse;
-  use Moose;
-  has AccountStatus => (is => 'ro', isa => 'Str');
-  has ActiveSubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainDeliverabilityTrackingOption]');
-  has DashboardEnabled => (is => 'ro', isa => 'Bool', required => 1);
-  has PendingExpirationSubscribedDomains => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DomainDeliverabilityTrackingOption]');
-  has SubscriptionExpiryDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DomainDeliverabilityTrackingOption/;
+  has AccountStatus => (is => 'ro', isa => Str);
+  has ActiveSubscribedDomains => (is => 'ro', isa => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]);
+  has DashboardEnabled => (is => 'ro', isa => Bool, required => 1);
+  has PendingExpirationSubscribedDomains => (is => 'ro', isa => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]);
+  has SubscriptionExpiryDate => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActiveSubscribedDomains' => {
+                                              'class' => 'Paws::PinpointEmail::DomainDeliverabilityTrackingOption',
+                                              'type' => 'ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]'
+                                            },
+               'AccountStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'DashboardEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SubscriptionExpiryDate' => {
+                                             'type' => 'Str'
+                                           },
+               'PendingExpirationSubscribedDomains' => {
+                                                         'class' => 'Paws::PinpointEmail::DomainDeliverabilityTrackingOption',
+                                                         'type' => 'ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]'
+                                                       }
+             },
+  'IsRequired' => {
+                    'DashboardEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +60,7 @@ this value is C<PENDING_EXPIRATION>, your subscription is scheduled to
 expire at the end of the current calendar month.
 
 Valid values are: C<"ACTIVE">, C<"PENDING_EXPIRATION">, C<"DISABLED">
-=head2 ActiveSubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]
+=head2 ActiveSubscribedDomains => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and currently has an active Deliverability dashboard subscription
@@ -41,7 +75,7 @@ Amazon Pinpoint account. If this value is C<true>, the dashboard is
 enabled.
 
 
-=head2 PendingExpirationSubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]
+=head2 PendingExpirationSubscribedDomains => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]
 
 An array of objects, one for each verified domain that you use to send
 email and currently has an active Deliverability dashboard subscription

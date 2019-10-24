@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ECS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ecs' }
   sub signing_name { 'ecs' }
   sub version { '2014-11-13' }
   sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -484,7 +486,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =item [ClusterName => Str]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
 
 =back
@@ -518,9 +520,9 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [Cluster => Str]
 
-=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+=item [DeploymentConfiguration => ECS_DeploymentConfiguration]
 
-=item [DeploymentController => L<Paws::ECS::DeploymentController>]
+=item [DeploymentController => ECS_DeploymentController]
 
 =item [DesiredCount => Int]
 
@@ -530,13 +532,13 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [LaunchType => Str]
 
-=item [LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]]
+=item [LoadBalancers => ArrayRef[ECS_LoadBalancer]]
 
-=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+=item [NetworkConfiguration => ECS_NetworkConfiguration]
 
-=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+=item [PlacementConstraints => ArrayRef[ECS_PlacementConstraint]]
 
-=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+=item [PlacementStrategy => ArrayRef[ECS_PlacementStrategy]]
 
 =item [PlatformVersion => Str]
 
@@ -546,9 +548,9 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [SchedulingStrategy => Str]
 
-=item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+=item [ServiceRegistries => ArrayRef[ECS_ServiceRegistry]]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
 =item [TaskDefinition => Str]
 
@@ -713,15 +715,15 @@ instances with the fewest number of running tasks for this service.
 
 =item [LaunchType => Str]
 
-=item [LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]]
+=item [LoadBalancers => ArrayRef[ECS_LoadBalancer]]
 
-=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+=item [NetworkConfiguration => ECS_NetworkConfiguration]
 
 =item [PlatformVersion => Str]
 
-=item [Scale => L<Paws::ECS::Scale>]
+=item [Scale => ECS_Scale]
 
-=item [ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]]
+=item [ServiceRegistries => ArrayRef[ECS_ServiceRegistry]]
 
 
 =back
@@ -760,7 +762,7 @@ root user for an account.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=item Attributes => ArrayRef[ECS_Attribute]
 
 =item [Cluster => Str]
 
@@ -1380,7 +1382,7 @@ individual account setting has been specified.
 
 =over
 
-=item Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=item Attributes => ArrayRef[ECS_Attribute]
 
 =item [Cluster => Str]
 
@@ -1403,7 +1405,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
 
-=item [Attributes => ArrayRef[L<Paws::ECS::Attribute>]]
+=item [Attributes => ArrayRef[ECS_Attribute]]
 
 =item [Cluster => Str]
 
@@ -1413,13 +1415,13 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [InstanceIdentityDocumentSignature => Str]
 
-=item [PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]]
+=item [PlatformDevices => ArrayRef[ECS_PlatformDevice]]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
-=item [TotalResources => ArrayRef[L<Paws::ECS::Resource>]]
+=item [TotalResources => ArrayRef[ECS_Resource]]
 
-=item [VersionInfo => L<Paws::ECS::VersionInfo>]
+=item [VersionInfo => ECS_VersionInfo]
 
 
 =back
@@ -1439,7 +1441,7 @@ becomes available to place containers on.
 
 =over
 
-=item ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
+=item ContainerDefinitions => ArrayRef[ECS_ContainerDefinition]
 
 =item Family => Str
 
@@ -1455,17 +1457,17 @@ becomes available to place containers on.
 
 =item [PidMode => Str]
 
-=item [PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]]
+=item [PlacementConstraints => ArrayRef[ECS_TaskDefinitionPlacementConstraint]]
 
-=item [ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>]
+=item [ProxyConfiguration => ECS_ProxyConfiguration]
 
 =item [RequiresCompatibilities => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
 =item [TaskRoleArn => Str]
 
-=item [Volumes => ArrayRef[L<Paws::ECS::Volume>]]
+=item [Volumes => ArrayRef[ECS_Volume]]
 
 
 =back
@@ -1518,13 +1520,13 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [LaunchType => Str]
 
-=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+=item [NetworkConfiguration => ECS_NetworkConfiguration]
 
-=item [Overrides => L<Paws::ECS::TaskOverride>]
+=item [Overrides => ECS_TaskOverride]
 
-=item [PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]]
+=item [PlacementConstraints => ArrayRef[ECS_PlacementConstraint]]
 
-=item [PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]]
+=item [PlacementStrategy => ArrayRef[ECS_PlacementStrategy]]
 
 =item [PlatformVersion => Str]
 
@@ -1532,7 +1534,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item [StartedBy => Str]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
 
 =back
@@ -1597,15 +1599,15 @@ gradually up to about five minutes of wait time.
 
 =item [Group => Str]
 
-=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+=item [NetworkConfiguration => ECS_NetworkConfiguration]
 
-=item [Overrides => L<Paws::ECS::TaskOverride>]
+=item [Overrides => ECS_TaskOverride]
 
 =item [PropagateTags => Str]
 
 =item [StartedBy => Str]
 
-=item [Tags => ArrayRef[L<Paws::ECS::Tag>]]
+=item [Tags => ArrayRef[ECS_Tag]]
 
 
 =back
@@ -1661,7 +1663,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =over
 
-=item Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+=item Attachments => ArrayRef[ECS_AttachmentStateChange]
 
 =item [Cluster => Str]
 
@@ -1688,7 +1690,7 @@ Sent to acknowledge that an attachment changed states.
 
 =item [ExitCode => Int]
 
-=item [NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]]
+=item [NetworkBindings => ArrayRef[ECS_NetworkBinding]]
 
 =item [Reason => Str]
 
@@ -1713,11 +1715,11 @@ Sent to acknowledge that a container changed states.
 
 =over
 
-=item [Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]]
+=item [Attachments => ArrayRef[ECS_AttachmentStateChange]]
 
 =item [Cluster => Str]
 
-=item [Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>]]
+=item [Containers => ArrayRef[ECS_ContainerStateChange]]
 
 =item [ExecutionStoppedAt => Str]
 
@@ -1750,7 +1752,7 @@ Sent to acknowledge that a task changed states.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::ECS::Tag>]
+=item Tags => ArrayRef[ECS_Tag]
 
 
 =back
@@ -1901,7 +1903,7 @@ Amazon ECS scheduler can begin scheduling tasks on the instance again.
 
 =item [Cluster => Str]
 
-=item [DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>]
+=item [DeploymentConfiguration => ECS_DeploymentConfiguration]
 
 =item [DesiredCount => Int]
 
@@ -1909,7 +1911,7 @@ Amazon ECS scheduler can begin scheduling tasks on the instance again.
 
 =item [HealthCheckGracePeriodSeconds => Int]
 
-=item [NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>]
+=item [NetworkConfiguration => ECS_NetworkConfiguration]
 
 =item [PlatformVersion => Str]
 
@@ -2092,7 +2094,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =item Cluster => Str
 
-=item Scale => L<Paws::ECS::Scale>
+=item Scale => ECS_Scale
 
 =item Service => Str
 

@@ -1,16 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::DescribeDBInstances;
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::DocDB::Types qw/DocDB_Filter/;
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[DocDB_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::DBInstanceMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::DBInstanceMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'Filters' => {
+                              'class' => 'Paws::DocDB::Filter',
+                              'type' => 'ArrayRef[DocDB_Filter]'
+                            },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +101,7 @@ If provided, must match the identifier of an existing C<DBInstance>.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::DocDB::Filter>]
+=head2 Filters => ArrayRef[DocDB_Filter]
 
 A filter that specifies one or more DB instances to describe.
 

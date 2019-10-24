@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GenerateServiceLastAccessedDetailsResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw//;
   has JobId => (is => 'ro', isa => Str);

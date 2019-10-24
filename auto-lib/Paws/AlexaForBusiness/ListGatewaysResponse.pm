@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::ListGatewaysResponse;
-  use Moose;
-  has Gateways => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::GatewaySummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_GatewaySummary/;
+  has Gateways => (is => 'ro', isa => ArrayRef[AlexaForBusiness_GatewaySummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Gateways' => {
+                               'class' => 'Paws::AlexaForBusiness::GatewaySummary',
+                               'type' => 'ArrayRef[AlexaForBusiness_GatewaySummary]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::AlexaForBusiness::ListGatewaysResponse
 =head1 ATTRIBUTES
 
 
-=head2 Gateways => ArrayRef[L<Paws::AlexaForBusiness::GatewaySummary>]
+=head2 Gateways => ArrayRef[AlexaForBusiness_GatewaySummary]
 
 The gateways in the list.
 

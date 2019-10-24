@@ -1,10 +1,31 @@
 
 package Paws::Greengrass::ListGroupsResponse;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::GroupInformation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_GroupInformation/;
+  has Groups => (is => 'ro', isa => ArrayRef[Greengrass_GroupInformation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'class' => 'Paws::Greengrass::GroupInformation',
+                             'type' => 'ArrayRef[Greengrass_GroupInformation]'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Greengrass::ListGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::Greengrass::GroupInformation>]
+=head2 Groups => ArrayRef[Greengrass_GroupInformation]
 
 Information about a group.
 

@@ -1,14 +1,46 @@
 
 package Paws::Glacier::DescribeVaultOutput;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has LastInventoryDate => (is => 'ro', isa => 'Str');
-  has NumberOfArchives => (is => 'ro', isa => 'Int');
-  has SizeInBytes => (is => 'ro', isa => 'Int');
-  has VaultARN => (is => 'ro', isa => 'Str');
-  has VaultName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glacier::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has LastInventoryDate => (is => 'ro', isa => Str);
+  has NumberOfArchives => (is => 'ro', isa => Int);
+  has SizeInBytes => (is => 'ro', isa => Int);
+  has VaultARN => (is => 'ro', isa => Str);
+  has VaultName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeInBytes' => {
+                                  'type' => 'Int'
+                                },
+               'VaultARN' => {
+                               'type' => 'Str'
+                             },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'NumberOfArchives' => {
+                                       'type' => 'Int'
+                                     },
+               'LastInventoryDate' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

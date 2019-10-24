@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::NotificationOptions;
-  use Moose;
-  has EmailMessage => (is => 'ro', isa => 'Str');
-  has SendEmail => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkDocs::Types qw//;
+  has EmailMessage => (is => 'ro', isa => Str);
+  has SendEmail => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'SendEmail' => {
+                                'type' => 'Bool'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

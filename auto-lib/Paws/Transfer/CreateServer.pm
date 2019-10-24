@@ -1,19 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::CreateServer;
-  use Moose;
-  has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
-  has EndpointType => (is => 'ro', isa => 'Str');
-  has HostKey => (is => 'ro', isa => 'Str');
-  has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
-  has IdentityProviderType => (is => 'ro', isa => 'Str');
-  has LoggingRole => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_EndpointDetails Transfer_Tag Transfer_IdentityProviderDetails/;
+  has EndpointDetails => (is => 'ro', isa => Transfer_EndpointDetails, predicate => 1);
+  has EndpointType => (is => 'ro', isa => Str, predicate => 1);
+  has HostKey => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityProviderDetails => (is => 'ro', isa => Transfer_IdentityProviderDetails, predicate => 1);
+  has IdentityProviderType => (is => 'ro', isa => Str, predicate => 1);
+  has LoggingRole => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Transfer_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::CreateServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transfer::CreateServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingRole' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityProviderType' => {
+                                           'type' => 'Str'
+                                         },
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointDetails' => {
+                                      'class' => 'Paws::Transfer::EndpointDetails',
+                                      'type' => 'Transfer_EndpointDetails'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::Transfer::Tag',
+                           'type' => 'ArrayRef[Transfer_Tag]'
+                         },
+               'IdentityProviderDetails' => {
+                                              'class' => 'Paws::Transfer::IdentityProviderDetails',
+                                              'type' => 'Transfer_IdentityProviderDetails'
+                                            },
+               'HostKey' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +103,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head1 ATTRIBUTES
 
 
-=head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
+=head2 EndpointDetails => Transfer_EndpointDetails
 
 The virtual private cloud (VPC) endpoint settings that you want to
 configure for your SFTP server.
@@ -93,7 +130,7 @@ information, see change-host-key in the I<AWS SFTP User Guide.>
 
 
 
-=head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
+=head2 IdentityProviderDetails => Transfer_IdentityProviderDetails
 
 An array containing all of the information required to call a
 customer-supplied authentication API. This parameter is not required
@@ -120,7 +157,7 @@ your Amazon CloudWatch logs for monitoring and auditing purposes.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=head2 Tags => ArrayRef[Transfer_Tag]
 
 Key-value pairs that can be used to group and search for servers.
 

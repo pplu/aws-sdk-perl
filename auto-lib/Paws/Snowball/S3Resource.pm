@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Snowball::S3Resource;
-  use Moose;
-  has BucketArn => (is => 'ro', isa => 'Str');
-  has KeyRange => (is => 'ro', isa => 'Paws::Snowball::KeyRange');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_KeyRange/;
+  has BucketArn => (is => 'ro', isa => Str);
+  has KeyRange => (is => 'ro', isa => Snowball_KeyRange);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BucketArn' => {
+                                'type' => 'Str'
+                              },
+               'KeyRange' => {
+                               'class' => 'Paws::Snowball::KeyRange',
+                               'type' => 'Snowball_KeyRange'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +68,7 @@ binary sorted.
   The Amazon Resource Name (ARN) of an Amazon S3 bucket.
 
 
-=head2 KeyRange => L<Paws::Snowball::KeyRange>
+=head2 KeyRange => Snowball_KeyRange
 
   For export jobs, you can provide an optional C<KeyRange> within a
 specific Amazon S3 bucket. The length of the range is defined at job

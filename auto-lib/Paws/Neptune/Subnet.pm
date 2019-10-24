@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Neptune::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::Neptune::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw/Neptune_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => Neptune_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+  has SubnetStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetAvailabilityZone' => {
+                                             'class' => 'Paws::Neptune::AvailabilityZone',
+                                             'type' => 'Neptune_AvailabilityZone'
+                                           },
+               'SubnetStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +65,7 @@ DescribeDBSubnetGroups action.
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::Neptune::AvailabilityZone>
+=head2 SubnetAvailabilityZone => Neptune_AvailabilityZone
 
   Specifies the EC2 Availability Zone that the subnet is in.
 

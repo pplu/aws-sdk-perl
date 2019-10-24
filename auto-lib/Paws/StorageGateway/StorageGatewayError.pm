@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::StorageGatewayError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', request_name => 'errorCode', traits => ['NameInRequest']);
-  has ErrorDetails => (is => 'ro', isa => 'Paws::StorageGateway::ErrorDetails', request_name => 'errorDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw/StorageGateway_errorDetails/;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDetails => (is => 'ro', isa => StorageGateway_errorDetails);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorDetails' => {
+                                   'class' => 'Paws::StorageGateway::ErrorDetails',
+                                   'type' => 'StorageGateway_errorDetails'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ErrorCode' => 'errorCode',
+                       'ErrorDetails' => 'errorDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ more information about the error.
   Additional information about the error.
 
 
-=head2 ErrorDetails => L<Paws::StorageGateway::ErrorDetails>
+=head2 ErrorDetails => StorageGateway_errorDetails
 
   Human-readable text that provides detail about the error that occurred.
 

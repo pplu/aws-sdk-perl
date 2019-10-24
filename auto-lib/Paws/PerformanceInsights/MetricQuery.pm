@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::MetricQuery;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::PerformanceInsights::MetricQueryFilterMap');
-  has GroupBy => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionGroup');
-  has Metric => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DimensionGroup PerformanceInsights_MetricQueryFilterMap/;
+  has Filter => (is => 'ro', isa => PerformanceInsights_MetricQueryFilterMap);
+  has GroupBy => (is => 'ro', isa => PerformanceInsights_DimensionGroup);
+  has Metric => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupBy' => {
+                              'class' => 'Paws::PerformanceInsights::DimensionGroup',
+                              'type' => 'PerformanceInsights_DimensionGroup'
+                            },
+               'Filter' => {
+                             'class' => 'Paws::PerformanceInsights::MetricQueryFilterMap',
+                             'type' => 'PerformanceInsights_MetricQueryFilterMap'
+                           },
+               'Metric' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Metric' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ only those data points that match your criteria (C<Filter>).
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::PerformanceInsights::MetricQueryFilterMap>
+=head2 Filter => PerformanceInsights_MetricQueryFilterMap
 
   One or more filters to apply in the request. Restrictions:
 
@@ -61,7 +89,7 @@ A single filter for any other dimension in this dimension group.
 
 
 
-=head2 GroupBy => L<Paws::PerformanceInsights::DimensionGroup>
+=head2 GroupBy => PerformanceInsights_DimensionGroup
 
   A specification for how to aggregate the data points from a query
 result. You must specify a valid dimension group. Performance Insights

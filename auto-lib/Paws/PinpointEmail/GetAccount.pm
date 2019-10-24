@@ -1,13 +1,22 @@
 
 package Paws::PinpointEmail::GetAccount;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAccount');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/account');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::GetAccountResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAccount');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/account');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::GetAccountResponse');
+
+    sub params_map {
+    our $Params_map ||= {}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

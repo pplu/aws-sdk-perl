@@ -1,17 +1,45 @@
 
 package Paws::KinesisVideoArchivedMedia::ListFragments;
-  use Moose;
-  has FragmentSelector => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::FragmentSelector');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_FragmentSelector/;
+  has FragmentSelector => (is => 'ro', isa => KinesisVideoArchivedMedia_FragmentSelector, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListFragments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listFragments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::ListFragmentsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListFragments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listFragments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideoArchivedMedia::ListFragmentsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FragmentSelector' => {
+                                       'class' => 'Paws::KinesisVideoArchivedMedia::FragmentSelector',
+                                       'type' => 'KinesisVideoArchivedMedia_FragmentSelector'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'IsRequired' => {
+                    'StreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +87,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>
+=head2 FragmentSelector => KinesisVideoArchivedMedia_FragmentSelector
 
 Describes the timestamp range and timestamp origin for the range of
 fragments to return.

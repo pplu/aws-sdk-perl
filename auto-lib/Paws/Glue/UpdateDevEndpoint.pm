@@ -1,20 +1,62 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateDevEndpoint;
-  use Moose;
-  has AddArguments => (is => 'ro', isa => 'Paws::Glue::MapValue');
-  has AddPublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CustomLibraries => (is => 'ro', isa => 'Paws::Glue::DevEndpointCustomLibraries');
-  has DeleteArguments => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DeletePublicKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EndpointName => (is => 'ro', isa => 'Str', required => 1);
-  has PublicKey => (is => 'ro', isa => 'Str');
-  has UpdateEtlLibraries => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Glue::Types qw/Glue_MapValue Glue_DevEndpointCustomLibraries/;
+  has AddArguments => (is => 'ro', isa => Glue_MapValue, predicate => 1);
+  has AddPublicKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CustomLibraries => (is => 'ro', isa => Glue_DevEndpointCustomLibraries, predicate => 1);
+  has DeleteArguments => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DeletePublicKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PublicKey => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateEtlLibraries => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDevEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateDevEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDevEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateDevEndpointResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'CustomLibraries' => {
+                                      'class' => 'Paws::Glue::DevEndpointCustomLibraries',
+                                      'type' => 'Glue_DevEndpointCustomLibraries'
+                                    },
+               'AddPublicKeys' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'UpdateEtlLibraries' => {
+                                         'type' => 'Bool'
+                                       },
+               'DeletePublicKeys' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DeleteArguments' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'PublicKey' => {
+                                'type' => 'Str'
+                              },
+               'AddArguments' => {
+                                   'class' => 'Paws::Glue::MapValue',
+                                   'type' => 'Glue_MapValue'
+                                 }
+             },
+  'IsRequired' => {
+                    'EndpointName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +96,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 AddArguments => L<Paws::Glue::MapValue>
+=head2 AddArguments => Glue_MapValue
 
 The map of arguments to add the map of arguments used to configure the
 DevEndpoint.
@@ -67,7 +109,7 @@ The list of public keys for the DevEndpoint to use.
 
 
 
-=head2 CustomLibraries => L<Paws::Glue::DevEndpointCustomLibraries>
+=head2 CustomLibraries => Glue_DevEndpointCustomLibraries
 
 Custom Python or Java libraries to be loaded in the DevEndpoint.
 

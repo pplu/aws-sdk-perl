@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ImageInserter;
-  use Moose;
-  has InsertableImages => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InsertableImage]', request_name => 'insertableImages', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_InsertableImage/;
+  has InsertableImages => (is => 'ro', isa => ArrayRef[MediaConvert_InsertableImage]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InsertableImages' => {
+                                       'class' => 'Paws::MediaConvert::InsertableImage',
+                                       'type' => 'ArrayRef[MediaConvert_InsertableImage]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'InsertableImages' => 'insertableImages'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ individually. This setting is disabled by default.
 =head1 ATTRIBUTES
 
 
-=head2 InsertableImages => ArrayRef[L<Paws::MediaConvert::InsertableImage>]
+=head2 InsertableImages => ArrayRef[MediaConvert_InsertableImage]
 
   Specify the images that you want to overlay on your video. The images
 must be PNG or TGA files.

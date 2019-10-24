@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::DynamoDBv2Action;
-  use Moose;
-  has PutItem => (is => 'ro', isa => 'Paws::IoT::PutItemInput', request_name => 'putItem', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_PutItemInput/;
+  has PutItem => (is => 'ro', isa => IoT_PutItemInput, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'PutItem' => {
+                              'class' => 'Paws::IoT::PutItemInput',
+                              'type' => 'IoT_PutItemInput'
+                            }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'PutItem' => 'putItem'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'PutItem' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +69,7 @@ it's own column in the DynamoDB table.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PutItem => L<Paws::IoT::PutItemInput>
+=head2 B<REQUIRED> PutItem => IoT_PutItemInput
 
   Specifies the DynamoDB table to which the message data will be written.
 For example:

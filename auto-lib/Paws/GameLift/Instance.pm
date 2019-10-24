@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::GameLift::Instance;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has FleetId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

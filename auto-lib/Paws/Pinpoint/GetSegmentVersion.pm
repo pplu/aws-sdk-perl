@@ -1,16 +1,47 @@
 
 package Paws::Pinpoint::GetSegmentVersion;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has SegmentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'segment-id', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'version', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SegmentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSegmentVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/versions/{version}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::GetSegmentVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSegmentVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/segments/{segment-id}/versions/{version}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::GetSegmentVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'SegmentId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id',
+                    'Version' => 'version',
+                    'SegmentId' => 'segment-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'Version' => 1,
+                    'SegmentId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

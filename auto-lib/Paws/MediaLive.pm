@@ -1,14 +1,15 @@
 package Paws::MediaLive;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'medialive' }
   sub signing_name { 'medialive' }
   sub version { '2017-10-14' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -351,9 +352,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =item ChannelId => Str
 
-=item [Creates => L<Paws::MediaLive::BatchScheduleActionCreateRequest>]
+=item [Creates => MediaLive_BatchScheduleActionCreateRequest]
 
-=item [Deletes => L<Paws::MediaLive::BatchScheduleActionDeleteRequest>]
+=item [Deletes => MediaLive_BatchScheduleActionDeleteRequest]
 
 
 =back
@@ -371,13 +372,13 @@ Update a channel schedule
 
 =item [ChannelClass => Str]
 
-=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+=item [Destinations => ArrayRef[MediaLive_OutputDestination]]
 
-=item [EncoderSettings => L<Paws::MediaLive::EncoderSettings>]
+=item [EncoderSettings => MediaLive_EncoderSettings]
 
-=item [InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]]
+=item [InputAttachments => ArrayRef[MediaLive_InputAttachment]]
 
-=item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
+=item [InputSpecification => MediaLive_InputSpecification]
 
 =item [LogLevel => Str]
 
@@ -389,7 +390,7 @@ Update a channel schedule
 
 =item [RoleArn => Str]
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
 
 =back
@@ -405,11 +406,11 @@ Creates a new channel
 
 =over
 
-=item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
+=item [Destinations => ArrayRef[MediaLive_InputDestinationRequest]]
 
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
-=item [MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]]
+=item [MediaConnectFlows => ArrayRef[MediaLive_MediaConnectFlowRequest]]
 
 =item [Name => Str]
 
@@ -417,13 +418,13 @@ Creates a new channel
 
 =item [RoleArn => Str]
 
-=item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
+=item [Sources => ArrayRef[MediaLive_InputSourceRequest]]
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
 =item [Type => Str]
 
-=item [Vpc => L<Paws::MediaLive::InputVpcRequest>]
+=item [Vpc => MediaLive_InputVpcRequest]
 
 
 =back
@@ -439,9 +440,9 @@ Create an input
 
 =over
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
-=item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
+=item [WhitelistRules => ArrayRef[MediaLive_InputWhitelistRuleCidr]]
 
 
 =back
@@ -459,7 +460,7 @@ Creates a Input Security Group
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
 
 =back
@@ -821,7 +822,7 @@ Produces list of tags that have been created for a resource
 
 =item [Start => Str]
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
 
 =back
@@ -871,13 +872,13 @@ Stops a running channel
 
 =item ChannelId => Str
 
-=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+=item [Destinations => ArrayRef[MediaLive_OutputDestination]]
 
-=item [EncoderSettings => L<Paws::MediaLive::EncoderSettings>]
+=item [EncoderSettings => MediaLive_EncoderSettings]
 
-=item [InputAttachments => ArrayRef[L<Paws::MediaLive::InputAttachment>]]
+=item [InputAttachments => ArrayRef[MediaLive_InputAttachment]]
 
-=item [InputSpecification => L<Paws::MediaLive::InputSpecification>]
+=item [InputSpecification => MediaLive_InputSpecification]
 
 =item [LogLevel => Str]
 
@@ -903,7 +904,7 @@ Updates a channel.
 
 =item ChannelId => Str
 
-=item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
+=item [Destinations => ArrayRef[MediaLive_OutputDestination]]
 
 
 =back
@@ -919,17 +920,17 @@ Changes the class of the channel.
 
 =over
 
-=item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
+=item [Destinations => ArrayRef[MediaLive_InputDestinationRequest]]
 
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
-=item [MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]]
+=item [MediaConnectFlows => ArrayRef[MediaLive_MediaConnectFlowRequest]]
 
 =item [Name => Str]
 
 =item [RoleArn => Str]
 
-=item [Sources => ArrayRef[L<Paws::MediaLive::InputSourceRequest>]]
+=item [Sources => ArrayRef[MediaLive_InputSourceRequest]]
 
 
 =back
@@ -947,9 +948,9 @@ Updates an input.
 
 =item InputSecurityGroupId => Str
 
-=item [Tags => L<Paws::MediaLive::Tags>]
+=item [Tags => MediaLive_Tags]
 
-=item [WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]]
+=item [WhitelistRules => ArrayRef[MediaLive_InputWhitelistRuleCidr]]
 
 
 =back

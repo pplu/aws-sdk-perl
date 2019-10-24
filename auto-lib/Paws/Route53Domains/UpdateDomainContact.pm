@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::UpdateDomainContact;
-  use Moose;
-  has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has RegistrantContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail');
-  has TechContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw/Route53Domains_ContactDetail/;
+  has AdminContact => (is => 'ro', isa => Route53Domains_ContactDetail, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistrantContact => (is => 'ro', isa => Route53Domains_ContactDetail, predicate => 1);
+  has TechContact => (is => 'ro', isa => Route53Domains_ContactDetail, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainContact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateDomainContactResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDomainContact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::UpdateDomainContactResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'RegistrantContact' => {
+                                        'class' => 'Paws::Route53Domains::ContactDetail',
+                                        'type' => 'Route53Domains_ContactDetail'
+                                      },
+               'AdminContact' => {
+                                   'class' => 'Paws::Route53Domains::ContactDetail',
+                                   'type' => 'Route53Domains_ContactDetail'
+                                 },
+               'TechContact' => {
+                                  'class' => 'Paws::Route53Domains::ContactDetail',
+                                  'type' => 'Route53Domains_ContactDetail'
+                                }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -123,7 +154,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 AdminContact => L<Paws::Route53Domains::ContactDetail>
+=head2 AdminContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 
@@ -135,13 +166,13 @@ The name of the domain that you want to update contact information for.
 
 
 
-=head2 RegistrantContact => L<Paws::Route53Domains::ContactDetail>
+=head2 RegistrantContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 
 
 
-=head2 TechContact => L<Paws::Route53Domains::ContactDetail>
+=head2 TechContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 

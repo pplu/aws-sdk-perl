@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::CreateResolverEndpoint;
-  use Moose;
-  has CreatorRequestId => (is => 'ro', isa => 'Str', required => 1);
-  has Direction => (is => 'ro', isa => 'Str', required => 1);
-  has IpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::IpAddressRequest]', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_IpAddressRequest Route53Resolver_Tag/;
+  has CreatorRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Direction => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpAddresses => (is => 'ro', isa => ArrayRef[Route53Resolver_IpAddressRequest], required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Route53Resolver_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResolverEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::CreateResolverEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResolverEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::CreateResolverEndpointResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'IpAddresses' => {
+                                  'class' => 'Paws::Route53Resolver::IpAddressRequest',
+                                  'type' => 'ArrayRef[Route53Resolver_IpAddressRequest]'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Route53Resolver::Tag',
+                           'type' => 'ArrayRef[Route53Resolver_Tag]'
+                         },
+               'Direction' => {
+                                'type' => 'Str'
+                              },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'SecurityGroupIds' => 1,
+                    'IpAddresses' => 1,
+                    'Direction' => 1,
+                    'CreatorRequestId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +137,7 @@ VPC to your network or another VPC
 
 Valid values are: C<"INBOUND">, C<"OUTBOUND">
 
-=head2 B<REQUIRED> IpAddresses => ArrayRef[L<Paws::Route53Resolver::IpAddressRequest>]
+=head2 B<REQUIRED> IpAddresses => ArrayRef[Route53Resolver_IpAddressRequest]
 
 The subnets and IP addresses in your VPC that you want DNS queries to
 pass through on the way from your VPCs to your network (for outbound
@@ -123,7 +162,7 @@ rules (for outbound resolver endpoints).
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Route53Resolver::Tag>]
+=head2 Tags => ArrayRef[Route53Resolver_Tag]
 
 A list of the tag keys and values that you want to associate with the
 endpoint.

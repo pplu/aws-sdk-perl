@@ -7,7 +7,7 @@ package Paws::EC2::SpotPrice;
   has SpotPrice => (is => 'ro', isa => Str);
   has Timestamp => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Timestamp' => {
@@ -35,8 +35,8 @@ package Paws::EC2::SpotPrice;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

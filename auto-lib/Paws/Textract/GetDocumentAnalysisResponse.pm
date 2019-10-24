@@ -1,14 +1,50 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Textract::GetDocumentAnalysisResponse;
-  use Moose;
-  has Blocks => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Block]');
-  has DocumentMetadata => (is => 'ro', isa => 'Paws::Textract::DocumentMetadata');
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::Textract::Warning]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Textract::Types qw/Textract_DocumentMetadata Textract_Warning Textract_Block/;
+  has Blocks => (is => 'ro', isa => ArrayRef[Textract_Block]);
+  has DocumentMetadata => (is => 'ro', isa => Textract_DocumentMetadata);
+  has JobStatus => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Warnings => (is => 'ro', isa => ArrayRef[Textract_Warning]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Warnings' => {
+                               'class' => 'Paws::Textract::Warning',
+                               'type' => 'ArrayRef[Textract_Warning]'
+                             },
+               'Blocks' => {
+                             'class' => 'Paws::Textract::Block',
+                             'type' => 'ArrayRef[Textract_Block]'
+                           },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'DocumentMetadata' => {
+                                       'class' => 'Paws::Textract::DocumentMetadata',
+                                       'type' => 'Textract_DocumentMetadata'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -19,12 +55,12 @@ Paws::Textract::GetDocumentAnalysisResponse
 =head1 ATTRIBUTES
 
 
-=head2 Blocks => ArrayRef[L<Paws::Textract::Block>]
+=head2 Blocks => ArrayRef[Textract_Block]
 
 The results of the text analysis operation.
 
 
-=head2 DocumentMetadata => L<Paws::Textract::DocumentMetadata>
+=head2 DocumentMetadata => Textract_DocumentMetadata
 
 Information about a document that Amazon Textract processed.
 C<DocumentMetadata> is returned in every page of paginated responses
@@ -48,7 +84,7 @@ of text detection results.
 The current status of an asynchronous document analysis operation.
 
 
-=head2 Warnings => ArrayRef[L<Paws::Textract::Warning>]
+=head2 Warnings => ArrayRef[Textract_Warning]
 
 A list of warnings that occurred during the document analysis
 operation.

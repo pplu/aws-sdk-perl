@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::Batch::Volume;
-  use Moose;
-  has Host => (is => 'ro', isa => 'Paws::Batch::Host', request_name => 'host', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_Host/;
+  has Host => (is => 'ro', isa => Batch_Host);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Host' => {
+                           'class' => 'Paws::Batch::Host',
+                           'type' => 'Batch_Host'
+                         }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Host' => 'host'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ A data volume used in a job's container properties.
 =head1 ATTRIBUTES
 
 
-=head2 Host => L<Paws::Batch::Host>
+=head2 Host => Batch_Host
 
   The contents of the C<host> parameter determine whether your data
 volume persists on the host container instance and where it is stored.

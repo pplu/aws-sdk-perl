@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::EMR;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticmapreduce' }
   sub signing_name { 'elasticmapreduce' }
   sub version { '2009-03-31' }
   sub target_prefix { 'ElasticMapReduce' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -407,7 +409,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =item ClusterId => Str
 
-=item InstanceFleet => L<Paws::EMR::InstanceFleetConfig>
+=item InstanceFleet => EMR_InstanceFleetConfig
 
 
 =back
@@ -426,7 +428,7 @@ versions 4.8.0 and later, excluding 5.0.x.
 
 =over
 
-=item InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
+=item InstanceGroups => ArrayRef[EMR_InstanceGroupConfig]
 
 =item JobFlowId => Str
 
@@ -446,7 +448,7 @@ Adds one or more instance groups to a running cluster.
 
 =item JobFlowId => Str
 
-=item Steps => ArrayRef[L<Paws::EMR::StepConfig>]
+=item Steps => ArrayRef[EMR_StepConfig]
 
 
 =back
@@ -488,7 +490,7 @@ states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 
 =item ResourceId => Str
 
-=item Tags => ArrayRef[L<Paws::EMR::Tag>]
+=item Tags => ArrayRef[EMR_Tag]
 
 
 =back
@@ -828,7 +830,7 @@ specify stepIds with the request.
 
 =item ClusterId => Str
 
-=item InstanceFleet => L<Paws::EMR::InstanceFleetModifyConfig>
+=item InstanceFleet => EMR_InstanceFleetModifyConfig
 
 
 =back
@@ -852,7 +854,7 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =item [ClusterId => Str]
 
-=item [InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]]
+=item [InstanceGroups => ArrayRef[EMR_InstanceGroupModifyConfig]]
 
 
 =back
@@ -871,7 +873,7 @@ will either succeed or fail atomically.
 
 =over
 
-=item AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>
+=item AutoScalingPolicy => EMR_AutoScalingPolicy
 
 =item ClusterId => Str
 
@@ -939,7 +941,7 @@ cluster:
 
 =over
 
-=item Instances => L<Paws::EMR::JobFlowInstancesConfig>
+=item Instances => EMR_JobFlowInstancesConfig
 
 =item Name => Str
 
@@ -947,13 +949,13 @@ cluster:
 
 =item [AmiVersion => Str]
 
-=item [Applications => ArrayRef[L<Paws::EMR::Application>]]
+=item [Applications => ArrayRef[EMR_Application]]
 
 =item [AutoScalingRole => Str]
 
-=item [BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]]
+=item [BootstrapActions => ArrayRef[EMR_BootstrapActionConfig]]
 
-=item [Configurations => ArrayRef[L<Paws::EMR::Configuration>]]
+=item [Configurations => ArrayRef[EMR_Configuration]]
 
 =item [CustomAmiId => Str]
 
@@ -961,11 +963,11 @@ cluster:
 
 =item [JobFlowRole => Str]
 
-=item [KerberosAttributes => L<Paws::EMR::KerberosAttributes>]
+=item [KerberosAttributes => EMR_KerberosAttributes]
 
 =item [LogUri => Str]
 
-=item [NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]]
+=item [NewSupportedProducts => ArrayRef[EMR_SupportedProductConfig]]
 
 =item [ReleaseLabel => Str]
 
@@ -977,11 +979,11 @@ cluster:
 
 =item [ServiceRole => Str]
 
-=item [Steps => ArrayRef[L<Paws::EMR::StepConfig>]]
+=item [Steps => ArrayRef[EMR_StepConfig]]
 
 =item [SupportedProducts => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::EMR::Tag>]]
+=item [Tags => ArrayRef[EMR_Tag]]
 
 =item [VisibleToAllUsers => Bool]
 

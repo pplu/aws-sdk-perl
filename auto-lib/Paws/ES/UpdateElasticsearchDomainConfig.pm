@@ -60,6 +60,9 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
              },
   'ParamInURI' => {
                     'DomainName' => 'DomainName'
+                  },
+  'IsRequired' => {
+                    'DomainName' => 1
                   }
 }
 ;

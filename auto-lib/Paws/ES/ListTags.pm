@@ -21,7 +21,10 @@ package Paws::ES::ListTags;
              },
   'ParamInQuery' => {
                       'ARN' => 'arn'
-                    }
+                    },
+  'IsRequired' => {
+                    'ARN' => 1
+                  }
 }
 ;
     return $Params_map;

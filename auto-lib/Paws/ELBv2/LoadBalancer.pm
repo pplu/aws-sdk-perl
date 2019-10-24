@@ -1,17 +1,69 @@
+# Generated from default/object.tt
 package Paws::ELBv2::LoadBalancer;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::AvailabilityZone]');
-  has CanonicalHostedZoneId => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DNSName => (is => 'ro', isa => 'Str');
-  has IpAddressType => (is => 'ro', isa => 'Str');
-  has LoadBalancerArn => (is => 'ro', isa => 'Str');
-  has LoadBalancerName => (is => 'ro', isa => 'Str');
-  has Scheme => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has State => (is => 'ro', isa => 'Paws::ELBv2::LoadBalancerState');
-  has Type => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_LoadBalancerState ELBv2_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[ELBv2_AvailabilityZone]);
+  has CanonicalHostedZoneId => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DNSName => (is => 'ro', isa => Str);
+  has IpAddressType => (is => 'ro', isa => Str);
+  has LoadBalancerArn => (is => 'ro', isa => Str);
+  has LoadBalancerName => (is => 'ro', isa => Str);
+  has Scheme => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has State => (is => 'ro', isa => ELBv2_LoadBalancerState);
+  has Type => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Scheme' => {
+                             'type' => 'Str'
+                           },
+               'IpAddressType' => {
+                                    'type' => 'Str'
+                                  },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::ELBv2::AvailabilityZone',
+                                        'type' => 'ArrayRef[ELBv2_AvailabilityZone]'
+                                      },
+               'State' => {
+                            'class' => 'Paws::ELBv2::LoadBalancerState',
+                            'type' => 'ELBv2_LoadBalancerState'
+                          },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'CanonicalHostedZoneId' => {
+                                            'type' => 'Str'
+                                          },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +99,7 @@ Information about a load balancer.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::ELBv2::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[ELBv2_AvailabilityZone]
 
   The Availability Zones for the load balancer.
 
@@ -104,7 +156,7 @@ load balancer.
   The IDs of the security groups for the load balancer.
 
 
-=head2 State => L<Paws::ELBv2::LoadBalancerState>
+=head2 State => ELBv2_LoadBalancerState
 
   The state of the load balancer.
 

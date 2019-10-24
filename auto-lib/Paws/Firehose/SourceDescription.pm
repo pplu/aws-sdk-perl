@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Firehose::SourceDescription;
-  use Moose;
-  has KinesisStreamSourceDescription => (is => 'ro', isa => 'Paws::Firehose::KinesisStreamSourceDescription');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Firehose::Types qw/Firehose_KinesisStreamSourceDescription/;
+  has KinesisStreamSourceDescription => (is => 'ro', isa => Firehose_KinesisStreamSourceDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisStreamSourceDescription' => {
+                                                     'class' => 'Paws::Firehose::KinesisStreamSourceDescription',
+                                                     'type' => 'Firehose_KinesisStreamSourceDescription'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ Data Firehose delivery stream.
 =head1 ATTRIBUTES
 
 
-=head2 KinesisStreamSourceDescription => L<Paws::Firehose::KinesisStreamSourceDescription>
+=head2 KinesisStreamSourceDescription => Firehose_KinesisStreamSourceDescription
 
   The KinesisStreamSourceDescription value for the source Kinesis data
 stream.

@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AacSettings;
-  use Moose;
-  has AudioDescriptionBroadcasterMix => (is => 'ro', isa => 'Str', request_name => 'audioDescriptionBroadcasterMix', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
-  has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
-  has RawFormat => (is => 'ro', isa => 'Str', request_name => 'rawFormat', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
-  has Specification => (is => 'ro', isa => 'Str', request_name => 'specification', traits => ['NameInRequest']);
-  has VbrQuality => (is => 'ro', isa => 'Str', request_name => 'vbrQuality', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has AudioDescriptionBroadcasterMix => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Int);
+  has CodecProfile => (is => 'ro', isa => Str);
+  has CodingMode => (is => 'ro', isa => Str);
+  has RateControlMode => (is => 'ro', isa => Str);
+  has RawFormat => (is => 'ro', isa => Str);
+  has SampleRate => (is => 'ro', isa => Int);
+  has Specification => (is => 'ro', isa => Str);
+  has VbrQuality => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RawFormat' => {
+                                'type' => 'Str'
+                              },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               },
+               'Specification' => {
+                                    'type' => 'Str'
+                                  },
+               'CodecProfile' => {
+                                   'type' => 'Str'
+                                 },
+               'CodingMode' => {
+                                 'type' => 'Str'
+                               },
+               'AudioDescriptionBroadcasterMix' => {
+                                                     'type' => 'Str'
+                                                   },
+               'VbrQuality' => {
+                                 'type' => 'Str'
+                               },
+               'RateControlMode' => {
+                                      'type' => 'Str'
+                                    },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'RawFormat' => 'rawFormat',
+                       'SampleRate' => 'sampleRate',
+                       'Specification' => 'specification',
+                       'CodecProfile' => 'codecProfile',
+                       'CodingMode' => 'codingMode',
+                       'AudioDescriptionBroadcasterMix' => 'audioDescriptionBroadcasterMix',
+                       'VbrQuality' => 'vbrQuality',
+                       'RateControlMode' => 'rateControlMode',
+                       'Bitrate' => 'bitrate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

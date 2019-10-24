@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudTrail::LookupEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Event]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[CloudTrail_Event]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Events' => {
+                             'class' => 'Paws::CloudTrail::Event',
+                             'type' => 'ArrayRef[CloudTrail_Event]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CloudTrail::LookupEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::CloudTrail::Event>]
+=head2 Events => ArrayRef[CloudTrail_Event]
 
 A list of events returned based on the lookup attributes specified and
 the CloudTrail event. The events list is sorted by time. The most

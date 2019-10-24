@@ -1,21 +1,74 @@
 
 package Paws::MediaConvert::CreateJobTemplate;
-  use Moose;
-  has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', traits => ['NameInRequest'], request_name => 'accelerationSettings');
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
-  has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings', required => 1);
-  has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert___mapOf__string MediaConvert_JobTemplateSettings MediaConvert_AccelerationSettings/;
+  has AccelerationSettings => (is => 'ro', isa => MediaConvert_AccelerationSettings, predicate => 1);
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Queue => (is => 'ro', isa => Str, predicate => 1);
+  has Settings => (is => 'ro', isa => MediaConvert_JobTemplateSettings, required => 1, predicate => 1);
+  has StatusUpdateInterval => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJobTemplate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/jobTemplates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::CreateJobTemplateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJobTemplate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/jobTemplates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::CreateJobTemplateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccelerationSettings' => {
+                                           'class' => 'Paws::MediaConvert::AccelerationSettings',
+                                           'type' => 'MediaConvert_AccelerationSettings'
+                                         },
+               'Settings' => {
+                               'class' => 'Paws::MediaConvert::JobTemplateSettings',
+                               'type' => 'MediaConvert_JobTemplateSettings'
+                             },
+               'Queue' => {
+                            'type' => 'Str'
+                          },
+               'StatusUpdateInterval' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::MediaConvert::__mapOf__string',
+                           'type' => 'MediaConvert___mapOf__string'
+                         },
+               'Category' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'AccelerationSettings' => 'accelerationSettings',
+                       'Settings' => 'settings',
+                       'Queue' => 'queue',
+                       'StatusUpdateInterval' => 'statusUpdateInterval',
+                       'Tags' => 'tags',
+                       'Category' => 'category',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Settings' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -682,9 +735,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     AudioBufferModel  => 'DVB',    # values: DVB, ATSC; OPTIONAL
                     AudioFramesPerPes => 1,        # max: 2147483647; OPTIONAL
                     AudioPids         => [
-                      1, ...    # min: 32, max: 8182; OPTIONAL
-                    ],          # OPTIONAL
-                    Bitrate => 1,    # max: 2147483647; OPTIONAL
+                      1, ...                       # min: 32, max: 8182
+                    ],                             # OPTIONAL
+                    Bitrate => 1,                  # max: 2147483647; OPTIONAL
                     BufferModel =>
                       'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                     DvbNitSettings => {
@@ -703,12 +756,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
                     },    # OPTIONAL
                     DvbSubPids => [
-                      1, ...    # min: 32, max: 8182; OPTIONAL
+                      1, ...    # min: 32, max: 8182
                     ],          # OPTIONAL
                     DvbTdtSettings => {
                       TdtInterval => 1,    # min: 1000, max: 30000; OPTIONAL
                     },    # OPTIONAL
-                    DvbTeletextPid => 1,    # min: 32, max: 8182; OPTIONAL
+                    DvbTeletextPid => 1,    # min: 32, max: 8182
                     EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
                     , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
                     EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
@@ -725,16 +778,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     PatInterval       => 1,     # max: 1000; OPTIONAL
                     PcrControl => 'PCR_EVERY_PES_PACKET'
                     , # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-                    PcrPid             => 1,      # min: 32, max: 8182; OPTIONAL
-                    PmtInterval        => 1,      # max: 1000; OPTIONAL
-                    PmtPid             => 1,      # min: 32, max: 8182; OPTIONAL
-                    PrivateMetadataPid => 1,      # min: 32, max: 8182; OPTIONAL
-                    ProgramNumber      => 1,      # max: 65535; OPTIONAL
-                    RateMode           => 'VBR',  # values: VBR, CBR; OPTIONAL
+                    PcrPid             => 1,        # min: 32, max: 8182
+                    PmtInterval        => 1,        # max: 1000; OPTIONAL
+                    PmtPid             => 1,        # min: 32, max: 8182
+                    PrivateMetadataPid => 1,        # min: 32, max: 8182
+                    ProgramNumber      => 1,        # max: 65535; OPTIONAL
+                    RateMode           => 'VBR',    # values: VBR, CBR; OPTIONAL
                     Scte35Esam         => {
-                      Scte35EsamPid => 1,         # min: 32, max: 8182; OPTIONAL
+                      Scte35EsamPid => 1,           # min: 32, max: 8182
                     },    # OPTIONAL
-                    Scte35Pid => 1,    # min: 32, max: 8182; OPTIONAL
+                    Scte35Pid => 1,    # min: 32, max: 8182
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     SegmentationMarkers => 'NONE'
@@ -742,32 +795,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     SegmentationStyle => 'MAINTAIN_CADENCE'
                     ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
                     SegmentationTime  => 1,    # OPTIONAL
-                    TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
+                    TimedMetadataPid  => 1,    # min: 32, max: 8182
                     TransportStreamId => 1,    # max: 65535; OPTIONAL
-                    VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
+                    VideoPid          => 1,    # min: 32, max: 8182
                   },    # OPTIONAL
                   M3u8Settings => {
                     AudioFramesPerPes => 1,    # max: 2147483647; OPTIONAL
                     AudioPids         => [
-                      1, ...                   # min: 32, max: 8182; OPTIONAL
+                      1, ...                   # min: 32, max: 8182
                     ],                         # OPTIONAL
                     NielsenId3  => 'INSERT',   # values: INSERT, NONE; OPTIONAL
                     PatInterval => 1,          # max: 1000; OPTIONAL
                     PcrControl => 'PCR_EVERY_PES_PACKET'
                     , # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
-                    PcrPid             => 1,    # min: 32, max: 8182; OPTIONAL
+                    PcrPid             => 1,    # min: 32, max: 8182
                     PmtInterval        => 1,    # max: 1000; OPTIONAL
-                    PmtPid             => 1,    # min: 32, max: 8182; OPTIONAL
-                    PrivateMetadataPid => 1,    # min: 32, max: 8182; OPTIONAL
+                    PmtPid             => 1,    # min: 32, max: 8182
+                    PrivateMetadataPid => 1,    # min: 32, max: 8182
                     ProgramNumber      => 1,    # max: 65535; OPTIONAL
-                    Scte35Pid          => 1,    # min: 32, max: 8182; OPTIONAL
+                    Scte35Pid          => 1,    # min: 32, max: 8182
                     Scte35Source =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
                     TimedMetadata =>
                       'PASSTHROUGH',    # values: PASSTHROUGH, NONE; OPTIONAL
-                    TimedMetadataPid  => 1,    # min: 32, max: 8182; OPTIONAL
+                    TimedMetadataPid  => 1,    # min: 32, max: 8182
                     TransportStreamId => 1,    # max: 65535; OPTIONAL
-                    VideoPid          => 1,    # min: 32, max: 8182; OPTIONAL
+                    VideoPid          => 1,    # min: 32, max: 8182
                   },    # OPTIONAL
                   MovSettings => {
                     ClapAtom => 'INCLUDE',  # values: INCLUDE, EXCLUDE; OPTIONAL
@@ -1167,7 +1220,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>
+=head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
 Accelerated transcoding can significantly speed up jobs with long,
 visually complex content. Outputs that use this feature incur pro-tier
@@ -1201,7 +1254,7 @@ to. If you don't specify this, jobs will go to the default queue.
 
 
 
-=head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=head2 B<REQUIRED> Settings => MediaConvert_JobTemplateSettings
 
 JobTemplateSettings contains all the transcode settings saved in the
 template that will be applied to jobs created from it.
@@ -1218,7 +1271,7 @@ transcode or encounters an error.
 
 Valid values are: C<"SECONDS_10">, C<"SECONDS_12">, C<"SECONDS_15">, C<"SECONDS_20">, C<"SECONDS_30">, C<"SECONDS_60">, C<"SECONDS_120">, C<"SECONDS_180">, C<"SECONDS_240">, C<"SECONDS_300">, C<"SECONDS_360">, C<"SECONDS_420">, C<"SECONDS_480">, C<"SECONDS_540">, C<"SECONDS_600">
 
-=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 Tags => MediaConvert___mapOf__string
 
 The tags that you want to add to the resource. You can tag resources
 with a key-value pair or with only a key.

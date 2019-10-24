@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::UpdateTableOutput;
   use Moo;
@@ -6,18 +7,21 @@ package Paws::DynamoDB::UpdateTableOutput;
   has TableDescription => (is => 'ro', isa => DynamoDB_TableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TableDescription' => {
                                        'class' => 'Paws::DynamoDB::TableDescription',
                                        'type' => 'DynamoDB_TableDescription'
-                                     }
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

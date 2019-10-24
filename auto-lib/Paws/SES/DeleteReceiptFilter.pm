@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::DeleteReceiptFilter;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::SES::DeleteReceiptFilter;
                'FilterName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'FilterName' => 1
+                  }
 }
 ;
     return $Params_map;

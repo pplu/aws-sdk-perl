@@ -1,13 +1,67 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationSummary;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
-  has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest'], required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has Author => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has HomePageUrl => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SpdxLicenseId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SpdxLicenseId' => {
+                                    'type' => 'Str'
+                                  },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Author' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'HomePageUrl' => 'homePageUrl',
+                       'ApplicationId' => 'applicationId',
+                       'SpdxLicenseId' => 'spdxLicenseId',
+                       'Labels' => 'labels',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Author' => 'author'
+                     },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'Name' => 1,
+                    'Description' => 1,
+                    'Author' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

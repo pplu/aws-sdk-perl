@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::AppStream::User;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has AuthenticationType => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AppStream::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has AuthenticationType => (is => 'ro', isa => Str, required => 1);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has FirstName => (is => 'ro', isa => Str);
+  has LastName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FirstName' => {
+                                'type' => 'Str'
+                              },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'LastName' => {
+                               'type' => 'Str'
+                             },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'AuthenticationType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::IoT::ResourceIdentifier;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str', request_name => 'account', traits => ['NameInRequest']);
-  has CaCertificateId => (is => 'ro', isa => 'Str', request_name => 'caCertificateId', traits => ['NameInRequest']);
-  has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
-  has CognitoIdentityPoolId => (is => 'ro', isa => 'Str', request_name => 'cognitoIdentityPoolId', traits => ['NameInRequest']);
-  has DeviceCertificateId => (is => 'ro', isa => 'Str', request_name => 'deviceCertificateId', traits => ['NameInRequest']);
-  has PolicyVersionIdentifier => (is => 'ro', isa => 'Paws::IoT::PolicyVersionIdentifier', request_name => 'policyVersionIdentifier', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_PolicyVersionIdentifier/;
+  has Account => (is => 'ro', isa => Str);
+  has CaCertificateId => (is => 'ro', isa => Str);
+  has ClientId => (is => 'ro', isa => Str);
+  has CognitoIdentityPoolId => (is => 'ro', isa => Str);
+  has DeviceCertificateId => (is => 'ro', isa => Str);
+  has PolicyVersionIdentifier => (is => 'ro', isa => IoT_PolicyVersionIdentifier);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'CaCertificateId' => {
+                                      'type' => 'Str'
+                                    },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'PolicyVersionIdentifier' => {
+                                              'class' => 'Paws::IoT::PolicyVersionIdentifier',
+                                              'type' => 'IoT_PolicyVersionIdentifier'
+                                            },
+               'CognitoIdentityPoolId' => {
+                                            'type' => 'Str'
+                                          },
+               'Account' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'DeviceCertificateId' => 'deviceCertificateId',
+                       'CaCertificateId' => 'caCertificateId',
+                       'ClientId' => 'clientId',
+                       'PolicyVersionIdentifier' => 'policyVersionIdentifier',
+                       'CognitoIdentityPoolId' => 'cognitoIdentityPoolId',
+                       'Account' => 'account'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +107,7 @@ Information identifying the non-compliant resource.
   The ID of the certificate attached to the resource.
 
 
-=head2 PolicyVersionIdentifier => L<Paws::IoT::PolicyVersionIdentifier>
+=head2 PolicyVersionIdentifier => IoT_PolicyVersionIdentifier
 
   The version of the policy associated with the resource.
 

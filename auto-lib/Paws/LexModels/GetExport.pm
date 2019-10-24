@@ -1,17 +1,53 @@
 
 package Paws::LexModels::GetExport;
-  use Moose;
-  has ExportType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'exportType', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'version', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has ExportType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetExport');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/exports/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetExportResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetExport');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/exports/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetExportResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ExportType' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInQuery' => {
+                      'Version' => 'version',
+                      'ResourceType' => 'resourceType',
+                      'ExportType' => 'exportType',
+                      'Name' => 'name'
+                    },
+  'IsRequired' => {
+                    'Version' => 1,
+                    'ResourceType' => 1,
+                    'ExportType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

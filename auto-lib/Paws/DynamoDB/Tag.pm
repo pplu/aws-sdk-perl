@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Tag;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::Tag;
   has Key => (is => 'ro', isa => Str, required => 1);
   has Value => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Value' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::Tag;
                'Key' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Key' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MarketplaceMetering;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'metering.marketplace' }
   sub signing_name { 'aws-marketplace' }
   sub version { '2016-01-14' }
   sub target_prefix { 'AWSMPMeteringService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -142,7 +144,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/marketplacemete
 
 =item ProductCode => Str
 
-=item UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>]
+=item UsageRecords => ArrayRef[MarketplaceMetering_UsageRecord]
 
 
 =back

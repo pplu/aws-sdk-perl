@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::UpdateGlobalTableSettingsOutput;
   use Moo;
@@ -7,21 +8,24 @@ package Paws::DynamoDB::UpdateGlobalTableSettingsOutput;
   has ReplicaSettings => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaSettingsDescription]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicaSettings' => {
                                       'class' => 'Paws::DynamoDB::ReplicaSettingsDescription',
                                       'type' => 'ArrayRef[DynamoDB_ReplicaSettingsDescription]'
                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'GlobalTableName' => {
                                       'type' => 'Str'
                                     }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

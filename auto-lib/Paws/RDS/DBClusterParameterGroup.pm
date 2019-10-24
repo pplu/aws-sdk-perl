@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::RDS::DBClusterParameterGroup;
-  use Moose;
-  has DBClusterParameterGroupArn => (is => 'ro', isa => 'Str');
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has DBClusterParameterGroupArn => (is => 'ro', isa => Str);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str);
+  has DBParameterGroupFamily => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterParameterGroupArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

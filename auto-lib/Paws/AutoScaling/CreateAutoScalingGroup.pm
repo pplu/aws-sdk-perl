@@ -1,33 +1,118 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::CreateAutoScalingGroup;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultCooldown => (is => 'ro', isa => 'Int');
-  has DesiredCapacity => (is => 'ro', isa => 'Int');
-  has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
-  has HealthCheckType => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
-  has LaunchTemplate => (is => 'ro', isa => 'Paws::AutoScaling::LaunchTemplateSpecification');
-  has LifecycleHookSpecificationList => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LifecycleHookSpecification]');
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxSize => (is => 'ro', isa => 'Int', required => 1);
-  has MinSize => (is => 'ro', isa => 'Int', required => 1);
-  has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
-  has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
-  has PlacementGroup => (is => 'ro', isa => 'Str');
-  has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]');
-  has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::AutoScaling::Types qw/AutoScaling_Tag AutoScaling_LaunchTemplateSpecification AutoScaling_MixedInstancesPolicy AutoScaling_LifecycleHookSpecification/;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DefaultCooldown => (is => 'ro', isa => Int, predicate => 1);
+  has DesiredCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has HealthCheckGracePeriod => (is => 'ro', isa => Int, predicate => 1);
+  has HealthCheckType => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchConfigurationName => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchTemplate => (is => 'ro', isa => AutoScaling_LaunchTemplateSpecification, predicate => 1);
+  has LifecycleHookSpecificationList => (is => 'ro', isa => ArrayRef[AutoScaling_LifecycleHookSpecification], predicate => 1);
+  has LoadBalancerNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxSize => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has MinSize => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has MixedInstancesPolicy => (is => 'ro', isa => AutoScaling_MixedInstancesPolicy, predicate => 1);
+  has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => Bool, predicate => 1);
+  has PlacementGroup => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceLinkedRoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AutoScaling_Tag], predicate => 1);
+  has TargetGroupARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TerminationPolicies => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has VPCZoneIdentifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAutoScalingGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAutoScalingGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TerminationPolicies' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'LaunchTemplate' => {
+                                     'class' => 'Paws::AutoScaling::LaunchTemplateSpecification',
+                                     'type' => 'AutoScaling_LaunchTemplateSpecification'
+                                   },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'MinSize' => {
+                              'type' => 'Int'
+                            },
+               'LoadBalancerNames' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'LifecycleHookSpecificationList' => {
+                                                     'class' => 'Paws::AutoScaling::LifecycleHookSpecification',
+                                                     'type' => 'ArrayRef[AutoScaling_LifecycleHookSpecification]'
+                                                   },
+               'HealthCheckType' => {
+                                      'type' => 'Str'
+                                    },
+               'VPCZoneIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'TargetGroupARNs' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ServiceLinkedRoleARN' => {
+                                           'type' => 'Str'
+                                         },
+               'PlacementGroup' => {
+                                     'type' => 'Str'
+                                   },
+               'MixedInstancesPolicy' => {
+                                           'class' => 'Paws::AutoScaling::MixedInstancesPolicy',
+                                           'type' => 'AutoScaling_MixedInstancesPolicy'
+                                         },
+               'MaxSize' => {
+                              'type' => 'Int'
+                            },
+               'NewInstancesProtectedFromScaleIn' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'DesiredCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'LaunchConfigurationName' => {
+                                              'type' => 'Str'
+                                            },
+               'HealthCheckGracePeriod' => {
+                                             'type' => 'Int'
+                                           },
+               'DefaultCooldown' => {
+                                      'type' => 'Int'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::AutoScaling::Tag',
+                           'type' => 'ArrayRef[AutoScaling_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'MaxSize' => 1,
+                    'MinSize' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -193,7 +278,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
-=head2 LaunchTemplate => L<Paws::AutoScaling::LaunchTemplateSpecification>
+=head2 LaunchTemplate => AutoScaling_LaunchTemplateSpecification
 
 The launch template to use to launch instances. This parameter, a
 launch configuration, a mixed instances policy, or an EC2 instance must
@@ -206,7 +291,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
-=head2 LifecycleHookSpecificationList => ArrayRef[L<Paws::AutoScaling::LifecycleHookSpecification>]
+=head2 LifecycleHookSpecificationList => ArrayRef[AutoScaling_LifecycleHookSpecification]
 
 One or more lifecycle hooks.
 
@@ -236,7 +321,7 @@ The minimum size of the group.
 
 
 
-=head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
+=head2 MixedInstancesPolicy => AutoScaling_MixedInstancesPolicy
 
 The mixed instances policy to use to launch instances. This parameter,
 a launch template, a launch configuration, or an EC2 instance must be
@@ -284,7 +369,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
+=head2 Tags => ArrayRef[AutoScaling_Tag]
 
 One or more tags.
 

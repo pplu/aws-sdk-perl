@@ -1,13 +1,58 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::WorkflowExecutionDetail;
-  use Moose;
-  has ExecutionConfiguration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration', traits => ['NameInRequest'], request_name => 'executionConfiguration' , required => 1);
-  has ExecutionInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionInfo', traits => ['NameInRequest'], request_name => 'executionInfo' , required => 1);
-  has LatestActivityTaskTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'latestActivityTaskTimestamp' );
-  has LatestExecutionContext => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'latestExecutionContext' );
-  has OpenCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', traits => ['NameInRequest'], request_name => 'openCounts' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecutionOpenCounts SimpleWorkflow_WorkflowExecutionConfiguration SimpleWorkflow_WorkflowExecutionInfo/;
+  has ExecutionConfiguration => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionConfiguration, required => 1);
+  has ExecutionInfo => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionInfo, required => 1);
+  has LatestActivityTaskTimestamp => (is => 'ro', isa => Str);
+  has LatestExecutionContext => (is => 'ro', isa => Str);
+  has OpenCounts => (is => 'ro', isa => SimpleWorkflow_WorkflowExecutionOpenCounts, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OpenCounts' => {
+                                 'class' => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts',
+                                 'type' => 'SimpleWorkflow_WorkflowExecutionOpenCounts'
+                               },
+               'ExecutionInfo' => {
+                                    'class' => 'Paws::SimpleWorkflow::WorkflowExecutionInfo',
+                                    'type' => 'SimpleWorkflow_WorkflowExecutionInfo'
+                                  },
+               'LatestActivityTaskTimestamp' => {
+                                                  'type' => 'Str'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionConfiguration' => {
+                                             'class' => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration',
+                                             'type' => 'SimpleWorkflow_WorkflowExecutionConfiguration'
+                                           },
+               'LatestExecutionContext' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'OpenCounts' => 'openCounts',
+                       'ExecutionInfo' => 'executionInfo',
+                       'LatestActivityTaskTimestamp' => 'latestActivityTaskTimestamp',
+                       'ExecutionConfiguration' => 'executionConfiguration',
+                       'LatestExecutionContext' => 'latestExecutionContext'
+                     },
+  'IsRequired' => {
+                    'OpenCounts' => 1,
+                    'ExecutionInfo' => 1,
+                    'ExecutionConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -18,13 +63,13 @@ Paws::SimpleWorkflow::WorkflowExecutionDetail
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ExecutionConfiguration => L<Paws::SimpleWorkflow::WorkflowExecutionConfiguration>
+=head2 B<REQUIRED> ExecutionConfiguration => SimpleWorkflow_WorkflowExecutionConfiguration
 
 The configuration settings for this workflow execution including
 timeout values, tasklist etc.
 
 
-=head2 B<REQUIRED> ExecutionInfo => L<Paws::SimpleWorkflow::WorkflowExecutionInfo>
+=head2 B<REQUIRED> ExecutionInfo => SimpleWorkflow_WorkflowExecutionInfo
 
 Information about the workflow execution.
 
@@ -45,7 +90,7 @@ string) when closing a decision task using
 RespondDecisionTaskCompleted.
 
 
-=head2 B<REQUIRED> OpenCounts => L<Paws::SimpleWorkflow::WorkflowExecutionOpenCounts>
+=head2 B<REQUIRED> OpenCounts => SimpleWorkflow_WorkflowExecutionOpenCounts
 
 The number of tasks for this workflow execution. This includes open and
 closed tasks of all types.

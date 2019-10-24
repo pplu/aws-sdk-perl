@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DeleteAnalysisScheme;
-  use Moose;
-  has AnalysisSchemeName => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has AnalysisSchemeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisScheme');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DeleteAnalysisSchemeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteAnalysisSchemeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteAnalysisScheme');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DeleteAnalysisSchemeResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteAnalysisSchemeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'AnalysisSchemeName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'AnalysisSchemeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

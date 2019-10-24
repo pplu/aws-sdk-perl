@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetActiveNamesResult;
-  use Moose;
-  has ActiveNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'activeNames' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lightsail::Types qw//;
+  has ActiveNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActiveNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ActiveNames' => 'activeNames',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

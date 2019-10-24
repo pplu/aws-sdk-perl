@@ -6,7 +6,7 @@ package Paws::DynamoDB::ExpressionAttributeNameMap;
 
   has Map => (is => 'ro', isa => HashRef[Str|Undef]);
 
-sub params_map {
+  sub params_map {
     my $params1 = {
                     types => {
                                'Map' => {

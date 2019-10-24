@@ -1,15 +1,42 @@
 
 package Paws::ServerlessRepo::GetApplication;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'semanticVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::GetApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::GetApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId'
+                  },
+  'ParamInQuery' => {
+                      'SemanticVersion' => 'semanticVersion'
+                    },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

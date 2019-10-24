@@ -1,17 +1,49 @@
 
 package Paws::Greengrass::CreateSubscriptionDefinition;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::SubscriptionDefinitionVersion');
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_Tags Greengrass_SubscriptionDefinitionVersion/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has InitialVersion => (is => 'ro', isa => Greengrass_SubscriptionDefinitionVersion, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Greengrass_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubscriptionDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/subscriptions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateSubscriptionDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSubscriptionDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/subscriptions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateSubscriptionDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitialVersion' => {
+                                     'class' => 'Paws::Greengrass::SubscriptionDefinitionVersion',
+                                     'type' => 'Greengrass_SubscriptionDefinitionVersion'
+                                   },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::Greengrass::Tags',
+                           'type' => 'Greengrass_Tags'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +107,7 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 InitialVersion => L<Paws::Greengrass::SubscriptionDefinitionVersion>
+=head2 InitialVersion => Greengrass_SubscriptionDefinitionVersion
 
 Information about the initial version of the subscription definition.
 
@@ -87,7 +119,7 @@ The name of the subscription definition.
 
 
 
-=head2 Tags => L<Paws::Greengrass::Tags>
+=head2 Tags => Greengrass_Tags
 
 Tag(s) to add to the new resource
 

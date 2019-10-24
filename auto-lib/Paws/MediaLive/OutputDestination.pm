@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::MediaLive::OutputDestination;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has MediaPackageSettings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaPackageOutputDestinationSettings]', request_name => 'mediaPackageSettings', traits => ['NameInRequest']);
-  has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputDestinationSettings MediaLive_MediaPackageOutputDestinationSettings/;
+  has Id => (is => 'ro', isa => Str);
+  has MediaPackageSettings => (is => 'ro', isa => ArrayRef[MediaLive_MediaPackageOutputDestinationSettings]);
+  has Settings => (is => 'ro', isa => ArrayRef[MediaLive_OutputDestinationSettings]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Settings' => {
+                               'class' => 'Paws::MediaLive::OutputDestinationSettings',
+                               'type' => 'ArrayRef[MediaLive_OutputDestinationSettings]'
+                             },
+               'MediaPackageSettings' => {
+                                           'class' => 'Paws::MediaLive::MediaPackageOutputDestinationSettings',
+                                           'type' => 'ArrayRef[MediaLive_MediaPackageOutputDestinationSettings]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Settings' => 'settings',
+                       'MediaPackageSettings' => 'mediaPackageSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,13 +73,13 @@ Placeholder documentation for OutputDestination
   User-specified id. This is used in an output group or an output.
 
 
-=head2 MediaPackageSettings => ArrayRef[L<Paws::MediaLive::MediaPackageOutputDestinationSettings>]
+=head2 MediaPackageSettings => ArrayRef[MediaLive_MediaPackageOutputDestinationSettings]
 
   Destination settings for a MediaPackage output; one destination for
 both encoders.
 
 
-=head2 Settings => ArrayRef[L<Paws::MediaLive::OutputDestinationSettings>]
+=head2 Settings => ArrayRef[MediaLive_OutputDestinationSettings]
 
   Destination settings for a standard output; one destination for each
 redundant encoder.

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::QueryCompileErrorLocation;
-  use Moose;
-  has EndCharOffset => (is => 'ro', isa => 'Int', request_name => 'endCharOffset', traits => ['NameInRequest']);
-  has StartCharOffset => (is => 'ro', isa => 'Int', request_name => 'startCharOffset', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has EndCharOffset => (is => 'ro', isa => Int);
+  has StartCharOffset => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndCharOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'StartCharOffset' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'NameInRequest' => {
+                       'EndCharOffset' => 'endCharOffset',
+                       'StartCharOffset' => 'startCharOffset'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

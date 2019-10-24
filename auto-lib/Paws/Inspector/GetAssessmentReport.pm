@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::GetAssessmentReport;
-  use Moose;
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentRunArn' , required => 1);
-  has ReportFileFormat => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reportFileFormat' , required => 1);
-  has ReportType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reportType' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentRunArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReportFileFormat => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReportType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAssessmentReport');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::GetAssessmentReportResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAssessmentReport');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::GetAssessmentReportResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReportType' => {
+                                 'type' => 'Str'
+                               },
+               'ReportFileFormat' => {
+                                       'type' => 'Str'
+                                     },
+               'AssessmentRunArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ReportType' => 'reportType',
+                       'ReportFileFormat' => 'reportFileFormat',
+                       'AssessmentRunArn' => 'assessmentRunArn'
+                     },
+  'IsRequired' => {
+                    'ReportType' => 1,
+                    'ReportFileFormat' => 1,
+                    'AssessmentRunArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

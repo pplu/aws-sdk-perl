@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelCountersForWorkteam;
-  use Moose;
-  has HumanLabeled => (is => 'ro', isa => 'Int');
-  has PendingHuman => (is => 'ro', isa => 'Int');
-  has Total => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SageMaker::Types qw//;
+  has HumanLabeled => (is => 'ro', isa => Int);
+  has PendingHuman => (is => 'ro', isa => Int);
+  has Total => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Int'
+                          },
+               'HumanLabeled' => {
+                                   'type' => 'Int'
+                                 },
+               'PendingHuman' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

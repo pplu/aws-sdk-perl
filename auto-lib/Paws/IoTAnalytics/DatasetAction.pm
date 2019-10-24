@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetAction;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
-  has ContainerAction => (is => 'ro', isa => 'Paws::IoTAnalytics::ContainerDatasetAction', request_name => 'containerAction', traits => ['NameInRequest']);
-  has QueryAction => (is => 'ro', isa => 'Paws::IoTAnalytics::SqlQueryDatasetAction', request_name => 'queryAction', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_SqlQueryDatasetAction IoTAnalytics_ContainerDatasetAction/;
+  has ActionName => (is => 'ro', isa => Str);
+  has ContainerAction => (is => 'ro', isa => IoTAnalytics_ContainerDatasetAction);
+  has QueryAction => (is => 'ro', isa => IoTAnalytics_SqlQueryDatasetAction);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ContainerAction' => {
+                                      'class' => 'Paws::IoTAnalytics::ContainerDatasetAction',
+                                      'type' => 'IoTAnalytics_ContainerDatasetAction'
+                                    },
+               'QueryAction' => {
+                                  'class' => 'Paws::IoTAnalytics::SqlQueryDatasetAction',
+                                  'type' => 'IoTAnalytics_SqlQueryDatasetAction'
+                                }
+             },
+  'NameInRequest' => {
+                       'ActionName' => 'actionName',
+                       'ContainerAction' => 'containerAction',
+                       'QueryAction' => 'queryAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,14 +75,14 @@ automatically created.
 automatically created.
 
 
-=head2 ContainerAction => L<Paws::IoTAnalytics::ContainerDatasetAction>
+=head2 ContainerAction => IoTAnalytics_ContainerDatasetAction
 
   Information which allows the system to run a containerized application
 in order to create the data set contents. The application must be in a
 Docker container along with any needed support libraries.
 
 
-=head2 QueryAction => L<Paws::IoTAnalytics::SqlQueryDatasetAction>
+=head2 QueryAction => IoTAnalytics_SqlQueryDatasetAction
 
   An "SqlQueryDatasetAction" object that uses an SQL query to
 automatically create data set contents.

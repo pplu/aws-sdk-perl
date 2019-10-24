@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::S3Configuration;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str', required => 1);
-  has FileKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has BucketARN => (is => 'ro', isa => Str, required => 1);
+  has FileKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileKey' => {
+                              'type' => 'Str'
+                            },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'FileKey' => 1,
+                    'BucketARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

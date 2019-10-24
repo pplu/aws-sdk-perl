@@ -5,7 +5,7 @@ package Paws::EC2::TerminateConnectionStatus;
   has CurrentStatus => (is => 'ro', isa => EC2_ClientVpnConnectionStatus);
   has PreviousStatus => (is => 'ro', isa => EC2_ClientVpnConnectionStatus);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PreviousStatus' => {
@@ -27,8 +27,8 @@ package Paws::EC2::TerminateConnectionStatus;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

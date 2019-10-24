@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::DeleteWebACL;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw//;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WebACLId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteWebACL');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::DeleteWebACLResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteWebACL');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::DeleteWebACLResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'WebACLId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,22 +1,84 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::CreateCommit;
-  use Moose;
-  has AuthorName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorName' );
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName' , required => 1);
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage' );
-  has DeleteFiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::DeleteFileEntry]', traits => ['NameInRequest'], request_name => 'deleteFiles' );
-  has Email => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'email' );
-  has KeepEmptyFolders => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'keepEmptyFolders' );
-  has ParentCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentCommitId' );
-  has PutFiles => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::PutFileEntry]', traits => ['NameInRequest'], request_name => 'putFiles' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SetFileModes => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::SetFileModeEntry]', traits => ['NameInRequest'], request_name => 'setFileModes' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_SetFileModeEntry CodeCommit_PutFileEntry CodeCommit_DeleteFileEntry/;
+  has AuthorName => (is => 'ro', isa => Str, predicate => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has DeleteFiles => (is => 'ro', isa => ArrayRef[CodeCommit_DeleteFileEntry], predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has KeepEmptyFolders => (is => 'ro', isa => Bool, predicate => 1);
+  has ParentCommitId => (is => 'ro', isa => Str, predicate => 1);
+  has PutFiles => (is => 'ro', isa => ArrayRef[CodeCommit_PutFileEntry], predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetFileModes => (is => 'ro', isa => ArrayRef[CodeCommit_SetFileModeEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCommit');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::CreateCommitOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCommit');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::CreateCommitOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'SetFileModes' => {
+                                   'class' => 'Paws::CodeCommit::SetFileModeEntry',
+                                   'type' => 'ArrayRef[CodeCommit_SetFileModeEntry]'
+                                 },
+               'PutFiles' => {
+                               'class' => 'Paws::CodeCommit::PutFileEntry',
+                               'type' => 'ArrayRef[CodeCommit_PutFileEntry]'
+                             },
+               'KeepEmptyFolders' => {
+                                       'type' => 'Bool'
+                                     },
+               'AuthorName' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'DeleteFiles' => {
+                                  'class' => 'Paws::CodeCommit::DeleteFileEntry',
+                                  'type' => 'ArrayRef[CodeCommit_DeleteFileEntry]'
+                                },
+               'ParentCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'CommitMessage' => 'commitMessage',
+                       'BranchName' => 'branchName',
+                       'SetFileModes' => 'setFileModes',
+                       'PutFiles' => 'putFiles',
+                       'KeepEmptyFolders' => 'keepEmptyFolders',
+                       'AuthorName' => 'authorName',
+                       'RepositoryName' => 'repositoryName',
+                       'DeleteFiles' => 'deleteFiles',
+                       'ParentCommitId' => 'parentCommitId',
+                       'Email' => 'email'
+                     },
+  'IsRequired' => {
+                    'BranchName' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +173,7 @@ default message will be used.
 
 
 
-=head2 DeleteFiles => ArrayRef[L<Paws::CodeCommit::DeleteFileEntry>]
+=head2 DeleteFiles => ArrayRef[CodeCommit_DeleteFileEntry]
 
 The files to delete in this commit. These files will still exist in
 prior commits.
@@ -140,7 +202,7 @@ If this is an empty repository, this is not required.
 
 
 
-=head2 PutFiles => ArrayRef[L<Paws::CodeCommit::PutFileEntry>]
+=head2 PutFiles => ArrayRef[CodeCommit_PutFileEntry]
 
 The files to add or update in this commit.
 
@@ -152,7 +214,7 @@ The name of the repository where you will create the commit.
 
 
 
-=head2 SetFileModes => ArrayRef[L<Paws::CodeCommit::SetFileModeEntry>]
+=head2 SetFileModes => ArrayRef[CodeCommit_SetFileModeEntry]
 
 The file modes to update for files in this commit.
 

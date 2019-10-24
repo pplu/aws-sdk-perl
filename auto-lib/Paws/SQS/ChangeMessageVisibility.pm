@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::ChangeMessageVisibility;
   use Moo;
@@ -25,7 +26,12 @@ package Paws::SQS::ChangeMessageVisibility;
                'ReceiptHandle' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'VisibilityTimeout' => 1,
+                    'ReceiptHandle' => 1
+                  }
 }
 ;
     return $Params_map;

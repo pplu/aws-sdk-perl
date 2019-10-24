@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RedshiftMetadata;
-  use Moose;
-  has DatabaseUserName => (is => 'ro', isa => 'Str');
-  has RedshiftDatabase => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDatabase');
-  has SelectSqlQuery => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RedshiftDatabase/;
+  has DatabaseUserName => (is => 'ro', isa => Str);
+  has RedshiftDatabase => (is => 'ro', isa => MachineLearning_RedshiftDatabase);
+  has SelectSqlQuery => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RedshiftDatabase' => {
+                                       'class' => 'Paws::MachineLearning::RedshiftDatabase',
+                                       'type' => 'MachineLearning_RedshiftDatabase'
+                                     },
+               'SelectSqlQuery' => {
+                                     'type' => 'Str'
+                                   },
+               'DatabaseUserName' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Describes the C<DataSource> details specific to Amazon Redshift.
   
 
 
-=head2 RedshiftDatabase => L<Paws::MachineLearning::RedshiftDatabase>
+=head2 RedshiftDatabase => MachineLearning_RedshiftDatabase
 
   
 

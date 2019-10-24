@@ -1,19 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalytics::CreateApplication;
-  use Moose;
-  has ApplicationCode => (is => 'ro', isa => 'Str');
-  has ApplicationDescription => (is => 'ro', isa => 'Str');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOption]');
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Input]');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Output]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_Input KinesisAnalytics_Tag KinesisAnalytics_CloudWatchLoggingOption KinesisAnalytics_Output/;
+  has ApplicationCode => (is => 'ro', isa => Str, predicate => 1);
+  has ApplicationDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => ArrayRef[KinesisAnalytics_CloudWatchLoggingOption], predicate => 1);
+  has Inputs => (is => 'ro', isa => ArrayRef[KinesisAnalytics_Input], predicate => 1);
+  has Outputs => (is => 'ro', isa => ArrayRef[KinesisAnalytics_Output], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[KinesisAnalytics_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalytics::CreateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalytics::CreateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Inputs' => {
+                             'class' => 'Paws::KinesisAnalytics::Input',
+                             'type' => 'ArrayRef[KinesisAnalytics_Input]'
+                           },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::KinesisAnalytics::CloudWatchLoggingOption',
+                                               'type' => 'ArrayRef[KinesisAnalytics_CloudWatchLoggingOption]'
+                                             },
+               'ApplicationDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::KinesisAnalytics::Tag',
+                           'type' => 'ArrayRef[KinesisAnalytics_Tag]'
+                         },
+               'Outputs' => {
+                              'class' => 'Paws::KinesisAnalytics::Output',
+                              'type' => 'ArrayRef[KinesisAnalytics_Output]'
+                            },
+               'ApplicationCode' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -177,7 +218,7 @@ C<sample-app>).
 
 
 
-=head2 CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOption>]
+=head2 CloudWatchLoggingOptions => ArrayRef[KinesisAnalytics_CloudWatchLoggingOption]
 
 Use this parameter to configure a CloudWatch log stream to monitor
 application configuration errors. For more information, see Working
@@ -186,7 +227,7 @@ with Amazon CloudWatch Logs
 
 
 
-=head2 Inputs => ArrayRef[L<Paws::KinesisAnalytics::Input>]
+=head2 Inputs => ArrayRef[KinesisAnalytics_Input]
 
 Use this parameter to configure the application input.
 
@@ -208,7 +249,7 @@ streaming source to record columns in the in-app stream.
 
 
 
-=head2 Outputs => ArrayRef[L<Paws::KinesisAnalytics::Output>]
+=head2 Outputs => ArrayRef[KinesisAnalytics_Output]
 
 You can configure application output to write data from any of the
 in-application streams to up to three destinations.
@@ -231,7 +272,7 @@ stream or Lambda function on your behalf.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]
+=head2 Tags => ArrayRef[KinesisAnalytics_Tag]
 
 A list of one or more tags to assign to the application. A tag is a
 key-value pair that identifies an application. Note that the maximum

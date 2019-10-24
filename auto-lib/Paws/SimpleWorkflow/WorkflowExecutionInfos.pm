@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::WorkflowExecutionInfos;
-  use Moose;
-  has ExecutionInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowExecutionInfo]', traits => ['NameInRequest'], request_name => 'executionInfos' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowExecutionInfo/;
+  has ExecutionInfos => (is => 'ro', isa => ArrayRef[SimpleWorkflow_WorkflowExecutionInfo], required => 1);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'ExecutionInfos' => {
+                                     'class' => 'Paws::SimpleWorkflow::WorkflowExecutionInfo',
+                                     'type' => 'ArrayRef[SimpleWorkflow_WorkflowExecutionInfo]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'ExecutionInfos' => 'executionInfos'
+                     },
+  'IsRequired' => {
+                    'ExecutionInfos' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::SimpleWorkflow::WorkflowExecutionInfos
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ExecutionInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowExecutionInfo>]
+=head2 B<REQUIRED> ExecutionInfos => ArrayRef[SimpleWorkflow_WorkflowExecutionInfo]
 
 The list of workflow information structures.
 

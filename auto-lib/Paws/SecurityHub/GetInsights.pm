@@ -1,16 +1,37 @@
 
 package Paws::SecurityHub::GetInsights;
-  use Moose;
-  has InsightArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SecurityHub::Types qw//;
+  has InsightArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInsights');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/insights/get');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::GetInsightsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetInsights');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/insights/get');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::GetInsightsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InsightArns' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

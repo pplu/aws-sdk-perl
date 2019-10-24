@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ACM::RenewalSummary;
-  use Moose;
-  has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]', required => 1);
-  has RenewalStatus => (is => 'ro', isa => 'Str', required => 1);
-  has RenewalStatusReason => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ACM::Types qw/ACM_DomainValidation/;
+  has DomainValidationOptions => (is => 'ro', isa => ArrayRef[ACM_DomainValidation], required => 1);
+  has RenewalStatus => (is => 'ro', isa => Str, required => 1);
+  has RenewalStatusReason => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RenewalStatus' => {
+                                    'type' => 'Str'
+                                  },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'RenewalStatusReason' => {
+                                          'type' => 'Str'
+                                        },
+               'DomainValidationOptions' => {
+                                              'class' => 'Paws::ACM::DomainValidation',
+                                              'type' => 'ArrayRef[ACM_DomainValidation]'
+                                            }
+             },
+  'IsRequired' => {
+                    'RenewalStatus' => 1,
+                    'UpdatedAt' => 1,
+                    'DomainValidationOptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +74,7 @@ is C<AMAZON_ISSUED>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
+=head2 B<REQUIRED> DomainValidationOptions => ArrayRef[ACM_DomainValidation]
 
   Contains information about the validation of each domain name in the
 certificate, as it pertains to ACM's managed renewal

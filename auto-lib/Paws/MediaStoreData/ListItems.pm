@@ -1,16 +1,42 @@
 
 package Paws::MediaStoreData::ListItems;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Path');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaStoreData::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Path => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListItems');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStoreData::ListItemsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListItems');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStoreData::ListItemsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken',
+                      'Path' => 'Path',
+                      'MaxResults' => 'MaxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

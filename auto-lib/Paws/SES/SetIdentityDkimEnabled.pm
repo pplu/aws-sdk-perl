@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SetIdentityDkimEnabled;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::SetIdentityDkimEnabled;
                'Identity' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'DkimEnabled' => 1,
+                    'Identity' => 1
+                  }
 }
 ;
     return $Params_map;

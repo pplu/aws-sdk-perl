@@ -106,7 +106,14 @@ use MooX::ClassAttribute;
                        'CopySourceRange' => 'x-amz-copy-source-range',
                        'CopySourceSSECustomerKeyMD5' => 'x-amz-copy-source-server-side-encryption-customer-key-MD5',
                        'CopySource' => 'x-amz-copy-source'
-                     }
+                     },
+  'IsRequired' => {
+                    'PartNumber' => 1,
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1,
+                    'CopySource' => 1
+                  }
 }
 ;
     return $Params_map;

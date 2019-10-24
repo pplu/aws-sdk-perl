@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::ListStackSetOperationResults;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OperationId => (is => 'ro', isa => 'Str', required => 1);
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudFormation::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OperationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStackSetOperationResults');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::ListStackSetOperationResultsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListStackSetOperationResultsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListStackSetOperationResults');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::ListStackSetOperationResultsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListStackSetOperationResultsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'OperationId' => 1,
+                    'StackSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

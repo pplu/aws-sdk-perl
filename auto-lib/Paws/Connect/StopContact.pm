@@ -1,15 +1,37 @@
 
 package Paws::Connect::StopContact;
-  use Moose;
-  has ContactId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw//;
+  has ContactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopContact');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact/stop');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::StopContactResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopContact');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact/stop');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::StopContactResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ContactId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'ContactId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

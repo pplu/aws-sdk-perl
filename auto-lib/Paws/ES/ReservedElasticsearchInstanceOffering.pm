@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::ReservedElasticsearchInstanceOffering;
   use Moo;
   use Types::Standard qw/Str Int Num ArrayRef/;

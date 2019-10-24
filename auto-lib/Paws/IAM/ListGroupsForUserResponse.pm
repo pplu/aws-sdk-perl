@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListGroupsForUserResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_Group/;
   has Groups => (is => 'ro', isa => ArrayRef[IAM_Group], required => 1);

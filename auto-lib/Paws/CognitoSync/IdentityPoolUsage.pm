@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CognitoSync::IdentityPoolUsage;
-  use Moose;
-  has DataStorage => (is => 'ro', isa => 'Int');
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has SyncSessionsCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CognitoSync::Types qw//;
+  has DataStorage => (is => 'ro', isa => Int);
+  has IdentityPoolId => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has SyncSessionsCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'SyncSessionsCount' => {
+                                        'type' => 'Int'
+                                      },
+               'DataStorage' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

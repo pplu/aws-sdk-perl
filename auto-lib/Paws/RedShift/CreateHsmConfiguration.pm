@@ -1,19 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CreateHsmConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has HsmIpAddress => (is => 'ro', isa => 'Str', required => 1);
-  has HsmPartitionName => (is => 'ro', isa => 'Str', required => 1);
-  has HsmPartitionPassword => (is => 'ro', isa => 'Str', required => 1);
-  has HsmServerPublicCertificate => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HsmIpAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HsmPartitionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HsmPartitionPassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HsmServerPublicCertificate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateHsmConfigurationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmConfigurationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHsmConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::CreateHsmConfigurationResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateHsmConfigurationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmPartitionName' => {
+                                       'type' => 'Str'
+                                     },
+               'HsmIpAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'HsmPartitionPassword' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'HsmServerPublicCertificate' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'HsmPartitionName' => 1,
+                    'HsmIpAddress' => 1,
+                    'HsmPartitionPassword' => 1,
+                    'HsmConfigurationIdentifier' => 1,
+                    'Description' => 1,
+                    'HsmServerPublicCertificate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +143,7 @@ is server.pem.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
 A list of tag instances.
 

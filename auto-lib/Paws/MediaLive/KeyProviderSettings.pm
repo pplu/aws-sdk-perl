@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::KeyProviderSettings;
-  use Moose;
-  has StaticKeySettings => (is => 'ro', isa => 'Paws::MediaLive::StaticKeySettings', request_name => 'staticKeySettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_StaticKeySettings/;
+  has StaticKeySettings => (is => 'ro', isa => MediaLive_StaticKeySettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StaticKeySettings' => {
+                                        'class' => 'Paws::MediaLive::StaticKeySettings',
+                                        'type' => 'MediaLive_StaticKeySettings'
+                                      }
+             },
+  'NameInRequest' => {
+                       'StaticKeySettings' => 'staticKeySettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Key Provider Settings
 =head1 ATTRIBUTES
 
 
-=head2 StaticKeySettings => L<Paws::MediaLive::StaticKeySettings>
+=head2 StaticKeySettings => MediaLive_StaticKeySettings
 
   
 

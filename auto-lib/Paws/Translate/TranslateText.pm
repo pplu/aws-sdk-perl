@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Translate::TranslateText;
-  use Moose;
-  has SourceLanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TargetLanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TerminologyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Text => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Translate::Types qw//;
+  has SourceLanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetLanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TerminologyNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Text => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TranslateText');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Translate::TranslateTextResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TranslateText');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Translate::TranslateTextResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'TerminologyNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'TargetLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'Text' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'SourceLanguageCode' => 1,
+                    'TargetLanguageCode' => 1,
+                    'Text' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

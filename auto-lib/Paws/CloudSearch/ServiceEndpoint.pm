@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::ServiceEndpoint;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

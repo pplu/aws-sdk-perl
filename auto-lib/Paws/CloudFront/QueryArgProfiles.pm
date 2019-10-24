@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CloudFront::QueryArgProfiles;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::QueryArgProfile]', request_name => 'QueryArgProfile', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_QueryArgProfile/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_QueryArgProfile]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::QueryArgProfile',
+                            'type' => 'ArrayRef[CloudFront_QueryArgProfile]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'QueryArgProfile'
+                     },
+  'IsRequired' => {
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ Query argument-profile mapping for field-level encryption.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::QueryArgProfile>]
+=head2 Items => ArrayRef[CloudFront_QueryArgProfile]
 
   Number of items for query argument-profile mapping for field-level
 encryption.

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::CanarySettings;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has PercentTraffic => (is => 'ro', isa => 'Num', request_name => 'percentTraffic', traits => ['NameInRequest']);
-  has StageVariableOverrides => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', request_name => 'stageVariableOverrides', traits => ['NameInRequest']);
-  has UseStageCache => (is => 'ro', isa => 'Bool', request_name => 'useStageCache', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Num Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has DeploymentId => (is => 'ro', isa => Str);
+  has PercentTraffic => (is => 'ro', isa => Num);
+  has StageVariableOverrides => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has UseStageCache => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PercentTraffic' => {
+                                     'type' => 'Num'
+                                   },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'UseStageCache' => {
+                                    'type' => 'Bool'
+                                  },
+               'StageVariableOverrides' => {
+                                             'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                             'type' => 'ApiGateway_MapOfStringToString'
+                                           }
+             },
+  'NameInRequest' => {
+                       'PercentTraffic' => 'percentTraffic',
+                       'DeploymentId' => 'deploymentId',
+                       'UseStageCache' => 'useStageCache',
+                       'StageVariableOverrides' => 'stageVariableOverrides'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +82,7 @@ Configuration settings of a canary deployment.
   The percent (0-100) of traffic diverted to a canary deployment.
 
 
-=head2 StageVariableOverrides => L<Paws::ApiGateway::MapOfStringToString>
+=head2 StageVariableOverrides => ApiGateway_MapOfStringToString
 
   Stage variables overridden for a canary release deployment, including
 new stage variables introduced in the canary. These stage variables are

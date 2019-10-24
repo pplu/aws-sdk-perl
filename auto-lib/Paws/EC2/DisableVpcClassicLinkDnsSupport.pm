@@ -11,7 +11,7 @@ package Paws::EC2::DisableVpcClassicLinkDnsSupport;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DisableVpcClassicLinkDnsSupportResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::DisableVpcClassicLinkDnsSupport;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

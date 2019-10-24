@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::SDB::Item;
-  use Moose;
-  has AlternateNameEncoding => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]', request_name => 'Attribute', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SDB::Types qw/SDB_Attribute/;
+  has AlternateNameEncoding => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => ArrayRef[SDB_Attribute], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SDB::Attribute',
+                                 'type' => 'ArrayRef[SDB_Attribute]'
+                               },
+               'AlternateNameEncoding' => {
+                                            'type' => 'Str'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'Attribute'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +74,7 @@ This class has no description
   
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::Attribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[SDB_Attribute]
 
   A list of attributes.
 

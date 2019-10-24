@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseParametersResult;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::RelationalDatabaseParameter]', traits => ['NameInRequest'], request_name => 'parameters' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabaseParameter/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[Lightsail_RelationalDatabaseParameter]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Lightsail::RelationalDatabaseParameter',
+                                 'type' => 'ArrayRef[Lightsail_RelationalDatabaseParameter]'
+                               },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'parameters',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ A token used for advancing to the next page of results from your get
 static IPs request.
 
 
-=head2 Parameters => ArrayRef[L<Paws::Lightsail::RelationalDatabaseParameter>]
+=head2 Parameters => ArrayRef[Lightsail_RelationalDatabaseParameter]
 
 An object describing the result of your get relational database
 parameters request.

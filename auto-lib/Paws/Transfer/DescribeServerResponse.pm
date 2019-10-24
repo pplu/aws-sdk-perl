@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::DescribeServerResponse;
-  use Moose;
-  has Server => (is => 'ro', isa => 'Paws::Transfer::DescribedServer', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw/Transfer_DescribedServer/;
+  has Server => (is => 'ro', isa => Transfer_DescribedServer, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Server' => {
+                             'class' => 'Paws::Transfer::DescribedServer',
+                             'type' => 'Transfer_DescribedServer'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Server' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Transfer::DescribeServerResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Server => L<Paws::Transfer::DescribedServer>
+=head2 B<REQUIRED> Server => Transfer_DescribedServer
 
 An array containing the properties of the server with the C<ServerID>
 you specified.

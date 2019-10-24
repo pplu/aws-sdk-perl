@@ -1,14 +1,15 @@
 package Paws::CognitoSync;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cognito-sync' }
   sub signing_name { 'cognito-sync' }
   sub version { '2014-06-30' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -455,7 +456,7 @@ Cognito Identity. You cannot call this API with developer credentials.
 
 =over
 
-=item Events => L<Paws::CognitoSync::Events>
+=item Events => CognitoSync_Events
 
 =item IdentityPoolId => Str
 
@@ -482,9 +483,9 @@ Identity.
 
 =item IdentityPoolId => Str
 
-=item [CognitoStreams => L<Paws::CognitoSync::CognitoStreams>]
+=item [CognitoStreams => CognitoSync_CognitoStreams]
 
-=item [PushSync => L<Paws::CognitoSync::PushSync>]
+=item [PushSync => CognitoSync_PushSync]
 
 
 =back
@@ -568,7 +569,7 @@ Cognito Identity. You cannot call this API with developer credentials.
 
 =item [DeviceId => Str]
 
-=item [RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]]
+=item [RecordPatches => ArrayRef[CognitoSync_RecordPatch]]
 
 
 =back

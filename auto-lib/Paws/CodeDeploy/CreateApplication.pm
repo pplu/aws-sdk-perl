@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::CreateApplication;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Tag/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ComputePlatform => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeDeploy_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::CreateApplicationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::CreateApplicationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputePlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::CodeDeploy::Tag',
+                           'type' => 'ArrayRef[CodeDeploy_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ComputePlatform' => 'computePlatform',
+                       'ApplicationName' => 'applicationName',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +97,7 @@ or C<ECS>).
 
 Valid values are: C<"Server">, C<"Lambda">, C<"ECS">
 
-=head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 Tags => ArrayRef[CodeDeploy_Tag]
 
 The metadata that you apply to CodeDeploy applications to help you
 organize and categorize them. Each tag consists of a key and an

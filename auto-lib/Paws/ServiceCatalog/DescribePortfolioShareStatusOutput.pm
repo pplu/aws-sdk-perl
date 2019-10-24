@@ -1,13 +1,44 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribePortfolioShareStatusOutput;
-  use Moose;
-  has OrganizationNodeValue => (is => 'ro', isa => 'Str');
-  has PortfolioId => (is => 'ro', isa => 'Str');
-  has PortfolioShareToken => (is => 'ro', isa => 'Str');
-  has ShareDetails => (is => 'ro', isa => 'Paws::ServiceCatalog::ShareDetails');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ShareDetails/;
+  has OrganizationNodeValue => (is => 'ro', isa => Str);
+  has PortfolioId => (is => 'ro', isa => Str);
+  has PortfolioShareToken => (is => 'ro', isa => Str);
+  has ShareDetails => (is => 'ro', isa => ServiceCatalog_ShareDetails);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShareDetails' => {
+                                   'class' => 'Paws::ServiceCatalog::ShareDetails',
+                                   'type' => 'ServiceCatalog_ShareDetails'
+                                 },
+               'PortfolioId' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PortfolioShareToken' => {
+                                          'type' => 'Str'
+                                        },
+               'OrganizationNodeValue' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -35,7 +66,7 @@ The token for the portfolio share operation. For example,
 C<share-6v24abcdefghi>.
 
 
-=head2 ShareDetails => L<Paws::ServiceCatalog::ShareDetails>
+=head2 ShareDetails => ServiceCatalog_ShareDetails
 
 Information about the portfolio share operation.
 

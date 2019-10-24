@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::Support::Communication;
-  use Moose;
-  has AttachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]', request_name => 'attachmentSet', traits => ['NameInRequest']);
-  has Body => (is => 'ro', isa => 'Str', request_name => 'body', traits => ['NameInRequest']);
-  has CaseId => (is => 'ro', isa => 'Str', request_name => 'caseId', traits => ['NameInRequest']);
-  has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
-  has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Support::Types qw/Support_AttachmentDetails/;
+  has AttachmentSet => (is => 'ro', isa => ArrayRef[Support_AttachmentDetails]);
+  has Body => (is => 'ro', isa => Str);
+  has CaseId => (is => 'ro', isa => Str);
+  has SubmittedBy => (is => 'ro', isa => Str);
+  has TimeCreated => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaseId' => {
+                             'type' => 'Str'
+                           },
+               'AttachmentSet' => {
+                                    'class' => 'Paws::Support::AttachmentDetails',
+                                    'type' => 'ArrayRef[Support_AttachmentDetails]'
+                                  },
+               'SubmittedBy' => {
+                                  'type' => 'Str'
+                                },
+               'TimeCreated' => {
+                                  'type' => 'Str'
+                                },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'CaseId' => 'caseId',
+                       'AttachmentSet' => 'attachmentSet',
+                       'SubmittedBy' => 'submittedBy',
+                       'TimeCreated' => 'timeCreated',
+                       'Body' => 'body'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +79,7 @@ account email address, and the date and time of the communication.
 =head1 ATTRIBUTES
 
 
-=head2 AttachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
+=head2 AttachmentSet => ArrayRef[Support_AttachmentDetails]
 
   Information about the attachments to the case communication.
 

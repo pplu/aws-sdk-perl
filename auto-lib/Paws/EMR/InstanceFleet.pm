@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleet;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceFleetType => (is => 'ro', isa => 'Str');
-  has InstanceTypeSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceTypeSpecification]');
-  has LaunchSpecifications => (is => 'ro', isa => 'Paws::EMR::InstanceFleetProvisioningSpecifications');
-  has Name => (is => 'ro', isa => 'Str');
-  has ProvisionedOnDemandCapacity => (is => 'ro', isa => 'Int');
-  has ProvisionedSpotCapacity => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Paws::EMR::InstanceFleetStatus');
-  has TargetOnDemandCapacity => (is => 'ro', isa => 'Int');
-  has TargetSpotCapacity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EMR::Types qw/EMR_InstanceTypeSpecification EMR_InstanceFleetProvisioningSpecifications EMR_InstanceFleetStatus/;
+  has Id => (is => 'ro', isa => Str);
+  has InstanceFleetType => (is => 'ro', isa => Str);
+  has InstanceTypeSpecifications => (is => 'ro', isa => ArrayRef[EMR_InstanceTypeSpecification]);
+  has LaunchSpecifications => (is => 'ro', isa => EMR_InstanceFleetProvisioningSpecifications);
+  has Name => (is => 'ro', isa => Str);
+  has ProvisionedOnDemandCapacity => (is => 'ro', isa => Int);
+  has ProvisionedSpotCapacity => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => EMR_InstanceFleetStatus);
+  has TargetOnDemandCapacity => (is => 'ro', isa => Int);
+  has TargetSpotCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisionedOnDemandCapacity' => {
+                                                  'type' => 'Int'
+                                                },
+               'TargetOnDemandCapacity' => {
+                                             'type' => 'Int'
+                                           },
+               'InstanceTypeSpecifications' => {
+                                                 'class' => 'Paws::EMR::InstanceTypeSpecification',
+                                                 'type' => 'ArrayRef[EMR_InstanceTypeSpecification]'
+                                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'class' => 'Paws::EMR::InstanceFleetStatus',
+                             'type' => 'EMR_InstanceFleetStatus'
+                           },
+               'LaunchSpecifications' => {
+                                           'class' => 'Paws::EMR::InstanceFleetProvisioningSpecifications',
+                                           'type' => 'EMR_InstanceFleetProvisioningSpecifications'
+                                         },
+               'TargetSpotCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'InstanceFleetType' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ProvisionedSpotCapacity' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,14 +110,14 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 CORE, or TASK.
 
 
-=head2 InstanceTypeSpecifications => ArrayRef[L<Paws::EMR::InstanceTypeSpecification>]
+=head2 InstanceTypeSpecifications => ArrayRef[EMR_InstanceTypeSpecification]
 
   The specification for the instance types that comprise an instance
 fleet. Up to five unique instance specifications may be defined for
 each instance fleet.
 
 
-=head2 LaunchSpecifications => L<Paws::EMR::InstanceFleetProvisioningSpecifications>
+=head2 LaunchSpecifications => EMR_InstanceFleetProvisioningSpecifications
 
   Describes the launch specification for an instance fleet.
 
@@ -94,7 +141,7 @@ fleet to fulfill C<TargetSpotCapacity>. This provisioned capacity might
 be less than or greater than C<TargetSpotCapacity>.
 
 
-=head2 Status => L<Paws::EMR::InstanceFleetStatus>
+=head2 Status => EMR_InstanceFleetStatus
 
   The current status of the instance fleet.
 

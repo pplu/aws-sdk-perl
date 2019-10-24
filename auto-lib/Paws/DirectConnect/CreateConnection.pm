@@ -1,17 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreateConnection;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has Bandwidth => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LagId => (is => 'ro', isa => Str, predicate => 1);
+  has Location => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConnection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Connection');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConnection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Connection');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'ConnectionName' => {
+                                     'type' => 'Str'
+                                   },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Bandwidth' => 'bandwidth',
+                       'ConnectionName' => 'connectionName',
+                       'LagId' => 'lagId',
+                       'Tags' => 'tags',
+                       'Location' => 'location'
+                     },
+  'IsRequired' => {
+                    'Bandwidth' => 1,
+                    'ConnectionName' => 1,
+                    'Location' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +136,7 @@ The location of the connection.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 The tags to assign to the connection.
 

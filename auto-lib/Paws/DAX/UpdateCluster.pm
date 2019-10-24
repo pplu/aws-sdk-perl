@@ -1,19 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::UpdateCluster;
-  use Moose;
-  has ClusterName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NotificationTopicStatus => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DAX::Types qw//;
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicStatus => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::UpdateClusterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::UpdateClusterResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NotificationTopicStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ClusterName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

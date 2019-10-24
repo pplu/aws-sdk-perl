@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::ConfirmTransitVirtualInterface;
-  use Moose;
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' , required => 1);
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmTransitVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::ConfirmTransitVirtualInterfaceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConfirmTransitVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::ConfirmTransitVirtualInterfaceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId'
+                     },
+  'IsRequired' => {
+                    'VirtualInterfaceId' => 1,
+                    'DirectConnectGatewayId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

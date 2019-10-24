@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::Athena::WorkGroupConfiguration;
-  use Moose;
-  has BytesScannedCutoffPerQuery => (is => 'ro', isa => 'Int');
-  has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
-  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
-  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::Athena::Types qw/Athena_ResultConfiguration/;
+  has BytesScannedCutoffPerQuery => (is => 'ro', isa => Int);
+  has EnforceWorkGroupConfiguration => (is => 'ro', isa => Bool);
+  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => Bool);
+  has ResultConfiguration => (is => 'ro', isa => Athena_ResultConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BytesScannedCutoffPerQuery' => {
+                                                 'type' => 'Int'
+                                               },
+               'ResultConfiguration' => {
+                                          'class' => 'Paws::Athena::ResultConfiguration',
+                                          'type' => 'Athena_ResultConfiguration'
+                                        },
+               'PublishCloudWatchMetricsEnabled' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'EnforceWorkGroupConfiguration' => {
+                                                    'type' => 'Bool'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +94,7 @@ information, see Workgroup Settings Override Client-Side Settings
 workgroup.
 
 
-=head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+=head2 ResultConfiguration => Athena_ResultConfiguration
 
   The configuration for the workgroup, which includes the location in
 Amazon S3 where query results are stored and the encryption option, if

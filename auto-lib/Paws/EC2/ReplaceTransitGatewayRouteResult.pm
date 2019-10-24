@@ -7,7 +7,7 @@ package Paws::EC2::ReplaceTransitGatewayRouteResult;
   has Route => (is => 'ro', isa => EC2_TransitGatewayRoute);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Route' => {
@@ -23,8 +23,8 @@ package Paws::EC2::ReplaceTransitGatewayRouteResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

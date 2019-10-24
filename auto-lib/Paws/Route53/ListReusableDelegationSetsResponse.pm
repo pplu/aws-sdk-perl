@@ -1,13 +1,49 @@
 
 package Paws::Route53::ListReusableDelegationSetsResponse;
-  use Moose;
-  has DelegationSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::DelegationSet]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Route53::Types qw/Route53_DelegationSet/;
+  has DelegationSets => (is => 'ro', isa => ArrayRef[Route53_DelegationSet], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Marker => (is => 'ro', isa => Str);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'DelegationSets' => {
+                                     'class' => 'Paws::Route53::DelegationSet',
+                                     'type' => 'ArrayRef[Route53_DelegationSet]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'DelegationSets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +55,7 @@ Paws::Route53::ListReusableDelegationSetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DelegationSets => ArrayRef[L<Paws::Route53::DelegationSet>]
+=head2 B<REQUIRED> DelegationSets => ArrayRef[Route53_DelegationSet]
 
 A complex type that contains one C<DelegationSet> element for each
 reusable delegation set that was created by the current AWS account.

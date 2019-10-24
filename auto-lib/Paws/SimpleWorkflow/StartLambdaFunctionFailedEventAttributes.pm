@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Cause => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has ScheduledEventId => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ScheduledEventId' => 'scheduledEventId',
+                       'Message' => 'message',
+                       'Cause' => 'cause'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

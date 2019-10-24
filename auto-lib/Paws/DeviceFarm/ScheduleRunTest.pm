@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::ScheduleRunTest;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
-  has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', request_name => 'parameters', traits => ['NameInRequest']);
-  has TestPackageArn => (is => 'ro', isa => 'Str', request_name => 'testPackageArn', traits => ['NameInRequest']);
-  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_TestParameters/;
+  has Filter => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => DeviceFarm_TestParameters);
+  has TestPackageArn => (is => 'ro', isa => Str);
+  has TestSpecArn => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::DeviceFarm::TestParameters',
+                                 'type' => 'DeviceFarm_TestParameters'
+                               },
+               'Filter' => {
+                             'type' => 'Str'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TestSpecArn' => {
+                                  'type' => 'Str'
+                                },
+               'TestPackageArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'parameters',
+                       'Filter' => 'filter',
+                       'Type' => 'type',
+                       'TestSpecArn' => 'testSpecArn',
+                       'TestPackageArn' => 'testPackageArn'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +87,7 @@ syntax, see ScheduleRun.
   The test's filter.
 
 
-=head2 Parameters => L<Paws::DeviceFarm::TestParameters>
+=head2 Parameters => DeviceFarm_TestParameters
 
   The test's parameters, such as test framework parameters and fixture
 settings. Parameters are represented by name-value pairs of strings.

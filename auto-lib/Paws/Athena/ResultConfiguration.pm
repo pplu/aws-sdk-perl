@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Athena::ResultConfiguration;
-  use Moose;
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Athena::EncryptionConfiguration');
-  has OutputLocation => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw/Athena_EncryptionConfiguration/;
+  has EncryptionConfiguration => (is => 'ro', isa => Athena_EncryptionConfiguration);
+  has OutputLocation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Athena::EncryptionConfiguration',
+                                              'type' => 'Athena_EncryptionConfiguration'
+                                            },
+               'OutputLocation' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +62,7 @@ the encryption configuration that are specified for the workgroup.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionConfiguration => L<Paws::Athena::EncryptionConfiguration>
+=head2 EncryptionConfiguration => Athena_EncryptionConfiguration
 
   If query results are encrypted in Amazon S3, indicates the encryption
 option used (for example, C<SSE-KMS> or C<CSE-KMS>) and key

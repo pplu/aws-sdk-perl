@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SSM::InstanceAssociationOutputUrl;
-  use Moose;
-  has S3OutputUrl => (is => 'ro', isa => 'Paws::SSM::S3OutputUrl');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SSM::Types qw/SSM_S3OutputUrl/;
+  has S3OutputUrl => (is => 'ro', isa => SSM_S3OutputUrl);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3OutputUrl' => {
+                                  'class' => 'Paws::SSM::S3OutputUrl',
+                                  'type' => 'SSM_S3OutputUrl'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ request.
 =head1 ATTRIBUTES
 
 
-=head2 S3OutputUrl => L<Paws::SSM::S3OutputUrl>
+=head2 S3OutputUrl => SSM_S3OutputUrl
 
   The URL of Amazon S3 bucket where you want to store the results of this
 request.

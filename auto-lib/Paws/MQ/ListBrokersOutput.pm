@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MQ::ListBrokersOutput;
-  use Moose;
-  has BrokerSummaries => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerSummary]', request_name => 'brokerSummaries', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MQ::Types qw/MQ_BrokerSummary/;
+  has BrokerSummaries => (is => 'ro', isa => ArrayRef[MQ_BrokerSummary]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BrokerSummaries' => {
+                                      'class' => 'Paws::MQ::BrokerSummary',
+                                      'type' => 'ArrayRef[MQ_BrokerSummary]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'BrokerSummaries' => 'brokerSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ A list of information about all brokers.
 =head1 ATTRIBUTES
 
 
-=head2 BrokerSummaries => ArrayRef[L<Paws::MQ::BrokerSummary>]
+=head2 BrokerSummaries => ArrayRef[MQ_BrokerSummary]
 
   A list of information about all brokers.
 

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Athena::WorkGroupConfigurationUpdates;
-  use Moose;
-  has BytesScannedCutoffPerQuery => (is => 'ro', isa => 'Int');
-  has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
-  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
-  has RemoveBytesScannedCutoffPerQuery => (is => 'ro', isa => 'Bool');
-  has ResultConfigurationUpdates => (is => 'ro', isa => 'Paws::Athena::ResultConfigurationUpdates');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::Athena::Types qw/Athena_ResultConfigurationUpdates/;
+  has BytesScannedCutoffPerQuery => (is => 'ro', isa => Int);
+  has EnforceWorkGroupConfiguration => (is => 'ro', isa => Bool);
+  has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => Bool);
+  has RemoveBytesScannedCutoffPerQuery => (is => 'ro', isa => Bool);
+  has ResultConfigurationUpdates => (is => 'ro', isa => Athena_ResultConfigurationUpdates);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResultConfigurationUpdates' => {
+                                                 'class' => 'Paws::Athena::ResultConfigurationUpdates',
+                                                 'type' => 'Athena_ResultConfigurationUpdates'
+                                               },
+               'RemoveBytesScannedCutoffPerQuery' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'BytesScannedCutoffPerQuery' => {
+                                                 'type' => 'Int'
+                                               },
+               'PublishCloudWatchMetricsEnabled' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'EnforceWorkGroupConfiguration' => {
+                                                    'type' => 'Bool'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +102,7 @@ CloudWatch.
 WorkGroupConfiguration$BytesScannedCutoffPerQuery
 
 
-=head2 ResultConfigurationUpdates => L<Paws::Athena::ResultConfigurationUpdates>
+=head2 ResultConfigurationUpdates => Athena_ResultConfigurationUpdates
 
   The result configuration information about the queries in this
 workgroup that will be updated. Includes the updated results location

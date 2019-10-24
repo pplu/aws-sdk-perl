@@ -1,11 +1,44 @@
 
 package Paws::Batch::RegisterJobDefinitionResponse;
-  use Moose;
-  has JobDefinitionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionArn', required => 1);
-  has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
-  has Revision => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'revision', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Batch::Types qw//;
+  has JobDefinitionArn => (is => 'ro', isa => Str, required => 1);
+  has JobDefinitionName => (is => 'ro', isa => Str, required => 1);
+  has Revision => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'JobDefinitionName' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobDefinitionArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'JobDefinitionName' => 'jobDefinitionName',
+                       'JobDefinitionArn' => 'jobDefinitionArn'
+                     },
+  'IsRequired' => {
+                    'Revision' => 1,
+                    'JobDefinitionName' => 1,
+                    'JobDefinitionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

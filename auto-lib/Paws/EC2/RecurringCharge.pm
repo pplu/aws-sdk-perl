@@ -4,7 +4,7 @@ package Paws::EC2::RecurringCharge;
   has Amount => (is => 'ro', isa => Num);
   has Frequency => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Frequency' => {
@@ -20,8 +20,8 @@ package Paws::EC2::RecurringCharge;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

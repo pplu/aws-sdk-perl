@@ -1,16 +1,42 @@
 
 package Paws::IoT::ListOTAUpdates;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has OtaUpdateStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'otaUpdateStatus');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OtaUpdateStatus => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOTAUpdates');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/otaUpdates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListOTAUpdatesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListOTAUpdates');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/otaUpdates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListOTAUpdatesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OtaUpdateStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'OtaUpdateStatus' => 'otaUpdateStatus',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

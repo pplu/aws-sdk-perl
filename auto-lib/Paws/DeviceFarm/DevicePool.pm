@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::DevicePool;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has MaxDevices => (is => 'ro', isa => 'Int', request_name => 'maxDevices', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', request_name => 'rules', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Rule/;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has MaxDevices => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[DeviceFarm_Rule]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Rules' => {
+                            'class' => 'Paws::DeviceFarm::Rule',
+                            'type' => 'ArrayRef[DeviceFarm_Rule]'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxDevices' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Rules' => 'rules',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'MaxDevices' => 'maxDevices',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +109,7 @@ that you incur by running tests.
   The device pool's name.
 
 
-=head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+=head2 Rules => ArrayRef[DeviceFarm_Rule]
 
   Information about the device pool's rules.
 

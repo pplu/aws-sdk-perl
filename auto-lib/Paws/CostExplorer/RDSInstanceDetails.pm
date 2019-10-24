@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::RDSInstanceDetails;
-  use Moose;
-  has CurrentGeneration => (is => 'ro', isa => 'Bool');
-  has DatabaseEdition => (is => 'ro', isa => 'Str');
-  has DatabaseEngine => (is => 'ro', isa => 'Str');
-  has DeploymentOption => (is => 'ro', isa => 'Str');
-  has Family => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has SizeFlexEligible => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CurrentGeneration => (is => 'ro', isa => Bool);
+  has DatabaseEdition => (is => 'ro', isa => Str);
+  has DatabaseEngine => (is => 'ro', isa => Str);
+  has DeploymentOption => (is => 'ro', isa => Str);
+  has Family => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has SizeFlexEligible => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'DeploymentOption' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'DatabaseEngine' => {
+                                     'type' => 'Str'
+                                   },
+               'SizeFlexEligible' => {
+                                       'type' => 'Bool'
+                                     },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'CurrentGeneration' => {
+                                        'type' => 'Bool'
+                                      },
+               'DatabaseEdition' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

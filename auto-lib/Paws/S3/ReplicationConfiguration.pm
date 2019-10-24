@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::ReplicationConfiguration;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -18,7 +19,11 @@ package Paws::S3::ReplicationConfiguration;
              },
   'NameInRequest' => {
                        'Rules' => 'Rule'
-                     }
+                     },
+  'IsRequired' => {
+                    'Rules' => 1,
+                    'Role' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,17 +1,53 @@
 
 package Paws::ApiGateway::GetIntegrationResponse;
-  use Moose;
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'status_code', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has HttpMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIntegrationResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetIntegrationResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'StatusCode' => 'status_code',
+                    'RestApiId' => 'restapi_id',
+                    'ResourceId' => 'resource_id',
+                    'HttpMethod' => 'http_method'
+                  },
+  'IsRequired' => {
+                    'StatusCode' => 1,
+                    'RestApiId' => 1,
+                    'ResourceId' => 1,
+                    'HttpMethod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

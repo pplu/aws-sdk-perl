@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformJobDefinition;
-  use Moose;
-  has BatchStrategy => (is => 'ro', isa => 'Str');
-  has Environment => (is => 'ro', isa => 'Paws::SageMaker::TransformEnvironmentMap');
-  has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
-  has MaxPayloadInMB => (is => 'ro', isa => 'Int');
-  has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
-  has TransformOutput => (is => 'ro', isa => 'Paws::SageMaker::TransformOutput', required => 1);
-  has TransformResources => (is => 'ro', isa => 'Paws::SageMaker::TransformResources', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SageMaker::Types qw/SageMaker_TransformResources SageMaker_TransformOutput SageMaker_TransformEnvironmentMap SageMaker_TransformInput/;
+  has BatchStrategy => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => SageMaker_TransformEnvironmentMap);
+  has MaxConcurrentTransforms => (is => 'ro', isa => Int);
+  has MaxPayloadInMB => (is => 'ro', isa => Int);
+  has TransformInput => (is => 'ro', isa => SageMaker_TransformInput, required => 1);
+  has TransformOutput => (is => 'ro', isa => SageMaker_TransformOutput, required => 1);
+  has TransformResources => (is => 'ro', isa => SageMaker_TransformResources, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxPayloadInMB' => {
+                                     'type' => 'Int'
+                                   },
+               'Environment' => {
+                                  'class' => 'Paws::SageMaker::TransformEnvironmentMap',
+                                  'type' => 'SageMaker_TransformEnvironmentMap'
+                                },
+               'TransformInput' => {
+                                     'class' => 'Paws::SageMaker::TransformInput',
+                                     'type' => 'SageMaker_TransformInput'
+                                   },
+               'TransformResources' => {
+                                         'class' => 'Paws::SageMaker::TransformResources',
+                                         'type' => 'SageMaker_TransformResources'
+                                       },
+               'BatchStrategy' => {
+                                    'type' => 'Str'
+                                  },
+               'TransformOutput' => {
+                                      'class' => 'Paws::SageMaker::TransformOutput',
+                                      'type' => 'SageMaker_TransformOutput'
+                                    },
+               'MaxConcurrentTransforms' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'IsRequired' => {
+                    'TransformInput' => 1,
+                    'TransformResources' => 1,
+                    'TransformOutput' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +97,7 @@ C<MultiRecord> means a mini-batch is set to contain as many records
 that can fit within the C<MaxPayloadInMB> limit.
 
 
-=head2 Environment => L<Paws::SageMaker::TransformEnvironmentMap>
+=head2 Environment => SageMaker_TransformEnvironmentMap
 
   The environment variables to set in the Docker container. We support up
 to 16 key and values entries in the map.
@@ -71,19 +115,19 @@ instance in a transform job. The default value is 1.
 of a record (without metadata).
 
 
-=head2 B<REQUIRED> TransformInput => L<Paws::SageMaker::TransformInput>
+=head2 B<REQUIRED> TransformInput => SageMaker_TransformInput
 
   A description of the input source and the way the transform job
 consumes it.
 
 
-=head2 B<REQUIRED> TransformOutput => L<Paws::SageMaker::TransformOutput>
+=head2 B<REQUIRED> TransformOutput => SageMaker_TransformOutput
 
   Identifies the Amazon S3 location where you want Amazon SageMaker to
 save the results from the transform job.
 
 
-=head2 B<REQUIRED> TransformResources => L<Paws::SageMaker::TransformResources>
+=head2 B<REQUIRED> TransformResources => SageMaker_TransformResources
 
   Identifies the ML compute instances for the transform job.
 

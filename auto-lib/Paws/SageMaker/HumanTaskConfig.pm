@@ -1,17 +1,80 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HumanTaskConfig;
-  use Moose;
-  has AnnotationConsolidationConfig => (is => 'ro', isa => 'Paws::SageMaker::AnnotationConsolidationConfig', required => 1);
-  has MaxConcurrentTaskCount => (is => 'ro', isa => 'Int');
-  has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => 'Int', required => 1);
-  has PreHumanTaskLambdaArn => (is => 'ro', isa => 'Str', required => 1);
-  has PublicWorkforceTaskPrice => (is => 'ro', isa => 'Paws::SageMaker::PublicWorkforceTaskPrice');
-  has TaskAvailabilityLifetimeInSeconds => (is => 'ro', isa => 'Int');
-  has TaskDescription => (is => 'ro', isa => 'Str', required => 1);
-  has TaskKeywords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TaskTimeLimitInSeconds => (is => 'ro', isa => 'Int', required => 1);
-  has TaskTitle => (is => 'ro', isa => 'Str', required => 1);
-  has UiConfig => (is => 'ro', isa => 'Paws::SageMaker::UiConfig', required => 1);
-  has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::SageMaker::Types qw/SageMaker_UiConfig SageMaker_PublicWorkforceTaskPrice SageMaker_AnnotationConsolidationConfig/;
+  has AnnotationConsolidationConfig => (is => 'ro', isa => SageMaker_AnnotationConsolidationConfig, required => 1);
+  has MaxConcurrentTaskCount => (is => 'ro', isa => Int);
+  has NumberOfHumanWorkersPerDataObject => (is => 'ro', isa => Int, required => 1);
+  has PreHumanTaskLambdaArn => (is => 'ro', isa => Str, required => 1);
+  has PublicWorkforceTaskPrice => (is => 'ro', isa => SageMaker_PublicWorkforceTaskPrice);
+  has TaskAvailabilityLifetimeInSeconds => (is => 'ro', isa => Int);
+  has TaskDescription => (is => 'ro', isa => Str, required => 1);
+  has TaskKeywords => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TaskTimeLimitInSeconds => (is => 'ro', isa => Int, required => 1);
+  has TaskTitle => (is => 'ro', isa => Str, required => 1);
+  has UiConfig => (is => 'ro', isa => SageMaker_UiConfig, required => 1);
+  has WorkteamArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxConcurrentTaskCount' => {
+                                             'type' => 'Int'
+                                           },
+               'PublicWorkforceTaskPrice' => {
+                                               'class' => 'Paws::SageMaker::PublicWorkforceTaskPrice',
+                                               'type' => 'SageMaker_PublicWorkforceTaskPrice'
+                                             },
+               'NumberOfHumanWorkersPerDataObject' => {
+                                                        'type' => 'Int'
+                                                      },
+               'UiConfig' => {
+                               'class' => 'Paws::SageMaker::UiConfig',
+                               'type' => 'SageMaker_UiConfig'
+                             },
+               'WorkteamArn' => {
+                                  'type' => 'Str'
+                                },
+               'TaskAvailabilityLifetimeInSeconds' => {
+                                                        'type' => 'Int'
+                                                      },
+               'PreHumanTaskLambdaArn' => {
+                                            'type' => 'Str'
+                                          },
+               'TaskDescription' => {
+                                      'type' => 'Str'
+                                    },
+               'TaskTitle' => {
+                                'type' => 'Str'
+                              },
+               'TaskTimeLimitInSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'TaskKeywords' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'AnnotationConsolidationConfig' => {
+                                                    'class' => 'Paws::SageMaker::AnnotationConsolidationConfig',
+                                                    'type' => 'SageMaker_AnnotationConsolidationConfig'
+                                                  }
+             },
+  'IsRequired' => {
+                    'NumberOfHumanWorkersPerDataObject' => 1,
+                    'UiConfig' => 1,
+                    'WorkteamArn' => 1,
+                    'PreHumanTaskLambdaArn' => 1,
+                    'TaskDescription' => 1,
+                    'TaskTitle' => 1,
+                    'TaskTimeLimitInSeconds' => 1,
+                    'AnnotationConsolidationConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +110,7 @@ Information required for human workers to complete a labeling task.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AnnotationConsolidationConfig => L<Paws::SageMaker::AnnotationConsolidationConfig>
+=head2 B<REQUIRED> AnnotationConsolidationConfig => SageMaker_AnnotationConsolidationConfig
 
   Configures how labels are consolidated across human workers.
 
@@ -208,7 +271,7 @@ C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
 
 
 
-=head2 PublicWorkforceTaskPrice => L<Paws::SageMaker::PublicWorkforceTaskPrice>
+=head2 PublicWorkforceTaskPrice => SageMaker_PublicWorkforceTaskPrice
 
   The price that you pay for each task performed by a public worker.
 
@@ -240,7 +303,7 @@ Turk can discover the task.
   A title for the task for your human workers.
 
 
-=head2 B<REQUIRED> UiConfig => L<Paws::SageMaker::UiConfig>
+=head2 B<REQUIRED> UiConfig => SageMaker_UiConfig
 
   Information about the user interface that workers use to complete the
 labeling task.

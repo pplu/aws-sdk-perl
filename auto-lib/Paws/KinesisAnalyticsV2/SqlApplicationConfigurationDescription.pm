@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SqlApplicationConfigurationDescription;
-  use Moose;
-  has InputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::InputDescription]');
-  has OutputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::OutputDescription]');
-  has ReferenceDataSourceDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ReferenceDataSourceDescription]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ReferenceDataSourceDescription KinesisAnalyticsV2_InputDescription KinesisAnalyticsV2_OutputDescription/;
+  has InputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_InputDescription]);
+  has OutputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_OutputDescription]);
+  has ReferenceDataSourceDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceDescription]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputDescriptions' => {
+                                         'class' => 'Paws::KinesisAnalyticsV2::OutputDescription',
+                                         'type' => 'ArrayRef[KinesisAnalyticsV2_OutputDescription]'
+                                       },
+               'ReferenceDataSourceDescriptions' => {
+                                                      'class' => 'Paws::KinesisAnalyticsV2::ReferenceDataSourceDescription',
+                                                      'type' => 'ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceDescription]'
+                                                    },
+               'InputDescriptions' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::InputDescription',
+                                        'type' => 'ArrayRef[KinesisAnalyticsV2_InputDescription]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +65,19 @@ SQL-based Kinesis Data Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 InputDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::InputDescription>]
+=head2 InputDescriptions => ArrayRef[KinesisAnalyticsV2_InputDescription]
 
   The array of InputDescription objects describing the input streams used
 by the application.
 
 
-=head2 OutputDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::OutputDescription>]
+=head2 OutputDescriptions => ArrayRef[KinesisAnalyticsV2_OutputDescription]
 
   The array of OutputDescription objects describing the destination
 streams used by the application.
 
 
-=head2 ReferenceDataSourceDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::ReferenceDataSourceDescription>]
+=head2 ReferenceDataSourceDescriptions => ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceDescription]
 
   The array of ReferenceDataSourceDescription objects describing the
 reference data sources used by the application.

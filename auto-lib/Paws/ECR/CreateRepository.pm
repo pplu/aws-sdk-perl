@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::CreateRepository;
-  use Moose;
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECR::Types qw/ECR_Tag/;
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECR_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::ECR::Tag',
+                           'type' => 'ArrayRef[ECR_Tag]'
+                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ C<project-a/nginx-web-app>).
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECR::Tag>]
+=head2 Tags => ArrayRef[ECR_Tag]
 
 
 

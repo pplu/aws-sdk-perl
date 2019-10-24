@@ -1,17 +1,47 @@
 
 package Paws::Lambda::PublishVersion;
-  use Moose;
-  has CodeSha256 => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has RevisionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has CodeSha256 => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PublishVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PublishVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CodeSha256' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  },
+  'IsRequired' => {
+                    'FunctionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MigrationHub::AssociateCreatedArtifact;
-  use Moose;
-  has CreatedArtifact => (is => 'ro', isa => 'Paws::MigrationHub::CreatedArtifact', required => 1);
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has MigrationTaskName => (is => 'ro', isa => 'Str', required => 1);
-  has ProgressUpdateStream => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MigrationHub::Types qw/MigrationHub_CreatedArtifact/;
+  has CreatedArtifact => (is => 'ro', isa => MigrationHub_CreatedArtifact, required => 1, predicate => 1);
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has MigrationTaskName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProgressUpdateStream => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateCreatedArtifact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MigrationHub::AssociateCreatedArtifactResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateCreatedArtifact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MigrationHub::AssociateCreatedArtifactResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'CreatedArtifact' => {
+                                      'class' => 'Paws::MigrationHub::CreatedArtifact',
+                                      'type' => 'MigrationHub_CreatedArtifact'
+                                    },
+               'ProgressUpdateStream' => {
+                                           'type' => 'Str'
+                                         },
+               'MigrationTaskName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'CreatedArtifact' => 1,
+                    'ProgressUpdateStream' => 1,
+                    'MigrationTaskName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mgh
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreatedArtifact => L<Paws::MigrationHub::CreatedArtifact>
+=head2 B<REQUIRED> CreatedArtifact => MigrationHub_CreatedArtifact
 
 An ARN of the AWS resource related to the migration (e.g., AMI, EC2
 instance, RDS instance, etc.)

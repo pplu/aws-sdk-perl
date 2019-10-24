@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::VirtualGateway;
-  use Moose;
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
-  has VirtualGatewayState => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayState', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has VirtualGatewayId => (is => 'ro', isa => Str);
+  has VirtualGatewayState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'VirtualGatewayState' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'VirtualGatewayState' => 'virtualGatewayState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

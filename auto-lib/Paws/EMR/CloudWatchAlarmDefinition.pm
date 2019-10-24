@@ -1,14 +1,62 @@
+# Generated from default/object.tt
 package Paws::EMR::CloudWatchAlarmDefinition;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::MetricDimension]');
-  has EvaluationPeriods => (is => 'ro', isa => 'Int');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str');
-  has Period => (is => 'ro', isa => 'Int', required => 1);
-  has Statistic => (is => 'ro', isa => 'Str');
-  has Threshold => (is => 'ro', isa => 'Num', required => 1);
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Num/;
+  use Paws::EMR::Types qw/EMR_MetricDimension/;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has Dimensions => (is => 'ro', isa => ArrayRef[EMR_MetricDimension]);
+  has EvaluationPeriods => (is => 'ro', isa => Int);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Namespace => (is => 'ro', isa => Str);
+  has Period => (is => 'ro', isa => Int, required => 1);
+  has Statistic => (is => 'ro', isa => Str);
+  has Threshold => (is => 'ro', isa => Num, required => 1);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'class' => 'Paws::EMR::MetricDimension',
+                                 'type' => 'ArrayRef[EMR_MetricDimension]'
+                               },
+               'EvaluationPeriods' => {
+                                        'type' => 'Int'
+                                      },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'Statistic' => {
+                                'type' => 'Str'
+                              },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Threshold' => 1,
+                    'Period' => 1,
+                    'MetricName' => 1,
+                    'ComparisonOperator' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +100,7 @@ conditions are satisfied, scaling activity begins.
 value specified by C<Threshold>.
 
 
-=head2 Dimensions => ArrayRef[L<Paws::EMR::MetricDimension>]
+=head2 Dimensions => ArrayRef[EMR_MetricDimension]
 
   A CloudWatch metric dimension.
 

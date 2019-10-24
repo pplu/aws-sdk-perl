@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ResourceTags;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert___mapOf__string/;
+  has Arn => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::MediaConvert::__mapOf__string',
+                           'type' => 'MediaConvert___mapOf__string'
+                         }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ MediaConvert resource.
   The Amazon Resource Name (ARN) of the resource.
 
 
-=head2 Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 Tags => MediaConvert___mapOf__string
 
   The tags for the resource.
 

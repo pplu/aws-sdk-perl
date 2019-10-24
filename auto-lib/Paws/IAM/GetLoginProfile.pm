@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetLoginProfile;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::GetLoginProfile;
                'UserName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

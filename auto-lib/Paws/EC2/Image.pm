@@ -26,7 +26,7 @@ package Paws::EC2::Image;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has VirtualizationType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ImageId' => {
@@ -134,8 +134,8 @@ package Paws::EC2::Image;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::LexModels::BotAliasMetadata;
-  use Moose;
-  has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
-  has BotVersion => (is => 'ro', isa => 'Str', request_name => 'botVersion', traits => ['NameInRequest']);
-  has Checksum => (is => 'ro', isa => 'Str', request_name => 'checksum', traits => ['NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDate', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has BotName => (is => 'ro', isa => Str);
+  has BotVersion => (is => 'ro', isa => Str);
+  has Checksum => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'BotVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Checksum' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'CreatedDate' => 'createdDate',
+                       'BotName' => 'botName',
+                       'BotVersion' => 'botVersion',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'Checksum' => 'checksum'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

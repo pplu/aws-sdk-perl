@@ -1,9 +1,30 @@
 
 package Paws::IoT::DescribeRoleAliasResponse;
-  use Moose;
-  has RoleAliasDescription => (is => 'ro', isa => 'Paws::IoT::RoleAliasDescription', traits => ['NameInRequest'], request_name => 'roleAliasDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_RoleAliasDescription/;
+  has RoleAliasDescription => (is => 'ro', isa => IoT_RoleAliasDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleAliasDescription' => {
+                                           'class' => 'Paws::IoT::RoleAliasDescription',
+                                           'type' => 'IoT_RoleAliasDescription'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RoleAliasDescription' => 'roleAliasDescription'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoT::DescribeRoleAliasResponse
 =head1 ATTRIBUTES
 
 
-=head2 RoleAliasDescription => L<Paws::IoT::RoleAliasDescription>
+=head2 RoleAliasDescription => IoT_RoleAliasDescription
 
 The role alias description.
 

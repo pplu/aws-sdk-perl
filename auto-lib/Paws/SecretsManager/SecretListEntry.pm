@@ -1,18 +1,74 @@
+# Generated from default/object.tt
 package Paws::SecretsManager::SecretListEntry;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has DeletedDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LastAccessedDate => (is => 'ro', isa => 'Str');
-  has LastChangedDate => (is => 'ro', isa => 'Str');
-  has LastRotatedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RotationEnabled => (is => 'ro', isa => 'Bool');
-  has RotationLambdaARN => (is => 'ro', isa => 'Str');
-  has RotationRules => (is => 'ro', isa => 'Paws::SecretsManager::RotationRulesType');
-  has SecretVersionsToStages => (is => 'ro', isa => 'Paws::SecretsManager::SecretVersionsToStagesMapType');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::SecretsManager::Types qw/SecretsManager_SecretVersionsToStagesMapType SecretsManager_RotationRulesType SecretsManager_Tag/;
+  has ARN => (is => 'ro', isa => Str);
+  has DeletedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LastAccessedDate => (is => 'ro', isa => Str);
+  has LastChangedDate => (is => 'ro', isa => Str);
+  has LastRotatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RotationEnabled => (is => 'ro', isa => Bool);
+  has RotationLambdaARN => (is => 'ro', isa => Str);
+  has RotationRules => (is => 'ro', isa => SecretsManager_RotationRulesType);
+  has SecretVersionsToStages => (is => 'ro', isa => SecretsManager_SecretVersionsToStagesMapType);
+  has Tags => (is => 'ro', isa => ArrayRef[SecretsManager_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastRotatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'DeletedDate' => {
+                                  'type' => 'Str'
+                                },
+               'RotationEnabled' => {
+                                      'type' => 'Bool'
+                                    },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'RotationRules' => {
+                                    'class' => 'Paws::SecretsManager::RotationRulesType',
+                                    'type' => 'SecretsManager_RotationRulesType'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::SecretsManager::Tag',
+                           'type' => 'ArrayRef[SecretsManager_Tag]'
+                         },
+               'RotationLambdaARN' => {
+                                        'type' => 'Str'
+                                      },
+               'LastChangedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'LastAccessedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SecretVersionsToStages' => {
+                                             'class' => 'Paws::SecretsManager::SecretVersionsToStagesMapType',
+                                             'type' => 'SecretsManager_SecretVersionsToStagesMapType'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -120,12 +176,12 @@ rotate and expire the secret either automatically per the schedule or
 manually by a call to RotateSecret.
 
 
-=head2 RotationRules => L<Paws::SecretsManager::RotationRulesType>
+=head2 RotationRules => SecretsManager_RotationRulesType
 
   A structure that defines the rotation configuration for the secret.
 
 
-=head2 SecretVersionsToStages => L<Paws::SecretsManager::SecretVersionsToStagesMapType>
+=head2 SecretVersionsToStages => SecretsManager_SecretVersionsToStagesMapType
 
   A list of all of the currently assigned C<SecretVersionStage> staging
 labels and the C<SecretVersionId> that each is attached to. Staging
@@ -137,7 +193,7 @@ deprecated and subject to deletion. Such versions are not included in
 this list.
 
 
-=head2 Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
+=head2 Tags => ArrayRef[SecretsManager_Tag]
 
   The list of user-defined tags that are associated with the secret. To
 add tags to a secret, use TagResource. To remove tags, use

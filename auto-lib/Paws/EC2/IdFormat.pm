@@ -5,7 +5,7 @@ package Paws::EC2::IdFormat;
   has Resource => (is => 'ro', isa => Str);
   has UseLongIds => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UseLongIds' => {
@@ -25,8 +25,8 @@ package Paws::EC2::IdFormat;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

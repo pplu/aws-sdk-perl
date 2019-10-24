@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::MemberConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has FrameworkConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberFrameworkConfiguration', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_MemberFrameworkConfiguration/;
+  has Description => (is => 'ro', isa => Str);
+  has FrameworkConfiguration => (is => 'ro', isa => ManagedBlockchain_MemberFrameworkConfiguration, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FrameworkConfiguration' => {
+                                             'class' => 'Paws::ManagedBlockchain::MemberFrameworkConfiguration',
+                                             'type' => 'ManagedBlockchain_MemberFrameworkConfiguration'
+                                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'FrameworkConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +71,7 @@ Configuration properties of the member.
   An optional description of the member.
 
 
-=head2 B<REQUIRED> FrameworkConfiguration => L<Paws::ManagedBlockchain::MemberFrameworkConfiguration>
+=head2 B<REQUIRED> FrameworkConfiguration => ManagedBlockchain_MemberFrameworkConfiguration
 
   Configuration properties of the blockchain framework relevant to the
 member.

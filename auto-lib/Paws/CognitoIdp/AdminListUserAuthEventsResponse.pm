@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::AdminListUserAuthEventsResponse;
-  use Moose;
-  has AuthEvents => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AuthEventType]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AuthEventType/;
+  has AuthEvents => (is => 'ro', isa => ArrayRef[CognitoIdp_AuthEventType]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AuthEvents' => {
+                                 'class' => 'Paws::CognitoIdp::AuthEventType',
+                                 'type' => 'ArrayRef[CognitoIdp_AuthEventType]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CognitoIdp::AdminListUserAuthEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 AuthEvents => ArrayRef[L<Paws::CognitoIdp::AuthEventType>]
+=head2 AuthEvents => ArrayRef[CognitoIdp_AuthEventType]
 
 The response object. It includes the C<EventID>, C<EventType>,
 C<CreationDate>, C<EventRisk>, and C<EventResponse>.

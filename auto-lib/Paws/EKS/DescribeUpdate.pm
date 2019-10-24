@@ -1,15 +1,41 @@
 
 package Paws::EKS::DescribeUpdate;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has UpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'updateId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UpdateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUpdate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/updates/{updateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::DescribeUpdateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUpdate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/updates/{updateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::DescribeUpdateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpdateId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'UpdateId' => 'updateId',
+                    'Name' => 'name'
+                  },
+  'IsRequired' => {
+                    'UpdateId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

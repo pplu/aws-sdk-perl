@@ -1,11 +1,39 @@
 
 package Paws::IoT::DescribeIndexResponse;
-  use Moose;
-  has IndexName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexName');
-  has IndexStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'indexStatus');
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has IndexName => (is => 'ro', isa => Str);
+  has IndexStatus => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IndexStatus' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'IndexName' => 'indexName',
+                       'IndexStatus' => 'indexStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Personalize::HPOObjective;
-  use Moose;
-  has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest']);
-  has MetricRegex => (is => 'ro', isa => 'Str', request_name => 'metricRegex', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has MetricName => (is => 'ro', isa => Str);
+  has MetricRegex => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricRegex' => {
+                                  'type' => 'Str'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'MetricRegex' => 'metricRegex',
+                       'Type' => 'type',
+                       'MetricName' => 'metricName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

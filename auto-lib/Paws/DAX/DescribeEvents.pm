@@ -1,19 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::DescribeEvents;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SourceName => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DAX::Types qw//;
+  has Duration => (is => 'ro', isa => Int, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SourceName => (is => 'ro', isa => Str, predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::DescribeEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::DescribeEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceName' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Duration' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

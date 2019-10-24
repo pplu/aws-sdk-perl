@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SSM::RelatedOpsItem;
-  use Moose;
-  has OpsItemId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has OpsItemId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OpsItemId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'OpsItemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

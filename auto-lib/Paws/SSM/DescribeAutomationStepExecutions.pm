@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::DescribeAutomationStepExecutions;
-  use Moose;
-  has AutomationExecutionId => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::StepExecutionFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ReverseOrder => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::SSM::Types qw/SSM_StepExecutionFilter/;
+  has AutomationExecutionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_StepExecutionFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutomationStepExecutions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::DescribeAutomationStepExecutionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAutomationStepExecutions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::DescribeAutomationStepExecutionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::StepExecutionFilter',
+                              'type' => 'ArrayRef[SSM_StepExecutionFilter]'
+                            },
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AutomationExecutionId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'AutomationExecutionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +102,7 @@ descriptions.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::StepExecutionFilter>]
+=head2 Filters => ArrayRef[SSM_StepExecutionFilter]
 
 One or more filters to limit the number of step executions returned by
 the request.

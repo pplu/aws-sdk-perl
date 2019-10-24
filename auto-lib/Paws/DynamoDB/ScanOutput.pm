@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::ScanOutput;
   use Moo;
@@ -10,7 +11,7 @@ package Paws::DynamoDB::ScanOutput;
   has ScannedCount => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ScannedCount' => {
@@ -24,6 +25,9 @@ package Paws::DynamoDB::ScanOutput;
                                        'class' => 'Paws::DynamoDB::ConsumedCapacity',
                                        'type' => 'DynamoDB_ConsumedCapacity'
                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'LastEvaluatedKey' => {
                                        'class' => 'Paws::DynamoDB::Key',
                                        'type' => 'DynamoDB_Key'
@@ -34,8 +38,8 @@ package Paws::DynamoDB::ScanOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

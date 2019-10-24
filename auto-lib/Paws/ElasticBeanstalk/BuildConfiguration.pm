@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::BuildConfiguration;
-  use Moose;
-  has ArtifactName => (is => 'ro', isa => 'Str');
-  has CodeBuildServiceRole => (is => 'ro', isa => 'Str', required => 1);
-  has ComputeType => (is => 'ro', isa => 'Str');
-  has Image => (is => 'ro', isa => 'Str', required => 1);
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ArtifactName => (is => 'ro', isa => Str);
+  has CodeBuildServiceRole => (is => 'ro', isa => Str, required => 1);
+  has ComputeType => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => Str, required => 1);
+  has TimeoutInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ArtifactName' => {
+                                   'type' => 'Str'
+                                 },
+               'TimeoutInMinutes' => {
+                                       'type' => 'Int'
+                                     },
+               'CodeBuildServiceRole' => {
+                                           'type' => 'Str'
+                                         },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'ComputeType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'CodeBuildServiceRole' => 1,
+                    'Image' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

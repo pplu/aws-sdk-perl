@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Artwork;
-  use Moose;
-  has AlbumArtFormat => (is => 'ro', isa => 'Str');
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has InputKey => (is => 'ro', isa => 'Str');
-  has MaxHeight => (is => 'ro', isa => 'Str');
-  has MaxWidth => (is => 'ro', isa => 'Str');
-  has PaddingPolicy => (is => 'ro', isa => 'Str');
-  has SizingPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Encryption/;
+  has AlbumArtFormat => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has InputKey => (is => 'ro', isa => Str);
+  has MaxHeight => (is => 'ro', isa => Str);
+  has MaxWidth => (is => 'ro', isa => Str);
+  has PaddingPolicy => (is => 'ro', isa => Str);
+  has SizingPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxWidth' => {
+                               'type' => 'Str'
+                             },
+               'SizingPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxHeight' => {
+                                'type' => 'Str'
+                              },
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'AlbumArtFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'PaddingPolicy' => {
+                                    'type' => 'Str'
+                                  },
+               'InputKey' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +91,7 @@ To pass through existing artwork unchanged, set the C<Merge Policy> to
   The format of album art, if any. Valid formats are C<.jpg> and C<.png>.
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your artwork.

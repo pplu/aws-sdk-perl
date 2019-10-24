@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Encryption;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,10 @@ package Paws::S3::Encryption;
                'KMSContext' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'EncryptionType' => 1
+                  }
 }
 ;
     return $Params_map;

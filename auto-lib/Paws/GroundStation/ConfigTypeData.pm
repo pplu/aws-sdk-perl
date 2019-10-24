@@ -1,11 +1,57 @@
+# Generated from default/object.tt
 package Paws::GroundStation::ConfigTypeData;
-  use Moose;
-  has AntennaDownlinkConfig => (is => 'ro', isa => 'Paws::GroundStation::AntennaDownlinkConfig', request_name => 'antennaDownlinkConfig', traits => ['NameInRequest']);
-  has AntennaDownlinkDemodDecodeConfig => (is => 'ro', isa => 'Paws::GroundStation::AntennaDownlinkDemodDecodeConfig', request_name => 'antennaDownlinkDemodDecodeConfig', traits => ['NameInRequest']);
-  has AntennaUplinkConfig => (is => 'ro', isa => 'Paws::GroundStation::AntennaUplinkConfig', request_name => 'antennaUplinkConfig', traits => ['NameInRequest']);
-  has DataflowEndpointConfig => (is => 'ro', isa => 'Paws::GroundStation::DataflowEndpointConfig', request_name => 'dataflowEndpointConfig', traits => ['NameInRequest']);
-  has TrackingConfig => (is => 'ro', isa => 'Paws::GroundStation::TrackingConfig', request_name => 'trackingConfig', traits => ['NameInRequest']);
-  has UplinkEchoConfig => (is => 'ro', isa => 'Paws::GroundStation::UplinkEchoConfig', request_name => 'uplinkEchoConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GroundStation::Types qw/GroundStation_DataflowEndpointConfig GroundStation_AntennaUplinkConfig GroundStation_AntennaDownlinkConfig GroundStation_UplinkEchoConfig GroundStation_TrackingConfig GroundStation_AntennaDownlinkDemodDecodeConfig/;
+  has AntennaDownlinkConfig => (is => 'ro', isa => GroundStation_AntennaDownlinkConfig);
+  has AntennaDownlinkDemodDecodeConfig => (is => 'ro', isa => GroundStation_AntennaDownlinkDemodDecodeConfig);
+  has AntennaUplinkConfig => (is => 'ro', isa => GroundStation_AntennaUplinkConfig);
+  has DataflowEndpointConfig => (is => 'ro', isa => GroundStation_DataflowEndpointConfig);
+  has TrackingConfig => (is => 'ro', isa => GroundStation_TrackingConfig);
+  has UplinkEchoConfig => (is => 'ro', isa => GroundStation_UplinkEchoConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UplinkEchoConfig' => {
+                                       'class' => 'Paws::GroundStation::UplinkEchoConfig',
+                                       'type' => 'GroundStation_UplinkEchoConfig'
+                                     },
+               'DataflowEndpointConfig' => {
+                                             'class' => 'Paws::GroundStation::DataflowEndpointConfig',
+                                             'type' => 'GroundStation_DataflowEndpointConfig'
+                                           },
+               'TrackingConfig' => {
+                                     'class' => 'Paws::GroundStation::TrackingConfig',
+                                     'type' => 'GroundStation_TrackingConfig'
+                                   },
+               'AntennaDownlinkDemodDecodeConfig' => {
+                                                       'class' => 'Paws::GroundStation::AntennaDownlinkDemodDecodeConfig',
+                                                       'type' => 'GroundStation_AntennaDownlinkDemodDecodeConfig'
+                                                     },
+               'AntennaUplinkConfig' => {
+                                          'class' => 'Paws::GroundStation::AntennaUplinkConfig',
+                                          'type' => 'GroundStation_AntennaUplinkConfig'
+                                        },
+               'AntennaDownlinkConfig' => {
+                                            'class' => 'Paws::GroundStation::AntennaDownlinkConfig',
+                                            'type' => 'GroundStation_AntennaDownlinkConfig'
+                                          }
+             },
+  'NameInRequest' => {
+                       'UplinkEchoConfig' => 'uplinkEchoConfig',
+                       'DataflowEndpointConfig' => 'dataflowEndpointConfig',
+                       'TrackingConfig' => 'trackingConfig',
+                       'AntennaDownlinkDemodDecodeConfig' => 'antennaDownlinkDemodDecodeConfig',
+                       'AntennaUplinkConfig' => 'antennaUplinkConfig',
+                       'AntennaDownlinkConfig' => 'antennaDownlinkConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,36 +89,36 @@ See the subtype definitions for what each type of C<Config> contains.
 =head1 ATTRIBUTES
 
 
-=head2 AntennaDownlinkConfig => L<Paws::GroundStation::AntennaDownlinkConfig>
+=head2 AntennaDownlinkConfig => GroundStation_AntennaDownlinkConfig
 
   Information about how AWS Ground Station should configure an antenna
 for downlink during a contact.
 
 
-=head2 AntennaDownlinkDemodDecodeConfig => L<Paws::GroundStation::AntennaDownlinkDemodDecodeConfig>
+=head2 AntennaDownlinkDemodDecodeConfig => GroundStation_AntennaDownlinkDemodDecodeConfig
 
   Information about how AWS Ground Station should congure an antenna for
 downlink demod decode during a contact.
 
 
-=head2 AntennaUplinkConfig => L<Paws::GroundStation::AntennaUplinkConfig>
+=head2 AntennaUplinkConfig => GroundStation_AntennaUplinkConfig
 
   Information about how AWS Ground Station should congure an antenna for
 uplink during a contact.
 
 
-=head2 DataflowEndpointConfig => L<Paws::GroundStation::DataflowEndpointConfig>
+=head2 DataflowEndpointConfig => GroundStation_DataflowEndpointConfig
 
   Information about the dataflow endpoint C<Config>.
 
 
-=head2 TrackingConfig => L<Paws::GroundStation::TrackingConfig>
+=head2 TrackingConfig => GroundStation_TrackingConfig
 
   Object that determines whether tracking should be used during a contact
 executed with this C<Config> in the mission profile.
 
 
-=head2 UplinkEchoConfig => L<Paws::GroundStation::UplinkEchoConfig>
+=head2 UplinkEchoConfig => GroundStation_UplinkEchoConfig
 
   Information about an uplink echo C<Config>.
 

@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::CreateBackupOutput;
   use Moo;
@@ -6,9 +7,12 @@ package Paws::DynamoDB::CreateBackupOutput;
   has BackupDetails => (is => 'ro', isa => DynamoDB_BackupDetails);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'BackupDetails' => {
                                     'class' => 'Paws::DynamoDB::BackupDetails',
                                     'type' => 'DynamoDB_BackupDetails'
@@ -16,8 +20,8 @@ package Paws::DynamoDB::CreateBackupOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

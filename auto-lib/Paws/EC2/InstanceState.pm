@@ -4,7 +4,7 @@ package Paws::EC2::InstanceState;
   has Code => (is => 'ro', isa => Int);
   has Name => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Code' => {
@@ -20,8 +20,8 @@ package Paws::EC2::InstanceState;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

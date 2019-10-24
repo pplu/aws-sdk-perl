@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::UpdateGameSessionQueueOutput;
-  use Moose;
-  has GameSessionQueue => (is => 'ro', isa => 'Paws::GameLift::GameSessionQueue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_GameSessionQueue/;
+  has GameSessionQueue => (is => 'ro', isa => GameLift_GameSessionQueue);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GameSessionQueue' => {
+                                       'class' => 'Paws::GameLift::GameSessionQueue',
+                                       'type' => 'GameLift_GameSessionQueue'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::UpdateGameSessionQueueOutput
 =head1 ATTRIBUTES
 
 
-=head2 GameSessionQueue => L<Paws::GameLift::GameSessionQueue>
+=head2 GameSessionQueue => GameLift_GameSessionQueue
 
 Object that describes the newly updated game session queue.
 

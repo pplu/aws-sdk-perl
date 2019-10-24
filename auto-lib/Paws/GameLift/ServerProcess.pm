@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::GameLift::ServerProcess;
-  use Moose;
-  has ConcurrentExecutions => (is => 'ro', isa => 'Int', required => 1);
-  has LaunchPath => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::GameLift::Types qw//;
+  has ConcurrentExecutions => (is => 'ro', isa => Int, required => 1);
+  has LaunchPath => (is => 'ro', isa => Str, required => 1);
+  has Parameters => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'type' => 'Str'
+                               },
+               'ConcurrentExecutions' => {
+                                           'type' => 'Int'
+                                         },
+               'LaunchPath' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ConcurrentExecutions' => 1,
+                    'LaunchPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

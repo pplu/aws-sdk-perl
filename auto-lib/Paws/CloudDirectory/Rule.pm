@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::Rule;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::CloudDirectory::RuleParameterMap');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_RuleParameterMap/;
+  has Parameters => (is => 'ro', isa => CloudDirectory_RuleParameterMap);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::CloudDirectory::RuleParameterMap',
+                                 'type' => 'CloudDirectory_RuleParameterMap'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ associated with the rule.
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => L<Paws::CloudDirectory::RuleParameterMap>
+=head2 Parameters => CloudDirectory_RuleParameterMap
 
   The minimum and maximum parameters that are associated with the rule.
 

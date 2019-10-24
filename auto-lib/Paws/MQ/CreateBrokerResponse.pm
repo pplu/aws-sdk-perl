@@ -1,10 +1,34 @@
 
 package Paws::MQ::CreateBrokerResponse;
-  use Moose;
-  has BrokerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerArn');
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has BrokerArn => (is => 'ro', isa => Str);
+  has BrokerId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'BrokerArn' => 'brokerArn',
+                       'BrokerId' => 'brokerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

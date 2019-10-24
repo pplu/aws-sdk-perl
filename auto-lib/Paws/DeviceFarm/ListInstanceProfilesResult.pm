@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListInstanceProfilesResult;
-  use Moose;
-  has InstanceProfiles => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::InstanceProfile]', traits => ['NameInRequest'], request_name => 'instanceProfiles' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_InstanceProfile/;
+  has InstanceProfiles => (is => 'ro', isa => ArrayRef[DeviceFarm_InstanceProfile]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'InstanceProfiles' => {
+                                       'class' => 'Paws::DeviceFarm::InstanceProfile',
+                                       'type' => 'ArrayRef[DeviceFarm_InstanceProfile]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'InstanceProfiles' => 'instanceProfiles'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListInstanceProfilesResult
 =head1 ATTRIBUTES
 
 
-=head2 InstanceProfiles => ArrayRef[L<Paws::DeviceFarm::InstanceProfile>]
+=head2 InstanceProfiles => ArrayRef[DeviceFarm_InstanceProfile]
 
 An object containing information about your instance profiles.
 

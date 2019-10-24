@@ -1,18 +1,58 @@
 
 package Paws::IoT::UpdateThing;
-  use Moose;
-  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', traits => ['NameInRequest'], request_name => 'attributePayload');
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
-  has RemoveThingType => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removeThingType');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw/IoT_AttributePayload/;
+  has AttributePayload => (is => 'ro', isa => IoT_AttributePayload, predicate => 1);
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has RemoveThingType => (is => 'ro', isa => Bool, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingTypeName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'RemoveThingType' => {
+                                      'type' => 'Bool'
+                                    },
+               'AttributePayload' => {
+                                       'class' => 'Paws::IoT::AttributePayload',
+                                       'type' => 'IoT_AttributePayload'
+                                     }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  },
+  'NameInRequest' => {
+                       'ExpectedVersion' => 'expectedVersion',
+                       'ThingTypeName' => 'thingTypeName',
+                       'RemoveThingType' => 'removeThingType',
+                       'AttributePayload' => 'attributePayload'
+                     },
+  'IsRequired' => {
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +92,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 AttributePayload => L<Paws::IoT::AttributePayload>
+=head2 AttributePayload => IoT_AttributePayload
 
 A list of thing attributes, a JSON string containing name-value pairs.
 For example:

@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreateGameSessionQueue;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionQueueDestination]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PlayerLatencyPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::PlayerLatencyPolicy]');
-  has TimeoutInSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::GameLift::Types qw/GameLift_PlayerLatencyPolicy GameLift_GameSessionQueueDestination/;
+  has Destinations => (is => 'ro', isa => ArrayRef[GameLift_GameSessionQueueDestination], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlayerLatencyPolicies => (is => 'ro', isa => ArrayRef[GameLift_PlayerLatencyPolicy], predicate => 1);
+  has TimeoutInSeconds => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGameSessionQueue');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreateGameSessionQueueOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGameSessionQueue');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreateGameSessionQueueOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutInSeconds' => {
+                                       'type' => 'Int'
+                                     },
+               'PlayerLatencyPolicies' => {
+                                            'class' => 'Paws::GameLift::PlayerLatencyPolicy',
+                                            'type' => 'ArrayRef[GameLift_PlayerLatencyPolicy]'
+                                          },
+               'Destinations' => {
+                                   'class' => 'Paws::GameLift::GameSessionQueueDestination',
+                                   'type' => 'ArrayRef[GameLift_GameSessionQueueDestination]'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]
+=head2 Destinations => ArrayRef[GameLift_GameSessionQueueDestination]
 
 List of fleets that can be used to fulfill game session placement
 requests in the queue. Fleets are identified by either a fleet ARN or a
@@ -74,7 +104,7 @@ names must be unique within each region.
 
 
 
-=head2 PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]
+=head2 PlayerLatencyPolicies => ArrayRef[GameLift_PlayerLatencyPolicy]
 
 Collection of latency policies to apply when processing game sessions
 placement requests with player latency information. Multiple policies

@@ -7,7 +7,7 @@ package Paws::EC2::IamInstanceProfileAssociation;
   has State => (is => 'ro', isa => Str);
   has Timestamp => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Timestamp' => {
@@ -36,8 +36,8 @@ package Paws::EC2::IamInstanceProfileAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

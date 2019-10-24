@@ -13,7 +13,7 @@ package Paws::EC2::ResetFpgaImageAttribute;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ResetFpgaImageAttributeResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -25,11 +25,14 @@ package Paws::EC2::ResetFpgaImageAttribute;
                'FpgaImageId' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'FpgaImageId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

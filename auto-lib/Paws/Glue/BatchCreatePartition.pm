@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::BatchCreatePartition;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has PartitionInputList => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PartitionInput]', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_PartitionInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartitionInputList => (is => 'ro', isa => ArrayRef[Glue_PartitionInput], required => 1, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchCreatePartition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::BatchCreatePartitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchCreatePartition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::BatchCreatePartitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'PartitionInputList' => {
+                                         'class' => 'Paws::Glue::PartitionInput',
+                                         'type' => 'ArrayRef[Glue_PartitionInput]'
+                                       },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'PartitionInputList' => 1,
+                    'DatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -123,7 +154,7 @@ created.
 
 
 
-=head2 B<REQUIRED> PartitionInputList => ArrayRef[L<Paws::Glue::PartitionInput>]
+=head2 B<REQUIRED> PartitionInputList => ArrayRef[Glue_PartitionInput]
 
 A list of C<PartitionInput> structures that define the partitions to be
 created.

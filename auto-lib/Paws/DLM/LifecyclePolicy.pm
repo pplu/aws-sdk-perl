@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::DLM::LifecyclePolicy;
-  use Moose;
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateModified => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str');
-  has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails');
-  has PolicyId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw/DLM_PolicyDetails/;
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateModified => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has PolicyDetails => (is => 'ro', isa => DLM_PolicyDetails);
+  has PolicyId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'DateModified' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyDetails' => {
+                                    'class' => 'Paws::DLM::PolicyDetails',
+                                    'type' => 'DLM_PolicyDetails'
+                                  },
+               'PolicyId' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +99,7 @@ Detailed information about a lifecycle policy.
 operations specified by the lifecycle policy.
 
 
-=head2 PolicyDetails => L<Paws::DLM::PolicyDetails>
+=head2 PolicyDetails => DLM_PolicyDetails
 
   The configuration of the lifecycle policy
 

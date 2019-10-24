@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Firehose::OpenXJsonSerDe;
-  use Moose;
-  has CaseInsensitive => (is => 'ro', isa => 'Bool');
-  has ColumnToJsonKeyMappings => (is => 'ro', isa => 'Paws::Firehose::ColumnToJsonKeyMappings');
-  has ConvertDotsInJsonKeysToUnderscores => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Firehose::Types qw/Firehose_ColumnToJsonKeyMappings/;
+  has CaseInsensitive => (is => 'ro', isa => Bool);
+  has ColumnToJsonKeyMappings => (is => 'ro', isa => Firehose_ColumnToJsonKeyMappings);
+  has ConvertDotsInJsonKeysToUnderscores => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaseInsensitive' => {
+                                      'type' => 'Bool'
+                                    },
+               'ConvertDotsInJsonKeysToUnderscores' => {
+                                                         'type' => 'Bool'
+                                                       },
+               'ColumnToJsonKeyMappings' => {
+                                              'class' => 'Paws::Firehose::ColumnToJsonKeyMappings',
+                                              'type' => 'Firehose_ColumnToJsonKeyMappings'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +73,7 @@ JsonSerDe.
 converts JSON keys to lowercase before deserializing them.
 
 
-=head2 ColumnToJsonKeyMappings => L<Paws::Firehose::ColumnToJsonKeyMappings>
+=head2 ColumnToJsonKeyMappings => Firehose_ColumnToJsonKeyMappings
 
   Maps column names to JSON keys that aren't identical to the column
 names. This is useful when the JSON contains keys that are Hive

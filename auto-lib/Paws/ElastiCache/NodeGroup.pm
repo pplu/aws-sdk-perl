@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::NodeGroup;
-  use Moose;
-  has NodeGroupId => (is => 'ro', isa => 'Str');
-  has NodeGroupMembers => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupMember]', request_name => 'NodeGroupMember', traits => ['NameInRequest']);
-  has PrimaryEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
-  has ReaderEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
-  has Slots => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Endpoint ElastiCache_NodeGroupMember/;
+  has NodeGroupId => (is => 'ro', isa => Str);
+  has NodeGroupMembers => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroupMember]);
+  has PrimaryEndpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+  has ReaderEndpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+  has Slots => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeGroupMembers' => {
+                                       'class' => 'Paws::ElastiCache::NodeGroupMember',
+                                       'type' => 'ArrayRef[ElastiCache_NodeGroupMember]'
+                                     },
+               'Slots' => {
+                            'type' => 'Str'
+                          },
+               'ReaderEndpoint' => {
+                                     'class' => 'Paws::ElastiCache::Endpoint',
+                                     'type' => 'ElastiCache_Endpoint'
+                                   },
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PrimaryEndpoint' => {
+                                      'class' => 'Paws::ElastiCache::Endpoint',
+                                      'type' => 'ElastiCache_Endpoint'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NodeGroupMembers' => 'NodeGroupMember'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,18 +90,18 @@ contains 1 to 15 node groups numbered 0001 to 0015. Optionally, the
 user can provide the id for a node group.
 
 
-=head2 NodeGroupMembers => ArrayRef[L<Paws::ElastiCache::NodeGroupMember>]
+=head2 NodeGroupMembers => ArrayRef[ElastiCache_NodeGroupMember]
 
   A list containing information about individual nodes within the node
 group (shard).
 
 
-=head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
+=head2 PrimaryEndpoint => ElastiCache_Endpoint
 
   The endpoint of the primary node in this node group (shard).
 
 
-=head2 ReaderEndpoint => L<Paws::ElastiCache::Endpoint>
+=head2 ReaderEndpoint => ElastiCache_Endpoint
 
   The endpoint of the replica nodes in this node group (shard).
 

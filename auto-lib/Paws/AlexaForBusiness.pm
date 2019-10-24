@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::AlexaForBusiness;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'a4b' }
   sub signing_name { 'a4b' }
   sub version { '2017-11-09' }
   sub target_prefix { 'AlexaForBusiness' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -980,13 +982,13 @@ Creates an address book with the specified details.
 
 =over
 
-=item ContentRange => L<Paws::AlexaForBusiness::BusinessReportContentRange>
+=item ContentRange => AlexaForBusiness_BusinessReportContentRange
 
 =item Format => Str
 
 =item [ClientRequestToken => Str]
 
-=item [Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>]
+=item [Recurrence => AlexaForBusiness_BusinessReportRecurrence]
 
 =item [S3BucketName => Str]
 
@@ -1013,13 +1015,13 @@ specified S3 location with a specified daily or weekly interval.
 
 =item ConferenceProviderType => Str
 
-=item MeetingSetting => L<Paws::AlexaForBusiness::MeetingSetting>
+=item MeetingSetting => AlexaForBusiness_MeetingSetting
 
 =item [ClientRequestToken => Str]
 
-=item [IPDialIn => L<Paws::AlexaForBusiness::IPDialIn>]
+=item [IPDialIn => AlexaForBusiness_IPDialIn]
 
-=item [PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>]
+=item [PSTNDialIn => AlexaForBusiness_PSTNDialIn]
 
 
 =back
@@ -1045,9 +1047,9 @@ Adds a new conference provider under the user's AWS account.
 
 =item [PhoneNumber => Str]
 
-=item [PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]]
+=item [PhoneNumbers => ArrayRef[AlexaForBusiness_PhoneNumber]]
 
-=item [SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]]
+=item [SipAddresses => ArrayRef[AlexaForBusiness_SipAddress]]
 
 
 =back
@@ -1161,7 +1163,7 @@ Creates a new room profile with the specified details.
 
 =item [ProviderCalendarId => Str]
 
-=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+=item [Tags => ArrayRef[AlexaForBusiness_Tag]]
 
 
 =back
@@ -1207,7 +1209,7 @@ Creates a skill group with a specified name and description.
 
 =item [LastName => Str]
 
-=item [Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]]
+=item [Tags => ArrayRef[AlexaForBusiness_Tag]]
 
 
 =back
@@ -1986,7 +1988,7 @@ Lists all tags for the specified resource.
 
 =over
 
-=item ConferencePreference => L<Paws::AlexaForBusiness::ConferencePreference>
+=item ConferencePreference => AlexaForBusiness_ConferencePreference
 
 
 =back
@@ -2024,7 +2026,7 @@ the specified attributes.
 
 =over
 
-=item RoomSkillParameter => L<Paws::AlexaForBusiness::RoomSkillParameter>
+=item RoomSkillParameter => AlexaForBusiness_RoomSkillParameter
 
 =item SkillId => Str
 
@@ -2045,7 +2047,7 @@ ID. Not all skills have a room skill parameter.
 
 =over
 
-=item AuthorizationResult => L<Paws::AlexaForBusiness::AuthorizationResult>
+=item AuthorizationResult => AlexaForBusiness_AuthorizationResult
 
 =item SkillId => Str
 
@@ -2149,13 +2151,13 @@ Revokes an invitation and invalidates the enrollment URL.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2172,13 +2174,13 @@ sort criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2195,13 +2197,13 @@ criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2217,13 +2219,13 @@ Searches devices and lists the ones that meet a set of filter criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2240,13 +2242,13 @@ and sort criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2263,13 +2265,13 @@ criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2286,13 +2288,13 @@ criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2309,13 +2311,13 @@ sort criteria.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]]
+=item [Filters => ArrayRef[AlexaForBusiness_Filter]]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]]
+=item [SortCriteria => ArrayRef[AlexaForBusiness_Sort]]
 
 
 =back
@@ -2334,9 +2336,9 @@ criteria.
 
 =item ClientRequestToken => Str
 
-=item Content => L<Paws::AlexaForBusiness::Content>
+=item Content => AlexaForBusiness_Content
 
-=item RoomFilters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
+=item RoomFilters => ArrayRef[AlexaForBusiness_Filter]
 
 =item [TimeToLiveInSeconds => Int]
 
@@ -2442,7 +2444,7 @@ the room.
 
 =item Arn => Str
 
-=item Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+=item Tags => ArrayRef[AlexaForBusiness_Tag]
 
 
 =back
@@ -2500,7 +2502,7 @@ Updates address book details by the address book ARN.
 
 =item [Format => Str]
 
-=item [Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>]
+=item [Recurrence => AlexaForBusiness_BusinessReportRecurrence]
 
 =item [S3BucketName => Str]
 
@@ -2527,11 +2529,11 @@ specified schedule ARN.
 
 =item ConferenceProviderType => Str
 
-=item MeetingSetting => L<Paws::AlexaForBusiness::MeetingSetting>
+=item MeetingSetting => AlexaForBusiness_MeetingSetting
 
-=item [IPDialIn => L<Paws::AlexaForBusiness::IPDialIn>]
+=item [IPDialIn => AlexaForBusiness_IPDialIn]
 
-=item [PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>]
+=item [PSTNDialIn => AlexaForBusiness_PSTNDialIn]
 
 
 =back
@@ -2557,9 +2559,9 @@ Updates an existing conference provider's settings.
 
 =item [PhoneNumber => Str]
 
-=item [PhoneNumbers => ArrayRef[L<Paws::AlexaForBusiness::PhoneNumber>]]
+=item [PhoneNumbers => ArrayRef[AlexaForBusiness_PhoneNumber]]
 
-=item [SipAddresses => ArrayRef[L<Paws::AlexaForBusiness::SipAddress>]]
+=item [SipAddresses => ArrayRef[AlexaForBusiness_SipAddress]]
 
 
 =back
@@ -2843,9 +2845,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AlexaForBusiness::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllDevices(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllDevices(sub { },[Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
-=head2 SearchAllDevices([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllDevices([Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2855,9 +2857,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AlexaForBusiness::SearchDevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllProfiles(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllProfiles(sub { },[Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
-=head2 SearchAllProfiles([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllProfiles([Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2867,9 +2869,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AlexaForBusiness::SearchProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllRooms(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllRooms(sub { },[Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
-=head2 SearchAllRooms([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllRooms([Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2879,9 +2881,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AlexaForBusiness::SearchRoomsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllSkillGroups(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllSkillGroups(sub { },[Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
-=head2 SearchAllSkillGroups([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllSkillGroups([Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2891,9 +2893,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AlexaForBusiness::SearchSkillGroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 SearchAllUsers(sub { },[Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllUsers(sub { },[Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
-=head2 SearchAllUsers([Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]])
+=head2 SearchAllUsers([Filters => ArrayRef[AlexaForBusiness_Filter], MaxResults => Int, NextToken => Str, SortCriteria => ArrayRef[AlexaForBusiness_Sort]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

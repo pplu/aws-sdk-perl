@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Captions;
-  use Moose;
-  has CaptionFormats => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CaptionFormat]');
-  has CaptionSources => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CaptionSource]');
-  has MergePolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_CaptionFormat ElasticTranscoder_CaptionSource/;
+  has CaptionFormats => (is => 'ro', isa => ArrayRef[ElasticTranscoder_CaptionFormat]);
+  has CaptionSources => (is => 'ro', isa => ArrayRef[ElasticTranscoder_CaptionSource]);
+  has MergePolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptionSources' => {
+                                     'class' => 'Paws::ElasticTranscoder::CaptionSource',
+                                     'type' => 'ArrayRef[ElasticTranscoder_CaptionSource]'
+                                   },
+               'MergePolicy' => {
+                                  'type' => 'Str'
+                                },
+               'CaptionFormats' => {
+                                     'class' => 'Paws::ElasticTranscoder::CaptionFormat',
+                                     'type' => 'ArrayRef[ElasticTranscoder_CaptionFormat]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +63,13 @@ The captions to be created, if any.
 =head1 ATTRIBUTES
 
 
-=head2 CaptionFormats => ArrayRef[L<Paws::ElasticTranscoder::CaptionFormat>]
+=head2 CaptionFormats => ArrayRef[ElasticTranscoder_CaptionFormat]
 
   The array of file formats for the output captions. If you leave this
 value blank, Elastic Transcoder returns an error.
 
 
-=head2 CaptionSources => ArrayRef[L<Paws::ElasticTranscoder::CaptionSource>]
+=head2 CaptionSources => ArrayRef[ElasticTranscoder_CaptionSource]
 
   Source files for the input sidecar captions used during the transcoding
 process. To omit all sidecar captions, leave C<CaptionSources> blank.

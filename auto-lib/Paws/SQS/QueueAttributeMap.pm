@@ -1,3 +1,4 @@
+# Generated from default/map_enum.tt
 package Paws::SQS::QueueAttributeMap;
   use Moo;
   with 'Paws::API::MapParser';
@@ -6,6 +7,7 @@ package Paws::SQS::QueueAttributeMap;
   class_has xml_keys =>(is => 'ro', default => 'Name');
   class_has xml_values =>(is => 'ro', default => 'Value');
   use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw//;
   has All => (is => 'ro', isa => Str);
   has ApproximateNumberOfMessages => (is => 'ro', isa => Str);
   has ApproximateNumberOfMessagesDelayed => (is => 'ro', isa => Str);
@@ -29,59 +31,41 @@ package Paws::SQS::QueueAttributeMap;
     our $Params_map ||= {
                     types => {
                                'All' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ApproximateNumberOfMessages' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ApproximateNumberOfMessagesDelayed' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ApproximateNumberOfMessagesNotVisible' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ContentBasedDeduplication' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'CreatedTimestamp' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'DelaySeconds' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'FifoQueue' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'KmsDataKeyReusePeriodSeconds' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'KmsMasterKeyId' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'LastModifiedTimestamp' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'MaximumMessageSize' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'MessageRetentionPeriod' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'Policy' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'QueueArn' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ReceiveMessageWaitTimeSeconds' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'RedrivePolicy' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'VisibilityTimeout' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                              },
                   };
     return $Params_map;

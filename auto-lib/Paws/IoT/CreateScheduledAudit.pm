@@ -1,19 +1,65 @@
 
 package Paws::IoT::CreateScheduledAudit;
-  use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfMonth');
-  has DayOfWeek => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfWeek');
-  has Frequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'frequency', required => 1);
-  has ScheduledAuditName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'scheduledAuditName', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has TargetCheckNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetCheckNames', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_Tag/;
+  has DayOfMonth => (is => 'ro', isa => Str, predicate => 1);
+  has DayOfWeek => (is => 'ro', isa => Str, predicate => 1);
+  has Frequency => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScheduledAuditName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
+  has TargetCheckNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateScheduledAudit');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/scheduledaudits/{scheduledAuditName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateScheduledAuditResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateScheduledAudit');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/scheduledaudits/{scheduledAuditName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateScheduledAuditResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'ScheduledAuditName' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetCheckNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         },
+               'DayOfWeek' => {
+                                'type' => 'Str'
+                              },
+               'DayOfMonth' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'ScheduledAuditName' => 'scheduledAuditName'
+                  },
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'TargetCheckNames' => 'targetCheckNames',
+                       'Tags' => 'tags',
+                       'DayOfWeek' => 'dayOfWeek',
+                       'DayOfMonth' => 'dayOfMonth'
+                     },
+  'IsRequired' => {
+                    'Frequency' => 1,
+                    'ScheduledAuditName' => 1,
+                    'TargetCheckNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +137,7 @@ The name you want to give to the scheduled audit. (Max. 128 chars)
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the scheduled audit.
 

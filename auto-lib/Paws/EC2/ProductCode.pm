@@ -4,7 +4,7 @@ package Paws::EC2::ProductCode;
   has ProductCodeId => (is => 'ro', isa => Str);
   has ProductCodeType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ProductCodeId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::ProductCode;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

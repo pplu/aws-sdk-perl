@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListDevicesResult;
-  use Moose;
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Device]', traits => ['NameInRequest'], request_name => 'devices' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Device/;
+  has Devices => (is => 'ro', isa => ArrayRef[DeviceFarm_Device]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Devices' => {
+                              'class' => 'Paws::DeviceFarm::Device',
+                              'type' => 'ArrayRef[DeviceFarm_Device]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Devices' => 'devices'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListDevicesResult
 =head1 ATTRIBUTES
 
 
-=head2 Devices => ArrayRef[L<Paws::DeviceFarm::Device>]
+=head2 Devices => ArrayRef[DeviceFarm_Device]
 
 Information about the devices.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::RecipientDsnFields;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -35,7 +36,11 @@ package Paws::SES::RecipientDsnFields;
                'LastAttemptDate' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Action' => 1
+                  }
 }
 ;
     return $Params_map;

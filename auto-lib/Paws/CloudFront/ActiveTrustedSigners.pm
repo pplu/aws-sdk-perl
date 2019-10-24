@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ActiveTrustedSigners;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Signer]', request_name => 'Signer', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_Signer/;
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_Signer]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::Signer',
+                            'type' => 'ArrayRef[CloudFront_Signer]'
+                          },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Signer'
+                     },
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +90,7 @@ C<TrustedSigners> complex type for this distribution have active
 CloudFront key pairs. If not, C<Enabled> is C<false>.
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
+=head2 Items => ArrayRef[CloudFront_Signer]
 
   A complex type that contains one C<Signer> complex type for each
 trusted signer that is specified in the C<TrustedSigners> complex type.

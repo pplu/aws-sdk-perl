@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GenerateServiceLastAccessedDetails;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::GenerateServiceLastAccessedDetails;
                'Arn' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
 }
 ;
     return $Params_map;

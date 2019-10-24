@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteRolePolicy;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::DeleteRolePolicy;
                'PolicyName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1,
+                    'PolicyName' => 1
+                  }
 }
 ;
     return $Params_map;

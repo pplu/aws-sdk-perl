@@ -1,14 +1,35 @@
 
 package Paws::GroundStation::DescribeContact;
-  use Moose;
-  has ContactId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'contactId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has ContactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeContact');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact/{contactId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::DescribeContactResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeContact');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact/{contactId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::DescribeContactResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContactId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ContactId' => 'contactId'
+                  },
+  'IsRequired' => {
+                    'ContactId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

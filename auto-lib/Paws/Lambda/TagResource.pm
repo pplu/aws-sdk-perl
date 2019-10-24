@@ -1,15 +1,41 @@
 
 package Paws::Lambda::TagResource;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ARN', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw/Lambda_Tags/;
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Lambda_Tags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-03-31/tags/{ARN}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-03-31/tags/{ARN}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::Lambda::Tags',
+                           'type' => 'Lambda_Tags'
+                         }
+             },
+  'ParamInURI' => {
+                    'Resource' => 'ARN'
+                  },
+  'IsRequired' => {
+                    'Resource' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +73,7 @@ The function's Amazon Resource Name (ARN).
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::Lambda::Tags>
+=head2 B<REQUIRED> Tags => Lambda_Tags
 
 A list of tags to apply to the function.
 

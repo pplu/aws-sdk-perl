@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::ECR::LifecyclePolicyPreviewResult;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::ECR::LifecyclePolicyRuleAction', request_name => 'action', traits => ['NameInRequest']);
-  has AppliedRulePriority => (is => 'ro', isa => 'Int', request_name => 'appliedRulePriority', traits => ['NameInRequest']);
-  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
-  has ImagePushedAt => (is => 'ro', isa => 'Str', request_name => 'imagePushedAt', traits => ['NameInRequest']);
-  has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'imageTags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::ECR::Types qw/ECR_LifecyclePolicyRuleAction/;
+  has Action => (is => 'ro', isa => ECR_LifecyclePolicyRuleAction);
+  has AppliedRulePriority => (is => 'ro', isa => Int);
+  has ImageDigest => (is => 'ro', isa => Str);
+  has ImagePushedAt => (is => 'ro', isa => Str);
+  has ImageTags => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImagePushedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'Action' => {
+                             'class' => 'Paws::ECR::LifecyclePolicyRuleAction',
+                             'type' => 'ECR_LifecyclePolicyRuleAction'
+                           },
+               'AppliedRulePriority' => {
+                                          'type' => 'Int'
+                                        },
+               'ImageTags' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'ImagePushedAt' => 'imagePushedAt',
+                       'ImageDigest' => 'imageDigest',
+                       'Action' => 'action',
+                       'AppliedRulePriority' => 'appliedRulePriority',
+                       'ImageTags' => 'imageTags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ The result of the lifecycle policy preview.
 =head1 ATTRIBUTES
 
 
-=head2 Action => L<Paws::ECR::LifecyclePolicyRuleAction>
+=head2 Action => ECR_LifecyclePolicyRuleAction
 
   The type of action to be taken.
 

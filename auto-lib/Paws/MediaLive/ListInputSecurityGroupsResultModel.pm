@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ListInputSecurityGroupsResultModel;
-  use Moose;
-  has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputSecurityGroup]', request_name => 'inputSecurityGroups', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputSecurityGroup/;
+  has InputSecurityGroups => (is => 'ro', isa => ArrayRef[MediaLive_InputSecurityGroup]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputSecurityGroups' => {
+                                          'class' => 'Paws::MediaLive::InputSecurityGroup',
+                                          'type' => 'ArrayRef[MediaLive_InputSecurityGroup]'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'InputSecurityGroups' => 'inputSecurityGroups',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Result of input security group list request
 =head1 ATTRIBUTES
 
 
-=head2 InputSecurityGroups => ArrayRef[L<Paws::MediaLive::InputSecurityGroup>]
+=head2 InputSecurityGroups => ArrayRef[MediaLive_InputSecurityGroup]
 
   List of input security groups
 

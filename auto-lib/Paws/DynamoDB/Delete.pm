@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Delete;
   use Moo;
   use Types::Standard qw/Str/;
@@ -9,7 +10,7 @@ package Paws::DynamoDB::Delete;
   has ReturnValuesOnConditionCheckFailure => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReturnValuesOnConditionCheckFailure' => {
@@ -33,11 +34,15 @@ package Paws::DynamoDB::Delete;
                'ConditionExpression' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

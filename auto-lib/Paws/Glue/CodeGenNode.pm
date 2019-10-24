@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Glue::CodeGenNode;
-  use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNodeArg]', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LineNumber => (is => 'ro', isa => 'Int');
-  has NodeType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::Glue::Types qw/Glue_CodeGenNodeArg/;
+  has Args => (is => 'ro', isa => ArrayRef[Glue_CodeGenNodeArg], required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LineNumber => (is => 'ro', isa => Int);
+  has NodeType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'LineNumber' => {
+                                 'type' => 'Int'
+                               },
+               'Args' => {
+                           'class' => 'Paws::Glue::CodeGenNodeArg',
+                           'type' => 'ArrayRef[Glue_CodeGenNodeArg]'
+                         }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'NodeType' => 1,
+                    'Args' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +71,7 @@ Represents a node in a directed acyclic graph (DAG)
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Args => ArrayRef[L<Paws::Glue::CodeGenNodeArg>]
+=head2 B<REQUIRED> Args => ArrayRef[Glue_CodeGenNodeArg]
 
   Properties of the node, in the form of name-value pairs.
 

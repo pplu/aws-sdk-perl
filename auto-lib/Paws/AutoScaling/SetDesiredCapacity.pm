@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::SetDesiredCapacity;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has HonorCooldown => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DesiredCapacity => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has HonorCooldown => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDesiredCapacity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetDesiredCapacity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DesiredCapacity' => {
+                                      'type' => 'Int'
+                                    },
+               'HonorCooldown' => {
+                                    'type' => 'Bool'
+                                  },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'DesiredCapacity' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

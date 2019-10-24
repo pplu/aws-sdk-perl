@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalytics::ListTagsForResourceResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_Tag/;
+  has Tags => (is => 'ro', isa => ArrayRef[KinesisAnalytics_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::KinesisAnalytics::Tag',
+                           'type' => 'ArrayRef[KinesisAnalytics_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::KinesisAnalytics::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => ArrayRef[L<Paws::KinesisAnalytics::Tag>]
+=head2 Tags => ArrayRef[KinesisAnalytics_Tag]
 
 The key-value tags assigned to the application.
 

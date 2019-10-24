@@ -1,21 +1,63 @@
 
 package Paws::MediaTailor::PutPlaybackConfiguration;
-  use Moose;
-  has AdDecisionServerUrl => (is => 'ro', isa => 'Str');
-  has CdnConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::CdnConfiguration');
-  has DashConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::DashConfigurationForPut');
-  has Name => (is => 'ro', isa => 'Str');
-  has SlateAdUrl => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::MediaTailor::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
-  has TranscodeProfileName => (is => 'ro', isa => 'Str');
-  has VideoContentSourceUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw/MediaTailor___mapOf__string MediaTailor_DashConfigurationForPut MediaTailor_CdnConfiguration/;
+  has AdDecisionServerUrl => (is => 'ro', isa => Str, predicate => 1);
+  has CdnConfiguration => (is => 'ro', isa => MediaTailor_CdnConfiguration, predicate => 1);
+  has DashConfiguration => (is => 'ro', isa => MediaTailor_DashConfigurationForPut, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has SlateAdUrl => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaTailor___mapOf__string, predicate => 1);
+  has TranscodeProfileName => (is => 'ro', isa => Str, predicate => 1);
+  has VideoContentSourceUrl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPlaybackConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/playbackConfiguration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaTailor::PutPlaybackConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutPlaybackConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/playbackConfiguration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaTailor::PutPlaybackConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VideoContentSourceUrl' => {
+                                            'type' => 'Str'
+                                          },
+               'DashConfiguration' => {
+                                        'class' => 'Paws::MediaTailor::DashConfigurationForPut',
+                                        'type' => 'MediaTailor_DashConfigurationForPut'
+                                      },
+               'AdDecisionServerUrl' => {
+                                          'type' => 'Str'
+                                        },
+               'CdnConfiguration' => {
+                                       'class' => 'Paws::MediaTailor::CdnConfiguration',
+                                       'type' => 'MediaTailor_CdnConfiguration'
+                                     },
+               'SlateAdUrl' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::MediaTailor::__mapOf__string',
+                           'type' => 'MediaTailor___mapOf__string'
+                         },
+               'TranscodeProfileName' => {
+                                           'type' => 'Str'
+                                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,14 +136,14 @@ length is 25,000 characters.
 
 
 
-=head2 CdnConfiguration => L<Paws::MediaTailor::CdnConfiguration>
+=head2 CdnConfiguration => MediaTailor_CdnConfiguration
 
 The configuration for using a content delivery network (CDN), like
 Amazon CloudFront, for content and ad segment management.
 
 
 
-=head2 DashConfiguration => L<Paws::MediaTailor::DashConfigurationForPut>
+=head2 DashConfiguration => MediaTailor_DashConfigurationForPut
 
 The configuration for DASH content.
 
@@ -125,7 +167,7 @@ audio and video.
 
 
 
-=head2 Tags => L<Paws::MediaTailor::__mapOf__string>
+=head2 Tags => MediaTailor___mapOf__string
 
 The tags to assign to the playback configuration.
 

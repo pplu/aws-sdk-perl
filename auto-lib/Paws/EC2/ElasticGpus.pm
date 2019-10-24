@@ -8,7 +8,7 @@ package Paws::EC2::ElasticGpus;
   has ElasticGpuType => (is => 'ro', isa => Str);
   has InstanceId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ElasticGpuHealth' => {
@@ -41,8 +41,8 @@ package Paws::EC2::ElasticGpus;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

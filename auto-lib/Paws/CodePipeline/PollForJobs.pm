@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PollForJobs;
-  use Moose;
-  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', traits => ['NameInRequest'], request_name => 'actionTypeId' , required => 1);
-  has MaxBatchSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBatchSize' );
-  has QueryParam => (is => 'ro', isa => 'Paws::CodePipeline::QueryParamMap', traits => ['NameInRequest'], request_name => 'queryParam' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_QueryParamMap CodePipeline_ActionTypeId/;
+  has ActionTypeId => (is => 'ro', isa => CodePipeline_ActionTypeId, required => 1, predicate => 1);
+  has MaxBatchSize => (is => 'ro', isa => Int, predicate => 1);
+  has QueryParam => (is => 'ro', isa => CodePipeline_QueryParamMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForJobs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PollForJobsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PollForJobs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::PollForJobsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryParam' => {
+                                 'class' => 'Paws::CodePipeline::QueryParamMap',
+                                 'type' => 'CodePipeline_QueryParamMap'
+                               },
+               'MaxBatchSize' => {
+                                   'type' => 'Int'
+                                 },
+               'ActionTypeId' => {
+                                   'class' => 'Paws::CodePipeline::ActionTypeId',
+                                   'type' => 'CodePipeline_ActionTypeId'
+                                 }
+             },
+  'NameInRequest' => {
+                       'QueryParam' => 'queryParam',
+                       'MaxBatchSize' => 'maxBatchSize',
+                       'ActionTypeId' => 'actionTypeId'
+                     },
+  'IsRequired' => {
+                    'ActionTypeId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +88,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> ActionTypeId => CodePipeline_ActionTypeId
 
 Represents information about an action type.
 
@@ -68,7 +100,7 @@ The maximum number of jobs to return in a poll for jobs call.
 
 
 
-=head2 QueryParam => L<Paws::CodePipeline::QueryParamMap>
+=head2 QueryParam => CodePipeline_QueryParamMap
 
 A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an

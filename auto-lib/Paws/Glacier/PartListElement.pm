@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glacier::PartListElement;
-  use Moose;
-  has RangeInBytes => (is => 'ro', isa => 'Str');
-  has SHA256TreeHash => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has RangeInBytes => (is => 'ro', isa => Str);
+  has SHA256TreeHash => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SHA256TreeHash' => {
+                                     'type' => 'Str'
+                                   },
+               'RangeInBytes' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

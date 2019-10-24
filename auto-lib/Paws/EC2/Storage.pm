@@ -3,7 +3,7 @@ package Paws::EC2::Storage;
   use Paws::EC2::Types qw/EC2_S3Storage/;
   has S3 => (is => 'ro', isa => EC2_S3Storage);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'S3' => {
@@ -13,8 +13,8 @@ package Paws::EC2::Storage;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

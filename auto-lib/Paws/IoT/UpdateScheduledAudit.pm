@@ -1,18 +1,57 @@
 
 package Paws::IoT::UpdateScheduledAudit;
-  use Moose;
-  has DayOfMonth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfMonth');
-  has DayOfWeek => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dayOfWeek');
-  has Frequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'frequency');
-  has ScheduledAuditName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'scheduledAuditName', required => 1);
-  has TargetCheckNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'targetCheckNames');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw//;
+  has DayOfMonth => (is => 'ro', isa => Str, predicate => 1);
+  has DayOfWeek => (is => 'ro', isa => Str, predicate => 1);
+  has Frequency => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledAuditName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetCheckNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScheduledAudit');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/scheduledaudits/{scheduledAuditName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateScheduledAuditResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateScheduledAudit');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/scheduledaudits/{scheduledAuditName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateScheduledAuditResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'ScheduledAuditName' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetCheckNames' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DayOfWeek' => {
+                                'type' => 'Str'
+                              },
+               'DayOfMonth' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'ScheduledAuditName' => 'scheduledAuditName'
+                  },
+  'NameInRequest' => {
+                       'Frequency' => 'frequency',
+                       'TargetCheckNames' => 'targetCheckNames',
+                       'DayOfWeek' => 'dayOfWeek',
+                       'DayOfMonth' => 'dayOfMonth'
+                     },
+  'IsRequired' => {
+                    'ScheduledAuditName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

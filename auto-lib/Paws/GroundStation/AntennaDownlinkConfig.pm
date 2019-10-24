@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::GroundStation::AntennaDownlinkConfig;
-  use Moose;
-  has SpectrumConfig => (is => 'ro', isa => 'Paws::GroundStation::SpectrumConfig', request_name => 'spectrumConfig', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GroundStation::Types qw/GroundStation_SpectrumConfig/;
+  has SpectrumConfig => (is => 'ro', isa => GroundStation_SpectrumConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpectrumConfig' => {
+                                     'class' => 'Paws::GroundStation::SpectrumConfig',
+                                     'type' => 'GroundStation_SpectrumConfig'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SpectrumConfig' => 'spectrumConfig'
+                     },
+  'IsRequired' => {
+                    'SpectrumConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ for downlink during a contact.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpectrumConfig => L<Paws::GroundStation::SpectrumConfig>
+=head2 B<REQUIRED> SpectrumConfig => GroundStation_SpectrumConfig
 
   Object that describes a spectral C<Config>.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::S3Action;
   use Moo;
   use Types::Standard qw/Str/;
@@ -22,7 +23,10 @@ package Paws::SES::S3Action;
                'KmsKeyArn' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'BucketName' => 1
+                  }
 }
 ;
     return $Params_map;

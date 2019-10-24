@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AdminCreateUserConfigType;
-  use Moose;
-  has AllowAdminCreateUserOnly => (is => 'ro', isa => 'Bool');
-  has InviteMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::MessageTemplateType');
-  has UnusedAccountValidityDays => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_MessageTemplateType/;
+  has AllowAdminCreateUserOnly => (is => 'ro', isa => Bool);
+  has InviteMessageTemplate => (is => 'ro', isa => CognitoIdp_MessageTemplateType);
+  has UnusedAccountValidityDays => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InviteMessageTemplate' => {
+                                            'class' => 'Paws::CognitoIdp::MessageTemplateType',
+                                            'type' => 'CognitoIdp_MessageTemplateType'
+                                          },
+               'UnusedAccountValidityDays' => {
+                                                'type' => 'Int'
+                                              },
+               'AllowAdminCreateUserOnly' => {
+                                               'type' => 'Bool'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +68,7 @@ The configuration for creating a new user profile.
 profiles. Set to C<False> if users can sign themselves up via an app.
 
 
-=head2 InviteMessageTemplate => L<Paws::CognitoIdp::MessageTemplateType>
+=head2 InviteMessageTemplate => CognitoIdp_MessageTemplateType
 
   The message template to be used for the welcome message to new users.
 

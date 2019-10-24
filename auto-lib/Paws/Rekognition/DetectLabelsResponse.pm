@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::DetectLabelsResponse;
-  use Moose;
-  has LabelModelVersion => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Label]');
-  has OrientationCorrection => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_Label/;
+  has LabelModelVersion => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Rekognition_Label]);
+  has OrientationCorrection => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Labels' => {
+                             'class' => 'Paws::Rekognition::Label',
+                             'type' => 'ArrayRef[Rekognition_Label]'
+                           },
+               'LabelModelVersion' => {
+                                        'type' => 'Str'
+                                      },
+               'OrientationCorrection' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +47,7 @@ Version number of the label detection model that was used to detect
 labels.
 
 
-=head2 Labels => ArrayRef[L<Paws::Rekognition::Label>]
+=head2 Labels => ArrayRef[Rekognition_Label]
 
 An array of labels for the real-world objects detected.
 

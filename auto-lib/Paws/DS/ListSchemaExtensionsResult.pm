@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::ListSchemaExtensionsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SchemaExtensionsInfo => (is => 'ro', isa => 'ArrayRef[Paws::DS::SchemaExtensionInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_SchemaExtensionInfo/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SchemaExtensionsInfo => (is => 'ro', isa => ArrayRef[DS_SchemaExtensionInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SchemaExtensionsInfo' => {
+                                           'class' => 'Paws::DS::SchemaExtensionInfo',
+                                           'type' => 'ArrayRef[DS_SchemaExtensionInfo]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ C<NextToken> parameter in a subsequent call to C<ListSchemaExtensions>
 to retrieve the next set of items.
 
 
-=head2 SchemaExtensionsInfo => ArrayRef[L<Paws::DS::SchemaExtensionInfo>]
+=head2 SchemaExtensionsInfo => ArrayRef[DS_SchemaExtensionInfo]
 
 Information about the schema extensions applied to the directory.
 

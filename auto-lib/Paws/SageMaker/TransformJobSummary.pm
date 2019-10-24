@@ -1,12 +1,53 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformJobSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has TransformEndTime => (is => 'ro', isa => 'Str');
-  has TransformJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has TransformJobName => (is => 'ro', isa => 'Str', required => 1);
-  has TransformJobStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has TransformEndTime => (is => 'ro', isa => Str);
+  has TransformJobArn => (is => 'ro', isa => Str, required => 1);
+  has TransformJobName => (is => 'ro', isa => Str, required => 1);
+  has TransformJobStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TransformJobStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'TransformEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'TransformJobName' => {
+                                       'type' => 'Str'
+                                     },
+               'TransformJobArn' => {
+                                      'type' => 'Str'
+                                    },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'TransformJobStatus' => 1,
+                    'TransformJobName' => 1,
+                    'TransformJobArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

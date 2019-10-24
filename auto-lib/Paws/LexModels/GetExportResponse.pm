@@ -1,15 +1,59 @@
 
 package Paws::LexModels::GetExportResponse;
-  use Moose;
-  has ExportStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'exportStatus');
-  has ExportType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'exportType');
-  has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType');
-  has Url => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'url');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw//;
+  has ExportStatus => (is => 'ro', isa => Str);
+  has ExportType => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExportType' => {
+                                 'type' => 'Str'
+                               },
+               'ExportStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'ResourceType' => 'resourceType',
+                       'FailureReason' => 'failureReason',
+                       'ExportType' => 'exportType',
+                       'Url' => 'url',
+                       'ExportStatus' => 'exportStatus',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

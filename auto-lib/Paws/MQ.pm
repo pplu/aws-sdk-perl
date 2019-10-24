@@ -1,14 +1,15 @@
 package Paws::MQ;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mq' }
   sub signing_name { 'mq' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -197,7 +198,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [BrokerName => Str]
 
-=item [Configuration => L<Paws::MQ::ConfigurationId>]
+=item [Configuration => MQ_ConfigurationId]
 
 =item [CreatorRequestId => Str]
 
@@ -209,9 +210,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [HostInstanceType => Str]
 
-=item [Logs => L<Paws::MQ::Logs>]
+=item [Logs => MQ_Logs]
 
-=item [MaintenanceWindowStartTime => L<Paws::MQ::WeeklyStartTime>]
+=item [MaintenanceWindowStartTime => MQ_WeeklyStartTime]
 
 =item [PubliclyAccessible => Bool]
 
@@ -219,9 +220,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [SubnetIds => ArrayRef[Str|Undef]]
 
-=item [Tags => L<Paws::MQ::__mapOf__string>]
+=item [Tags => MQ___mapOf__string]
 
-=item [Users => ArrayRef[L<Paws::MQ::User>]]
+=item [Users => ArrayRef[MQ_User]]
 
 
 =back
@@ -243,7 +244,7 @@ Creates a broker. Note: This API is asynchronous.
 
 =item [Name => Str]
 
-=item [Tags => L<Paws::MQ::__mapOf__string>]
+=item [Tags => MQ___mapOf__string]
 
 
 =back
@@ -262,7 +263,7 @@ Amazon MQ uses the default configuration (the engine type and version).
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::MQ::__mapOf__string>]
+=item [Tags => MQ___mapOf__string]
 
 
 =back
@@ -577,11 +578,11 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item [AutoMinorVersionUpgrade => Bool]
 
-=item [Configuration => L<Paws::MQ::ConfigurationId>]
+=item [Configuration => MQ_ConfigurationId]
 
 =item [EngineVersion => Str]
 
-=item [Logs => L<Paws::MQ::Logs>]
+=item [Logs => MQ_Logs]
 
 
 =back

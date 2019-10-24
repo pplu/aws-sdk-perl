@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchReadOperationResponse;
-  use Moose;
-  has ExceptionResponse => (is => 'ro', isa => 'Paws::CloudDirectory::BatchReadException');
-  has SuccessfulResponse => (is => 'ro', isa => 'Paws::CloudDirectory::BatchReadSuccessfulResponse');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_BatchReadSuccessfulResponse CloudDirectory_BatchReadException/;
+  has ExceptionResponse => (is => 'ro', isa => CloudDirectory_BatchReadException);
+  has SuccessfulResponse => (is => 'ro', isa => CloudDirectory_BatchReadSuccessfulResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExceptionResponse' => {
+                                        'class' => 'Paws::CloudDirectory::BatchReadException',
+                                        'type' => 'CloudDirectory_BatchReadException'
+                                      },
+               'SuccessfulResponse' => {
+                                         'class' => 'Paws::CloudDirectory::BatchReadSuccessfulResponse',
+                                         'type' => 'CloudDirectory_BatchReadSuccessfulResponse'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Represents the output of a C<BatchRead> response operation.
 =head1 ATTRIBUTES
 
 
-=head2 ExceptionResponse => L<Paws::CloudDirectory::BatchReadException>
+=head2 ExceptionResponse => CloudDirectory_BatchReadException
 
   Identifies which operation in a batch has failed.
 
 
-=head2 SuccessfulResponse => L<Paws::CloudDirectory::BatchReadSuccessfulResponse>
+=head2 SuccessfulResponse => CloudDirectory_BatchReadSuccessfulResponse
 
   Identifies which operation in a batch has succeeded.
 

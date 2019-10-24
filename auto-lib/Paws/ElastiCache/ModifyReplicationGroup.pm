@@ -1,30 +1,100 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ModifyReplicationGroup;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NodeGroupId => (is => 'ro', isa => 'Str');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NotificationTopicStatus => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PrimaryClusterId => (is => 'ro', isa => 'Str');
-  has ReplicationGroupDescription => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshottingClusterId => (is => 'ro', isa => 'Str');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::ElastiCache::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutomaticFailoverEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has CacheNodeType => (is => 'ro', isa => Str, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NodeGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTopicStatus => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PrimaryClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationGroupDescription => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshottingClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotWindow => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyReplicationGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReplicationGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::ModifyReplicationGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyReplicationGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshottingClusterId' => {
+                                            'type' => 'Str'
+                                          },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'NotificationTopicStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'CacheSecurityGroupNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'PrimaryClusterId' => {
+                                       'type' => 'Str'
+                                     },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'ReplicationGroupDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'AutomaticFailoverEnabled' => {
+                                               'type' => 'Bool'
+                                             }
+             },
+  'IsRequired' => {
+                    'ReplicationGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

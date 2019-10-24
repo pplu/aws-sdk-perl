@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::SetDefaultPolicyVersion;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::SetDefaultPolicyVersion;
                'VersionId' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyArn' => 1,
+                    'VersionId' => 1
+                  }
 }
 ;
     return $Params_map;

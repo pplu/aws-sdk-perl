@@ -4,7 +4,7 @@ package Paws::EC2::LaunchPermissionModifications;
   has Add => (is => 'ro', isa => ArrayRef[EC2_LaunchPermission]);
   has Remove => (is => 'ro', isa => ArrayRef[EC2_LaunchPermission]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Remove' => {
@@ -18,8 +18,8 @@ package Paws::EC2::LaunchPermissionModifications;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

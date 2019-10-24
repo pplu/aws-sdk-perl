@@ -1,16 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Health::DescribeAffectedEntities;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::Health::EntityFilter', traits => ['NameInRequest'], request_name => 'filter' , required => 1);
-  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Health::Types qw/Health_EntityFilter/;
+  has Filter => (is => 'ro', isa => Health_EntityFilter, required => 1, predicate => 1);
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAffectedEntities');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Health::DescribeAffectedEntitiesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAffectedEntities');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Health::DescribeAffectedEntitiesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filter' => {
+                             'class' => 'Paws::Health::EntityFilter',
+                             'type' => 'Health_EntityFilter'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Filter' => 'filter',
+                       'NextToken' => 'nextToken',
+                       'Locale' => 'locale',
+                       'MaxResults' => 'maxResults'
+                     },
+  'IsRequired' => {
+                    'Filter' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +110,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/hea
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filter => L<Paws::Health::EntityFilter>
+=head2 B<REQUIRED> Filter => Health_EntityFilter
 
 Values to narrow the results returned. At least one event ARN is
 required.

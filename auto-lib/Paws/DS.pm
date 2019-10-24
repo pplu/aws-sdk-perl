@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'ds' }
   sub signing_name { 'ds' }
   sub version { '2015-04-16' }
   sub target_prefix { 'DirectoryService_20150416' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -550,7 +552,7 @@ owner account.
 
 =item DirectoryId => Str
 
-=item IpRoutes => ArrayRef[L<Paws::DS::IpRoute>]
+=item IpRoutes => ArrayRef[DS_IpRoute]
 
 =item [UpdateSecurityGroupForDirectoryControllers => Bool]
 
@@ -582,7 +584,7 @@ Resources, and Conditions Reference
 
 =item ResourceId => Str
 
-=item Tags => ArrayRef[L<Paws::DS::Tag>]
+=item Tags => ArrayRef[DS_Tag]
 
 
 =back
@@ -622,7 +624,7 @@ C<CreatingSnapshot>, and C<UpdatingSchema>.
 
 =over
 
-=item ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
+=item ConnectSettings => DS_DirectoryConnectSettings
 
 =item Name => Str
 
@@ -634,7 +636,7 @@ C<CreatingSnapshot>, and C<UpdatingSchema>.
 
 =item [ShortName => Str]
 
-=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
+=item [Tags => ArrayRef[DS_Tag]]
 
 
 =back
@@ -686,7 +688,7 @@ this operation should only be used when absolutely necessary.
 
 =item Password => Str
 
-=item [ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]]
+=item [ComputerAttributes => ArrayRef[DS_Attribute]]
 
 =item [OrganizationalUnitDistinguishedName => Str]
 
@@ -738,9 +740,9 @@ the trusted domain.
 
 =item [ShortName => Str]
 
-=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
+=item [Tags => ArrayRef[DS_Tag]]
 
-=item [VpcSettings => L<Paws::DS::DirectoryVpcSettings>]
+=item [VpcSettings => DS_DirectoryVpcSettings]
 
 
 =back
@@ -787,7 +789,7 @@ AWS account.
 
 =item Password => Str
 
-=item VpcSettings => L<Paws::DS::DirectoryVpcSettings>
+=item VpcSettings => DS_DirectoryVpcSettings
 
 =item [Description => Str]
 
@@ -795,7 +797,7 @@ AWS account.
 
 =item [ShortName => Str]
 
-=item [Tags => ArrayRef[L<Paws::DS::Tag>]]
+=item [Tags => ArrayRef[DS_Tag]]
 
 
 =back
@@ -1206,7 +1208,7 @@ Disables single-sign on for a directory.
 
 =item DirectoryId => Str
 
-=item RadiusSettings => L<Paws::DS::RadiusSettings>
+=item RadiusSettings => DS_RadiusSettings
 
 
 =back
@@ -1480,7 +1482,7 @@ operation is complete.
 
 =item ShareMethod => Str
 
-=item ShareTarget => L<Paws::DS::ShareTarget>
+=item ShareTarget => DS_ShareTarget
 
 =item [ShareNotes => Str]
 
@@ -1540,7 +1542,7 @@ Applies a schema extension to a Microsoft AD directory.
 
 =item DirectoryId => Str
 
-=item UnshareTarget => L<Paws::DS::UnshareTarget>
+=item UnshareTarget => DS_UnshareTarget
 
 
 =back
@@ -1603,7 +1605,7 @@ During this time, you cannot make another update request.
 
 =item DirectoryId => Str
 
-=item RadiusSettings => L<Paws::DS::RadiusSettings>
+=item RadiusSettings => DS_RadiusSettings
 
 
 =back

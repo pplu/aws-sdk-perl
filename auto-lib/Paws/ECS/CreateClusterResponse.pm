@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::CreateClusterResponse;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Paws::ECS::Cluster', traits => ['NameInRequest'], request_name => 'cluster' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw/ECS_Cluster/;
+  has Cluster => (is => 'ro', isa => ECS_Cluster);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Cluster' => {
+                              'class' => 'Paws::ECS::Cluster',
+                              'type' => 'ECS_Cluster'
+                            }
+             },
+  'NameInRequest' => {
+                       'Cluster' => 'cluster'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::ECS::CreateClusterResponse
 =head1 ATTRIBUTES
 
 
-=head2 Cluster => L<Paws::ECS::Cluster>
+=head2 Cluster => ECS_Cluster
 
 The full description of your new cluster.
 

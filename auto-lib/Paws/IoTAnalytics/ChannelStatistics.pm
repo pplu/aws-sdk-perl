@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ChannelStatistics;
-  use Moose;
-  has Size => (is => 'ro', isa => 'Paws::IoTAnalytics::EstimatedResourceSize', request_name => 'size', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_EstimatedResourceSize/;
+  has Size => (is => 'ro', isa => IoTAnalytics_EstimatedResourceSize);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'class' => 'Paws::IoTAnalytics::EstimatedResourceSize',
+                           'type' => 'IoTAnalytics_EstimatedResourceSize'
+                         }
+             },
+  'NameInRequest' => {
+                       'Size' => 'size'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Statistics information about the channel.
 =head1 ATTRIBUTES
 
 
-=head2 Size => L<Paws::IoTAnalytics::EstimatedResourceSize>
+=head2 Size => IoTAnalytics_EstimatedResourceSize
 
   The estimated size of the channel.
 

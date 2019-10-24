@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
-  has SignalName => (is => 'ro', isa => 'Str', request_name => 'signalName', traits => ['NameInRequest'], required => 1);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has Input => (is => 'ro', isa => Str);
+  has RunId => (is => 'ro', isa => Str);
+  has SignalName => (is => 'ro', isa => Str, required => 1);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               },
+               'SignalName' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'RunId' => 'runId',
+                       'Control' => 'control',
+                       'Input' => 'input',
+                       'WorkflowId' => 'workflowId',
+                       'SignalName' => 'signalName',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId'
+                     },
+  'IsRequired' => {
+                    'WorkflowId' => 1,
+                    'SignalName' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

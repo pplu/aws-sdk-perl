@@ -1,15 +1,40 @@
 
 package Paws::EFS::DeleteTags;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/delete-tags/{FileSystemId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/delete-tags/{FileSystemId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'FileSystemId' => 'FileSystemId'
+                  },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'FileSystemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

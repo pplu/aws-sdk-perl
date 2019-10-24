@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::ResourceServerScopeType;
-  use Moose;
-  has ScopeDescription => (is => 'ro', isa => 'Str', required => 1);
-  has ScopeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has ScopeDescription => (is => 'ro', isa => Str, required => 1);
+  has ScopeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScopeName' => {
+                                'type' => 'Str'
+                              },
+               'ScopeDescription' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'ScopeName' => 1,
+                    'ScopeDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

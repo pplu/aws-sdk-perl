@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SqlApplicationConfigurationUpdate;
-  use Moose;
-  has InputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::InputUpdate]');
-  has OutputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::OutputUpdate]');
-  has ReferenceDataSourceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ReferenceDataSourceUpdate]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_OutputUpdate KinesisAnalyticsV2_InputUpdate KinesisAnalyticsV2_ReferenceDataSourceUpdate/;
+  has InputUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_InputUpdate]);
+  has OutputUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_OutputUpdate]);
+  has ReferenceDataSourceUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceUpdate]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputUpdates' => {
+                                    'class' => 'Paws::KinesisAnalyticsV2::OutputUpdate',
+                                    'type' => 'ArrayRef[KinesisAnalyticsV2_OutputUpdate]'
+                                  },
+               'ReferenceDataSourceUpdates' => {
+                                                 'class' => 'Paws::KinesisAnalyticsV2::ReferenceDataSourceUpdate',
+                                                 'type' => 'ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceUpdate]'
+                                               },
+               'InputUpdates' => {
+                                   'class' => 'Paws::KinesisAnalyticsV2::InputUpdate',
+                                   'type' => 'ArrayRef[KinesisAnalyticsV2_InputUpdate]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,19 +66,19 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 InputUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::InputUpdate>]
+=head2 InputUpdates => ArrayRef[KinesisAnalyticsV2_InputUpdate]
 
   The array of InputUpdate objects describing the new input streams used
 by the application.
 
 
-=head2 OutputUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::OutputUpdate>]
+=head2 OutputUpdates => ArrayRef[KinesisAnalyticsV2_OutputUpdate]
 
   The array of OutputUpdate objects describing the new destination
 streams used by the application.
 
 
-=head2 ReferenceDataSourceUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::ReferenceDataSourceUpdate>]
+=head2 ReferenceDataSourceUpdates => ArrayRef[KinesisAnalyticsV2_ReferenceDataSourceUpdate]
 
   The array of ReferenceDataSourceUpdate objects describing the new
 reference data sources used by the application.

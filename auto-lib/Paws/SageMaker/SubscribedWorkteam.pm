@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::SageMaker::SubscribedWorkteam;
-  use Moose;
-  has ListingId => (is => 'ro', isa => 'Str');
-  has MarketplaceDescription => (is => 'ro', isa => 'Str');
-  has MarketplaceTitle => (is => 'ro', isa => 'Str');
-  has SellerName => (is => 'ro', isa => 'Str');
-  has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has ListingId => (is => 'ro', isa => Str);
+  has MarketplaceDescription => (is => 'ro', isa => Str);
+  has MarketplaceTitle => (is => 'ro', isa => Str);
+  has SellerName => (is => 'ro', isa => Str);
+  has WorkteamArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MarketplaceDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'SellerName' => {
+                                 'type' => 'Str'
+                               },
+               'WorkteamArn' => {
+                                  'type' => 'Str'
+                                },
+               'ListingId' => {
+                                'type' => 'Str'
+                              },
+               'MarketplaceTitle' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'WorkteamArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

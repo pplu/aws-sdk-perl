@@ -1,23 +1,84 @@
 
 package Paws::ApiGateway::CreateAuthorizer;
-  use Moose;
-  has AuthorizerCredentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerCredentials');
-  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'authorizerResultTtlInSeconds');
-  has AuthorizerUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerUri');
-  has AuthType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authType');
-  has IdentitySource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identitySource');
-  has IdentityValidationExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identityValidationExpression');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'providerARNs');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw//;
+  has AuthorizerCredentials => (is => 'ro', isa => Str, predicate => 1);
+  has AuthorizerResultTtlInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has AuthorizerUri => (is => 'ro', isa => Str, predicate => 1);
+  has AuthType => (is => 'ro', isa => Str, predicate => 1);
+  has IdentitySource => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityValidationExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProviderARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/authorizers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Authorizer');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/authorizers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::Authorizer');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'AuthType' => {
+                               'type' => 'Str'
+                             },
+               'ProviderARNs' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'IdentityValidationExpression' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AuthorizerUri' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'AuthorizerCredentials' => {
+                                            'type' => 'Str'
+                                          },
+               'AuthorizerResultTtlInSeconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'IdentitySource' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'NameInRequest' => {
+                       'AuthType' => 'authType',
+                       'ProviderARNs' => 'providerARNs',
+                       'IdentityValidationExpression' => 'identityValidationExpression',
+                       'AuthorizerUri' => 'authorizerUri',
+                       'Type' => 'type',
+                       'AuthorizerCredentials' => 'authorizerCredentials',
+                       'AuthorizerResultTtlInSeconds' => 'authorizerResultTtlInSeconds',
+                       'IdentitySource' => 'identitySource',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'Type' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

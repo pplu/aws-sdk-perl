@@ -1,16 +1,47 @@
 
 package Paws::Chime::ListBots;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBots');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/bots');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::ListBotsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBots');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/bots');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::ListBotsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'next-token',
+                      'MaxResults' => 'max-results'
+                    },
+  'IsRequired' => {
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

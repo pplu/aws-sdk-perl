@@ -4,7 +4,7 @@ package Paws::EC2::AccountAttribute;
   has AttributeName => (is => 'ro', isa => Str);
   has AttributeValues => (is => 'ro', isa => ArrayRef[EC2_AccountAttributeValue]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AttributeValues' => {
@@ -21,8 +21,8 @@ package Paws::EC2::AccountAttribute;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

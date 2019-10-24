@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetOpenIDConnectProviderResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Undef/;
   use Paws::IAM::Types qw//;
   has ClientIDList => (is => 'ro', isa => ArrayRef[Str|Undef]);

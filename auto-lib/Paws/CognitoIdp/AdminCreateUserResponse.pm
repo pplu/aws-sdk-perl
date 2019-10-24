@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::AdminCreateUserResponse;
-  use Moose;
-  has User => (is => 'ro', isa => 'Paws::CognitoIdp::UserType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserType/;
+  has User => (is => 'ro', isa => CognitoIdp_UserType);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'User' => {
+                           'class' => 'Paws::CognitoIdp::UserType',
+                           'type' => 'CognitoIdp_UserType'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::CognitoIdp::AdminCreateUserResponse
 =head1 ATTRIBUTES
 
 
-=head2 User => L<Paws::CognitoIdp::UserType>
+=head2 User => CognitoIdp_UserType
 
 The newly created user.
 

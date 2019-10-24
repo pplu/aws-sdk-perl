@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::WorkLink::DeviceSummary;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str');
-  has DeviceStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str);
+  has DeviceStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

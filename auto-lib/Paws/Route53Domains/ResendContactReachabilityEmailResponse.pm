@@ -1,11 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Domains::ResendContactReachabilityEmailResponse;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName' );
-  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'emailAddress' );
-  has IsAlreadyVerified => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'isAlreadyVerified' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Route53Domains::Types qw//;
+  has DomainName => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+  has IsAlreadyVerified => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsAlreadyVerified' => {
+                                        'type' => 'Bool'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'IsAlreadyVerified' => 'isAlreadyVerified',
+                       'DomainName' => 'domainName',
+                       'EmailAddress' => 'emailAddress'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

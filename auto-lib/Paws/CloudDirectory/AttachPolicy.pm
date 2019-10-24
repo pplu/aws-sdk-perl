@@ -1,16 +1,47 @@
 
 package Paws::CloudDirectory::AttachPolicy;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has PolicyReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has PolicyReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/policy/attach');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::AttachPolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachPolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/policy/attach');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::AttachPolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'ObjectReference' => 1,
+                    'DirectoryArn' => 1,
+                    'PolicyReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,14 +85,14 @@ where both objects reside. For more information, see arns.
 
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
 The reference that identifies the object to which the policy will be
 attached.
 
 
 
-=head2 B<REQUIRED> PolicyReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> PolicyReference => CloudDirectory_ObjectReference
 
 The reference that is associated with the policy object.
 

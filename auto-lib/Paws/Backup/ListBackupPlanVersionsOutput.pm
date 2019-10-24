@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListBackupPlanVersionsOutput;
-  use Moose;
-  has BackupPlanVersionsList => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupPlansListMember]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupPlansListMember/;
+  has BackupPlanVersionsList => (is => 'ro', isa => ArrayRef[Backup_BackupPlansListMember]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BackupPlanVersionsList' => {
+                                             'class' => 'Paws::Backup::BackupPlansListMember',
+                                             'type' => 'ArrayRef[Backup_BackupPlansListMember]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Backup::ListBackupPlanVersionsOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupPlanVersionsList => ArrayRef[L<Paws::Backup::BackupPlansListMember>]
+=head2 BackupPlanVersionsList => ArrayRef[Backup_BackupPlansListMember]
 
 An array of version list items containing metadata about your backup
 plans.

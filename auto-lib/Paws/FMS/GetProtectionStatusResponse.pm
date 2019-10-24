@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::FMS::GetProtectionStatusResponse;
-  use Moose;
-  has AdminAccountId => (is => 'ro', isa => 'Str');
-  has Data => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ServiceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FMS::Types qw//;
+  has AdminAccountId => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has ServiceType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdminAccountId' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

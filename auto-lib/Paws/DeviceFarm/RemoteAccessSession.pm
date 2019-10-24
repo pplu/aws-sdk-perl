@@ -1,26 +1,128 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::RemoteAccessSession;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
-  has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
-  has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
-  has DeviceUdid => (is => 'ro', isa => 'Str', request_name => 'deviceUdid', traits => ['NameInRequest']);
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
-  has HostAddress => (is => 'ro', isa => 'Str', request_name => 'hostAddress', traits => ['NameInRequest']);
-  has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
-  has InteractionMode => (is => 'ro', isa => 'Str', request_name => 'interactionMode', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
-  has RemoteRecordAppArn => (is => 'ro', isa => 'Str', request_name => 'remoteRecordAppArn', traits => ['NameInRequest']);
-  has RemoteRecordEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteRecordEnabled', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
-  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
-  has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Device DeviceFarm_DeviceMinutes/;
+  has Arn => (is => 'ro', isa => Str);
+  has BillingMethod => (is => 'ro', isa => Str);
+  has ClientId => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Device => (is => 'ro', isa => DeviceFarm_Device);
+  has DeviceMinutes => (is => 'ro', isa => DeviceFarm_DeviceMinutes);
+  has DeviceUdid => (is => 'ro', isa => Str);
+  has Endpoint => (is => 'ro', isa => Str);
+  has HostAddress => (is => 'ro', isa => Str);
+  has InstanceArn => (is => 'ro', isa => Str);
+  has InteractionMode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RemoteDebugEnabled => (is => 'ro', isa => Bool);
+  has RemoteRecordAppArn => (is => 'ro', isa => Str);
+  has RemoteRecordEnabled => (is => 'ro', isa => Bool);
+  has Result => (is => 'ro', isa => Str);
+  has SkipAppResign => (is => 'ro', isa => Bool);
+  has Started => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Stopped => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Stopped' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SkipAppResign' => {
+                                    'type' => 'Bool'
+                                  },
+               'RemoteRecordAppArn' => {
+                                         'type' => 'Str'
+                                       },
+               'InstanceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Started' => {
+                              'type' => 'Str'
+                            },
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'InteractionMode' => {
+                                      'type' => 'Str'
+                                    },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'Device' => {
+                             'class' => 'Paws::DeviceFarm::Device',
+                             'type' => 'DeviceFarm_Device'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'HostAddress' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'RemoteDebugEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'BillingMethod' => {
+                                    'type' => 'Str'
+                                  },
+               'DeviceUdid' => {
+                                 'type' => 'Str'
+                               },
+               'DeviceMinutes' => {
+                                    'class' => 'Paws::DeviceFarm::DeviceMinutes',
+                                    'type' => 'DeviceFarm_DeviceMinutes'
+                                  },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RemoteRecordEnabled' => {
+                                          'type' => 'Bool'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Stopped' => 'stopped',
+                       'Status' => 'status',
+                       'SkipAppResign' => 'skipAppResign',
+                       'RemoteRecordAppArn' => 'remoteRecordAppArn',
+                       'InstanceArn' => 'instanceArn',
+                       'Started' => 'started',
+                       'Result' => 'result',
+                       'InteractionMode' => 'interactionMode',
+                       'ClientId' => 'clientId',
+                       'Device' => 'device',
+                       'Message' => 'message',
+                       'HostAddress' => 'hostAddress',
+                       'Arn' => 'arn',
+                       'RemoteDebugEnabled' => 'remoteDebugEnabled',
+                       'BillingMethod' => 'billingMethod',
+                       'DeviceUdid' => 'deviceUdid',
+                       'DeviceMinutes' => 'deviceMinutes',
+                       'Created' => 'created',
+                       'Endpoint' => 'endpoint',
+                       'Name' => 'name',
+                       'RemoteRecordEnabled' => 'remoteRecordEnabled'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,12 +182,12 @@ returned if remote debugging is enabled for the remote access session.
   The date and time the remote access session was created.
 
 
-=head2 Device => L<Paws::DeviceFarm::Device>
+=head2 Device => DeviceFarm_Device
 
   The device (phone or tablet) used in the remote access session.
 
 
-=head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
+=head2 DeviceMinutes => DeviceFarm_DeviceMinutes
 
   The number of minutes a device is used in a remote access session
 (including setup and teardown minutes).

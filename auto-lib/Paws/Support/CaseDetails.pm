@@ -1,17 +1,82 @@
+# Generated from default/object.tt
 package Paws::Support::CaseDetails;
-  use Moose;
-  has CaseId => (is => 'ro', isa => 'Str', request_name => 'caseId', traits => ['NameInRequest']);
-  has CategoryCode => (is => 'ro', isa => 'Str', request_name => 'categoryCode', traits => ['NameInRequest']);
-  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ccEmailAddresses', traits => ['NameInRequest']);
-  has DisplayId => (is => 'ro', isa => 'Str', request_name => 'displayId', traits => ['NameInRequest']);
-  has Language => (is => 'ro', isa => 'Str', request_name => 'language', traits => ['NameInRequest']);
-  has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', request_name => 'recentCommunications', traits => ['NameInRequest']);
-  has ServiceCode => (is => 'ro', isa => 'Str', request_name => 'serviceCode', traits => ['NameInRequest']);
-  has SeverityCode => (is => 'ro', isa => 'Str', request_name => 'severityCode', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Subject => (is => 'ro', isa => 'Str', request_name => 'subject', traits => ['NameInRequest']);
-  has SubmittedBy => (is => 'ro', isa => 'Str', request_name => 'submittedBy', traits => ['NameInRequest']);
-  has TimeCreated => (is => 'ro', isa => 'Str', request_name => 'timeCreated', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Support::Types qw/Support_RecentCaseCommunications/;
+  has CaseId => (is => 'ro', isa => Str);
+  has CategoryCode => (is => 'ro', isa => Str);
+  has CcEmailAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DisplayId => (is => 'ro', isa => Str);
+  has Language => (is => 'ro', isa => Str);
+  has RecentCommunications => (is => 'ro', isa => Support_RecentCaseCommunications);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has SeverityCode => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str);
+  has SubmittedBy => (is => 'ro', isa => Str);
+  has TimeCreated => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'RecentCommunications' => {
+                                           'class' => 'Paws::Support::RecentCaseCommunications',
+                                           'type' => 'Support_RecentCaseCommunications'
+                                         },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'CaseId' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'SubmittedBy' => {
+                                  'type' => 'Str'
+                                },
+               'TimeCreated' => {
+                                  'type' => 'Str'
+                                },
+               'CcEmailAddresses' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'SeverityCode' => {
+                                   'type' => 'Str'
+                                 },
+               'CategoryCode' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ServiceCode' => 'serviceCode',
+                       'RecentCommunications' => 'recentCommunications',
+                       'Subject' => 'subject',
+                       'CaseId' => 'caseId',
+                       'Status' => 'status',
+                       'Language' => 'language',
+                       'SubmittedBy' => 'submittedBy',
+                       'TimeCreated' => 'timeCreated',
+                       'CcEmailAddresses' => 'ccEmailAddresses',
+                       'SeverityCode' => 'severityCode',
+                       'CategoryCode' => 'categoryCode',
+                       'DisplayId' => 'displayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -146,7 +211,7 @@ Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
 
-=head2 RecentCommunications => L<Paws::Support::RecentCaseCommunications>
+=head2 RecentCommunications => Support_RecentCaseCommunications
 
   The five most recent communications between you and AWS Support Center,
 including the IDs of any attachments to the communications. Also

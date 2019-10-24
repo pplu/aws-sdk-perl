@@ -1,11 +1,59 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Str', request_name => 'details', traits => ['NameInRequest']);
-  has InitiatedEventId => (is => 'ro', isa => 'Int', request_name => 'initiatedEventId', traits => ['NameInRequest'], required => 1);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
-  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', request_name => 'workflowExecution', traits => ['NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType SimpleWorkflow_WorkflowExecution/;
+  has Details => (is => 'ro', isa => Str);
+  has InitiatedEventId => (is => 'ro', isa => Int, required => 1);
+  has Reason => (is => 'ro', isa => Str);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has WorkflowExecution => (is => 'ro', isa => SimpleWorkflow_WorkflowExecution, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Details' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowType' => {
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType',
+                                   'type' => 'SimpleWorkflow_WorkflowType'
+                                 },
+               'InitiatedEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'WorkflowExecution' => {
+                                        'class' => 'Paws::SimpleWorkflow::WorkflowExecution',
+                                        'type' => 'SimpleWorkflow_WorkflowExecution'
+                                      }
+             },
+  'NameInRequest' => {
+                       'StartedEventId' => 'startedEventId',
+                       'Reason' => 'reason',
+                       'Details' => 'details',
+                       'WorkflowType' => 'workflowType',
+                       'InitiatedEventId' => 'initiatedEventId',
+                       'WorkflowExecution' => 'workflowExecution'
+                     },
+  'IsRequired' => {
+                    'StartedEventId' => 1,
+                    'WorkflowType' => 1,
+                    'InitiatedEventId' => 1,
+                    'WorkflowExecution' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,12 +116,12 @@ for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
 
-=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => SimpleWorkflow_WorkflowExecution
 
   The child workflow execution that failed.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The type of the child workflow execution.
 

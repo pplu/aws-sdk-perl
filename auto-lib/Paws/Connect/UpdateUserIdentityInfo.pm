@@ -1,16 +1,47 @@
 
 package Paws::Connect::UpdateUserIdentityInfo;
-  use Moose;
-  has IdentityInfo => (is => 'ro', isa => 'Paws::Connect::UserIdentityInfo', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_UserIdentityInfo/;
+  has IdentityInfo => (is => 'ro', isa => Connect_UserIdentityInfo, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserIdentityInfo');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/users/{InstanceId}/{UserId}/identity-info');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUserIdentityInfo');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/users/{InstanceId}/{UserId}/identity-info');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'IdentityInfo' => {
+                                   'class' => 'Paws::Connect::UserIdentityInfo',
+                                   'type' => 'Connect_UserIdentityInfo'
+                                 },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId',
+                    'UserId' => 'UserId'
+                  },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'IdentityInfo' => 1,
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+=head2 B<REQUIRED> IdentityInfo => Connect_UserIdentityInfo
 
 A C<UserIdentityInfo> object.
 

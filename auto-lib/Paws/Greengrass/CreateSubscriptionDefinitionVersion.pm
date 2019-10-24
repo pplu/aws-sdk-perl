@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateSubscriptionDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
-  has Subscriptions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Subscription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Subscription/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subscriptions => (is => 'ro', isa => ArrayRef[Greengrass_Subscription], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubscriptionDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateSubscriptionDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSubscriptionDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateSubscriptionDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionDefinitionId' => {
+                                               'type' => 'Str'
+                                             },
+               'Subscriptions' => {
+                                    'class' => 'Paws::Greengrass::Subscription',
+                                    'type' => 'ArrayRef[Greengrass_Subscription]'
+                                  },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'SubscriptionDefinitionId' => 'SubscriptionDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'SubscriptionDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +103,7 @@ The ID of the subscription definition.
 
 
 
-=head2 Subscriptions => ArrayRef[L<Paws::Greengrass::Subscription>]
+=head2 Subscriptions => ArrayRef[Greengrass_Subscription]
 
 A list of subscriptions.
 

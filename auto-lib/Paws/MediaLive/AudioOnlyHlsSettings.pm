@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioOnlyHlsSettings;
-  use Moose;
-  has AudioGroupId => (is => 'ro', isa => 'Str', request_name => 'audioGroupId', traits => ['NameInRequest']);
-  has AudioOnlyImage => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'audioOnlyImage', traits => ['NameInRequest']);
-  has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has AudioGroupId => (is => 'ro', isa => Str);
+  has AudioOnlyImage => (is => 'ro', isa => MediaLive_InputLocation);
+  has AudioTrackType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AudioOnlyImage' => {
+                                     'class' => 'Paws::MediaLive::InputLocation',
+                                     'type' => 'MediaLive_InputLocation'
+                                   },
+               'AudioGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'AudioTrackType' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'AudioOnlyImage' => 'audioOnlyImage',
+                       'AudioGroupId' => 'audioGroupId',
+                       'AudioTrackType' => 'audioTrackType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +72,7 @@ Audio Only Hls Settings
   Specifies the group to which the audio Rendition belongs.
 
 
-=head2 AudioOnlyImage => L<Paws::MediaLive::InputLocation>
+=head2 AudioOnlyImage => MediaLive_InputLocation
 
   For use with an audio only Stream. Must be a .jpg or .png file. If
 given, this image will be used as the cover-art for the audio only

@@ -1,55 +1,208 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::RestoreDBInstanceFromS3;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str', required => 1);
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBName => (is => 'ro', isa => 'Str');
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has S3IngestionRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has S3Prefix => (is => 'ro', isa => 'Str');
-  has SourceEngine => (is => 'ro', isa => 'Str', required => 1);
-  has SourceEngineVersion => (is => 'ro', isa => 'Str', required => 1);
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has UseDefaultProcessorFeatures => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::RDS::Types qw/RDS_Tag RDS_ProcessorFeature/;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBName => (is => 'ro', isa => Str, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePerformanceInsights => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has MonitoringInterval => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_ProcessorFeature], predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3IngestionRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3Prefix => (is => 'ro', isa => Str, predicate => 1);
+  has SourceEngine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceEngineVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has UseDefaultProcessorFeatures => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromS3');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBInstanceFromS3Result');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBInstanceFromS3Result');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBInstanceFromS3');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::RestoreDBInstanceFromS3Result');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBInstanceFromS3Result');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'ProcessorFeatures' => {
+                                        'class' => 'Paws::RDS::ProcessorFeature',
+                                        'type' => 'ArrayRef[RDS_ProcessorFeature]'
+                                      },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'S3IngestionRoleArn' => {
+                                         'type' => 'Str'
+                                       },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'S3Prefix' => {
+                               'type' => 'Str'
+                             },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'DBSecurityGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'EnablePerformanceInsights' => {
+                                                'type' => 'Bool'
+                                              },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'UseDefaultProcessorFeatures' => {
+                                                  'type' => 'Bool'
+                                                },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'PerformanceInsightsRetentionPeriod' => {
+                                                         'type' => 'Int'
+                                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'SourceEngineVersion' => {
+                                          'type' => 'Str'
+                                        },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'SourceEngine' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1,
+                    'S3IngestionRoleArn' => 1,
+                    'Engine' => 1,
+                    'S3BucketName' => 1,
+                    'SourceEngineVersion' => 1,
+                    'SourceEngine' => 1,
+                    'DBInstanceClass' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -124,7 +277,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                                            # OPTIONAL
       UseDefaultProcessorFeatures => 1,                             # OPTIONAL
-      VpcSecurityGroupIds         => [ 'MyString', ... ],           # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                   # OPTIONAL
     );
 
     # Results:
@@ -533,7 +686,7 @@ Must be at least 30 minutes.
 
 
 
-=head2 ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]
+=head2 ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]
 
 The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
@@ -606,7 +759,7 @@ Default: C<io1> if the C<Iops> parameter is specified; otherwise C<gp2>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 A list of tags to associate with this DB instance. For more
 information, see Tagging Amazon RDS Resources

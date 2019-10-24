@@ -1,19 +1,79 @@
+# Generated from default/object.tt
 package Paws::Comprehend::DocumentClassifierProperties;
-  use Moose;
-  has ClassifierMetadata => (is => 'ro', isa => 'Paws::Comprehend::ClassifierMetadata');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
-  has DocumentClassifierArn => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierInputDataConfig');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubmitTime => (is => 'ro', isa => 'Str');
-  has TrainingEndTime => (is => 'ro', isa => 'Str');
-  has TrainingStartTime => (is => 'ro', isa => 'Str');
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_DocumentClassifierOutputDataConfig Comprehend_VpcConfig Comprehend_DocumentClassifierInputDataConfig Comprehend_ClassifierMetadata/;
+  has ClassifierMetadata => (is => 'ro', isa => Comprehend_ClassifierMetadata);
+  has DataAccessRoleArn => (is => 'ro', isa => Str);
+  has DocumentClassifierArn => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_DocumentClassifierInputDataConfig);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has OutputDataConfig => (is => 'ro', isa => Comprehend_DocumentClassifierOutputDataConfig);
+  has Status => (is => 'ro', isa => Str);
+  has SubmitTime => (is => 'ro', isa => Str);
+  has TrainingEndTime => (is => 'ro', isa => Str);
+  has TrainingStartTime => (is => 'ro', isa => Str);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::DocumentClassifierInputDataConfig',
+                                      'type' => 'Comprehend_DocumentClassifierInputDataConfig'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DocumentClassifierArn' => {
+                                            'type' => 'Str'
+                                          },
+               'ClassifierMetadata' => {
+                                         'class' => 'Paws::Comprehend::ClassifierMetadata',
+                                         'type' => 'Comprehend_ClassifierMetadata'
+                                       },
+               'TrainingEndTime' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputDataConfig' => {
+                                       'class' => 'Paws::Comprehend::DocumentClassifierOutputDataConfig',
+                                       'type' => 'Comprehend_DocumentClassifierOutputDataConfig'
+                                     },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'TrainingStartTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +109,7 @@ Provides information about a document classifier.
 =head1 ATTRIBUTES
 
 
-=head2 ClassifierMetadata => L<Paws::Comprehend::ClassifierMetadata>
+=head2 ClassifierMetadata => Comprehend_ClassifierMetadata
 
   Information about the document classifier, including the number of
 documents used for training the classifier, the number of documents
@@ -72,7 +132,7 @@ role that grants Amazon Comprehend read access to your input data.
   The time that training the document classifier completed.
 
 
-=head2 InputDataConfig => L<Paws::Comprehend::DocumentClassifierInputDataConfig>
+=head2 InputDataConfig => Comprehend_DocumentClassifierInputDataConfig
 
   The input data configuration that you supplied when you created the
 document classifier for training.
@@ -89,7 +149,7 @@ was trained on.
   Additional information about the status of the classifier.
 
 
-=head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>
+=head2 OutputDataConfig => Comprehend_DocumentClassifierOutputDataConfig
 
   Provides output results configuration parameters for custom classifier
 jobs.
@@ -145,7 +205,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
   Configuration parameters for a private Virtual Private Cloud (VPC)
 containing the resources you are using for your custom classifier. For

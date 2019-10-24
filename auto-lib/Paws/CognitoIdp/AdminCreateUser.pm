@@ -1,20 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminCreateUser;
-  use Moose;
-  has DesiredDeliveryMediums => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ForceAliasCreation => (is => 'ro', isa => 'Bool');
-  has MessageAction => (is => 'ro', isa => 'Str');
-  has TemporaryPassword => (is => 'ro', isa => 'Str');
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has ValidationData => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType/;
+  has DesiredDeliveryMediums => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ForceAliasCreation => (is => 'ro', isa => Bool, predicate => 1);
+  has MessageAction => (is => 'ro', isa => Str, predicate => 1);
+  has TemporaryPassword => (is => 'ro', isa => Str, predicate => 1);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidationData => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminCreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminCreateUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminCreateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminCreateUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'ForceAliasCreation' => {
+                                         'type' => 'Bool'
+                                       },
+               'DesiredDeliveryMediums' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'TemporaryPassword' => {
+                                        'type' => 'Str'
+                                      },
+               'UserAttributes' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'MessageAction' => {
+                                    'type' => 'Str'
+                                  },
+               'ValidationData' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +168,7 @@ C<MessageAction> parameter.
 
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user
@@ -182,7 +225,7 @@ The user pool ID for the user pool where the user will be created.
 
 
 
-=head2 ValidationData => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 ValidationData => ArrayRef[CognitoIdp_AttributeType]
 
 The user's validation data. This is an array of name-value pairs that
 contain user attributes and attribute values that you can use for

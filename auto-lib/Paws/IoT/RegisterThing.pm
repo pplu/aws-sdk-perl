@@ -1,15 +1,41 @@
 
 package Paws::IoT::RegisterThing;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::IoT::Parameters', traits => ['NameInRequest'], request_name => 'parameters');
-  has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_Parameters/;
+  has Parameters => (is => 'ro', isa => IoT_Parameters, predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::RegisterThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::RegisterThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::IoT::Parameters',
+                                 'type' => 'IoT_Parameters'
+                               },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'parameters',
+                       'TemplateBody' => 'templateBody'
+                     },
+  'IsRequired' => {
+                    'TemplateBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => L<Paws::IoT::Parameters>
+=head2 Parameters => IoT_Parameters
 
 The parameters for provisioning a thing. See Programmatic Provisioning
 (https://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html)

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::AnalyticsConfiguration;
   use Moo;
   use Types::Standard qw/Str/;
@@ -20,7 +21,11 @@ package Paws::S3::AnalyticsConfiguration;
                                            'class' => 'Paws::S3::StorageClassAnalysis',
                                            'type' => 'S3_StorageClassAnalysis'
                                          }
-             }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'StorageClassAnalysis' => 1
+                  }
 }
 ;
     return $Params_map;

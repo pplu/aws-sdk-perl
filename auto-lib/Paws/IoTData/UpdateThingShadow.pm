@@ -1,15 +1,43 @@
 
 package Paws::IoTData::UpdateThingShadow;
-  use Moose;
-  has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload', required => 1);
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTData::Types qw//;
+  has Payload => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateThingShadow');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/shadow');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTData::UpdateThingShadowResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateThingShadow');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/shadow');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTData::UpdateThingShadowResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'ThingName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  },
+  'NameInRequest' => {
+                       'Payload' => 'payload'
+                     },
+  'IsRequired' => {
+                    'Payload' => 1,
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::PutFileEntry;
-  use Moose;
-  has FileContent => (is => 'ro', isa => 'Str', request_name => 'fileContent', traits => ['NameInRequest']);
-  has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
-  has SourceFile => (is => 'ro', isa => 'Paws::CodeCommit::SourceFileSpecifier', request_name => 'sourceFile', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_SourceFileSpecifier/;
+  has FileContent => (is => 'ro', isa => Str);
+  has FileMode => (is => 'ro', isa => Str);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has SourceFile => (is => 'ro', isa => CodeCommit_SourceFileSpecifier);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'SourceFile' => {
+                                 'class' => 'Paws::CodeCommit::SourceFileSpecifier',
+                                 'type' => 'CodeCommit_SourceFileSpecifier'
+                               },
+               'FileContent' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FileMode' => 'fileMode',
+                       'FilePath' => 'filePath',
+                       'SourceFile' => 'sourceFile',
+                       'FileContent' => 'fileContent'
+                     },
+  'IsRequired' => {
+                    'FilePath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +93,7 @@ include EXECUTABLE and NORMAL.
 file.
 
 
-=head2 SourceFile => L<Paws::CodeCommit::SourceFileSpecifier>
+=head2 SourceFile => CodeCommit_SourceFileSpecifier
 
   The name and full path of the file that contains the changes you want
 to make as part of the commit, if you are not providing the file

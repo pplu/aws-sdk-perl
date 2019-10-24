@@ -4,7 +4,7 @@ package Paws::EC2::LaunchPermission;
   has Group => (is => 'ro', isa => Str);
   has UserId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UserId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::LaunchPermission;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

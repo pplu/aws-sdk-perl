@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::StackSummary;
-  use Moose;
-  has AppsCount => (is => 'ro', isa => 'Int');
-  has Arn => (is => 'ro', isa => 'Str');
-  has InstancesCount => (is => 'ro', isa => 'Paws::OpsWorks::InstancesCount');
-  has LayersCount => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_InstancesCount/;
+  has AppsCount => (is => 'ro', isa => Int);
+  has Arn => (is => 'ro', isa => Str);
+  has InstancesCount => (is => 'ro', isa => OpsWorks_InstancesCount);
+  has LayersCount => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'LayersCount' => {
+                                  'type' => 'Int'
+                                },
+               'AppsCount' => {
+                                'type' => 'Int'
+                              },
+               'InstancesCount' => {
+                                     'class' => 'Paws::OpsWorks::InstancesCount',
+                                     'type' => 'OpsWorks_InstancesCount'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +84,7 @@ Summarizes the number of layers, instances, and apps in a stack.
   The stack's ARN.
 
 
-=head2 InstancesCount => L<Paws::OpsWorks::InstancesCount>
+=head2 InstancesCount => OpsWorks_InstancesCount
 
   An C<InstancesCount> object with the number of instances in each
 status.

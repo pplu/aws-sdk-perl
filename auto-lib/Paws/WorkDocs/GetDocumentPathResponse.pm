@@ -1,9 +1,27 @@
 
 package Paws::WorkDocs::GetDocumentPathResponse;
-  use Moose;
-  has Path => (is => 'ro', isa => 'Paws::WorkDocs::ResourcePath');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_ResourcePath/;
+  has Path => (is => 'ro', isa => WorkDocs_ResourcePath);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Path' => {
+                           'class' => 'Paws::WorkDocs::ResourcePath',
+                           'type' => 'WorkDocs_ResourcePath'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::WorkDocs::GetDocumentPathResponse
 =head1 ATTRIBUTES
 
 
-=head2 Path => L<Paws::WorkDocs::ResourcePath>
+=head2 Path => WorkDocs_ResourcePath
 
 The path information.
 

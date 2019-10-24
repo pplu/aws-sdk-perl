@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Action;
-  use Moose;
-  has ActionType => (is => 'ro', isa => 'Str', request_name => 'actionType', traits => ['NameInRequest']);
-  has AwsApiCallAction => (is => 'ro', isa => 'Paws::GuardDuty::AwsApiCallAction', request_name => 'awsApiCallAction', traits => ['NameInRequest']);
-  has DnsRequestAction => (is => 'ro', isa => 'Paws::GuardDuty::DnsRequestAction', request_name => 'dnsRequestAction', traits => ['NameInRequest']);
-  has NetworkConnectionAction => (is => 'ro', isa => 'Paws::GuardDuty::NetworkConnectionAction', request_name => 'networkConnectionAction', traits => ['NameInRequest']);
-  has PortProbeAction => (is => 'ro', isa => 'Paws::GuardDuty::PortProbeAction', request_name => 'portProbeAction', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_DnsRequestAction GuardDuty_PortProbeAction GuardDuty_AwsApiCallAction GuardDuty_NetworkConnectionAction/;
+  has ActionType => (is => 'ro', isa => Str);
+  has AwsApiCallAction => (is => 'ro', isa => GuardDuty_AwsApiCallAction);
+  has DnsRequestAction => (is => 'ro', isa => GuardDuty_DnsRequestAction);
+  has NetworkConnectionAction => (is => 'ro', isa => GuardDuty_NetworkConnectionAction);
+  has PortProbeAction => (is => 'ro', isa => GuardDuty_PortProbeAction);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsRequestAction' => {
+                                       'class' => 'Paws::GuardDuty::DnsRequestAction',
+                                       'type' => 'GuardDuty_DnsRequestAction'
+                                     },
+               'ActionType' => {
+                                 'type' => 'Str'
+                               },
+               'PortProbeAction' => {
+                                      'class' => 'Paws::GuardDuty::PortProbeAction',
+                                      'type' => 'GuardDuty_PortProbeAction'
+                                    },
+               'NetworkConnectionAction' => {
+                                              'class' => 'Paws::GuardDuty::NetworkConnectionAction',
+                                              'type' => 'GuardDuty_NetworkConnectionAction'
+                                            },
+               'AwsApiCallAction' => {
+                                       'class' => 'Paws::GuardDuty::AwsApiCallAction',
+                                       'type' => 'GuardDuty_AwsApiCallAction'
+                                     }
+             },
+  'NameInRequest' => {
+                       'DnsRequestAction' => 'dnsRequestAction',
+                       'ActionType' => 'actionType',
+                       'PortProbeAction' => 'portProbeAction',
+                       'NetworkConnectionAction' => 'networkConnectionAction',
+                       'AwsApiCallAction' => 'awsApiCallAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,23 +85,23 @@ This class has no description
   GuardDuty Finding activity type.
 
 
-=head2 AwsApiCallAction => L<Paws::GuardDuty::AwsApiCallAction>
+=head2 AwsApiCallAction => GuardDuty_AwsApiCallAction
 
   Information about the AWS_API_CALL action described in this finding.
 
 
-=head2 DnsRequestAction => L<Paws::GuardDuty::DnsRequestAction>
+=head2 DnsRequestAction => GuardDuty_DnsRequestAction
 
   Information about the DNS_REQUEST action described in this finding.
 
 
-=head2 NetworkConnectionAction => L<Paws::GuardDuty::NetworkConnectionAction>
+=head2 NetworkConnectionAction => GuardDuty_NetworkConnectionAction
 
   Information about the NETWORK_CONNECTION action described in this
 finding.
 
 
-=head2 PortProbeAction => L<Paws::GuardDuty::PortProbeAction>
+=head2 PortProbeAction => GuardDuty_PortProbeAction
 
   Information about the PORT_PROBE action described in this finding.
 

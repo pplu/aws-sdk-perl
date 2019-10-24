@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::DS::Trust;
-  use Moose;
-  has CreatedDateTime => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str');
-  has RemoteDomainName => (is => 'ro', isa => 'Str');
-  has SelectiveAuth => (is => 'ro', isa => 'Str');
-  has StateLastUpdatedDateTime => (is => 'ro', isa => 'Str');
-  has TrustDirection => (is => 'ro', isa => 'Str');
-  has TrustId => (is => 'ro', isa => 'Str');
-  has TrustState => (is => 'ro', isa => 'Str');
-  has TrustStateReason => (is => 'ro', isa => 'Str');
-  has TrustType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has CreatedDateTime => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has RemoteDomainName => (is => 'ro', isa => Str);
+  has SelectiveAuth => (is => 'ro', isa => Str);
+  has StateLastUpdatedDateTime => (is => 'ro', isa => Str);
+  has TrustDirection => (is => 'ro', isa => Str);
+  has TrustId => (is => 'ro', isa => Str);
+  has TrustState => (is => 'ro', isa => Str);
+  has TrustStateReason => (is => 'ro', isa => Str);
+  has TrustType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateLastUpdatedDateTime' => {
+                                               'type' => 'Str'
+                                             },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedDateTime' => {
+                                      'type' => 'Str'
+                                    },
+               'TrustId' => {
+                              'type' => 'Str'
+                            },
+               'TrustStateReason' => {
+                                       'type' => 'Str'
+                                     },
+               'TrustState' => {
+                                 'type' => 'Str'
+                               },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'TrustType' => {
+                                'type' => 'Str'
+                              },
+               'RemoteDomainName' => {
+                                       'type' => 'Str'
+                                     },
+               'SelectiveAuth' => {
+                                    'type' => 'Str'
+                                  },
+               'TrustDirection' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

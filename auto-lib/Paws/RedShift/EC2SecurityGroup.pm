@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::RedShift::EC2SecurityGroup;
-  use Moose;
-  has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has EC2SecurityGroupName => (is => 'ro', isa => Str);
+  has EC2SecurityGroupOwnerId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'EC2SecurityGroupOwnerId' => {
+                                              'type' => 'Str'
+                                            },
+               'EC2SecurityGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +85,7 @@ C<EC2SecurityGroupName> field.
   The status of the EC2 security group.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the EC2 security group.
 

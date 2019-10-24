@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::CreateComputer;
-  use Moose;
-  has ComputerAttributes => (is => 'ro', isa => 'ArrayRef[Paws::DS::Attribute]');
-  has ComputerName => (is => 'ro', isa => 'Str', required => 1);
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_Attribute/;
+  has ComputerAttributes => (is => 'ro', isa => ArrayRef[DS_Attribute], predicate => 1);
+  has ComputerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => Str, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateComputer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateComputerResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateComputer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::CreateComputerResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputerName' => {
+                                   'type' => 'Str'
+                                 },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'ComputerAttributes' => {
+                                         'class' => 'Paws::DS::Attribute',
+                                         'type' => 'ArrayRef[DS_Attribute]'
+                                       },
+               'OrganizationalUnitDistinguishedName' => {
+                                                          'type' => 'Str'
+                                                        }
+             },
+  'IsRequired' => {
+                    'ComputerName' => 1,
+                    'Password' => 1,
+                    'DirectoryId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ds/
 =head1 ATTRIBUTES
 
 
-=head2 ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]
+=head2 ComputerAttributes => ArrayRef[DS_Attribute]
 
 An array of Attribute objects that contain any LDAP attributes to apply
 to the computer account.

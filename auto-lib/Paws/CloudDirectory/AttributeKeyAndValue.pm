@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::AttributeKeyAndValue;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Paws::CloudDirectory::AttributeKey', required => 1);
-  has Value => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKey CloudDirectory_TypedAttributeValue/;
+  has Key => (is => 'ro', isa => CloudDirectory_AttributeKey, required => 1);
+  has Value => (is => 'ro', isa => CloudDirectory_TypedAttributeValue, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'class' => 'Paws::CloudDirectory::TypedAttributeValue',
+                            'type' => 'CloudDirectory_TypedAttributeValue'
+                          },
+               'Key' => {
+                          'class' => 'Paws::CloudDirectory::AttributeKey',
+                          'type' => 'CloudDirectory_AttributeKey'
+                        }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Key' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The combination of an attribute key and an attribute value.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => L<Paws::CloudDirectory::AttributeKey>
+=head2 B<REQUIRED> Key => CloudDirectory_AttributeKey
 
   The key of the attribute.
 
 
-=head2 B<REQUIRED> Value => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 B<REQUIRED> Value => CloudDirectory_TypedAttributeValue
 
   The value of the attribute.
 

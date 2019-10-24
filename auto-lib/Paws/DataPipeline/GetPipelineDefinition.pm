@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::GetPipelineDefinition;
-  use Moose;
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPipelineDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::GetPipelineDefinitionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetPipelineDefinition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::GetPipelineDefinitionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'PipelineId' => 'pipelineId'
+                     },
+  'IsRequired' => {
+                    'PipelineId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,17 +1,81 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Hdr10Metadata;
-  use Moose;
-  has BluePrimaryX => (is => 'ro', isa => 'Int', request_name => 'bluePrimaryX', traits => ['NameInRequest']);
-  has BluePrimaryY => (is => 'ro', isa => 'Int', request_name => 'bluePrimaryY', traits => ['NameInRequest']);
-  has GreenPrimaryX => (is => 'ro', isa => 'Int', request_name => 'greenPrimaryX', traits => ['NameInRequest']);
-  has GreenPrimaryY => (is => 'ro', isa => 'Int', request_name => 'greenPrimaryY', traits => ['NameInRequest']);
-  has MaxContentLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxContentLightLevel', traits => ['NameInRequest']);
-  has MaxFrameAverageLightLevel => (is => 'ro', isa => 'Int', request_name => 'maxFrameAverageLightLevel', traits => ['NameInRequest']);
-  has MaxLuminance => (is => 'ro', isa => 'Int', request_name => 'maxLuminance', traits => ['NameInRequest']);
-  has MinLuminance => (is => 'ro', isa => 'Int', request_name => 'minLuminance', traits => ['NameInRequest']);
-  has RedPrimaryX => (is => 'ro', isa => 'Int', request_name => 'redPrimaryX', traits => ['NameInRequest']);
-  has RedPrimaryY => (is => 'ro', isa => 'Int', request_name => 'redPrimaryY', traits => ['NameInRequest']);
-  has WhitePointX => (is => 'ro', isa => 'Int', request_name => 'whitePointX', traits => ['NameInRequest']);
-  has WhitePointY => (is => 'ro', isa => 'Int', request_name => 'whitePointY', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has BluePrimaryX => (is => 'ro', isa => Int);
+  has BluePrimaryY => (is => 'ro', isa => Int);
+  has GreenPrimaryX => (is => 'ro', isa => Int);
+  has GreenPrimaryY => (is => 'ro', isa => Int);
+  has MaxContentLightLevel => (is => 'ro', isa => Int);
+  has MaxFrameAverageLightLevel => (is => 'ro', isa => Int);
+  has MaxLuminance => (is => 'ro', isa => Int);
+  has MinLuminance => (is => 'ro', isa => Int);
+  has RedPrimaryX => (is => 'ro', isa => Int);
+  has RedPrimaryY => (is => 'ro', isa => Int);
+  has WhitePointX => (is => 'ro', isa => Int);
+  has WhitePointY => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxLuminance' => {
+                                   'type' => 'Int'
+                                 },
+               'RedPrimaryY' => {
+                                  'type' => 'Int'
+                                },
+               'WhitePointY' => {
+                                  'type' => 'Int'
+                                },
+               'GreenPrimaryY' => {
+                                    'type' => 'Int'
+                                  },
+               'MaxFrameAverageLightLevel' => {
+                                                'type' => 'Int'
+                                              },
+               'MaxContentLightLevel' => {
+                                           'type' => 'Int'
+                                         },
+               'BluePrimaryY' => {
+                                   'type' => 'Int'
+                                 },
+               'GreenPrimaryX' => {
+                                    'type' => 'Int'
+                                  },
+               'BluePrimaryX' => {
+                                   'type' => 'Int'
+                                 },
+               'WhitePointX' => {
+                                  'type' => 'Int'
+                                },
+               'RedPrimaryX' => {
+                                  'type' => 'Int'
+                                },
+               'MinLuminance' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'MaxLuminance' => 'maxLuminance',
+                       'RedPrimaryY' => 'redPrimaryY',
+                       'WhitePointY' => 'whitePointY',
+                       'GreenPrimaryY' => 'greenPrimaryY',
+                       'MaxFrameAverageLightLevel' => 'maxFrameAverageLightLevel',
+                       'MaxContentLightLevel' => 'maxContentLightLevel',
+                       'BluePrimaryY' => 'bluePrimaryY',
+                       'GreenPrimaryX' => 'greenPrimaryX',
+                       'BluePrimaryX' => 'bluePrimaryX',
+                       'WhitePointX' => 'whitePointX',
+                       'RedPrimaryX' => 'redPrimaryX',
+                       'MinLuminance' => 'minLuminance'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

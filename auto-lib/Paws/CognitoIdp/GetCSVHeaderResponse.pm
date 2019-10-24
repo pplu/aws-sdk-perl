@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::GetCSVHeaderResponse;
-  use Moose;
-  has CSVHeader => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdp::Types qw//;
+  has CSVHeader => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has UserPoolId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'CSVHeader' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::GetIdentityMailFromDomainAttributesResponse;
   use Moo;
@@ -16,7 +17,10 @@ package Paws::SES::GetIdentityMailFromDomainAttributesResponse;
                                                'class' => 'Paws::SES::MailFromDomainAttributes',
                                                'type' => 'SES_MailFromDomainAttributes'
                                              }
-             }
+             },
+  'IsRequired' => {
+                    'MailFromDomainAttributes' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,15 +1,37 @@
 
 package Paws::Chime::CreateVoiceConnector;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RequireEncryption => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Chime::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequireEncryption => (is => 'ro', isa => Bool, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVoiceConnector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::CreateVoiceConnectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateVoiceConnector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::CreateVoiceConnectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequireEncryption' => {
+                                        'type' => 'Bool'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'RequireEncryption' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

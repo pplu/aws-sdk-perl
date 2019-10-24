@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::IoT::AuthorizerDescription;
-  use Moose;
-  has AuthorizerArn => (is => 'ro', isa => 'Str', request_name => 'authorizerArn', traits => ['NameInRequest']);
-  has AuthorizerFunctionArn => (is => 'ro', isa => 'Str', request_name => 'authorizerFunctionArn', traits => ['NameInRequest']);
-  has AuthorizerName => (is => 'ro', isa => 'Str', request_name => 'authorizerName', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TokenKeyName => (is => 'ro', isa => 'Str', request_name => 'tokenKeyName', traits => ['NameInRequest']);
-  has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', request_name => 'tokenSigningPublicKeys', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_PublicKeyMap/;
+  has AuthorizerArn => (is => 'ro', isa => Str);
+  has AuthorizerFunctionArn => (is => 'ro', isa => Str);
+  has AuthorizerName => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TokenKeyName => (is => 'ro', isa => Str);
+  has TokenSigningPublicKeys => (is => 'ro', isa => IoT_PublicKeyMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TokenSigningPublicKeys' => {
+                                             'class' => 'Paws::IoT::PublicKeyMap',
+                                             'type' => 'IoT_PublicKeyMap'
+                                           },
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TokenKeyName' => {
+                                   'type' => 'Str'
+                                 },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthorizerArn' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthorizerFunctionArn' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'NameInRequest' => {
+                       'TokenSigningPublicKeys' => 'tokenSigningPublicKeys',
+                       'AuthorizerName' => 'authorizerName',
+                       'Status' => 'status',
+                       'TokenKeyName' => 'tokenKeyName',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CreationDate' => 'creationDate',
+                       'AuthorizerArn' => 'authorizerArn',
+                       'AuthorizerFunctionArn' => 'authorizerFunctionArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +127,7 @@ The authorizer description.
   The key used to extract the token from the HTTP headers.
 
 
-=head2 TokenSigningPublicKeys => L<Paws::IoT::PublicKeyMap>
+=head2 TokenSigningPublicKeys => IoT_PublicKeyMap
 
   The public keys used to validate the token signature returned by your
 custom authentication service.

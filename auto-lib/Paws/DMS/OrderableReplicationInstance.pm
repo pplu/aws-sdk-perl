@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::DMS::OrderableReplicationInstance;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultAllocatedStorage => (is => 'ro', isa => 'Int');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has IncludedAllocatedStorage => (is => 'ro', isa => 'Int');
-  has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
-  has MinAllocatedStorage => (is => 'ro', isa => 'Int');
-  has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::DMS::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DefaultAllocatedStorage => (is => 'ro', isa => Int);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has IncludedAllocatedStorage => (is => 'ro', isa => Int);
+  has MaxAllocatedStorage => (is => 'ro', isa => Int);
+  has MinAllocatedStorage => (is => 'ro', isa => Int);
+  has ReplicationInstanceClass => (is => 'ro', isa => Str);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxAllocatedStorage' => {
+                                          'type' => 'Int'
+                                        },
+               'ReplicationInstanceClass' => {
+                                               'type' => 'Str'
+                                             },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'DefaultAllocatedStorage' => {
+                                              'type' => 'Int'
+                                            },
+               'MinAllocatedStorage' => {
+                                          'type' => 'Int'
+                                        },
+               'IncludedAllocatedStorage' => {
+                                               'type' => 'Int'
+                                             },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

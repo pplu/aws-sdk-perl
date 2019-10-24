@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerInputDataConfig;
-  use Moose;
-  has Annotations => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerAnnotations');
-  has Documents => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerDocuments', required => 1);
-  has EntityList => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerEntityList');
-  has EntityTypes => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntityTypesListItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_EntityRecognizerEntityList Comprehend_EntityRecognizerDocuments Comprehend_EntityTypesListItem Comprehend_EntityRecognizerAnnotations/;
+  has Annotations => (is => 'ro', isa => Comprehend_EntityRecognizerAnnotations);
+  has Documents => (is => 'ro', isa => Comprehend_EntityRecognizerDocuments, required => 1);
+  has EntityList => (is => 'ro', isa => Comprehend_EntityRecognizerEntityList);
+  has EntityTypes => (is => 'ro', isa => ArrayRef[Comprehend_EntityTypesListItem], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Documents' => {
+                                'class' => 'Paws::Comprehend::EntityRecognizerDocuments',
+                                'type' => 'Comprehend_EntityRecognizerDocuments'
+                              },
+               'EntityList' => {
+                                 'class' => 'Paws::Comprehend::EntityRecognizerEntityList',
+                                 'type' => 'Comprehend_EntityRecognizerEntityList'
+                               },
+               'Annotations' => {
+                                  'class' => 'Paws::Comprehend::EntityRecognizerAnnotations',
+                                  'type' => 'Comprehend_EntityRecognizerAnnotations'
+                                },
+               'EntityTypes' => {
+                                  'class' => 'Paws::Comprehend::EntityTypesListItem',
+                                  'type' => 'ArrayRef[Comprehend_EntityTypesListItem]'
+                                }
+             },
+  'IsRequired' => {
+                    'Documents' => 1,
+                    'EntityTypes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +73,22 @@ Specifies the format and location of the input data.
 =head1 ATTRIBUTES
 
 
-=head2 Annotations => L<Paws::Comprehend::EntityRecognizerAnnotations>
+=head2 Annotations => Comprehend_EntityRecognizerAnnotations
 
   S3 location of the annotations file for an entity recognizer.
 
 
-=head2 B<REQUIRED> Documents => L<Paws::Comprehend::EntityRecognizerDocuments>
+=head2 B<REQUIRED> Documents => Comprehend_EntityRecognizerDocuments
 
   S3 location of the documents folder for an entity recognizer
 
 
-=head2 EntityList => L<Paws::Comprehend::EntityRecognizerEntityList>
+=head2 EntityList => Comprehend_EntityRecognizerEntityList
 
   S3 location of the entity list for an entity recognizer.
 
 
-=head2 B<REQUIRED> EntityTypes => ArrayRef[L<Paws::Comprehend::EntityTypesListItem>]
+=head2 B<REQUIRED> EntityTypes => ArrayRef[Comprehend_EntityTypesListItem]
 
   The entity types in the input data for an entity recognizer.
 

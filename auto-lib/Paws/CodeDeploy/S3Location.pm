@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::S3Location;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has BundleType => (is => 'ro', isa => 'Str', request_name => 'bundleType', traits => ['NameInRequest']);
-  has ETag => (is => 'ro', isa => 'Str', request_name => 'eTag', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has BundleType => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'BundleType' => {
+                                 'type' => 'Str'
+                               },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'BundleType' => 'bundleType',
+                       'ETag' => 'eTag',
+                       'Bucket' => 'bucket',
+                       'Key' => 'key'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

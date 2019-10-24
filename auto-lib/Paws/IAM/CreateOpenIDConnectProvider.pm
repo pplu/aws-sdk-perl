@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateOpenIDConnectProvider;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::CreateOpenIDConnectProvider;
                'Url' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'ThumbprintList' => 1,
+                    'Url' => 1
+                  }
 }
 ;
     return $Params_map;

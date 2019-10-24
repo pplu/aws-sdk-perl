@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentTargetFilter;
-  use Moose;
-  has AssessmentTargetNamePattern => (is => 'ro', isa => 'Str', request_name => 'assessmentTargetNamePattern', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentTargetNamePattern => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssessmentTargetNamePattern' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'NameInRequest' => {
+                       'AssessmentTargetNamePattern' => 'assessmentTargetNamePattern'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

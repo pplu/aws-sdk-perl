@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::GroundStation::MissionProfileListItem;
-  use Moose;
-  has MissionProfileArn => (is => 'ro', isa => 'Str', request_name => 'missionProfileArn', traits => ['NameInRequest']);
-  has MissionProfileId => (is => 'ro', isa => 'Str', request_name => 'missionProfileId', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has MissionProfileArn => (is => 'ro', isa => Str);
+  has MissionProfileId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissionProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'MissionProfileId' => {
+                                       'type' => 'Str'
+                                     },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'MissionProfileArn' => 'missionProfileArn',
+                       'MissionProfileId' => 'missionProfileId',
+                       'Region' => 'region',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

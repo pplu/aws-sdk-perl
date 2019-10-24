@@ -1,35 +1,129 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::RunJobFlow;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has AmiVersion => (is => 'ro', isa => 'Str');
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
-  has AutoScalingRole => (is => 'ro', isa => 'Str');
-  has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionConfig]');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has CustomAmiId => (is => 'ro', isa => 'Str');
-  has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
-  has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesConfig', required => 1);
-  has JobFlowRole => (is => 'ro', isa => 'Str');
-  has KerberosAttributes => (is => 'ro', isa => 'Paws::EMR::KerberosAttributes');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NewSupportedProducts => (is => 'ro', isa => 'ArrayRef[Paws::EMR::SupportedProductConfig]');
-  has ReleaseLabel => (is => 'ro', isa => 'Str');
-  has RepoUpgradeOnBoot => (is => 'ro', isa => 'Str');
-  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]');
-  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Undef Bool/;
+  use Paws::EMR::Types qw/EMR_JobFlowInstancesConfig EMR_SupportedProductConfig EMR_Configuration EMR_KerberosAttributes EMR_Application EMR_BootstrapActionConfig EMR_StepConfig EMR_Tag/;
+  has AdditionalInfo => (is => 'ro', isa => Str, predicate => 1);
+  has AmiVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Applications => (is => 'ro', isa => ArrayRef[EMR_Application], predicate => 1);
+  has AutoScalingRole => (is => 'ro', isa => Str, predicate => 1);
+  has BootstrapActions => (is => 'ro', isa => ArrayRef[EMR_BootstrapActionConfig], predicate => 1);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration], predicate => 1);
+  has CustomAmiId => (is => 'ro', isa => Str, predicate => 1);
+  has EbsRootVolumeSize => (is => 'ro', isa => Int, predicate => 1);
+  has Instances => (is => 'ro', isa => EMR_JobFlowInstancesConfig, required => 1, predicate => 1);
+  has JobFlowRole => (is => 'ro', isa => Str, predicate => 1);
+  has KerberosAttributes => (is => 'ro', isa => EMR_KerberosAttributes, predicate => 1);
+  has LogUri => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewSupportedProducts => (is => 'ro', isa => ArrayRef[EMR_SupportedProductConfig], predicate => 1);
+  has ReleaseLabel => (is => 'ro', isa => Str, predicate => 1);
+  has RepoUpgradeOnBoot => (is => 'ro', isa => Str, predicate => 1);
+  has ScaleDownBehavior => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceRole => (is => 'ro', isa => Str, predicate => 1);
+  has Steps => (is => 'ro', isa => ArrayRef[EMR_StepConfig], predicate => 1);
+  has SupportedProducts => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[EMR_Tag], predicate => 1);
+  has VisibleToAllUsers => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RunJobFlow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::RunJobFlowOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RunJobFlow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::RunJobFlowOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReleaseLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'Applications' => {
+                                   'class' => 'Paws::EMR::Application',
+                                   'type' => 'ArrayRef[EMR_Application]'
+                                 },
+               'RepoUpgradeOnBoot' => {
+                                        'type' => 'Str'
+                                      },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'NewSupportedProducts' => {
+                                           'class' => 'Paws::EMR::SupportedProductConfig',
+                                           'type' => 'ArrayRef[EMR_SupportedProductConfig]'
+                                         },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomAmiId' => {
+                                  'type' => 'Str'
+                                },
+               'EbsRootVolumeSize' => {
+                                        'type' => 'Int'
+                                      },
+               'Instances' => {
+                                'class' => 'Paws::EMR::JobFlowInstancesConfig',
+                                'type' => 'EMR_JobFlowInstancesConfig'
+                              },
+               'SupportedProducts' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Steps' => {
+                            'class' => 'Paws::EMR::StepConfig',
+                            'type' => 'ArrayRef[EMR_StepConfig]'
+                          },
+               'AmiVersion' => {
+                                 'type' => 'Str'
+                               },
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   },
+               'ScaleDownBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'JobFlowRole' => {
+                                  'type' => 'Str'
+                                },
+               'KerberosAttributes' => {
+                                         'class' => 'Paws::EMR::KerberosAttributes',
+                                         'type' => 'EMR_KerberosAttributes'
+                                       },
+               'VisibleToAllUsers' => {
+                                        'type' => 'Bool'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::EMR::Tag',
+                           'type' => 'ArrayRef[EMR_Tag]'
+                         },
+               'BootstrapActions' => {
+                                       'class' => 'Paws::EMR::BootstrapActionConfig',
+                                       'type' => 'ArrayRef[EMR_BootstrapActionConfig]'
+                                     },
+               'AutoScalingRole' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Instances' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +159,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EmrManagedMasterSecurityGroup => 'MyXmlStringMaxLen256',    # max: 256
         EmrManagedSlaveSecurityGroup  => 'MyXmlStringMaxLen256',    # max: 256
         HadoopVersion                 => 'MyXmlStringMaxLen256',    # max: 256
-        InstanceCount                 => 1,                         # OPTIONAL
+        InstanceCount                 => 1,
         InstanceFleets                => [
           {
             InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
@@ -73,7 +167,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 InstanceType => 'MyInstanceType',   # min: 1, max: 256; OPTIONAL
                 BidPrice => 'MyXmlStringMaxLen256', # max: 256
-                BidPriceAsPercentageOfOnDemandPrice => 1,
+                BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
                 Configurations                      => [
                   {
                     Classification => 'MyString',
@@ -86,11 +180,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EbsBlockDeviceConfigs => [
                     {
                       VolumeSpecification => {
-                        SizeInGB   => 1,                              # OPTIONAL
+                        SizeInGB   => 1,
                         VolumeType => 'MyString',
-                        Iops       => 1,                              # OPTIONAL
+                        Iops       => 1,
                       },
-                      VolumesPerInstance => 1,                        # OPTIONAL
+                      VolumesPerInstance => 1,
                     },
                     ...
                   ],                                                  # OPTIONAL
@@ -117,23 +211,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                                                       # OPTIONAL
         InstanceGroups => [
           {
-            InstanceCount     => 1,                 # OPTIONAL
+            InstanceCount     => 1,
             InstanceRole      => 'MASTER',          # values: MASTER, CORE, TASK
             InstanceType      => 'MyInstanceType',  # min: 1, max: 256; OPTIONAL
             AutoScalingPolicy => {
               Constraints => {
-                MaxCapacity => 1,                   # OPTIONAL
-                MinCapacity => 1,                   # OPTIONAL
+                MaxCapacity => 1,
+                MinCapacity => 1,
 
               },
               Rules => [
                 {
                   Action => {
                     SimpleScalingPolicyConfiguration => {
-                      ScalingAdjustment => 1,                     # OPTIONAL
+                      ScalingAdjustment => 1,
                       AdjustmentType    => 'CHANGE_IN_CAPACITY'
                       , # values: CHANGE_IN_CAPACITY, PERCENT_CHANGE_IN_CAPACITY, EXACT_CAPACITY; OPTIONAL
-                      CoolDown => 1,    # OPTIONAL
+                      CoolDown => 1,
                     },
                     Market => 'ON_DEMAND',   # values: ON_DEMAND, SPOT; OPTIONAL
                   },
@@ -143,8 +237,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                       , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
                       MetricName => 'MyString',
-                      Period     => 1,            # OPTIONAL
-                      Threshold  => 1,
+                      Period     => 1,
+                      Threshold  => 1,            # OPTIONAL
                       Dimensions => [
                         {
                           Key   => 'MyString',
@@ -152,7 +246,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },
                         ...
                       ],                          # OPTIONAL
-                      EvaluationPeriods => 1,               # OPTIONAL
+                      EvaluationPeriods => 1,
                       Namespace         => 'MyString',
                       Statistic         => 'SAMPLE_COUNT'
                       , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
@@ -180,11 +274,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
-                    SizeInGB   => 1,                                # OPTIONAL
+                    SizeInGB   => 1,
                     VolumeType => 'MyString',
-                    Iops       => 1,                                # OPTIONAL
+                    Iops       => 1,
                   },
-                  VolumesPerInstance => 1,                          # OPTIONAL
+                  VolumesPerInstance => 1,
                 },
                 ...
               ],                                                    # OPTIONAL
@@ -326,7 +420,7 @@ AMI, use C<CustomAmiID>.
 
 
 
-=head2 Applications => ArrayRef[L<Paws::EMR::Application>]
+=head2 Applications => ArrayRef[EMR_Application]
 
 Applies to Amazon EMR releases 4.0 and later. A case-insensitive list
 of applications for Amazon EMR to install and configure when launching
@@ -345,14 +439,14 @@ instances in an instance group.
 
 
 
-=head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]
+=head2 BootstrapActions => ArrayRef[EMR_BootstrapActionConfig]
 
 A list of bootstrap actions to run before Hadoop starts on the cluster
 nodes.
 
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
 For Amazon EMR releases 4.0 and later. The list of configurations
 supplied for the EMR cluster you are creating.
@@ -387,7 +481,7 @@ later.
 
 
 
-=head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesConfig>
+=head2 B<REQUIRED> Instances => EMR_JobFlowInstancesConfig
 
 A specification of the number and type of Amazon EC2 instances.
 
@@ -402,7 +496,7 @@ must have already created it using the CLI or console.
 
 
 
-=head2 KerberosAttributes => L<Paws::EMR::KerberosAttributes>
+=head2 KerberosAttributes => EMR_KerberosAttributes
 
 Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
@@ -425,7 +519,7 @@ The name of the job flow.
 
 
 
-=head2 NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]
+=head2 NewSupportedProducts => ArrayRef[EMR_SupportedProductConfig]
 
 For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 later, use Applications.
@@ -537,7 +631,7 @@ AWS resources on your behalf.
 
 
 
-=head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
+=head2 Steps => ArrayRef[EMR_StepConfig]
 
 A list of steps to run.
 
@@ -568,7 +662,7 @@ Currently supported values are:
 
 
 
-=head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
+=head2 Tags => ArrayRef[EMR_Tag]
 
 A list of tags to associate with a cluster and propagate to Amazon EC2
 instances.

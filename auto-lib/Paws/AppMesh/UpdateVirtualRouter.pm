@@ -1,17 +1,55 @@
 
 package Paws::AppMesh::UpdateVirtualRouter;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualRouterSpec/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_VirtualRouterSpec, required => 1, predicate => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVirtualRouter');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UpdateVirtualRouterOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVirtualRouter');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouters/{virtualRouterName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::UpdateVirtualRouterOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::VirtualRouterSpec',
+                           'type' => 'AppMesh_VirtualRouterSpec'
+                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'ParamInURI' => {
+                    'MeshName' => 'meshName',
+                    'VirtualRouterName' => 'virtualRouterName'
+                  },
+  'NameInRequest' => {
+                       'Spec' => 'spec',
+                       'ClientToken' => 'clientToken'
+                     },
+  'IsRequired' => {
+                    'Spec' => 1,
+                    'MeshName' => 1,
+                    'VirtualRouterName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +113,7 @@ The name of the service mesh that the virtual router resides in.
 
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualRouterSpec>
+=head2 B<REQUIRED> Spec => AppMesh_VirtualRouterSpec
 
 The new virtual router specification to apply. This overwrites the
 existing data.

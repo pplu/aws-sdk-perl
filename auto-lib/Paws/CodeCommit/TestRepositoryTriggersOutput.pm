@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::TestRepositoryTriggersOutput;
-  use Moose;
-  has FailedExecutions => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryTriggerExecutionFailure]', traits => ['NameInRequest'], request_name => 'failedExecutions' );
-  has SuccessfulExecutions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'successfulExecutions' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_RepositoryTriggerExecutionFailure/;
+  has FailedExecutions => (is => 'ro', isa => ArrayRef[CodeCommit_RepositoryTriggerExecutionFailure]);
+  has SuccessfulExecutions => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SuccessfulExecutions' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FailedExecutions' => {
+                                       'class' => 'Paws::CodeCommit::RepositoryTriggerExecutionFailure',
+                                       'type' => 'ArrayRef[CodeCommit_RepositoryTriggerExecutionFailure]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SuccessfulExecutions' => 'successfulExecutions',
+                       'FailedExecutions' => 'failedExecutions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CodeCommit::TestRepositoryTriggersOutput
 =head1 ATTRIBUTES
 
 
-=head2 FailedExecutions => ArrayRef[L<Paws::CodeCommit::RepositoryTriggerExecutionFailure>]
+=head2 FailedExecutions => ArrayRef[CodeCommit_RepositoryTriggerExecutionFailure]
 
 The list of triggers that were not able to be tested. This list
 provides the names of the triggers that could not be tested, separated

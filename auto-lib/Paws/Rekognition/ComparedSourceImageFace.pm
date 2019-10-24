@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::ComparedSourceImageFace;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Confidence => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Rekognition::Types qw/Rekognition_BoundingBox/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Confidence => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +62,7 @@ for this comparison.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box of the face.
 

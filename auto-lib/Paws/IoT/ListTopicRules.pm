@@ -1,17 +1,47 @@
 
 package Paws::IoT::ListTopicRules;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has RuleDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ruleDisabled');
-  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'topic');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RuleDisabled => (is => 'ro', isa => Bool, predicate => 1);
+  has Topic => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTopicRules');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/rules');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListTopicRulesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTopicRules');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/rules');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListTopicRulesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Topic' => {
+                            'type' => 'Str'
+                          },
+               'RuleDisabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'Topic' => 'topic',
+                      'RuleDisabled' => 'ruleDisabled',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

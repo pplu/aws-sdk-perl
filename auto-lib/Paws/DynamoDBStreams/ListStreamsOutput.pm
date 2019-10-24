@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDBStreams::ListStreamsOutput;
-  use Moose;
-  has LastEvaluatedStreamArn => (is => 'ro', isa => 'Str');
-  has Streams => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Stream]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_Stream/;
+  has LastEvaluatedStreamArn => (is => 'ro', isa => Str);
+  has Streams => (is => 'ro', isa => ArrayRef[DynamoDBStreams_Stream]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastEvaluatedStreamArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Streams' => {
+                              'class' => 'Paws::DynamoDBStreams::Stream',
+                              'type' => 'ArrayRef[DynamoDBStreams_Stream]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -30,7 +52,7 @@ you have reached the end of the result set is when
 C<LastEvaluatedStreamArn> is empty.
 
 
-=head2 Streams => ArrayRef[L<Paws::DynamoDBStreams::Stream>]
+=head2 Streams => ArrayRef[DynamoDBStreams_Stream]
 
 A list of stream descriptors associated with the current account and
 endpoint.

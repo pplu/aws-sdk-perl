@@ -4,7 +4,7 @@ package Paws::EC2::Region;
   has Endpoint => (is => 'ro', isa => Str);
   has RegionName => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Endpoint' => {
@@ -20,8 +20,8 @@ package Paws::EC2::Region;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

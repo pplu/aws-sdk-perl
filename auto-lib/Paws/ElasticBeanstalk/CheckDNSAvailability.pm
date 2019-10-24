@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::CheckDNSAvailability;
-  use Moose;
-  has CNAMEPrefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has CNAMEPrefix => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailability');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CheckDNSAvailabilityResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CheckDNSAvailability');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CheckDNSAvailabilityResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CNAMEPrefix' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'CNAMEPrefix' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

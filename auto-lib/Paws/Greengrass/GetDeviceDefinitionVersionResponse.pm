@@ -1,14 +1,47 @@
 
 package Paws::Greengrass::GetDeviceDefinitionVersionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Definition => (is => 'ro', isa => 'Paws::Greengrass::DeviceDefinitionVersion');
-  has Id => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_DeviceDefinitionVersion/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => Greengrass_DeviceDefinitionVersion);
+  has Id => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Definition' => {
+                                 'class' => 'Paws::Greengrass::DeviceDefinitionVersion',
+                                 'type' => 'Greengrass_DeviceDefinitionVersion'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +64,7 @@ The time, in milliseconds since the epoch, when the device definition
 version was created.
 
 
-=head2 Definition => L<Paws::Greengrass::DeviceDefinitionVersion>
+=head2 Definition => Greengrass_DeviceDefinitionVersion
 
 Information about the device definition version.
 

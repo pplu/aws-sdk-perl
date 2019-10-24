@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::AddUserToGroup;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::AddUserToGroup;
                'GroupName' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'GroupName' => 1
+                  }
 }
 ;
     return $Params_map;

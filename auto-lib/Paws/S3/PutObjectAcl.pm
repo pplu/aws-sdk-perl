@@ -91,7 +91,11 @@ use MooX::ClassAttribute;
                        'GrantWrite' => 'x-amz-grant-write',
                        'RequestPayer' => 'x-amz-request-payer',
                        'GrantReadACP' => 'x-amz-grant-read-acp'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

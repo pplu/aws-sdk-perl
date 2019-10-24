@@ -1,14 +1,73 @@
+# Generated from default/object.tt
 package Paws::Amplify::Step;
-  use Moose;
-  has ArtifactsUrl => (is => 'ro', isa => 'Str', request_name => 'artifactsUrl', traits => ['NameInRequest']);
-  has Context => (is => 'ro', isa => 'Str', request_name => 'context', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest'], required => 1);
-  has LogUrl => (is => 'ro', isa => 'Str', request_name => 'logUrl', traits => ['NameInRequest']);
-  has Screenshots => (is => 'ro', isa => 'Paws::Amplify::Screenshots', request_name => 'screenshots', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has StepName => (is => 'ro', isa => 'Str', request_name => 'stepName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw/Amplify_Screenshots/;
+  has ArtifactsUrl => (is => 'ro', isa => Str);
+  has Context => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str, required => 1);
+  has LogUrl => (is => 'ro', isa => Str);
+  has Screenshots => (is => 'ro', isa => Amplify_Screenshots);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StatusReason => (is => 'ro', isa => Str);
+  has StepName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LogUrl' => {
+                             'type' => 'Str'
+                           },
+               'StepName' => {
+                               'type' => 'Str'
+                             },
+               'Context' => {
+                              'type' => 'Str'
+                            },
+               'Screenshots' => {
+                                  'class' => 'Paws::Amplify::Screenshots',
+                                  'type' => 'Amplify_Screenshots'
+                                },
+               'ArtifactsUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StatusReason' => 'statusReason',
+                       'Status' => 'status',
+                       'LogUrl' => 'logUrl',
+                       'StepName' => 'stepName',
+                       'Context' => 'context',
+                       'Screenshots' => 'screenshots',
+                       'ArtifactsUrl' => 'artifactsUrl',
+                       'EndTime' => 'endTime',
+                       'StartTime' => 'startTime'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'StepName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +125,7 @@ build.
   URL to the logs for the execution step.
 
 
-=head2 Screenshots => L<Paws::Amplify::Screenshots>
+=head2 Screenshots => Amplify_Screenshots
 
   List of screenshot URLs for the execution step, if relevant.
 

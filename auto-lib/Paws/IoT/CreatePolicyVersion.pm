@@ -1,16 +1,50 @@
 
 package Paws::IoT::CreatePolicyVersion;
-  use Moose;
-  has PolicyDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'policyDocument', required => 1);
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
-  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has PolicyDocument => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SetAsDefault => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePolicyVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyName}/version');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreatePolicyVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePolicyVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies/{policyName}/version');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreatePolicyVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SetAsDefault' => {
+                                   'type' => 'Bool'
+                                 },
+               'PolicyDocument' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'PolicyName' => 'policyName'
+                  },
+  'ParamInQuery' => {
+                      'SetAsDefault' => 'setAsDefault'
+                    },
+  'NameInRequest' => {
+                       'PolicyDocument' => 'policyDocument'
+                     },
+  'IsRequired' => {
+                    'PolicyDocument' => 1,
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

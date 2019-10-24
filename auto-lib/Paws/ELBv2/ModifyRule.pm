@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::ModifyRule;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Action]');
-  has Conditions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::RuleCondition]');
-  has RuleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_RuleCondition ELBv2_Action/;
+  has Actions => (is => 'ro', isa => ArrayRef[ELBv2_Action], predicate => 1);
+  has Conditions => (is => 'ro', isa => ArrayRef[ELBv2_RuleCondition], predicate => 1);
+  has RuleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::ModifyRuleOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::ModifyRuleOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Conditions' => {
+                                 'class' => 'Paws::ELBv2::RuleCondition',
+                                 'type' => 'ArrayRef[ELBv2_RuleCondition]'
+                               },
+               'Actions' => {
+                              'class' => 'Paws::ELBv2::Action',
+                              'type' => 'ArrayRef[ELBv2_Action]'
+                            },
+               'RuleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'RuleArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::ELBv2::Action>]
+=head2 Actions => ArrayRef[ELBv2_Action]
 
 The actions. Each rule must include exactly one of the following types
 of actions: C<forward>, C<fixed-response>, or C<redirect>.
@@ -79,7 +106,7 @@ you drop specified client requests and return a custom HTTP response.
 
 
 
-=head2 Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
+=head2 Conditions => ArrayRef[ELBv2_RuleCondition]
 
 The conditions. Each rule can include zero or one of the following
 conditions: C<http-request-method>, C<host-header>, C<path-pattern>,

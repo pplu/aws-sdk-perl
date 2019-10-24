@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Personalize::UpdateCampaign;
-  use Moose;
-  has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn' , required => 1);
-  has MinProvisionedTPS => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minProvisionedTPS' );
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionVersionArn' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Personalize::Types qw//;
+  has CampaignArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MinProvisionedTPS => (is => 'ro', isa => Int, predicate => 1);
+  has SolutionVersionArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCampaign');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Personalize::UpdateCampaignResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCampaign');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Personalize::UpdateCampaignResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinProvisionedTPS' => {
+                                        'type' => 'Int'
+                                      },
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               'CampaignArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'MinProvisionedTPS' => 'minProvisionedTPS',
+                       'SolutionVersionArn' => 'solutionVersionArn',
+                       'CampaignArn' => 'campaignArn'
+                     },
+  'IsRequired' => {
+                    'CampaignArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,23 +1,102 @@
+# Generated from default/object.tt
 package Paws::AppStream::Fleet;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has ComputeCapacityStatus => (is => 'ro', isa => 'Paws::AppStream::ComputeCapacityStatus', required => 1);
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
-  has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
-  has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
-  has FleetType => (is => 'ro', isa => 'Str');
-  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
-  has ImageArn => (is => 'ro', isa => 'Str');
-  has ImageName => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has MaxUserDurationInSeconds => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef/;
+  use Paws::AppStream::Types qw/AppStream_ComputeCapacityStatus AppStream_VpcConfig AppStream_FleetError AppStream_DomainJoinInfo/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has ComputeCapacityStatus => (is => 'ro', isa => AppStream_ComputeCapacityStatus, required => 1);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisconnectTimeoutInSeconds => (is => 'ro', isa => Int);
+  has DisplayName => (is => 'ro', isa => Str);
+  has DomainJoinInfo => (is => 'ro', isa => AppStream_DomainJoinInfo);
+  has EnableDefaultInternetAccess => (is => 'ro', isa => Bool);
+  has FleetErrors => (is => 'ro', isa => ArrayRef[AppStream_FleetError]);
+  has FleetType => (is => 'ro', isa => Str);
+  has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => Int);
+  has ImageArn => (is => 'ro', isa => Str);
+  has ImageName => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has MaxUserDurationInSeconds => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has VpcConfig => (is => 'ro', isa => AppStream_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'DomainJoinInfo' => {
+                                     'class' => 'Paws::AppStream::DomainJoinInfo',
+                                     'type' => 'AppStream_DomainJoinInfo'
+                                   },
+               'ImageArn' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'FleetErrors' => {
+                                  'class' => 'Paws::AppStream::FleetError',
+                                  'type' => 'ArrayRef[AppStream_FleetError]'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'ComputeCapacityStatus' => {
+                                            'class' => 'Paws::AppStream::ComputeCapacityStatus',
+                                            'type' => 'AppStream_ComputeCapacityStatus'
+                                          },
+               'EnableDefaultInternetAccess' => {
+                                                  'type' => 'Bool'
+                                                },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ImageName' => {
+                                'type' => 'Str'
+                              },
+               'FleetType' => {
+                                'type' => 'Str'
+                              },
+               'IdleDisconnectTimeoutInSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'VpcConfig' => {
+                                'class' => 'Paws::AppStream::VpcConfig',
+                                'type' => 'AppStream_VpcConfig'
+                              },
+               'DisconnectTimeoutInSeconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxUserDurationInSeconds' => {
+                                               'type' => 'Int'
+                                             }
+             },
+  'IsRequired' => {
+                    'InstanceType' => 1,
+                    'Arn' => 1,
+                    'State' => 1,
+                    'Name' => 1,
+                    'ComputeCapacityStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +137,7 @@ Describes a fleet.
   The ARN for the fleet.
 
 
-=head2 B<REQUIRED> ComputeCapacityStatus => L<Paws::AppStream::ComputeCapacityStatus>
+=head2 B<REQUIRED> ComputeCapacityStatus => AppStream_ComputeCapacityStatus
 
   The capacity status for the fleet.
 
@@ -89,7 +168,7 @@ Specify a value between 60 and 360000.
   The fleet name to display.
 
 
-=head2 DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>
+=head2 DomainJoinInfo => AppStream_DomainJoinInfo
 
   The name of the directory and organizational unit (OU) to use to join
 the fleet to a Microsoft Active Directory domain.
@@ -100,7 +179,7 @@ the fleet to a Microsoft Active Directory domain.
   Indicates whether default internet access is enabled for the fleet.
 
 
-=head2 FleetErrors => ArrayRef[L<Paws::AppStream::FleetError>]
+=head2 FleetErrors => ArrayRef[AppStream_FleetError]
 
   The fleet errors.
 
@@ -192,7 +271,7 @@ Specify a value between 600 and 360000.
   The current state for the fleet.
 
 
-=head2 VpcConfig => L<Paws::AppStream::VpcConfig>
+=head2 VpcConfig => AppStream_VpcConfig
 
   The VPC configuration for the fleet.
 

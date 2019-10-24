@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudWatch::ListMetricsOutput;
-  use Moose;
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Metric]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Metric/;
+  has Metrics => (is => 'ro', isa => ArrayRef[CloudWatch_Metric]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Metrics' => {
+                              'class' => 'Paws::CloudWatch::Metric',
+                              'type' => 'ArrayRef[CloudWatch_Metric]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::CloudWatch::ListMetricsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Metrics => ArrayRef[L<Paws::CloudWatch::Metric>]
+=head2 Metrics => ArrayRef[CloudWatch_Metric]
 
 The metrics.
 

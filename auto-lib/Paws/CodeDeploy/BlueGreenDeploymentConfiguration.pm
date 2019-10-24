@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::BlueGreenDeploymentConfiguration;
-  use Moose;
-  has DeploymentReadyOption => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentReadyOption', request_name => 'deploymentReadyOption', traits => ['NameInRequest']);
-  has GreenFleetProvisioningOption => (is => 'ro', isa => 'Paws::CodeDeploy::GreenFleetProvisioningOption', request_name => 'greenFleetProvisioningOption', traits => ['NameInRequest']);
-  has TerminateBlueInstancesOnDeploymentSuccess => (is => 'ro', isa => 'Paws::CodeDeploy::BlueInstanceTerminationOption', request_name => 'terminateBlueInstancesOnDeploymentSuccess', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_BlueInstanceTerminationOption CodeDeploy_GreenFleetProvisioningOption CodeDeploy_DeploymentReadyOption/;
+  has DeploymentReadyOption => (is => 'ro', isa => CodeDeploy_DeploymentReadyOption);
+  has GreenFleetProvisioningOption => (is => 'ro', isa => CodeDeploy_GreenFleetProvisioningOption);
+  has TerminateBlueInstancesOnDeploymentSuccess => (is => 'ro', isa => CodeDeploy_BlueInstanceTerminationOption);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentReadyOption' => {
+                                            'class' => 'Paws::CodeDeploy::DeploymentReadyOption',
+                                            'type' => 'CodeDeploy_DeploymentReadyOption'
+                                          },
+               'TerminateBlueInstancesOnDeploymentSuccess' => {
+                                                                'class' => 'Paws::CodeDeploy::BlueInstanceTerminationOption',
+                                                                'type' => 'CodeDeploy_BlueInstanceTerminationOption'
+                                                              },
+               'GreenFleetProvisioningOption' => {
+                                                   'class' => 'Paws::CodeDeploy::GreenFleetProvisioningOption',
+                                                   'type' => 'CodeDeploy_GreenFleetProvisioningOption'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'DeploymentReadyOption' => 'deploymentReadyOption',
+                       'TerminateBlueInstancesOnDeploymentSuccess' => 'terminateBlueInstancesOnDeploymentSuccess',
+                       'GreenFleetProvisioningOption' => 'greenFleetProvisioningOption'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,19 +69,19 @@ Information about blue/green deployment options for a deployment group.
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentReadyOption => L<Paws::CodeDeploy::DeploymentReadyOption>
+=head2 DeploymentReadyOption => CodeDeploy_DeploymentReadyOption
 
   Information about the action to take when newly provisioned instances
 are ready to receive traffic in a blue/green deployment.
 
 
-=head2 GreenFleetProvisioningOption => L<Paws::CodeDeploy::GreenFleetProvisioningOption>
+=head2 GreenFleetProvisioningOption => CodeDeploy_GreenFleetProvisioningOption
 
   Information about how instances are provisioned for a replacement
 environment in a blue/green deployment.
 
 
-=head2 TerminateBlueInstancesOnDeploymentSuccess => L<Paws::CodeDeploy::BlueInstanceTerminationOption>
+=head2 TerminateBlueInstancesOnDeploymentSuccess => CodeDeploy_BlueInstanceTerminationOption
 
   Information about whether to terminate instances in the original fleet
 during a blue/green deployment.

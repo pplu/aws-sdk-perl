@@ -1,15 +1,40 @@
 
 package Paws::MobileHub::DescribeProject;
-  use Moose;
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId', required => 1);
-  has SyncFromResources => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'syncFromResources');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MobileHub::Types qw//;
+  has ProjectId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SyncFromResources => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeProject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/project');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MobileHub::DescribeProjectResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeProject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/project');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MobileHub::DescribeProjectResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyncFromResources' => {
+                                        'type' => 'Bool'
+                                      },
+               'ProjectId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'SyncFromResources' => 'syncFromResources',
+                      'ProjectId' => 'projectId'
+                    },
+  'IsRequired' => {
+                    'ProjectId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

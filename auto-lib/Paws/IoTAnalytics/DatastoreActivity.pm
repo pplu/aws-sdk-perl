@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatastoreActivity;
-  use Moose;
-  has DatastoreName => (is => 'ro', isa => 'Str', request_name => 'datastoreName', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has DatastoreName => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DatastoreName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'DatastoreName' => 'datastoreName'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'DatastoreName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

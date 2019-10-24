@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchAttachObject;
-  use Moose;
-  has ChildReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has ChildReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has LinkName => (is => 'ro', isa => Str, required => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'ChildReference' => {
+                                     'class' => 'Paws::CloudDirectory::ObjectReference',
+                                     'type' => 'CloudDirectory_ObjectReference'
+                                   },
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'LinkName' => 1,
+                    'ChildReference' => 1,
+                    'ParentReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +68,7 @@ Represents the output of an AttachObject operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ChildReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ChildReference => CloudDirectory_ObjectReference
 
   The child object reference that is to be attached to the object.
 
@@ -48,7 +78,7 @@ Represents the output of an AttachObject operation.
   The name of the link.
 
 
-=head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ParentReference => CloudDirectory_ObjectReference
 
   The parent object reference.
 

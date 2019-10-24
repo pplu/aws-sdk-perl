@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::MssEncryption;
-  use Moose;
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackage::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaPackage::Types qw/MediaPackage_SpekeKeyProvider/;
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackage_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaPackage::SpekeKeyProvider',
+                                       'type' => 'MediaPackage_SpekeKeyProvider'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider'
+                     },
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ A Microsoft Smooth Streaming (MSS) encryption configuration.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackage::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackage_SpekeKeyProvider
 
   
 

@@ -1,17 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ListComplianceItems;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ComplianceStringFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Undef/;
+  use Paws::SSM::Types qw/SSM_ComplianceStringFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_ComplianceStringFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListComplianceItems');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListComplianceItemsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListComplianceItems');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ListComplianceItemsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::ComplianceStringFilter',
+                              'type' => 'ArrayRef[SSM_ComplianceStringFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::ComplianceStringFilter>]
+=head2 Filters => ArrayRef[SSM_ComplianceStringFilter]
 
 One or more compliance filters. Use a filter to return a more specific
 list of results.

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::FindingStatistics;
-  use Moose;
-  has CountBySeverity => (is => 'ro', isa => 'Paws::GuardDuty::CountBySeverity', request_name => 'countBySeverity', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::GuardDuty::Types qw/GuardDuty_CountBySeverity/;
+  has CountBySeverity => (is => 'ro', isa => GuardDuty_CountBySeverity);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CountBySeverity' => {
+                                      'class' => 'Paws::GuardDuty::CountBySeverity',
+                                      'type' => 'GuardDuty_CountBySeverity'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CountBySeverity' => 'countBySeverity'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CountBySeverity => L<Paws::GuardDuty::CountBySeverity>
+=head2 CountBySeverity => GuardDuty_CountBySeverity
 
   Represents a map of severity to count statistic for a set of findings
 

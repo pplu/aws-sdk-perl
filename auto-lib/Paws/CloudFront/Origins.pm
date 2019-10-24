@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Origins;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Origin]', request_name => 'Origin', traits => ['NameInRequest'], required => 1);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::CloudFront::Types qw/CloudFront_Origin/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_Origin], required => 1);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::Origin',
+                            'type' => 'ArrayRef[CloudFront_Origin]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Origin'
+                     },
+  'IsRequired' => {
+                    'Items' => 1,
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ groups for this distribution.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Items => ArrayRef[L<Paws::CloudFront::Origin>]
+=head2 B<REQUIRED> Items => ArrayRef[CloudFront_Origin]
 
   A complex type that contains origins or origin groups for this
 distribution.

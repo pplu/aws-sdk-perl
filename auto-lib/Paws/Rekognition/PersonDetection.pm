@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::PersonDetection;
-  use Moose;
-  has Person => (is => 'ro', isa => 'Paws::Rekognition::PersonDetail');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_PersonDetail/;
+  has Person => (is => 'ro', isa => Rekognition_PersonDetail);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Person' => {
+                             'class' => 'Paws::Rekognition::PersonDetail',
+                             'type' => 'Rekognition_PersonDetail'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 Person => L<Paws::Rekognition::PersonDetail>
+=head2 Person => Rekognition_PersonDetail
 
   Details about a person whose path was tracked in a video.
 

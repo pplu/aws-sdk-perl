@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::RemovePermission;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SQS::RemovePermission;
                'Label' => {
                             'type' => 'Str'
                           }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'Label' => 1
+                  }
 }
 ;
     return $Params_map;

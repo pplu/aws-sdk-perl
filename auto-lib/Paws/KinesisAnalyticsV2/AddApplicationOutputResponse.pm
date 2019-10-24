@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationOutputResponse;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str');
-  has ApplicationVersionId => (is => 'ro', isa => 'Int');
-  has OutputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::OutputDescription]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_OutputDescription/;
+  has ApplicationARN => (is => 'ro', isa => Str);
+  has ApplicationVersionId => (is => 'ro', isa => Int);
+  has OutputDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_OutputDescription]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputDescriptions' => {
+                                         'class' => 'Paws::KinesisAnalyticsV2::OutputDescription',
+                                         'type' => 'ArrayRef[KinesisAnalyticsV2_OutputDescription]'
+                                       },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +52,7 @@ The updated application version ID. Kinesis Data Analytics increments
 this ID when the application is updated.
 
 
-=head2 OutputDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::OutputDescription>]
+=head2 OutputDescriptions => ArrayRef[KinesisAnalyticsV2_OutputDescription]
 
 Describes the application output configuration. For more information,
 see Configuring Application Output

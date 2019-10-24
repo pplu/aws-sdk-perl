@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Greengrass::ConnectivityInfo;
-  use Moose;
-  has HostAddress => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Str');
-  has PortNumber => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Greengrass::Types qw//;
+  has HostAddress => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Metadata => (is => 'ro', isa => Str);
+  has PortNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'HostAddress' => {
+                                  'type' => 'Str'
+                                },
+               'PortNumber' => {
+                                 'type' => 'Int'
+                               },
+               'Metadata' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

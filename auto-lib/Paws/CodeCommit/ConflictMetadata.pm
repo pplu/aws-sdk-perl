@@ -1,15 +1,76 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::ConflictMetadata;
-  use Moose;
-  has ContentConflict => (is => 'ro', isa => 'Bool', request_name => 'contentConflict', traits => ['NameInRequest']);
-  has FileModeConflict => (is => 'ro', isa => 'Bool', request_name => 'fileModeConflict', traits => ['NameInRequest']);
-  has FileModes => (is => 'ro', isa => 'Paws::CodeCommit::FileModes', request_name => 'fileModes', traits => ['NameInRequest']);
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest']);
-  has FileSizes => (is => 'ro', isa => 'Paws::CodeCommit::FileSizes', request_name => 'fileSizes', traits => ['NameInRequest']);
-  has IsBinaryFile => (is => 'ro', isa => 'Paws::CodeCommit::IsBinaryFile', request_name => 'isBinaryFile', traits => ['NameInRequest']);
-  has MergeOperations => (is => 'ro', isa => 'Paws::CodeCommit::MergeOperations', request_name => 'mergeOperations', traits => ['NameInRequest']);
-  has NumberOfConflicts => (is => 'ro', isa => 'Int', request_name => 'numberOfConflicts', traits => ['NameInRequest']);
-  has ObjectTypeConflict => (is => 'ro', isa => 'Bool', request_name => 'objectTypeConflict', traits => ['NameInRequest']);
-  has ObjectTypes => (is => 'ro', isa => 'Paws::CodeCommit::ObjectTypes', request_name => 'objectTypes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str Int/;
+  use Paws::CodeCommit::Types qw/CodeCommit_FileSizes CodeCommit_FileModes CodeCommit_ObjectTypes CodeCommit_MergeOperations CodeCommit_IsBinaryFile/;
+  has ContentConflict => (is => 'ro', isa => Bool);
+  has FileModeConflict => (is => 'ro', isa => Bool);
+  has FileModes => (is => 'ro', isa => CodeCommit_FileModes);
+  has FilePath => (is => 'ro', isa => Str);
+  has FileSizes => (is => 'ro', isa => CodeCommit_FileSizes);
+  has IsBinaryFile => (is => 'ro', isa => CodeCommit_IsBinaryFile);
+  has MergeOperations => (is => 'ro', isa => CodeCommit_MergeOperations);
+  has NumberOfConflicts => (is => 'ro', isa => Int);
+  has ObjectTypeConflict => (is => 'ro', isa => Bool);
+  has ObjectTypes => (is => 'ro', isa => CodeCommit_ObjectTypes);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileModes' => {
+                                'class' => 'Paws::CodeCommit::FileModes',
+                                'type' => 'CodeCommit_FileModes'
+                              },
+               'IsBinaryFile' => {
+                                   'class' => 'Paws::CodeCommit::IsBinaryFile',
+                                   'type' => 'CodeCommit_IsBinaryFile'
+                                 },
+               'FileSizes' => {
+                                'class' => 'Paws::CodeCommit::FileSizes',
+                                'type' => 'CodeCommit_FileSizes'
+                              },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'NumberOfConflicts' => {
+                                        'type' => 'Int'
+                                      },
+               'ObjectTypeConflict' => {
+                                         'type' => 'Bool'
+                                       },
+               'ContentConflict' => {
+                                      'type' => 'Bool'
+                                    },
+               'FileModeConflict' => {
+                                       'type' => 'Bool'
+                                     },
+               'MergeOperations' => {
+                                      'class' => 'Paws::CodeCommit::MergeOperations',
+                                      'type' => 'CodeCommit_MergeOperations'
+                                    },
+               'ObjectTypes' => {
+                                  'class' => 'Paws::CodeCommit::ObjectTypes',
+                                  'type' => 'CodeCommit_ObjectTypes'
+                                }
+             },
+  'NameInRequest' => {
+                       'FileModes' => 'fileModes',
+                       'IsBinaryFile' => 'isBinaryFile',
+                       'FileSizes' => 'fileSizes',
+                       'FilePath' => 'filePath',
+                       'NumberOfConflicts' => 'numberOfConflicts',
+                       'ObjectTypeConflict' => 'objectTypeConflict',
+                       'ContentConflict' => 'contentConflict',
+                       'FileModeConflict' => 'fileModeConflict',
+                       'MergeOperations' => 'mergeOperations',
+                       'ObjectTypes' => 'objectTypes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +118,7 @@ of a file.
 of a file.
 
 
-=head2 FileModes => L<Paws::CodeCommit::FileModes>
+=head2 FileModes => CodeCommit_FileModes
 
   The file modes of the file in the source, destination, and base of the
 merge.
@@ -68,19 +129,19 @@ merge.
   The path of the file that contains conflicts.
 
 
-=head2 FileSizes => L<Paws::CodeCommit::FileSizes>
+=head2 FileSizes => CodeCommit_FileSizes
 
   The file sizes of the file in the source, destination, and base of the
 merge.
 
 
-=head2 IsBinaryFile => L<Paws::CodeCommit::IsBinaryFile>
+=head2 IsBinaryFile => CodeCommit_IsBinaryFile
 
   A boolean value (true or false) indicating whether the file is binary
 or textual in the source, destination, and base of the merge.
 
 
-=head2 MergeOperations => L<Paws::CodeCommit::MergeOperations>
+=head2 MergeOperations => CodeCommit_MergeOperations
 
   Whether an add, modify, or delete operation caused the conflict between
 the source and destination of the merge.
@@ -99,7 +160,7 @@ between the branches in the object type of a file, folder, or
 submodule.
 
 
-=head2 ObjectTypes => L<Paws::CodeCommit::ObjectTypes>
+=head2 ObjectTypes => CodeCommit_ObjectTypes
 
   Information about any object type conflicts in a merge operation.
 

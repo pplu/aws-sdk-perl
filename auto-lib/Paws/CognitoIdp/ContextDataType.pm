@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::ContextDataType;
-  use Moose;
-  has EncodedData => (is => 'ro', isa => 'Str');
-  has HttpHeaders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::HttpHeader]', required => 1);
-  has IpAddress => (is => 'ro', isa => 'Str', required => 1);
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
-  has ServerPath => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_HttpHeader/;
+  has EncodedData => (is => 'ro', isa => Str);
+  has HttpHeaders => (is => 'ro', isa => ArrayRef[CognitoIdp_HttpHeader], required => 1);
+  has IpAddress => (is => 'ro', isa => Str, required => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1);
+  has ServerPath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'HttpHeaders' => {
+                                  'class' => 'Paws::CognitoIdp::HttpHeader',
+                                  'type' => 'ArrayRef[CognitoIdp_HttpHeader]'
+                                },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'EncodedData' => {
+                                  'type' => 'Str'
+                                },
+               'ServerPath' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ServerName' => 1,
+                    'HttpHeaders' => 1,
+                    'IpAddress' => 1,
+                    'ServerPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +83,7 @@ event by Amazon Cognito advanced security.
 the Amazon Cognito context data collection library.
 
 
-=head2 B<REQUIRED> HttpHeaders => ArrayRef[L<Paws::CognitoIdp::HttpHeader>]
+=head2 B<REQUIRED> HttpHeaders => ArrayRef[CognitoIdp_HttpHeader]
 
   HttpHeaders received on your server in same order.
 

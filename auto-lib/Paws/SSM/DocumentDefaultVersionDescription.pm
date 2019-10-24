@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::DocumentDefaultVersionDescription;
-  use Moose;
-  has DefaultVersion => (is => 'ro', isa => 'Str');
-  has DefaultVersionName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has DefaultVersion => (is => 'ro', isa => Str);
+  has DefaultVersionName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DefaultVersionName' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

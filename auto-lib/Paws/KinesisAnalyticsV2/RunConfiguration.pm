@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::RunConfiguration;
-  use Moose;
-  has ApplicationRestoreConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
-  has SqlRunConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::SqlRunConfiguration]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_SqlRunConfiguration KinesisAnalyticsV2_ApplicationRestoreConfiguration/;
+  has ApplicationRestoreConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationRestoreConfiguration);
+  has SqlRunConfigurations => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_SqlRunConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SqlRunConfigurations' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::SqlRunConfiguration',
+                                           'type' => 'ArrayRef[KinesisAnalyticsV2_SqlRunConfiguration]'
+                                         },
+               'ApplicationRestoreConfiguration' => {
+                                                      'class' => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration',
+                                                      'type' => 'KinesisAnalyticsV2_ApplicationRestoreConfiguration'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationRestoreConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration>
+=head2 ApplicationRestoreConfiguration => KinesisAnalyticsV2_ApplicationRestoreConfiguration
 
   Describes the restore behavior of a restarting application.
 
 
-=head2 SqlRunConfigurations => ArrayRef[L<Paws::KinesisAnalyticsV2::SqlRunConfiguration>]
+=head2 SqlRunConfigurations => ArrayRef[KinesisAnalyticsV2_SqlRunConfiguration]
 
   Describes the starting parameters for an SQL-based Kinesis Data
 Analytics application.

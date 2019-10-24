@@ -1,22 +1,71 @@
 
 package Paws::WorkDocs::CreateUser;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has EmailAddress => (is => 'ro', isa => 'Str');
-  has GivenName => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
-  has Surname => (is => 'ro', isa => 'Str', required => 1);
-  has TimeZoneId => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_StorageRuleType/;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has EmailAddress => (is => 'ro', isa => Str, predicate => 1);
+  has GivenName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StorageRule => (is => 'ro', isa => WorkDocs_StorageRuleType, predicate => 1);
+  has Surname => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TimeZoneId => (is => 'ro', isa => Str, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::CreateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Surname' => {
+                              'type' => 'Str'
+                            },
+               'GivenName' => {
+                                'type' => 'Str'
+                              },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'TimeZoneId' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'StorageRule' => {
+                                  'class' => 'Paws::WorkDocs::StorageRuleType',
+                                  'type' => 'WorkDocs_StorageRuleType'
+                                }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'Surname' => 1,
+                    'Password' => 1,
+                    'GivenName' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +143,7 @@ The password of the user.
 
 
 
-=head2 StorageRule => L<Paws::WorkDocs::StorageRuleType>
+=head2 StorageRule => WorkDocs_StorageRuleType
 
 The amount of storage for the user.
 

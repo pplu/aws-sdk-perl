@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::S3ContentLocation;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str', required => 1);
-  has FileKey => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has BucketARN => (is => 'ro', isa => Str, required => 1);
+  has FileKey => (is => 'ro', isa => Str, required => 1);
+  has ObjectVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'FileKey' => {
+                              'type' => 'Str'
+                            },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'FileKey' => 1,
+                    'BucketARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

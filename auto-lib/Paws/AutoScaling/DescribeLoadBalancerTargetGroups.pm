@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribeLoadBalancerTargetGroups;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerTargetGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeLoadBalancerTargetGroupsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerTargetGroupsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeLoadBalancerTargetGroups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::DescribeLoadBalancerTargetGroupsResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeLoadBalancerTargetGroupsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

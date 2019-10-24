@@ -1,3 +1,4 @@
+# Generated from default/map_str_to_native.tt
 package Paws::SES::PolicyMap;
   use Moo;
   use Types::Standard qw/HashRef Undef Str/;

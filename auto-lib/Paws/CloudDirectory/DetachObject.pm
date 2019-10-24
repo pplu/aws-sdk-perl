@@ -1,16 +1,46 @@
 
 package Paws::CloudDirectory::DetachObject;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LinkName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/detach');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::DetachObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/detach');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::DetachObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'LinkName' => 1,
+                    'DirectoryArn' => 1,
+                    'ParentReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +94,7 @@ The link name associated with the object that needs to be detached.
 
 
 
-=head2 B<REQUIRED> ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ParentReference => CloudDirectory_ObjectReference
 
 The parent reference from which the object with the specified link name
 is detached.

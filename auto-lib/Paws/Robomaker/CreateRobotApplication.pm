@@ -1,17 +1,55 @@
 
 package Paws::Robomaker::CreateRobotApplication;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_SourceConfig Robomaker_RobotSoftwareSuite Robomaker_TagMap/;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite, required => 1, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[Robomaker_SourceConfig], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRobotApplication');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createRobotApplication');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::CreateRobotApplicationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRobotApplication');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createRobotApplication');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::CreateRobotApplicationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sources' => {
+                              'class' => 'Paws::Robomaker::SourceConfig',
+                              'type' => 'ArrayRef[Robomaker_SourceConfig]'
+                            },
+               'RobotSoftwareSuite' => {
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite',
+                                         'type' => 'Robomaker_RobotSoftwareSuite'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Sources' => 'sources',
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Sources' => 1,
+                    'RobotSoftwareSuite' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,19 +113,19 @@ The name of the robot application.
 
 
 
-=head2 B<REQUIRED> RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 B<REQUIRED> RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
 The robot software suite used by the robot application.
 
 
 
-=head2 B<REQUIRED> Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+=head2 B<REQUIRED> Sources => ArrayRef[Robomaker_SourceConfig]
 
 The sources of the robot application.
 
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 A map that contains tag keys and tag values that are attached to the
 robot application.

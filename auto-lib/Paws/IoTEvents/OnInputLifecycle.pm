@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::OnInputLifecycle;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Event]', request_name => 'events', traits => ['NameInRequest']);
-  has TransitionEvents => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::TransitionEvent]', request_name => 'transitionEvents', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Event IoTEvents_TransitionEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[IoTEvents_Event]);
+  has TransitionEvents => (is => 'ro', isa => ArrayRef[IoTEvents_TransitionEvent]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'class' => 'Paws::IoTEvents::Event',
+                             'type' => 'ArrayRef[IoTEvents_Event]'
+                           },
+               'TransitionEvents' => {
+                                       'class' => 'Paws::IoTEvents::TransitionEvent',
+                                       'type' => 'ArrayRef[IoTEvents_TransitionEvent]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Events' => 'events',
+                       'TransitionEvents' => 'transitionEvents'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ TRUE.
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::IoTEvents::Event>]
+=head2 Events => ArrayRef[IoTEvents_Event]
 
   Specifies the actions performed when the C<condition> evaluates to
 TRUE.
 
 
-=head2 TransitionEvents => ArrayRef[L<Paws::IoTEvents::TransitionEvent>]
+=head2 TransitionEvents => ArrayRef[IoTEvents_TransitionEvent]
 
   Specifies the actions performed and the next state entered when a
 C<condition> evaluates to TRUE.

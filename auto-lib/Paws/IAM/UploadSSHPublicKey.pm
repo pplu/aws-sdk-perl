@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UploadSSHPublicKey;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UploadSSHPublicKey;
                'SSHPublicKeyBody' => {
                                        'type' => 'Str'
                                      }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'SSHPublicKeyBody' => 1
+                  }
 }
 ;
     return $Params_map;

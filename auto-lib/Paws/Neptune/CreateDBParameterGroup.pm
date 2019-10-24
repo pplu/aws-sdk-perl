@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CreateDBParameterGroup;
-  use Moose;
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
-  has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has DBParameterGroupFamily => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CreateDBParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CreateDBParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::Neptune::Tag',
+                           'type' => 'ArrayRef[Neptune_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'DBParameterGroupName' => 1,
+                    'Description' => 1,
+                    'DBParameterGroupFamily' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +126,7 @@ The description for the DB parameter group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to be assigned to the new DB parameter group.
 

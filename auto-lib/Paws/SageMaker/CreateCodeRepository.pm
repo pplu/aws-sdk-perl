@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateCodeRepository;
-  use Moose;
-  has CodeRepositoryName => (is => 'ro', isa => 'Str', required => 1);
-  has GitConfig => (is => 'ro', isa => 'Paws::SageMaker::GitConfig', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_GitConfig/;
+  has CodeRepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GitConfig => (is => 'ro', isa => SageMaker_GitConfig, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCodeRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateCodeRepositoryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCodeRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateCodeRepositoryOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CodeRepositoryName' => {
+                                         'type' => 'Str'
+                                       },
+               'GitConfig' => {
+                                'class' => 'Paws::SageMaker::GitConfig',
+                                'type' => 'SageMaker_GitConfig'
+                              }
+             },
+  'IsRequired' => {
+                    'CodeRepositoryName' => 1,
+                    'GitConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +80,7 @@ Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 
 
 
-=head2 B<REQUIRED> GitConfig => L<Paws::SageMaker::GitConfig>
+=head2 B<REQUIRED> GitConfig => SageMaker_GitConfig
 
 Specifies details about the repository, including the URL where the
 repository is located, the default branch, and credentials to use to

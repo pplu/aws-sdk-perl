@@ -1,16 +1,45 @@
 
 package Paws::Chime::UpdateBot;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has BotId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botId', required => 1);
-  has Disabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Disabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBot');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/bots/{botId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::UpdateBotResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBot');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/bots/{botId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::UpdateBotResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'BotId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'BotId' => 'botId'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'BotId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

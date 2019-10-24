@@ -1,17 +1,59 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::DescribeHapgResponse;
-  use Moose;
-  has HapgArn => (is => 'ro', isa => 'Str');
-  has HapgSerial => (is => 'ro', isa => 'Str');
-  has HsmsLastActionFailed => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has HsmsPendingDeletion => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has HsmsPendingRegistration => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Label => (is => 'ro', isa => 'Str');
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has PartitionSerialList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudHSM::Types qw//;
+  has HapgArn => (is => 'ro', isa => Str);
+  has HapgSerial => (is => 'ro', isa => Str);
+  has HsmsLastActionFailed => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HsmsPendingDeletion => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has HsmsPendingRegistration => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Label => (is => 'ro', isa => Str);
+  has LastModifiedTimestamp => (is => 'ro', isa => Str);
+  has PartitionSerialList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'HsmsLastActionFailed' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'HsmsPendingRegistration' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'PartitionSerialList' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'HapgArn' => {
+                              'type' => 'Str'
+                            },
+               'HsmsPendingDeletion' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'HapgSerial' => {
+                                 'type' => 'Str'
+                               },
+               'LastModifiedTimestamp' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

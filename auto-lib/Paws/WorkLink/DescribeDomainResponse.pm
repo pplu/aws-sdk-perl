@@ -1,13 +1,42 @@
 
 package Paws::WorkLink::DescribeDomainResponse;
-  use Moose;
-  has AcmCertificateArn => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
-  has DomainStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has AcmCertificateArn => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has DomainStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'AcmCertificateArn' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

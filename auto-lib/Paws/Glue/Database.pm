@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::Database;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LocationUri => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_ParametersMap/;
+  has CreateTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LocationUri => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::ParametersMap',
+                                 'type' => 'Glue_ParametersMap'
+                               },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'LocationUri' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +95,7 @@ reside in a Hive metastore or an RDBMS.
 lowercase when it is stored.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   These key-value pairs define parameters and properties of the database.
 

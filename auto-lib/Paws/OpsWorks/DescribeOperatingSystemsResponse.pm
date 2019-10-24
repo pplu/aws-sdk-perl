@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeOperatingSystemsResponse;
-  use Moose;
-  has OperatingSystems => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::OperatingSystem]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_OperatingSystem/;
+  has OperatingSystems => (is => 'ro', isa => ArrayRef[OpsWorks_OperatingSystem]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OperatingSystems' => {
+                                       'class' => 'Paws::OpsWorks::OperatingSystem',
+                                       'type' => 'ArrayRef[OpsWorks_OperatingSystem]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeOperatingSystemsResponse
 =head1 ATTRIBUTES
 
 
-=head2 OperatingSystems => ArrayRef[L<Paws::OpsWorks::OperatingSystem>]
+=head2 OperatingSystems => ArrayRef[OpsWorks_OperatingSystem]
 
 Contains information in response to a C<DescribeOperatingSystems>
 request.

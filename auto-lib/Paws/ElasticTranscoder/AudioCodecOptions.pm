@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::AudioCodecOptions;
-  use Moose;
-  has BitDepth => (is => 'ro', isa => 'Str');
-  has BitOrder => (is => 'ro', isa => 'Str');
-  has Profile => (is => 'ro', isa => 'Str');
-  has Signed => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has BitDepth => (is => 'ro', isa => Str);
+  has BitOrder => (is => 'ro', isa => Str);
+  has Profile => (is => 'ro', isa => Str);
+  has Signed => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BitOrder' => {
+                               'type' => 'Str'
+                             },
+               'BitDepth' => {
+                               'type' => 'Str'
+                             },
+               'Profile' => {
+                              'type' => 'Str'
+                            },
+               'Signed' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

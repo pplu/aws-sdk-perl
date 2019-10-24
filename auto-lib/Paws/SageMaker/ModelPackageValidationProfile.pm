@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ModelPackageValidationProfile;
-  use Moose;
-  has ProfileName => (is => 'ro', isa => 'Str', required => 1);
-  has TransformJobDefinition => (is => 'ro', isa => 'Paws::SageMaker::TransformJobDefinition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_TransformJobDefinition/;
+  has ProfileName => (is => 'ro', isa => Str, required => 1);
+  has TransformJobDefinition => (is => 'ro', isa => SageMaker_TransformJobDefinition, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'TransformJobDefinition' => {
+                                             'class' => 'Paws::SageMaker::TransformJobDefinition',
+                                             'type' => 'SageMaker_TransformJobDefinition'
+                                           }
+             },
+  'IsRequired' => {
+                    'ProfileName' => 1,
+                    'TransformJobDefinition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +71,7 @@ buyers on AWS Marketplace.
   The name of the profile for the model package.
 
 
-=head2 B<REQUIRED> TransformJobDefinition => L<Paws::SageMaker::TransformJobDefinition>
+=head2 B<REQUIRED> TransformJobDefinition => SageMaker_TransformJobDefinition
 
   The C<TransformJobDefinition> object that describes the transform job
 used for the validation of the model package.

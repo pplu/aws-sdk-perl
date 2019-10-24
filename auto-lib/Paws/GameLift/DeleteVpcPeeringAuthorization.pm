@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::DeleteVpcPeeringAuthorization;
-  use Moose;
-  has GameLiftAwsAccountId => (is => 'ro', isa => 'Str', required => 1);
-  has PeerVpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has GameLiftAwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PeerVpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteVpcPeeringAuthorization');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::DeleteVpcPeeringAuthorizationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteVpcPeeringAuthorization');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::DeleteVpcPeeringAuthorizationOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeerVpcId' => {
+                                'type' => 'Str'
+                              },
+               'GameLiftAwsAccountId' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'PeerVpcId' => 1,
+                    'GameLiftAwsAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

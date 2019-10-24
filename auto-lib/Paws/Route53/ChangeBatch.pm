@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Route53::ChangeBatch;
-  use Moose;
-  has Changes => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Change]', request_name => 'Change', traits => ['NameInRequest'], required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Route53::Types qw/Route53_Change/;
+  has Changes => (is => 'ro', isa => ArrayRef[Route53_Change], required => 1);
+  has Comment => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Changes' => {
+                              'class' => 'Paws::Route53::Change',
+                              'type' => 'ArrayRef[Route53_Change]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Changes' => 'Change'
+                     },
+  'IsRequired' => {
+                    'Changes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +64,7 @@ The information for a change request.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Changes => ArrayRef[L<Paws::Route53::Change>]
+=head2 B<REQUIRED> Changes => ArrayRef[Route53_Change]
 
   Information about the changes to make to the record sets.
 

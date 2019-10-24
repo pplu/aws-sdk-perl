@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AppStream::CreateUsageReportSubscriptionResult;
-  use Moose;
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has S3BucketName => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Schedule' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

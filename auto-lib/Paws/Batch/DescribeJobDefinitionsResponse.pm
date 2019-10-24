@@ -1,10 +1,35 @@
 
 package Paws::Batch::DescribeJobDefinitionsResponse;
-  use Moose;
-  has JobDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::Batch::JobDefinition]', traits => ['NameInRequest'], request_name => 'jobDefinitions');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Batch::Types qw/Batch_JobDefinition/;
+  has JobDefinitions => (is => 'ro', isa => ArrayRef[Batch_JobDefinition]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobDefinitions' => {
+                                     'class' => 'Paws::Batch::JobDefinition',
+                                     'type' => 'ArrayRef[Batch_JobDefinition]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'JobDefinitions' => 'jobDefinitions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Batch::DescribeJobDefinitionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 JobDefinitions => ArrayRef[L<Paws::Batch::JobDefinition>]
+=head2 JobDefinitions => ArrayRef[Batch_JobDefinition]
 
 The list of job definitions.
 

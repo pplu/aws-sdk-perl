@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Organizations::CreateAccountStatus;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has AccountName => (is => 'ro', isa => 'Str');
-  has CompletedTimestamp => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has GovCloudAccountId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has RequestedTimestamp => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has AccountName => (is => 'ro', isa => Str);
+  has CompletedTimestamp => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has GovCloudAccountId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has RequestedTimestamp => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestedTimestamp' => {
+                                         'type' => 'Str'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CompletedTimestamp' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'AccountName' => {
+                                  'type' => 'Str'
+                                },
+               'GovCloudAccountId' => {
+                                        'type' => 'Str'
+                                      },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::EngineDefaults;
-  use Moose;
-  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]', request_name => 'CacheNodeTypeSpecificParameter', traits => ['NameInRequest']);
-  has CacheParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Parameter]', request_name => 'Parameter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_CacheNodeTypeSpecificParameter ElastiCache_Parameter/;
+  has CacheNodeTypeSpecificParameters => (is => 'ro', isa => ArrayRef[ElastiCache_CacheNodeTypeSpecificParameter]);
+  has CacheParameterGroupFamily => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[ElastiCache_Parameter]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::ElastiCache::Parameter',
+                                 'type' => 'ArrayRef[ElastiCache_Parameter]'
+                               },
+               'CacheParameterGroupFamily' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheNodeTypeSpecificParameters' => {
+                                                      'class' => 'Paws::ElastiCache::CacheNodeTypeSpecificParameter',
+                                                      'type' => 'ArrayRef[ElastiCache_CacheNodeTypeSpecificParameter]'
+                                                    },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'Parameter',
+                       'CacheNodeTypeSpecificParameters' => 'CacheNodeTypeSpecificParameter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +72,7 @@ operation.
 =head1 ATTRIBUTES
 
 
-=head2 CacheNodeTypeSpecificParameters => ArrayRef[L<Paws::ElastiCache::CacheNodeTypeSpecificParameter>]
+=head2 CacheNodeTypeSpecificParameters => ArrayRef[ElastiCache_CacheNodeTypeSpecificParameter]
 
   A list of parameters specific to a particular cache node type. Each
 element in the list contains detailed information about one parameter.
@@ -60,7 +92,7 @@ C<redis2.8> | C<redis3.2> | C<redis4.0> | C<redis5.0> |
   Provides an identifier to allow retrieval of paginated results.
 
 
-=head2 Parameters => ArrayRef[L<Paws::ElastiCache::Parameter>]
+=head2 Parameters => ArrayRef[ElastiCache_Parameter]
 
   Contains a list of engine default parameters.
 

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginGroupFailoverCriteria;
-  use Moose;
-  has StatusCodes => (is => 'ro', isa => 'Paws::CloudFront::StatusCodes', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudFront::Types qw/CloudFront_StatusCodes/;
+  has StatusCodes => (is => 'ro', isa => CloudFront_StatusCodes, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCodes' => {
+                                  'class' => 'Paws::CloudFront::StatusCodes',
+                                  'type' => 'CloudFront_StatusCodes'
+                                }
+             },
+  'IsRequired' => {
+                    'StatusCodes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ CloudFront will failover from the primary origin to the second origin.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StatusCodes => L<Paws::CloudFront::StatusCodes>
+=head2 B<REQUIRED> StatusCodes => CloudFront_StatusCodes
 
   The status codes that, when returned from the primary origin, will
 trigger CloudFront to failover to the second origin.

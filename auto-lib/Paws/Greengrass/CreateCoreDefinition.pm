@@ -1,17 +1,49 @@
 
 package Paws::Greengrass::CreateCoreDefinition;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::CoreDefinitionVersion');
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_Tags Greengrass_CoreDefinitionVersion/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has InitialVersion => (is => 'ro', isa => Greengrass_CoreDefinitionVersion, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Greengrass_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCoreDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/cores');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateCoreDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCoreDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/cores');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateCoreDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitialVersion' => {
+                                     'class' => 'Paws::Greengrass::CoreDefinitionVersion',
+                                     'type' => 'Greengrass_CoreDefinitionVersion'
+                                   },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::Greengrass::Tags',
+                           'type' => 'Greengrass_Tags'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +104,7 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 InitialVersion => L<Paws::Greengrass::CoreDefinitionVersion>
+=head2 InitialVersion => Greengrass_CoreDefinitionVersion
 
 Information about the initial version of the core definition.
 
@@ -84,7 +116,7 @@ The name of the core definition.
 
 
 
-=head2 Tags => L<Paws::Greengrass::Tags>
+=head2 Tags => Greengrass_Tags
 
 Tag(s) to add to the new resource
 

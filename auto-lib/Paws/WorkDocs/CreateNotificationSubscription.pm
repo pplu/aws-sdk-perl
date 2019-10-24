@@ -1,17 +1,50 @@
 
 package Paws::WorkDocs::CreateNotificationSubscription;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'OrganizationId', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
-  has SubscriptionType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubscriptionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNotificationSubscription');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/organizations/{OrganizationId}/subscriptions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateNotificationSubscriptionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNotificationSubscription');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/organizations/{OrganizationId}/subscriptions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::CreateNotificationSubscriptionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionType' => {
+                                       'type' => 'Str'
+                                     },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'OrganizationId' => 'OrganizationId'
+                  },
+  'IsRequired' => {
+                    'SubscriptionType' => 1,
+                    'OrganizationId' => 1,
+                    'Protocol' => 1,
+                    'Endpoint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

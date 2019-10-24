@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::LoadBasedAutoScalingConfiguration;
-  use Moose;
-  has DownScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
-  has Enable => (is => 'ro', isa => 'Bool');
-  has LayerId => (is => 'ro', isa => 'Str');
-  has UpScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_AutoScalingThresholds/;
+  has DownScaling => (is => 'ro', isa => OpsWorks_AutoScalingThresholds);
+  has Enable => (is => 'ro', isa => Bool);
+  has LayerId => (is => 'ro', isa => Str);
+  has UpScaling => (is => 'ro', isa => OpsWorks_AutoScalingThresholds);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DownScaling' => {
+                                  'class' => 'Paws::OpsWorks::AutoScalingThresholds',
+                                  'type' => 'OpsWorks_AutoScalingThresholds'
+                                },
+               'UpScaling' => {
+                                'class' => 'Paws::OpsWorks::AutoScalingThresholds',
+                                'type' => 'OpsWorks_AutoScalingThresholds'
+                              },
+               'Enable' => {
+                             'type' => 'Bool'
+                           },
+               'LayerId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +67,7 @@ Describes a layer's load-based auto scaling configuration.
 =head1 ATTRIBUTES
 
 
-=head2 DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>
+=head2 DownScaling => OpsWorks_AutoScalingThresholds
 
   An C<AutoScalingThresholds> object that describes the downscaling
 configuration, which defines how and when AWS OpsWorks Stacks reduces
@@ -56,7 +84,7 @@ the number of instances.
   The layer ID.
 
 
-=head2 UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>
+=head2 UpScaling => OpsWorks_AutoScalingThresholds
 
   An C<AutoScalingThresholds> object that describes the upscaling
 configuration, which defines how and when AWS OpsWorks Stacks increases

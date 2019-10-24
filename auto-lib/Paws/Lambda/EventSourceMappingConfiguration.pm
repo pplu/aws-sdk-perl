@@ -1,16 +1,54 @@
 
 package Paws::Lambda::EventSourceMappingConfiguration;
-  use Moose;
-  has BatchSize => (is => 'ro', isa => 'Int');
-  has EventSourceArn => (is => 'ro', isa => 'Str');
-  has FunctionArn => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has LastProcessingResult => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateTransitionReason => (is => 'ro', isa => 'Str');
-  has UUID => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has BatchSize => (is => 'ro', isa => Int);
+  has EventSourceArn => (is => 'ro', isa => Str);
+  has FunctionArn => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has LastProcessingResult => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateTransitionReason => (is => 'ro', isa => Str);
+  has UUID => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastProcessingResult' => {
+                                           'type' => 'Str'
+                                         },
+               'EventSourceArn' => {
+                                     'type' => 'Str'
+                                   },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'StateTransitionReason' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BatchSize' => {
+                                'type' => 'Int'
+                              },
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                },
+               'UUID' => {
+                           'type' => 'Str'
+                         },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

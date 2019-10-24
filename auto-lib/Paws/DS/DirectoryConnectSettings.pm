@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::DS::DirectoryConnectSettings;
-  use Moose;
-  has CustomerDnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has CustomerUserName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has VpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DS::Types qw//;
+  has CustomerDnsIps => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has CustomerUserName => (is => 'ro', isa => Str, required => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'CustomerUserName' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'CustomerDnsIps' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'VpcId' => 1,
+                    'CustomerUserName' => 1,
+                    'SubnetIds' => 1,
+                    'CustomerDnsIps' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

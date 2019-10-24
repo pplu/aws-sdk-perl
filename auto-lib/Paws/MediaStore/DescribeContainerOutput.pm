@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MediaStore::DescribeContainerOutput;
-  use Moose;
-  has Container => (is => 'ro', isa => 'Paws::MediaStore::Container');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStore::Types qw/MediaStore_Container/;
+  has Container => (is => 'ro', isa => MediaStore_Container);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Container' => {
+                                'class' => 'Paws::MediaStore::Container',
+                                'type' => 'MediaStore_Container'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::MediaStore::DescribeContainerOutput
 =head1 ATTRIBUTES
 
 
-=head2 Container => L<Paws::MediaStore::Container>
+=head2 Container => MediaStore_Container
 
 The name of the queried container.
 

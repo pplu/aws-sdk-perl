@@ -1,10 +1,34 @@
 
 package Paws::AppMesh::UpdateMeshOutput;
-  use Moose;
-  has Mesh => (is => 'ro', isa => 'Paws::AppMesh::MeshData', traits => ['NameInRequest'], request_name => 'mesh', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Mesh');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_MeshData/;
+  has Mesh => (is => 'ro', isa => AppMesh_MeshData, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Mesh' => {
+                           'class' => 'Paws::AppMesh::MeshData',
+                           'type' => 'AppMesh_MeshData'
+                         }
+             },
+  'NameInRequest' => {
+                       'Mesh' => 'mesh'
+                     },
+  'IsRequired' => {
+                    'Mesh' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::AppMesh::UpdateMeshOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Mesh => L<Paws::AppMesh::MeshData>
+=head2 B<REQUIRED> Mesh => AppMesh_MeshData
 
 
 

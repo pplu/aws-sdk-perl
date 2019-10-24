@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudTrail::ListPublicKeysResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PublicKeyList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::PublicKey]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_PublicKey/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PublicKeyList => (is => 'ro', isa => ArrayRef[CloudTrail_PublicKey]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PublicKeyList' => {
+                                    'class' => 'Paws::CloudTrail::PublicKey',
+                                    'type' => 'ArrayRef[CloudTrail_PublicKey]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::CloudTrail::ListPublicKeysResponse
 Reserved for future use.
 
 
-=head2 PublicKeyList => ArrayRef[L<Paws::CloudTrail::PublicKey>]
+=head2 PublicKeyList => ArrayRef[CloudTrail_PublicKey]
 
 Contains an array of PublicKey objects.
 

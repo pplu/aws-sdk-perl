@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::GameLift::RuntimeConfiguration;
-  use Moose;
-  has GameSessionActivationTimeoutSeconds => (is => 'ro', isa => 'Int');
-  has MaxConcurrentGameSessionActivations => (is => 'ro', isa => 'Int');
-  has ServerProcesses => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ServerProcess]');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_ServerProcess/;
+  has GameSessionActivationTimeoutSeconds => (is => 'ro', isa => Int);
+  has MaxConcurrentGameSessionActivations => (is => 'ro', isa => Int);
+  has ServerProcesses => (is => 'ro', isa => ArrayRef[GameLift_ServerProcess]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameSessionActivationTimeoutSeconds' => {
+                                                          'type' => 'Int'
+                                                        },
+               'ServerProcesses' => {
+                                      'class' => 'Paws::GameLift::ServerProcess',
+                                      'type' => 'ArrayRef[GameLift_ServerProcess]'
+                                    },
+               'MaxConcurrentGameSessionActivations' => {
+                                                          'type' => 'Int'
+                                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -161,7 +185,7 @@ an instance simultaneously. This setting limits the amount of instance
 resources that can be used for new game activations at any one time.
 
 
-=head2 ServerProcesses => ArrayRef[L<Paws::GameLift::ServerProcess>]
+=head2 ServerProcesses => ArrayRef[GameLift_ServerProcess]
 
   Collection of server process configurations that describe which server
 processes to run on each instance in a fleet.

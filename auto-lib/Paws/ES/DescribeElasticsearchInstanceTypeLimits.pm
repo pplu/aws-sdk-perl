@@ -33,7 +33,11 @@ package Paws::ES::DescribeElasticsearchInstanceTypeLimits;
                   },
   'ParamInQuery' => {
                       'DomainName' => 'domainName'
-                    }
+                    },
+  'IsRequired' => {
+                    'ElasticsearchVersion' => 1,
+                    'InstanceType' => 1
+                  }
 }
 ;
     return $Params_map;

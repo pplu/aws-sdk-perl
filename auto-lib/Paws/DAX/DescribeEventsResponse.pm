@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::DescribeEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Event]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DAX::Types qw/DAX_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[DAX_Event]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Events' => {
+                             'class' => 'Paws::DAX::Event',
+                             'type' => 'ArrayRef[DAX_Event]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DAX::DescribeEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::DAX::Event>]
+=head2 Events => ArrayRef[DAX_Event]
 
 An array of events. Each element in the array represents one event.
 

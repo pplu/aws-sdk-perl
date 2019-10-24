@@ -1,22 +1,83 @@
 
 package Paws::Kafka::CreateCluster;
-  use Moose;
-  has BrokerNodeGroupInfo => (is => 'ro', isa => 'Paws::Kafka::BrokerNodeGroupInfo', traits => ['NameInRequest'], request_name => 'brokerNodeGroupInfo', required => 1);
-  has ClientAuthentication => (is => 'ro', isa => 'Paws::Kafka::ClientAuthentication', traits => ['NameInRequest'], request_name => 'clientAuthentication');
-  has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName', required => 1);
-  has ConfigurationInfo => (is => 'ro', isa => 'Paws::Kafka::ConfigurationInfo', traits => ['NameInRequest'], request_name => 'configurationInfo');
-  has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', traits => ['NameInRequest'], request_name => 'encryptionInfo');
-  has EnhancedMonitoring => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'enhancedMonitoring');
-  has KafkaVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kafkaVersion', required => 1);
-  has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfBrokerNodes', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw/Kafka_ClientAuthentication Kafka___mapOf__string Kafka_ConfigurationInfo Kafka_EncryptionInfo Kafka_BrokerNodeGroupInfo/;
+  has BrokerNodeGroupInfo => (is => 'ro', isa => Kafka_BrokerNodeGroupInfo, required => 1, predicate => 1);
+  has ClientAuthentication => (is => 'ro', isa => Kafka_ClientAuthentication, predicate => 1);
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigurationInfo => (is => 'ro', isa => Kafka_ConfigurationInfo, predicate => 1);
+  has EncryptionInfo => (is => 'ro', isa => Kafka_EncryptionInfo, predicate => 1);
+  has EnhancedMonitoring => (is => 'ro', isa => Str, predicate => 1);
+  has KafkaVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NumberOfBrokerNodes => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Kafka___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/clusters');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::CreateClusterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/clusters');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::CreateClusterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KafkaVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'BrokerNodeGroupInfo' => {
+                                          'class' => 'Paws::Kafka::BrokerNodeGroupInfo',
+                                          'type' => 'Kafka_BrokerNodeGroupInfo'
+                                        },
+               'EncryptionInfo' => {
+                                     'class' => 'Paws::Kafka::EncryptionInfo',
+                                     'type' => 'Kafka_EncryptionInfo'
+                                   },
+               'EnhancedMonitoring' => {
+                                         'type' => 'Str'
+                                       },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Kafka::__mapOf__string',
+                           'type' => 'Kafka___mapOf__string'
+                         },
+               'ClientAuthentication' => {
+                                           'class' => 'Paws::Kafka::ClientAuthentication',
+                                           'type' => 'Kafka_ClientAuthentication'
+                                         },
+               'ConfigurationInfo' => {
+                                        'class' => 'Paws::Kafka::ConfigurationInfo',
+                                        'type' => 'Kafka_ConfigurationInfo'
+                                      },
+               'NumberOfBrokerNodes' => {
+                                          'type' => 'Int'
+                                        }
+             },
+  'NameInRequest' => {
+                       'KafkaVersion' => 'kafkaVersion',
+                       'BrokerNodeGroupInfo' => 'brokerNodeGroupInfo',
+                       'EncryptionInfo' => 'encryptionInfo',
+                       'EnhancedMonitoring' => 'enhancedMonitoring',
+                       'ClusterName' => 'clusterName',
+                       'Tags' => 'tags',
+                       'ClientAuthentication' => 'clientAuthentication',
+                       'ConfigurationInfo' => 'configurationInfo',
+                       'NumberOfBrokerNodes' => 'numberOfBrokerNodes'
+                     },
+  'IsRequired' => {
+                    'KafkaVersion' => 1,
+                    'BrokerNodeGroupInfo' => 1,
+                    'ClusterName' => 1,
+                    'NumberOfBrokerNodes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,13 +149,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> BrokerNodeGroupInfo => L<Paws::Kafka::BrokerNodeGroupInfo>
+=head2 B<REQUIRED> BrokerNodeGroupInfo => Kafka_BrokerNodeGroupInfo
 
 Information about the broker nodes in the cluster.
 
 
 
-=head2 ClientAuthentication => L<Paws::Kafka::ClientAuthentication>
+=head2 ClientAuthentication => Kafka_ClientAuthentication
 
 Includes all client authentication related information.
 
@@ -106,14 +167,14 @@ The name of the cluster.
 
 
 
-=head2 ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>
+=head2 ConfigurationInfo => Kafka_ConfigurationInfo
 
 Represents the configuration that you want MSK to use for the brokers
 in a cluster.
 
 
 
-=head2 EncryptionInfo => L<Paws::Kafka::EncryptionInfo>
+=head2 EncryptionInfo => Kafka_EncryptionInfo
 
 Includes all encryption-related information.
 
@@ -138,7 +199,7 @@ The number of broker nodes in the cluster.
 
 
 
-=head2 Tags => L<Paws::Kafka::__mapOf__string>
+=head2 Tags => Kafka___mapOf__string
 
 Create tags when creating the cluster.
 

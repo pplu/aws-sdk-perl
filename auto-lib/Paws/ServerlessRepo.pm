@@ -1,14 +1,15 @@
 package Paws::ServerlessRepo;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'serverlessrepo' }
   sub signing_name { 'serverlessrepo' }
   sub version { '2017-09-08' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -314,15 +315,15 @@ Creates an application version.
 
 =item [NotificationArns => ArrayRef[Str|Undef]]
 
-=item [ParameterOverrides => ArrayRef[L<Paws::ServerlessRepo::ParameterValue>]]
+=item [ParameterOverrides => ArrayRef[ServerlessRepo_ParameterValue]]
 
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
-=item [RollbackConfiguration => L<Paws::ServerlessRepo::RollbackConfiguration>]
+=item [RollbackConfiguration => ServerlessRepo_RollbackConfiguration]
 
 =item [SemanticVersion => Str]
 
-=item [Tags => ArrayRef[L<Paws::ServerlessRepo::Tag>]]
+=item [Tags => ArrayRef[ServerlessRepo_Tag]]
 
 =item [TemplateId => Str]
 
@@ -489,7 +490,7 @@ Lists versions for the specified application.
 
 =item ApplicationId => Str
 
-=item Statements => ArrayRef[L<Paws::ServerlessRepo::ApplicationPolicyStatement>]
+=item Statements => ArrayRef[ServerlessRepo_ApplicationPolicyStatement]
 
 
 =back

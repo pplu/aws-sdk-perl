@@ -1,16 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::IncreaseReplicaCount;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool', required => 1);
-  has NewReplicaCount => (is => 'ro', isa => 'Int');
-  has ReplicaConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ConfigureShard]');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ConfigureShard/;
+  has ApplyImmediately => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has NewReplicaCount => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicaConfiguration => (is => 'ro', isa => ArrayRef[ElastiCache_ConfigureShard], predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'IncreaseReplicaCount');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::IncreaseReplicaCountResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'IncreaseReplicaCountResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'IncreaseReplicaCount');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::IncreaseReplicaCountResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'IncreaseReplicaCountResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewReplicaCount' => {
+                                      'type' => 'Int'
+                                    },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'ReplicaConfiguration' => {
+                                           'class' => 'Paws::ElastiCache::ConfigureShard',
+                                           'type' => 'ArrayRef[ElastiCache_ConfigureShard]'
+                                         }
+             },
+  'IsRequired' => {
+                    'ApplyImmediately' => 1,
+                    'ReplicationGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +102,7 @@ replica nodes in each of the replication group's node groups.
 
 
 
-=head2 ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]
+=head2 ReplicaConfiguration => ArrayRef[ElastiCache_ConfigureShard]
 
 A list of C<ConfigureShard> objects that can be used to configure each
 shard in a Redis (cluster mode enabled) replication group. The

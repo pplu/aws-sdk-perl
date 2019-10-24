@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::DetectorDebugOption;
-  use Moose;
-  has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest'], required => 1);
-  has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw//;
+  has DetectorModelName => (is => 'ro', isa => Str, required => 1);
+  has KeyValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyValue' => {
+                               'type' => 'Str'
+                             },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'KeyValue' => 'keyValue',
+                       'DetectorModelName' => 'detectorModelName'
+                     },
+  'IsRequired' => {
+                    'DetectorModelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

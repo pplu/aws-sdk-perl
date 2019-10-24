@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Snowball::DescribeAddressesResult;
-  use Moose;
-  has Addresses => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::Address]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Snowball::Types qw/Snowball_Address/;
+  has Addresses => (is => 'ro', isa => ArrayRef[Snowball_Address]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Addresses' => {
+                                'class' => 'Paws::Snowball::Address',
+                                'type' => 'ArrayRef[Snowball_Address]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Snowball::DescribeAddressesResult
 =head1 ATTRIBUTES
 
 
-=head2 Addresses => ArrayRef[L<Paws::Snowball::Address>]
+=head2 Addresses => ArrayRef[Snowball_Address]
 
 The Snowball shipping addresses that were created for this account.
 

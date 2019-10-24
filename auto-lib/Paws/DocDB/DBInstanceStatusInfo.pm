@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBInstanceStatusInfo;
-  use Moose;
-  has Message => (is => 'ro', isa => 'Str');
-  has Normal => (is => 'ro', isa => 'Bool');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::DocDB::Types qw//;
+  has Message => (is => 'ro', isa => Str);
+  has Normal => (is => 'ro', isa => Bool);
+  has Status => (is => 'ro', isa => Str);
+  has StatusType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusType' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Normal' => {
+                             'type' => 'Bool'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

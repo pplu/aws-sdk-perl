@@ -1,12 +1,44 @@
 
 package Paws::CloudDirectory::CreateDirectoryResponse;
-  use Moose;
-  has AppliedSchemaArn => (is => 'ro', isa => 'Str', required => 1);
-  has DirectoryArn => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has AppliedSchemaArn => (is => 'ro', isa => Str, required => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ObjectIdentifier => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AppliedSchemaArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ObjectIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'AppliedSchemaArn' => 1,
+                    'ObjectIdentifier' => 1,
+                    'DirectoryArn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

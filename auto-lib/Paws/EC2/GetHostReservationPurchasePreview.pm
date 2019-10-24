@@ -12,7 +12,7 @@ package Paws::EC2::GetHostReservationPurchasePreview;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::GetHostReservationPurchasePreviewResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OfferingId' => {
@@ -21,11 +21,15 @@ package Paws::EC2::GetHostReservationPurchasePreview;
                'HostIdSet' => {
                                 'type' => 'ArrayRef[Str|Undef]'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'OfferingId' => 1,
+                    'HostIdSet' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

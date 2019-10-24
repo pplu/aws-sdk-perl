@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::RouteResponse;
-  use Moose;
-  has ModelSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'modelSelectionExpression', traits => ['NameInRequest']);
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteModels', request_name => 'responseModels', traits => ['NameInRequest']);
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteParameters', request_name => 'responseParameters', traits => ['NameInRequest']);
-  has RouteResponseId => (is => 'ro', isa => 'Str', request_name => 'routeResponseId', traits => ['NameInRequest']);
-  has RouteResponseKey => (is => 'ro', isa => 'Str', request_name => 'routeResponseKey', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_RouteModels ApiGatewayV2_RouteParameters/;
+  has ModelSelectionExpression => (is => 'ro', isa => Str);
+  has ResponseModels => (is => 'ro', isa => ApiGatewayV2_RouteModels);
+  has ResponseParameters => (is => 'ro', isa => ApiGatewayV2_RouteParameters);
+  has RouteResponseId => (is => 'ro', isa => Str);
+  has RouteResponseKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResponseModels' => {
+                                     'class' => 'Paws::ApiGatewayV2::RouteModels',
+                                     'type' => 'ApiGatewayV2_RouteModels'
+                                   },
+               'RouteResponseId' => {
+                                      'type' => 'Str'
+                                    },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGatewayV2::RouteParameters',
+                                         'type' => 'ApiGatewayV2_RouteParameters'
+                                       },
+               'ModelSelectionExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'RouteResponseKey' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ResponseModels' => 'responseModels',
+                       'RouteResponseId' => 'routeResponseId',
+                       'ResponseParameters' => 'responseParameters',
+                       'ModelSelectionExpression' => 'modelSelectionExpression',
+                       'RouteResponseKey' => 'routeResponseKey'
+                     },
+  'IsRequired' => {
+                    'RouteResponseKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +86,12 @@ Represents a route response.
   Represents the model selection expression of a route response.
 
 
-=head2 ResponseModels => L<Paws::ApiGatewayV2::RouteModels>
+=head2 ResponseModels => ApiGatewayV2_RouteModels
 
   Represents the response models of a route response.
 
 
-=head2 ResponseParameters => L<Paws::ApiGatewayV2::RouteParameters>
+=head2 ResponseParameters => ApiGatewayV2_RouteParameters
 
   Represents the response parameters of a route response.
 

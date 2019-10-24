@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListPoliciesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicySummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_PolicySummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => ArrayRef[Organizations_PolicySummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Policies' => {
+                               'class' => 'Paws::Organizations::PolicySummary',
+                               'type' => 'ArrayRef[Organizations_PolicySummary]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ get the next part of the output. You should repeat this until the
 C<NextToken> response element comes back as C<null>.
 
 
-=head2 Policies => ArrayRef[L<Paws::Organizations::PolicySummary>]
+=head2 Policies => ArrayRef[Organizations_PolicySummary]
 
 A list of policies that match the filter criteria in the request. The
 output list doesn't include the policy contents. To see the content for

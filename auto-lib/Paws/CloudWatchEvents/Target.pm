@@ -1,16 +1,73 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::Target;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has BatchParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchParameters');
-  has EcsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::EcsParameters');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Input => (is => 'ro', isa => 'Str');
-  has InputPath => (is => 'ro', isa => 'Str');
-  has InputTransformer => (is => 'ro', isa => 'Paws::CloudWatchEvents::InputTransformer');
-  has KinesisParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::KinesisParameters');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
-  has SqsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SqsParameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_SqsParameters CloudWatchEvents_EcsParameters CloudWatchEvents_KinesisParameters CloudWatchEvents_RunCommandParameters CloudWatchEvents_InputTransformer CloudWatchEvents_BatchParameters/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has BatchParameters => (is => 'ro', isa => CloudWatchEvents_BatchParameters);
+  has EcsParameters => (is => 'ro', isa => CloudWatchEvents_EcsParameters);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Input => (is => 'ro', isa => Str);
+  has InputPath => (is => 'ro', isa => Str);
+  has InputTransformer => (is => 'ro', isa => CloudWatchEvents_InputTransformer);
+  has KinesisParameters => (is => 'ro', isa => CloudWatchEvents_KinesisParameters);
+  has RoleArn => (is => 'ro', isa => Str);
+  has RunCommandParameters => (is => 'ro', isa => CloudWatchEvents_RunCommandParameters);
+  has SqsParameters => (is => 'ro', isa => CloudWatchEvents_SqsParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisParameters' => {
+                                        'class' => 'Paws::CloudWatchEvents::KinesisParameters',
+                                        'type' => 'CloudWatchEvents_KinesisParameters'
+                                      },
+               'InputPath' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'BatchParameters' => {
+                                      'class' => 'Paws::CloudWatchEvents::BatchParameters',
+                                      'type' => 'CloudWatchEvents_BatchParameters'
+                                    },
+               'EcsParameters' => {
+                                    'class' => 'Paws::CloudWatchEvents::EcsParameters',
+                                    'type' => 'CloudWatchEvents_EcsParameters'
+                                  },
+               'SqsParameters' => {
+                                    'class' => 'Paws::CloudWatchEvents::SqsParameters',
+                                    'type' => 'CloudWatchEvents_SqsParameters'
+                                  },
+               'InputTransformer' => {
+                                       'class' => 'Paws::CloudWatchEvents::InputTransformer',
+                                       'type' => 'CloudWatchEvents_InputTransformer'
+                                     },
+               'RunCommandParameters' => {
+                                           'class' => 'Paws::CloudWatchEvents::RunCommandParameters',
+                                           'type' => 'CloudWatchEvents_RunCommandParameters'
+                                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Input' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +118,7 @@ in the I<Amazon CloudWatch Events User Guide>.
   The Amazon Resource Name (ARN) of the target.
 
 
-=head2 BatchParameters => L<Paws::CloudWatchEvents::BatchParameters>
+=head2 BatchParameters => CloudWatchEvents_BatchParameters
 
   If the event target is an AWS Batch job, this contains the job
 definition, job name, and other parameters. For more information, see
@@ -69,7 +126,7 @@ Jobs (https://docs.aws.amazon.com/batch/latest/userguide/jobs.html) in
 the I<AWS Batch User Guide>.
 
 
-=head2 EcsParameters => L<Paws::CloudWatchEvents::EcsParameters>
+=head2 EcsParameters => CloudWatchEvents_EcsParameters
 
   Contains the Amazon ECS task definition and task count to be used, if
 the event target is an Amazon ECS task. For more information about
@@ -99,7 +156,7 @@ notation, not bracket notation. For more information about JSON paths,
 see JSONPath (http://goessner.net/articles/JsonPath/).
 
 
-=head2 InputTransformer => L<Paws::CloudWatchEvents::InputTransformer>
+=head2 InputTransformer => CloudWatchEvents_InputTransformer
 
   Settings to enable you to provide custom input to a target based on
 certain event data. You can extract one or more key-value pairs from
@@ -107,7 +164,7 @@ the event and then use that data to send customized input to the
 target.
 
 
-=head2 KinesisParameters => L<Paws::CloudWatchEvents::KinesisParameters>
+=head2 KinesisParameters => CloudWatchEvents_KinesisParameters
 
   The custom parameter you can use to control the shard assignment, when
 the target is a Kinesis data stream. If you do not include this
@@ -121,13 +178,13 @@ target when the rule is triggered. If one rule triggers multiple
 targets, you can use a different IAM role for each target.
 
 
-=head2 RunCommandParameters => L<Paws::CloudWatchEvents::RunCommandParameters>
+=head2 RunCommandParameters => CloudWatchEvents_RunCommandParameters
 
   Parameters used when you are using the rule to invoke Amazon EC2 Run
 Command.
 
 
-=head2 SqsParameters => L<Paws::CloudWatchEvents::SqsParameters>
+=head2 SqsParameters => CloudWatchEvents_SqsParameters
 
   Contains the message group ID to use when the target is a FIFO queue.
 

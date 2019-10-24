@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::DescribeImportTasksResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Tasks => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ImportTask]', traits => ['NameInRequest'], request_name => 'tasks' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_ImportTask/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Tasks => (is => 'ro', isa => ArrayRef[Discovery_ImportTask]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tasks' => {
+                            'class' => 'Paws::Discovery::ImportTask',
+                            'type' => 'ArrayRef[Discovery_ImportTask]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Tasks' => 'tasks',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::Discovery::DescribeImportTasksResponse
 The token to request the next page of results.
 
 
-=head2 Tasks => ArrayRef[L<Paws::Discovery::ImportTask>]
+=head2 Tasks => ArrayRef[Discovery_ImportTask]
 
 A returned array of import tasks that match any applied filters, up to
 the specified number of maximum results.

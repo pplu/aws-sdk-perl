@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Kinesis::Record;
-  use Moose;
-  has ApproximateArrivalTimestamp => (is => 'ro', isa => 'Str');
-  has Data => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
-  has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has ApproximateArrivalTimestamp => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Str, required => 1);
+  has EncryptionType => (is => 'ro', isa => Str);
+  has PartitionKey => (is => 'ro', isa => Str, required => 1);
+  has SequenceNumber => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'SequenceNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'PartitionKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ApproximateArrivalTimestamp' => {
+                                                  'type' => 'Str'
+                                                },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'SequenceNumber' => 1,
+                    'PartitionKey' => 1,
+                    'Data' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

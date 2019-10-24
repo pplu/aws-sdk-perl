@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::ListResourceServersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceServers => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::ResourceServerType]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ResourceServerType/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ResourceServers => (is => 'ro', isa => ArrayRef[CognitoIdp_ResourceServerType], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceServers' => {
+                                      'class' => 'Paws::CognitoIdp::ResourceServerType',
+                                      'type' => 'ArrayRef[CognitoIdp_ResourceServerType]'
+                                    }
+             },
+  'IsRequired' => {
+                    'ResourceServers' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +45,7 @@ Paws::CognitoIdp::ListResourceServersResponse
 A pagination token.
 
 
-=head2 B<REQUIRED> ResourceServers => ArrayRef[L<Paws::CognitoIdp::ResourceServerType>]
+=head2 B<REQUIRED> ResourceServers => ArrayRef[CognitoIdp_ResourceServerType]
 
 The resource servers.
 

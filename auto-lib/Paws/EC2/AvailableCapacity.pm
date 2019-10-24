@@ -4,7 +4,7 @@ package Paws::EC2::AvailableCapacity;
   has AvailableInstanceCapacity => (is => 'ro', isa => ArrayRef[EC2_InstanceCapacity]);
   has AvailableVCpus => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AvailableVCpus' => {
@@ -21,8 +21,8 @@ package Paws::EC2::AvailableCapacity;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

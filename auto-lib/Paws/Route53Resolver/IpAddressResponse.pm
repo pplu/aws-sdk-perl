@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::IpAddressResponse;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Ip => (is => 'ro', isa => 'Str');
-  has IpId => (is => 'ro', isa => 'Str');
-  has ModificationTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Ip => (is => 'ro', isa => Str);
+  has IpId => (is => 'ro', isa => Str);
+  has ModificationTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'IpId' => {
+                           'type' => 'Str'
+                         },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Ip' => {
+                         'type' => 'Str'
+                       },
+               'ModificationTime' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

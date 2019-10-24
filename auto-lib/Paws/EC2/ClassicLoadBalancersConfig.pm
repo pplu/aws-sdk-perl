@@ -3,7 +3,7 @@ package Paws::EC2::ClassicLoadBalancersConfig;
   use Paws::EC2::Types qw/EC2_ClassicLoadBalancer/;
   has ClassicLoadBalancers => (is => 'ro', isa => ArrayRef[EC2_ClassicLoadBalancer]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ClassicLoadBalancers' => {
@@ -16,8 +16,8 @@ package Paws::EC2::ClassicLoadBalancersConfig;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

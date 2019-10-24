@@ -1,17 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetInventory;
-  use Moose;
-  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResultAttributes => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ResultAttribute]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_ResultAttribute SSM_InventoryAggregator SSM_InventoryFilter/;
+  has Aggregators => (is => 'ro', isa => ArrayRef[SSM_InventoryAggregator], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_InventoryFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResultAttributes => (is => 'ro', isa => ArrayRef[SSM_ResultAttribute], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInventory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetInventoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetInventory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetInventoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Aggregators' => {
+                                  'class' => 'Paws::SSM::InventoryAggregator',
+                                  'type' => 'ArrayRef[SSM_InventoryAggregator]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::InventoryFilter',
+                              'type' => 'ArrayRef[SSM_InventoryFilter]'
+                            },
+               'ResultAttributes' => {
+                                       'class' => 'Paws::SSM::ResultAttribute',
+                                       'type' => 'ArrayRef[SSM_ResultAttribute]'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Aggregators => ArrayRef[L<Paws::SSM::InventoryAggregator>]
+=head2 Aggregators => ArrayRef[SSM_InventoryAggregator]
 
 Returns counts of inventory types based on one or more expressions. For
 example, if you aggregate by using an expression that uses the
@@ -97,7 +128,7 @@ how many Windows and Linux instances exist in your inventoried fleet.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]
+=head2 Filters => ArrayRef[SSM_InventoryFilter]
 
 One or more filters. Use a filter to return a more specific list of
 results.
@@ -119,7 +150,7 @@ from a previous call.)
 
 
 
-=head2 ResultAttributes => ArrayRef[L<Paws::SSM::ResultAttribute>]
+=head2 ResultAttributes => ArrayRef[SSM_ResultAttribute]
 
 The list of inventory item types to return.
 

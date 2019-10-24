@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Glue::ConnectionPasswordEncryption;
-  use Moose;
-  has AwsKmsKeyId => (is => 'ro', isa => 'Str');
-  has ReturnConnectionPasswordEncrypted => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Glue::Types qw//;
+  has AwsKmsKeyId => (is => 'ro', isa => Str);
+  has ReturnConnectionPasswordEncrypted => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnConnectionPasswordEncrypted' => {
+                                                        'type' => 'Bool'
+                                                      },
+               'AwsKmsKeyId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ReturnConnectionPasswordEncrypted' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

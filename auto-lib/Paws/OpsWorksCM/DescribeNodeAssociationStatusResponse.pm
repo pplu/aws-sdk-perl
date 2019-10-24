@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse;
-  use Moose;
-  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
-  has NodeAssociationStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_EngineAttribute/;
+  has EngineAttributes => (is => 'ro', isa => ArrayRef[OpsWorksCM_EngineAttribute]);
+  has NodeAssociationStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NodeAssociationStatus' => {
+                                            'type' => 'Str'
+                                          },
+               'EngineAttributes' => {
+                                       'class' => 'Paws::OpsWorksCM::EngineAttribute',
+                                       'type' => 'ArrayRef[OpsWorksCM_EngineAttribute]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::OpsWorksCM::DescribeNodeAssociationStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=head2 EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]
 
 Attributes specific to the node association. In Puppet, the attibute
 PUPPET_NODE_CERT contains the signed certificate (the result of the

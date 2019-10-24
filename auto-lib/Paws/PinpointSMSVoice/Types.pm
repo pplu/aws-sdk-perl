@@ -1,0 +1,37 @@
+package Paws::PinpointSMSVoice::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type PinpointSMSVoice_AlreadyExistsException, { class => 'Paws::PinpointSMSVoice::AlreadyExistsException' };
+  class_type PinpointSMSVoice_BadRequestException, { class => 'Paws::PinpointSMSVoice::BadRequestException' };
+  class_type PinpointSMSVoice_CallInstructionsMessageType, { class => 'Paws::PinpointSMSVoice::CallInstructionsMessageType' };
+  class_type PinpointSMSVoice_CloudWatchLogsDestination, { class => 'Paws::PinpointSMSVoice::CloudWatchLogsDestination' };
+  class_type PinpointSMSVoice_CreateConfigurationSetEventDestinationRequest, { class => 'Paws::PinpointSMSVoice::CreateConfigurationSetEventDestinationRequest' };
+  class_type PinpointSMSVoice_CreateConfigurationSetEventDestinationResponse, { class => 'Paws::PinpointSMSVoice::CreateConfigurationSetEventDestinationResponse' };
+  class_type PinpointSMSVoice_CreateConfigurationSetRequest, { class => 'Paws::PinpointSMSVoice::CreateConfigurationSetRequest' };
+  class_type PinpointSMSVoice_CreateConfigurationSetResponse, { class => 'Paws::PinpointSMSVoice::CreateConfigurationSetResponse' };
+  class_type PinpointSMSVoice_DeleteConfigurationSetEventDestinationRequest, { class => 'Paws::PinpointSMSVoice::DeleteConfigurationSetEventDestinationRequest' };
+  class_type PinpointSMSVoice_DeleteConfigurationSetEventDestinationResponse, { class => 'Paws::PinpointSMSVoice::DeleteConfigurationSetEventDestinationResponse' };
+  class_type PinpointSMSVoice_DeleteConfigurationSetRequest, { class => 'Paws::PinpointSMSVoice::DeleteConfigurationSetRequest' };
+  class_type PinpointSMSVoice_DeleteConfigurationSetResponse, { class => 'Paws::PinpointSMSVoice::DeleteConfigurationSetResponse' };
+  class_type PinpointSMSVoice_EventDestination, { class => 'Paws::PinpointSMSVoice::EventDestination' };
+  class_type PinpointSMSVoice_EventDestinationDefinition, { class => 'Paws::PinpointSMSVoice::EventDestinationDefinition' };
+  class_type PinpointSMSVoice_GetConfigurationSetEventDestinationsRequest, { class => 'Paws::PinpointSMSVoice::GetConfigurationSetEventDestinationsRequest' };
+  class_type PinpointSMSVoice_GetConfigurationSetEventDestinationsResponse, { class => 'Paws::PinpointSMSVoice::GetConfigurationSetEventDestinationsResponse' };
+  class_type PinpointSMSVoice_InternalServiceErrorException, { class => 'Paws::PinpointSMSVoice::InternalServiceErrorException' };
+  class_type PinpointSMSVoice_KinesisFirehoseDestination, { class => 'Paws::PinpointSMSVoice::KinesisFirehoseDestination' };
+  class_type PinpointSMSVoice_LimitExceededException, { class => 'Paws::PinpointSMSVoice::LimitExceededException' };
+  class_type PinpointSMSVoice_ListConfigurationSetsRequest, { class => 'Paws::PinpointSMSVoice::ListConfigurationSetsRequest' };
+  class_type PinpointSMSVoice_ListConfigurationSetsResponse, { class => 'Paws::PinpointSMSVoice::ListConfigurationSetsResponse' };
+  class_type PinpointSMSVoice_NotFoundException, { class => 'Paws::PinpointSMSVoice::NotFoundException' };
+  class_type PinpointSMSVoice_PlainTextMessageType, { class => 'Paws::PinpointSMSVoice::PlainTextMessageType' };
+  class_type PinpointSMSVoice_SendVoiceMessageRequest, { class => 'Paws::PinpointSMSVoice::SendVoiceMessageRequest' };
+  class_type PinpointSMSVoice_SendVoiceMessageResponse, { class => 'Paws::PinpointSMSVoice::SendVoiceMessageResponse' };
+  class_type PinpointSMSVoice_SnsDestination, { class => 'Paws::PinpointSMSVoice::SnsDestination' };
+  class_type PinpointSMSVoice_SSMLMessageType, { class => 'Paws::PinpointSMSVoice::SSMLMessageType' };
+  class_type PinpointSMSVoice_TooManyRequestsException, { class => 'Paws::PinpointSMSVoice::TooManyRequestsException' };
+  class_type PinpointSMSVoice_UpdateConfigurationSetEventDestinationRequest, { class => 'Paws::PinpointSMSVoice::UpdateConfigurationSetEventDestinationRequest' };
+  class_type PinpointSMSVoice_UpdateConfigurationSetEventDestinationResponse, { class => 'Paws::PinpointSMSVoice::UpdateConfigurationSetEventDestinationResponse' };
+  class_type PinpointSMSVoice_VoiceMessageContent, { class => 'Paws::PinpointSMSVoice::VoiceMessageContent' };
+
+1;

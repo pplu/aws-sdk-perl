@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::GetFlowTemplateResponse;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Paws::IoTThingsGraph::FlowTemplateDescription', traits => ['NameInRequest'], request_name => 'description' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_FlowTemplateDescription/;
+  has Description => (is => 'ro', isa => IoTThingsGraph_FlowTemplateDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'class' => 'Paws::IoTThingsGraph::FlowTemplateDescription',
+                                  'type' => 'IoTThingsGraph_FlowTemplateDescription'
+                                }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::IoTThingsGraph::GetFlowTemplateResponse
 =head1 ATTRIBUTES
 
 
-=head2 Description => L<Paws::IoTThingsGraph::FlowTemplateDescription>
+=head2 Description => IoTThingsGraph_FlowTemplateDescription
 
 The object that describes the specified workflow.
 

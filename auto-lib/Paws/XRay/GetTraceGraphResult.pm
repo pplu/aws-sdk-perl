@@ -1,10 +1,31 @@
 
 package Paws::XRay::GetTraceGraphResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Service]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_Service/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Services => (is => 'ro', isa => ArrayRef[XRay_Service]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Services' => {
+                               'class' => 'Paws::XRay::Service',
+                               'type' => 'ArrayRef[XRay_Service]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::XRay::GetTraceGraphResult
 Pagination token. Not used.
 
 
-=head2 Services => ArrayRef[L<Paws::XRay::Service>]
+=head2 Services => ArrayRef[XRay_Service]
 
 The services that have processed one of the specified requests.
 

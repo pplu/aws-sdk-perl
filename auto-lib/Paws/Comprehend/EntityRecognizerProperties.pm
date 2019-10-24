@@ -1,18 +1,74 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerProperties;
-  use Moose;
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EntityRecognizerArn => (is => 'ro', isa => 'Str');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerInputDataConfig');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has RecognizerMetadata => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerMetadata');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubmitTime => (is => 'ro', isa => 'Str');
-  has TrainingEndTime => (is => 'ro', isa => 'Str');
-  has TrainingStartTime => (is => 'ro', isa => 'Str');
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_VpcConfig Comprehend_EntityRecognizerMetadata Comprehend_EntityRecognizerInputDataConfig/;
+  has DataAccessRoleArn => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has EntityRecognizerArn => (is => 'ro', isa => Str);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_EntityRecognizerInputDataConfig);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has RecognizerMetadata => (is => 'ro', isa => Comprehend_EntityRecognizerMetadata);
+  has Status => (is => 'ro', isa => Str);
+  has SubmitTime => (is => 'ro', isa => Str);
+  has TrainingEndTime => (is => 'ro', isa => Str);
+  has TrainingStartTime => (is => 'ro', isa => Str);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::EntityRecognizerInputDataConfig',
+                                      'type' => 'Comprehend_EntityRecognizerInputDataConfig'
+                                    },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RecognizerMetadata' => {
+                                         'class' => 'Paws::Comprehend::EntityRecognizerMetadata',
+                                         'type' => 'Comprehend_EntityRecognizerMetadata'
+                                       },
+               'TrainingEndTime' => {
+                                      'type' => 'Str'
+                                    },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'SubmitTime' => {
+                                 'type' => 'Str'
+                               },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'EntityRecognizerArn' => {
+                                          'type' => 'Str'
+                                        },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'TrainingStartTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +120,7 @@ role that grants Amazon Comprehend read access to your input data.
   The Amazon Resource Name (ARN) that identifies the entity recognizer.
 
 
-=head2 InputDataConfig => L<Paws::Comprehend::EntityRecognizerInputDataConfig>
+=head2 InputDataConfig => Comprehend_EntityRecognizerInputDataConfig
 
   The input data properties of an entity recognizer.
 
@@ -80,7 +136,7 @@ language. Only English ("en") is currently supported.
   A description of the status of the recognizer.
 
 
-=head2 RecognizerMetadata => L<Paws::Comprehend::EntityRecognizerMetadata>
+=head2 RecognizerMetadata => Comprehend_EntityRecognizerMetadata
 
   Provides information about an entity recognizer.
 
@@ -127,7 +183,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
   Configuration parameters for a private Virtual Private Cloud (VPC)
 containing the resources you are using for your custom entity

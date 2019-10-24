@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::RevisionInfo;
-  use Moose;
-  has GenericRevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', request_name => 'genericRevisionInfo', traits => ['NameInRequest']);
-  has RevisionLocation => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revisionLocation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_GenericRevisionInfo CodeDeploy_RevisionLocation/;
+  has GenericRevisionInfo => (is => 'ro', isa => CodeDeploy_GenericRevisionInfo);
+  has RevisionLocation => (is => 'ro', isa => CodeDeploy_RevisionLocation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RevisionLocation' => {
+                                       'class' => 'Paws::CodeDeploy::RevisionLocation',
+                                       'type' => 'CodeDeploy_RevisionLocation'
+                                     },
+               'GenericRevisionInfo' => {
+                                          'class' => 'Paws::CodeDeploy::GenericRevisionInfo',
+                                          'type' => 'CodeDeploy_GenericRevisionInfo'
+                                        }
+             },
+  'NameInRequest' => {
+                       'RevisionLocation' => 'revisionLocation',
+                       'GenericRevisionInfo' => 'genericRevisionInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ Information about an application revision.
 =head1 ATTRIBUTES
 
 
-=head2 GenericRevisionInfo => L<Paws::CodeDeploy::GenericRevisionInfo>
+=head2 GenericRevisionInfo => CodeDeploy_GenericRevisionInfo
 
   Information about an application revision, including usage details and
 associated deployment groups.
 
 
-=head2 RevisionLocation => L<Paws::CodeDeploy::RevisionLocation>
+=head2 RevisionLocation => CodeDeploy_RevisionLocation
 
   Information about the location and type of an application revision.
 

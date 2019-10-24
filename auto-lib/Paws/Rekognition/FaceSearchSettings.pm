@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Rekognition::FaceSearchSettings;
-  use Moose;
-  has CollectionId => (is => 'ro', isa => 'Str');
-  has FaceMatchThreshold => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Rekognition::Types qw//;
+  has CollectionId => (is => 'ro', isa => Str);
+  has FaceMatchThreshold => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CollectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'FaceMatchThreshold' => {
+                                         'type' => 'Num'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

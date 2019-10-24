@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::GetSampledRequestsResponse;
-  use Moose;
-  has PopulationSize => (is => 'ro', isa => 'Int');
-  has SampledRequests => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::SampledHTTPRequest]');
-  has TimeWindow => (is => 'ro', isa => 'Paws::WAFRegional::TimeWindow');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SampledHTTPRequest WAFRegional_TimeWindow/;
+  has PopulationSize => (is => 'ro', isa => Int);
+  has SampledRequests => (is => 'ro', isa => ArrayRef[WAFRegional_SampledHTTPRequest]);
+  has TimeWindow => (is => 'ro', isa => WAFRegional_TimeWindow);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeWindow' => {
+                                 'class' => 'Paws::WAFRegional::TimeWindow',
+                                 'type' => 'WAFRegional_TimeWindow'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SampledRequests' => {
+                                      'class' => 'Paws::WAFRegional::SampledHTTPRequest',
+                                      'type' => 'ArrayRef[WAFRegional_SampledHTTPRequest]'
+                                    },
+               'PopulationSize' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,13 +50,13 @@ C<MaxItems>, the sample includes every request that your AWS resource
 received during the specified time range.
 
 
-=head2 SampledRequests => ArrayRef[L<Paws::WAFRegional::SampledHTTPRequest>]
+=head2 SampledRequests => ArrayRef[WAFRegional_SampledHTTPRequest]
 
 A complex type that contains detailed information about each of the
 requests in the sample.
 
 
-=head2 TimeWindow => L<Paws::WAFRegional::TimeWindow>
+=head2 TimeWindow => WAFRegional_TimeWindow
 
 Usually, C<TimeWindow> is the time range that you specified in the
 C<GetSampledRequests> request. However, if your AWS resource received

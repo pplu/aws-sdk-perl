@@ -1,10 +1,40 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::CreateCustomActionTypeOutput;
-  use Moose;
-  has ActionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', traits => ['NameInRequest'], request_name => 'actionType' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_Tag CodePipeline_ActionType/;
+  has ActionType => (is => 'ro', isa => CodePipeline_ActionType, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActionType' => {
+                                 'class' => 'Paws::CodePipeline::ActionType',
+                                 'type' => 'CodePipeline_ActionType'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ActionType' => 'actionType',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ActionType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +45,12 @@ Paws::CodePipeline::CreateCustomActionTypeOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ActionType => L<Paws::CodePipeline::ActionType>
+=head2 B<REQUIRED> ActionType => CodePipeline_ActionType
 
 Returns information about the details of an action type.
 
 
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 Tags => ArrayRef[CodePipeline_Tag]
 
 Specifies the tags applied to the custom action.
 

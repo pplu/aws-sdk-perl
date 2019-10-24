@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Cloud9::EnvironmentLifecycle;
-  use Moose;
-  has FailureResource => (is => 'ro', isa => 'Str', request_name => 'failureResource', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw//;
+  has FailureResource => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'FailureResource' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'Status' => 'status',
+                       'FailureResource' => 'failureResource'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

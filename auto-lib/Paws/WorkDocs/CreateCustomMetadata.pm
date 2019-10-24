@@ -1,17 +1,55 @@
 
 package Paws::WorkDocs::CreateCustomMetadata;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has CustomMetadata => (is => 'ro', isa => 'Paws::WorkDocs::CustomMetadataMap', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'versionid');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_CustomMetadataMap/;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has CustomMetadata => (is => 'ro', isa => WorkDocs_CustomMetadataMap, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomMetadata');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/customMetadata');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::CreateCustomMetadataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCustomMetadata');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/resources/{ResourceId}/customMetadata');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::CreateCustomMetadataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'CustomMetadata' => {
+                                     'class' => 'Paws::WorkDocs::CustomMetadataMap',
+                                     'type' => 'WorkDocs_CustomMetadataMap'
+                                   },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ResourceId' => 'ResourceId'
+                  },
+  'ParamInQuery' => {
+                      'VersionId' => 'versionid'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'CustomMetadata' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +93,7 @@ credentials.
 
 
 
-=head2 B<REQUIRED> CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>
+=head2 B<REQUIRED> CustomMetadata => WorkDocs_CustomMetadataMap
 
 Custom metadata in the form of name-value pairs.
 

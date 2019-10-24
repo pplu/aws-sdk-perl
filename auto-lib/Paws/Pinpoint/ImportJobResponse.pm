@@ -1,18 +1,80 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ImportJobResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has CompletedPieces => (is => 'ro', isa => 'Int');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has Definition => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobResource', required => 1);
-  has FailedPieces => (is => 'ro', isa => 'Int');
-  has Failures => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has JobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has TotalFailures => (is => 'ro', isa => 'Int');
-  has TotalPieces => (is => 'ro', isa => 'Int');
-  has TotalProcessed => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ImportJobResource/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CompletedPieces => (is => 'ro', isa => Int);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has Definition => (is => 'ro', isa => Pinpoint_ImportJobResource, required => 1);
+  has FailedPieces => (is => 'ro', isa => Int);
+  has Failures => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has JobStatus => (is => 'ro', isa => Str, required => 1);
+  has TotalFailures => (is => 'ro', isa => Int);
+  has TotalPieces => (is => 'ro', isa => Int);
+  has TotalProcessed => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Definition' => {
+                                 'class' => 'Paws::Pinpoint::ImportJobResource',
+                                 'type' => 'Pinpoint_ImportJobResource'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Failures' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'FailedPieces' => {
+                                   'type' => 'Int'
+                                 },
+               'CompletedPieces' => {
+                                      'type' => 'Int'
+                                    },
+               'TotalProcessed' => {
+                                     'type' => 'Int'
+                                   },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'TotalFailures' => {
+                                    'type' => 'Int'
+                                  },
+               'TotalPieces' => {
+                                  'type' => 'Int'
+                                },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'Type' => 1,
+                    'Definition' => 1,
+                    'Id' => 1,
+                    'CreationDate' => 1,
+                    'JobStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +135,7 @@ the import job, as of the time of the request.
   The date, in ISO 8601 format, when the import job was created.
 
 
-=head2 B<REQUIRED> Definition => L<Paws::Pinpoint::ImportJobResource>
+=head2 B<REQUIRED> Definition => Pinpoint_ImportJobResource
 
   The resource settings that apply to the import job.
 

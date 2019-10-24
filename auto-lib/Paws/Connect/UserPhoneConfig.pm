@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Connect::UserPhoneConfig;
-  use Moose;
-  has AfterContactWorkTimeLimit => (is => 'ro', isa => 'Int');
-  has AutoAccept => (is => 'ro', isa => 'Bool');
-  has DeskPhoneNumber => (is => 'ro', isa => 'Str');
-  has PhoneType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::Connect::Types qw//;
+  has AfterContactWorkTimeLimit => (is => 'ro', isa => Int);
+  has AutoAccept => (is => 'ro', isa => Bool);
+  has DeskPhoneNumber => (is => 'ro', isa => Str);
+  has PhoneType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AfterContactWorkTimeLimit' => {
+                                                'type' => 'Int'
+                                              },
+               'AutoAccept' => {
+                                 'type' => 'Bool'
+                               },
+               'PhoneType' => {
+                                'type' => 'Str'
+                              },
+               'DeskPhoneNumber' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'PhoneType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

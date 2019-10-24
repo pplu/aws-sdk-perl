@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateByteMatchSet;
-  use Moose;
-  has ByteMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ByteMatchSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_ByteMatchSetUpdate/;
+  has ByteMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_ByteMatchSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateByteMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateByteMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateByteMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateByteMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAFRegional::ByteMatchSetUpdate',
+                              'type' => 'ArrayRef[WAFRegional_ByteMatchSetUpdate]'
+                            },
+               'ByteMatchSetId' => {
+                                     'type' => 'Str'
+                                   },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'ByteMatchSetId' => 1,
+                    'ChangeToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +105,7 @@ The value returned by the most recent call to GetChangeToken.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::ByteMatchSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_ByteMatchSetUpdate]
 
 An array of C<ByteMatchSetUpdate> objects that you want to insert into
 or delete from a ByteMatchSet. For more information, see the applicable

@@ -21,7 +21,7 @@ package Paws::EC2::ModifyVpcEndpoint;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcEndpointResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ResetPolicy' => {
@@ -65,11 +65,14 @@ package Paws::EC2::ModifyVpcEndpoint;
                        'AddRouteTableIds' => 'AddRouteTableId',
                        'RemoveSecurityGroupIds' => 'RemoveSecurityGroupId',
                        'AddSubnetIds' => 'AddSubnetId'
-                     }
+                     },
+  'IsRequired' => {
+                    'VpcEndpointId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

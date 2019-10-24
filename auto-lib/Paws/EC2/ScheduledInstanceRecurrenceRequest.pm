@@ -7,7 +7,7 @@ package Paws::EC2::ScheduledInstanceRecurrenceRequest;
   has OccurrenceRelativeToEnd => (is => 'ro', isa => Bool);
   has OccurrenceUnit => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Frequency' => {
@@ -31,8 +31,8 @@ package Paws::EC2::ScheduledInstanceRecurrenceRequest;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

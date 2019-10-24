@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Entitlement;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subscribers', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Encryption/;
+  has Description => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has EntitlementArn => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscribers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConnect::Encryption',
+                                 'type' => 'MediaConnect_Encryption'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Subscribers' => 'subscribers',
+                       'Encryption' => 'encryption',
+                       'Name' => 'name',
+                       'EntitlementArn' => 'entitlementArn',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Subscribers' => 1,
+                    'Name' => 1,
+                    'EntitlementArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +87,7 @@ The settings for a flow entitlement.
   A description of the entitlement.
 
 
-=head2 Encryption => L<Paws::MediaConnect::Encryption>
+=head2 Encryption => MediaConnect_Encryption
 
   The type of encryption that will be used on the output that is
 associated with this entitlement.

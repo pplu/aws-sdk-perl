@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::DescribeKey;
-  use Moose;
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KeyId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KMS::Types qw//;
+  has GrantTokens => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKey');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::DescribeKeyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeKey');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::DescribeKeyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantTokens' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'KeyId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'KeyId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

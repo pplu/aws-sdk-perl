@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Delete;
   use Moo;
   use Types::Standard qw/ArrayRef Bool/;
@@ -18,7 +19,10 @@ package Paws::S3::Delete;
              },
   'NameInRequest' => {
                        'Objects' => 'Object'
-                     }
+                     },
+  'IsRequired' => {
+                    'Objects' => 1
+                  }
 }
 ;
     return $Params_map;

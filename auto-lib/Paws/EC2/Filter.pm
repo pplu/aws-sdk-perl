@@ -4,7 +4,7 @@ package Paws::EC2::Filter;
   has Name => (is => 'ro', isa => Str);
   has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Values' => {
@@ -19,8 +19,8 @@ package Paws::EC2::Filter;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

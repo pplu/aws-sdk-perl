@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationVersionPage;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::VersionSummary]', request_name => 'versions', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_VersionSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Versions => (is => 'ro', isa => ArrayRef[ServerlessRepo_VersionSummary], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Versions' => {
+                               'class' => 'Paws::ServerlessRepo::VersionSummary',
+                               'type' => 'ArrayRef[ServerlessRepo_VersionSummary]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Versions' => 'versions',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Versions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ A list of version summaries for the application.
   The token to request the next page of results.
 
 
-=head2 B<REQUIRED> Versions => ArrayRef[L<Paws::ServerlessRepo::VersionSummary>]
+=head2 B<REQUIRED> Versions => ArrayRef[ServerlessRepo_VersionSummary]
 
   An array of version summaries for the application.
 

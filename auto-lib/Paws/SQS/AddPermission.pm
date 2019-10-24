@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::AddPermission;
   use Moo;
@@ -29,7 +30,13 @@ package Paws::SQS::AddPermission;
                'AWSAccountIds' => {
                                     'type' => 'ArrayRef[Str|Undef]'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'Actions' => 1,
+                    'Label' => 1,
+                    'AWSAccountIds' => 1
+                  }
 }
 ;
     return $Params_map;

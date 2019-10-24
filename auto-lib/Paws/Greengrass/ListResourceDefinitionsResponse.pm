@@ -1,10 +1,31 @@
 
 package Paws::Greengrass::ListResourceDefinitionsResponse;
-  use Moose;
-  has Definitions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::DefinitionInformation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_DefinitionInformation/;
+  has Definitions => (is => 'ro', isa => ArrayRef[Greengrass_DefinitionInformation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Definitions' => {
+                                  'class' => 'Paws::Greengrass::DefinitionInformation',
+                                  'type' => 'ArrayRef[Greengrass_DefinitionInformation]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Greengrass::ListResourceDefinitionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Definitions => ArrayRef[L<Paws::Greengrass::DefinitionInformation>]
+=head2 Definitions => ArrayRef[Greengrass_DefinitionInformation]
 
 Information about a definition.
 

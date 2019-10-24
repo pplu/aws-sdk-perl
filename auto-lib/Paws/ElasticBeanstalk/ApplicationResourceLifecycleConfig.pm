@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig;
-  use Moose;
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has VersionLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ApplicationVersionLifecycleConfig/;
+  has ServiceRole => (is => 'ro', isa => Str);
+  has VersionLifecycleConfig => (is => 'ro', isa => ElasticBeanstalk_ApplicationVersionLifecycleConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'VersionLifecycleConfig' => {
+                                             'class' => 'Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig',
+                                             'type' => 'ElasticBeanstalk_ApplicationVersionLifecycleConfig'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +78,7 @@ however, specify it in subsequent calls to change the Service Role to
 another value.
 
 
-=head2 VersionLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationVersionLifecycleConfig>
+=head2 VersionLifecycleConfig => ElasticBeanstalk_ApplicationVersionLifecycleConfig
 
   The application version lifecycle configuration.
 

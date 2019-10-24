@@ -4,7 +4,7 @@ package Paws::EC2::ReservedInstancesModificationResult;
   has ReservedInstancesId => (is => 'ro', isa => Str);
   has TargetConfiguration => (is => 'ro', isa => EC2_ReservedInstancesConfiguration);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReservedInstancesId' => {
@@ -21,8 +21,8 @@ package Paws::EC2::ReservedInstancesModificationResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

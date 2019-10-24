@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::DeleteFileSystem;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::DeleteFileSystemWindowsConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::FSX::Types qw/FSX_DeleteFileSystemWindowsConfiguration/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WindowsConfiguration => (is => 'ro', isa => FSX_DeleteFileSystemWindowsConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteFileSystem');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::DeleteFileSystemResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteFileSystem');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::DeleteFileSystemResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'WindowsConfiguration' => {
+                                           'class' => 'Paws::FSX::DeleteFileSystemWindowsConfiguration',
+                                           'type' => 'FSX_DeleteFileSystemWindowsConfiguration'
+                                         },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'FileSystemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +97,7 @@ The ID of the file system you want to delete.
 
 
 
-=head2 WindowsConfiguration => L<Paws::FSX::DeleteFileSystemWindowsConfiguration>
+=head2 WindowsConfiguration => FSX_DeleteFileSystemWindowsConfiguration
 
 
 

@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedLinkSpecifier;
-  use Moose;
-  has IdentityAttributeValues => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeNameAndValue]', required => 1);
-  has SourceObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has TargetObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has TypedLinkFacet => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeNameAndValue CloudDirectory_ObjectReference CloudDirectory_TypedLinkSchemaAndFacetName/;
+  has IdentityAttributeValues => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeNameAndValue], required => 1);
+  has SourceObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has TargetObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has TypedLinkFacet => (is => 'ro', isa => CloudDirectory_TypedLinkSchemaAndFacetName, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityAttributeValues' => {
+                                              'class' => 'Paws::CloudDirectory::AttributeNameAndValue',
+                                              'type' => 'ArrayRef[CloudDirectory_AttributeNameAndValue]'
+                                            },
+               'TypedLinkFacet' => {
+                                     'class' => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName',
+                                     'type' => 'CloudDirectory_TypedLinkSchemaAndFacetName'
+                                   },
+               'SourceObjectReference' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectReference',
+                                            'type' => 'CloudDirectory_ObjectReference'
+                                          },
+               'TargetObjectReference' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectReference',
+                                            'type' => 'CloudDirectory_ObjectReference'
+                                          }
+             },
+  'IsRequired' => {
+                    'IdentityAttributeValues' => 1,
+                    'TypedLinkFacet' => 1,
+                    'SourceObjectReference' => 1,
+                    'TargetObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,22 +81,22 @@ output. You can also construct a typed link specifier from scratch.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IdentityAttributeValues => ArrayRef[L<Paws::CloudDirectory::AttributeNameAndValue>]
+=head2 B<REQUIRED> IdentityAttributeValues => ArrayRef[CloudDirectory_AttributeNameAndValue]
 
   Identifies the attribute value to update.
 
 
-=head2 B<REQUIRED> SourceObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> SourceObjectReference => CloudDirectory_ObjectReference
 
   Identifies the source object that the typed link will attach to.
 
 
-=head2 B<REQUIRED> TargetObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> TargetObjectReference => CloudDirectory_ObjectReference
 
   Identifies the target object that the typed link will attach to.
 
 
-=head2 B<REQUIRED> TypedLinkFacet => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+=head2 B<REQUIRED> TypedLinkFacet => CloudDirectory_TypedLinkSchemaAndFacetName
 
   Identifies the typed link facet that is associated with the typed link.
 

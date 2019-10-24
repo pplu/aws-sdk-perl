@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has RunId => (is => 'ro', isa => Str);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'RunId' => 'runId',
+                       'Control' => 'control',
+                       'WorkflowId' => 'workflowId',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId'
+                     },
+  'IsRequired' => {
+                    'WorkflowId' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

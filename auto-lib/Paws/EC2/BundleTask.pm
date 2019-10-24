@@ -10,7 +10,7 @@ package Paws::EC2::BundleTask;
   has Storage => (is => 'ro', isa => EC2_Storage);
   has UpdateTime => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -52,8 +52,8 @@ package Paws::EC2::BundleTask;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

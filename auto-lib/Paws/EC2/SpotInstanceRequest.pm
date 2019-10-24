@@ -21,7 +21,7 @@ package Paws::EC2::SpotInstanceRequest;
   has ValidFrom => (is => 'ro', isa => Str);
   has ValidUntil => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LaunchGroup' => {
@@ -109,8 +109,8 @@ package Paws::EC2::SpotInstanceRequest;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

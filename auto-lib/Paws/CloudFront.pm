@@ -1,15 +1,16 @@
 package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed" unless $ENV{'PAWS_SILENCE_UNSTABLE_WARNINGS'};
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'cloudfront' }
   sub signing_name { 'cloudfront' }
   sub version { '2019-03-26' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller';
@@ -402,7 +403,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =over
 
-=item CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+=item CloudFrontOriginAccessIdentityConfig => CloudFront_CloudFrontOriginAccessIdentityConfig
 
 
 =back
@@ -424,7 +425,7 @@ in the I<Amazon CloudFront Developer Guide>.
 
 =over
 
-=item DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+=item DistributionConfig => CloudFront_DistributionConfig
 
 
 =back
@@ -455,7 +456,7 @@ in the I<Amazon CloudFront Developer Guide>.
 
 =over
 
-=item DistributionConfigWithTags => L<Paws::CloudFront::DistributionConfigWithTags>
+=item DistributionConfigWithTags => CloudFront_DistributionConfigWithTags
 
 
 =back
@@ -471,7 +472,7 @@ Create a new distribution with tags.
 
 =over
 
-=item FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+=item FieldLevelEncryptionConfig => CloudFront_FieldLevelEncryptionConfig
 
 
 =back
@@ -487,7 +488,7 @@ Create a new field-level encryption configuration.
 
 =over
 
-=item FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=item FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
 
 =back
@@ -505,7 +506,7 @@ Create a field-level encryption profile.
 
 =item DistributionId => Str
 
-=item InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
+=item InvalidationBatch => CloudFront_InvalidationBatch
 
 
 =back
@@ -521,7 +522,7 @@ Create a new invalidation.
 
 =over
 
-=item PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+=item PublicKeyConfig => CloudFront_PublicKeyConfig
 
 
 =back
@@ -539,7 +540,7 @@ account.
 
 =over
 
-=item StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+=item StreamingDistributionConfig => CloudFront_StreamingDistributionConfig
 
 
 =back
@@ -586,7 +587,7 @@ specified.
 
 =over
 
-=item StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>
+=item StreamingDistributionConfigWithTags => CloudFront_StreamingDistributionConfigWithTags
 
 
 =back
@@ -1150,7 +1151,7 @@ List tags for a CloudFront resource.
 
 =item Resource => Str
 
-=item Tags => L<Paws::CloudFront::Tags>
+=item Tags => CloudFront_Tags
 
 
 =back
@@ -1168,7 +1169,7 @@ Add tags to a CloudFront resource.
 
 =item Resource => Str
 
-=item TagKeys => L<Paws::CloudFront::TagKeys>
+=item TagKeys => CloudFront_TagKeys
 
 
 =back
@@ -1184,7 +1185,7 @@ Remove tags from a CloudFront resource.
 
 =over
 
-=item CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
+=item CloudFrontOriginAccessIdentityConfig => CloudFront_CloudFrontOriginAccessIdentityConfig
 
 =item Id => Str
 
@@ -1204,7 +1205,7 @@ Update an origin access identity.
 
 =over
 
-=item DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+=item DistributionConfig => CloudFront_DistributionConfig
 
 =item Id => Str
 
@@ -1330,7 +1331,7 @@ is complete, the value of C<Status> is C<Deployed>.
 
 =over
 
-=item FieldLevelEncryptionConfig => L<Paws::CloudFront::FieldLevelEncryptionConfig>
+=item FieldLevelEncryptionConfig => CloudFront_FieldLevelEncryptionConfig
 
 =item Id => Str
 
@@ -1350,7 +1351,7 @@ Update a field-level encryption configuration.
 
 =over
 
-=item FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=item FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
 =item Id => Str
 
@@ -1372,7 +1373,7 @@ Update a field-level encryption profile.
 
 =item Id => Str
 
-=item PublicKeyConfig => L<Paws::CloudFront::PublicKeyConfig>
+=item PublicKeyConfig => CloudFront_PublicKeyConfig
 
 =item [IfMatch => Str]
 
@@ -1393,7 +1394,7 @@ is the comment.
 
 =item Id => Str
 
-=item StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+=item StreamingDistributionConfig => CloudFront_StreamingDistributionConfig
 
 =item [IfMatch => Str]
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::ScalingParameters;
-  use Moose;
-  has DesiredInstanceType => (is => 'ro', isa => 'Str');
-  has DesiredPartitionCount => (is => 'ro', isa => 'Int');
-  has DesiredReplicationCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudSearch::Types qw//;
+  has DesiredInstanceType => (is => 'ro', isa => Str);
+  has DesiredPartitionCount => (is => 'ro', isa => Int);
+  has DesiredReplicationCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DesiredPartitionCount' => {
+                                            'type' => 'Int'
+                                          },
+               'DesiredInstanceType' => {
+                                          'type' => 'Str'
+                                        },
+               'DesiredReplicationCount' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

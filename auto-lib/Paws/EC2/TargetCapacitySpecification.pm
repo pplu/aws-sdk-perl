@@ -6,7 +6,7 @@ package Paws::EC2::TargetCapacitySpecification;
   has SpotTargetCapacity => (is => 'ro', isa => Int);
   has TotalTargetCapacity => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SpotTargetCapacity' => {
@@ -30,8 +30,8 @@ package Paws::EC2::TargetCapacitySpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

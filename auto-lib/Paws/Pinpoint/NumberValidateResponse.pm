@@ -1,22 +1,78 @@
 
 package Paws::Pinpoint::NumberValidateResponse;
-  use Moose;
-  has Carrier => (is => 'ro', isa => 'Str');
-  has City => (is => 'ro', isa => 'Str');
-  has CleansedPhoneNumberE164 => (is => 'ro', isa => 'Str');
-  has CleansedPhoneNumberNational => (is => 'ro', isa => 'Str');
-  has Country => (is => 'ro', isa => 'Str');
-  has CountryCodeIso2 => (is => 'ro', isa => 'Str');
-  has CountryCodeNumeric => (is => 'ro', isa => 'Str');
-  has County => (is => 'ro', isa => 'Str');
-  has OriginalCountryCodeIso2 => (is => 'ro', isa => 'Str');
-  has OriginalPhoneNumber => (is => 'ro', isa => 'Str');
-  has PhoneType => (is => 'ro', isa => 'Str');
-  has PhoneTypeCode => (is => 'ro', isa => 'Int');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has ZipCode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Carrier => (is => 'ro', isa => Str);
+  has City => (is => 'ro', isa => Str);
+  has CleansedPhoneNumberE164 => (is => 'ro', isa => Str);
+  has CleansedPhoneNumberNational => (is => 'ro', isa => Str);
+  has Country => (is => 'ro', isa => Str);
+  has CountryCodeIso2 => (is => 'ro', isa => Str);
+  has CountryCodeNumeric => (is => 'ro', isa => Str);
+  has County => (is => 'ro', isa => Str);
+  has OriginalCountryCodeIso2 => (is => 'ro', isa => Str);
+  has OriginalPhoneNumber => (is => 'ro', isa => Str);
+  has PhoneType => (is => 'ro', isa => Str);
+  has PhoneTypeCode => (is => 'ro', isa => Int);
+  has Timezone => (is => 'ro', isa => Str);
+  has ZipCode => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CountryCodeNumeric' => {
+                                         'type' => 'Str'
+                                       },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'OriginalCountryCodeIso2' => {
+                                              'type' => 'Str'
+                                            },
+               'CountryCodeIso2' => {
+                                      'type' => 'Str'
+                                    },
+               'Carrier' => {
+                              'type' => 'Str'
+                            },
+               'CleansedPhoneNumberNational' => {
+                                                  'type' => 'Str'
+                                                },
+               'County' => {
+                             'type' => 'Str'
+                           },
+               'PhoneType' => {
+                                'type' => 'Str'
+                              },
+               'City' => {
+                           'type' => 'Str'
+                         },
+               'OriginalPhoneNumber' => {
+                                          'type' => 'Str'
+                                        },
+               'ZipCode' => {
+                              'type' => 'Str'
+                            },
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'PhoneTypeCode' => {
+                                    'type' => 'Int'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CleansedPhoneNumberE164' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

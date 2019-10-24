@@ -3,7 +3,7 @@ package Paws::EC2::VpnConnectionOptions;
   use Paws::EC2::Types qw//;
   has StaticRoutesOnly => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'StaticRoutesOnly' => {
@@ -15,8 +15,8 @@ package Paws::EC2::VpnConnectionOptions;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

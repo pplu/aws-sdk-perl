@@ -1,25 +1,100 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::SMBFileShareInfo;
-  use Moose;
-  has AdminUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Authentication => (is => 'ro', isa => 'Str');
-  has DefaultStorageClass => (is => 'ro', isa => 'Str');
-  has FileShareARN => (is => 'ro', isa => 'Str');
-  has FileShareId => (is => 'ro', isa => 'Str');
-  has FileShareStatus => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
-  has InvalidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has LocationARN => (is => 'ro', isa => 'Str');
-  has ObjectACL => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Bool');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has Role => (is => 'ro', isa => 'Str');
-  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has AdminUserList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Authentication => (is => 'ro', isa => Str);
+  has DefaultStorageClass => (is => 'ro', isa => Str);
+  has FileShareARN => (is => 'ro', isa => Str);
+  has FileShareId => (is => 'ro', isa => Str);
+  has FileShareStatus => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => Bool);
+  has InvalidUserList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has KMSEncrypted => (is => 'ro', isa => Bool);
+  has KMSKey => (is => 'ro', isa => Str);
+  has LocationARN => (is => 'ro', isa => Str);
+  has ObjectACL => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has ReadOnly => (is => 'ro', isa => Bool);
+  has RequesterPays => (is => 'ro', isa => Bool);
+  has Role => (is => 'ro', isa => Str);
+  has SMBACLEnabled => (is => 'ro', isa => Bool);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag]);
+  has ValidUserList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SMBACLEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'Authentication' => {
+                                     'type' => 'Str'
+                                   },
+               'FileShareId' => {
+                                  'type' => 'Str'
+                                },
+               'AdminUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ObjectACL' => {
+                                'type' => 'Str'
+                              },
+               'InvalidUserList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'LocationARN' => {
+                                  'type' => 'Str'
+                                },
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'FileShareStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'DefaultStorageClass' => {
+                                          'type' => 'Str'
+                                        },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'ValidUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 },
+               'GuessMIMETypeEnabled' => {
+                                           'type' => 'Bool'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -175,7 +250,7 @@ https://docs.aws.amazon.com/storagegateway/latest/userguide/smb-acl.html
 in the Storage Gateway User Guide.
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
   A list of up to 50 tags assigned to the SMB file share, sorted
 alphabetically by key name. Each tag is a key-value pair. For a gateway

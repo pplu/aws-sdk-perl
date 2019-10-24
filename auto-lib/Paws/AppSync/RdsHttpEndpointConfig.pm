@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::AppSync::RdsHttpEndpointConfig;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest']);
-  has AwsSecretStoreArn => (is => 'ro', isa => 'Str', request_name => 'awsSecretStoreArn', traits => ['NameInRequest']);
-  has DatabaseName => (is => 'ro', isa => 'Str', request_name => 'databaseName', traits => ['NameInRequest']);
-  has DbClusterIdentifier => (is => 'ro', isa => 'Str', request_name => 'dbClusterIdentifier', traits => ['NameInRequest']);
-  has Schema => (is => 'ro', isa => 'Str', request_name => 'schema', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str);
+  has AwsSecretStoreArn => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DbClusterIdentifier => (is => 'ro', isa => Str);
+  has Schema => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'AwsSecretStoreArn' => {
+                                        'type' => 'Str'
+                                      },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'DbClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'AwsSecretStoreArn' => 'awsSecretStoreArn',
+                       'AwsRegion' => 'awsRegion',
+                       'DatabaseName' => 'databaseName',
+                       'DbClusterIdentifier' => 'dbClusterIdentifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

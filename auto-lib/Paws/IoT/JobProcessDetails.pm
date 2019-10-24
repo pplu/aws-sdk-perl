@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::IoT::JobProcessDetails;
-  use Moose;
-  has NumberOfCanceledThings => (is => 'ro', isa => 'Int', request_name => 'numberOfCanceledThings', traits => ['NameInRequest']);
-  has NumberOfFailedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfFailedThings', traits => ['NameInRequest']);
-  has NumberOfInProgressThings => (is => 'ro', isa => 'Int', request_name => 'numberOfInProgressThings', traits => ['NameInRequest']);
-  has NumberOfQueuedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfQueuedThings', traits => ['NameInRequest']);
-  has NumberOfRejectedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfRejectedThings', traits => ['NameInRequest']);
-  has NumberOfRemovedThings => (is => 'ro', isa => 'Int', request_name => 'numberOfRemovedThings', traits => ['NameInRequest']);
-  has NumberOfSucceededThings => (is => 'ro', isa => 'Int', request_name => 'numberOfSucceededThings', traits => ['NameInRequest']);
-  has NumberOfTimedOutThings => (is => 'ro', isa => 'Int', request_name => 'numberOfTimedOutThings', traits => ['NameInRequest']);
-  has ProcessingTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'processingTargets', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Undef Str/;
+  use Paws::IoT::Types qw//;
+  has NumberOfCanceledThings => (is => 'ro', isa => Int);
+  has NumberOfFailedThings => (is => 'ro', isa => Int);
+  has NumberOfInProgressThings => (is => 'ro', isa => Int);
+  has NumberOfQueuedThings => (is => 'ro', isa => Int);
+  has NumberOfRejectedThings => (is => 'ro', isa => Int);
+  has NumberOfRemovedThings => (is => 'ro', isa => Int);
+  has NumberOfSucceededThings => (is => 'ro', isa => Int);
+  has NumberOfTimedOutThings => (is => 'ro', isa => Int);
+  has ProcessingTargets => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfQueuedThings' => {
+                                           'type' => 'Int'
+                                         },
+               'NumberOfSucceededThings' => {
+                                              'type' => 'Int'
+                                            },
+               'NumberOfCanceledThings' => {
+                                             'type' => 'Int'
+                                           },
+               'NumberOfTimedOutThings' => {
+                                             'type' => 'Int'
+                                           },
+               'ProcessingTargets' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'NumberOfInProgressThings' => {
+                                               'type' => 'Int'
+                                             },
+               'NumberOfRejectedThings' => {
+                                             'type' => 'Int'
+                                           },
+               'NumberOfRemovedThings' => {
+                                            'type' => 'Int'
+                                          },
+               'NumberOfFailedThings' => {
+                                           'type' => 'Int'
+                                         }
+             },
+  'NameInRequest' => {
+                       'NumberOfQueuedThings' => 'numberOfQueuedThings',
+                       'NumberOfSucceededThings' => 'numberOfSucceededThings',
+                       'NumberOfCanceledThings' => 'numberOfCanceledThings',
+                       'NumberOfTimedOutThings' => 'numberOfTimedOutThings',
+                       'ProcessingTargets' => 'processingTargets',
+                       'NumberOfInProgressThings' => 'numberOfInProgressThings',
+                       'NumberOfRejectedThings' => 'numberOfRejectedThings',
+                       'NumberOfRemovedThings' => 'numberOfRemovedThings',
+                       'NumberOfFailedThings' => 'numberOfFailedThings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

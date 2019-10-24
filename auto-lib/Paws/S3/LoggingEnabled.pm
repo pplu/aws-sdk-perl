@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::LoggingEnabled;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -22,7 +23,11 @@ package Paws::S3::LoggingEnabled;
              },
   'NameInRequest' => {
                        'TargetGrants' => 'Grant'
-                     }
+                     },
+  'IsRequired' => {
+                    'TargetBucket' => 1,
+                    'TargetPrefix' => 1
+                  }
 }
 ;
     return $Params_map;

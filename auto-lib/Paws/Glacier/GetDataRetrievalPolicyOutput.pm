@@ -1,9 +1,27 @@
 
 package Paws::Glacier::GetDataRetrievalPolicyOutput;
-  use Moose;
-  has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_DataRetrievalPolicy/;
+  has Policy => (is => 'ro', isa => Glacier_DataRetrievalPolicy);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Policy' => {
+                             'class' => 'Paws::Glacier::DataRetrievalPolicy',
+                             'type' => 'Glacier_DataRetrievalPolicy'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Glacier::GetDataRetrievalPolicyOutput
 =head1 ATTRIBUTES
 
 
-=head2 Policy => L<Paws::Glacier::DataRetrievalPolicy>
+=head2 Policy => Glacier_DataRetrievalPolicy
 
 Contains the returned data retrieval policy in JSON format.
 

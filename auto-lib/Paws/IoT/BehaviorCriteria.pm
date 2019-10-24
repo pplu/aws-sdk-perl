@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::IoT::BehaviorCriteria;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', request_name => 'comparisonOperator', traits => ['NameInRequest']);
-  has ConsecutiveDatapointsToAlarm => (is => 'ro', isa => 'Int', request_name => 'consecutiveDatapointsToAlarm', traits => ['NameInRequest']);
-  has ConsecutiveDatapointsToClear => (is => 'ro', isa => 'Int', request_name => 'consecutiveDatapointsToClear', traits => ['NameInRequest']);
-  has DurationSeconds => (is => 'ro', isa => 'Int', request_name => 'durationSeconds', traits => ['NameInRequest']);
-  has StatisticalThreshold => (is => 'ro', isa => 'Paws::IoT::StatisticalThreshold', request_name => 'statisticalThreshold', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Paws::IoT::MetricValue', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_StatisticalThreshold IoT_MetricValue/;
+  has ComparisonOperator => (is => 'ro', isa => Str);
+  has ConsecutiveDatapointsToAlarm => (is => 'ro', isa => Int);
+  has ConsecutiveDatapointsToClear => (is => 'ro', isa => Int);
+  has DurationSeconds => (is => 'ro', isa => Int);
+  has StatisticalThreshold => (is => 'ro', isa => IoT_StatisticalThreshold);
+  has Value => (is => 'ro', isa => IoT_MetricValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsecutiveDatapointsToClear' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Value' => {
+                            'class' => 'Paws::IoT::MetricValue',
+                            'type' => 'IoT_MetricValue'
+                          },
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'StatisticalThreshold' => {
+                                           'class' => 'Paws::IoT::StatisticalThreshold',
+                                           'type' => 'IoT_StatisticalThreshold'
+                                         },
+               'ConsecutiveDatapointsToAlarm' => {
+                                                   'type' => 'Int'
+                                                 },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ConsecutiveDatapointsToClear' => 'consecutiveDatapointsToClear',
+                       'Value' => 'value',
+                       'DurationSeconds' => 'durationSeconds',
+                       'StatisticalThreshold' => 'statisticalThreshold',
+                       'ConsecutiveDatapointsToAlarm' => 'consecutiveDatapointsToAlarm',
+                       'ComparisonOperator' => 'comparisonOperator'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,14 +114,14 @@ measurements from an individual device are also accumulated over this
 time duration before being given a percentile rank.
 
 
-=head2 StatisticalThreshold => L<Paws::IoT::StatisticalThreshold>
+=head2 StatisticalThreshold => IoT_StatisticalThreshold
 
   A statistical ranking (percentile) which indicates a threshold value by
 which a behavior is determined to be in compliance or in violation of
 the behavior.
 
 
-=head2 Value => L<Paws::IoT::MetricValue>
+=head2 Value => IoT_MetricValue
 
   The value to be compared with the C<metric>.
 

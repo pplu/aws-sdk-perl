@@ -1,9 +1,30 @@
 
 package Paws::IoT::DescribeCertificateResponse;
-  use Moose;
-  has CertificateDescription => (is => 'ro', isa => 'Paws::IoT::CertificateDescription', traits => ['NameInRequest'], request_name => 'certificateDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_CertificateDescription/;
+  has CertificateDescription => (is => 'ro', isa => IoT_CertificateDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CertificateDescription' => {
+                                             'class' => 'Paws::IoT::CertificateDescription',
+                                             'type' => 'IoT_CertificateDescription'
+                                           }
+             },
+  'NameInRequest' => {
+                       'CertificateDescription' => 'certificateDescription'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoT::DescribeCertificateResponse
 =head1 ATTRIBUTES
 
 
-=head2 CertificateDescription => L<Paws::IoT::CertificateDescription>
+=head2 CertificateDescription => IoT_CertificateDescription
 
 The description of the certificate.
 

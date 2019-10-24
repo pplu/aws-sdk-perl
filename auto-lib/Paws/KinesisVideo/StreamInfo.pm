@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::KinesisVideo::StreamInfo;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DataRetentionInHours => (is => 'ro', isa => 'Int');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MediaType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideo::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DataRetentionInHours => (is => 'ro', isa => Int);
+  has DeviceName => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has MediaType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StreamARN => (is => 'ro', isa => Str);
+  has StreamName => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'MediaType' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'DataRetentionInHours' => {
+                                           'type' => 'Int'
+                                         },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::AppStream::ComputeCapacityStatus;
-  use Moose;
-  has Available => (is => 'ro', isa => 'Int');
-  has Desired => (is => 'ro', isa => 'Int', required => 1);
-  has InUse => (is => 'ro', isa => 'Int');
-  has Running => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::AppStream::Types qw//;
+  has Available => (is => 'ro', isa => Int);
+  has Desired => (is => 'ro', isa => Int, required => 1);
+  has InUse => (is => 'ro', isa => Int);
+  has Running => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InUse' => {
+                            'type' => 'Int'
+                          },
+               'Running' => {
+                              'type' => 'Int'
+                            },
+               'Available' => {
+                                'type' => 'Int'
+                              },
+               'Desired' => {
+                              'type' => 'Int'
+                            }
+             },
+  'IsRequired' => {
+                    'Desired' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::DLM::PolicyDetails;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::DLM::Parameters');
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Schedules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Schedule]');
-  has TargetTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DLM::Types qw/DLM_Parameters DLM_Schedule DLM_Tag/;
+  has Parameters => (is => 'ro', isa => DLM_Parameters);
+  has PolicyType => (is => 'ro', isa => Str);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Schedules => (is => 'ro', isa => ArrayRef[DLM_Schedule]);
+  has TargetTags => (is => 'ro', isa => ArrayRef[DLM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetTags' => {
+                                 'class' => 'Paws::DLM::Tag',
+                                 'type' => 'ArrayRef[DLM_Tag]'
+                               },
+               'Parameters' => {
+                                 'class' => 'Paws::DLM::Parameters',
+                                 'type' => 'DLM_Parameters'
+                               },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'Schedules' => {
+                                'class' => 'Paws::DLM::Schedule',
+                                'type' => 'ArrayRef[DLM_Schedule]'
+                              },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +72,7 @@ Specifies the configuration of a lifecycle policy.
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => L<Paws::DLM::Parameters>
+=head2 Parameters => DLM_Parameters
 
   A set of optional parameters that can be provided by the policy.
 
@@ -57,12 +89,12 @@ not present.
   The resource type.
 
 
-=head2 Schedules => ArrayRef[L<Paws::DLM::Schedule>]
+=head2 Schedules => ArrayRef[DLM_Schedule]
 
   The schedule of policy-defined actions.
 
 
-=head2 TargetTags => ArrayRef[L<Paws::DLM::Tag>]
+=head2 TargetTags => ArrayRef[DLM_Tag]
 
   The single tag that identifies targeted resources for this policy.
 

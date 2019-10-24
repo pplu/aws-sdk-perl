@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::UpdateGlobalTableOutput;
   use Moo;
@@ -6,18 +7,21 @@ package Paws::DynamoDB::UpdateGlobalTableOutput;
   has GlobalTableDescription => (is => 'ro', isa => DynamoDB_GlobalTableDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'GlobalTableDescription' => {
                                              'class' => 'Paws::DynamoDB::GlobalTableDescription',
                                              'type' => 'DynamoDB_GlobalTableDescription'
-                                           }
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

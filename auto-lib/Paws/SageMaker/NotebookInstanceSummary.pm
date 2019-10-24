@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::SageMaker::NotebookInstanceSummary;
-  use Moose;
-  has AdditionalCodeRepositories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DefaultCodeRepository => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has NotebookInstanceArn => (is => 'ro', isa => 'Str', required => 1);
-  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => 'Str');
-  has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
-  has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::SageMaker::Types qw//;
+  has AdditionalCodeRepositories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreationTime => (is => 'ro', isa => Str);
+  has DefaultCodeRepository => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has NotebookInstanceArn => (is => 'ro', isa => Str, required => 1);
+  has NotebookInstanceLifecycleConfigName => (is => 'ro', isa => Str);
+  has NotebookInstanceName => (is => 'ro', isa => Str, required => 1);
+  has NotebookInstanceStatus => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'NotebookInstanceStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'AdditionalCodeRepositories' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'NotebookInstanceArn' => {
+                                          'type' => 'Str'
+                                        },
+               'NotebookInstanceName' => {
+                                           'type' => 'Str'
+                                         },
+               'DefaultCodeRepository' => {
+                                            'type' => 'Str'
+                                          },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'NotebookInstanceLifecycleConfigName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'NotebookInstanceArn' => 1,
+                    'NotebookInstanceName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

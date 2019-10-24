@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisionedProductPlanSummary;
-  use Moose;
-  has PlanId => (is => 'ro', isa => 'Str');
-  has PlanName => (is => 'ro', isa => 'Str');
-  has PlanType => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has ProvisionProductId => (is => 'ro', isa => 'Str');
-  has ProvisionProductName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has PlanId => (is => 'ro', isa => Str);
+  has PlanName => (is => 'ro', isa => Str);
+  has PlanType => (is => 'ro', isa => Str);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str);
+  has ProvisionProductId => (is => 'ro', isa => Str);
+  has ProvisionProductName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'PlanName' => {
+                               'type' => 'Str'
+                             },
+               'ProvisionProductId' => {
+                                         'type' => 'Str'
+                                       },
+               'PlanId' => {
+                             'type' => 'Str'
+                           },
+               'ProvisionProductName' => {
+                                           'type' => 'Str'
+                                         },
+               'PlanType' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

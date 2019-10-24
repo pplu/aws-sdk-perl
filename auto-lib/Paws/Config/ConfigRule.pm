@@ -1,15 +1,64 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigRule;
-  use Moose;
-  has ConfigRuleArn => (is => 'ro', isa => 'Str');
-  has ConfigRuleId => (is => 'ro', isa => 'Str');
-  has ConfigRuleName => (is => 'ro', isa => 'Str');
-  has ConfigRuleState => (is => 'ro', isa => 'Str');
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has InputParameters => (is => 'ro', isa => 'Str');
-  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'Paws::Config::Scope');
-  has Source => (is => 'ro', isa => 'Paws::Config::Source', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_Source Config_Scope/;
+  has ConfigRuleArn => (is => 'ro', isa => Str);
+  has ConfigRuleId => (is => 'ro', isa => Str);
+  has ConfigRuleName => (is => 'ro', isa => Str);
+  has ConfigRuleState => (is => 'ro', isa => Str);
+  has CreatedBy => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has InputParameters => (is => 'ro', isa => Str);
+  has MaximumExecutionFrequency => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Config_Scope);
+  has Source => (is => 'ro', isa => Config_Source, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputParameters' => {
+                                      'type' => 'Str'
+                                    },
+               'ConfigRuleId' => {
+                                   'type' => 'Str'
+                                 },
+               'MaximumExecutionFrequency' => {
+                                                'type' => 'Str'
+                                              },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'Scope' => {
+                            'class' => 'Paws::Config::Scope',
+                            'type' => 'Config_Scope'
+                          },
+               'ConfigRuleArn' => {
+                                    'type' => 'Str'
+                                  },
+               'Source' => {
+                             'class' => 'Paws::Config::Source',
+                             'type' => 'Config_Source'
+                           },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'ConfigRuleState' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Source' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -141,7 +190,7 @@ To change the frequency, specify a valid value for the
 C<MaximumExecutionFrequency> parameter.
 
 
-=head2 Scope => L<Paws::Config::Scope>
+=head2 Scope => Config_Scope
 
   Defines which resources can trigger an evaluation for the rule. The
 scope can include one or more resource types, a combination of one
@@ -151,7 +200,7 @@ evaluation for the rule. If you do not specify a scope, evaluations are
 triggered when any resource in the recording group changes.
 
 
-=head2 B<REQUIRED> Source => L<Paws::Config::Source>
+=head2 B<REQUIRED> Source => Config_Source
 
   Provides the rule owner (AWS or customer), the rule identifier, and the
 notifications that cause the function to evaluate your AWS resources.

@@ -1,20 +1,71 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ExecutionId => (is => 'ro', isa => 'Str');
-  has InvocationId => (is => 'ro', isa => 'Str');
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetails => (is => 'ro', isa => 'Str');
-  has TaskExecutionId => (is => 'ro', isa => 'Str');
-  has TaskType => (is => 'ro', isa => 'Str');
-  has WindowExecutionId => (is => 'ro', isa => 'Str');
-  has WindowTargetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has EndTime => (is => 'ro', isa => Str);
+  has ExecutionId => (is => 'ro', isa => Str);
+  has InvocationId => (is => 'ro', isa => Str);
+  has OwnerInformation => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => Str);
+  has TaskExecutionId => (is => 'ro', isa => Str);
+  has TaskType => (is => 'ro', isa => Str);
+  has WindowExecutionId => (is => 'ro', isa => Str);
+  has WindowTargetId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WindowTargetId' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TaskType' => {
+                               'type' => 'Str'
+                             },
+               'StatusDetails' => {
+                                    'type' => 'Str'
+                                  },
+               'InvocationId' => {
+                                   'type' => 'Str'
+                                 },
+               'Parameters' => {
+                                 'type' => 'Str'
+                               },
+               'ExecutionId' => {
+                                  'type' => 'Str'
+                                },
+               'TaskExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'WindowExecutionId' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

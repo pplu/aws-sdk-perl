@@ -1,17 +1,54 @@
 
 package Paws::IoT::CreateThingGroup;
-  use Moose;
-  has ParentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentGroupName');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
-  has ThingGroupProperties => (is => 'ro', isa => 'Paws::IoT::ThingGroupProperties', traits => ['NameInRequest'], request_name => 'thingGroupProperties');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Tag IoT_ThingGroupProperties/;
+  has ParentGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoT_Tag], predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingGroupProperties => (is => 'ro', isa => IoT_ThingGroupProperties, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/{thingGroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/{thingGroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ThingGroupProperties' => {
+                                           'class' => 'Paws::IoT::ThingGroupProperties',
+                                           'type' => 'IoT_ThingGroupProperties'
+                                         },
+               'ParentGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::IoT::Tag',
+                           'type' => 'ArrayRef[IoT_Tag]'
+                         }
+             },
+  'ParamInURI' => {
+                    'ThingGroupName' => 'thingGroupName'
+                  },
+  'NameInRequest' => {
+                       'ThingGroupProperties' => 'thingGroupProperties',
+                       'ParentGroupName' => 'parentGroupName',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ThingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +110,7 @@ The name of the parent thing group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+=head2 Tags => ArrayRef[IoT_Tag]
 
 Metadata which can be used to manage the thing group.
 
@@ -85,7 +122,7 @@ The thing group name to create.
 
 
 
-=head2 ThingGroupProperties => L<Paws::IoT::ThingGroupProperties>
+=head2 ThingGroupProperties => IoT_ThingGroupProperties
 
 The thing group properties.
 

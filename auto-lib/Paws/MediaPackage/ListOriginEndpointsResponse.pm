@@ -1,10 +1,35 @@
 
 package Paws::MediaPackage::ListOriginEndpointsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has OriginEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::OriginEndpoint]', traits => ['NameInRequest'], request_name => 'originEndpoints');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackage::Types qw/MediaPackage_OriginEndpoint/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OriginEndpoints => (is => 'ro', isa => ArrayRef[MediaPackage_OriginEndpoint]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OriginEndpoints' => {
+                                      'class' => 'Paws::MediaPackage::OriginEndpoint',
+                                      'type' => 'ArrayRef[MediaPackage_OriginEndpoint]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'OriginEndpoints' => 'originEndpoints',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ A token that can be used to resume pagination from the end of the
 collection.
 
 
-=head2 OriginEndpoints => ArrayRef[L<Paws::MediaPackage::OriginEndpoint>]
+=head2 OriginEndpoints => ArrayRef[MediaPackage_OriginEndpoint]
 
 A list of OriginEndpoint records.
 

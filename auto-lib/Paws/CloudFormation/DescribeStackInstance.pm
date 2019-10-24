@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::DescribeStackInstance;
-  use Moose;
-  has StackInstanceAccount => (is => 'ro', isa => 'Str', required => 1);
-  has StackInstanceRegion => (is => 'ro', isa => 'Str', required => 1);
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has StackInstanceAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackInstanceRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DescribeStackInstanceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeStackInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::DescribeStackInstanceOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeStackInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackInstanceAccount' => {
+                                           'type' => 'Str'
+                                         },
+               'StackInstanceRegion' => {
+                                          'type' => 'Str'
+                                        },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'StackInstanceAccount' => 1,
+                    'StackInstanceRegion' => 1,
+                    'StackSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

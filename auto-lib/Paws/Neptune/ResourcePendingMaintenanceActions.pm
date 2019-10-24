@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Neptune::ResourcePendingMaintenanceActions;
-  use Moose;
-  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::PendingMaintenanceAction]', request_name => 'PendingMaintenanceAction', traits => ['NameInRequest']);
-  has ResourceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Neptune::Types qw/Neptune_PendingMaintenanceAction/;
+  has PendingMaintenanceActionDetails => (is => 'ro', isa => ArrayRef[Neptune_PendingMaintenanceAction]);
+  has ResourceIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'PendingMaintenanceActionDetails' => {
+                                                      'class' => 'Paws::Neptune::PendingMaintenanceAction',
+                                                      'type' => 'ArrayRef[Neptune_PendingMaintenanceAction]'
+                                                    }
+             },
+  'NameInRequest' => {
+                       'PendingMaintenanceActionDetails' => 'PendingMaintenanceAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Describes the pending maintenance actions for a resource.
 =head1 ATTRIBUTES
 
 
-=head2 PendingMaintenanceActionDetails => ArrayRef[L<Paws::Neptune::PendingMaintenanceAction>]
+=head2 PendingMaintenanceActionDetails => ArrayRef[Neptune_PendingMaintenanceAction]
 
   A list that provides details about the pending maintenance actions for
 the resource.

@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AuthenticationResultType;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str');
-  has ExpiresIn => (is => 'ro', isa => 'Int');
-  has IdToken => (is => 'ro', isa => 'Str');
-  has NewDeviceMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::NewDeviceMetadataType');
-  has RefreshToken => (is => 'ro', isa => 'Str');
-  has TokenType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_NewDeviceMetadataType/;
+  has AccessToken => (is => 'ro', isa => Str);
+  has ExpiresIn => (is => 'ro', isa => Int);
+  has IdToken => (is => 'ro', isa => Str);
+  has NewDeviceMetadata => (is => 'ro', isa => CognitoIdp_NewDeviceMetadataType);
+  has RefreshToken => (is => 'ro', isa => Str);
+  has TokenType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TokenType' => {
+                                'type' => 'Str'
+                              },
+               'RefreshToken' => {
+                                   'type' => 'Str'
+                                 },
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'IdToken' => {
+                              'type' => 'Str'
+                            },
+               'ExpiresIn' => {
+                                'type' => 'Int'
+                              },
+               'NewDeviceMetadata' => {
+                                        'class' => 'Paws::CognitoIdp::NewDeviceMetadataType',
+                                        'type' => 'CognitoIdp_NewDeviceMetadataType'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +89,7 @@ The authentication result.
   The ID token.
 
 
-=head2 NewDeviceMetadata => L<Paws::CognitoIdp::NewDeviceMetadataType>
+=head2 NewDeviceMetadata => CognitoIdp_NewDeviceMetadataType
 
   The new device metadata from an authentication result.
 

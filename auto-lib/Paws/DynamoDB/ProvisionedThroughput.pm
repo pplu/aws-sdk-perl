@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ProvisionedThroughput;
   use Moo;
   use Types::Standard qw/Int/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::ProvisionedThroughput;
   has ReadCapacityUnits => (is => 'ro', isa => Int, required => 1);
   has WriteCapacityUnits => (is => 'ro', isa => Int, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReadCapacityUnits' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::ProvisionedThroughput;
                'WriteCapacityUnits' => {
                                          'type' => 'Int'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'ReadCapacityUnits' => 1,
+                    'WriteCapacityUnits' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

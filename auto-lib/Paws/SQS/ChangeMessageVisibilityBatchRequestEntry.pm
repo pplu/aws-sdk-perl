@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::ChangeMessageVisibilityBatchRequestEntry;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -18,7 +19,11 @@ package Paws::SQS::ChangeMessageVisibilityBatchRequestEntry;
                'ReceiptHandle' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'ReceiptHandle' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::RegexMatchTuple;
-  use Moose;
-  has FieldToMatch => (is => 'ro', isa => 'Paws::WAFRegional::FieldToMatch', required => 1);
-  has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
-  has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_FieldToMatch/;
+  has FieldToMatch => (is => 'ro', isa => WAFRegional_FieldToMatch, required => 1);
+  has RegexPatternSetId => (is => 'ro', isa => Str, required => 1);
+  has TextTransformation => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegexPatternSetId' => {
+                                        'type' => 'Str'
+                                      },
+               'FieldToMatch' => {
+                                   'class' => 'Paws::WAFRegional::FieldToMatch',
+                                   'type' => 'WAFRegional_FieldToMatch'
+                                 },
+               'TextTransformation' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'RegexPatternSetId' => 1,
+                    'FieldToMatch' => 1,
+                    'TextTransformation' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +89,7 @@ it to lowercase, before inspecting it for the specified string.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldToMatch => L<Paws::WAFRegional::FieldToMatch>
+=head2 B<REQUIRED> FieldToMatch => WAFRegional_FieldToMatch
 
   Specifies where in a web request to look for the C<RegexPatternSet>.
 

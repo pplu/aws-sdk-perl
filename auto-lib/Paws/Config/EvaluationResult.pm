@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::Config::EvaluationResult;
-  use Moose;
-  has Annotation => (is => 'ro', isa => 'Str');
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str');
-  has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier');
-  has ResultRecordedTime => (is => 'ro', isa => 'Str');
-  has ResultToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_EvaluationResultIdentifier/;
+  has Annotation => (is => 'ro', isa => Str);
+  has ComplianceType => (is => 'ro', isa => Str);
+  has ConfigRuleInvokedTime => (is => 'ro', isa => Str);
+  has EvaluationResultIdentifier => (is => 'ro', isa => Config_EvaluationResultIdentifier);
+  has ResultRecordedTime => (is => 'ro', isa => Str);
+  has ResultToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'ConfigRuleInvokedTime' => {
+                                            'type' => 'Str'
+                                          },
+               'Annotation' => {
+                                 'type' => 'Str'
+                               },
+               'ResultRecordedTime' => {
+                                         'type' => 'Str'
+                                       },
+               'EvaluationResultIdentifier' => {
+                                                 'class' => 'Paws::Config::EvaluationResultIdentifier',
+                                                 'type' => 'Config_EvaluationResultIdentifier'
+                                               },
+               'ResultToken' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +98,7 @@ C<EvaluationResult> data type.
   The time when the AWS Config rule evaluated the AWS resource.
 
 
-=head2 EvaluationResultIdentifier => L<Paws::Config::EvaluationResultIdentifier>
+=head2 EvaluationResultIdentifier => Config_EvaluationResultIdentifier
 
   Uniquely identifies the evaluation result.
 

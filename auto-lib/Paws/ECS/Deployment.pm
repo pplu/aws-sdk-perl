@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::ECS::Deployment;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
-  has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
-  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
-  has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw/ECS_NetworkConfiguration/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DesiredCount => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str);
+  has LaunchType => (is => 'ro', isa => Str);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration);
+  has PendingCount => (is => 'ro', isa => Int);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has RunningCount => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has TaskDefinition => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DesiredCount' => {
+                                   'type' => 'Int'
+                                 },
+               'NetworkConfiguration' => {
+                                           'class' => 'Paws::ECS::NetworkConfiguration',
+                                           'type' => 'ECS_NetworkConfiguration'
+                                         },
+               'RunningCount' => {
+                                   'type' => 'Int'
+                                 },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'PendingCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'LaunchType' => 'launchType',
+                       'PlatformVersion' => 'platformVersion',
+                       'TaskDefinition' => 'taskDefinition',
+                       'Id' => 'id',
+                       'Status' => 'status',
+                       'DesiredCount' => 'desiredCount',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'RunningCount' => 'runningCount',
+                       'UpdatedAt' => 'updatedAt',
+                       'CreatedAt' => 'createdAt',
+                       'PendingCount' => 'pendingCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +132,7 @@ information, see Amazon ECS Launch Types
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
   The VPC subnet and security group configuration for tasks that receive
 their own elastic network interface by using the C<awsvpc> networking

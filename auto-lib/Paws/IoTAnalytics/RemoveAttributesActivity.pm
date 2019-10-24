@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::RemoveAttributesActivity;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Attributes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'Next' => 'next',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,47 @@
 
 package Paws::Pinpoint::UpdateEndpoint;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EndpointId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'endpoint-id', required => 1);
-  has EndpointRequest => (is => 'ro', isa => 'Paws::Pinpoint::EndpointRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointRequest => (is => 'ro', isa => Pinpoint_EndpointRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EndpointRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEndpoint');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::MessageBody');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEndpoint');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/endpoints/{endpoint-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::MessageBody');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EndpointRequest' => {
+                                      'class' => 'Paws::Pinpoint::EndpointRequest',
+                                      'type' => 'Pinpoint_EndpointRequest'
+                                    },
+               'EndpointId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id',
+                    'EndpointId' => 'endpoint-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'EndpointRequest' => 1,
+                    'EndpointId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,19 +84,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Location       => {
           City       => 'My__string',
           Country    => 'My__string',
-          Latitude   => 1,              # OPTIONAL
-          Longitude  => 1,              # OPTIONAL
+          Latitude   => 1,
+          Longitude  => 1,
           PostalCode => 'My__string',
           Region     => 'My__string',
         },    # OPTIONAL
-        Metrics => {
-          'My__string' => 1,    # , value: OPTIONAL
-        },    # OPTIONAL
+        Metrics   => { 'My__string' => 1, },    # OPTIONAL
         OptOut    => 'My__string',
         RequestId => 'My__string',
         User      => {
           UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-          ,    # OPTIONAL
+          ,                                     # OPTIONAL
           UserId => 'My__string',
         },    # OPTIONAL
       },
@@ -97,7 +126,7 @@ The unique identifier for the endpoint.
 
 
 
-=head2 B<REQUIRED> EndpointRequest => L<Paws::Pinpoint::EndpointRequest>
+=head2 B<REQUIRED> EndpointRequest => Pinpoint_EndpointRequest
 
 
 

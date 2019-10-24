@@ -1,18 +1,56 @@
 
 package Paws::MediaLive::PurchaseOffering;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestId');
-  has Start => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'start');
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_Tags/;
+  has Count => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RequestId => (is => 'ro', isa => Str, predicate => 1);
+  has Start => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaLive_Tags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseOffering');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/offerings/{offeringId}/purchase');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::PurchaseOfferingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PurchaseOffering');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/offerings/{offeringId}/purchase');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::PurchaseOfferingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RequestId' => 'requestId',
+                       'Count' => 'count',
+                       'Tags' => 'tags',
+                       'Start' => 'start',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Count' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +116,7 @@ one year from now. If no value is given, the default is now.
 
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
 A collection of key-value pairs
 

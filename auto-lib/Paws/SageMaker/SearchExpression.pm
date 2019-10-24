@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::SageMaker::SearchExpression;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Filter]');
-  has NestedFilters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::NestedFilters]');
-  has Operator => (is => 'ro', isa => 'Str');
-  has SubExpressions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SearchExpression]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_NestedFilters SageMaker_Filter SageMaker_SearchExpression/;
+  has Filters => (is => 'ro', isa => ArrayRef[SageMaker_Filter]);
+  has NestedFilters => (is => 'ro', isa => ArrayRef[SageMaker_NestedFilters]);
+  has Operator => (is => 'ro', isa => Str);
+  has SubExpressions => (is => 'ro', isa => ArrayRef[SageMaker_SearchExpression]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NestedFilters' => {
+                                    'class' => 'Paws::SageMaker::NestedFilters',
+                                    'type' => 'ArrayRef[SageMaker_NestedFilters]'
+                                  },
+               'Operator' => {
+                               'type' => 'Str'
+                             },
+               'Filters' => {
+                              'class' => 'Paws::SageMaker::Filter',
+                              'type' => 'ArrayRef[SageMaker_Filter]'
+                            },
+               'SubExpressions' => {
+                                     'class' => 'Paws::SageMaker::SearchExpression',
+                                     'type' => 'ArrayRef[SageMaker_SearchExpression]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,12 +101,12 @@ A Boolean operator: C<And> or C<Or>.
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SageMaker::Filter>]
+=head2 Filters => ArrayRef[SageMaker_Filter]
 
   A list of filter objects.
 
 
-=head2 NestedFilters => ArrayRef[L<Paws::SageMaker::NestedFilters>]
+=head2 NestedFilters => ArrayRef[SageMaker_NestedFilters]
 
   A list of nested filter objects.
 
@@ -91,7 +120,7 @@ conditional statement needs to be true for the entire search expression
 to be true, specify C<Or>. The default value is C<And>.
 
 
-=head2 SubExpressions => ArrayRef[L<Paws::SageMaker::SearchExpression>]
+=head2 SubExpressions => ArrayRef[SageMaker_SearchExpression]
 
   A list of search expression objects.
 

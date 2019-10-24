@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::Transfer::ListedUser;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has HomeDirectory => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has SshPublicKeyCount => (is => 'ro', isa => 'Int');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Transfer::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has HomeDirectory => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has SshPublicKeyCount => (is => 'ro', isa => Int);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'SshPublicKeyCount' => {
+                                        'type' => 'Int'
+                                      },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'HomeDirectory' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MQ::UserPendingChanges;
-  use Moose;
-  has ConsoleAccess => (is => 'ro', isa => 'Bool', request_name => 'consoleAccess', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
-  has PendingChange => (is => 'ro', isa => 'Str', request_name => 'pendingChange', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::MQ::Types qw//;
+  has ConsoleAccess => (is => 'ro', isa => Bool);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PendingChange => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ConsoleAccess' => {
+                                    'type' => 'Bool'
+                                  },
+               'PendingChange' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groups',
+                       'ConsoleAccess' => 'consoleAccess',
+                       'PendingChange' => 'pendingChange'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

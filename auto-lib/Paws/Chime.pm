@@ -1,14 +1,15 @@
 package Paws::Chime;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'chime' }
   sub signing_name { 'chime' }
   sub version { '2018-05-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -563,7 +564,7 @@ suspended are ignored.
 
 =over
 
-=item UpdatePhoneNumberRequestItems => ArrayRef[L<Paws::Chime::UpdatePhoneNumberRequestItem>]
+=item UpdatePhoneNumberRequestItems => ArrayRef[Chime_UpdatePhoneNumberRequestItem]
 
 
 =back
@@ -584,7 +585,7 @@ type.
 
 =item AccountId => Str
 
-=item UpdateUserRequestItems => ArrayRef[L<Paws::Chime::UpdateUserRequestItem>]
+=item UpdateUserRequestItems => ArrayRef[Chime_UpdateUserRequestItem]
 
 
 =back
@@ -1317,7 +1318,7 @@ Lambda function ARN. For more information, see Bot.
 
 =over
 
-=item Origination => L<Paws::Chime::Origination>
+=item Origination => Chime_Origination
 
 =item VoiceConnectorId => Str
 
@@ -1336,7 +1337,7 @@ Connector.
 
 =over
 
-=item Termination => L<Paws::Chime::Termination>
+=item Termination => Chime_Termination
 
 =item VoiceConnectorId => Str
 
@@ -1357,7 +1358,7 @@ Connector.
 
 =item VoiceConnectorId => Str
 
-=item [Credentials => ArrayRef[L<Paws::Chime::Credential>]]
+=item [Credentials => ArrayRef[Chime_Credential]]
 
 
 =back
@@ -1478,7 +1479,7 @@ Currently, only account name updates are supported for this action.
 
 =item AccountId => Str
 
-=item AccountSettings => L<Paws::Chime::AccountSettings>
+=item AccountSettings => Chime_AccountSettings
 
 
 =back
@@ -1520,9 +1521,9 @@ the bot from running in your Amazon Chime Enterprise account.
 
 =over
 
-=item BusinessCalling => L<Paws::Chime::BusinessCallingSettings>
+=item BusinessCalling => Chime_BusinessCallingSettings
 
-=item VoiceConnector => L<Paws::Chime::VoiceConnectorSettings>
+=item VoiceConnector => Chime_VoiceConnectorSettings
 
 
 =back
@@ -1585,7 +1586,7 @@ C<LicenseType> updates are supported for this action.
 
 =item UserId => Str
 
-=item UserSettings => L<Paws::Chime::UserSettings>
+=item UserSettings => Chime_UserSettings
 
 
 =back

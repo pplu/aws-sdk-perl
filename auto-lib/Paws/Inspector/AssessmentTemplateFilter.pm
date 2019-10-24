@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Inspector::AssessmentTemplateFilter;
-  use Moose;
-  has DurationRange => (is => 'ro', isa => 'Paws::Inspector::DurationRange', request_name => 'durationRange', traits => ['NameInRequest']);
-  has NamePattern => (is => 'ro', isa => 'Str', request_name => 'namePattern', traits => ['NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw/Inspector_DurationRange/;
+  has DurationRange => (is => 'ro', isa => Inspector_DurationRange);
+  has NamePattern => (is => 'ro', isa => Str);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamePattern' => {
+                                  'type' => 'Str'
+                                },
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DurationRange' => {
+                                    'class' => 'Paws::Inspector::DurationRange',
+                                    'type' => 'Inspector_DurationRange'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NamePattern' => 'namePattern',
+                       'RulesPackageArns' => 'rulesPackageArns',
+                       'DurationRange' => 'durationRange'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ Used as the request parameter in the ListAssessmentTemplates action.
 =head1 ATTRIBUTES
 
 
-=head2 DurationRange => L<Paws::Inspector::DurationRange>
+=head2 DurationRange => Inspector_DurationRange
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum

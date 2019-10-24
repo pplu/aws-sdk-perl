@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreateOpenIDConnectProviderResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw//;
   has OpenIDConnectProviderArn => (is => 'ro', isa => Str);

@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::ApiStage;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', request_name => 'apiId', traits => ['NameInRequest']);
-  has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
-  has Throttle => (is => 'ro', isa => 'Paws::ApiGateway::MapOfApiStageThrottleSettings', request_name => 'throttle', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfApiStageThrottleSettings/;
+  has ApiId => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str);
+  has Throttle => (is => 'ro', isa => ApiGateway_MapOfApiStageThrottleSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Throttle' => {
+                               'class' => 'Paws::ApiGateway::MapOfApiStageThrottleSettings',
+                               'type' => 'ApiGateway_MapOfApiStageThrottleSettings'
+                             },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Stage' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Throttle' => 'throttle',
+                       'ApiId' => 'apiId',
+                       'Stage' => 'stage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +77,7 @@ API stage name of the associated API stage in a usage plan.
   API stage name of the associated API stage in a usage plan.
 
 
-=head2 Throttle => L<Paws::ApiGateway::MapOfApiStageThrottleSettings>
+=head2 Throttle => ApiGateway_MapOfApiStageThrottleSettings
 
   Map containing method level throttling information for API stage in a
 usage plan.

@@ -1,18 +1,75 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceDirectory;
-  use Moose;
-  has Alias => (is => 'ro', isa => 'Str');
-  has CustomerUserName => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DirectoryName => (is => 'ro', isa => 'Str');
-  has DirectoryType => (is => 'ro', isa => 'Str');
-  has DnsIpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IamRoleId => (is => 'ro', isa => 'Str');
-  has IpGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipGroupIds', traits => ['NameInRequest']);
-  has RegistrationCode => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
-  has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_DefaultWorkspaceCreationProperties/;
+  has Alias => (is => 'ro', isa => Str);
+  has CustomerUserName => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DirectoryName => (is => 'ro', isa => Str);
+  has DirectoryType => (is => 'ro', isa => Str);
+  has DnsIpAddresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IamRoleId => (is => 'ro', isa => Str);
+  has IpGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RegistrationCode => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has WorkspaceCreationProperties => (is => 'ro', isa => WorkSpaces_DefaultWorkspaceCreationProperties);
+  has WorkspaceSecurityGroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrationCode' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DirectoryName' => {
+                                    'type' => 'Str'
+                                  },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'DnsIpAddresses' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'WorkspaceCreationProperties' => {
+                                                  'class' => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties',
+                                                  'type' => 'WorkSpaces_DefaultWorkspaceCreationProperties'
+                                                },
+               'Alias' => {
+                            'type' => 'Str'
+                          },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'IpGroupIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'CustomerUserName' => {
+                                       'type' => 'Str'
+                                     },
+               'WorkspaceSecurityGroupId' => {
+                                               'type' => 'Str'
+                                             },
+               'DirectoryType' => {
+                                    'type' => 'Str'
+                                  },
+               'IamRoleId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'IpGroupIds' => 'ipGroupIds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +166,7 @@ directory.
   The identifiers of the subnets used with the directory.
 
 
-=head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>
+=head2 WorkspaceCreationProperties => WorkSpaces_DefaultWorkspaceCreationProperties
 
   The default creation properties for all WorkSpaces in the directory.
 

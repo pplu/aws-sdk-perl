@@ -1,20 +1,58 @@
 
 package Paws::Route53::ListResourceRecordSets;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
-  has StartRecordIdentifier => (is => 'ro', isa => 'Str', query_name => 'identifier', traits => ['ParamInQuery']);
-  has StartRecordName => (is => 'ro', isa => 'Str', query_name => 'name', traits => ['ParamInQuery']);
-  has StartRecordType => (is => 'ro', isa => 'Str', query_name => 'type', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Str, predicate => 1);
+  has StartRecordIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has StartRecordName => (is => 'ro', isa => Str, predicate => 1);
+  has StartRecordType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListResourceRecordSets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzone/{Id}/rrset');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListResourceRecordSetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListResourceRecordSets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzone/{Id}/rrset');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ListResourceRecordSetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartRecordType' => {
+                                      'type' => 'Str'
+                                    },
+               'StartRecordIdentifier' => {
+                                            'type' => 'Str'
+                                          },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'StartRecordName' => {
+                                      'type' => 'Str'
+                                    },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'HostedZoneId' => 'Id'
+                  },
+  'ParamInQuery' => {
+                      'StartRecordType' => 'type',
+                      'StartRecordIdentifier' => 'identifier',
+                      'MaxItems' => 'maxitems',
+                      'StartRecordName' => 'name'
+                    },
+  'IsRequired' => {
+                    'HostedZoneId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

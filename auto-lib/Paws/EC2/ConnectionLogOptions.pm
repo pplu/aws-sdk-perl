@@ -5,7 +5,7 @@ package Paws::EC2::ConnectionLogOptions;
   has CloudwatchLogStream => (is => 'ro', isa => Str);
   has Enabled => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CloudwatchLogGroup' => {
@@ -20,8 +20,8 @@ package Paws::EC2::ConnectionLogOptions;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

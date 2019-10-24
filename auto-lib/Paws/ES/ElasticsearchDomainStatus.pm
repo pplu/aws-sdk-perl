@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::ElasticsearchDomainStatus;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -101,7 +102,13 @@ package Paws::ES::ElasticsearchDomainStatus;
                'Endpoint' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'ElasticsearchClusterConfig' => 1,
+                    'ARN' => 1,
+                    'DomainId' => 1,
+                    'DomainName' => 1
+                  }
 }
 ;
     return $Params_map;

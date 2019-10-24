@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::SendAutomationSignal;
-  use Moose;
-  has AutomationExecutionId => (is => 'ro', isa => 'Str', required => 1);
-  has Payload => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has SignalType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AutomationParameterMap/;
+  has AutomationExecutionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Payload => (is => 'ro', isa => SSM_AutomationParameterMap, predicate => 1);
+  has SignalType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendAutomationSignal');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::SendAutomationSignalResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendAutomationSignal');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::SendAutomationSignalResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Payload' => {
+                              'class' => 'Paws::SSM::AutomationParameterMap',
+                              'type' => 'SSM_AutomationParameterMap'
+                            },
+               'SignalType' => {
+                                 'type' => 'Str'
+                               },
+               'AutomationExecutionId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'SignalType' => 1,
+                    'AutomationExecutionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +79,7 @@ want to send the signal to.
 
 
 
-=head2 Payload => L<Paws::SSM::AutomationParameterMap>
+=head2 Payload => SSM_AutomationParameterMap
 
 The data sent with the signal. The data schema depends on the type of
 signal used in the request.

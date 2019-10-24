@@ -1,17 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::GenerateDataKeyWithoutPlaintext;
-  use Moose;
-  has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has KeySpec => (is => 'ro', isa => 'Str');
-  has NumberOfBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::KMS::Types qw/KMS_EncryptionContextType/;
+  has EncryptionContext => (is => 'ro', isa => KMS_EncryptionContextType, predicate => 1);
+  has GrantTokens => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeySpec => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfBytes => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateDataKeyWithoutPlaintext');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateDataKeyWithoutPlaintextResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GenerateDataKeyWithoutPlaintext');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::GenerateDataKeyWithoutPlaintextResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantTokens' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'NumberOfBytes' => {
+                                    'type' => 'Int'
+                                  },
+               'KeySpec' => {
+                              'type' => 'Str'
+                            },
+               'EncryptionContext' => {
+                                        'class' => 'Paws::KMS::EncryptionContextType',
+                                        'type' => 'KMS_EncryptionContextType'
+                                      }
+             },
+  'IsRequired' => {
+                    'KeyId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContext => KMS_EncryptionContextType
 
 A set of key-value pairs that represents additional authenticated data.
 

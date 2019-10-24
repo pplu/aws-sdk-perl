@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DescribeDocumentClassifierResponse;
-  use Moose;
-  has DocumentClassifierProperties => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_DocumentClassifierProperties/;
+  has DocumentClassifierProperties => (is => 'ro', isa => Comprehend_DocumentClassifierProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentClassifierProperties' => {
+                                                   'class' => 'Paws::Comprehend::DocumentClassifierProperties',
+                                                   'type' => 'Comprehend_DocumentClassifierProperties'
+                                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Comprehend::DescribeDocumentClassifierResponse
 =head1 ATTRIBUTES
 
 
-=head2 DocumentClassifierProperties => L<Paws::Comprehend::DocumentClassifierProperties>
+=head2 DocumentClassifierProperties => Comprehend_DocumentClassifierProperties
 
 An object that contains the properties associated with a document
 classifier.

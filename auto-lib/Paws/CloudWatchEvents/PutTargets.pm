@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutTargets;
-  use Moose;
-  has Rule => (is => 'ro', isa => 'Str', required => 1);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Target]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Target/;
+  has Rule => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Target], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutTargets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::PutTargetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutTargets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::PutTargetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Targets' => {
+                              'class' => 'Paws::CloudWatchEvents::Target',
+                              'type' => 'ArrayRef[CloudWatchEvents_Target]'
+                            },
+               'Rule' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Targets' => 1,
+                    'Rule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +137,7 @@ The name of the rule.
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::CloudWatchEvents::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[CloudWatchEvents_Target]
 
 The targets to update or add to the rule.
 

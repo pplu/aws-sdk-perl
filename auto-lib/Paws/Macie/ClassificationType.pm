@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Macie::ClassificationType;
-  use Moose;
-  has Continuous => (is => 'ro', isa => 'Str', request_name => 'continuous', traits => ['NameInRequest'], required => 1);
-  has OneTime => (is => 'ro', isa => 'Str', request_name => 'oneTime', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Macie::Types qw//;
+  has Continuous => (is => 'ro', isa => Str, required => 1);
+  has OneTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OneTime' => {
+                              'type' => 'Str'
+                            },
+               'Continuous' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'OneTime' => 'oneTime',
+                       'Continuous' => 'continuous'
+                     },
+  'IsRequired' => {
+                    'OneTime' => 1,
+                    'Continuous' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

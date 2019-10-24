@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ELB::ModifyLoadBalancerAttributesOutput;
-  use Moose;
-  has LoadBalancerAttributes => (is => 'ro', isa => 'Paws::ELB::LoadBalancerAttributes');
-  has LoadBalancerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw/ELB_LoadBalancerAttributes/;
+  has LoadBalancerAttributes => (is => 'ro', isa => ELB_LoadBalancerAttributes);
+  has LoadBalancerName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'LoadBalancerAttributes' => {
+                                             'class' => 'Paws::ELB::LoadBalancerAttributes',
+                                             'type' => 'ELB_LoadBalancerAttributes'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::ELB::ModifyLoadBalancerAttributesOutput
 =head1 ATTRIBUTES
 
 
-=head2 LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
+=head2 LoadBalancerAttributes => ELB_LoadBalancerAttributes
 
 Information about the load balancer attributes.
 

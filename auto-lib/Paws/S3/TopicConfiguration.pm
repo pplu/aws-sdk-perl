@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::TopicConfiguration;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
@@ -27,7 +28,11 @@ package Paws::S3::TopicConfiguration;
   'NameInRequest' => {
                        'Events' => 'Event',
                        'TopicArn' => 'Topic'
-                     }
+                     },
+  'IsRequired' => {
+                    'Events' => 1,
+                    'TopicArn' => 1
+                  }
 }
 ;
     return $Params_map;

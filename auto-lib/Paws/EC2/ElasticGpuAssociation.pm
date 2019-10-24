@@ -6,7 +6,7 @@ package Paws::EC2::ElasticGpuAssociation;
   has ElasticGpuAssociationTime => (is => 'ro', isa => Str);
   has ElasticGpuId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ElasticGpuAssociationState' => {
@@ -30,8 +30,8 @@ package Paws::EC2::ElasticGpuAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

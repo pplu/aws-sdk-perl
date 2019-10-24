@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentGroupList;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::SegmentGroup]');
-  has Include => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_SegmentGroup/;
+  has Groups => (is => 'ro', isa => ArrayRef[Pinpoint_SegmentGroup]);
+  has Include => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Include' => {
+                              'type' => 'Str'
+                            },
+               'Groups' => {
+                             'class' => 'Paws::Pinpoint::SegmentGroup',
+                             'type' => 'ArrayRef[Pinpoint_SegmentGroup]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ groups for a segment.
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::Pinpoint::SegmentGroup>]
+=head2 Groups => ArrayRef[Pinpoint_SegmentGroup]
 
   An array that defines the set of segment criteria to evaluate when
 handling segment groups for the segment.

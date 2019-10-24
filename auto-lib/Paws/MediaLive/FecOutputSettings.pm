@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::FecOutputSettings;
-  use Moose;
-  has ColumnDepth => (is => 'ro', isa => 'Int', request_name => 'columnDepth', traits => ['NameInRequest']);
-  has IncludeFec => (is => 'ro', isa => 'Str', request_name => 'includeFec', traits => ['NameInRequest']);
-  has RowLength => (is => 'ro', isa => 'Int', request_name => 'rowLength', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw//;
+  has ColumnDepth => (is => 'ro', isa => Int);
+  has IncludeFec => (is => 'ro', isa => Str);
+  has RowLength => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RowLength' => {
+                                'type' => 'Int'
+                              },
+               'ColumnDepth' => {
+                                  'type' => 'Int'
+                                },
+               'IncludeFec' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'RowLength' => 'rowLength',
+                       'ColumnDepth' => 'columnDepth',
+                       'IncludeFec' => 'includeFec'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

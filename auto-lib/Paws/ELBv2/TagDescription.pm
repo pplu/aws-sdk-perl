@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TagDescription;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ELBv2_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ELBv2::Tag',
+                           'type' => 'ArrayRef[ELBv2_Tag]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The tags associated with a resource.
   The Amazon Resource Name (ARN) of the resource.
 
 
-=head2 Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+=head2 Tags => ArrayRef[ELBv2_Tag]
 
   Information about the tags.
 

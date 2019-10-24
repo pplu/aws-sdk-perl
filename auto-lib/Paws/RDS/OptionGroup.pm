@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::RDS::OptionGroup;
-  use Moose;
-  has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => 'Bool');
-  has EngineName => (is => 'ro', isa => 'Str');
-  has MajorEngineVersion => (is => 'ro', isa => 'Str');
-  has OptionGroupArn => (is => 'ro', isa => 'Str');
-  has OptionGroupDescription => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Option]', request_name => 'Option', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Option/;
+  has AllowsVpcAndNonVpcInstanceMemberships => (is => 'ro', isa => Bool);
+  has EngineName => (is => 'ro', isa => Str);
+  has MajorEngineVersion => (is => 'ro', isa => Str);
+  has OptionGroupArn => (is => 'ro', isa => Str);
+  has OptionGroupDescription => (is => 'ro', isa => Str);
+  has OptionGroupName => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => ArrayRef[RDS_Option]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MajorEngineVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'Options' => {
+                              'class' => 'Paws::RDS::Option',
+                              'type' => 'ArrayRef[RDS_Option]'
+                            },
+               'OptionGroupDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'EngineName' => {
+                                 'type' => 'Str'
+                               },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'OptionGroupArn' => {
+                                     'type' => 'Str'
+                                   },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'AllowsVpcAndNonVpcInstanceMemberships' => {
+                                                            'type' => 'Bool'
+                                                          }
+             },
+  'NameInRequest' => {
+                       'Options' => 'Option'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +118,7 @@ to.
   Specifies the name of the option group.
 
 
-=head2 Options => ArrayRef[L<Paws::RDS::Option>]
+=head2 Options => ArrayRef[RDS_Option]
 
   Indicates what options are available in the option group.
 

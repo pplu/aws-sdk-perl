@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::StopGameSessionPlacementOutput;
-  use Moose;
-  has GameSessionPlacement => (is => 'ro', isa => 'Paws::GameLift::GameSessionPlacement');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_GameSessionPlacement/;
+  has GameSessionPlacement => (is => 'ro', isa => GameLift_GameSessionPlacement);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GameSessionPlacement' => {
+                                           'class' => 'Paws::GameLift::GameSessionPlacement',
+                                           'type' => 'GameLift_GameSessionPlacement'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::StopGameSessionPlacementOutput
 =head1 ATTRIBUTES
 
 
-=head2 GameSessionPlacement => L<Paws::GameLift::GameSessionPlacement>
+=head2 GameSessionPlacement => GameLift_GameSessionPlacement
 
 Object that describes the canceled game session placement, with
 C<CANCELLED> status and an end time stamp.

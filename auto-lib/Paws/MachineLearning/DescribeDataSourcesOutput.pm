@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::DescribeDataSourcesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::DataSource]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MachineLearning::Types qw/MachineLearning_DataSource/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Results => (is => 'ro', isa => ArrayRef[MachineLearning_DataSource]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Results' => {
+                              'class' => 'Paws::MachineLearning::DataSource',
+                              'type' => 'ArrayRef[MachineLearning_DataSource]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ An ID of the next page in the paginated results that indicates at least
 one more page follows.
 
 
-=head2 Results => ArrayRef[L<Paws::MachineLearning::DataSource>]
+=head2 Results => ArrayRef[MachineLearning_DataSource]
 
 A list of C<DataSource> that meet the search criteria.
 

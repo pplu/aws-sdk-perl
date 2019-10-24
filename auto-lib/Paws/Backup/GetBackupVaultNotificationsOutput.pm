@@ -1,12 +1,38 @@
 
 package Paws::Backup::GetBackupVaultNotificationsOutput;
-  use Moose;
-  has BackupVaultArn => (is => 'ro', isa => 'Str');
-  has BackupVaultEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BackupVaultName => (is => 'ro', isa => 'Str');
-  has SNSTopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultArn => (is => 'ro', isa => Str);
+  has BackupVaultEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BackupVaultName => (is => 'ro', isa => Str);
+  has SNSTopicArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BackupVaultArn' => {
+                                     'type' => 'Str'
+                                   },
+               'SNSTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'BackupVaultEvents' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

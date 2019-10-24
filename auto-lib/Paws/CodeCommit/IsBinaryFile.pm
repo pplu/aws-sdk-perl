@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::IsBinaryFile;
-  use Moose;
-  has Base => (is => 'ro', isa => 'Bool', request_name => 'base', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Bool', request_name => 'destination', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Bool', request_name => 'source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CodeCommit::Types qw//;
+  has Base => (is => 'ro', isa => Bool);
+  has Destination => (is => 'ro', isa => Bool);
+  has Source => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Base' => {
+                           'type' => 'Bool'
+                         },
+               'Source' => {
+                             'type' => 'Bool'
+                           },
+               'Destination' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'NameInRequest' => {
+                       'Base' => 'base',
+                       'Source' => 'source',
+                       'Destination' => 'destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

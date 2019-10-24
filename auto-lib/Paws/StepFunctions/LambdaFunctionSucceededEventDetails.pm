@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::LambdaFunctionSucceededEventDetails;
-  use Moose;
-  has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Output => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Output' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Output' => 'output'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

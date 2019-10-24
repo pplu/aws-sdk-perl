@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DeleteWorkteamResponse;
-  use Moose;
-  has Success => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SageMaker::Types qw//;
+  has Success => (is => 'ro', isa => Bool, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Success' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'Success' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

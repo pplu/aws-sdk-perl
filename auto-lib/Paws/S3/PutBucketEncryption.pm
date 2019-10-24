@@ -44,7 +44,11 @@ use MooX::ClassAttribute;
                   },
   'ParamInHeader' => {
                        'ContentLength' => 'Content-Length'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'ServerSideEncryptionConfiguration' => 1
+                  }
 }
 ;
     return $Params_map;

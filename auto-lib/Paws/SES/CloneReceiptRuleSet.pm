@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::CloneReceiptRuleSet;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::CloneReceiptRuleSet;
                'OriginalRuleSetName' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'RuleSetName' => 1,
+                    'OriginalRuleSetName' => 1
+                  }
 }
 ;
     return $Params_map;

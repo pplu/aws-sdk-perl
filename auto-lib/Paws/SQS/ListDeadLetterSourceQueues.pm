@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::ListDeadLetterSourceQueues;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::SQS::ListDeadLetterSourceQueues;
                'QueueUrl' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1
+                  }
 }
 ;
     return $Params_map;

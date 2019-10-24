@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::SearchEntitiesResponse;
-  use Moose;
-  has Descriptions => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::EntityDescription]', traits => ['NameInRequest'], request_name => 'descriptions' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_EntityDescription/;
+  has Descriptions => (is => 'ro', isa => ArrayRef[IoTThingsGraph_EntityDescription]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Descriptions' => {
+                                   'class' => 'Paws::IoTThingsGraph::EntityDescription',
+                                   'type' => 'ArrayRef[IoTThingsGraph_EntityDescription]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Descriptions' => 'descriptions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::IoTThingsGraph::SearchEntitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Descriptions => ArrayRef[L<Paws::IoTThingsGraph::EntityDescription>]
+=head2 Descriptions => ArrayRef[IoTThingsGraph_EntityDescription]
 
 An array of descriptions for each entity returned in the search result.
 

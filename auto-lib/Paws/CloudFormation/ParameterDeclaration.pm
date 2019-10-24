@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ParameterDeclaration;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has NoEcho => (is => 'ro', isa => 'Bool');
-  has ParameterConstraints => (is => 'ro', isa => 'Paws::CloudFormation::ParameterConstraints');
-  has ParameterKey => (is => 'ro', isa => 'Str');
-  has ParameterType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ParameterConstraints/;
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has NoEcho => (is => 'ro', isa => Bool);
+  has ParameterConstraints => (is => 'ro', isa => CloudFormation_ParameterConstraints);
+  has ParameterKey => (is => 'ro', isa => Str);
+  has ParameterType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterConstraints' => {
+                                           'class' => 'Paws::CloudFormation::ParameterConstraints',
+                                           'type' => 'CloudFormation_ParameterConstraints'
+                                         },
+               'NoEcho' => {
+                             'type' => 'Bool'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +90,7 @@ The ParameterDeclaration data type.
 in logs and in the AWS Management Console.
 
 
-=head2 ParameterConstraints => L<Paws::CloudFormation::ParameterConstraints>
+=head2 ParameterConstraints => CloudFormation_ParameterConstraints
 
   The criteria that AWS CloudFormation uses to validate parameter values.
 

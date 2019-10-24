@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::ELB::AccessLog;
-  use Moose;
-  has EmitInterval => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3BucketPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::ELB::Types qw//;
+  has EmitInterval => (is => 'ro', isa => Int);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has S3BucketPrefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'S3BucketPrefix' => {
+                                     'type' => 'Str'
+                                   },
+               'EmitInterval' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

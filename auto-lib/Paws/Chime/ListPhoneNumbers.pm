@@ -1,19 +1,57 @@
 
 package Paws::Chime::ListPhoneNumbers;
-  use Moose;
-  has FilterName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filter-name');
-  has FilterValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filter-value');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
-  has ProductType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'product-type');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has FilterName => (is => 'ro', isa => Str, predicate => 1);
+  has FilterValue => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProductType => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPhoneNumbers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/phone-numbers');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::ListPhoneNumbersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPhoneNumbers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/phone-numbers');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::ListPhoneNumbersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FilterValue' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                },
+               'FilterName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'next-token',
+                      'FilterValue' => 'filter-value',
+                      'Status' => 'status',
+                      'MaxResults' => 'max-results',
+                      'ProductType' => 'product-type',
+                      'FilterName' => 'filter-name'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

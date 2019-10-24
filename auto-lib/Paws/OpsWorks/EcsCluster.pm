@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::EcsCluster;
-  use Moose;
-  has EcsClusterArn => (is => 'ro', isa => 'Str');
-  has EcsClusterName => (is => 'ro', isa => 'Str');
-  has RegisteredAt => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has EcsClusterArn => (is => 'ro', isa => Str);
+  has EcsClusterName => (is => 'ro', isa => Str);
+  has RegisteredAt => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'EcsClusterName' => {
+                                     'type' => 'Str'
+                                   },
+               'EcsClusterArn' => {
+                                    'type' => 'Str'
+                                  },
+               'RegisteredAt' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

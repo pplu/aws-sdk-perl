@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Rekognition::FaceDetection;
-  use Moose;
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
-  has Timestamp => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceDetail/;
+  has Face => (is => 'ro', isa => Rekognition_FaceDetail);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'Face' => {
+                           'class' => 'Paws::Rekognition::FaceDetail',
+                           'type' => 'Rekognition_FaceDetail'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ time the face was detected in the video.
 =head1 ATTRIBUTES
 
 
-=head2 Face => L<Paws::Rekognition::FaceDetail>
+=head2 Face => Rekognition_FaceDetail
 
   The face properties for the detected face.
 

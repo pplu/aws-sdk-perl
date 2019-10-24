@@ -1,31 +1,162 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::Build;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
-  has BuildComplete => (is => 'ro', isa => 'Bool', request_name => 'buildComplete', traits => ['NameInRequest']);
-  has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
-  has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
-  has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
-  has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Initiator => (is => 'ro', isa => 'Str', request_name => 'initiator', traits => ['NameInRequest']);
-  has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', request_name => 'logs', traits => ['NameInRequest']);
-  has NetworkInterface => (is => 'ro', isa => 'Paws::CodeBuild::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
-  has Phases => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildPhase]', request_name => 'phases', traits => ['NameInRequest']);
-  has ProjectName => (is => 'ro', isa => 'Str', request_name => 'projectName', traits => ['NameInRequest']);
-  has QueuedTimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'queuedTimeoutInMinutes', traits => ['NameInRequest']);
-  has ResolvedSourceVersion => (is => 'ro', isa => 'Str', request_name => 'resolvedSourceVersion', traits => ['NameInRequest']);
-  has SecondaryArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::BuildArtifacts]', request_name => 'secondaryArtifacts', traits => ['NameInRequest']);
-  has SecondarySources => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSource]', request_name => 'secondarySources', traits => ['NameInRequest']);
-  has SecondarySourceVersions => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ProjectSourceVersion]', request_name => 'secondarySourceVersions', traits => ['NameInRequest']);
-  has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::CodeBuild::ProjectSource', request_name => 'source', traits => ['NameInRequest']);
-  has SourceVersion => (is => 'ro', isa => 'Str', request_name => 'sourceVersion', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
-  has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::CodeBuild::Types qw/CodeBuild_ProjectEnvironment CodeBuild_ProjectSource CodeBuild_ProjectSourceVersion CodeBuild_ProjectCache CodeBuild_VpcConfig CodeBuild_BuildArtifacts CodeBuild_BuildPhase CodeBuild_LogsLocation CodeBuild_NetworkInterface/;
+  has Arn => (is => 'ro', isa => Str);
+  has Artifacts => (is => 'ro', isa => CodeBuild_BuildArtifacts);
+  has BuildComplete => (is => 'ro', isa => Bool);
+  has BuildStatus => (is => 'ro', isa => Str);
+  has Cache => (is => 'ro', isa => CodeBuild_ProjectCache);
+  has CurrentPhase => (is => 'ro', isa => Str);
+  has EncryptionKey => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Environment => (is => 'ro', isa => CodeBuild_ProjectEnvironment);
+  has Id => (is => 'ro', isa => Str);
+  has Initiator => (is => 'ro', isa => Str);
+  has Logs => (is => 'ro', isa => CodeBuild_LogsLocation);
+  has NetworkInterface => (is => 'ro', isa => CodeBuild_NetworkInterface);
+  has Phases => (is => 'ro', isa => ArrayRef[CodeBuild_BuildPhase]);
+  has ProjectName => (is => 'ro', isa => Str);
+  has QueuedTimeoutInMinutes => (is => 'ro', isa => Int);
+  has ResolvedSourceVersion => (is => 'ro', isa => Str);
+  has SecondaryArtifacts => (is => 'ro', isa => ArrayRef[CodeBuild_BuildArtifacts]);
+  has SecondarySources => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSource]);
+  has SecondarySourceVersions => (is => 'ro', isa => ArrayRef[CodeBuild_ProjectSourceVersion]);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => CodeBuild_ProjectSource);
+  has SourceVersion => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has TimeoutInMinutes => (is => 'ro', isa => Int);
+  has VpcConfig => (is => 'ro', isa => CodeBuild_VpcConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'QueuedTimeoutInMinutes' => {
+                                             'type' => 'Int'
+                                           },
+               'SecondaryArtifacts' => {
+                                         'class' => 'Paws::CodeBuild::BuildArtifacts',
+                                         'type' => 'ArrayRef[CodeBuild_BuildArtifacts]'
+                                       },
+               'Cache' => {
+                            'class' => 'Paws::CodeBuild::ProjectCache',
+                            'type' => 'CodeBuild_ProjectCache'
+                          },
+               'BuildStatus' => {
+                                  'type' => 'Str'
+                                },
+               'BuildComplete' => {
+                                    'type' => 'Bool'
+                                  },
+               'NetworkInterface' => {
+                                       'class' => 'Paws::CodeBuild::NetworkInterface',
+                                       'type' => 'CodeBuild_NetworkInterface'
+                                     },
+               'ResolvedSourceVersion' => {
+                                            'type' => 'Str'
+                                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Source' => {
+                             'class' => 'Paws::CodeBuild::ProjectSource',
+                             'type' => 'CodeBuild_ProjectSource'
+                           },
+               'Artifacts' => {
+                                'class' => 'Paws::CodeBuild::BuildArtifacts',
+                                'type' => 'CodeBuild_BuildArtifacts'
+                              },
+               'Environment' => {
+                                  'class' => 'Paws::CodeBuild::ProjectEnvironment',
+                                  'type' => 'CodeBuild_ProjectEnvironment'
+                                },
+               'TimeoutInMinutes' => {
+                                       'type' => 'Int'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'SecondarySourceVersions' => {
+                                              'class' => 'Paws::CodeBuild::ProjectSourceVersion',
+                                              'type' => 'ArrayRef[CodeBuild_ProjectSourceVersion]'
+                                            },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'Phases' => {
+                             'class' => 'Paws::CodeBuild::BuildPhase',
+                             'type' => 'ArrayRef[CodeBuild_BuildPhase]'
+                           },
+               'CurrentPhase' => {
+                                   'type' => 'Str'
+                                 },
+               'VpcConfig' => {
+                                'class' => 'Paws::CodeBuild::VpcConfig',
+                                'type' => 'CodeBuild_VpcConfig'
+                              },
+               'EncryptionKey' => {
+                                    'type' => 'Str'
+                                  },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'SecondarySources' => {
+                                       'class' => 'Paws::CodeBuild::ProjectSource',
+                                       'type' => 'ArrayRef[CodeBuild_ProjectSource]'
+                                     },
+               'Initiator' => {
+                                'type' => 'Str'
+                              },
+               'Logs' => {
+                           'class' => 'Paws::CodeBuild::LogsLocation',
+                           'type' => 'CodeBuild_LogsLocation'
+                         }
+             },
+  'NameInRequest' => {
+                       'SourceVersion' => 'sourceVersion',
+                       'QueuedTimeoutInMinutes' => 'queuedTimeoutInMinutes',
+                       'SecondaryArtifacts' => 'secondaryArtifacts',
+                       'Cache' => 'cache',
+                       'BuildStatus' => 'buildStatus',
+                       'BuildComplete' => 'buildComplete',
+                       'NetworkInterface' => 'networkInterface',
+                       'ResolvedSourceVersion' => 'resolvedSourceVersion',
+                       'Arn' => 'arn',
+                       'StartTime' => 'startTime',
+                       'Source' => 'source',
+                       'Artifacts' => 'artifacts',
+                       'Environment' => 'environment',
+                       'TimeoutInMinutes' => 'timeoutInMinutes',
+                       'Id' => 'id',
+                       'SecondarySourceVersions' => 'secondarySourceVersions',
+                       'ServiceRole' => 'serviceRole',
+                       'ProjectName' => 'projectName',
+                       'Phases' => 'phases',
+                       'CurrentPhase' => 'currentPhase',
+                       'VpcConfig' => 'vpcConfig',
+                       'EncryptionKey' => 'encryptionKey',
+                       'EndTime' => 'endTime',
+                       'SecondarySources' => 'secondarySources',
+                       'Initiator' => 'initiator',
+                       'Logs' => 'logs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +197,7 @@ Information about a build.
   The Amazon Resource Name (ARN) of the build.
 
 
-=head2 Artifacts => L<Paws::CodeBuild::BuildArtifacts>
+=head2 Artifacts => CodeBuild_BuildArtifacts
 
   Information about the output artifacts for the build.
 
@@ -110,7 +241,7 @@ C<TIMED_OUT>: The build timed out.
 
 
 
-=head2 Cache => L<Paws::CodeBuild::ProjectCache>
+=head2 Cache => CodeBuild_ProjectCache
 
   Information about the cache for the build.
 
@@ -137,7 +268,7 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
   When the build process ended, expressed in Unix time format.
 
 
-=head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
+=head2 Environment => CodeBuild_ProjectEnvironment
 
   Information about the build environment for this build.
 
@@ -172,17 +303,17 @@ C<CodeBuild-Jenkins-Plugin>.
 
 
 
-=head2 Logs => L<Paws::CodeBuild::LogsLocation>
+=head2 Logs => CodeBuild_LogsLocation
 
   Information about the build's logs in Amazon CloudWatch Logs.
 
 
-=head2 NetworkInterface => L<Paws::CodeBuild::NetworkInterface>
+=head2 NetworkInterface => CodeBuild_NetworkInterface
 
   Describes a network interface.
 
 
-=head2 Phases => ArrayRef[L<Paws::CodeBuild::BuildPhase>]
+=head2 Phases => ArrayRef[CodeBuild_BuildPhase]
 
   Information about all previous build phases that are complete and
 information about any current build phase that is not yet complete.
@@ -222,17 +353,17 @@ For Amazon Simple Storage Service (Amazon S3), this does not apply.
 
 
 
-=head2 SecondaryArtifacts => ArrayRef[L<Paws::CodeBuild::BuildArtifacts>]
+=head2 SecondaryArtifacts => ArrayRef[CodeBuild_BuildArtifacts]
 
   An array of C<ProjectArtifacts> objects.
 
 
-=head2 SecondarySources => ArrayRef[L<Paws::CodeBuild::ProjectSource>]
+=head2 SecondarySources => ArrayRef[CodeBuild_ProjectSource]
 
   An array of C<ProjectSource> objects.
 
 
-=head2 SecondarySourceVersions => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]
+=head2 SecondarySourceVersions => ArrayRef[CodeBuild_ProjectSourceVersion]
 
   An array of C<ProjectSourceVersion> objects. Each
 C<ProjectSourceVersion> must be one of:
@@ -273,7 +404,7 @@ object that represents the build input ZIP file to use.
   The name of a service role used for this build.
 
 
-=head2 Source => L<Paws::CodeBuild::ProjectSource>
+=head2 Source => CodeBuild_ProjectSource
 
   Information about the source code to be built.
 
@@ -300,7 +431,7 @@ in the I<AWS CodeBuild User Guide>.
 build if it does not get marked as completed.
 
 
-=head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
+=head2 VpcConfig => CodeBuild_VpcConfig
 
   If your AWS CodeBuild project accesses resources in an Amazon VPC, you
 provide this parameter that identifies the VPC ID and the list of

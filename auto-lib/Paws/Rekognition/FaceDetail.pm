@@ -1,20 +1,93 @@
+# Generated from default/object.tt
 package Paws::Rekognition::FaceDetail;
-  use Moose;
-  has AgeRange => (is => 'ro', isa => 'Paws::Rekognition::AgeRange');
-  has Beard => (is => 'ro', isa => 'Paws::Rekognition::Beard');
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Confidence => (is => 'ro', isa => 'Num');
-  has Emotions => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Emotion]');
-  has Eyeglasses => (is => 'ro', isa => 'Paws::Rekognition::Eyeglasses');
-  has EyesOpen => (is => 'ro', isa => 'Paws::Rekognition::EyeOpen');
-  has Gender => (is => 'ro', isa => 'Paws::Rekognition::Gender');
-  has Landmarks => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Landmark]');
-  has MouthOpen => (is => 'ro', isa => 'Paws::Rekognition::MouthOpen');
-  has Mustache => (is => 'ro', isa => 'Paws::Rekognition::Mustache');
-  has Pose => (is => 'ro', isa => 'Paws::Rekognition::Pose');
-  has Quality => (is => 'ro', isa => 'Paws::Rekognition::ImageQuality');
-  has Smile => (is => 'ro', isa => 'Paws::Rekognition::Smile');
-  has Sunglasses => (is => 'ro', isa => 'Paws::Rekognition::Sunglasses');
+  use Moo;
+  use Types::Standard qw/Num ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_Emotion Rekognition_AgeRange Rekognition_Sunglasses Rekognition_EyeOpen Rekognition_Pose Rekognition_Beard Rekognition_Gender Rekognition_BoundingBox Rekognition_Eyeglasses Rekognition_Landmark Rekognition_ImageQuality Rekognition_Mustache Rekognition_Smile Rekognition_MouthOpen/;
+  has AgeRange => (is => 'ro', isa => Rekognition_AgeRange);
+  has Beard => (is => 'ro', isa => Rekognition_Beard);
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Confidence => (is => 'ro', isa => Num);
+  has Emotions => (is => 'ro', isa => ArrayRef[Rekognition_Emotion]);
+  has Eyeglasses => (is => 'ro', isa => Rekognition_Eyeglasses);
+  has EyesOpen => (is => 'ro', isa => Rekognition_EyeOpen);
+  has Gender => (is => 'ro', isa => Rekognition_Gender);
+  has Landmarks => (is => 'ro', isa => ArrayRef[Rekognition_Landmark]);
+  has MouthOpen => (is => 'ro', isa => Rekognition_MouthOpen);
+  has Mustache => (is => 'ro', isa => Rekognition_Mustache);
+  has Pose => (is => 'ro', isa => Rekognition_Pose);
+  has Quality => (is => 'ro', isa => Rekognition_ImageQuality);
+  has Smile => (is => 'ro', isa => Rekognition_Smile);
+  has Sunglasses => (is => 'ro', isa => Rekognition_Sunglasses);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgeRange' => {
+                               'class' => 'Paws::Rekognition::AgeRange',
+                               'type' => 'Rekognition_AgeRange'
+                             },
+               'Pose' => {
+                           'class' => 'Paws::Rekognition::Pose',
+                           'type' => 'Rekognition_Pose'
+                         },
+               'Landmarks' => {
+                                'class' => 'Paws::Rekognition::Landmark',
+                                'type' => 'ArrayRef[Rekognition_Landmark]'
+                              },
+               'Gender' => {
+                             'class' => 'Paws::Rekognition::Gender',
+                             'type' => 'Rekognition_Gender'
+                           },
+               'Emotions' => {
+                               'class' => 'Paws::Rekognition::Emotion',
+                               'type' => 'ArrayRef[Rekognition_Emotion]'
+                             },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                },
+               'Mustache' => {
+                               'class' => 'Paws::Rekognition::Mustache',
+                               'type' => 'Rekognition_Mustache'
+                             },
+               'Smile' => {
+                            'class' => 'Paws::Rekognition::Smile',
+                            'type' => 'Rekognition_Smile'
+                          },
+               'EyesOpen' => {
+                               'class' => 'Paws::Rekognition::EyeOpen',
+                               'type' => 'Rekognition_EyeOpen'
+                             },
+               'Eyeglasses' => {
+                                 'class' => 'Paws::Rekognition::Eyeglasses',
+                                 'type' => 'Rekognition_Eyeglasses'
+                               },
+               'Quality' => {
+                              'class' => 'Paws::Rekognition::ImageQuality',
+                              'type' => 'Rekognition_ImageQuality'
+                            },
+               'MouthOpen' => {
+                                'class' => 'Paws::Rekognition::MouthOpen',
+                                'type' => 'Rekognition_MouthOpen'
+                              },
+               'Beard' => {
+                            'class' => 'Paws::Rekognition::Beard',
+                            'type' => 'Rekognition_Beard'
+                          },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'Sunglasses' => {
+                                 'class' => 'Paws::Rekognition::Sunglasses',
+                                 'type' => 'Rekognition_Sunglasses'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -83,19 +156,19 @@ C<IndexFaces>, use the C<DetectAttributes> input parameter.
 =head1 ATTRIBUTES
 
 
-=head2 AgeRange => L<Paws::Rekognition::AgeRange>
+=head2 AgeRange => Rekognition_AgeRange
 
   The estimated age range, in years, for the face. Low represents the
 lowest estimated age and High represents the highest estimated age.
 
 
-=head2 Beard => L<Paws::Rekognition::Beard>
+=head2 Beard => Rekognition_Beard
 
   Indicates whether or not the face has a beard, and the confidence level
 in the determination.
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box of the face. Default attribute.
 
@@ -106,64 +179,64 @@ in the determination.
 different object such as a tree). Default attribute.
 
 
-=head2 Emotions => ArrayRef[L<Paws::Rekognition::Emotion>]
+=head2 Emotions => ArrayRef[Rekognition_Emotion]
 
   The emotions detected on the face, and the confidence level in the
 determination. For example, HAPPY, SAD, and ANGRY.
 
 
-=head2 Eyeglasses => L<Paws::Rekognition::Eyeglasses>
+=head2 Eyeglasses => Rekognition_Eyeglasses
 
   Indicates whether or not the face is wearing eye glasses, and the
 confidence level in the determination.
 
 
-=head2 EyesOpen => L<Paws::Rekognition::EyeOpen>
+=head2 EyesOpen => Rekognition_EyeOpen
 
   Indicates whether or not the eyes on the face are open, and the
 confidence level in the determination.
 
 
-=head2 Gender => L<Paws::Rekognition::Gender>
+=head2 Gender => Rekognition_Gender
 
   Gender of the face and the confidence level in the determination.
 
 
-=head2 Landmarks => ArrayRef[L<Paws::Rekognition::Landmark>]
+=head2 Landmarks => ArrayRef[Rekognition_Landmark]
 
   Indicates the location of landmarks on the face. Default attribute.
 
 
-=head2 MouthOpen => L<Paws::Rekognition::MouthOpen>
+=head2 MouthOpen => Rekognition_MouthOpen
 
   Indicates whether or not the mouth on the face is open, and the
 confidence level in the determination.
 
 
-=head2 Mustache => L<Paws::Rekognition::Mustache>
+=head2 Mustache => Rekognition_Mustache
 
   Indicates whether or not the face has a mustache, and the confidence
 level in the determination.
 
 
-=head2 Pose => L<Paws::Rekognition::Pose>
+=head2 Pose => Rekognition_Pose
 
   Indicates the pose of the face as determined by its pitch, roll, and
 yaw. Default attribute.
 
 
-=head2 Quality => L<Paws::Rekognition::ImageQuality>
+=head2 Quality => Rekognition_ImageQuality
 
   Identifies image brightness and sharpness. Default attribute.
 
 
-=head2 Smile => L<Paws::Rekognition::Smile>
+=head2 Smile => Rekognition_Smile
 
   Indicates whether or not the face is smiling, and the confidence level
 in the determination.
 
 
-=head2 Sunglasses => L<Paws::Rekognition::Sunglasses>
+=head2 Sunglasses => Rekognition_Sunglasses
 
   Indicates whether or not the face is wearing sunglasses, and the
 confidence level in the determination.

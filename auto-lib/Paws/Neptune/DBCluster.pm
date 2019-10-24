@@ -1,41 +1,175 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBCluster;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AssociatedRoles => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterRole]', request_name => 'DBClusterRole', traits => ['NameInRequest']);
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CloneGroupId => (is => 'ro', isa => 'Str');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterArn => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterMember]', request_name => 'DBClusterMember', traits => ['NameInRequest']);
-  has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBClusterOptionGroupStatus]', request_name => 'DBClusterOptionGroup', traits => ['NameInRequest']);
-  has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
-  has DbClusterResourceId => (is => 'ro', isa => 'Str');
-  has DBSubnetGroup => (is => 'ro', isa => 'Str');
-  has EarliestRestorableTime => (is => 'ro', isa => 'Str');
-  has EnabledCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PercentProgress => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReaderEndpoint => (is => 'ro', isa => 'Str');
-  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
-  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Undef Str Bool/;
+  use Paws::Neptune::Types qw/Neptune_VpcSecurityGroupMembership Neptune_DBClusterOptionGroupStatus Neptune_DBClusterRole Neptune_DBClusterMember/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AssociatedRoles => (is => 'ro', isa => ArrayRef[Neptune_DBClusterRole]);
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CharacterSetName => (is => 'ro', isa => Str);
+  has CloneGroupId => (is => 'ro', isa => Str);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DBClusterArn => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBClusterMembers => (is => 'ro', isa => ArrayRef[Neptune_DBClusterMember]);
+  has DBClusterOptionGroupMemberships => (is => 'ro', isa => ArrayRef[Neptune_DBClusterOptionGroupStatus]);
+  has DBClusterParameterGroup => (is => 'ro', isa => Str);
+  has DbClusterResourceId => (is => 'ro', isa => Str);
+  has DBSubnetGroup => (is => 'ro', isa => Str);
+  has EarliestRestorableTime => (is => 'ro', isa => Str);
+  has EnabledCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LatestRestorableTime => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PercentProgress => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has ReaderEndpoint => (is => 'ro', isa => Str);
+  has ReadReplicaIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReplicationSourceIdentifier => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcSecurityGroups => (is => 'ro', isa => ArrayRef[Neptune_VpcSecurityGroupMembership]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcSecurityGroups' => {
+                                        'class' => 'Paws::Neptune::VpcSecurityGroupMembership',
+                                        'type' => 'ArrayRef[Neptune_VpcSecurityGroupMembership]'
+                                      },
+               'ReaderEndpoint' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LatestRestorableTime' => {
+                                           'type' => 'Str'
+                                         },
+               'DBClusterMembers' => {
+                                       'class' => 'Paws::Neptune::DBClusterMember',
+                                       'type' => 'ArrayRef[Neptune_DBClusterMember]'
+                                     },
+               'ReplicationSourceIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'DBClusterParameterGroup' => {
+                                              'type' => 'Str'
+                                            },
+               'CloneGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'DBClusterArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      },
+               'DBSubnetGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'AssociatedRoles' => {
+                                      'class' => 'Paws::Neptune::DBClusterRole',
+                                      'type' => 'ArrayRef[Neptune_DBClusterRole]'
+                                    },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'EnabledCloudwatchLogsExports' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'PercentProgress' => {
+                                      'type' => 'Str'
+                                    },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'EarliestRestorableTime' => {
+                                             'type' => 'Str'
+                                           },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DbClusterResourceId' => {
+                                          'type' => 'Str'
+                                        },
+               'DBClusterOptionGroupMemberships' => {
+                                                      'class' => 'Paws::Neptune::DBClusterOptionGroupStatus',
+                                                      'type' => 'ArrayRef[Neptune_DBClusterOptionGroupStatus]'
+                                                    },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'ReadReplicaIdentifiers' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           }
+             },
+  'NameInRequest' => {
+                       'VpcSecurityGroups' => 'VpcSecurityGroupMembership',
+                       'DBClusterOptionGroupMemberships' => 'DBClusterOptionGroup',
+                       'AvailabilityZones' => 'AvailabilityZone',
+                       'DBClusterMembers' => 'DBClusterMember',
+                       'ReadReplicaIdentifiers' => 'ReadReplicaIdentifier',
+                       'AssociatedRoles' => 'DBClusterRole'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +214,7 @@ action.
 storage size is not fixed, but instead automatically adjusts as needed.
 
 
-=head2 AssociatedRoles => ArrayRef[L<Paws::Neptune::DBClusterRole>]
+=head2 AssociatedRoles => ArrayRef[Neptune_DBClusterRole]
 
   Provides a list of the AWS Identity and Access Management (IAM) roles
 that are associated with the DB cluster. IAM roles that are associated
@@ -135,12 +269,12 @@ created. This same name is returned for the life of the DB cluster.
 unique key that identifies a DB cluster.
 
 
-=head2 DBClusterMembers => ArrayRef[L<Paws::Neptune::DBClusterMember>]
+=head2 DBClusterMembers => ArrayRef[Neptune_DBClusterMember]
 
   Provides the list of instances that make up the DB cluster.
 
 
-=head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::Neptune::DBClusterOptionGroupStatus>]
+=head2 DBClusterOptionGroupMemberships => ArrayRef[Neptune_DBClusterOptionGroupStatus]
 
   Provides the list of option group memberships for this DB cluster.
 
@@ -288,7 +422,7 @@ this DB cluster.
   Specifies whether the DB cluster is encrypted.
 
 
-=head2 VpcSecurityGroups => ArrayRef[L<Paws::Neptune::VpcSecurityGroupMembership>]
+=head2 VpcSecurityGroups => ArrayRef[Neptune_VpcSecurityGroupMembership]
 
   Provides a list of VPC security groups that the DB cluster belongs to.
 

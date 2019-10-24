@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Config::ComplianceSummaryByResourceType;
-  use Moose;
-  has ComplianceSummary => (is => 'ro', isa => 'Paws::Config::ComplianceSummary');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ComplianceSummary/;
+  has ComplianceSummary => (is => 'ro', isa => Config_ComplianceSummary);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'ComplianceSummary' => {
+                                        'class' => 'Paws::Config::ComplianceSummary',
+                                        'type' => 'Config_ComplianceSummary'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ noncompliant, up to a maximum of 100 for each.
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceSummary => L<Paws::Config::ComplianceSummary>
+=head2 ComplianceSummary => Config_ComplianceSummary
 
   The number of AWS resources that are compliant or noncompliant, up to a
 maximum of 100 for each.

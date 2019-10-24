@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::ObjectAttributeAction;
-  use Moose;
-  has ObjectAttributeActionType => (is => 'ro', isa => 'Str');
-  has ObjectAttributeUpdateValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedAttributeValue/;
+  has ObjectAttributeActionType => (is => 'ro', isa => Str);
+  has ObjectAttributeUpdateValue => (is => 'ro', isa => CloudDirectory_TypedAttributeValue);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectAttributeUpdateValue' => {
+                                                 'class' => 'Paws::CloudDirectory::TypedAttributeValue',
+                                                 'type' => 'CloudDirectory_TypedAttributeValue'
+                                               },
+               'ObjectAttributeActionType' => {
+                                                'type' => 'Str'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The action to take on the object attribute.
   A type that can be either C<Update> or C<Delete>.
 
 
-=head2 ObjectAttributeUpdateValue => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 ObjectAttributeUpdateValue => CloudDirectory_TypedAttributeValue
 
   The value that you want to update to.
 

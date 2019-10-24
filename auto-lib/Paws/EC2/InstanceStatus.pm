@@ -8,7 +8,7 @@ package Paws::EC2::InstanceStatus;
   has InstanceStatus => (is => 'ro', isa => EC2_InstanceStatusSummary);
   has SystemStatus => (is => 'ro', isa => EC2_InstanceStatusSummary);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceStatus' => {
@@ -44,8 +44,8 @@ package Paws::EC2::InstanceStatus;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

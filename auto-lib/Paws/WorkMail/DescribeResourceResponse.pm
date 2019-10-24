@@ -1,16 +1,56 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::DescribeResourceResponse;
-  use Moose;
-  has BookingOptions => (is => 'ro', isa => 'Paws::WorkMail::BookingOptions');
-  has DisabledDate => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has EnabledDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw/WorkMail_BookingOptions/;
+  has BookingOptions => (is => 'ro', isa => WorkMail_BookingOptions);
+  has DisabledDate => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has EnabledDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'BookingOptions' => {
+                                     'class' => 'Paws::WorkMail::BookingOptions',
+                                     'type' => 'WorkMail_BookingOptions'
+                                   },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'DisabledDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'EnabledDate' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +61,7 @@ Paws::WorkMail::DescribeResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 BookingOptions => L<Paws::WorkMail::BookingOptions>
+=head2 BookingOptions => WorkMail_BookingOptions
 
 The booking options for the described resource.
 

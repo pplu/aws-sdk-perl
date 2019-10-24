@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
-  use Moose;
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmPrivateVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConfirmPrivateVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId'
+                     },
+  'IsRequired' => {
+                    'VirtualInterfaceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

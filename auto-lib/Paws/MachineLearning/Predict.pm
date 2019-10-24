@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::Predict;
-  use Moose;
-  has MLModelId => (is => 'ro', isa => 'Str', required => 1);
-  has PredictEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has Record => (is => 'ro', isa => 'Paws::MachineLearning::Record', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_Record/;
+  has MLModelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PredictEndpoint => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Record => (is => 'ro', isa => MachineLearning_Record, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Predict');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::PredictOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Predict');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::PredictOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Record' => {
+                             'class' => 'Paws::MachineLearning::Record',
+                             'type' => 'MachineLearning_Record'
+                           },
+               'PredictEndpoint' => {
+                                      'type' => 'Str'
+                                    },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Record' => 1,
+                    'PredictEndpoint' => 1,
+                    'MLModelId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +87,7 @@ A unique identifier of the C<MLModel>.
 
 
 
-=head2 B<REQUIRED> Record => L<Paws::MachineLearning::Record>
+=head2 B<REQUIRED> Record => MachineLearning_Record
 
 
 

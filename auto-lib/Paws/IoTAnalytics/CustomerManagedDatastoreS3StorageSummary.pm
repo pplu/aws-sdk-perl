@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::CustomerManagedDatastoreS3StorageSummary;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
-  has KeyPrefix => (is => 'ro', isa => 'Str', request_name => 'keyPrefix', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has KeyPrefix => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'KeyPrefix' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Bucket' => 'bucket',
+                       'KeyPrefix' => 'keyPrefix'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

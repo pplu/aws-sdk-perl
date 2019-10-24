@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ReferenceDataSourceDescription;
-  use Moose;
-  has ReferenceId => (is => 'ro', isa => 'Str', required => 1);
-  has ReferenceSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema');
-  has S3ReferenceDataSourceDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3ReferenceDataSourceDescription', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_SourceSchema KinesisAnalytics_S3ReferenceDataSourceDescription/;
+  has ReferenceId => (is => 'ro', isa => Str, required => 1);
+  has ReferenceSchema => (is => 'ro', isa => KinesisAnalytics_SourceSchema);
+  has S3ReferenceDataSourceDescription => (is => 'ro', isa => KinesisAnalytics_S3ReferenceDataSourceDescription, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReferenceId' => {
+                                  'type' => 'Str'
+                                },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ReferenceSchema' => {
+                                      'class' => 'Paws::KinesisAnalytics::SourceSchema',
+                                      'type' => 'KinesisAnalytics_SourceSchema'
+                                    },
+               'S3ReferenceDataSourceDescription' => {
+                                                       'class' => 'Paws::KinesisAnalytics::S3ReferenceDataSourceDescription',
+                                                       'type' => 'KinesisAnalytics_S3ReferenceDataSourceDescription'
+                                                     }
+             },
+  'IsRequired' => {
+                    'ReferenceId' => 1,
+                    'TableName' => 1,
+                    'S3ReferenceDataSourceDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,14 +81,14 @@ application using the AddApplicationReferenceDataSource
 operation.
 
 
-=head2 ReferenceSchema => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 ReferenceSchema => KinesisAnalytics_SourceSchema
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns created in the
 in-application stream.
 
 
-=head2 B<REQUIRED> S3ReferenceDataSourceDescription => L<Paws::KinesisAnalytics::S3ReferenceDataSourceDescription>
+=head2 B<REQUIRED> S3ReferenceDataSourceDescription => KinesisAnalytics_S3ReferenceDataSourceDescription
 
   Provides the S3 bucket name, the object key name that contains the
 reference data. It also provides the Amazon Resource Name (ARN) of the

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SageMaker::PublicWorkforceTaskPrice;
-  use Moose;
-  has AmountInUsd => (is => 'ro', isa => 'Paws::SageMaker::USD');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_USD/;
+  has AmountInUsd => (is => 'ro', isa => SageMaker_USD);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AmountInUsd' => {
+                                  'class' => 'Paws::SageMaker::USD',
+                                  'type' => 'SageMaker_USD'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -195,7 +213,7 @@ are in US dollars.
 =head1 ATTRIBUTES
 
 
-=head2 AmountInUsd => L<Paws::SageMaker::USD>
+=head2 AmountInUsd => SageMaker_USD
 
   Defines the amount of money paid to a worker in United States dollars.
 

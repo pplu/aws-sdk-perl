@@ -1,16 +1,46 @@
 
 package Paws::PinpointSMSVoice::UpdateConfigurationSetEventDestination;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has EventDestination => (is => 'ro', isa => 'Paws::PinpointSMSVoice::EventDestinationDefinition');
-  has EventDestinationName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EventDestinationName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw/PinpointSMSVoice_EventDestinationDefinition/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventDestination => (is => 'ro', isa => PinpointSMSVoice_EventDestinationDefinition, predicate => 1);
+  has EventDestinationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetEventDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointSMSVoice::UpdateConfigurationSetEventDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetEventDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointSMSVoice::UpdateConfigurationSetEventDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'EventDestinationName' => {
+                                           'type' => 'Str'
+                                         },
+               'EventDestination' => {
+                                       'class' => 'Paws::PinpointSMSVoice::EventDestinationDefinition',
+                                       'type' => 'PinpointSMSVoice_EventDestinationDefinition'
+                                     }
+             },
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName',
+                    'EventDestinationName' => 'EventDestinationName'
+                  },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1,
+                    'EventDestinationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +96,7 @@ ConfigurationSetName
 
 
 
-=head2 EventDestination => L<Paws::PinpointSMSVoice::EventDestinationDefinition>
+=head2 EventDestination => PinpointSMSVoice_EventDestinationDefinition
 
 
 

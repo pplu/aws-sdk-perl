@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::LoggingConfiguration;
-  use Moose;
-  has LogDestinationConfigs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has RedactedFields => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::FieldToMatch]');
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_FieldToMatch/;
+  has LogDestinationConfigs => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has RedactedFields => (is => 'ro', isa => ArrayRef[WAFRegional_FieldToMatch]);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'RedactedFields' => {
+                                     'class' => 'Paws::WAFRegional::FieldToMatch',
+                                     'type' => 'ArrayRef[WAFRegional_FieldToMatch]'
+                                   },
+               'LogDestinationConfigs' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'LogDestinationConfigs' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +72,7 @@ the web ACL Amazon Resource Name (ARN).
   An array of Amazon Kinesis Data Firehose ARNs.
 
 
-=head2 RedactedFields => ArrayRef[L<Paws::WAFRegional::FieldToMatch>]
+=head2 RedactedFields => ArrayRef[WAFRegional_FieldToMatch]
 
   The parts of the request that you want redacted from the logs. For
 example, if you redact the cookie field, the cookie field in the

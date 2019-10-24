@@ -8,7 +8,7 @@ package Paws::EC2::CreateNatGatewayResult;
   has NatGateway => (is => 'ro', isa => EC2_NatGateway);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ClientToken' => {
@@ -28,8 +28,8 @@ package Paws::EC2::CreateNatGatewayResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

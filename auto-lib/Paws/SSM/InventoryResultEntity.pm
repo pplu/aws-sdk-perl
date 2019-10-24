@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::InventoryResultEntity;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Paws::SSM::InventoryResultItemMap');
-  has Id => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_InventoryResultItemMap/;
+  has Data => (is => 'ro', isa => SSM_InventoryResultItemMap);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Data' => {
+                           'class' => 'Paws::SSM::InventoryResultItemMap',
+                           'type' => 'SSM_InventoryResultItemMap'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Inventory query results.
 =head1 ATTRIBUTES
 
 
-=head2 Data => L<Paws::SSM::InventoryResultItemMap>
+=head2 Data => SSM_InventoryResultItemMap
 
   The data section in the inventory result entity JSON.
 

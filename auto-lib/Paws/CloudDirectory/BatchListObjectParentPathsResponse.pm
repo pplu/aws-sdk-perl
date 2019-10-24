@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListObjectParentPathsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PathToObjectIdentifiersList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::PathToObjectIdentifiers]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_PathToObjectIdentifiers/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PathToObjectIdentifiersList => (is => 'ro', isa => ArrayRef[CloudDirectory_PathToObjectIdentifiers]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PathToObjectIdentifiersList' => {
+                                                  'class' => 'Paws::CloudDirectory::PathToObjectIdentifiers',
+                                                  'type' => 'ArrayRef[CloudDirectory_PathToObjectIdentifiers]'
+                                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ Represents the output of a ListObjectParentPaths response operation.
   The pagination token.
 
 
-=head2 PathToObjectIdentifiersList => ArrayRef[L<Paws::CloudDirectory::PathToObjectIdentifiers>]
+=head2 PathToObjectIdentifiersList => ArrayRef[CloudDirectory_PathToObjectIdentifiers]
 
   Returns the path to the C<ObjectIdentifiers> that are associated with
 the directory.

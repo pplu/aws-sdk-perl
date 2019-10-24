@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NoiseReducerFilterSettings;
-  use Moose;
-  has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Strength => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Strength' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Strength' => 'strength'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

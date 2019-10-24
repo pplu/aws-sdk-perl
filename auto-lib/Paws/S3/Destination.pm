@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Destination;
   use Moo;
   use Types::Standard qw/Str/;
@@ -28,7 +29,10 @@ package Paws::S3::Destination;
                                                'class' => 'Paws::S3::AccessControlTranslation',
                                                'type' => 'S3_AccessControlTranslation'
                                              }
-             }
+             },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

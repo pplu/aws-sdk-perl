@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::Route53::HealthCheck;
-  use Moose;
-  has CallerReference => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchAlarmConfiguration => (is => 'ro', isa => 'Paws::Route53::CloudWatchAlarmConfiguration');
-  has HealthCheckConfig => (is => 'ro', isa => 'Paws::Route53::HealthCheckConfig', required => 1);
-  has HealthCheckVersion => (is => 'ro', isa => 'Int', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw/Route53_LinkedService Route53_HealthCheckConfig Route53_CloudWatchAlarmConfiguration/;
+  has CallerReference => (is => 'ro', isa => Str, required => 1);
+  has CloudWatchAlarmConfiguration => (is => 'ro', isa => Route53_CloudWatchAlarmConfiguration);
+  has HealthCheckConfig => (is => 'ro', isa => Route53_HealthCheckConfig, required => 1);
+  has HealthCheckVersion => (is => 'ro', isa => Int, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LinkedService => (is => 'ro', isa => Route53_LinkedService);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkedService' => {
+                                    'class' => 'Paws::Route53::LinkedService',
+                                    'type' => 'Route53_LinkedService'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CloudWatchAlarmConfiguration' => {
+                                                   'class' => 'Paws::Route53::CloudWatchAlarmConfiguration',
+                                                   'type' => 'Route53_CloudWatchAlarmConfiguration'
+                                                 },
+               'CallerReference' => {
+                                      'type' => 'Str'
+                                    },
+               'HealthCheckVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'HealthCheckConfig' => {
+                                        'class' => 'Paws::Route53::HealthCheckConfig',
+                                        'type' => 'Route53_HealthCheckConfig'
+                                      }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'CallerReference' => 1,
+                    'HealthCheckVersion' => 1,
+                    'HealthCheckConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,13 +88,13 @@ associated with the current AWS account.
   A unique string that you specified when you created the health check.
 
 
-=head2 CloudWatchAlarmConfiguration => L<Paws::Route53::CloudWatchAlarmConfiguration>
+=head2 CloudWatchAlarmConfiguration => Route53_CloudWatchAlarmConfiguration
 
   A complex type that contains information about the CloudWatch alarm
 that Amazon Route 53 is monitoring for this health check.
 
 
-=head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>
+=head2 B<REQUIRED> HealthCheckConfig => Route53_HealthCheckConfig
 
   A complex type that contains detailed information about one health
 check.
@@ -74,7 +115,7 @@ this value to specify which health check to use. The value can be up to
 64 characters long.
 
 
-=head2 LinkedService => L<Paws::Route53::LinkedService>
+=head2 LinkedService => Route53_LinkedService
 
   If the health check was created by another service, the service that
 created the health check. When a health check is created by another

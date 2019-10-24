@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::Decrypt;
-  use Moose;
-  has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KMS::Types qw/KMS_EncryptionContextType/;
+  has CiphertextBlob => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EncryptionContext => (is => 'ro', isa => KMS_EncryptionContextType, predicate => 1);
+  has GrantTokens => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Decrypt');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::DecryptResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Decrypt');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::DecryptResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantTokens' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CiphertextBlob' => {
+                                     'type' => 'Str'
+                                   },
+               'EncryptionContext' => {
+                                        'class' => 'Paws::KMS::EncryptionContextType',
+                                        'type' => 'KMS_EncryptionContextType'
+                                      }
+             },
+  'IsRequired' => {
+                    'CiphertextBlob' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +78,7 @@ Ciphertext to be decrypted. The blob includes metadata.
 
 
 
-=head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContext => KMS_EncryptionContextType
 
 The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For

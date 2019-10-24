@@ -1,9 +1,30 @@
 
 package Paws::IoTAnalytics::DescribeDatasetResponse;
-  use Moose;
-  has Dataset => (is => 'ro', isa => 'Paws::IoTAnalytics::Dataset', traits => ['NameInRequest'], request_name => 'dataset');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_Dataset/;
+  has Dataset => (is => 'ro', isa => IoTAnalytics_Dataset);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Dataset' => {
+                              'class' => 'Paws::IoTAnalytics::Dataset',
+                              'type' => 'IoTAnalytics_Dataset'
+                            }
+             },
+  'NameInRequest' => {
+                       'Dataset' => 'dataset'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::IoTAnalytics::DescribeDatasetResponse
 =head1 ATTRIBUTES
 
 
-=head2 Dataset => L<Paws::IoTAnalytics::Dataset>
+=head2 Dataset => IoTAnalytics_Dataset
 
 An object that contains information about the data set.
 

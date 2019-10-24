@@ -1,17 +1,55 @@
 
 package Paws::ApiGateway::ImportDocumentationParts;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failonwarnings');
-  has Mode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'mode');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw//;
+  has Body => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FailOnWarnings => (is => 'ro', isa => Bool, predicate => 1);
+  has Mode => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportDocumentationParts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationPartIds');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportDocumentationParts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DocumentationPartIds');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'FailOnWarnings' => {
+                                     'type' => 'Bool'
+                                   },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'ParamInQuery' => {
+                      'FailOnWarnings' => 'failonwarnings',
+                      'Mode' => 'mode'
+                    },
+  'NameInRequest' => {
+                       'Body' => 'body'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'Body' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

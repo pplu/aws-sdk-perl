@@ -1,18 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::UpdateSecret;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has SecretBinary => (is => 'ro', isa => 'Str');
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
-  has SecretString => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has SecretBinary => (is => 'ro', isa => Str, predicate => 1);
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecretString => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSecret');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::UpdateSecretResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSecret');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::UpdateSecretResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'SecretId' => {
+                               'type' => 'Str'
+                             },
+               'SecretBinary' => {
+                                   'type' => 'Str'
+                                 },
+               'SecretString' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'SecretId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

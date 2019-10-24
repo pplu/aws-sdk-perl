@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::KeySchemaElement;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::KeySchemaElement;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has KeyType => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'KeyType' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::KeySchemaElement;
                'AttributeName' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'KeyType' => 1,
+                    'AttributeName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

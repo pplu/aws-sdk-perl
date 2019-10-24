@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::UpdateConfigurationSetSendingEnabled;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::UpdateConfigurationSetSendingEnabled;
                'ConfigurationSetName' => {
                                            'type' => 'Str'
                                          }
-             }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'ConfigurationSetName' => 1
+                  }
 }
 ;
     return $Params_map;

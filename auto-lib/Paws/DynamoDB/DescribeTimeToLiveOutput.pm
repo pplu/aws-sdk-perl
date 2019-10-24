@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DescribeTimeToLiveOutput;
   use Moo;
@@ -6,18 +7,21 @@ package Paws::DynamoDB::DescribeTimeToLiveOutput;
   has TimeToLiveDescription => (is => 'ro', isa => DynamoDB_TimeToLiveDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TimeToLiveDescription' => {
                                             'class' => 'Paws::DynamoDB::TimeToLiveDescription',
                                             'type' => 'DynamoDB_TimeToLiveDescription'
-                                          }
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

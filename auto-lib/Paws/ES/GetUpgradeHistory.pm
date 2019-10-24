@@ -33,7 +33,10 @@ package Paws::ES::GetUpgradeHistory;
   'ParamInQuery' => {
                       'NextToken' => 'nextToken',
                       'MaxResults' => 'maxResults'
-                    }
+                    },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
 }
 ;
     return $Params_map;

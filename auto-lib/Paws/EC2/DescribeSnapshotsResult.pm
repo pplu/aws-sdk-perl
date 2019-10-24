@@ -8,7 +8,7 @@ package Paws::EC2::DescribeSnapshotsResult;
   has Snapshots => (is => 'ro', isa => ArrayRef[EC2_Snapshot]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Snapshots' => {
@@ -28,8 +28,8 @@ package Paws::EC2::DescribeSnapshotsResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

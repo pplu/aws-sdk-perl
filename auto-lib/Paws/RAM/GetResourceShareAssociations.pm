@@ -1,20 +1,65 @@
 
 package Paws::RAM::GetResourceShareAssociations;
-  use Moose;
-  has AssociationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationStatus');
-  has AssociationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationType', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principal');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn');
-  has ResourceShareArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareArns');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::RAM::Types qw//;
+  has AssociationStatus => (is => 'ro', isa => Str, predicate => 1);
+  has AssociationType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceShareArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceShareAssociations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/getresourceshareassociations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::GetResourceShareAssociationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceShareAssociations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/getresourceshareassociations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::GetResourceShareAssociationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ResourceShareArns' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'AssociationType' => {
+                                      'type' => 'Str'
+                                    },
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AssociationStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'ResourceArn' => 'resourceArn',
+                       'NextToken' => 'nextToken',
+                       'ResourceShareArns' => 'resourceShareArns',
+                       'AssociationType' => 'associationType',
+                       'Principal' => 'principal',
+                       'MaxResults' => 'maxResults',
+                       'AssociationStatus' => 'associationStatus'
+                     },
+  'IsRequired' => {
+                    'AssociationType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

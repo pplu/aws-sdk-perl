@@ -1,8 +1,22 @@
 package Paws::Budgets::CostFilters;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToNativeMapParser';
+  use Types::Standard qw/HashRef ArrayRef Undef Str/;
+  use Paws::Budgets::Types qw//;
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Str|Undef]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[Str|Undef]]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[Str|Undef]]',
+                                          class => '',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +51,7 @@ A map that represents the cost filters that are applied to the budget.
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[Str|Undef]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

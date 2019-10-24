@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickDevices::Device;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT1ClickDevices::Attributes', request_name => 'attributes', traits => ['NameInRequest']);
-  has DeviceId => (is => 'ro', isa => 'Str', request_name => 'deviceId', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickDevices::Types qw/IoT1ClickDevices_Attributes/;
+  has Attributes => (is => 'ro', isa => IoT1ClickDevices_Attributes);
+  has DeviceId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT1ClickDevices::Attributes',
+                                 'type' => 'IoT1ClickDevices_Attributes'
+                               },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Attributes' => 'attributes',
+                       'DeviceId' => 'deviceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT1ClickDevices::Attributes>
+=head2 Attributes => IoT1ClickDevices_Attributes
 
   The user specified attributes associated with the device for an event.
 

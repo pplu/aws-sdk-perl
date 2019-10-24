@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::StepDetail;
-  use Moose;
-  has ExecutionStatusDetail => (is => 'ro', isa => 'Paws::EMR::StepExecutionStatusDetail', required => 1);
-  has StepConfig => (is => 'ro', isa => 'Paws::EMR::StepConfig', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::EMR::Types qw/EMR_StepConfig EMR_StepExecutionStatusDetail/;
+  has ExecutionStatusDetail => (is => 'ro', isa => EMR_StepExecutionStatusDetail, required => 1);
+  has StepConfig => (is => 'ro', isa => EMR_StepConfig, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionStatusDetail' => {
+                                            'class' => 'Paws::EMR::StepExecutionStatusDetail',
+                                            'type' => 'EMR_StepExecutionStatusDetail'
+                                          },
+               'StepConfig' => {
+                                 'class' => 'Paws::EMR::StepConfig',
+                                 'type' => 'EMR_StepConfig'
+                               }
+             },
+  'IsRequired' => {
+                    'ExecutionStatusDetail' => 1,
+                    'StepConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Combines the execution state and configuration of a step.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::StepExecutionStatusDetail>
+=head2 B<REQUIRED> ExecutionStatusDetail => EMR_StepExecutionStatusDetail
 
   The description of the step status.
 
 
-=head2 B<REQUIRED> StepConfig => L<Paws::EMR::StepConfig>
+=head2 B<REQUIRED> StepConfig => EMR_StepConfig
 
   The step configuration.
 

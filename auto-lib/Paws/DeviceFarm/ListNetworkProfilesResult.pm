@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListNetworkProfilesResult;
-  use Moose;
-  has NetworkProfiles => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::NetworkProfile]', traits => ['NameInRequest'], request_name => 'networkProfiles' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_NetworkProfile/;
+  has NetworkProfiles => (is => 'ro', isa => ArrayRef[DeviceFarm_NetworkProfile]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkProfiles' => {
+                                      'class' => 'Paws::DeviceFarm::NetworkProfile',
+                                      'type' => 'ArrayRef[DeviceFarm_NetworkProfile]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NetworkProfiles' => 'networkProfiles',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListNetworkProfilesResult
 =head1 ATTRIBUTES
 
 
-=head2 NetworkProfiles => ArrayRef[L<Paws::DeviceFarm::NetworkProfile>]
+=head2 NetworkProfiles => ArrayRef[DeviceFarm_NetworkProfile]
 
 A list of the available network profiles.
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::DS::IpRouteInfo;
-  use Moose;
-  has AddedDateTime => (is => 'ro', isa => 'Str');
-  has CidrIp => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has IpRouteStatusMsg => (is => 'ro', isa => 'Str');
-  has IpRouteStatusReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has AddedDateTime => (is => 'ro', isa => Str);
+  has CidrIp => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has IpRouteStatusMsg => (is => 'ro', isa => Str);
+  has IpRouteStatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpRouteStatusReason' => {
+                                          'type' => 'Str'
+                                        },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'AddedDateTime' => {
+                                    'type' => 'Str'
+                                  },
+               'IpRouteStatusMsg' => {
+                                       'type' => 'Str'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'CidrIp' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

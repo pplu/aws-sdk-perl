@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::CreateDataSourceFromRDS;
-  use Moose;
-  has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str');
-  has RDSData => (is => 'ro', isa => 'Paws::MachineLearning::RDSDataSpec', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RDSDataSpec/;
+  has ComputeStatistics => (is => 'ro', isa => Bool, predicate => 1);
+  has DataSourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSourceName => (is => 'ro', isa => Str, predicate => 1);
+  has RDSData => (is => 'ro', isa => MachineLearning_RDSDataSpec, required => 1, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromRDS');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRDSOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataSourceFromRDS');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRDSOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RDSData' => {
+                              'class' => 'Paws::MachineLearning::RDSDataSpec',
+                              'type' => 'MachineLearning_RDSDataSpec'
+                            },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'ComputeStatistics' => {
+                                        'type' => 'Bool'
+                                      },
+               'DataSourceId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'RDSData' => 1,
+                    'RoleARN' => 1,
+                    'DataSourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +131,7 @@ A user-supplied name or description of the C<DataSource>.
 
 
 
-=head2 B<REQUIRED> RDSData => L<Paws::MachineLearning::RDSDataSpec>
+=head2 B<REQUIRED> RDSData => MachineLearning_RDSDataSpec
 
 The data specification of an Amazon RDS C<DataSource>:
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::ListAggregateDiscoveredResourcesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::Config::AggregateResourceIdentifier]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_AggregateResourceIdentifier/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ResourceIdentifiers => (is => 'ro', isa => ArrayRef[Config_AggregateResourceIdentifier]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourceIdentifiers' => {
+                                          'class' => 'Paws::Config::AggregateResourceIdentifier',
+                                          'type' => 'ArrayRef[Config_AggregateResourceIdentifier]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 
-=head2 ResourceIdentifiers => ArrayRef[L<Paws::Config::AggregateResourceIdentifier>]
+=head2 ResourceIdentifiers => ArrayRef[Config_AggregateResourceIdentifier]
 
 Returns a list of C<ResourceIdentifiers> objects.
 

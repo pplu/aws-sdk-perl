@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::RDS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'rds' }
   sub signing_name { 'rds' }
   sub version { '2014-10-31' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -1440,7 +1442,7 @@ subscription.
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::RDS::Tag>]
+=item Tags => ArrayRef[RDS_Tag]
 
 
 =back
@@ -1559,7 +1561,7 @@ This action only applies to Aurora DB clusters.
 
 =item TargetDBClusterParameterGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1587,7 +1589,7 @@ This action only applies to Aurora DB clusters.
 
 =item [PreSignedUrl => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1703,7 +1705,7 @@ This action only applies to Aurora DB clusters.
 
 =item TargetDBParameterGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1731,7 +1733,7 @@ Copies the specified DB parameter group.
 
 =item [PreSignedUrl => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1762,7 +1764,7 @@ in the I<Amazon RDS User Guide.>
 
 =item TargetOptionGroupIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1828,11 +1830,11 @@ Copies the specified option group.
 
 =item [ReplicationSourceIdentifier => Str]
 
-=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
+=item [ScalingConfiguration => RDS_ScalingConfiguration]
 
 =item [StorageEncrypted => Bool]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -1895,7 +1897,7 @@ This action only applies to Aurora DB clusters.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -1947,7 +1949,7 @@ This action only applies to Aurora DB clusters.
 
 =item DBClusterSnapshotIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2040,7 +2042,7 @@ This action only applies to Aurora DB clusters.
 
 =item [PreferredMaintenanceWindow => Str]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PromotionTier => Int]
 
@@ -2050,7 +2052,7 @@ This action only applies to Aurora DB clusters.
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [TdeCredentialArn => Str]
 
@@ -2116,13 +2118,13 @@ Creates a new DB instance.
 
 =item [PreSignedUrl => Str]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PubliclyAccessible => Bool]
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [UseDefaultProcessorFeatures => Bool]
 
@@ -2164,7 +2166,7 @@ Your source DB instance must have backup retention enabled.
 
 =item Description => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2207,7 +2209,7 @@ modified.
 
 =item DBSecurityGroupName => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2231,7 +2233,7 @@ are not in a VPC.
 
 =item DBSnapshotIdentifier => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2254,7 +2256,7 @@ state.
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2283,7 +2285,7 @@ one subnet in at least two AZs in the AWS Region.
 
 =item [SourceType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2366,7 +2368,7 @@ This action only applies to Aurora DB clusters.
 
 =item OptionGroupName => Str
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -2699,7 +2701,7 @@ This command doesn't take any parameters.
 
 =item [CertificateIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -2724,7 +2726,7 @@ account.
 
 =item [BacktrackIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -2754,7 +2756,7 @@ This action only applies to Aurora DB clusters.
 
 =item [DBClusterIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -2778,7 +2780,7 @@ This action only applies to Aurora DB clusters.
 
 =item [DBClusterParameterGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -2809,7 +2811,7 @@ This action only applies to Aurora DB clusters.
 
 =item DBClusterParameterGroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -2840,7 +2842,7 @@ This action only applies to Aurora DB clusters.
 
 =item [DBClusterIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [IncludeShared => Bool]
 
@@ -2903,7 +2905,7 @@ This action only applies to Aurora DB clusters.
 
 =item [DBClusterSnapshotIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [IncludePublic => Bool]
 
@@ -2944,7 +2946,7 @@ This action only applies to Aurora DB clusters.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [IncludeAll => Bool]
 
@@ -2974,7 +2976,7 @@ Returns a list of the available DB engines.
 
 =item [DbiResourceId => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3003,7 +3005,7 @@ All parameters are optional.
 
 =item [DBInstanceIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3032,7 +3034,7 @@ pagination.
 
 =item [FileSize => Int]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3054,7 +3056,7 @@ Returns a list of DB log files for the DB instance.
 
 =item [DBParameterGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3078,7 +3080,7 @@ description of the specified DB parameter group.
 
 =item DBParameterGroupName => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3103,7 +3105,7 @@ group.
 
 =item [DBSecurityGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3159,7 +3161,7 @@ the C<ModifyDBSnapshotAttribute> API action.
 
 =item [DBSnapshotIdentifier => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [IncludePublic => Bool]
 
@@ -3188,7 +3190,7 @@ pagination.
 
 =item [DBSubnetGroupName => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3215,7 +3217,7 @@ For an overview of CIDR ranges, go to the Wikipedia Tutorial
 
 =item DBParameterGroupFamily => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3242,7 +3244,7 @@ in the I<Amazon Aurora User Guide.>
 
 =item DBParameterGroupFamily => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3263,7 +3265,7 @@ specified database engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [SourceType => Str]
 
@@ -3291,7 +3293,7 @@ topic in the I<Amazon RDS User Guide.>
 
 =item [EventCategories => ArrayRef[Str|Undef]]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3321,7 +3323,7 @@ as a parameter. By default, the past hour of events are returned.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3348,7 +3350,7 @@ subscription.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [GlobalClusterIdentifier => Str]
 
@@ -3379,7 +3381,7 @@ This action only applies to Aurora DB clusters.
 
 =item EngineName => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [MajorEngineVersion => Str]
 
@@ -3403,7 +3405,7 @@ Describes all available options.
 
 =item [EngineName => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [MajorEngineVersion => Str]
 
@@ -3433,7 +3435,7 @@ Describes the available option groups.
 
 =item [EngineVersion => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [LicenseModel => Str]
 
@@ -3458,7 +3460,7 @@ engine.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3485,7 +3487,7 @@ least one pending maintenance action.
 
 =item [Duration => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3520,7 +3522,7 @@ about a specified reserved DB instance.
 
 =item [Duration => Str]
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3548,7 +3550,7 @@ Lists available reserved DB instance offerings.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 =item [Marker => Str]
 
@@ -3650,7 +3652,7 @@ This action only applies to Aurora DB clusters.
 
 =item ResourceName => Str
 
-=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+=item [Filters => ArrayRef[RDS_Filter]]
 
 
 =back
@@ -3728,7 +3730,7 @@ This action only applies to Aurora DB clusters.
 
 =item [BackupRetentionPeriod => Int]
 
-=item [CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>]
+=item [CloudwatchLogsExportConfiguration => RDS_CloudwatchLogsExportConfiguration]
 
 =item [CopyTagsToSnapshot => Bool]
 
@@ -3756,7 +3758,7 @@ This action only applies to Aurora DB clusters.
 
 =item [PreferredMaintenanceWindow => Str]
 
-=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
+=item [ScalingConfiguration => RDS_ScalingConfiguration]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -3807,7 +3809,7 @@ This action only applies to Aurora DB clusters.
 
 =item DBClusterParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::RDS::Parameter>]
+=item Parameters => ArrayRef[RDS_Parameter]
 
 
 =back
@@ -3904,7 +3906,7 @@ This action only applies to Aurora DB clusters.
 
 =item [CACertificateIdentifier => Str]
 
-=item [CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>]
+=item [CloudwatchLogsExportConfiguration => RDS_CloudwatchLogsExportConfiguration]
 
 =item [CopyTagsToSnapshot => Bool]
 
@@ -3956,7 +3958,7 @@ This action only applies to Aurora DB clusters.
 
 =item [PreferredMaintenanceWindow => Str]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PromotionTier => Int]
 
@@ -3992,7 +3994,7 @@ before you call C<ModifyDBInstance>.
 
 =item DBParameterGroupName => Str
 
-=item Parameters => ArrayRef[L<Paws::RDS::Parameter>]
+=item Parameters => ArrayRef[RDS_Parameter]
 
 
 =back
@@ -4176,7 +4178,7 @@ This action only applies to Aurora DB clusters.
 
 =item [ApplyImmediately => Bool]
 
-=item [OptionsToInclude => ArrayRef[L<Paws::RDS::OptionConfiguration>]]
+=item [OptionsToInclude => ArrayRef[RDS_OptionConfiguration]]
 
 =item [OptionsToRemove => ArrayRef[Str|Undef]]
 
@@ -4258,7 +4260,7 @@ This action only applies to Aurora DB clusters.
 
 =item [ReservedDBInstanceId => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 
 =back
@@ -4417,7 +4419,7 @@ in the I<Amazon RDS User Guide.>
 
 =item DBClusterParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::RDS::Parameter>]]
+=item [Parameters => ArrayRef[RDS_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -4453,7 +4455,7 @@ This action only applies to Aurora DB clusters.
 
 =item DBParameterGroupName => Str
 
-=item [Parameters => ArrayRef[L<Paws::RDS::Parameter>]]
+=item [Parameters => ArrayRef[RDS_Parameter]]
 
 =item [ResetAllParameters => Bool]
 
@@ -4532,7 +4534,7 @@ or C<RebootDBInstance> request.
 
 =item [StorageEncrypted => Bool]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -4591,9 +4593,9 @@ This action only applies to Aurora DB clusters.
 
 =item [Port => Int]
 
-=item [ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>]
+=item [ScalingConfiguration => RDS_ScalingConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -4654,7 +4656,7 @@ This action only applies to Aurora DB clusters.
 
 =item [RestoreType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -4732,13 +4734,13 @@ This action only applies to Aurora DB clusters.
 
 =item [Port => Int]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PubliclyAccessible => Bool]
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [TdeCredentialArn => Str]
 
@@ -4855,7 +4857,7 @@ Aurora, use C<RestoreDBClusterFromSnapshot>.
 
 =item [PreferredMaintenanceWindow => Str]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PubliclyAccessible => Bool]
 
@@ -4865,7 +4867,7 @@ Aurora, use C<RestoreDBClusterFromSnapshot>.
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [UseDefaultProcessorFeatures => Bool]
 
@@ -4930,7 +4932,7 @@ in the I<Amazon RDS User Guide.>
 
 =item [Port => Int]
 
-=item [ProcessorFeatures => ArrayRef[L<Paws::RDS::ProcessorFeature>]]
+=item [ProcessorFeatures => ArrayRef[RDS_ProcessorFeature]]
 
 =item [PubliclyAccessible => Bool]
 
@@ -4942,7 +4944,7 @@ in the I<Amazon RDS User Guide.>
 
 =item [StorageType => Str]
 
-=item [Tags => ArrayRef[L<Paws::RDS::Tag>]]
+=item [Tags => ArrayRef[RDS_Tag]]
 
 =item [TdeCredentialArn => Str]
 
@@ -5166,9 +5168,9 @@ Aurora clusters, use C<StopDBCluster> instead.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllCertificates(sub { },[CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllCertificates(sub { },[CertificateIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllCertificates([CertificateIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllCertificates([CertificateIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5178,9 +5180,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::CertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusterBacktracks(DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterBacktracks(DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5190,9 +5192,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterBacktrackMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterEndpoints(sub { },[DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterEndpoints(sub { },[DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusterEndpoints([DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterEndpoints([DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5202,9 +5204,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterEndpointMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusterParameterGroups([DBClusterParameterGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5214,9 +5216,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBClusterParameters(sub { },DBClusterParameterGroupName => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
-=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBClusterParameters(DBClusterParameterGroupName => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5226,9 +5228,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludeShared => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters(sub { },[DBClusterIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludeShared => Bool, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludeShared => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBClusters([DBClusterIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludeShared => Bool, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5238,9 +5240,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBClusterSnapshots(sub { },[DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
-=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5250,9 +5252,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBClusterSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludeAll => Bool, ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions(sub { },[DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[RDS_Filter], IncludeAll => Bool, ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludeAll => Bool, ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBEngineVersions([DBParameterGroupFamily => Str, DefaultOnly => Bool, Engine => Str, EngineVersion => Str, Filters => ArrayRef[RDS_Filter], IncludeAll => Bool, ListSupportedCharacterSets => Bool, ListSupportedTimezones => Bool, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5262,9 +5264,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBEngineVersionMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstanceAutomatedBackups(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstanceAutomatedBackups([DBInstanceIdentifier => Str, DbiResourceId => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5274,9 +5276,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBInstanceAutomatedBackupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances(sub { },[DBInstanceIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBInstances([DBInstanceIdentifier => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5286,9 +5288,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBLogFiles(sub { },DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBLogFiles(sub { },DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBLogFiles(DBInstanceIdentifier => Str, [FileLastWritten => Int, FilenameContains => Str, FileSize => Int, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5298,9 +5300,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DescribeDBLogFilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBParameterGroups(sub { },[DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBParameterGroups(sub { },[DBParameterGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBParameterGroups([DBParameterGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5310,9 +5312,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBParameterGroupsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBParameters(sub { },DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBParameters(sub { },DBParameterGroupName => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
-=head2 DescribeAllDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, Source => Str])
+=head2 DescribeAllDBParameters(DBParameterGroupName => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, Source => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5322,9 +5324,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBParameterGroupDetails> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSecurityGroups(sub { },[DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSecurityGroups(sub { },[DBSecurityGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSecurityGroups([DBSecurityGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5334,9 +5336,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSecurityGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots(sub { },[DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
-=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeAllDBSnapshots([DBInstanceIdentifier => Str, DbiResourceId => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[RDS_Filter], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5346,9 +5348,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSnapshotMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups(sub { },[DBSubnetGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5358,9 +5360,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DBSubnetGroupMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEngineDefaultClusterParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultClusterParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultClusterParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5370,9 +5372,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DescribeEngineDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultParameters(sub { },DBParameterGroupFamily => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+=head2 DescribeAllEngineDefaultParameters(DBParameterGroupFamily => Str, [Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5382,9 +5384,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::DescribeEngineDefaultParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
-=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeAllEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str|Undef], Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5394,9 +5396,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions(sub { },[Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
-=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
+=head2 DescribeAllEventSubscriptions([Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, SubscriptionName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5406,9 +5408,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[RDS_Filter], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllGlobalClusters([Filters => ArrayRef[L<Paws::RDS::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllGlobalClusters([Filters => ArrayRef[RDS_Filter], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5418,9 +5420,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[RDS_Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
-=head2 DescribeAllOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
+=head2 DescribeAllOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[RDS_Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5430,9 +5432,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OptionGroupOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOptionGroups(sub { },[EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
+=head2 DescribeAllOptionGroups(sub { },[EngineName => Str, Filters => ArrayRef[RDS_Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
 
-=head2 DescribeAllOptionGroups([EngineName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
+=head2 DescribeAllOptionGroups([EngineName => Str, Filters => ArrayRef[RDS_Filter], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int, OptionGroupName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5442,9 +5444,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OptionGroups> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[RDS_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
-=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
+=head2 DescribeAllOrderableDBInstanceOptions(Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[RDS_Filter], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5454,9 +5456,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::OrderableDBInstanceOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribeAllPendingMaintenanceActions(sub { },[Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
-=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
+=head2 DescribeAllPendingMaintenanceActions([Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, ResourceIdentifier => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5466,9 +5468,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
-=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5478,9 +5480,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::ReservedDBInstanceMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedDBInstancesOfferings(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstancesOfferings(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
 
-=head2 DescribeAllReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstancesOfferings([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstancesOfferingId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -5490,9 +5492,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::ReservedDBInstancesOfferingMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllSourceRegions(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+=head2 DescribeAllSourceRegions(sub { },[Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, RegionName => Str])
 
-=head2 DescribeAllSourceRegions([Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, RegionName => Str])
+=head2 DescribeAllSourceRegions([Filters => ArrayRef[RDS_Filter], Marker => Str, MaxRecords => Int, RegionName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

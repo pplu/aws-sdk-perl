@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::HttpInstanceSummary;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
-  has HealthStatus => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has NamespaceName => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Attributes/;
+  has Attributes => (is => 'ro', isa => ServiceDiscovery_Attributes);
+  has HealthStatus => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has NamespaceName => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'HealthStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'Attributes' => {
+                                 'class' => 'Paws::ServiceDiscovery::Attributes',
+                                 'type' => 'ServiceDiscovery_Attributes'
+                               },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +72,7 @@ you specified in the request.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::ServiceDiscovery::Attributes>
+=head2 Attributes => ServiceDiscovery_Attributes
 
   If you included any attributes when you registered the instance, the
 values of those attributes.

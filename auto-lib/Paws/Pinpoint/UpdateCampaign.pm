@@ -1,16 +1,47 @@
 
 package Paws::Pinpoint::UpdateCampaign;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has CampaignId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'campaign-id', required => 1);
-  has WriteCampaignRequest => (is => 'ro', isa => 'Paws::Pinpoint::WriteCampaignRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_WriteCampaignRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CampaignId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WriteCampaignRequest => (is => 'ro', isa => Pinpoint_WriteCampaignRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'WriteCampaignRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCampaign');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateCampaignResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCampaign');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/campaigns/{campaign-id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateCampaignResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'CampaignId' => {
+                                 'type' => 'Str'
+                               },
+               'WriteCampaignRequest' => {
+                                           'class' => 'Paws::Pinpoint::WriteCampaignRequest',
+                                           'type' => 'Pinpoint_WriteCampaignRequest'
+                                         }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id',
+                    'CampaignId' => 'campaign-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'CampaignId' => 1,
+                    'WriteCampaignRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -337,7 +368,7 @@ The unique identifier for the campaign.
 
 
 
-=head2 B<REQUIRED> WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>
+=head2 B<REQUIRED> WriteCampaignRequest => Pinpoint_WriteCampaignRequest
 
 
 

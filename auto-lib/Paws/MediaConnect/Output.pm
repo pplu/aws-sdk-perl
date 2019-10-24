@@ -1,14 +1,72 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Output;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
-  has MediaLiveInputArn => (is => 'ro', isa => 'Str', request_name => 'mediaLiveInputArn', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has OutputArn => (is => 'ro', isa => 'Str', request_name => 'outputArn', traits => ['NameInRequest'], required => 1);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
-  has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Transport MediaConnect_Encryption/;
+  has Description => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has EntitlementArn => (is => 'ro', isa => Str);
+  has MediaLiveInputArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has OutputArn => (is => 'ro', isa => Str, required => 1);
+  has Port => (is => 'ro', isa => Int);
+  has Transport => (is => 'ro', isa => MediaConnect_Transport);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'OutputArn' => {
+                                'type' => 'Str'
+                              },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConnect::Encryption',
+                                 'type' => 'MediaConnect_Encryption'
+                               },
+               'MediaLiveInputArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Transport' => {
+                                'class' => 'Paws::MediaConnect::Transport',
+                                'type' => 'MediaConnect_Transport'
+                              }
+             },
+  'NameInRequest' => {
+                       'Port' => 'port',
+                       'Destination' => 'destination',
+                       'EntitlementArn' => 'entitlementArn',
+                       'OutputArn' => 'outputArn',
+                       'Encryption' => 'encryption',
+                       'MediaLiveInputArn' => 'mediaLiveInputArn',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Transport' => 'transport'
+                     },
+  'IsRequired' => {
+                    'OutputArn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +112,7 @@ The settings for an output.
   The address where you want to send the output.
 
 
-=head2 Encryption => L<Paws::MediaConnect::Encryption>
+=head2 Encryption => MediaConnect_Encryption
 
   The type of key used for the encryption. If no keyType is provided, the
 service will use the default setting (static-key).
@@ -89,7 +147,7 @@ flow.
   The port to use when content is distributed to this output.
 
 
-=head2 Transport => L<Paws::MediaConnect::Transport>
+=head2 Transport => MediaConnect_Transport
 
   Attributes related to the transport stream that are used in the output.
 

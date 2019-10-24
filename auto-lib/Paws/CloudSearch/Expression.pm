@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::Expression;
-  use Moose;
-  has ExpressionName => (is => 'ro', isa => 'Str', required => 1);
-  has ExpressionValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has ExpressionName => (is => 'ro', isa => Str, required => 1);
+  has ExpressionValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpressionValue' => {
+                                      'type' => 'Str'
+                                    },
+               'ExpressionName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ExpressionValue' => 1,
+                    'ExpressionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

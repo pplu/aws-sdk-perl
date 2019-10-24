@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::DecreaseReplicaCountResult;
-  use Moose;
-  has ReplicationGroup => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ReplicationGroup/;
+  has ReplicationGroup => (is => 'ro', isa => ElastiCache_ReplicationGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationGroup' => {
+                                       'class' => 'Paws::ElastiCache::ReplicationGroup',
+                                       'type' => 'ElastiCache_ReplicationGroup'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElastiCache::DecreaseReplicaCountResult
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationGroup => L<Paws::ElastiCache::ReplicationGroup>
+=head2 ReplicationGroup => ElastiCache_ReplicationGroup
 
 
 

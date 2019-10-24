@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Get;
   use Moo;
   use Types::Standard qw/Str/;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::Get;
   has ProjectionExpression => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TableName' => {
@@ -24,11 +25,15 @@ package Paws::DynamoDB::Get;
                           'class' => 'Paws::DynamoDB::Key',
                           'type' => 'DynamoDB_Key'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

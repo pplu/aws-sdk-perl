@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::UpdateImagePermissions;
-  use Moose;
-  has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has SharedAccountId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw/AppStream_ImagePermissions/;
+  has ImagePermissions => (is => 'ro', isa => AppStream_ImagePermissions, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SharedAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateImagePermissions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::UpdateImagePermissionsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateImagePermissions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::UpdateImagePermissionsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImagePermissions' => {
+                                       'class' => 'Paws::AppStream::ImagePermissions',
+                                       'type' => 'AppStream_ImagePermissions'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'SharedAccountId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ImagePermissions' => 1,
+                    'Name' => 1,
+                    'SharedAccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ImagePermissions => L<Paws::AppStream::ImagePermissions>
+=head2 B<REQUIRED> ImagePermissions => AppStream_ImagePermissions
 
 The permissions for the image.
 

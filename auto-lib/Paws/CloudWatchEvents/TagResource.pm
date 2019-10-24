@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::TagResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::CloudWatchEvents::Tag',
+                           'type' => 'ArrayRef[CloudWatchEvents_Tag]'
+                         },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ The ARN of the CloudWatch Events rule that you're adding tags to.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[CloudWatchEvents_Tag]
 
 The list of key-value pairs to associate with the rule.
 

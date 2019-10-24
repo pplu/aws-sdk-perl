@@ -1,9 +1,44 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::StageState;
-  use Moose;
-  has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', request_name => 'actionStates', traits => ['NameInRequest']);
-  has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', request_name => 'inboundTransitionState', traits => ['NameInRequest']);
-  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_StageExecution CodePipeline_TransitionState CodePipeline_ActionState/;
+  has ActionStates => (is => 'ro', isa => ArrayRef[CodePipeline_ActionState]);
+  has InboundTransitionState => (is => 'ro', isa => CodePipeline_TransitionState);
+  has LatestExecution => (is => 'ro', isa => CodePipeline_StageExecution);
+  has StageName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'ActionStates' => {
+                                   'class' => 'Paws::CodePipeline::ActionState',
+                                   'type' => 'ArrayRef[CodePipeline_ActionState]'
+                                 },
+               'LatestExecution' => {
+                                      'class' => 'Paws::CodePipeline::StageExecution',
+                                      'type' => 'CodePipeline_StageExecution'
+                                    },
+               'InboundTransitionState' => {
+                                             'class' => 'Paws::CodePipeline::TransitionState',
+                                             'type' => 'CodePipeline_TransitionState'
+                                           }
+             },
+  'NameInRequest' => {
+                       'StageName' => 'stageName',
+                       'ActionStates' => 'actionStates',
+                       'LatestExecution' => 'latestExecution',
+                       'InboundTransitionState' => 'inboundTransitionState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +74,18 @@ Represents information about the state of the stage.
 =head1 ATTRIBUTES
 
 
-=head2 ActionStates => ArrayRef[L<Paws::CodePipeline::ActionState>]
+=head2 ActionStates => ArrayRef[CodePipeline_ActionState]
 
   The state of the stage.
 
 
-=head2 InboundTransitionState => L<Paws::CodePipeline::TransitionState>
+=head2 InboundTransitionState => CodePipeline_TransitionState
 
   The state of the inbound transition, which is either enabled or
 disabled.
 
 
-=head2 LatestExecution => L<Paws::CodePipeline::StageExecution>
+=head2 LatestExecution => CodePipeline_StageExecution
 
   Information about the latest execution in the stage, including its ID
 and status.

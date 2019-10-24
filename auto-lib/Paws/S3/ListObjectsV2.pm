@@ -66,7 +66,10 @@ use MooX::ClassAttribute;
                       'EncodingType' => 'encoding-type',
                       'Delimiter' => 'delimiter',
                       'MaxKeys' => 'max-keys'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

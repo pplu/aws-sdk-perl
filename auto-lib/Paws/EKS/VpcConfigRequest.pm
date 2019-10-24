@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::EKS::VpcConfigRequest;
-  use Moose;
-  has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
-  has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::EKS::Types qw//;
+  has EndpointPrivateAccess => (is => 'ro', isa => Bool);
+  has EndpointPublicAccess => (is => 'ro', isa => Bool);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'EndpointPrivateAccess' => {
+                                            'type' => 'Bool'
+                                          },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'EndpointPublicAccess' => {
+                                           'type' => 'Bool'
+                                         }
+             },
+  'NameInRequest' => {
+                       'SecurityGroupIds' => 'securityGroupIds',
+                       'EndpointPrivateAccess' => 'endpointPrivateAccess',
+                       'SubnetIds' => 'subnetIds',
+                       'EndpointPublicAccess' => 'endpointPublicAccess'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

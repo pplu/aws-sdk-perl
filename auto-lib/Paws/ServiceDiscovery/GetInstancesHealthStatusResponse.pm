@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceDiscovery::GetInstancesHealthStatusResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::ServiceDiscovery::InstanceHealthStatusMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_InstanceHealthStatusMap/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => ServiceDiscovery_InstanceHealthStatusMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'class' => 'Paws::ServiceDiscovery::InstanceHealthStatusMap',
+                             'type' => 'ServiceDiscovery_InstanceHealthStatusMap'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +45,7 @@ group of results. Specify the value of C<NextToken> from the previous
 response in the next request.
 
 
-=head2 Status => L<Paws::ServiceDiscovery::InstanceHealthStatusMap>
+=head2 Status => ServiceDiscovery_InstanceHealthStatusMap
 
 A complex type that contains the IDs and the health status of the
 instances that you specified in the C<GetInstancesHealthStatus>

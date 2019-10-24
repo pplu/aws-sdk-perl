@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::BatchDetectDominantLanguage;
-  use Moose;
-  has TextList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Comprehend::Types qw//;
+  has TextList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDetectDominantLanguage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::BatchDetectDominantLanguageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDetectDominantLanguage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::BatchDetectDominantLanguageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TextList' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             },
+  'IsRequired' => {
+                    'TextList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::MergeMetadata;
-  use Moose;
-  has IsMerged => (is => 'ro', isa => 'Bool', request_name => 'isMerged', traits => ['NameInRequest']);
-  has MergeCommitId => (is => 'ro', isa => 'Str', request_name => 'mergeCommitId', traits => ['NameInRequest']);
-  has MergedBy => (is => 'ro', isa => 'Str', request_name => 'mergedBy', traits => ['NameInRequest']);
-  has MergeOption => (is => 'ro', isa => 'Str', request_name => 'mergeOption', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CodeCommit::Types qw//;
+  has IsMerged => (is => 'ro', isa => Bool);
+  has MergeCommitId => (is => 'ro', isa => Str);
+  has MergedBy => (is => 'ro', isa => Str);
+  has MergeOption => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MergeOption' => {
+                                  'type' => 'Str'
+                                },
+               'MergedBy' => {
+                               'type' => 'Str'
+                             },
+               'MergeCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'IsMerged' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'NameInRequest' => {
+                       'MergeOption' => 'mergeOption',
+                       'MergedBy' => 'mergedBy',
+                       'MergeCommitId' => 'mergeCommitId',
+                       'IsMerged' => 'isMerged'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

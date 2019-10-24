@@ -1,16 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::PutPipelineDefinition;
-  use Moose;
-  has ParameterObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterObject]', traits => ['NameInRequest'], request_name => 'parameterObjects' );
-  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterValues' );
-  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has PipelineObjects => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::PipelineObject]', traits => ['NameInRequest'], request_name => 'pipelineObjects' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DataPipeline::Types qw/DataPipeline_ParameterValue DataPipeline_ParameterObject DataPipeline_PipelineObject/;
+  has ParameterObjects => (is => 'ro', isa => ArrayRef[DataPipeline_ParameterObject], predicate => 1);
+  has ParameterValues => (is => 'ro', isa => ArrayRef[DataPipeline_ParameterValue], predicate => 1);
+  has PipelineId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PipelineObjects => (is => 'ro', isa => ArrayRef[DataPipeline_PipelineObject], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPipelineDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::PutPipelineDefinitionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutPipelineDefinition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::PutPipelineDefinitionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterObjects' => {
+                                       'class' => 'Paws::DataPipeline::ParameterObject',
+                                       'type' => 'ArrayRef[DataPipeline_ParameterObject]'
+                                     },
+               'ParameterValues' => {
+                                      'class' => 'Paws::DataPipeline::ParameterValue',
+                                      'type' => 'ArrayRef[DataPipeline_ParameterValue]'
+                                    },
+               'PipelineObjects' => {
+                                      'class' => 'Paws::DataPipeline::PipelineObject',
+                                      'type' => 'ArrayRef[DataPipeline_PipelineObject]'
+                                    },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ParameterObjects' => 'parameterObjects',
+                       'ParameterValues' => 'parameterValues',
+                       'PipelineObjects' => 'pipelineObjects',
+                       'PipelineId' => 'pipelineId'
+                     },
+  'IsRequired' => {
+                    'PipelineObjects' => 1,
+                    'PipelineId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,13 +124,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]
+=head2 ParameterObjects => ArrayRef[DataPipeline_ParameterObject]
 
 The parameter objects used with the pipeline.
 
 
 
-=head2 ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
+=head2 ParameterValues => ArrayRef[DataPipeline_ParameterValue]
 
 The parameter values used with the pipeline.
 
@@ -104,7 +142,7 @@ The ID of the pipeline.
 
 
 
-=head2 B<REQUIRED> PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
+=head2 B<REQUIRED> PipelineObjects => ArrayRef[DataPipeline_PipelineObject]
 
 The objects that define the pipeline. These objects overwrite the
 existing pipeline definition.

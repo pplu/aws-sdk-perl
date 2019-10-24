@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::DescribeStreamConsumerOutput;
-  use Moose;
-  has ConsumerDescription => (is => 'ro', isa => 'Paws::Kinesis::ConsumerDescription', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw/Kinesis_ConsumerDescription/;
+  has ConsumerDescription => (is => 'ro', isa => Kinesis_ConsumerDescription, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsumerDescription' => {
+                                          'class' => 'Paws::Kinesis::ConsumerDescription',
+                                          'type' => 'Kinesis_ConsumerDescription'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ConsumerDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Kinesis::DescribeStreamConsumerOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConsumerDescription => L<Paws::Kinesis::ConsumerDescription>
+=head2 B<REQUIRED> ConsumerDescription => Kinesis_ConsumerDescription
 
 An object that represents the details of the consumer.
 

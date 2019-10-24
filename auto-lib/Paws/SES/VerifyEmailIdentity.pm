@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::VerifyEmailIdentity;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::SES::VerifyEmailIdentity;
                'EmailAddress' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'EmailAddress' => 1
+                  }
 }
 ;
     return $Params_map;

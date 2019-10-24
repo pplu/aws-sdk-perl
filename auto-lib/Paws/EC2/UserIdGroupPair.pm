@@ -9,7 +9,7 @@ package Paws::EC2::UserIdGroupPair;
   has VpcId => (is => 'ro', isa => Str);
   has VpcPeeringConnectionId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -45,8 +45,8 @@ package Paws::EC2::UserIdGroupPair;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

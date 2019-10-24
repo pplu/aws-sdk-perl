@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Firehose::DataFormatConversionConfiguration;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has InputFormatConfiguration => (is => 'ro', isa => 'Paws::Firehose::InputFormatConfiguration');
-  has OutputFormatConfiguration => (is => 'ro', isa => 'Paws::Firehose::OutputFormatConfiguration');
-  has SchemaConfiguration => (is => 'ro', isa => 'Paws::Firehose::SchemaConfiguration');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Firehose::Types qw/Firehose_InputFormatConfiguration Firehose_OutputFormatConfiguration Firehose_SchemaConfiguration/;
+  has Enabled => (is => 'ro', isa => Bool);
+  has InputFormatConfiguration => (is => 'ro', isa => Firehose_InputFormatConfiguration);
+  has OutputFormatConfiguration => (is => 'ro', isa => Firehose_OutputFormatConfiguration);
+  has SchemaConfiguration => (is => 'ro', isa => Firehose_SchemaConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaConfiguration' => {
+                                          'class' => 'Paws::Firehose::SchemaConfiguration',
+                                          'type' => 'Firehose_SchemaConfiguration'
+                                        },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'InputFormatConfiguration' => {
+                                               'class' => 'Paws::Firehose::InputFormatConfiguration',
+                                               'type' => 'Firehose_InputFormatConfiguration'
+                                             },
+               'OutputFormatConfiguration' => {
+                                                'class' => 'Paws::Firehose::OutputFormatConfiguration',
+                                                'type' => 'Firehose_OutputFormatConfiguration'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,19 +81,19 @@ Record Format Conversion
 conversion while preserving the configuration details.
 
 
-=head2 InputFormatConfiguration => L<Paws::Firehose::InputFormatConfiguration>
+=head2 InputFormatConfiguration => Firehose_InputFormatConfiguration
 
   Specifies the deserializer that you want Kinesis Data Firehose to use
 to convert the format of your data from JSON.
 
 
-=head2 OutputFormatConfiguration => L<Paws::Firehose::OutputFormatConfiguration>
+=head2 OutputFormatConfiguration => Firehose_OutputFormatConfiguration
 
   Specifies the serializer that you want Kinesis Data Firehose to use to
 convert the format of your data to the Parquet or ORC format.
 
 
-=head2 SchemaConfiguration => L<Paws::Firehose::SchemaConfiguration>
+=head2 SchemaConfiguration => Firehose_SchemaConfiguration
 
   Specifies the AWS Glue Data Catalog table that contains the column
 information.

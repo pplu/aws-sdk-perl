@@ -1,26 +1,145 @@
+# Generated from default/object.tt
 package Paws::Amplify::App;
-  use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', request_name => 'appArn', traits => ['NameInRequest'], required => 1);
-  has AppId => (is => 'ro', isa => 'Str', request_name => 'appId', traits => ['NameInRequest'], required => 1);
-  has AutoBranchCreationConfig => (is => 'ro', isa => 'Paws::Amplify::AutoBranchCreationConfig', request_name => 'autoBranchCreationConfig', traits => ['NameInRequest']);
-  has AutoBranchCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoBranchCreationPatterns', traits => ['NameInRequest']);
-  has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
-  has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
-  has CustomRules => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::CustomRule]', request_name => 'customRules', traits => ['NameInRequest']);
-  has DefaultDomain => (is => 'ro', isa => 'Str', request_name => 'defaultDomain', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has EnableAutoBranchCreation => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBranchCreation', traits => ['NameInRequest']);
-  has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
-  has EnableBranchAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableBranchAutoBuild', traits => ['NameInRequest'], required => 1);
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
-  has IamServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'iamServiceRoleArn', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest'], required => 1);
-  has ProductionBranch => (is => 'ro', isa => 'Paws::Amplify::ProductionBranch', request_name => 'productionBranch', traits => ['NameInRequest']);
-  has Repository => (is => 'ro', isa => 'Str', request_name => 'repository', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has UpdateTime => (is => 'ro', isa => 'Str', request_name => 'updateTime', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Amplify::Types qw/Amplify_CustomRule Amplify_AutoBranchCreationConfig Amplify_TagMap Amplify_ProductionBranch Amplify_EnvironmentVariables/;
+  has AppArn => (is => 'ro', isa => Str, required => 1);
+  has AppId => (is => 'ro', isa => Str, required => 1);
+  has AutoBranchCreationConfig => (is => 'ro', isa => Amplify_AutoBranchCreationConfig);
+  has AutoBranchCreationPatterns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BasicAuthCredentials => (is => 'ro', isa => Str);
+  has BuildSpec => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str, required => 1);
+  has CustomRules => (is => 'ro', isa => ArrayRef[Amplify_CustomRule]);
+  has DefaultDomain => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has EnableAutoBranchCreation => (is => 'ro', isa => Bool);
+  has EnableBasicAuth => (is => 'ro', isa => Bool, required => 1);
+  has EnableBranchAutoBuild => (is => 'ro', isa => Bool, required => 1);
+  has EnvironmentVariables => (is => 'ro', isa => Amplify_EnvironmentVariables, required => 1);
+  has IamServiceRoleArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Platform => (is => 'ro', isa => Str, required => 1);
+  has ProductionBranch => (is => 'ro', isa => Amplify_ProductionBranch);
+  has Repository => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Amplify_TagMap);
+  has UpdateTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BuildSpec' => {
+                                'type' => 'Str'
+                              },
+               'BasicAuthCredentials' => {
+                                           'type' => 'Str'
+                                         },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'CustomRules' => {
+                                  'class' => 'Paws::Amplify::CustomRule',
+                                  'type' => 'ArrayRef[Amplify_CustomRule]'
+                                },
+               'Repository' => {
+                                 'type' => 'Str'
+                               },
+               'AppArn' => {
+                             'type' => 'Str'
+                           },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Amplify::EnvironmentVariables',
+                                           'type' => 'Amplify_EnvironmentVariables'
+                                         },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'AutoBranchCreationConfig' => {
+                                               'class' => 'Paws::Amplify::AutoBranchCreationConfig',
+                                               'type' => 'Amplify_AutoBranchCreationConfig'
+                                             },
+               'ProductionBranch' => {
+                                       'class' => 'Paws::Amplify::ProductionBranch',
+                                       'type' => 'Amplify_ProductionBranch'
+                                     },
+               'AppId' => {
+                            'type' => 'Str'
+                          },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'EnableAutoBranchCreation' => {
+                                               'type' => 'Bool'
+                                             },
+               'IamServiceRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'AutoBranchCreationPatterns' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'EnableBranchAutoBuild' => {
+                                            'type' => 'Bool'
+                                          },
+               'EnableBasicAuth' => {
+                                      'type' => 'Bool'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::Amplify::TagMap',
+                           'type' => 'Amplify_TagMap'
+                         },
+               'DefaultDomain' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'BuildSpec' => 'buildSpec',
+                       'BasicAuthCredentials' => 'basicAuthCredentials',
+                       'Platform' => 'platform',
+                       'CustomRules' => 'customRules',
+                       'Repository' => 'repository',
+                       'AppArn' => 'appArn',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'UpdateTime' => 'updateTime',
+                       'AutoBranchCreationConfig' => 'autoBranchCreationConfig',
+                       'ProductionBranch' => 'productionBranch',
+                       'AppId' => 'appId',
+                       'CreateTime' => 'createTime',
+                       'EnableAutoBranchCreation' => 'enableAutoBranchCreation',
+                       'IamServiceRoleArn' => 'iamServiceRoleArn',
+                       'AutoBranchCreationPatterns' => 'autoBranchCreationPatterns',
+                       'EnableBranchAutoBuild' => 'enableBranchAutoBuild',
+                       'EnableBasicAuth' => 'enableBasicAuth',
+                       'Tags' => 'tags',
+                       'DefaultDomain' => 'defaultDomain',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Platform' => 1,
+                    'CreateTime' => 1,
+                    'Repository' => 1,
+                    'AppArn' => 1,
+                    'EnableBranchAutoBuild' => 1,
+                    'EnvironmentVariables' => 1,
+                    'UpdateTime' => 1,
+                    'EnableBasicAuth' => 1,
+                    'Name' => 1,
+                    'DefaultDomain' => 1,
+                    'Description' => 1,
+                    'AppId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +186,7 @@ deploying, and hosting.
   Unique Id for the Amplify App.
 
 
-=head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
+=head2 AutoBranchCreationConfig => Amplify_AutoBranchCreationConfig
 
   Automated branch creation config for the Amplify App.
 
@@ -92,7 +211,7 @@ deploying, and hosting.
   Create date / time for the Amplify App.
 
 
-=head2 CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]
+=head2 CustomRules => ArrayRef[Amplify_CustomRule]
 
   Custom redirect / rewrite rules for the Amplify App.
 
@@ -122,7 +241,7 @@ deploying, and hosting.
   Enables auto-building of branches for the Amplify App.
 
 
-=head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
+=head2 B<REQUIRED> EnvironmentVariables => Amplify_EnvironmentVariables
 
   Environment Variables for the Amplify App.
 
@@ -142,7 +261,7 @@ deploying, and hosting.
   Platform for the Amplify App.
 
 
-=head2 ProductionBranch => L<Paws::Amplify::ProductionBranch>
+=head2 ProductionBranch => Amplify_ProductionBranch
 
   Structure with Production Branch information.
 
@@ -152,7 +271,7 @@ deploying, and hosting.
   Repository for the Amplify App.
 
 
-=head2 Tags => L<Paws::Amplify::TagMap>
+=head2 Tags => Amplify_TagMap
 
   Tag for Amplify App.
 

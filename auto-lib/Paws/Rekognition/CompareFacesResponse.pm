@@ -1,13 +1,46 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::CompareFacesResponse;
-  use Moose;
-  has FaceMatches => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::CompareFacesMatch]');
-  has SourceImageFace => (is => 'ro', isa => 'Paws::Rekognition::ComparedSourceImageFace');
-  has SourceImageOrientationCorrection => (is => 'ro', isa => 'Str');
-  has TargetImageOrientationCorrection => (is => 'ro', isa => 'Str');
-  has UnmatchedFaces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::ComparedFace]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_ComparedSourceImageFace Rekognition_ComparedFace Rekognition_CompareFacesMatch/;
+  has FaceMatches => (is => 'ro', isa => ArrayRef[Rekognition_CompareFacesMatch]);
+  has SourceImageFace => (is => 'ro', isa => Rekognition_ComparedSourceImageFace);
+  has SourceImageOrientationCorrection => (is => 'ro', isa => Str);
+  has TargetImageOrientationCorrection => (is => 'ro', isa => Str);
+  has UnmatchedFaces => (is => 'ro', isa => ArrayRef[Rekognition_ComparedFace]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceImageFace' => {
+                                      'class' => 'Paws::Rekognition::ComparedSourceImageFace',
+                                      'type' => 'Rekognition_ComparedSourceImageFace'
+                                    },
+               'UnmatchedFaces' => {
+                                     'class' => 'Paws::Rekognition::ComparedFace',
+                                     'type' => 'ArrayRef[Rekognition_ComparedFace]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TargetImageOrientationCorrection' => {
+                                                       'type' => 'Str'
+                                                     },
+               'SourceImageOrientationCorrection' => {
+                                                       'type' => 'Str'
+                                                     },
+               'FaceMatches' => {
+                                  'class' => 'Paws::Rekognition::CompareFacesMatch',
+                                  'type' => 'ArrayRef[Rekognition_CompareFacesMatch]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -18,7 +51,7 @@ Paws::Rekognition::CompareFacesResponse
 =head1 ATTRIBUTES
 
 
-=head2 FaceMatches => ArrayRef[L<Paws::Rekognition::CompareFacesMatch>]
+=head2 FaceMatches => ArrayRef[Rekognition_CompareFacesMatch]
 
 An array of faces in the target image that match the source image face.
 Each C<CompareFacesMatch> object provides the bounding box, the
@@ -27,7 +60,7 @@ similarity score for the face in the bounding box and the face in the
 source image.
 
 
-=head2 SourceImageFace => L<Paws::Rekognition::ComparedSourceImageFace>
+=head2 SourceImageFace => Rekognition_ComparedSourceImageFace
 
 The face in the source image that was used for comparison.
 
@@ -68,7 +101,7 @@ image Exif metadata. The bounding box coordinates aren't translated and
 represent the object locations before the image is rotated.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
-=head2 UnmatchedFaces => ArrayRef[L<Paws::Rekognition::ComparedFace>]
+=head2 UnmatchedFaces => ArrayRef[Rekognition_ComparedFace]
 
 An array of faces in the target image that did not match the source
 image face.

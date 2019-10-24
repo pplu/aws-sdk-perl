@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::RoleMapping;
-  use Moose;
-  has AmbiguousRoleResolution => (is => 'ro', isa => 'Str');
-  has RulesConfiguration => (is => 'ro', isa => 'Paws::CognitoIdentity::RulesConfigurationType');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_RulesConfigurationType/;
+  has AmbiguousRoleResolution => (is => 'ro', isa => Str);
+  has RulesConfiguration => (is => 'ro', isa => CognitoIdentity_RulesConfigurationType);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RulesConfiguration' => {
+                                         'class' => 'Paws::CognitoIdentity::RulesConfigurationType',
+                                         'type' => 'CognitoIdentity_RulesConfigurationType'
+                                       },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'AmbiguousRoleResolution' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +76,7 @@ claim and there are multiple C<cognito:roles> matches for the C<Token>
 type.
 
 
-=head2 RulesConfiguration => L<Paws::CognitoIdentity::RulesConfigurationType>
+=head2 RulesConfiguration => CognitoIdentity_RulesConfigurationType
 
   The rules to be used for mapping users to roles.
 

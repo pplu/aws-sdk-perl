@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::ListIpRoutesResult;
-  use Moose;
-  has IpRoutesInfo => (is => 'ro', isa => 'ArrayRef[Paws::DS::IpRouteInfo]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_IpRouteInfo/;
+  has IpRoutesInfo => (is => 'ro', isa => ArrayRef[DS_IpRouteInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'IpRoutesInfo' => {
+                                   'class' => 'Paws::DS::IpRouteInfo',
+                                   'type' => 'ArrayRef[DS_IpRouteInfo]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::DS::ListIpRoutesResult
 =head1 ATTRIBUTES
 
 
-=head2 IpRoutesInfo => ArrayRef[L<Paws::DS::IpRouteInfo>]
+=head2 IpRoutesInfo => ArrayRef[DS_IpRouteInfo]
 
 A list of IpRoutes.
 

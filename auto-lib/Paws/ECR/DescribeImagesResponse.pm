@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::DescribeImagesResponse;
-  use Moose;
-  has ImageDetails => (is => 'ro', isa => 'ArrayRef[Paws::ECR::ImageDetail]', traits => ['NameInRequest'], request_name => 'imageDetails' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECR::Types qw/ECR_ImageDetail/;
+  has ImageDetails => (is => 'ro', isa => ArrayRef[ECR_ImageDetail]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageDetails' => {
+                                   'class' => 'Paws::ECR::ImageDetail',
+                                   'type' => 'ArrayRef[ECR_ImageDetail]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ImageDetails' => 'imageDetails',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::ECR::DescribeImagesResponse
 =head1 ATTRIBUTES
 
 
-=head2 ImageDetails => ArrayRef[L<Paws::ECR::ImageDetail>]
+=head2 ImageDetails => ArrayRef[ECR_ImageDetail]
 
 A list of ImageDetail objects that contain data about the image.
 

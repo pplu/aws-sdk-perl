@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseSnapshotsResult;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has RelationalDatabaseSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::RelationalDatabaseSnapshot]', traits => ['NameInRequest'], request_name => 'relationalDatabaseSnapshots' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabaseSnapshot/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has RelationalDatabaseSnapshots => (is => 'ro', isa => ArrayRef[Lightsail_RelationalDatabaseSnapshot]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RelationalDatabaseSnapshots' => {
+                                                  'class' => 'Paws::Lightsail::RelationalDatabaseSnapshot',
+                                                  'type' => 'ArrayRef[Lightsail_RelationalDatabaseSnapshot]'
+                                                }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'RelationalDatabaseSnapshots' => 'relationalDatabaseSnapshots'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ A token used for advancing to the next page of results from your get
 relational database snapshots request.
 
 
-=head2 RelationalDatabaseSnapshots => ArrayRef[L<Paws::Lightsail::RelationalDatabaseSnapshot>]
+=head2 RelationalDatabaseSnapshots => ArrayRef[Lightsail_RelationalDatabaseSnapshot]
 
 An object describing the result of your get relational database
 snapshots request.

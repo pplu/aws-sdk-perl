@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::Connect::HierarchyPath;
-  use Moose;
-  has LevelFive => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
-  has LevelFour => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
-  has LevelOne => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
-  has LevelThree => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
-  has LevelTwo => (is => 'ro', isa => 'Paws::Connect::HierarchyGroupSummary');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Connect::Types qw/Connect_HierarchyGroupSummary/;
+  has LevelFive => (is => 'ro', isa => Connect_HierarchyGroupSummary);
+  has LevelFour => (is => 'ro', isa => Connect_HierarchyGroupSummary);
+  has LevelOne => (is => 'ro', isa => Connect_HierarchyGroupSummary);
+  has LevelThree => (is => 'ro', isa => Connect_HierarchyGroupSummary);
+  has LevelTwo => (is => 'ro', isa => Connect_HierarchyGroupSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LevelThree' => {
+                                 'class' => 'Paws::Connect::HierarchyGroupSummary',
+                                 'type' => 'Connect_HierarchyGroupSummary'
+                               },
+               'LevelOne' => {
+                               'class' => 'Paws::Connect::HierarchyGroupSummary',
+                               'type' => 'Connect_HierarchyGroupSummary'
+                             },
+               'LevelFive' => {
+                                'class' => 'Paws::Connect::HierarchyGroupSummary',
+                                'type' => 'Connect_HierarchyGroupSummary'
+                              },
+               'LevelFour' => {
+                                'class' => 'Paws::Connect::HierarchyGroupSummary',
+                                'type' => 'Connect_HierarchyGroupSummary'
+                              },
+               'LevelTwo' => {
+                               'class' => 'Paws::Connect::HierarchyGroupSummary',
+                               'type' => 'Connect_HierarchyGroupSummary'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,31 +75,31 @@ the hierarchy group.
 =head1 ATTRIBUTES
 
 
-=head2 LevelFive => L<Paws::Connect::HierarchyGroupSummary>
+=head2 LevelFive => Connect_HierarchyGroupSummary
 
   A C<HierarchyGroupSummary> object that contains information about the
 level of the hierarchy group, including ARN, Id, and Name.
 
 
-=head2 LevelFour => L<Paws::Connect::HierarchyGroupSummary>
+=head2 LevelFour => Connect_HierarchyGroupSummary
 
   A C<HierarchyGroupSummary> object that contains information about the
 level of the hierarchy group, including ARN, Id, and Name.
 
 
-=head2 LevelOne => L<Paws::Connect::HierarchyGroupSummary>
+=head2 LevelOne => Connect_HierarchyGroupSummary
 
   A C<HierarchyGroupSummary> object that contains information about the
 level of the hierarchy group, including ARN, Id, and Name.
 
 
-=head2 LevelThree => L<Paws::Connect::HierarchyGroupSummary>
+=head2 LevelThree => Connect_HierarchyGroupSummary
 
   A C<HierarchyGroupSummary> object that contains information about the
 level of the hierarchy group, including ARN, Id, and Name.
 
 
-=head2 LevelTwo => L<Paws::Connect::HierarchyGroupSummary>
+=head2 LevelTwo => Connect_HierarchyGroupSummary
 
   A C<HierarchyGroupSummary> object that contains information about the
 level of the hierarchy group, including ARN, Id, and Name.

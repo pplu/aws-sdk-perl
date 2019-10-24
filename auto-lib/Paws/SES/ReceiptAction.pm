@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptAction;
   use Moo;
   use Types::Standard qw//;

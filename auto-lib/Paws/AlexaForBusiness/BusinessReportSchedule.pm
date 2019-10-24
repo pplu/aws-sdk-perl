@@ -1,13 +1,54 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::BusinessReportSchedule;
-  use Moose;
-  has ContentRange => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportContentRange');
-  has Format => (is => 'ro', isa => 'Str');
-  has LastBusinessReport => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReport');
-  has Recurrence => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportRecurrence');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has ScheduleArn => (is => 'ro', isa => 'Str');
-  has ScheduleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_BusinessReportContentRange AlexaForBusiness_BusinessReport AlexaForBusiness_BusinessReportRecurrence/;
+  has ContentRange => (is => 'ro', isa => AlexaForBusiness_BusinessReportContentRange);
+  has Format => (is => 'ro', isa => Str);
+  has LastBusinessReport => (is => 'ro', isa => AlexaForBusiness_BusinessReport);
+  has Recurrence => (is => 'ro', isa => AlexaForBusiness_BusinessReportRecurrence);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has S3KeyPrefix => (is => 'ro', isa => Str);
+  has ScheduleArn => (is => 'ro', isa => Str);
+  has ScheduleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastBusinessReport' => {
+                                         'class' => 'Paws::AlexaForBusiness::BusinessReport',
+                                         'type' => 'AlexaForBusiness_BusinessReport'
+                                       },
+               'ContentRange' => {
+                                   'class' => 'Paws::AlexaForBusiness::BusinessReportContentRange',
+                                   'type' => 'AlexaForBusiness_BusinessReportContentRange'
+                                 },
+               'ScheduleName' => {
+                                   'type' => 'Str'
+                                 },
+               'ScheduleArn' => {
+                                  'type' => 'Str'
+                                },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Recurrence' => {
+                                 'class' => 'Paws::AlexaForBusiness::BusinessReportRecurrence',
+                                 'type' => 'AlexaForBusiness_BusinessReportRecurrence'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +84,7 @@ The schedule of the usage report.
 =head1 ATTRIBUTES
 
 
-=head2 ContentRange => L<Paws::AlexaForBusiness::BusinessReportContentRange>
+=head2 ContentRange => AlexaForBusiness_BusinessReportContentRange
 
   The content range of the reports.
 
@@ -54,13 +95,13 @@ The schedule of the usage report.
 files of individual files).
 
 
-=head2 LastBusinessReport => L<Paws::AlexaForBusiness::BusinessReport>
+=head2 LastBusinessReport => AlexaForBusiness_BusinessReport
 
   The details of the last business report delivery for a specified time
 interval.
 
 
-=head2 Recurrence => L<Paws::AlexaForBusiness::BusinessReportRecurrence>
+=head2 Recurrence => AlexaForBusiness_BusinessReportRecurrence
 
   The recurrence of the reports.
 

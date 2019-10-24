@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Subscription;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Source => (is => 'ro', isa => 'Str');
-  has Subject => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Source' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

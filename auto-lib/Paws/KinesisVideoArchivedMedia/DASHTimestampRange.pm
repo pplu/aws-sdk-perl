@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisVideoArchivedMedia::DASHTimestampRange;
-  use Moose;
-  has EndTimestamp => (is => 'ro', isa => 'Str');
-  has StartTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw//;
+  has EndTimestamp => (is => 'ro', isa => Str);
+  has StartTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'EndTimestamp' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

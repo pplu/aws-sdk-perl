@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeStar::CreateUserProfile;
-  use Moose;
-  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName' , required => 1);
-  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'emailAddress' , required => 1);
-  has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has DisplayName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EmailAddress => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SshPublicKey => (is => 'ro', isa => Str, predicate => 1);
+  has UserArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUserProfile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeStar::CreateUserProfileResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUserProfile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeStar::CreateUserProfileResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'SshPublicKey' => 'sshPublicKey',
+                       'DisplayName' => 'displayName',
+                       'EmailAddress' => 'emailAddress'
+                     },
+  'IsRequired' => {
+                    'UserArn' => 1,
+                    'DisplayName' => 1,
+                    'EmailAddress' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

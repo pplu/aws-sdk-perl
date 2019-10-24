@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AttributeValue;
   use Moo;
   use Types::Standard qw/Str Bool ArrayRef Undef/;
@@ -13,7 +14,7 @@ package Paws::DynamoDB::AttributeValue;
   has S => (is => 'ro', isa => Str);
   has SS => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'S' => {
@@ -51,8 +52,8 @@ package Paws::DynamoDB::AttributeValue;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

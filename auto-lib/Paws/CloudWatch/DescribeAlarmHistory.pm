@@ -1,18 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::DescribeAlarmHistory;
-  use Moose;
-  has AlarmName => (is => 'ro', isa => 'Str');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has HistoryItemType => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatch::Types qw//;
+  has AlarmName => (is => 'ro', isa => Str, predicate => 1);
+  has EndDate => (is => 'ro', isa => Str, predicate => 1);
+  has HistoryItemType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmHistoryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAlarmHistory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmHistoryOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAlarmHistoryResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HistoryItemType' => {
+                                      'type' => 'Str'
+                                    },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'AlarmName' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

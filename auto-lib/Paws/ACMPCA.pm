@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ACMPCA;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'acm-pca' }
   sub signing_name { 'acm-pca' }
   sub version { '2017-08-22' }
   sub target_prefix { 'ACMPrivateCA' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -241,15 +243,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 
 =over
 
-=item CertificateAuthorityConfiguration => L<Paws::ACMPCA::CertificateAuthorityConfiguration>
+=item CertificateAuthorityConfiguration => ACMPCA_CertificateAuthorityConfiguration
 
 =item CertificateAuthorityType => Str
 
 =item [IdempotencyToken => Str]
 
-=item [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>]
+=item [RevocationConfiguration => ACMPCA_RevocationConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::ACMPCA::Tag>]]
+=item [Tags => ArrayRef[ACMPCA_Tag]]
 
 
 =back
@@ -630,7 +632,7 @@ The chain must be PEM-encoded.
 
 =item SigningAlgorithm => Str
 
-=item Validity => L<Paws::ACMPCA::Validity>
+=item Validity => ACMPCA_Validity
 
 =item [IdempotencyToken => Str]
 
@@ -783,7 +785,7 @@ You cannot revoke a root CA self-signed certificate.
 
 =item CertificateAuthorityArn => Str
 
-=item Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+=item Tags => ArrayRef[ACMPCA_Tag]
 
 
 =back
@@ -810,7 +812,7 @@ tags are associated with your CA.
 
 =item CertificateAuthorityArn => Str
 
-=item Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+=item Tags => ArrayRef[ACMPCA_Tag]
 
 
 =back
@@ -834,7 +836,7 @@ associated with your CA.
 
 =item CertificateAuthorityArn => Str
 
-=item [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>]
+=item [RevocationConfiguration => ACMPCA_RevocationConfiguration]
 
 =item [Status => Str]
 

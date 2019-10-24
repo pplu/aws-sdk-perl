@@ -4,7 +4,7 @@ package Paws::EC2::UserBucket;
   has S3Bucket => (is => 'ro', isa => Str);
   has S3Key => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'S3Key' => {
@@ -16,8 +16,8 @@ package Paws::EC2::UserBucket;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

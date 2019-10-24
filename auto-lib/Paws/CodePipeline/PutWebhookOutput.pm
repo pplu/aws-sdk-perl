@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::PutWebhookOutput;
-  use Moose;
-  has Webhook => (is => 'ro', isa => 'Paws::CodePipeline::ListWebhookItem', traits => ['NameInRequest'], request_name => 'webhook' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ListWebhookItem/;
+  has Webhook => (is => 'ro', isa => CodePipeline_ListWebhookItem);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Webhook' => {
+                              'class' => 'Paws::CodePipeline::ListWebhookItem',
+                              'type' => 'CodePipeline_ListWebhookItem'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Webhook' => 'webhook'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodePipeline::PutWebhookOutput
 =head1 ATTRIBUTES
 
 
-=head2 Webhook => L<Paws::CodePipeline::ListWebhookItem>
+=head2 Webhook => CodePipeline_ListWebhookItem
 
 The detail returned from creating the webhook, such as the webhook
 name, webhook URL, and webhook ARN.

@@ -1,16 +1,50 @@
 
 package Paws::ApiGateway::CreateDocumentationPart;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Paws::ApiGateway::DocumentationPartLocation', traits => ['NameInRequest'], request_name => 'location', required => 1);
-  has Properties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'properties', required => 1);
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_DocumentationPartLocation/;
+  has Location => (is => 'ro', isa => ApiGateway_DocumentationPartLocation, required => 1, predicate => 1);
+  has Properties => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDocumentationPart');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationPart');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDocumentationPart');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DocumentationPart');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Properties' => {
+                                 'type' => 'Str'
+                               },
+               'Location' => {
+                               'class' => 'Paws::ApiGateway::DocumentationPartLocation',
+                               'type' => 'ApiGateway_DocumentationPartLocation'
+                             }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'NameInRequest' => {
+                       'Properties' => 'properties',
+                       'Location' => 'location'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'Properties' => 1,
+                    'Location' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Location => L<Paws::ApiGateway::DocumentationPartLocation>
+=head2 B<REQUIRED> Location => ApiGateway_DocumentationPartLocation
 
 [Required] The location of the targeted API entity of the to-be-created
 documentation part.

@@ -18,7 +18,7 @@ package Paws::EC2::ClientVpnEndpoint;
   has TransportProtocol => (is => 'ro', isa => Str);
   has VpnProtocol => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ClientCidrBlock' => {
@@ -95,8 +95,8 @@ package Paws::EC2::ClientVpnEndpoint;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionExecutionOutput;
-  use Moose;
-  has ExecutionResult => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecutionResult', request_name => 'executionResult', traits => ['NameInRequest']);
-  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactDetail]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionExecutionResult CodePipeline_ArtifactDetail/;
+  has ExecutionResult => (is => 'ro', isa => CodePipeline_ActionExecutionResult);
+  has OutputArtifacts => (is => 'ro', isa => ArrayRef[CodePipeline_ArtifactDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionResult' => {
+                                      'class' => 'Paws::CodePipeline::ActionExecutionResult',
+                                      'type' => 'CodePipeline_ActionExecutionResult'
+                                    },
+               'OutputArtifacts' => {
+                                      'class' => 'Paws::CodePipeline::ArtifactDetail',
+                                      'type' => 'ArrayRef[CodePipeline_ArtifactDetail]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ExecutionResult' => 'executionResult',
+                       'OutputArtifacts' => 'outputArtifacts'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ execution result.
 =head1 ATTRIBUTES
 
 
-=head2 ExecutionResult => L<Paws::CodePipeline::ActionExecutionResult>
+=head2 ExecutionResult => CodePipeline_ActionExecutionResult
 
   Execution result information listed in the output details for an action
 execution.
 
 
-=head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::ArtifactDetail>]
+=head2 OutputArtifacts => ArrayRef[CodePipeline_ArtifactDetail]
 
   Details of output artifacts of the action that correspond to the action
 execution.

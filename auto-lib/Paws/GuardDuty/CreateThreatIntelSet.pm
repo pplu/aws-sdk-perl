@@ -1,20 +1,72 @@
 
 package Paws::GuardDuty::CreateThreatIntelSet;
-  use Moose;
-  has Activate => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'activate', required => 1);
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has Format => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'format', required => 1);
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GuardDuty::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GuardDuty::Types qw/GuardDuty_TagMap/;
+  has Activate => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Format => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Location => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => GuardDuty_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateThreatIntelSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/threatintelset');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::CreateThreatIntelSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateThreatIntelSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/threatintelset');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::CreateThreatIntelSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::GuardDuty::TagMap',
+                           'type' => 'GuardDuty_TagMap'
+                         },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Activate' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'ClientToken' => 'clientToken',
+                       'Tags' => 'tags',
+                       'Location' => 'location',
+                       'Name' => 'name',
+                       'Format' => 'format',
+                       'Activate' => 'activate'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1,
+                    'Location' => 1,
+                    'Name' => 1,
+                    'Format' => 1,
+                    'Activate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +150,7 @@ ThreatIntelSet.
 
 
 
-=head2 Tags => L<Paws::GuardDuty::TagMap>
+=head2 Tags => GuardDuty_TagMap
 
 The tags to be added to a new Threat List resource.
 

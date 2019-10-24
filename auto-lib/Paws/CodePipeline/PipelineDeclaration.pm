@@ -1,11 +1,59 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::PipelineDeclaration;
-  use Moose;
-  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', request_name => 'artifactStore', traits => ['NameInRequest']);
-  has ArtifactStores => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStoreMap', request_name => 'artifactStores', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has Stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', request_name => 'stages', traits => ['NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ArtifactStore CodePipeline_ArtifactStoreMap CodePipeline_StageDeclaration/;
+  has ArtifactStore => (is => 'ro', isa => CodePipeline_ArtifactStore);
+  has ArtifactStores => (is => 'ro', isa => CodePipeline_ArtifactStoreMap);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has Stages => (is => 'ro', isa => ArrayRef[CodePipeline_StageDeclaration], required => 1);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ArtifactStores' => {
+                                     'class' => 'Paws::CodePipeline::ArtifactStoreMap',
+                                     'type' => 'CodePipeline_ArtifactStoreMap'
+                                   },
+               'ArtifactStore' => {
+                                    'class' => 'Paws::CodePipeline::ArtifactStore',
+                                    'type' => 'CodePipeline_ArtifactStore'
+                                  },
+               'Stages' => {
+                             'class' => 'Paws::CodePipeline::StageDeclaration',
+                             'type' => 'ArrayRef[CodePipeline_StageDeclaration]'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'RoleArn' => 'roleArn',
+                       'ArtifactStores' => 'artifactStores',
+                       'ArtifactStore' => 'artifactStore',
+                       'Stages' => 'stages',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'Stages' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,13 +90,13 @@ pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
+=head2 ArtifactStore => CodePipeline_ArtifactStore
 
   Represents information about the Amazon S3 bucket where artifacts are
 stored for the pipeline.
 
 
-=head2 ArtifactStores => L<Paws::CodePipeline::ArtifactStoreMap>
+=head2 ArtifactStores => CodePipeline_ArtifactStoreMap
 
   A mapping of C<artifactStore> objects and their corresponding regions.
 There must be an artifact store for the pipeline region and for each
@@ -71,7 +119,7 @@ perform actions with no C<actionRoleArn>, or to use to assume roles for
 actions with an C<actionRoleArn>.
 
 
-=head2 B<REQUIRED> Stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]
+=head2 B<REQUIRED> Stages => ArrayRef[CodePipeline_StageDeclaration]
 
   The stage in which to perform the action.
 

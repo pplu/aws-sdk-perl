@@ -3,7 +3,7 @@ package Paws::EC2::CidrBlock;
   use Paws::EC2::Types qw//;
   has CidrBlock => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CidrBlock' => {
@@ -15,8 +15,8 @@ package Paws::EC2::CidrBlock;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

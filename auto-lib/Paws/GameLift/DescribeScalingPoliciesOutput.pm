@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeScalingPoliciesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScalingPolicies => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ScalingPolicy]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_ScalingPolicy/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScalingPolicies => (is => 'ro', isa => ArrayRef[GameLift_ScalingPolicy]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ScalingPolicies' => {
+                                      'class' => 'Paws::GameLift::ScalingPolicy',
+                                      'type' => 'ArrayRef[GameLift_ScalingPolicy]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ call to this action. If no token is returned, these results represent
 the end of the list.
 
 
-=head2 ScalingPolicies => ArrayRef[L<Paws::GameLift::ScalingPolicy>]
+=head2 ScalingPolicies => ArrayRef[GameLift_ScalingPolicy]
 
 Collection of objects containing the scaling policies matching the
 request.

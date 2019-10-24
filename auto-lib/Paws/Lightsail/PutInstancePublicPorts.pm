@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::PutInstancePublicPorts;
-  use Moose;
-  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
-  has PortInfos => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::PortInfo]', traits => ['NameInRequest'], request_name => 'portInfos' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_PortInfo/;
+  has InstanceName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PortInfos => (is => 'ro', isa => ArrayRef[Lightsail_PortInfo], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutInstancePublicPorts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::PutInstancePublicPortsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutInstancePublicPorts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::PutInstancePublicPortsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceName' => {
+                                   'type' => 'Str'
+                                 },
+               'PortInfos' => {
+                                'class' => 'Paws::Lightsail::PortInfo',
+                                'type' => 'ArrayRef[Lightsail_PortInfo]'
+                              }
+             },
+  'NameInRequest' => {
+                       'InstanceName' => 'instanceName',
+                       'PortInfos' => 'portInfos'
+                     },
+  'IsRequired' => {
+                    'InstanceName' => 1,
+                    'PortInfos' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +86,7 @@ The Lightsail instance name of the public port(s) you are setting.
 
 
 
-=head2 B<REQUIRED> PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>]
+=head2 B<REQUIRED> PortInfos => ArrayRef[Lightsail_PortInfo]
 
 Specifies information about the public port(s).
 

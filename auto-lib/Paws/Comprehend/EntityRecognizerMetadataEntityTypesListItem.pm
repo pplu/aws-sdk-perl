@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Comprehend::EntityRecognizerMetadataEntityTypesListItem;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

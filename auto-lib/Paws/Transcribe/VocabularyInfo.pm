@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Transcribe::VocabularyInfo;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has VocabularyName => (is => 'ro', isa => 'Str');
-  has VocabularyState => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transcribe::Types qw//;
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has VocabularyName => (is => 'ro', isa => Str);
+  has VocabularyState => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VocabularyName' => {
+                                     'type' => 'Str'
+                                   },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'VocabularyState' => {
+                                      'type' => 'Str'
+                                    },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

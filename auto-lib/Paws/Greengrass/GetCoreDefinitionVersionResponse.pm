@@ -1,14 +1,47 @@
 
 package Paws::Greengrass::GetCoreDefinitionVersionResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Definition => (is => 'ro', isa => 'Paws::Greengrass::CoreDefinitionVersion');
-  has Id => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_CoreDefinitionVersion/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Definition => (is => 'ro', isa => Greengrass_CoreDefinitionVersion);
+  has Id => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Definition' => {
+                                 'class' => 'Paws::Greengrass::CoreDefinitionVersion',
+                                 'type' => 'Greengrass_CoreDefinitionVersion'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +64,7 @@ The time, in milliseconds since the epoch, when the core definition
 version was created.
 
 
-=head2 Definition => L<Paws::Greengrass::CoreDefinitionVersion>
+=head2 Definition => Greengrass_CoreDefinitionVersion
 
 Information about the core definition version.
 

@@ -1,16 +1,64 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3ObjectMetadata;
-  use Moose;
-  has CacheControl => (is => 'ro', isa => 'Str');
-  has ContentDisposition => (is => 'ro', isa => 'Str');
-  has ContentEncoding => (is => 'ro', isa => 'Str');
-  has ContentLanguage => (is => 'ro', isa => 'Str');
-  has ContentLength => (is => 'ro', isa => 'Int');
-  has ContentMD5 => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has HttpExpiresDate => (is => 'ro', isa => 'Str');
-  has RequesterCharged => (is => 'ro', isa => 'Bool');
-  has SSEAlgorithm => (is => 'ro', isa => 'Str');
-  has UserMetadata => (is => 'ro', isa => 'Paws::S3Control::S3UserMetadata');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::S3Control::Types qw/S3Control_S3UserMetadata/;
+  has CacheControl => (is => 'ro', isa => Str);
+  has ContentDisposition => (is => 'ro', isa => Str);
+  has ContentEncoding => (is => 'ro', isa => Str);
+  has ContentLanguage => (is => 'ro', isa => Str);
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentMD5 => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has HttpExpiresDate => (is => 'ro', isa => Str);
+  has RequesterCharged => (is => 'ro', isa => Bool);
+  has SSEAlgorithm => (is => 'ro', isa => Str);
+  has UserMetadata => (is => 'ro', isa => S3Control_S3UserMetadata);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'UserMetadata' => {
+                                   'class' => 'Paws::S3Control::S3UserMetadata',
+                                   'type' => 'S3Control_S3UserMetadata'
+                                 },
+               'ContentMD5' => {
+                                 'type' => 'Str'
+                               },
+               'HttpExpiresDate' => {
+                                      'type' => 'Str'
+                                    },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               'SSEAlgorithm' => {
+                                   'type' => 'Str'
+                                 },
+               'RequesterCharged' => {
+                                       'type' => 'Bool'
+                                     },
+               'ContentLanguage' => {
+                                      'type' => 'Str'
+                                    },
+               'ContentEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'ContentDisposition' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +144,7 @@ This class has no description
   
 
 
-=head2 UserMetadata => L<Paws::S3Control::S3UserMetadata>
+=head2 UserMetadata => S3Control_S3UserMetadata
 
   
 

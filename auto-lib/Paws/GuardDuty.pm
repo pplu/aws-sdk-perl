@@ -1,14 +1,15 @@
 package Paws::GuardDuty;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'guardduty' }
   sub signing_name { 'guardduty' }
   sub version { '2017-11-28' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -503,7 +504,7 @@ IDs.
 
 =item [FindingPublishingFrequency => Str]
 
-=item [Tags => L<Paws::GuardDuty::TagMap>]
+=item [Tags => GuardDuty_TagMap]
 
 
 =back
@@ -523,7 +524,7 @@ order for GuardDuty to become operational.
 
 =item DetectorId => Str
 
-=item FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=item FindingCriteria => GuardDuty_FindingCriteria
 
 =item Name => Str
 
@@ -535,7 +536,7 @@ order for GuardDuty to become operational.
 
 =item [Rank => Int]
 
-=item [Tags => L<Paws::GuardDuty::TagMap>]
+=item [Tags => GuardDuty_TagMap]
 
 
 =back
@@ -563,7 +564,7 @@ Creates a filter using the specified finding criteria.
 
 =item [ClientToken => Str]
 
-=item [Tags => L<Paws::GuardDuty::TagMap>]
+=item [Tags => GuardDuty_TagMap]
 
 
 =back
@@ -581,7 +582,7 @@ applications.
 
 =over
 
-=item AccountDetails => ArrayRef[L<Paws::GuardDuty::AccountDetail>]
+=item AccountDetails => ArrayRef[GuardDuty_AccountDetail]
 
 =item DetectorId => Str
 
@@ -633,7 +634,7 @@ example findings of all supported finding types.
 
 =item [ClientToken => Str]
 
-=item [Tags => L<Paws::GuardDuty::TagMap>]
+=item [Tags => GuardDuty_TagMap]
 
 
 =back
@@ -847,7 +848,7 @@ Returns the details of the filter specified by the filter name.
 
 =item FindingIds => ArrayRef[Str|Undef]
 
-=item [SortCriteria => L<Paws::GuardDuty::SortCriteria>]
+=item [SortCriteria => GuardDuty_SortCriteria]
 
 
 =back
@@ -867,7 +868,7 @@ Describes Amazon GuardDuty findings specified by finding IDs.
 
 =item FindingStatisticTypes => ArrayRef[Str|Undef]
 
-=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+=item [FindingCriteria => GuardDuty_FindingCriteria]
 
 
 =back
@@ -1039,13 +1040,13 @@ Returns a paginated list of the current filters.
 
 =item DetectorId => Str
 
-=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+=item [FindingCriteria => GuardDuty_FindingCriteria]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
-=item [SortCriteria => L<Paws::GuardDuty::SortCriteria>]
+=item [SortCriteria => GuardDuty_SortCriteria]
 
 
 =back
@@ -1207,7 +1208,7 @@ to monitor these membersE<rsquo> findings.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::GuardDuty::TagMap>
+=item Tags => GuardDuty_TagMap
 
 
 =back
@@ -1288,7 +1289,7 @@ Updates an Amazon GuardDuty detector specified by the detectorId.
 
 =item [Description => Str]
 
-=item [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>]
+=item [FindingCriteria => GuardDuty_FindingCriteria]
 
 =item [Rank => Int]
 
@@ -1402,9 +1403,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::GuardDuty::ListFiltersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllFindings(sub { },DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, MaxResults => Int, NextToken => Str, SortCriteria => L<Paws::GuardDuty::SortCriteria>])
+=head2 ListAllFindings(sub { },DetectorId => Str, [FindingCriteria => GuardDuty_FindingCriteria, MaxResults => Int, NextToken => Str, SortCriteria => GuardDuty_SortCriteria])
 
-=head2 ListAllFindings(DetectorId => Str, [FindingCriteria => L<Paws::GuardDuty::FindingCriteria>, MaxResults => Int, NextToken => Str, SortCriteria => L<Paws::GuardDuty::SortCriteria>])
+=head2 ListAllFindings(DetectorId => Str, [FindingCriteria => GuardDuty_FindingCriteria, MaxResults => Int, NextToken => Str, SortCriteria => GuardDuty_SortCriteria])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

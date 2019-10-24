@@ -1,18 +1,62 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::PollForDecisionTask;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has Identity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identity' );
-  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Identity => (is => 'ro', isa => Str, predicate => 1);
+  has MaximumPageSize => (is => 'ro', isa => Int, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReverseOrder => (is => 'ro', isa => Bool, predicate => 1);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForDecisionTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::DecisionTask');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PollForDecisionTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::DecisionTask');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Identity' => {
+                               'type' => 'Str'
+                             },
+               'MaximumPageSize' => {
+                                      'type' => 'Int'
+                                    },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'ReverseOrder' => {
+                                   'type' => 'Bool'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'NextPageToken' => 'nextPageToken',
+                       'Identity' => 'identity',
+                       'MaximumPageSize' => 'maximumPageSize',
+                       'Domain' => 'domain',
+                       'ReverseOrder' => 'reverseOrder'
+                     },
+  'IsRequired' => {
+                    'TaskList' => 1,
+                    'Domain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -114,7 +158,7 @@ the events.
 
 
 
-=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => SimpleWorkflow_TaskList
 
 Specifies the task list to poll for decision tasks.
 

@@ -1,10 +1,31 @@
 
 package Paws::XRay::GetSamplingRulesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SamplingRuleRecords => (is => 'ro', isa => 'ArrayRef[Paws::XRay::SamplingRuleRecord]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_SamplingRuleRecord/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SamplingRuleRecords => (is => 'ro', isa => ArrayRef[XRay_SamplingRuleRecord]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SamplingRuleRecords' => {
+                                          'class' => 'Paws::XRay::SamplingRuleRecord',
+                                          'type' => 'ArrayRef[XRay_SamplingRuleRecord]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::XRay::GetSamplingRulesResult
 Pagination token. Not used.
 
 
-=head2 SamplingRuleRecords => ArrayRef[L<Paws::XRay::SamplingRuleRecord>]
+=head2 SamplingRuleRecords => ArrayRef[XRay_SamplingRuleRecord]
 
 Rule definitions and metadata.
 

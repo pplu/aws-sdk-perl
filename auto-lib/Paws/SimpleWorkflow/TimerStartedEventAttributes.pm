@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::TimerStartedEventAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
-  has StartToFireTimeout => (is => 'ro', isa => 'Str', request_name => 'startToFireTimeout', traits => ['NameInRequest'], required => 1);
-  has TimerId => (is => 'ro', isa => 'Str', request_name => 'timerId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+  has StartToFireTimeout => (is => 'ro', isa => Str, required => 1);
+  has TimerId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartToFireTimeout' => {
+                                         'type' => 'Str'
+                                       },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'TimerId' => {
+                              'type' => 'Str'
+                            },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'StartToFireTimeout' => 'startToFireTimeout',
+                       'Control' => 'control',
+                       'TimerId' => 'timerId',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId'
+                     },
+  'IsRequired' => {
+                    'StartToFireTimeout' => 1,
+                    'TimerId' => 1,
+                    'DecisionTaskCompletedEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

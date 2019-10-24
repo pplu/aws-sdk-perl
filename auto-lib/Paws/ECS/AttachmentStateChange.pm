@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ECS::AttachmentStateChange;
-  use Moose;
-  has AttachmentArn => (is => 'ro', isa => 'Str', request_name => 'attachmentArn', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has AttachmentArn => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AttachmentArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'AttachmentArn' => 'attachmentArn'
+                     },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'AttachmentArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

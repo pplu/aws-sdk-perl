@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ContentTypeProfile;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', required => 1);
-  has Format => (is => 'ro', isa => 'Str', required => 1);
-  has ProfileId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has ContentType => (is => 'ro', isa => Str, required => 1);
+  has Format => (is => 'ro', isa => Str, required => 1);
+  has ProfileId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'ProfileId' => {
+                                'type' => 'Str'
+                              },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ContentType' => 1,
+                    'Format' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

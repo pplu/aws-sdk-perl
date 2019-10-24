@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::Kafka::EncryptionInfo;
-  use Moose;
-  has EncryptionAtRest => (is => 'ro', isa => 'Paws::Kafka::EncryptionAtRest', request_name => 'encryptionAtRest', traits => ['NameInRequest']);
-  has EncryptionInTransit => (is => 'ro', isa => 'Paws::Kafka::EncryptionInTransit', request_name => 'encryptionInTransit', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Kafka::Types qw/Kafka_EncryptionAtRest Kafka_EncryptionInTransit/;
+  has EncryptionAtRest => (is => 'ro', isa => Kafka_EncryptionAtRest);
+  has EncryptionInTransit => (is => 'ro', isa => Kafka_EncryptionInTransit);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionAtRest' => {
+                                       'class' => 'Paws::Kafka::EncryptionAtRest',
+                                       'type' => 'Kafka_EncryptionAtRest'
+                                     },
+               'EncryptionInTransit' => {
+                                          'class' => 'Paws::Kafka::EncryptionInTransit',
+                                          'type' => 'Kafka_EncryptionInTransit'
+                                        }
+             },
+  'NameInRequest' => {
+                       'EncryptionAtRest' => 'encryptionAtRest',
+                       'EncryptionInTransit' => 'encryptionInTransit'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +65,12 @@ data in transit.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionAtRest => L<Paws::Kafka::EncryptionAtRest>
+=head2 EncryptionAtRest => Kafka_EncryptionAtRest
 
   The data-volume encryption details.
 
 
-=head2 EncryptionInTransit => L<Paws::Kafka::EncryptionInTransit>
+=head2 EncryptionInTransit => Kafka_EncryptionInTransit
 
   The details for encryption in transit.
 

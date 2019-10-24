@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoT::OutgoingCertificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
-  has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
-  has TransferredTo => (is => 'ro', isa => 'Str', request_name => 'transferredTo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has TransferDate => (is => 'ro', isa => Str);
+  has TransferMessage => (is => 'ro', isa => Str);
+  has TransferredTo => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransferMessage' => {
+                                      'type' => 'Str'
+                                    },
+               'TransferredTo' => {
+                                    'type' => 'Str'
+                                  },
+               'TransferDate' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'TransferMessage' => 'transferMessage',
+                       'TransferredTo' => 'transferredTo',
+                       'TransferDate' => 'transferDate',
+                       'CreationDate' => 'creationDate',
+                       'CertificateId' => 'certificateId',
+                       'CertificateArn' => 'certificateArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

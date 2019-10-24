@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Tagging;
   use Moo;
   use Types::Standard qw/ArrayRef/;
@@ -14,7 +15,10 @@ package Paws::S3::Tagging;
              },
   'NameInRequest' => {
                        'TagSet' => 'Tag'
-                     }
+                     },
+  'IsRequired' => {
+                    'TagSet' => 1
+                  }
 }
 ;
     return $Params_map;

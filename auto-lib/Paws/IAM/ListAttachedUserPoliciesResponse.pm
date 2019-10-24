@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListAttachedUserPoliciesResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_AttachedPolicy/;
   has AttachedPolicies => (is => 'ro', isa => ArrayRef[IAM_AttachedPolicy]);

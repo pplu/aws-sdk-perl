@@ -4,7 +4,7 @@ package Paws::EC2::TargetConfiguration;
   has InstanceCount => (is => 'ro', isa => Int);
   has OfferingId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OfferingId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::TargetConfiguration;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

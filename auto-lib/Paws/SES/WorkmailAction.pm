@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::WorkmailAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,10 @@ package Paws::SES::WorkmailAction;
                'TopicArn' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'OrganizationArn' => 1
+                  }
 }
 ;
     return $Params_map;

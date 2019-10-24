@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::Neptune::DBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupArn => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Subnet/;
+  has DBSubnetGroupArn => (is => 'ro', isa => Str);
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has SubnetGroupStatus => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[Neptune_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'Subnets' => {
+                              'class' => 'Paws::Neptune::Subnet',
+                              'type' => 'ArrayRef[Neptune_Subnet]'
+                            },
+               'DBSubnetGroupArn' => {
+                                       'type' => 'Str'
+                                     },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'SubnetGroupStatus' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Subnets' => 'Subnet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +100,7 @@ DescribeDBSubnetGroups action.
   Provides the status of the DB subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::Neptune::Subnet>]
+=head2 Subnets => ArrayRef[Neptune_Subnet]
 
   Contains a list of Subnet elements.
 

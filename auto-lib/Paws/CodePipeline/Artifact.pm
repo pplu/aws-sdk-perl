@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::Artifact;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Str', request_name => 'revision', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ArtifactLocation/;
+  has Location => (is => 'ro', isa => CodePipeline_ArtifactLocation);
+  has Name => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'type' => 'Str'
+                             },
+               'Location' => {
+                               'class' => 'Paws::CodePipeline::ArtifactLocation',
+                               'type' => 'CodePipeline_ArtifactLocation'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'Location' => 'location',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ actions in the pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 Location => L<Paws::CodePipeline::ArtifactLocation>
+=head2 Location => CodePipeline_ArtifactLocation
 
   The location of an artifact.
 

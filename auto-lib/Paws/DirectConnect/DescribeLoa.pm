@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DescribeLoa;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has LoaContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaContentType' );
-  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoaContentType => (is => 'ro', isa => Str, predicate => 1);
+  has ProviderName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoa');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Loa');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeLoa');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Loa');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoaContentType' => {
+                                     'type' => 'Str'
+                                   },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'LoaContentType' => 'loaContentType',
+                       'ProviderName' => 'providerName',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'IsRequired' => {
+                    'ConnectionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

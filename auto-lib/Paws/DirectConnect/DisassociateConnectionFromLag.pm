@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DisassociateConnectionFromLag;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LagId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateConnectionFromLag');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Connection');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateConnectionFromLag');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Connection');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'LagId' => 'lagId',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'IsRequired' => {
+                    'LagId' => 1,
+                    'ConnectionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

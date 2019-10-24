@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ImportExport::Job;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has IsCanceled => (is => 'ro', isa => 'Bool');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ImportExport::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has IsCanceled => (is => 'ro', isa => Bool);
+  has JobId => (is => 'ro', isa => Str);
+  has JobType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'IsCanceled' => {
+                                 'type' => 'Bool'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

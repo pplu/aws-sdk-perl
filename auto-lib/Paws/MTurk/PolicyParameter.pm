@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::MTurk::PolicyParameter;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has MapEntries => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::ParameterMapEntry]');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MTurk::Types qw/MTurk_ParameterMapEntry/;
+  has Key => (is => 'ro', isa => Str);
+  has MapEntries => (is => 'ro', isa => ArrayRef[MTurk_ParameterMapEntry]);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'MapEntries' => {
+                                 'class' => 'Paws::MTurk::ParameterMapEntry',
+                                 'type' => 'ArrayRef[MTurk_ParameterMapEntry]'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Name of the parameter from the Review policy.
   Name of the parameter from the list of Review Polices.
 
 
-=head2 MapEntries => ArrayRef[L<Paws::MTurk::ParameterMapEntry>]
+=head2 MapEntries => ArrayRef[MTurk_ParameterMapEntry]
 
   List of ParameterMapEntry objects.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::Group;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,14 @@ package Paws::IAM::Group;
                'Arn' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'CreateDate' => 1,
+                    'GroupId' => 1,
+                    'GroupName' => 1,
+                    'Path' => 1,
+                    'Arn' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::SigningCertificate;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,13 @@ package Paws::IAM::SigningCertificate;
                'CertificateId' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'CertificateBody' => 1,
+                    'Status' => 1,
+                    'CertificateId' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -21,6 +21,9 @@ package Paws::ES::DeleteElasticsearchDomain;
              },
   'ParamInURI' => {
                     'DomainName' => 'DomainName'
+                  },
+  'IsRequired' => {
+                    'DomainName' => 1
                   }
 }
 ;

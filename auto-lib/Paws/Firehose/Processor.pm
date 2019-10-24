@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Firehose::Processor;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::ProcessorParameter]');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Firehose::Types qw/Firehose_ProcessorParameter/;
+  has Parameters => (is => 'ro', isa => ArrayRef[Firehose_ProcessorParameter]);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Firehose::ProcessorParameter',
+                                 'type' => 'ArrayRef[Firehose_ProcessorParameter]'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Describes a data processor.
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => ArrayRef[L<Paws::Firehose::ProcessorParameter>]
+=head2 Parameters => ArrayRef[Firehose_ProcessorParameter]
 
   The processor parameters.
 

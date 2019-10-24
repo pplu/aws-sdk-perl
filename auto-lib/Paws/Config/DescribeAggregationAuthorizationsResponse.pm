@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeAggregationAuthorizationsResponse;
-  use Moose;
-  has AggregationAuthorizations => (is => 'ro', isa => 'ArrayRef[Paws::Config::AggregationAuthorization]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_AggregationAuthorization/;
+  has AggregationAuthorizations => (is => 'ro', isa => ArrayRef[Config_AggregationAuthorization]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AggregationAuthorizations' => {
+                                                'class' => 'Paws::Config::AggregationAuthorization',
+                                                'type' => 'ArrayRef[Config_AggregationAuthorization]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Config::DescribeAggregationAuthorizationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 AggregationAuthorizations => ArrayRef[L<Paws::Config::AggregationAuthorization>]
+=head2 AggregationAuthorizations => ArrayRef[Config_AggregationAuthorization]
 
 Returns a list of authorizations granted to various aggregator accounts
 and regions.

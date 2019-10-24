@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DeleteIndexField;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has IndexFieldName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudSearch::Types qw//;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IndexFieldName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIndexField');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DeleteIndexFieldResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIndexFieldResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteIndexField');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DeleteIndexFieldResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DeleteIndexFieldResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'IndexFieldName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'IndexFieldName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

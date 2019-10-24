@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFront::LambdaFunctionAssociation;
-  use Moose;
-  has EventType => (is => 'ro', isa => 'Str', required => 1);
-  has IncludeBody => (is => 'ro', isa => 'Bool');
-  has LambdaFunctionARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw//;
+  has EventType => (is => 'ro', isa => Str, required => 1);
+  has IncludeBody => (is => 'ro', isa => Bool);
+  has LambdaFunctionARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LambdaFunctionARN' => {
+                                        'type' => 'Str'
+                                      },
+               'IncludeBody' => {
+                                  'type' => 'Bool'
+                                },
+               'EventType' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'LambdaFunctionARN' => 1,
+                    'EventType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

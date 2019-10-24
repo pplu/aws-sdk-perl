@@ -1,29 +1,100 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::CreateSMBFileShare;
-  use Moose;
-  has AdminUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Authentication => (is => 'ro', isa => 'Str');
-  has ClientToken => (is => 'ro', isa => 'Str', required => 1);
-  has DefaultStorageClass => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
-  has InvalidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has LocationARN => (is => 'ro', isa => 'Str', required => 1);
-  has ObjectACL => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Bool');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has AdminUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Authentication => (is => 'ro', isa => Str, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultStorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has InvalidUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KMSEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has LocationARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectACL => (is => 'ro', isa => Str, predicate => 1);
+  has ReadOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has RequesterPays => (is => 'ro', isa => Bool, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SMBACLEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag], predicate => 1);
+  has ValidUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSMBFileShare');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::CreateSMBFileShareOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSMBFileShare');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::CreateSMBFileShareOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SMBACLEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'Authentication' => {
+                                     'type' => 'Str'
+                                   },
+               'AdminUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ObjectACL' => {
+                                'type' => 'Str'
+                              },
+               'InvalidUserList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'LocationARN' => {
+                                  'type' => 'Str'
+                                },
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'DefaultStorageClass' => {
+                                          'type' => 'Str'
+                                        },
+               'ValidUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'GuessMIMETypeEnabled' => {
+                                           'type' => 'Bool'
+                                         }
+             },
+  'IsRequired' => {
+                    'LocationARN' => 1,
+                    'ClientToken' => 1,
+                    'Role' => 1,
+                    'GatewayARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -214,7 +285,7 @@ in the Storage Gateway User Guide.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
 A list of up to 50 tags that can be assigned to the NFS file share.
 Each tag is a key-value pair.

@@ -1,14 +1,32 @@
 
 package Paws::XRay::PutTraceSegments;
-  use Moose;
-  has TraceSegmentDocuments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::XRay::Types qw//;
+  has TraceSegmentDocuments => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutTraceSegments');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TraceSegments');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::PutTraceSegmentsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutTraceSegments');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TraceSegments');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::PutTraceSegmentsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TraceSegmentDocuments' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          }
+             },
+  'IsRequired' => {
+                    'TraceSegmentDocuments' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

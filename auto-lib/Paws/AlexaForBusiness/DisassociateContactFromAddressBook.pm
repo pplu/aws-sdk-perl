@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::DisassociateContactFromAddressBook;
-  use Moose;
-  has AddressBookArn => (is => 'ro', isa => 'Str', required => 1);
-  has ContactArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has AddressBookArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ContactArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisassociateContactFromAddressBook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::DisassociateContactFromAddressBookResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DisassociateContactFromAddressBook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::DisassociateContactFromAddressBookResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContactArn' => {
+                                 'type' => 'Str'
+                               },
+               'AddressBookArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ContactArn' => 1,
+                    'AddressBookArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

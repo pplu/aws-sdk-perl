@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::StopContinuousExportResponse;
-  use Moose;
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
-  has StopTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopTime' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has StartTime => (is => 'ro', isa => Str);
+  has StopTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StopTime' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StopTime' => 'stopTime',
+                       'StartTime' => 'startTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

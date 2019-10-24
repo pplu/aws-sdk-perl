@@ -1,17 +1,85 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::InstanceDetails;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has IamInstanceProfile => (is => 'ro', isa => 'Paws::GuardDuty::IamInstanceProfile', request_name => 'iamInstanceProfile', traits => ['NameInRequest']);
-  has ImageDescription => (is => 'ro', isa => 'Str', request_name => 'imageDescription', traits => ['NameInRequest']);
-  has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceState => (is => 'ro', isa => 'Str', request_name => 'instanceState', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has LaunchTime => (is => 'ro', isa => 'Str', request_name => 'launchTime', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has ProductCodes => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::ProductCode]', request_name => 'productCodes', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Tag GuardDuty_NetworkInterface GuardDuty_IamInstanceProfile GuardDuty_ProductCode/;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has IamInstanceProfile => (is => 'ro', isa => GuardDuty_IamInstanceProfile);
+  has ImageDescription => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceState => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LaunchTime => (is => 'ro', isa => Str);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[GuardDuty_NetworkInterface]);
+  has Platform => (is => 'ro', isa => Str);
+  has ProductCodes => (is => 'ro', isa => ArrayRef[GuardDuty_ProductCode]);
+  has Tags => (is => 'ro', isa => ArrayRef[GuardDuty_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchTime' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'ProductCodes' => {
+                                   'class' => 'Paws::GuardDuty::ProductCode',
+                                   'type' => 'ArrayRef[GuardDuty_ProductCode]'
+                                 },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceState' => {
+                                    'type' => 'Str'
+                                  },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::GuardDuty::NetworkInterface',
+                                        'type' => 'ArrayRef[GuardDuty_NetworkInterface]'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::GuardDuty::Tag',
+                           'type' => 'ArrayRef[GuardDuty_Tag]'
+                         },
+               'ImageDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'IamInstanceProfile' => {
+                                         'class' => 'Paws::GuardDuty::IamInstanceProfile',
+                                         'type' => 'GuardDuty_IamInstanceProfile'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LaunchTime' => 'launchTime',
+                       'InstanceId' => 'instanceId',
+                       'ImageId' => 'imageId',
+                       'ProductCodes' => 'productCodes',
+                       'Platform' => 'platform',
+                       'InstanceType' => 'instanceType',
+                       'InstanceState' => 'instanceState',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'NetworkInterfaces' => 'networkInterfaces',
+                       'Tags' => 'tags',
+                       'ImageDescription' => 'imageDescription',
+                       'IamInstanceProfile' => 'iamInstanceProfile'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +120,7 @@ This class has no description
   The availability zone of the EC2 instance.
 
 
-=head2 IamInstanceProfile => L<Paws::GuardDuty::IamInstanceProfile>
+=head2 IamInstanceProfile => GuardDuty_IamInstanceProfile
 
   The profile information of the EC2 instance.
 
@@ -87,7 +155,7 @@ This class has no description
   The launch time of the EC2 instance.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::GuardDuty::NetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[GuardDuty_NetworkInterface]
 
   The network interface information of the EC2 instance.
 
@@ -97,12 +165,12 @@ This class has no description
   The platform of the EC2 instance.
 
 
-=head2 ProductCodes => ArrayRef[L<Paws::GuardDuty::ProductCode>]
+=head2 ProductCodes => ArrayRef[GuardDuty_ProductCode]
 
   The product code of the EC2 instance.
 
 
-=head2 Tags => ArrayRef[L<Paws::GuardDuty::Tag>]
+=head2 Tags => ArrayRef[GuardDuty_Tag]
 
   The tags of the EC2 instance.
 

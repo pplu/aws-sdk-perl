@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::RulesConfigurationType;
-  use Moose;
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::MappingRule]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_MappingRule/;
+  has Rules => (is => 'ro', isa => ArrayRef[CognitoIdentity_MappingRule], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::CognitoIdentity::MappingRule',
+                            'type' => 'ArrayRef[CognitoIdentity_MappingRule]'
+                          }
+             },
+  'IsRequired' => {
+                    'Rules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A container for rules.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::CognitoIdentity::MappingRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[CognitoIdentity_MappingRule]
 
   An array of rules. You can specify up to 25 rules per identity
 provider.

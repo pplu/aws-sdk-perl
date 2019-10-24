@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::MTurk::Locale;
-  use Moose;
-  has Country => (is => 'ro', isa => 'Str', required => 1);
-  has Subdivision => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has Country => (is => 'ro', isa => Str, required => 1);
+  has Subdivision => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Country' => {
+                              'type' => 'Str'
+                            },
+               'Subdivision' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Country' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

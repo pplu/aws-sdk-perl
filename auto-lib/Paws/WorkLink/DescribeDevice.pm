@@ -1,15 +1,37 @@
 
 package Paws::WorkLink::DescribeDevice;
-  use Moose;
-  has DeviceId => (is => 'ro', isa => 'Str', required => 1);
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has DeviceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDevice');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/describeDevice');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::DescribeDeviceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDevice');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/describeDevice');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::DescribeDeviceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'DeviceId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'FleetArn' => 1,
+                    'DeviceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

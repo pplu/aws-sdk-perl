@@ -1,17 +1,49 @@
 
 package Paws::Chime::PutEventsConfiguration;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has BotId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botId', required => 1);
-  has LambdaFunctionArn => (is => 'ro', isa => 'Str');
-  has OutboundEventsHTTPSEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LambdaFunctionArn => (is => 'ro', isa => Str, predicate => 1);
+  has OutboundEventsHTTPSEndpoint => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEventsConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/bots/{botId}/events-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::PutEventsConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEventsConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/bots/{botId}/events-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::PutEventsConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutboundEventsHTTPSEndpoint' => {
+                                                  'type' => 'Str'
+                                                },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'LambdaFunctionArn' => {
+                                        'type' => 'Str'
+                                      },
+               'BotId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'BotId' => 'botId'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'BotId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

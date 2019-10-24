@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::CreateDataSourceFromRedshift;
-  use Moose;
-  has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
-  has DataSourceName => (is => 'ro', isa => 'Str');
-  has DataSpec => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDataSpec', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RedshiftDataSpec/;
+  has ComputeStatistics => (is => 'ro', isa => Bool, predicate => 1);
+  has DataSourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DataSourceName => (is => 'ro', isa => Str, predicate => 1);
+  has DataSpec => (is => 'ro', isa => MachineLearning_RedshiftDataSpec, required => 1, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromRedshift');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRedshiftOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDataSourceFromRedshift');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromRedshiftOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'ComputeStatistics' => {
+                                        'type' => 'Bool'
+                                      },
+               'DataSpec' => {
+                               'class' => 'Paws::MachineLearning::RedshiftDataSpec',
+                               'type' => 'MachineLearning_RedshiftDataSpec'
+                             },
+               'DataSourceId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'RoleARN' => 1,
+                    'DataSpec' => 1,
+                    'DataSourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +123,7 @@ A user-supplied name or description of the C<DataSource>.
 
 
 
-=head2 B<REQUIRED> DataSpec => L<Paws::MachineLearning::RedshiftDataSpec>
+=head2 B<REQUIRED> DataSpec => MachineLearning_RedshiftDataSpec
 
 The data specification of an Amazon Redshift C<DataSource>:
 

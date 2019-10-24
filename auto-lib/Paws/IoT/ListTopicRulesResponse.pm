@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListTopicRulesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::IoT::TopicRuleListItem]', traits => ['NameInRequest'], request_name => 'rules');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_TopicRuleListItem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[IoT_TopicRuleListItem]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::IoT::TopicRuleListItem',
+                            'type' => 'ArrayRef[IoT_TopicRuleListItem]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Rules' => 'rules',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::IoT::ListTopicRulesResponse
 A token used to retrieve the next value.
 
 
-=head2 Rules => ArrayRef[L<Paws::IoT::TopicRuleListItem>]
+=head2 Rules => ArrayRef[IoT_TopicRuleListItem]
 
 The rules.
 

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Firehose::Deserializer;
-  use Moose;
-  has HiveJsonSerDe => (is => 'ro', isa => 'Paws::Firehose::HiveJsonSerDe');
-  has OpenXJsonSerDe => (is => 'ro', isa => 'Paws::Firehose::OpenXJsonSerDe');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Firehose::Types qw/Firehose_OpenXJsonSerDe Firehose_HiveJsonSerDe/;
+  has HiveJsonSerDe => (is => 'ro', isa => Firehose_HiveJsonSerDe);
+  has OpenXJsonSerDe => (is => 'ro', isa => Firehose_OpenXJsonSerDe);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OpenXJsonSerDe' => {
+                                     'class' => 'Paws::Firehose::OpenXJsonSerDe',
+                                     'type' => 'Firehose_OpenXJsonSerDe'
+                                   },
+               'HiveJsonSerDe' => {
+                                    'class' => 'Paws::Firehose::HiveJsonSerDe',
+                                    'type' => 'Firehose_HiveJsonSerDe'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ and the OpenX JSON SerDe (https://github.com/rcongiu/Hive-JSON-Serde).
 =head1 ATTRIBUTES
 
 
-=head2 HiveJsonSerDe => L<Paws::Firehose::HiveJsonSerDe>
+=head2 HiveJsonSerDe => Firehose_HiveJsonSerDe
 
   The native Hive / HCatalog JsonSerDe. Used by Kinesis Data Firehose for
 deserializing data, which means converting it from the JSON format in
@@ -51,7 +73,7 @@ one of two deserializers you can choose, depending on which one offers
 the functionality you need. The other option is the OpenX SerDe.
 
 
-=head2 OpenXJsonSerDe => L<Paws::Firehose::OpenXJsonSerDe>
+=head2 OpenXJsonSerDe => Firehose_OpenXJsonSerDe
 
   The OpenX SerDe. Used by Kinesis Data Firehose for deserializing data,
 which means converting it from the JSON format in preparation for

@@ -1,8 +1,43 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::DetectorState;
-  use Moose;
-  has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest'], required => 1);
-  has Timers => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::Timer]', request_name => 'timers', traits => ['NameInRequest'], required => 1);
-  has Variables => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::Variable]', request_name => 'variables', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_Variable IoTEventsData_Timer/;
+  has StateName => (is => 'ro', isa => Str, required => 1);
+  has Timers => (is => 'ro', isa => ArrayRef[IoTEventsData_Timer], required => 1);
+  has Variables => (is => 'ro', isa => ArrayRef[IoTEventsData_Variable], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Variables' => {
+                                'class' => 'Paws::IoTEventsData::Variable',
+                                'type' => 'ArrayRef[IoTEventsData_Variable]'
+                              },
+               'Timers' => {
+                             'class' => 'Paws::IoTEventsData::Timer',
+                             'type' => 'ArrayRef[IoTEventsData_Timer]'
+                           },
+               'StateName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Variables' => 'variables',
+                       'Timers' => 'timers',
+                       'StateName' => 'stateName'
+                     },
+  'IsRequired' => {
+                    'Variables' => 1,
+                    'Timers' => 1,
+                    'StateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +78,12 @@ Information about the current state of the detector instance.
   The name of the state.
 
 
-=head2 B<REQUIRED> Timers => ArrayRef[L<Paws::IoTEventsData::Timer>]
+=head2 B<REQUIRED> Timers => ArrayRef[IoTEventsData_Timer]
 
   The current state of the detector's timers.
 
 
-=head2 B<REQUIRED> Variables => ArrayRef[L<Paws::IoTEventsData::Variable>]
+=head2 B<REQUIRED> Variables => ArrayRef[IoTEventsData_Variable]
 
   The current values of the detector's variables.
 

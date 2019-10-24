@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::GatewayInfo;
-  use Moose;
-  has Ec2InstanceId => (is => 'ro', isa => 'Str');
-  has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayId => (is => 'ro', isa => 'Str');
-  has GatewayName => (is => 'ro', isa => 'Str');
-  has GatewayOperationalState => (is => 'ro', isa => 'Str');
-  has GatewayType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has Ec2InstanceId => (is => 'ro', isa => Str);
+  has Ec2InstanceRegion => (is => 'ro', isa => Str);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has GatewayId => (is => 'ro', isa => Str);
+  has GatewayName => (is => 'ro', isa => Str);
+  has GatewayOperationalState => (is => 'ro', isa => Str);
+  has GatewayType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayType' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayName' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayId' => {
+                                'type' => 'Str'
+                              },
+               'GatewayOperationalState' => {
+                                              'type' => 'Str'
+                                            },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'Ec2InstanceRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'Ec2InstanceId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

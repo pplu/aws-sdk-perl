@@ -17,7 +17,7 @@ package Paws::EC2::FpgaImage;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has UpdateTime => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'FpgaImageGlobalId' => {
@@ -89,8 +89,8 @@ package Paws::EC2::FpgaImage;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

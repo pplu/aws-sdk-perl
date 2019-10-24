@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateDeviceInstance;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'labels' );
-  has ProfileArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profileArn' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ProfileArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeviceInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateDeviceInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeviceInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateDeviceInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'ProfileArn' => 'profileArn',
+                       'Labels' => 'labels',
+                       'Arn' => 'arn'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

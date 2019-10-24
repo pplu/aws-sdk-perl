@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SSM::CloudWatchOutputConfig;
-  use Moose;
-  has CloudWatchLogGroupName => (is => 'ro', isa => 'Str');
-  has CloudWatchOutputEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SSM::Types qw//;
+  has CloudWatchLogGroupName => (is => 'ro', isa => Str);
+  has CloudWatchOutputEnabled => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudWatchLogGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'CloudWatchOutputEnabled' => {
+                                              'type' => 'Bool'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

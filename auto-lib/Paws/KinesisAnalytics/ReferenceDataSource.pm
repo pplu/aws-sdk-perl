@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ReferenceDataSource;
-  use Moose;
-  has ReferenceSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::SourceSchema', required => 1);
-  has S3ReferenceDataSource => (is => 'ro', isa => 'Paws::KinesisAnalytics::S3ReferenceDataSource');
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_SourceSchema KinesisAnalytics_S3ReferenceDataSource/;
+  has ReferenceSchema => (is => 'ro', isa => KinesisAnalytics_SourceSchema, required => 1);
+  has S3ReferenceDataSource => (is => 'ro', isa => KinesisAnalytics_S3ReferenceDataSource);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3ReferenceDataSource' => {
+                                            'class' => 'Paws::KinesisAnalytics::S3ReferenceDataSource',
+                                            'type' => 'KinesisAnalytics_S3ReferenceDataSource'
+                                          },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'ReferenceSchema' => {
+                                      'class' => 'Paws::KinesisAnalytics::SourceSchema',
+                                      'type' => 'KinesisAnalytics_SourceSchema'
+                                    }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'ReferenceSchema' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,14 +70,14 @@ elements in the Amazon S3 object to the in-application table.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ReferenceSchema => L<Paws::KinesisAnalytics::SourceSchema>
+=head2 B<REQUIRED> ReferenceSchema => KinesisAnalytics_SourceSchema
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns created in the
 in-application stream.
 
 
-=head2 S3ReferenceDataSource => L<Paws::KinesisAnalytics::S3ReferenceDataSource>
+=head2 S3ReferenceDataSource => KinesisAnalytics_S3ReferenceDataSource
 
   Identifies the S3 bucket and object that contains the reference data.
 Also identifies the IAM role Amazon Kinesis Analytics can assume to

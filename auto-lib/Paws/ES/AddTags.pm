@@ -23,7 +23,11 @@ package Paws::ES::AddTags;
                               'class' => 'Paws::ES::Tag',
                               'type' => 'ArrayRef[ES_Tag]'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'ARN' => 1,
+                    'TagList' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -18,7 +18,7 @@ package Paws::EC2::CopyImage;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CopyImageResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -50,11 +50,16 @@ package Paws::EC2::CopyImage;
                        'DryRun' => 'dryRun',
                        'KmsKeyId' => 'kmsKeyId',
                        'Encrypted' => 'encrypted'
-                     }
+                     },
+  'IsRequired' => {
+                    'SourceImageId' => 1,
+                    'Name' => 1,
+                    'SourceRegion' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

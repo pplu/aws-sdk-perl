@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationPage;
-  use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationSummary]', request_name => 'applications', traits => ['NameInRequest'], required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationSummary/;
+  has Applications => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationSummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Applications' => {
+                                   'class' => 'Paws::ServerlessRepo::ApplicationSummary',
+                                   'type' => 'ArrayRef[ServerlessRepo_ApplicationSummary]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Applications' => 'applications'
+                     },
+  'IsRequired' => {
+                    'Applications' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ A list of application details.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Applications => ArrayRef[L<Paws::ServerlessRepo::ApplicationSummary>]
+=head2 B<REQUIRED> Applications => ArrayRef[ServerlessRepo_ApplicationSummary]
 
   An array of application summaries.
 

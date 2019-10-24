@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ResultByTime;
-  use Moose;
-  has Estimated => (is => 'ro', isa => 'Bool');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::Group]');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
-  has Total => (is => 'ro', isa => 'Paws::CostExplorer::Metrics');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_Group CostExplorer_Metrics/;
+  has Estimated => (is => 'ro', isa => Bool);
+  has Groups => (is => 'ro', isa => ArrayRef[CostExplorer_Group]);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval);
+  has Total => (is => 'ro', isa => CostExplorer_Metrics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'class' => 'Paws::CostExplorer::Metrics',
+                            'type' => 'CostExplorer_Metrics'
+                          },
+               'Groups' => {
+                             'class' => 'Paws::CostExplorer::Group',
+                             'type' => 'ArrayRef[CostExplorer_Group]'
+                           },
+               'Estimated' => {
+                                'type' => 'Bool'
+                              },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,17 +73,17 @@ The result that is associated with a time period.
   Whether the result is estimated.
 
 
-=head2 Groups => ArrayRef[L<Paws::CostExplorer::Group>]
+=head2 Groups => ArrayRef[CostExplorer_Group]
 
   The groups that this time period includes.
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 TimePeriod => CostExplorer_DateInterval
 
   The time period that the result covers.
 
 
-=head2 Total => L<Paws::CostExplorer::Metrics>
+=head2 Total => CostExplorer_Metrics
 
   The total amount of cost or usage accrued during the time period.
 

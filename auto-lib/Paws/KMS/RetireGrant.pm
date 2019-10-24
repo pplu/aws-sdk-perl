@@ -1,15 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::RetireGrant;
-  use Moose;
-  has GrantId => (is => 'ro', isa => 'Str');
-  has GrantToken => (is => 'ro', isa => 'Str');
-  has KeyId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has GrantId => (is => 'ro', isa => Str, predicate => 1);
+  has GrantToken => (is => 'ro', isa => Str, predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetireGrant');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RetireGrant');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GrantToken' => {
+                                 'type' => 'Str'
+                               },
+               'GrantId' => {
+                              'type' => 'Str'
+                            },
+               'KeyId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

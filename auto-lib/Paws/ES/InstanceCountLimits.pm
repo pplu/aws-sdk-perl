@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::InstanceCountLimits;
   use Moo;
   use Types::Standard qw/Int/;

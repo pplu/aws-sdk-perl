@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RealtimeEndpointInfo;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has EndpointStatus => (is => 'ro', isa => 'Str');
-  has EndpointUrl => (is => 'ro', isa => 'Str');
-  has PeakRequestsPerSecond => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MachineLearning::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has EndpointStatus => (is => 'ro', isa => Str);
+  has EndpointUrl => (is => 'ro', isa => Str);
+  has PeakRequestsPerSecond => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeakRequestsPerSecond' => {
+                                            'type' => 'Int'
+                                          },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'EndpointUrl' => {
+                                  'type' => 'Str'
+                                },
+               'EndpointStatus' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

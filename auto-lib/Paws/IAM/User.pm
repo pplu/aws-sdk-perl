@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::User;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -40,7 +41,14 @@ package Paws::IAM::User;
                'PasswordLastUsed' => {
                                        'type' => 'Str'
                                      }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'CreateDate' => 1,
+                    'UserId' => 1,
+                    'Path' => 1,
+                    'Arn' => 1
+                  }
 }
 ;
     return $Params_map;

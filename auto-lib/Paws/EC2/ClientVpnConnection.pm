@@ -15,7 +15,7 @@ package Paws::EC2::ClientVpnConnection;
   has Timestamp => (is => 'ro', isa => Str);
   has Username => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ConnectionEndTime' => {
@@ -76,8 +76,8 @@ package Paws::EC2::ClientVpnConnection;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

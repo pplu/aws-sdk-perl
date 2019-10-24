@@ -1,14 +1,63 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroupConfig;
-  use Moose;
-  has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicy');
-  has BidPrice => (is => 'ro', isa => 'Str');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has EbsConfiguration => (is => 'ro', isa => 'Paws::EMR::EbsConfiguration');
-  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
-  has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has Market => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EMR::Types qw/EMR_EbsConfiguration EMR_Configuration EMR_AutoScalingPolicy/;
+  has AutoScalingPolicy => (is => 'ro', isa => EMR_AutoScalingPolicy);
+  has BidPrice => (is => 'ro', isa => Str);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has EbsConfiguration => (is => 'ro', isa => EMR_EbsConfiguration);
+  has InstanceCount => (is => 'ro', isa => Int, required => 1);
+  has InstanceRole => (is => 'ro', isa => Str, required => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has Market => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   },
+               'EbsConfiguration' => {
+                                       'class' => 'Paws::EMR::EbsConfiguration',
+                                       'type' => 'EMR_EbsConfiguration'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AutoScalingPolicy' => {
+                                        'class' => 'Paws::EMR::AutoScalingPolicy',
+                                        'type' => 'EMR_AutoScalingPolicy'
+                                      },
+               'InstanceRole' => {
+                                   'type' => 'Str'
+                                 },
+               'Market' => {
+                             'type' => 'Str'
+                           },
+               'BidPrice' => {
+                               'type' => 'Str'
+                             },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'InstanceRole' => 1,
+                    'InstanceType' => 1,
+                    'InstanceCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +93,7 @@ Configuration defining a new instance group.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicy>
+=head2 AutoScalingPolicy => EMR_AutoScalingPolicy
 
   An automatic scaling policy for a core instance group or task instance
 group in an Amazon EMR cluster. The automatic scaling policy defines
@@ -62,7 +111,7 @@ in USD. If the value is NULL and C<SPOT> is specified, the maximum Spot
 price is set equal to the On-Demand price.
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   Amazon EMR releases 4.x or later.
 
@@ -71,7 +120,7 @@ You can specify a separate configuration for each instance group
 (master, core, and task).
 
 
-=head2 EbsConfiguration => L<Paws::EMR::EbsConfiguration>
+=head2 EbsConfiguration => EMR_EbsConfiguration
 
   EBS configurations that will be attached to each EC2 instance in the
 instance group.

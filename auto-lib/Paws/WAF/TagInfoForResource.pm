@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::WAF::TagInfoForResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str);
+  has TagList => (is => 'ro', isa => ArrayRef[WAF_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagList' => {
+                              'class' => 'Paws::WAF::Tag',
+                              'type' => 'ArrayRef[WAF_Tag]'
+                            },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ This class has no description
   
 
 
-=head2 TagList => ArrayRef[L<Paws::WAF::Tag>]
+=head2 TagList => ArrayRef[WAF_Tag]
 
   
 

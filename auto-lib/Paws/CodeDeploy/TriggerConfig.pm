@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::TriggerConfig;
-  use Moose;
-  has TriggerEvents => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'triggerEvents', traits => ['NameInRequest']);
-  has TriggerName => (is => 'ro', isa => 'Str', request_name => 'triggerName', traits => ['NameInRequest']);
-  has TriggerTargetArn => (is => 'ro', isa => 'Str', request_name => 'triggerTargetArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has TriggerEvents => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TriggerName => (is => 'ro', isa => Str);
+  has TriggerTargetArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TriggerTargetArn' => {
+                                       'type' => 'Str'
+                                     },
+               'TriggerEvents' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'TriggerName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TriggerTargetArn' => 'triggerTargetArn',
+                       'TriggerEvents' => 'triggerEvents',
+                       'TriggerName' => 'triggerName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

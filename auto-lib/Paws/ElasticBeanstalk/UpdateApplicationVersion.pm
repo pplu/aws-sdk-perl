@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::UpdateApplicationVersion;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has VersionLabel => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateApplicationVersionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplicationVersion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'UpdateApplicationVersionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VersionLabel' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'VersionLabel' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutRemediationConfigurations;
-  use Moose;
-  has RemediationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::Config::RemediationConfiguration]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_RemediationConfiguration/;
+  has RemediationConfigurations => (is => 'ro', isa => ArrayRef[Config_RemediationConfiguration], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRemediationConfigurations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutRemediationConfigurationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRemediationConfigurations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutRemediationConfigurationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemediationConfigurations' => {
+                                                'class' => 'Paws::Config::RemediationConfiguration',
+                                                'type' => 'ArrayRef[Config_RemediationConfiguration]'
+                                              }
+             },
+  'IsRequired' => {
+                    'RemediationConfigurations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +85,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RemediationConfigurations => ArrayRef[L<Paws::Config::RemediationConfiguration>]
+=head2 B<REQUIRED> RemediationConfigurations => ArrayRef[Config_RemediationConfiguration]
 
 A list of remediation configuration objects.
 

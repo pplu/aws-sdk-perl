@@ -1,41 +1,147 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateDBCluster;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineMode => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
-  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::RDS::Types qw/RDS_ScalingConfiguration RDS_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has BacktrackWindow => (is => 'ro', isa => Int, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CharacterSetName => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineMode => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has GlobalClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreSignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationSourceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has ScalingConfiguration => (is => 'ro', isa => RDS_ScalingConfiguration, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CreateDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'ReplicationSourceIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'GlobalClusterIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'EngineMode' => {
+                                 'type' => 'Str'
+                               },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'ScalingConfiguration' => {
+                                           'class' => 'Paws::RDS::ScalingConfiguration',
+                                           'type' => 'RDS_ScalingConfiguration'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'Engine' => 1,
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -478,7 +584,7 @@ if this DB cluster is created as a Read Replica.
 
 
 
-=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+=head2 ScalingConfiguration => RDS_ScalingConfiguration
 
 For DB clusters in C<serverless> DB engine mode, the scaling properties
 of the DB cluster.
@@ -491,7 +597,7 @@ A value that indicates whether the DB cluster is encrypted.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 Tags to assign to the DB cluster.
 

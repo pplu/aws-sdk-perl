@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::SccDestinationSettings;
-  use Moose;
-  has Framerate => (is => 'ro', isa => 'Str', request_name => 'framerate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Framerate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Framerate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Framerate' => 'framerate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

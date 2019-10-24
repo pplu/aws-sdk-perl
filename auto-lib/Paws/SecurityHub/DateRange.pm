@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::DateRange;
-  use Moose;
-  has Unit => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SecurityHub::Types qw//;
+  has Unit => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Int'
+                          },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

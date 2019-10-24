@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateServiceSpecificCredential;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::UpdateServiceSpecificCredential;
                'ServiceSpecificCredentialId' => {
                                                   'type' => 'Str'
                                                 }
-             }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'ServiceSpecificCredentialId' => 1
+                  }
 }
 ;
     return $Params_map;

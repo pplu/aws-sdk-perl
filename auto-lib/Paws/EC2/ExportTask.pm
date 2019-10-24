@@ -8,7 +8,7 @@ package Paws::EC2::ExportTask;
   has State => (is => 'ro', isa => Str);
   has StatusMessage => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ExportToS3Task' => {
@@ -42,8 +42,8 @@ package Paws::EC2::ExportTask;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

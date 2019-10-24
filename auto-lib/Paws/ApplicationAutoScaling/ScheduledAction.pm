@@ -1,15 +1,68 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::ScheduledAction;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str');
-  has ScalableTargetAction => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::ScalableTargetAction');
-  has Schedule => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduledActionARN => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_ScalableTargetAction/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EndTime => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str);
+  has ScalableTargetAction => (is => 'ro', isa => ApplicationAutoScaling_ScalableTargetAction);
+  has Schedule => (is => 'ro', isa => Str, required => 1);
+  has ScheduledActionARN => (is => 'ro', isa => Str, required => 1);
+  has ScheduledActionName => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledActionARN' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'ScalableTargetAction' => {
+                                           'class' => 'Paws::ApplicationAutoScaling::ScalableTargetAction',
+                                           'type' => 'ApplicationAutoScaling_ScalableTargetAction'
+                                         },
+               'ScheduledActionName' => {
+                                          'type' => 'Str'
+                                        },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Schedule' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ScheduledActionName' => 1,
+                    'ScheduledActionARN' => 1,
+                    'ResourceId' => 1,
+                    'CreationTime' => 1,
+                    'ServiceNamespace' => 1,
+                    'Schedule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -185,7 +238,7 @@ custom resource provided by your own application or service.
 
 
 
-=head2 ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>
+=head2 ScalableTargetAction => ApplicationAutoScaling_ScalableTargetAction
 
   The new minimum and maximum capacity. You can set both values or just
 one. During the scheduled time, if the current capacity is below the

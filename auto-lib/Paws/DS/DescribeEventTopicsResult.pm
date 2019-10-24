@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DS::DescribeEventTopicsResult;
-  use Moose;
-  has EventTopics => (is => 'ro', isa => 'ArrayRef[Paws::DS::EventTopic]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DS::Types qw/DS_EventTopic/;
+  has EventTopics => (is => 'ro', isa => ArrayRef[DS_EventTopic]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventTopics' => {
+                                  'class' => 'Paws::DS::EventTopic',
+                                  'type' => 'ArrayRef[DS_EventTopic]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DS::DescribeEventTopicsResult
 =head1 ATTRIBUTES
 
 
-=head2 EventTopics => ArrayRef[L<Paws::DS::EventTopic>]
+=head2 EventTopics => ArrayRef[DS_EventTopic]
 
 A list of SNS topic names that receive status messages from the
 specified Directory ID.

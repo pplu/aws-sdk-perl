@@ -8,7 +8,7 @@ package Paws::EC2::UnassignIpv6AddressesResult;
   has UnassignedIpv6Addresses => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UnassignedIpv6Addresses' => {
@@ -27,8 +27,8 @@ package Paws::EC2::UnassignIpv6AddressesResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

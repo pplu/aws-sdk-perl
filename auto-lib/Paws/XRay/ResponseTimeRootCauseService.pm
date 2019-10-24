@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::XRay::ResponseTimeRootCauseService;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has EntityPath => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ResponseTimeRootCauseEntity]');
-  has Inferred => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool Undef/;
+  use Paws::XRay::Types qw/XRay_ResponseTimeRootCauseEntity/;
+  has AccountId => (is => 'ro', isa => Str);
+  has EntityPath => (is => 'ro', isa => ArrayRef[XRay_ResponseTimeRootCauseEntity]);
+  has Inferred => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EntityPath' => {
+                                 'class' => 'Paws::XRay::ResponseTimeRootCauseEntity',
+                                 'type' => 'ArrayRef[XRay_ResponseTimeRootCauseEntity]'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Inferred' => {
+                               'type' => 'Bool'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +80,7 @@ warning.
   The account ID associated to the service.
 
 
-=head2 EntityPath => ArrayRef[L<Paws::XRay::ResponseTimeRootCauseEntity>]
+=head2 EntityPath => ArrayRef[XRay_ResponseTimeRootCauseEntity]
 
   The path of root cause entities found on the service.
 

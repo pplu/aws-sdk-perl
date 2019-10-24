@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptFilter;
   use Moo;
   use Types::Standard qw/Str/;
@@ -15,7 +16,11 @@ package Paws::SES::ReceiptFilter;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'IpFilter' => 1,
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

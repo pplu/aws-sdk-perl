@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDS::DBParameterGroupStatus;
-  use Moose;
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw//;
+  has DBParameterGroupName => (is => 'ro', isa => Str);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

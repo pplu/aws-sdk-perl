@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ChannelEgressEndpoint;
-  use Moose;
-  has SourceIp => (is => 'ro', isa => 'Str', request_name => 'sourceIp', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has SourceIp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIp' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'SourceIp' => 'sourceIp'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

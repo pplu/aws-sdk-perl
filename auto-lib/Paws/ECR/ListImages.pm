@@ -1,17 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::ListImages;
-  use Moose;
-  has Filter => (is => 'ro', isa => 'Paws::ECR::ListImagesFilter', traits => ['NameInRequest'], request_name => 'filter' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECR::Types qw/ECR_ListImagesFilter/;
+  has Filter => (is => 'ro', isa => ECR_ListImagesFilter, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListImages');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::ListImagesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListImages');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::ListImagesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'Filter' => {
+                             'class' => 'Paws::ECR::ListImagesFilter',
+                             'type' => 'ECR_ListImagesFilter'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'Filter' => 'filter',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +87,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 Filter => L<Paws::ECR::ListImagesFilter>
+=head2 Filter => ECR_ListImagesFilter
 
 The filter key and value with which to filter your C<ListImages>
 results.

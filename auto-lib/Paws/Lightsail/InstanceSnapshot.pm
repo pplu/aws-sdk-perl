@@ -1,20 +1,99 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceSnapshot;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has FromAttachedDisks => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Disk]', request_name => 'fromAttachedDisks', traits => ['NameInRequest']);
-  has FromBlueprintId => (is => 'ro', isa => 'Str', request_name => 'fromBlueprintId', traits => ['NameInRequest']);
-  has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
-  has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
-  has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Lightsail::Types qw/Lightsail_ResourceLocation Lightsail_Disk Lightsail_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FromAttachedDisks => (is => 'ro', isa => ArrayRef[Lightsail_Disk]);
+  has FromBlueprintId => (is => 'ro', isa => Str);
+  has FromBundleId => (is => 'ro', isa => Str);
+  has FromInstanceArn => (is => 'ro', isa => Str);
+  has FromInstanceName => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has Progress => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SizeInGb => (is => 'ro', isa => Int);
+  has State => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FromBundleId' => {
+                                   'type' => 'Str'
+                                 },
+               'FromInstanceName' => {
+                                       'type' => 'Str'
+                                     },
+               'FromInstanceArn' => {
+                                      'type' => 'Str'
+                                    },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'FromAttachedDisks' => {
+                                        'class' => 'Paws::Lightsail::Disk',
+                                        'type' => 'ArrayRef[Lightsail_Disk]'
+                                      },
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'Progress' => {
+                               'type' => 'Str'
+                             },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'FromBlueprintId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'FromBundleId' => 'fromBundleId',
+                       'FromInstanceName' => 'fromInstanceName',
+                       'FromInstanceArn' => 'fromInstanceArn',
+                       'SupportCode' => 'supportCode',
+                       'State' => 'state',
+                       'FromAttachedDisks' => 'fromAttachedDisks',
+                       'SizeInGb' => 'sizeInGb',
+                       'ResourceType' => 'resourceType',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags',
+                       'Progress' => 'progress',
+                       'Location' => 'location',
+                       'Name' => 'name',
+                       'FromBlueprintId' => 'fromBlueprintId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +140,7 @@ C<arn:aws:lightsail:us-east-2:123456789101:InstanceSnapshot/d23b5706-3322-4d83-8
   The timestamp when the snapshot was created (e.g., C<1479907467.024>).
 
 
-=head2 FromAttachedDisks => ArrayRef[L<Paws::Lightsail::Disk>]
+=head2 FromAttachedDisks => ArrayRef[Lightsail_Disk]
 
   An array of disk objects containing information about all block storage
 disks.
@@ -91,7 +170,7 @@ C<arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-1234
   The instance from which the snapshot was created.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The region name and Availability Zone where you created the snapshot.
 
@@ -129,7 +208,7 @@ code enables our support team to look up your Lightsail information
 more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

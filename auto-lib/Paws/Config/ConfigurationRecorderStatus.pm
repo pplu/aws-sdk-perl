@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigurationRecorderStatus;
-  use Moose;
-  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
-  has LastStartTime => (is => 'ro', isa => 'Str', request_name => 'lastStartTime', traits => ['NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', request_name => 'lastStatusChangeTime', traits => ['NameInRequest']);
-  has LastStopTime => (is => 'ro', isa => 'Str', request_name => 'lastStopTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Recording => (is => 'ro', isa => 'Bool', request_name => 'recording', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Config::Types qw//;
+  has LastErrorCode => (is => 'ro', isa => Str);
+  has LastErrorMessage => (is => 'ro', isa => Str);
+  has LastStartTime => (is => 'ro', isa => Str);
+  has LastStatus => (is => 'ro', isa => Str);
+  has LastStatusChangeTime => (is => 'ro', isa => Str);
+  has LastStopTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Recording => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastErrorCode' => {
+                                    'type' => 'Str'
+                                  },
+               'Recording' => {
+                                'type' => 'Bool'
+                              },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'LastStartTime' => {
+                                    'type' => 'Str'
+                                  },
+               'LastErrorMessage' => {
+                                       'type' => 'Str'
+                                     },
+               'LastStatusChangeTime' => {
+                                           'type' => 'Str'
+                                         },
+               'LastStopTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'LastErrorCode' => 'lastErrorCode',
+                       'Recording' => 'recording',
+                       'LastStatus' => 'lastStatus',
+                       'LastStartTime' => 'lastStartTime',
+                       'LastErrorMessage' => 'lastErrorMessage',
+                       'LastStatusChangeTime' => 'lastStatusChangeTime',
+                       'LastStopTime' => 'lastStopTime',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

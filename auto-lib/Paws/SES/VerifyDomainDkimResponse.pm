@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::VerifyDomainDkimResponse;
   use Moo;
@@ -15,7 +16,10 @@ package Paws::SES::VerifyDomainDkimResponse;
                '_request_id' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'DkimTokens' => 1
+                  }
 }
 ;
     return $Params_map;

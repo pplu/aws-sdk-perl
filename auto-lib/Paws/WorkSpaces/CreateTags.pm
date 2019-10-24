@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::CreateTags;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_Tag/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WorkSpaces_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::CreateTagsResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::CreateTagsResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::WorkSpaces::Tag',
+                           'type' => 'ArrayRef[WorkSpaces_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ access control groups.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[WorkSpaces_Tag]
 
 The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 

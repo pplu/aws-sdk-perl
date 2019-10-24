@@ -1,10 +1,35 @@
 
 package Paws::MediaConnect::ListEntitlementsResponse;
-  use Moose;
-  has Entitlements => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::ListedEntitlement]', traits => ['NameInRequest'], request_name => 'entitlements');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_ListedEntitlement/;
+  has Entitlements => (is => 'ro', isa => ArrayRef[MediaConnect_ListedEntitlement]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Entitlements' => {
+                                   'class' => 'Paws::MediaConnect::ListedEntitlement',
+                                   'type' => 'ArrayRef[MediaConnect_ListedEntitlement]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Entitlements' => 'entitlements'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::MediaConnect::ListEntitlementsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Entitlements => ArrayRef[L<Paws::MediaConnect::ListedEntitlement>]
+=head2 Entitlements => ArrayRef[MediaConnect_ListedEntitlement]
 
 A list of entitlements that have been granted to you from other AWS
 accounts.

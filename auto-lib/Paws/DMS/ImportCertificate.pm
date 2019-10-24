@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::ImportCertificate;
-  use Moose;
-  has CertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has CertificatePem => (is => 'ro', isa => 'Str');
-  has CertificateWallet => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Tag/;
+  has CertificateIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CertificatePem => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateWallet => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DMS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::ImportCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::ImportCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateIdentifier' => {
+                                            'type' => 'Str'
+                                          },
+               'CertificateWallet' => {
+                                        'type' => 'Str'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::DMS::Tag',
+                           'type' => 'ArrayRef[DMS_Tag]'
+                         },
+               'CertificatePem' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'CertificateIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +103,7 @@ SSL.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+=head2 Tags => ArrayRef[DMS_Tag]
 
 The tags associated with the certificate.
 

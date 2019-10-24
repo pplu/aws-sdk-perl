@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateGcmChannel;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has GCMChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::GCMChannelRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_GCMChannelRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GCMChannelRequest => (is => 'ro', isa => Pinpoint_GCMChannelRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'GCMChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGcmChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/gcm');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateGcmChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGcmChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/gcm');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateGcmChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'GCMChannelRequest' => {
+                                        'class' => 'Paws::Pinpoint::GCMChannelRequest',
+                                        'type' => 'Pinpoint_GCMChannelRequest'
+                                      }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'GCMChannelRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +82,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> GCMChannelRequest => L<Paws::Pinpoint::GCMChannelRequest>
+=head2 B<REQUIRED> GCMChannelRequest => Pinpoint_GCMChannelRequest
 
 
 

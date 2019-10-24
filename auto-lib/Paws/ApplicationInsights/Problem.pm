@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::ApplicationInsights::Problem;
-  use Moose;
-  has AffectedResource => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Feedback => (is => 'ro', isa => 'Paws::ApplicationInsights::Feedback');
-  has Id => (is => 'ro', isa => 'Str');
-  has Insights => (is => 'ro', isa => 'Str');
-  has ResourceGroupName => (is => 'ro', isa => 'Str');
-  has SeverityLevel => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_Feedback/;
+  has AffectedResource => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Feedback => (is => 'ro', isa => ApplicationInsights_Feedback);
+  has Id => (is => 'ro', isa => Str);
+  has Insights => (is => 'ro', isa => Str);
+  has ResourceGroupName => (is => 'ro', isa => Str);
+  has SeverityLevel => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'SeverityLevel' => {
+                                    'type' => 'Str'
+                                  },
+               'AffectedResource' => {
+                                       'type' => 'Str'
+                                     },
+               'Insights' => {
+                               'type' => 'Str'
+                             },
+               'ResourceGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Feedback' => {
+                               'class' => 'Paws::ApplicationInsights::Feedback',
+                               'type' => 'ApplicationInsights_Feedback'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +100,7 @@ Describes a problem that is detected by correlating observations.
   The time when the problem ended, in epoch seconds.
 
 
-=head2 Feedback => L<Paws::ApplicationInsights::Feedback>
+=head2 Feedback => ApplicationInsights_Feedback
 
   Feedback provided by the user about the problem.
 

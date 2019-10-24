@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::CreateRateBasedRule;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RateKey => (is => 'ro', isa => 'Str', required => 1);
-  has RateLimit => (is => 'ro', isa => 'Int', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_Tag/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RateKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RateLimit => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WAFRegional_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRateBasedRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::CreateRateBasedRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRateBasedRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::CreateRateBasedRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'RateLimit' => {
+                                'type' => 'Int'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::WAFRegional::Tag',
+                           'type' => 'ArrayRef[WAFRegional_Tag]'
+                         },
+               'RateKey' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'RateLimit' => 1,
+                    'RateKey' => 1,
+                    'Name' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -105,7 +144,7 @@ action that is specified for this rule.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WAFRegional::Tag>]
+=head2 Tags => ArrayRef[WAFRegional_Tag]
 
 
 

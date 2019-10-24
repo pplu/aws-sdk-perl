@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::SuggestModel;
-  use Moose;
-  has Found => (is => 'ro', isa => 'Int', request_name => 'found', traits => ['NameInRequest']);
-  has Query => (is => 'ro', isa => 'Str', request_name => 'query', traits => ['NameInRequest']);
-  has Suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]', request_name => 'suggestions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_SuggestionMatch/;
+  has Found => (is => 'ro', isa => Int);
+  has Query => (is => 'ro', isa => Str);
+  has Suggestions => (is => 'ro', isa => ArrayRef[CloudSearchDomain_SuggestionMatch]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'Suggestions' => {
+                                  'class' => 'Paws::CloudSearchDomain::SuggestionMatch',
+                                  'type' => 'ArrayRef[CloudSearchDomain_SuggestionMatch]'
+                                },
+               'Found' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Query' => 'query',
+                       'Suggestions' => 'suggestions',
+                       'Found' => 'found'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +78,7 @@ C<SuggestResponse>.
   The query string specified in the suggest request.
 
 
-=head2 Suggestions => ArrayRef[L<Paws::CloudSearchDomain::SuggestionMatch>]
+=head2 Suggestions => ArrayRef[CloudSearchDomain_SuggestionMatch]
 
   The documents that match the query string.
 

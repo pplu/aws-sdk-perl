@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateVirtualMFADevice;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::CreateVirtualMFADevice;
                'Path' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'VirtualMFADeviceName' => 1
+                  }
 }
 ;
     return $Params_map;

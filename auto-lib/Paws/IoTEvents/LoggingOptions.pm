@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::LoggingOptions;
-  use Moose;
-  has DetectorDebugOptions => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::DetectorDebugOption]', request_name => 'detectorDebugOptions', traits => ['NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest'], required => 1);
-  has Level => (is => 'ro', isa => 'Str', request_name => 'level', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_DetectorDebugOption/;
+  has DetectorDebugOptions => (is => 'ro', isa => ArrayRef[IoTEvents_DetectorDebugOption]);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Level => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Level' => {
+                            'type' => 'Str'
+                          },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'DetectorDebugOptions' => {
+                                           'class' => 'Paws::IoTEvents::DetectorDebugOption',
+                                           'type' => 'ArrayRef[IoTEvents_DetectorDebugOption]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Level' => 'level',
+                       'Enabled' => 'enabled',
+                       'DetectorDebugOptions' => 'detectorDebugOptions'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'Level' => 1,
+                    'Enabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +77,7 @@ The values of the AWS IoT Events logging options.
 =head1 ATTRIBUTES
 
 
-=head2 DetectorDebugOptions => ArrayRef[L<Paws::IoTEvents::DetectorDebugOption>]
+=head2 DetectorDebugOptions => ArrayRef[IoTEvents_DetectorDebugOption]
 
   Information that identifies those detector models and their detectors
 (instances) for which the logging level is given.

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListIncomingTypedLinksResponse;
-  use Moose;
-  has LinkSpecifiers => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkSpecifier]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has LinkSpecifiers => (is => 'ro', isa => ArrayRef[CloudDirectory_TypedLinkSpecifier]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LinkSpecifiers' => {
+                                     'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                     'type' => 'ArrayRef[CloudDirectory_TypedLinkSpecifier]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Represents the output of a ListIncomingTypedLinks response operation.
 =head1 ATTRIBUTES
 
 
-=head2 LinkSpecifiers => ArrayRef[L<Paws::CloudDirectory::TypedLinkSpecifier>]
+=head2 LinkSpecifiers => ArrayRef[CloudDirectory_TypedLinkSpecifier]
 
   Returns one or more typed link specifiers as output.
 

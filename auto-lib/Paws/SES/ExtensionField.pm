@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ExtensionField;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::SES::ExtensionField;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

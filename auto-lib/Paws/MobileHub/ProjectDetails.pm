@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::MobileHub::ProjectDetails;
-  use Moose;
-  has ConsoleUrl => (is => 'ro', isa => 'Str', request_name => 'consoleUrl', traits => ['NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDate', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ProjectId => (is => 'ro', isa => 'Str', request_name => 'projectId', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::MobileHub::Resource]', request_name => 'resources', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MobileHub::Types qw/MobileHub_Resource/;
+  has ConsoleUrl => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProjectId => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Resources => (is => 'ro', isa => ArrayRef[MobileHub_Resource]);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ConsoleUrl' => {
+                                 'type' => 'Str'
+                               },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Resources' => {
+                                'class' => 'Paws::MobileHub::Resource',
+                                'type' => 'ArrayRef[MobileHub_Resource]'
+                              },
+               'ProjectId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'State' => 'state',
+                       'ConsoleUrl' => 'consoleUrl',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'CreatedDate' => 'createdDate',
+                       'Resources' => 'resources',
+                       'ProjectId' => 'projectId',
+                       'Name' => 'name',
+                       'Region' => 'region'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +122,7 @@ Detailed information about an AWS Mobile Hub project.
   
 
 
-=head2 Resources => ArrayRef[L<Paws::MobileHub::Resource>]
+=head2 Resources => ArrayRef[MobileHub_Resource]
 
   
 

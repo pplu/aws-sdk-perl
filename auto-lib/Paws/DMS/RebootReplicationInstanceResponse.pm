@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::RebootReplicationInstanceResponse;
-  use Moose;
-  has ReplicationInstance => (is => 'ro', isa => 'Paws::DMS::ReplicationInstance');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationInstance/;
+  has ReplicationInstance => (is => 'ro', isa => DMS_ReplicationInstance);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationInstance' => {
+                                          'class' => 'Paws::DMS::ReplicationInstance',
+                                          'type' => 'DMS_ReplicationInstance'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::RebootReplicationInstanceResponse
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationInstance => L<Paws::DMS::ReplicationInstance>
+=head2 ReplicationInstance => DMS_ReplicationInstance
 
 The replication instance that is being rebooted.
 

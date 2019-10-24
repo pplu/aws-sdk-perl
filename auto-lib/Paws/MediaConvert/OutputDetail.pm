@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::OutputDetail;
-  use Moose;
-  has DurationInMs => (is => 'ro', isa => 'Int', request_name => 'durationInMs', traits => ['NameInRequest']);
-  has VideoDetails => (is => 'ro', isa => 'Paws::MediaConvert::VideoDetail', request_name => 'videoDetails', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_VideoDetail/;
+  has DurationInMs => (is => 'ro', isa => Int);
+  has VideoDetails => (is => 'ro', isa => MediaConvert_VideoDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DurationInMs' => {
+                                   'type' => 'Int'
+                                 },
+               'VideoDetails' => {
+                                   'class' => 'Paws::MediaConvert::VideoDetail',
+                                   'type' => 'MediaConvert_VideoDetail'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DurationInMs' => 'durationInMs',
+                       'VideoDetails' => 'videoDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +67,7 @@ Details regarding output
   Duration in milliseconds
 
 
-=head2 VideoDetails => L<Paws::MediaConvert::VideoDetail>
+=head2 VideoDetails => MediaConvert_VideoDetail
 
   Contains details about the output's video stream
 

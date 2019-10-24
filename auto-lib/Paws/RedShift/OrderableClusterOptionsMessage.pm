@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::OrderableClusterOptionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has OrderableClusterOptions => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::OrderableClusterOption]', request_name => 'OrderableClusterOption', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_OrderableClusterOption/;
+  has Marker => (is => 'ro', isa => Str);
+  has OrderableClusterOptions => (is => 'ro', isa => ArrayRef[RedShift_OrderableClusterOption]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrderableClusterOptions' => {
+                                              'class' => 'Paws::RedShift::OrderableClusterOption',
+                                              'type' => 'ArrayRef[RedShift_OrderableClusterOption]'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'OrderableClusterOptions' => 'OrderableClusterOption'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 OrderableClusterOptions => ArrayRef[L<Paws::RedShift::OrderableClusterOption>]
+=head2 OrderableClusterOptions => ArrayRef[RedShift_OrderableClusterOption]
 
 An C<OrderableClusterOption> structure containing information about
 orderable options for the cluster.

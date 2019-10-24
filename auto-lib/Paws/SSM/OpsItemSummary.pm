@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsItemSummary;
-  use Moose;
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
-  has OpsItemId => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has Source => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw/SSM_OpsItemOperationalData/;
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has OperationalData => (is => 'ro', isa => SSM_OpsItemOperationalData);
+  has OpsItemId => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has Source => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'OpsItemId' => {
+                                'type' => 'Str'
+                              },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'OperationalData' => {
+                                      'class' => 'Paws::SSM::OpsItemOperationalData',
+                                      'type' => 'SSM_OpsItemOperationalData'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +112,7 @@ OpsItem.
   The date and time the OpsItem was last updated.
 
 
-=head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
+=head2 OperationalData => SSM_OpsItemOperationalData
 
   Operational data is custom data that provides useful reference details
 about the OpsItem.

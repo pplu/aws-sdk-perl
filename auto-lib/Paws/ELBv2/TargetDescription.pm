@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::ELBv2::TargetDescription;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELBv2::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Port => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,44 @@
 
 package Paws::IoT::GetEffectivePolicies;
-  use Moose;
-  has CognitoIdentityPoolId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cognitoIdentityPoolId');
-  has Principal => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'principal');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CognitoIdentityPoolId => (is => 'ro', isa => Str, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetEffectivePolicies');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/effective-policies');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::GetEffectivePoliciesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetEffectivePolicies');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/effective-policies');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::GetEffectivePoliciesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'CognitoIdentityPoolId' => {
+                                            'type' => 'Str'
+                                          },
+               'Principal' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'ThingName' => 'thingName'
+                    },
+  'NameInRequest' => {
+                       'CognitoIdentityPoolId' => 'cognitoIdentityPoolId',
+                       'Principal' => 'principal'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

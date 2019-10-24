@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetKeyPairsResult;
-  use Moose;
-  has KeyPairs => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::KeyPair]', traits => ['NameInRequest'], request_name => 'keyPairs' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_KeyPair/;
+  has KeyPairs => (is => 'ro', isa => ArrayRef[Lightsail_KeyPair]);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'KeyPairs' => {
+                               'class' => 'Paws::Lightsail::KeyPair',
+                               'type' => 'ArrayRef[Lightsail_KeyPair]'
+                             }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'KeyPairs' => 'keyPairs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Lightsail::GetKeyPairsResult
 =head1 ATTRIBUTES
 
 
-=head2 KeyPairs => ArrayRef[L<Paws::Lightsail::KeyPair>]
+=head2 KeyPairs => ArrayRef[Lightsail_KeyPair]
 
 An array of key-value pairs containing information about the key pairs.
 

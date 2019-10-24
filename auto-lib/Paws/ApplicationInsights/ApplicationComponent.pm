@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ApplicationInsights::ApplicationComponent;
-  use Moose;
-  has ComponentName => (is => 'ro', isa => 'Str');
-  has Monitor => (is => 'ro', isa => 'Bool');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Tier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApplicationInsights::Types qw//;
+  has ComponentName => (is => 'ro', isa => Str);
+  has Monitor => (is => 'ro', isa => Bool);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Tier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Monitor' => {
+                              'type' => 'Bool'
+                            },
+               'ComponentName' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

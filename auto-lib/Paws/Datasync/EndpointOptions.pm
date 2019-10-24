@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Datasync::EndpointOptions;
-  use Moose;
-  has Fips => (is => 'ro', isa => 'Bool');
-  has PrivateLink => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Datasync::Types qw//;
+  has Fips => (is => 'ro', isa => Bool);
+  has PrivateLink => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateLink' => {
+                                  'type' => 'Bool'
+                                },
+               'Fips' => {
+                           'type' => 'Bool'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

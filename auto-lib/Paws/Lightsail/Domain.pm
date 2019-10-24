@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Domain;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DomainEntries => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::DomainEntry]', request_name => 'domainEntries', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_DomainEntry Lightsail_ResourceLocation Lightsail_Tag/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DomainEntries => (is => 'ro', isa => ArrayRef[Lightsail_DomainEntry]);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainEntries' => {
+                                    'class' => 'Paws::Lightsail::DomainEntry',
+                                    'type' => 'ArrayRef[Lightsail_DomainEntry]'
+                                  },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'DomainEntries' => 'domainEntries',
+                       'SupportCode' => 'supportCode',
+                       'CreatedAt' => 'createdAt',
+                       'ResourceType' => 'resourceType',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,13 +105,13 @@ C<arn:aws:lightsail:global:123456789101:Domain/824cede0-abc7-4f84-8dbc-12345EXAM
   The date when the domain recordset was created.
 
 
-=head2 DomainEntries => ArrayRef[L<Paws::Lightsail::DomainEntry>]
+=head2 DomainEntries => ArrayRef[Lightsail_DomainEntry]
 
   An array of key-value pairs containing information about the domain
 entries.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The AWS Region and Availability Zones where the domain recordset was
 created.
@@ -84,7 +135,7 @@ code enables our support team to look up your Lightsail information
 more easily.
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
   The tag keys and optional values for the resource. For more information
 about tags in Lightsail, see the Lightsail Dev Guide

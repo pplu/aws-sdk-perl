@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Source;
-  use Moose;
-  has Password => (is => 'ro', isa => 'Str');
-  has Revision => (is => 'ro', isa => 'Str');
-  has SshKey => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Url => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Password => (is => 'ro', isa => Str);
+  has Revision => (is => 'ro', isa => Str);
+  has SshKey => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'SshKey' => {
+                             'type' => 'Str'
+                           },
+               'Revision' => {
+                               'type' => 'Str'
+                             },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

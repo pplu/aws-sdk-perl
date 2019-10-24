@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::CreateLoadBalancerListeners;
-  use Moose;
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Listener]', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_Listener/;
+  has Listeners => (is => 'ro', isa => ArrayRef[ELB_Listener], required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListeners');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::CreateLoadBalancerListenerOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateLoadBalancerListenersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLoadBalancerListeners');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::CreateLoadBalancerListenerOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateLoadBalancerListenersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'Listeners' => {
+                                'class' => 'Paws::ELB::Listener',
+                                'type' => 'ArrayRef[ELB_Listener]'
+                              }
+             },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'Listeners' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Listeners => ArrayRef[L<Paws::ELB::Listener>]
+=head2 B<REQUIRED> Listeners => ArrayRef[ELB_Listener]
 
 The listeners.
 

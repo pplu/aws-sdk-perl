@@ -1,16 +1,42 @@
 
 package Paws::IoT::ListBillingGroups;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NamePrefixFilter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namePrefixFilter');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NamePrefixFilter => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBillingGroups');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/billing-groups');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListBillingGroupsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBillingGroups');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/billing-groups');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListBillingGroupsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamePrefixFilter' => {
+                                       'type' => 'Str'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NamePrefixFilter' => 'namePrefixFilter',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

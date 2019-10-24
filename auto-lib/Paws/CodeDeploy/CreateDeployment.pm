@@ -1,22 +1,83 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::CreateDeployment;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', traits => ['NameInRequest'], request_name => 'autoRollbackConfiguration' );
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
-  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has FileExistsBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fileExistsBehavior' );
-  has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ignoreApplicationStopFailures' );
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
-  has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', traits => ['NameInRequest'], request_name => 'targetInstances' );
-  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'updateOutdatedInstancesOnly' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_AutoRollbackConfiguration CodeDeploy_RevisionLocation CodeDeploy_TargetInstances/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AutoRollbackConfiguration => (is => 'ro', isa => CodeDeploy_AutoRollbackConfiguration, predicate => 1);
+  has DeploymentConfigName => (is => 'ro', isa => Str, predicate => 1);
+  has DeploymentGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has FileExistsBehavior => (is => 'ro', isa => Str, predicate => 1);
+  has IgnoreApplicationStopFailures => (is => 'ro', isa => Bool, predicate => 1);
+  has Revision => (is => 'ro', isa => CodeDeploy_RevisionLocation, predicate => 1);
+  has TargetInstances => (is => 'ro', isa => CodeDeploy_TargetInstances, predicate => 1);
+  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeployment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeployment');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'class' => 'Paws::CodeDeploy::RevisionLocation',
+                               'type' => 'CodeDeploy_RevisionLocation'
+                             },
+               'UpdateOutdatedInstancesOnly' => {
+                                                  'type' => 'Bool'
+                                                },
+               'IgnoreApplicationStopFailures' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'TargetInstances' => {
+                                      'class' => 'Paws::CodeDeploy::TargetInstances',
+                                      'type' => 'CodeDeploy_TargetInstances'
+                                    },
+               'FileExistsBehavior' => {
+                                         'type' => 'Str'
+                                       },
+               'DeploymentConfigName' => {
+                                           'type' => 'Str'
+                                         },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'AutoRollbackConfiguration' => {
+                                                'class' => 'Paws::CodeDeploy::AutoRollbackConfiguration',
+                                                'type' => 'CodeDeploy_AutoRollbackConfiguration'
+                                              },
+               'DeploymentGroupName' => {
+                                          'type' => 'Str'
+                                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'UpdateOutdatedInstancesOnly' => 'updateOutdatedInstancesOnly',
+                       'IgnoreApplicationStopFailures' => 'ignoreApplicationStopFailures',
+                       'TargetInstances' => 'targetInstances',
+                       'FileExistsBehavior' => 'fileExistsBehavior',
+                       'DeploymentConfigName' => 'deploymentConfigName',
+                       'ApplicationName' => 'applicationName',
+                       'AutoRollbackConfiguration' => 'autoRollbackConfiguration',
+                       'DeploymentGroupName' => 'deploymentGroupName',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +147,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],
-            ...
+            ...                        # OPTIONAL
           ],                           # OPTIONAL
         },    # OPTIONAL
         TagFilters => [
@@ -97,7 +158,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyValue',    # OPTIONAL
           },
           ...
-        ],
+        ],                         # OPTIONAL
       },    # OPTIONAL
       UpdateOutdatedInstancesOnly => 1,    # OPTIONAL
     );
@@ -120,7 +181,7 @@ or AWS account.
 
 
 
-=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+=head2 AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration
 
 Configuration information for an automatic rollback that is added when
 a deployment is created.
@@ -212,13 +273,13 @@ should be ignored.
 
 
 
-=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 Revision => CodeDeploy_RevisionLocation
 
 The type and location of the revision to deploy.
 
 
 
-=head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
+=head2 TargetInstances => CodeDeploy_TargetInstances
 
 Information about the instances that belong to the replacement
 environment in a blue/green deployment.

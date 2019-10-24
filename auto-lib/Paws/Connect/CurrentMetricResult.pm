@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Connect::CurrentMetricResult;
-  use Moose;
-  has Collections => (is => 'ro', isa => 'ArrayRef[Paws::Connect::CurrentMetricData]');
-  has Dimensions => (is => 'ro', isa => 'Paws::Connect::Dimensions');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Connect::Types qw/Connect_Dimensions Connect_CurrentMetricData/;
+  has Collections => (is => 'ro', isa => ArrayRef[Connect_CurrentMetricData]);
+  has Dimensions => (is => 'ro', isa => Connect_Dimensions);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'class' => 'Paws::Connect::Dimensions',
+                                 'type' => 'Connect_Dimensions'
+                               },
+               'Collections' => {
+                                  'class' => 'Paws::Connect::CurrentMetricData',
+                                  'type' => 'ArrayRef[Connect_CurrentMetricData]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ A C<CurrentMetricResult> object.
 =head1 ATTRIBUTES
 
 
-=head2 Collections => ArrayRef[L<Paws::Connect::CurrentMetricData>]
+=head2 Collections => ArrayRef[Connect_CurrentMetricData]
 
   The C<Collections> for the C<CurrentMetricResult> object.
 
 
-=head2 Dimensions => L<Paws::Connect::Dimensions>
+=head2 Dimensions => Connect_Dimensions
 
   The C<Dimensions> for the C<CurrentMetricResult> object.
 

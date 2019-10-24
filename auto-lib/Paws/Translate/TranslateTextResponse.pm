@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Translate::TranslateTextResponse;
-  use Moose;
-  has AppliedTerminologies => (is => 'ro', isa => 'ArrayRef[Paws::Translate::AppliedTerminology]');
-  has SourceLanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TargetLanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has TranslatedText => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Translate::Types qw/Translate_AppliedTerminology/;
+  has AppliedTerminologies => (is => 'ro', isa => ArrayRef[Translate_AppliedTerminology]);
+  has SourceLanguageCode => (is => 'ro', isa => Str, required => 1);
+  has TargetLanguageCode => (is => 'ro', isa => Str, required => 1);
+  has TranslatedText => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AppliedTerminologies' => {
+                                           'class' => 'Paws::Translate::AppliedTerminology',
+                                           'type' => 'ArrayRef[Translate_AppliedTerminology]'
+                                         },
+               'TargetLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'TranslatedText' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'SourceLanguageCode' => 1,
+                    'TargetLanguageCode' => 1,
+                    'TranslatedText' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -17,7 +50,7 @@ Paws::Translate::TranslateTextResponse
 =head1 ATTRIBUTES
 
 
-=head2 AppliedTerminologies => ArrayRef[L<Paws::Translate::AppliedTerminology>]
+=head2 AppliedTerminologies => ArrayRef[Translate_AppliedTerminology]
 
 The names of the custom terminologies applied to the input text by
 Amazon Translate for the translated text response.

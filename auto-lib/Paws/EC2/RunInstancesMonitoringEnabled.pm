@@ -3,7 +3,7 @@ package Paws::EC2::RunInstancesMonitoringEnabled;
   use Paws::EC2::Types qw//;
   has Enabled => (is => 'ro', isa => Bool, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Enabled' => {
@@ -12,11 +12,14 @@ package Paws::EC2::RunInstancesMonitoringEnabled;
              },
   'NameInRequest' => {
                        'Enabled' => 'enabled'
-                     }
+                     },
+  'IsRequired' => {
+                    'Enabled' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -5,7 +5,7 @@ package Paws::EC2::PrefixList;
   has PrefixListId => (is => 'ro', isa => Str);
   has PrefixListName => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Cidrs' => {
@@ -25,8 +25,8 @@ package Paws::EC2::PrefixList;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,16 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::DescribeParameters;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParametersFilter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ParameterFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ParameterStringFilter]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_ParameterStringFilter SSM_ParametersFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_ParametersFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterFilters => (is => 'ro', isa => ArrayRef[SSM_ParameterStringFilter], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeParameters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::DescribeParametersResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeParameters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::DescribeParametersResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::ParametersFilter',
+                              'type' => 'ArrayRef[SSM_ParametersFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ParameterFilters' => {
+                                       'class' => 'Paws::SSM::ParameterStringFilter',
+                                       'type' => 'ArrayRef[SSM_ParameterStringFilter]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +94,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::ParametersFilter>]
+=head2 Filters => ArrayRef[SSM_ParametersFilter]
 
 One or more filters. Use a filter to return a more specific list of
 results.
@@ -89,7 +116,7 @@ from a previous call.)
 
 
 
-=head2 ParameterFilters => ArrayRef[L<Paws::SSM::ParameterStringFilter>]
+=head2 ParameterFilters => ArrayRef[SSM_ParameterStringFilter]
 
 Filters to limit the request results.
 

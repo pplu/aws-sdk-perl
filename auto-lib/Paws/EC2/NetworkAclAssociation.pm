@@ -5,7 +5,7 @@ package Paws::EC2::NetworkAclAssociation;
   has NetworkAclId => (is => 'ro', isa => Str);
   has SubnetId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SubnetId' => {
@@ -25,8 +25,8 @@ package Paws::EC2::NetworkAclAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

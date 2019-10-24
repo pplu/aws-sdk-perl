@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateLocationEfs;
-  use Moose;
-  has Ec2Config => (is => 'ro', isa => 'Paws::Datasync::Ec2Config', required => 1);
-  has EfsFilesystemArn => (is => 'ro', isa => 'Str', required => 1);
-  has Subdirectory => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry Datasync_Ec2Config/;
+  has Ec2Config => (is => 'ro', isa => Datasync_Ec2Config, required => 1, predicate => 1);
+  has EfsFilesystemArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Subdirectory => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLocationEfs');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateLocationEfsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLocationEfs');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateLocationEfsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EfsFilesystemArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Ec2Config' => {
+                                'class' => 'Paws::Datasync::Ec2Config',
+                                'type' => 'Datasync_Ec2Config'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Datasync::TagListEntry',
+                           'type' => 'ArrayRef[Datasync_TagListEntry]'
+                         },
+               'Subdirectory' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'EfsFilesystemArn' => 1,
+                    'Ec2Config' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Ec2Config => L<Paws::Datasync::Ec2Config>
+=head2 B<REQUIRED> Ec2Config => Datasync_Ec2Config
 
 The subnet and security group that the Amazon EFS file system uses. The
 security group that you provide needs to be able to communicate with
@@ -111,7 +142,7 @@ root directory.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents a tag that you want to add to the
 resource. The value can be an empty string. This value helps you

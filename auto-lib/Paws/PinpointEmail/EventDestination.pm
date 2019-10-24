@@ -1,12 +1,55 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::EventDestination;
-  use Moose;
-  has CloudWatchDestination => (is => 'ro', isa => 'Paws::PinpointEmail::CloudWatchDestination');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has KinesisFirehoseDestination => (is => 'ro', isa => 'Paws::PinpointEmail::KinesisFirehoseDestination');
-  has MatchingEventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PinpointDestination => (is => 'ro', isa => 'Paws::PinpointEmail::PinpointDestination');
-  has SnsDestination => (is => 'ro', isa => 'Paws::PinpointEmail::SnsDestination');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_PinpointDestination PinpointEmail_SnsDestination PinpointEmail_KinesisFirehoseDestination PinpointEmail_CloudWatchDestination/;
+  has CloudWatchDestination => (is => 'ro', isa => PinpointEmail_CloudWatchDestination);
+  has Enabled => (is => 'ro', isa => Bool);
+  has KinesisFirehoseDestination => (is => 'ro', isa => PinpointEmail_KinesisFirehoseDestination);
+  has MatchingEventTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has PinpointDestination => (is => 'ro', isa => PinpointEmail_PinpointDestination);
+  has SnsDestination => (is => 'ro', isa => PinpointEmail_SnsDestination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PinpointDestination' => {
+                                          'class' => 'Paws::PinpointEmail::PinpointDestination',
+                                          'type' => 'PinpointEmail_PinpointDestination'
+                                        },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'SnsDestination' => {
+                                     'class' => 'Paws::PinpointEmail::SnsDestination',
+                                     'type' => 'PinpointEmail_SnsDestination'
+                                   },
+               'CloudWatchDestination' => {
+                                            'class' => 'Paws::PinpointEmail::CloudWatchDestination',
+                                            'type' => 'PinpointEmail_CloudWatchDestination'
+                                          },
+               'MatchingEventTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'KinesisFirehoseDestination' => {
+                                                 'class' => 'Paws::PinpointEmail::KinesisFirehoseDestination',
+                                                 'type' => 'PinpointEmail_KinesisFirehoseDestination'
+                                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'MatchingEventTypes' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +90,7 @@ stream data to Amazon S3 for long-term storage.
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchDestination => L<Paws::PinpointEmail::CloudWatchDestination>
+=head2 CloudWatchDestination => PinpointEmail_CloudWatchDestination
 
   An object that defines an Amazon CloudWatch destination for email
 events. You can use Amazon CloudWatch to monitor and gain insights on
@@ -65,7 +108,7 @@ destination is disabled, events aren't sent to the specified
 destinations.
 
 
-=head2 KinesisFirehoseDestination => L<Paws::PinpointEmail::KinesisFirehoseDestination>
+=head2 KinesisFirehoseDestination => PinpointEmail_KinesisFirehoseDestination
 
   An object that defines an Amazon Kinesis Data Firehose destination for
 email events. You can use Amazon Kinesis Data Firehose to stream data
@@ -83,7 +126,7 @@ destinations.
   A name that identifies the event destination.
 
 
-=head2 PinpointDestination => L<Paws::PinpointEmail::PinpointDestination>
+=head2 PinpointDestination => PinpointEmail_PinpointDestination
 
   An object that defines a Amazon Pinpoint destination for email events.
 You can use Amazon Pinpoint events to create attributes in Amazon
@@ -91,7 +134,7 @@ Pinpoint projects. You can use these attributes to create segments for
 your campaigns.
 
 
-=head2 SnsDestination => L<Paws::PinpointEmail::SnsDestination>
+=head2 SnsDestination => PinpointEmail_SnsDestination
 
   An object that defines an Amazon SNS destination for email events. You
 can use Amazon SNS to send notification when certain email events

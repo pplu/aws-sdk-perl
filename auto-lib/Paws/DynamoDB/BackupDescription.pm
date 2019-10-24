@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BackupDescription;
   use Moo;
   use Types::Standard qw//;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::BackupDescription;
   has SourceTableDetails => (is => 'ro', isa => DynamoDB_SourceTableDetails);
   has SourceTableFeatureDetails => (is => 'ro', isa => DynamoDB_SourceTableFeatureDetails);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SourceTableDetails' => {
@@ -24,8 +25,8 @@ package Paws::DynamoDB::BackupDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

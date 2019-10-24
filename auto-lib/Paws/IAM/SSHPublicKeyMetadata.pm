@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::SSHPublicKeyMetadata;
   use Moo;
   use Types::Standard qw/Str/;
@@ -22,7 +23,13 @@ package Paws::IAM::SSHPublicKeyMetadata;
                'SSHPublicKeyId' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Status' => 1,
+                    'UploadDate' => 1,
+                    'SSHPublicKeyId' => 1
+                  }
 }
 ;
     return $Params_map;

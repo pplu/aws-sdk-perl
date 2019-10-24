@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Config::QueryInfo;
-  use Moose;
-  has SelectFields => (is => 'ro', isa => 'ArrayRef[Paws::Config::FieldInfo]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Config::Types qw/Config_FieldInfo/;
+  has SelectFields => (is => 'ro', isa => ArrayRef[Config_FieldInfo]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SelectFields' => {
+                                   'class' => 'Paws::Config::FieldInfo',
+                                   'type' => 'ArrayRef[Config_FieldInfo]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Details about the query.
 =head1 ATTRIBUTES
 
 
-=head2 SelectFields => ArrayRef[L<Paws::Config::FieldInfo>]
+=head2 SelectFields => ArrayRef[Config_FieldInfo]
 
   Returns a C<FieldInfo> object.
 

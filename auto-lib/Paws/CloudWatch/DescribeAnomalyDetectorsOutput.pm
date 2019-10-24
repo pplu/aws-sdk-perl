@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudWatch::DescribeAnomalyDetectorsOutput;
-  use Moose;
-  has AnomalyDetectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::AnomalyDetector]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_AnomalyDetector/;
+  has AnomalyDetectors => (is => 'ro', isa => ArrayRef[CloudWatch_AnomalyDetector]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AnomalyDetectors' => {
+                                       'class' => 'Paws::CloudWatch::AnomalyDetector',
+                                       'type' => 'ArrayRef[CloudWatch_AnomalyDetector]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::CloudWatch::DescribeAnomalyDetectorsOutput
 =head1 ATTRIBUTES
 
 
-=head2 AnomalyDetectors => ArrayRef[L<Paws::CloudWatch::AnomalyDetector>]
+=head2 AnomalyDetectors => ArrayRef[CloudWatch_AnomalyDetector]
 
 The list of anomaly detection models returned by the operation.
 

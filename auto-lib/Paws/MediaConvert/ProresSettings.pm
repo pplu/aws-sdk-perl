@@ -1,16 +1,76 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ProresSettings;
-  use Moose;
-  has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
-  has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
-  has InterlaceMode => (is => 'ro', isa => 'Str', request_name => 'interlaceMode', traits => ['NameInRequest']);
-  has ParControl => (is => 'ro', isa => 'Str', request_name => 'parControl', traits => ['NameInRequest']);
-  has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
-  has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
-  has SlowPal => (is => 'ro', isa => 'Str', request_name => 'slowPal', traits => ['NameInRequest']);
-  has Telecine => (is => 'ro', isa => 'Str', request_name => 'telecine', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has CodecProfile => (is => 'ro', isa => Str);
+  has FramerateControl => (is => 'ro', isa => Str);
+  has FramerateConversionAlgorithm => (is => 'ro', isa => Str);
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+  has InterlaceMode => (is => 'ro', isa => Str);
+  has ParControl => (is => 'ro', isa => Str);
+  has ParDenominator => (is => 'ro', isa => Int);
+  has ParNumerator => (is => 'ro', isa => Int);
+  has SlowPal => (is => 'ro', isa => Str);
+  has Telecine => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParControl' => {
+                                 'type' => 'Str'
+                               },
+               'FramerateConversionAlgorithm' => {
+                                                   'type' => 'Str'
+                                                 },
+               'FramerateControl' => {
+                                       'type' => 'Str'
+                                     },
+               'CodecProfile' => {
+                                   'type' => 'Str'
+                                 },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'ParNumerator' => {
+                                   'type' => 'Int'
+                                 },
+               'ParDenominator' => {
+                                     'type' => 'Int'
+                                   },
+               'InterlaceMode' => {
+                                    'type' => 'Str'
+                                  },
+               'Telecine' => {
+                               'type' => 'Str'
+                             },
+               'SlowPal' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ParControl' => 'parControl',
+                       'FramerateConversionAlgorithm' => 'framerateConversionAlgorithm',
+                       'FramerateControl' => 'framerateControl',
+                       'CodecProfile' => 'codecProfile',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'ParNumerator' => 'parNumerator',
+                       'ParDenominator' => 'parDenominator',
+                       'InterlaceMode' => 'interlaceMode',
+                       'Telecine' => 'telecine',
+                       'SlowPal' => 'slowPal'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

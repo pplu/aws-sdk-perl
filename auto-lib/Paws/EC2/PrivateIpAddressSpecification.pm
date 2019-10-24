@@ -4,7 +4,7 @@ package Paws::EC2::PrivateIpAddressSpecification;
   has Primary => (is => 'ro', isa => Bool);
   has PrivateIpAddress => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Primary' => {
@@ -20,8 +20,8 @@ package Paws::EC2::PrivateIpAddressSpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::ProposalActions;
-  use Moose;
-  has Invitations => (is => 'ro', isa => 'ArrayRef[Paws::ManagedBlockchain::InviteAction]');
-  has Removals => (is => 'ro', isa => 'ArrayRef[Paws::ManagedBlockchain::RemoveAction]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_InviteAction ManagedBlockchain_RemoveAction/;
+  has Invitations => (is => 'ro', isa => ArrayRef[ManagedBlockchain_InviteAction]);
+  has Removals => (is => 'ro', isa => ArrayRef[ManagedBlockchain_RemoveAction]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Invitations' => {
+                                  'class' => 'Paws::ManagedBlockchain::InviteAction',
+                                  'type' => 'ArrayRef[ManagedBlockchain_InviteAction]'
+                                },
+               'Removals' => {
+                               'class' => 'Paws::ManagedBlockchain::RemoveAction',
+                               'type' => 'ArrayRef[ManagedBlockchain_RemoveAction]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +59,13 @@ The actions to carry out if a proposal is C<APPROVED>.
 =head1 ATTRIBUTES
 
 
-=head2 Invitations => ArrayRef[L<Paws::ManagedBlockchain::InviteAction>]
+=head2 Invitations => ArrayRef[ManagedBlockchain_InviteAction]
 
   The actions to perform for an C<APPROVED> proposal to invite an AWS
 account to create a member and join the network.
 
 
-=head2 Removals => ArrayRef[L<Paws::ManagedBlockchain::RemoveAction>]
+=head2 Removals => ArrayRef[ManagedBlockchain_RemoveAction]
 
   The actions to perform for an C<APPROVED> proposal to remove a member
 from the network, which deletes the member and all associated member

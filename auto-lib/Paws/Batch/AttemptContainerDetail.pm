@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::Batch::AttemptContainerDetail;
-  use Moose;
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
-  has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
-  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
-  has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
-  has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Batch::Types qw/Batch_NetworkInterface/;
+  has ContainerInstanceArn => (is => 'ro', isa => Str);
+  has ExitCode => (is => 'ro', isa => Int);
+  has LogStreamName => (is => 'ro', isa => Str);
+  has NetworkInterfaces => (is => 'ro', isa => ArrayRef[Batch_NetworkInterface]);
+  has Reason => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'ExitCode' => {
+                               'type' => 'Int'
+                             },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'ContainerInstanceArn' => {
+                                           'type' => 'Str'
+                                         },
+               'NetworkInterfaces' => {
+                                        'class' => 'Paws::Batch::NetworkInterface',
+                                        'type' => 'ArrayRef[Batch_NetworkInterface]'
+                                      },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Reason' => 'reason',
+                       'ExitCode' => 'exitCode',
+                       'TaskArn' => 'taskArn',
+                       'ContainerInstanceArn' => 'containerInstanceArn',
+                       'NetworkInterfaces' => 'networkInterfaces',
+                       'LogStreamName' => 'logStreamName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +103,7 @@ container attempt receives a log stream name when they reach the
 C<RUNNING> status.
 
 
-=head2 NetworkInterfaces => ArrayRef[L<Paws::Batch::NetworkInterface>]
+=head2 NetworkInterfaces => ArrayRef[Batch_NetworkInterface]
 
   The network interfaces associated with the job attempt.
 

@@ -1,10 +1,31 @@
 
 package Paws::Backup::ListBackupPlanTemplatesOutput;
-  use Moose;
-  has BackupPlanTemplatesList => (is => 'ro', isa => 'ArrayRef[Paws::Backup::BackupPlanTemplatesListMember]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Backup::Types qw/Backup_BackupPlanTemplatesListMember/;
+  has BackupPlanTemplatesList => (is => 'ro', isa => ArrayRef[Backup_BackupPlanTemplatesListMember]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupPlanTemplatesList' => {
+                                              'class' => 'Paws::Backup::BackupPlanTemplatesListMember',
+                                              'type' => 'ArrayRef[Backup_BackupPlanTemplatesListMember]'
+                                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Backup::ListBackupPlanTemplatesOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupPlanTemplatesList => ArrayRef[L<Paws::Backup::BackupPlanTemplatesListMember>]
+=head2 BackupPlanTemplatesList => ArrayRef[Backup_BackupPlanTemplatesListMember]
 
 An array of template list items containing metadata about your saved
 templates.

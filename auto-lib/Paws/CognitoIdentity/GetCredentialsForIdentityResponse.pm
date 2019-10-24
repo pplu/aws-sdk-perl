@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdentity::GetCredentialsForIdentityResponse;
-  use Moose;
-  has Credentials => (is => 'ro', isa => 'Paws::CognitoIdentity::Credentials');
-  has IdentityId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_Credentials/;
+  has Credentials => (is => 'ro', isa => CognitoIdentity_Credentials);
+  has IdentityId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Credentials' => {
+                                  'class' => 'Paws::CognitoIdentity::Credentials',
+                                  'type' => 'CognitoIdentity_Credentials'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CognitoIdentity::GetCredentialsForIdentityResponse
 =head1 ATTRIBUTES
 
 
-=head2 Credentials => L<Paws::CognitoIdentity::Credentials>
+=head2 Credentials => CognitoIdentity_Credentials
 
 Credentials for the provided identity ID.
 

@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::DescribeConfigurationSettings;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EnvironmentName => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeConfigurationSettingsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeConfigurationSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeConfigurationSettingsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

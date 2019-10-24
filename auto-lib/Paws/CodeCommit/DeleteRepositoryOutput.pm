@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::DeleteRepositoryOutput;
-  use Moose;
-  has RepositoryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has RepositoryId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RepositoryId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'RepositoryId' => 'repositoryId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::Lightsail::InstanceNetworking;
-  use Moose;
-  has MonthlyTransfer => (is => 'ro', isa => 'Paws::Lightsail::MonthlyTransfer', request_name => 'monthlyTransfer', traits => ['NameInRequest']);
-  has Ports => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstancePortInfo]', request_name => 'ports', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_InstancePortInfo Lightsail_MonthlyTransfer/;
+  has MonthlyTransfer => (is => 'ro', isa => Lightsail_MonthlyTransfer);
+  has Ports => (is => 'ro', isa => ArrayRef[Lightsail_InstancePortInfo]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ports' => {
+                            'class' => 'Paws::Lightsail::InstancePortInfo',
+                            'type' => 'ArrayRef[Lightsail_InstancePortInfo]'
+                          },
+               'MonthlyTransfer' => {
+                                      'class' => 'Paws::Lightsail::MonthlyTransfer',
+                                      'type' => 'Lightsail_MonthlyTransfer'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Ports' => 'ports',
+                       'MonthlyTransfer' => 'monthlyTransfer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +64,12 @@ instance.
 =head1 ATTRIBUTES
 
 
-=head2 MonthlyTransfer => L<Paws::Lightsail::MonthlyTransfer>
+=head2 MonthlyTransfer => Lightsail_MonthlyTransfer
 
   The amount of data in GB allocated for monthly data transfers.
 
 
-=head2 Ports => ArrayRef[L<Paws::Lightsail::InstancePortInfo>]
+=head2 Ports => ArrayRef[Lightsail_InstancePortInfo]
 
   An array of key-value pairs containing information about the ports on
 the instance.

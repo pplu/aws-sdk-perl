@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateDeviceDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId', required => 1);
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Device]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Device/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DeviceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Devices => (is => 'ro', isa => ArrayRef[Greengrass_Device], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeviceDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateDeviceDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeviceDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateDeviceDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceDefinitionId' => {
+                                         'type' => 'Str'
+                                       },
+               'Devices' => {
+                              'class' => 'Paws::Greengrass::Device',
+                              'type' => 'ArrayRef[Greengrass_Device]'
+                            },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'DeviceDefinitionId' => 'DeviceDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'DeviceDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +103,7 @@ The ID of the device definition.
 
 
 
-=head2 Devices => ArrayRef[L<Paws::Greengrass::Device>]
+=head2 Devices => ArrayRef[Greengrass_Device]
 
 A list of devices in the definition version.
 

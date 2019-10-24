@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::OutputUpdate;
-  use Moose;
-  has DestinationSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::DestinationSchema');
-  has KinesisFirehoseOutputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseOutputUpdate');
-  has KinesisStreamsOutputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsOutputUpdate');
-  has LambdaOutputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::LambdaOutputUpdate');
-  has NameUpdate => (is => 'ro', isa => 'Str');
-  has OutputId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_LambdaOutputUpdate KinesisAnalytics_KinesisStreamsOutputUpdate KinesisAnalytics_KinesisFirehoseOutputUpdate KinesisAnalytics_DestinationSchema/;
+  has DestinationSchemaUpdate => (is => 'ro', isa => KinesisAnalytics_DestinationSchema);
+  has KinesisFirehoseOutputUpdate => (is => 'ro', isa => KinesisAnalytics_KinesisFirehoseOutputUpdate);
+  has KinesisStreamsOutputUpdate => (is => 'ro', isa => KinesisAnalytics_KinesisStreamsOutputUpdate);
+  has LambdaOutputUpdate => (is => 'ro', isa => KinesisAnalytics_LambdaOutputUpdate);
+  has NameUpdate => (is => 'ro', isa => Str);
+  has OutputId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputId' => {
+                               'type' => 'Str'
+                             },
+               'KinesisFirehoseOutputUpdate' => {
+                                                  'class' => 'Paws::KinesisAnalytics::KinesisFirehoseOutputUpdate',
+                                                  'type' => 'KinesisAnalytics_KinesisFirehoseOutputUpdate'
+                                                },
+               'LambdaOutputUpdate' => {
+                                         'class' => 'Paws::KinesisAnalytics::LambdaOutputUpdate',
+                                         'type' => 'KinesisAnalytics_LambdaOutputUpdate'
+                                       },
+               'KinesisStreamsOutputUpdate' => {
+                                                 'class' => 'Paws::KinesisAnalytics::KinesisStreamsOutputUpdate',
+                                                 'type' => 'KinesisAnalytics_KinesisStreamsOutputUpdate'
+                                               },
+               'DestinationSchemaUpdate' => {
+                                              'class' => 'Paws::KinesisAnalytics::DestinationSchema',
+                                              'type' => 'KinesisAnalytics_DestinationSchema'
+                                            },
+               'NameUpdate' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'OutputId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,25 +81,25 @@ C<OutputId>.
 =head1 ATTRIBUTES
 
 
-=head2 DestinationSchemaUpdate => L<Paws::KinesisAnalytics::DestinationSchema>
+=head2 DestinationSchemaUpdate => KinesisAnalytics_DestinationSchema
 
   Describes the data format when records are written to the destination.
 For more information, see Configuring Application Output
 (https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html).
 
 
-=head2 KinesisFirehoseOutputUpdate => L<Paws::KinesisAnalytics::KinesisFirehoseOutputUpdate>
+=head2 KinesisFirehoseOutputUpdate => KinesisAnalytics_KinesisFirehoseOutputUpdate
 
   Describes an Amazon Kinesis Firehose delivery stream as the destination
 for the output.
 
 
-=head2 KinesisStreamsOutputUpdate => L<Paws::KinesisAnalytics::KinesisStreamsOutputUpdate>
+=head2 KinesisStreamsOutputUpdate => KinesisAnalytics_KinesisStreamsOutputUpdate
 
   Describes an Amazon Kinesis stream as the destination for the output.
 
 
-=head2 LambdaOutputUpdate => L<Paws::KinesisAnalytics::LambdaOutputUpdate>
+=head2 LambdaOutputUpdate => KinesisAnalytics_LambdaOutputUpdate
 
   Describes an AWS Lambda function as the destination for the output.
 

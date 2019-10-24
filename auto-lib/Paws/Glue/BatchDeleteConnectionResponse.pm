@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::BatchDeleteConnectionResponse;
-  use Moose;
-  has Errors => (is => 'ro', isa => 'Paws::Glue::ErrorByName');
-  has Succeeded => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_ErrorByName/;
+  has Errors => (is => 'ro', isa => Glue_ErrorByName);
+  has Succeeded => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Succeeded' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Errors' => {
+                             'class' => 'Paws::Glue::ErrorByName',
+                             'type' => 'Glue_ErrorByName'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::BatchDeleteConnectionResponse
 =head1 ATTRIBUTES
 
 
-=head2 Errors => L<Paws::Glue::ErrorByName>
+=head2 Errors => Glue_ErrorByName
 
 A map of the names of connections that were not successfully deleted to
 error details.

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::Logging;
-  use Moose;
-  has AccessLog => (is => 'ro', isa => 'Paws::AppMesh::AccessLog', request_name => 'accessLog', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_AccessLog/;
+  has AccessLog => (is => 'ro', isa => AppMesh_AccessLog);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessLog' => {
+                                'class' => 'Paws::AppMesh::AccessLog',
+                                'type' => 'AppMesh_AccessLog'
+                              }
+             },
+  'NameInRequest' => {
+                       'AccessLog' => 'accessLog'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object representing the logging information for a virtual node.
 =head1 ATTRIBUTES
 
 
-=head2 AccessLog => L<Paws::AppMesh::AccessLog>
+=head2 AccessLog => AppMesh_AccessLog
 
   The access log configuration for a virtual node.
 

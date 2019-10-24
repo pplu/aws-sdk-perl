@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetServerCertificateResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_ServerCertificate/;
   has ServerCertificate => (is => 'ro', isa => IAM_ServerCertificate, required => 1);

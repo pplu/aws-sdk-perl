@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SMS::LaunchDetails;
-  use Moose;
-  has LatestLaunchTime => (is => 'ro', isa => 'Str', request_name => 'latestLaunchTime', traits => ['NameInRequest']);
-  has StackId => (is => 'ro', isa => 'Str', request_name => 'stackId', traits => ['NameInRequest']);
-  has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SMS::Types qw//;
+  has LatestLaunchTime => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LatestLaunchTime' => {
+                                       'type' => 'Str'
+                                     },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'StackName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'LatestLaunchTime' => 'latestLaunchTime',
+                       'StackId' => 'stackId',
+                       'StackName' => 'stackName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult;
-  use Moose;
-  has Directories => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceDirectory]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceDirectory/;
+  has Directories => (is => 'ro', isa => ArrayRef[WorkSpaces_WorkspaceDirectory]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Directories' => {
+                                  'class' => 'Paws::WorkSpaces::WorkspaceDirectory',
+                                  'type' => 'ArrayRef[WorkSpaces_WorkspaceDirectory]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WorkSpaces::DescribeWorkspaceDirectoriesResult
 =head1 ATTRIBUTES
 
 
-=head2 Directories => ArrayRef[L<Paws::WorkSpaces::WorkspaceDirectory>]
+=head2 Directories => ArrayRef[WorkSpaces_WorkspaceDirectory]
 
 Information about the directories.
 

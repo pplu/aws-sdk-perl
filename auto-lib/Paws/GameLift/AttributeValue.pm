@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::GameLift::AttributeValue;
-  use Moose;
-  has N => (is => 'ro', isa => 'Num');
-  has S => (is => 'ro', isa => 'Str');
-  has SDM => (is => 'ro', isa => 'Paws::GameLift::StringDoubleMap');
-  has SL => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Num Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_StringDoubleMap/;
+  has N => (is => 'ro', isa => Num);
+  has S => (is => 'ro', isa => Str);
+  has SDM => (is => 'ro', isa => GameLift_StringDoubleMap);
+  has SL => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S' => {
+                        'type' => 'Str'
+                      },
+               'SDM' => {
+                          'class' => 'Paws::GameLift::StringDoubleMap',
+                          'type' => 'GameLift_StringDoubleMap'
+                        },
+               'N' => {
+                        'type' => 'Num'
+                      },
+               'SL' => {
+                         'type' => 'ArrayRef[Str|Undef]'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +79,7 @@ object can use only one of the available properties.
   For single string values. Maximum string length is 100 characters.
 
 
-=head2 SDM => L<Paws::GameLift::StringDoubleMap>
+=head2 SDM => GameLift_StringDoubleMap
 
   For a map of up to 10 data type:value pairs. Maximum length for each
 string value is 100 characters.

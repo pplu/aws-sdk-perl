@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::RegisterRdsDbInstance;
-  use Moose;
-  has DbPassword => (is => 'ro', isa => 'Str', required => 1);
-  has DbUser => (is => 'ro', isa => 'Str', required => 1);
-  has RdsDbInstanceArn => (is => 'ro', isa => 'Str', required => 1);
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has DbPassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DbUser => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RdsDbInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterRdsDbInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterRdsDbInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RdsDbInstanceArn' => {
+                                       'type' => 'Str'
+                                     },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'DbPassword' => {
+                                 'type' => 'Str'
+                               },
+               'DbUser' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'RdsDbInstanceArn' => 1,
+                    'StackId' => 1,
+                    'DbPassword' => 1,
+                    'DbUser' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

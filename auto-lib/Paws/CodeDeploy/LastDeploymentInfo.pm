@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::LastDeploymentInfo;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has CreateTime => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CreateTime' => 'createTime',
+                       'DeploymentId' => 'deploymentId',
+                       'EndTime' => 'endTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

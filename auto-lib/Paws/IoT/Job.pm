@@ -1,22 +1,111 @@
+# Generated from default/object.tt
 package Paws::IoT::Job;
-  use Moose;
-  has AbortConfig => (is => 'ro', isa => 'Paws::IoT::AbortConfig', request_name => 'abortConfig', traits => ['NameInRequest']);
-  has Comment => (is => 'ro', isa => 'Str', request_name => 'comment', traits => ['NameInRequest']);
-  has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ForceCanceled => (is => 'ro', isa => 'Bool', request_name => 'forceCanceled', traits => ['NameInRequest']);
-  has JobArn => (is => 'ro', isa => 'Str', request_name => 'jobArn', traits => ['NameInRequest']);
-  has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', request_name => 'jobExecutionsRolloutConfig', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has JobProcessDetails => (is => 'ro', isa => 'Paws::IoT::JobProcessDetails', request_name => 'jobProcessDetails', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', request_name => 'presignedUrlConfig', traits => ['NameInRequest']);
-  has ReasonCode => (is => 'ro', isa => 'Str', request_name => 'reasonCode', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'targets', traits => ['NameInRequest']);
-  has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
-  has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', request_name => 'timeoutConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_JobProcessDetails IoT_TimeoutConfig IoT_AbortConfig IoT_PresignedUrlConfig IoT_JobExecutionsRolloutConfig/;
+  has AbortConfig => (is => 'ro', isa => IoT_AbortConfig);
+  has Comment => (is => 'ro', isa => Str);
+  has CompletedAt => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ForceCanceled => (is => 'ro', isa => Bool);
+  has JobArn => (is => 'ro', isa => Str);
+  has JobExecutionsRolloutConfig => (is => 'ro', isa => IoT_JobExecutionsRolloutConfig);
+  has JobId => (is => 'ro', isa => Str);
+  has JobProcessDetails => (is => 'ro', isa => IoT_JobProcessDetails);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has PresignedUrlConfig => (is => 'ro', isa => IoT_PresignedUrlConfig);
+  has ReasonCode => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TargetSelection => (is => 'ro', isa => Str);
+  has TimeoutConfig => (is => 'ro', isa => IoT_TimeoutConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobProcessDetails' => {
+                                        'class' => 'Paws::IoT::JobProcessDetails',
+                                        'type' => 'IoT_JobProcessDetails'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CompletedAt' => {
+                                  'type' => 'Str'
+                                },
+               'JobExecutionsRolloutConfig' => {
+                                                 'class' => 'Paws::IoT::JobExecutionsRolloutConfig',
+                                                 'type' => 'IoT_JobExecutionsRolloutConfig'
+                                               },
+               'JobArn' => {
+                             'type' => 'Str'
+                           },
+               'AbortConfig' => {
+                                  'class' => 'Paws::IoT::AbortConfig',
+                                  'type' => 'IoT_AbortConfig'
+                                },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ForceCanceled' => {
+                                    'type' => 'Bool'
+                                  },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'TimeoutConfig' => {
+                                    'class' => 'Paws::IoT::TimeoutConfig',
+                                    'type' => 'IoT_TimeoutConfig'
+                                  },
+               'ReasonCode' => {
+                                 'type' => 'Str'
+                               },
+               'Targets' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'TargetSelection' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'PresignedUrlConfig' => {
+                                         'class' => 'Paws::IoT::PresignedUrlConfig',
+                                         'type' => 'IoT_PresignedUrlConfig'
+                                       }
+             },
+  'NameInRequest' => {
+                       'JobProcessDetails' => 'jobProcessDetails',
+                       'Status' => 'status',
+                       'CompletedAt' => 'completedAt',
+                       'JobExecutionsRolloutConfig' => 'jobExecutionsRolloutConfig',
+                       'JobArn' => 'jobArn',
+                       'AbortConfig' => 'abortConfig',
+                       'CreatedAt' => 'createdAt',
+                       'ForceCanceled' => 'forceCanceled',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'JobId' => 'jobId',
+                       'Comment' => 'comment',
+                       'TimeoutConfig' => 'timeoutConfig',
+                       'ReasonCode' => 'reasonCode',
+                       'Targets' => 'targets',
+                       'TargetSelection' => 'targetSelection',
+                       'Description' => 'description',
+                       'PresignedUrlConfig' => 'presignedUrlConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +141,7 @@ The C<Job> object contains details about a job.
 =head1 ATTRIBUTES
 
 
-=head2 AbortConfig => L<Paws::IoT::AbortConfig>
+=head2 AbortConfig => IoT_AbortConfig
 
   Configuration for criteria to abort the job.
 
@@ -89,7 +178,7 @@ parameter set to C<true>.
 "arn:aws:iot:region:account:job/jobId".
 
 
-=head2 JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>
+=head2 JobExecutionsRolloutConfig => IoT_JobExecutionsRolloutConfig
 
   Allows you to create a staged rollout of a job.
 
@@ -99,7 +188,7 @@ parameter set to C<true>.
   The unique identifier you assigned to this job when it was created.
 
 
-=head2 JobProcessDetails => L<Paws::IoT::JobProcessDetails>
+=head2 JobProcessDetails => IoT_JobProcessDetails
 
   Details about the job process.
 
@@ -109,7 +198,7 @@ parameter set to C<true>.
   The time, in seconds since the epoch, when the job was last updated.
 
 
-=head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>
+=head2 PresignedUrlConfig => IoT_PresignedUrlConfig
 
   Configuration for pre-signed S3 URLs.
 
@@ -141,7 +230,7 @@ group, even after the job was completed by all things originally in the
 group.
 
 
-=head2 TimeoutConfig => L<Paws::IoT::TimeoutConfig>
+=head2 TimeoutConfig => IoT_TimeoutConfig
 
   Specifies the amount of time each device has to finish its execution of
 the job. A timer is started when the job execution status is set to

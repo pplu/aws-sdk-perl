@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::PutLoggingConfiguration;
-  use Moose;
-  has LoggingConfiguration => (is => 'ro', isa => 'Paws::WAF::LoggingConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_LoggingConfiguration/;
+  has LoggingConfiguration => (is => 'ro', isa => WAF_LoggingConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLoggingConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::PutLoggingConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLoggingConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::PutLoggingConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingConfiguration' => {
+                                           'class' => 'Paws::WAF::LoggingConfiguration',
+                                           'type' => 'WAF_LoggingConfiguration'
+                                         }
+             },
+  'IsRequired' => {
+                    'LoggingConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LoggingConfiguration => L<Paws::WAF::LoggingConfiguration>
+=head2 B<REQUIRED> LoggingConfiguration => WAF_LoggingConfiguration
 
 The Amazon Kinesis Data Firehose that contains the inspected traffic
 information, the redacted fields details, and the Amazon Resource Name

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::Budgets::NotificationWithSubscribers;
-  use Moose;
-  has Notification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Subscriber]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Budgets::Types qw/Budgets_Notification Budgets_Subscriber/;
+  has Notification => (is => 'ro', isa => Budgets_Notification, required => 1);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Budgets_Subscriber], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscribers' => {
+                                  'class' => 'Paws::Budgets::Subscriber',
+                                  'type' => 'ArrayRef[Budgets_Subscriber]'
+                                },
+               'Notification' => {
+                                   'class' => 'Paws::Budgets::Notification',
+                                   'type' => 'Budgets_Notification'
+                                 }
+             },
+  'IsRequired' => {
+                    'Subscribers' => 1,
+                    'Notification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +65,12 @@ subscribers.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
+=head2 B<REQUIRED> Notification => Budgets_Notification
 
   The notification that is associated with a budget.
 
 
-=head2 B<REQUIRED> Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
+=head2 B<REQUIRED> Subscribers => ArrayRef[Budgets_Subscriber]
 
   A list of subscribers who are subscribed to this notification.
 

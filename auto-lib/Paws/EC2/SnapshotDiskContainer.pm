@@ -6,7 +6,7 @@ package Paws::EC2::SnapshotDiskContainer;
   has Url => (is => 'ro', isa => Str);
   has UserBucket => (is => 'ro', isa => EC2_UserBucket);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UserBucket' => {
@@ -25,8 +25,8 @@ package Paws::EC2::SnapshotDiskContainer;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

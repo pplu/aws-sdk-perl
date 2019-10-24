@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::Glue::TriggerUpdate;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Action]');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Predicate => (is => 'ro', isa => 'Paws::Glue::Predicate');
-  has Schedule => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Glue::Types qw/Glue_Action Glue_Predicate/;
+  has Actions => (is => 'ro', isa => ArrayRef[Glue_Action]);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Predicate => (is => 'ro', isa => Glue_Predicate);
+  has Schedule => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Actions' => {
+                              'class' => 'Paws::Glue::Action',
+                              'type' => 'ArrayRef[Glue_Action]'
+                            },
+               'Predicate' => {
+                                'class' => 'Paws::Glue::Predicate',
+                                'type' => 'Glue_Predicate'
+                              },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +73,7 @@ completely.
 =head1 ATTRIBUTES
 
 
-=head2 Actions => ArrayRef[L<Paws::Glue::Action>]
+=head2 Actions => ArrayRef[Glue_Action]
 
   The actions initiated by this trigger.
 
@@ -57,7 +88,7 @@ completely.
   Reserved for future use.
 
 
-=head2 Predicate => L<Paws::Glue::Predicate>
+=head2 Predicate => Glue_Predicate
 
   The predicate of this trigger, which defines when it will fire.
 

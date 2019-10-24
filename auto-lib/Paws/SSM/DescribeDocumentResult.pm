@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeDocumentResult;
-  use Moose;
-  has Document => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_DocumentDescription/;
+  has Document => (is => 'ro', isa => SSM_DocumentDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Document' => {
+                               'class' => 'Paws::SSM::DocumentDescription',
+                               'type' => 'SSM_DocumentDescription'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::DescribeDocumentResult
 =head1 ATTRIBUTES
 
 
-=head2 Document => L<Paws::SSM::DocumentDescription>
+=head2 Document => SSM_DocumentDescription
 
 Information about the Systems Manager document.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Rule;
   use Moo;
   use Types::Standard qw/Str/;
@@ -43,7 +44,11 @@ package Paws::S3::Rule;
                                  'class' => 'Paws::S3::Transition',
                                  'type' => 'S3_Transition'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'Prefix' => 1,
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

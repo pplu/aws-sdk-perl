@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::InputProcessingConfigurationDescription;
-  use Moose;
-  has InputLambdaProcessorDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputLambdaProcessorDescription');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputLambdaProcessorDescription/;
+  has InputLambdaProcessorDescription => (is => 'ro', isa => KinesisAnalyticsV2_InputLambdaProcessorDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputLambdaProcessorDescription' => {
+                                                      'class' => 'Paws::KinesisAnalyticsV2::InputLambdaProcessorDescription',
+                                                      'type' => 'KinesisAnalyticsV2_InputLambdaProcessorDescription'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +57,7 @@ only input processor available is AWS Lambda
 =head1 ATTRIBUTES
 
 
-=head2 InputLambdaProcessorDescription => L<Paws::KinesisAnalyticsV2::InputLambdaProcessorDescription>
+=head2 InputLambdaProcessorDescription => KinesisAnalyticsV2_InputLambdaProcessorDescription
 
   Provides configuration information about the associated
 InputLambdaProcessorDescription

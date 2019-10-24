@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::ReplicationRuleAndOperator;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;

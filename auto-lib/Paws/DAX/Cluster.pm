@@ -1,22 +1,93 @@
+# Generated from default/object.tt
 package Paws::DAX::Cluster;
-  use Moose;
-  has ActiveNodes => (is => 'ro', isa => 'Int');
-  has ClusterArn => (is => 'ro', isa => 'Str');
-  has ClusterDiscoveryEndpoint => (is => 'ro', isa => 'Paws::DAX::Endpoint');
-  has ClusterName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str');
-  has NodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Nodes => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Node]');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has NotificationConfiguration => (is => 'ro', isa => 'Paws::DAX::NotificationConfiguration');
-  has ParameterGroup => (is => 'ro', isa => 'Paws::DAX::ParameterGroupStatus');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DAX::SecurityGroupMembership]');
-  has SSEDescription => (is => 'ro', isa => 'Paws::DAX::SSEDescription');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubnetGroup => (is => 'ro', isa => 'Str');
-  has TotalNodes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::DAX::Types qw/DAX_SSEDescription DAX_ParameterGroupStatus DAX_NotificationConfiguration DAX_SecurityGroupMembership DAX_Node DAX_Endpoint/;
+  has ActiveNodes => (is => 'ro', isa => Int);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ClusterDiscoveryEndpoint => (is => 'ro', isa => DAX_Endpoint);
+  has ClusterName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IamRoleArn => (is => 'ro', isa => Str);
+  has NodeIdsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Nodes => (is => 'ro', isa => ArrayRef[DAX_Node]);
+  has NodeType => (is => 'ro', isa => Str);
+  has NotificationConfiguration => (is => 'ro', isa => DAX_NotificationConfiguration);
+  has ParameterGroup => (is => 'ro', isa => DAX_ParameterGroupStatus);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[DAX_SecurityGroupMembership]);
+  has SSEDescription => (is => 'ro', isa => DAX_SSEDescription);
+  has Status => (is => 'ro', isa => Str);
+  has SubnetGroup => (is => 'ro', isa => Str);
+  has TotalNodes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SubnetGroup' => {
+                                  'type' => 'Str'
+                                },
+               'TotalNodes' => {
+                                 'type' => 'Int'
+                               },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'ClusterDiscoveryEndpoint' => {
+                                               'class' => 'Paws::DAX::Endpoint',
+                                               'type' => 'DAX_Endpoint'
+                                             },
+               'NotificationConfiguration' => {
+                                                'class' => 'Paws::DAX::NotificationConfiguration',
+                                                'type' => 'DAX_NotificationConfiguration'
+                                              },
+               'Nodes' => {
+                            'class' => 'Paws::DAX::Node',
+                            'type' => 'ArrayRef[DAX_Node]'
+                          },
+               'SSEDescription' => {
+                                     'class' => 'Paws::DAX::SSEDescription',
+                                     'type' => 'DAX_SSEDescription'
+                                   },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'NodeIdsToRemove' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'ParameterGroup' => {
+                                     'class' => 'Paws::DAX::ParameterGroupStatus',
+                                     'type' => 'DAX_ParameterGroupStatus'
+                                   },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'ActiveNodes' => {
+                                  'type' => 'Int'
+                                },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'SecurityGroups' => {
+                                     'class' => 'Paws::DAX::SecurityGroupMembership',
+                                     'type' => 'ArrayRef[DAX_SecurityGroupMembership]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +134,7 @@ serving requests).
   The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 
 
-=head2 ClusterDiscoveryEndpoint => L<Paws::DAX::Endpoint>
+=head2 ClusterDiscoveryEndpoint => DAX_Endpoint
 
   The configuration endpoint for this DAX cluster, consisting of a DNS
 name and a port number. Client applications can specify this endpoint,
@@ -94,7 +165,7 @@ access DynamoDB on your behalf.
   A list of nodes to be removed from the cluster.
 
 
-=head2 Nodes => ArrayRef[L<Paws::DAX::Node>]
+=head2 Nodes => ArrayRef[DAX_Node]
 
   A list of nodes that are currently in the cluster.
 
@@ -105,14 +176,14 @@ access DynamoDB on your behalf.
 are of the same type.)
 
 
-=head2 NotificationConfiguration => L<Paws::DAX::NotificationConfiguration>
+=head2 NotificationConfiguration => DAX_NotificationConfiguration
 
   Describes a notification topic and its status. Notification topics are
 used for publishing DAX events to subscribers using Amazon Simple
 Notification Service (SNS).
 
 
-=head2 ParameterGroup => L<Paws::DAX::ParameterGroupStatus>
+=head2 ParameterGroup => DAX_ParameterGroupStatus
 
   The parameter group being used by nodes in the cluster.
 
@@ -125,13 +196,13 @@ normally takes less than 30 minutes, and is performed automatically
 within the maintenance window.
 
 
-=head2 SecurityGroups => ArrayRef[L<Paws::DAX::SecurityGroupMembership>]
+=head2 SecurityGroups => ArrayRef[DAX_SecurityGroupMembership]
 
   A list of security groups, and the status of each, for the nodes in the
 cluster.
 
 
-=head2 SSEDescription => L<Paws::DAX::SSEDescription>
+=head2 SSEDescription => DAX_SSEDescription
 
   The description of the server-side encryption status on the specified
 DAX cluster.

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetConferencePreferenceResponse;
-  use Moose;
-  has Preference => (is => 'ro', isa => 'Paws::AlexaForBusiness::ConferencePreference');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_ConferencePreference/;
+  has Preference => (is => 'ro', isa => AlexaForBusiness_ConferencePreference);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Preference' => {
+                                 'class' => 'Paws::AlexaForBusiness::ConferencePreference',
+                                 'type' => 'AlexaForBusiness_ConferencePreference'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetConferencePreferenceResponse
 =head1 ATTRIBUTES
 
 
-=head2 Preference => L<Paws::AlexaForBusiness::ConferencePreference>
+=head2 Preference => AlexaForBusiness_ConferencePreference
 
 The conference preference.
 

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::DescribeAccountResponse;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Paws::Organizations::Account');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw/Organizations_Account/;
+  has Account => (is => 'ro', isa => Organizations_Account);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Account' => {
+                              'class' => 'Paws::Organizations::Account',
+                              'type' => 'Organizations_Account'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Organizations::DescribeAccountResponse
 =head1 ATTRIBUTES
 
 
-=head2 Account => L<Paws::Organizations::Account>
+=head2 Account => Organizations_Account
 
 A structure that contains information about the requested account.
 

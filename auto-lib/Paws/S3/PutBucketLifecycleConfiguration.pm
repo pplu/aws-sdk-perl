@@ -27,6 +27,9 @@ use MooX::ClassAttribute;
              },
   'ParamInURI' => {
                     'Bucket' => 'Bucket'
+                  },
+  'IsRequired' => {
+                    'Bucket' => 1
                   }
 }
 ;

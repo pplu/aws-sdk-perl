@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::InputDecryptionSettings;
-  use Moose;
-  has DecryptionMode => (is => 'ro', isa => 'Str', request_name => 'decryptionMode', traits => ['NameInRequest']);
-  has EncryptedDecryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptedDecryptionKey', traits => ['NameInRequest']);
-  has InitializationVector => (is => 'ro', isa => 'Str', request_name => 'initializationVector', traits => ['NameInRequest']);
-  has KmsKeyRegion => (is => 'ro', isa => 'Str', request_name => 'kmsKeyRegion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has DecryptionMode => (is => 'ro', isa => Str);
+  has EncryptedDecryptionKey => (is => 'ro', isa => Str);
+  has InitializationVector => (is => 'ro', isa => Str);
+  has KmsKeyRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KmsKeyRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'DecryptionMode' => {
+                                     'type' => 'Str'
+                                   },
+               'EncryptedDecryptionKey' => {
+                                             'type' => 'Str'
+                                           },
+               'InitializationVector' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'KmsKeyRegion' => 'kmsKeyRegion',
+                       'DecryptionMode' => 'decryptionMode',
+                       'EncryptedDecryptionKey' => 'encryptedDecryptionKey',
+                       'InitializationVector' => 'initializationVector'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

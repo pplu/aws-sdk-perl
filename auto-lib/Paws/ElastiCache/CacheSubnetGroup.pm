@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheSubnetGroup;
-  use Moose;
-  has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Subnet]', request_name => 'Subnet', traits => ['NameInRequest']);
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Subnet/;
+  has CacheSubnetGroupDescription => (is => 'ro', isa => Str);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[ElastiCache_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Subnets' => {
+                              'class' => 'Paws::ElastiCache::Subnet',
+                              'type' => 'ArrayRef[ElastiCache_Subnet]'
+                            },
+               'CacheSubnetGroupDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Subnets' => 'Subnet'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +92,7 @@ C<ModifyCacheSubnetGroup>
   The name of the cache subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::ElastiCache::Subnet>]
+=head2 Subnets => ArrayRef[ElastiCache_Subnet]
 
   A list of subnets associated with the cache subnet group.
 

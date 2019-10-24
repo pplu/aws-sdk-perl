@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputSecurityGroupWhitelistRequest;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', request_name => 'whitelistRules', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputWhitelistRuleCidr MediaLive_Tags/;
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+  has WhitelistRules => (is => 'ro', isa => ArrayRef[MediaLive_InputWhitelistRuleCidr]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WhitelistRules' => {
+                                     'class' => 'Paws::MediaLive::InputWhitelistRuleCidr',
+                                     'type' => 'ArrayRef[MediaLive_InputWhitelistRuleCidr]'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         }
+             },
+  'NameInRequest' => {
+                       'WhitelistRules' => 'whitelistRules',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Request of IPv4 CIDR addresses to whitelist in a security group.
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   A collection of key-value pairs.
 
 
-=head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRuleCidr>]
+=head2 WhitelistRules => ArrayRef[MediaLive_InputWhitelistRuleCidr]
 
   List of IPv4 CIDR addresses to whitelist
 

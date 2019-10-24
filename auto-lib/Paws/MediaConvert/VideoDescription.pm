@@ -1,20 +1,100 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::VideoDescription;
-  use Moose;
-  has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
-  has AntiAlias => (is => 'ro', isa => 'Str', request_name => 'antiAlias', traits => ['NameInRequest']);
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaConvert::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
-  has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
-  has Crop => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'crop', traits => ['NameInRequest']);
-  has DropFrameTimecode => (is => 'ro', isa => 'Str', request_name => 'dropFrameTimecode', traits => ['NameInRequest']);
-  has FixedAfd => (is => 'ro', isa => 'Int', request_name => 'fixedAfd', traits => ['NameInRequest']);
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Position => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'position', traits => ['NameInRequest']);
-  has RespondToAfd => (is => 'ro', isa => 'Str', request_name => 'respondToAfd', traits => ['NameInRequest']);
-  has ScalingBehavior => (is => 'ro', isa => 'Str', request_name => 'scalingBehavior', traits => ['NameInRequest']);
-  has Sharpness => (is => 'ro', isa => 'Int', request_name => 'sharpness', traits => ['NameInRequest']);
-  has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
-  has VideoPreprocessors => (is => 'ro', isa => 'Paws::MediaConvert::VideoPreprocessor', request_name => 'videoPreprocessors', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Rectangle MediaConvert_VideoCodecSettings MediaConvert_VideoPreprocessor/;
+  has AfdSignaling => (is => 'ro', isa => Str);
+  has AntiAlias => (is => 'ro', isa => Str);
+  has CodecSettings => (is => 'ro', isa => MediaConvert_VideoCodecSettings);
+  has ColorMetadata => (is => 'ro', isa => Str);
+  has Crop => (is => 'ro', isa => MediaConvert_Rectangle);
+  has DropFrameTimecode => (is => 'ro', isa => Str);
+  has FixedAfd => (is => 'ro', isa => Int);
+  has Height => (is => 'ro', isa => Int);
+  has Position => (is => 'ro', isa => MediaConvert_Rectangle);
+  has RespondToAfd => (is => 'ro', isa => Str);
+  has ScalingBehavior => (is => 'ro', isa => Str);
+  has Sharpness => (is => 'ro', isa => Int);
+  has TimecodeInsertion => (is => 'ro', isa => Str);
+  has VideoPreprocessors => (is => 'ro', isa => MediaConvert_VideoPreprocessor);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Position' => {
+                               'class' => 'Paws::MediaConvert::Rectangle',
+                               'type' => 'MediaConvert_Rectangle'
+                             },
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'VideoPreprocessors' => {
+                                         'class' => 'Paws::MediaConvert::VideoPreprocessor',
+                                         'type' => 'MediaConvert_VideoPreprocessor'
+                                       },
+               'ScalingBehavior' => {
+                                      'type' => 'Str'
+                                    },
+               'RespondToAfd' => {
+                                   'type' => 'Str'
+                                 },
+               'ColorMetadata' => {
+                                    'type' => 'Str'
+                                  },
+               'AntiAlias' => {
+                                'type' => 'Str'
+                              },
+               'Sharpness' => {
+                                'type' => 'Int'
+                              },
+               'Crop' => {
+                           'class' => 'Paws::MediaConvert::Rectangle',
+                           'type' => 'MediaConvert_Rectangle'
+                         },
+               'FixedAfd' => {
+                               'type' => 'Int'
+                             },
+               'TimecodeInsertion' => {
+                                        'type' => 'Str'
+                                      },
+               'CodecSettings' => {
+                                    'class' => 'Paws::MediaConvert::VideoCodecSettings',
+                                    'type' => 'MediaConvert_VideoCodecSettings'
+                                  },
+               'DropFrameTimecode' => {
+                                        'type' => 'Str'
+                                      },
+               'AfdSignaling' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Position' => 'position',
+                       'Height' => 'height',
+                       'Width' => 'width',
+                       'VideoPreprocessors' => 'videoPreprocessors',
+                       'ScalingBehavior' => 'scalingBehavior',
+                       'RespondToAfd' => 'respondToAfd',
+                       'ColorMetadata' => 'colorMetadata',
+                       'AntiAlias' => 'antiAlias',
+                       'Sharpness' => 'sharpness',
+                       'Crop' => 'crop',
+                       'FixedAfd' => 'fixedAfd',
+                       'TimecodeInsertion' => 'timecodeInsertion',
+                       'CodecSettings' => 'codecSettings',
+                       'DropFrameTimecode' => 'dropFrameTimecode',
+                       'AfdSignaling' => 'afdSignaling'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +148,7 @@ The service no longer accepts the value DISABLED for AntiAlias. If you
 specify that in your job, the service will ignore the setting.
 
 
-=head2 CodecSettings => L<Paws::MediaConvert::VideoCodecSettings>
+=head2 CodecSettings => MediaConvert_VideoCodecSettings
 
   Video codec settings, (CodecSettings) under (VideoDescription),
 contains the group of settings related to video encoding. The settings
@@ -86,7 +166,7 @@ FrameCaptureSettings
 in this output. This setting is enabled by default.
 
 
-=head2 Crop => L<Paws::MediaConvert::Rectangle>
+=head2 Crop => MediaConvert_Rectangle
 
   Applies only if your input aspect ratio is different from your output
 aspect ratio. Use Input cropping rectangle (Crop) to specify the video
@@ -120,7 +200,7 @@ for this output. Specify in pixels. If you don't provide a value here,
 the service will use the input height.
 
 
-=head2 Position => L<Paws::MediaConvert::Rectangle>
+=head2 Position => MediaConvert_Rectangle
 
   Use Position (Position) to point to a rectangle object to define your
 position. This setting overrides any other aspect ratio.
@@ -174,7 +254,7 @@ in the output. Source under Job settings E<gt> Timecode configuration
 (TimecodeSource) does.
 
 
-=head2 VideoPreprocessors => L<Paws::MediaConvert::VideoPreprocessor>
+=head2 VideoPreprocessors => MediaConvert_VideoPreprocessor
 
   Find additional transcoding features under Preprocessors
 (VideoPreprocessors). Enable the features at each output individually.

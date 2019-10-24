@@ -1,23 +1,122 @@
+# Generated from default/object.tt
 package Paws::Inspector::Finding;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has AssetAttributes => (is => 'ro', isa => 'Paws::Inspector::AssetAttributes', request_name => 'assetAttributes', traits => ['NameInRequest']);
-  has AssetType => (is => 'ro', isa => 'Str', request_name => 'assetType', traits => ['NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
-  has Confidence => (is => 'ro', isa => 'Int', request_name => 'confidence', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has IndicatorOfCompromise => (is => 'ro', isa => 'Bool', request_name => 'indicatorOfCompromise', traits => ['NameInRequest']);
-  has NumericSeverity => (is => 'ro', isa => 'Num', request_name => 'numericSeverity', traits => ['NameInRequest']);
-  has Recommendation => (is => 'ro', isa => 'Str', request_name => 'recommendation', traits => ['NameInRequest']);
-  has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
-  has ServiceAttributes => (is => 'ro', isa => 'Paws::Inspector::InspectorServiceAttributes', request_name => 'serviceAttributes', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributes', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool Num/;
+  use Paws::Inspector::Types qw/Inspector_Attribute Inspector_InspectorServiceAttributes Inspector_AssetAttributes/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssetAttributes => (is => 'ro', isa => Inspector_AssetAttributes);
+  has AssetType => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute], required => 1);
+  has Confidence => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has IndicatorOfCompromise => (is => 'ro', isa => Bool);
+  has NumericSeverity => (is => 'ro', isa => Num);
+  has Recommendation => (is => 'ro', isa => Str);
+  has SchemaVersion => (is => 'ro', isa => Int);
+  has Service => (is => 'ro', isa => Str);
+  has ServiceAttributes => (is => 'ro', isa => Inspector_InspectorServiceAttributes);
+  has Severity => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceAttributes' => {
+                                        'class' => 'Paws::Inspector::InspectorServiceAttributes',
+                                        'type' => 'Inspector_InspectorServiceAttributes'
+                                      },
+               'SchemaVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Confidence' => {
+                                 'type' => 'Int'
+                               },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'AssetAttributes' => {
+                                      'class' => 'Paws::Inspector::AssetAttributes',
+                                      'type' => 'Inspector_AssetAttributes'
+                                    },
+               'AssetType' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'IndicatorOfCompromise' => {
+                                            'type' => 'Bool'
+                                          },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'class' => 'Paws::Inspector::Attribute',
+                                 'type' => 'ArrayRef[Inspector_Attribute]'
+                               },
+               'UserAttributes' => {
+                                     'class' => 'Paws::Inspector::Attribute',
+                                     'type' => 'ArrayRef[Inspector_Attribute]'
+                                   },
+               'NumericSeverity' => {
+                                      'type' => 'Num'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Recommendation' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ServiceAttributes' => 'serviceAttributes',
+                       'SchemaVersion' => 'schemaVersion',
+                       'Title' => 'title',
+                       'Service' => 'service',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'Confidence' => 'confidence',
+                       'Severity' => 'severity',
+                       'AssetAttributes' => 'assetAttributes',
+                       'AssetType' => 'assetType',
+                       'Id' => 'id',
+                       'IndicatorOfCompromise' => 'indicatorOfCompromise',
+                       'UpdatedAt' => 'updatedAt',
+                       'Attributes' => 'attributes',
+                       'UserAttributes' => 'userAttributes',
+                       'NumericSeverity' => 'numericSeverity',
+                       'Description' => 'description',
+                       'Recommendation' => 'recommendation'
+                     },
+  'IsRequired' => {
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'Attributes' => 1,
+                    'UserAttributes' => 1,
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +158,7 @@ is used as the response element in the DescribeFindings action.
   The ARN that specifies the finding.
 
 
-=head2 AssetAttributes => L<Paws::Inspector::AssetAttributes>
+=head2 AssetAttributes => Inspector_AssetAttributes
 
   A collection of attributes of the host from which the finding is
 generated.
@@ -70,7 +169,7 @@ generated.
   The type of the host from which the finding is generated.
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[Inspector_Attribute]
 
   The system-defined attributes for the finding.
 
@@ -120,7 +219,7 @@ generated.
   The data element is set to "Inspector".
 
 
-=head2 ServiceAttributes => L<Paws::Inspector::InspectorServiceAttributes>
+=head2 ServiceAttributes => Inspector_InspectorServiceAttributes
 
   This data type is used in the Finding data type.
 
@@ -141,7 +240,7 @@ Informational.
   The time when AddAttributesToFindings is called.
 
 
-=head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 B<REQUIRED> UserAttributes => ArrayRef[Inspector_Attribute]
 
   The user-defined attributes that are assigned to the finding.
 

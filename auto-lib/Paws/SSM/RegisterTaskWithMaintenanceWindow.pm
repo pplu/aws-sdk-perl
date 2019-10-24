@@ -1,26 +1,93 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::RegisterTaskWithMaintenanceWindow;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
-  has MaxConcurrency => (is => 'ro', isa => 'Str', required => 1);
-  has MaxErrors => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]', required => 1);
-  has TaskArn => (is => 'ro', isa => 'Str', required => 1);
-  has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
-  has TaskParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskParameters');
-  has TaskType => (is => 'ro', isa => 'Str', required => 1);
-  has WindowId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_LoggingInfo SSM_MaintenanceWindowTaskInvocationParameters SSM_MaintenanceWindowTaskParameters/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has LoggingInfo => (is => 'ro', isa => SSM_LoggingInfo, predicate => 1);
+  has MaxConcurrency => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxErrors => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, predicate => 1);
+  has ServiceRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], required => 1, predicate => 1);
+  has TaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskInvocationParameters => (is => 'ro', isa => SSM_MaintenanceWindowTaskInvocationParameters, predicate => 1);
+  has TaskParameters => (is => 'ro', isa => SSM_MaintenanceWindowTaskParameters, predicate => 1);
+  has TaskType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WindowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterTaskWithMaintenanceWindow');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::RegisterTaskWithMaintenanceWindowResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterTaskWithMaintenanceWindow');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::RegisterTaskWithMaintenanceWindowResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'LoggingInfo' => {
+                                  'class' => 'Paws::SSM::LoggingInfo',
+                                  'type' => 'SSM_LoggingInfo'
+                                },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'TaskParameters' => {
+                                     'class' => 'Paws::SSM::MaintenanceWindowTaskParameters',
+                                     'type' => 'SSM_MaintenanceWindowTaskParameters'
+                                   },
+               'TaskType' => {
+                               'type' => 'Str'
+                             },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'TaskInvocationParameters' => {
+                                               'class' => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters',
+                                               'type' => 'SSM_MaintenanceWindowTaskInvocationParameters'
+                                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'MaxErrors' => 1,
+                    'TaskArn' => 1,
+                    'Targets' => 1,
+                    'WindowId' => 1,
+                    'TaskType' => 1,
+                    'MaxConcurrency' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -139,7 +206,7 @@ An optional description for the task.
 
 
 
-=head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
+=head2 LoggingInfo => SSM_LoggingInfo
 
 A structure containing information about an Amazon S3 bucket to write
 instance-level logs to.
@@ -210,7 +277,7 @@ Maintenance Window Tasks?
 
 
 
-=head2 B<REQUIRED> Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 B<REQUIRED> Targets => ArrayRef[SSM_Target]
 
 The targets (either instances or maintenance window targets).
 
@@ -230,14 +297,14 @@ The ARN of the task to run.
 
 
 
-=head2 TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>
+=head2 TaskInvocationParameters => SSM_MaintenanceWindowTaskInvocationParameters
 
 The parameters that the task should use during execution. Populate only
 the fields that match the task type. All other fields should be empty.
 
 
 
-=head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
+=head2 TaskParameters => SSM_MaintenanceWindowTaskParameters
 
 The parameters that should be passed to the task when it is run.
 

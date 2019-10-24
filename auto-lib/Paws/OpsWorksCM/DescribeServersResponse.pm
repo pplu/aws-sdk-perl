@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorksCM::DescribeServersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Servers => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::Server]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_Server/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Servers => (is => 'ro', isa => ArrayRef[OpsWorksCM_Server]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Servers' => {
+                              'class' => 'Paws::OpsWorksCM::Server',
+                              'type' => 'ArrayRef[OpsWorksCM_Server]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::OpsWorksCM::DescribeServersResponse
 This is not currently implemented for C<DescribeServers> requests.
 
 
-=head2 Servers => ArrayRef[L<Paws::OpsWorksCM::Server>]
+=head2 Servers => ArrayRef[OpsWorksCM_Server]
 
 Contains the response to a C<DescribeServers> request.
 

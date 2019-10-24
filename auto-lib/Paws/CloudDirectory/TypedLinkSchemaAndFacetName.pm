@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::TypedLinkSchemaAndFacetName;
-  use Moose;
-  has SchemaArn => (is => 'ro', isa => 'Str', required => 1);
-  has TypedLinkName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has SchemaArn => (is => 'ro', isa => Str, required => 1);
+  has TypedLinkName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypedLinkName' => {
+                                    'type' => 'Str'
+                                  },
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'TypedLinkName' => 1,
+                    'SchemaArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::ElasticsearchClusterConfig;
   use Moo;
   use Types::Standard qw/Int Bool Str/;

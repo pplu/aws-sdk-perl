@@ -1,14 +1,35 @@
 
 package Paws::ManagedBlockchain::RejectInvitation;
-  use Moose;
-  has InvitationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'invitationId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has InvitationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RejectInvitation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/invitations/{invitationId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::RejectInvitationOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RejectInvitation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/invitations/{invitationId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::RejectInvitationOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvitationId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'InvitationId' => 'invitationId'
+                  },
+  'IsRequired' => {
+                    'InvitationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

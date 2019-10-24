@@ -1,18 +1,60 @@
 
 package Paws::IoT::UpdateCACertificate;
-  use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'caCertificateId', required => 1);
-  has NewAutoRegistrationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newAutoRegistrationStatus');
-  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus');
-  has RegistrationConfig => (is => 'ro', isa => 'Paws::IoT::RegistrationConfig', traits => ['NameInRequest'], request_name => 'registrationConfig');
-  has RemoveAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removeAutoRegistration');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw/IoT_RegistrationConfig/;
+  has CertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewAutoRegistrationStatus => (is => 'ro', isa => Str, predicate => 1);
+  has NewStatus => (is => 'ro', isa => Str, predicate => 1);
+  has RegistrationConfig => (is => 'ro', isa => IoT_RegistrationConfig, predicate => 1);
+  has RemoveAutoRegistration => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCACertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{caCertificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCACertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/cacertificate/{caCertificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistrationConfig' => {
+                                         'class' => 'Paws::IoT::RegistrationConfig',
+                                         'type' => 'IoT_RegistrationConfig'
+                                       },
+               'NewAutoRegistrationStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'NewStatus' => {
+                                'type' => 'Str'
+                              },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'RemoveAutoRegistration' => {
+                                             'type' => 'Bool'
+                                           }
+             },
+  'ParamInURI' => {
+                    'CertificateId' => 'caCertificateId'
+                  },
+  'ParamInQuery' => {
+                      'NewAutoRegistrationStatus' => 'newAutoRegistrationStatus',
+                      'NewStatus' => 'newStatus'
+                    },
+  'NameInRequest' => {
+                       'RegistrationConfig' => 'registrationConfig',
+                       'RemoveAutoRegistration' => 'removeAutoRegistration'
+                     },
+  'IsRequired' => {
+                    'CertificateId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +113,7 @@ not be used.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">
 
-=head2 RegistrationConfig => L<Paws::IoT::RegistrationConfig>
+=head2 RegistrationConfig => IoT_RegistrationConfig
 
 Information about the registration configuration.
 

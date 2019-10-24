@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::OfferingTransaction;
-  use Moose;
-  has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', request_name => 'cost', traits => ['NameInRequest']);
-  has CreatedOn => (is => 'ro', isa => 'Str', request_name => 'createdOn', traits => ['NameInRequest']);
-  has OfferingPromotionId => (is => 'ro', isa => 'Str', request_name => 'offeringPromotionId', traits => ['NameInRequest']);
-  has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', request_name => 'offeringStatus', traits => ['NameInRequest']);
-  has TransactionId => (is => 'ro', isa => 'Str', request_name => 'transactionId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_MonetaryAmount DeviceFarm_OfferingStatus/;
+  has Cost => (is => 'ro', isa => DeviceFarm_MonetaryAmount);
+  has CreatedOn => (is => 'ro', isa => Str);
+  has OfferingPromotionId => (is => 'ro', isa => Str);
+  has OfferingStatus => (is => 'ro', isa => DeviceFarm_OfferingStatus);
+  has TransactionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingPromotionId' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedOn' => {
+                                'type' => 'Str'
+                              },
+               'OfferingStatus' => {
+                                     'class' => 'Paws::DeviceFarm::OfferingStatus',
+                                     'type' => 'DeviceFarm_OfferingStatus'
+                                   },
+               'Cost' => {
+                           'class' => 'Paws::DeviceFarm::MonetaryAmount',
+                           'type' => 'DeviceFarm_MonetaryAmount'
+                         },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'OfferingPromotionId' => 'offeringPromotionId',
+                       'CreatedOn' => 'createdOn',
+                       'OfferingStatus' => 'offeringStatus',
+                       'Cost' => 'cost',
+                       'TransactionId' => 'transactionId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +78,7 @@ Represents the metadata of an offering transaction.
 =head1 ATTRIBUTES
 
 
-=head2 Cost => L<Paws::DeviceFarm::MonetaryAmount>
+=head2 Cost => DeviceFarm_MonetaryAmount
 
   The cost of an offering transaction.
 
@@ -55,7 +93,7 @@ Represents the metadata of an offering transaction.
   The ID that corresponds to a device offering promotion.
 
 
-=head2 OfferingStatus => L<Paws::DeviceFarm::OfferingStatus>
+=head2 OfferingStatus => DeviceFarm_OfferingStatus
 
   The status of an offering transaction.
 

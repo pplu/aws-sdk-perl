@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeFleetUtilizationOutput;
-  use Moose;
-  has FleetUtilization => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::FleetUtilization]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_FleetUtilization/;
+  has FleetUtilization => (is => 'ro', isa => ArrayRef[GameLift_FleetUtilization]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FleetUtilization' => {
+                                       'class' => 'Paws::GameLift::FleetUtilization',
+                                       'type' => 'ArrayRef[GameLift_FleetUtilization]'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeFleetUtilizationOutput
 =head1 ATTRIBUTES
 
 
-=head2 FleetUtilization => ArrayRef[L<Paws::GameLift::FleetUtilization>]
+=head2 FleetUtilization => ArrayRef[GameLift_FleetUtilization]
 
 Collection of objects containing utilization information for each
 requested fleet ID.

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::RunCommandParameters;
-  use Moose;
-  has RunCommandTargets => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::RunCommandTarget]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_RunCommandTarget/;
+  has RunCommandTargets => (is => 'ro', isa => ArrayRef[CloudWatchEvents_RunCommandTarget], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunCommandTargets' => {
+                                        'class' => 'Paws::CloudWatchEvents::RunCommandTarget',
+                                        'type' => 'ArrayRef[CloudWatchEvents_RunCommandTarget]'
+                                      }
+             },
+  'IsRequired' => {
+                    'RunCommandTargets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ to specify which EC2 instances are to be sent the command.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RunCommandTargets => ArrayRef[L<Paws::CloudWatchEvents::RunCommandTarget>]
+=head2 B<REQUIRED> RunCommandTargets => ArrayRef[CloudWatchEvents_RunCommandTarget]
 
   Currently, we support including only one RunCommandTarget block, which
 specifies either an array of InstanceIds or a tag.

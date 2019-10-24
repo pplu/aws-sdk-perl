@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::StopRemoteAccessSessionResult;
-  use Moose;
-  has RemoteAccessSession => (is => 'ro', isa => 'Paws::DeviceFarm::RemoteAccessSession', traits => ['NameInRequest'], request_name => 'remoteAccessSession' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_RemoteAccessSession/;
+  has RemoteAccessSession => (is => 'ro', isa => DeviceFarm_RemoteAccessSession);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemoteAccessSession' => {
+                                          'class' => 'Paws::DeviceFarm::RemoteAccessSession',
+                                          'type' => 'DeviceFarm_RemoteAccessSession'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RemoteAccessSession' => 'remoteAccessSession'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::StopRemoteAccessSessionResult
 =head1 ATTRIBUTES
 
 
-=head2 RemoteAccessSession => L<Paws::DeviceFarm::RemoteAccessSession>
+=head2 RemoteAccessSession => DeviceFarm_RemoteAccessSession
 
 A container representing the metadata from the service about the remote
 access session you are stopping.

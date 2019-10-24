@@ -1,16 +1,72 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationDetail;
-  use Moose;
-  has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription');
-  has ApplicationDescription => (is => 'ro', isa => 'Str');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionDescription]');
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
-  has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceExecutionRole => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_CloudWatchLoggingOptionDescription KinesisAnalyticsV2_ApplicationConfigurationDescription/;
+  has ApplicationARN => (is => 'ro', isa => Str, required => 1);
+  has ApplicationConfigurationDescription => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationConfigurationDescription);
+  has ApplicationDescription => (is => 'ro', isa => Str);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1);
+  has ApplicationStatus => (is => 'ro', isa => Str, required => 1);
+  has ApplicationVersionId => (is => 'ro', isa => Int, required => 1);
+  has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionDescription]);
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has LastUpdateTimestamp => (is => 'ro', isa => Str);
+  has RuntimeEnvironment => (is => 'ro', isa => Str, required => 1);
+  has ServiceExecutionRole => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationDescription' => {
+                                             'type' => 'Str'
+                                           },
+               'ServiceExecutionRole' => {
+                                           'type' => 'Str'
+                                         },
+               'ApplicationStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'CloudWatchLoggingOptionDescriptions' => {
+                                                          'class' => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionDescription',
+                                                          'type' => 'ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionDescription]'
+                                                        },
+               'ApplicationARN' => {
+                                     'type' => 'Str'
+                                   },
+               'RuntimeEnvironment' => {
+                                         'type' => 'Str'
+                                       },
+               'ApplicationConfigurationDescription' => {
+                                                          'class' => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription',
+                                                          'type' => 'KinesisAnalyticsV2_ApplicationConfigurationDescription'
+                                                        },
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         },
+               'LastUpdateTimestamp' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'ApplicationStatus' => 1,
+                    'ApplicationARN' => 1,
+                    'RuntimeEnvironment' => 1,
+                    'ApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +109,7 @@ configurations.
   The ARN of the application.
 
 
-=head2 ApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription>
+=head2 ApplicationConfigurationDescription => KinesisAnalyticsV2_ApplicationConfigurationDescription
 
   Provides details about the application's SQL or Java code and starting
 parameters.
@@ -81,7 +137,7 @@ updates the C<ApplicationVersionId> each time you update the
 application.
 
 
-=head2 CloudWatchLoggingOptionDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionDescription>]
+=head2 CloudWatchLoggingOptionDescriptions => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionDescription]
 
   Describes the application Amazon CloudWatch logging options.
 

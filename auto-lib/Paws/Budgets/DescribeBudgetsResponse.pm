@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Budgets::DescribeBudgetsResponse;
-  use Moose;
-  has Budgets => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Budget]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Budgets::Types qw/Budgets_Budget/;
+  has Budgets => (is => 'ro', isa => ArrayRef[Budgets_Budget]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Budgets' => {
+                              'class' => 'Paws::Budgets::Budget',
+                              'type' => 'ArrayRef[Budgets_Budget]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Budgets::DescribeBudgetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Budgets => ArrayRef[L<Paws::Budgets::Budget>]
+=head2 Budgets => ArrayRef[Budgets_Budget]
 
 A list of budgets.
 

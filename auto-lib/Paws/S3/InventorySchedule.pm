@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::InventorySchedule;
   use Moo;
   use Types::Standard qw/Str/;
@@ -10,7 +11,10 @@ package Paws::S3::InventorySchedule;
                'Frequency' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'Frequency' => 1
+                  }
 }
 ;
     return $Params_map;

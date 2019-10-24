@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::WorkLink::FleetSummary;
-  use Moose;
-  has CompanyCode => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has FleetArn => (is => 'ro', isa => 'Str');
-  has FleetName => (is => 'ro', isa => 'Str');
-  has FleetStatus => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has CompanyCode => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has FleetArn => (is => 'ro', isa => Str);
+  has FleetName => (is => 'ro', isa => Str);
+  has FleetStatus => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'FleetStatus' => {
+                                  'type' => 'Str'
+                                },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'CompanyCode' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'FleetName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::RemoveAttributesFromFindings;
-  use Moose;
-  has AttributeKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'attributeKeys' , required => 1);
-  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingArns' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw//;
+  has AttributeKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has FindingArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveAttributesFromFindings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::RemoveAttributesFromFindingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveAttributesFromFindings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::RemoveAttributesFromFindingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindingArns' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'AttributeKeys' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'FindingArns' => 'findingArns',
+                       'AttributeKeys' => 'attributeKeys'
+                     },
+  'IsRequired' => {
+                    'FindingArns' => 1,
+                    'AttributeKeys' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

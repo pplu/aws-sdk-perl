@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::BatchGetDeploymentGroupsOutput;
-  use Moose;
-  has DeploymentGroupsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentGroupInfo]', traits => ['NameInRequest'], request_name => 'deploymentGroupsInfo' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_DeploymentGroupInfo/;
+  has DeploymentGroupsInfo => (is => 'ro', isa => ArrayRef[CodeDeploy_DeploymentGroupInfo]);
+  has ErrorMessage => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentGroupsInfo' => {
+                                           'class' => 'Paws::CodeDeploy::DeploymentGroupInfo',
+                                           'type' => 'ArrayRef[CodeDeploy_DeploymentGroupInfo]'
+                                         },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DeploymentGroupsInfo' => 'deploymentGroupsInfo',
+                       'ErrorMessage' => 'errorMessage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CodeDeploy::BatchGetDeploymentGroupsOutput
 =head1 ATTRIBUTES
 
 
-=head2 DeploymentGroupsInfo => ArrayRef[L<Paws::CodeDeploy::DeploymentGroupInfo>]
+=head2 DeploymentGroupsInfo => ArrayRef[CodeDeploy_DeploymentGroupInfo]
 
 Information about the deployment groups.
 

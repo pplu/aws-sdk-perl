@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::GetMailboxDetailsResponse;
-  use Moose;
-  has MailboxQuota => (is => 'ro', isa => 'Int');
-  has MailboxSize => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::WorkMail::Types qw//;
+  has MailboxQuota => (is => 'ro', isa => Int);
+  has MailboxSize => (is => 'ro', isa => Num);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MailboxQuota' => {
+                                   'type' => 'Int'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MailboxSize' => {
+                                  'type' => 'Num'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

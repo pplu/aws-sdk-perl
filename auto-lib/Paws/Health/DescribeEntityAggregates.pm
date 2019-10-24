@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Health::DescribeEntityAggregates;
-  use Moose;
-  has EventArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'eventArns' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Health::Types qw//;
+  has EventArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEntityAggregates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Health::DescribeEntityAggregatesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEntityAggregates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Health::DescribeEntityAggregatesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventArns' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'EventArns' => 'eventArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

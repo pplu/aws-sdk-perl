@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventsResponse;
-  use Moose;
-  has Results => (is => 'ro', isa => 'Paws::Pinpoint::MapOfItemResponse');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfItemResponse/;
+  has Results => (is => 'ro', isa => Pinpoint_MapOfItemResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Results' => {
+                              'class' => 'Paws::Pinpoint::MapOfItemResponse',
+                              'type' => 'Pinpoint_MapOfItemResponse'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ associated with.
 =head1 ATTRIBUTES
 
 
-=head2 Results => L<Paws::Pinpoint::MapOfItemResponse>
+=head2 Results => Pinpoint_MapOfItemResponse
 
   A map that contains a multipart response for each endpoint. For each
 item in this object, the endpoint ID is the key and the item response

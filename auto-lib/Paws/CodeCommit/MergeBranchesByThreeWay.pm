@@ -1,23 +1,88 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::MergeBranchesByThreeWay;
-  use Moose;
-  has AuthorName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorName' );
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage' );
-  has ConflictDetailLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictDetailLevel' );
-  has ConflictResolution => (is => 'ro', isa => 'Paws::CodeCommit::ConflictResolution', traits => ['NameInRequest'], request_name => 'conflictResolution' );
-  has ConflictResolutionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictResolutionStrategy' );
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has Email => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'email' );
-  has KeepEmptyFolders => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'keepEmptyFolders' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
-  has TargetBranch => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetBranch' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_ConflictResolution/;
+  has AuthorName => (is => 'ro', isa => Str, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictDetailLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictResolution => (is => 'ro', isa => CodeCommit_ConflictResolution, predicate => 1);
+  has ConflictResolutionStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has KeepEmptyFolders => (is => 'ro', isa => Bool, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetBranch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergeBranchesByThreeWay');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByThreeWayOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergeBranchesByThreeWay');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::MergeBranchesByThreeWayOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConflictDetailLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'ConflictResolution' => {
+                                         'class' => 'Paws::CodeCommit::ConflictResolution',
+                                         'type' => 'CodeCommit_ConflictResolution'
+                                       },
+               'ConflictResolutionStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'KeepEmptyFolders' => {
+                                       'type' => 'Bool'
+                                     },
+               'AuthorName' => {
+                                 'type' => 'Str'
+                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'TargetBranch' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier',
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'ConflictDetailLevel' => 'conflictDetailLevel',
+                       'CommitMessage' => 'commitMessage',
+                       'ConflictResolution' => 'conflictResolution',
+                       'ConflictResolutionStrategy' => 'conflictResolutionStrategy',
+                       'KeepEmptyFolders' => 'keepEmptyFolders',
+                       'AuthorName' => 'authorName',
+                       'RepositoryName' => 'repositoryName',
+                       'Email' => 'email',
+                       'TargetBranch' => 'targetBranch'
+                     },
+  'IsRequired' => {
+                    'SourceCommitSpecifier' => 1,
+                    'DestinationCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,21 +122,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FilePath        => 'MyPath',
             ReplacementType => 'KEEP_BASE'
             , # values: KEEP_BASE, KEEP_SOURCE, KEEP_DESTINATION, USE_NEW_CONTENT
-            Content => 'BlobFileContent',    # max: 6291456; OPTIONAL
-            FileMode =>
-              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
+            Content  => 'BlobFileContent', # max: 6291456; OPTIONAL
+            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
           },
           ...
-        ],                     # OPTIONAL
+        ],                                 # OPTIONAL
         SetFileModes => [
           {
-            FileMode =>
-              'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
+            FileMode => 'EXECUTABLE',      # values: EXECUTABLE, NORMAL, SYMLINK
             FilePath => 'MyPath',
 
           },
           ...
-        ],                     # OPTIONAL
+        ],                                 # OPTIONAL
       },    # OPTIONAL
       ConflictResolutionStrategy => 'NONE',            # OPTIONAL
       Email                      => 'MyEmail',         # OPTIONAL
@@ -114,7 +177,7 @@ branches has differences on the same line.
 
 Valid values are: C<"FILE_LEVEL">, C<"LINE_LEVEL">
 
-=head2 ConflictResolution => L<Paws::CodeCommit::ConflictResolution>
+=head2 ConflictResolution => CodeCommit_ConflictResolution
 
 A list of inputs to use when resolving conflicts during a merge if
 AUTOMERGE is chosen as the conflict resolution strategy.

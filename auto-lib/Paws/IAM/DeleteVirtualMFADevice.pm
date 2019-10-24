@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteVirtualMFADevice;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteVirtualMFADevice;
                'SerialNumber' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'SerialNumber' => 1
+                  }
 }
 ;
     return $Params_map;

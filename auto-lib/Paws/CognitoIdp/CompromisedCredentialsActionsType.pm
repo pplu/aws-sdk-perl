@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::CompromisedCredentialsActionsType;
-  use Moose;
-  has EventAction => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has EventAction => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventAction' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'EventAction' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Celebrity;
-  use Moose;
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::ComparedFace');
-  has Id => (is => 'ro', isa => 'Str');
-  has MatchConfidence => (is => 'ro', isa => 'Num');
-  has Name => (is => 'ro', isa => 'Str');
-  has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Num ArrayRef Undef/;
+  use Paws::Rekognition::Types qw/Rekognition_ComparedFace/;
+  has Face => (is => 'ro', isa => Rekognition_ComparedFace);
+  has Id => (is => 'ro', isa => Str);
+  has MatchConfidence => (is => 'ro', isa => Num);
+  has Name => (is => 'ro', isa => Str);
+  has Urls => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Face' => {
+                           'class' => 'Paws::Rekognition::ComparedFace',
+                           'type' => 'Rekognition_ComparedFace'
+                         },
+               'Urls' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MatchConfidence' => {
+                                      'type' => 'Num'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +71,7 @@ RecognizeCelebrities operation.
 =head1 ATTRIBUTES
 
 
-=head2 Face => L<Paws::Rekognition::ComparedFace>
+=head2 Face => Rekognition_ComparedFace
 
   Provides information about the celebrity's face, such as its location
 on the image.

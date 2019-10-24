@@ -1,19 +1,63 @@
 
 package Paws::ServerlessRepo::CreateApplicationVersion;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'applicationId', required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'semanticVersion', required => 1);
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeArchiveUrl');
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeUrl');
-  has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
-  has TemplateUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateUrl');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceCodeUrl => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateUrl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplicationVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications/{applicationId}/versions/{semanticVersion}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::CreateApplicationVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplicationVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications/{applicationId}/versions/{semanticVersion}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::CreateApplicationVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'applicationId',
+                    'SemanticVersion' => 'semanticVersion'
+                  },
+  'NameInRequest' => {
+                       'TemplateBody' => 'templateBody',
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl',
+                       'TemplateUrl' => 'templateUrl'
+                     },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'SemanticVersion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

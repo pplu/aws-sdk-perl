@@ -1,13 +1,43 @@
 
 package Paws::XRay::GetServiceGraphResult;
-  use Moose;
-  has ContainsOldGroupVersions => (is => 'ro', isa => 'Bool');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Service]');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::XRay::Types qw/XRay_Service/;
+  has ContainsOldGroupVersions => (is => 'ro', isa => Bool);
+  has EndTime => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Services => (is => 'ro', isa => ArrayRef[XRay_Service]);
+  has StartTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ContainsOldGroupVersions' => {
+                                               'type' => 'Bool'
+                                             },
+               'Services' => {
+                               'class' => 'Paws::XRay::Service',
+                               'type' => 'ArrayRef[XRay_Service]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +66,7 @@ The end of the time frame for which the graph was generated.
 Pagination token. Not used.
 
 
-=head2 Services => ArrayRef[L<Paws::XRay::Service>]
+=head2 Services => ArrayRef[XRay_Service]
 
 The services that have processed a traced request during the specified
 time frame.

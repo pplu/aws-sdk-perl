@@ -3,7 +3,7 @@ package Paws::EC2::LaunchTemplatesMonitoring;
   use Paws::EC2::Types qw//;
   has Enabled => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Enabled' => {
@@ -15,8 +15,8 @@ package Paws::EC2::LaunchTemplatesMonitoring;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

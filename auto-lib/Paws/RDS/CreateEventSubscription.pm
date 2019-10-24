@@ -1,19 +1,58 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateEventSubscription;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnsTopicArn => (is => 'ro', isa => 'Str', required => 1);
-  has SourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has SubscriptionName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnsTopicArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
+  has SubscriptionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEventSubscription');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateEventSubscriptionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateEventSubscriptionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEventSubscription');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CreateEventSubscriptionResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateEventSubscriptionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'SourceIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'SubscriptionName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SnsTopicArn' => 1,
+                    'SubscriptionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -139,7 +178,7 @@ Constraints: The name must be less than 255 characters.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

@@ -1,18 +1,54 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationAutoScaling::RegisterScalableTarget;
-  use Moose;
-  has MaxCapacity => (is => 'ro', isa => 'Int');
-  has MinCapacity => (is => 'ro', isa => 'Int');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has MaxCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has MinCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterScalableTarget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationAutoScaling::RegisterScalableTargetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterScalableTarget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationAutoScaling::RegisterScalableTargetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ServiceNamespace' => 1,
+                    'ScalableDimension' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

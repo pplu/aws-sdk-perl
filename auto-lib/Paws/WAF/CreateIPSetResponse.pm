@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::CreateIPSetResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has IPSet => (is => 'ro', isa => 'Paws::WAF::IPSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_IPSet/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has IPSet => (is => 'ro', isa => WAF_IPSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'IPSet' => {
+                            'class' => 'Paws::WAF::IPSet',
+                            'type' => 'WAF_IPSet'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
 
 
-=head2 IPSet => L<Paws::WAF::IPSet>
+=head2 IPSet => WAF_IPSet
 
 The IPSet returned in the C<CreateIPSet> response.
 

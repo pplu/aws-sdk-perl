@@ -37,6 +37,10 @@ use MooX::ClassAttribute;
                     },
   'ParamInURI' => {
                     'Bucket' => 'Bucket'
+                  },
+  'IsRequired' => {
+                    'PublicAccessBlockConfiguration' => 1,
+                    'Bucket' => 1
                   }
 }
 ;

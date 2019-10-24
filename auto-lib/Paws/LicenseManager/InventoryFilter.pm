@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::InventoryFilter;
-  use Moose;
-  has Condition => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LicenseManager::Types qw//;
+  has Condition => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Condition' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Condition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::Message;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Paws::PinpointEmail::Body', required => 1);
-  has Subject => (is => 'ro', isa => 'Paws::PinpointEmail::Content', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_Body PinpointEmail_Content/;
+  has Body => (is => 'ro', isa => PinpointEmail_Body, required => 1);
+  has Subject => (is => 'ro', isa => PinpointEmail_Content, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subject' => {
+                              'class' => 'Paws::PinpointEmail::Content',
+                              'type' => 'PinpointEmail_Content'
+                            },
+               'Body' => {
+                           'class' => 'Paws::PinpointEmail::Body',
+                           'type' => 'PinpointEmail_Body'
+                         }
+             },
+  'IsRequired' => {
+                    'Subject' => 1,
+                    'Body' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ consists of a subject line and a message body.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Body => L<Paws::PinpointEmail::Body>
+=head2 B<REQUIRED> Body => PinpointEmail_Body
 
   The body of the message. You can specify an HTML version of the
 message, a text-only version of the message, or both.
 
 
-=head2 B<REQUIRED> Subject => L<Paws::PinpointEmail::Content>
+=head2 B<REQUIRED> Subject => PinpointEmail_Content
 
   The subject line of the email. The subject line can only contain 7-bit
 ASCII characters. However, you can specify non-ASCII characters in the

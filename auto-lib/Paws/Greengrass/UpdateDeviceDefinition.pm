@@ -1,15 +1,39 @@
 
 package Paws::Greengrass::UpdateDeviceDefinition;
-  use Moose;
-  has DeviceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceDefinitionId', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has DeviceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeviceDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::UpdateDeviceDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeviceDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/devices/{DeviceDefinitionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::UpdateDeviceDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceDefinitionId' => {
+                                         'type' => 'Str'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'DeviceDefinitionId' => 'DeviceDefinitionId'
+                  },
+  'IsRequired' => {
+                    'DeviceDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

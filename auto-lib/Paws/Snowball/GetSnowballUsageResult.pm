@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Snowball::GetSnowballUsageResult;
-  use Moose;
-  has SnowballLimit => (is => 'ro', isa => 'Int');
-  has SnowballsInUse => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Snowball::Types qw//;
+  has SnowballLimit => (is => 'ro', isa => Int);
+  has SnowballsInUse => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnowballLimit' => {
+                                    'type' => 'Int'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SnowballsInUse' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

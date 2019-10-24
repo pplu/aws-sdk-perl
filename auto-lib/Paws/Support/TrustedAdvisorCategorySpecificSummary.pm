@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorCategorySpecificSummary;
-  use Moose;
-  has CostOptimizing => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCostOptimizingSummary', request_name => 'costOptimizing', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Support::Types qw/Support_TrustedAdvisorCostOptimizingSummary/;
+  has CostOptimizing => (is => 'ro', isa => Support_TrustedAdvisorCostOptimizingSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CostOptimizing' => {
+                                     'class' => 'Paws::Support::TrustedAdvisorCostOptimizingSummary',
+                                     'type' => 'Support_TrustedAdvisorCostOptimizingSummary'
+                                   }
+             },
+  'NameInRequest' => {
+                       'CostOptimizing' => 'costOptimizing'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ the Trusted Advisor check.
 =head1 ATTRIBUTES
 
 
-=head2 CostOptimizing => L<Paws::Support::TrustedAdvisorCostOptimizingSummary>
+=head2 CostOptimizing => Support_TrustedAdvisorCostOptimizingSummary
 
   The summary information about cost savings for a Trusted Advisor check
 that is in the Cost Optimizing category.

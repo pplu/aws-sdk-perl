@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::ELB::PolicyAttributeTypeDescription;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has AttributeType => (is => 'ro', isa => 'Str');
-  has Cardinality => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str);
+  has AttributeType => (is => 'ro', isa => Str);
+  has Cardinality => (is => 'ro', isa => Str);
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeType' => {
+                                    'type' => 'Str'
+                                  },
+               'Cardinality' => {
+                                  'type' => 'Str'
+                                },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::Chime::Bot;
-  use Moose;
-  has BotEmail => (is => 'ro', isa => 'Str');
-  has BotId => (is => 'ro', isa => 'Str');
-  has BotType => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has Disabled => (is => 'ro', isa => 'Bool');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has SecurityToken => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has UserId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Chime::Types qw//;
+  has BotEmail => (is => 'ro', isa => Str);
+  has BotId => (is => 'ro', isa => Str);
+  has BotType => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has Disabled => (is => 'ro', isa => Bool);
+  has DisplayName => (is => 'ro', isa => Str);
+  has SecurityToken => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityToken' => {
+                                    'type' => 'Str'
+                                  },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'BotEmail' => {
+                               'type' => 'Str'
+                             },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'BotType' => {
+                              'type' => 'Str'
+                            },
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'BotId' => {
+                            'type' => 'Str'
+                          },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

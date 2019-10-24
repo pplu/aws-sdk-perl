@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Glue::BatchStopJobRunError;
-  use Moose;
-  has ErrorDetail => (is => 'ro', isa => 'Paws::Glue::ErrorDetail');
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobRunId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_ErrorDetail/;
+  has ErrorDetail => (is => 'ro', isa => Glue_ErrorDetail);
+  has JobName => (is => 'ro', isa => Str);
+  has JobRunId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorDetail' => {
+                                  'class' => 'Paws::Glue::ErrorDetail',
+                                  'type' => 'Glue_ErrorDetail'
+                                },
+               'JobRunId' => {
+                               'type' => 'Str'
+                             },
+               'JobName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ run.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorDetail => L<Paws::Glue::ErrorDetail>
+=head2 ErrorDetail => Glue_ErrorDetail
 
   Specifies details about the error that was encountered.
 

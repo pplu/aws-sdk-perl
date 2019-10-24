@@ -1,15 +1,41 @@
 
 package Paws::ResourceGroups::UpdateGroupQuery;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
-  has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_ResourceQuery/;
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceQuery => (is => 'ro', isa => ResourceGroups_ResourceQuery, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroupQuery');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}/query');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::UpdateGroupQueryOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateGroupQuery');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/groups/{GroupName}/query');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::UpdateGroupQueryOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'ResourceQuery' => {
+                                    'class' => 'Paws::ResourceGroups::ResourceQuery',
+                                    'type' => 'ResourceGroups_ResourceQuery'
+                                  }
+             },
+  'ParamInURI' => {
+                    'GroupName' => 'GroupName'
+                  },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'ResourceQuery' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ The name of the resource group for which you want to edit the query.
 
 
 
-=head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=head2 B<REQUIRED> ResourceQuery => ResourceGroups_ResourceQuery
 
 The resource query that determines which AWS resources are members of
 the resource group.

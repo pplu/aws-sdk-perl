@@ -1,18 +1,58 @@
 
 package Paws::MQ::CreateUser;
-  use Moose;
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
-  has ConsoleAccess => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'consoleAccess');
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'groups');
-  has Password => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'password');
-  has Username => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'username', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::MQ::Types qw//;
+  has BrokerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConsoleAccess => (is => 'ro', isa => Bool, predicate => 1);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Password => (is => 'ro', isa => Str, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/brokers/{broker-id}/users/{username}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::CreateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/brokers/{broker-id}/users/{username}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::CreateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'ConsoleAccess' => {
+                                    'type' => 'Bool'
+                                  },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'Username' => 'username',
+                    'BrokerId' => 'broker-id'
+                  },
+  'NameInRequest' => {
+                       'Groups' => 'groups',
+                       'Password' => 'password',
+                       'ConsoleAccess' => 'consoleAccess'
+                     },
+  'IsRequired' => {
+                    'Username' => 1,
+                    'BrokerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

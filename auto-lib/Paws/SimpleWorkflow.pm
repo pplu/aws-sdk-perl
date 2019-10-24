@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::SimpleWorkflow;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'swf' }
   sub signing_name { 'swf' }
   sub version { '2012-01-25' }
   sub target_prefix { 'SimpleWorkflowService' }
   sub json_version { "1.0" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -421,17 +423,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 
 =item Domain => Str
 
-=item [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>]
+=item [CloseStatusFilter => SimpleWorkflow_CloseStatusFilter]
 
-=item [CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>]
+=item [CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter]
 
-=item [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>]
+=item [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter]
 
-=item [StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>]
+=item [StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter]
 
-=item [TagFilter => L<Paws::SimpleWorkflow::TagFilter>]
+=item [TagFilter => SimpleWorkflow_TagFilter]
 
-=item [TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>]
+=item [TypeFilter => SimpleWorkflow_WorkflowTypeFilter]
 
 
 =back
@@ -503,13 +505,13 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=item StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
-=item [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>]
+=item [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter]
 
-=item [TagFilter => L<Paws::SimpleWorkflow::TagFilter>]
+=item [TagFilter => SimpleWorkflow_TagFilter]
 
-=item [TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>]
+=item [TypeFilter => SimpleWorkflow_WorkflowTypeFilter]
 
 
 =back
@@ -581,7 +583,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item TaskList => L<Paws::SimpleWorkflow::TaskList>
+=item TaskList => SimpleWorkflow_TaskList
 
 
 =back
@@ -635,7 +637,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item TaskList => L<Paws::SimpleWorkflow::TaskList>
+=item TaskList => SimpleWorkflow_TaskList
 
 
 =back
@@ -687,7 +689,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =over
 
-=item ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=item ActivityType => SimpleWorkflow_ActivityType
 
 =item Domain => Str
 
@@ -814,7 +816,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=item WorkflowType => SimpleWorkflow_WorkflowType
 
 
 =back
@@ -883,7 +885,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =over
 
-=item ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=item ActivityType => SimpleWorkflow_ActivityType
 
 =item Domain => Str
 
@@ -999,7 +1001,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item Execution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=item Execution => SimpleWorkflow_WorkflowExecution
 
 
 =back
@@ -1052,7 +1054,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=item WorkflowType => SimpleWorkflow_WorkflowType
 
 
 =back
@@ -1118,7 +1120,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item Execution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=item Execution => SimpleWorkflow_WorkflowExecution
 
 =item [MaximumPageSize => Int]
 
@@ -1240,11 +1242,11 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>]
+=item [CloseStatusFilter => SimpleWorkflow_CloseStatusFilter]
 
-=item [CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>]
+=item [CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter]
 
-=item [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>]
+=item [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter]
 
 =item [MaximumPageSize => Int]
 
@@ -1252,11 +1254,11 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [ReverseOrder => Bool]
 
-=item [StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>]
+=item [StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter]
 
-=item [TagFilter => L<Paws::SimpleWorkflow::TagFilter>]
+=item [TagFilter => SimpleWorkflow_TagFilter]
 
-=item [TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>]
+=item [TypeFilter => SimpleWorkflow_WorkflowTypeFilter]
 
 
 =back
@@ -1390,9 +1392,9 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=item StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter
 
-=item [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>]
+=item [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter]
 
 =item [MaximumPageSize => Int]
 
@@ -1400,9 +1402,9 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [ReverseOrder => Bool]
 
-=item [TagFilter => L<Paws::SimpleWorkflow::TagFilter>]
+=item [TagFilter => SimpleWorkflow_TagFilter]
 
-=item [TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>]
+=item [TypeFilter => SimpleWorkflow_WorkflowTypeFilter]
 
 
 =back
@@ -1551,7 +1553,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item TaskList => L<Paws::SimpleWorkflow::TaskList>
+=item TaskList => SimpleWorkflow_TaskList
 
 =item [Identity => Str]
 
@@ -1616,7 +1618,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item TaskList => L<Paws::SimpleWorkflow::TaskList>
+=item TaskList => SimpleWorkflow_TaskList
 
 =item [Identity => Str]
 
@@ -1782,7 +1784,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [DefaultTaskHeartbeatTimeout => Str]
 
-=item [DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>]
+=item [DefaultTaskList => SimpleWorkflow_TaskList]
 
 =item [DefaultTaskPriority => Str]
 
@@ -1868,7 +1870,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]]
+=item [Tags => ArrayRef[SimpleWorkflow_ResourceTag]]
 
 
 =back
@@ -1928,7 +1930,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [DefaultLambdaRole => Str]
 
-=item [DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>]
+=item [DefaultTaskList => SimpleWorkflow_TaskList]
 
 =item [DefaultTaskPriority => Str]
 
@@ -2263,7 +2265,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item TaskToken => Str
 
-=item [Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]]
+=item [Decisions => ArrayRef[SimpleWorkflow_Decision]]
 
 =item [ExecutionContext => Str]
 
@@ -2371,7 +2373,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item WorkflowId => Str
 
-=item WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=item WorkflowType => SimpleWorkflow_WorkflowType
 
 =item [ChildPolicy => Str]
 
@@ -2383,7 +2385,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item [TagList => ArrayRef[Str|Undef]]
 
-=item [TaskList => L<Paws::SimpleWorkflow::TaskList>]
+=item [TaskList => SimpleWorkflow_TaskList]
 
 =item [TaskPriority => Str]
 
@@ -2478,7 +2480,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]
+=item Tags => ArrayRef[SimpleWorkflow_ResourceTag]
 
 
 =back
@@ -2568,7 +2570,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =over
 
-=item ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=item ActivityType => SimpleWorkflow_ActivityType
 
 =item Domain => Str
 
@@ -2691,7 +2693,7 @@ in the I<Amazon SWF Developer Guide>.
 
 =item Domain => Str
 
-=item WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=item WorkflowType => SimpleWorkflow_WorkflowType
 
 
 =back
@@ -2777,9 +2779,9 @@ Remove a tag from a Amazon SWF domain.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllWorkflowExecutionHistory(sub { },Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+=head2 GetAllWorkflowExecutionHistory(sub { },Domain => Str, Execution => SimpleWorkflow_WorkflowExecution, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
-=head2 GetAllWorkflowExecutionHistory(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+=head2 GetAllWorkflowExecutionHistory(Domain => Str, Execution => SimpleWorkflow_WorkflowExecution, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2801,9 +2803,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SimpleWorkflow::ActivityTypeInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllClosedWorkflowExecutions(sub { },Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+=head2 ListAllClosedWorkflowExecutions(sub { },Domain => Str, [CloseStatusFilter => SimpleWorkflow_CloseStatusFilter, CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter, ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter, TagFilter => SimpleWorkflow_TagFilter, TypeFilter => SimpleWorkflow_WorkflowTypeFilter])
 
-=head2 ListAllClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+=head2 ListAllClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => SimpleWorkflow_CloseStatusFilter, CloseTimeFilter => SimpleWorkflow_ExecutionTimeFilter, ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter, TagFilter => SimpleWorkflow_TagFilter, TypeFilter => SimpleWorkflow_WorkflowTypeFilter])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2825,9 +2827,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SimpleWorkflow::DomainInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllOpenWorkflowExecutions(sub { },Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+=head2 ListAllOpenWorkflowExecutions(sub { },Domain => Str, StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter, [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => SimpleWorkflow_TagFilter, TypeFilter => SimpleWorkflow_WorkflowTypeFilter])
 
-=head2 ListAllOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
+=head2 ListAllOpenWorkflowExecutions(Domain => Str, StartTimeFilter => SimpleWorkflow_ExecutionTimeFilter, [ExecutionFilter => SimpleWorkflow_WorkflowExecutionFilter, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => SimpleWorkflow_TagFilter, TypeFilter => SimpleWorkflow_WorkflowTypeFilter])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2849,9 +2851,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SimpleWorkflow::WorkflowTypeInfos> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 PollForAllDecisionTasks(sub { },Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+=head2 PollForAllDecisionTasks(sub { },Domain => Str, TaskList => SimpleWorkflow_TaskList, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
-=head2 PollForAllDecisionTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
+=head2 PollForAllDecisionTasks(Domain => Str, TaskList => SimpleWorkflow_TaskList, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

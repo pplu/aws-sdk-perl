@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackEvent;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has EventId => (is => 'ro', isa => 'Str', required => 1);
-  has LogicalResourceId => (is => 'ro', isa => 'Str');
-  has PhysicalResourceId => (is => 'ro', isa => 'Str');
-  has ResourceProperties => (is => 'ro', isa => 'Str');
-  has ResourceStatus => (is => 'ro', isa => 'Str');
-  has ResourceStatusReason => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str, required => 1);
+  has LogicalResourceId => (is => 'ro', isa => Str);
+  has PhysicalResourceId => (is => 'ro', isa => Str);
+  has ResourceProperties => (is => 'ro', isa => Str);
+  has ResourceStatus => (is => 'ro', isa => Str);
+  has ResourceStatusReason => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str, required => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceId' => {
+                                        'type' => 'Str'
+                                      },
+               'StackName' => {
+                                'type' => 'Str'
+                              },
+               'ResourceProperties' => {
+                                         'type' => 'Str'
+                                       },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'ResourceStatusReason' => {
+                                           'type' => 'Str'
+                                         },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'PhysicalResourceId' => {
+                                         'type' => 'Str'
+                                       },
+               'ResourceStatus' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Timestamp' => 1,
+                    'EventId' => 1,
+                    'StackId' => 1,
+                    'StackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::FileSizes;
-  use Moose;
-  has Base => (is => 'ro', isa => 'Int', request_name => 'base', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Int', request_name => 'destination', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Int', request_name => 'source', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CodeCommit::Types qw//;
+  has Base => (is => 'ro', isa => Int);
+  has Destination => (is => 'ro', isa => Int);
+  has Source => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Base' => {
+                           'type' => 'Int'
+                         },
+               'Source' => {
+                             'type' => 'Int'
+                           },
+               'Destination' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'Base' => 'base',
+                       'Source' => 'source',
+                       'Destination' => 'destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

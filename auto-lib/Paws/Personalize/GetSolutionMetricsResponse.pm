@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::GetSolutionMetricsResponse;
-  use Moose;
-  has Metrics => (is => 'ro', isa => 'Paws::Personalize::Metrics', traits => ['NameInRequest'], request_name => 'metrics' );
-  has SolutionVersionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionVersionArn' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_Metrics/;
+  has Metrics => (is => 'ro', isa => Personalize_Metrics);
+  has SolutionVersionArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SolutionVersionArn' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Metrics' => {
+                              'class' => 'Paws::Personalize::Metrics',
+                              'type' => 'Personalize_Metrics'
+                            }
+             },
+  'NameInRequest' => {
+                       'SolutionVersionArn' => 'solutionVersionArn',
+                       'Metrics' => 'metrics'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Personalize::GetSolutionMetricsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Metrics => L<Paws::Personalize::Metrics>
+=head2 Metrics => Personalize_Metrics
 
 The metrics for the solution version.
 

@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SnapshotDetails;
-  use Moose;
-  has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has SnapshotCreationTimestamp => (is => 'ro', isa => 'Str');
-  has SnapshotName => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ApplicationVersionId => (is => 'ro', isa => Int, required => 1);
+  has SnapshotCreationTimestamp => (is => 'ro', isa => Str);
+  has SnapshotName => (is => 'ro', isa => Str, required => 1);
+  has SnapshotStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationVersionId' => {
+                                           'type' => 'Int'
+                                         },
+               'SnapshotCreationTimestamp' => {
+                                                'type' => 'Str'
+                                              },
+               'SnapshotStatus' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'SnapshotName' => 1,
+                    'ApplicationVersionId' => 1,
+                    'SnapshotStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

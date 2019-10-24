@@ -29,7 +29,11 @@ use MooX::ClassAttribute;
                   },
   'ParamInQuery' => {
                       'Id' => 'id'
-                    }
+                    },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

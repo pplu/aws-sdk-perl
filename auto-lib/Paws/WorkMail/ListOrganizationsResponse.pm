@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::ListOrganizationsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OrganizationSummaries => (is => 'ro', isa => 'ArrayRef[Paws::WorkMail::OrganizationSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkMail::Types qw/WorkMail_OrganizationSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OrganizationSummaries => (is => 'ro', isa => ArrayRef[WorkMail_OrganizationSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationSummaries' => {
+                                            'class' => 'Paws::WorkMail::OrganizationSummary',
+                                            'type' => 'ArrayRef[WorkMail_OrganizationSummary]'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use to retrieve the next page of results. The value is
 "null" when there are no more results to return.
 
 
-=head2 OrganizationSummaries => ArrayRef[L<Paws::WorkMail::OrganizationSummary>]
+=head2 OrganizationSummaries => ArrayRef[WorkMail_OrganizationSummary]
 
 The overview of owned organizations presented as a list of organization
 summaries.

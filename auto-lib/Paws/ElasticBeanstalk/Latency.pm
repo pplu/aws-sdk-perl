@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::Latency;
-  use Moose;
-  has P10 => (is => 'ro', isa => 'Num');
-  has P50 => (is => 'ro', isa => 'Num');
-  has P75 => (is => 'ro', isa => 'Num');
-  has P85 => (is => 'ro', isa => 'Num');
-  has P90 => (is => 'ro', isa => 'Num');
-  has P95 => (is => 'ro', isa => 'Num');
-  has P99 => (is => 'ro', isa => 'Num');
-  has P999 => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has P10 => (is => 'ro', isa => Num);
+  has P50 => (is => 'ro', isa => Num);
+  has P75 => (is => 'ro', isa => Num);
+  has P85 => (is => 'ro', isa => Num);
+  has P90 => (is => 'ro', isa => Num);
+  has P95 => (is => 'ro', isa => Num);
+  has P99 => (is => 'ro', isa => Num);
+  has P999 => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'P95' => {
+                          'type' => 'Num'
+                        },
+               'P99' => {
+                          'type' => 'Num'
+                        },
+               'P90' => {
+                          'type' => 'Num'
+                        },
+               'P85' => {
+                          'type' => 'Num'
+                        },
+               'P50' => {
+                          'type' => 'Num'
+                        },
+               'P75' => {
+                          'type' => 'Num'
+                        },
+               'P10' => {
+                          'type' => 'Num'
+                        },
+               'P999' => {
+                           'type' => 'Num'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

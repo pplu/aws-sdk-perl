@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::Permission;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
-  has Principal => (is => 'ro', isa => 'Str');
-  has SourceAccount => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ACMPCA::Types qw//;
+  has Actions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CertificateAuthorityArn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Policy => (is => 'ro', isa => Str);
+  has Principal => (is => 'ro', isa => Str);
+  has SourceAccount => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'Actions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'SourceAccount' => {
+                                    'type' => 'Str'
+                                  },
+               'Principal' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

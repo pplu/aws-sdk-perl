@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::Config::DeliveryChannel;
-  use Moose;
-  has ConfigSnapshotDeliveryProperties => (is => 'ro', isa => 'Paws::Config::ConfigSnapshotDeliveryProperties', request_name => 'configSnapshotDeliveryProperties', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has S3BucketName => (is => 'ro', isa => 'Str', request_name => 's3BucketName', traits => ['NameInRequest']);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str', request_name => 's3KeyPrefix', traits => ['NameInRequest']);
-  has SnsTopicARN => (is => 'ro', isa => 'Str', request_name => 'snsTopicARN', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ConfigSnapshotDeliveryProperties/;
+  has ConfigSnapshotDeliveryProperties => (is => 'ro', isa => Config_ConfigSnapshotDeliveryProperties);
+  has Name => (is => 'ro', isa => Str);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has S3KeyPrefix => (is => 'ro', isa => Str);
+  has SnsTopicARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'SnsTopicARN' => {
+                                  'type' => 'Str'
+                                },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigSnapshotDeliveryProperties' => {
+                                                       'class' => 'Paws::Config::ConfigSnapshotDeliveryProperties',
+                                                       'type' => 'Config_ConfigSnapshotDeliveryProperties'
+                                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'S3KeyPrefix' => 's3KeyPrefix',
+                       'SnsTopicARN' => 'snsTopicARN',
+                       'S3BucketName' => 's3BucketName',
+                       'ConfigSnapshotDeliveryProperties' => 'configSnapshotDeliveryProperties',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +78,7 @@ configuration states.
 =head1 ATTRIBUTES
 
 
-=head2 ConfigSnapshotDeliveryProperties => L<Paws::Config::ConfigSnapshotDeliveryProperties>
+=head2 ConfigSnapshotDeliveryProperties => Config_ConfigSnapshotDeliveryProperties
 
   The options for how often AWS Config delivers configuration snapshots
 to the Amazon S3 bucket.

@@ -1,20 +1,61 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::PutLifecycleHook;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has DefaultResult => (is => 'ro', isa => 'Str');
-  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
-  has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleTransition => (is => 'ro', isa => 'Str');
-  has NotificationMetadata => (is => 'ro', isa => 'Str');
-  has NotificationTargetARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultResult => (is => 'ro', isa => Str, predicate => 1);
+  has HeartbeatTimeout => (is => 'ro', isa => Int, predicate => 1);
+  has LifecycleHookName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LifecycleTransition => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationMetadata => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationTargetARN => (is => 'ro', isa => Str, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutLifecycleHook');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::PutLifecycleHookAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutLifecycleHookResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutLifecycleHook');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::PutLifecycleHookAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PutLifecycleHookResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationMetadata' => {
+                                           'type' => 'Str'
+                                         },
+               'LifecycleTransition' => {
+                                          'type' => 'Str'
+                                        },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'NotificationTargetARN' => {
+                                            'type' => 'Str'
+                                          },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'DefaultResult' => {
+                                    'type' => 'Str'
+                                  },
+               'HeartbeatTimeout' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'LifecycleHookName' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

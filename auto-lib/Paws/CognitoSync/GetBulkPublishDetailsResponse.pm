@@ -1,13 +1,42 @@
 
 package Paws::CognitoSync::GetBulkPublishDetailsResponse;
-  use Moose;
-  has BulkPublishCompleteTime => (is => 'ro', isa => 'Str');
-  has BulkPublishStartTime => (is => 'ro', isa => 'Str');
-  has BulkPublishStatus => (is => 'ro', isa => 'Str');
-  has FailureMessage => (is => 'ro', isa => 'Str');
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has BulkPublishCompleteTime => (is => 'ro', isa => Str);
+  has BulkPublishStartTime => (is => 'ro', isa => Str);
+  has BulkPublishStatus => (is => 'ro', isa => Str);
+  has FailureMessage => (is => 'ro', isa => Str);
+  has IdentityPoolId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureMessage' => {
+                                     'type' => 'Str'
+                                   },
+               'BulkPublishCompleteTime' => {
+                                              'type' => 'Str'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'BulkPublishStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'BulkPublishStartTime' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentConfigInfo;
-  use Moose;
-  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has DeploymentConfigId => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigId', traits => ['NameInRequest']);
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
-  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['NameInRequest']);
-  has TrafficRoutingConfig => (is => 'ro', isa => 'Paws::CodeDeploy::TrafficRoutingConfig', request_name => 'trafficRoutingConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_MinimumHealthyHosts CodeDeploy_TrafficRoutingConfig/;
+  has ComputePlatform => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has DeploymentConfigId => (is => 'ro', isa => Str);
+  has DeploymentConfigName => (is => 'ro', isa => Str);
+  has MinimumHealthyHosts => (is => 'ro', isa => CodeDeploy_MinimumHealthyHosts);
+  has TrafficRoutingConfig => (is => 'ro', isa => CodeDeploy_TrafficRoutingConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComputePlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'DeploymentConfigName' => {
+                                           'type' => 'Str'
+                                         },
+               'DeploymentConfigId' => {
+                                         'type' => 'Str'
+                                       },
+               'MinimumHealthyHosts' => {
+                                          'class' => 'Paws::CodeDeploy::MinimumHealthyHosts',
+                                          'type' => 'CodeDeploy_MinimumHealthyHosts'
+                                        },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'TrafficRoutingConfig' => {
+                                           'class' => 'Paws::CodeDeploy::TrafficRoutingConfig',
+                                           'type' => 'CodeDeploy_TrafficRoutingConfig'
+                                         }
+             },
+  'NameInRequest' => {
+                       'ComputePlatform' => 'computePlatform',
+                       'DeploymentConfigName' => 'deploymentConfigName',
+                       'DeploymentConfigId' => 'deploymentConfigId',
+                       'MinimumHealthyHosts' => 'minimumHealthyHosts',
+                       'CreateTime' => 'createTime',
+                       'TrafficRoutingConfig' => 'trafficRoutingConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,12 +104,12 @@ or C<ECS>).
   The deployment configuration name.
 
 
-=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
+=head2 MinimumHealthyHosts => CodeDeploy_MinimumHealthyHosts
 
   Information about the number or percentage of minimum healthy instance.
 
 
-=head2 TrafficRoutingConfig => L<Paws::CodeDeploy::TrafficRoutingConfig>
+=head2 TrafficRoutingConfig => CodeDeploy_TrafficRoutingConfig
 
   The configuration that specifies how the deployment traffic is routed.
 Only deployments with a Lambda compute platform can specify this.

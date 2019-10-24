@@ -1,16 +1,55 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribePatchGroupStateResult;
-  use Moose;
-  has Instances => (is => 'ro', isa => 'Int');
-  has InstancesWithFailedPatches => (is => 'ro', isa => 'Int');
-  has InstancesWithInstalledOtherPatches => (is => 'ro', isa => 'Int');
-  has InstancesWithInstalledPatches => (is => 'ro', isa => 'Int');
-  has InstancesWithInstalledRejectedPatches => (is => 'ro', isa => 'Int');
-  has InstancesWithMissingPatches => (is => 'ro', isa => 'Int');
-  has InstancesWithNotApplicablePatches => (is => 'ro', isa => 'Int');
-  has InstancesWithUnreportedNotApplicablePatches => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has Instances => (is => 'ro', isa => Int);
+  has InstancesWithFailedPatches => (is => 'ro', isa => Int);
+  has InstancesWithInstalledOtherPatches => (is => 'ro', isa => Int);
+  has InstancesWithInstalledPatches => (is => 'ro', isa => Int);
+  has InstancesWithInstalledRejectedPatches => (is => 'ro', isa => Int);
+  has InstancesWithMissingPatches => (is => 'ro', isa => Int);
+  has InstancesWithNotApplicablePatches => (is => 'ro', isa => Int);
+  has InstancesWithUnreportedNotApplicablePatches => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstancesWithFailedPatches' => {
+                                                 'type' => 'Int'
+                                               },
+               'InstancesWithNotApplicablePatches' => {
+                                                        'type' => 'Int'
+                                                      },
+               'InstancesWithInstalledOtherPatches' => {
+                                                         'type' => 'Int'
+                                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InstancesWithInstalledPatches' => {
+                                                    'type' => 'Int'
+                                                  },
+               'Instances' => {
+                                'type' => 'Int'
+                              },
+               'InstancesWithUnreportedNotApplicablePatches' => {
+                                                                  'type' => 'Int'
+                                                                },
+               'InstancesWithInstalledRejectedPatches' => {
+                                                            'type' => 'Int'
+                                                          },
+               'InstancesWithMissingPatches' => {
+                                                  'type' => 'Int'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

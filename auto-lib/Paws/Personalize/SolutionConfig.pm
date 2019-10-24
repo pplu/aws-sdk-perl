@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::Personalize::SolutionConfig;
-  use Moose;
-  has AlgorithmHyperParameters => (is => 'ro', isa => 'Paws::Personalize::HyperParameters', request_name => 'algorithmHyperParameters', traits => ['NameInRequest']);
-  has AutoMLConfig => (is => 'ro', isa => 'Paws::Personalize::AutoMLConfig', request_name => 'autoMLConfig', traits => ['NameInRequest']);
-  has EventValueThreshold => (is => 'ro', isa => 'Str', request_name => 'eventValueThreshold', traits => ['NameInRequest']);
-  has FeatureTransformationParameters => (is => 'ro', isa => 'Paws::Personalize::FeatureTransformationParameters', request_name => 'featureTransformationParameters', traits => ['NameInRequest']);
-  has HpoConfig => (is => 'ro', isa => 'Paws::Personalize::HPOConfig', request_name => 'hpoConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw/Personalize_FeatureTransformationParameters Personalize_HPOConfig Personalize_AutoMLConfig Personalize_HyperParameters/;
+  has AlgorithmHyperParameters => (is => 'ro', isa => Personalize_HyperParameters);
+  has AutoMLConfig => (is => 'ro', isa => Personalize_AutoMLConfig);
+  has EventValueThreshold => (is => 'ro', isa => Str);
+  has FeatureTransformationParameters => (is => 'ro', isa => Personalize_FeatureTransformationParameters);
+  has HpoConfig => (is => 'ro', isa => Personalize_HPOConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FeatureTransformationParameters' => {
+                                                      'class' => 'Paws::Personalize::FeatureTransformationParameters',
+                                                      'type' => 'Personalize_FeatureTransformationParameters'
+                                                    },
+               'AutoMLConfig' => {
+                                   'class' => 'Paws::Personalize::AutoMLConfig',
+                                   'type' => 'Personalize_AutoMLConfig'
+                                 },
+               'HpoConfig' => {
+                                'class' => 'Paws::Personalize::HPOConfig',
+                                'type' => 'Personalize_HPOConfig'
+                              },
+               'EventValueThreshold' => {
+                                          'type' => 'Str'
+                                        },
+               'AlgorithmHyperParameters' => {
+                                               'class' => 'Paws::Personalize::HyperParameters',
+                                               'type' => 'Personalize_HyperParameters'
+                                             }
+             },
+  'NameInRequest' => {
+                       'FeatureTransformationParameters' => 'featureTransformationParameters',
+                       'AutoMLConfig' => 'autoMLConfig',
+                       'HpoConfig' => 'hpoConfig',
+                       'EventValueThreshold' => 'eventValueThreshold',
+                       'AlgorithmHyperParameters' => 'algorithmHyperParameters'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +80,12 @@ Describes the configuration properties for the solution.
 =head1 ATTRIBUTES
 
 
-=head2 AlgorithmHyperParameters => L<Paws::Personalize::HyperParameters>
+=head2 AlgorithmHyperParameters => Personalize_HyperParameters
 
   Lists the hyperparameter names and ranges.
 
 
-=head2 AutoMLConfig => L<Paws::Personalize::AutoMLConfig>
+=head2 AutoMLConfig => Personalize_AutoMLConfig
 
   The AutoMLConfig object containing a list of recipes to search when
 AutoML is performed.
@@ -57,12 +97,12 @@ AutoML is performed.
 used for training a model.
 
 
-=head2 FeatureTransformationParameters => L<Paws::Personalize::FeatureTransformationParameters>
+=head2 FeatureTransformationParameters => Personalize_FeatureTransformationParameters
 
   Lists the feature transformation parameters.
 
 
-=head2 HpoConfig => L<Paws::Personalize::HPOConfig>
+=head2 HpoConfig => Personalize_HPOConfig
 
   Describes the properties for hyperparameter optimization (HPO). For use
 with the bring-your-own-recipe feature. Not used with Amazon

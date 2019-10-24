@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::KeySchemaElement;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
-  has KeyType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDBStreams::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, required => 1);
+  has KeyType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyType' => {
+                              'type' => 'Str'
+                            },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'KeyType' => 1,
+                    'AttributeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

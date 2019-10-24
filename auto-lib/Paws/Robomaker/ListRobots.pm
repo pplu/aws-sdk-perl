@@ -1,16 +1,43 @@
 
 package Paws::Robomaker::ListRobots;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Filter]', traits => ['NameInRequest'], request_name => 'filters');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Robomaker::Types qw/Robomaker_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[Robomaker_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRobots');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/listRobots');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::ListRobotsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRobots');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/listRobots');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::ListRobotsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::Robomaker::Filter',
+                              'type' => 'ArrayRef[Robomaker_Filter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Filters' => 'filters',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,9 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListRobotsResponse = $robomaker->ListRobots(
       Filters => [
         {
-          Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
+          Name   => 'MyName',    # min: 1, max: 255
           Values => [
-            'MyName', ...        # min: 1, max: 255; OPTIONAL
+            'MyName', ...        # min: 1, max: 255
           ],                     # min: 1, max: 1; OPTIONAL
         },
         ...
@@ -56,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::Robomaker::Filter>]
+=head2 Filters => ArrayRef[Robomaker_Filter]
 
 Optional filters to limit results.
 

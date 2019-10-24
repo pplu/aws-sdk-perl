@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SSM::FailureDetails;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
-  has FailureStage => (is => 'ro', isa => 'Str');
-  has FailureType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AutomationParameterMap/;
+  has Details => (is => 'ro', isa => SSM_AutomationParameterMap);
+  has FailureStage => (is => 'ro', isa => Str);
+  has FailureType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::SSM::AutomationParameterMap',
+                              'type' => 'SSM_AutomationParameterMap'
+                            },
+               'FailureType' => {
+                                  'type' => 'Str'
+                                },
+               'FailureStage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Information about an Automation failure.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::SSM::AutomationParameterMap>
+=head2 Details => SSM_AutomationParameterMap
 
   Detailed information about the Automation step failure.
 

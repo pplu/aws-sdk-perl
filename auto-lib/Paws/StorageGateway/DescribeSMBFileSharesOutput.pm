@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeSMBFileSharesOutput;
-  use Moose;
-  has SMBFileShareInfoList => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::SMBFileShareInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_SMBFileShareInfo/;
+  has SMBFileShareInfoList => (is => 'ro', isa => ArrayRef[StorageGateway_SMBFileShareInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SMBFileShareInfoList' => {
+                                           'class' => 'Paws::StorageGateway::SMBFileShareInfo',
+                                           'type' => 'ArrayRef[StorageGateway_SMBFileShareInfo]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::StorageGateway::DescribeSMBFileSharesOutput
 =head1 ATTRIBUTES
 
 
-=head2 SMBFileShareInfoList => ArrayRef[L<Paws::StorageGateway::SMBFileShareInfo>]
+=head2 SMBFileShareInfoList => ArrayRef[StorageGateway_SMBFileShareInfo]
 
 An array containing a description for each requested file share.
 

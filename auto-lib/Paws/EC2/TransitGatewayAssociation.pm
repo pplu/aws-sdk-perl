@@ -7,7 +7,7 @@ package Paws::EC2::TransitGatewayAssociation;
   has TransitGatewayAttachmentId => (is => 'ro', isa => Str);
   has TransitGatewayRouteTableId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ResourceId' => {
@@ -35,8 +35,8 @@ package Paws::EC2::TransitGatewayAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::ListWebACLsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has WebACLs => (is => 'ro', isa => 'ArrayRef[Paws::WAF::WebACLSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_WebACLSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has WebACLs => (is => 'ro', isa => ArrayRef[WAF_WebACLSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'WebACLs' => {
+                              'class' => 'Paws::WAF::WebACLSummary',
+                              'type' => 'ArrayRef[WAF_WebACLSummary]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ request, and specify the C<NextMarker> value from the response in the
 C<NextMarker> value in the next request.
 
 
-=head2 WebACLs => ArrayRef[L<Paws::WAF::WebACLSummary>]
+=head2 WebACLs => ArrayRef[WAF_WebACLSummary]
 
 An array of WebACLSummary objects.
 

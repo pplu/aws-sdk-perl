@@ -8,7 +8,7 @@ package Paws::EC2::VpcPeeringConnection;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has VpcPeeringConnectionId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'RequesterVpcInfo' => {
@@ -44,8 +44,8 @@ package Paws::EC2::VpcPeeringConnection;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

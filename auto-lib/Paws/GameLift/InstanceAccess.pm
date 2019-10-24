@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::GameLift::InstanceAccess;
-  use Moose;
-  has Credentials => (is => 'ro', isa => 'Paws::GameLift::InstanceCredentials');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has OperatingSystem => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_InstanceCredentials/;
+  has Credentials => (is => 'ro', isa => GameLift_InstanceCredentials);
+  has FleetId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has OperatingSystem => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Credentials' => {
+                                  'class' => 'Paws::GameLift::InstanceCredentials',
+                                  'type' => 'GameLift_InstanceCredentials'
+                                },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +71,7 @@ requested by calling GetInstanceAccess.
 =head1 ATTRIBUTES
 
 
-=head2 Credentials => L<Paws::GameLift::InstanceCredentials>
+=head2 Credentials => GameLift_InstanceCredentials
 
   Credentials required to access the instance.
 

@@ -1,16 +1,65 @@
 
 package Paws::LexModels::CreateSlotTypeVersionResponse;
-  use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_EnumerationValue/;
+  has Checksum => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EnumerationValues => (is => 'ro', isa => ArrayRef[LexModels_EnumerationValue]);
+  has LastUpdatedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ValueSelectionStrategy => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValueSelectionStrategy' => {
+                                             'type' => 'Str'
+                                           },
+               'LastUpdatedDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EnumerationValues' => {
+                                        'class' => 'Paws::LexModels::EnumerationValue',
+                                        'type' => 'ArrayRef[LexModels_EnumerationValue]'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Checksum' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ValueSelectionStrategy' => 'valueSelectionStrategy',
+                       'LastUpdatedDate' => 'lastUpdatedDate',
+                       'CreatedDate' => 'createdDate',
+                       'Version' => 'version',
+                       'EnumerationValues' => 'enumerationValues',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Checksum' => 'checksum'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +86,7 @@ The date that the slot type was created.
 A description of the slot type.
 
 
-=head2 EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]
+=head2 EnumerationValues => ArrayRef[LexModels_EnumerationValue]
 
 A list of C<EnumerationValue> objects that defines the values that the
 slot type can take.

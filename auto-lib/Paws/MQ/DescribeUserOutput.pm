@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MQ::DescribeUserOutput;
-  use Moose;
-  has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
-  has ConsoleAccess => (is => 'ro', isa => 'Bool', request_name => 'consoleAccess', traits => ['NameInRequest']);
-  has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
-  has Pending => (is => 'ro', isa => 'Paws::MQ::UserPendingChanges', request_name => 'pending', traits => ['NameInRequest']);
-  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::MQ::Types qw/MQ_UserPendingChanges/;
+  has BrokerId => (is => 'ro', isa => Str);
+  has ConsoleAccess => (is => 'ro', isa => Bool);
+  has Groups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Pending => (is => 'ro', isa => MQ_UserPendingChanges);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groups' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ConsoleAccess' => {
+                                    'type' => 'Bool'
+                                  },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Pending' => {
+                              'class' => 'Paws::MQ::UserPendingChanges',
+                              'type' => 'MQ_UserPendingChanges'
+                            },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Groups' => 'groups',
+                       'ConsoleAccess' => 'consoleAccess',
+                       'Username' => 'username',
+                       'Pending' => 'pending',
+                       'BrokerId' => 'brokerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +95,7 @@ underscores, and tildes (- . _ ~). This value must be 2-100 characters
 long.
 
 
-=head2 Pending => L<Paws::MQ::UserPendingChanges>
+=head2 Pending => MQ_UserPendingChanges
 
   The status of the changes pending for the ActiveMQ user.
 

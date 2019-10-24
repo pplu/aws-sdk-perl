@@ -1,19 +1,76 @@
+# Generated from default/object.tt
 package Paws::Neptune::PendingModifiedValues;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::Neptune::PendingCloudwatchLogsExports');
-  has Port => (is => 'ro', isa => 'Int');
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::Neptune::Types qw/Neptune_PendingCloudwatchLogsExports/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CACertificateIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PendingCloudwatchLogsExports => (is => 'ro', isa => Neptune_PendingCloudwatchLogsExports);
+  has Port => (is => 'ro', isa => Int);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'PendingCloudwatchLogsExports' => {
+                                                   'class' => 'Paws::Neptune::PendingCloudwatchLogsExports',
+                                                   'type' => 'Neptune_PendingCloudwatchLogsExports'
+                                                 },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +172,7 @@ credentials for the DB instance.
 deployment.
 
 
-=head2 PendingCloudwatchLogsExports => L<Paws::Neptune::PendingCloudwatchLogsExports>
+=head2 PendingCloudwatchLogsExports => Neptune_PendingCloudwatchLogsExports
 
   Specifies the CloudWatch logs to be exported.
 

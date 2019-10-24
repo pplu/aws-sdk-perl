@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::RedShift::TaggedResource;
-  use Moose;
-  has ResourceName => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Tag => (is => 'ro', isa => 'Paws::RedShift::Tag');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Tag => (is => 'ro', isa => RedShift_Tag);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tag' => {
+                          'class' => 'Paws::RedShift::Tag',
+                          'type' => 'RedShift_Tag'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +120,7 @@ Resource Name (ARN)
 in the Amazon Redshift Cluster Management Guide.
 
 
-=head2 Tag => L<Paws::RedShift::Tag>
+=head2 Tag => RedShift_Tag
 
   The tag for the resource.
 

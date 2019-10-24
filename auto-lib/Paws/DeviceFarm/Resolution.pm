@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Resolution;
-  use Moose;
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Height => (is => 'ro', isa => Int);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          }
+             },
+  'NameInRequest' => {
+                       'Height' => 'height',
+                       'Width' => 'width'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

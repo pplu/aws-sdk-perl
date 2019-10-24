@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::CreateSnapshotResult;
-  use Moose;
-  has Snapshot => (is => 'ro', isa => 'Paws::ElastiCache::Snapshot');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Snapshot/;
+  has Snapshot => (is => 'ro', isa => ElastiCache_Snapshot);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Snapshot' => {
+                               'class' => 'Paws::ElastiCache::Snapshot',
+                               'type' => 'ElastiCache_Snapshot'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElastiCache::CreateSnapshotResult
 =head1 ATTRIBUTES
 
 
-=head2 Snapshot => L<Paws::ElastiCache::Snapshot>
+=head2 Snapshot => ElastiCache_Snapshot
 
 
 

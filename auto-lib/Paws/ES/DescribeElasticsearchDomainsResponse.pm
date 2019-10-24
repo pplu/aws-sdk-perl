@@ -16,7 +16,10 @@ package Paws::ES::DescribeElasticsearchDomainsResponse;
                '_request_id' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'DomainStatusList' => 1
+                  }
 }
 ;
     return $Params_map;

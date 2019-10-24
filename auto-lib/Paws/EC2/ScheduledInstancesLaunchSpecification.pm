@@ -16,7 +16,7 @@ package Paws::EC2::ScheduledInstancesLaunchSpecification;
   has SubnetId => (is => 'ro', isa => Str);
   has UserData => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ImageId' => {
@@ -71,11 +71,14 @@ package Paws::EC2::ScheduledInstancesLaunchSpecification;
                        'SecurityGroupIds' => 'SecurityGroupId',
                        'NetworkInterfaces' => 'NetworkInterface',
                        'BlockDeviceMappings' => 'BlockDeviceMapping'
-                     }
+                     },
+  'IsRequired' => {
+                    'ImageId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

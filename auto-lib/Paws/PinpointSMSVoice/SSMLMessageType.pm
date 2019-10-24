@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::PinpointSMSVoice::SSMLMessageType;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Text => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw//;
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Text => (is => 'ro', isa => Str);
+  has VoiceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Text' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

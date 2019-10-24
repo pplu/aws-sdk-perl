@@ -5,7 +5,7 @@ package Paws::EC2::InstanceCapacity;
   has InstanceType => (is => 'ro', isa => Str);
   has TotalCapacity => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceType' => {
@@ -25,8 +25,8 @@ package Paws::EC2::InstanceCapacity;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

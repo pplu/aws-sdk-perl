@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::AnalyticsExportDestination;
   use Moo;
   use Types::Standard qw//;
@@ -11,7 +12,10 @@ package Paws::S3::AnalyticsExportDestination;
                                           'class' => 'Paws::S3::AnalyticsS3BucketDestination',
                                           'type' => 'S3_AnalyticsS3BucketDestination'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'S3BucketDestination' => 1
+                  }
 }
 ;
     return $Params_map;

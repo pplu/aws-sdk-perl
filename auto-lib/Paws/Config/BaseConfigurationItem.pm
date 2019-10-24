@@ -1,19 +1,92 @@
+# Generated from default/object.tt
 package Paws::Config::BaseConfigurationItem;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has AwsRegion => (is => 'ro', isa => 'Str', request_name => 'awsRegion', traits => ['NameInRequest']);
-  has Configuration => (is => 'ro', isa => 'Str', request_name => 'configuration', traits => ['NameInRequest']);
-  has ConfigurationItemCaptureTime => (is => 'ro', isa => 'Str', request_name => 'configurationItemCaptureTime', traits => ['NameInRequest']);
-  has ConfigurationItemStatus => (is => 'ro', isa => 'Str', request_name => 'configurationItemStatus', traits => ['NameInRequest']);
-  has ConfigurationStateId => (is => 'ro', isa => 'Str', request_name => 'configurationStateId', traits => ['NameInRequest']);
-  has ResourceCreationTime => (is => 'ro', isa => 'Str', request_name => 'resourceCreationTime', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has ResourceName => (is => 'ro', isa => 'Str', request_name => 'resourceName', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SupplementaryConfiguration => (is => 'ro', isa => 'Paws::Config::SupplementaryConfiguration', request_name => 'supplementaryConfiguration', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_SupplementaryConfiguration/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has AwsRegion => (is => 'ro', isa => Str);
+  has Configuration => (is => 'ro', isa => Str);
+  has ConfigurationItemCaptureTime => (is => 'ro', isa => Str);
+  has ConfigurationItemStatus => (is => 'ro', isa => Str);
+  has ConfigurationStateId => (is => 'ro', isa => Str);
+  has ResourceCreationTime => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceName => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SupplementaryConfiguration => (is => 'ro', isa => Config_SupplementaryConfiguration);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'Configuration' => {
+                                    'type' => 'Str'
+                                  },
+               'ConfigurationItemStatus' => {
+                                              'type' => 'Str'
+                                            },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'ResourceName' => {
+                                   'type' => 'Str'
+                                 },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ConfigurationStateId' => {
+                                           'type' => 'Str'
+                                         },
+               'SupplementaryConfiguration' => {
+                                                 'class' => 'Paws::Config::SupplementaryConfiguration',
+                                                 'type' => 'Config_SupplementaryConfiguration'
+                                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceCreationTime' => {
+                                           'type' => 'Str'
+                                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'ConfigurationItemCaptureTime' => {
+                                                   'type' => 'Str'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'AwsRegion' => 'awsRegion',
+                       'Configuration' => 'configuration',
+                       'ConfigurationItemStatus' => 'configurationItemStatus',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'ResourceName' => 'resourceName',
+                       'Version' => 'version',
+                       'ConfigurationStateId' => 'configurationStateId',
+                       'SupplementaryConfiguration' => 'supplementaryConfiguration',
+                       'ResourceType' => 'resourceType',
+                       'AccountId' => 'accountId',
+                       'ResourceCreationTime' => 'resourceCreationTime',
+                       'Arn' => 'arn',
+                       'ConfigurationItemCaptureTime' => 'configurationItemCaptureTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +183,7 @@ a resource.
   The type of AWS resource.
 
 
-=head2 SupplementaryConfiguration => L<Paws::Config::SupplementaryConfiguration>
+=head2 SupplementaryConfiguration => Config_SupplementaryConfiguration
 
   Configuration attributes that AWS Config returns for certain resource
 types to supplement the information returned for the configuration

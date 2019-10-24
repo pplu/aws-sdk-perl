@@ -1,21 +1,62 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeEvents;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has Duration => (is => 'ro', isa => Int, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has SourceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has SourceType => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::EventsMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::EventsMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeEventsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Filters' => {
+                              'class' => 'Paws::Neptune::Filter',
+                              'type' => 'ArrayRef[Neptune_Filter]'
+                            },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +132,7 @@ notification subscription.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 This parameter is not currently supported.
 

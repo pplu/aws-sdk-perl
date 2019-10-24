@@ -1,24 +1,88 @@
+# Generated from callresult_class.tt
 
 package Paws::ImportExport::GetStatusOutput;
-  use Moose;
-  has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
-  has Carrier => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CurrentManifest => (is => 'ro', isa => 'Str');
-  has ErrorCount => (is => 'ro', isa => 'Int');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has LocationCode => (is => 'ro', isa => 'Str');
-  has LocationMessage => (is => 'ro', isa => 'Str');
-  has LogBucket => (is => 'ro', isa => 'Str');
-  has LogKey => (is => 'ro', isa => 'Str');
-  has ProgressCode => (is => 'ro', isa => 'Str');
-  has ProgressMessage => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
-  has SignatureFileContents => (is => 'ro', isa => 'Str');
-  has TrackingNumber => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::ImportExport::Types qw/ImportExport_Artifact/;
+  has ArtifactList => (is => 'ro', isa => ArrayRef[ImportExport_Artifact]);
+  has Carrier => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CurrentManifest => (is => 'ro', isa => Str);
+  has ErrorCount => (is => 'ro', isa => Int);
+  has JobId => (is => 'ro', isa => Str);
+  has JobType => (is => 'ro', isa => Str);
+  has LocationCode => (is => 'ro', isa => Str);
+  has LocationMessage => (is => 'ro', isa => Str);
+  has LogBucket => (is => 'ro', isa => Str);
+  has LogKey => (is => 'ro', isa => Str);
+  has ProgressCode => (is => 'ro', isa => Str);
+  has ProgressMessage => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
+  has SignatureFileContents => (is => 'ro', isa => Str);
+  has TrackingNumber => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Carrier' => {
+                              'type' => 'Str'
+                            },
+               'TrackingNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               'LocationCode' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgressMessage' => {
+                                      'type' => 'Str'
+                                    },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'ErrorCount' => {
+                                 'type' => 'Int'
+                               },
+               'LogBucket' => {
+                                'type' => 'Str'
+                              },
+               'ArtifactList' => {
+                                   'class' => 'Paws::ImportExport::Artifact',
+                                   'type' => 'ArrayRef[ImportExport_Artifact]'
+                                 },
+               'LocationMessage' => {
+                                      'type' => 'Str'
+                                    },
+               'ProgressCode' => {
+                                   'type' => 'Str'
+                                 },
+               'SignatureFileContents' => {
+                                            'type' => 'Str'
+                                          },
+               'CurrentManifest' => {
+                                      'type' => 'Str'
+                                    },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'LogKey' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +94,7 @@ Paws::ImportExport::GetStatusOutput
 =head1 ATTRIBUTES
 
 
-=head2 ArtifactList => ArrayRef[L<Paws::ImportExport::Artifact>]
+=head2 ArtifactList => ArrayRef[ImportExport_Artifact]
 
 
 

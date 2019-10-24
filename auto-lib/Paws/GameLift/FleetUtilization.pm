@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::GameLift::FleetUtilization;
-  use Moose;
-  has ActiveGameSessionCount => (is => 'ro', isa => 'Int');
-  has ActiveServerProcessCount => (is => 'ro', isa => 'Int');
-  has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::GameLift::Types qw//;
+  has ActiveGameSessionCount => (is => 'ro', isa => Int);
+  has ActiveServerProcessCount => (is => 'ro', isa => Int);
+  has CurrentPlayerSessionCount => (is => 'ro', isa => Int);
+  has FleetId => (is => 'ro', isa => Str);
+  has MaximumPlayerSessionCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActiveServerProcessCount' => {
+                                               'type' => 'Int'
+                                             },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'ActiveGameSessionCount' => {
+                                             'type' => 'Int'
+                                           },
+               'MaximumPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'CurrentPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

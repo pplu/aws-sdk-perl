@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::ChannelList;
-  use Moose;
-  has Channels => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::Channel]', request_name => 'channels', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_Channel/;
+  has Channels => (is => 'ro', isa => ArrayRef[MediaPackage_Channel]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Channels' => {
+                               'class' => 'Paws::MediaPackage::Channel',
+                               'type' => 'ArrayRef[MediaPackage_Channel]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Channels' => 'channels',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ A collection of Channel records.
 =head1 ATTRIBUTES
 
 
-=head2 Channels => ArrayRef[L<Paws::MediaPackage::Channel>]
+=head2 Channels => ArrayRef[MediaPackage_Channel]
 
   A list of Channel records.
 

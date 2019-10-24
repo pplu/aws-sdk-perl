@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECR::BatchCheckLayerAvailability;
-  use Moose;
-  has LayerDigests => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'layerDigests' , required => 1);
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECR::Types qw//;
+  has LayerDigests => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has RegistryId => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchCheckLayerAvailability');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::BatchCheckLayerAvailabilityResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchCheckLayerAvailability');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::BatchCheckLayerAvailabilityResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'LayerDigests' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'LayerDigests' => 'layerDigests',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'LayerDigests' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

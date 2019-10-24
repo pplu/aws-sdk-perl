@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseEvent;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventCategories', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Lightsail::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Message => (is => 'ro', isa => Str);
+  has Resource => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'EventCategories' => 'eventCategories',
+                       'Resource' => 'resource',
+                       'CreatedAt' => 'createdAt',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

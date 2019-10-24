@@ -1,25 +1,104 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationDescription;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str');
-  has AssociationName => (is => 'ro', isa => 'Str');
-  has AssociationVersion => (is => 'ro', isa => 'Str');
-  has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
-  has ComplianceSeverity => (is => 'ro', isa => 'Str');
-  has Date => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str');
-  has LastExecutionDate => (is => 'ro', isa => 'Str');
-  has LastSuccessfulExecutionDate => (is => 'ro', isa => 'Str');
-  has LastUpdateAssociationDate => (is => 'ro', isa => 'Str');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
-  has Overview => (is => 'ro', isa => 'Paws::SSM::AssociationOverview');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::SSM::AssociationStatus');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_AssociationStatus SSM_AssociationOverview SSM_Parameters SSM_InstanceAssociationOutputLocation/;
+  has AssociationId => (is => 'ro', isa => Str);
+  has AssociationName => (is => 'ro', isa => Str);
+  has AssociationVersion => (is => 'ro', isa => Str);
+  has AutomationTargetParameterName => (is => 'ro', isa => Str);
+  has ComplianceSeverity => (is => 'ro', isa => Str);
+  has Date => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has LastExecutionDate => (is => 'ro', isa => Str);
+  has LastSuccessfulExecutionDate => (is => 'ro', isa => Str);
+  has LastUpdateAssociationDate => (is => 'ro', isa => Str);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputLocation => (is => 'ro', isa => SSM_InstanceAssociationOutputLocation);
+  has Overview => (is => 'ro', isa => SSM_AssociationOverview);
+  has Parameters => (is => 'ro', isa => SSM_Parameters);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => SSM_AssociationStatus);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'class' => 'Paws::SSM::AssociationStatus',
+                             'type' => 'SSM_AssociationStatus'
+                           },
+               'AutomationTargetParameterName' => {
+                                                    'type' => 'Str'
+                                                  },
+               'OutputLocation' => {
+                                     'class' => 'Paws::SSM::InstanceAssociationOutputLocation',
+                                     'type' => 'SSM_InstanceAssociationOutputLocation'
+                                   },
+               'LastUpdateAssociationDate' => {
+                                                'type' => 'Str'
+                                              },
+               'ComplianceSeverity' => {
+                                         'type' => 'Str'
+                                       },
+               'AssociationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Overview' => {
+                               'class' => 'Paws::SSM::AssociationOverview',
+                               'type' => 'SSM_AssociationOverview'
+                             },
+               'LastSuccessfulExecutionDate' => {
+                                                  'type' => 'Str'
+                                                },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'Date' => {
+                           'type' => 'Str'
+                         },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::Parameters',
+                                 'type' => 'SSM_Parameters'
+                               },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AssociationVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'LastExecutionDate' => {
+                                        'type' => 'Str'
+                                      },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -150,18 +229,18 @@ one at a time.
   The name of the Systems Manager document.
 
 
-=head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
+=head2 OutputLocation => SSM_InstanceAssociationOutputLocation
 
   An Amazon S3 bucket where you want to store the output details of the
 request.
 
 
-=head2 Overview => L<Paws::SSM::AssociationOverview>
+=head2 Overview => SSM_AssociationOverview
 
   Information about the association.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
   A description of the parameters for a document.
 
@@ -171,12 +250,12 @@ request.
   A cron expression that specifies a schedule when the association runs.
 
 
-=head2 Status => L<Paws::SSM::AssociationStatus>
+=head2 Status => SSM_AssociationStatus
 
   The association status.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
   The instances targeted by the request.
 

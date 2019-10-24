@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::CoverageNormalizedUnits;
-  use Moose;
-  has CoverageNormalizedUnitsPercentage => (is => 'ro', isa => 'Str');
-  has OnDemandNormalizedUnits => (is => 'ro', isa => 'Str');
-  has ReservedNormalizedUnits => (is => 'ro', isa => 'Str');
-  has TotalRunningNormalizedUnits => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CoverageNormalizedUnitsPercentage => (is => 'ro', isa => Str);
+  has OnDemandNormalizedUnits => (is => 'ro', isa => Str);
+  has ReservedNormalizedUnits => (is => 'ro', isa => Str);
+  has TotalRunningNormalizedUnits => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedNormalizedUnits' => {
+                                              'type' => 'Str'
+                                            },
+               'OnDemandNormalizedUnits' => {
+                                              'type' => 'Str'
+                                            },
+               'TotalRunningNormalizedUnits' => {
+                                                  'type' => 'Str'
+                                                },
+               'CoverageNormalizedUnitsPercentage' => {
+                                                        'type' => 'Str'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

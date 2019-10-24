@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::VideoDetail;
-  use Moose;
-  has HeightInPx => (is => 'ro', isa => 'Int', request_name => 'heightInPx', traits => ['NameInRequest']);
-  has WidthInPx => (is => 'ro', isa => 'Int', request_name => 'widthInPx', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has HeightInPx => (is => 'ro', isa => Int);
+  has WidthInPx => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WidthInPx' => {
+                                'type' => 'Int'
+                              },
+               'HeightInPx' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'WidthInPx' => 'widthInPx',
+                       'HeightInPx' => 'heightInPx'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

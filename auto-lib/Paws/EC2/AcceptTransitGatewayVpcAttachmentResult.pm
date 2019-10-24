@@ -7,7 +7,7 @@ package Paws::EC2::AcceptTransitGatewayVpcAttachmentResult;
   has TransitGatewayVpcAttachment => (is => 'ro', isa => EC2_TransitGatewayVpcAttachment);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TransitGatewayVpcAttachment' => {
@@ -23,8 +23,8 @@ package Paws::EC2::AcceptTransitGatewayVpcAttachmentResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

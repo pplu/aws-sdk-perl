@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::AddressConfiguration;
-  use Moose;
-  has BodyOverride => (is => 'ro', isa => 'Str');
-  has ChannelType => (is => 'ro', isa => 'Str');
-  has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has RawContent => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has TitleOverride => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfListOf__string/;
+  has BodyOverride => (is => 'ro', isa => Str);
+  has ChannelType => (is => 'ro', isa => Str);
+  has Context => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has RawContent => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has TitleOverride => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'RawContent' => {
+                                 'type' => 'Str'
+                               },
+               'BodyOverride' => {
+                                   'type' => 'Str'
+                                 },
+               'Context' => {
+                              'class' => 'Paws::Pinpoint::MapOf__string',
+                              'type' => 'Pinpoint_MapOf__string'
+                            },
+               'TitleOverride' => {
+                                    'type' => 'Str'
+                                  },
+               'ChannelType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +87,7 @@ overrides the default message body.
   The channel to use when sending the message.
 
 
-=head2 Context => L<Paws::Pinpoint::MapOf__string>
+=head2 Context => Pinpoint_MapOf__string
 
   An object that maps custom attributes to attributes for the address and
 is attached to the message. For a push notification, this payload is
@@ -67,7 +101,7 @@ payload is added to email/SMS delivery receipt event attributes.
 notification message. This value overrides the message.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   An object that maps variable values for the message. Amazon Pinpoint
 merges these values with the variable values specified by properties of

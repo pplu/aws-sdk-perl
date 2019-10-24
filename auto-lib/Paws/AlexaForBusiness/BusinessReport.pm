@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::BusinessReport;
-  use Moose;
-  has DeliveryTime => (is => 'ro', isa => 'Str');
-  has DownloadUrl => (is => 'ro', isa => 'Str');
-  has FailureCode => (is => 'ro', isa => 'Str');
-  has S3Location => (is => 'ro', isa => 'Paws::AlexaForBusiness::BusinessReportS3Location');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_BusinessReportS3Location/;
+  has DeliveryTime => (is => 'ro', isa => Str);
+  has DownloadUrl => (is => 'ro', isa => Str);
+  has FailureCode => (is => 'ro', isa => Str);
+  has S3Location => (is => 'ro', isa => AlexaForBusiness_BusinessReportS3Location);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeliveryTime' => {
+                                   'type' => 'Str'
+                                 },
+               'S3Location' => {
+                                 'class' => 'Paws::AlexaForBusiness::BusinessReportS3Location',
+                                 'type' => 'AlexaForBusiness_BusinessReportS3Location'
+                               },
+               'DownloadUrl' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +85,7 @@ Usage report with specified parameters.
   The failure code.
 
 
-=head2 S3Location => L<Paws::AlexaForBusiness::BusinessReportS3Location>
+=head2 S3Location => AlexaForBusiness_BusinessReportS3Location
 
   The S3 location of the output reports.
 

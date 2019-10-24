@@ -1,11 +1,56 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ContainerSettings;
-  use Moose;
-  has Container => (is => 'ro', isa => 'Str', request_name => 'container', traits => ['NameInRequest']);
-  has F4vSettings => (is => 'ro', isa => 'Paws::MediaConvert::F4vSettings', request_name => 'f4vSettings', traits => ['NameInRequest']);
-  has M2tsSettings => (is => 'ro', isa => 'Paws::MediaConvert::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
-  has M3u8Settings => (is => 'ro', isa => 'Paws::MediaConvert::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest']);
-  has MovSettings => (is => 'ro', isa => 'Paws::MediaConvert::MovSettings', request_name => 'movSettings', traits => ['NameInRequest']);
-  has Mp4Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp4Settings', request_name => 'mp4Settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_M3u8Settings MediaConvert_MovSettings MediaConvert_M2tsSettings MediaConvert_F4vSettings MediaConvert_Mp4Settings/;
+  has Container => (is => 'ro', isa => Str);
+  has F4vSettings => (is => 'ro', isa => MediaConvert_F4vSettings);
+  has M2tsSettings => (is => 'ro', isa => MediaConvert_M2tsSettings);
+  has M3u8Settings => (is => 'ro', isa => MediaConvert_M3u8Settings);
+  has MovSettings => (is => 'ro', isa => MediaConvert_MovSettings);
+  has Mp4Settings => (is => 'ro', isa => MediaConvert_Mp4Settings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'M3u8Settings' => {
+                                   'class' => 'Paws::MediaConvert::M3u8Settings',
+                                   'type' => 'MediaConvert_M3u8Settings'
+                                 },
+               'M2tsSettings' => {
+                                   'class' => 'Paws::MediaConvert::M2tsSettings',
+                                   'type' => 'MediaConvert_M2tsSettings'
+                                 },
+               'F4vSettings' => {
+                                  'class' => 'Paws::MediaConvert::F4vSettings',
+                                  'type' => 'MediaConvert_F4vSettings'
+                                },
+               'MovSettings' => {
+                                  'class' => 'Paws::MediaConvert::MovSettings',
+                                  'type' => 'MediaConvert_MovSettings'
+                                },
+               'Container' => {
+                                'type' => 'Str'
+                              },
+               'Mp4Settings' => {
+                                  'class' => 'Paws::MediaConvert::Mp4Settings',
+                                  'type' => 'MediaConvert_Mp4Settings'
+                                }
+             },
+  'NameInRequest' => {
+                       'M3u8Settings' => 'm3u8Settings',
+                       'M2tsSettings' => 'm2tsSettings',
+                       'F4vSettings' => 'f4vSettings',
+                       'MovSettings' => 'movSettings',
+                       'Container' => 'container',
+                       'Mp4Settings' => 'mp4Settings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,12 +92,12 @@ Container specific settings.
 object. If not specified, the default object will be created.
 
 
-=head2 F4vSettings => L<Paws::MediaConvert::F4vSettings>
+=head2 F4vSettings => MediaConvert_F4vSettings
 
   Settings for F4v container
 
 
-=head2 M2tsSettings => L<Paws::MediaConvert::M2tsSettings>
+=head2 M2tsSettings => MediaConvert_M2tsSettings
 
   MPEG-2 TS container settings. These apply to outputs in a File output
 group when the output's container (ContainerType) is MPEG-2 Transport
@@ -67,17 +112,17 @@ of data it accesses and then uses the PIDs to locate specific data
 within the asset.
 
 
-=head2 M3u8Settings => L<Paws::MediaConvert::M3u8Settings>
+=head2 M3u8Settings => MediaConvert_M3u8Settings
 
   Settings for TS segments in HLS
 
 
-=head2 MovSettings => L<Paws::MediaConvert::MovSettings>
+=head2 MovSettings => MediaConvert_MovSettings
 
   Settings for MOV Container.
 
 
-=head2 Mp4Settings => L<Paws::MediaConvert::Mp4Settings>
+=head2 Mp4Settings => MediaConvert_Mp4Settings
 
   Settings for MP4 Container
 

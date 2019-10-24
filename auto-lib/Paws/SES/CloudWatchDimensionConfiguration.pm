@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::CloudWatchDimensionConfiguration;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,12 @@ package Paws::SES::CloudWatchDimensionConfiguration;
                'DimensionValueSource' => {
                                            'type' => 'Str'
                                          }
-             }
+             },
+  'IsRequired' => {
+                    'DimensionName' => 1,
+                    'DefaultDimensionValue' => 1,
+                    'DimensionValueSource' => 1
+                  }
 }
 ;
     return $Params_map;

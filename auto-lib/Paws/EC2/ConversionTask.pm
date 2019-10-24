@@ -9,7 +9,7 @@ package Paws::EC2::ConversionTask;
   has StatusMessage => (is => 'ro', isa => Str);
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ExpirationTime' => {
@@ -48,8 +48,8 @@ package Paws::EC2::ConversionTask;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

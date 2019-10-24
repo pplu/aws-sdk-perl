@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::KinesisVideoArchivedMedia::HLSFragmentSelector;
-  use Moose;
-  has FragmentSelectorType => (is => 'ro', isa => 'Str');
-  has TimestampRange => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::HLSTimestampRange');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_HLSTimestampRange/;
+  has FragmentSelectorType => (is => 'ro', isa => Str);
+  has TimestampRange => (is => 'ro', isa => KinesisVideoArchivedMedia_HLSTimestampRange);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampRange' => {
+                                     'class' => 'Paws::KinesisVideoArchivedMedia::HLSTimestampRange',
+                                     'type' => 'KinesisVideoArchivedMedia_HLSTimestampRange'
+                                   },
+               'FragmentSelectorType' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +92,7 @@ not included in the HLS media playlist.
 The default is C<SERVER_TIMESTAMP>.
 
 
-=head2 TimestampRange => L<Paws::KinesisVideoArchivedMedia::HLSTimestampRange>
+=head2 TimestampRange => KinesisVideoArchivedMedia_HLSTimestampRange
 
   The start and end of the timestamp range for the requested media.
 

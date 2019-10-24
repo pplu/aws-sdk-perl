@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::DetectorStateSummary;
-  use Moose;
-  has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEventsData::Types qw//;
+  has StateName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StateName' => 'stateName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

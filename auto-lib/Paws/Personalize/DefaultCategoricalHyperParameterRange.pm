@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Personalize::DefaultCategoricalHyperParameterRange;
-  use Moose;
-  has IsTunable => (is => 'ro', isa => 'Bool', request_name => 'isTunable', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'values', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::Personalize::Types qw//;
+  has IsTunable => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'IsTunable' => {
+                                'type' => 'Bool'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Values' => 'values',
+                       'IsTunable' => 'isTunable',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::RegistryCredential;
-  use Moose;
-  has Credential => (is => 'ro', isa => 'Str', request_name => 'credential', traits => ['NameInRequest'], required => 1);
-  has CredentialProvider => (is => 'ro', isa => 'Str', request_name => 'credentialProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has Credential => (is => 'ro', isa => Str, required => 1);
+  has CredentialProvider => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Credential' => {
+                                 'type' => 'Str'
+                               },
+               'CredentialProvider' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Credential' => 'credential',
+                       'CredentialProvider' => 'credentialProvider'
+                     },
+  'IsRequired' => {
+                    'Credential' => 1,
+                    'CredentialProvider' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

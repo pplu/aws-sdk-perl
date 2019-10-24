@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::NotifyConfigurationType;
-  use Moose;
-  has BlockEmail => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyEmailType');
-  has From => (is => 'ro', isa => 'Str');
-  has MfaEmail => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyEmailType');
-  has NoActionEmail => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyEmailType');
-  has ReplyTo => (is => 'ro', isa => 'Str');
-  has SourceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_NotifyEmailType/;
+  has BlockEmail => (is => 'ro', isa => CognitoIdp_NotifyEmailType);
+  has From => (is => 'ro', isa => Str);
+  has MfaEmail => (is => 'ro', isa => CognitoIdp_NotifyEmailType);
+  has NoActionEmail => (is => 'ro', isa => CognitoIdp_NotifyEmailType);
+  has ReplyTo => (is => 'ro', isa => Str);
+  has SourceArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NoActionEmail' => {
+                                    'class' => 'Paws::CognitoIdp::NotifyEmailType',
+                                    'type' => 'CognitoIdp_NotifyEmailType'
+                                  },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'MfaEmail' => {
+                               'class' => 'Paws::CognitoIdp::NotifyEmailType',
+                               'type' => 'CognitoIdp_NotifyEmailType'
+                             },
+               'ReplyTo' => {
+                              'type' => 'Str'
+                            },
+               'From' => {
+                           'type' => 'Str'
+                         },
+               'BlockEmail' => {
+                                 'class' => 'Paws::CognitoIdp::NotifyEmailType',
+                                 'type' => 'CognitoIdp_NotifyEmailType'
+                               }
+             },
+  'IsRequired' => {
+                    'SourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +79,7 @@ The notify configuration type.
 =head1 ATTRIBUTES
 
 
-=head2 BlockEmail => L<Paws::CognitoIdp::NotifyEmailType>
+=head2 BlockEmail => CognitoIdp_NotifyEmailType
 
   Email template used when a detected risk event is blocked.
 
@@ -53,13 +91,13 @@ individually verified with Amazon SES, or from a domain that has been
 verified with Amazon SES.
 
 
-=head2 MfaEmail => L<Paws::CognitoIdp::NotifyEmailType>
+=head2 MfaEmail => CognitoIdp_NotifyEmailType
 
   The MFA email template used when MFA is challenged as part of a
 detected risk.
 
 
-=head2 NoActionEmail => L<Paws::CognitoIdp::NotifyEmailType>
+=head2 NoActionEmail => CognitoIdp_NotifyEmailType
 
   The email template used when a detected risk event is allowed.
 

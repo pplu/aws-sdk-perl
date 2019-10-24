@@ -1,14 +1,30 @@
 
 package Paws::SecurityHub::CreateMembers;
-  use Moose;
-  has AccountDetails => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AccountDetails]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AccountDetails/;
+  has AccountDetails => (is => 'ro', isa => ArrayRef[SecurityHub_AccountDetails], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/members');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::CreateMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/members');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::CreateMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountDetails' => {
+                                     'class' => 'Paws::SecurityHub::AccountDetails',
+                                     'type' => 'ArrayRef[SecurityHub_AccountDetails]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 AccountDetails => ArrayRef[L<Paws::SecurityHub::AccountDetails>]
+=head2 AccountDetails => ArrayRef[SecurityHub_AccountDetails]
 
 A list of account ID and email address pairs of the accounts to
 associate with the Security Hub master account.

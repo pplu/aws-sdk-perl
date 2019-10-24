@@ -1,17 +1,53 @@
 
 package Paws::IoT::ListThingRegistrationTaskReports;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has ReportType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'reportType', required => 1);
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'taskId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ReportType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListThingRegistrationTaskReports');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-registration-tasks/{taskId}/reports');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingRegistrationTaskReportsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListThingRegistrationTaskReports');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-registration-tasks/{taskId}/reports');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListThingRegistrationTaskReportsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReportType' => {
+                                 'type' => 'Str'
+                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInURI' => {
+                    'TaskId' => 'taskId'
+                  },
+  'ParamInQuery' => {
+                      'ReportType' => 'reportType',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    },
+  'IsRequired' => {
+                    'ReportType' => 1,
+                    'TaskId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CostExplorer::GetReservationPurchaseRecommendationResponse;
-  use Moose;
-  has Metadata => (is => 'ro', isa => 'Paws::CostExplorer::ReservationPurchaseRecommendationMetadata');
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has Recommendations => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ReservationPurchaseRecommendation]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_ReservationPurchaseRecommendation CostExplorer_ReservationPurchaseRecommendationMetadata/;
+  has Metadata => (is => 'ro', isa => CostExplorer_ReservationPurchaseRecommendationMetadata);
+  has NextPageToken => (is => 'ro', isa => Str);
+  has Recommendations => (is => 'ro', isa => ArrayRef[CostExplorer_ReservationPurchaseRecommendation]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recommendations' => {
+                                      'class' => 'Paws::CostExplorer::ReservationPurchaseRecommendation',
+                                      'type' => 'ArrayRef[CostExplorer_ReservationPurchaseRecommendation]'
+                                    },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'class' => 'Paws::CostExplorer::ReservationPurchaseRecommendationMetadata',
+                               'type' => 'CostExplorer_ReservationPurchaseRecommendationMetadata'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +42,7 @@ Paws::CostExplorer::GetReservationPurchaseRecommendationResponse
 =head1 ATTRIBUTES
 
 
-=head2 Metadata => L<Paws::CostExplorer::ReservationPurchaseRecommendationMetadata>
+=head2 Metadata => CostExplorer_ReservationPurchaseRecommendationMetadata
 
 Information about this specific recommendation call, such as the time
 stamp for when Cost Explorer generated this recommendation.
@@ -27,7 +53,7 @@ stamp for when Cost Explorer generated this recommendation.
 The pagination token for the next set of retrievable results.
 
 
-=head2 Recommendations => ArrayRef[L<Paws::CostExplorer::ReservationPurchaseRecommendation>]
+=head2 Recommendations => ArrayRef[CostExplorer_ReservationPurchaseRecommendation]
 
 Recommendations for reservations to purchase.
 

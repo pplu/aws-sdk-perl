@@ -1,8 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ScheduleAction;
-  use Moose;
-  has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest'], required => 1);
-  has ScheduleActionSettings => (is => 'ro', isa => 'Paws::MediaLive::ScheduleActionSettings', request_name => 'scheduleActionSettings', traits => ['NameInRequest'], required => 1);
-  has ScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::ScheduleActionStartSettings', request_name => 'scheduleActionStartSettings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_ScheduleActionSettings MediaLive_ScheduleActionStartSettings/;
+  has ActionName => (is => 'ro', isa => Str, required => 1);
+  has ScheduleActionSettings => (is => 'ro', isa => MediaLive_ScheduleActionSettings, required => 1);
+  has ScheduleActionStartSettings => (is => 'ro', isa => MediaLive_ScheduleActionStartSettings, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduleActionStartSettings' => {
+                                                  'class' => 'Paws::MediaLive::ScheduleActionStartSettings',
+                                                  'type' => 'MediaLive_ScheduleActionStartSettings'
+                                                },
+               'ActionName' => {
+                                 'type' => 'Str'
+                               },
+               'ScheduleActionSettings' => {
+                                             'class' => 'Paws::MediaLive::ScheduleActionSettings',
+                                             'type' => 'MediaLive_ScheduleActionSettings'
+                                           }
+             },
+  'NameInRequest' => {
+                       'ScheduleActionStartSettings' => 'scheduleActionStartSettings',
+                       'ActionName' => 'actionName',
+                       'ScheduleActionSettings' => 'scheduleActionSettings'
+                     },
+  'IsRequired' => {
+                    'ScheduleActionStartSettings' => 1,
+                    'ActionName' => 1,
+                    'ScheduleActionSettings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,12 +83,12 @@ time of more than 1 hour ago (approximately) so at that point a name
 can be reused.
 
 
-=head2 B<REQUIRED> ScheduleActionSettings => L<Paws::MediaLive::ScheduleActionSettings>
+=head2 B<REQUIRED> ScheduleActionSettings => MediaLive_ScheduleActionSettings
 
   Settings for this schedule action.
 
 
-=head2 B<REQUIRED> ScheduleActionStartSettings => L<Paws::MediaLive::ScheduleActionStartSettings>
+=head2 B<REQUIRED> ScheduleActionStartSettings => MediaLive_ScheduleActionStartSettings
 
   The time for the action to start in the channel.
 

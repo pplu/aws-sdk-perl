@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::OTAUpdateSummary;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has OtaUpdateArn => (is => 'ro', isa => 'Str', request_name => 'otaUpdateArn', traits => ['NameInRequest']);
-  has OtaUpdateId => (is => 'ro', isa => 'Str', request_name => 'otaUpdateId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has OtaUpdateArn => (is => 'ro', isa => Str);
+  has OtaUpdateId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OtaUpdateArn' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'OtaUpdateId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'OtaUpdateArn' => 'otaUpdateArn',
+                       'CreationDate' => 'creationDate',
+                       'OtaUpdateId' => 'otaUpdateId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

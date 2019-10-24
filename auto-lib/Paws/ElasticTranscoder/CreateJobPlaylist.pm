@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::CreateJobPlaylist;
-  use Moose;
-  has Format => (is => 'ro', isa => 'Str');
-  has HlsContentProtection => (is => 'ro', isa => 'Paws::ElasticTranscoder::HlsContentProtection');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PlayReadyDrm => (is => 'ro', isa => 'Paws::ElasticTranscoder::PlayReadyDrm');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_PlayReadyDrm ElasticTranscoder_HlsContentProtection/;
+  has Format => (is => 'ro', isa => Str);
+  has HlsContentProtection => (is => 'ro', isa => ElasticTranscoder_HlsContentProtection);
+  has Name => (is => 'ro', isa => Str);
+  has OutputKeys => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has PlayReadyDrm => (is => 'ro', isa => ElasticTranscoder_PlayReadyDrm);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputKeys' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'PlayReadyDrm' => {
+                                   'class' => 'Paws::ElasticTranscoder::PlayReadyDrm',
+                                   'type' => 'ElasticTranscoder_PlayReadyDrm'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'HlsContentProtection' => {
+                                           'class' => 'Paws::ElasticTranscoder::HlsContentProtection',
+                                           'type' => 'ElasticTranscoder_HlsContentProtection'
+                                         },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +77,7 @@ Information about the master playlist.
 C<HLSv4>, and C<Smooth>.
 
 
-=head2 HlsContentProtection => L<Paws::ElasticTranscoder::HlsContentProtection>
+=head2 HlsContentProtection => ElasticTranscoder_HlsContentProtection
 
   The HLS content protection settings, if any, that you want Elastic
 Transcoder to apply to the output files associated with this playlist.
@@ -119,7 +150,7 @@ C<Video:Profile>, and C<Video:FrameRate> to C<Video:KeyframesMaxDist>
 ratio must be the same for all outputs.
 
 
-=head2 PlayReadyDrm => L<Paws::ElasticTranscoder::PlayReadyDrm>
+=head2 PlayReadyDrm => ElasticTranscoder_PlayReadyDrm
 
   The DRM settings, if any, that you want Elastic Transcoder to apply to
 the output files associated with this playlist.

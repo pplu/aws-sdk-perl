@@ -1,10 +1,31 @@
 
 package Paws::Polly::ListLexiconsOutput;
-  use Moose;
-  has Lexicons => (is => 'ro', isa => 'ArrayRef[Paws::Polly::LexiconDescription]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Polly::Types qw/Polly_LexiconDescription/;
+  has Lexicons => (is => 'ro', isa => ArrayRef[Polly_LexiconDescription]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Lexicons' => {
+                               'class' => 'Paws::Polly::LexiconDescription',
+                               'type' => 'ArrayRef[Polly_LexiconDescription]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Polly::ListLexiconsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Lexicons => ArrayRef[L<Paws::Polly::LexiconDescription>]
+=head2 Lexicons => ArrayRef[Polly_LexiconDescription]
 
 A list of lexicon names and attributes.
 

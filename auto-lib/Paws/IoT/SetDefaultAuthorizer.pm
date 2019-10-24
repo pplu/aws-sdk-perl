@@ -1,14 +1,35 @@
 
 package Paws::IoT::SetDefaultAuthorizer;
-  use Moose;
-  has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AuthorizerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetDefaultAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/default-authorizer');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::SetDefaultAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetDefaultAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/default-authorizer');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::SetDefaultAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'AuthorizerName' => 'authorizerName'
+                     },
+  'IsRequired' => {
+                    'AuthorizerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

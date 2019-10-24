@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::AddInstanceGroups;
-  use Moose;
-  has InstanceGroups => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceGroupConfig]', required => 1);
-  has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EMR::Types qw/EMR_InstanceGroupConfig/;
+  has InstanceGroups => (is => 'ro', isa => ArrayRef[EMR_InstanceGroupConfig], required => 1, predicate => 1);
+  has JobFlowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddInstanceGroups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::AddInstanceGroupsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddInstanceGroups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::AddInstanceGroupsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceGroups' => {
+                                     'class' => 'Paws::EMR::InstanceGroupConfig',
+                                     'type' => 'ArrayRef[EMR_InstanceGroupConfig]'
+                                   },
+               'JobFlowId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'InstanceGroups' => 1,
+                    'JobFlowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +149,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
+=head2 B<REQUIRED> InstanceGroups => ArrayRef[EMR_InstanceGroupConfig]
 
 Instance groups to add.
 

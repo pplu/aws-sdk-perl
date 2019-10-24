@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::DescribeTrustedAdvisorCheckResultResponse;
-  use Moose;
-  has Result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult', traits => ['NameInRequest'], request_name => 'result' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw/Support_TrustedAdvisorCheckResult/;
+  has Result => (is => 'ro', isa => Support_TrustedAdvisorCheckResult);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Result' => {
+                             'class' => 'Paws::Support::TrustedAdvisorCheckResult',
+                             'type' => 'Support_TrustedAdvisorCheckResult'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Result' => 'result'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Support::DescribeTrustedAdvisorCheckResultResponse
 =head1 ATTRIBUTES
 
 
-=head2 Result => L<Paws::Support::TrustedAdvisorCheckResult>
+=head2 Result => Support_TrustedAdvisorCheckResult
 
 The detailed results of the Trusted Advisor check.
 

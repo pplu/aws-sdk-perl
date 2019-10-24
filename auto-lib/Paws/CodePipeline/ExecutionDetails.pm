@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ExecutionDetails;
-  use Moose;
-  has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
-  has PercentComplete => (is => 'ro', isa => 'Int', request_name => 'percentComplete', traits => ['NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodePipeline::Types qw//;
+  has ExternalExecutionId => (is => 'ro', isa => Str);
+  has PercentComplete => (is => 'ro', isa => Int);
+  has Summary => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExternalExecutionId' => {
+                                          'type' => 'Str'
+                                        },
+               'PercentComplete' => {
+                                      'type' => 'Int'
+                                    },
+               'Summary' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ExternalExecutionId' => 'externalExecutionId',
+                       'PercentComplete' => 'percentComplete',
+                       'Summary' => 'summary'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Neptune::Endpoint;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Neptune::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

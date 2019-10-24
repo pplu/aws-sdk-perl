@@ -1,18 +1,59 @@
 
 package Paws::Glacier::ListParts;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId', required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has UploadId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListParts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListPartsOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListParts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glacier::ListPartsOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'Limit' => {
+                            'type' => 'Str'
+                          },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName',
+                    'UploadId' => 'uploadId'
+                  },
+  'ParamInQuery' => {
+                      'Limit' => 'limit',
+                      'Marker' => 'marker'
+                    },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1,
+                    'UploadId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

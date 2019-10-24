@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppMesh::PortMapping;
-  use Moose;
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest'], required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::AppMesh::Types qw//;
+  has Port => (is => 'ro', isa => Int, required => 1);
+  has Protocol => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'Protocol' => 'protocol',
+                       'Port' => 'port'
+                     },
+  'IsRequired' => {
+                    'Protocol' => 1,
+                    'Port' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

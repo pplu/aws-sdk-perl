@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::SetUserSettings;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
-  has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_MFAOptionType/;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MFAOptions => (is => 'ro', isa => ArrayRef[CognitoIdp_MFAOptionType], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetUserSettings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::SetUserSettingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetUserSettings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::SetUserSettingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'MFAOptions' => {
+                                 'class' => 'Paws::CognitoIdp::MFAOptionType',
+                                 'type' => 'ArrayRef[CognitoIdp_MFAOptionType]'
+                               }
+             },
+  'IsRequired' => {
+                    'AccessToken' => 1,
+                    'MFAOptions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The access token for the set user settings request.
 
 
 
-=head2 B<REQUIRED> MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=head2 B<REQUIRED> MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
 Specifies the options for MFA (e.g., email or phone number).
 

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::InputProcessingConfiguration;
-  use Moose;
-  has InputLambdaProcessor => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputLambdaProcessor', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputLambdaProcessor/;
+  has InputLambdaProcessor => (is => 'ro', isa => KinesisAnalyticsV2_InputLambdaProcessor, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputLambdaProcessor' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::InputLambdaProcessor',
+                                           'type' => 'KinesisAnalyticsV2_InputLambdaProcessor'
+                                         }
+             },
+  'IsRequired' => {
+                    'InputLambdaProcessor' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +61,7 @@ processor available is AWS Lambda
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputLambdaProcessor => L<Paws::KinesisAnalyticsV2::InputLambdaProcessor>
+=head2 B<REQUIRED> InputLambdaProcessor => KinesisAnalyticsV2_InputLambdaProcessor
 
   The InputLambdaProcessor that is used to preprocess the records in the
 stream before being processed by your application code.

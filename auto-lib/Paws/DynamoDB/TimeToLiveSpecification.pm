@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TimeToLiveSpecification;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::TimeToLiveSpecification;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has Enabled => (is => 'ro', isa => Bool, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Enabled' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::TimeToLiveSpecification;
                'AttributeName' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'Enabled' => 1,
+                    'AttributeName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

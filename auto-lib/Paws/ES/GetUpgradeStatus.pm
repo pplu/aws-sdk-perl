@@ -21,6 +21,9 @@ package Paws::ES::GetUpgradeStatus;
              },
   'ParamInURI' => {
                     'DomainName' => 'DomainName'
+                  },
+  'IsRequired' => {
+                    'DomainName' => 1
                   }
 }
 ;

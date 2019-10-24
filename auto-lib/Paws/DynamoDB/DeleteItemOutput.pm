@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DeleteItemOutput;
   use Moo;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::DeleteItemOutput;
   has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetrics);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Attributes' => {
@@ -19,6 +20,9 @@ package Paws::DynamoDB::DeleteItemOutput;
                                        'class' => 'Paws::DynamoDB::ConsumedCapacity',
                                        'type' => 'DynamoDB_ConsumedCapacity'
                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'ItemCollectionMetrics' => {
                                             'class' => 'Paws::DynamoDB::ItemCollectionMetrics',
                                             'type' => 'DynamoDB_ItemCollectionMetrics'
@@ -26,8 +30,8 @@ package Paws::DynamoDB::DeleteItemOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

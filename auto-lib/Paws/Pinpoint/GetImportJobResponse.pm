@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetImportJobResponse;
-  use Moose;
-  has ImportJobResponse => (is => 'ro', isa => 'Paws::Pinpoint::ImportJobResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'ImportJobResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ImportJobResponse/;
+  has ImportJobResponse => (is => 'ro', isa => Pinpoint_ImportJobResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportJobResponse' => {
+                                        'class' => 'Paws::Pinpoint::ImportJobResponse',
+                                        'type' => 'Pinpoint_ImportJobResponse'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ImportJobResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetImportJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ImportJobResponse => L<Paws::Pinpoint::ImportJobResponse>
+=head2 B<REQUIRED> ImportJobResponse => Pinpoint_ImportJobResponse
 
 
 

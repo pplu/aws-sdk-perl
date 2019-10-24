@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Polly::LexiconDescription;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::Polly::LexiconAttributes');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Polly::Types qw/Polly_LexiconAttributes/;
+  has Attributes => (is => 'ro', isa => Polly_LexiconAttributes);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::Polly::LexiconAttributes',
+                                 'type' => 'Polly_LexiconAttributes'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Describes the content of the lexicon.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::Polly::LexiconAttributes>
+=head2 Attributes => Polly_LexiconAttributes
 
   Provides lexicon metadata.
 

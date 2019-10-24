@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Resource;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::SecurityHub::ResourceDetails');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Partition => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_ResourceDetails SecurityHub_FieldMap/;
+  has Details => (is => 'ro', isa => SecurityHub_ResourceDetails);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Partition => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => SecurityHub_FieldMap);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::SecurityHub::ResourceDetails',
+                              'type' => 'SecurityHub_ResourceDetails'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Partition' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::SecurityHub::FieldMap',
+                           'type' => 'SecurityHub_FieldMap'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +79,7 @@ A resource related to a finding.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::SecurityHub::ResourceDetails>
+=head2 Details => SecurityHub_ResourceDetails
 
   Additional details about the resource related to a finding.
 
@@ -61,7 +99,7 @@ A resource related to a finding.
   The canonical AWS external Region name where this resource is located.
 
 
-=head2 Tags => L<Paws::SecurityHub::FieldMap>
+=head2 Tags => SecurityHub_FieldMap
 
   A list of AWS tags associated with a resource at the time the finding
 was processed.

@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::ConnectorDefinitionVersion;
-  use Moose;
-  has Connectors => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Connector]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Connector/;
+  has Connectors => (is => 'ro', isa => ArrayRef[Greengrass_Connector]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Connectors' => {
+                                 'class' => 'Paws::Greengrass::Connector',
+                                 'type' => 'ArrayRef[Greengrass_Connector]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ container for connectors.
 =head1 ATTRIBUTES
 
 
-=head2 Connectors => ArrayRef[L<Paws::Greengrass::Connector>]
+=head2 Connectors => ArrayRef[Greengrass_Connector]
 
   A list of references to connectors in this version, with their
 corresponding configuration settings.

@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::QueryInfo;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Int', request_name => 'createTime', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has QueryId => (is => 'ro', isa => 'Str', request_name => 'queryId', traits => ['NameInRequest']);
-  has QueryString => (is => 'ro', isa => 'Str', request_name => 'queryString', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has CreateTime => (is => 'ro', isa => Int);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has QueryId => (is => 'ro', isa => Str);
+  has QueryString => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreateTime' => {
+                                 'type' => 'Int'
+                               },
+               'QueryId' => {
+                              'type' => 'Str'
+                            },
+               'QueryString' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LogGroupName' => 'logGroupName',
+                       'Status' => 'status',
+                       'CreateTime' => 'createTime',
+                       'QueryId' => 'queryId',
+                       'QueryString' => 'queryString'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

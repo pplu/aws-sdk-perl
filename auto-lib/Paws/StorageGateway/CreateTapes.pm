@@ -1,21 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::CreateTapes;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has NumTapesToCreate => (is => 'ro', isa => 'Int', required => 1);
-  has PoolId => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has TapeBarcodePrefix => (is => 'ro', isa => 'Str', required => 1);
-  has TapeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has ClientToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KMSEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has NumTapesToCreate => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has PoolId => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag], predicate => 1);
+  has TapeBarcodePrefix => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TapeSizeInBytes => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTapes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::CreateTapesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTapes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::CreateTapesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TapeSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'PoolId' => {
+                             'type' => 'Str'
+                           },
+               'TapeBarcodePrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'NumTapesToCreate' => {
+                                       'type' => 'Int'
+                                     },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'TapeSizeInBytes' => 1,
+                    'ClientToken' => 1,
+                    'TapeBarcodePrefix' => 1,
+                    'NumTapesToCreate' => 1,
+                    'GatewayARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +157,7 @@ Valid values: "GLACIER", "DEEP_ARCHIVE"
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
 A list of up to 50 tags that can be assigned to a virtual tape. Each
 tag is a key-value pair.

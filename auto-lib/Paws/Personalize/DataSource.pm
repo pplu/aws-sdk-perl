@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Personalize::DataSource;
-  use Moose;
-  has DataLocation => (is => 'ro', isa => 'Str', request_name => 'dataLocation', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has DataLocation => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataLocation' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DataLocation' => 'dataLocation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

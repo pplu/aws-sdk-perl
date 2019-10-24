@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::DvbTdtSettings;
-  use Moose;
-  has RepInterval => (is => 'ro', isa => 'Int', request_name => 'repInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaLive::Types qw//;
+  has RepInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepInterval' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'RepInterval' => 'repInterval'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

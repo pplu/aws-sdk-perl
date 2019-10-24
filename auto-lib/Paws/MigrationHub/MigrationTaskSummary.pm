@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MigrationHub::MigrationTaskSummary;
-  use Moose;
-  has MigrationTaskName => (is => 'ro', isa => 'Str');
-  has ProgressPercent => (is => 'ro', isa => 'Int');
-  has ProgressUpdateStream => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusDetail => (is => 'ro', isa => 'Str');
-  has UpdateDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MigrationHub::Types qw//;
+  has MigrationTaskName => (is => 'ro', isa => Str);
+  has ProgressPercent => (is => 'ro', isa => Int);
+  has ProgressUpdateStream => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetail => (is => 'ro', isa => Str);
+  has UpdateDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusDetail' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgressUpdateStream' => {
+                                           'type' => 'Str'
+                                         },
+               'ProgressPercent' => {
+                                      'type' => 'Int'
+                                    },
+               'UpdateDateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'MigrationTaskName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

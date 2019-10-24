@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::ListSecretVersionIds;
-  use Moose;
-  has IncludeDeprecated => (is => 'ro', isa => 'Bool');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SecretsManager::Types qw//;
+  has IncludeDeprecated => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSecretVersionIds');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::ListSecretVersionIdsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSecretVersionIds');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::ListSecretVersionIdsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretId' => {
+                               'type' => 'Str'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'IncludeDeprecated' => {
+                                        'type' => 'Bool'
+                                      }
+             },
+  'IsRequired' => {
+                    'SecretId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

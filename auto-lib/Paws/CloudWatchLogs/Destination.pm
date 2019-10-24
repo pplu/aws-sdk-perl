@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::Destination;
-  use Moose;
-  has AccessPolicy => (is => 'ro', isa => 'Str', request_name => 'accessPolicy', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Int', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DestinationName => (is => 'ro', isa => 'Str', request_name => 'destinationName', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has AccessPolicy => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Int);
+  has DestinationName => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has TargetArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Int'
+                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AccessPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'DestinationName' => {
+                                      'type' => 'Str'
+                                    },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'RoleArn' => 'roleArn',
+                       'AccessPolicy' => 'accessPolicy',
+                       'DestinationName' => 'destinationName',
+                       'TargetArn' => 'targetArn',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

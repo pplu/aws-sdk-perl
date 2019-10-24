@@ -1,16 +1,44 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyCurrentDBClusterCapacity;
-  use Moose;
-  has Capacity => (is => 'ro', isa => 'Int');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SecondsBeforeTimeout => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RDS::Types qw//;
+  has Capacity => (is => 'ro', isa => Int, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecondsBeforeTimeout => (is => 'ro', isa => Int, predicate => 1);
+  has TimeoutAction => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCurrentDBClusterCapacity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterCapacityInfo');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCurrentDBClusterCapacityResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyCurrentDBClusterCapacity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterCapacityInfo');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyCurrentDBClusterCapacityResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  },
+               'SecondsBeforeTimeout' => {
+                                           'type' => 'Int'
+                                         },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Capacity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

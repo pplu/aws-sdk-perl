@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::ListProjectsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeStar::ProjectSummary]', traits => ['NameInRequest'], request_name => 'projects' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeStar::Types qw/CodeStar_ProjectSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Projects => (is => 'ro', isa => ArrayRef[CodeStar_ProjectSummary], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Projects' => {
+                               'class' => 'Paws::CodeStar::ProjectSummary',
+                               'type' => 'ArrayRef[CodeStar_ProjectSummary]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Projects' => 'projects',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'Projects' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +50,7 @@ The continuation token to use when requesting the next set of results,
 if there are more results to be returned.
 
 
-=head2 B<REQUIRED> Projects => ArrayRef[L<Paws::CodeStar::ProjectSummary>]
+=head2 B<REQUIRED> Projects => ArrayRef[CodeStar_ProjectSummary]
 
 A list of projects.
 

@@ -1,20 +1,80 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::User;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has EmailAddress => (is => 'ro', isa => 'Str');
-  has GivenName => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Locale => (is => 'ro', isa => 'Str');
-  has ModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has OrganizationId => (is => 'ro', isa => 'Str');
-  has RecycleBinFolderId => (is => 'ro', isa => 'Str');
-  has RootFolderId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Storage => (is => 'ro', isa => 'Paws::WorkDocs::UserStorageMetadata');
-  has Surname => (is => 'ro', isa => 'Str');
-  has TimeZoneId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_UserStorageMetadata/;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+  has GivenName => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Locale => (is => 'ro', isa => Str);
+  has ModifiedTimestamp => (is => 'ro', isa => Str);
+  has OrganizationId => (is => 'ro', isa => Str);
+  has RecycleBinFolderId => (is => 'ro', isa => Str);
+  has RootFolderId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Storage => (is => 'ro', isa => WorkDocs_UserStorageMetadata);
+  has Surname => (is => 'ro', isa => Str);
+  has TimeZoneId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Surname' => {
+                              'type' => 'Str'
+                            },
+               'GivenName' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'TimeZoneId' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'RootFolderId' => {
+                                   'type' => 'Str'
+                                 },
+               'RecycleBinFolderId' => {
+                                         'type' => 'Str'
+                                       },
+               'Storage' => {
+                              'class' => 'Paws::WorkDocs::UserStorageMetadata',
+                              'type' => 'WorkDocs_UserStorageMetadata'
+                            },
+               'ModifiedTimestamp' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +160,7 @@ Describes a user.
   The status of the user.
 
 
-=head2 Storage => L<Paws::WorkDocs::UserStorageMetadata>
+=head2 Storage => WorkDocs_UserStorageMetadata
 
   The storage for the user.
 

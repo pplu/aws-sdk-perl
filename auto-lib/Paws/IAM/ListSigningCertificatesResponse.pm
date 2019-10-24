@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListSigningCertificatesResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_SigningCertificate/;
   has Certificates => (is => 'ro', isa => ArrayRef[IAM_SigningCertificate], required => 1);

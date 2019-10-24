@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::Rekognition::PersonDetail;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Face => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
-  has Index => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceDetail Rekognition_BoundingBox/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Face => (is => 'ro', isa => Rekognition_FaceDetail);
+  has Index => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Face' => {
+                           'class' => 'Paws::Rekognition::FaceDetail',
+                           'type' => 'Rekognition_FaceDetail'
+                         },
+               'Index' => {
+                            'type' => 'Int'
+                          },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +63,12 @@ Details about a person detected in a video analysis request.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   Bounding box around the detected person.
 
 
-=head2 Face => L<Paws::Rekognition::FaceDetail>
+=head2 Face => Rekognition_FaceDetail
 
   Face details for the detected person.
 

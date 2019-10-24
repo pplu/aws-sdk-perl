@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Resolver::UpdateResolverRule;
-  use Moose;
-  has Config => (is => 'ro', isa => 'Paws::Route53Resolver::ResolverRuleConfig', required => 1);
-  has ResolverRuleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_ResolverRuleConfig/;
+  has Config => (is => 'ro', isa => Route53Resolver_ResolverRuleConfig, required => 1, predicate => 1);
+  has ResolverRuleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateResolverRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Resolver::UpdateResolverRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateResolverRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Resolver::UpdateResolverRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResolverRuleId' => {
+                                     'type' => 'Str'
+                                   },
+               'Config' => {
+                             'class' => 'Paws::Route53Resolver::ResolverRuleConfig',
+                             'type' => 'Route53Resolver_ResolverRuleConfig'
+                           }
+             },
+  'IsRequired' => {
+                    'ResolverRuleId' => 1,
+                    'Config' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +79,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Config => L<Paws::Route53Resolver::ResolverRuleConfig>
+=head2 B<REQUIRED> Config => Route53Resolver_ResolverRuleConfig
 
 The new settings for the resolver rule.
 

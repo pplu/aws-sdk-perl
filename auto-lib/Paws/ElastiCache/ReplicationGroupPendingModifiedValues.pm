@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
-  use Moose;
-  has AutomaticFailoverStatus => (is => 'ro', isa => 'Str');
-  has PrimaryClusterId => (is => 'ro', isa => 'Str');
-  has Resharding => (is => 'ro', isa => 'Paws::ElastiCache::ReshardingStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ReshardingStatus/;
+  has AutomaticFailoverStatus => (is => 'ro', isa => Str);
+  has PrimaryClusterId => (is => 'ro', isa => Str);
+  has Resharding => (is => 'ro', isa => ElastiCache_ReshardingStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resharding' => {
+                                 'class' => 'Paws::ElastiCache::ReshardingStatus',
+                                 'type' => 'ElastiCache_ReshardingStatus'
+                               },
+               'PrimaryClusterId' => {
+                                       'type' => 'Str'
+                                     },
+               'AutomaticFailoverStatus' => {
+                                              'type' => 'Str'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +96,7 @@ C<--apply-immediately> was specified), or during the next maintenance
 window.
 
 
-=head2 Resharding => L<Paws::ElastiCache::ReshardingStatus>
+=head2 Resharding => ElastiCache_ReshardingStatus
 
   The status of an online resharding operation.
 

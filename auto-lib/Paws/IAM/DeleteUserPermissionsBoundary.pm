@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteUserPermissionsBoundary;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteUserPermissionsBoundary;
                'UserName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

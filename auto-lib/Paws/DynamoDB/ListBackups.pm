@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::ListBackups;
   use Moo;
@@ -16,7 +17,7 @@ package Paws::DynamoDB::ListBackups;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::ListBackupsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BackupType' => {
@@ -40,8 +41,8 @@ package Paws::DynamoDB::ListBackups;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

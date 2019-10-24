@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::UpdateConfigurationSetTrackingOptions;
   use Moo;
@@ -22,7 +23,11 @@ package Paws::SES::UpdateConfigurationSetTrackingOptions;
                                       'class' => 'Paws::SES::TrackingOptions',
                                       'type' => 'SES_TrackingOptions'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1,
+                    'TrackingOptions' => 1
+                  }
 }
 ;
     return $Params_map;

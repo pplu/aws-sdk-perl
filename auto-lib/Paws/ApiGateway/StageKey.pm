@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::StageKey;
-  use Moose;
-  has RestApiId => (is => 'ro', isa => 'Str', request_name => 'restApiId', traits => ['NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has RestApiId => (is => 'ro', isa => Str);
+  has StageName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'StageName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RestApiId' => 'restApiId',
+                       'StageName' => 'stageName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::StatusCodes;
-  use Moose;
-  has Status2xx => (is => 'ro', isa => 'Int');
-  has Status3xx => (is => 'ro', isa => 'Int');
-  has Status4xx => (is => 'ro', isa => 'Int');
-  has Status5xx => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Status2xx => (is => 'ro', isa => Int);
+  has Status3xx => (is => 'ro', isa => Int);
+  has Status4xx => (is => 'ro', isa => Int);
+  has Status5xx => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status4xx' => {
+                                'type' => 'Int'
+                              },
+               'Status5xx' => {
+                                'type' => 'Int'
+                              },
+               'Status2xx' => {
+                                'type' => 'Int'
+                              },
+               'Status3xx' => {
+                                'type' => 'Int'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

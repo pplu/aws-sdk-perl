@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::FilteredLogEvent;
-  use Moose;
-  has EventId => (is => 'ro', isa => 'Str', request_name => 'eventId', traits => ['NameInRequest']);
-  has IngestionTime => (is => 'ro', isa => 'Int', request_name => 'ingestionTime', traits => ['NameInRequest']);
-  has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Timestamp => (is => 'ro', isa => 'Int', request_name => 'timestamp', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has EventId => (is => 'ro', isa => Str);
+  has IngestionTime => (is => 'ro', isa => Int);
+  has LogStreamName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Timestamp => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Int'
+                              },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'IngestionTime' => {
+                                    'type' => 'Int'
+                                  },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Timestamp' => 'timestamp',
+                       'EventId' => 'eventId',
+                       'Message' => 'message',
+                       'IngestionTime' => 'ingestionTime',
+                       'LogStreamName' => 'logStreamName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

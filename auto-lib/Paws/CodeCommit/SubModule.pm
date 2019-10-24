@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::SubModule;
-  use Moose;
-  has AbsolutePath => (is => 'ro', isa => 'Str', request_name => 'absolutePath', traits => ['NameInRequest']);
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
-  has RelativePath => (is => 'ro', isa => 'Str', request_name => 'relativePath', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has AbsolutePath => (is => 'ro', isa => Str);
+  has CommitId => (is => 'ro', isa => Str);
+  has RelativePath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AbsolutePath' => {
+                                   'type' => 'Str'
+                                 },
+               'RelativePath' => {
+                                   'type' => 'Str'
+                                 },
+               'CommitId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'AbsolutePath' => 'absolutePath',
+                       'RelativePath' => 'relativePath',
+                       'CommitId' => 'commitId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

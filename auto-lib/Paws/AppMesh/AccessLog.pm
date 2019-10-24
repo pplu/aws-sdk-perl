@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::AccessLog;
-  use Moose;
-  has File => (is => 'ro', isa => 'Paws::AppMesh::FileAccessLog', request_name => 'file', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_FileAccessLog/;
+  has File => (is => 'ro', isa => AppMesh_FileAccessLog);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'File' => {
+                           'class' => 'Paws::AppMesh::FileAccessLog',
+                           'type' => 'AppMesh_FileAccessLog'
+                         }
+             },
+  'NameInRequest' => {
+                       'File' => 'file'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ node.
 =head1 ATTRIBUTES
 
 
-=head2 File => L<Paws::AppMesh::FileAccessLog>
+=head2 File => AppMesh_FileAccessLog
 
   The file object to send virtual node access logs to.
 

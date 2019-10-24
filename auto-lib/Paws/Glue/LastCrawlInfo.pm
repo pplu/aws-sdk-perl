@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Glue::LastCrawlInfo;
-  use Moose;
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has LogGroup => (is => 'ro', isa => 'Str');
-  has LogStream => (is => 'ro', isa => 'Str');
-  has MessagePrefix => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LogGroup => (is => 'ro', isa => Str);
+  has LogStream => (is => 'ro', isa => Str);
+  has MessagePrefix => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessagePrefix' => {
+                                    'type' => 'Str'
+                                  },
+               'LogGroup' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LogStream' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

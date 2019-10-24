@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::CloudWatchEvents::Rule;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EventPattern => (is => 'ro', isa => 'Str');
-  has ManagedBy => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EventPattern => (is => 'ro', isa => Str);
+  has ManagedBy => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ManagedBy' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'EventPattern' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

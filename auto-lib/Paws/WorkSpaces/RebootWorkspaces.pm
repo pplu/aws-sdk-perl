@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::RebootWorkspaces;
-  use Moose;
-  has RebootWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::RebootRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_RebootRequest/;
+  has RebootWorkspaceRequests => (is => 'ro', isa => ArrayRef[WorkSpaces_RebootRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootWorkspaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::RebootWorkspacesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RebootWorkspaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::RebootWorkspacesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RebootWorkspaceRequests' => {
+                                              'class' => 'Paws::WorkSpaces::RebootRequest',
+                                              'type' => 'ArrayRef[WorkSpaces_RebootRequest]'
+                                            }
+             },
+  'IsRequired' => {
+                    'RebootWorkspaceRequests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>]
+=head2 B<REQUIRED> RebootWorkspaceRequests => ArrayRef[WorkSpaces_RebootRequest]
 
 The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
 

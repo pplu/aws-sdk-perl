@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::Message;
   use Moo;
   use Types::Standard qw//;
@@ -16,7 +17,11 @@ package Paws::SES::Message;
                            'class' => 'Paws::SES::Body',
                            'type' => 'SES_Body'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Subject' => 1,
+                    'Body' => 1
+                  }
 }
 ;
     return $Params_map;

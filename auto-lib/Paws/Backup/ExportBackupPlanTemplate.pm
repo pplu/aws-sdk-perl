@@ -1,14 +1,35 @@
 
 package Paws::Backup::ExportBackupPlanTemplate;
-  use Moose;
-  has BackupPlanId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupPlanId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupPlanId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportBackupPlanTemplate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup/plans/{backupPlanId}/toTemplate/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::ExportBackupPlanTemplateOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportBackupPlanTemplate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup/plans/{backupPlanId}/toTemplate/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::ExportBackupPlanTemplateOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'BackupPlanId' => 'backupPlanId'
+                  },
+  'IsRequired' => {
+                    'BackupPlanId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

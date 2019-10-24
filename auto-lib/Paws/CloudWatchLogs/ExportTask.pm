@@ -1,14 +1,68 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::ExportTask;
-  use Moose;
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationPrefix => (is => 'ro', isa => 'Str', request_name => 'destinationPrefix', traits => ['NameInRequest']);
-  has ExecutionInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskExecutionInfo', request_name => 'executionInfo', traits => ['NameInRequest']);
-  has From => (is => 'ro', isa => 'Int', request_name => 'from', traits => ['NameInRequest']);
-  has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExportTaskStatus', request_name => 'status', traits => ['NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
-  has TaskName => (is => 'ro', isa => 'Str', request_name => 'taskName', traits => ['NameInRequest']);
-  has To => (is => 'ro', isa => 'Int', request_name => 'to', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_ExportTaskExecutionInfo CloudWatchLogs_ExportTaskStatus/;
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationPrefix => (is => 'ro', isa => Str);
+  has ExecutionInfo => (is => 'ro', isa => CloudWatchLogs_ExportTaskExecutionInfo);
+  has From => (is => 'ro', isa => Int);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => CloudWatchLogs_ExportTaskStatus);
+  has TaskId => (is => 'ro', isa => Str);
+  has TaskName => (is => 'ro', isa => Str);
+  has To => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionInfo' => {
+                                    'class' => 'Paws::CloudWatchLogs::ExportTaskExecutionInfo',
+                                    'type' => 'CloudWatchLogs_ExportTaskExecutionInfo'
+                                  },
+               'Status' => {
+                             'class' => 'Paws::CloudWatchLogs::ExportTaskStatus',
+                             'type' => 'CloudWatchLogs_ExportTaskStatus'
+                           },
+               'DestinationPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'To' => {
+                         'type' => 'Int'
+                       },
+               'TaskName' => {
+                               'type' => 'Str'
+                             },
+               'From' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'ExecutionInfo' => 'executionInfo',
+                       'Status' => 'status',
+                       'DestinationPrefix' => 'destinationPrefix',
+                       'Destination' => 'destination',
+                       'LogGroupName' => 'logGroupName',
+                       'TaskId' => 'taskId',
+                       'To' => 'to',
+                       'TaskName' => 'taskName',
+                       'From' => 'from'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +109,7 @@ Represents an export task.
 exported.
 
 
-=head2 ExecutionInfo => L<Paws::CloudWatchLogs::ExportTaskExecutionInfo>
+=head2 ExecutionInfo => CloudWatchLogs_ExportTaskExecutionInfo
 
   Execution info about the export task.
 
@@ -72,7 +126,7 @@ exported.
   The name of the log group from which logs data was exported.
 
 
-=head2 Status => L<Paws::CloudWatchLogs::ExportTaskStatus>
+=head2 Status => CloudWatchLogs_ExportTaskStatus
 
   The status of the export task.
 

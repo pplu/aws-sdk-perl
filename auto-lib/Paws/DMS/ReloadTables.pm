@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::ReloadTables;
-  use Moose;
-  has ReloadOption => (is => 'ro', isa => 'Str');
-  has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
-  has TablesToReload => (is => 'ro', isa => 'ArrayRef[Paws::DMS::TableToReload]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_TableToReload/;
+  has ReloadOption => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationTaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TablesToReload => (is => 'ro', isa => ArrayRef[DMS_TableToReload], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReloadTables');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::ReloadTablesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReloadTables');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::ReloadTablesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationTaskArn' => {
+                                         'type' => 'Str'
+                                       },
+               'ReloadOption' => {
+                                   'type' => 'Str'
+                                 },
+               'TablesToReload' => {
+                                     'class' => 'Paws::DMS::TableToReload',
+                                     'type' => 'ArrayRef[DMS_TableToReload]'
+                                   }
+             },
+  'IsRequired' => {
+                    'ReplicationTaskArn' => 1,
+                    'TablesToReload' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +98,7 @@ The Amazon Resource Name (ARN) of the replication task.
 
 
 
-=head2 B<REQUIRED> TablesToReload => ArrayRef[L<Paws::DMS::TableToReload>]
+=head2 B<REQUIRED> TablesToReload => ArrayRef[DMS_TableToReload]
 
 The name and schema of the table to be reloaded.
 

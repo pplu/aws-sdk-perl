@@ -1,8 +1,13 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyDetail;
   use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw//;
   has PolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->PolicyDocument)); });
   has PolicyName => (is => 'ro', isa => Str);
 
     sub params_map {

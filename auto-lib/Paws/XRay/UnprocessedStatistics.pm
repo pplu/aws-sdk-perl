@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::XRay::UnprocessedStatistics;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has RuleName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has RuleName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

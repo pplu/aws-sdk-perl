@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::ApplicationPolicyStatement;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
-  has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principals', traits => ['NameInRequest'], required => 1);
-  has StatementId => (is => 'ro', isa => 'Str', request_name => 'statementId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has Actions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Principals => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has StatementId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Actions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Principals' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'StatementId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Actions' => 'actions',
+                       'Principals' => 'principals',
+                       'StatementId' => 'statementId'
+                     },
+  'IsRequired' => {
+                    'Actions' => 1,
+                    'Principals' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

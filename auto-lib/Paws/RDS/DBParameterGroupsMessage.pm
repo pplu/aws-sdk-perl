@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBParameterGroupsMessage;
-  use Moose;
-  has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroup]', request_name => 'DBParameterGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBParameterGroup/;
+  has DBParameterGroups => (is => 'ro', isa => ArrayRef[RDS_DBParameterGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroups' => {
+                                        'class' => 'Paws::RDS::DBParameterGroup',
+                                        'type' => 'ArrayRef[RDS_DBParameterGroup]'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DBParameterGroups' => 'DBParameterGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBParameterGroupsMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBParameterGroups => ArrayRef[L<Paws::RDS::DBParameterGroup>]
+=head2 DBParameterGroups => ArrayRef[RDS_DBParameterGroup]
 
 A list of C<DBParameterGroup> instances.
 

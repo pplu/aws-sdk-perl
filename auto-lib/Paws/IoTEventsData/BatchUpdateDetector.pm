@@ -1,14 +1,36 @@
 
 package Paws::IoTEventsData::BatchUpdateDetector;
-  use Moose;
-  has Detectors => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::UpdateDetectorRequest]', traits => ['NameInRequest'], request_name => 'detectors', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_UpdateDetectorRequest/;
+  has Detectors => (is => 'ro', isa => ArrayRef[IoTEventsData_UpdateDetectorRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchUpdateDetector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detectors');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEventsData::BatchUpdateDetectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchUpdateDetector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detectors');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEventsData::BatchUpdateDetectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Detectors' => {
+                                'class' => 'Paws::IoTEventsData::UpdateDetectorRequest',
+                                'type' => 'ArrayRef[IoTEventsData_UpdateDetectorRequest]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Detectors' => 'detectors'
+                     },
+  'IsRequired' => {
+                    'Detectors' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +94,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Detectors => ArrayRef[L<Paws::IoTEventsData::UpdateDetectorRequest>]
+=head2 B<REQUIRED> Detectors => ArrayRef[IoTEventsData_UpdateDetectorRequest]
 
 The list of detectors (instances) to update, along with the values to
 update.

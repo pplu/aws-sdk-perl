@@ -11,7 +11,7 @@ package Paws::EC2::ReleaseHosts;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ReleaseHostsResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'HostIds' => {
@@ -20,11 +20,14 @@ package Paws::EC2::ReleaseHosts;
              },
   'NameInRequest' => {
                        'HostIds' => 'hostId'
-                     }
+                     },
+  'IsRequired' => {
+                    'HostIds' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,17 +1,52 @@
 
 package Paws::IoT::ListThingsInThingGroup;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Recursive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'recursive');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingGroupName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Recursive => (is => 'ro', isa => Bool, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListThingsInThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/{thingGroupName}/things');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingsInThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListThingsInThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/{thingGroupName}/things');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListThingsInThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Recursive' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'ParamInURI' => {
+                    'ThingGroupName' => 'thingGroupName'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'Recursive' => 'recursive'
+                    },
+  'IsRequired' => {
+                    'ThingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

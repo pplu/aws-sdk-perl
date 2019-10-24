@@ -1,20 +1,56 @@
 
 package Paws::Greengrass::CreateSoftwareUpdateJob;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has S3UrlSignerRole => (is => 'ro', isa => 'Str');
-  has SoftwareToUpdate => (is => 'ro', isa => 'Str');
-  has UpdateAgentLogLevel => (is => 'ro', isa => 'Str');
-  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UpdateTargetsArchitecture => (is => 'ro', isa => 'Str');
-  has UpdateTargetsOperatingSystem => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Greengrass::Types qw//;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has S3UrlSignerRole => (is => 'ro', isa => Str, predicate => 1);
+  has SoftwareToUpdate => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateAgentLogLevel => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateTargets => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has UpdateTargetsArchitecture => (is => 'ro', isa => Str, predicate => 1);
+  has UpdateTargetsOperatingSystem => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSoftwareUpdateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/updates');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateSoftwareUpdateJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSoftwareUpdateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/updates');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateSoftwareUpdateJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpdateTargetsOperatingSystem' => {
+                                                   'type' => 'Str'
+                                                 },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'UpdateTargets' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'S3UrlSignerRole' => {
+                                      'type' => 'Str'
+                                    },
+               'UpdateTargetsArchitecture' => {
+                                                'type' => 'Str'
+                                              },
+               'UpdateAgentLogLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'SoftwareToUpdate' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,22 +1,83 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::RegisterActivityType;
-  use Moose;
-  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskHeartbeatTimeout' );
-  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'defaultTaskList' );
-  has DefaultTaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskPriority' );
-  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskScheduleToCloseTimeout' );
-  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskScheduleToStartTimeout' );
-  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskStartToCloseTimeout' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, predicate => 1);
+  has DefaultTaskPriority => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterActivityType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterActivityType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultTaskStartToCloseTimeout' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'DefaultTaskPriority' => {
+                                          'type' => 'Str'
+                                        },
+               'DefaultTaskScheduleToCloseTimeout' => {
+                                                        'type' => 'Str'
+                                                      },
+               'DefaultTaskHeartbeatTimeout' => {
+                                                  'type' => 'Str'
+                                                },
+               'DefaultTaskList' => {
+                                      'class' => 'Paws::SimpleWorkflow::TaskList',
+                                      'type' => 'SimpleWorkflow_TaskList'
+                                    },
+               'DefaultTaskScheduleToStartTimeout' => {
+                                                        'type' => 'Str'
+                                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DefaultTaskStartToCloseTimeout' => 'defaultTaskStartToCloseTimeout',
+                       'Domain' => 'domain',
+                       'Version' => 'version',
+                       'DefaultTaskPriority' => 'defaultTaskPriority',
+                       'DefaultTaskScheduleToCloseTimeout' => 'defaultTaskScheduleToCloseTimeout',
+                       'DefaultTaskHeartbeatTimeout' => 'defaultTaskHeartbeatTimeout',
+                       'DefaultTaskList' => 'defaultTaskList',
+                       'DefaultTaskScheduleToStartTimeout' => 'defaultTaskScheduleToStartTimeout',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Version' => 1,
+                    'Domain' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +139,7 @@ to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
 
-=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => SimpleWorkflow_TaskList
 
 If set, specifies the default task list to use for scheduling tasks of
 this activity type. This default task list is used if a task list isn't

@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateConnectorDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has ConnectorDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConnectorDefinitionId', required => 1);
-  has Connectors => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Connector]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Connector/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ConnectorDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Connectors => (is => 'ro', isa => ArrayRef[Greengrass_Connector], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConnectorDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/connectors/{ConnectorDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateConnectorDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConnectorDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/connectors/{ConnectorDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateConnectorDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Connectors' => {
+                                 'class' => 'Paws::Greengrass::Connector',
+                                 'type' => 'ArrayRef[Greengrass_Connector]'
+                               },
+               'ConnectorDefinitionId' => {
+                                            'type' => 'Str'
+                                          },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'ConnectorDefinitionId' => 'ConnectorDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'ConnectorDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +102,7 @@ The ID of the connector definition.
 
 
 
-=head2 Connectors => ArrayRef[L<Paws::Greengrass::Connector>]
+=head2 Connectors => ArrayRef[Greengrass_Connector]
 
 A list of references to connectors in this version, with their
 corresponding configuration settings.

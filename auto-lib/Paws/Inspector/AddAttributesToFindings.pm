@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Inspector::AddAttributesToFindings;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' , required => 1);
-  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'findingArns' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Inspector::Types qw/Inspector_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute], required => 1, predicate => 1);
+  has FindingArns => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddAttributesToFindings');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::AddAttributesToFindingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddAttributesToFindings');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Inspector::AddAttributesToFindingsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::Inspector::Attribute',
+                                 'type' => 'ArrayRef[Inspector_Attribute]'
+                               },
+               'FindingArns' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'FindingArns' => 'findingArns'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'FindingArns' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ins
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[Inspector_Attribute]
 
 The array of attributes that you want to assign to specified findings.
 

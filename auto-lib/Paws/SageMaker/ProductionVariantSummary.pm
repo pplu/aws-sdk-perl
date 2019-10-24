@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ProductionVariantSummary;
-  use Moose;
-  has CurrentInstanceCount => (is => 'ro', isa => 'Int');
-  has CurrentWeight => (is => 'ro', isa => 'Num');
-  has DeployedImages => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::DeployedImage]');
-  has DesiredInstanceCount => (is => 'ro', isa => 'Int');
-  has DesiredWeight => (is => 'ro', isa => 'Num');
-  has VariantName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Num ArrayRef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_DeployedImage/;
+  has CurrentInstanceCount => (is => 'ro', isa => Int);
+  has CurrentWeight => (is => 'ro', isa => Num);
+  has DeployedImages => (is => 'ro', isa => ArrayRef[SageMaker_DeployedImage]);
+  has DesiredInstanceCount => (is => 'ro', isa => Int);
+  has DesiredWeight => (is => 'ro', isa => Num);
+  has VariantName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentWeight' => {
+                                    'type' => 'Num'
+                                  },
+               'VariantName' => {
+                                  'type' => 'Str'
+                                },
+               'DesiredWeight' => {
+                                    'type' => 'Num'
+                                  },
+               'CurrentInstanceCount' => {
+                                           'type' => 'Int'
+                                         },
+               'DesiredInstanceCount' => {
+                                           'type' => 'Int'
+                                         },
+               'DeployedImages' => {
+                                     'class' => 'Paws::SageMaker::DeployedImage',
+                                     'type' => 'ArrayRef[SageMaker_DeployedImage]'
+                                   }
+             },
+  'IsRequired' => {
+                    'VariantName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +90,7 @@ C<Updating>, you get different desired and current values.
   The weight associated with the variant.
 
 
-=head2 DeployedImages => ArrayRef[L<Paws::SageMaker::DeployedImage>]
+=head2 DeployedImages => ArrayRef[SageMaker_DeployedImage]
 
   An array of C<DeployedImage> objects that specify the Amazon EC2
 Container Registry paths of the inference images deployed on instances

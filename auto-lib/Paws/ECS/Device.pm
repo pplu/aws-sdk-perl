@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::ECS::Device;
-  use Moose;
-  has ContainerPath => (is => 'ro', isa => 'Str', request_name => 'containerPath', traits => ['NameInRequest']);
-  has HostPath => (is => 'ro', isa => 'Str', request_name => 'hostPath', traits => ['NameInRequest'], required => 1);
-  has Permissions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'permissions', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has ContainerPath => (is => 'ro', isa => Str);
+  has HostPath => (is => 'ro', isa => Str, required => 1);
+  has Permissions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerPath' => {
+                                    'type' => 'Str'
+                                  },
+               'HostPath' => {
+                               'type' => 'Str'
+                             },
+               'Permissions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'NameInRequest' => {
+                       'ContainerPath' => 'containerPath',
+                       'HostPath' => 'hostPath',
+                       'Permissions' => 'permissions'
+                     },
+  'IsRequired' => {
+                    'HostPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

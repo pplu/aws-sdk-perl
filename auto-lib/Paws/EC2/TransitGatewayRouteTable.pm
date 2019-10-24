@@ -9,7 +9,7 @@ package Paws::EC2::TransitGatewayRouteTable;
   has TransitGatewayId => (is => 'ro', isa => Str);
   has TransitGatewayRouteTableId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TransitGatewayId' => {
@@ -46,8 +46,8 @@ package Paws::EC2::TransitGatewayRouteTable;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

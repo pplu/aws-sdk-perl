@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetSqlInjectionMatchSetResponse;
-  use Moose;
-  has SqlInjectionMatchSet => (is => 'ro', isa => 'Paws::WAF::SqlInjectionMatchSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_SqlInjectionMatchSet/;
+  has SqlInjectionMatchSet => (is => 'ro', isa => WAF_SqlInjectionMatchSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SqlInjectionMatchSet' => {
+                                           'class' => 'Paws::WAF::SqlInjectionMatchSet',
+                                           'type' => 'WAF_SqlInjectionMatchSet'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::GetSqlInjectionMatchSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 SqlInjectionMatchSet => L<Paws::WAF::SqlInjectionMatchSet>
+=head2 SqlInjectionMatchSet => WAF_SqlInjectionMatchSet
 
 Information about the SqlInjectionMatchSet that you specified in the
 C<GetSqlInjectionMatchSet> request. For more information, see the

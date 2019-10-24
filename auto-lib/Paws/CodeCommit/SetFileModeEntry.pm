@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::SetFileModeEntry;
-  use Moose;
-  has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest'], required => 1);
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has FileMode => (is => 'ro', isa => Str, required => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               'FilePath' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'FileMode' => 'fileMode',
+                       'FilePath' => 'filePath'
+                     },
+  'IsRequired' => {
+                    'FileMode' => 1,
+                    'FilePath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

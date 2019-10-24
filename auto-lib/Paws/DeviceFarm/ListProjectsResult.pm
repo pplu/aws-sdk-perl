@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListProjectsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Project]', traits => ['NameInRequest'], request_name => 'projects' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Project/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Projects => (is => 'ro', isa => ArrayRef[DeviceFarm_Project]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Projects' => {
+                               'class' => 'Paws::DeviceFarm::Project',
+                               'type' => 'ArrayRef[DeviceFarm_Project]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Projects' => 'projects',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 Projects => ArrayRef[L<Paws::DeviceFarm::Project>]
+=head2 Projects => ArrayRef[DeviceFarm_Project]
 
 Information about the projects.
 

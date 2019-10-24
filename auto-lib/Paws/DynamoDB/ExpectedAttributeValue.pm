@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ExpectedAttributeValue;
   use Moo;
   use Types::Standard qw/ArrayRef Str Bool/;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::ExpectedAttributeValue;
   has Exists => (is => 'ro', isa => Bool);
   has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AttributeValueList' => {
@@ -27,8 +28,8 @@ package Paws::DynamoDB::ExpectedAttributeValue;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

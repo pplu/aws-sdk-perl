@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Lightsail::PendingMaintenanceAction;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest']);
-  has CurrentApplyDate => (is => 'ro', isa => 'Str', request_name => 'currentApplyDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+  has CurrentApplyDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentApplyDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'CurrentApplyDate' => 'currentApplyDate',
+                       'Action' => 'action',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

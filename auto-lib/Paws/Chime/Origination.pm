@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Chime::Origination;
-  use Moose;
-  has Disabled => (is => 'ro', isa => 'Bool');
-  has Routes => (is => 'ro', isa => 'ArrayRef[Paws::Chime::OriginationRoute]');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef/;
+  use Paws::Chime::Types qw/Chime_OriginationRoute/;
+  has Disabled => (is => 'ro', isa => Bool);
+  has Routes => (is => 'ro', isa => ArrayRef[Chime_OriginationRoute]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'Routes' => {
+                             'class' => 'Paws::Chime::OriginationRoute',
+                             'type' => 'ArrayRef[Chime_OriginationRoute]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ using your Amazon Chime Voice Connector.
 for your Amazon Chime Voice Connector.
 
 
-=head2 Routes => ArrayRef[L<Paws::Chime::OriginationRoute>]
+=head2 Routes => ArrayRef[Chime_OriginationRoute]
 
   The call distribution properties defined for your SIP hosts. Valid
 range: Minimum value of 1. Maximum value of 20.

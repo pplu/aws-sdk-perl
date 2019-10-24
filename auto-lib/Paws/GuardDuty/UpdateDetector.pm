@@ -1,16 +1,47 @@
 
 package Paws::GuardDuty::UpdateDetector;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable');
-  has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GuardDuty::Types qw//;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Enable => (is => 'ro', isa => Bool, predicate => 1);
+  has FindingPublishingFrequency => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDetector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::UpdateDetectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDetector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::UpdateDetectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enable' => {
+                             'type' => 'Bool'
+                           },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'FindingPublishingFrequency' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'Enable' => 'enable',
+                       'FindingPublishingFrequency' => 'findingPublishingFrequency'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

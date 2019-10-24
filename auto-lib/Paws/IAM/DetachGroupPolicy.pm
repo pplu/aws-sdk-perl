@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DetachGroupPolicy;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::DetachGroupPolicy;
                'GroupName' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyArn' => 1,
+                    'GroupName' => 1
+                  }
 }
 ;
     return $Params_map;

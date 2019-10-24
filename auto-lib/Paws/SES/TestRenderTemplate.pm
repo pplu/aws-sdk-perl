@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::TestRenderTemplate;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::TestRenderTemplate;
                'TemplateData' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'TemplateName' => 1,
+                    'TemplateData' => 1
+                  }
 }
 ;
     return $Params_map;

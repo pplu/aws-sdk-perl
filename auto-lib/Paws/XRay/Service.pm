@@ -1,18 +1,75 @@
+# Generated from default/object.tt
 package Paws::XRay::Service;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has DurationHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
-  has Edges => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Edge]');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReferenceId => (is => 'ro', isa => 'Int');
-  has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
-  has Root => (is => 'ro', isa => 'Bool');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has SummaryStatistics => (is => 'ro', isa => 'Paws::XRay::ServiceStatistics');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int Bool/;
+  use Paws::XRay::Types qw/XRay_ServiceStatistics XRay_HistogramEntry XRay_Edge/;
+  has AccountId => (is => 'ro', isa => Str);
+  has DurationHistogram => (is => 'ro', isa => ArrayRef[XRay_HistogramEntry]);
+  has Edges => (is => 'ro', isa => ArrayRef[XRay_Edge]);
+  has EndTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReferenceId => (is => 'ro', isa => Int);
+  has ResponseTimeHistogram => (is => 'ro', isa => ArrayRef[XRay_HistogramEntry]);
+  has Root => (is => 'ro', isa => Bool);
+  has StartTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has SummaryStatistics => (is => 'ro', isa => XRay_ServiceStatistics);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Root' => {
+                           'type' => 'Bool'
+                         },
+               'SummaryStatistics' => {
+                                        'class' => 'Paws::XRay::ServiceStatistics',
+                                        'type' => 'XRay_ServiceStatistics'
+                                      },
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Edges' => {
+                            'class' => 'Paws::XRay::Edge',
+                            'type' => 'ArrayRef[XRay_Edge]'
+                          },
+               'ResponseTimeHistogram' => {
+                                            'class' => 'Paws::XRay::HistogramEntry',
+                                            'type' => 'ArrayRef[XRay_HistogramEntry]'
+                                          },
+               'ReferenceId' => {
+                                  'type' => 'Int'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'DurationHistogram' => {
+                                        'class' => 'Paws::XRay::HistogramEntry',
+                                        'type' => 'ArrayRef[XRay_HistogramEntry]'
+                                      },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +112,12 @@ an application used.
   Identifier of the AWS account in which the service runs.
 
 
-=head2 DurationHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
+=head2 DurationHistogram => ArrayRef[XRay_HistogramEntry]
 
   A histogram that maps the spread of service durations.
 
 
-=head2 Edges => ArrayRef[L<Paws::XRay::Edge>]
+=head2 Edges => ArrayRef[XRay_Edge]
 
   Connections to downstream services.
 
@@ -85,7 +142,7 @@ an application used.
   Identifier for the service. Unique within the service map.
 
 
-=head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
+=head2 ResponseTimeHistogram => ArrayRef[XRay_HistogramEntry]
 
   A histogram that maps the spread of service response times.
 
@@ -105,7 +162,7 @@ an application used.
   The service's state.
 
 
-=head2 SummaryStatistics => L<Paws::XRay::ServiceStatistics>
+=head2 SummaryStatistics => XRay_ServiceStatistics
 
   Aggregated statistics for the service.
 

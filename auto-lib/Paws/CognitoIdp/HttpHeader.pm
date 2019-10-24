@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::HttpHeader;
-  use Moose;
-  has HeaderName => (is => 'ro', isa => 'Str', request_name => 'headerName', traits => ['NameInRequest']);
-  has HeaderValue => (is => 'ro', isa => 'Str', request_name => 'headerValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has HeaderName => (is => 'ro', isa => Str);
+  has HeaderValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HeaderName' => {
+                                 'type' => 'Str'
+                               },
+               'HeaderValue' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'HeaderName' => 'headerName',
+                       'HeaderValue' => 'headerValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

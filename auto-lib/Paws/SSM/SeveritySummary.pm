@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::SSM::SeveritySummary;
-  use Moose;
-  has CriticalCount => (is => 'ro', isa => 'Int');
-  has HighCount => (is => 'ro', isa => 'Int');
-  has InformationalCount => (is => 'ro', isa => 'Int');
-  has LowCount => (is => 'ro', isa => 'Int');
-  has MediumCount => (is => 'ro', isa => 'Int');
-  has UnspecifiedCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SSM::Types qw//;
+  has CriticalCount => (is => 'ro', isa => Int);
+  has HighCount => (is => 'ro', isa => Int);
+  has InformationalCount => (is => 'ro', isa => Int);
+  has LowCount => (is => 'ro', isa => Int);
+  has MediumCount => (is => 'ro', isa => Int);
+  has UnspecifiedCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UnspecifiedCount' => {
+                                       'type' => 'Int'
+                                     },
+               'LowCount' => {
+                               'type' => 'Int'
+                             },
+               'HighCount' => {
+                                'type' => 'Int'
+                              },
+               'CriticalCount' => {
+                                    'type' => 'Int'
+                                  },
+               'MediumCount' => {
+                                  'type' => 'Int'
+                                },
+               'InformationalCount' => {
+                                         'type' => 'Int'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

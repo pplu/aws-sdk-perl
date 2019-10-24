@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::ValidationWarning;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Warnings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'warnings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DataPipeline::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Warnings => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Warnings' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Warnings' => 'warnings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

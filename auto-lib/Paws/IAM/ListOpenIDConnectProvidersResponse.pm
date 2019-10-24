@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListOpenIDConnectProvidersResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef/;
   use Paws::IAM::Types qw/IAM_OpenIDConnectProviderListEntry/;
   has OpenIDConnectProviderList => (is => 'ro', isa => ArrayRef[IAM_OpenIDConnectProviderListEntry]);

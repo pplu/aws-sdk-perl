@@ -4,7 +4,7 @@ package Paws::EC2::TrafficMirrorPortRangeRequest;
   has FromPort => (is => 'ro', isa => Int);
   has ToPort => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ToPort' => {
@@ -16,8 +16,8 @@ package Paws::EC2::TrafficMirrorPortRangeRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

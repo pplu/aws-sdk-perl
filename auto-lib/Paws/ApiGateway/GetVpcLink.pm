@@ -1,14 +1,35 @@
 
 package Paws::ApiGateway::GetVpcLink;
-  use Moose;
-  has VpcLinkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vpclink_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has VpcLinkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetVpcLink');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/vpclinks/{vpclink_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::VpcLink');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetVpcLink');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/vpclinks/{vpclink_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::VpcLink');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcLinkId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'VpcLinkId' => 'vpclink_id'
+                  },
+  'IsRequired' => {
+                    'VpcLinkId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::FacetAttribute;
-  use Moose;
-  has AttributeDefinition => (is => 'ro', isa => 'Paws::CloudDirectory::FacetAttributeDefinition');
-  has AttributeReference => (is => 'ro', isa => 'Paws::CloudDirectory::FacetAttributeReference');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RequiredBehavior => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_FacetAttributeReference CloudDirectory_FacetAttributeDefinition/;
+  has AttributeDefinition => (is => 'ro', isa => CloudDirectory_FacetAttributeDefinition);
+  has AttributeReference => (is => 'ro', isa => CloudDirectory_FacetAttributeReference);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RequiredBehavior => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeDefinition' => {
+                                          'class' => 'Paws::CloudDirectory::FacetAttributeDefinition',
+                                          'type' => 'CloudDirectory_FacetAttributeDefinition'
+                                        },
+               'AttributeReference' => {
+                                         'class' => 'Paws::CloudDirectory::FacetAttributeReference',
+                                         'type' => 'CloudDirectory_FacetAttributeReference'
+                                       },
+               'RequiredBehavior' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ An attribute that is associated with the Facet.
 =head1 ATTRIBUTES
 
 
-=head2 AttributeDefinition => L<Paws::CloudDirectory::FacetAttributeDefinition>
+=head2 AttributeDefinition => CloudDirectory_FacetAttributeDefinition
 
   A facet attribute consists of either a definition or a reference. This
 structure contains the attribute definition. See Attribute References
@@ -47,7 +78,7 @@ structure contains the attribute definition. See Attribute References
 for more information.
 
 
-=head2 AttributeReference => L<Paws::CloudDirectory::FacetAttributeReference>
+=head2 AttributeReference => CloudDirectory_FacetAttributeReference
 
   An attribute reference that is associated with the attribute. See
 Attribute References

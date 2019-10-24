@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ServiceSpecificCredential;
   use Moo;
   use Types::Standard qw/Str/;
@@ -34,7 +35,16 @@ package Paws::IAM::ServiceSpecificCredential;
                'ServiceSpecificCredentialId' => {
                                                   'type' => 'Str'
                                                 }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServicePassword' => 1,
+                    'CreateDate' => 1,
+                    'ServiceUserName' => 1,
+                    'ServiceName' => 1,
+                    'Status' => 1,
+                    'ServiceSpecificCredentialId' => 1
+                  }
 }
 ;
     return $Params_map;

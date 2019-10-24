@@ -1,16 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::DescribeDBClusters;
-  use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Neptune::Types qw/Neptune_Filter/;
+  has DBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Neptune_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::DBClusterMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClustersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBClusters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::DBClusterMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBClustersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::Neptune::Filter',
+                              'type' => 'ArrayRef[Neptune_Filter]'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +101,7 @@ If supplied, must match an existing DBClusterIdentifier.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Neptune::Filter>]
+=head2 Filters => ArrayRef[Neptune_Filter]
 
 A filter that specifies one or more DB clusters to describe.
 

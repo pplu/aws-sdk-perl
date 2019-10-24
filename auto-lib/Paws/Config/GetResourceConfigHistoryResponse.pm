@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetResourceConfigHistoryResponse;
-  use Moose;
-  has ConfigurationItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationItem]', traits => ['NameInRequest'], request_name => 'configurationItems' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ConfigurationItem/;
+  has ConfigurationItems => (is => 'ro', isa => ArrayRef[Config_ConfigurationItem]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationItems' => {
+                                         'class' => 'Paws::Config::ConfigurationItem',
+                                         'type' => 'ArrayRef[Config_ConfigurationItem]'
+                                       },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ConfigurationItems' => 'configurationItems',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Config::GetResourceConfigHistoryResponse
 =head1 ATTRIBUTES
 
 
-=head2 ConfigurationItems => ArrayRef[L<Paws::Config::ConfigurationItem>]
+=head2 ConfigurationItems => ArrayRef[Config_ConfigurationItem]
 
 A list that contains the configuration history of one or more
 resources.

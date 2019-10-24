@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ChangePassword;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::ChangePassword;
                'NewPassword' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'OldPassword' => 1,
+                    'NewPassword' => 1
+                  }
 }
 ;
     return $Params_map;

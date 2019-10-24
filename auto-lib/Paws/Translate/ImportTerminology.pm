@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Translate::ImportTerminology;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has EncryptionKey => (is => 'ro', isa => 'Paws::Translate::EncryptionKey');
-  has MergeStrategy => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has TerminologyData => (is => 'ro', isa => 'Paws::Translate::TerminologyData', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw/Translate_EncryptionKey Translate_TerminologyData/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionKey => (is => 'ro', isa => Translate_EncryptionKey, predicate => 1);
+  has MergeStrategy => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TerminologyData => (is => 'ro', isa => Translate_TerminologyData, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportTerminology');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Translate::ImportTerminologyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportTerminology');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Translate::ImportTerminologyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MergeStrategy' => {
+                                    'type' => 'Str'
+                                  },
+               'EncryptionKey' => {
+                                    'class' => 'Paws::Translate::EncryptionKey',
+                                    'type' => 'Translate_EncryptionKey'
+                                  },
+               'TerminologyData' => {
+                                      'class' => 'Paws::Translate::TerminologyData',
+                                      'type' => 'Translate_TerminologyData'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'MergeStrategy' => 1,
+                    'TerminologyData' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +100,7 @@ The description of the custom terminology being imported.
 
 
 
-=head2 EncryptionKey => L<Paws::Translate::EncryptionKey>
+=head2 EncryptionKey => Translate_EncryptionKey
 
 The encryption key for the custom terminology being imported.
 
@@ -86,7 +121,7 @@ The name of the custom terminology being imported.
 
 
 
-=head2 B<REQUIRED> TerminologyData => L<Paws::Translate::TerminologyData>
+=head2 B<REQUIRED> TerminologyData => Translate_TerminologyData
 
 The terminology data for the custom terminology being imported.
 

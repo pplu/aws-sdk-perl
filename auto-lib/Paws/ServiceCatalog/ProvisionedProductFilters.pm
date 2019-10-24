@@ -1,12 +1,25 @@
+# Generated from default/map_enum.tt
 package Paws::ServiceCatalog::ProvisionedProductFilters;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has SearchQuery => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has SearchQuery => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'SearchQuery' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +55,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 SearchQuery => ArrayRef[Str|Undef]
+=head2 SearchQuery => 
 
 
 

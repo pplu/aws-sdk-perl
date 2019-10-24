@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::Principal;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Roles => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::PermissionInfo]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_PermissionInfo/;
+  has Id => (is => 'ro', isa => Str);
+  has Roles => (is => 'ro', isa => ArrayRef[WorkDocs_PermissionInfo]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Roles' => {
+                            'class' => 'Paws::WorkDocs::PermissionInfo',
+                            'type' => 'ArrayRef[WorkDocs_PermissionInfo]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Describes a resource.
   The ID of the resource.
 
 
-=head2 Roles => ArrayRef[L<Paws::WorkDocs::PermissionInfo>]
+=head2 Roles => ArrayRef[WorkDocs_PermissionInfo]
 
   The permission information for the resource.
 

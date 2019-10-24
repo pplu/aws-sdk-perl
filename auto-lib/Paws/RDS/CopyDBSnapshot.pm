@@ -1,19 +1,58 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CopyDBSnapshot;
-  use Moose;
-  has CopyTags => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has CopyTags => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PreSignedUrl => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDBSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TargetDBSnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyDBSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CopyDBSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyDBSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetDBSnapshotIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'CopyTags' => {
+                               'type' => 'Bool'
+                             },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         },
+               'SourceDBSnapshotIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'TargetDBSnapshotIdentifier' => 1,
+                    'SourceDBSnapshotIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -189,7 +228,7 @@ C<arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20130805>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

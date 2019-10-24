@@ -1,15 +1,41 @@
 
 package Paws::IoT::DeleteV2LoggingLevel;
-  use Moose;
-  has TargetName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetName', required => 1);
-  has TargetType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TargetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteV2LoggingLevel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2LoggingLevel');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteV2LoggingLevel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2LoggingLevel');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInQuery' => {
+                      'TargetType' => 'targetType',
+                      'TargetName' => 'targetName'
+                    },
+  'IsRequired' => {
+                    'TargetType' => 1,
+                    'TargetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

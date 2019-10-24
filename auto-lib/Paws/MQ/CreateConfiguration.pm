@@ -1,17 +1,48 @@
 
 package Paws::MQ::CreateConfiguration;
-  use Moose;
-  has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
-  has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw/MQ___mapOf__string/;
+  has EngineType => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => MQ___mapOf__string, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::CreateConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::CreateConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::MQ::__mapOf__string',
+                           'type' => 'MQ___mapOf__string'
+                         },
+               'EngineType' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'Tags' => 'tags',
+                       'EngineType' => 'engineType',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +107,7 @@ _ ~). This value must be 1-150 characters long.
 
 
 
-=head2 Tags => L<Paws::MQ::__mapOf__string>
+=head2 Tags => MQ___mapOf__string
 
 Create tags when creating the configuration.
 

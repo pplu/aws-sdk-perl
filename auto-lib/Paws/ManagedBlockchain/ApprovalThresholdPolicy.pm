@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::ApprovalThresholdPolicy;
-  use Moose;
-  has ProposalDurationInHours => (is => 'ro', isa => 'Int');
-  has ThresholdComparator => (is => 'ro', isa => 'Str');
-  has ThresholdPercentage => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has ProposalDurationInHours => (is => 'ro', isa => Int);
+  has ThresholdComparator => (is => 'ro', isa => Str);
+  has ThresholdPercentage => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThresholdComparator' => {
+                                          'type' => 'Str'
+                                        },
+               'ThresholdPercentage' => {
+                                          'type' => 'Int'
+                                        },
+               'ProposalDurationInHours' => {
+                                              'type' => 'Int'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingTypeProperties;
-  use Moose;
-  has SearchableAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'searchableAttributes', traits => ['NameInRequest']);
-  has ThingTypeDescription => (is => 'ro', isa => 'Str', request_name => 'thingTypeDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::IoT::Types qw//;
+  has SearchableAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ThingTypeDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingTypeDescription' => {
+                                           'type' => 'Str'
+                                         },
+               'SearchableAttributes' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'ThingTypeDescription' => 'thingTypeDescription',
+                       'SearchableAttributes' => 'searchableAttributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

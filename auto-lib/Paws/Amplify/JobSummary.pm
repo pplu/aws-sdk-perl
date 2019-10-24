@@ -1,14 +1,76 @@
+# Generated from default/object.tt
 package Paws::Amplify::JobSummary;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest'], required => 1);
-  has CommitMessage => (is => 'ro', isa => 'Str', request_name => 'commitMessage', traits => ['NameInRequest'], required => 1);
-  has CommitTime => (is => 'ro', isa => 'Str', request_name => 'commitTime', traits => ['NameInRequest'], required => 1);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has JobArn => (is => 'ro', isa => 'Str', request_name => 'jobArn', traits => ['NameInRequest'], required => 1);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
-  has JobType => (is => 'ro', isa => 'Str', request_name => 'jobType', traits => ['NameInRequest'], required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has CommitId => (is => 'ro', isa => Str, required => 1);
+  has CommitMessage => (is => 'ro', isa => Str, required => 1);
+  has CommitTime => (is => 'ro', isa => Str, required => 1);
+  has EndTime => (is => 'ro', isa => Str);
+  has JobArn => (is => 'ro', isa => Str, required => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1);
+  has JobType => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CommitTime' => {
+                                 'type' => 'Str'
+                               },
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'JobArn' => {
+                             'type' => 'Str'
+                           },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'CommitMessage' => 'commitMessage',
+                       'Status' => 'status',
+                       'CommitTime' => 'commitTime',
+                       'CommitId' => 'commitId',
+                       'JobArn' => 'jobArn',
+                       'JobType' => 'jobType',
+                       'EndTime' => 'endTime',
+                       'StartTime' => 'startTime',
+                       'JobId' => 'jobId'
+                     },
+  'IsRequired' => {
+                    'CommitMessage' => 1,
+                    'Status' => 1,
+                    'CommitTime' => 1,
+                    'CommitId' => 1,
+                    'JobArn' => 1,
+                    'JobType' => 1,
+                    'StartTime' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

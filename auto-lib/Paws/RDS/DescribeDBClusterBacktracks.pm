@@ -1,17 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DescribeDBClusterBacktracks;
-  use Moose;
-  has BacktrackIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::RDS::Types qw/RDS_Filter/;
+  has BacktrackIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[RDS_Filter], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterBacktracks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterBacktrackMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterBacktracksResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDBClusterBacktracks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterBacktrackMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeDBClusterBacktracksResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BacktrackIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Filters' => {
+                              'class' => 'Paws::RDS::Filter',
+                              'type' => 'ArrayRef[RDS_Filter]'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +138,7 @@ Example: C<my-cluster1>
 
 
 
-=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
+=head2 Filters => ArrayRef[RDS_Filter]
 
 A filter that specifies one or more DB clusters to describe. Supported
 filters include the following:

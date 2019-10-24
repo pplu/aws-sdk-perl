@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::S3Location;
   use Moo;
   use Types::Standard qw/ArrayRef Str/;
@@ -46,7 +47,11 @@ package Paws::S3::S3Location;
   'NameInRequest' => {
                        'AccessControlList' => 'Grant',
                        'UserMetadata' => 'MetadataEntry'
-                     }
+                     },
+  'IsRequired' => {
+                    'Prefix' => 1,
+                    'BucketName' => 1
+                  }
 }
 ;
     return $Params_map;

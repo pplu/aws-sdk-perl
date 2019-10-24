@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetServiceLastAccessedDetails;
   use Moo;
@@ -25,7 +26,10 @@ package Paws::IAM::GetServiceLastAccessedDetails;
                'JobId' => {
                             'type' => 'Str'
                           }
-             }
+             },
+  'IsRequired' => {
+                    'JobId' => 1
+                  }
 }
 ;
     return $Params_map;

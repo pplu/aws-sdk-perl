@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DescribeSuggesters;
-  use Moose;
-  has Deployed => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has SuggesterNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::CloudSearch::Types qw//;
+  has Deployed => (is => 'ro', isa => Bool, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SuggesterNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSuggesters');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeSuggestersResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSuggestersResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSuggesters');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DescribeSuggestersResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeSuggestersResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SuggesterNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'Deployed' => {
+                               'type' => 'Bool'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::ListVolumeRecoveryPointsOutput;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has VolumeRecoveryPointInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::VolumeRecoveryPointInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_VolumeRecoveryPointInfo/;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has VolumeRecoveryPointInfos => (is => 'ro', isa => ArrayRef[StorageGateway_VolumeRecoveryPointInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeRecoveryPointInfos' => {
+                                               'class' => 'Paws::StorageGateway::VolumeRecoveryPointInfo',
+                                               'type' => 'ArrayRef[StorageGateway_VolumeRecoveryPointInfo]'
+                                             },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::StorageGateway::ListVolumeRecoveryPointsOutput
 
 
 
-=head2 VolumeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::VolumeRecoveryPointInfo>]
+=head2 VolumeRecoveryPointInfos => ArrayRef[StorageGateway_VolumeRecoveryPointInfo]
 
 An array of VolumeRecoveryPointInfo objects.
 

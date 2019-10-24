@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateCoreDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId', required => 1);
-  has Cores => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Core]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Core/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has CoreDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Cores => (is => 'ro', isa => ArrayRef[Greengrass_Core], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCoreDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/cores/{CoreDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateCoreDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCoreDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/cores/{CoreDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateCoreDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoreDefinitionId' => {
+                                       'type' => 'Str'
+                                     },
+               'Cores' => {
+                            'class' => 'Paws::Greengrass::Core',
+                            'type' => 'ArrayRef[Greengrass_Core]'
+                          },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'CoreDefinitionId' => 'CoreDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'CoreDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +103,7 @@ The ID of the core definition.
 
 
 
-=head2 Cores => ArrayRef[L<Paws::Greengrass::Core>]
+=head2 Cores => ArrayRef[Greengrass_Core]
 
 A list of cores in the core definition version.
 

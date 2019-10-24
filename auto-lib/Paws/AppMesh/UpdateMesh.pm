@@ -1,16 +1,48 @@
 
 package Paws::AppMesh::UpdateMesh;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::MeshSpec', traits => ['NameInRequest'], request_name => 'spec');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_MeshSpec/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_MeshSpec, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMesh');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UpdateMeshOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMesh');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::UpdateMeshOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::MeshSpec',
+                           'type' => 'AppMesh_MeshSpec'
+                         },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'MeshName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'MeshName' => 'meshName'
+                  },
+  'NameInRequest' => {
+                       'Spec' => 'spec',
+                       'ClientToken' => 'clientToken'
+                     },
+  'IsRequired' => {
+                    'MeshName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +98,7 @@ The name of the service mesh to update.
 
 
 
-=head2 Spec => L<Paws::AppMesh::MeshSpec>
+=head2 Spec => AppMesh_MeshSpec
 
 The service mesh specification to apply.
 

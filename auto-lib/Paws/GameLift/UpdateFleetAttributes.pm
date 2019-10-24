@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::UpdateFleetAttributes;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has MetricGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
-  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
-  has ResourceCreationLimitPolicy => (is => 'ro', isa => 'Paws::GameLift::ResourceCreationLimitPolicy');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_ResourceCreationLimitPolicy/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceCreationLimitPolicy => (is => 'ro', isa => GameLift_ResourceCreationLimitPolicy, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFleetAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::UpdateFleetAttributesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFleetAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::UpdateFleetAttributesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricGroups' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'NewGameSessionProtectionPolicy' => {
+                                                     'type' => 'Str'
+                                                   },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'ResourceCreationLimitPolicy' => {
+                                                  'class' => 'Paws::GameLift::ResourceCreationLimitPolicy',
+                                                  'type' => 'GameLift_ResourceCreationLimitPolicy'
+                                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'FleetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +144,7 @@ cannot be terminated during a scale-down event.
 
 Valid values are: C<"NoProtection">, C<"FullProtection">
 
-=head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
+=head2 ResourceCreationLimitPolicy => GameLift_ResourceCreationLimitPolicy
 
 Policy that limits the number of game sessions an individual player can
 create over a span of time.

@@ -1,16 +1,46 @@
 
 package Paws::CloudDirectory::BatchRead;
-  use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::BatchReadOperation]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_BatchReadOperation/;
+  has ConsistencyLevel => (is => 'ro', isa => Str, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Operations => (is => 'ro', isa => ArrayRef[CloudDirectory_BatchReadOperation], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchRead');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchread');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::BatchReadResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchRead');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/batchread');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::BatchReadResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConsistencyLevel' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Operations' => {
+                                 'class' => 'Paws::CloudDirectory::BatchReadOperation',
+                                 'type' => 'ArrayRef[CloudDirectory_BatchReadOperation]'
+                               }
+             },
+  'ParamInHeader' => {
+                       'ConsistencyLevel' => 'x-amz-consistency-level',
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'DirectoryArn' => 1,
+                    'Operations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +109,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SchemaFacet => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },    # OPTIONAL
+            },
 
           },    # OPTIONAL
           GetObjectInformation => {
@@ -178,9 +208,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FacetFilter => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },    # OPTIONAL
-            MaxResults => 1,                # min: 1; OPTIONAL
-            NextToken  => 'MyNextToken',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectChildren => {
             ObjectReference => {
@@ -294,7 +324,7 @@ For more information, see arns.
 
 
 
-=head2 B<REQUIRED> Operations => ArrayRef[L<Paws::CloudDirectory::BatchReadOperation>]
+=head2 B<REQUIRED> Operations => ArrayRef[CloudDirectory_BatchReadOperation]
 
 A list of operations that are part of the batch.
 

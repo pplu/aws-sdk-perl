@@ -1,10 +1,34 @@
 
 package Paws::PinpointEmail::ListDeliverabilityTestReportsResponse;
-  use Moose;
-  has DeliverabilityTestReports => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DeliverabilityTestReport]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DeliverabilityTestReport/;
+  has DeliverabilityTestReports => (is => 'ro', isa => ArrayRef[PinpointEmail_DeliverabilityTestReport], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliverabilityTestReports' => {
+                                                'class' => 'Paws::PinpointEmail::DeliverabilityTestReport',
+                                                'type' => 'ArrayRef[PinpointEmail_DeliverabilityTestReport]'
+                                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'DeliverabilityTestReports' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::PinpointEmail::ListDeliverabilityTestReportsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DeliverabilityTestReports => ArrayRef[L<Paws::PinpointEmail::DeliverabilityTestReport>]
+=head2 B<REQUIRED> DeliverabilityTestReports => ArrayRef[PinpointEmail_DeliverabilityTestReport]
 
 An object that contains a lists of predictive inbox placement tests
 that you've performed.

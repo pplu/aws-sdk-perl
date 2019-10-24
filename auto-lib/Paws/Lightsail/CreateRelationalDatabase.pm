@@ -1,23 +1,90 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateRelationalDatabase;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' );
-  has MasterDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterDatabaseName' , required => 1);
-  has MasterUsername => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterUsername' , required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'masterUserPassword' );
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'preferredBackupWindow' );
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'preferredMaintenanceWindow' );
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible' );
-  has RelationalDatabaseBlueprintId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseBlueprintId' , required => 1);
-  has RelationalDatabaseBundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseBundleId' , required => 1);
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag/;
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has MasterDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has RelationalDatabaseBlueprintId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RelationalDatabaseBundleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRelationalDatabase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateRelationalDatabaseResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRelationalDatabase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateRelationalDatabaseResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'RelationalDatabaseBlueprintId' => {
+                                                    'type' => 'Str'
+                                                  },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'MasterDatabaseName' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'RelationalDatabaseBundleId' => {
+                                                 'type' => 'Str'
+                                               },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'MasterUserPassword' => 'masterUserPassword',
+                       'RelationalDatabaseBlueprintId' => 'relationalDatabaseBlueprintId',
+                       'PreferredBackupWindow' => 'preferredBackupWindow',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'MasterDatabaseName' => 'masterDatabaseName',
+                       'Tags' => 'tags',
+                       'PreferredMaintenanceWindow' => 'preferredMaintenanceWindow',
+                       'PubliclyAccessible' => 'publiclyAccessible',
+                       'RelationalDatabaseBundleId' => 'relationalDatabaseBundleId',
+                       'MasterUsername' => 'masterUsername',
+                       'RelationalDatabaseName' => 'relationalDatabaseName'
+                     },
+  'IsRequired' => {
+                    'RelationalDatabaseBlueprintId' => 1,
+                    'MasterDatabaseName' => 1,
+                    'RelationalDatabaseBundleId' => 1,
+                    'MasterUsername' => 1,
+                    'RelationalDatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -273,7 +340,7 @@ The first and last character must be a letter or number.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

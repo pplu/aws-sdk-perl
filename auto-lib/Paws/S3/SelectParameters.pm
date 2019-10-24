@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::SelectParameters;
   use Moo;
   use Types::Standard qw/Str/;
@@ -24,7 +25,13 @@ package Paws::S3::SelectParameters;
                'ExpressionType' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'Expression' => 1,
+                    'OutputSerialization' => 1,
+                    'InputSerialization' => 1,
+                    'ExpressionType' => 1
+                  }
 }
 ;
     return $Params_map;

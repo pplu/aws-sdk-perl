@@ -1,14 +1,15 @@
 package Paws::WorkDocs;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'workdocs' }
   sub signing_name { 'workdocs' }
   sub version { '2016-05-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -555,13 +556,13 @@ WorkDocs.
 
 =over
 
-=item Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>]
+=item Principals => ArrayRef[WorkDocs_SharePrincipal]
 
 =item ResourceId => Str
 
 =item [AuthenticationToken => Str]
 
-=item [NotificationOptions => L<Paws::WorkDocs::NotificationOptions>]
+=item [NotificationOptions => WorkDocs_NotificationOptions]
 
 
 =back
@@ -609,7 +610,7 @@ Adds a new comment to the specified document version.
 
 =over
 
-=item CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>
+=item CustomMetadata => WorkDocs_CustomMetadataMap
 
 =item ResourceId => Str
 
@@ -714,7 +715,7 @@ in the I<Amazon WorkDocs Developer Guide>.
 
 =item [OrganizationId => Str]
 
-=item [StorageRule => L<Paws::WorkDocs::StorageRuleType>]
+=item [StorageRule => WorkDocs_StorageRuleType]
 
 =item [TimeZoneId => Str]
 
@@ -1502,7 +1503,7 @@ have access to both the folder and its parent folder, if applicable.
 
 =item [Locale => Str]
 
-=item [StorageRule => L<Paws::WorkDocs::StorageRuleType>]
+=item [StorageRule => WorkDocs_StorageRuleType]
 
 =item [Surname => Str]
 

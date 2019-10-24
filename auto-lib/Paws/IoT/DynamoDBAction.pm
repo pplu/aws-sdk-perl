@@ -1,15 +1,77 @@
+# Generated from default/object.tt
 package Paws::IoT::DynamoDBAction;
-  use Moose;
-  has HashKeyField => (is => 'ro', isa => 'Str', request_name => 'hashKeyField', traits => ['NameInRequest'], required => 1);
-  has HashKeyType => (is => 'ro', isa => 'Str', request_name => 'hashKeyType', traits => ['NameInRequest']);
-  has HashKeyValue => (is => 'ro', isa => 'Str', request_name => 'hashKeyValue', traits => ['NameInRequest'], required => 1);
-  has Operation => (is => 'ro', isa => 'Str', request_name => 'operation', traits => ['NameInRequest']);
-  has PayloadField => (is => 'ro', isa => 'Str', request_name => 'payloadField', traits => ['NameInRequest']);
-  has RangeKeyField => (is => 'ro', isa => 'Str', request_name => 'rangeKeyField', traits => ['NameInRequest']);
-  has RangeKeyType => (is => 'ro', isa => 'Str', request_name => 'rangeKeyType', traits => ['NameInRequest']);
-  has RangeKeyValue => (is => 'ro', isa => 'Str', request_name => 'rangeKeyValue', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has HashKeyField => (is => 'ro', isa => Str, required => 1);
+  has HashKeyType => (is => 'ro', isa => Str);
+  has HashKeyValue => (is => 'ro', isa => Str, required => 1);
+  has Operation => (is => 'ro', isa => Str);
+  has PayloadField => (is => 'ro', isa => Str);
+  has RangeKeyField => (is => 'ro', isa => Str);
+  has RangeKeyType => (is => 'ro', isa => Str);
+  has RangeKeyValue => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RangeKeyType' => {
+                                   'type' => 'Str'
+                                 },
+               'RangeKeyField' => {
+                                    'type' => 'Str'
+                                  },
+               'HashKeyType' => {
+                                  'type' => 'Str'
+                                },
+               'PayloadField' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'HashKeyField' => {
+                                   'type' => 'Str'
+                                 },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'RangeKeyValue' => {
+                                    'type' => 'Str'
+                                  },
+               'HashKeyValue' => {
+                                   'type' => 'Str'
+                                 },
+               'Operation' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RangeKeyType' => 'rangeKeyType',
+                       'RangeKeyField' => 'rangeKeyField',
+                       'HashKeyType' => 'hashKeyType',
+                       'PayloadField' => 'payloadField',
+                       'RoleArn' => 'roleArn',
+                       'HashKeyField' => 'hashKeyField',
+                       'TableName' => 'tableName',
+                       'RangeKeyValue' => 'rangeKeyValue',
+                       'HashKeyValue' => 'hashKeyValue',
+                       'Operation' => 'operation'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'HashKeyField' => 1,
+                    'TableName' => 1,
+                    'HashKeyValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Glue::WorkflowGraph;
-  use Moose;
-  has Edges => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Edge]');
-  has Nodes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Node]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_Edge Glue_Node/;
+  has Edges => (is => 'ro', isa => ArrayRef[Glue_Edge]);
+  has Nodes => (is => 'ro', isa => ArrayRef[Glue_Node]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Nodes' => {
+                            'class' => 'Paws::Glue::Node',
+                            'type' => 'ArrayRef[Glue_Node]'
+                          },
+               'Edges' => {
+                            'class' => 'Paws::Glue::Edge',
+                            'type' => 'ArrayRef[Glue_Edge]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +61,13 @@ connections between them.
 =head1 ATTRIBUTES
 
 
-=head2 Edges => ArrayRef[L<Paws::Glue::Edge>]
+=head2 Edges => ArrayRef[Glue_Edge]
 
   A list of all the directed connections between the nodes belonging to
 the workflow.
 
 
-=head2 Nodes => ArrayRef[L<Paws::Glue::Node>]
+=head2 Nodes => ArrayRef[Glue_Node]
 
   A list of the the AWS Glue components belong to the workflow
 represented as nodes.

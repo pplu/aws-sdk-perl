@@ -1,16 +1,67 @@
 
 package Paws::Robomaker::DescribeRobotApplicationResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedAt');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RevisionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'revisionId');
-  has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite');
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Source]', traits => ['NameInRequest'], request_name => 'sources');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_Source Robomaker_RobotSoftwareSuite Robomaker_TagMap/;
+  has Arn => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RevisionId => (is => 'ro', isa => Str);
+  has RobotSoftwareSuite => (is => 'ro', isa => Robomaker_RobotSoftwareSuite);
+  has Sources => (is => 'ro', isa => ArrayRef[Robomaker_Source]);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
+  has Version => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RobotSoftwareSuite' => {
+                                         'class' => 'Paws::Robomaker::RobotSoftwareSuite',
+                                         'type' => 'Robomaker_RobotSoftwareSuite'
+                                       },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Sources' => {
+                              'class' => 'Paws::Robomaker::Source',
+                              'type' => 'ArrayRef[Robomaker_Source]'
+                            },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RobotSoftwareSuite' => 'robotSoftwareSuite',
+                       'RevisionId' => 'revisionId',
+                       'Sources' => 'sources',
+                       'Version' => 'version',
+                       'Arn' => 'arn',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,17 +94,17 @@ The name of the robot application.
 The revision id of the robot application.
 
 
-=head2 RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
+=head2 RobotSoftwareSuite => Robomaker_RobotSoftwareSuite
 
 The robot software suite used by the robot application.
 
 
-=head2 Sources => ArrayRef[L<Paws::Robomaker::Source>]
+=head2 Sources => ArrayRef[Robomaker_Source]
 
 The sources of the robot application.
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the specified robot application.
 

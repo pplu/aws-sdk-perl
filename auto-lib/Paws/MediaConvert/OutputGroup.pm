@@ -1,9 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::OutputGroup;
-  use Moose;
-  has CustomName => (is => 'ro', isa => 'Str', request_name => 'customName', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest']);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_OutputGroupSettings MediaConvert_Output/;
+  has CustomName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputGroupSettings => (is => 'ro', isa => MediaConvert_OutputGroupSettings);
+  has Outputs => (is => 'ro', isa => ArrayRef[MediaConvert_Output]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomName' => {
+                                 'type' => 'Str'
+                               },
+               'Outputs' => {
+                              'class' => 'Paws::MediaConvert::Output',
+                              'type' => 'ArrayRef[MediaConvert_Output]'
+                            },
+               'OutputGroupSettings' => {
+                                          'class' => 'Paws::MediaConvert::OutputGroupSettings',
+                                          'type' => 'MediaConvert_OutputGroupSettings'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'CustomName' => 'customName',
+                       'Outputs' => 'outputs',
+                       'OutputGroupSettings' => 'outputGroupSettings',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,12 +87,12 @@ underscores.
   Name of the output group
 
 
-=head2 OutputGroupSettings => L<Paws::MediaConvert::OutputGroupSettings>
+=head2 OutputGroupSettings => MediaConvert_OutputGroupSettings
 
   Output Group settings, including type
 
 
-=head2 Outputs => ArrayRef[L<Paws::MediaConvert::Output>]
+=head2 Outputs => ArrayRef[MediaConvert_Output]
 
   This object holds groups of encoding settings, one group of settings
 per output.

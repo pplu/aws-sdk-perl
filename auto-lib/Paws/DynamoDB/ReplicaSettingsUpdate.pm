@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ReplicaSettingsUpdate;
   use Moo;
   use Types::Standard qw/Str ArrayRef Int/;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
   has ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ReplicaProvisionedReadCapacityUnits => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicaGlobalSecondaryIndexSettingsUpdate' => {
@@ -24,11 +25,14 @@ package Paws::DynamoDB::ReplicaSettingsUpdate;
                'RegionName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'RegionName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

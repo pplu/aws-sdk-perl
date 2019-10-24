@@ -1,10 +1,31 @@
 
 package Paws::Lambda::ListFunctionsResponse;
-  use Moose;
-  has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FunctionConfiguration]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lambda::Types qw/Lambda_FunctionConfiguration/;
+  has Functions => (is => 'ro', isa => ArrayRef[Lambda_FunctionConfiguration]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Functions' => {
+                                'class' => 'Paws::Lambda::FunctionConfiguration',
+                                'type' => 'ArrayRef[Lambda_FunctionConfiguration]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Lambda::ListFunctionsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Functions => ArrayRef[L<Paws::Lambda::FunctionConfiguration>]
+=head2 Functions => ArrayRef[Lambda_FunctionConfiguration]
 
 A list of Lambda functions.
 

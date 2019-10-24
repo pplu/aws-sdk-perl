@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeDeploy::BatchGetApplicationsOutput;
-  use Moose;
-  has ApplicationsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ApplicationInfo]', traits => ['NameInRequest'], request_name => 'applicationsInfo' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_ApplicationInfo/;
+  has ApplicationsInfo => (is => 'ro', isa => ArrayRef[CodeDeploy_ApplicationInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationsInfo' => {
+                                       'class' => 'Paws::CodeDeploy::ApplicationInfo',
+                                       'type' => 'ArrayRef[CodeDeploy_ApplicationInfo]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ApplicationsInfo' => 'applicationsInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeDeploy::BatchGetApplicationsOutput
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationsInfo => ArrayRef[L<Paws::CodeDeploy::ApplicationInfo>]
+=head2 ApplicationsInfo => ArrayRef[CodeDeploy_ApplicationInfo]
 
 Information about the applications.
 

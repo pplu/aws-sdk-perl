@@ -1,13 +1,49 @@
 
 package Paws::MediaStoreData::DescribeObjectResponse;
-  use Moose;
-  has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
-  has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has LastModified => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Last-Modified');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaStoreData::Types qw//;
+  has CacheControl => (is => 'ro', isa => Str);
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentType => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CacheControl' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInHeader' => {
+                       'ContentLength' => 'Content-Length',
+                       'ETag' => 'ETag',
+                       'ContentType' => 'Content-Type',
+                       'CacheControl' => 'Cache-Control',
+                       'LastModified' => 'Last-Modified'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

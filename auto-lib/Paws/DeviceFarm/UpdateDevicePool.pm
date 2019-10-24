@@ -1,18 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::UpdateDevicePool;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
-  has ClearMaxDevices => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'clearMaxDevices' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has MaxDevices => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxDevices' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' );
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Rule/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClearMaxDevices => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has MaxDevices => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Rules => (is => 'ro', isa => ArrayRef[DeviceFarm_Rule], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDevicePool');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::UpdateDevicePoolResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDevicePool');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::UpdateDevicePoolResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::DeviceFarm::Rule',
+                            'type' => 'ArrayRef[DeviceFarm_Rule]'
+                          },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxDevices' => {
+                                 'type' => 'Int'
+                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ClearMaxDevices' => {
+                                      'type' => 'Bool'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Rules' => 'rules',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'MaxDevices' => 'maxDevices',
+                       'Description' => 'description',
+                       'ClearMaxDevices' => 'clearMaxDevices'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -110,7 +153,7 @@ A string representing the name of the device pool you wish to update.
 
 
 
-=head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+=head2 Rules => ArrayRef[DeviceFarm_Rule]
 
 Represents the rules you wish to modify for the device pool. Updating
 rules is optional; however, if you choose to update rules for your

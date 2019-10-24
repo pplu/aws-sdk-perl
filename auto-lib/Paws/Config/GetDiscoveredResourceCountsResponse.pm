@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetDiscoveredResourceCountsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceCounts => (is => 'ro', isa => 'ArrayRef[Paws::Config::ResourceCount]', traits => ['NameInRequest'], request_name => 'resourceCounts' );
-  has TotalDiscoveredResources => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'totalDiscoveredResources' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Config::Types qw/Config_ResourceCount/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ResourceCounts => (is => 'ro', isa => ArrayRef[Config_ResourceCount]);
+  has TotalDiscoveredResources => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceCounts' => {
+                                     'class' => 'Paws::Config::ResourceCount',
+                                     'type' => 'ArrayRef[Config_ResourceCount]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'TotalDiscoveredResources' => {
+                                               'type' => 'Int'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ResourceCounts' => 'resourceCounts',
+                       'NextToken' => 'nextToken',
+                       'TotalDiscoveredResources' => 'totalDiscoveredResources'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +52,7 @@ The string that you use in a subsequent request to get the next page of
 results in a paginated response.
 
 
-=head2 ResourceCounts => ArrayRef[L<Paws::Config::ResourceCount>]
+=head2 ResourceCounts => ArrayRef[Config_ResourceCount]
 
 The list of C<ResourceCount> objects. Each object is listed in
 descending order by the number of resources.

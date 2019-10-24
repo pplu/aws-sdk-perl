@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobManifest;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Paws::S3Control::JobManifestLocation', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::S3Control::JobManifestSpec', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::S3Control::Types qw/S3Control_JobManifestLocation S3Control_JobManifestSpec/;
+  has Location => (is => 'ro', isa => S3Control_JobManifestLocation, required => 1);
+  has Spec => (is => 'ro', isa => S3Control_JobManifestSpec, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::S3Control::JobManifestSpec',
+                           'type' => 'S3Control_JobManifestSpec'
+                         },
+               'Location' => {
+                               'class' => 'Paws::S3Control::JobManifestLocation',
+                               'type' => 'S3Control_JobManifestLocation'
+                             }
+             },
+  'IsRequired' => {
+                    'Spec' => 1,
+                    'Location' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ Contains the configuration information for a job's manifest.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Location => L<Paws::S3Control::JobManifestLocation>
+=head2 B<REQUIRED> Location => S3Control_JobManifestLocation
 
   Contains the information required to locate the specified job's
 manifest.
 
 
-=head2 B<REQUIRED> Spec => L<Paws::S3Control::JobManifestSpec>
+=head2 B<REQUIRED> Spec => S3Control_JobManifestSpec
 
   Describes the format of the specified job's manifest. If the manifest
 is in CSV format, also describes the columns contained within the

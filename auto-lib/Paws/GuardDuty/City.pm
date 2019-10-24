@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::City;
-  use Moose;
-  has CityName => (is => 'ro', isa => 'Str', request_name => 'cityName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has CityName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CityName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'CityName' => 'cityName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

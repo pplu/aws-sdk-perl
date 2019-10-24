@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::VPCDerivedInfoStatus;
   use Moo;
   use Types::Standard qw//;
@@ -16,7 +17,11 @@ package Paws::ES::VPCDerivedInfoStatus;
                              'class' => 'Paws::ES::OptionStatus',
                              'type' => 'ES_OptionStatus'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

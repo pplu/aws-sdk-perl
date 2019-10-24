@@ -1,10 +1,35 @@
 
 package Paws::GroundStation::ListSatellitesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Satellites => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::SatelliteListItem]', traits => ['NameInRequest'], request_name => 'satellites');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_SatelliteListItem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Satellites => (is => 'ro', isa => ArrayRef[GroundStation_SatelliteListItem]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Satellites' => {
+                                 'class' => 'Paws::GroundStation::SatelliteListItem',
+                                 'type' => 'ArrayRef[GroundStation_SatelliteListItem]'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Satellites' => 'satellites',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ Next token that can be supplied in the next call to get the next page
 of satellites.
 
 
-=head2 Satellites => ArrayRef[L<Paws::GroundStation::SatelliteListItem>]
+=head2 Satellites => ArrayRef[GroundStation_SatelliteListItem]
 
 List of satellites.
 

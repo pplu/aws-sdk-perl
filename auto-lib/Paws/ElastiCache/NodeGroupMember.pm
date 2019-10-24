@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::NodeGroupMember;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has CacheNodeId => (is => 'ro', isa => 'Str');
-  has CurrentRole => (is => 'ro', isa => 'Str');
-  has PreferredAvailabilityZone => (is => 'ro', isa => 'Str');
-  has ReadEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Endpoint/;
+  has CacheClusterId => (is => 'ro', isa => Str);
+  has CacheNodeId => (is => 'ro', isa => Str);
+  has CurrentRole => (is => 'ro', isa => Str);
+  has PreferredAvailabilityZone => (is => 'ro', isa => Str);
+  has ReadEndpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'ReadEndpoint' => {
+                                   'class' => 'Paws::ElastiCache::Endpoint',
+                                   'type' => 'ElastiCache_Endpoint'
+                                 },
+               'CurrentRole' => {
+                                  'type' => 'Str'
+                                },
+               'PreferredAvailabilityZone' => {
+                                                'type' => 'Str'
+                                              },
+               'CacheNodeId' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +93,7 @@ disabled) replication groups.
   The name of the Availability Zone in which the node is located.
 
 
-=head2 ReadEndpoint => L<Paws::ElastiCache::Endpoint>
+=head2 ReadEndpoint => ElastiCache_Endpoint
 
   The information required for client programs to connect to a node for
 read operations. The read endpoint is only applicable on Redis (cluster

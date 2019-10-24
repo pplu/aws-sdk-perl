@@ -1,14 +1,15 @@
 package Paws::MediaPackageVod;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mediapackage-vod' }
   sub signing_name { 'mediapackage-vod' }
   sub version { '2018-11-07' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -213,13 +214,13 @@ Creates a new MediaPackage VOD Asset resource.
 
 =item PackagingGroupId => Str
 
-=item [CmafPackage => L<Paws::MediaPackageVod::CmafPackage>]
+=item [CmafPackage => MediaPackageVod_CmafPackage]
 
-=item [DashPackage => L<Paws::MediaPackageVod::DashPackage>]
+=item [DashPackage => MediaPackageVod_DashPackage]
 
-=item [HlsPackage => L<Paws::MediaPackageVod::HlsPackage>]
+=item [HlsPackage => MediaPackageVod_HlsPackage]
 
-=item [MssPackage => L<Paws::MediaPackageVod::MssPackage>]
+=item [MssPackage => MediaPackageVod_MssPackage]
 
 
 =back

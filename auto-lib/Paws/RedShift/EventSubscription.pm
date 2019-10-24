@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::RedShift::EventSubscription;
-  use Moose;
-  has CustomerAwsId => (is => 'ro', isa => 'Str');
-  has CustSubscriptionId => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'SourceId', traits => ['NameInRequest']);
-  has SourceType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has CustomerAwsId => (is => 'ro', isa => Str);
+  has CustSubscriptionId => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has EventCategoriesList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Severity => (is => 'ro', isa => Str);
+  has SnsTopicArn => (is => 'ro', isa => Str);
+  has SourceIdsList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SubscriptionCreationTime => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionCreationTime' => {
+                                               'type' => 'Str'
+                                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'SourceIdsList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'CustomerAwsId' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'CustSubscriptionId' => {
+                                         'type' => 'Str'
+                                       },
+               'EventCategoriesList' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'Severity' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'SourceIdsList' => 'SourceId',
+                       'Tags' => 'Tag',
+                       'EventCategoriesList' => 'EventCategory'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -126,7 +179,7 @@ subscription was created.
 was created.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the event subscription.
 

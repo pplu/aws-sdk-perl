@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetWorkflowRunResponse;
-  use Moose;
-  has Run => (is => 'ro', isa => 'Paws::Glue::WorkflowRun');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_WorkflowRun/;
+  has Run => (is => 'ro', isa => Glue_WorkflowRun);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Run' => {
+                          'class' => 'Paws::Glue::WorkflowRun',
+                          'type' => 'Glue_WorkflowRun'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetWorkflowRunResponse
 =head1 ATTRIBUTES
 
 
-=head2 Run => L<Paws::Glue::WorkflowRun>
+=head2 Run => Glue_WorkflowRun
 
 The requested workflow run metadata.
 

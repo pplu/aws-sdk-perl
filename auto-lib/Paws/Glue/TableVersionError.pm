@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Glue::TableVersionError;
-  use Moose;
-  has ErrorDetail => (is => 'ro', isa => 'Paws::Glue::ErrorDetail');
-  has TableName => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_ErrorDetail/;
+  has ErrorDetail => (is => 'ro', isa => Glue_ErrorDetail);
+  has TableName => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorDetail' => {
+                                  'class' => 'Paws::Glue::ErrorDetail',
+                                  'type' => 'Glue_ErrorDetail'
+                                },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ An error record for table-version operations.
 =head1 ATTRIBUTES
 
 
-=head2 ErrorDetail => L<Paws::Glue::ErrorDetail>
+=head2 ErrorDetail => Glue_ErrorDetail
 
   Detail about the error.
 

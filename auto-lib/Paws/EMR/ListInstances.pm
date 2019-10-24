@@ -1,19 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::ListInstances;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceFleetId => (is => 'ro', isa => 'Str');
-  has InstanceFleetType => (is => 'ro', isa => 'Str');
-  has InstanceGroupId => (is => 'ro', isa => 'Str');
-  has InstanceGroupTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InstanceStates => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EMR::Types qw//;
+  has ClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceFleetId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceFleetType => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceGroupTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InstanceStates => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::ListInstancesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::ListInstancesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceGroupTypes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'InstanceStates' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'InstanceFleetId' => {
+                                      'type' => 'Str'
+                                    },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'InstanceGroupId' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceFleetType' => {
+                                        'type' => 'Str'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ClusterId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

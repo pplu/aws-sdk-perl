@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Signer;
-  use Moose;
-  has AwsAccountNumber => (is => 'ro', isa => 'Str');
-  has KeyPairIds => (is => 'ro', isa => 'Paws::CloudFront::KeyPairIds');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_KeyPairIds/;
+  has AwsAccountNumber => (is => 'ro', isa => Str);
+  has KeyPairIds => (is => 'ro', isa => CloudFront_KeyPairIds);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyPairIds' => {
+                                 'class' => 'Paws::CloudFront::KeyPairIds',
+                                 'type' => 'CloudFront_KeyPairIds'
+                               },
+               'AwsAccountNumber' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +79,7 @@ An AWS account number.
 
 
 
-=head2 KeyPairIds => L<Paws::CloudFront::KeyPairIds>
+=head2 KeyPairIds => CloudFront_KeyPairIds
 
   A complex type that lists the active CloudFront key pairs, if any, that
 are associated with C<AwsAccountNumber>.

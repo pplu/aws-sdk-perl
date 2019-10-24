@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SNS::Endpoint;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
-  has EndpointArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MapStringToString/;
+  has Attributes => (is => 'ro', isa => SNS_MapStringToString);
+  has EndpointArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::MapStringToString',
+                                 'type' => 'SNS_MapStringToString'
+                               },
+               'EndpointArn' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Endpoint for mobile app and device.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => SNS_MapStringToString
 
   Attributes for endpoint.
 

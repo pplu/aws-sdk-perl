@@ -1,14 +1,69 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::ScheduleRunConfiguration;
-  use Moose;
-  has AuxiliaryApps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'auxiliaryApps', traits => ['NameInRequest']);
-  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
-  has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
-  has ExtraDataPackageArn => (is => 'ro', isa => 'Str', request_name => 'extraDataPackageArn', traits => ['NameInRequest']);
-  has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
-  has NetworkProfileArn => (is => 'ro', isa => 'Str', request_name => 'networkProfileArn', traits => ['NameInRequest']);
-  has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
-  has VpceConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpceConfigurationArns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_CustomerArtifactPaths DeviceFarm_Location DeviceFarm_Radios/;
+  has AuxiliaryApps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BillingMethod => (is => 'ro', isa => Str);
+  has CustomerArtifactPaths => (is => 'ro', isa => DeviceFarm_CustomerArtifactPaths);
+  has ExtraDataPackageArn => (is => 'ro', isa => Str);
+  has Locale => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => DeviceFarm_Location);
+  has NetworkProfileArn => (is => 'ro', isa => Str);
+  has Radios => (is => 'ro', isa => DeviceFarm_Radios);
+  has VpceConfigurationArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BillingMethod' => {
+                                    'type' => 'Str'
+                                  },
+               'AuxiliaryApps' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'NetworkProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Radios' => {
+                             'class' => 'Paws::DeviceFarm::Radios',
+                             'type' => 'DeviceFarm_Radios'
+                           },
+               'ExtraDataPackageArn' => {
+                                          'type' => 'Str'
+                                        },
+               'VpceConfigurationArns' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'Location' => {
+                               'class' => 'Paws::DeviceFarm::Location',
+                               'type' => 'DeviceFarm_Location'
+                             },
+               'CustomerArtifactPaths' => {
+                                            'class' => 'Paws::DeviceFarm::CustomerArtifactPaths',
+                                            'type' => 'DeviceFarm_CustomerArtifactPaths'
+                                          }
+             },
+  'NameInRequest' => {
+                       'BillingMethod' => 'billingMethod',
+                       'AuxiliaryApps' => 'auxiliaryApps',
+                       'NetworkProfileArn' => 'networkProfileArn',
+                       'Locale' => 'locale',
+                       'Radios' => 'radios',
+                       'ExtraDataPackageArn' => 'extraDataPackageArn',
+                       'VpceConfigurationArns' => 'vpceConfigurationArns',
+                       'Location' => 'location',
+                       'CustomerArtifactPaths' => 'customerArtifactPaths'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +112,7 @@ C<unmetered>. If the parameter is not specified, the default value is
 C<metered>.
 
 
-=head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
+=head2 CustomerArtifactPaths => DeviceFarm_CustomerArtifactPaths
 
   Input C<CustomerArtifactPaths> object for the scheduled run
 configuration.
@@ -75,7 +130,7 @@ app's sandbox for iOS.
   Information about the locale that is used for the run.
 
 
-=head2 Location => L<Paws::DeviceFarm::Location>
+=head2 Location => DeviceFarm_Location
 
   Information about the location that is used for the run.
 
@@ -85,7 +140,7 @@ app's sandbox for iOS.
   Reserved for internal use.
 
 
-=head2 Radios => L<Paws::DeviceFarm::Radios>
+=head2 Radios => DeviceFarm_Radios
 
   Information about the radio states for the run.
 

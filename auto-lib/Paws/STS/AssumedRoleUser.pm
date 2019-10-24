@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::STS::AssumedRoleUser;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has AssumedRoleId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::STS::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has AssumedRoleId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AssumedRoleId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'AssumedRoleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

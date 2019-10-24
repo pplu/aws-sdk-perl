@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::LicenseManager::ListLicenseConfigurations;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::Filter]');
-  has LicenseConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::LicenseManager::Types qw/LicenseManager_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[LicenseManager_Filter], predicate => 1);
+  has LicenseConfigurationArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLicenseConfigurations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LicenseManager::ListLicenseConfigurationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListLicenseConfigurations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LicenseManager::ListLicenseConfigurationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LicenseConfigurationArns' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'Filters' => {
+                              'class' => 'Paws::LicenseManager::Filter',
+                              'type' => 'ArrayRef[LicenseManager_Filter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $license -manager->ListLicenseConfigurations(
       Filters => [
         {
-          Name   => 'MyFilterName',              # OPTIONAL
+          Name => 'MyFilterName',                # OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
@@ -57,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::LicenseManager::Filter>]
+=head2 Filters => ArrayRef[LicenseManager_Filter]
 
 One or more filters.
 

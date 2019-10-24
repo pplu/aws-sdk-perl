@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Datasync::LocationListEntry;
-  use Moose;
-  has LocationArn => (is => 'ro', isa => 'Str');
-  has LocationUri => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw//;
+  has LocationArn => (is => 'ro', isa => Str);
+  has LocationUri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LocationArn' => {
+                                  'type' => 'Str'
+                                },
+               'LocationUri' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,16 +1,65 @@
 
 package Paws::IoT::DescribeThingResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', traits => ['NameInRequest'], request_name => 'attributes');
-  has BillingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'billingGroupName');
-  has DefaultClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultClientId');
-  has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
-  has ThingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingId');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
-  has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingTypeName');
-  has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw/IoT_Attributes/;
+  has Attributes => (is => 'ro', isa => IoT_Attributes);
+  has BillingGroupName => (is => 'ro', isa => Str);
+  has DefaultClientId => (is => 'ro', isa => Str);
+  has ThingArn => (is => 'ro', isa => Str);
+  has ThingId => (is => 'ro', isa => Str);
+  has ThingName => (is => 'ro', isa => Str);
+  has ThingTypeName => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingTypeName' => {
+                                    'type' => 'Str'
+                                  },
+               'BillingGroupName' => {
+                                       'type' => 'Str'
+                                     },
+               'ThingId' => {
+                              'type' => 'Str'
+                            },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::Attributes',
+                                 'type' => 'IoT_Attributes'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'DefaultClientId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ThingArn' => 'thingArn',
+                       'ThingTypeName' => 'thingTypeName',
+                       'BillingGroupName' => 'billingGroupName',
+                       'ThingId' => 'thingId',
+                       'Version' => 'version',
+                       'Attributes' => 'attributes',
+                       'ThingName' => 'thingName',
+                       'DefaultClientId' => 'defaultClientId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +71,7 @@ Paws::IoT::DescribeThingResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => IoT_Attributes
 
 The thing attributes.
 

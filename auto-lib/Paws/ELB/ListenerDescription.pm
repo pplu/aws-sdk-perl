@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ELB::ListenerDescription;
-  use Moose;
-  has Listener => (is => 'ro', isa => 'Paws::ELB::Listener');
-  has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ELB::Types qw/ELB_Listener/;
+  has Listener => (is => 'ro', isa => ELB_Listener);
+  has PolicyNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyNames' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Listener' => {
+                               'class' => 'Paws::ELB::Listener',
+                               'type' => 'ELB_Listener'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ The policies enabled for a listener.
 =head1 ATTRIBUTES
 
 
-=head2 Listener => L<Paws::ELB::Listener>
+=head2 Listener => ELB_Listener
 
   The listener.
 

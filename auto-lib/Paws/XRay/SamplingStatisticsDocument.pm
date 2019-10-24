@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingStatisticsDocument;
-  use Moose;
-  has BorrowCount => (is => 'ro', isa => 'Int');
-  has ClientID => (is => 'ro', isa => 'Str', required => 1);
-  has RequestCount => (is => 'ro', isa => 'Int', required => 1);
-  has RuleName => (is => 'ro', isa => 'Str', required => 1);
-  has SampledCount => (is => 'ro', isa => 'Int', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::XRay::Types qw//;
+  has BorrowCount => (is => 'ro', isa => Int);
+  has ClientID => (is => 'ro', isa => Str, required => 1);
+  has RequestCount => (is => 'ro', isa => Int, required => 1);
+  has RuleName => (is => 'ro', isa => Str, required => 1);
+  has SampledCount => (is => 'ro', isa => Int, required => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'BorrowCount' => {
+                                  'type' => 'Int'
+                                },
+               'SampledCount' => {
+                                   'type' => 'Int'
+                                 },
+               'ClientID' => {
+                               'type' => 'Str'
+                             },
+               'RequestCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'IsRequired' => {
+                    'RuleName' => 1,
+                    'Timestamp' => 1,
+                    'SampledCount' => 1,
+                    'ClientID' => 1,
+                    'RequestCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

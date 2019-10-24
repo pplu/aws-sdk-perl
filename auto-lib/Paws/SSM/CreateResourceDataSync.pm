@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateResourceDataSync;
-  use Moose;
-  has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination', required => 1);
-  has SyncName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ResourceDataSyncS3Destination/;
+  has S3Destination => (is => 'ro', isa => SSM_ResourceDataSyncS3Destination, required => 1, predicate => 1);
+  has SyncName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResourceDataSync');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateResourceDataSyncResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResourceDataSync');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateResourceDataSyncResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SyncName' => {
+                               'type' => 'Str'
+                             },
+               'S3Destination' => {
+                                    'class' => 'Paws::SSM::ResourceDataSyncS3Destination',
+                                    'type' => 'SSM_ResourceDataSyncS3Destination'
+                                  }
+             },
+  'IsRequired' => {
+                    'SyncName' => 1,
+                    'S3Destination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> S3Destination => L<Paws::SSM::ResourceDataSyncS3Destination>
+=head2 B<REQUIRED> S3Destination => SSM_ResourceDataSyncS3Destination
 
 Amazon S3 configuration details for the sync.
 

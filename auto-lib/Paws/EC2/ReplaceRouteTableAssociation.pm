@@ -13,7 +13,7 @@ package Paws::EC2::ReplaceRouteTableAssociation;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ReplaceRouteTableAssociationResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -30,11 +30,15 @@ package Paws::EC2::ReplaceRouteTableAssociation;
                        'DryRun' => 'dryRun',
                        'AssociationId' => 'associationId',
                        'RouteTableId' => 'routeTableId'
-                     }
+                     },
+  'IsRequired' => {
+                    'AssociationId' => 1,
+                    'RouteTableId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityVerificationAttributes;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,10 @@ package Paws::SES::IdentityVerificationAttributes;
                'VerificationStatus' => {
                                          'type' => 'Str'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'VerificationStatus' => 1
+                  }
 }
 ;
     return $Params_map;

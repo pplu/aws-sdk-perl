@@ -21,6 +21,9 @@ package Paws::ES::DescribeElasticsearchDomain;
              },
   'ParamInURI' => {
                     'DomainName' => 'DomainName'
+                  },
+  'IsRequired' => {
+                    'DomainName' => 1
                   }
 }
 ;

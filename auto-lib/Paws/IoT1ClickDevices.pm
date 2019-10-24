@@ -1,14 +1,15 @@
 package Paws::IoT1ClickDevices;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'devices.iot1click' }
   sub signing_name { 'iot1click' }
   sub version { '2018-05-14' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -205,7 +206,7 @@ the details of the device.
 
 =item DeviceId => Str
 
-=item [Tags => L<Paws::IoT1ClickDevices::__mapOf__string>]
+=item [Tags => IoT1ClickDevices___mapOf__string]
 
 
 =back
@@ -265,7 +266,7 @@ device event can be published by simply clicking the device.
 
 =item DeviceId => Str
 
-=item [DeviceMethod => L<Paws::IoT1ClickDevices::DeviceMethod>]
+=item [DeviceMethod => IoT1ClickDevices_DeviceMethod]
 
 =item [DeviceMethodParameters => Str]
 
@@ -347,7 +348,7 @@ Lists the tags associated with the specified resource ARN.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::IoT1ClickDevices::__mapOf__string>
+=item Tags => IoT1ClickDevices___mapOf__string
 
 
 =back

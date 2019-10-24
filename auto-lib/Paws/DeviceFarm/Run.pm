@@ -1,36 +1,183 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Run;
-  use Moose;
-  has AppUpload => (is => 'ro', isa => 'Str', request_name => 'appUpload', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
-  has CompletedJobs => (is => 'ro', isa => 'Int', request_name => 'completedJobs', traits => ['NameInRequest']);
-  has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', request_name => 'counters', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has CustomerArtifactPaths => (is => 'ro', isa => 'Paws::DeviceFarm::CustomerArtifactPaths', request_name => 'customerArtifactPaths', traits => ['NameInRequest']);
-  has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', request_name => 'deviceMinutes', traits => ['NameInRequest']);
-  has DevicePoolArn => (is => 'ro', isa => 'Str', request_name => 'devicePoolArn', traits => ['NameInRequest']);
-  has DeviceSelectionResult => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceSelectionResult', request_name => 'deviceSelectionResult', traits => ['NameInRequest']);
-  has EventCount => (is => 'ro', isa => 'Int', request_name => 'eventCount', traits => ['NameInRequest']);
-  has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
-  has Locale => (is => 'ro', isa => 'Str', request_name => 'locale', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::DeviceFarm::Location', request_name => 'location', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has NetworkProfile => (is => 'ro', isa => 'Paws::DeviceFarm::NetworkProfile', request_name => 'networkProfile', traits => ['NameInRequest']);
-  has ParsingResultUrl => (is => 'ro', isa => 'Str', request_name => 'parsingResultUrl', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has Radios => (is => 'ro', isa => 'Paws::DeviceFarm::Radios', request_name => 'radios', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
-  has ResultCode => (is => 'ro', isa => 'Str', request_name => 'resultCode', traits => ['NameInRequest']);
-  has Seed => (is => 'ro', isa => 'Int', request_name => 'seed', traits => ['NameInRequest']);
-  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
-  has Started => (is => 'ro', isa => 'Str', request_name => 'started', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Str', request_name => 'stopped', traits => ['NameInRequest']);
-  has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
-  has TotalJobs => (is => 'ro', isa => 'Int', request_name => 'totalJobs', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has WebUrl => (is => 'ro', isa => 'Str', request_name => 'webUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceSelectionResult DeviceFarm_CustomerArtifactPaths DeviceFarm_DeviceMinutes DeviceFarm_Location DeviceFarm_Counters DeviceFarm_Radios DeviceFarm_NetworkProfile/;
+  has AppUpload => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has BillingMethod => (is => 'ro', isa => Str);
+  has CompletedJobs => (is => 'ro', isa => Int);
+  has Counters => (is => 'ro', isa => DeviceFarm_Counters);
+  has Created => (is => 'ro', isa => Str);
+  has CustomerArtifactPaths => (is => 'ro', isa => DeviceFarm_CustomerArtifactPaths);
+  has DeviceMinutes => (is => 'ro', isa => DeviceFarm_DeviceMinutes);
+  has DevicePoolArn => (is => 'ro', isa => Str);
+  has DeviceSelectionResult => (is => 'ro', isa => DeviceFarm_DeviceSelectionResult);
+  has EventCount => (is => 'ro', isa => Int);
+  has JobTimeoutMinutes => (is => 'ro', isa => Int);
+  has Locale => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => DeviceFarm_Location);
+  has Message => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NetworkProfile => (is => 'ro', isa => DeviceFarm_NetworkProfile);
+  has ParsingResultUrl => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Radios => (is => 'ro', isa => DeviceFarm_Radios);
+  has Result => (is => 'ro', isa => Str);
+  has ResultCode => (is => 'ro', isa => Str);
+  has Seed => (is => 'ro', isa => Int);
+  has SkipAppResign => (is => 'ro', isa => Bool);
+  has Started => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Stopped => (is => 'ro', isa => Str);
+  has TestSpecArn => (is => 'ro', isa => Str);
+  has TotalJobs => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+  has WebUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Stopped' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SkipAppResign' => {
+                                    'type' => 'Bool'
+                                  },
+               'DevicePoolArn' => {
+                                    'type' => 'Str'
+                                  },
+               'Radios' => {
+                             'class' => 'Paws::DeviceFarm::Radios',
+                             'type' => 'DeviceFarm_Radios'
+                           },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Started' => {
+                              'type' => 'Str'
+                            },
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'DeviceSelectionResult' => {
+                                            'class' => 'Paws::DeviceFarm::DeviceSelectionResult',
+                                            'type' => 'DeviceFarm_DeviceSelectionResult'
+                                          },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::DeviceFarm::Location',
+                               'type' => 'DeviceFarm_Location'
+                             },
+               'TotalJobs' => {
+                                'type' => 'Int'
+                              },
+               'ParsingResultUrl' => {
+                                       'type' => 'Str'
+                                     },
+               'CustomerArtifactPaths' => {
+                                            'class' => 'Paws::DeviceFarm::CustomerArtifactPaths',
+                                            'type' => 'DeviceFarm_CustomerArtifactPaths'
+                                          },
+               'ResultCode' => {
+                                 'type' => 'Str'
+                               },
+               'BillingMethod' => {
+                                    'type' => 'Str'
+                                  },
+               'CompletedJobs' => {
+                                    'type' => 'Int'
+                                  },
+               'TestSpecArn' => {
+                                  'type' => 'Str'
+                                },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'Counters' => {
+                               'class' => 'Paws::DeviceFarm::Counters',
+                               'type' => 'DeviceFarm_Counters'
+                             },
+               'AppUpload' => {
+                                'type' => 'Str'
+                              },
+               'EventCount' => {
+                                 'type' => 'Int'
+                               },
+               'NetworkProfile' => {
+                                     'class' => 'Paws::DeviceFarm::NetworkProfile',
+                                     'type' => 'DeviceFarm_NetworkProfile'
+                                   },
+               'WebUrl' => {
+                             'type' => 'Str'
+                           },
+               'Seed' => {
+                           'type' => 'Int'
+                         },
+               'JobTimeoutMinutes' => {
+                                        'type' => 'Int'
+                                      },
+               'DeviceMinutes' => {
+                                    'class' => 'Paws::DeviceFarm::DeviceMinutes',
+                                    'type' => 'DeviceFarm_DeviceMinutes'
+                                  },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Platform' => 'platform',
+                       'Stopped' => 'stopped',
+                       'Status' => 'status',
+                       'SkipAppResign' => 'skipAppResign',
+                       'DevicePoolArn' => 'devicePoolArn',
+                       'Radios' => 'radios',
+                       'Type' => 'type',
+                       'Started' => 'started',
+                       'Result' => 'result',
+                       'DeviceSelectionResult' => 'deviceSelectionResult',
+                       'Message' => 'message',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'TotalJobs' => 'totalJobs',
+                       'ParsingResultUrl' => 'parsingResultUrl',
+                       'CustomerArtifactPaths' => 'customerArtifactPaths',
+                       'ResultCode' => 'resultCode',
+                       'BillingMethod' => 'billingMethod',
+                       'CompletedJobs' => 'completedJobs',
+                       'TestSpecArn' => 'testSpecArn',
+                       'Locale' => 'locale',
+                       'Counters' => 'counters',
+                       'AppUpload' => 'appUpload',
+                       'EventCount' => 'eventCount',
+                       'NetworkProfile' => 'networkProfile',
+                       'WebUrl' => 'webUrl',
+                       'Seed' => 'seed',
+                       'JobTimeoutMinutes' => 'jobTimeoutMinutes',
+                       'DeviceMinutes' => 'deviceMinutes',
+                       'Created' => 'created',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +236,7 @@ C<metered>.
   The total number of completed jobs.
 
 
-=head2 Counters => L<Paws::DeviceFarm::Counters>
+=head2 Counters => DeviceFarm_Counters
 
   The run's result counters.
 
@@ -99,12 +246,12 @@ C<metered>.
   When the run was created.
 
 
-=head2 CustomerArtifactPaths => L<Paws::DeviceFarm::CustomerArtifactPaths>
+=head2 CustomerArtifactPaths => DeviceFarm_CustomerArtifactPaths
 
   Output C<CustomerArtifactPaths> object for the test run.
 
 
-=head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
+=head2 DeviceMinutes => DeviceFarm_DeviceMinutes
 
   Represents the total (metered or unmetered) minutes used by the test
 run.
@@ -115,7 +262,7 @@ run.
   The ARN of the device pool for the run.
 
 
-=head2 DeviceSelectionResult => L<Paws::DeviceFarm::DeviceSelectionResult>
+=head2 DeviceSelectionResult => DeviceFarm_DeviceSelectionResult
 
   The results of a device filter used to select the devices for a test
 run.
@@ -137,7 +284,7 @@ the UI fuzz test should perform.
   Information about the locale that is used for the run.
 
 
-=head2 Location => L<Paws::DeviceFarm::Location>
+=head2 Location => DeviceFarm_Location
 
   Information about the location that is used for the run.
 
@@ -152,7 +299,7 @@ the UI fuzz test should perform.
   The run's name.
 
 
-=head2 NetworkProfile => L<Paws::DeviceFarm::NetworkProfile>
+=head2 NetworkProfile => DeviceFarm_NetworkProfile
 
   The network profile being used for a test run.
 
@@ -185,7 +332,7 @@ IOS: The iOS platform.
 
 
 
-=head2 Radios => L<Paws::DeviceFarm::Radios>
+=head2 Radios => DeviceFarm_Radios
 
   Information about the radio states for the run.
 

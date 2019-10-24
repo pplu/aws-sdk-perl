@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::SystemInstanceDescription;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', request_name => 'definition', traits => ['NameInRequest']);
-  has FlowActionsRoleArn => (is => 'ro', isa => 'Str', request_name => 'flowActionsRoleArn', traits => ['NameInRequest']);
-  has MetricsConfiguration => (is => 'ro', isa => 'Paws::IoTThingsGraph::MetricsConfiguration', request_name => 'metricsConfiguration', traits => ['NameInRequest']);
-  has S3BucketName => (is => 'ro', isa => 'Str', request_name => 's3BucketName', traits => ['NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Paws::IoTThingsGraph::SystemInstanceSummary', request_name => 'summary', traits => ['NameInRequest']);
-  has ValidatedDependencyRevisions => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::DependencyRevision]', request_name => 'validatedDependencyRevisions', traits => ['NameInRequest']);
-  has ValidatedNamespaceVersion => (is => 'ro', isa => 'Int', request_name => 'validatedNamespaceVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_SystemInstanceSummary IoTThingsGraph_DefinitionDocument IoTThingsGraph_DependencyRevision IoTThingsGraph_MetricsConfiguration/;
+  has Definition => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument);
+  has FlowActionsRoleArn => (is => 'ro', isa => Str);
+  has MetricsConfiguration => (is => 'ro', isa => IoTThingsGraph_MetricsConfiguration);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has Summary => (is => 'ro', isa => IoTThingsGraph_SystemInstanceSummary);
+  has ValidatedDependencyRevisions => (is => 'ro', isa => ArrayRef[IoTThingsGraph_DependencyRevision]);
+  has ValidatedNamespaceVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidatedNamespaceVersion' => {
+                                                'type' => 'Int'
+                                              },
+               'MetricsConfiguration' => {
+                                           'class' => 'Paws::IoTThingsGraph::MetricsConfiguration',
+                                           'type' => 'IoTThingsGraph_MetricsConfiguration'
+                                         },
+               'Definition' => {
+                                 'class' => 'Paws::IoTThingsGraph::DefinitionDocument',
+                                 'type' => 'IoTThingsGraph_DefinitionDocument'
+                               },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'ValidatedDependencyRevisions' => {
+                                                   'class' => 'Paws::IoTThingsGraph::DependencyRevision',
+                                                   'type' => 'ArrayRef[IoTThingsGraph_DependencyRevision]'
+                                                 },
+               'Summary' => {
+                              'class' => 'Paws::IoTThingsGraph::SystemInstanceSummary',
+                              'type' => 'IoTThingsGraph_SystemInstanceSummary'
+                            },
+               'FlowActionsRoleArn' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'ValidatedNamespaceVersion' => 'validatedNamespaceVersion',
+                       'MetricsConfiguration' => 'metricsConfiguration',
+                       'Definition' => 'definition',
+                       'S3BucketName' => 's3BucketName',
+                       'ValidatedDependencyRevisions' => 'validatedDependencyRevisions',
+                       'Summary' => 'summary',
+                       'FlowActionsRoleArn' => 'flowActionsRoleArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +91,7 @@ information.
 =head1 ATTRIBUTES
 
 
-=head2 Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 Definition => IoTThingsGraph_DefinitionDocument
 
   
 
@@ -56,7 +104,7 @@ must have read and write permissionss to AWS Lambda and AWS IoT and to
 any other AWS services that the flow uses.
 
 
-=head2 MetricsConfiguration => L<Paws::IoTThingsGraph::MetricsConfiguration>
+=head2 MetricsConfiguration => IoTThingsGraph_MetricsConfiguration
 
   
 
@@ -67,12 +115,12 @@ any other AWS services that the flow uses.
 system instance is stored.
 
 
-=head2 Summary => L<Paws::IoTThingsGraph::SystemInstanceSummary>
+=head2 Summary => IoTThingsGraph_SystemInstanceSummary
 
   An object that contains summary information about a system instance.
 
 
-=head2 ValidatedDependencyRevisions => ArrayRef[L<Paws::IoTThingsGraph::DependencyRevision>]
+=head2 ValidatedDependencyRevisions => ArrayRef[IoTThingsGraph_DependencyRevision]
 
   A list of objects that contain all of the IDs and revision numbers of
 workflows and systems that are used in a system instance.

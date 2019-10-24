@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes;
-  use Moose;
-  has ExecutionContext => (is => 'ro', isa => 'Str', request_name => 'executionContext', traits => ['NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has ExecutionContext => (is => 'ro', isa => Str);
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'ExecutionContext' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StartedEventId' => 'startedEventId',
+                       'ScheduledEventId' => 'scheduledEventId',
+                       'ExecutionContext' => 'executionContext'
+                     },
+  'IsRequired' => {
+                    'StartedEventId' => 1,
+                    'ScheduledEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

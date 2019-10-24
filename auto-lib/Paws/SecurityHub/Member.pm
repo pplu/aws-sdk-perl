@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Member;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has InvitedAt => (is => 'ro', isa => 'Str');
-  has MasterId => (is => 'ro', isa => 'Str');
-  has MemberStatus => (is => 'ro', isa => 'Str');
-  has UpdatedAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has InvitedAt => (is => 'ro', isa => Str);
+  has MasterId => (is => 'ro', isa => Str);
+  has MemberStatus => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'MemberStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'MasterId' => {
+                               'type' => 'Str'
+                             },
+               'InvitedAt' => {
+                                'type' => 'Str'
+                              },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::SMS::UserData;
-  use Moose;
-  has S3Location => (is => 'ro', isa => 'Paws::SMS::S3Location', request_name => 's3Location', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SMS::Types qw/SMS_S3Location/;
+  has S3Location => (is => 'ro', isa => SMS_S3Location);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Location' => {
+                                 'class' => 'Paws::SMS::S3Location',
+                                 'type' => 'SMS_S3Location'
+                               }
+             },
+  'NameInRequest' => {
+                       'S3Location' => 's3Location'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ configuring the server during launch.
 =head1 ATTRIBUTES
 
 
-=head2 S3Location => L<Paws::SMS::S3Location>
+=head2 S3Location => SMS_S3Location
 
   Amazon S3 location of the user-data script.
 

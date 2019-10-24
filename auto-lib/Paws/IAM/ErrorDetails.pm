@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ErrorDetails;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::IAM::ErrorDetails;
                'Message' => {
                               'type' => 'Str'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'Code' => 1,
+                    'Message' => 1
+                  }
 }
 ;
     return $Params_map;

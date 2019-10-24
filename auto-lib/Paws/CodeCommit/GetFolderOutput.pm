@@ -1,15 +1,68 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetFolderOutput;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' , required => 1);
-  has Files => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::File]', traits => ['NameInRequest'], request_name => 'files' );
-  has FolderPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'folderPath' , required => 1);
-  has SubFolders => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Folder]', traits => ['NameInRequest'], request_name => 'subFolders' );
-  has SubModules => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::SubModule]', traits => ['NameInRequest'], request_name => 'subModules' );
-  has SymbolicLinks => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::SymbolicLink]', traits => ['NameInRequest'], request_name => 'symbolicLinks' );
-  has TreeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'treeId' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_SymbolicLink CodeCommit_SubModule CodeCommit_File CodeCommit_Folder/;
+  has CommitId => (is => 'ro', isa => Str, required => 1);
+  has Files => (is => 'ro', isa => ArrayRef[CodeCommit_File]);
+  has FolderPath => (is => 'ro', isa => Str, required => 1);
+  has SubFolders => (is => 'ro', isa => ArrayRef[CodeCommit_Folder]);
+  has SubModules => (is => 'ro', isa => ArrayRef[CodeCommit_SubModule]);
+  has SymbolicLinks => (is => 'ro', isa => ArrayRef[CodeCommit_SymbolicLink]);
+  has TreeId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubModules' => {
+                                 'class' => 'Paws::CodeCommit::SubModule',
+                                 'type' => 'ArrayRef[CodeCommit_SubModule]'
+                               },
+               'SubFolders' => {
+                                 'class' => 'Paws::CodeCommit::Folder',
+                                 'type' => 'ArrayRef[CodeCommit_Folder]'
+                               },
+               'FolderPath' => {
+                                 'type' => 'Str'
+                               },
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'TreeId' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Files' => {
+                            'class' => 'Paws::CodeCommit::File',
+                            'type' => 'ArrayRef[CodeCommit_File]'
+                          },
+               'SymbolicLinks' => {
+                                    'class' => 'Paws::CodeCommit::SymbolicLink',
+                                    'type' => 'ArrayRef[CodeCommit_SymbolicLink]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SubModules' => 'subModules',
+                       'TreeId' => 'treeId',
+                       'SubFolders' => 'subFolders',
+                       'FolderPath' => 'folderPath',
+                       'SymbolicLinks' => 'symbolicLinks',
+                       'Files' => 'files',
+                       'CommitId' => 'commitId'
+                     },
+  'IsRequired' => {
+                    'FolderPath' => 1,
+                    'CommitId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -26,7 +79,7 @@ The full commit ID used as a reference for which version of the folder
 content is returned.
 
 
-=head2 Files => ArrayRef[L<Paws::CodeCommit::File>]
+=head2 Files => ArrayRef[CodeCommit_File]
 
 The list of files that exist in the specified folder, if any.
 
@@ -36,17 +89,17 @@ The list of files that exist in the specified folder, if any.
 The fully-qualified path of the folder whose contents are returned.
 
 
-=head2 SubFolders => ArrayRef[L<Paws::CodeCommit::Folder>]
+=head2 SubFolders => ArrayRef[CodeCommit_Folder]
 
 The list of folders that exist beneath the specified folder, if any.
 
 
-=head2 SubModules => ArrayRef[L<Paws::CodeCommit::SubModule>]
+=head2 SubModules => ArrayRef[CodeCommit_SubModule]
 
 The list of submodules that exist in the specified folder, if any.
 
 
-=head2 SymbolicLinks => ArrayRef[L<Paws::CodeCommit::SymbolicLink>]
+=head2 SymbolicLinks => ArrayRef[CodeCommit_SymbolicLink]
 
 The list of symbolic links to other files and folders that exist in the
 specified folder, if any.

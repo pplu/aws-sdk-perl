@@ -1,16 +1,48 @@
 
 package Paws::Greengrass::GetLoggerDefinitionVersion;
-  use Moose;
-  has LoggerDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionId', required => 1);
-  has LoggerDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LoggerDefinitionVersionId', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has LoggerDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoggerDefinitionVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLoggerDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetLoggerDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLoggerDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetLoggerDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LoggerDefinitionId' => {
+                                         'type' => 'Str'
+                                       },
+               'LoggerDefinitionVersionId' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'ParamInURI' => {
+                    'LoggerDefinitionId' => 'LoggerDefinitionId',
+                    'LoggerDefinitionVersionId' => 'LoggerDefinitionVersionId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken'
+                    },
+  'IsRequired' => {
+                    'LoggerDefinitionId' => 1,
+                    'LoggerDefinitionVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

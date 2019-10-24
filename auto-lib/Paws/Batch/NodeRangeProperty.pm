@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Batch::NodeRangeProperty;
-  use Moose;
-  has Container => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', request_name => 'container', traits => ['NameInRequest']);
-  has TargetNodes => (is => 'ro', isa => 'Str', request_name => 'targetNodes', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_ContainerProperties/;
+  has Container => (is => 'ro', isa => Batch_ContainerProperties);
+  has TargetNodes => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetNodes' => {
+                                  'type' => 'Str'
+                                },
+               'Container' => {
+                                'class' => 'Paws::Batch::ContainerProperties',
+                                'type' => 'Batch_ContainerProperties'
+                              }
+             },
+  'NameInRequest' => {
+                       'TargetNodes' => 'targetNodes',
+                       'Container' => 'container'
+                     },
+  'IsRequired' => {
+                    'TargetNodes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ multi-node parallel job.
 =head1 ATTRIBUTES
 
 
-=head2 Container => L<Paws::Batch::ContainerProperties>
+=head2 Container => Batch_ContainerProperties
 
   The container details for the node range.
 

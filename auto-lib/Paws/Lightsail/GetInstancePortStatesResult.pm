@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetInstancePortStatesResult;
-  use Moose;
-  has PortStates => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::InstancePortState]', traits => ['NameInRequest'], request_name => 'portStates' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_InstancePortState/;
+  has PortStates => (is => 'ro', isa => ArrayRef[Lightsail_InstancePortState]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PortStates' => {
+                                 'class' => 'Paws::Lightsail::InstancePortState',
+                                 'type' => 'ArrayRef[Lightsail_InstancePortState]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PortStates' => 'portStates'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetInstancePortStatesResult
 =head1 ATTRIBUTES
 
 
-=head2 PortStates => ArrayRef[L<Paws::Lightsail::InstancePortState>]
+=head2 PortStates => ArrayRef[Lightsail_InstancePortState]
 
 Information about the port states resulting from your request.
 

@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Organizations::HandshakeResource;
-  use Moose;
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::HandshakeResource]');
-  has Type => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Organizations::Types qw/Organizations_HandshakeResource/;
+  has Resources => (is => 'ro', isa => ArrayRef[Organizations_HandshakeResource]);
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Resources' => {
+                                'class' => 'Paws::Organizations::HandshakeResource',
+                                'type' => 'ArrayRef[Organizations_HandshakeResource]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Contains additional data that is needed to process a handshake.
 =head1 ATTRIBUTES
 
 
-=head2 Resources => ArrayRef[L<Paws::Organizations::HandshakeResource>]
+=head2 Resources => ArrayRef[Organizations_HandshakeResource]
 
   When needed, contains an additional array of C<HandshakeResource>
 objects.

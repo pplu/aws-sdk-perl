@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DeploymentJob;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', request_name => 'deploymentApplicationConfigs', traits => ['NameInRequest']);
-  has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', request_name => 'deploymentConfig', traits => ['NameInRequest']);
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has Fleet => (is => 'ro', isa => 'Str', request_name => 'fleet', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentConfig Robomaker_DeploymentApplicationConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DeploymentApplicationConfigs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentApplicationConfig]);
+  has DeploymentConfig => (is => 'ro', isa => Robomaker_DeploymentConfig);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Fleet => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentConfig' => {
+                                       'class' => 'Paws::Robomaker::DeploymentConfig',
+                                       'type' => 'Robomaker_DeploymentConfig'
+                                     },
+               'Fleet' => {
+                            'type' => 'Str'
+                          },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeploymentApplicationConfigs' => {
+                                                   'class' => 'Paws::Robomaker::DeploymentApplicationConfig',
+                                                   'type' => 'ArrayRef[Robomaker_DeploymentApplicationConfig]'
+                                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'DeploymentConfig' => 'deploymentConfig',
+                       'Fleet' => 'fleet',
+                       'Status' => 'status',
+                       'DeploymentApplicationConfigs' => 'deploymentApplicationConfigs',
+                       'CreatedAt' => 'createdAt',
+                       'FailureCode' => 'failureCode',
+                       'FailureReason' => 'failureReason',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,12 +104,12 @@ Information about a deployment job.
 created.
 
 
-=head2 DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=head2 DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
   The deployment application configuration.
 
 
-=head2 DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>
+=head2 DeploymentConfig => Robomaker_DeploymentConfig
 
   The deployment configuration.
 

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::CaptionSource;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has Key => (is => 'ro', isa => 'Str');
-  has Label => (is => 'ro', isa => 'Str');
-  has Language => (is => 'ro', isa => 'Str');
-  has TimeOffset => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Encryption/;
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has Key => (is => 'ro', isa => Str);
+  has Label => (is => 'ro', isa => Str);
+  has Language => (is => 'ro', isa => Str);
+  has TimeOffset => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeOffset' => {
+                                 'type' => 'Str'
+                               },
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +71,7 @@ transcoding process.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that Elastic Transcoder needs to
 decyrpt your caption sources, or that you want Elastic Transcoder to

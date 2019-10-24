@@ -1,14 +1,15 @@
 package Paws::Amplify;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'amplify' }
   sub signing_name { 'amplify' }
   sub version { '2017-07-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -303,7 +304,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [AccessToken => Str]
 
-=item [AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>]
+=item [AutoBranchCreationConfig => Amplify_AutoBranchCreationConfig]
 
 =item [AutoBranchCreationPatterns => ArrayRef[Str|Undef]]
 
@@ -311,7 +312,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [BuildSpec => Str]
 
-=item [CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]]
+=item [CustomRules => ArrayRef[Amplify_CustomRule]]
 
 =item [Description => Str]
 
@@ -321,7 +322,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [EnableBranchAutoBuild => Bool]
 
-=item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
+=item [EnvironmentVariables => Amplify_EnvironmentVariables]
 
 =item [IamServiceRoleArn => Str]
 
@@ -331,7 +332,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =item [Repository => Str]
 
-=item [Tags => L<Paws::Amplify::TagMap>]
+=item [Tags => Amplify_TagMap]
 
 
 =back
@@ -365,13 +366,13 @@ Creates a new Amplify App.
 
 =item [EnableNotification => Bool]
 
-=item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
+=item [EnvironmentVariables => Amplify_EnvironmentVariables]
 
 =item [Framework => Str]
 
 =item [Stage => Str]
 
-=item [Tags => L<Paws::Amplify::TagMap>]
+=item [Tags => Amplify_TagMap]
 
 =item [Ttl => Str]
 
@@ -393,7 +394,7 @@ Creates a new Branch for an Amplify App.
 
 =item BranchName => Str
 
-=item [FileMap => L<Paws::Amplify::FileMap>]
+=item [FileMap => Amplify_FileMap]
 
 
 =back
@@ -414,7 +415,7 @@ repository)
 
 =item DomainName => Str
 
-=item SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
+=item SubDomainSettings => ArrayRef[Amplify_SubDomainSetting]
 
 =item [EnableAutoSubDomain => Bool]
 
@@ -820,7 +821,7 @@ App.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::Amplify::TagMap>
+=item Tags => Amplify_TagMap
 
 
 =back
@@ -856,7 +857,7 @@ Untag resource with resourceArn.
 
 =item AppId => Str
 
-=item [AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>]
+=item [AutoBranchCreationConfig => Amplify_AutoBranchCreationConfig]
 
 =item [AutoBranchCreationPatterns => ArrayRef[Str|Undef]]
 
@@ -864,7 +865,7 @@ Untag resource with resourceArn.
 
 =item [BuildSpec => Str]
 
-=item [CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]]
+=item [CustomRules => ArrayRef[Amplify_CustomRule]]
 
 =item [Description => Str]
 
@@ -874,7 +875,7 @@ Untag resource with resourceArn.
 
 =item [EnableBranchAutoBuild => Bool]
 
-=item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
+=item [EnvironmentVariables => Amplify_EnvironmentVariables]
 
 =item [IamServiceRoleArn => Str]
 
@@ -914,7 +915,7 @@ Updates an existing Amplify App.
 
 =item [EnableNotification => Bool]
 
-=item [EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>]
+=item [EnvironmentVariables => Amplify_EnvironmentVariables]
 
 =item [Framework => Str]
 
@@ -940,7 +941,7 @@ Updates a branch for an Amplify App.
 
 =item DomainName => Str
 
-=item SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
+=item SubDomainSettings => ArrayRef[Amplify_SubDomainSetting]
 
 =item [EnableAutoSubDomain => Bool]
 

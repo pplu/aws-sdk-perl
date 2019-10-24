@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::ObjectAttributeUpdate;
-  use Moose;
-  has ObjectAttributeAction => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectAttributeAction');
-  has ObjectAttributeKey => (is => 'ro', isa => 'Paws::CloudDirectory::AttributeKey');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKey CloudDirectory_ObjectAttributeAction/;
+  has ObjectAttributeAction => (is => 'ro', isa => CloudDirectory_ObjectAttributeAction);
+  has ObjectAttributeKey => (is => 'ro', isa => CloudDirectory_AttributeKey);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectAttributeAction' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectAttributeAction',
+                                            'type' => 'CloudDirectory_ObjectAttributeAction'
+                                          },
+               'ObjectAttributeKey' => {
+                                         'class' => 'Paws::CloudDirectory::AttributeKey',
+                                         'type' => 'CloudDirectory_AttributeKey'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Structure that contains attribute update information.
 =head1 ATTRIBUTES
 
 
-=head2 ObjectAttributeAction => L<Paws::CloudDirectory::ObjectAttributeAction>
+=head2 ObjectAttributeAction => CloudDirectory_ObjectAttributeAction
 
   The action to perform as part of the attribute update.
 
 
-=head2 ObjectAttributeKey => L<Paws::CloudDirectory::AttributeKey>
+=head2 ObjectAttributeKey => CloudDirectory_AttributeKey
 
   The key of the attribute being updated.
 

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateRoleDescription;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UpdateRoleDescription;
                'Description' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1,
+                    'Description' => 1
+                  }
 }
 ;
     return $Params_map;

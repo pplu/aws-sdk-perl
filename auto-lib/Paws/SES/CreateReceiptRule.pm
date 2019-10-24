@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::CreateReceiptRule;
   use Moo;
@@ -26,7 +27,11 @@ package Paws::SES::CreateReceiptRule;
                            'class' => 'Paws::SES::ReceiptRule',
                            'type' => 'SES_ReceiptRule'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'RuleSetName' => 1,
+                    'Rule' => 1
+                  }
 }
 ;
     return $Params_map;

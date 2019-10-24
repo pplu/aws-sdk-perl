@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GroundStation::UplinkSpectrumConfig;
-  use Moose;
-  has CenterFrequency => (is => 'ro', isa => 'Paws::GroundStation::Frequency', request_name => 'centerFrequency', traits => ['NameInRequest'], required => 1);
-  has Polarization => (is => 'ro', isa => 'Str', request_name => 'polarization', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_Frequency/;
+  has CenterFrequency => (is => 'ro', isa => GroundStation_Frequency, required => 1);
+  has Polarization => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Polarization' => {
+                                   'type' => 'Str'
+                                 },
+               'CenterFrequency' => {
+                                      'class' => 'Paws::GroundStation::Frequency',
+                                      'type' => 'GroundStation_Frequency'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Polarization' => 'polarization',
+                       'CenterFrequency' => 'centerFrequency'
+                     },
+  'IsRequired' => {
+                    'CenterFrequency' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ Information about the uplink spectral C<Config>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CenterFrequency => L<Paws::GroundStation::Frequency>
+=head2 B<REQUIRED> CenterFrequency => GroundStation_Frequency
 
   Center frequency of an uplink spectral C<Config>.
 

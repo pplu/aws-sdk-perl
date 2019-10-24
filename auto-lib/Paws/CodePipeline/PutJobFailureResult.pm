@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::PutJobFailureResult;
-  use Moose;
-  has FailureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', traits => ['NameInRequest'], request_name => 'failureDetails' , required => 1);
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_FailureDetails/;
+  has FailureDetails => (is => 'ro', isa => CodePipeline_FailureDetails, required => 1, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutJobFailureResult');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutJobFailureResult');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'FailureDetails' => {
+                                     'class' => 'Paws::CodePipeline::FailureDetails',
+                                     'type' => 'CodePipeline_FailureDetails'
+                                   }
+             },
+  'NameInRequest' => {
+                       'JobId' => 'jobId',
+                       'FailureDetails' => 'failureDetails'
+                     },
+  'IsRequired' => {
+                    'JobId' => 1,
+                    'FailureDetails' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
+=head2 B<REQUIRED> FailureDetails => CodePipeline_FailureDetails
 
 The details about the failure of a job.
 

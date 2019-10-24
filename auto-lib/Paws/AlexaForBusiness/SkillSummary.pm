@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::SkillSummary;
-  use Moose;
-  has EnablementType => (is => 'ro', isa => 'Str');
-  has SkillId => (is => 'ro', isa => 'Str');
-  has SkillName => (is => 'ro', isa => 'Str');
-  has SkillType => (is => 'ro', isa => 'Str');
-  has SupportsLinking => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has EnablementType => (is => 'ro', isa => Str);
+  has SkillId => (is => 'ro', isa => Str);
+  has SkillName => (is => 'ro', isa => Str);
+  has SkillType => (is => 'ro', isa => Str);
+  has SupportsLinking => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkillName' => {
+                                'type' => 'Str'
+                              },
+               'EnablementType' => {
+                                     'type' => 'Str'
+                                   },
+               'SkillType' => {
+                                'type' => 'Str'
+                              },
+               'SupportsLinking' => {
+                                      'type' => 'Bool'
+                                    },
+               'SkillId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

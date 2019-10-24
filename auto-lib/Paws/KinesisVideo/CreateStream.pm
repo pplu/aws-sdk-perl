@@ -1,19 +1,53 @@
 
 package Paws::KinesisVideo::CreateStream;
-  use Moose;
-  has DataRetentionInHours => (is => 'ro', isa => 'Int');
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MediaType => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::KinesisVideo::ResourceTags');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisVideo::Types qw/KinesisVideo_ResourceTags/;
+  has DataRetentionInHours => (is => 'ro', isa => Int, predicate => 1);
+  has DeviceName => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MediaType => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => KinesisVideo_ResourceTags, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createStream');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::CreateStreamOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createStream');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::CreateStreamOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'DataRetentionInHours' => {
+                                           'type' => 'Int'
+                                         },
+               'MediaType' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::KinesisVideo::ResourceTags',
+                           'type' => 'KinesisVideo_ResourceTags'
+                         },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'StreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +150,7 @@ each account and region.
 
 
 
-=head2 Tags => L<Paws::KinesisVideo::ResourceTags>
+=head2 Tags => KinesisVideo_ResourceTags
 
 A list of tags to associate with the specified stream. Each tag is a
 key-value pair (the value is optional).

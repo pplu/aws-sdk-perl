@@ -1,18 +1,52 @@
 
 package Paws::Signer::ListSigningPlatforms;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'category');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Partner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'partner');
-  has Target => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'target');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Signer::Types qw//;
+  has Category => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Partner => (is => 'ro', isa => Str, predicate => 1);
+  has Target => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSigningPlatforms');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/signing-platforms');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Signer::ListSigningPlatformsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSigningPlatforms');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/signing-platforms');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Signer::ListSigningPlatformsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Partner' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInQuery' => {
+                      'Target' => 'target',
+                      'Partner' => 'partner',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'Category' => 'category'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

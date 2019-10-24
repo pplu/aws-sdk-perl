@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Glue::NotificationProperty;
-  use Moose;
-  has NotifyDelayAfter => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Glue::Types qw//;
+  has NotifyDelayAfter => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotifyDelayAfter' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

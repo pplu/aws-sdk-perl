@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::EntityDetails;
   use Moo;
   use Types::Standard qw/Str/;
@@ -15,7 +16,10 @@ package Paws::IAM::EntityDetails;
                'LastAuthenticated' => {
                                         'type' => 'Str'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'EntityInfo' => 1
+                  }
 }
 ;
     return $Params_map;

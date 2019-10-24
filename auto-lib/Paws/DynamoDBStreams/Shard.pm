@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::Shard;
-  use Moose;
-  has ParentShardId => (is => 'ro', isa => 'Str');
-  has SequenceNumberRange => (is => 'ro', isa => 'Paws::DynamoDBStreams::SequenceNumberRange');
-  has ShardId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_SequenceNumberRange/;
+  has ParentShardId => (is => 'ro', isa => Str);
+  has SequenceNumberRange => (is => 'ro', isa => DynamoDBStreams_SequenceNumberRange);
+  has ShardId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShardId' => {
+                              'type' => 'Str'
+                            },
+               'SequenceNumberRange' => {
+                                          'class' => 'Paws::DynamoDBStreams::SequenceNumberRange',
+                                          'type' => 'DynamoDBStreams_SequenceNumberRange'
+                                        },
+               'ParentShardId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ A uniquely identified group of stream records within a stream.
   The shard ID of the current shard's parent.
 
 
-=head2 SequenceNumberRange => L<Paws::DynamoDBStreams::SequenceNumberRange>
+=head2 SequenceNumberRange => DynamoDBStreams_SequenceNumberRange
 
   The range of possible sequence numbers for the shard.
 

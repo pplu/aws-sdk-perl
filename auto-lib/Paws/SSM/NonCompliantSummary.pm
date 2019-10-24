@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::NonCompliantSummary;
-  use Moose;
-  has NonCompliantCount => (is => 'ro', isa => 'Int');
-  has SeveritySummary => (is => 'ro', isa => 'Paws::SSM::SeveritySummary');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SSM::Types qw/SSM_SeveritySummary/;
+  has NonCompliantCount => (is => 'ro', isa => Int);
+  has SeveritySummary => (is => 'ro', isa => SSM_SeveritySummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NonCompliantCount' => {
+                                        'type' => 'Int'
+                                      },
+               'SeveritySummary' => {
+                                      'class' => 'Paws::SSM::SeveritySummary',
+                                      'type' => 'SSM_SeveritySummary'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ according to resource type.
   The total number of compliance items that are not compliant.
 
 
-=head2 SeveritySummary => L<Paws::SSM::SeveritySummary>
+=head2 SeveritySummary => SSM_SeveritySummary
 
   A summary of the non-compliance severity by compliance type
 

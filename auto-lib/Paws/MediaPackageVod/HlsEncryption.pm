@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::HlsEncryption;
-  use Moose;
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaPackageVod::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_SpekeKeyProvider/;
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaPackageVod_SpekeKeyProvider, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaPackageVod::SpekeKeyProvider',
+                                       'type' => 'MediaPackageVod_SpekeKeyProvider'
+                                     },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'EncryptionMethod' => 'encryptionMethod'
+                     },
+  'IsRequired' => {
+                    'SpekeKeyProvider' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ An HTTP Live Streaming (HLS) encryption configuration.
   The encryption method to use.
 
 
-=head2 B<REQUIRED> SpekeKeyProvider => L<Paws::MediaPackageVod::SpekeKeyProvider>
+=head2 B<REQUIRED> SpekeKeyProvider => MediaPackageVod_SpekeKeyProvider
 
   
 

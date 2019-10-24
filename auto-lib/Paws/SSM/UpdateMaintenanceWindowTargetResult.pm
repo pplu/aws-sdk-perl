@@ -1,14 +1,48 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::UpdateMaintenanceWindowTargetResult;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has WindowId => (is => 'ro', isa => 'Str');
-  has WindowTargetId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target/;
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerInformation => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+  has WindowId => (is => 'ro', isa => Str);
+  has WindowTargetId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'WindowTargetId' => {
+                                     'type' => 'Str'
+                                   },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -34,7 +68,7 @@ The updated name.
 The updated owner.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 The updated targets.
 

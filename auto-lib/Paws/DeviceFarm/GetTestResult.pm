@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetTestResult;
-  use Moose;
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['NameInRequest'], request_name => 'test' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Test/;
+  has Test => (is => 'ro', isa => DeviceFarm_Test);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Test' => {
+                           'class' => 'Paws::DeviceFarm::Test',
+                           'type' => 'DeviceFarm_Test'
+                         }
+             },
+  'NameInRequest' => {
+                       'Test' => 'test'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::GetTestResult
 =head1 ATTRIBUTES
 
 
-=head2 Test => L<Paws::DeviceFarm::Test>
+=head2 Test => DeviceFarm_Test
 
 A test condition that is evaluated.
 

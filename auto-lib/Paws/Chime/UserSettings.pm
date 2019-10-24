@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Chime::UserSettings;
-  use Moose;
-  has Telephony => (is => 'ro', isa => 'Paws::Chime::TelephonySettings', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Chime::Types qw/Chime_TelephonySettings/;
+  has Telephony => (is => 'ro', isa => Chime_TelephonySettings, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Telephony' => {
+                                'class' => 'Paws::Chime::TelephonySettings',
+                                'type' => 'Chime_TelephonySettings'
+                              }
+             },
+  'IsRequired' => {
+                    'Telephony' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ outbound calling and text messaging.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Telephony => L<Paws::Chime::TelephonySettings>
+=head2 B<REQUIRED> Telephony => Chime_TelephonySettings
 
   The telephony settings associated with the user.
 

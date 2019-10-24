@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::DimensionValuesWithAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_Attributes/;
+  has Attributes => (is => 'ro', isa => CostExplorer_Attributes);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Attributes' => {
+                                 'class' => 'Paws::CostExplorer::Attributes',
+                                 'type' => 'CostExplorer_Attributes'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +60,7 @@ values.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::CostExplorer::Attributes>
+=head2 Attributes => CostExplorer_Attributes
 
   The attribute that applies to a specific C<Dimension>.
 

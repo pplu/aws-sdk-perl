@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::WriteRequest;
   use Moo;
   use Types::Standard qw//;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::WriteRequest;
   has DeleteRequest => (is => 'ro', isa => DynamoDB_DeleteRequest);
   has PutRequest => (is => 'ro', isa => DynamoDB_PutRequest);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PutRequest' => {
@@ -19,8 +20,8 @@ package Paws::DynamoDB::WriteRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

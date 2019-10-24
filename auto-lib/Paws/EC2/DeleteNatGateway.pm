@@ -11,17 +11,20 @@ package Paws::EC2::DeleteNatGateway;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteNatGatewayResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NatGatewayId' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'NatGatewayId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

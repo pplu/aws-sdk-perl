@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::CoverageByTime;
-  use Moose;
-  has Groups => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ReservationCoverageGroup]');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
-  has Total => (is => 'ro', isa => 'Paws::CostExplorer::Coverage');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval CostExplorer_Coverage CostExplorer_ReservationCoverageGroup/;
+  has Groups => (is => 'ro', isa => ArrayRef[CostExplorer_ReservationCoverageGroup]);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval);
+  has Total => (is => 'ro', isa => CostExplorer_Coverage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'class' => 'Paws::CostExplorer::Coverage',
+                            'type' => 'CostExplorer_Coverage'
+                          },
+               'Groups' => {
+                             'class' => 'Paws::CostExplorer::ReservationCoverageGroup',
+                             'type' => 'ArrayRef[CostExplorer_ReservationCoverageGroup]'
+                           },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +64,17 @@ Reservation coverage for a specified period, in hours.
 =head1 ATTRIBUTES
 
 
-=head2 Groups => ArrayRef[L<Paws::CostExplorer::ReservationCoverageGroup>]
+=head2 Groups => ArrayRef[CostExplorer_ReservationCoverageGroup]
 
   The groups of instances that the reservation covered.
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 TimePeriod => CostExplorer_DateInterval
 
   The period that this coverage was used over.
 
 
-=head2 Total => L<Paws::CostExplorer::Coverage>
+=head2 Total => CostExplorer_Coverage
 
   The total reservation coverage, in hours.
 

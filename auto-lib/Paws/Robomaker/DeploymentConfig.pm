@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DeploymentConfig;
-  use Moose;
-  has ConcurrentDeploymentPercentage => (is => 'ro', isa => 'Int', request_name => 'concurrentDeploymentPercentage', traits => ['NameInRequest']);
-  has FailureThresholdPercentage => (is => 'ro', isa => 'Int', request_name => 'failureThresholdPercentage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Robomaker::Types qw//;
+  has ConcurrentDeploymentPercentage => (is => 'ro', isa => Int);
+  has FailureThresholdPercentage => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureThresholdPercentage' => {
+                                                 'type' => 'Int'
+                                               },
+               'ConcurrentDeploymentPercentage' => {
+                                                     'type' => 'Int'
+                                                   }
+             },
+  'NameInRequest' => {
+                       'FailureThresholdPercentage' => 'failureThresholdPercentage',
+                       'ConcurrentDeploymentPercentage' => 'concurrentDeploymentPercentage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

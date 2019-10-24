@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::MssPackage;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackageVod::MssEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has MssManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::MssManifest]', request_name => 'mssManifests', traits => ['NameInRequest'], required => 1);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_MssEncryption MediaPackageVod_MssManifest/;
+  has Encryption => (is => 'ro', isa => MediaPackageVod_MssEncryption);
+  has MssManifests => (is => 'ro', isa => ArrayRef[MediaPackageVod_MssManifest], required => 1);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaPackageVod::MssEncryption',
+                                 'type' => 'MediaPackageVod_MssEncryption'
+                               },
+               'MssManifests' => {
+                                   'class' => 'Paws::MediaPackageVod::MssManifest',
+                                   'type' => 'ArrayRef[MediaPackageVod_MssManifest]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'Encryption' => 'encryption',
+                       'MssManifests' => 'mssManifests'
+                     },
+  'IsRequired' => {
+                    'MssManifests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +71,12 @@ A Microsoft Smooth Streaming (MSS) PackagingConfiguration.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaPackageVod::MssEncryption>
+=head2 Encryption => MediaPackageVod_MssEncryption
 
   
 
 
-=head2 B<REQUIRED> MssManifests => ArrayRef[L<Paws::MediaPackageVod::MssManifest>]
+=head2 B<REQUIRED> MssManifests => ArrayRef[MediaPackageVod_MssManifest]
 
   A list of MSS manifest configurations.
 

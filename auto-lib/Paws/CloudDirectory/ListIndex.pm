@@ -1,19 +1,59 @@
 
 package Paws::CloudDirectory::ListIndex;
-  use Moose;
-  has ConsistencyLevel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-consistency-level');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has IndexReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RangesOnIndexedValues => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeRange]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectAttributeRange CloudDirectory_ObjectReference/;
+  has ConsistencyLevel => (is => 'ro', isa => Str, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IndexReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RangesOnIndexedValues => (is => 'ro', isa => ArrayRef[CloudDirectory_ObjectAttributeRange], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListIndex');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/index/targets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::ListIndexResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListIndex');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/index/targets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::ListIndexResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexReference' => {
+                                     'class' => 'Paws::CloudDirectory::ObjectReference',
+                                     'type' => 'CloudDirectory_ObjectReference'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ConsistencyLevel' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'RangesOnIndexedValues' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectAttributeRange',
+                                            'type' => 'ArrayRef[CloudDirectory_ObjectAttributeRange]'
+                                          }
+             },
+  'ParamInHeader' => {
+                       'ConsistencyLevel' => 'x-amz-consistency-level',
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'IndexReference' => 1,
+                    'DirectoryArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +138,7 @@ The ARN of the directory that the index exists in.
 
 
 
-=head2 B<REQUIRED> IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> IndexReference => CloudDirectory_ObjectReference
 
 The reference to the index to list.
 
@@ -119,7 +159,7 @@ The pagination token.
 
 
 
-=head2 RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]
+=head2 RangesOnIndexedValues => ArrayRef[CloudDirectory_ObjectAttributeRange]
 
 Specifies the ranges of indexed values that you want to query.
 

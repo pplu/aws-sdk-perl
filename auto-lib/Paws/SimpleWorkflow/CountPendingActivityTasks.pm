@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::CountPendingActivityTasks;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CountPendingActivityTasks');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::PendingTaskCount');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CountPendingActivityTasks');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::PendingTaskCount');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'Domain' => 'domain'
+                     },
+  'IsRequired' => {
+                    'TaskList' => 1,
+                    'Domain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +83,7 @@ The name of the domain that contains the task list.
 
 
 
-=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => SimpleWorkflow_TaskList
 
 The name of the task list.
 

@@ -1,17 +1,67 @@
+# Generated from default/object.tt
 package Paws::DMS::MongoDbSettings;
-  use Moose;
-  has AuthMechanism => (is => 'ro', isa => 'Str');
-  has AuthSource => (is => 'ro', isa => 'Str');
-  has AuthType => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DocsToInvestigate => (is => 'ro', isa => 'Str');
-  has ExtractDocId => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has NestingLevel => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has ServerName => (is => 'ro', isa => 'Str');
-  has Username => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DMS::Types qw//;
+  has AuthMechanism => (is => 'ro', isa => Str);
+  has AuthSource => (is => 'ro', isa => Str);
+  has AuthType => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DocsToInvestigate => (is => 'ro', isa => Str);
+  has ExtractDocId => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has NestingLevel => (is => 'ro', isa => Str);
+  has Password => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has ServerName => (is => 'ro', isa => Str);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'AuthType' => {
+                               'type' => 'Str'
+                             },
+               'ExtractDocId' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthSource' => {
+                                 'type' => 'Str'
+                               },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'DocsToInvestigate' => {
+                                        'type' => 'Str'
+                                      },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'AuthMechanism' => {
+                                    'type' => 'Str'
+                                  },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'NestingLevel' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

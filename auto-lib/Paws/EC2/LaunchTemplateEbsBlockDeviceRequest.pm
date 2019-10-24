@@ -9,7 +9,7 @@ package Paws::EC2::LaunchTemplateEbsBlockDeviceRequest;
   has VolumeSize => (is => 'ro', isa => Int);
   has VolumeType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VolumeSize' => {
@@ -36,8 +36,8 @@ package Paws::EC2::LaunchTemplateEbsBlockDeviceRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

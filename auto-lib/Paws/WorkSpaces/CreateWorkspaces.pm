@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::CreateWorkspaces;
-  use Moose;
-  has Workspaces => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::WorkspaceRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceRequest/;
+  has Workspaces => (is => 'ro', isa => ArrayRef[WorkSpaces_WorkspaceRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateWorkspaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::CreateWorkspacesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateWorkspaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::CreateWorkspacesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Workspaces' => {
+                                 'class' => 'Paws::WorkSpaces::WorkspaceRequest',
+                                 'type' => 'ArrayRef[WorkSpaces_WorkspaceRequest]'
+                               }
+             },
+  'IsRequired' => {
+                    'Workspaces' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>]
+=head2 B<REQUIRED> Workspaces => ArrayRef[WorkSpaces_WorkspaceRequest]
 
 The WorkSpaces to create. You can specify up to 25 WorkSpaces.
 

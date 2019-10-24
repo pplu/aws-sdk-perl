@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchUpdateLinkAttributes;
-  use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::LinkAttributeUpdate]', required => 1);
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_LinkAttributeUpdate CloudDirectory_TypedLinkSpecifier/;
+  has AttributeUpdates => (is => 'ro', isa => ArrayRef[CloudDirectory_LinkAttributeUpdate], required => 1);
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       },
+               'AttributeUpdates' => {
+                                       'class' => 'Paws::CloudDirectory::LinkAttributeUpdate',
+                                       'type' => 'ArrayRef[CloudDirectory_LinkAttributeUpdate]'
+                                     }
+             },
+  'IsRequired' => {
+                    'TypedLinkSpecifier' => 1,
+                    'AttributeUpdates' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,12 +67,12 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::LinkAttributeUpdate>]
+=head2 B<REQUIRED> AttributeUpdates => ArrayRef[CloudDirectory_LinkAttributeUpdate]
 
   The attributes update structure.
 
 
-=head2 B<REQUIRED> TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 B<REQUIRED> TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
   Allows a typed link specifier to be accepted as input.
 

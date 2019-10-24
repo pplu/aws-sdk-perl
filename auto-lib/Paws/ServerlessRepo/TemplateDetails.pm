@@ -1,12 +1,65 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::TemplateDetails;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', request_name => 'applicationId', traits => ['NameInRequest'], required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest'], required => 1);
-  has ExpirationTime => (is => 'ro', isa => 'Str', request_name => 'expirationTime', traits => ['NameInRequest'], required => 1);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has TemplateId => (is => 'ro', isa => 'Str', request_name => 'templateId', traits => ['NameInRequest'], required => 1);
-  has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has ExpirationTime => (is => 'ro', isa => Str, required => 1);
+  has SemanticVersion => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has TemplateId => (is => 'ro', isa => Str, required => 1);
+  has TemplateUrl => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'ApplicationId' => 'applicationId',
+                       'ExpirationTime' => 'expirationTime',
+                       'Status' => 'status',
+                       'SemanticVersion' => 'semanticVersion',
+                       'TemplateUrl' => 'templateUrl',
+                       'TemplateId' => 'templateId'
+                     },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'ApplicationId' => 1,
+                    'ExpirationTime' => 1,
+                    'Status' => 1,
+                    'SemanticVersion' => 1,
+                    'TemplateUrl' => 1,
+                    'TemplateId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

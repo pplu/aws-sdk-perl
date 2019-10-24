@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::UpdateResourceServer;
-  use Moose;
-  has Identifier => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::ResourceServerScopeType]');
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ResourceServerScopeType/;
+  has Identifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Scopes => (is => 'ro', isa => ArrayRef[CognitoIdp_ResourceServerScopeType], predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateResourceServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::UpdateResourceServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateResourceServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::UpdateResourceServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scopes' => {
+                             'class' => 'Paws::CognitoIdp::ResourceServerScopeType',
+                             'type' => 'ArrayRef[CognitoIdp_ResourceServerScopeType]'
+                           },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'Identifier' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +99,7 @@ The name of the resource server.
 
 
 
-=head2 Scopes => ArrayRef[L<Paws::CognitoIdp::ResourceServerScopeType>]
+=head2 Scopes => ArrayRef[CognitoIdp_ResourceServerScopeType]
 
 The scope values to be set for the resource server.
 

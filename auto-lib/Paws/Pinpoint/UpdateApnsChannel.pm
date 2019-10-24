@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateApnsChannel;
-  use Moose;
-  has APNSChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::APNSChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_APNSChannelRequest/;
+  has APNSChannelRequest => (is => 'ro', isa => Pinpoint_APNSChannelRequest, required => 1, predicate => 1);
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'APNSChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApnsChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/apns');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApnsChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApnsChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/apns');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateApnsChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'APNSChannelRequest' => {
+                                         'class' => 'Paws::Pinpoint::APNSChannelRequest',
+                                         'type' => 'Pinpoint_APNSChannelRequest'
+                                       }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'APNSChannelRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>
+=head2 B<REQUIRED> APNSChannelRequest => Pinpoint_APNSChannelRequest
 
 
 

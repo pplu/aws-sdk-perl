@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeBuild::BatchGetProjectsOutput;
-  use Moose;
-  has Projects => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Project]', traits => ['NameInRequest'], request_name => 'projects' );
-  has ProjectsNotFound => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'projectsNotFound' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_Project/;
+  has Projects => (is => 'ro', isa => ArrayRef[CodeBuild_Project]);
+  has ProjectsNotFound => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Projects' => {
+                               'class' => 'Paws::CodeBuild::Project',
+                               'type' => 'ArrayRef[CodeBuild_Project]'
+                             },
+               'ProjectsNotFound' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Projects' => 'projects',
+                       'ProjectsNotFound' => 'projectsNotFound'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CodeBuild::BatchGetProjectsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Projects => ArrayRef[L<Paws::CodeBuild::Project>]
+=head2 Projects => ArrayRef[CodeBuild_Project]
 
 Information about the requested build projects.
 

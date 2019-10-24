@@ -1,19 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchLogs::GetLogEvents;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' );
-  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
-  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
-  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has StartFromHead => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'startFromHead' );
-  has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has EndTime => (is => 'ro', isa => Int, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LogGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartFromHead => (is => 'ro', isa => Bool, predicate => 1);
+  has StartTime => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLogEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::GetLogEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLogEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchLogs::GetLogEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'StartTime' => {
+                                'type' => 'Int'
+                              },
+               'EndTime' => {
+                              'type' => 'Int'
+                            },
+               'LogStreamName' => {
+                                    'type' => 'Str'
+                                  },
+               'StartFromHead' => {
+                                    'type' => 'Bool'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'LogGroupName' => 'logGroupName',
+                       'Limit' => 'limit',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'LogStreamName' => 'logStreamName',
+                       'StartFromHead' => 'startFromHead'
+                     },
+  'IsRequired' => {
+                    'LogGroupName' => 1,
+                    'LogStreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

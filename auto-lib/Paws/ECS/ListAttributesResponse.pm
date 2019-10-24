@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::ListAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ECS_Attribute]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'class' => 'Paws::ECS::Attribute',
+                                 'type' => 'ArrayRef[ECS_Attribute]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Attributes' => 'attributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::ECS::ListAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 Attributes => ArrayRef[ECS_Attribute]
 
 A list of attribute objects that meet the criteria of the request.
 

@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::InitiateAuth;
-  use Moose;
-  has AnalyticsMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::AnalyticsMetadataType');
-  has AuthFlow => (is => 'ro', isa => 'Str', required => 1);
-  has AuthParameters => (is => 'ro', isa => 'Paws::CognitoIdp::AuthParametersType');
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::ClientMetadataType');
-  has UserContextData => (is => 'ro', isa => 'Paws::CognitoIdp::UserContextDataType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserContextDataType CognitoIdp_AnalyticsMetadataType CognitoIdp_AuthParametersType CognitoIdp_ClientMetadataType/;
+  has AnalyticsMetadata => (is => 'ro', isa => CognitoIdp_AnalyticsMetadataType, predicate => 1);
+  has AuthFlow => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AuthParameters => (is => 'ro', isa => CognitoIdp_AuthParametersType, predicate => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientMetadata => (is => 'ro', isa => CognitoIdp_ClientMetadataType, predicate => 1);
+  has UserContextData => (is => 'ro', isa => CognitoIdp_UserContextDataType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InitiateAuth');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::InitiateAuthResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InitiateAuth');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::InitiateAuthResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'AuthFlow' => {
+                               'type' => 'Str'
+                             },
+               'ClientMetadata' => {
+                                     'class' => 'Paws::CognitoIdp::ClientMetadataType',
+                                     'type' => 'CognitoIdp_ClientMetadataType'
+                                   },
+               'AnalyticsMetadata' => {
+                                        'class' => 'Paws::CognitoIdp::AnalyticsMetadataType',
+                                        'type' => 'CognitoIdp_AnalyticsMetadataType'
+                                      },
+               'AuthParameters' => {
+                                     'class' => 'Paws::CognitoIdp::AuthParametersType',
+                                     'type' => 'CognitoIdp_AuthParametersType'
+                                   },
+               'UserContextData' => {
+                                      'class' => 'Paws::CognitoIdp::UserContextDataType',
+                                      'type' => 'CognitoIdp_UserContextDataType'
+                                    }
+             },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'AuthFlow' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AnalyticsMetadata => L<Paws::CognitoIdp::AnalyticsMetadataType>
+=head2 AnalyticsMetadata => CognitoIdp_AnalyticsMetadataType
 
 The Amazon Pinpoint analytics metadata for collecting metrics for
 C<InitiateAuth> calls.
@@ -126,7 +165,7 @@ C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
 Valid values are: C<"USER_SRP_AUTH">, C<"REFRESH_TOKEN_AUTH">, C<"REFRESH_TOKEN">, C<"CUSTOM_AUTH">, C<"ADMIN_NO_SRP_AUTH">, C<"USER_PASSWORD_AUTH">
 
-=head2 AuthParameters => L<Paws::CognitoIdp::AuthParametersType>
+=head2 AuthParameters => CognitoIdp_AuthParametersType
 
 The authentication parameters. These are inputs corresponding to the
 C<AuthFlow> that you are invoking. The required values depend on the
@@ -162,7 +201,7 @@ The app client ID.
 
 
 
-=head2 ClientMetadata => L<Paws::CognitoIdp::ClientMetadataType>
+=head2 ClientMetadata => CognitoIdp_ClientMetadataType
 
 This is a random key-value pair map which can contain any key and will
 be passed to your PreAuthentication Lambda trigger as-is. It can be
@@ -170,7 +209,7 @@ used to implement additional validations around authentication.
 
 
 
-=head2 UserContextData => L<Paws::CognitoIdp::UserContextDataType>
+=head2 UserContextData => CognitoIdp_UserContextDataType
 
 Contextual data such as the user's device fingerprint, IP address, or
 location used for evaluating the risk of an unexpected event by Amazon

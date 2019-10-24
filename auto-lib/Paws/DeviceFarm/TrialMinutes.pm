@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::TrialMinutes;
-  use Moose;
-  has Remaining => (is => 'ro', isa => 'Num', request_name => 'remaining', traits => ['NameInRequest']);
-  has Total => (is => 'ro', isa => 'Num', request_name => 'total', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::DeviceFarm::Types qw//;
+  has Remaining => (is => 'ro', isa => Num);
+  has Total => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Num'
+                          },
+               'Remaining' => {
+                                'type' => 'Num'
+                              }
+             },
+  'NameInRequest' => {
+                       'Total' => 'total',
+                       'Remaining' => 'remaining'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

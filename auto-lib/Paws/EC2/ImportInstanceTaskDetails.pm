@@ -6,7 +6,7 @@ package Paws::EC2::ImportInstanceTaskDetails;
   has Platform => (is => 'ro', isa => Str);
   has Volumes => (is => 'ro', isa => ArrayRef[EC2_ImportInstanceVolumeDetailItem]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Volumes' => {
@@ -31,8 +31,8 @@ package Paws::EC2::ImportInstanceTaskDetails;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::CreateRuleGroup;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WAF::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_Tag/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[WAF_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRuleGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::CreateRuleGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRuleGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::CreateRuleGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::WAF::Tag',
+                           'type' => 'ArrayRef[WAF_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'Name' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +110,7 @@ C<Name> after you create a C<RuleGroup>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::WAF::Tag>]
+=head2 Tags => ArrayRef[WAF_Tag]
 
 
 

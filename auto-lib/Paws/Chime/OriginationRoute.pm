@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Chime::OriginationRoute;
-  use Moose;
-  has Host => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Priority => (is => 'ro', isa => 'Int');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has Weight => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Chime::Types qw//;
+  has Host => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Priority => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+  has Weight => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Weight' => {
+                             'type' => 'Int'
+                           },
+               'Host' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

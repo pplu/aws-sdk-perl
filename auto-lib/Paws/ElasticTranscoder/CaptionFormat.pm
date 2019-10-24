@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::CaptionFormat;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
-  has Format => (is => 'ro', isa => 'Str');
-  has Pattern => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Encryption/;
+  has Encryption => (is => 'ro', isa => ElasticTranscoder_Encryption);
+  has Format => (is => 'ro', isa => Str);
+  has Pattern => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Encryption' => {
+                                 'class' => 'Paws::ElasticTranscoder::Encryption',
+                                 'type' => 'ElasticTranscoder_Encryption'
+                               },
+               'Pattern' => {
+                              'type' => 'Str'
+                            },
+               'Format' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ Elastic Transcoder returns an error.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
+=head2 Encryption => ElasticTranscoder_Encryption
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your caption formats.

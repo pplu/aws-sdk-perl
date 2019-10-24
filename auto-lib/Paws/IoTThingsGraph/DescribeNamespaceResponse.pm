@@ -1,13 +1,50 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::DescribeNamespaceResponse;
-  use Moose;
-  has NamespaceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceArn' );
-  has NamespaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceName' );
-  has NamespaceVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'namespaceVersion' );
-  has TrackingNamespaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trackingNamespaceName' );
-  has TrackingNamespaceVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'trackingNamespaceVersion' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has NamespaceArn => (is => 'ro', isa => Str);
+  has NamespaceName => (is => 'ro', isa => Str);
+  has NamespaceVersion => (is => 'ro', isa => Int);
+  has TrackingNamespaceName => (is => 'ro', isa => Str);
+  has TrackingNamespaceVersion => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrackingNamespaceName' => {
+                                            'type' => 'Str'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrackingNamespaceVersion' => {
+                                               'type' => 'Int'
+                                             },
+               'NamespaceVersion' => {
+                                       'type' => 'Int'
+                                     },
+               'NamespaceArn' => {
+                                   'type' => 'Str'
+                                 },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'TrackingNamespaceName' => 'trackingNamespaceName',
+                       'TrackingNamespaceVersion' => 'trackingNamespaceVersion',
+                       'NamespaceVersion' => 'namespaceVersion',
+                       'NamespaceArn' => 'namespaceArn',
+                       'NamespaceName' => 'namespaceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

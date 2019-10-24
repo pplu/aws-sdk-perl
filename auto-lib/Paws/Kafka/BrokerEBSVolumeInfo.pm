@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Kafka::BrokerEBSVolumeInfo;
-  use Moose;
-  has KafkaBrokerNodeId => (is => 'ro', isa => 'Str', request_name => 'kafkaBrokerNodeId', traits => ['NameInRequest'], required => 1);
-  has VolumeSizeGB => (is => 'ro', isa => 'Int', request_name => 'volumeSizeGB', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has KafkaBrokerNodeId => (is => 'ro', isa => Str, required => 1);
+  has VolumeSizeGB => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KafkaBrokerNodeId' => {
+                                        'type' => 'Str'
+                                      },
+               'VolumeSizeGB' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'KafkaBrokerNodeId' => 'kafkaBrokerNodeId',
+                       'VolumeSizeGB' => 'volumeSizeGB'
+                     },
+  'IsRequired' => {
+                    'KafkaBrokerNodeId' => 1,
+                    'VolumeSizeGB' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

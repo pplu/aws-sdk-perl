@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::PatchGroupPatchBaselineMapping;
-  use Moose;
-  has BaselineIdentity => (is => 'ro', isa => 'Paws::SSM::PatchBaselineIdentity');
-  has PatchGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_PatchBaselineIdentity/;
+  has BaselineIdentity => (is => 'ro', isa => SSM_PatchBaselineIdentity);
+  has PatchGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PatchGroup' => {
+                                 'type' => 'Str'
+                               },
+               'BaselineIdentity' => {
+                                       'class' => 'Paws::SSM::PatchBaselineIdentity',
+                                       'type' => 'SSM_PatchBaselineIdentity'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ group is registered with.
 =head1 ATTRIBUTES
 
 
-=head2 BaselineIdentity => L<Paws::SSM::PatchBaselineIdentity>
+=head2 BaselineIdentity => SSM_PatchBaselineIdentity
 
   The patch baseline the patch group is registered with.
 

@@ -14,7 +14,7 @@ package Paws::EC2::CreateInstanceExportTask;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateInstanceExportTaskResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -36,11 +36,14 @@ package Paws::EC2::CreateInstanceExportTask;
                        'ExportToS3Task' => 'exportToS3',
                        'TargetEnvironment' => 'targetEnvironment',
                        'Description' => 'description'
-                     }
+                     },
+  'IsRequired' => {
+                    'InstanceId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

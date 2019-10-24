@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::UpdateTagsForResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
-  has TagsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagsToAdd => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Tag], predicate => 1);
+  has TagsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTagsForResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTagsForResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'TagsToRemove' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'TagsToAdd' => {
+                                'class' => 'Paws::ElasticBeanstalk::Tag',
+                                'type' => 'ArrayRef[ElasticBeanstalk_Tag]'
+                              }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ Must be the ARN of an Elastic Beanstalk environment.
 
 
 
-=head2 TagsToAdd => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+=head2 TagsToAdd => ArrayRef[ElasticBeanstalk_Tag]
 
 A list of tags to add or update.
 

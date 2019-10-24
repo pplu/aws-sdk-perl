@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::PostCommentReply;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Content => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'content' , required => 1);
-  has InReplyTo => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inReplyTo' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InReplyTo => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostCommentReply');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::PostCommentReplyOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PostCommentReply');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::PostCommentReplyOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'InReplyTo' => {
+                                'type' => 'Str'
+                              },
+               'Content' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'InReplyTo' => 'inReplyTo',
+                       'Content' => 'content'
+                     },
+  'IsRequired' => {
+                    'InReplyTo' => 1,
+                    'Content' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -15,7 +15,7 @@ package Paws::EC2::ScheduledInstanceAvailability;
   has SlotDurationInHours => (is => 'ro', isa => Int);
   has TotalScheduledInstanceHours => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PurchaseToken' => {
@@ -76,8 +76,8 @@ package Paws::EC2::ScheduledInstanceAvailability;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

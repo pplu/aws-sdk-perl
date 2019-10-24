@@ -1,17 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
-  use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
-  has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
-  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' );
-  has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_ScheduleRunTest DeviceFarm_ScheduleRunConfiguration/;
+  has AppArn => (is => 'ro', isa => Str, predicate => 1);
+  has Configuration => (is => 'ro', isa => DeviceFarm_ScheduleRunConfiguration, predicate => 1);
+  has DevicePoolArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Test => (is => 'ro', isa => DeviceFarm_ScheduleRunTest, predicate => 1);
+  has TestType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDevicePoolCompatibility');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetDevicePoolCompatibilityResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDevicePoolCompatibility');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DeviceFarm::GetDevicePoolCompatibilityResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configuration' => {
+                                    'class' => 'Paws::DeviceFarm::ScheduleRunConfiguration',
+                                    'type' => 'DeviceFarm_ScheduleRunConfiguration'
+                                  },
+               'TestType' => {
+                               'type' => 'Str'
+                             },
+               'Test' => {
+                           'class' => 'Paws::DeviceFarm::ScheduleRunTest',
+                           'type' => 'DeviceFarm_ScheduleRunTest'
+                         },
+               'DevicePoolArn' => {
+                                    'type' => 'Str'
+                                  },
+               'AppArn' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Configuration' => 'configuration',
+                       'TestType' => 'testType',
+                       'Test' => 'test',
+                       'DevicePoolArn' => 'devicePoolArn',
+                       'AppArn' => 'appArn'
+                     },
+  'IsRequired' => {
+                    'DevicePoolArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +102,7 @@ The ARN of the app that is associated with the specified device pool.
 
 
 
-=head2 Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
+=head2 Configuration => DeviceFarm_ScheduleRunConfiguration
 
 An object containing information about the settings for a run.
 
@@ -74,7 +114,7 @@ The device pool's ARN.
 
 
 
-=head2 Test => L<Paws::DeviceFarm::ScheduleRunTest>
+=head2 Test => DeviceFarm_ScheduleRunTest
 
 Information about the uploaded test to be run against the device pool.
 

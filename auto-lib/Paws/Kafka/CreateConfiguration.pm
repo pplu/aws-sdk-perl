@@ -1,17 +1,52 @@
 
 package Paws::Kafka::CreateConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has KafkaVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'kafkaVersions', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ServerProperties => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Kafka::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has KafkaVersions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServerProperties => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/configurations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::CreateConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/configurations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::CreateConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerProperties' => {
+                                       'type' => 'Str'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'KafkaVersions' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ServerProperties' => 'serverProperties',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'KafkaVersions' => 'kafkaVersions'
+                     },
+  'IsRequired' => {
+                    'ServerProperties' => 1,
+                    'Name' => 1,
+                    'KafkaVersions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -7,7 +7,7 @@ package Paws::EC2::CreateVpcResult;
   has Vpc => (is => 'ro', isa => EC2_Vpc);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Vpc' => {
@@ -23,8 +23,8 @@ package Paws::EC2::CreateVpcResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

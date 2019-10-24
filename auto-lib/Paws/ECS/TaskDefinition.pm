@@ -1,23 +1,116 @@
+# Generated from default/object.tt
 package Paws::ECS::TaskDefinition;
-  use Moose;
-  has Compatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'compatibilities', traits => ['NameInRequest']);
-  has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', request_name => 'containerDefinitions', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
-  has Family => (is => 'ro', isa => 'Str', request_name => 'family', traits => ['NameInRequest']);
-  has IpcMode => (is => 'ro', isa => 'Str', request_name => 'ipcMode', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
-  has NetworkMode => (is => 'ro', isa => 'Str', request_name => 'networkMode', traits => ['NameInRequest']);
-  has PidMode => (is => 'ro', isa => 'Str', request_name => 'pidMode', traits => ['NameInRequest']);
-  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
-  has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', request_name => 'proxyConfiguration', traits => ['NameInRequest']);
-  has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'requiresAttributes', traits => ['NameInRequest']);
-  has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiresCompatibilities', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
-  has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::ECS::Types qw/ECS_ProxyConfiguration ECS_Volume ECS_TaskDefinitionPlacementConstraint ECS_ContainerDefinition ECS_Attribute/;
+  has Compatibilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ContainerDefinitions => (is => 'ro', isa => ArrayRef[ECS_ContainerDefinition]);
+  has Cpu => (is => 'ro', isa => Str);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has Family => (is => 'ro', isa => Str);
+  has IpcMode => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Str);
+  has NetworkMode => (is => 'ro', isa => Str);
+  has PidMode => (is => 'ro', isa => Str);
+  has PlacementConstraints => (is => 'ro', isa => ArrayRef[ECS_TaskDefinitionPlacementConstraint]);
+  has ProxyConfiguration => (is => 'ro', isa => ECS_ProxyConfiguration);
+  has RequiresAttributes => (is => 'ro', isa => ArrayRef[ECS_Attribute]);
+  has RequiresCompatibilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Revision => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has TaskDefinitionArn => (is => 'ro', isa => Str);
+  has TaskRoleArn => (is => 'ro', isa => Str);
+  has Volumes => (is => 'ro', isa => ArrayRef[ECS_Volume]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'type' => 'Int'
+                             },
+               'NetworkMode' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'IpcMode' => {
+                              'type' => 'Str'
+                            },
+               'PidMode' => {
+                              'type' => 'Str'
+                            },
+               'Compatibilities' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'TaskRoleArn' => {
+                                  'type' => 'Str'
+                                },
+               'TaskDefinitionArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ProxyConfiguration' => {
+                                         'class' => 'Paws::ECS::ProxyConfiguration',
+                                         'type' => 'ECS_ProxyConfiguration'
+                                       },
+               'ContainerDefinitions' => {
+                                           'class' => 'Paws::ECS::ContainerDefinition',
+                                           'type' => 'ArrayRef[ECS_ContainerDefinition]'
+                                         },
+               'Cpu' => {
+                          'type' => 'Str'
+                        },
+               'Volumes' => {
+                              'class' => 'Paws::ECS::Volume',
+                              'type' => 'ArrayRef[ECS_Volume]'
+                            },
+               'PlacementConstraints' => {
+                                           'class' => 'Paws::ECS::TaskDefinitionPlacementConstraint',
+                                           'type' => 'ArrayRef[ECS_TaskDefinitionPlacementConstraint]'
+                                         },
+               'RequiresAttributes' => {
+                                         'class' => 'Paws::ECS::Attribute',
+                                         'type' => 'ArrayRef[ECS_Attribute]'
+                                       },
+               'Memory' => {
+                             'type' => 'Str'
+                           },
+               'RequiresCompatibilities' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            }
+             },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'NetworkMode' => 'networkMode',
+                       'Status' => 'status',
+                       'ExecutionRoleArn' => 'executionRoleArn',
+                       'Family' => 'family',
+                       'IpcMode' => 'ipcMode',
+                       'PidMode' => 'pidMode',
+                       'Compatibilities' => 'compatibilities',
+                       'TaskRoleArn' => 'taskRoleArn',
+                       'TaskDefinitionArn' => 'taskDefinitionArn',
+                       'ProxyConfiguration' => 'proxyConfiguration',
+                       'ContainerDefinitions' => 'containerDefinitions',
+                       'Cpu' => 'cpu',
+                       'Volumes' => 'volumes',
+                       'PlacementConstraints' => 'placementConstraints',
+                       'RequiresAttributes' => 'requiresAttributes',
+                       'Memory' => 'memory',
+                       'RequiresCompatibilities' => 'requiresCompatibilities'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +158,7 @@ ECS Launch Types
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
+=head2 ContainerDefinitions => ArrayRef[ECS_ContainerDefinition]
 
   A list of container definitions in JSON format that describe the
 different containers that make up your task. For more information about
@@ -280,13 +373,13 @@ This parameter is not supported for Windows containers or tasks using
 the Fargate launch type.
 
 
-=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
+=head2 PlacementConstraints => ArrayRef[ECS_TaskDefinitionPlacementConstraint]
 
   An array of placement constraint objects to use for tasks. This field
 is not valid if you are using the Fargate launch type for your task.
 
 
-=head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
+=head2 ProxyConfiguration => ECS_ProxyConfiguration
 
   The configuration details for the App Mesh proxy.
 
@@ -301,7 +394,7 @@ AMI
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 RequiresAttributes => ArrayRef[ECS_Attribute]
 
   The container instance attributes required by your task. This field is
 not valid if you are using the Fargate launch type for your task.
@@ -350,7 +443,7 @@ for Tasks
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
+=head2 Volumes => ArrayRef[ECS_Volume]
 
   The list of volume definitions for the task.
 

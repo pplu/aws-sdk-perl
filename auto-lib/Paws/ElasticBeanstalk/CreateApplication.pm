@@ -1,16 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::ElasticBeanstalk::CreateApplication;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has ResourceLifecycleConfig => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ApplicationResourceLifecycleConfig ElasticBeanstalk_Tag/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceLifecycleConfig => (is => 'ro', isa => ElasticBeanstalk_ApplicationResourceLifecycleConfig, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationDescriptionMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApplicationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticBeanstalk::ApplicationDescriptionMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateApplicationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceLifecycleConfig' => {
+                                              'class' => 'Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig',
+                                              'type' => 'ElasticBeanstalk_ApplicationResourceLifecycleConfig'
+                                            },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'Tags' => {
+                           'class' => 'Paws::ElasticBeanstalk::Tag',
+                           'type' => 'ArrayRef[ElasticBeanstalk_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -64,14 +94,14 @@ Describes the application.
 
 
 
-=head2 ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+=head2 ResourceLifecycleConfig => ElasticBeanstalk_ApplicationResourceLifecycleConfig
 
 Specify an application resource lifecycle configuration to prevent your
 application from accumulating too many versions.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]
+=head2 Tags => ArrayRef[ElasticBeanstalk_Tag]
 
 Specifies the tags applied to the application.
 

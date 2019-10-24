@@ -1,17 +1,48 @@
 
 package Paws::Backup::CreateBackupVault;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has BackupVaultTags => (is => 'ro', isa => 'Paws::Backup::Tags');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has EncryptionKeyArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_Tags/;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BackupVaultTags => (is => 'ro', isa => Backup_Tags, predicate => 1);
+  has CreatorRequestId => (is => 'ro', isa => Str, predicate => 1);
+  has EncryptionKeyArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBackupVault');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::CreateBackupVaultOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBackupVault');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::CreateBackupVaultOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'EncryptionKeyArn' => {
+                                       'type' => 'Str'
+                                     },
+               'BackupVaultTags' => {
+                                      'class' => 'Paws::Backup::Tags',
+                                      'type' => 'Backup_Tags'
+                                    },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'BackupVaultName' => 'backupVaultName'
+                  },
+  'IsRequired' => {
+                    'BackupVaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +91,7 @@ lowercase letters, numbers, and hyphens.
 
 
 
-=head2 BackupVaultTags => L<Paws::Backup::Tags>
+=head2 BackupVaultTags => Backup_Tags
 
 Metadata that you can assign to help organize the resources that you
 create. Each tag is a key-value pair.

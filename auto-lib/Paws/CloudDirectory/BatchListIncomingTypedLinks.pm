@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListIncomingTypedLinks;
-  use Moose;
-  has FilterAttributeRanges => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::TypedLinkAttributeRange]');
-  has FilterTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference CloudDirectory_TypedLinkAttributeRange CloudDirectory_TypedLinkSchemaAndFacetName/;
+  has FilterAttributeRanges => (is => 'ro', isa => ArrayRef[CloudDirectory_TypedLinkAttributeRange]);
+  has FilterTypedLink => (is => 'ro', isa => CloudDirectory_TypedLinkSchemaAndFacetName);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilterAttributeRanges' => {
+                                            'class' => 'Paws::CloudDirectory::TypedLinkAttributeRange',
+                                            'type' => 'ArrayRef[CloudDirectory_TypedLinkAttributeRange]'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FilterTypedLink' => {
+                                      'class' => 'Paws::CloudDirectory::TypedLinkSchemaAndFacetName',
+                                      'type' => 'CloudDirectory_TypedLinkSchemaAndFacetName'
+                                    },
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'IsRequired' => {
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +78,7 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 FilterAttributeRanges => ArrayRef[L<Paws::CloudDirectory::TypedLinkAttributeRange>]
+=head2 FilterAttributeRanges => ArrayRef[CloudDirectory_TypedLinkAttributeRange]
 
   Provides range filters for multiple attributes. When providing ranges
 to typed link selection, any inexact ranges must be specified at the
@@ -51,7 +86,7 @@ end. Any attributes that do not have a range specified are presumed to
 match the entire range.
 
 
-=head2 FilterTypedLink => L<Paws::CloudDirectory::TypedLinkSchemaAndFacetName>
+=head2 FilterTypedLink => CloudDirectory_TypedLinkSchemaAndFacetName
 
   Filters are interpreted in the order of the attributes on the typed
 link facet, not the order in which they are supplied to any API calls.
@@ -67,7 +102,7 @@ link facet, not the order in which they are supplied to any API calls.
   The pagination token.
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   The reference that identifies the object whose attributes will be
 listed.

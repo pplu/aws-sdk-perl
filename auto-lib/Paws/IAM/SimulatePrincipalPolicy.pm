@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::SimulatePrincipalPolicy;
   use Moo;
@@ -58,7 +59,11 @@ package Paws::IAM::SimulatePrincipalPolicy;
                'CallerArn' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'PolicySourceArn' => 1,
+                    'ActionNames' => 1
+                  }
 }
 ;
     return $Params_map;

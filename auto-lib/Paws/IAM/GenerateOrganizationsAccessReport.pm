@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GenerateOrganizationsAccessReport;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::GenerateOrganizationsAccessReport;
                'OrganizationsPolicyId' => {
                                             'type' => 'Str'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'EntityPath' => 1
+                  }
 }
 ;
     return $Params_map;

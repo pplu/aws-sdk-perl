@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AddCustomAttributes;
-  use Moose;
-  has CustomAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_SchemaAttributeType/;
+  has CustomAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_SchemaAttributeType], required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddCustomAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AddCustomAttributesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddCustomAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AddCustomAttributesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'CustomAttributes' => {
+                                       'class' => 'Paws::CognitoIdp::SchemaAttributeType',
+                                       'type' => 'ArrayRef[CognitoIdp_SchemaAttributeType]'
+                                     }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'CustomAttributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CustomAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+=head2 B<REQUIRED> CustomAttributes => ArrayRef[CognitoIdp_SchemaAttributeType]
 
 An array of custom attributes, such as Mutable and Name.
 

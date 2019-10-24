@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::DescribeReplicationInstancesResponse;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has ReplicationInstances => (is => 'ro', isa => 'ArrayRef[Paws::DMS::ReplicationInstance]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_ReplicationInstance/;
+  has Marker => (is => 'ro', isa => Str);
+  has ReplicationInstances => (is => 'ro', isa => ArrayRef[DMS_ReplicationInstance]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationInstances' => {
+                                           'class' => 'Paws::DMS::ReplicationInstance',
+                                           'type' => 'ArrayRef[DMS_ReplicationInstance]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 ReplicationInstances => ArrayRef[L<Paws::DMS::ReplicationInstance>]
+=head2 ReplicationInstances => ArrayRef[DMS_ReplicationInstance]
 
 The replication instances described.
 

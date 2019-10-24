@@ -1,20 +1,110 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Finding;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has Confidence => (is => 'ro', isa => 'Num', request_name => 'confidence', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Partition => (is => 'ro', isa => 'Str', request_name => 'partition', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest'], required => 1);
-  has Resource => (is => 'ro', isa => 'Paws::GuardDuty::Resource', request_name => 'resource', traits => ['NameInRequest'], required => 1);
-  has SchemaVersion => (is => 'ro', isa => 'Str', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
-  has Service => (is => 'ro', isa => 'Paws::GuardDuty::Service', request_name => 'service', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Num', request_name => 'severity', traits => ['NameInRequest'], required => 1);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::GuardDuty::Types qw/GuardDuty_Service GuardDuty_Resource/;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Confidence => (is => 'ro', isa => Num);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Partition => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str, required => 1);
+  has Resource => (is => 'ro', isa => GuardDuty_Resource, required => 1);
+  has SchemaVersion => (is => 'ro', isa => Str, required => 1);
+  has Service => (is => 'ro', isa => GuardDuty_Service);
+  has Severity => (is => 'ro', isa => Num, required => 1);
+  has Title => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Resource' => {
+                               'class' => 'Paws::GuardDuty::Resource',
+                               'type' => 'GuardDuty_Resource'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Service' => {
+                              'class' => 'Paws::GuardDuty::Service',
+                              'type' => 'GuardDuty_Service'
+                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Partition' => {
+                                'type' => 'Str'
+                              },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'Severity' => {
+                               'type' => 'Num'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'SchemaVersion' => 'schemaVersion',
+                       'Resource' => 'resource',
+                       'Id' => 'id',
+                       'Title' => 'title',
+                       'Service' => 'service',
+                       'Type' => 'type',
+                       'UpdatedAt' => 'updatedAt',
+                       'CreatedAt' => 'createdAt',
+                       'AccountId' => 'accountId',
+                       'Arn' => 'arn',
+                       'Partition' => 'partition',
+                       'Confidence' => 'confidence',
+                       'Severity' => 'severity',
+                       'Description' => 'description',
+                       'Region' => 'region'
+                     },
+  'IsRequired' => {
+                    'SchemaVersion' => 1,
+                    'Resource' => 1,
+                    'Id' => 1,
+                    'Type' => 1,
+                    'UpdatedAt' => 1,
+                    'CreatedAt' => 1,
+                    'AccountId' => 1,
+                    'Arn' => 1,
+                    'Region' => 1,
+                    'Severity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +182,7 @@ generate a finding.
 generate a finding.
 
 
-=head2 B<REQUIRED> Resource => L<Paws::GuardDuty::Resource>
+=head2 B<REQUIRED> Resource => GuardDuty_Resource
 
   The AWS resource associated with the activity that prompted GuardDuty
 to generate a finding.
@@ -103,7 +193,7 @@ to generate a finding.
   Findings' schema version.
 
 
-=head2 Service => L<Paws::GuardDuty::Service>
+=head2 Service => GuardDuty_Service
 
   Additional information assigned to the generated finding by GuardDuty.
 

@@ -1,12 +1,46 @@
 
 package Paws::Route53::ListTrafficPoliciesResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyIdMarker => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicySummaries => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicySummary]', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Route53::Types qw/Route53_TrafficPolicySummary/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyIdMarker => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicySummaries => (is => 'ro', isa => ArrayRef[Route53_TrafficPolicySummary], required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficPolicyIdMarker' => {
+                                            'type' => 'Str'
+                                          },
+               'TrafficPolicySummaries' => {
+                                             'class' => 'Paws::Route53::TrafficPolicySummary',
+                                             'type' => 'ArrayRef[Route53_TrafficPolicySummary]'
+                                           }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'TrafficPolicyIdMarker' => 1,
+                    'TrafficPolicySummaries' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +77,7 @@ traffic policies.
 
 
 
-=head2 B<REQUIRED> TrafficPolicySummaries => ArrayRef[L<Paws::Route53::TrafficPolicySummary>]
+=head2 B<REQUIRED> TrafficPolicySummaries => ArrayRef[Route53_TrafficPolicySummary]
 
 A list that contains one C<TrafficPolicySummary> element for each
 traffic policy that was created by the current AWS account.

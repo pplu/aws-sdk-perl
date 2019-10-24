@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::UserInfo;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str', request_name => 'date', traits => ['NameInRequest']);
-  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'Date' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'Email' => 'email',
+                       'Date' => 'date'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

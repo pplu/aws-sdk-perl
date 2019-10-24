@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageIdentifier;
-  use Moose;
-  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
-  has ImageTag => (is => 'ro', isa => 'Str', request_name => 'imageTag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has ImageDigest => (is => 'ro', isa => Str);
+  has ImageTag => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'ImageTag' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ImageDigest' => 'imageDigest',
+                       'ImageTag' => 'imageTag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

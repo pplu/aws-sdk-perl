@@ -1,16 +1,47 @@
 
 package Paws::CloudDirectory::RemoveFacetFromObject;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet CloudDirectory_ObjectReference/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1, predicate => 1);
+  has SchemaFacet => (is => 'ro', isa => CloudDirectory_SchemaFacet, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveFacetFromObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/facets/delete');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::RemoveFacetFromObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveFacetFromObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/object/facets/delete');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::RemoveFacetFromObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'SchemaFacet' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'CloudDirectory_SchemaFacet'
+                                },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'ObjectReference' => 1,
+                    'SchemaFacet' => 1,
+                    'DirectoryArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,13 +85,13 @@ The ARN of the directory in which the object resides.
 
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
 A reference to the object to remove the facet from.
 
 
 
-=head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=head2 B<REQUIRED> SchemaFacet => CloudDirectory_SchemaFacet
 
 The facet to remove. See SchemaFacet for details.
 

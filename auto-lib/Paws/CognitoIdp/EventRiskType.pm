@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::EventRiskType;
-  use Moose;
-  has RiskDecision => (is => 'ro', isa => 'Str');
-  has RiskLevel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has RiskDecision => (is => 'ro', isa => Str);
+  has RiskLevel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RiskLevel' => {
+                                'type' => 'Str'
+                              },
+               'RiskDecision' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

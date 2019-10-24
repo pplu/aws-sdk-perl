@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceResizePolicy;
-  use Moose;
-  has InstancesToProtect => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InstancesToTerminate => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InstanceTerminationTimeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::EMR::Types qw//;
+  has InstancesToProtect => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InstancesToTerminate => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InstanceTerminationTimeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceTerminationTimeout' => {
+                                                 'type' => 'Int'
+                                               },
+               'InstancesToProtect' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'InstancesToTerminate' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

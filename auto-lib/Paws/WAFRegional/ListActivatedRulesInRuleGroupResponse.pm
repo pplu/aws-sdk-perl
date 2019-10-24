@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListActivatedRulesInRuleGroupResponse;
-  use Moose;
-  has ActivatedRules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ActivatedRule]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_ActivatedRule/;
+  has ActivatedRules => (is => 'ro', isa => ArrayRef[WAFRegional_ActivatedRule]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivatedRules' => {
+                                     'class' => 'Paws::WAFRegional::ActivatedRule',
+                                     'type' => 'ArrayRef[WAFRegional_ActivatedRule]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAFRegional::ListActivatedRulesInRuleGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 ActivatedRules => ArrayRef[L<Paws::WAFRegional::ActivatedRule>]
+=head2 ActivatedRules => ArrayRef[WAFRegional_ActivatedRule]
 
 An array of C<ActivatedRules> objects.
 

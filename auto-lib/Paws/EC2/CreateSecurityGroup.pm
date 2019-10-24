@@ -14,7 +14,7 @@ package Paws::EC2::CreateSecurityGroup;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateSecurityGroupResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -33,11 +33,15 @@ package Paws::EC2::CreateSecurityGroup;
   'NameInRequest' => {
                        'DryRun' => 'dryRun',
                        'Description' => 'GroupDescription'
-                     }
+                     },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'Description' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

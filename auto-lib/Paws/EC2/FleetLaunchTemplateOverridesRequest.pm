@@ -9,7 +9,7 @@ package Paws::EC2::FleetLaunchTemplateOverridesRequest;
   has SubnetId => (is => 'ro', isa => Str);
   has WeightedCapacity => (is => 'ro', isa => Num);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceType' => {
@@ -37,8 +37,8 @@ package Paws::EC2::FleetLaunchTemplateOverridesRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

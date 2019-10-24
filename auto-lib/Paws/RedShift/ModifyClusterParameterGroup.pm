@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ModifyClusterParameterGroup;
-  use Moose;
-  has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Parameter]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Parameter/;
+  has ParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[RedShift_Parameter], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ClusterParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::RedShift::Parameter',
+                                 'type' => 'ArrayRef[RedShift_Parameter]'
+                               },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'Parameters' => 1,
+                    'ParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +92,7 @@ The name of the parameter group to be modified.
 
 
 
-=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
+=head2 B<REQUIRED> Parameters => ArrayRef[RedShift_Parameter]
 
 An array of parameters to be modified. A maximum of 20 parameters can
 be modified in a single request.

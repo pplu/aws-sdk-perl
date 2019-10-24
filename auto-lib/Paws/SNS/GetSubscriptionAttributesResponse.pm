@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::SNS::GetSubscriptionAttributesResponse;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::SubscriptionAttributesMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_SubscriptionAttributesMap/;
+  has Attributes => (is => 'ro', isa => SNS_SubscriptionAttributesMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::SubscriptionAttributesMap',
+                                 'type' => 'SNS_SubscriptionAttributesMap'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::SNS::GetSubscriptionAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
+=head2 Attributes => SNS_SubscriptionAttributesMap
 
 A map of the subscription's attributes. Attributes in this map include
 the following:

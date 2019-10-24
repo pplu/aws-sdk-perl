@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::SSM::ComplianceSummaryItem;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has CompliantSummary => (is => 'ro', isa => 'Paws::SSM::CompliantSummary');
-  has NonCompliantSummary => (is => 'ro', isa => 'Paws::SSM::NonCompliantSummary');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_NonCompliantSummary SSM_CompliantSummary/;
+  has ComplianceType => (is => 'ro', isa => Str);
+  has CompliantSummary => (is => 'ro', isa => SSM_CompliantSummary);
+  has NonCompliantSummary => (is => 'ro', isa => SSM_NonCompliantSummary);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'NonCompliantSummary' => {
+                                          'class' => 'Paws::SSM::NonCompliantSummary',
+                                          'type' => 'SSM_NonCompliantSummary'
+                                        },
+               'CompliantSummary' => {
+                                       'class' => 'Paws::SSM::CompliantSummary',
+                                       'type' => 'SSM_CompliantSummary'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +69,12 @@ A summary of compliance information by compliance type.
 Association, Patch, or Custom:string.
 
 
-=head2 CompliantSummary => L<Paws::SSM::CompliantSummary>
+=head2 CompliantSummary => SSM_CompliantSummary
 
   A list of COMPLIANT items for the specified compliance type.
 
 
-=head2 NonCompliantSummary => L<Paws::SSM::NonCompliantSummary>
+=head2 NonCompliantSummary => SSM_NonCompliantSummary
 
   A list of NON_COMPLIANT items for the specified compliance type.
 

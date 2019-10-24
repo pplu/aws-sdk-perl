@@ -1,10 +1,31 @@
 
 package Paws::Connect::GetMetricDataResponse;
-  use Moose;
-  has MetricResults => (is => 'ro', isa => 'ArrayRef[Paws::Connect::HistoricalMetricResult]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Connect::Types qw/Connect_HistoricalMetricResult/;
+  has MetricResults => (is => 'ro', isa => ArrayRef[Connect_HistoricalMetricResult]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricResults' => {
+                                    'class' => 'Paws::Connect::HistoricalMetricResult',
+                                    'type' => 'ArrayRef[Connect_HistoricalMetricResult]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Connect::GetMetricDataResponse
 =head1 ATTRIBUTES
 
 
-=head2 MetricResults => ArrayRef[L<Paws::Connect::HistoricalMetricResult>]
+=head2 MetricResults => ArrayRef[Connect_HistoricalMetricResult]
 
 A list of C<HistoricalMetricResult> objects, organized by
 C<Dimensions>, which is the ID of the resource specified in the

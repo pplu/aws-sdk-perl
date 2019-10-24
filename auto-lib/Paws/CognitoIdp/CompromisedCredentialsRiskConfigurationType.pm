@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::CompromisedCredentialsRiskConfigurationType;
-  use Moose;
-  has Actions => (is => 'ro', isa => 'Paws::CognitoIdp::CompromisedCredentialsActionsType', required => 1);
-  has EventFilter => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_CompromisedCredentialsActionsType/;
+  has Actions => (is => 'ro', isa => CognitoIdp_CompromisedCredentialsActionsType, required => 1);
+  has EventFilter => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Actions' => {
+                              'class' => 'Paws::CognitoIdp::CompromisedCredentialsActionsType',
+                              'type' => 'CognitoIdp_CompromisedCredentialsActionsType'
+                            },
+               'EventFilter' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'IsRequired' => {
+                    'Actions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ The compromised credentials risk configuration type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Actions => L<Paws::CognitoIdp::CompromisedCredentialsActionsType>
+=head2 B<REQUIRED> Actions => CognitoIdp_CompromisedCredentialsActionsType
 
   The compromised credentials risk configuration actions.
 

@@ -1,21 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreateGameSession;
-  use Moose;
-  has AliasId => (is => 'ro', isa => 'Str');
-  has CreatorId => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
-  has GameSessionData => (is => 'ro', isa => 'Str');
-  has GameSessionId => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::GameLift::Types qw/GameLift_GameProperty/;
+  has AliasId => (is => 'ro', isa => Str, predicate => 1);
+  has CreatorId => (is => 'ro', isa => Str, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, predicate => 1);
+  has GameProperties => (is => 'ro', isa => ArrayRef[GameLift_GameProperty], predicate => 1);
+  has GameSessionData => (is => 'ro', isa => Str, predicate => 1);
+  has GameSessionId => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has MaximumPlayerSessionCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGameSession');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreateGameSessionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGameSession');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreateGameSessionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'GameProperties' => {
+                                     'class' => 'Paws::GameLift::GameProperty',
+                                     'type' => 'ArrayRef[GameLift_GameProperty]'
+                                   },
+               'CreatorId' => {
+                                'type' => 'Str'
+                              },
+               'AliasId' => {
+                              'type' => 'Str'
+                            },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'GameSessionData' => {
+                                      'type' => 'Str'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaximumPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'MaximumPlayerSessionCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +133,7 @@ must reference either a fleet ID or alias ID, but not both.
 
 
 
-=head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
+=head2 GameProperties => ArrayRef[GameLift_GameProperty]
 
 Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the

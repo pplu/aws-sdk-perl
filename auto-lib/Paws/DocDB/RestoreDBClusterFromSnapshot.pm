@@ -1,24 +1,79 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::RestoreDBClusterFromSnapshot;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::RestoreDBClusterFromSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::RestoreDBClusterFromSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                }
+             },
+  'IsRequired' => {
+                    'Engine' => 1,
+                    'SnapshotIdentifier' => 1,
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -212,7 +267,7 @@ Must match the identifier of an existing snapshot.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the restored DB cluster.
 

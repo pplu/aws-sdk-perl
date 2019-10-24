@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::PerformanceInsights::DimensionKeyDescription;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionMap');
-  has Partitions => (is => 'ro', isa => 'ArrayRef[Num]');
-  has Total => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DimensionMap/;
+  has Dimensions => (is => 'ro', isa => PerformanceInsights_DimensionMap);
+  has Partitions => (is => 'ro', isa => ArrayRef[Num]);
+  has Total => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Num'
+                          },
+               'Dimensions' => {
+                                 'class' => 'Paws::PerformanceInsights::DimensionMap',
+                                 'type' => 'PerformanceInsights_DimensionMap'
+                               },
+               'Partitions' => {
+                                 'type' => 'ArrayRef[Num]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ within a dimension group.
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => L<Paws::PerformanceInsights::DimensionMap>
+=head2 Dimensions => PerformanceInsights_DimensionMap
 
   A map of name-value pairs for the dimensions in the group.
 

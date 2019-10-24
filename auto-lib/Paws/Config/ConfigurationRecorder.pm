@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigurationRecorder;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RecordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup', request_name => 'recordingGroup', traits => ['NameInRequest']);
-  has RoleARN => (is => 'ro', isa => 'Str', request_name => 'roleARN', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_RecordingGroup/;
+  has Name => (is => 'ro', isa => Str);
+  has RecordingGroup => (is => 'ro', isa => Config_RecordingGroup);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'RecordingGroup' => {
+                                     'class' => 'Paws::Config::RecordingGroup',
+                                     'type' => 'Config_RecordingGroup'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RoleARN' => 'roleARN',
+                       'RecordingGroup' => 'recordingGroup',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +75,7 @@ the name "default" when creating the configuration recorder. You cannot
 change the assigned name.
 
 
-=head2 RecordingGroup => L<Paws::Config::RecordingGroup>
+=head2 RecordingGroup => Config_RecordingGroup
 
   Specifies the types of AWS resources for which AWS Config records
 configuration changes.

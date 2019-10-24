@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ElastiCacheInstanceDetails;
-  use Moose;
-  has CurrentGeneration => (is => 'ro', isa => 'Bool');
-  has Family => (is => 'ro', isa => 'Str');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has SizeFlexEligible => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CostExplorer::Types qw//;
+  has CurrentGeneration => (is => 'ro', isa => Bool);
+  has Family => (is => 'ro', isa => Str);
+  has NodeType => (is => 'ro', isa => Str);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has SizeFlexEligible => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Family' => {
+                             'type' => 'Str'
+                           },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'SizeFlexEligible' => {
+                                       'type' => 'Bool'
+                                     },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'CurrentGeneration' => {
+                                        'type' => 'Bool'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

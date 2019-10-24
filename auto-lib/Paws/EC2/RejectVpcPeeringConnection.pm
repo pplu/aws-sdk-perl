@@ -12,7 +12,7 @@ package Paws::EC2::RejectVpcPeeringConnection;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::RejectVpcPeeringConnectionResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -25,11 +25,14 @@ package Paws::EC2::RejectVpcPeeringConnection;
   'NameInRequest' => {
                        'DryRun' => 'dryRun',
                        'VpcPeeringConnectionId' => 'vpcPeeringConnectionId'
-                     }
+                     },
+  'IsRequired' => {
+                    'VpcPeeringConnectionId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

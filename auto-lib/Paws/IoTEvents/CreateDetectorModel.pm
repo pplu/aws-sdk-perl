@@ -1,19 +1,64 @@
 
 package Paws::IoTEvents::CreateDetectorModel;
-  use Moose;
-  has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', traits => ['NameInRequest'], request_name => 'detectorModelDefinition', required => 1);
-  has DetectorModelDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelDescription');
-  has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelName', required => 1);
-  has Key => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'key');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEvents::Types qw/IoTEvents_Tag IoTEvents_DetectorModelDefinition/;
+  has DetectorModelDefinition => (is => 'ro', isa => IoTEvents_DetectorModelDefinition, required => 1, predicate => 1);
+  has DetectorModelDescription => (is => 'ro', isa => Str, predicate => 1);
+  has DetectorModelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Key => (is => 'ro', isa => Str, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTEvents_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDetectorModel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector-models');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTEvents::CreateDetectorModelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDetectorModel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector-models');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTEvents::CreateDetectorModelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetectorModelDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'DetectorModelDefinition' => {
+                                              'class' => 'Paws::IoTEvents::DetectorModelDefinition',
+                                              'type' => 'IoTEvents_DetectorModelDefinition'
+                                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::IoTEvents::Tag',
+                           'type' => 'ArrayRef[IoTEvents_Tag]'
+                         },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'DetectorModelDescription' => 'detectorModelDescription',
+                       'DetectorModelDefinition' => 'detectorModelDefinition',
+                       'RoleArn' => 'roleArn',
+                       'Tags' => 'tags',
+                       'Key' => 'key',
+                       'DetectorModelName' => 'detectorModelName'
+                     },
+  'IsRequired' => {
+                    'DetectorModelDefinition' => 1,
+                    'RoleArn' => 1,
+                    'DetectorModelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -229,7 +274,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DetectorModelDefinition => L<Paws::IoTEvents::DetectorModelDefinition>
+=head2 B<REQUIRED> DetectorModelDefinition => IoTEvents_DetectorModelDefinition
 
 Information that defines how the detectors operate.
 
@@ -265,7 +310,7 @@ its operations.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTEvents::Tag>]
+=head2 Tags => ArrayRef[IoTEvents_Tag]
 
 Metadata which can be used to manage the detector model.
 

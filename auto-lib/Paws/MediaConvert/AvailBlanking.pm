@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AvailBlanking;
-  use Moose;
-  has AvailBlankingImage => (is => 'ro', isa => 'Str', request_name => 'availBlankingImage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has AvailBlankingImage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AvailBlankingImage' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'AvailBlankingImage' => 'availBlankingImage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

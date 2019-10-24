@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::BatchResultErrorEntry;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -22,7 +23,12 @@ package Paws::SQS::BatchResultErrorEntry;
                'SenderFault' => {
                                   'type' => 'Bool'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'Code' => 1,
+                    'Id' => 1,
+                    'SenderFault' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::History;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::HistoryEvent]', traits => ['NameInRequest'], request_name => 'events' , required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_HistoryEvent/;
+  has Events => (is => 'ro', isa => ArrayRef[SimpleWorkflow_HistoryEvent], required => 1);
+  has NextPageToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Events' => {
+                             'class' => 'Paws::SimpleWorkflow::HistoryEvent',
+                             'type' => 'ArrayRef[SimpleWorkflow_HistoryEvent]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'Events' => 'events'
+                     },
+  'IsRequired' => {
+                    'Events' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::SimpleWorkflow::History
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
+=head2 B<REQUIRED> Events => ArrayRef[SimpleWorkflow_HistoryEvent]
 
 The list of history events.
 

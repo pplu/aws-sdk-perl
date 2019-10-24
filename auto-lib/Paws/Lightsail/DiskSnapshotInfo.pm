@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Lightsail::DiskSnapshotInfo;
-  use Moose;
-  has SizeInGb => (is => 'ro', isa => 'Int', request_name => 'sizeInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Lightsail::Types qw//;
+  has SizeInGb => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeInGb' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'SizeInGb' => 'sizeInGb'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

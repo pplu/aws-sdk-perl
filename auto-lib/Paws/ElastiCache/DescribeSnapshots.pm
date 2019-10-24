@@ -1,19 +1,53 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::DescribeSnapshots;
-  use Moose;
-  has CacheClusterId => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has ShowNodeGroupConfig => (is => 'ro', isa => 'Bool');
-  has SnapshotName => (is => 'ro', isa => 'Str');
-  has SnapshotSource => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, predicate => 1);
+  has ShowNodeGroupConfig => (is => 'ro', isa => Bool, predicate => 1);
+  has SnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotSource => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshots');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::DescribeSnapshotsListMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeSnapshots');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::DescribeSnapshotsListMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeSnapshotsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'CacheClusterId' => {
+                                     'type' => 'Str'
+                                   },
+               'ShowNodeGroupConfig' => {
+                                          'type' => 'Bool'
+                                        },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'SnapshotSource' => {
+                                     'type' => 'Str'
+                                   },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

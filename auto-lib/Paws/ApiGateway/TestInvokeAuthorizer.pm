@@ -1,21 +1,77 @@
 
 package Paws::ApiGateway::TestInvokeAuthorizer;
-  use Moose;
-  has AdditionalContext => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'additionalContext');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizer_id', required => 1);
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'headers');
-  has MultiValueHeaders => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToList', traits => ['NameInRequest'], request_name => 'multiValueHeaders');
-  has PathWithQueryString => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pathWithQueryString');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'stageVariables');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_MapOfStringToList/;
+  has AdditionalContext => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has AuthorizerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Body => (is => 'ro', isa => Str, predicate => 1);
+  has Headers => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has MultiValueHeaders => (is => 'ro', isa => ApiGateway_MapOfStringToList, predicate => 1);
+  has PathWithQueryString => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageVariables => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TestInvokeAuthorizer');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/authorizers/{authorizer_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::TestInvokeAuthorizerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TestInvokeAuthorizer');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/authorizers/{authorizer_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::TestInvokeAuthorizerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'PathWithQueryString' => {
+                                          'type' => 'Str'
+                                        },
+               'Headers' => {
+                              'class' => 'Paws::ApiGateway::MapOfStringToString',
+                              'type' => 'ApiGateway_MapOfStringToString'
+                            },
+               'StageVariables' => {
+                                     'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                     'type' => 'ApiGateway_MapOfStringToString'
+                                   },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'AdditionalContext' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                        'type' => 'ApiGateway_MapOfStringToString'
+                                      },
+               'Body' => {
+                           'type' => 'Str'
+                         },
+               'MultiValueHeaders' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToList',
+                                        'type' => 'ApiGateway_MapOfStringToList'
+                                      }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'AuthorizerId' => 'authorizer_id'
+                  },
+  'NameInRequest' => {
+                       'AdditionalContext' => 'additionalContext',
+                       'PathWithQueryString' => 'pathWithQueryString',
+                       'Headers' => 'headers',
+                       'StageVariables' => 'stageVariables',
+                       'MultiValueHeaders' => 'multiValueHeaders',
+                       'Body' => 'body'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'AuthorizerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>
+=head2 AdditionalContext => ApiGateway_MapOfStringToString
 
 [Optional] A key-value map of additional context variables.
 
@@ -82,7 +138,7 @@ request.
 
 
 
-=head2 Headers => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Headers => ApiGateway_MapOfStringToString
 
 [Required] A key-value map of headers to simulate an incoming
 invocation request. This is where the incoming authorization token, or
@@ -90,7 +146,7 @@ identity source, should be specified.
 
 
 
-=head2 MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>
+=head2 MultiValueHeaders => ApiGateway_MapOfStringToList
 
 [Optional] The headers as a map from string to list of values to
 simulate an incoming invocation request. This is where the incoming
@@ -112,7 +168,7 @@ string parameters.
 
 
 
-=head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 StageVariables => ApiGateway_MapOfStringToString
 
 A key-value map of stage variables to simulate an invocation on a
 deployed Stage.

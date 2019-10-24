@@ -1,21 +1,84 @@
+# Generated from default/object.tt
 package Paws::GameLift::GameSession;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has CreatorId => (is => 'ro', isa => 'Str');
-  has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
-  has GameSessionData => (is => 'ro', isa => 'Str');
-  has GameSessionId => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has MatchmakerData => (is => 'ro', isa => 'Str');
-  has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
-  has PlayerSessionCreationPolicy => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
-  has TerminationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_GameProperty/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has CreatorId => (is => 'ro', isa => Str);
+  has CurrentPlayerSessionCount => (is => 'ro', isa => Int);
+  has FleetId => (is => 'ro', isa => Str);
+  has GameProperties => (is => 'ro', isa => ArrayRef[GameLift_GameProperty]);
+  has GameSessionData => (is => 'ro', isa => Str);
+  has GameSessionId => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has MatchmakerData => (is => 'ro', isa => Str);
+  has MaximumPlayerSessionCount => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has PlayerSessionCreationPolicy => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has TerminationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'MatchmakerData' => {
+                                     'type' => 'Str'
+                                   },
+               'GameProperties' => {
+                                     'class' => 'Paws::GameLift::GameProperty',
+                                     'type' => 'ArrayRef[GameLift_GameProperty]'
+                                   },
+               'CreatorId' => {
+                                'type' => 'Str'
+                              },
+               'TerminationTime' => {
+                                      'type' => 'Str'
+                                    },
+               'PlayerSessionCreationPolicy' => {
+                                                  'type' => 'Str'
+                                                },
+               'CurrentPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'GameSessionData' => {
+                                      'type' => 'Str'
+                                    },
+               'MaximumPlayerSessionCount' => {
+                                                'type' => 'Int'
+                                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -131,7 +194,7 @@ sessions a player can create.
   Unique identifier for a fleet that the game session is running on.
 
 
-=head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
+=head2 GameProperties => ArrayRef[GameLift_GameProperty]
 
   Set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the

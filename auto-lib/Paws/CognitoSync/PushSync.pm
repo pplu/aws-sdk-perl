@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoSync::PushSync;
-  use Moose;
-  has ApplicationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CognitoSync::Types qw//;
+  has ApplicationArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ApplicationArns' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

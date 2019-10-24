@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::AppMesh::WeightedTarget;
-  use Moose;
-  has VirtualNode => (is => 'ro', isa => 'Str', request_name => 'virtualNode', traits => ['NameInRequest'], required => 1);
-  has Weight => (is => 'ro', isa => 'Int', request_name => 'weight', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppMesh::Types qw//;
+  has VirtualNode => (is => 'ro', isa => Str, required => 1);
+  has Weight => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Weight' => {
+                             'type' => 'Int'
+                           },
+               'VirtualNode' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Weight' => 'weight',
+                       'VirtualNode' => 'virtualNode'
+                     },
+  'IsRequired' => {
+                    'Weight' => 1,
+                    'VirtualNode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

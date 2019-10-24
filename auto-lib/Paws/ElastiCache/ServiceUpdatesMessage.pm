@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::ElastiCache::ServiceUpdatesMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has ServiceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ServiceUpdate]', request_name => 'ServiceUpdate', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ServiceUpdate/;
+  has Marker => (is => 'ro', isa => Str);
+  has ServiceUpdates => (is => 'ro', isa => ArrayRef[ElastiCache_ServiceUpdate]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceUpdates' => {
+                                     'class' => 'Paws::ElastiCache::ServiceUpdate',
+                                     'type' => 'ArrayRef[ElastiCache_ServiceUpdate]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ServiceUpdates' => 'ServiceUpdate'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords>.
 
 
-=head2 ServiceUpdates => ArrayRef[L<Paws::ElastiCache::ServiceUpdate>]
+=head2 ServiceUpdates => ArrayRef[ElastiCache_ServiceUpdate]
 
 A list of service updates
 

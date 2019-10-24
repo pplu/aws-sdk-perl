@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::InstanceIdentity;
-  use Moose;
-  has Document => (is => 'ro', isa => 'Str', request_name => 'document', traits => ['NameInRequest']);
-  has Signature => (is => 'ro', isa => 'Str', request_name => 'signature', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has Document => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               'Document' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Signature' => 'signature',
+                       'Document' => 'document'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

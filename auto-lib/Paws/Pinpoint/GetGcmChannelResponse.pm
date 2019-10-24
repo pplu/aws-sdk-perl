@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::GetGcmChannelResponse;
-  use Moose;
-  has GCMChannelResponse => (is => 'ro', isa => 'Paws::Pinpoint::GCMChannelResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'GCMChannelResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_GCMChannelResponse/;
+  has GCMChannelResponse => (is => 'ro', isa => Pinpoint_GCMChannelResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GCMChannelResponse' => {
+                                         'class' => 'Paws::Pinpoint::GCMChannelResponse',
+                                         'type' => 'Pinpoint_GCMChannelResponse'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'GCMChannelResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::GetGcmChannelResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GCMChannelResponse => L<Paws::Pinpoint::GCMChannelResponse>
+=head2 B<REQUIRED> GCMChannelResponse => Pinpoint_GCMChannelResponse
 
 
 

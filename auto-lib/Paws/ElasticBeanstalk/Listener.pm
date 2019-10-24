@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::Listener;
-  use Moose;
-  has Port => (is => 'ro', isa => 'Int');
-  has Protocol => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Port => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Port' => {
+                           'type' => 'Int'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,31 @@
 
 package Paws::WorkLink::ListDomainsResponse;
-  use Moose;
-  has Domains => (is => 'ro', isa => 'ArrayRef[Paws::WorkLink::DomainSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkLink::Types qw/WorkLink_DomainSummary/;
+  has Domains => (is => 'ro', isa => ArrayRef[WorkLink_DomainSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Domains' => {
+                              'class' => 'Paws::WorkLink::DomainSummary',
+                              'type' => 'ArrayRef[WorkLink_DomainSummary]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::WorkLink::ListDomainsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Domains => ArrayRef[L<Paws::WorkLink::DomainSummary>]
+=head2 Domains => ArrayRef[WorkLink_DomainSummary]
 
 Information about the domains.
 

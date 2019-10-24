@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::CertificateAuthorityConfiguration;
-  use Moose;
-  has KeyAlgorithm => (is => 'ro', isa => 'Str', required => 1);
-  has SigningAlgorithm => (is => 'ro', isa => 'Str', required => 1);
-  has Subject => (is => 'ro', isa => 'Paws::ACMPCA::ASN1Subject', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw/ACMPCA_ASN1Subject/;
+  has KeyAlgorithm => (is => 'ro', isa => Str, required => 1);
+  has SigningAlgorithm => (is => 'ro', isa => Str, required => 1);
+  has Subject => (is => 'ro', isa => ACMPCA_ASN1Subject, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyAlgorithm' => {
+                                   'type' => 'Str'
+                                 },
+               'Subject' => {
+                              'class' => 'Paws::ACMPCA::ASN1Subject',
+                              'type' => 'ACMPCA_ASN1Subject'
+                            },
+               'SigningAlgorithm' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'KeyAlgorithm' => 1,
+                    'Subject' => 1,
+                    'SigningAlgorithm' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +87,7 @@ CA.
 requests.
 
 
-=head2 B<REQUIRED> Subject => L<Paws::ACMPCA::ASN1Subject>
+=head2 B<REQUIRED> Subject => ACMPCA_ASN1Subject
 
   Structure that contains X.500 distinguished name information for your
 private CA.

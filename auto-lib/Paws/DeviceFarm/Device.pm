@@ -1,26 +1,129 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Device;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Availability => (is => 'ro', isa => 'Str', request_name => 'availability', traits => ['NameInRequest']);
-  has Carrier => (is => 'ro', isa => 'Str', request_name => 'carrier', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', request_name => 'cpu', traits => ['NameInRequest']);
-  has FleetName => (is => 'ro', isa => 'Str', request_name => 'fleetName', traits => ['NameInRequest']);
-  has FleetType => (is => 'ro', isa => 'Str', request_name => 'fleetType', traits => ['NameInRequest']);
-  has FormFactor => (is => 'ro', isa => 'Str', request_name => 'formFactor', traits => ['NameInRequest']);
-  has HeapSize => (is => 'ro', isa => 'Int', request_name => 'heapSize', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
-  has Instances => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::DeviceInstance]', request_name => 'instances', traits => ['NameInRequest']);
-  has Manufacturer => (is => 'ro', isa => 'Str', request_name => 'manufacturer', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has Model => (is => 'ro', isa => 'Str', request_name => 'model', traits => ['NameInRequest']);
-  has ModelId => (is => 'ro', isa => 'Str', request_name => 'modelId', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Os => (is => 'ro', isa => 'Str', request_name => 'os', traits => ['NameInRequest']);
-  has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
-  has Radio => (is => 'ro', isa => 'Str', request_name => 'radio', traits => ['NameInRequest']);
-  has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteAccessEnabled', traits => ['NameInRequest']);
-  has RemoteDebugEnabled => (is => 'ro', isa => 'Bool', request_name => 'remoteDebugEnabled', traits => ['NameInRequest']);
-  has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', request_name => 'resolution', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Bool/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_DeviceInstance DeviceFarm_CPU DeviceFarm_Resolution/;
+  has Arn => (is => 'ro', isa => Str);
+  has Availability => (is => 'ro', isa => Str);
+  has Carrier => (is => 'ro', isa => Str);
+  has Cpu => (is => 'ro', isa => DeviceFarm_CPU);
+  has FleetName => (is => 'ro', isa => Str);
+  has FleetType => (is => 'ro', isa => Str);
+  has FormFactor => (is => 'ro', isa => Str);
+  has HeapSize => (is => 'ro', isa => Int);
+  has Image => (is => 'ro', isa => Str);
+  has Instances => (is => 'ro', isa => ArrayRef[DeviceFarm_DeviceInstance]);
+  has Manufacturer => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Int);
+  has Model => (is => 'ro', isa => Str);
+  has ModelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Os => (is => 'ro', isa => Str);
+  has Platform => (is => 'ro', isa => Str);
+  has Radio => (is => 'ro', isa => Str);
+  has RemoteAccessEnabled => (is => 'ro', isa => Bool);
+  has RemoteDebugEnabled => (is => 'ro', isa => Bool);
+  has Resolution => (is => 'ro', isa => DeviceFarm_Resolution);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Carrier' => {
+                              'type' => 'Str'
+                            },
+               'ModelId' => {
+                              'type' => 'Str'
+                            },
+               'Radio' => {
+                            'type' => 'Str'
+                          },
+               'Model' => {
+                            'type' => 'Str'
+                          },
+               'Resolution' => {
+                                 'class' => 'Paws::DeviceFarm::Resolution',
+                                 'type' => 'DeviceFarm_Resolution'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'RemoteDebugEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Manufacturer' => {
+                                   'type' => 'Str'
+                                 },
+               'Instances' => {
+                                'class' => 'Paws::DeviceFarm::DeviceInstance',
+                                'type' => 'ArrayRef[DeviceFarm_DeviceInstance]'
+                              },
+               'FleetName' => {
+                                'type' => 'Str'
+                              },
+               'Cpu' => {
+                          'class' => 'Paws::DeviceFarm::CPU',
+                          'type' => 'DeviceFarm_CPU'
+                        },
+               'FormFactor' => {
+                                 'type' => 'Str'
+                               },
+               'Availability' => {
+                                   'type' => 'Str'
+                                 },
+               'HeapSize' => {
+                               'type' => 'Int'
+                             },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'Os' => {
+                         'type' => 'Str'
+                       },
+               'FleetType' => {
+                                'type' => 'Str'
+                              },
+               'RemoteAccessEnabled' => {
+                                          'type' => 'Bool'
+                                        },
+               'Memory' => {
+                             'type' => 'Int'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Platform' => 'platform',
+                       'Carrier' => 'carrier',
+                       'ModelId' => 'modelId',
+                       'Radio' => 'radio',
+                       'Model' => 'model',
+                       'Resolution' => 'resolution',
+                       'Arn' => 'arn',
+                       'RemoteDebugEnabled' => 'remoteDebugEnabled',
+                       'Manufacturer' => 'manufacturer',
+                       'Instances' => 'instances',
+                       'FleetName' => 'fleetName',
+                       'Cpu' => 'cpu',
+                       'FormFactor' => 'formFactor',
+                       'Availability' => 'availability',
+                       'HeapSize' => 'heapSize',
+                       'Image' => 'image',
+                       'Os' => 'os',
+                       'FleetType' => 'fleetType',
+                       'RemoteAccessEnabled' => 'remoteAccessEnabled',
+                       'Memory' => 'memory',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +175,7 @@ currently available in the ListDevices and GetDevice API methods.
   The device's carrier.
 
 
-=head2 Cpu => L<Paws::DeviceFarm::CPU>
+=head2 Cpu => DeviceFarm_CPU
 
   Information about the device's CPU.
 
@@ -118,7 +221,7 @@ TABLET: The tablet form factor.
   The device's image name.
 
 
-=head2 Instances => ArrayRef[L<Paws::DeviceFarm::DeviceInstance>]
+=head2 Instances => ArrayRef[DeviceFarm_DeviceInstance]
 
   The instances belonging to this device.
 
@@ -190,7 +293,7 @@ device.
 device.
 
 
-=head2 Resolution => L<Paws::DeviceFarm::Resolution>
+=head2 Resolution => DeviceFarm_Resolution
 
   The resolution of the device.
 

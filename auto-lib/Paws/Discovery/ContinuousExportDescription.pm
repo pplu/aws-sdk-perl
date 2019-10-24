@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::Discovery::ContinuousExportDescription;
-  use Moose;
-  has DataSource => (is => 'ro', isa => 'Str', request_name => 'dataSource', traits => ['NameInRequest']);
-  has ExportId => (is => 'ro', isa => 'Str', request_name => 'exportId', traits => ['NameInRequest']);
-  has S3Bucket => (is => 'ro', isa => 'Str', request_name => 's3Bucket', traits => ['NameInRequest']);
-  has SchemaStorageConfig => (is => 'ro', isa => 'Paws::Discovery::SchemaStorageConfig', request_name => 'schemaStorageConfig', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusDetail => (is => 'ro', isa => 'Str', request_name => 'statusDetail', traits => ['NameInRequest']);
-  has StopTime => (is => 'ro', isa => 'Str', request_name => 'stopTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw/Discovery_SchemaStorageConfig/;
+  has DataSource => (is => 'ro', isa => Str);
+  has ExportId => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has SchemaStorageConfig => (is => 'ro', isa => Discovery_SchemaStorageConfig);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetail => (is => 'ro', isa => Str);
+  has StopTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StopTime' => {
+                               'type' => 'Str'
+                             },
+               'SchemaStorageConfig' => {
+                                          'class' => 'Paws::Discovery::SchemaStorageConfig',
+                                          'type' => 'Discovery_SchemaStorageConfig'
+                                        },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StatusDetail' => {
+                                   'type' => 'Str'
+                                 },
+               'DataSource' => {
+                                 'type' => 'Str'
+                               },
+               'ExportId' => {
+                               'type' => 'Str'
+                             },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StopTime' => 'stopTime',
+                       'SchemaStorageConfig' => 'schemaStorageConfig',
+                       'S3Bucket' => 's3Bucket',
+                       'Status' => 'status',
+                       'StatusDetail' => 'statusDetail',
+                       'DataSource' => 'dataSource',
+                       'ExportId' => 'exportId',
+                       'StartTime' => 'startTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +109,7 @@ offered for AGENT).
 stored.
 
 
-=head2 SchemaStorageConfig => L<Paws::Discovery::SchemaStorageConfig>
+=head2 SchemaStorageConfig => Discovery_SchemaStorageConfig
 
   An object which describes how the data is stored.
 

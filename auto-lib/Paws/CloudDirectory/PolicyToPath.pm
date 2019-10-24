@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::PolicyToPath;
-  use Moose;
-  has Path => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::PolicyAttachment]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_PolicyAttachment/;
+  has Path => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => ArrayRef[CloudDirectory_PolicyAttachment]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Policies' => {
+                               'class' => 'Paws::CloudDirectory::PolicyAttachment',
+                               'type' => 'ArrayRef[CloudDirectory_PolicyAttachment]'
+                             },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +65,7 @@ to that object.
   The path that is referenced from the root.
 
 
-=head2 Policies => ArrayRef[L<Paws::CloudDirectory::PolicyAttachment>]
+=head2 Policies => ArrayRef[CloudDirectory_PolicyAttachment]
 
   List of policy objects.
 

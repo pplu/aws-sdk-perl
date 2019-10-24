@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::LoadBalancerTlsCertificateSummary;
-  use Moose;
-  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Lightsail::Types qw//;
+  has IsAttached => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IsAttached' => {
+                                 'type' => 'Bool'
+                               }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'IsAttached' => 'isAttached'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

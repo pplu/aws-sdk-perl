@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAF::SizeConstraintSet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has SizeConstraints => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SizeConstraint]', required => 1);
-  has SizeConstraintSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_SizeConstraint/;
+  has Name => (is => 'ro', isa => Str);
+  has SizeConstraints => (is => 'ro', isa => ArrayRef[WAF_SizeConstraint], required => 1);
+  has SizeConstraintSetId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeConstraintSetId' => {
+                                          'type' => 'Str'
+                                        },
+               'SizeConstraints' => {
+                                      'class' => 'Paws::WAF::SizeConstraint',
+                                      'type' => 'ArrayRef[WAF_SizeConstraint]'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'SizeConstraintSetId' => 1,
+                    'SizeConstraints' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +75,7 @@ match.
   The name, if any, of the C<SizeConstraintSet>.
 
 
-=head2 B<REQUIRED> SizeConstraints => ArrayRef[L<Paws::WAF::SizeConstraint>]
+=head2 B<REQUIRED> SizeConstraints => ArrayRef[WAF_SizeConstraint]
 
   Specifies the parts of web requests that you want to inspect the size
 of.

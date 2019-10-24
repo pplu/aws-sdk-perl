@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::FacetAttributeUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str');
-  has Attribute => (is => 'ro', isa => 'Paws::CloudDirectory::FacetAttribute');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_FacetAttribute/;
+  has Action => (is => 'ro', isa => Str);
+  has Attribute => (is => 'ro', isa => CloudDirectory_FacetAttribute);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attribute' => {
+                                'class' => 'Paws::CloudDirectory::FacetAttribute',
+                                'type' => 'CloudDirectory_FacetAttribute'
+                              },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ A structure that contains information used to update an attribute.
   The action to perform when updating the attribute.
 
 
-=head2 Attribute => L<Paws::CloudDirectory::FacetAttribute>
+=head2 Attribute => CloudDirectory_FacetAttribute
 
   The attribute to update.
 

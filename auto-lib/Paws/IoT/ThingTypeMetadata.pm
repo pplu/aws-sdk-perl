@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::ThingTypeMetadata;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has Deprecated => (is => 'ro', isa => 'Bool', request_name => 'deprecated', traits => ['NameInRequest']);
-  has DeprecationDate => (is => 'ro', isa => 'Str', request_name => 'deprecationDate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has Deprecated => (is => 'ro', isa => Bool);
+  has DeprecationDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'DeprecationDate' => {
+                                      'type' => 'Str'
+                                    },
+               'Deprecated' => {
+                                 'type' => 'Bool'
+                               }
+             },
+  'NameInRequest' => {
+                       'CreationDate' => 'creationDate',
+                       'DeprecationDate' => 'deprecationDate',
+                       'Deprecated' => 'deprecated'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

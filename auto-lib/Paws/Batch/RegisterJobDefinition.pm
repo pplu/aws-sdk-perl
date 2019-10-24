@@ -1,20 +1,71 @@
 
 package Paws::Batch::RegisterJobDefinition;
-  use Moose;
-  has ContainerProperties => (is => 'ro', isa => 'Paws::Batch::ContainerProperties', traits => ['NameInRequest'], request_name => 'containerProperties');
-  has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
-  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', traits => ['NameInRequest'], request_name => 'nodeProperties');
-  has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
-  has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
-  has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_RetryStrategy Batch_JobTimeout Batch_ParametersMap Batch_ContainerProperties Batch_NodeProperties/;
+  has ContainerProperties => (is => 'ro', isa => Batch_ContainerProperties, predicate => 1);
+  has JobDefinitionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodeProperties => (is => 'ro', isa => Batch_NodeProperties, predicate => 1);
+  has Parameters => (is => 'ro', isa => Batch_ParametersMap, predicate => 1);
+  has RetryStrategy => (is => 'ro', isa => Batch_RetryStrategy, predicate => 1);
+  has Timeout => (is => 'ro', isa => Batch_JobTimeout, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterJobDefinition');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/registerjobdefinition');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::RegisterJobDefinitionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterJobDefinition');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/registerjobdefinition');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::RegisterJobDefinitionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Batch::ParametersMap',
+                                 'type' => 'Batch_ParametersMap'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'RetryStrategy' => {
+                                    'class' => 'Paws::Batch::RetryStrategy',
+                                    'type' => 'Batch_RetryStrategy'
+                                  },
+               'JobDefinitionName' => {
+                                        'type' => 'Str'
+                                      },
+               'NodeProperties' => {
+                                     'class' => 'Paws::Batch::NodeProperties',
+                                     'type' => 'Batch_NodeProperties'
+                                   },
+               'ContainerProperties' => {
+                                          'class' => 'Paws::Batch::ContainerProperties',
+                                          'type' => 'Batch_ContainerProperties'
+                                        },
+               'Timeout' => {
+                              'class' => 'Paws::Batch::JobTimeout',
+                              'type' => 'Batch_JobTimeout'
+                            }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'parameters',
+                       'Type' => 'type',
+                       'RetryStrategy' => 'retryStrategy',
+                       'JobDefinitionName' => 'jobDefinitionName',
+                       'NodeProperties' => 'nodeProperties',
+                       'ContainerProperties' => 'containerProperties',
+                       'Timeout' => 'timeout'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'JobDefinitionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +111,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 =head1 ATTRIBUTES
 
 
-=head2 ContainerProperties => L<Paws::Batch::ContainerProperties>
+=head2 ContainerProperties => Batch_ContainerProperties
 
 An object with various properties specific to single-node
 container-based jobs. If the job definition's C<type> parameter is
@@ -77,7 +128,7 @@ allowed.
 
 
 
-=head2 NodeProperties => L<Paws::Batch::NodeProperties>
+=head2 NodeProperties => Batch_NodeProperties
 
 An object with various properties specific to multi-node parallel jobs.
 If you specify node properties for a job, it becomes a multi-node
@@ -89,7 +140,7 @@ C<containerProperties> or C<nodeProperties>.
 
 
 
-=head2 Parameters => L<Paws::Batch::ParametersMap>
+=head2 Parameters => Batch_ParametersMap
 
 Default parameter substitution placeholders to set in the job
 definition. Parameters are specified as a key-value pair mapping.
@@ -98,7 +149,7 @@ parameter defaults from the job definition.
 
 
 
-=head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
+=head2 RetryStrategy => Batch_RetryStrategy
 
 The retry strategy to use for failed jobs that are submitted with this
 job definition. Any retry strategy that is specified during a SubmitJob
@@ -107,7 +158,7 @@ terminated due to a timeout, it is not retried.
 
 
 
-=head2 Timeout => L<Paws::Batch::JobTimeout>
+=head2 Timeout => Batch_JobTimeout
 
 The timeout configuration for jobs that are submitted with this job
 definition, after which AWS Batch terminates your jobs if they have not

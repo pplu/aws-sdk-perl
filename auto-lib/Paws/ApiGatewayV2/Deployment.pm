@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::Deployment;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has DeploymentStatus => (is => 'ro', isa => 'Str', request_name => 'deploymentStatus', traits => ['NameInRequest']);
-  has DeploymentStatusMessage => (is => 'ro', isa => 'Str', request_name => 'deploymentStatusMessage', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has DeploymentStatus => (is => 'ro', isa => Str);
+  has DeploymentStatusMessage => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentStatusMessage' => {
+                                              'type' => 'Str'
+                                            },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'CreatedDate' => 'createdDate',
+                       'DeploymentStatusMessage' => 'deploymentStatusMessage',
+                       'DeploymentId' => 'deploymentId',
+                       'Description' => 'description',
+                       'DeploymentStatus' => 'deploymentStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::Config::ComplianceSummary;
-  use Moose;
-  has ComplianceSummaryTimestamp => (is => 'ro', isa => 'Str');
-  has CompliantResourceCount => (is => 'ro', isa => 'Paws::Config::ComplianceContributorCount');
-  has NonCompliantResourceCount => (is => 'ro', isa => 'Paws::Config::ComplianceContributorCount');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_ComplianceContributorCount/;
+  has ComplianceSummaryTimestamp => (is => 'ro', isa => Str);
+  has CompliantResourceCount => (is => 'ro', isa => Config_ComplianceContributorCount);
+  has NonCompliantResourceCount => (is => 'ro', isa => Config_ComplianceContributorCount);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NonCompliantResourceCount' => {
+                                                'class' => 'Paws::Config::ComplianceContributorCount',
+                                                'type' => 'Config_ComplianceContributorCount'
+                                              },
+               'ComplianceSummaryTimestamp' => {
+                                                 'type' => 'Str'
+                                               },
+               'CompliantResourceCount' => {
+                                             'class' => 'Paws::Config::ComplianceContributorCount',
+                                             'type' => 'Config_ComplianceContributorCount'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +69,13 @@ noncompliant.
   The time that AWS Config created the compliance summary.
 
 
-=head2 CompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
+=head2 CompliantResourceCount => Config_ComplianceContributorCount
 
   The number of AWS Config rules or AWS resources that are compliant, up
 to a maximum of 25 for rules and 100 for resources.
 
 
-=head2 NonCompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
+=head2 NonCompliantResourceCount => Config_ComplianceContributorCount
 
   The number of AWS Config rules or AWS resources that are noncompliant,
 up to a maximum of 25 for rules and 100 for resources.

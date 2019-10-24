@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Firehose::ListDeliveryStreamsOutput;
-  use Moose;
-  has DeliveryStreamNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has HasMoreDeliveryStreams => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::Firehose::Types qw//;
+  has DeliveryStreamNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has HasMoreDeliveryStreams => (is => 'ro', isa => Bool, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HasMoreDeliveryStreams' => {
+                                             'type' => 'Bool'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeliveryStreamNames' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'IsRequired' => {
+                    'HasMoreDeliveryStreams' => 1,
+                    'DeliveryStreamNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

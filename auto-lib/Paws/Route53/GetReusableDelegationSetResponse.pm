@@ -1,9 +1,31 @@
 
 package Paws::Route53::GetReusableDelegationSetResponse;
-  use Moose;
-  has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_DelegationSet/;
+  has DelegationSet => (is => 'ro', isa => Route53_DelegationSet, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DelegationSet' => {
+                                    'class' => 'Paws::Route53::DelegationSet',
+                                    'type' => 'Route53_DelegationSet'
+                                  }
+             },
+  'IsRequired' => {
+                    'DelegationSet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::Route53::GetReusableDelegationSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DelegationSet => L<Paws::Route53::DelegationSet>
+=head2 B<REQUIRED> DelegationSet => Route53_DelegationSet
 
 A complex type that contains information about the reusable delegation
 set.

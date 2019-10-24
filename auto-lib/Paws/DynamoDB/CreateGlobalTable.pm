@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::CreateGlobalTable;
   use Moo;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::CreateGlobalTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateGlobalTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicationGroup' => {
@@ -22,11 +23,15 @@ package Paws::DynamoDB::CreateGlobalTable;
                'GlobalTableName' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'ReplicationGroup' => 1,
+                    'GlobalTableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

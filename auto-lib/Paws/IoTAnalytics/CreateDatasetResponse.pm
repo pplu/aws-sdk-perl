@@ -1,11 +1,40 @@
 
 package Paws::IoTAnalytics::CreateDatasetResponse;
-  use Moose;
-  has DatasetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetArn');
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetName');
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod/;
+  has DatasetArn => (is => 'ro', isa => Str);
+  has DatasetName => (is => 'ro', isa => Str);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'DatasetArn' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'DatasetArn' => 'datasetArn',
+                       'DatasetName' => 'datasetName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +56,7 @@ The ARN of the data set.
 The name of the data set.
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
 How long, in days, data set contents are kept for the data set.
 

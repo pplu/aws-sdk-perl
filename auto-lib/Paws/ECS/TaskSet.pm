@@ -1,26 +1,130 @@
+# Generated from default/object.tt
 package Paws::ECS::TaskSet;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
-  has ComputedDesiredCount => (is => 'ro', isa => 'Int', request_name => 'computedDesiredCount', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has ExternalId => (is => 'ro', isa => 'Str', request_name => 'externalId', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', request_name => 'loadBalancers', traits => ['NameInRequest']);
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
-  has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
-  has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
-  has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
-  has Scale => (is => 'ro', isa => 'Paws::ECS::Scale', request_name => 'scale', traits => ['NameInRequest']);
-  has ServiceArn => (is => 'ro', isa => 'Str', request_name => 'serviceArn', traits => ['NameInRequest']);
-  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', request_name => 'serviceRegistries', traits => ['NameInRequest']);
-  has StabilityStatus => (is => 'ro', isa => 'Str', request_name => 'stabilityStatus', traits => ['NameInRequest']);
-  has StabilityStatusAt => (is => 'ro', isa => 'Str', request_name => 'stabilityStatusAt', traits => ['NameInRequest']);
-  has StartedBy => (is => 'ro', isa => 'Str', request_name => 'startedBy', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
-  has TaskSetArn => (is => 'ro', isa => 'Str', request_name => 'taskSetArn', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Scale ECS_LoadBalancer ECS_ServiceRegistry ECS_NetworkConfiguration/;
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ComputedDesiredCount => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has ExternalId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LaunchType => (is => 'ro', isa => Str);
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[ECS_LoadBalancer]);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration);
+  has PendingCount => (is => 'ro', isa => Int);
+  has PlatformVersion => (is => 'ro', isa => Str);
+  has RunningCount => (is => 'ro', isa => Int);
+  has Scale => (is => 'ro', isa => ECS_Scale);
+  has ServiceArn => (is => 'ro', isa => Str);
+  has ServiceRegistries => (is => 'ro', isa => ArrayRef[ECS_ServiceRegistry]);
+  has StabilityStatus => (is => 'ro', isa => Str);
+  has StabilityStatusAt => (is => 'ro', isa => Str);
+  has StartedBy => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskDefinition => (is => 'ro', isa => Str);
+  has TaskSetArn => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Scale' => {
+                            'class' => 'Paws::ECS::Scale',
+                            'type' => 'ECS_Scale'
+                          },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'StabilityStatusAt' => {
+                                        'type' => 'Str'
+                                      },
+               'RunningCount' => {
+                                   'type' => 'Int'
+                                 },
+               'ServiceArn' => {
+                                 'type' => 'Str'
+                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'TaskSetArn' => {
+                                 'type' => 'Str'
+                               },
+               'StartedBy' => {
+                                'type' => 'Str'
+                              },
+               'StabilityStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'ComputedDesiredCount' => {
+                                           'type' => 'Int'
+                                         },
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ServiceRegistries' => {
+                                        'class' => 'Paws::ECS::ServiceRegistry',
+                                        'type' => 'ArrayRef[ECS_ServiceRegistry]'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'NetworkConfiguration' => {
+                                           'class' => 'Paws::ECS::NetworkConfiguration',
+                                           'type' => 'ECS_NetworkConfiguration'
+                                         },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'LoadBalancers' => {
+                                    'class' => 'Paws::ECS::LoadBalancer',
+                                    'type' => 'ArrayRef[ECS_LoadBalancer]'
+                                  },
+               'PendingCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TaskDefinition' => 'taskDefinition',
+                       'Status' => 'status',
+                       'Scale' => 'scale',
+                       'ExternalId' => 'externalId',
+                       'StabilityStatusAt' => 'stabilityStatusAt',
+                       'RunningCount' => 'runningCount',
+                       'ServiceArn' => 'serviceArn',
+                       'CreatedAt' => 'createdAt',
+                       'TaskSetArn' => 'taskSetArn',
+                       'StartedBy' => 'startedBy',
+                       'StabilityStatus' => 'stabilityStatus',
+                       'ComputedDesiredCount' => 'computedDesiredCount',
+                       'LaunchType' => 'launchType',
+                       'PlatformVersion' => 'platformVersion',
+                       'ServiceRegistries' => 'serviceRegistries',
+                       'Id' => 'id',
+                       'ClusterArn' => 'clusterArn',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'UpdatedAt' => 'updatedAt',
+                       'LoadBalancers' => 'loadBalancers',
+                       'PendingCount' => 'pendingCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -103,12 +207,12 @@ information, see Amazon ECS Launch Types
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[ECS_LoadBalancer]
 
   Details on a load balancer that is used with a task set.
 
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
   The network configuration for the task set.
 
@@ -139,7 +243,7 @@ during a deployment. A task in the C<RUNNING> state is running and
 ready for use.
 
 
-=head2 Scale => L<Paws::ECS::Scale>
+=head2 Scale => ECS_Scale
 
   A floating-point percentage of the desired number of tasks to place and
 keep running in the task set.
@@ -150,7 +254,7 @@ keep running in the task set.
   The Amazon Resource Name (ARN) of the service the task set exists in.
 
 
-=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+=head2 ServiceRegistries => ArrayRef[ECS_ServiceRegistry]
 
   The details of the service discovery registries to assign to this task
 set. For more information, see Service Discovery

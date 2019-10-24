@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::S3ReferenceDataSource;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str', required => 1);
-  has FileKey => (is => 'ro', isa => 'Str', required => 1);
-  has ReferenceRoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw//;
+  has BucketARN => (is => 'ro', isa => Str, required => 1);
+  has FileKey => (is => 'ro', isa => Str, required => 1);
+  has ReferenceRoleARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReferenceRoleARN' => {
+                                       'type' => 'Str'
+                                     },
+               'FileKey' => {
+                              'type' => 'Str'
+                            },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ReferenceRoleARN' => 1,
+                    'FileKey' => 1,
+                    'BucketARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

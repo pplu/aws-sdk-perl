@@ -1,19 +1,85 @@
+# Generated from default/object.tt
 package Paws::EMR::JobFlowDetail;
-  use Moose;
-  has AmiVersion => (is => 'ro', isa => 'Str');
-  has AutoScalingRole => (is => 'ro', isa => 'Str');
-  has BootstrapActions => (is => 'ro', isa => 'ArrayRef[Paws::EMR::BootstrapActionDetail]');
-  has ExecutionStatusDetail => (is => 'ro', isa => 'Paws::EMR::JobFlowExecutionStatusDetail', required => 1);
-  has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesDetail', required => 1);
-  has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
-  has JobFlowRole => (is => 'ro', isa => 'Str');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ScaleDownBehavior => (is => 'ro', isa => 'Str');
-  has ServiceRole => (is => 'ro', isa => 'Str');
-  has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepDetail]');
-  has SupportedProducts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::EMR::Types qw/EMR_BootstrapActionDetail EMR_StepDetail EMR_JobFlowInstancesDetail EMR_JobFlowExecutionStatusDetail/;
+  has AmiVersion => (is => 'ro', isa => Str);
+  has AutoScalingRole => (is => 'ro', isa => Str);
+  has BootstrapActions => (is => 'ro', isa => ArrayRef[EMR_BootstrapActionDetail]);
+  has ExecutionStatusDetail => (is => 'ro', isa => EMR_JobFlowExecutionStatusDetail, required => 1);
+  has Instances => (is => 'ro', isa => EMR_JobFlowInstancesDetail, required => 1);
+  has JobFlowId => (is => 'ro', isa => Str, required => 1);
+  has JobFlowRole => (is => 'ro', isa => Str);
+  has LogUri => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ScaleDownBehavior => (is => 'ro', isa => Str);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has Steps => (is => 'ro', isa => ArrayRef[EMR_StepDetail]);
+  has SupportedProducts => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has VisibleToAllUsers => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScaleDownBehavior' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'JobFlowRole' => {
+                                  'type' => 'Str'
+                                },
+               'JobFlowId' => {
+                                'type' => 'Str'
+                              },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionStatusDetail' => {
+                                            'class' => 'Paws::EMR::JobFlowExecutionStatusDetail',
+                                            'type' => 'EMR_JobFlowExecutionStatusDetail'
+                                          },
+               'VisibleToAllUsers' => {
+                                        'type' => 'Bool'
+                                      },
+               'BootstrapActions' => {
+                                       'class' => 'Paws::EMR::BootstrapActionDetail',
+                                       'type' => 'ArrayRef[EMR_BootstrapActionDetail]'
+                                     },
+               'Instances' => {
+                                'class' => 'Paws::EMR::JobFlowInstancesDetail',
+                                'type' => 'EMR_JobFlowInstancesDetail'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AutoScalingRole' => {
+                                      'type' => 'Str'
+                                    },
+               'SupportedProducts' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Steps' => {
+                            'class' => 'Paws::EMR::StepDetail',
+                            'type' => 'ArrayRef[EMR_StepDetail]'
+                          },
+               'AmiVersion' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ExecutionStatusDetail' => 1,
+                    'Instances' => 1,
+                    'Name' => 1,
+                    'JobFlowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,17 +130,17 @@ automatic scaling feature to get the required permissions it needs to
 launch and terminate EC2 instances in an instance group.
 
 
-=head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionDetail>]
+=head2 BootstrapActions => ArrayRef[EMR_BootstrapActionDetail]
 
   A list of the bootstrap actions run by the job flow.
 
 
-=head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::JobFlowExecutionStatusDetail>
+=head2 B<REQUIRED> ExecutionStatusDetail => EMR_JobFlowExecutionStatusDetail
 
   Describes the execution status of the job flow.
 
 
-=head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesDetail>
+=head2 B<REQUIRED> Instances => EMR_JobFlowInstancesDetail
 
   Describes the Amazon EC2 instances of the job flow.
 
@@ -124,7 +190,7 @@ than 5.1.0.
 AWS resources on your behalf.
 
 
-=head2 Steps => ArrayRef[L<Paws::EMR::StepDetail>]
+=head2 Steps => ArrayRef[EMR_StepDetail]
 
   A list of steps run by the job flow.
 

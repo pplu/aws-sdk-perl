@@ -7,7 +7,7 @@ package Paws::EC2::ImportVolumeTaskDetails;
   has Image => (is => 'ro', isa => EC2_DiskImageDescription);
   has Volume => (is => 'ro', isa => EC2_DiskImageVolumeDescription);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Volume' => {
@@ -37,8 +37,8 @@ package Paws::EC2::ImportVolumeTaskDetails;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

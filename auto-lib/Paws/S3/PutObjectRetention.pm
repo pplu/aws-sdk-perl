@@ -61,7 +61,11 @@ use MooX::ClassAttribute;
   'ParamInHeader' => {
                        'BypassGovernanceRetention' => 'x-amz-bypass-governance-retention',
                        'RequestPayer' => 'x-amz-request-payer'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

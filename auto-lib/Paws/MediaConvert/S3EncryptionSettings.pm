@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::S3EncryptionSettings;
-  use Moose;
-  has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
-  has KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 'kmsKeyArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has EncryptionType => (is => 'ro', isa => Str);
+  has KmsKeyArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'EncryptionType' => 'encryptionType',
+                       'KmsKeyArn' => 'kmsKeyArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

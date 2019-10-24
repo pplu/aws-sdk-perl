@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::ImportFindingsError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', required => 1);
-  has ErrorMessage => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str, required => 1);
+  has ErrorMessage => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'ErrorCode' => 1,
+                    'ErrorMessage' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

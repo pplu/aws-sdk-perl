@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::UpdatePullRequestTitle;
-  use Moose;
-  has PullRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestId' , required => 1);
-  has Title => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'title' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has PullRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Title => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePullRequestTitle');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::UpdatePullRequestTitleOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePullRequestTitle');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::UpdatePullRequestTitleOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'Title' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'PullRequestId' => 'pullRequestId',
+                       'Title' => 'title'
+                     },
+  'IsRequired' => {
+                    'PullRequestId' => 1,
+                    'Title' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

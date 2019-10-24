@@ -1,21 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::UpdateIdentityPool;
-  use Moose;
-  has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
-  has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
-  has DeveloperProviderName => (is => 'ro', isa => 'Str');
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
-  has IdentityPoolTags => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityPoolTagsType');
-  has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_IdentityProviders CognitoIdentity_CognitoIdentityProvider CognitoIdentity_IdentityPoolTagsType/;
+  has AllowUnauthenticatedIdentities => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has CognitoIdentityProviders => (is => 'ro', isa => ArrayRef[CognitoIdentity_CognitoIdentityProvider], predicate => 1);
+  has DeveloperProviderName => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolTags => (is => 'ro', isa => CognitoIdentity_IdentityPoolTagsType, predicate => 1);
+  has OpenIdConnectProviderARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SamlProviderARNs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SupportedLoginProviders => (is => 'ro', isa => CognitoIdentity_IdentityProviders, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIdentityPool');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::IdentityPool');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateIdentityPool');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::IdentityPool');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowUnauthenticatedIdentities' => {
+                                                     'type' => 'Bool'
+                                                   },
+               'CognitoIdentityProviders' => {
+                                               'class' => 'Paws::CognitoIdentity::CognitoIdentityProvider',
+                                               'type' => 'ArrayRef[CognitoIdentity_CognitoIdentityProvider]'
+                                             },
+               'DeveloperProviderName' => {
+                                            'type' => 'Str'
+                                          },
+               'OpenIdConnectProviderARNs' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'IdentityPoolName' => {
+                                       'type' => 'Str'
+                                     },
+               'SamlProviderARNs' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'IdentityPoolTags' => {
+                                       'class' => 'Paws::CognitoIdentity::IdentityPoolTagsType',
+                                       'type' => 'CognitoIdentity_IdentityPoolTagsType'
+                                     },
+               'SupportedLoginProviders' => {
+                                              'class' => 'Paws::CognitoIdentity::IdentityProviders',
+                                              'type' => 'CognitoIdentity_IdentityProviders'
+                                            }
+             },
+  'IsRequired' => {
+                    'AllowUnauthenticatedIdentities' => 1,
+                    'IdentityPoolName' => 1,
+                    'IdentityPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +140,7 @@ TRUE if the identity pool supports unauthenticated logins.
 
 
 
-=head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
+=head2 CognitoIdentityProviders => ArrayRef[CognitoIdentity_CognitoIdentityProvider]
 
 A list representing an Amazon Cognito user pool and its client ID.
 
@@ -116,7 +164,7 @@ A string that you provide.
 
 
 
-=head2 IdentityPoolTags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+=head2 IdentityPoolTags => CognitoIdentity_IdentityPoolTagsType
 
 The tags that are assigned to the identity pool. A tag is a label that
 you can apply to identity pools to categorize and manage them in
@@ -138,7 +186,7 @@ identity pool.
 
 
 
-=head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
+=head2 SupportedLoginProviders => CognitoIdentity_IdentityProviders
 
 Optional key:value pairs mapping provider names to provider app IDs.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AppSync::AwsIamConfig;
-  use Moose;
-  has SigningRegion => (is => 'ro', isa => 'Str', request_name => 'signingRegion', traits => ['NameInRequest']);
-  has SigningServiceName => (is => 'ro', isa => 'Str', request_name => 'signingServiceName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has SigningRegion => (is => 'ro', isa => Str);
+  has SigningServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningServiceName' => {
+                                         'type' => 'Str'
+                                       },
+               'SigningRegion' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SigningServiceName' => 'signingServiceName',
+                       'SigningRegion' => 'signingRegion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

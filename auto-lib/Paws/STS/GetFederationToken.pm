@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::STS::GetFederationToken;
-  use Moose;
-  has DurationSeconds => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Policy => (is => 'ro', isa => 'Str');
-  has PolicyArns => (is => 'ro', isa => 'ArrayRef[Paws::STS::PolicyDescriptorType]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::STS::Types qw/STS_PolicyDescriptorType/;
+  has DurationSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Policy => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyArns => (is => 'ro', isa => ArrayRef[STS_PolicyDescriptorType], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFederationToken');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::GetFederationTokenResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFederationTokenResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFederationToken');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::STS::GetFederationTokenResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'GetFederationTokenResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DurationSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'PolicyArns' => {
+                                 'class' => 'Paws::STS::PolicyDescriptorType',
+                                 'type' => 'ArrayRef[STS_PolicyDescriptorType]'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -119,7 +148,7 @@ limit.
 
 
 
-=head2 PolicyArns => ArrayRef[L<Paws::STS::PolicyDescriptorType>]
+=head2 PolicyArns => ArrayRef[STS_PolicyDescriptorType]
 
 The Amazon Resource Names (ARNs) of the IAM managed policies that you
 want to use as a managed session policy. The policies must exist in the

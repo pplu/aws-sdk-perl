@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Endpoint;
-  use Moose;
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Url' => 'url'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Comprehend::BatchDetectKeyPhrasesItemResult;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int');
-  has KeyPhrases => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::KeyPhrase]');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_KeyPhrase/;
+  has Index => (is => 'ro', isa => Int);
+  has KeyPhrases => (is => 'ro', isa => ArrayRef[Comprehend_KeyPhrase]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Index' => {
+                            'type' => 'Int'
+                          },
+               'KeyPhrases' => {
+                                 'class' => 'Paws::Comprehend::KeyPhrase',
+                                 'type' => 'ArrayRef[Comprehend_KeyPhrase]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ for each document that is successfully processed by the operation.
   The zero-based index of the document in the input list.
 
 
-=head2 KeyPhrases => ArrayRef[L<Paws::Comprehend::KeyPhrase>]
+=head2 KeyPhrases => ArrayRef[Comprehend_KeyPhrase]
 
   One or more KeyPhrase objects, one for each key phrase detected in the
 document.

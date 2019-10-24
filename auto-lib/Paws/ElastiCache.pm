@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::ElastiCache;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticache' }
   sub signing_name { 'elasticache' }
   sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -623,7 +625,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+=item Tags => ArrayRef[ElastiCache_Tag]
 
 
 =back
@@ -878,7 +880,7 @@ in the ElastiCache User Guide.
 
 =item [SnapshotWindow => Str]
 
-=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+=item [Tags => ArrayRef[ElastiCache_Tag]]
 
 
 =back
@@ -1015,7 +1017,7 @@ Virtual Private Cloud (Amazon VPC).
 
 =item [EngineVersion => Str]
 
-=item [NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]]
+=item [NodeGroupConfiguration => ArrayRef[ElastiCache_NodeGroupConfiguration]]
 
 =item [NotificationTopicArn => Str]
 
@@ -1043,7 +1045,7 @@ Virtual Private Cloud (Amazon VPC).
 
 =item [SnapshotWindow => Str]
 
-=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+=item [Tags => ArrayRef[ElastiCache_Tag]]
 
 =item [TransitEncryptionEnabled => Bool]
 
@@ -1116,7 +1118,7 @@ This operation is valid for Redis only.
 
 =item [NewReplicaCount => Int]
 
-=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+=item [ReplicaConfiguration => ArrayRef[ElastiCache_ConfigureShard]]
 
 =item [ReplicasToRemove => ArrayRef[Str|Undef]]
 
@@ -1658,7 +1660,7 @@ This operation is valid for Redis only.
 
 =item [ServiceUpdateStatus => ArrayRef[Str|Undef]]
 
-=item [ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>]
+=item [ServiceUpdateTimeRange => ElastiCache_TimeRangeFilter]
 
 =item [ShowNodeLevelUpdateStatus => Bool]
 
@@ -1684,7 +1686,7 @@ Returns details of the update actions
 
 =item [NewReplicaCount => Int]
 
-=item [ReplicaConfiguration => ArrayRef[L<Paws::ElastiCache::ConfigureShard>]]
+=item [ReplicaConfiguration => ArrayRef[ElastiCache_ConfigureShard]]
 
 
 =back
@@ -1805,7 +1807,7 @@ parameters and the new values.
 
 =item CacheParameterGroupName => Str
 
-=item ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
+=item ParameterNameValues => ArrayRef[ElastiCache_ParameterNameValue]
 
 
 =back
@@ -1925,7 +1927,7 @@ This operation is valid for Redis only.
 
 =item [NodeGroupsToRetain => ArrayRef[Str|Undef]]
 
-=item [ReshardingConfiguration => ArrayRef[L<Paws::ElastiCache::ReshardingConfiguration>]]
+=item [ReshardingConfiguration => ArrayRef[ElastiCache_ReshardingConfiguration]]
 
 
 =back
@@ -2021,7 +2023,7 @@ resource.
 
 =item CacheParameterGroupName => Str
 
-=item [ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]]
+=item [ParameterNameValues => ArrayRef[ElastiCache_ParameterNameValue]]
 
 =item [ResetAllParameters => Bool]
 
@@ -2324,9 +2326,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ElastiCache::DescribeSnapshotsListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllUpdateActions(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
+=head2 DescribeAllUpdateActions(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => ElastiCache_TimeRangeFilter, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllUpdateActions([Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
+=head2 DescribeAllUpdateActions([Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => ElastiCache_TimeRangeFilter, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

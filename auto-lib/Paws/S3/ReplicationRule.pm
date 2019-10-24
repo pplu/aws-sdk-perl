@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::ReplicationRule;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -42,7 +43,11 @@ package Paws::S3::ReplicationRule;
                'Priority' => {
                                'type' => 'Int'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Destination' => 1
+                  }
 }
 ;
     return $Params_map;

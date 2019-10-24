@@ -1,14 +1,68 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditFinding;
-  use Moose;
-  has CheckName => (is => 'ro', isa => 'Str', request_name => 'checkName', traits => ['NameInRequest']);
-  has FindingTime => (is => 'ro', isa => 'Str', request_name => 'findingTime', traits => ['NameInRequest']);
-  has NonCompliantResource => (is => 'ro', isa => 'Paws::IoT::NonCompliantResource', request_name => 'nonCompliantResource', traits => ['NameInRequest']);
-  has ReasonForNonCompliance => (is => 'ro', isa => 'Str', request_name => 'reasonForNonCompliance', traits => ['NameInRequest']);
-  has ReasonForNonComplianceCode => (is => 'ro', isa => 'Str', request_name => 'reasonForNonComplianceCode', traits => ['NameInRequest']);
-  has RelatedResources => (is => 'ro', isa => 'ArrayRef[Paws::IoT::RelatedResource]', request_name => 'relatedResources', traits => ['NameInRequest']);
-  has Severity => (is => 'ro', isa => 'Str', request_name => 'severity', traits => ['NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
-  has TaskStartTime => (is => 'ro', isa => 'Str', request_name => 'taskStartTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_NonCompliantResource IoT_RelatedResource/;
+  has CheckName => (is => 'ro', isa => Str);
+  has FindingTime => (is => 'ro', isa => Str);
+  has NonCompliantResource => (is => 'ro', isa => IoT_NonCompliantResource);
+  has ReasonForNonCompliance => (is => 'ro', isa => Str);
+  has ReasonForNonComplianceCode => (is => 'ro', isa => Str);
+  has RelatedResources => (is => 'ro', isa => ArrayRef[IoT_RelatedResource]);
+  has Severity => (is => 'ro', isa => Str);
+  has TaskId => (is => 'ro', isa => Str);
+  has TaskStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelatedResources' => {
+                                       'class' => 'Paws::IoT::RelatedResource',
+                                       'type' => 'ArrayRef[IoT_RelatedResource]'
+                                     },
+               'TaskStartTime' => {
+                                    'type' => 'Str'
+                                  },
+               'CheckName' => {
+                                'type' => 'Str'
+                              },
+               'ReasonForNonCompliance' => {
+                                             'type' => 'Str'
+                                           },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'ReasonForNonComplianceCode' => {
+                                                 'type' => 'Str'
+                                               },
+               'FindingTime' => {
+                                  'type' => 'Str'
+                                },
+               'NonCompliantResource' => {
+                                           'class' => 'Paws::IoT::NonCompliantResource',
+                                           'type' => 'IoT_NonCompliantResource'
+                                         },
+               'Severity' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'RelatedResources' => 'relatedResources',
+                       'TaskStartTime' => 'taskStartTime',
+                       'CheckName' => 'checkName',
+                       'ReasonForNonCompliance' => 'reasonForNonCompliance',
+                       'TaskId' => 'taskId',
+                       'ReasonForNonComplianceCode' => 'reasonForNonComplianceCode',
+                       'FindingTime' => 'findingTime',
+                       'NonCompliantResource' => 'nonCompliantResource',
+                       'Severity' => 'severity'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +108,7 @@ The findings (results) of the audit.
   The time the result (finding) was discovered.
 
 
-=head2 NonCompliantResource => L<Paws::IoT::NonCompliantResource>
+=head2 NonCompliantResource => IoT_NonCompliantResource
 
   The resource that was found to be non-compliant with the audit check.
 
@@ -69,7 +123,7 @@ The findings (results) of the audit.
   A code which indicates the reason that the resource was non-compliant.
 
 
-=head2 RelatedResources => ArrayRef[L<Paws::IoT::RelatedResource>]
+=head2 RelatedResources => ArrayRef[IoT_RelatedResource]
 
   The list of related resources.
 

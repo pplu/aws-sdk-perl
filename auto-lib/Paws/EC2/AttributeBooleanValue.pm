@@ -3,7 +3,7 @@ package Paws::EC2::AttributeBooleanValue;
   use Paws::EC2::Types qw//;
   has Value => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Value' => {
@@ -15,8 +15,8 @@ package Paws::EC2::AttributeBooleanValue;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

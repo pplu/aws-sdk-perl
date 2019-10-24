@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::RevokeCacheSecurityGroupIngress;
-  use Moose;
-  has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has EC2SecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has CacheSecurityGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EC2SecurityGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EC2SecurityGroupOwnerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RevokeCacheSecurityGroupIngressResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RevokeCacheSecurityGroupIngress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RevokeCacheSecurityGroupIngressResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2SecurityGroupOwnerId' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheSecurityGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'EC2SecurityGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'EC2SecurityGroupOwnerId' => 1,
+                    'CacheSecurityGroupName' => 1,
+                    'EC2SecurityGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

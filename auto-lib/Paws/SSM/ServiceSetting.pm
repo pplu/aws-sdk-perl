@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::SSM::ServiceSetting;
-  use Moose;
-  has ARN => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has LastModifiedUser => (is => 'ro', isa => 'Str');
-  has SettingId => (is => 'ro', isa => 'Str');
-  has SettingValue => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has ARN => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has LastModifiedUser => (is => 'ro', isa => Str);
+  has SettingId => (is => 'ro', isa => Str);
+  has SettingValue => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SettingValue' => {
+                                   'type' => 'Str'
+                                 },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SettingId' => {
+                                'type' => 'Str'
+                              },
+               'LastModifiedUser' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

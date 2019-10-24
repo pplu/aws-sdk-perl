@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::TimecodeConfig;
-  use Moose;
-  has Anchor => (is => 'ro', isa => 'Str', request_name => 'anchor', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
-  has TimestampOffset => (is => 'ro', isa => 'Str', request_name => 'timestampOffset', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has Anchor => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+  has TimestampOffset => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'TimestampOffset' => {
+                                      'type' => 'Str'
+                                    },
+               'Anchor' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Start' => 'start',
+                       'Source' => 'source',
+                       'TimestampOffset' => 'timestampOffset',
+                       'Anchor' => 'anchor'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

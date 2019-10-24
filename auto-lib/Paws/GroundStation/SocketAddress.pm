@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GroundStation::SocketAddress;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GroundStation::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Port => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Port' => 'port',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Port' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

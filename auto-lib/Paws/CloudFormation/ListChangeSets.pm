@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::ListChangeSets;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListChangeSets');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::ListChangeSetsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListChangeSetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListChangeSets');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::ListChangeSetsOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ListChangeSetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StackName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'StackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

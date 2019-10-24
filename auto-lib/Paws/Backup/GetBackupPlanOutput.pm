@@ -1,16 +1,55 @@
 
 package Paws::Backup::GetBackupPlanOutput;
-  use Moose;
-  has BackupPlan => (is => 'ro', isa => 'Paws::Backup::BackupPlan');
-  has BackupPlanArn => (is => 'ro', isa => 'Str');
-  has BackupPlanId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has DeletionDate => (is => 'ro', isa => 'Str');
-  has LastExecutionDate => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw/Backup_BackupPlan/;
+  has BackupPlan => (is => 'ro', isa => Backup_BackupPlan);
+  has BackupPlanArn => (is => 'ro', isa => Str);
+  has BackupPlanId => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has DeletionDate => (is => 'ro', isa => Str);
+  has LastExecutionDate => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     },
+               'DeletionDate' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupPlan' => {
+                                 'class' => 'Paws::Backup::BackupPlan',
+                                 'type' => 'Backup_BackupPlan'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 },
+               'VersionId' => {
+                                'type' => 'Str'
+                              },
+               'BackupPlanArn' => {
+                                    'type' => 'Str'
+                                  },
+               'LastExecutionDate' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +61,7 @@ Paws::Backup::GetBackupPlanOutput
 =head1 ATTRIBUTES
 
 
-=head2 BackupPlan => L<Paws::Backup::BackupPlan>
+=head2 BackupPlan => Backup_BackupPlan
 
 Specifies the body of a backup plan. Includes a C<BackupPlanName> and
 one or more sets of C<Rules>.

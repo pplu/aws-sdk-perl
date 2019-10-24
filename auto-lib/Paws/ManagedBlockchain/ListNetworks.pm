@@ -1,18 +1,52 @@
 
 package Paws::ManagedBlockchain::ListNetworks;
-  use Moose;
-  has Framework => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'framework');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has Framework => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListNetworks');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::ListNetworksOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListNetworks');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::ListNetworksOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Framework' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'Framework' => 'framework',
+                      'NextToken' => 'nextToken',
+                      'Status' => 'status',
+                      'Name' => 'name',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

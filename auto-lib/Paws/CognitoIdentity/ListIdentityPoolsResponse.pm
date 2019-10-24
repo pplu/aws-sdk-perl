@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdentity::ListIdentityPoolsResponse;
-  use Moose;
-  has IdentityPools => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::IdentityPoolShortDescription]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_IdentityPoolShortDescription/;
+  has IdentityPools => (is => 'ro', isa => ArrayRef[CognitoIdentity_IdentityPoolShortDescription]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityPools' => {
+                                    'class' => 'Paws::CognitoIdentity::IdentityPoolShortDescription',
+                                    'type' => 'ArrayRef[CognitoIdentity_IdentityPoolShortDescription]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CognitoIdentity::ListIdentityPoolsResponse
 =head1 ATTRIBUTES
 
 
-=head2 IdentityPools => ArrayRef[L<Paws::CognitoIdentity::IdentityPoolShortDescription>]
+=head2 IdentityPools => ArrayRef[CognitoIdentity_IdentityPoolShortDescription]
 
 The identity pools returned by the ListIdentityPools action.
 

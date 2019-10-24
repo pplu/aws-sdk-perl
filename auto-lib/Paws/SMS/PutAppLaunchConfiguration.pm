@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SMS::PutAppLaunchConfiguration;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appId' );
-  has RoleName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleName' );
-  has ServerGroupLaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerGroupLaunchConfiguration]', traits => ['NameInRequest'], request_name => 'serverGroupLaunchConfigurations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_ServerGroupLaunchConfiguration/;
+  has AppId => (is => 'ro', isa => Str, predicate => 1);
+  has RoleName => (is => 'ro', isa => Str, predicate => 1);
+  has ServerGroupLaunchConfigurations => (is => 'ro', isa => ArrayRef[SMS_ServerGroupLaunchConfiguration], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAppLaunchConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SMS::PutAppLaunchConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutAppLaunchConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SMS::PutAppLaunchConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerGroupLaunchConfigurations' => {
+                                                      'class' => 'Paws::SMS::ServerGroupLaunchConfiguration',
+                                                      'type' => 'ArrayRef[SMS_ServerGroupLaunchConfiguration]'
+                                                    },
+               'RoleName' => {
+                               'type' => 'Str'
+                             },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ServerGroupLaunchConfigurations' => 'serverGroupLaunchConfigurations',
+                       'RoleName' => 'roleName',
+                       'AppId' => 'appId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +124,7 @@ CloudFormation uses to launch the application.
 
 
 
-=head2 ServerGroupLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerGroupLaunchConfiguration>]
+=head2 ServerGroupLaunchConfigurations => ArrayRef[SMS_ServerGroupLaunchConfiguration]
 
 Launch configurations for server groups in the application.
 

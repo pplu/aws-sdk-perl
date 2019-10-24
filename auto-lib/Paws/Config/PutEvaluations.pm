@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::PutEvaluations;
-  use Moose;
-  has Evaluations => (is => 'ro', isa => 'ArrayRef[Paws::Config::Evaluation]');
-  has ResultToken => (is => 'ro', isa => 'Str', required => 1);
-  has TestMode => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Config::Types qw/Config_Evaluation/;
+  has Evaluations => (is => 'ro', isa => ArrayRef[Config_Evaluation], predicate => 1);
+  has ResultToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TestMode => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvaluations');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::PutEvaluationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEvaluations');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::PutEvaluationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TestMode' => {
+                               'type' => 'Bool'
+                             },
+               'Evaluations' => {
+                                  'class' => 'Paws::Config::Evaluation',
+                                  'type' => 'ArrayRef[Config_Evaluation]'
+                                },
+               'ResultToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ResultToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +83,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 Evaluations => ArrayRef[L<Paws::Config::Evaluation>]
+=head2 Evaluations => ArrayRef[Config_Evaluation]
 
 The assessments that the AWS Lambda function performs. Each evaluation
 identifies an AWS resource and indicates whether it complies with the

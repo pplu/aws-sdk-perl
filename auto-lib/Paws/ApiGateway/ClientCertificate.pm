@@ -1,14 +1,55 @@
 
 package Paws::ApiGateway::ClientCertificate;
-  use Moose;
-  has ClientCertificateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientCertificateId');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has ExpirationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expirationDate');
-  has PemEncodedCertificate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pemEncodedCertificate');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has ClientCertificateId => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ExpirationDate => (is => 'ro', isa => Str);
+  has PemEncodedCertificate => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PemEncodedCertificate' => {
+                                            'type' => 'Str'
+                                          },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'ExpirationDate' => {
+                                     'type' => 'Str'
+                                   },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PemEncodedCertificate' => 'pemEncodedCertificate',
+                       'CreatedDate' => 'createdDate',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'Tags' => 'tags',
+                       'ExpirationDate' => 'expirationDate',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +87,7 @@ The PEM-encoded public key of the client certificate, which can be used
 to configure certificate authentication in the integration endpoint .
 
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The collection of tags. Each tag element is associated with a given
 resource.

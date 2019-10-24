@@ -1,24 +1,83 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::CreateApp;
-  use Moose;
-  has AppSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
-  has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::AppAttributes');
-  has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::DataSource]');
-  has Description => (is => 'ro', isa => 'Str');
-  has Domains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableSsl => (is => 'ro', isa => 'Bool');
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::EnvironmentVariable]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Shortname => (is => 'ro', isa => 'Str');
-  has SslConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::SslConfiguration');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::OpsWorks::Types qw/OpsWorks_AppAttributes OpsWorks_Source OpsWorks_EnvironmentVariable OpsWorks_SslConfiguration OpsWorks_DataSource/;
+  has AppSource => (is => 'ro', isa => OpsWorks_Source, predicate => 1);
+  has Attributes => (is => 'ro', isa => OpsWorks_AppAttributes, predicate => 1);
+  has DataSources => (is => 'ro', isa => ArrayRef[OpsWorks_DataSource], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Domains => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableSsl => (is => 'ro', isa => Bool, predicate => 1);
+  has Environment => (is => 'ro', isa => ArrayRef[OpsWorks_EnvironmentVariable], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Shortname => (is => 'ro', isa => Str, predicate => 1);
+  has SslConfiguration => (is => 'ro', isa => OpsWorks_SslConfiguration, predicate => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApp');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateAppResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateApp');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorks::CreateAppResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Environment' => {
+                                  'class' => 'Paws::OpsWorks::EnvironmentVariable',
+                                  'type' => 'ArrayRef[OpsWorks_EnvironmentVariable]'
+                                },
+               'Domains' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SslConfiguration' => {
+                                       'class' => 'Paws::OpsWorks::SslConfiguration',
+                                       'type' => 'OpsWorks_SslConfiguration'
+                                     },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Shortname' => {
+                                'type' => 'Str'
+                              },
+               'Attributes' => {
+                                 'class' => 'Paws::OpsWorks::AppAttributes',
+                                 'type' => 'OpsWorks_AppAttributes'
+                               },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'DataSources' => {
+                                  'class' => 'Paws::OpsWorks::DataSource',
+                                  'type' => 'ArrayRef[OpsWorks_DataSource]'
+                                },
+               'AppSource' => {
+                                'class' => 'Paws::OpsWorks::Source',
+                                'type' => 'OpsWorks_Source'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'EnableSsl' => {
+                                'type' => 'Bool'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'StackId' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,20 +151,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ops
 =head1 ATTRIBUTES
 
 
-=head2 AppSource => L<Paws::OpsWorks::Source>
+=head2 AppSource => OpsWorks_Source
 
 A C<Source> object that specifies the app repository.
 
 
 
-=head2 Attributes => L<Paws::OpsWorks::AppAttributes>
+=head2 Attributes => OpsWorks_AppAttributes
 
 One or more user-defined key/value pairs to be added to the stack
 attributes.
 
 
 
-=head2 DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]
+=head2 DataSources => ArrayRef[OpsWorks_DataSource]
 
 The app's data source.
 
@@ -130,7 +189,7 @@ Whether to enable SSL for the app.
 
 
 
-=head2 Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]
+=head2 Environment => ArrayRef[OpsWorks_EnvironmentVariable]
 
 An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
@@ -162,7 +221,7 @@ The app's short name.
 
 
 
-=head2 SslConfiguration => L<Paws::OpsWorks::SslConfiguration>
+=head2 SslConfiguration => OpsWorks_SslConfiguration
 
 An C<SslConfiguration> object with the SSL configuration.
 

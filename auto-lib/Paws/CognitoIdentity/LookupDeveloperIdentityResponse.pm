@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdentity::LookupDeveloperIdentityResponse;
-  use Moose;
-  has DeveloperUserIdentifierList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IdentityId => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdentity::Types qw//;
+  has DeveloperUserIdentifierList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IdentityId => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeveloperUserIdentifierList' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

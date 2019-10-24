@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CodeStar;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'codestar' }
   sub signing_name { 'codestar' }
   sub version { '2017-04-19' }
   sub target_prefix { 'CodeStar_20170419' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -371,11 +373,11 @@ Adds an IAM user to the team for an AWS CodeStar project.
 
 =item [Description => Str]
 
-=item [SourceCode => ArrayRef[L<Paws::CodeStar::Code>]]
+=item [SourceCode => ArrayRef[CodeStar_Code]]
 
-=item [Tags => L<Paws::CodeStar::Tags>]
+=item [Tags => CodeStar_Tags]
 
-=item [Toolchain => L<Paws::CodeStar::Toolchain>]
+=item [Toolchain => CodeStar_Toolchain]
 
 
 =back
@@ -615,7 +617,7 @@ CodeStar.
 
 =item Id => Str
 
-=item Tags => L<Paws::CodeStar::Tags>
+=item Tags => CodeStar_Tags
 
 
 =back

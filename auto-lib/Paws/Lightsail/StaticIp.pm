@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::Lightsail::StaticIp;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AttachedTo => (is => 'ro', isa => 'Str', request_name => 'attachedTo', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
-  has IsAttached => (is => 'ro', isa => 'Bool', request_name => 'isAttached', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
-  has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw/Lightsail_ResourceLocation/;
+  has Arn => (is => 'ro', isa => Str);
+  has AttachedTo => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has IsAttached => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Lightsail_ResourceLocation);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has SupportCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'SupportCode' => {
+                                  'type' => 'Str'
+                                },
+               'IsAttached' => {
+                                 'type' => 'Bool'
+                               },
+               'AttachedTo' => {
+                                 'type' => 'Str'
+                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Location' => {
+                               'class' => 'Paws::Lightsail::ResourceLocation',
+                               'type' => 'Lightsail_ResourceLocation'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'IpAddress' => 'ipAddress',
+                       'SupportCode' => 'supportCode',
+                       'IsAttached' => 'isAttached',
+                       'AttachedTo' => 'attachedTo',
+                       'CreatedAt' => 'createdAt',
+                       'ResourceType' => 'resourceType',
+                       'Arn' => 'arn',
+                       'Location' => 'location',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +124,7 @@ C<Amazon_Linux-1GB-Ohio-1>).
   A Boolean value indicating whether the static IP is attached.
 
 
-=head2 Location => L<Paws::Lightsail::ResourceLocation>
+=head2 Location => Lightsail_ResourceLocation
 
   The region and Availability Zone where the static IP was created.
 

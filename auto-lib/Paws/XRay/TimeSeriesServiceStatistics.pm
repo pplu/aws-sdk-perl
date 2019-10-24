@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::XRay::TimeSeriesServiceStatistics;
-  use Moose;
-  has EdgeSummaryStatistics => (is => 'ro', isa => 'Paws::XRay::EdgeStatistics');
-  has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
-  has ServiceSummaryStatistics => (is => 'ro', isa => 'Paws::XRay::ServiceStatistics');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::XRay::Types qw/XRay_ServiceStatistics XRay_HistogramEntry XRay_EdgeStatistics/;
+  has EdgeSummaryStatistics => (is => 'ro', isa => XRay_EdgeStatistics);
+  has ResponseTimeHistogram => (is => 'ro', isa => ArrayRef[XRay_HistogramEntry]);
+  has ServiceSummaryStatistics => (is => 'ro', isa => XRay_ServiceStatistics);
+  has Timestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ServiceSummaryStatistics' => {
+                                               'class' => 'Paws::XRay::ServiceStatistics',
+                                               'type' => 'XRay_ServiceStatistics'
+                                             },
+               'EdgeSummaryStatistics' => {
+                                            'class' => 'Paws::XRay::EdgeStatistics',
+                                            'type' => 'XRay_EdgeStatistics'
+                                          },
+               'ResponseTimeHistogram' => {
+                                            'class' => 'Paws::XRay::HistogramEntry',
+                                            'type' => 'ArrayRef[XRay_HistogramEntry]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +68,17 @@ A list of TimeSeriesStatistic structures.
 =head1 ATTRIBUTES
 
 
-=head2 EdgeSummaryStatistics => L<Paws::XRay::EdgeStatistics>
+=head2 EdgeSummaryStatistics => XRay_EdgeStatistics
 
   
 
 
-=head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
+=head2 ResponseTimeHistogram => ArrayRef[XRay_HistogramEntry]
 
   The response time histogram for the selected entities.
 
 
-=head2 ServiceSummaryStatistics => L<Paws::XRay::ServiceStatistics>
+=head2 ServiceSummaryStatistics => XRay_ServiceStatistics
 
   
 

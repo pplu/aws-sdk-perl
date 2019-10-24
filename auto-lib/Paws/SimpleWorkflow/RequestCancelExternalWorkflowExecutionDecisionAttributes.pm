@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes;
-  use Moose;
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has RunId => (is => 'ro', isa => 'Str', request_name => 'runId', traits => ['NameInRequest']);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Control => (is => 'ro', isa => Str);
+  has RunId => (is => 'ro', isa => Str);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunId' => {
+                            'type' => 'Str'
+                          },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'RunId' => 'runId',
+                       'Control' => 'control',
+                       'WorkflowId' => 'workflowId'
+                     },
+  'IsRequired' => {
+                    'WorkflowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

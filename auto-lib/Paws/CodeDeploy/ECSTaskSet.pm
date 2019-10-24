@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::ECSTaskSet;
-  use Moose;
-  has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
-  has Identifer => (is => 'ro', isa => 'Str', request_name => 'identifer', traits => ['NameInRequest']);
-  has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
-  has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetGroup => (is => 'ro', isa => 'Paws::CodeDeploy::TargetGroupInfo', request_name => 'targetGroup', traits => ['NameInRequest']);
-  has TaskSetLabel => (is => 'ro', isa => 'Str', request_name => 'taskSetLabel', traits => ['NameInRequest']);
-  has TrafficWeight => (is => 'ro', isa => 'Num', request_name => 'trafficWeight', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str Num/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TargetGroupInfo/;
+  has DesiredCount => (is => 'ro', isa => Int);
+  has Identifer => (is => 'ro', isa => Str);
+  has PendingCount => (is => 'ro', isa => Int);
+  has RunningCount => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has TargetGroup => (is => 'ro', isa => CodeDeploy_TargetGroupInfo);
+  has TaskSetLabel => (is => 'ro', isa => Str);
+  has TrafficWeight => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskSetLabel' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DesiredCount' => {
+                                   'type' => 'Int'
+                                 },
+               'TrafficWeight' => {
+                                    'type' => 'Num'
+                                  },
+               'TargetGroup' => {
+                                  'class' => 'Paws::CodeDeploy::TargetGroupInfo',
+                                  'type' => 'CodeDeploy_TargetGroupInfo'
+                                },
+               'RunningCount' => {
+                                   'type' => 'Int'
+                                 },
+               'Identifer' => {
+                                'type' => 'Str'
+                              },
+               'PendingCount' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TaskSetLabel' => 'taskSetLabel',
+                       'Status' => 'status',
+                       'DesiredCount' => 'desiredCount',
+                       'TrafficWeight' => 'trafficWeight',
+                       'TargetGroup' => 'targetGroup',
+                       'RunningCount' => 'runningCount',
+                       'Identifer' => 'identifer',
+                       'PendingCount' => 'pendingCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +151,7 @@ group.
 
 
 
-=head2 TargetGroup => L<Paws::CodeDeploy::TargetGroupInfo>
+=head2 TargetGroup => CodeDeploy_TargetGroupInfo
 
   The target group associated with the task set. The target group is used
 by AWS CodeDeploy to manage traffic to a task set.

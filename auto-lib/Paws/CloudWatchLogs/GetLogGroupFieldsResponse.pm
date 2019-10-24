@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::GetLogGroupFieldsResponse;
-  use Moose;
-  has LogGroupFields => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogGroupField]', traits => ['NameInRequest'], request_name => 'logGroupFields' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_LogGroupField/;
+  has LogGroupFields => (is => 'ro', isa => ArrayRef[CloudWatchLogs_LogGroupField]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogGroupFields' => {
+                                     'class' => 'Paws::CloudWatchLogs::LogGroupField',
+                                     'type' => 'ArrayRef[CloudWatchLogs_LogGroupField]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LogGroupFields' => 'logGroupFields'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CloudWatchLogs::GetLogGroupFieldsResponse
 =head1 ATTRIBUTES
 
 
-=head2 LogGroupFields => ArrayRef[L<Paws::CloudWatchLogs::LogGroupField>]
+=head2 LogGroupFields => ArrayRef[CloudWatchLogs_LogGroupField]
 
 The array of fields found in the query. Each object in the array
 contains the name of the field, along with the percentage of time it

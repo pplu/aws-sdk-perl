@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::CampaignSmsMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has MessageType => (is => 'ro', isa => 'Str');
-  has SenderId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has Body => (is => 'ro', isa => Str);
+  has MessageType => (is => 'ro', isa => Str);
+  has SenderId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SenderId' => {
+                               'type' => 'Str'
+                             },
+               'MessageType' => {
+                                  'type' => 'Str'
+                                },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

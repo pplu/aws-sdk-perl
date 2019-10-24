@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyGlobalCluster;
-  use Moose;
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
-  has NewGlobalClusterIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::RDS::Types qw//;
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has GlobalClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has NewGlobalClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyGlobalCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyGlobalClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyGlobalClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyGlobalCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyGlobalClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyGlobalClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'GlobalClusterIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'NewGlobalClusterIdentifier' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

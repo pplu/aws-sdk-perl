@@ -1,15 +1,78 @@
+# Generated from default/object.tt
 package Paws::Batch::JobSummary;
-  use Moose;
-  has ArrayProperties => (is => 'ro', isa => 'Paws::Batch::ArrayPropertiesSummary', request_name => 'arrayProperties', traits => ['NameInRequest']);
-  has Container => (is => 'ro', isa => 'Paws::Batch::ContainerSummary', request_name => 'container', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Int', request_name => 'createdAt', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest'], required => 1);
-  has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest'], required => 1);
-  has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodePropertiesSummary', request_name => 'nodeProperties', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Int', request_name => 'startedAt', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Int', request_name => 'stoppedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Batch::Types qw/Batch_ContainerSummary Batch_ArrayPropertiesSummary Batch_NodePropertiesSummary/;
+  has ArrayProperties => (is => 'ro', isa => Batch_ArrayPropertiesSummary);
+  has Container => (is => 'ro', isa => Batch_ContainerSummary);
+  has CreatedAt => (is => 'ro', isa => Int);
+  has JobId => (is => 'ro', isa => Str, required => 1);
+  has JobName => (is => 'ro', isa => Str, required => 1);
+  has NodeProperties => (is => 'ro', isa => Batch_NodePropertiesSummary);
+  has StartedAt => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has StoppedAt => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'StoppedAt' => {
+                                'type' => 'Int'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Int'
+                              },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'CreatedAt' => {
+                                'type' => 'Int'
+                              },
+               'NodeProperties' => {
+                                     'class' => 'Paws::Batch::NodePropertiesSummary',
+                                     'type' => 'Batch_NodePropertiesSummary'
+                                   },
+               'ArrayProperties' => {
+                                      'class' => 'Paws::Batch::ArrayPropertiesSummary',
+                                      'type' => 'Batch_ArrayPropertiesSummary'
+                                    },
+               'Container' => {
+                                'class' => 'Paws::Batch::ContainerSummary',
+                                'type' => 'Batch_ContainerSummary'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'StatusReason' => 'statusReason',
+                       'StoppedAt' => 'stoppedAt',
+                       'Status' => 'status',
+                       'StartedAt' => 'startedAt',
+                       'JobName' => 'jobName',
+                       'CreatedAt' => 'createdAt',
+                       'NodeProperties' => 'nodeProperties',
+                       'ArrayProperties' => 'arrayProperties',
+                       'Container' => 'container',
+                       'JobId' => 'jobId'
+                     },
+  'IsRequired' => {
+                    'JobName' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,12 +108,12 @@ An object representing summary details of a job.
 =head1 ATTRIBUTES
 
 
-=head2 ArrayProperties => L<Paws::Batch::ArrayPropertiesSummary>
+=head2 ArrayProperties => Batch_ArrayPropertiesSummary
 
   The array properties of the job, if it is an array job.
 
 
-=head2 Container => L<Paws::Batch::ContainerSummary>
+=head2 Container => Batch_ContainerSummary
 
   An object representing the details of the container that is associated
 with the job.
@@ -75,7 +138,7 @@ state.
   The name of the job.
 
 
-=head2 NodeProperties => L<Paws::Batch::NodePropertiesSummary>
+=head2 NodeProperties => Batch_NodePropertiesSummary
 
   The node properties for a single node in a job summary list.
 

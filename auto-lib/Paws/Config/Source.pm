@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Config::Source;
-  use Moose;
-  has Owner => (is => 'ro', isa => 'Str', required => 1);
-  has SourceDetails => (is => 'ro', isa => 'ArrayRef[Paws::Config::SourceDetail]');
-  has SourceIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_SourceDetail/;
+  has Owner => (is => 'ro', isa => Str, required => 1);
+  has SourceDetails => (is => 'ro', isa => ArrayRef[Config_SourceDetail]);
+  has SourceIdentifier => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'SourceDetails' => {
+                                    'class' => 'Paws::Config::SourceDetail',
+                                    'type' => 'ArrayRef[Config_SourceDetail]'
+                                  },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Owner' => 1,
+                    'SourceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +74,7 @@ resources.
 rule.
 
 
-=head2 SourceDetails => ArrayRef[L<Paws::Config::SourceDetail>]
+=head2 SourceDetails => ArrayRef[Config_SourceDetail]
 
   Provides the source and type of the event that causes AWS Config to
 evaluate your AWS resources.

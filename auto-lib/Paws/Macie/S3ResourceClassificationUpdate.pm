@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Macie::S3ResourceClassificationUpdate;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has ClassificationTypeUpdate => (is => 'ro', isa => 'Paws::Macie::ClassificationTypeUpdate', request_name => 'classificationTypeUpdate', traits => ['NameInRequest'], required => 1);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Macie::Types qw/Macie_ClassificationTypeUpdate/;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has ClassificationTypeUpdate => (is => 'ro', isa => Macie_ClassificationTypeUpdate, required => 1);
+  has Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'ClassificationTypeUpdate' => {
+                                               'class' => 'Paws::Macie::ClassificationTypeUpdate',
+                                               'type' => 'Macie_ClassificationTypeUpdate'
+                                             }
+             },
+  'NameInRequest' => {
+                       'Prefix' => 'prefix',
+                       'BucketName' => 'bucketName',
+                       'ClassificationTypeUpdate' => 'classificationTypeUpdate'
+                     },
+  'IsRequired' => {
+                    'BucketName' => 1,
+                    'ClassificationTypeUpdate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ action.
 update.
 
 
-=head2 B<REQUIRED> ClassificationTypeUpdate => L<Paws::Macie::ClassificationTypeUpdate>
+=head2 B<REQUIRED> ClassificationTypeUpdate => Macie_ClassificationTypeUpdate
 
   The classification type that you want to update for the resource
 associated with Amazon Macie.

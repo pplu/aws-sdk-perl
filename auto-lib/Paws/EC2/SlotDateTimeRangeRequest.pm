@@ -4,7 +4,7 @@ package Paws::EC2::SlotDateTimeRangeRequest;
   has EarliestTime => (is => 'ro', isa => Str, required => 1);
   has LatestTime => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LatestTime' => {
@@ -13,11 +13,15 @@ package Paws::EC2::SlotDateTimeRangeRequest;
                'EarliestTime' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'LatestTime' => 1,
+                    'EarliestTime' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

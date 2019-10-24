@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::ECS::Resource;
-  use Moose;
-  has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
-  has IntegerValue => (is => 'ro', isa => 'Int', request_name => 'integerValue', traits => ['NameInRequest']);
-  has LongValue => (is => 'ro', isa => 'Int', request_name => 'longValue', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has StringSetValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'stringSetValue', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Int Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has DoubleValue => (is => 'ro', isa => Num);
+  has IntegerValue => (is => 'ro', isa => Int);
+  has LongValue => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has StringSetValue => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StringSetValue' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'DoubleValue' => {
+                                  'type' => 'Num'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'LongValue' => {
+                                'type' => 'Int'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IntegerValue' => {
+                                   'type' => 'Int'
+                                 }
+             },
+  'NameInRequest' => {
+                       'StringSetValue' => 'stringSetValue',
+                       'DoubleValue' => 'doubleValue',
+                       'Type' => 'type',
+                       'LongValue' => 'longValue',
+                       'Name' => 'name',
+                       'IntegerValue' => 'integerValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

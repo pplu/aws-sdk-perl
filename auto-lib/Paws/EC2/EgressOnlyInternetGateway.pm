@@ -4,7 +4,7 @@ package Paws::EC2::EgressOnlyInternetGateway;
   has Attachments => (is => 'ro', isa => ArrayRef[EC2_InternetGatewayAttachment]);
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Attachments' => {
@@ -21,8 +21,8 @@ package Paws::EC2::EgressOnlyInternetGateway;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

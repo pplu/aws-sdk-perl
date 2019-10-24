@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::MetricsConfiguration;
   use Moo;
   use Types::Standard qw/Str/;
@@ -15,7 +16,10 @@ package Paws::S3::MetricsConfiguration;
                'Id' => {
                          'type' => 'Str'
                        }
-             }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
 }
 ;
     return $Params_map;

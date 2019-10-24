@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::HlsCaptionLanguageMapping;
-  use Moose;
-  has CaptionChannel => (is => 'ro', isa => 'Int', request_name => 'captionChannel', traits => ['NameInRequest']);
-  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has CaptionChannel => (is => 'ro', isa => Int);
+  has CustomLanguageCode => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageDescription => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'LanguageDescription' => {
+                                          'type' => 'Str'
+                                        },
+               'CaptionChannel' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'CustomLanguageCode' => 'customLanguageCode',
+                       'LanguageCode' => 'languageCode',
+                       'LanguageDescription' => 'languageDescription',
+                       'CaptionChannel' => 'captionChannel'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

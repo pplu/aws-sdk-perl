@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeAssociationExecutionsResult;
-  use Moose;
-  has AssociationExecutions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationExecution]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AssociationExecution/;
+  has AssociationExecutions => (is => 'ro', isa => ArrayRef[SSM_AssociationExecution]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AssociationExecutions' => {
+                                            'class' => 'Paws::SSM::AssociationExecution',
+                                            'type' => 'ArrayRef[SSM_AssociationExecution]'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeAssociationExecutionsResult
 =head1 ATTRIBUTES
 
 
-=head2 AssociationExecutions => ArrayRef[L<Paws::SSM::AssociationExecution>]
+=head2 AssociationExecutions => ArrayRef[SSM_AssociationExecution]
 
 A list of the executions for the specified association ID.
 

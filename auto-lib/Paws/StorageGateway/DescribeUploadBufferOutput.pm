@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeUploadBufferOutput;
-  use Moose;
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has UploadBufferAllocatedInBytes => (is => 'ro', isa => 'Int');
-  has UploadBufferUsedInBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::StorageGateway::Types qw//;
+  has DiskIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has GatewayARN => (is => 'ro', isa => Str);
+  has UploadBufferAllocatedInBytes => (is => 'ro', isa => Int);
+  has UploadBufferUsedInBytes => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UploadBufferAllocatedInBytes' => {
+                                                   'type' => 'Int'
+                                                 },
+               'DiskIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'UploadBufferUsedInBytes' => {
+                                              'type' => 'Int'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

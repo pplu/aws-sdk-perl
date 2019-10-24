@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::MigrationHub::MigrationTask;
-  use Moose;
-  has MigrationTaskName => (is => 'ro', isa => 'Str');
-  has ProgressUpdateStream => (is => 'ro', isa => 'Str');
-  has ResourceAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::MigrationHub::ResourceAttribute]');
-  has Task => (is => 'ro', isa => 'Paws::MigrationHub::Task');
-  has UpdateDateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MigrationHub::Types qw/MigrationHub_Task MigrationHub_ResourceAttribute/;
+  has MigrationTaskName => (is => 'ro', isa => Str);
+  has ProgressUpdateStream => (is => 'ro', isa => Str);
+  has ResourceAttributeList => (is => 'ro', isa => ArrayRef[MigrationHub_ResourceAttribute]);
+  has Task => (is => 'ro', isa => MigrationHub_Task);
+  has UpdateDateTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceAttributeList' => {
+                                            'class' => 'Paws::MigrationHub::ResourceAttribute',
+                                            'type' => 'ArrayRef[MigrationHub_ResourceAttribute]'
+                                          },
+               'ProgressUpdateStream' => {
+                                           'type' => 'Str'
+                                         },
+               'UpdateDateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Task' => {
+                           'class' => 'Paws::MigrationHub::Task',
+                           'type' => 'MigrationHub_Task'
+                         },
+               'MigrationTaskName' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,12 +81,12 @@ Represents a migration task in a migration tool.
   A name that identifies the vendor of the migration tool being used.
 
 
-=head2 ResourceAttributeList => ArrayRef[L<Paws::MigrationHub::ResourceAttribute>]
+=head2 ResourceAttributeList => ArrayRef[MigrationHub_ResourceAttribute]
 
   
 
 
-=head2 Task => L<Paws::MigrationHub::Task>
+=head2 Task => MigrationHub_Task
 
   Task object encapsulating task information.
 

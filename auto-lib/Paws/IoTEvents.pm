@@ -1,14 +1,15 @@
 package Paws::IoTEvents;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'iotevents' }
   sub signing_name { 'iotevents' }
   sub version { '2018-07-27' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -137,7 +138,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =over
 
-=item DetectorModelDefinition => L<Paws::IoTEvents::DetectorModelDefinition>
+=item DetectorModelDefinition => IoTEvents_DetectorModelDefinition
 
 =item DetectorModelName => Str
 
@@ -147,7 +148,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =item [Key => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoTEvents::Tag>]]
+=item [Tags => ArrayRef[IoTEvents_Tag]]
 
 
 =back
@@ -163,13 +164,13 @@ Creates a detector model.
 
 =over
 
-=item InputDefinition => L<Paws::IoTEvents::InputDefinition>
+=item InputDefinition => IoTEvents_InputDefinition
 
 =item InputName => Str
 
 =item [InputDescription => Str]
 
-=item [Tags => ArrayRef[L<Paws::IoTEvents::Tag>]]
+=item [Tags => ArrayRef[IoTEvents_Tag]]
 
 
 =back
@@ -341,7 +342,7 @@ Lists the tags (metadata) you have assigned to the resource.
 
 =over
 
-=item LoggingOptions => L<Paws::IoTEvents::LoggingOptions>
+=item LoggingOptions => IoTEvents_LoggingOptions
 
 
 =back
@@ -365,7 +366,7 @@ minutes for that change to take effect.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::IoTEvents::Tag>]
+=item Tags => ArrayRef[IoTEvents_Tag]
 
 
 =back
@@ -400,7 +401,7 @@ Removes the given tags (metadata) from the resource.
 
 =over
 
-=item DetectorModelDefinition => L<Paws::IoTEvents::DetectorModelDefinition>
+=item DetectorModelDefinition => IoTEvents_DetectorModelDefinition
 
 =item DetectorModelName => Str
 
@@ -423,7 +424,7 @@ version will be deleted and re-created as new inputs arrive.
 
 =over
 
-=item InputDefinition => L<Paws::IoTEvents::InputDefinition>
+=item InputDefinition => IoTEvents_InputDefinition
 
 =item InputName => Str
 

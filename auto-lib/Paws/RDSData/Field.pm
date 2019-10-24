@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::RDSData::Field;
-  use Moose;
-  has BlobValue => (is => 'ro', isa => 'Str', request_name => 'blobValue', traits => ['NameInRequest']);
-  has BooleanValue => (is => 'ro', isa => 'Bool', request_name => 'booleanValue', traits => ['NameInRequest']);
-  has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
-  has IsNull => (is => 'ro', isa => 'Bool', request_name => 'isNull', traits => ['NameInRequest']);
-  has LongValue => (is => 'ro', isa => 'Int', request_name => 'longValue', traits => ['NameInRequest']);
-  has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Num Int/;
+  use Paws::RDSData::Types qw//;
+  has BlobValue => (is => 'ro', isa => Str);
+  has BooleanValue => (is => 'ro', isa => Bool);
+  has DoubleValue => (is => 'ro', isa => Num);
+  has IsNull => (is => 'ro', isa => Bool);
+  has LongValue => (is => 'ro', isa => Int);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DoubleValue' => {
+                                  'type' => 'Num'
+                                },
+               'BlobValue' => {
+                                'type' => 'Str'
+                              },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                },
+               'LongValue' => {
+                                'type' => 'Int'
+                              },
+               'BooleanValue' => {
+                                   'type' => 'Bool'
+                                 },
+               'IsNull' => {
+                             'type' => 'Bool'
+                           }
+             },
+  'NameInRequest' => {
+                       'DoubleValue' => 'doubleValue',
+                       'BlobValue' => 'blobValue',
+                       'StringValue' => 'stringValue',
+                       'LongValue' => 'longValue',
+                       'BooleanValue' => 'booleanValue',
+                       'IsNull' => 'isNull'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

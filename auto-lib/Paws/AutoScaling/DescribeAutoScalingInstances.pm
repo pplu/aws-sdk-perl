@@ -1,15 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribeAutoScalingInstances;
-  use Moose;
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::AutoScaling::Types qw//;
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::AutoScalingInstancesType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAutoScalingInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::AutoScalingInstancesType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAutoScalingInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

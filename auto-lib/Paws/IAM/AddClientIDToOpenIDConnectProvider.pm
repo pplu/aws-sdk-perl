@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::AddClientIDToOpenIDConnectProvider;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::AddClientIDToOpenIDConnectProvider;
                'ClientID' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'OpenIDConnectProviderArn' => 1,
+                    'ClientID' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EMR::DescribeStep;
-  use Moose;
-  has ClusterId => (is => 'ro', isa => 'Str', required => 1);
-  has StepId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw//;
+  has ClusterId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StepId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStep');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::DescribeStepOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeStep');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EMR::DescribeStepOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'StepId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ClusterId' => 1,
+                    'StepId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Tags;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudFront::Types qw/CloudFront_Tag/;
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::CloudFront::Tag',
+                            'type' => 'ArrayRef[CloudFront_Tag]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A complex type that contains zero or more C<Tag> elements.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::Tag>]
+=head2 Items => ArrayRef[CloudFront_Tag]
 
   A complex type that contains C<Tag> elements.
 

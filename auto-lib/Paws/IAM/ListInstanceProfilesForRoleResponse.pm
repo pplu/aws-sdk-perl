@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListInstanceProfilesForRoleResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_InstanceProfile/;
   has InstanceProfiles => (is => 'ro', isa => ArrayRef[IAM_InstanceProfile], required => 1);

@@ -1,19 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::RegisterInstance;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str');
-  has InstanceIdentity => (is => 'ro', isa => 'Paws::OpsWorks::InstanceIdentity');
-  has PrivateIp => (is => 'ro', isa => 'Str');
-  has PublicIp => (is => 'ro', isa => 'Str');
-  has RsaPublicKey => (is => 'ro', isa => 'Str');
-  has RsaPublicKeyFingerprint => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_InstanceIdentity/;
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIdentity => (is => 'ro', isa => OpsWorks_InstanceIdentity, predicate => 1);
+  has PrivateIp => (is => 'ro', isa => Str, predicate => 1);
+  has PublicIp => (is => 'ro', isa => Str, predicate => 1);
+  has RsaPublicKey => (is => 'ro', isa => Str, predicate => 1);
+  has RsaPublicKeyFingerprint => (is => 'ro', isa => Str, predicate => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::RegisterInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorks::RegisterInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'PublicIp' => {
+                               'type' => 'Str'
+                             },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'RsaPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'PrivateIp' => {
+                                'type' => 'Str'
+                              },
+               'RsaPublicKeyFingerprint' => {
+                                              'type' => 'Str'
+                                            },
+               'InstanceIdentity' => {
+                                       'class' => 'Paws::OpsWorks::InstanceIdentity',
+                                       'type' => 'OpsWorks_InstanceIdentity'
+                                     }
+             },
+  'IsRequired' => {
+                    'StackId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +101,7 @@ The instance's hostname.
 
 
 
-=head2 InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>
+=head2 InstanceIdentity => OpsWorks_InstanceIdentity
 
 An InstanceIdentity object that contains the instance's identity.
 

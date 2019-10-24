@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::XRay::ErrorRootCause;
-  use Moose;
-  has Services => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ErrorRootCauseService]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::XRay::Types qw/XRay_ErrorRootCauseService/;
+  has Services => (is => 'ro', isa => ArrayRef[XRay_ErrorRootCauseService]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Services' => {
+                               'class' => 'Paws::XRay::ErrorRootCauseService',
+                               'type' => 'ArrayRef[XRay_ErrorRootCauseService]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The root cause of a trace summary error.
 =head1 ATTRIBUTES
 
 
-=head2 Services => ArrayRef[L<Paws::XRay::ErrorRootCauseService>]
+=head2 Services => ArrayRef[XRay_ErrorRootCauseService]
 
   A list of services corresponding to an error. A service identifies a
 segment and it contains a name, account ID, type, and inferred flag.

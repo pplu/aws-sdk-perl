@@ -1,17 +1,50 @@
 
 package Paws::CloudDirectory::GetLinkAttributes;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ConsistencyLevel => (is => 'ro', isa => 'Str');
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has ConsistencyLevel => (is => 'ro', isa => Str, predicate => 1);
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLinkAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/attributes/get');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::GetLinkAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLinkAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/typedlink/attributes/get');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::GetLinkAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       },
+               'ConsistencyLevel' => {
+                                       'type' => 'Str'
+                                     },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'TypedLinkSpecifier' => 1,
+                    'AttributeNames' => 1,
+                    'DirectoryArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +133,7 @@ Links
 
 
 
-=head2 B<REQUIRED> TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 B<REQUIRED> TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
 Allows a typed link specifier to be accepted as input.
 

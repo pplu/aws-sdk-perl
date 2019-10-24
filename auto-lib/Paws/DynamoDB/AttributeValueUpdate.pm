@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AttributeValueUpdate;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::AttributeValueUpdate;
   has Action => (is => 'ro', isa => Str);
   has Value => (is => 'ro', isa => DynamoDB_AttributeValue);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Value' => {
@@ -18,8 +19,8 @@ package Paws::DynamoDB::AttributeValueUpdate;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

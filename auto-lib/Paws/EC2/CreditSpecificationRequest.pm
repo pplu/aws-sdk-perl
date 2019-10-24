@@ -3,17 +3,20 @@ package Paws::EC2::CreditSpecificationRequest;
   use Paws::EC2::Types qw//;
   has CpuCredits => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CpuCredits' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'CpuCredits' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

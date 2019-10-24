@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::UpdateApplicationInput;
-  use Moose;
-  has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
-  has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
-  has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServerlessRepo::Types qw//;
+  has Author => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has HomePageUrl => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ReadmeBody => (is => 'ro', isa => Str);
+  has ReadmeUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'ReadmeBody' => {
+                                 'type' => 'Str'
+                               },
+               'ReadmeUrl' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Author' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Labels' => 'labels',
+                       'HomePageUrl' => 'homePageUrl',
+                       'ReadmeBody' => 'readmeBody',
+                       'ReadmeUrl' => 'readmeUrl',
+                       'Description' => 'description',
+                       'Author' => 'author'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

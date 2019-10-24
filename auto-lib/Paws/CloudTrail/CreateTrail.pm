@@ -1,23 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::CreateTrail;
-  use Moose;
-  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
-  has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
-  has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
-  has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
-  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
-  has IsOrganizationTrail => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has S3KeyPrefix => (is => 'ro', isa => 'Str');
-  has SnsTopicName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudTrail::Types qw//;
+  has CloudWatchLogsLogGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has CloudWatchLogsRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has EnableLogFileValidation => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeGlobalServiceEvents => (is => 'ro', isa => Bool, predicate => 1);
+  has IsMultiRegionTrail => (is => 'ro', isa => Bool, predicate => 1);
+  has IsOrganizationTrail => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has S3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has SnsTopicName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTrail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::CreateTrailResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTrail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::CreateTrailResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncludeGlobalServiceEvents' => {
+                                                 'type' => 'Bool'
+                                               },
+               'SnsTopicName' => {
+                                   'type' => 'Str'
+                                 },
+               'CloudWatchLogsRoleArn' => {
+                                            'type' => 'Str'
+                                          },
+               'IsOrganizationTrail' => {
+                                          'type' => 'Bool'
+                                        },
+               'IsMultiRegionTrail' => {
+                                         'type' => 'Bool'
+                                       },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'S3KeyPrefix' => {
+                                  'type' => 'Str'
+                                },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'CloudWatchLogsLogGroupArn' => {
+                                                'type' => 'Str'
+                                              },
+               'EnableLogFileValidation' => {
+                                              'type' => 'Bool'
+                                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'S3BucketName' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

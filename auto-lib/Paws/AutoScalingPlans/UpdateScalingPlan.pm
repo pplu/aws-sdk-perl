@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AutoScalingPlans::UpdateScalingPlan;
-  use Moose;
-  has ApplicationSource => (is => 'ro', isa => 'Paws::AutoScalingPlans::ApplicationSource');
-  has ScalingInstructions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScalingPlans::ScalingInstruction]');
-  has ScalingPlanName => (is => 'ro', isa => 'Str', required => 1);
-  has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AutoScalingPlans::Types qw/AutoScalingPlans_ScalingInstruction AutoScalingPlans_ApplicationSource/;
+  has ApplicationSource => (is => 'ro', isa => AutoScalingPlans_ApplicationSource, predicate => 1);
+  has ScalingInstructions => (is => 'ro', isa => ArrayRef[AutoScalingPlans_ScalingInstruction], predicate => 1);
+  has ScalingPlanName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalingPlanVersion => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateScalingPlan');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScalingPlans::UpdateScalingPlanResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateScalingPlan');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScalingPlans::UpdateScalingPlanResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScalingInstructions' => {
+                                          'class' => 'Paws::AutoScalingPlans::ScalingInstruction',
+                                          'type' => 'ArrayRef[AutoScalingPlans_ScalingInstruction]'
+                                        },
+               'ScalingPlanName' => {
+                                      'type' => 'Str'
+                                    },
+               'ScalingPlanVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'ApplicationSource' => {
+                                        'class' => 'Paws::AutoScalingPlans::ApplicationSource',
+                                        'type' => 'AutoScalingPlans_ApplicationSource'
+                                      }
+             },
+  'IsRequired' => {
+                    'ScalingPlanName' => 1,
+                    'ScalingPlanVersion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -126,13 +157,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationSource => L<Paws::AutoScalingPlans::ApplicationSource>
+=head2 ApplicationSource => AutoScalingPlans_ApplicationSource
 
 A CloudFormation stack or set of tags.
 
 
 
-=head2 ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
+=head2 ScalingInstructions => ArrayRef[AutoScalingPlans_ScalingInstruction]
 
 The scaling instructions.
 

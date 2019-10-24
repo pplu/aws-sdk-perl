@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::LaunchConfigurationsType;
-  use Moose;
-  has LaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::LaunchConfiguration]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_LaunchConfiguration/;
+  has LaunchConfigurations => (is => 'ro', isa => ArrayRef[AutoScaling_LaunchConfiguration], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LaunchConfigurations' => {
+                                           'class' => 'Paws::AutoScaling::LaunchConfiguration',
+                                           'type' => 'ArrayRef[AutoScaling_LaunchConfiguration]'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'LaunchConfigurations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AutoScaling::LaunchConfigurationsType
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LaunchConfigurations => ArrayRef[L<Paws::AutoScaling::LaunchConfiguration>]
+=head2 B<REQUIRED> LaunchConfigurations => ArrayRef[AutoScaling_LaunchConfiguration]
 
 The launch configurations.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::SourceBuildInformation;
-  use Moose;
-  has SourceLocation => (is => 'ro', isa => 'Str', required => 1);
-  has SourceRepository => (is => 'ro', isa => 'Str', required => 1);
-  has SourceType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has SourceLocation => (is => 'ro', isa => Str, required => 1);
+  has SourceRepository => (is => 'ro', isa => Str, required => 1);
+  has SourceType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'SourceLocation' => {
+                                     'type' => 'Str'
+                                   },
+               'SourceRepository' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SourceType' => 1,
+                    'SourceLocation' => 1,
+                    'SourceRepository' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

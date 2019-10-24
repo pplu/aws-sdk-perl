@@ -11,7 +11,7 @@ package Paws::EC2::DescribeSpotFleetRequestHistoryResponse;
   has StartTime => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NextToken' => {
@@ -43,8 +43,8 @@ package Paws::EC2::DescribeSpotFleetRequestHistoryResponse;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

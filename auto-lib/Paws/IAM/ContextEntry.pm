@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ContextEntry;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Health::DescribeAffectedEntitiesResponse;
-  use Moose;
-  has Entities => (is => 'ro', isa => 'ArrayRef[Paws::Health::AffectedEntity]', traits => ['NameInRequest'], request_name => 'entities' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Health::Types qw/Health_AffectedEntity/;
+  has Entities => (is => 'ro', isa => ArrayRef[Health_AffectedEntity]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entities' => {
+                               'class' => 'Paws::Health::AffectedEntity',
+                               'type' => 'ArrayRef[Health_AffectedEntity]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Entities' => 'entities',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Health::DescribeAffectedEntitiesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Entities => ArrayRef[L<Paws::Health::AffectedEntity>]
+=head2 Entities => ArrayRef[Health_AffectedEntity]
 
 The entities that match the filter criteria.
 

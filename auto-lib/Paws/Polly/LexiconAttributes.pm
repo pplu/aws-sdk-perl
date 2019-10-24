@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Polly::LexiconAttributes;
-  use Moose;
-  has Alphabet => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has LexemesCount => (is => 'ro', isa => 'Int');
-  has LexiconArn => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Polly::Types qw//;
+  has Alphabet => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has LexemesCount => (is => 'ro', isa => Int);
+  has LexiconArn => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'LexemesCount' => {
+                                   'type' => 'Int'
+                                 },
+               'LexiconArn' => {
+                                 'type' => 'Str'
+                               },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 },
+               'Alphabet' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

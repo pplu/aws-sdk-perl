@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Endpoint;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::Endpoint;
   has Address => (is => 'ro', isa => Str, required => 1);
   has CachePeriodInMinutes => (is => 'ro', isa => Int, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CachePeriodInMinutes' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::Endpoint;
                'Address' => {
                               'type' => 'Str'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'CachePeriodInMinutes' => 1,
+                    'Address' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

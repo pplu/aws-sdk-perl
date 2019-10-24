@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::DocDB::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::DocDB::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DocDB::Types qw/DocDB_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => DocDB_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+  has SubnetStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetAvailabilityZone' => {
+                                             'class' => 'Paws::DocDB::AvailabilityZone',
+                                             'type' => 'DocDB_AvailabilityZone'
+                                           },
+               'SubnetStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Detailed information about a subnet.
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::DocDB::AvailabilityZone>
+=head2 SubnetAvailabilityZone => DocDB_AvailabilityZone
 
   Specifies the Availability Zone for the subnet.
 

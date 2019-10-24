@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetLoadBalancerTlsCertificatesResult;
-  use Moose;
-  has TlsCertificates => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificate]', traits => ['NameInRequest'], request_name => 'tlsCertificates' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_LoadBalancerTlsCertificate/;
+  has TlsCertificates => (is => 'ro', isa => ArrayRef[Lightsail_LoadBalancerTlsCertificate]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TlsCertificates' => {
+                                      'class' => 'Paws::Lightsail::LoadBalancerTlsCertificate',
+                                      'type' => 'ArrayRef[Lightsail_LoadBalancerTlsCertificate]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TlsCertificates' => 'tlsCertificates'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetLoadBalancerTlsCertificatesResult
 =head1 ATTRIBUTES
 
 
-=head2 TlsCertificates => ArrayRef[L<Paws::Lightsail::LoadBalancerTlsCertificate>]
+=head2 TlsCertificates => ArrayRef[Lightsail_LoadBalancerTlsCertificate]
 
 An array of LoadBalancerTlsCertificate objects describing your SSL/TLS
 certificates.

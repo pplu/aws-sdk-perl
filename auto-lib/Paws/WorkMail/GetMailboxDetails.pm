@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::GetMailboxDetails;
-  use Moose;
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMailboxDetails');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::GetMailboxDetailsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMailboxDetails');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::GetMailboxDetailsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'OrganizationId' => 1,
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

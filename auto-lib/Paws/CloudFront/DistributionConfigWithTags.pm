@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudFront::DistributionConfigWithTags;
-  use Moose;
-  has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudFront::Types qw/CloudFront_DistributionConfig CloudFront_Tags/;
+  has DistributionConfig => (is => 'ro', isa => CloudFront_DistributionConfig, required => 1);
+  has Tags => (is => 'ro', isa => CloudFront_Tags, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DistributionConfig' => {
+                                         'class' => 'Paws::CloudFront::DistributionConfig',
+                                         'type' => 'CloudFront_DistributionConfig'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::CloudFront::Tags',
+                           'type' => 'CloudFront_Tags'
+                         }
+             },
+  'IsRequired' => {
+                    'DistributionConfig' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +64,12 @@ the distribution.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
+=head2 B<REQUIRED> DistributionConfig => CloudFront_DistributionConfig
 
   A distribution configuration.
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CloudFront::Tags>
+=head2 B<REQUIRED> Tags => CloudFront_Tags
 
   A complex type that contains zero or more C<Tag> elements.
 

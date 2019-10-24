@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::Personalize::EventTracker;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
-  has DatasetGroupArn => (is => 'ro', isa => 'Str', request_name => 'datasetGroupArn', traits => ['NameInRequest']);
-  has EventTrackerArn => (is => 'ro', isa => 'Str', request_name => 'eventTrackerArn', traits => ['NameInRequest']);
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TrackingId => (is => 'ro', isa => 'Str', request_name => 'trackingId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Personalize::Types qw//;
+  has AccountId => (is => 'ro', isa => Str);
+  has CreationDateTime => (is => 'ro', isa => Str);
+  has DatasetGroupArn => (is => 'ro', isa => Str);
+  has EventTrackerArn => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TrackingId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreationDateTime' => {
+                                       'type' => 'Str'
+                                     },
+               'EventTrackerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'DatasetGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'TrackingId' => {
+                                 'type' => 'Str'
+                               },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LastUpdatedDateTime' => 'lastUpdatedDateTime',
+                       'CreationDateTime' => 'creationDateTime',
+                       'EventTrackerArn' => 'eventTrackerArn',
+                       'DatasetGroupArn' => 'datasetGroupArn',
+                       'TrackingId' => 'trackingId',
+                       'AccountId' => 'accountId',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

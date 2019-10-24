@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELBv2::RulePriorityPair;
-  use Moose;
-  has Priority => (is => 'ro', isa => 'Int');
-  has RuleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ELBv2::Types qw//;
+  has Priority => (is => 'ro', isa => Int);
+  has RuleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleArn' => {
+                              'type' => 'Str'
+                            },
+               'Priority' => {
+                               'type' => 'Int'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

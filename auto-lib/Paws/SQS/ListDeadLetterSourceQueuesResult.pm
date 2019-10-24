@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SQS::ListDeadLetterSourceQueuesResult;
   use Moo;
@@ -18,7 +19,10 @@ package Paws::SQS::ListDeadLetterSourceQueuesResult;
              },
   'NameInRequest' => {
                        'QueueUrls' => 'QueueUrl'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueUrls' => 1
+                  }
 }
 ;
     return $Params_map;

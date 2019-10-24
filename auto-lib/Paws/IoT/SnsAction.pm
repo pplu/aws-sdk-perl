@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::SnsAction;
-  use Moose;
-  has MessageFormat => (is => 'ro', isa => 'Str', request_name => 'messageFormat', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has MessageFormat => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has TargetArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'MessageFormat' => 'messageFormat',
+                       'RoleArn' => 'roleArn',
+                       'TargetArn' => 'targetArn'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'TargetArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

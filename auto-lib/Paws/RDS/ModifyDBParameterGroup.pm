@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyDBParameterGroup;
-  use Moose;
-  has DBParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Parameter]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Parameter/;
+  has DBParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[RDS_Parameter], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::RDS::Parameter',
+                                 'type' => 'ArrayRef[RDS_Parameter]'
+                               },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'Parameters' => 1,
+                    'DBParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +91,7 @@ If supplied, must match the name of an existing DBParameterGroup.
 
 
 
-=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RDS::Parameter>]
+=head2 B<REQUIRED> Parameters => ArrayRef[RDS_Parameter]
 
 An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method

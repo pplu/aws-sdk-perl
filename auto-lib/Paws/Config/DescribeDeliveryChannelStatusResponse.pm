@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeDeliveryChannelStatusResponse;
-  use Moose;
-  has DeliveryChannelsStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::DeliveryChannelStatus]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_DeliveryChannelStatus/;
+  has DeliveryChannelsStatus => (is => 'ro', isa => ArrayRef[Config_DeliveryChannelStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DeliveryChannelsStatus' => {
+                                             'class' => 'Paws::Config::DeliveryChannelStatus',
+                                             'type' => 'ArrayRef[Config_DeliveryChannelStatus]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Config::DescribeDeliveryChannelStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 DeliveryChannelsStatus => ArrayRef[L<Paws::Config::DeliveryChannelStatus>]
+=head2 DeliveryChannelsStatus => ArrayRef[Config_DeliveryChannelStatus]
 
 A list that contains the status of a specified delivery channel.
 

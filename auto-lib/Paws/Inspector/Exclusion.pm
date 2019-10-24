@@ -1,11 +1,60 @@
+# Generated from default/object.tt
 package Paws::Inspector::Exclusion;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has Recommendation => (is => 'ro', isa => 'Str', request_name => 'recommendation', traits => ['NameInRequest'], required => 1);
-  has Scopes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Scope]', request_name => 'scopes', traits => ['NameInRequest'], required => 1);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_Scope Inspector_Attribute/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Attributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute]);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has Recommendation => (is => 'ro', isa => Str, required => 1);
+  has Scopes => (is => 'ro', isa => ArrayRef[Inspector_Scope], required => 1);
+  has Title => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scopes' => {
+                             'class' => 'Paws::Inspector::Scope',
+                             'type' => 'ArrayRef[Inspector_Scope]'
+                           },
+               'Attributes' => {
+                                 'class' => 'Paws::Inspector::Attribute',
+                                 'type' => 'ArrayRef[Inspector_Attribute]'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Recommendation' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Scopes' => 'scopes',
+                       'Attributes' => 'attributes',
+                       'Arn' => 'arn',
+                       'Description' => 'description',
+                       'Title' => 'title',
+                       'Recommendation' => 'recommendation'
+                     },
+  'IsRequired' => {
+                    'Scopes' => 1,
+                    'Arn' => 1,
+                    'Description' => 1,
+                    'Title' => 1,
+                    'Recommendation' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +95,7 @@ Contains information about what was excluded from an assessment run.
   The ARN that specifies the exclusion.
 
 
-=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[Inspector_Attribute]
 
   The system-defined attributes for the exclusion.
 
@@ -61,7 +110,7 @@ Contains information about what was excluded from an assessment run.
   The recommendation for the exclusion.
 
 
-=head2 B<REQUIRED> Scopes => ArrayRef[L<Paws::Inspector::Scope>]
+=head2 B<REQUIRED> Scopes => ArrayRef[Inspector_Scope]
 
   The AWS resources for which the exclusion pertains.
 

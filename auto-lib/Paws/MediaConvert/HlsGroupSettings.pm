@@ -1,29 +1,144 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::HlsGroupSettings;
-  use Moose;
-  has AdMarkers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adMarkers', traits => ['NameInRequest']);
-  has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
-  has CaptionLanguageMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::HlsCaptionLanguageMapping]', request_name => 'captionLanguageMappings', traits => ['NameInRequest']);
-  has CaptionLanguageSetting => (is => 'ro', isa => 'Str', request_name => 'captionLanguageSetting', traits => ['NameInRequest']);
-  has ClientCache => (is => 'ro', isa => 'Str', request_name => 'clientCache', traits => ['NameInRequest']);
-  has CodecSpecification => (is => 'ro', isa => 'Str', request_name => 'codecSpecification', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
-  has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
-  has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
-  has MinSegmentLength => (is => 'ro', isa => 'Int', request_name => 'minSegmentLength', traits => ['NameInRequest']);
-  has OutputSelection => (is => 'ro', isa => 'Str', request_name => 'outputSelection', traits => ['NameInRequest']);
-  has ProgramDateTime => (is => 'ro', isa => 'Str', request_name => 'programDateTime', traits => ['NameInRequest']);
-  has ProgramDateTimePeriod => (is => 'ro', isa => 'Int', request_name => 'programDateTimePeriod', traits => ['NameInRequest']);
-  has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
-  has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
-  has SegmentsPerSubdirectory => (is => 'ro', isa => 'Int', request_name => 'segmentsPerSubdirectory', traits => ['NameInRequest']);
-  has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
-  has TimedMetadataId3Frame => (is => 'ro', isa => 'Str', request_name => 'timedMetadataId3Frame', traits => ['NameInRequest']);
-  has TimedMetadataId3Period => (is => 'ro', isa => 'Int', request_name => 'timedMetadataId3Period', traits => ['NameInRequest']);
-  has TimestampDeltaMilliseconds => (is => 'ro', isa => 'Int', request_name => 'timestampDeltaMilliseconds', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Num Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DestinationSettings MediaConvert_HlsCaptionLanguageMapping MediaConvert_HlsEncryptionSettings/;
+  has AdMarkers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has BaseUrl => (is => 'ro', isa => Str);
+  has CaptionLanguageMappings => (is => 'ro', isa => ArrayRef[MediaConvert_HlsCaptionLanguageMapping]);
+  has CaptionLanguageSetting => (is => 'ro', isa => Str);
+  has ClientCache => (is => 'ro', isa => Str);
+  has CodecSpecification => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+  has DirectoryStructure => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => MediaConvert_HlsEncryptionSettings);
+  has ManifestCompression => (is => 'ro', isa => Str);
+  has ManifestDurationFormat => (is => 'ro', isa => Str);
+  has MinFinalSegmentLength => (is => 'ro', isa => Num);
+  has MinSegmentLength => (is => 'ro', isa => Int);
+  has OutputSelection => (is => 'ro', isa => Str);
+  has ProgramDateTime => (is => 'ro', isa => Str);
+  has ProgramDateTimePeriod => (is => 'ro', isa => Int);
+  has SegmentControl => (is => 'ro', isa => Str);
+  has SegmentLength => (is => 'ro', isa => Int);
+  has SegmentsPerSubdirectory => (is => 'ro', isa => Int);
+  has StreamInfResolution => (is => 'ro', isa => Str);
+  has TimedMetadataId3Frame => (is => 'ro', isa => Str);
+  has TimedMetadataId3Period => (is => 'ro', isa => Int);
+  has TimestampDeltaMilliseconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampDeltaMilliseconds' => {
+                                                 'type' => 'Int'
+                                               },
+               'DestinationSettings' => {
+                                          'class' => 'Paws::MediaConvert::DestinationSettings',
+                                          'type' => 'MediaConvert_DestinationSettings'
+                                        },
+               'TimedMetadataId3Frame' => {
+                                            'type' => 'Str'
+                                          },
+               'CaptionLanguageMappings' => {
+                                              'class' => 'Paws::MediaConvert::HlsCaptionLanguageMapping',
+                                              'type' => 'ArrayRef[MediaConvert_HlsCaptionLanguageMapping]'
+                                            },
+               'ProgramDateTime' => {
+                                      'type' => 'Str'
+                                    },
+               'OutputSelection' => {
+                                      'type' => 'Str'
+                                    },
+               'MinFinalSegmentLength' => {
+                                            'type' => 'Num'
+                                          },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConvert::HlsEncryptionSettings',
+                                 'type' => 'MediaConvert_HlsEncryptionSettings'
+                               },
+               'AdMarkers' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'BaseUrl' => {
+                              'type' => 'Str'
+                            },
+               'CaptionLanguageSetting' => {
+                                             'type' => 'Str'
+                                           },
+               'SegmentsPerSubdirectory' => {
+                                              'type' => 'Int'
+                                            },
+               'ProgramDateTimePeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'CodecSpecification' => {
+                                         'type' => 'Str'
+                                       },
+               'SegmentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ClientCache' => {
+                                  'type' => 'Str'
+                                },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'ManifestCompression' => {
+                                          'type' => 'Str'
+                                        },
+               'SegmentControl' => {
+                                     'type' => 'Str'
+                                   },
+               'ManifestDurationFormat' => {
+                                             'type' => 'Str'
+                                           },
+               'TimedMetadataId3Period' => {
+                                             'type' => 'Int'
+                                           },
+               'StreamInfResolution' => {
+                                          'type' => 'Str'
+                                        },
+               'DirectoryStructure' => {
+                                         'type' => 'Str'
+                                       },
+               'MinSegmentLength' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'TimestampDeltaMilliseconds' => 'timestampDeltaMilliseconds',
+                       'DestinationSettings' => 'destinationSettings',
+                       'TimedMetadataId3Frame' => 'timedMetadataId3Frame',
+                       'CaptionLanguageMappings' => 'captionLanguageMappings',
+                       'ProgramDateTime' => 'programDateTime',
+                       'OutputSelection' => 'outputSelection',
+                       'MinFinalSegmentLength' => 'minFinalSegmentLength',
+                       'Encryption' => 'encryption',
+                       'AdMarkers' => 'adMarkers',
+                       'BaseUrl' => 'baseUrl',
+                       'CaptionLanguageSetting' => 'captionLanguageSetting',
+                       'SegmentsPerSubdirectory' => 'segmentsPerSubdirectory',
+                       'ProgramDateTimePeriod' => 'programDateTimePeriod',
+                       'CodecSpecification' => 'codecSpecification',
+                       'SegmentLength' => 'segmentLength',
+                       'ClientCache' => 'clientCache',
+                       'Destination' => 'destination',
+                       'ManifestCompression' => 'manifestCompression',
+                       'SegmentControl' => 'segmentControl',
+                       'ManifestDurationFormat' => 'manifestDurationFormat',
+                       'TimedMetadataId3Period' => 'timedMetadataId3Period',
+                       'StreamInfResolution' => 'streamInfResolution',
+                       'DirectoryStructure' => 'directoryStructure',
+                       'MinSegmentLength' => 'minSegmentLength'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +188,7 @@ this group of Apple HLS outputs.
 URL than the main .m3u8 file.
 
 
-=head2 CaptionLanguageMappings => ArrayRef[L<Paws::MediaConvert::HlsCaptionLanguageMapping>]
+=head2 CaptionLanguageMappings => ArrayRef[MediaConvert_HlsCaptionLanguageMapping]
 
   Language to be used on Caption outputs
 
@@ -113,7 +228,7 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination
@@ -124,7 +239,7 @@ of destination
   Indicates whether segments should be placed in subdirectories.
 
 
-=head2 Encryption => L<Paws::MediaConvert::HlsEncryptionSettings>
+=head2 Encryption => MediaConvert_HlsEncryptionSettings
 
   DRM settings.
 

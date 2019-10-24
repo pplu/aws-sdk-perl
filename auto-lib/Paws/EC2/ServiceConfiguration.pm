@@ -13,7 +13,7 @@ package Paws::EC2::ServiceConfiguration;
   has ServiceType => (is => 'ro', isa => ArrayRef[EC2_ServiceTypeDetail]);
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NetworkLoadBalancerArns' => {
@@ -67,8 +67,8 @@ package Paws::EC2::ServiceConfiguration;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

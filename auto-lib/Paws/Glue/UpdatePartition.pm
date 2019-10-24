@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdatePartition;
-  use Moose;
-  has CatalogId => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
-  has PartitionInput => (is => 'ro', isa => 'Paws::Glue::PartitionInput', required => 1);
-  has PartitionValueList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has TableName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_PartitionInput/;
+  has CatalogId => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PartitionInput => (is => 'ro', isa => Glue_PartitionInput, required => 1, predicate => 1);
+  has PartitionValueList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has TableName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePartition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdatePartitionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePartition');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdatePartitionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PartitionInput' => {
+                                     'class' => 'Paws::Glue::PartitionInput',
+                                     'type' => 'Glue_PartitionInput'
+                                   },
+               'PartitionValueList' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'CatalogId' => {
+                                'type' => 'Str'
+                              },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'PartitionInput' => 1,
+                    'PartitionValueList' => 1,
+                    'TableName' => 1,
+                    'DatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +153,7 @@ resides.
 
 
 
-=head2 B<REQUIRED> PartitionInput => L<Paws::Glue::PartitionInput>
+=head2 B<REQUIRED> PartitionInput => Glue_PartitionInput
 
 The new partition object to which to update the partition.
 

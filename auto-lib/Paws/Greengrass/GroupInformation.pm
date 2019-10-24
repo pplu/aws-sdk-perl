@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::Greengrass::GroupInformation;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has LastUpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has LatestVersion => (is => 'ro', isa => 'Str');
-  has LatestVersionArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LastUpdatedTimestamp => (is => 'ro', isa => Str);
+  has LatestVersion => (is => 'ro', isa => Str);
+  has LatestVersionArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'LatestVersionArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LastUpdatedTimestamp' => {
+                                           'type' => 'Str'
+                                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LatestVersion' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

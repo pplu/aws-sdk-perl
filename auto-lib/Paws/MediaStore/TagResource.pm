@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MediaStore::TagResource;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::MediaStore::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaStore::Types qw/MediaStore_Tag/;
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[MediaStore_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaStore::TagResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaStore::TagResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::MediaStore::Tag',
+                           'type' => 'ArrayRef[MediaStore_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'Resource' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The Amazon Resource Name (ARN) for the container.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[MediaStore_Tag]
 
 An array of key:value pairs that you want to add to the container. You
 need to specify only the tags that you want to add or update. For

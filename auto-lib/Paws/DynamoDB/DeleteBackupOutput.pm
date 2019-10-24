@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DeleteBackupOutput;
   use Moo;
@@ -6,9 +7,12 @@ package Paws::DynamoDB::DeleteBackupOutput;
   has BackupDescription => (is => 'ro', isa => DynamoDB_BackupDescription);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'BackupDescription' => {
                                         'class' => 'Paws::DynamoDB::BackupDescription',
                                         'type' => 'DynamoDB_BackupDescription'
@@ -16,8 +20,8 @@ package Paws::DynamoDB::DeleteBackupOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteLoginProfile;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteLoginProfile;
                'UserName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

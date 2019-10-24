@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::VideoCodecSettings;
-  use Moose;
-  has FrameCaptureSettings => (is => 'ro', isa => 'Paws::MediaLive::FrameCaptureSettings', request_name => 'frameCaptureSettings', traits => ['NameInRequest']);
-  has H264Settings => (is => 'ro', isa => 'Paws::MediaLive::H264Settings', request_name => 'h264Settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_FrameCaptureSettings MediaLive_H264Settings/;
+  has FrameCaptureSettings => (is => 'ro', isa => MediaLive_FrameCaptureSettings);
+  has H264Settings => (is => 'ro', isa => MediaLive_H264Settings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'H264Settings' => {
+                                   'class' => 'Paws::MediaLive::H264Settings',
+                                   'type' => 'MediaLive_H264Settings'
+                                 },
+               'FrameCaptureSettings' => {
+                                           'class' => 'Paws::MediaLive::FrameCaptureSettings',
+                                           'type' => 'MediaLive_FrameCaptureSettings'
+                                         }
+             },
+  'NameInRequest' => {
+                       'H264Settings' => 'h264Settings',
+                       'FrameCaptureSettings' => 'frameCaptureSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Video Codec Settings
 =head1 ATTRIBUTES
 
 
-=head2 FrameCaptureSettings => L<Paws::MediaLive::FrameCaptureSettings>
+=head2 FrameCaptureSettings => MediaLive_FrameCaptureSettings
 
   
 
 
-=head2 H264Settings => L<Paws::MediaLive::H264Settings>
+=head2 H264Settings => MediaLive_H264Settings
 
   
 

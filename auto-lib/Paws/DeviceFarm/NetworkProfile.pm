@@ -1,17 +1,81 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::NetworkProfile;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DownlinkBandwidthBits => (is => 'ro', isa => 'Int', request_name => 'downlinkBandwidthBits', traits => ['NameInRequest']);
-  has DownlinkDelayMs => (is => 'ro', isa => 'Int', request_name => 'downlinkDelayMs', traits => ['NameInRequest']);
-  has DownlinkJitterMs => (is => 'ro', isa => 'Int', request_name => 'downlinkJitterMs', traits => ['NameInRequest']);
-  has DownlinkLossPercent => (is => 'ro', isa => 'Int', request_name => 'downlinkLossPercent', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has UplinkBandwidthBits => (is => 'ro', isa => 'Int', request_name => 'uplinkBandwidthBits', traits => ['NameInRequest']);
-  has UplinkDelayMs => (is => 'ro', isa => 'Int', request_name => 'uplinkDelayMs', traits => ['NameInRequest']);
-  has UplinkJitterMs => (is => 'ro', isa => 'Int', request_name => 'uplinkJitterMs', traits => ['NameInRequest']);
-  has UplinkLossPercent => (is => 'ro', isa => 'Int', request_name => 'uplinkLossPercent', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DownlinkBandwidthBits => (is => 'ro', isa => Int);
+  has DownlinkDelayMs => (is => 'ro', isa => Int);
+  has DownlinkJitterMs => (is => 'ro', isa => Int);
+  has DownlinkLossPercent => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has UplinkBandwidthBits => (is => 'ro', isa => Int);
+  has UplinkDelayMs => (is => 'ro', isa => Int);
+  has UplinkJitterMs => (is => 'ro', isa => Int);
+  has UplinkLossPercent => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DownlinkJitterMs' => {
+                                       'type' => 'Int'
+                                     },
+               'DownlinkBandwidthBits' => {
+                                            'type' => 'Int'
+                                          },
+               'UplinkLossPercent' => {
+                                        'type' => 'Int'
+                                      },
+               'UplinkBandwidthBits' => {
+                                          'type' => 'Int'
+                                        },
+               'DownlinkLossPercent' => {
+                                          'type' => 'Int'
+                                        },
+               'DownlinkDelayMs' => {
+                                      'type' => 'Int'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'UplinkDelayMs' => {
+                                    'type' => 'Int'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'UplinkJitterMs' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'DownlinkJitterMs' => 'downlinkJitterMs',
+                       'DownlinkBandwidthBits' => 'downlinkBandwidthBits',
+                       'UplinkLossPercent' => 'uplinkLossPercent',
+                       'UplinkBandwidthBits' => 'uplinkBandwidthBits',
+                       'DownlinkLossPercent' => 'downlinkLossPercent',
+                       'DownlinkDelayMs' => 'downlinkDelayMs',
+                       'Type' => 'type',
+                       'UplinkDelayMs' => 'uplinkDelayMs',
+                       'Arn' => 'arn',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'UplinkJitterMs' => 'uplinkJitterMs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

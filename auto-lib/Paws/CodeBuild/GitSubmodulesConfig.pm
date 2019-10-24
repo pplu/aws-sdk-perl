@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::GitSubmodulesConfig;
-  use Moose;
-  has FetchSubmodules => (is => 'ro', isa => 'Bool', request_name => 'fetchSubmodules', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CodeBuild::Types qw//;
+  has FetchSubmodules => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FetchSubmodules' => {
+                                      'type' => 'Bool'
+                                    }
+             },
+  'NameInRequest' => {
+                       'FetchSubmodules' => 'fetchSubmodules'
+                     },
+  'IsRequired' => {
+                    'FetchSubmodules' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

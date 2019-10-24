@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::AddTagsToResource;
-  use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::AddTagsToResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::AddTagsToResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'ResourceARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +83,7 @@ The Amazon Resource Name (ARN) of the resource you want to add tags to.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[StorageGateway_Tag]
 
 The key-value pair that represents the tag you want to add to the
 resource. The value can be an empty string.

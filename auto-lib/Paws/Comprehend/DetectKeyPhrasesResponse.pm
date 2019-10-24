@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DetectKeyPhrasesResponse;
-  use Moose;
-  has KeyPhrases => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::KeyPhrase]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_KeyPhrase/;
+  has KeyPhrases => (is => 'ro', isa => ArrayRef[Comprehend_KeyPhrase]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'KeyPhrases' => {
+                                 'class' => 'Paws::Comprehend::KeyPhrase',
+                                 'type' => 'ArrayRef[Comprehend_KeyPhrase]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Comprehend::DetectKeyPhrasesResponse
 =head1 ATTRIBUTES
 
 
-=head2 KeyPhrases => ArrayRef[L<Paws::Comprehend::KeyPhrase>]
+=head2 KeyPhrases => ArrayRef[Comprehend_KeyPhrase]
 
 A collection of key phrases that Amazon Comprehend identified in the
 input text. For each key phrase, the response provides the text of the

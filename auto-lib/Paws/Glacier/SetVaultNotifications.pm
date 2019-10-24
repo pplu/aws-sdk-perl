@@ -1,16 +1,49 @@
 
 package Paws::Glacier::SetVaultNotifications;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
-  has VaultNotificationConfig => (is => 'ro', isa => 'Paws::Glacier::VaultNotificationConfig', traits => ['NameInRequest'], request_name => 'vaultNotificationConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_VaultNotificationConfig/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VaultNotificationConfig => (is => 'ro', isa => Glacier_VaultNotificationConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'VaultNotificationConfig');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetVaultNotifications');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/notification-configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetVaultNotifications');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/notification-configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VaultNotificationConfig' => {
+                                              'class' => 'Paws::Glacier::VaultNotificationConfig',
+                                              'type' => 'Glacier_VaultNotificationConfig'
+                                            },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'VaultName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName'
+                  },
+  'NameInRequest' => {
+                       'VaultNotificationConfig' => 'vaultNotificationConfig'
+                     },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +98,7 @@ The name of the vault.
 
 
 
-=head2 VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>
+=head2 VaultNotificationConfig => Glacier_VaultNotificationConfig
 
 Provides options for specifying notification configuration.
 

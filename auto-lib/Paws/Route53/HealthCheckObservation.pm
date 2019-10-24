@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Route53::HealthCheckObservation;
-  use Moose;
-  has IPAddress => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has StatusReport => (is => 'ro', isa => 'Paws::Route53::StatusReport');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_StatusReport/;
+  has IPAddress => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has StatusReport => (is => 'ro', isa => Route53_StatusReport);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusReport' => {
+                                   'class' => 'Paws::Route53::StatusReport',
+                                   'type' => 'Route53_StatusReport'
+                                 },
+               'IPAddress' => {
+                                'type' => 'Str'
+                              },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +75,7 @@ failure reason in C<StatusReport>.
 status in C<StatusReport>.
 
 
-=head2 StatusReport => L<Paws::Route53::StatusReport>
+=head2 StatusReport => Route53_StatusReport
 
   A complex type that contains the last failure reason as reported by one
 Amazon Route 53 health checker and the time of the failed health check.

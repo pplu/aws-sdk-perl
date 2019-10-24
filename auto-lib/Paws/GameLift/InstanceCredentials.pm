@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GameLift::InstanceCredentials;
-  use Moose;
-  has Secret => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has Secret => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Secret' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

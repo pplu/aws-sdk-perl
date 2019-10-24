@@ -1,13 +1,53 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::CreateCommitOutput;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' );
-  has FilesAdded => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::FileMetadata]', traits => ['NameInRequest'], request_name => 'filesAdded' );
-  has FilesDeleted => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::FileMetadata]', traits => ['NameInRequest'], request_name => 'filesDeleted' );
-  has FilesUpdated => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::FileMetadata]', traits => ['NameInRequest'], request_name => 'filesUpdated' );
-  has TreeId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'treeId' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_FileMetadata/;
+  has CommitId => (is => 'ro', isa => Str);
+  has FilesAdded => (is => 'ro', isa => ArrayRef[CodeCommit_FileMetadata]);
+  has FilesDeleted => (is => 'ro', isa => ArrayRef[CodeCommit_FileMetadata]);
+  has FilesUpdated => (is => 'ro', isa => ArrayRef[CodeCommit_FileMetadata]);
+  has TreeId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TreeId' => {
+                             'type' => 'Str'
+                           },
+               'FilesUpdated' => {
+                                   'class' => 'Paws::CodeCommit::FileMetadata',
+                                   'type' => 'ArrayRef[CodeCommit_FileMetadata]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FilesDeleted' => {
+                                   'class' => 'Paws::CodeCommit::FileMetadata',
+                                   'type' => 'ArrayRef[CodeCommit_FileMetadata]'
+                                 },
+               'FilesAdded' => {
+                                 'class' => 'Paws::CodeCommit::FileMetadata',
+                                 'type' => 'ArrayRef[CodeCommit_FileMetadata]'
+                               },
+               'CommitId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'TreeId' => 'treeId',
+                       'FilesUpdated' => 'filesUpdated',
+                       'FilesDeleted' => 'filesDeleted',
+                       'FilesAdded' => 'filesAdded',
+                       'CommitId' => 'commitId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,17 +64,17 @@ The full commit ID of the commit that contains your committed file
 changes.
 
 
-=head2 FilesAdded => ArrayRef[L<Paws::CodeCommit::FileMetadata>]
+=head2 FilesAdded => ArrayRef[CodeCommit_FileMetadata]
 
 The files added as part of the committed file changes.
 
 
-=head2 FilesDeleted => ArrayRef[L<Paws::CodeCommit::FileMetadata>]
+=head2 FilesDeleted => ArrayRef[CodeCommit_FileMetadata]
 
 The files deleted as part of the committed file changes.
 
 
-=head2 FilesUpdated => ArrayRef[L<Paws::CodeCommit::FileMetadata>]
+=head2 FilesUpdated => ArrayRef[CodeCommit_FileMetadata]
 
 The files updated as part of the commited file changes.
 

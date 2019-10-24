@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::CreatePipeline;
-  use Moose;
-  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_Tag CodePipeline_PipelineDeclaration/;
+  has Pipeline => (is => 'ro', isa => CodePipeline_PipelineDeclaration, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePipeline');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::CreatePipelineOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePipeline');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::CreatePipelineOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pipeline' => {
+                               'class' => 'Paws::CodePipeline::PipelineDeclaration',
+                               'type' => 'CodePipeline_PipelineDeclaration'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Pipeline' => 'pipeline',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Pipeline' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +117,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type => 'KMS',                               # values: KMS
 
           },    # OPTIONAL
-        },    # OPTIONAL
+        },
         ArtifactStores => {
           'MyAWSRegionName' => {
             Location      => 'MyArtifactStoreLocation',    # min: 3, max: 63
@@ -99,7 +127,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type => 'KMS',                               # values: KMS
 
             },    # OPTIONAL
-          },    # key: min: 4, max: 30; OPTIONAL, value: OPTIONAL
+          },    # key: min: 4, max: 30; OPTIONAL
         },    # OPTIONAL
         Version => 1,    # min: 1; OPTIONAL
       },
@@ -125,14 +153,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+=head2 B<REQUIRED> Pipeline => CodePipeline_PipelineDeclaration
 
 Represents the structure of actions and stages to be performed in the
 pipeline.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 Tags => ArrayRef[CodePipeline_Tag]
 
 The tags for the pipeline.
 

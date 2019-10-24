@@ -1,19 +1,63 @@
 
 package Paws::LexModels::PutSlotType;
-  use Moose;
-  has Checksum => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checksum');
-  has CreateVersion => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'createVersion');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has EnumerationValues => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::EnumerationValue]', traits => ['NameInRequest'], request_name => 'enumerationValues');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has ValueSelectionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'valueSelectionStrategy');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_EnumerationValue/;
+  has Checksum => (is => 'ro', isa => Str, predicate => 1);
+  has CreateVersion => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EnumerationValues => (is => 'ro', isa => ArrayRef[LexModels_EnumerationValue], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValueSelectionStrategy => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSlotType');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/slottypes/{name}/versions/$LATEST');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::PutSlotTypeResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutSlotType');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/slottypes/{name}/versions/$LATEST');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::PutSlotTypeResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EnumerationValues' => {
+                                        'class' => 'Paws::LexModels::EnumerationValue',
+                                        'type' => 'ArrayRef[LexModels_EnumerationValue]'
+                                      },
+               'CreateVersion' => {
+                                    'type' => 'Bool'
+                                  },
+               'ValueSelectionStrategy' => {
+                                             'type' => 'Str'
+                                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Checksum' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'NameInRequest' => {
+                       'EnumerationValues' => 'enumerationValues',
+                       'CreateVersion' => 'createVersion',
+                       'ValueSelectionStrategy' => 'valueSelectionStrategy',
+                       'Description' => 'description',
+                       'Checksum' => 'checksum'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +140,7 @@ A description of the slot type.
 
 
 
-=head2 EnumerationValues => ArrayRef[L<Paws::LexModels::EnumerationValue>]
+=head2 EnumerationValues => ArrayRef[LexModels_EnumerationValue]
 
 A list of C<EnumerationValue> objects that defines the values that the
 slot type can take. Each value can have a list of C<synonyms>, which

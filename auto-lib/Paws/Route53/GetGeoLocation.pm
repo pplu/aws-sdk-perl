@@ -1,18 +1,43 @@
 
 package Paws::Route53::GetGeoLocation;
-  use Moose;
-  has ContinentCode => (is => 'ro', isa => 'Str', query_name => 'continentcode', traits => ['ParamInQuery']);
-  has CountryCode => (is => 'ro', isa => 'Str', query_name => 'countrycode', traits => ['ParamInQuery']);
-  has SubdivisionCode => (is => 'ro', isa => 'Str', query_name => 'subdivisioncode', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has ContinentCode => (is => 'ro', isa => Str, predicate => 1);
+  has CountryCode => (is => 'ro', isa => Str, predicate => 1);
+  has SubdivisionCode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGeoLocation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/geolocation');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetGeoLocationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetGeoLocation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/geolocation');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::GetGeoLocationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContinentCode' => {
+                                    'type' => 'Str'
+                                  },
+               'SubdivisionCode' => {
+                                      'type' => 'Str'
+                                    },
+               'CountryCode' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInQuery' => {
+                      'ContinentCode' => 'continentcode',
+                      'SubdivisionCode' => 'subdivisioncode',
+                      'CountryCode' => 'countrycode'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

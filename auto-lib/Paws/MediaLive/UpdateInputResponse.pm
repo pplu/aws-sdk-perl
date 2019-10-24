@@ -1,9 +1,30 @@
 
 package Paws::MediaLive::UpdateInputResponse;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Paws::MediaLive::Input', traits => ['NameInRequest'], request_name => 'input');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_Input/;
+  has Input => (is => 'ro', isa => MediaLive_Input);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Input' => {
+                            'class' => 'Paws::MediaLive::Input',
+                            'type' => 'MediaLive_Input'
+                          }
+             },
+  'NameInRequest' => {
+                       'Input' => 'input'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::MediaLive::UpdateInputResponse
 =head1 ATTRIBUTES
 
 
-=head2 Input => L<Paws::MediaLive::Input>
+=head2 Input => MediaLive_Input
 
 
 

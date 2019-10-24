@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetOpsSummaryResult;
-  use Moose;
-  has Entities => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsEntity]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_OpsEntity/;
+  has Entities => (is => 'ro', isa => ArrayRef[SSM_OpsEntity]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entities' => {
+                               'class' => 'Paws::SSM::OpsEntity',
+                               'type' => 'ArrayRef[SSM_OpsEntity]'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::GetOpsSummaryResult
 =head1 ATTRIBUTES
 
 
-=head2 Entities => ArrayRef[L<Paws::SSM::OpsEntity>]
+=head2 Entities => ArrayRef[SSM_OpsEntity]
 
 The list of aggregated and filtered OpsItems.
 

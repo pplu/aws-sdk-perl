@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::XRay::Http;
-  use Moose;
-  has ClientIp => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str');
-  has HttpStatus => (is => 'ro', isa => 'Int');
-  has HttpURL => (is => 'ro', isa => 'Str');
-  has UserAgent => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::XRay::Types qw//;
+  has ClientIp => (is => 'ro', isa => Str);
+  has HttpMethod => (is => 'ro', isa => Str);
+  has HttpStatus => (is => 'ro', isa => Int);
+  has HttpURL => (is => 'ro', isa => Str);
+  has UserAgent => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HttpStatus' => {
+                                 'type' => 'Int'
+                               },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'HttpURL' => {
+                              'type' => 'Str'
+                            },
+               'UserAgent' => {
+                                'type' => 'Str'
+                              },
+               'ClientIp' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

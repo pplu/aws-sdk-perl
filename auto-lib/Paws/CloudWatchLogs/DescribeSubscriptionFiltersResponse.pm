@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has SubscriptionFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SubscriptionFilter]', traits => ['NameInRequest'], request_name => 'subscriptionFilters' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_SubscriptionFilter/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SubscriptionFilters => (is => 'ro', isa => ArrayRef[CloudWatchLogs_SubscriptionFilter]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SubscriptionFilters' => {
+                                          'class' => 'Paws::CloudWatchLogs::SubscriptionFilter',
+                                          'type' => 'ArrayRef[CloudWatchLogs_SubscriptionFilter]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SubscriptionFilters' => 'subscriptionFilters'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse
 
 
 
-=head2 SubscriptionFilters => ArrayRef[L<Paws::CloudWatchLogs::SubscriptionFilter>]
+=head2 SubscriptionFilters => ArrayRef[CloudWatchLogs_SubscriptionFilter]
 
 The subscription filters.
 

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::MeshSpec;
-  use Moose;
-  has EgressFilter => (is => 'ro', isa => 'Paws::AppMesh::EgressFilter', request_name => 'egressFilter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::AppMesh::Types qw/AppMesh_EgressFilter/;
+  has EgressFilter => (is => 'ro', isa => AppMesh_EgressFilter);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EgressFilter' => {
+                                   'class' => 'Paws::AppMesh::EgressFilter',
+                                   'type' => 'AppMesh_EgressFilter'
+                                 }
+             },
+  'NameInRequest' => {
+                       'EgressFilter' => 'egressFilter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object representing the specification of a service mesh.
 =head1 ATTRIBUTES
 
 
-=head2 EgressFilter => L<Paws::AppMesh::EgressFilter>
+=head2 EgressFilter => AppMesh_EgressFilter
 
   The egress filter rules for the service mesh.
 

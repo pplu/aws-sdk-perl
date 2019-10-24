@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Route53Resolver::ResolverRuleConfig;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has ResolverEndpointId => (is => 'ro', isa => 'Str');
-  has TargetIps => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::TargetAddress]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_TargetAddress/;
+  has Name => (is => 'ro', isa => Str);
+  has ResolverEndpointId => (is => 'ro', isa => Str);
+  has TargetIps => (is => 'ro', isa => ArrayRef[Route53Resolver_TargetAddress]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResolverEndpointId' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetIps' => {
+                                'class' => 'Paws::Route53Resolver::TargetAddress',
+                                'type' => 'ArrayRef[Route53Resolver_TargetAddress]'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +75,7 @@ in the Resolver dashboard in the Route 53 console.
 route DNS queries to the IP addresses that you specify in C<TargetIps>.
 
 
-=head2 TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]
+=head2 TargetIps => ArrayRef[Route53Resolver_TargetAddress]
 
   For DNS queries that originate in your VPC, the new IP addresses that
 you want to route outbound DNS queries to.

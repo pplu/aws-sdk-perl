@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateXssMatchSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::XssMatchSetUpdate]', required => 1);
-  has XssMatchSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_XssMatchSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_XssMatchSetUpdate], required => 1, predicate => 1);
+  has XssMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateXssMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateXssMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateXssMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateXssMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAFRegional::XssMatchSetUpdate',
+                              'type' => 'ArrayRef[WAFRegional_XssMatchSetUpdate]'
+                            },
+               'XssMatchSetId' => {
+                                    'type' => 'Str'
+                                  },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'XssMatchSetId' => 1,
+                    'ChangeToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +94,7 @@ The value returned by the most recent call to GetChangeToken.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::XssMatchSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_XssMatchSetUpdate]
 
 An array of C<XssMatchSetUpdate> objects that you want to insert into
 or delete from an XssMatchSet. For more information, see the applicable

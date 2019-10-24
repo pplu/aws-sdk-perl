@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorks::CreateDeployment;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str');
-  has Command => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommand', required => 1);
-  has Comment => (is => 'ro', isa => 'Str');
-  has CustomJson => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_DeploymentCommand/;
+  has AppId => (is => 'ro', isa => Str, predicate => 1);
+  has Command => (is => 'ro', isa => OpsWorks_DeploymentCommand, required => 1, predicate => 1);
+  has Comment => (is => 'ro', isa => Str, predicate => 1);
+  has CustomJson => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has LayerIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StackId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeployment');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateDeploymentResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeployment');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorks::CreateDeploymentResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Command' => {
+                              'class' => 'Paws::OpsWorks::DeploymentCommand',
+                              'type' => 'OpsWorks_DeploymentCommand'
+                            },
+               'LayerIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'CustomJson' => {
+                                 'type' => 'Str'
+                               },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Command' => 1,
+                    'StackId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +104,7 @@ other deployment commands.
 
 
 
-=head2 B<REQUIRED> Command => L<Paws::OpsWorks::DeploymentCommand>
+=head2 B<REQUIRED> Command => OpsWorks_DeploymentCommand
 
 A C<DeploymentCommand> object that specifies the deployment command and
 any associated arguments.

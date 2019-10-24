@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::PutRoomSkillParameter;
-  use Moose;
-  has RoomArn => (is => 'ro', isa => 'Str');
-  has RoomSkillParameter => (is => 'ro', isa => 'Paws::AlexaForBusiness::RoomSkillParameter', required => 1);
-  has SkillId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_RoomSkillParameter/;
+  has RoomArn => (is => 'ro', isa => Str, predicate => 1);
+  has RoomSkillParameter => (is => 'ro', isa => AlexaForBusiness_RoomSkillParameter, required => 1, predicate => 1);
+  has SkillId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRoomSkillParameter');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::PutRoomSkillParameterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRoomSkillParameter');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::PutRoomSkillParameterResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoomArn' => {
+                              'type' => 'Str'
+                            },
+               'RoomSkillParameter' => {
+                                         'class' => 'Paws::AlexaForBusiness::RoomSkillParameter',
+                                         'type' => 'AlexaForBusiness_RoomSkillParameter'
+                                       },
+               'SkillId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'RoomSkillParameter' => 1,
+                    'SkillId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ The ARN of the room associated with the room skill parameter. Required.
 
 
 
-=head2 B<REQUIRED> RoomSkillParameter => L<Paws::AlexaForBusiness::RoomSkillParameter>
+=head2 B<REQUIRED> RoomSkillParameter => AlexaForBusiness_RoomSkillParameter
 
 The updated room skill parameter. Required.
 

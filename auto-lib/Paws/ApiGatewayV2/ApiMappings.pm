@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::ApiMappings;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::ApiMapping]', request_name => 'items', traits => ['NameInRequest']);
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_ApiMapping/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGatewayV2_ApiMapping]);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Items' => {
+                            'class' => 'Paws::ApiGatewayV2::ApiMapping',
+                            'type' => 'ArrayRef[ApiGatewayV2_ApiMapping]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Items' => 'items',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +62,7 @@ Represents a collection of ApiMappings resources.
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGatewayV2::ApiMapping>]
+=head2 Items => ArrayRef[ApiGatewayV2_ApiMapping]
 
   The elements from this collection.
 

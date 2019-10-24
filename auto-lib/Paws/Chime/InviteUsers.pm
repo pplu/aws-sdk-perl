@@ -1,15 +1,40 @@
 
 package Paws::Chime::InviteUsers;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has UserEmailList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Chime::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserEmailList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'InviteUsers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users?operation=add');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::InviteUsersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'InviteUsers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/users?operation=add');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::InviteUsersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserEmailList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  },
+  'IsRequired' => {
+                    'UserEmailList' => 1,
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

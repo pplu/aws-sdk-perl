@@ -1,16 +1,47 @@
 
 package Paws::Chime::UpdateUserSettings;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
-  has UserSettings => (is => 'ro', isa => 'Paws::Chime::UserSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_UserSettings/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserSettings => (is => 'ro', isa => Chime_UserSettings, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users/{userId}/settings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUserSettings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/users/{userId}/settings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'UserSettings' => {
+                                   'class' => 'Paws::Chime::UserSettings',
+                                   'type' => 'Chime_UserSettings'
+                                 }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'UserId' => 'userId'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'UserId' => 1,
+                    'UserSettings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +94,7 @@ The user ID.
 
 
 
-=head2 B<REQUIRED> UserSettings => L<Paws::Chime::UserSettings>
+=head2 B<REQUIRED> UserSettings => Chime_UserSettings
 
 The user settings to update.
 

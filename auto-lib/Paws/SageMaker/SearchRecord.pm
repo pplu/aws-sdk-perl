@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SageMaker::SearchRecord;
-  use Moose;
-  has TrainingJob => (is => 'ro', isa => 'Paws::SageMaker::TrainingJob');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_TrainingJob/;
+  has TrainingJob => (is => 'ro', isa => SageMaker_TrainingJob);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrainingJob' => {
+                                  'class' => 'Paws::SageMaker::TrainingJob',
+                                  'type' => 'SageMaker_TrainingJob'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ object.
 =head1 ATTRIBUTES
 
 
-=head2 TrainingJob => L<Paws::SageMaker::TrainingJob>
+=head2 TrainingJob => SageMaker_TrainingJob
 
   A C<TrainingJob> object that is returned as part of a C<Search>
 request.

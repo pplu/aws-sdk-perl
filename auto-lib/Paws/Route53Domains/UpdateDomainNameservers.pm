@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::UpdateDomainNameservers;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has FIAuthKey => (is => 'ro', isa => 'Str');
-  has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_Nameserver/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FIAuthKey => (is => 'ro', isa => Str, predicate => 1);
+  has Nameservers => (is => 'ro', isa => ArrayRef[Route53Domains_Nameserver], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainNameservers');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateDomainNameserversResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDomainNameservers');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::UpdateDomainNameserversResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Nameservers' => {
+                                  'class' => 'Paws::Route53Domains::Nameserver',
+                                  'type' => 'ArrayRef[Route53Domains_Nameserver]'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'FIAuthKey' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Nameservers' => 1,
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +94,7 @@ The authorization key for .fi domains
 
 
 
-=head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
+=head2 B<REQUIRED> Nameservers => ArrayRef[Route53Domains_Nameserver]
 
 A list of new name servers for the domain.
 

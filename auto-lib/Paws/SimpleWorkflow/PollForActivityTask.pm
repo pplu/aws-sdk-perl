@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::PollForActivityTask;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
-  has Identity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identity' );
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Identity => (is => 'ro', isa => Str, predicate => 1);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForActivityTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTask');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PollForActivityTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTask');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'Identity' => {
+                               'type' => 'Str'
+                             },
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'Identity' => 'identity',
+                       'Domain' => 'domain'
+                     },
+  'IsRequired' => {
+                    'TaskList' => 1,
+                    'Domain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +101,7 @@ user defined.
 
 
 
-=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => SimpleWorkflow_TaskList
 
 Specifies the task list to poll for activity tasks.
 

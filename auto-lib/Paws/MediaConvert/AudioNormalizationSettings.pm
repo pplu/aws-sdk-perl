@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AudioNormalizationSettings;
-  use Moose;
-  has Algorithm => (is => 'ro', isa => 'Str', request_name => 'algorithm', traits => ['NameInRequest']);
-  has AlgorithmControl => (is => 'ro', isa => 'Str', request_name => 'algorithmControl', traits => ['NameInRequest']);
-  has CorrectionGateLevel => (is => 'ro', isa => 'Int', request_name => 'correctionGateLevel', traits => ['NameInRequest']);
-  has LoudnessLogging => (is => 'ro', isa => 'Str', request_name => 'loudnessLogging', traits => ['NameInRequest']);
-  has PeakCalculation => (is => 'ro', isa => 'Str', request_name => 'peakCalculation', traits => ['NameInRequest']);
-  has TargetLkfs => (is => 'ro', isa => 'Num', request_name => 'targetLkfs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaConvert::Types qw//;
+  has Algorithm => (is => 'ro', isa => Str);
+  has AlgorithmControl => (is => 'ro', isa => Str);
+  has CorrectionGateLevel => (is => 'ro', isa => Int);
+  has LoudnessLogging => (is => 'ro', isa => Str);
+  has PeakCalculation => (is => 'ro', isa => Str);
+  has TargetLkfs => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PeakCalculation' => {
+                                      'type' => 'Str'
+                                    },
+               'LoudnessLogging' => {
+                                      'type' => 'Str'
+                                    },
+               'CorrectionGateLevel' => {
+                                          'type' => 'Int'
+                                        },
+               'AlgorithmControl' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetLkfs' => {
+                                 'type' => 'Num'
+                               },
+               'Algorithm' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'PeakCalculation' => 'peakCalculation',
+                       'LoudnessLogging' => 'loudnessLogging',
+                       'CorrectionGateLevel' => 'correctionGateLevel',
+                       'AlgorithmControl' => 'algorithmControl',
+                       'TargetLkfs' => 'targetLkfs',
+                       'Algorithm' => 'algorithm'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

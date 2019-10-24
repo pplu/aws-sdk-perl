@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::Route53::TrafficPolicyInstance;
-  use Moose;
-  has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has State => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyId => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyType => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicyVersion => (is => 'ro', isa => 'Int', required => 1);
-  has TTL => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw//;
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyId => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyType => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyVersion => (is => 'ro', isa => Int, required => 1);
+  has TTL => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficPolicyType' => {
+                                        'type' => 'Str'
+                                      },
+               'TrafficPolicyId' => {
+                                      'type' => 'Str'
+                                    },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'TrafficPolicyVersion' => {
+                                           'type' => 'Int'
+                                         },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'TTL' => {
+                          'type' => 'Int'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'TrafficPolicyType' => 1,
+                    'TrafficPolicyId' => 1,
+                    'Id' => 1,
+                    'State' => 1,
+                    'HostedZoneId' => 1,
+                    'TrafficPolicyVersion' => 1,
+                    'Message' => 1,
+                    'TTL' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

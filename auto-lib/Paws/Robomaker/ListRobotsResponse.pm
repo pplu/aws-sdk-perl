@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::ListRobotsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Robots => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Robot]', traits => ['NameInRequest'], request_name => 'robots');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_Robot/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Robots => (is => 'ro', isa => ArrayRef[Robomaker_Robot]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Robots' => {
+                             'class' => 'Paws::Robomaker::Robot',
+                             'type' => 'ArrayRef[Robomaker_Robot]'
+                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Robots' => 'robots'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +49,7 @@ value can be used to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 Robots => ArrayRef[L<Paws::Robomaker::Robot>]
+=head2 Robots => ArrayRef[Robomaker_Robot]
 
 A list of robots that meet the criteria of the request.
 

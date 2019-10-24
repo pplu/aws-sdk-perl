@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::BaiduChannelRequest;
-  use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has SecretKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw//;
+  has ApiKey => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool);
+  has SecretKey => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretKey' => {
+                                'type' => 'Str'
+                              },
+               'ApiKey' => {
+                             'type' => 'Str'
+                           },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            }
+             },
+  'IsRequired' => {
+                    'SecretKey' => 1,
+                    'ApiKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

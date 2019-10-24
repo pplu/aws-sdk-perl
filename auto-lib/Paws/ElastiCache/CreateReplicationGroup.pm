@@ -1,40 +1,143 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::CreateReplicationGroup;
-  use Moose;
-  has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has AuthToken => (is => 'ro', isa => 'Str');
-  has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheNodeType => (is => 'ro', isa => 'Str');
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str');
-  has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has NodeGroupConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupConfiguration]');
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has NumCacheClusters => (is => 'ro', isa => 'Int');
-  has NumNodeGroups => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredCacheClusterAZs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PrimaryClusterId => (is => 'ro', isa => 'Str');
-  has ReplicasPerNodeGroup => (is => 'ro', isa => 'Int');
-  has ReplicationGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SnapshotName => (is => 'ro', isa => 'Str');
-  has SnapshotRetentionLimit => (is => 'ro', isa => 'Int');
-  has SnapshotWindow => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
-  has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Tag ElastiCache_NodeGroupConfiguration/;
+  has AtRestEncryptionEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has AuthToken => (is => 'ro', isa => Str, predicate => 1);
+  has AutomaticFailoverEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has CacheNodeType => (is => 'ro', isa => Str, predicate => 1);
+  has CacheParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has CacheSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has CacheSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has NodeGroupConfiguration => (is => 'ro', isa => ArrayRef[ElastiCache_NodeGroupConfiguration], predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has NumCacheClusters => (is => 'ro', isa => Int, predicate => 1);
+  has NumNodeGroups => (is => 'ro', isa => Int, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredCacheClusterAZs => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PrimaryClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicasPerNodeGroup => (is => 'ro', isa => Int, predicate => 1);
+  has ReplicationGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotArns => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has SnapshotRetentionLimit => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotWindow => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ElastiCache_Tag], predicate => 1);
+  has TransitEncryptionEnabled => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateReplicationGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateReplicationGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReplicationGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CreateReplicationGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateReplicationGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotWindow' => {
+                                     'type' => 'Str'
+                                   },
+               'SnapshotArns' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'CacheNodeType' => {
+                                    'type' => 'Str'
+                                  },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'CacheSubnetGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'AuthToken' => {
+                                'type' => 'Str'
+                              },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'SnapshotRetentionLimit' => {
+                                             'type' => 'Int'
+                                           },
+               'NodeGroupConfiguration' => {
+                                             'class' => 'Paws::ElastiCache::NodeGroupConfiguration',
+                                             'type' => 'ArrayRef[ElastiCache_NodeGroupConfiguration]'
+                                           },
+               'TransitEncryptionEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'CacheSecurityGroupNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ReplicasPerNodeGroup' => {
+                                           'type' => 'Int'
+                                         },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'NumCacheClusters' => {
+                                       'type' => 'Int'
+                                     },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'PrimaryClusterId' => {
+                                       'type' => 'Str'
+                                     },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'PreferredCacheClusterAZs' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'AtRestEncryptionEnabled' => {
+                                              'type' => 'Bool'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::ElastiCache::Tag',
+                           'type' => 'ArrayRef[ElastiCache_Tag]'
+                         },
+               'ReplicationGroupDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'AutomaticFailoverEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'NumNodeGroups' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'IsRequired' => {
+                    'ReplicationGroupId' => 1,
+                    'ReplicationGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -395,7 +498,7 @@ anew with the earlier engine version.
 
 
 
-=head2 NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]
+=head2 NodeGroupConfiguration => ArrayRef[ElastiCache_NodeGroupConfiguration]
 
 A list of node group (shard) configuration options. Each node group
 (shard) configuration has the following members:
@@ -631,7 +734,7 @@ an appropriate time range.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+=head2 Tags => ArrayRef[ElastiCache_Tag]
 
 A list of cost allocation tags to be added to this resource. Tags are
 comma-separated key,value pairs (e.g. Key=C<myKey>,

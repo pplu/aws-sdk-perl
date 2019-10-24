@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::RedShift::EventInfoMap;
-  use Moose;
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
-  has EventDescription => (is => 'ro', isa => 'Str');
-  has EventId => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::RedShift::Types qw//;
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventDescription => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'EventDescription' => {
+                                       'type' => 'Str'
+                                     },
+               'Severity' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'EventCategories' => 'EventCategory'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

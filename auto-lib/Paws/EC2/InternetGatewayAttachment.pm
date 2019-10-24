@@ -4,7 +4,7 @@ package Paws::EC2::InternetGatewayAttachment;
   has State => (is => 'ro', isa => Str);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::InternetGatewayAttachment;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

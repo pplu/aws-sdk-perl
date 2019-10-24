@@ -1,13 +1,28 @@
+# Generated from default/map_enum.tt
 package Paws::WorkDocs::DocumentSourceUrlMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has ORIGINAL => (is => 'ro', isa => Str);
+  has WITH_COMMENTS => (is => 'ro', isa => Str);
 
-  has ORIGINAL => (is => 'ro', isa => 'Str');
-  has WITH_COMMENTS => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ORIGINAL' => {
+                                          type => 'Str',                                        },
+                               'WITH_COMMENTS' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,10 +58,10 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ORIGINAL => Str
+=head2 ORIGINAL => 
 
 
-=head2 WITH_COMMENTS => Str
+=head2 WITH_COMMENTS => 
 
 
 

@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::Inspector::ResourceGroup;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroupTag]', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_ResourceGroupTag/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreatedAt => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Inspector_ResourceGroupTag], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Inspector::ResourceGroupTag',
+                           'type' => 'ArrayRef[Inspector_ResourceGroupTag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'CreatedAt' => 1,
+                    'Arn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +85,7 @@ element in the DescribeResourceGroups action.
   The time at which resource group is created.
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Inspector_ResourceGroupTag]
 
   The tags (key and value pairs) of the resource group. This data type
 property is used in the CreateResourceGroup action.

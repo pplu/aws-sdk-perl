@@ -1,19 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Cloud9::CreateEnvironmentEC2;
-  use Moose;
-  has AutomaticStopTimeMinutes => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'automaticStopTimeMinutes' );
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has InstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceType' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has OwnerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerArn' );
-  has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Cloud9::Types qw//;
+  has AutomaticStopTimeMinutes => (is => 'ro', isa => Int, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OwnerArn => (is => 'ro', isa => Str, predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironmentEC2');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Cloud9::CreateEnvironmentEC2Result');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEnvironmentEC2');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Cloud9::CreateEnvironmentEC2Result');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'AutomaticStopTimeMinutes' => {
+                                               'type' => 'Int'
+                                             },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'OwnerArn' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'AutomaticStopTimeMinutes' => 'automaticStopTimeMinutes',
+                       'InstanceType' => 'instanceType',
+                       'SubnetId' => 'subnetId',
+                       'OwnerArn' => 'ownerArn',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'InstanceType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,19 +1,65 @@
 
 package Paws::GroundStation::ReserveContact;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime', required => 1);
-  has GroundStation => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groundStation', required => 1);
-  has MissionProfileArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'missionProfileArn', required => 1);
-  has SatelliteArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'satelliteArn', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_TagsMap/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GroundStation => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MissionProfileArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SatelliteArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReserveContact');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::ContactIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ReserveContact');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::ContactIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissionProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'GroundStation' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::GroundStation::TagsMap',
+                           'type' => 'GroundStation_TagsMap'
+                         },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'SatelliteArn' => {
+                                   'type' => 'Str'
+                                 },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'MissionProfileArn' => 'missionProfileArn',
+                       'GroundStation' => 'groundStation',
+                       'Tags' => 'tags',
+                       'StartTime' => 'startTime',
+                       'SatelliteArn' => 'satelliteArn',
+                       'EndTime' => 'endTime'
+                     },
+  'IsRequired' => {
+                    'MissionProfileArn' => 1,
+                    'GroundStation' => 1,
+                    'StartTime' => 1,
+                    'SatelliteArn' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +129,7 @@ Start time of a contact.
 
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a contact.
 

@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::EMR::AutoScalingPolicyDescription;
-  use Moose;
-  has Constraints => (is => 'ro', isa => 'Paws::EMR::ScalingConstraints');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::EMR::ScalingRule]');
-  has Status => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyStatus');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::EMR::Types qw/EMR_AutoScalingPolicyStatus EMR_ScalingRule EMR_ScalingConstraints/;
+  has Constraints => (is => 'ro', isa => EMR_ScalingConstraints);
+  has Rules => (is => 'ro', isa => ArrayRef[EMR_ScalingRule]);
+  has Status => (is => 'ro', isa => EMR_AutoScalingPolicyStatus);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::EMR::ScalingRule',
+                            'type' => 'ArrayRef[EMR_ScalingRule]'
+                          },
+               'Status' => {
+                             'class' => 'Paws::EMR::AutoScalingPolicyStatus',
+                             'type' => 'EMR_AutoScalingPolicyStatus'
+                           },
+               'Constraints' => {
+                                  'class' => 'Paws::EMR::ScalingConstraints',
+                                  'type' => 'EMR_ScalingConstraints'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,20 +67,20 @@ response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 =head1 ATTRIBUTES
 
 
-=head2 Constraints => L<Paws::EMR::ScalingConstraints>
+=head2 Constraints => EMR_ScalingConstraints
 
   The upper and lower EC2 instance limits for an automatic scaling
 policy. Automatic scaling activity will not cause an instance group to
 grow above or below these limits.
 
 
-=head2 Rules => ArrayRef[L<Paws::EMR::ScalingRule>]
+=head2 Rules => ArrayRef[EMR_ScalingRule]
 
   The scale-in and scale-out rules that comprise the automatic scaling
 policy.
 
 
-=head2 Status => L<Paws::EMR::AutoScalingPolicyStatus>
+=head2 Status => EMR_AutoScalingPolicyStatus
 
   The status of an automatic scaling policy.
 

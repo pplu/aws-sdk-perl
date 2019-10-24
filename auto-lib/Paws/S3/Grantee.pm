@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::Grantee;
   use Moo;
   use Types::Standard qw/Str/;
@@ -29,7 +30,10 @@ package Paws::S3::Grantee;
              },
   'NameInRequest' => {
                        'Type' => 'xsi:type'
-                     }
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
 }
 ;
     return $Params_map;

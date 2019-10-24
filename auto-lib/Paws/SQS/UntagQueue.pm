@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::UntagQueue;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SQS::UntagQueue;
                'TagKeys' => {
                               'type' => 'ArrayRef[Str|Undef]'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'TagKeys' => 1
+                  }
 }
 ;
     return $Params_map;

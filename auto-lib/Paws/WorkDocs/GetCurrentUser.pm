@@ -1,14 +1,35 @@
 
 package Paws::WorkDocs::GetCurrentUser;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCurrentUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/me');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetCurrentUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCurrentUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/me');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::GetCurrentUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'AuthenticationToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

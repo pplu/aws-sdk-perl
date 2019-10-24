@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateUser;
   use Moo;
@@ -30,7 +31,10 @@ package Paws::IAM::CreateUser;
                            'class' => 'Paws::IAM::Tag',
                            'type' => 'ArrayRef[IAM_Tag]'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

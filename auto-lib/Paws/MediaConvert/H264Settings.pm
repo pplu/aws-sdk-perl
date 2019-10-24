@@ -1,44 +1,217 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::H264Settings;
-  use Moose;
-  has AdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'adaptiveQuantization', traits => ['NameInRequest']);
-  has Bitrate => (is => 'ro', isa => 'Int', request_name => 'bitrate', traits => ['NameInRequest']);
-  has CodecLevel => (is => 'ro', isa => 'Str', request_name => 'codecLevel', traits => ['NameInRequest']);
-  has CodecProfile => (is => 'ro', isa => 'Str', request_name => 'codecProfile', traits => ['NameInRequest']);
-  has DynamicSubGop => (is => 'ro', isa => 'Str', request_name => 'dynamicSubGop', traits => ['NameInRequest']);
-  has EntropyEncoding => (is => 'ro', isa => 'Str', request_name => 'entropyEncoding', traits => ['NameInRequest']);
-  has FieldEncoding => (is => 'ro', isa => 'Str', request_name => 'fieldEncoding', traits => ['NameInRequest']);
-  has FlickerAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'flickerAdaptiveQuantization', traits => ['NameInRequest']);
-  has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
-  has FramerateConversionAlgorithm => (is => 'ro', isa => 'Str', request_name => 'framerateConversionAlgorithm', traits => ['NameInRequest']);
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
-  has GopBReference => (is => 'ro', isa => 'Str', request_name => 'gopBReference', traits => ['NameInRequest']);
-  has GopClosedCadence => (is => 'ro', isa => 'Int', request_name => 'gopClosedCadence', traits => ['NameInRequest']);
-  has GopSize => (is => 'ro', isa => 'Num', request_name => 'gopSize', traits => ['NameInRequest']);
-  has GopSizeUnits => (is => 'ro', isa => 'Str', request_name => 'gopSizeUnits', traits => ['NameInRequest']);
-  has HrdBufferInitialFillPercentage => (is => 'ro', isa => 'Int', request_name => 'hrdBufferInitialFillPercentage', traits => ['NameInRequest']);
-  has HrdBufferSize => (is => 'ro', isa => 'Int', request_name => 'hrdBufferSize', traits => ['NameInRequest']);
-  has InterlaceMode => (is => 'ro', isa => 'Str', request_name => 'interlaceMode', traits => ['NameInRequest']);
-  has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
-  has MinIInterval => (is => 'ro', isa => 'Int', request_name => 'minIInterval', traits => ['NameInRequest']);
-  has NumberBFramesBetweenReferenceFrames => (is => 'ro', isa => 'Int', request_name => 'numberBFramesBetweenReferenceFrames', traits => ['NameInRequest']);
-  has NumberReferenceFrames => (is => 'ro', isa => 'Int', request_name => 'numberReferenceFrames', traits => ['NameInRequest']);
-  has ParControl => (is => 'ro', isa => 'Str', request_name => 'parControl', traits => ['NameInRequest']);
-  has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
-  has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
-  has QualityTuningLevel => (is => 'ro', isa => 'Str', request_name => 'qualityTuningLevel', traits => ['NameInRequest']);
-  has QvbrSettings => (is => 'ro', isa => 'Paws::MediaConvert::H264QvbrSettings', request_name => 'qvbrSettings', traits => ['NameInRequest']);
-  has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
-  has RepeatPps => (is => 'ro', isa => 'Str', request_name => 'repeatPps', traits => ['NameInRequest']);
-  has SceneChangeDetect => (is => 'ro', isa => 'Str', request_name => 'sceneChangeDetect', traits => ['NameInRequest']);
-  has Slices => (is => 'ro', isa => 'Int', request_name => 'slices', traits => ['NameInRequest']);
-  has SlowPal => (is => 'ro', isa => 'Str', request_name => 'slowPal', traits => ['NameInRequest']);
-  has Softness => (is => 'ro', isa => 'Int', request_name => 'softness', traits => ['NameInRequest']);
-  has SpatialAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'spatialAdaptiveQuantization', traits => ['NameInRequest']);
-  has Syntax => (is => 'ro', isa => 'Str', request_name => 'syntax', traits => ['NameInRequest']);
-  has Telecine => (is => 'ro', isa => 'Str', request_name => 'telecine', traits => ['NameInRequest']);
-  has TemporalAdaptiveQuantization => (is => 'ro', isa => 'Str', request_name => 'temporalAdaptiveQuantization', traits => ['NameInRequest']);
-  has UnregisteredSeiTimecode => (is => 'ro', isa => 'Str', request_name => 'unregisteredSeiTimecode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::MediaConvert::Types qw/MediaConvert_H264QvbrSettings/;
+  has AdaptiveQuantization => (is => 'ro', isa => Str);
+  has Bitrate => (is => 'ro', isa => Int);
+  has CodecLevel => (is => 'ro', isa => Str);
+  has CodecProfile => (is => 'ro', isa => Str);
+  has DynamicSubGop => (is => 'ro', isa => Str);
+  has EntropyEncoding => (is => 'ro', isa => Str);
+  has FieldEncoding => (is => 'ro', isa => Str);
+  has FlickerAdaptiveQuantization => (is => 'ro', isa => Str);
+  has FramerateControl => (is => 'ro', isa => Str);
+  has FramerateConversionAlgorithm => (is => 'ro', isa => Str);
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+  has GopBReference => (is => 'ro', isa => Str);
+  has GopClosedCadence => (is => 'ro', isa => Int);
+  has GopSize => (is => 'ro', isa => Num);
+  has GopSizeUnits => (is => 'ro', isa => Str);
+  has HrdBufferInitialFillPercentage => (is => 'ro', isa => Int);
+  has HrdBufferSize => (is => 'ro', isa => Int);
+  has InterlaceMode => (is => 'ro', isa => Str);
+  has MaxBitrate => (is => 'ro', isa => Int);
+  has MinIInterval => (is => 'ro', isa => Int);
+  has NumberBFramesBetweenReferenceFrames => (is => 'ro', isa => Int);
+  has NumberReferenceFrames => (is => 'ro', isa => Int);
+  has ParControl => (is => 'ro', isa => Str);
+  has ParDenominator => (is => 'ro', isa => Int);
+  has ParNumerator => (is => 'ro', isa => Int);
+  has QualityTuningLevel => (is => 'ro', isa => Str);
+  has QvbrSettings => (is => 'ro', isa => MediaConvert_H264QvbrSettings);
+  has RateControlMode => (is => 'ro', isa => Str);
+  has RepeatPps => (is => 'ro', isa => Str);
+  has SceneChangeDetect => (is => 'ro', isa => Str);
+  has Slices => (is => 'ro', isa => Int);
+  has SlowPal => (is => 'ro', isa => Str);
+  has Softness => (is => 'ro', isa => Int);
+  has SpatialAdaptiveQuantization => (is => 'ro', isa => Str);
+  has Syntax => (is => 'ro', isa => Str);
+  has Telecine => (is => 'ro', isa => Str);
+  has TemporalAdaptiveQuantization => (is => 'ro', isa => Str);
+  has UnregisteredSeiTimecode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdaptiveQuantization' => {
+                                           'type' => 'Str'
+                                         },
+               'NumberReferenceFrames' => {
+                                            'type' => 'Int'
+                                          },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       },
+               'Slices' => {
+                             'type' => 'Int'
+                           },
+               'FieldEncoding' => {
+                                    'type' => 'Str'
+                                  },
+               'RateControlMode' => {
+                                      'type' => 'Str'
+                                    },
+               'Telecine' => {
+                               'type' => 'Str'
+                             },
+               'Bitrate' => {
+                              'type' => 'Int'
+                            },
+               'GopClosedCadence' => {
+                                       'type' => 'Int'
+                                     },
+               'FlickerAdaptiveQuantization' => {
+                                                  'type' => 'Str'
+                                                },
+               'Softness' => {
+                               'type' => 'Int'
+                             },
+               'DynamicSubGop' => {
+                                    'type' => 'Str'
+                                  },
+               'ParDenominator' => {
+                                     'type' => 'Int'
+                                   },
+               'HrdBufferSize' => {
+                                    'type' => 'Int'
+                                  },
+               'QualityTuningLevel' => {
+                                         'type' => 'Str'
+                                       },
+               'MinIInterval' => {
+                                   'type' => 'Int'
+                                 },
+               'SceneChangeDetect' => {
+                                        'type' => 'Str'
+                                      },
+               'FramerateControl' => {
+                                       'type' => 'Str'
+                                     },
+               'CodecProfile' => {
+                                   'type' => 'Str'
+                                 },
+               'GopBReference' => {
+                                    'type' => 'Str'
+                                  },
+               'InterlaceMode' => {
+                                    'type' => 'Str'
+                                  },
+               'SlowPal' => {
+                              'type' => 'Str'
+                            },
+               'HrdBufferInitialFillPercentage' => {
+                                                     'type' => 'Int'
+                                                   },
+               'UnregisteredSeiTimecode' => {
+                                              'type' => 'Str'
+                                            },
+               'GopSize' => {
+                              'type' => 'Num'
+                            },
+               'FramerateConversionAlgorithm' => {
+                                                   'type' => 'Str'
+                                                 },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               },
+               'ParControl' => {
+                                 'type' => 'Str'
+                               },
+               'SpatialAdaptiveQuantization' => {
+                                                  'type' => 'Str'
+                                                },
+               'GopSizeUnits' => {
+                                   'type' => 'Str'
+                                 },
+               'CodecLevel' => {
+                                 'type' => 'Str'
+                               },
+               'RepeatPps' => {
+                                'type' => 'Str'
+                              },
+               'TemporalAdaptiveQuantization' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Syntax' => {
+                             'type' => 'Str'
+                           },
+               'ParNumerator' => {
+                                   'type' => 'Int'
+                                 },
+               'QvbrSettings' => {
+                                   'class' => 'Paws::MediaConvert::H264QvbrSettings',
+                                   'type' => 'MediaConvert_H264QvbrSettings'
+                                 },
+               'EntropyEncoding' => {
+                                      'type' => 'Str'
+                                    },
+               'NumberBFramesBetweenReferenceFrames' => {
+                                                          'type' => 'Int'
+                                                        }
+             },
+  'NameInRequest' => {
+                       'AdaptiveQuantization' => 'adaptiveQuantization',
+                       'NumberReferenceFrames' => 'numberReferenceFrames',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'FramerateNumerator' => 'framerateNumerator',
+                       'Slices' => 'slices',
+                       'FieldEncoding' => 'fieldEncoding',
+                       'RateControlMode' => 'rateControlMode',
+                       'Telecine' => 'telecine',
+                       'Bitrate' => 'bitrate',
+                       'GopClosedCadence' => 'gopClosedCadence',
+                       'FlickerAdaptiveQuantization' => 'flickerAdaptiveQuantization',
+                       'Softness' => 'softness',
+                       'DynamicSubGop' => 'dynamicSubGop',
+                       'ParDenominator' => 'parDenominator',
+                       'HrdBufferSize' => 'hrdBufferSize',
+                       'QualityTuningLevel' => 'qualityTuningLevel',
+                       'MinIInterval' => 'minIInterval',
+                       'SceneChangeDetect' => 'sceneChangeDetect',
+                       'FramerateControl' => 'framerateControl',
+                       'CodecProfile' => 'codecProfile',
+                       'GopBReference' => 'gopBReference',
+                       'InterlaceMode' => 'interlaceMode',
+                       'SlowPal' => 'slowPal',
+                       'HrdBufferInitialFillPercentage' => 'hrdBufferInitialFillPercentage',
+                       'UnregisteredSeiTimecode' => 'unregisteredSeiTimecode',
+                       'GopSize' => 'gopSize',
+                       'FramerateConversionAlgorithm' => 'framerateConversionAlgorithm',
+                       'MaxBitrate' => 'maxBitrate',
+                       'ParControl' => 'parControl',
+                       'SpatialAdaptiveQuantization' => 'spatialAdaptiveQuantization',
+                       'GopSizeUnits' => 'gopSizeUnits',
+                       'CodecLevel' => 'codecLevel',
+                       'RepeatPps' => 'repeatPps',
+                       'TemporalAdaptiveQuantization' => 'temporalAdaptiveQuantization',
+                       'Syntax' => 'syntax',
+                       'ParNumerator' => 'parNumerator',
+                       'QvbrSettings' => 'qvbrSettings',
+                       'EntropyEncoding' => 'entropyEncoding',
+                       'NumberBFramesBetweenReferenceFrames' => 'numberBFramesBetweenReferenceFrames'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -274,7 +447,7 @@ to use fast single-pass, high-quality singlepass, or high-quality
 multipass video encoding.
 
 
-=head2 QvbrSettings => L<Paws::MediaConvert::H264QvbrSettings>
+=head2 QvbrSettings => MediaConvert_H264QvbrSettings
 
   Settings for quality-defined variable bitrate encoding with the H.264
 codec. Required when you set Rate control mode to QVBR. Not valid when

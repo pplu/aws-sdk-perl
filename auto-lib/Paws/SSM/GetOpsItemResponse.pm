@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetOpsItemResponse;
-  use Moose;
-  has OpsItem => (is => 'ro', isa => 'Paws::SSM::OpsItem');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_OpsItem/;
+  has OpsItem => (is => 'ro', isa => SSM_OpsItem);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OpsItem' => {
+                              'class' => 'Paws::SSM::OpsItem',
+                              'type' => 'SSM_OpsItem'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::GetOpsItemResponse
 =head1 ATTRIBUTES
 
 
-=head2 OpsItem => L<Paws::SSM::OpsItem>
+=head2 OpsItem => SSM_OpsItem
 
 The OpsItem.
 

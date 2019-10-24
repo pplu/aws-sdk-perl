@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::BucketInfo;
-  use Moose;
-  has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Bucket]', request_name => 'buckets', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudSearchDomain::Types qw/CloudSearchDomain_Bucket/;
+  has Buckets => (is => 'ro', isa => ArrayRef[CloudSearchDomain_Bucket]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Buckets' => {
+                              'class' => 'Paws::CloudSearchDomain::Bucket',
+                              'type' => 'ArrayRef[CloudSearchDomain_Bucket]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Buckets' => 'buckets'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ A container for the calculated facet values and counts.
 =head1 ATTRIBUTES
 
 
-=head2 Buckets => ArrayRef[L<Paws::CloudSearchDomain::Bucket>]
+=head2 Buckets => ArrayRef[CloudSearchDomain_Bucket]
 
   A list of the calculated facet values and counts.
 

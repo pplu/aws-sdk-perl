@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::LexModels::EnumerationValue;
-  use Moose;
-  has Synonyms => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'synonyms', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::LexModels::Types qw//;
+  has Synonyms => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Synonyms' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Synonyms' => 'synonyms'
+                     },
+  'IsRequired' => {
+                    'Value' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterTuningJobSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has HyperParameterTuningEndTime => (is => 'ro', isa => 'Str');
-  has HyperParameterTuningJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has HyperParameterTuningJobName => (is => 'ro', isa => 'Str', required => 1);
-  has HyperParameterTuningJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has ObjectiveStatusCounters => (is => 'ro', isa => 'Paws::SageMaker::ObjectiveStatusCounters', required => 1);
-  has ResourceLimits => (is => 'ro', isa => 'Paws::SageMaker::ResourceLimits');
-  has Strategy => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobStatusCounters => (is => 'ro', isa => 'Paws::SageMaker::TrainingJobStatusCounters', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_TrainingJobStatusCounters SageMaker_ResourceLimits SageMaker_ObjectiveStatusCounters/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has HyperParameterTuningEndTime => (is => 'ro', isa => Str);
+  has HyperParameterTuningJobArn => (is => 'ro', isa => Str, required => 1);
+  has HyperParameterTuningJobName => (is => 'ro', isa => Str, required => 1);
+  has HyperParameterTuningJobStatus => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has ObjectiveStatusCounters => (is => 'ro', isa => SageMaker_ObjectiveStatusCounters, required => 1);
+  has ResourceLimits => (is => 'ro', isa => SageMaker_ResourceLimits);
+  has Strategy => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobStatusCounters => (is => 'ro', isa => SageMaker_TrainingJobStatusCounters, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'HyperParameterTuningJobName' => {
+                                                  'type' => 'Str'
+                                                },
+               'ObjectiveStatusCounters' => {
+                                              'class' => 'Paws::SageMaker::ObjectiveStatusCounters',
+                                              'type' => 'SageMaker_ObjectiveStatusCounters'
+                                            },
+               'Strategy' => {
+                               'type' => 'Str'
+                             },
+               'ResourceLimits' => {
+                                     'class' => 'Paws::SageMaker::ResourceLimits',
+                                     'type' => 'SageMaker_ResourceLimits'
+                                   },
+               'HyperParameterTuningEndTime' => {
+                                                  'type' => 'Str'
+                                                },
+               'HyperParameterTuningJobArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'TrainingJobStatusCounters' => {
+                                                'class' => 'Paws::SageMaker::TrainingJobStatusCounters',
+                                                'type' => 'SageMaker_TrainingJobStatusCounters'
+                                              },
+               'HyperParameterTuningJobStatus' => {
+                                                    'type' => 'Str'
+                                                  }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'HyperParameterTuningJobArn' => 1,
+                    'HyperParameterTuningJobName' => 1,
+                    'TrainingJobStatusCounters' => 1,
+                    'ObjectiveStatusCounters' => 1,
+                    'HyperParameterTuningJobStatus' => 1,
+                    'Strategy' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -75,14 +131,14 @@ Provides summary information about a hyperparameter tuning job.
   The date and time that the tuning job was modified.
 
 
-=head2 B<REQUIRED> ObjectiveStatusCounters => L<Paws::SageMaker::ObjectiveStatusCounters>
+=head2 B<REQUIRED> ObjectiveStatusCounters => SageMaker_ObjectiveStatusCounters
 
   The ObjectiveStatusCounters object that specifies the numbers of
 training jobs, categorized by objective metric status, that this tuning
 job launched.
 
 
-=head2 ResourceLimits => L<Paws::SageMaker::ResourceLimits>
+=head2 ResourceLimits => SageMaker_ResourceLimits
 
   The ResourceLimits object that specifies the maximum number of training
 jobs and parallel training jobs allowed for this tuning job.
@@ -95,7 +151,7 @@ which hyperparameters to use for each iteration. Currently, the only
 valid value is Bayesian.
 
 
-=head2 B<REQUIRED> TrainingJobStatusCounters => L<Paws::SageMaker::TrainingJobStatusCounters>
+=head2 B<REQUIRED> TrainingJobStatusCounters => SageMaker_TrainingJobStatusCounters
 
   The TrainingJobStatusCounters object that specifies the numbers of
 training jobs, categorized by status, that this tuning job launched.

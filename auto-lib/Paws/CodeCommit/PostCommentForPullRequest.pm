@@ -1,19 +1,70 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::PostCommentForPullRequest;
-  use Moose;
-  has AfterCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterCommitId' , required => 1);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeCommitId' , required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken' );
-  has Content => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'content' , required => 1);
-  has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', traits => ['NameInRequest'], request_name => 'location' );
-  has PullRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestId' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Location/;
+  has AfterCommitId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BeforeCommitId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Content => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Location => (is => 'ro', isa => CodeCommit_Location, predicate => 1);
+  has PullRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostCommentForPullRequest');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::PostCommentForPullRequestOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PostCommentForPullRequest');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::PostCommentForPullRequestOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'Location' => {
+                               'class' => 'Paws::CodeCommit::Location',
+                               'type' => 'CodeCommit_Location'
+                             },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'PullRequestId' => 'pullRequestId',
+                       'AfterCommitId' => 'afterCommitId',
+                       'Location' => 'location',
+                       'Content' => 'content',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'BeforeCommitId' => 1,
+                    'PullRequestId' => 1,
+                    'AfterCommitId' => 1,
+                    'Content' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +148,7 @@ The content of your comment on the change.
 
 
 
-=head2 Location => L<Paws::CodeCommit::Location>
+=head2 Location => CodeCommit_Location
 
 The location of the change where you want to post your comment. If no
 location is provided, the comment will be posted as a general comment

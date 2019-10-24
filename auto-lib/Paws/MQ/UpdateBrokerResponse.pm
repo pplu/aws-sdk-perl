@@ -1,13 +1,51 @@
 
 package Paws::MQ::UpdateBrokerResponse;
-  use Moose;
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerId');
-  has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
-  has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
-  has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::MQ::Types qw/MQ_Logs MQ_ConfigurationId/;
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool);
+  has BrokerId => (is => 'ro', isa => Str);
+  has Configuration => (is => 'ro', isa => MQ_ConfigurationId);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Logs => (is => 'ro', isa => MQ_Logs);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Configuration' => {
+                                    'class' => 'Paws::MQ::ConfigurationId',
+                                    'type' => 'MQ_ConfigurationId'
+                                  },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             },
+               'Logs' => {
+                           'class' => 'Paws::MQ::Logs',
+                           'type' => 'MQ_Logs'
+                         }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'Configuration' => 'configuration',
+                       'AutoMinorVersionUpgrade' => 'autoMinorVersionUpgrade',
+                       'BrokerId' => 'brokerId',
+                       'Logs' => 'logs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +67,7 @@ The new value of automatic upgrades to new minor version for brokers.
 Required. The unique ID that Amazon MQ generates for the broker.
 
 
-=head2 Configuration => L<Paws::MQ::ConfigurationId>
+=head2 Configuration => MQ_ConfigurationId
 
 The ID of the updated configuration.
 
@@ -41,7 +79,7 @@ engine versions, see
 https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
-=head2 Logs => L<Paws::MQ::Logs>
+=head2 Logs => MQ_Logs
 
 The list of information about logs to be enabled for the specified
 broker.

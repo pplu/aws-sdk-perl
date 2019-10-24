@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::DescribeTrustedAdvisorCheckResult;
-  use Moose;
-  has CheckId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkId' , required => 1);
-  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw//;
+  has CheckId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Language => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckResult');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeTrustedAdvisorCheckResultResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTrustedAdvisorCheckResult');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::DescribeTrustedAdvisorCheckResultResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'CheckId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Language' => 'language',
+                       'CheckId' => 'checkId'
+                     },
+  'IsRequired' => {
+                    'CheckId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::DescribeRdsDbInstancesResult;
-  use Moose;
-  has RdsDbInstances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::RdsDbInstance]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_RdsDbInstance/;
+  has RdsDbInstances => (is => 'ro', isa => ArrayRef[OpsWorks_RdsDbInstance]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RdsDbInstances' => {
+                                     'class' => 'Paws::OpsWorks::RdsDbInstance',
+                                     'type' => 'ArrayRef[OpsWorks_RdsDbInstance]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::OpsWorks::DescribeRdsDbInstancesResult
 =head1 ATTRIBUTES
 
 
-=head2 RdsDbInstances => ArrayRef[L<Paws::OpsWorks::RdsDbInstance>]
+=head2 RdsDbInstances => ArrayRef[OpsWorks_RdsDbInstance]
 
 An a array of C<RdsDbInstance> objects that describe the instances.
 

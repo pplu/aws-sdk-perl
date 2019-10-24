@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputLocation;
-  use Moose;
-  has PasswordParam => (is => 'ro', isa => 'Str', request_name => 'passwordParam', traits => ['NameInRequest']);
-  has Uri => (is => 'ro', isa => 'Str', request_name => 'uri', traits => ['NameInRequest'], required => 1);
-  has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has PasswordParam => (is => 'ro', isa => Str);
+  has Uri => (is => 'ro', isa => Str, required => 1);
+  has Username => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'PasswordParam' => {
+                                    'type' => 'Str'
+                                  },
+               'Uri' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Username' => 'username',
+                       'PasswordParam' => 'passwordParam',
+                       'Uri' => 'uri'
+                     },
+  'IsRequired' => {
+                    'Uri' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

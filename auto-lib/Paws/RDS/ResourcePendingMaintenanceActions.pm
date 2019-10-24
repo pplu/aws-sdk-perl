@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::ResourcePendingMaintenanceActions;
-  use Moose;
-  has PendingMaintenanceActionDetails => (is => 'ro', isa => 'ArrayRef[Paws::RDS::PendingMaintenanceAction]', request_name => 'PendingMaintenanceAction', traits => ['NameInRequest']);
-  has ResourceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::RDS::Types qw/RDS_PendingMaintenanceAction/;
+  has PendingMaintenanceActionDetails => (is => 'ro', isa => ArrayRef[RDS_PendingMaintenanceAction]);
+  has ResourceIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'PendingMaintenanceActionDetails' => {
+                                                      'class' => 'Paws::RDS::PendingMaintenanceAction',
+                                                      'type' => 'ArrayRef[RDS_PendingMaintenanceAction]'
+                                                    }
+             },
+  'NameInRequest' => {
+                       'PendingMaintenanceActionDetails' => 'PendingMaintenanceAction'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ Describes the pending maintenance actions for a resource.
 =head1 ATTRIBUTES
 
 
-=head2 PendingMaintenanceActionDetails => ArrayRef[L<Paws::RDS::PendingMaintenanceAction>]
+=head2 PendingMaintenanceActionDetails => ArrayRef[RDS_PendingMaintenanceAction]
 
   A list that provides details about the pending maintenance actions for
 the resource.

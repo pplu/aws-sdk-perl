@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudFront::Restrictions;
-  use Moose;
-  has GeoRestriction => (is => 'ro', isa => 'Paws::CloudFront::GeoRestriction', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudFront::Types qw/CloudFront_GeoRestriction/;
+  has GeoRestriction => (is => 'ro', isa => CloudFront_GeoRestriction, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GeoRestriction' => {
+                                     'class' => 'Paws::CloudFront::GeoRestriction',
+                                     'type' => 'CloudFront_GeoRestriction'
+                                   }
+             },
+  'IsRequired' => {
+                    'GeoRestriction' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ distribution of your content.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GeoRestriction => L<Paws::CloudFront::GeoRestriction>
+=head2 B<REQUIRED> GeoRestriction => CloudFront_GeoRestriction
 
   A complex type that controls the countries in which your content is
 distributed. CloudFront determines the location of your users using

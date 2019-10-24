@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::CreateQueue;
   use Moo;
@@ -25,7 +26,10 @@ package Paws::SQS::CreateQueue;
              },
   'NameInRequest' => {
                        'Attributes' => 'Attribute'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueName' => 1
+                  }
 }
 ;
     return $Params_map;

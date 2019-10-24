@@ -1,13 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::StartContinuousExportResponse;
-  use Moose;
-  has DataSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSource' );
-  has ExportId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'exportId' );
-  has S3Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3Bucket' );
-  has SchemaStorageConfig => (is => 'ro', isa => 'Paws::Discovery::SchemaStorageConfig', traits => ['NameInRequest'], request_name => 'schemaStorageConfig' );
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw/Discovery_SchemaStorageConfig/;
+  has DataSource => (is => 'ro', isa => Str);
+  has ExportId => (is => 'ro', isa => Str);
+  has S3Bucket => (is => 'ro', isa => Str);
+  has SchemaStorageConfig => (is => 'ro', isa => Discovery_SchemaStorageConfig);
+  has StartTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSource' => {
+                                 'type' => 'Str'
+                               },
+               'SchemaStorageConfig' => {
+                                          'class' => 'Paws::Discovery::SchemaStorageConfig',
+                                          'type' => 'Discovery_SchemaStorageConfig'
+                                        },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'ExportId' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'DataSource' => 'dataSource',
+                       'SchemaStorageConfig' => 'schemaStorageConfig',
+                       'S3Bucket' => 's3Bucket',
+                       'ExportId' => 'exportId',
+                       'StartTime' => 'startTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -35,7 +73,7 @@ The name of the s3 bucket where the export data parquet files are
 stored.
 
 
-=head2 SchemaStorageConfig => L<Paws::Discovery::SchemaStorageConfig>
+=head2 SchemaStorageConfig => Discovery_SchemaStorageConfig
 
 A dictionary which describes how the data is stored.
 

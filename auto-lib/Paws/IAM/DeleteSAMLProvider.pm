@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteSAMLProvider;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteSAMLProvider;
                'SAMLProviderArn' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'SAMLProviderArn' => 1
+                  }
 }
 ;
     return $Params_map;

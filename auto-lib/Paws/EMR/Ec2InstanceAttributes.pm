@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::EMR::Ec2InstanceAttributes;
-  use Moose;
-  has AdditionalMasterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Ec2AvailabilityZone => (is => 'ro', isa => 'Str');
-  has Ec2KeyName => (is => 'ro', isa => 'Str');
-  has Ec2SubnetId => (is => 'ro', isa => 'Str');
-  has EmrManagedMasterSecurityGroup => (is => 'ro', isa => 'Str');
-  has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => 'Str');
-  has IamInstanceProfile => (is => 'ro', isa => 'Str');
-  has RequestedEc2AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RequestedEc2SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EMR::Types qw//;
+  has AdditionalMasterSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AdditionalSlaveSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Ec2AvailabilityZone => (is => 'ro', isa => Str);
+  has Ec2KeyName => (is => 'ro', isa => Str);
+  has Ec2SubnetId => (is => 'ro', isa => Str);
+  has EmrManagedMasterSecurityGroup => (is => 'ro', isa => Str);
+  has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => Str);
+  has IamInstanceProfile => (is => 'ro', isa => Str);
+  has RequestedEc2AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RequestedEc2SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServiceAccessSecurityGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmrManagedMasterSecurityGroup' => {
+                                                    'type' => 'Str'
+                                                  },
+               'AdditionalSlaveSecurityGroups' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'RequestedEc2SubnetIds' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'Ec2AvailabilityZone' => {
+                                          'type' => 'Str'
+                                        },
+               'Ec2SubnetId' => {
+                                  'type' => 'Str'
+                                },
+               'RequestedEc2AvailabilityZones' => {
+                                                    'type' => 'ArrayRef[Str|Undef]'
+                                                  },
+               'AdditionalMasterSecurityGroups' => {
+                                                     'type' => 'ArrayRef[Str|Undef]'
+                                                   },
+               'EmrManagedSlaveSecurityGroup' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Ec2KeyName' => {
+                                 'type' => 'Str'
+                               },
+               'IamInstanceProfile' => {
+                                         'type' => 'Str'
+                                       },
+               'ServiceAccessSecurityGroup' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

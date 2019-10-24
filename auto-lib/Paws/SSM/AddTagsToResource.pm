@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::AddTagsToResource;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceType => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Tag/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::AddTagsToResourceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::AddTagsToResourceResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ResourceType' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +107,7 @@ following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">, C<"OpsItem">
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[SSM_Tag]
 
 One or more tags. The value parameter is required, but if you don't
 want the tag to have a value, specify the parameter with no value, and

@@ -4,7 +4,7 @@ package Paws::EC2::VpnTunnelOptionsSpecification;
   has PreSharedKey => (is => 'ro', isa => Str);
   has TunnelInsideCidr => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TunnelInsideCidr' => {
@@ -16,8 +16,8 @@ package Paws::EC2::VpnTunnelOptionsSpecification;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

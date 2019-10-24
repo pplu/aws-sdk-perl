@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::SSM::AssociationStatus;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has Date => (is => 'ro', isa => 'Str', required => 1);
-  has Message => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has AdditionalInfo => (is => 'ro', isa => Str);
+  has Date => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Date' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Message' => 1,
+                    'Name' => 1,
+                    'Date' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

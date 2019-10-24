@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::GameLift::Event;
-  use Moose;
-  has EventCode => (is => 'ro', isa => 'Str');
-  has EventId => (is => 'ro', isa => 'Str');
-  has EventTime => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has PreSignedLogUrl => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has EventCode => (is => 'ro', isa => Str);
+  has EventId => (is => 'ro', isa => Str);
+  has EventTime => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has PreSignedLogUrl => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'EventCode' => {
+                                'type' => 'Str'
+                              },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'PreSignedLogUrl' => {
+                                      'type' => 'Str'
+                                    },
+               'EventTime' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::Amplify::DeleteWebhook;
-  use Moose;
-  has WebhookId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'webhookId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has WebhookId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteWebhook');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/webhooks/{webhookId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::DeleteWebhookResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteWebhook');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/webhooks/{webhookId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::DeleteWebhookResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WebhookId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'WebhookId' => 'webhookId'
+                  },
+  'IsRequired' => {
+                    'WebhookId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

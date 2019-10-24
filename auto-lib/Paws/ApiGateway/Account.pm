@@ -1,12 +1,45 @@
 
 package Paws::ApiGateway::Account;
-  use Moose;
-  has ApiKeyVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeyVersion');
-  has CloudwatchRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloudwatchRoleArn');
-  has Features => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'features');
-  has ThrottleSettings => (is => 'ro', isa => 'Paws::ApiGateway::ThrottleSettings', traits => ['NameInRequest'], request_name => 'throttleSettings');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_ThrottleSettings/;
+  has ApiKeyVersion => (is => 'ro', isa => Str);
+  has CloudwatchRoleArn => (is => 'ro', isa => Str);
+  has Features => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ThrottleSettings => (is => 'ro', isa => ApiGateway_ThrottleSettings);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiKeyVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Features' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CloudwatchRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'ThrottleSettings' => {
+                                       'class' => 'Paws::ApiGateway::ThrottleSettings',
+                                       'type' => 'ApiGateway_ThrottleSettings'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ApiKeyVersion' => 'apiKeyVersion',
+                       'Features' => 'features',
+                       'CloudwatchRoleArn' => 'cloudwatchRoleArn',
+                       'ThrottleSettings' => 'throttleSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -34,7 +67,7 @@ A list of features supported for the account. When usage plans are
 enabled, the features list will include an entry of C<"UsagePlans">.
 
 
-=head2 ThrottleSettings => L<Paws::ApiGateway::ThrottleSettings>
+=head2 ThrottleSettings => ApiGateway_ThrottleSettings
 
 Specifies the API request limits configured for the current Account.
 

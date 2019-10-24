@@ -1,20 +1,82 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EmailChannelResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str');
-  has ConfigurationSet => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has FromAddress => (is => 'ro', isa => 'Str');
-  has HasCredential => (is => 'ro', isa => 'Bool');
-  has Id => (is => 'ro', isa => 'Str');
-  has Identity => (is => 'ro', isa => 'Str');
-  has IsArchived => (is => 'ro', isa => 'Bool');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has MessagesPerSecond => (is => 'ro', isa => 'Int');
-  has Platform => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Pinpoint::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has ConfigurationSet => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has FromAddress => (is => 'ro', isa => Str);
+  has HasCredential => (is => 'ro', isa => Bool);
+  has Id => (is => 'ro', isa => Str);
+  has Identity => (is => 'ro', isa => Str);
+  has IsArchived => (is => 'ro', isa => Bool);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has MessagesPerSecond => (is => 'ro', isa => Int);
+  has Platform => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FromAddress' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'Platform' => {
+                               'type' => 'Str'
+                             },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ConfigurationSet' => {
+                                       'type' => 'Str'
+                                     },
+               'MessagesPerSecond' => {
+                                        'type' => 'Int'
+                                      },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'Identity' => {
+                               'type' => 'Str'
+                             },
+               'IsArchived' => {
+                                 'type' => 'Bool'
+                               },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'HasCredential' => {
+                                    'type' => 'Bool'
+                                  }
+             },
+  'IsRequired' => {
+                    'Platform' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

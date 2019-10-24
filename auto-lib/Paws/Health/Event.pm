@@ -1,15 +1,71 @@
+# Generated from default/object.tt
 package Paws::Health::Event;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has EventTypeCategory => (is => 'ro', isa => 'Str', request_name => 'eventTypeCategory', traits => ['NameInRequest']);
-  has EventTypeCode => (is => 'ro', isa => 'Str', request_name => 'eventTypeCode', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
-  has Service => (is => 'ro', isa => 'Str', request_name => 'service', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Health::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has EndTime => (is => 'ro', isa => Str);
+  has EventTypeCategory => (is => 'ro', isa => Str);
+  has EventTypeCode => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Service => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventTypeCode' => {
+                                    'type' => 'Str'
+                                  },
+               'EventTypeCategory' => {
+                                        'type' => 'Str'
+                                      },
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'EventTypeCode' => 'eventTypeCode',
+                       'EventTypeCategory' => 'eventTypeCategory',
+                       'Service' => 'service',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'StatusCode' => 'statusCode',
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'Arn' => 'arn',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime',
+                       'Region' => 'region'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudFront::StreamingDistributionConfigWithTags;
-  use Moose;
-  has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CloudFront::Tags', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudFront::Types qw/CloudFront_StreamingDistributionConfig CloudFront_Tags/;
+  has StreamingDistributionConfig => (is => 'ro', isa => CloudFront_StreamingDistributionConfig, required => 1);
+  has Tags => (is => 'ro', isa => CloudFront_Tags, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::CloudFront::Tags',
+                           'type' => 'CloudFront_Tags'
+                         },
+               'StreamingDistributionConfig' => {
+                                                  'class' => 'Paws::CloudFront::StreamingDistributionConfig',
+                                                  'type' => 'CloudFront_StreamingDistributionConfig'
+                                                }
+             },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'StreamingDistributionConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +64,12 @@ associated with the streaming distribution.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
+=head2 B<REQUIRED> StreamingDistributionConfig => CloudFront_StreamingDistributionConfig
 
   A streaming distribution Configuration.
 
 
-=head2 B<REQUIRED> Tags => L<Paws::CloudFront::Tags>
+=head2 B<REQUIRED> Tags => CloudFront_Tags
 
   A complex type that contains zero or more C<Tag> elements.
 

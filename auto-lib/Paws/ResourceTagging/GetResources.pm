@@ -1,17 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ResourceTagging::GetResources;
-  use Moose;
-  has PaginationToken => (is => 'ro', isa => 'Str');
-  has ResourcesPerPage => (is => 'ro', isa => 'Int');
-  has ResourceTypeFilters => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::ResourceTagging::TagFilter]');
-  has TagsPerPage => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ResourceTagging::Types qw/ResourceTagging_TagFilter/;
+  has PaginationToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourcesPerPage => (is => 'ro', isa => Int, predicate => 1);
+  has ResourceTypeFilters => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TagFilters => (is => 'ro', isa => ArrayRef[ResourceTagging_TagFilter], predicate => 1);
+  has TagsPerPage => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceTagging::GetResourcesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceTagging::GetResourcesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourcesPerPage' => {
+                                       'type' => 'Int'
+                                     },
+               'PaginationToken' => {
+                                      'type' => 'Str'
+                                    },
+               'TagFilters' => {
+                                 'class' => 'Paws::ResourceTagging::TagFilter',
+                                 'type' => 'ArrayRef[ResourceTagging_TagFilter]'
+                               },
+               'ResourceTypeFilters' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'TagsPerPage' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +145,7 @@ requirement applies to each resource type filter.
 
 
 
-=head2 TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>]
+=head2 TagFilters => ArrayRef[ResourceTagging_TagFilter]
 
 A list of TagFilters (keys and values). Each TagFilter specified must
 contain a key with values as optional. A request can include up to 50

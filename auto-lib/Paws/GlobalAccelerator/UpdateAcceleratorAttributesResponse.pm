@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::UpdateAcceleratorAttributesResponse;
-  use Moose;
-  has AcceleratorAttributes => (is => 'ro', isa => 'Paws::GlobalAccelerator::AcceleratorAttributes');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_AcceleratorAttributes/;
+  has AcceleratorAttributes => (is => 'ro', isa => GlobalAccelerator_AcceleratorAttributes);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AcceleratorAttributes' => {
+                                            'class' => 'Paws::GlobalAccelerator::AcceleratorAttributes',
+                                            'type' => 'GlobalAccelerator_AcceleratorAttributes'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GlobalAccelerator::UpdateAcceleratorAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 AcceleratorAttributes => L<Paws::GlobalAccelerator::AcceleratorAttributes>
+=head2 AcceleratorAttributes => GlobalAccelerator_AcceleratorAttributes
 
 Updated attributes for the accelerator.
 

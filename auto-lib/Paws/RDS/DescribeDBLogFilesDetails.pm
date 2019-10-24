@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RDS::DescribeDBLogFilesDetails;
-  use Moose;
-  has LastWritten => (is => 'ro', isa => 'Int');
-  has LogFileName => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::RDS::Types qw//;
+  has LastWritten => (is => 'ro', isa => Int);
+  has LogFileName => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogFileName' => {
+                                  'type' => 'Str'
+                                },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'LastWritten' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

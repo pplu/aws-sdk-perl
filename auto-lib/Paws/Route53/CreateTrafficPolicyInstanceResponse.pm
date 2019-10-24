@@ -1,10 +1,39 @@
 
 package Paws::Route53::CreateTrafficPolicyInstanceResponse;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location', required => 1);
-  has TrafficPolicyInstance => (is => 'ro', isa => 'Paws::Route53::TrafficPolicyInstance', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_TrafficPolicyInstance/;
+  has Location => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicyInstance => (is => 'ro', isa => Route53_TrafficPolicyInstance, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'TrafficPolicyInstance' => {
+                                            'class' => 'Paws::Route53::TrafficPolicyInstance',
+                                            'type' => 'Route53_TrafficPolicyInstance'
+                                          }
+             },
+  'ParamInHeader' => {
+                       'Location' => 'Location'
+                     },
+  'IsRequired' => {
+                    'Location' => 1,
+                    'TrafficPolicyInstance' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +51,7 @@ A unique URL that represents a new traffic policy instance.
 
 
 
-=head2 B<REQUIRED> TrafficPolicyInstance => L<Paws::Route53::TrafficPolicyInstance>
+=head2 B<REQUIRED> TrafficPolicyInstance => Route53_TrafficPolicyInstance
 
 A complex type that contains settings for the new traffic policy
 instance.

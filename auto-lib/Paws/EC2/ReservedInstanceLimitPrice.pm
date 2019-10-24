@@ -4,7 +4,7 @@ package Paws::EC2::ReservedInstanceLimitPrice;
   has Amount => (is => 'ro', isa => Num);
   has CurrencyCode => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Amount' => {
@@ -20,8 +20,8 @@ package Paws::EC2::ReservedInstanceLimitPrice;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

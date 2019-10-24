@@ -1,22 +1,70 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::StartJobRun;
-  use Moose;
-  has AllocatedCapacity => (is => 'ro', isa => 'Int');
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
-  has JobName => (is => 'ro', isa => 'Str', required => 1);
-  has JobRunId => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::Glue::Types qw/Glue_NotificationProperty Glue_GenericMap/;
+  has AllocatedCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has Arguments => (is => 'ro', isa => Glue_GenericMap, predicate => 1);
+  has JobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobRunId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxCapacity => (is => 'ro', isa => Num, predicate => 1);
+  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty, predicate => 1);
+  has NumberOfWorkers => (is => 'ro', isa => Int, predicate => 1);
+  has SecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has Timeout => (is => 'ro', isa => Int, predicate => 1);
+  has WorkerType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartJobRun');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::StartJobRunResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartJobRun');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::StartJobRunResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'Arguments' => {
+                                'class' => 'Paws::Glue::GenericMap',
+                                'type' => 'Glue_GenericMap'
+                              },
+               'JobRunId' => {
+                               'type' => 'Str'
+                             },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'NotificationProperty' => {
+                                           'class' => 'Paws::Glue::NotificationProperty',
+                                           'type' => 'Glue_NotificationProperty'
+                                         },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'AllocatedCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'Timeout' => {
+                              'type' => 'Int'
+                            }
+             },
+  'IsRequired' => {
+                    'JobName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +123,7 @@ Glue pricing page
 
 
 
-=head2 Arguments => L<Paws::Glue::GenericMap>
+=head2 Arguments => Glue_GenericMap
 
 The job arguments specifically for this run. For this job run, they
 replace the default arguments set in the job definition itself.
@@ -140,7 +188,7 @@ allocation.
 
 
 
-=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+=head2 NotificationProperty => Glue_NotificationProperty
 
 Specifies configuration properties of a job run notification.
 

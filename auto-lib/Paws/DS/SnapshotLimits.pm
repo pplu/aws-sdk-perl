@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::DS::SnapshotLimits;
-  use Moose;
-  has ManualSnapshotsCurrentCount => (is => 'ro', isa => 'Int');
-  has ManualSnapshotsLimit => (is => 'ro', isa => 'Int');
-  has ManualSnapshotsLimitReached => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::DS::Types qw//;
+  has ManualSnapshotsCurrentCount => (is => 'ro', isa => Int);
+  has ManualSnapshotsLimit => (is => 'ro', isa => Int);
+  has ManualSnapshotsLimitReached => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManualSnapshotsLimitReached' => {
+                                                  'type' => 'Bool'
+                                                },
+               'ManualSnapshotsLimit' => {
+                                           'type' => 'Int'
+                                         },
+               'ManualSnapshotsCurrentCount' => {
+                                                  'type' => 'Int'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

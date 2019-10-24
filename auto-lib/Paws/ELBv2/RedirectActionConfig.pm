@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::ELBv2::RedirectActionConfig;
-  use Moose;
-  has Host => (is => 'ro', isa => 'Str');
-  has Path => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has Query => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELBv2::Types qw//;
+  has Host => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has Query => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Port' => {
+                           'type' => 'Str'
+                         },
+               'Host' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'StatusCode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ArtifactDetail;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has S3location => (is => 'ro', isa => 'Paws::CodePipeline::S3Location', request_name => 's3location', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_S3Location/;
+  has Name => (is => 'ro', isa => Str);
+  has S3location => (is => 'ro', isa => CodePipeline_S3Location);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'S3location' => {
+                                 'class' => 'Paws::CodePipeline::S3Location',
+                                 'type' => 'CodePipeline_S3Location'
+                               }
+             },
+  'NameInRequest' => {
+                       'Name' => 'name',
+                       'S3location' => 's3location'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ location.
   The artifact object name for the action execution.
 
 
-=head2 S3location => L<Paws::CodePipeline::S3Location>
+=head2 S3location => CodePipeline_S3Location
 
   The Amazon S3 artifact location for the action execution.
 

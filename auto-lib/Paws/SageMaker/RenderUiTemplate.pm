@@ -1,15 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::RenderUiTemplate;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has Task => (is => 'ro', isa => 'Paws::SageMaker::RenderableTask', required => 1);
-  has UiTemplate => (is => 'ro', isa => 'Paws::SageMaker::UiTemplate', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_UiTemplate SageMaker_RenderableTask/;
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Task => (is => 'ro', isa => SageMaker_RenderableTask, required => 1, predicate => 1);
+  has UiTemplate => (is => 'ro', isa => SageMaker_UiTemplate, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RenderUiTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::RenderUiTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RenderUiTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::RenderUiTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'UiTemplate' => {
+                                 'class' => 'Paws::SageMaker::UiTemplate',
+                                 'type' => 'SageMaker_UiTemplate'
+                               },
+               'Task' => {
+                           'class' => 'Paws::SageMaker::RenderableTask',
+                           'type' => 'SageMaker_RenderableTask'
+                         }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'UiTemplate' => 1,
+                    'Task' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,13 +90,13 @@ are used by the template.
 
 
 
-=head2 B<REQUIRED> Task => L<Paws::SageMaker::RenderableTask>
+=head2 B<REQUIRED> Task => SageMaker_RenderableTask
 
 A C<RenderableTask> object containing a representative task to render.
 
 
 
-=head2 B<REQUIRED> UiTemplate => L<Paws::SageMaker::UiTemplate>
+=head2 B<REQUIRED> UiTemplate => SageMaker_UiTemplate
 
 A C<Template> object containing the worker UI template to render.
 

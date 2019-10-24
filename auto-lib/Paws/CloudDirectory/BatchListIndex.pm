@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListIndex;
-  use Moose;
-  has IndexReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RangesOnIndexedValues => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeRange]');
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectAttributeRange CloudDirectory_ObjectReference/;
+  has IndexReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
+  has RangesOnIndexedValues => (is => 'ro', isa => ArrayRef[CloudDirectory_ObjectAttributeRange]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexReference' => {
+                                     'class' => 'Paws::CloudDirectory::ObjectReference',
+                                     'type' => 'CloudDirectory_ObjectReference'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'RangesOnIndexedValues' => {
+                                            'class' => 'Paws::CloudDirectory::ObjectAttributeRange',
+                                            'type' => 'ArrayRef[CloudDirectory_ObjectAttributeRange]'
+                                          }
+             },
+  'IsRequired' => {
+                    'IndexReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +72,7 @@ BatchReadRequest$Operations.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> IndexReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> IndexReference => CloudDirectory_ObjectReference
 
   The reference to the index to list.
 
@@ -56,7 +87,7 @@ BatchReadRequest$Operations.
   The pagination token.
 
 
-=head2 RangesOnIndexedValues => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeRange>]
+=head2 RangesOnIndexedValues => ArrayRef[CloudDirectory_ObjectAttributeRange]
 
   Specifies the ranges of indexed values that you want to query.
 

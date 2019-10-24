@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListAttachedGroupPolicies;
   use Moo;
@@ -29,7 +30,10 @@ package Paws::IAM::ListAttachedGroupPolicies;
                'Marker' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
 }
 ;
     return $Params_map;

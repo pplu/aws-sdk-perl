@@ -9,7 +9,7 @@ package Paws::EC2::HostOffering;
   has PaymentOption => (is => 'ro', isa => Str);
   has UpfrontPrice => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UpfrontPrice' => {
@@ -45,8 +45,8 @@ package Paws::EC2::HostOffering;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

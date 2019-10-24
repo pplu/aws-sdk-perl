@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigurationAggregator;
-  use Moose;
-  has AccountAggregationSources => (is => 'ro', isa => 'ArrayRef[Paws::Config::AccountAggregationSource]');
-  has ConfigurationAggregatorArn => (is => 'ro', isa => 'Str');
-  has ConfigurationAggregatorName => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has OrganizationAggregationSource => (is => 'ro', isa => 'Paws::Config::OrganizationAggregationSource');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Config::Types qw/Config_OrganizationAggregationSource Config_AccountAggregationSource/;
+  has AccountAggregationSources => (is => 'ro', isa => ArrayRef[Config_AccountAggregationSource]);
+  has ConfigurationAggregatorArn => (is => 'ro', isa => Str);
+  has ConfigurationAggregatorName => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has OrganizationAggregationSource => (is => 'ro', isa => Config_OrganizationAggregationSource);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'OrganizationAggregationSource' => {
+                                                    'class' => 'Paws::Config::OrganizationAggregationSource',
+                                                    'type' => 'Config_OrganizationAggregationSource'
+                                                  },
+               'ConfigurationAggregatorName' => {
+                                                  'type' => 'Str'
+                                                },
+               'ConfigurationAggregatorArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'AccountAggregationSources' => {
+                                                'class' => 'Paws::Config::AccountAggregationSource',
+                                                'type' => 'ArrayRef[Config_AccountAggregationSource]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +76,7 @@ about source accounts, regions, and metadata of the aggregator.
 =head1 ATTRIBUTES
 
 
-=head2 AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]
+=head2 AccountAggregationSources => ArrayRef[Config_AccountAggregationSource]
 
   Provides a list of source accounts and regions to be aggregated.
 
@@ -67,7 +101,7 @@ about source accounts, regions, and metadata of the aggregator.
   The time of the last update.
 
 
-=head2 OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>
+=head2 OrganizationAggregationSource => Config_OrganizationAggregationSource
 
   Provides an organization and list of regions to be aggregated.
 

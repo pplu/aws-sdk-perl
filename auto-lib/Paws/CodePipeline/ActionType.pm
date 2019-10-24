@@ -1,10 +1,56 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionType;
-  use Moose;
-  has ActionConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', request_name => 'actionConfigurationProperties', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'inputArtifactDetails', traits => ['NameInRequest'], required => 1);
-  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'outputArtifactDetails', traits => ['NameInRequest'], required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', request_name => 'settings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionTypeSettings CodePipeline_ArtifactDetails CodePipeline_ActionConfigurationProperty CodePipeline_ActionTypeId/;
+  has ActionConfigurationProperties => (is => 'ro', isa => ArrayRef[CodePipeline_ActionConfigurationProperty]);
+  has Id => (is => 'ro', isa => CodePipeline_ActionTypeId, required => 1);
+  has InputArtifactDetails => (is => 'ro', isa => CodePipeline_ArtifactDetails, required => 1);
+  has OutputArtifactDetails => (is => 'ro', isa => CodePipeline_ArtifactDetails, required => 1);
+  has Settings => (is => 'ro', isa => CodePipeline_ActionTypeSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'class' => 'Paws::CodePipeline::ActionTypeId',
+                         'type' => 'CodePipeline_ActionTypeId'
+                       },
+               'Settings' => {
+                               'class' => 'Paws::CodePipeline::ActionTypeSettings',
+                               'type' => 'CodePipeline_ActionTypeSettings'
+                             },
+               'InputArtifactDetails' => {
+                                           'class' => 'Paws::CodePipeline::ArtifactDetails',
+                                           'type' => 'CodePipeline_ArtifactDetails'
+                                         },
+               'OutputArtifactDetails' => {
+                                            'class' => 'Paws::CodePipeline::ArtifactDetails',
+                                            'type' => 'CodePipeline_ArtifactDetails'
+                                          },
+               'ActionConfigurationProperties' => {
+                                                    'class' => 'Paws::CodePipeline::ActionConfigurationProperty',
+                                                    'type' => 'ArrayRef[CodePipeline_ActionConfigurationProperty]'
+                                                  }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Settings' => 'settings',
+                       'InputArtifactDetails' => 'inputArtifactDetails',
+                       'OutputArtifactDetails' => 'outputArtifactDetails',
+                       'ActionConfigurationProperties' => 'actionConfigurationProperties'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'InputArtifactDetails' => 1,
+                    'OutputArtifactDetails' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,29 +86,29 @@ Returns information about the details of an action type.
 =head1 ATTRIBUTES
 
 
-=head2 ActionConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
+=head2 ActionConfigurationProperties => ArrayRef[CodePipeline_ActionConfigurationProperty]
 
   The configuration properties for the action type.
 
 
-=head2 B<REQUIRED> Id => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> Id => CodePipeline_ActionTypeId
 
   Represents information about an action type.
 
 
-=head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> InputArtifactDetails => CodePipeline_ArtifactDetails
 
   The details of the input artifact for the action, such as its commit
 ID.
 
 
-=head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> OutputArtifactDetails => CodePipeline_ArtifactDetails
 
   The details of the output artifact of the action, such as its commit
 ID.
 
 
-=head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
+=head2 Settings => CodePipeline_ActionTypeSettings
 
   The settings for the action type.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Route53::AliasTarget;
-  use Moose;
-  has DNSName => (is => 'ro', isa => 'Str', required => 1);
-  has EvaluateTargetHealth => (is => 'ro', isa => 'Bool', required => 1);
-  has HostedZoneId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Route53::Types qw//;
+  has DNSName => (is => 'ro', isa => Str, required => 1);
+  has EvaluateTargetHealth => (is => 'ro', isa => Bool, required => 1);
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluateTargetHealth' => {
+                                           'type' => 'Bool'
+                                         },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'EvaluateTargetHealth' => 1,
+                    'DNSName' => 1,
+                    'HostedZoneId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

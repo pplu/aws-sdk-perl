@@ -18,7 +18,10 @@ package Paws::ES::DescribeElasticsearchDomains;
                'DomainNames' => {
                                   'type' => 'ArrayRef[Str|Undef]'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'DomainNames' => 1
+                  }
 }
 ;
     return $Params_map;

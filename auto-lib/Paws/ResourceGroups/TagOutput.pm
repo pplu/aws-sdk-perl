@@ -1,10 +1,31 @@
 
 package Paws::ResourceGroups::TagOutput;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::ResourceGroups::Tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw/ResourceGroups_Tags/;
+  has Arn => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ResourceGroups_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::ResourceGroups::Tags',
+                           'type' => 'ResourceGroups_Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::ResourceGroups::TagOutput
 The ARN of the tagged resource.
 
 
-=head2 Tags => L<Paws::ResourceGroups::Tags>
+=head2 Tags => ResourceGroups_Tags
 
 The tags that have been added to the specified resource.
 

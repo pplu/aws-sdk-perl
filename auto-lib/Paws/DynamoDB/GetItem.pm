@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::GetItem;
   use Moo;
@@ -17,7 +18,7 @@ package Paws::DynamoDB::GetItem;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::GetItemOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReturnConsumedCapacity' => {
@@ -43,11 +44,15 @@ package Paws::DynamoDB::GetItem;
                           'class' => 'Paws::DynamoDB::Key',
                           'type' => 'DynamoDB_Key'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'TableName' => 1,
+                    'Key' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

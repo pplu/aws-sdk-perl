@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::ListRuleGroupsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has RuleGroups => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RuleGroupSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_RuleGroupSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has RuleGroups => (is => 'ro', isa => ArrayRef[WAF_RuleGroupSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RuleGroups' => {
+                                 'class' => 'Paws::WAF::RuleGroupSummary',
+                                 'type' => 'ArrayRef[WAF_RuleGroupSummary]'
+                               },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ and specify the C<NextMarker> value from the response in the
 C<NextMarker> value in the next request.
 
 
-=head2 RuleGroups => ArrayRef[L<Paws::WAF::RuleGroupSummary>]
+=head2 RuleGroups => ArrayRef[WAF_RuleGroupSummary]
 
 An array of RuleGroup objects.
 

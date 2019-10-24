@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::Policy;
   use Moo;
   use Types::Standard qw/Str Int Bool/;

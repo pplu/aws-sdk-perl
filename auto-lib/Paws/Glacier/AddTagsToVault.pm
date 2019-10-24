@@ -1,16 +1,46 @@
 
 package Paws::Glacier::AddTagsToVault;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Glacier::TagMap');
-  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_TagMap/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Glacier_TagMap, predicate => 1);
+  has VaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToVault');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/tags?operation=add');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToVault');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/{accountId}/vaults/{vaultName}/tags?operation=add');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'VaultName' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Glacier::TagMap',
+                           'type' => 'Glacier_TagMap'
+                         }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId',
+                    'VaultName' => 'vaultName'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'VaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +88,7 @@ you use an account ID, do not include any hyphens ('-') in the ID.
 
 
 
-=head2 Tags => L<Paws::Glacier::TagMap>
+=head2 Tags => Glacier_TagMap
 
 The tags to add to the vault. Each tag is composed of a key and a
 value. The value can be an empty string.

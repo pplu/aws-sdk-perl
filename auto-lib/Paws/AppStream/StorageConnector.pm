@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::AppStream::StorageConnector;
-  use Moose;
-  has ConnectorType => (is => 'ro', isa => 'Str', required => 1);
-  has Domains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AppStream::Types qw//;
+  has ConnectorType => (is => 'ro', isa => Str, required => 1);
+  has Domains => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ResourceIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Domains' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ConnectorType' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ConnectorType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::Subscription;
-  use Moose;
-  has EndPoint => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has SubscriptionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has EndPoint => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has SubscriptionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionId' => {
+                                     'type' => 'Str'
+                                   },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'EndPoint' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

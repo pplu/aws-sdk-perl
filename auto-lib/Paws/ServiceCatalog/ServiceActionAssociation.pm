@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ServiceActionAssociation;
-  use Moose;
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceActionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has ProductId => (is => 'ro', isa => Str, required => 1);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str, required => 1);
+  has ServiceActionId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ServiceActionId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'ProvisioningArtifactId' => 1,
+                    'ProductId' => 1,
+                    'ServiceActionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

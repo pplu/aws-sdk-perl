@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::UpdateSystemTemplate;
-  use Moose;
-  has CompatibleNamespaceVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'compatibleNamespaceVersion' );
-  has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_DefinitionDocument/;
+  has CompatibleNamespaceVersion => (is => 'ro', isa => Int, predicate => 1);
+  has Definition => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSystemTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::UpdateSystemTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSystemTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::UpdateSystemTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CompatibleNamespaceVersion' => {
+                                                 'type' => 'Int'
+                                               },
+               'Definition' => {
+                                 'class' => 'Paws::IoTThingsGraph::DefinitionDocument',
+                                 'type' => 'IoTThingsGraph_DefinitionDocument'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'CompatibleNamespaceVersion' => 'compatibleNamespaceVersion',
+                       'Definition' => 'definition',
+                       'Id' => 'id'
+                     },
+  'IsRequired' => {
+                    'Definition' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +91,7 @@ If no value is specified, the latest version is used by default.
 
 
 
-=head2 B<REQUIRED> Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 B<REQUIRED> Definition => IoTThingsGraph_DefinitionDocument
 
 The C<DefinitionDocument> that contains the updated system definition.
 

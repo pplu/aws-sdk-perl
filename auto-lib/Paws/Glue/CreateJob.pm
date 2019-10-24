@@ -1,29 +1,104 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateJob;
-  use Moose;
-  has AllocatedCapacity => (is => 'ro', isa => 'Int');
-  has Command => (is => 'ro', isa => 'Paws::Glue::JobCommand', required => 1);
-  has Connections => (is => 'ro', isa => 'Paws::Glue::ConnectionsList');
-  has DefaultArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has MaxCapacity => (is => 'ro', isa => 'Num');
-  has MaxRetries => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
-  has NumberOfWorkers => (is => 'ro', isa => 'Int');
-  has Role => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
-  has Timeout => (is => 'ro', isa => 'Int');
-  has WorkerType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::Glue::Types qw/Glue_ConnectionsList Glue_TagsMap Glue_ExecutionProperty Glue_JobCommand Glue_NotificationProperty Glue_GenericMap/;
+  has AllocatedCapacity => (is => 'ro', isa => Int, predicate => 1);
+  has Command => (is => 'ro', isa => Glue_JobCommand, required => 1, predicate => 1);
+  has Connections => (is => 'ro', isa => Glue_ConnectionsList, predicate => 1);
+  has DefaultArguments => (is => 'ro', isa => Glue_GenericMap, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionProperty => (is => 'ro', isa => Glue_ExecutionProperty, predicate => 1);
+  has LogUri => (is => 'ro', isa => Str, predicate => 1);
+  has MaxCapacity => (is => 'ro', isa => Num, predicate => 1);
+  has MaxRetries => (is => 'ro', isa => Int, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty, predicate => 1);
+  has NumberOfWorkers => (is => 'ro', isa => Int, predicate => 1);
+  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
+  has Timeout => (is => 'ro', isa => Int, predicate => 1);
+  has WorkerType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkerType' => {
+                                 'type' => 'Str'
+                               },
+               'NumberOfWorkers' => {
+                                      'type' => 'Int'
+                                    },
+               'ExecutionProperty' => {
+                                        'class' => 'Paws::Glue::ExecutionProperty',
+                                        'type' => 'Glue_ExecutionProperty'
+                                      },
+               'NotificationProperty' => {
+                                           'class' => 'Paws::Glue::NotificationProperty',
+                                           'type' => 'Glue_NotificationProperty'
+                                         },
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'MaxCapacity' => {
+                                  'type' => 'Num'
+                                },
+               'Connections' => {
+                                  'class' => 'Paws::Glue::ConnectionsList',
+                                  'type' => 'Glue_ConnectionsList'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'DefaultArguments' => {
+                                       'class' => 'Paws::Glue::GenericMap',
+                                       'type' => 'Glue_GenericMap'
+                                     },
+               'MaxRetries' => {
+                                 'type' => 'Int'
+                               },
+               'Command' => {
+                              'class' => 'Paws::Glue::JobCommand',
+                              'type' => 'Glue_JobCommand'
+                            },
+               'AllocatedCapacity' => {
+                                        'type' => 'Int'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::Glue::TagsMap',
+                           'type' => 'Glue_TagsMap'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Timeout' => {
+                              'type' => 'Int'
+                            }
+             },
+  'IsRequired' => {
+                    'Command' => 1,
+                    'Role' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,19 +177,19 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 
-=head2 B<REQUIRED> Command => L<Paws::Glue::JobCommand>
+=head2 B<REQUIRED> Command => Glue_JobCommand
 
 The C<JobCommand> that executes this job.
 
 
 
-=head2 Connections => L<Paws::Glue::ConnectionsList>
+=head2 Connections => Glue_ConnectionsList
 
 The connections used for this job.
 
 
 
-=head2 DefaultArguments => L<Paws::Glue::GenericMap>
+=head2 DefaultArguments => Glue_GenericMap
 
 The default arguments for this job.
 
@@ -139,7 +214,7 @@ Description of the job being defined.
 
 
 
-=head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
+=head2 ExecutionProperty => Glue_ExecutionProperty
 
 An C<ExecutionProperty> specifying the maximum number of concurrent
 runs allowed for this job.
@@ -198,7 +273,7 @@ account.
 
 
 
-=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+=head2 NotificationProperty => Glue_NotificationProperty
 
 Specifies configuration properties of a job notification.
 
@@ -228,7 +303,7 @@ job.
 
 
 
-=head2 Tags => L<Paws::Glue::TagsMap>
+=head2 Tags => Glue_TagsMap
 
 The tags to use with this job. You may use tags to limit access to the
 job. For more information about tags in AWS Glue, see AWS Tags in AWS

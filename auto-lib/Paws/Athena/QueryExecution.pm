@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::Athena::QueryExecution;
-  use Moose;
-  has Query => (is => 'ro', isa => 'Str');
-  has QueryExecutionContext => (is => 'ro', isa => 'Paws::Athena::QueryExecutionContext');
-  has QueryExecutionId => (is => 'ro', isa => 'Str');
-  has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
-  has StatementType => (is => 'ro', isa => 'Str');
-  has Statistics => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatistics');
-  has Status => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatus');
-  has WorkGroup => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Athena::Types qw/Athena_QueryExecutionStatus Athena_ResultConfiguration Athena_QueryExecutionContext Athena_QueryExecutionStatistics/;
+  has Query => (is => 'ro', isa => Str);
+  has QueryExecutionContext => (is => 'ro', isa => Athena_QueryExecutionContext);
+  has QueryExecutionId => (is => 'ro', isa => Str);
+  has ResultConfiguration => (is => 'ro', isa => Athena_ResultConfiguration);
+  has StatementType => (is => 'ro', isa => Str);
+  has Statistics => (is => 'ro', isa => Athena_QueryExecutionStatistics);
+  has Status => (is => 'ro', isa => Athena_QueryExecutionStatus);
+  has WorkGroup => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistics' => {
+                                 'class' => 'Paws::Athena::QueryExecutionStatistics',
+                                 'type' => 'Athena_QueryExecutionStatistics'
+                               },
+               'Status' => {
+                             'class' => 'Paws::Athena::QueryExecutionStatus',
+                             'type' => 'Athena_QueryExecutionStatus'
+                           },
+               'StatementType' => {
+                                    'type' => 'Str'
+                                  },
+               'QueryExecutionContext' => {
+                                            'class' => 'Paws::Athena::QueryExecutionContext',
+                                            'type' => 'Athena_QueryExecutionContext'
+                                          },
+               'QueryExecutionId' => {
+                                       'type' => 'Str'
+                                     },
+               'WorkGroup' => {
+                                'type' => 'Str'
+                              },
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'ResultConfiguration' => {
+                                          'class' => 'Paws::Athena::ResultConfiguration',
+                                          'type' => 'Athena_ResultConfiguration'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +90,7 @@ Information about a single instance of a query execution.
   The SQL query statements which the query execution ran.
 
 
-=head2 QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>
+=head2 QueryExecutionContext => Athena_QueryExecutionContext
 
   The database in which the query execution occurred.
 
@@ -58,7 +100,7 @@ Information about a single instance of a query execution.
   The unique identifier for each query execution.
 
 
-=head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
+=head2 ResultConfiguration => Athena_ResultConfiguration
 
   The location in Amazon S3 where query results were stored and the
 encryption option, if any, used for query results. These are known as
@@ -76,13 +118,13 @@ query statements other than DDL and DML, such as C<SHOW CREATE TABLE>,
 or C<DESCRIBE E<lt>tableE<gt>>.
 
 
-=head2 Statistics => L<Paws::Athena::QueryExecutionStatistics>
+=head2 Statistics => Athena_QueryExecutionStatistics
 
   The amount of data scanned during the query execution and the amount of
 time that it took to execute, and the type of statement that was run.
 
 
-=head2 Status => L<Paws::Athena::QueryExecutionStatus>
+=head2 Status => Athena_QueryExecutionStatus
 
   The completion date, current state, submission time, and state change
 reason (if applicable) for the query execution.

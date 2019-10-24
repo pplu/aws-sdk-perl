@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::WebhookFilterRule;
-  use Moose;
-  has JsonPath => (is => 'ro', isa => 'Str', request_name => 'jsonPath', traits => ['NameInRequest'], required => 1);
-  has MatchEquals => (is => 'ro', isa => 'Str', request_name => 'matchEquals', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has JsonPath => (is => 'ro', isa => Str, required => 1);
+  has MatchEquals => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JsonPath' => {
+                               'type' => 'Str'
+                             },
+               'MatchEquals' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'JsonPath' => 'jsonPath',
+                       'MatchEquals' => 'matchEquals'
+                     },
+  'IsRequired' => {
+                    'JsonPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

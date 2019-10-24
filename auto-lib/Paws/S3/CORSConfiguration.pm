@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::CORSConfiguration;
   use Moo;
   use Types::Standard qw/ArrayRef/;
@@ -14,7 +15,10 @@ package Paws::S3::CORSConfiguration;
              },
   'NameInRequest' => {
                        'CORSRules' => 'CORSRule'
-                     }
+                     },
+  'IsRequired' => {
+                    'CORSRules' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,54 +1,199 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CreateDBInstance;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CharacterSetName => (is => 'ro', isa => 'Str');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str', required => 1);
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBName => (is => 'ro', isa => 'Str');
-  has DBParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
-  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str', required => 1);
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MonitoringInterval => (is => 'ro', isa => 'Int');
-  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has TdeCredentialPassword => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Int Bool ArrayRef Undef/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has AllocatedStorage => (is => 'ro', isa => Int, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CharacterSetName => (is => 'ro', isa => Str, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBName => (is => 'ro', isa => Str, predicate => 1);
+  has DBParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, predicate => 1);
+  has DomainIAMRoleName => (is => 'ro', isa => Str, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EnablePerformanceInsights => (is => 'ro', isa => Bool, predicate => 1);
+  has Engine => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Iops => (is => 'ro', isa => Int, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has LicenseModel => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has MonitoringInterval => (is => 'ro', isa => Int, predicate => 1);
+  has MonitoringRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has MultiAZ => (is => 'ro', isa => Bool, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceInsightsKMSKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PromotionTier => (is => 'ro', isa => Int, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has StorageType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
+  has TdeCredentialArn => (is => 'ro', isa => Str, predicate => 1);
+  has TdeCredentialPassword => (is => 'ro', isa => Str, predicate => 1);
+  has Timezone => (is => 'ro', isa => Str, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CreateDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CreateDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'MonitoringRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'DBParameterGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'DBSecurityGroups' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'CharacterSetName' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::Neptune::Tag',
+                           'type' => 'ArrayRef[Neptune_Tag]'
+                         },
+               'DomainIAMRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    },
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'EnablePerformanceInsights' => {
+                                                'type' => 'Bool'
+                                              },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'TdeCredentialPassword' => {
+                                            'type' => 'Str'
+                                          },
+               'MonitoringInterval' => {
+                                         'type' => 'Int'
+                                       },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'PerformanceInsightsKMSKeyId' => {
+                                                  'type' => 'Str'
+                                                },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBName' => {
+                             'type' => 'Str'
+                           },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1,
+                    'Engine' => 1,
+                    'DBInstanceClass' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -531,7 +676,7 @@ Not applicable. Storage is managed by the DB Cluster.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to assign to the new instance.
 

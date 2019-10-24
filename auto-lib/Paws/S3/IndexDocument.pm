@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::IndexDocument;
   use Moo;
   use Types::Standard qw/Str/;
@@ -10,7 +11,10 @@ package Paws::S3::IndexDocument;
                'Suffix' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Suffix' => 1
+                  }
 }
 ;
     return $Params_map;

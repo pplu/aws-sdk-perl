@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Translate::Term;
-  use Moose;
-  has SourceText => (is => 'ro', isa => 'Str');
-  has TargetText => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Translate::Types qw//;
+  has SourceText => (is => 'ro', isa => Str);
+  has TargetText => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceText' => {
+                                 'type' => 'Str'
+                               },
+               'TargetText' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

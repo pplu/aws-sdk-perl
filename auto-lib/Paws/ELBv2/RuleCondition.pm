@@ -1,13 +1,57 @@
+# Generated from default/object.tt
 package Paws::ELBv2::RuleCondition;
-  use Moose;
-  has Field => (is => 'ro', isa => 'Str');
-  has HostHeaderConfig => (is => 'ro', isa => 'Paws::ELBv2::HostHeaderConditionConfig');
-  has HttpHeaderConfig => (is => 'ro', isa => 'Paws::ELBv2::HttpHeaderConditionConfig');
-  has HttpRequestMethodConfig => (is => 'ro', isa => 'Paws::ELBv2::HttpRequestMethodConditionConfig');
-  has PathPatternConfig => (is => 'ro', isa => 'Paws::ELBv2::PathPatternConditionConfig');
-  has QueryStringConfig => (is => 'ro', isa => 'Paws::ELBv2::QueryStringConditionConfig');
-  has SourceIpConfig => (is => 'ro', isa => 'Paws::ELBv2::SourceIpConditionConfig');
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ELBv2::Types qw/ELBv2_QueryStringConditionConfig ELBv2_HttpRequestMethodConditionConfig ELBv2_SourceIpConditionConfig ELBv2_HostHeaderConditionConfig ELBv2_HttpHeaderConditionConfig ELBv2_PathPatternConditionConfig/;
+  has Field => (is => 'ro', isa => Str);
+  has HostHeaderConfig => (is => 'ro', isa => ELBv2_HostHeaderConditionConfig);
+  has HttpHeaderConfig => (is => 'ro', isa => ELBv2_HttpHeaderConditionConfig);
+  has HttpRequestMethodConfig => (is => 'ro', isa => ELBv2_HttpRequestMethodConditionConfig);
+  has PathPatternConfig => (is => 'ro', isa => ELBv2_PathPatternConditionConfig);
+  has QueryStringConfig => (is => 'ro', isa => ELBv2_QueryStringConditionConfig);
+  has SourceIpConfig => (is => 'ro', isa => ELBv2_SourceIpConditionConfig);
+  has Values => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIpConfig' => {
+                                     'class' => 'Paws::ELBv2::SourceIpConditionConfig',
+                                     'type' => 'ELBv2_SourceIpConditionConfig'
+                                   },
+               'HttpHeaderConfig' => {
+                                       'class' => 'Paws::ELBv2::HttpHeaderConditionConfig',
+                                       'type' => 'ELBv2_HttpHeaderConditionConfig'
+                                     },
+               'HttpRequestMethodConfig' => {
+                                              'class' => 'Paws::ELBv2::HttpRequestMethodConditionConfig',
+                                              'type' => 'ELBv2_HttpRequestMethodConditionConfig'
+                                            },
+               'PathPatternConfig' => {
+                                        'class' => 'Paws::ELBv2::PathPatternConditionConfig',
+                                        'type' => 'ELBv2_PathPatternConditionConfig'
+                                      },
+               'Field' => {
+                            'type' => 'Str'
+                          },
+               'QueryStringConfig' => {
+                                        'class' => 'Paws::ELBv2::QueryStringConditionConfig',
+                                        'type' => 'ELBv2_QueryStringConditionConfig'
+                                      },
+               'HostHeaderConfig' => {
+                                       'class' => 'Paws::ELBv2::HostHeaderConditionConfig',
+                                       'type' => 'ELBv2_HostHeaderConditionConfig'
+                                     },
+               'Values' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -77,37 +121,37 @@ C<source-ip>
 
 
 
-=head2 HostHeaderConfig => L<Paws::ELBv2::HostHeaderConditionConfig>
+=head2 HostHeaderConfig => ELBv2_HostHeaderConditionConfig
 
   Information for a host header condition. Specify only when C<Field> is
 C<host-header>.
 
 
-=head2 HttpHeaderConfig => L<Paws::ELBv2::HttpHeaderConditionConfig>
+=head2 HttpHeaderConfig => ELBv2_HttpHeaderConditionConfig
 
   Information for an HTTP header condition. Specify only when C<Field> is
 C<http-header>.
 
 
-=head2 HttpRequestMethodConfig => L<Paws::ELBv2::HttpRequestMethodConditionConfig>
+=head2 HttpRequestMethodConfig => ELBv2_HttpRequestMethodConditionConfig
 
   Information for an HTTP method condition. Specify only when C<Field> is
 C<http-request-method>.
 
 
-=head2 PathPatternConfig => L<Paws::ELBv2::PathPatternConditionConfig>
+=head2 PathPatternConfig => ELBv2_PathPatternConditionConfig
 
   Information for a path pattern condition. Specify only when C<Field> is
 C<path-pattern>.
 
 
-=head2 QueryStringConfig => L<Paws::ELBv2::QueryStringConditionConfig>
+=head2 QueryStringConfig => ELBv2_QueryStringConditionConfig
 
   Information for a query string condition. Specify only when C<Field> is
 C<query-string>.
 
 
-=head2 SourceIpConfig => L<Paws::ELBv2::SourceIpConditionConfig>
+=head2 SourceIpConfig => ELBv2_SourceIpConditionConfig
 
   Information for a source IP condition. Specify only when C<Field> is
 C<source-ip>.

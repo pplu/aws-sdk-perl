@@ -1,15 +1,42 @@
 
 package Paws::IoT::DeleteThing;
-  use Moose;
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'expectedVersion');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteThing');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteThingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteThing');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteThingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  },
+  'ParamInQuery' => {
+                      'ExpectedVersion' => 'expectedVersion'
+                    },
+  'IsRequired' => {
+                    'ThingName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

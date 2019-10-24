@@ -8,7 +8,7 @@ package Paws::EC2::DescribeScheduledInstancesResult;
   has ScheduledInstanceSet => (is => 'ro', isa => ArrayRef[EC2_ScheduledInstance]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NextToken' => {
@@ -28,8 +28,8 @@ package Paws::EC2::DescribeScheduledInstancesResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

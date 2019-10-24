@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::MTurk::QualificationRequirement;
-  use Moose;
-  has ActionsGuarded => (is => 'ro', isa => 'Str');
-  has Comparator => (is => 'ro', isa => 'Str', required => 1);
-  has IntegerValues => (is => 'ro', isa => 'ArrayRef[Int]');
-  has LocaleValues => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::Locale]');
-  has QualificationTypeId => (is => 'ro', isa => 'Str', required => 1);
-  has RequiredToPreview => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Bool/;
+  use Paws::MTurk::Types qw/MTurk_Locale/;
+  has ActionsGuarded => (is => 'ro', isa => Str);
+  has Comparator => (is => 'ro', isa => Str, required => 1);
+  has IntegerValues => (is => 'ro', isa => ArrayRef[Int]);
+  has LocaleValues => (is => 'ro', isa => ArrayRef[MTurk_Locale]);
+  has QualificationTypeId => (is => 'ro', isa => Str, required => 1);
+  has RequiredToPreview => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequiredToPreview' => {
+                                        'type' => 'Bool'
+                                      },
+               'LocaleValues' => {
+                                   'class' => 'Paws::MTurk::Locale',
+                                   'type' => 'ArrayRef[MTurk_Locale]'
+                                 },
+               'Comparator' => {
+                                 'type' => 'Str'
+                               },
+               'ActionsGuarded' => {
+                                     'type' => 'Str'
+                                   },
+               'QualificationTypeId' => {
+                                          'type' => 'Str'
+                                        },
+               'IntegerValues' => {
+                                    'type' => 'ArrayRef[Int]'
+                                  }
+             },
+  'IsRequired' => {
+                    'Comparator' => 1,
+                    'QualificationTypeId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +128,7 @@ or the NotIn comparator, you can use up to 15 IntegerValue elements in
 a QualificationRequirement data structure.
 
 
-=head2 LocaleValues => ArrayRef[L<Paws::MTurk::Locale>]
+=head2 LocaleValues => ArrayRef[MTurk_Locale]
 
   The locale value to compare against the Qualification's value. The
 local value must be a valid ISO 3166 country code or supports ISO

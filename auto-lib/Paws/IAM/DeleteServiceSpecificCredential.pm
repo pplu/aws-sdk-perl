@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteServiceSpecificCredential;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::DeleteServiceSpecificCredential;
                'ServiceSpecificCredentialId' => {
                                                   'type' => 'Str'
                                                 }
-             }
+             },
+  'IsRequired' => {
+                    'ServiceSpecificCredentialId' => 1
+                  }
 }
 ;
     return $Params_map;

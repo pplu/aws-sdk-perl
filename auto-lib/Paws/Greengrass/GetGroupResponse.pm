@@ -1,16 +1,58 @@
 
 package Paws::Greengrass::GetGroupResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreationTimestamp => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has LastUpdatedTimestamp => (is => 'ro', isa => 'Str');
-  has LatestVersion => (is => 'ro', isa => 'Str');
-  has LatestVersionArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass___mapOf__string/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreationTimestamp => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LastUpdatedTimestamp => (is => 'ro', isa => Str);
+  has LatestVersion => (is => 'ro', isa => Str);
+  has LatestVersionArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Greengrass___mapOf__string);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LatestVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'LatestVersionArn' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdatedTimestamp' => {
+                                           'type' => 'Str'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::Greengrass::__mapOf__string',
+                           'type' => 'Greengrass___mapOf__string'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +101,7 @@ The ARN of the latest version of the definition.
 The name of the definition.
 
 
-=head2 Tags => L<Paws::Greengrass::__mapOf__string>
+=head2 Tags => Greengrass___mapOf__string
 
 The tags for the definition.
 

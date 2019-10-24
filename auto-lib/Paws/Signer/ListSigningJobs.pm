@@ -1,18 +1,52 @@
 
 package Paws::Signer::ListSigningJobs;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has PlatformId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'platformId');
-  has RequestedBy => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'requestedBy');
-  has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Signer::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PlatformId => (is => 'ro', isa => Str, predicate => 1);
+  has RequestedBy => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSigningJobs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/signing-jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Signer::ListSigningJobsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSigningJobs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/signing-jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Signer::ListSigningJobsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'RequestedBy' => {
+                                  'type' => 'Str'
+                                },
+               'PlatformId' => {
+                                 'type' => 'Str'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'Status' => 'status',
+                      'RequestedBy' => 'requestedBy',
+                      'PlatformId' => 'platformId',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

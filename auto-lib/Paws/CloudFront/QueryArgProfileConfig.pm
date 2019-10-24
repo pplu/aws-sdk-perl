@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFront::QueryArgProfileConfig;
-  use Moose;
-  has ForwardWhenQueryArgProfileIsUnknown => (is => 'ro', isa => 'Bool', required => 1);
-  has QueryArgProfiles => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfiles');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_QueryArgProfiles/;
+  has ForwardWhenQueryArgProfileIsUnknown => (is => 'ro', isa => Bool, required => 1);
+  has QueryArgProfiles => (is => 'ro', isa => CloudFront_QueryArgProfiles);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QueryArgProfiles' => {
+                                       'class' => 'Paws::CloudFront::QueryArgProfiles',
+                                       'type' => 'CloudFront_QueryArgProfiles'
+                                     },
+               'ForwardWhenQueryArgProfileIsUnknown' => {
+                                                          'type' => 'Bool'
+                                                        }
+             },
+  'IsRequired' => {
+                    'ForwardWhenQueryArgProfileIsUnknown' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +69,7 @@ the profile specified by the field-level encryption query argument,
 fle-profile, is unknown.
 
 
-=head2 QueryArgProfiles => L<Paws::CloudFront::QueryArgProfiles>
+=head2 QueryArgProfiles => CloudFront_QueryArgProfiles
 
   Profiles specified for query argument-profile mapping for field-level
 encryption.

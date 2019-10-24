@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ECS::TaskOverride;
-  use Moose;
-  has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', request_name => 'containerOverrides', traits => ['NameInRequest']);
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
-  has TaskRoleArn => (is => 'ro', isa => 'Str', request_name => 'taskRoleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ECS::Types qw/ECS_ContainerOverride/;
+  has ContainerOverrides => (is => 'ro', isa => ArrayRef[ECS_ContainerOverride]);
+  has ExecutionRoleArn => (is => 'ro', isa => Str);
+  has TaskRoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskRoleArn' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'ContainerOverrides' => {
+                                         'class' => 'Paws::ECS::ContainerOverride',
+                                         'type' => 'ArrayRef[ECS_ContainerOverride]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'TaskRoleArn' => 'taskRoleArn',
+                       'ExecutionRoleArn' => 'executionRoleArn',
+                       'ContainerOverrides' => 'containerOverrides'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +67,7 @@ The overrides associated with a task.
 =head1 ATTRIBUTES
 
 
-=head2 ContainerOverrides => ArrayRef[L<Paws::ECS::ContainerOverride>]
+=head2 ContainerOverrides => ArrayRef[ECS_ContainerOverride]
 
   One or more container overrides sent to a task.
 

@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::EC2InstanceConnect::SendSSHPublicKey;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceOSUser => (is => 'ro', isa => 'Str', required => 1);
-  has SSHPublicKey => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EC2InstanceConnect::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceOSUser => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SSHPublicKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendSSHPublicKey');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2InstanceConnect::SendSSHPublicKeyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendSSHPublicKey');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2InstanceConnect::SendSSHPublicKeyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SSHPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceOSUser' => {
+                                     'type' => 'Str'
+                                   },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'SSHPublicKey' => 1,
+                    'InstanceOSUser' => 1,
+                    'InstanceId' => 1,
+                    'AvailabilityZone' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

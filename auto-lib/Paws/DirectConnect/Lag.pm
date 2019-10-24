@@ -1,24 +1,107 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Lag;
-  use Moose;
-  has AllowsHostedConnections => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'allowsHostedConnections' );
-  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
-  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
-  has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
-  has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' );
-  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
-  has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
-  has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
-  has LagState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagState' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
-  has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumLinks' );
-  has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag DirectConnect_Connection/;
+  has AllowsHostedConnections => (is => 'ro', isa => Bool);
+  has AwsDevice => (is => 'ro', isa => Str);
+  has AwsDeviceV2 => (is => 'ro', isa => Str);
+  has Connections => (is => 'ro', isa => ArrayRef[DirectConnect_Connection]);
+  has ConnectionsBandwidth => (is => 'ro', isa => Str);
+  has HasLogicalRedundancy => (is => 'ro', isa => Str);
+  has JumboFrameCapable => (is => 'ro', isa => Bool);
+  has LagId => (is => 'ro', isa => Str);
+  has LagName => (is => 'ro', isa => Str);
+  has LagState => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
+  has MinimumLinks => (is => 'ro', isa => Int);
+  has NumberOfConnections => (is => 'ro', isa => Int);
+  has OwnerAccount => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HasLogicalRedundancy' => {
+                                           'type' => 'Str'
+                                         },
+               'LagState' => {
+                               'type' => 'Str'
+                             },
+               'AwsDeviceV2' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'JumboFrameCapable' => {
+                                        'type' => 'Bool'
+                                      },
+               'Connections' => {
+                                  'class' => 'Paws::DirectConnect::Connection',
+                                  'type' => 'ArrayRef[DirectConnect_Connection]'
+                                },
+               'LagName' => {
+                              'type' => 'Str'
+                            },
+               'NumberOfConnections' => {
+                                          'type' => 'Int'
+                                        },
+               'MinimumLinks' => {
+                                   'type' => 'Int'
+                                 },
+               'AwsDevice' => {
+                                'type' => 'Str'
+                              },
+               'AllowsHostedConnections' => {
+                                              'type' => 'Bool'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         },
+               'ConnectionsBandwidth' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'HasLogicalRedundancy' => 'hasLogicalRedundancy',
+                       'LagState' => 'lagState',
+                       'AwsDeviceV2' => 'awsDeviceV2',
+                       'OwnerAccount' => 'ownerAccount',
+                       'LagId' => 'lagId',
+                       'Location' => 'location',
+                       'Region' => 'region',
+                       'JumboFrameCapable' => 'jumboFrameCapable',
+                       'Connections' => 'connections',
+                       'LagName' => 'lagName',
+                       'NumberOfConnections' => 'numberOfConnections',
+                       'MinimumLinks' => 'minimumLinks',
+                       'AwsDevice' => 'awsDevice',
+                       'AllowsHostedConnections' => 'allowsHostedConnections',
+                       'Tags' => 'tags',
+                       'ConnectionsBandwidth' => 'connectionsBandwidth'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -44,7 +127,7 @@ The AWS Direct Connect endpoint that hosts the LAG.
 The AWS Direct Connect endpoint that hosts the LAG.
 
 
-=head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
+=head2 Connections => ArrayRef[DirectConnect_Connection]
 
 The connections bundled by the LAG.
 
@@ -143,7 +226,7 @@ The ID of the AWS account that owns the LAG.
 The AWS Region where the connection is located.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 Any tags assigned to link aggregation group (LAG).
 

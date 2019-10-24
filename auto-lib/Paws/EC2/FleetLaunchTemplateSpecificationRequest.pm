@@ -5,7 +5,7 @@ package Paws::EC2::FleetLaunchTemplateSpecificationRequest;
   has LaunchTemplateName => (is => 'ro', isa => Str);
   has Version => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LaunchTemplateId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::FleetLaunchTemplateSpecificationRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateAdmChannel;
-  use Moose;
-  has ADMChannelRequest => (is => 'ro', isa => 'Paws::Pinpoint::ADMChannelRequest', required => 1);
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ADMChannelRequest/;
+  has ADMChannelRequest => (is => 'ro', isa => Pinpoint_ADMChannelRequest, required => 1, predicate => 1);
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'ADMChannelRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAdmChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/channels/adm');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateAdmChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAdmChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/channels/adm');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateAdmChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'ADMChannelRequest' => {
+                                        'class' => 'Paws::Pinpoint::ADMChannelRequest',
+                                        'type' => 'Pinpoint_ADMChannelRequest'
+                                      }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'ADMChannelRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +76,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ADMChannelRequest => L<Paws::Pinpoint::ADMChannelRequest>
+=head2 B<REQUIRED> ADMChannelRequest => Pinpoint_ADMChannelRequest
 
 
 

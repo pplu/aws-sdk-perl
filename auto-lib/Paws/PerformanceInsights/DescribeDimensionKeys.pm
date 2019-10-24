@@ -1,23 +1,80 @@
+# Generated from json/callargs_class.tt
 
 package Paws::PerformanceInsights::DescribeDimensionKeys;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has Filter => (is => 'ro', isa => 'Paws::PerformanceInsights::MetricQueryFilterMap');
-  has GroupBy => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionGroup', required => 1);
-  has Identifier => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has Metric => (is => 'ro', isa => 'Str', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PartitionBy => (is => 'ro', isa => 'Paws::PerformanceInsights::DimensionGroup');
-  has PeriodInSeconds => (is => 'ro', isa => 'Int');
-  has ServiceType => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_DimensionGroup PerformanceInsights_MetricQueryFilterMap/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filter => (is => 'ro', isa => PerformanceInsights_MetricQueryFilterMap, predicate => 1);
+  has GroupBy => (is => 'ro', isa => PerformanceInsights_DimensionGroup, required => 1, predicate => 1);
+  has Identifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has Metric => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PartitionBy => (is => 'ro', isa => PerformanceInsights_DimensionGroup, predicate => 1);
+  has PeriodInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has ServiceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDimensionKeys');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PerformanceInsights::DescribeDimensionKeysResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeDimensionKeys');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PerformanceInsights::DescribeDimensionKeysResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PeriodInSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Filter' => {
+                             'class' => 'Paws::PerformanceInsights::MetricQueryFilterMap',
+                             'type' => 'PerformanceInsights_MetricQueryFilterMap'
+                           },
+               'GroupBy' => {
+                              'class' => 'Paws::PerformanceInsights::DimensionGroup',
+                              'type' => 'PerformanceInsights_DimensionGroup'
+                            },
+               'PartitionBy' => {
+                                  'class' => 'Paws::PerformanceInsights::DimensionGroup',
+                                  'type' => 'PerformanceInsights_DimensionGroup'
+                                },
+               'Metric' => {
+                             'type' => 'Str'
+                           },
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'GroupBy' => 1,
+                    'Metric' => 1,
+                    'ServiceType' => 1,
+                    'Identifier' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +141,7 @@ The value for C<EndTime> must be later than the value for C<StartTime>.
 
 
 
-=head2 Filter => L<Paws::PerformanceInsights::MetricQueryFilterMap>
+=head2 Filter => PerformanceInsights_MetricQueryFilterMap
 
 One or more filters to apply in the request. Restrictions:
 
@@ -104,7 +161,7 @@ A single filter for any other dimension in this dimension group.
 
 
 
-=head2 B<REQUIRED> GroupBy => L<Paws::PerformanceInsights::DimensionGroup>
+=head2 B<REQUIRED> GroupBy => PerformanceInsights_DimensionGroup
 
 A specification for how to aggregate the data points from a query
 result. You must specify a valid dimension group. Performance Insights
@@ -165,7 +222,7 @@ token, up to the value specified by C<MaxRecords>.
 
 
 
-=head2 PartitionBy => L<Paws::PerformanceInsights::DimensionGroup>
+=head2 PartitionBy => PerformanceInsights_DimensionGroup
 
 For each dimension specified in C<GroupBy>, specify a secondary
 dimension to further subdivide the partition keys in the response.

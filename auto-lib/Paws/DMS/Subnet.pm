@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::DMS::Subnet;
-  use Moose;
-  has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::DMS::AvailabilityZone');
-  has SubnetIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_AvailabilityZone/;
+  has SubnetAvailabilityZone => (is => 'ro', isa => DMS_AvailabilityZone);
+  has SubnetIdentifier => (is => 'ro', isa => Str);
+  has SubnetStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'SubnetAvailabilityZone' => {
+                                             'class' => 'Paws::DMS::AvailabilityZone',
+                                             'type' => 'DMS_AvailabilityZone'
+                                           },
+               'SubnetStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 SubnetAvailabilityZone => L<Paws::DMS::AvailabilityZone>
+=head2 SubnetAvailabilityZone => DMS_AvailabilityZone
 
   The Availability Zone of the subnet.
 

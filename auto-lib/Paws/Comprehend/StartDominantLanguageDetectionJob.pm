@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::StartDominantLanguageDetectionJob;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
-  has JobName => (is => 'ro', isa => 'Str');
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig', required => 1);
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_OutputDataConfig Comprehend_VpcConfig Comprehend_InputDataConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DataAccessRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_InputDataConfig, required => 1, predicate => 1);
+  has JobName => (is => 'ro', isa => Str, predicate => 1);
+  has OutputDataConfig => (is => 'ro', isa => Comprehend_OutputDataConfig, required => 1, predicate => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartDominantLanguageDetectionJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartDominantLanguageDetectionJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartDominantLanguageDetectionJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::StartDominantLanguageDetectionJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::InputDataConfig',
+                                      'type' => 'Comprehend_InputDataConfig'
+                                    },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'OutputDataConfig' => {
+                                       'class' => 'Paws::Comprehend::OutputDataConfig',
+                                       'type' => 'Comprehend_OutputDataConfig'
+                                     },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'InputDataConfig' => 1,
+                    'DataAccessRoleArn' => 1,
+                    'OutputDataConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +130,7 @@ https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permiss
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => Comprehend_InputDataConfig
 
 Specifies the format and location of the input data for the job.
 
@@ -100,7 +142,7 @@ An identifier for the job.
 
 
 
-=head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=head2 B<REQUIRED> OutputDataConfig => Comprehend_OutputDataConfig
 
 Specifies where to send the output files.
 
@@ -129,7 +171,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
 Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your dominant language

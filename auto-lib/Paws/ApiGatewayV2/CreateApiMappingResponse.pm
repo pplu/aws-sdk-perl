@@ -1,12 +1,44 @@
 
 package Paws::ApiGatewayV2::CreateApiMappingResponse;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiId');
-  has ApiMappingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingId');
-  has ApiMappingKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingKey');
-  has Stage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stage');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str);
+  has ApiMappingId => (is => 'ro', isa => Str);
+  has ApiMappingKey => (is => 'ro', isa => Str);
+  has Stage => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiMappingId' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'ApiMappingKey' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ApiMappingId' => 'apiMappingId',
+                       'ApiId' => 'apiId',
+                       'Stage' => 'stage',
+                       'ApiMappingKey' => 'apiMappingKey'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

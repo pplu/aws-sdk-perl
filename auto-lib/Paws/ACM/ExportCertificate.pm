@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::ExportCertificate;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has Passphrase => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Passphrase => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExportCertificate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACM::ExportCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExportCertificate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACM::ExportCertificateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Passphrase' => {
+                                 'type' => 'Str'
+                               },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Passphrase' => 1,
+                    'CertificateArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

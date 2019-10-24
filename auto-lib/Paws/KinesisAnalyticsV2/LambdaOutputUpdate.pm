@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::LambdaOutputUpdate;
-  use Moose;
-  has ResourceARNUpdate => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ResourceARNUpdate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceARNUpdate' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'ResourceARNUpdate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

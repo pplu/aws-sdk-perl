@@ -1,19 +1,78 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::ScalingPolicy;
-  use Moose;
-  has AdjustmentType => (is => 'ro', isa => 'Str');
-  has Alarms => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Alarm]');
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has Cooldown => (is => 'ro', isa => 'Int');
-  has EstimatedInstanceWarmup => (is => 'ro', isa => 'Int');
-  has MetricAggregationType => (is => 'ro', isa => 'Str');
-  has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
-  has MinAdjustmentStep => (is => 'ro', isa => 'Int');
-  has PolicyARN => (is => 'ro', isa => 'Str');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int');
-  has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::StepAdjustment]');
-  has TargetTrackingConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::TargetTrackingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AutoScaling::Types qw/AutoScaling_TargetTrackingConfiguration AutoScaling_StepAdjustment AutoScaling_Alarm/;
+  has AdjustmentType => (is => 'ro', isa => Str);
+  has Alarms => (is => 'ro', isa => ArrayRef[AutoScaling_Alarm]);
+  has AutoScalingGroupName => (is => 'ro', isa => Str);
+  has Cooldown => (is => 'ro', isa => Int);
+  has EstimatedInstanceWarmup => (is => 'ro', isa => Int);
+  has MetricAggregationType => (is => 'ro', isa => Str);
+  has MinAdjustmentMagnitude => (is => 'ro', isa => Int);
+  has MinAdjustmentStep => (is => 'ro', isa => Int);
+  has PolicyARN => (is => 'ro', isa => Str);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyType => (is => 'ro', isa => Str);
+  has ScalingAdjustment => (is => 'ro', isa => Int);
+  has StepAdjustments => (is => 'ro', isa => ArrayRef[AutoScaling_StepAdjustment]);
+  has TargetTrackingConfiguration => (is => 'ro', isa => AutoScaling_TargetTrackingConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricAggregationType' => {
+                                            'type' => 'Str'
+                                          },
+               'PolicyARN' => {
+                                'type' => 'Str'
+                              },
+               'Alarms' => {
+                             'class' => 'Paws::AutoScaling::Alarm',
+                             'type' => 'ArrayRef[AutoScaling_Alarm]'
+                           },
+               'StepAdjustments' => {
+                                      'class' => 'Paws::AutoScaling::StepAdjustment',
+                                      'type' => 'ArrayRef[AutoScaling_StepAdjustment]'
+                                    },
+               'EstimatedInstanceWarmup' => {
+                                              'type' => 'Int'
+                                            },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'MinAdjustmentMagnitude' => {
+                                             'type' => 'Int'
+                                           },
+               'Cooldown' => {
+                               'type' => 'Int'
+                             },
+               'AdjustmentType' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetTrackingConfiguration' => {
+                                                  'class' => 'Paws::AutoScaling::TargetTrackingConfiguration',
+                                                  'type' => 'AutoScaling_TargetTrackingConfiguration'
+                                                },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      },
+               'MinAdjustmentStep' => {
+                                        'type' => 'Int'
+                                      },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +115,7 @@ interpreted. The valid values are C<ChangeInCapacity>,
 C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
 
-=head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
+=head2 Alarms => ArrayRef[AutoScaling_Alarm]
 
   The CloudWatch alarms related to the policy.
 
@@ -121,13 +180,13 @@ positive value adds to the current capacity while a negative number
 removes from the current capacity.
 
 
-=head2 StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]
+=head2 StepAdjustments => ArrayRef[AutoScaling_StepAdjustment]
 
   A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
 
-=head2 TargetTrackingConfiguration => L<Paws::AutoScaling::TargetTrackingConfiguration>
+=head2 TargetTrackingConfiguration => AutoScaling_TargetTrackingConfiguration
 
   A target tracking scaling policy.
 

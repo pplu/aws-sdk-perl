@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspacesIpGroup;
-  use Moose;
-  has GroupDesc => (is => 'ro', isa => 'Str', request_name => 'groupDesc', traits => ['NameInRequest']);
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
-  has UserRules => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::IpRuleItem]', request_name => 'userRules', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_IpRuleItem/;
+  has GroupDesc => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+  has UserRules => (is => 'ro', isa => ArrayRef[WorkSpaces_IpRuleItem]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupDesc' => {
+                                'type' => 'Str'
+                              },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'UserRules' => {
+                                'class' => 'Paws::WorkSpaces::IpRuleItem',
+                                'type' => 'ArrayRef[WorkSpaces_IpRuleItem]'
+                              },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'GroupDesc' => 'groupDesc',
+                       'GroupId' => 'groupId',
+                       'UserRules' => 'userRules',
+                       'GroupName' => 'groupName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +87,7 @@ Describes an IP access control group.
   The name of the group.
 
 
-=head2 UserRules => ArrayRef[L<Paws::WorkSpaces::IpRuleItem>]
+=head2 UserRules => ArrayRef[WorkSpaces_IpRuleItem]
 
   The rules.
 

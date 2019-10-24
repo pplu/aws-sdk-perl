@@ -1,16 +1,47 @@
 
 package Paws::IoT::ListTargetsForPolicy;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize');
-  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTargetsForPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policy-targets/{policyName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListTargetsForPolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTargetsForPolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policy-targets/{policyName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListTargetsForPolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'PolicyName' => 'policyName'
+                  },
+  'ParamInQuery' => {
+                      'PageSize' => 'pageSize',
+                      'Marker' => 'marker'
+                    },
+  'IsRequired' => {
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

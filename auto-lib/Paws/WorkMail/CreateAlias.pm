@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::CreateAlias;
-  use Moose;
-  has Alias => (is => 'ro', isa => 'Str', required => 1);
-  has EntityId => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has Alias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EntityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAlias');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::CreateAliasResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAlias');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::CreateAliasResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Alias' => {
+                            'type' => 'Str'
+                          },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'EntityId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Alias' => 1,
+                    'OrganizationId' => 1,
+                    'EntityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

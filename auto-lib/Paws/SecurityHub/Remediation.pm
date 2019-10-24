@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Remediation;
-  use Moose;
-  has Recommendation => (is => 'ro', isa => 'Paws::SecurityHub::Recommendation');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SecurityHub::Types qw/SecurityHub_Recommendation/;
+  has Recommendation => (is => 'ro', isa => SecurityHub_Recommendation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recommendation' => {
+                                     'class' => 'Paws::SecurityHub::Recommendation',
+                                     'type' => 'SecurityHub_Recommendation'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Details about the remediation steps for a finding.
 =head1 ATTRIBUTES
 
 
-=head2 Recommendation => L<Paws::SecurityHub::Recommendation>
+=head2 Recommendation => SecurityHub_Recommendation
 
   A recommendation on the steps to take to remediate the issue identified
 by a finding.

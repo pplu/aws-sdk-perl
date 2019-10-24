@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateLoginProfile;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::CreateLoginProfile;
                'PasswordResetRequired' => {
                                             'type' => 'Bool'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Password' => 1
+                  }
 }
 ;
     return $Params_map;

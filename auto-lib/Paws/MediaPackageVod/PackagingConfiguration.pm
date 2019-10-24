@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::PackagingConfiguration;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafPackage', request_name => 'cmafPackage', traits => ['NameInRequest']);
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::DashPackage', request_name => 'dashPackage', traits => ['NameInRequest']);
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
-  has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_HlsPackage MediaPackageVod_DashPackage MediaPackageVod_MssPackage MediaPackageVod_CmafPackage/;
+  has Arn => (is => 'ro', isa => Str);
+  has CmafPackage => (is => 'ro', isa => MediaPackageVod_CmafPackage);
+  has DashPackage => (is => 'ro', isa => MediaPackageVod_DashPackage);
+  has HlsPackage => (is => 'ro', isa => MediaPackageVod_HlsPackage);
+  has Id => (is => 'ro', isa => Str);
+  has MssPackage => (is => 'ro', isa => MediaPackageVod_MssPackage);
+  has PackagingGroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::MssPackage',
+                                 'type' => 'MediaPackageVod_MssPackage'
+                               },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::CmafPackage',
+                                  'type' => 'MediaPackageVod_CmafPackage'
+                                },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::HlsPackage',
+                                 'type' => 'MediaPackageVod_HlsPackage'
+                               },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DashPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::DashPackage',
+                                  'type' => 'MediaPackageVod_DashPackage'
+                                }
+             },
+  'NameInRequest' => {
+                       'MssPackage' => 'mssPackage',
+                       'CmafPackage' => 'cmafPackage',
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'Id' => 'id',
+                       'HlsPackage' => 'hlsPackage',
+                       'Arn' => 'arn',
+                       'DashPackage' => 'dashPackage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,17 +95,17 @@ A MediaPackage VOD PackagingConfiguration resource.
   The ARN of the PackagingConfiguration.
 
 
-=head2 CmafPackage => L<Paws::MediaPackageVod::CmafPackage>
+=head2 CmafPackage => MediaPackageVod_CmafPackage
 
   
 
 
-=head2 DashPackage => L<Paws::MediaPackageVod::DashPackage>
+=head2 DashPackage => MediaPackageVod_DashPackage
 
   
 
 
-=head2 HlsPackage => L<Paws::MediaPackageVod::HlsPackage>
+=head2 HlsPackage => MediaPackageVod_HlsPackage
 
   
 
@@ -67,7 +115,7 @@ A MediaPackage VOD PackagingConfiguration resource.
   The ID of the PackagingConfiguration.
 
 
-=head2 MssPackage => L<Paws::MediaPackageVod::MssPackage>
+=head2 MssPackage => MediaPackageVod_MssPackage
 
   
 

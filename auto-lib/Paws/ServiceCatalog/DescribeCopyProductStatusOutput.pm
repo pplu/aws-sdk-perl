@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeCopyProductStatusOutput;
-  use Moose;
-  has CopyProductStatus => (is => 'ro', isa => 'Str');
-  has StatusDetail => (is => 'ro', isa => 'Str');
-  has TargetProductId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has CopyProductStatus => (is => 'ro', isa => Str);
+  has StatusDetail => (is => 'ro', isa => Str);
+  has TargetProductId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetProductId' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StatusDetail' => {
+                                   'type' => 'Str'
+                                 },
+               'CopyProductStatus' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

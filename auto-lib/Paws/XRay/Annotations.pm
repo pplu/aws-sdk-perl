@@ -1,8 +1,23 @@
 package Paws::XRay::Annotations;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef ArrayRef/;
+  use Paws::XRay::Types qw/XRay_ValueWithServiceIds/;
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::XRay::ValueWithServiceIds]]');
+  has Map => (is => 'ro', isa => HashRef[ArrayRef[XRay_ValueWithServiceIds]]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ArrayRef[XRay_ValueWithServiceIds]]',
+                                          class => 'Paws::XRay::ValueWithServiceIds',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::XRay::ValueWithServiceIds>]
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

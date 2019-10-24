@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudTrail::PublicKey;
-  use Moose;
-  has Fingerprint => (is => 'ro', isa => 'Str');
-  has ValidityEndTime => (is => 'ro', isa => 'Str');
-  has ValidityStartTime => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudTrail::Types qw//;
+  has Fingerprint => (is => 'ro', isa => Str);
+  has ValidityEndTime => (is => 'ro', isa => Str);
+  has ValidityStartTime => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidityEndTime' => {
+                                      'type' => 'Str'
+                                    },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Fingerprint' => {
+                                  'type' => 'Str'
+                                },
+               'ValidityStartTime' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

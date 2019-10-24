@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::Snowball::ShippingDetails;
-  use Moose;
-  has InboundShipment => (is => 'ro', isa => 'Paws::Snowball::Shipment');
-  has OutboundShipment => (is => 'ro', isa => 'Paws::Snowball::Shipment');
-  has ShippingOption => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_Shipment/;
+  has InboundShipment => (is => 'ro', isa => Snowball_Shipment);
+  has OutboundShipment => (is => 'ro', isa => Snowball_Shipment);
+  has ShippingOption => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShippingOption' => {
+                                     'type' => 'Str'
+                                   },
+               'InboundShipment' => {
+                                      'class' => 'Paws::Snowball::Shipment',
+                                      'type' => 'Snowball_Shipment'
+                                    },
+               'OutboundShipment' => {
+                                       'class' => 'Paws::Snowball::Shipment',
+                                       'type' => 'Snowball_Shipment'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,13 +64,13 @@ numbers and shipping speed options.
 =head1 ATTRIBUTES
 
 
-=head2 InboundShipment => L<Paws::Snowball::Shipment>
+=head2 InboundShipment => Snowball_Shipment
 
   The C<Status> and C<TrackingNumber> values for a Snowball being
 returned to AWS for a particular job.
 
 
-=head2 OutboundShipment => L<Paws::Snowball::Shipment>
+=head2 OutboundShipment => Snowball_Shipment
 
   The C<Status> and C<TrackingNumber> values for a Snowball being
 delivered to the address that you specified for a particular job.

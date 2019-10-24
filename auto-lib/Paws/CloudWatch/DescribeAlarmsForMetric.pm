@@ -1,19 +1,58 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudWatch::DescribeAlarmsForMetric;
-  use Moose;
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has ExtendedStatistic => (is => 'ro', isa => 'Str');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Period => (is => 'ro', isa => 'Int');
-  has Statistic => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension/;
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension], predicate => 1);
+  has ExtendedStatistic => (is => 'ro', isa => Str, predicate => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Period => (is => 'ro', isa => Int, predicate => 1);
+  has Statistic => (is => 'ro', isa => Str, predicate => 1);
+  has Unit => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetric');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmsForMetricOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmsForMetricResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAlarmsForMetric');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmsForMetricOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAlarmsForMetricResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExtendedStatistic' => {
+                                        'type' => 'Str'
+                                      },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Statistic' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +100,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head1 ATTRIBUTES
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
 The dimensions associated with the metric. If the metric has any
 associated dimensions, you must specify them in order for the call to

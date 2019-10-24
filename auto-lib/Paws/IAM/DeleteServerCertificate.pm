@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteServerCertificate;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteServerCertificate;
                'ServerCertificateName' => {
                                             'type' => 'Str'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'ServerCertificateName' => 1
+                  }
 }
 ;
     return $Params_map;

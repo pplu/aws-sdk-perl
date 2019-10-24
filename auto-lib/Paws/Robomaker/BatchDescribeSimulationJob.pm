@@ -1,14 +1,35 @@
 
 package Paws::Robomaker::BatchDescribeSimulationJob;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobs', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Robomaker::Types qw//;
+  has Jobs => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDescribeSimulationJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/batchDescribeSimulationJob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::BatchDescribeSimulationJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDescribeSimulationJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/batchDescribeSimulationJob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::BatchDescribeSimulationJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Jobs' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Jobs' => 'jobs'
+                     },
+  'IsRequired' => {
+                    'Jobs' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

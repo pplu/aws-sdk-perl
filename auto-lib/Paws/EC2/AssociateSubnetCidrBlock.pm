@@ -12,7 +12,7 @@ package Paws::EC2::AssociateSubnetCidrBlock;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssociateSubnetCidrBlockResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6CidrBlock' => {
@@ -25,11 +25,15 @@ package Paws::EC2::AssociateSubnetCidrBlock;
   'NameInRequest' => {
                        'Ipv6CidrBlock' => 'ipv6CidrBlock',
                        'SubnetId' => 'subnetId'
-                     }
+                     },
+  'IsRequired' => {
+                    'Ipv6CidrBlock' => 1,
+                    'SubnetId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,16 +1,50 @@
 
 package Paws::Kafka::UpdateClusterConfiguration;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterArn', required => 1);
-  has ConfigurationInfo => (is => 'ro', isa => 'Paws::Kafka::ConfigurationInfo', traits => ['NameInRequest'], request_name => 'configurationInfo', required => 1);
-  has CurrentVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentVersion', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw/Kafka_ConfigurationInfo/;
+  has ClusterArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigurationInfo => (is => 'ro', isa => Kafka_ConfigurationInfo, required => 1, predicate => 1);
+  has CurrentVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateClusterConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/clusters/{clusterArn}/configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::UpdateClusterConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateClusterConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/clusters/{clusterArn}/configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::UpdateClusterConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'ConfigurationInfo' => {
+                                        'class' => 'Paws::Kafka::ConfigurationInfo',
+                                        'type' => 'Kafka_ConfigurationInfo'
+                                      }
+             },
+  'ParamInURI' => {
+                    'ClusterArn' => 'clusterArn'
+                  },
+  'NameInRequest' => {
+                       'CurrentVersion' => 'currentVersion',
+                       'ConfigurationInfo' => 'configurationInfo'
+                     },
+  'IsRequired' => {
+                    'CurrentVersion' => 1,
+                    'ClusterArn' => 1,
+                    'ConfigurationInfo' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +94,7 @@ The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 
 
 
-=head2 B<REQUIRED> ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>
+=head2 B<REQUIRED> ConfigurationInfo => Kafka_ConfigurationInfo
 
 Represents the configuration that you want MSK to use for the brokers
 in a cluster.

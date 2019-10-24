@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::DiscoverPollEndpoint;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerInstance => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverPollEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DiscoverPollEndpointResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DiscoverPollEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::DiscoverPollEndpointResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerInstance' => {
+                                        'type' => 'Str'
+                                      },
+               'Cluster' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ContainerInstance' => 'containerInstance',
+                       'Cluster' => 'cluster'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

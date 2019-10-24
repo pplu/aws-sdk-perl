@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::Input;
-  use Moose;
-  has InputParallelism => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputParallelism');
-  has InputProcessingConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputProcessingConfiguration');
-  has InputSchema => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SourceSchema', required => 1);
-  has KinesisFirehoseInput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisFirehoseInput');
-  has KinesisStreamsInput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisStreamsInput');
-  has NamePrefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_KinesisStreamsInput KinesisAnalyticsV2_InputParallelism KinesisAnalyticsV2_KinesisFirehoseInput KinesisAnalyticsV2_SourceSchema KinesisAnalyticsV2_InputProcessingConfiguration/;
+  has InputParallelism => (is => 'ro', isa => KinesisAnalyticsV2_InputParallelism);
+  has InputProcessingConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_InputProcessingConfiguration);
+  has InputSchema => (is => 'ro', isa => KinesisAnalyticsV2_SourceSchema, required => 1);
+  has KinesisFirehoseInput => (is => 'ro', isa => KinesisAnalyticsV2_KinesisFirehoseInput);
+  has KinesisStreamsInput => (is => 'ro', isa => KinesisAnalyticsV2_KinesisStreamsInput);
+  has NamePrefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisFirehoseInput' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::KinesisFirehoseInput',
+                                           'type' => 'KinesisAnalyticsV2_KinesisFirehoseInput'
+                                         },
+               'InputParallelism' => {
+                                       'class' => 'Paws::KinesisAnalyticsV2::InputParallelism',
+                                       'type' => 'KinesisAnalyticsV2_InputParallelism'
+                                     },
+               'InputProcessingConfiguration' => {
+                                                   'class' => 'Paws::KinesisAnalyticsV2::InputProcessingConfiguration',
+                                                   'type' => 'KinesisAnalyticsV2_InputProcessingConfiguration'
+                                                 },
+               'InputSchema' => {
+                                  'class' => 'Paws::KinesisAnalyticsV2::SourceSchema',
+                                  'type' => 'KinesisAnalyticsV2_SourceSchema'
+                                },
+               'NamePrefix' => {
+                                 'type' => 'Str'
+                               },
+               'KinesisStreamsInput' => {
+                                          'class' => 'Paws::KinesisAnalyticsV2::KinesisStreamsInput',
+                                          'type' => 'KinesisAnalyticsV2_KinesisStreamsInput'
+                                        }
+             },
+  'IsRequired' => {
+                    'InputSchema' => 1,
+                    'NamePrefix' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +85,12 @@ the two.
 =head1 ATTRIBUTES
 
 
-=head2 InputParallelism => L<Paws::KinesisAnalyticsV2::InputParallelism>
+=head2 InputParallelism => KinesisAnalyticsV2_InputParallelism
 
   Describes the number of in-application streams to create.
 
 
-=head2 InputProcessingConfiguration => L<Paws::KinesisAnalyticsV2::InputProcessingConfiguration>
+=head2 InputProcessingConfiguration => KinesisAnalyticsV2_InputProcessingConfiguration
 
   The InputProcessingConfiguration for the input. An input processor
 transforms records as they are received from the stream, before the
@@ -57,7 +98,7 @@ application's SQL code executes. Currently, the only input processing
 configuration available is InputLambdaProcessor.
 
 
-=head2 B<REQUIRED> InputSchema => L<Paws::KinesisAnalyticsV2::SourceSchema>
+=head2 B<REQUIRED> InputSchema => KinesisAnalyticsV2_SourceSchema
 
   Describes the format of the data in the streaming source, and how each
 data element maps to corresponding columns in the in-application stream
@@ -66,13 +107,13 @@ that is being created.
 Also used to describe the format of the reference data source.
 
 
-=head2 KinesisFirehoseInput => L<Paws::KinesisAnalyticsV2::KinesisFirehoseInput>
+=head2 KinesisFirehoseInput => KinesisAnalyticsV2_KinesisFirehoseInput
 
   If the streaming source is an Amazon Kinesis Data Firehose delivery
 stream, identifies the delivery stream's ARN.
 
 
-=head2 KinesisStreamsInput => L<Paws::KinesisAnalyticsV2::KinesisStreamsInput>
+=head2 KinesisStreamsInput => KinesisAnalyticsV2_KinesisStreamsInput
 
   If the streaming source is an Amazon Kinesis data stream, identifies
 the stream's Amazon Resource Name (ARN).

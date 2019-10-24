@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::BouncedRecipientInfo;
   use Moo;
   use Types::Standard qw/Str/;
@@ -23,7 +24,10 @@ package Paws::SES::BouncedRecipientInfo;
                                          'class' => 'Paws::SES::RecipientDsnFields',
                                          'type' => 'SES_RecipientDsnFields'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'Recipient' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::AcceleratorAttributes;
-  use Moose;
-  has FlowLogsEnabled => (is => 'ro', isa => 'Bool');
-  has FlowLogsS3Bucket => (is => 'ro', isa => 'Str');
-  has FlowLogsS3Prefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::GlobalAccelerator::Types qw//;
+  has FlowLogsEnabled => (is => 'ro', isa => Bool);
+  has FlowLogsS3Bucket => (is => 'ro', isa => Str);
+  has FlowLogsS3Prefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FlowLogsEnabled' => {
+                                      'type' => 'Bool'
+                                    },
+               'FlowLogsS3Bucket' => {
+                                       'type' => 'Str'
+                                     },
+               'FlowLogsS3Prefix' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

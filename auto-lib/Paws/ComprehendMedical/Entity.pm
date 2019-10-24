@@ -1,14 +1,57 @@
+# Generated from default/object.tt
 package Paws::ComprehendMedical::Entity;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Attribute]');
-  has BeginOffset => (is => 'ro', isa => 'Int');
-  has Category => (is => 'ro', isa => 'Str');
-  has EndOffset => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Int');
-  has Score => (is => 'ro', isa => 'Num');
-  has Text => (is => 'ro', isa => 'Str');
-  has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Trait]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str Num/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_Trait ComprehendMedical_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ComprehendMedical_Attribute]);
+  has BeginOffset => (is => 'ro', isa => Int);
+  has Category => (is => 'ro', isa => Str);
+  has EndOffset => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Int);
+  has Score => (is => 'ro', isa => Num);
+  has Text => (is => 'ro', isa => Str);
+  has Traits => (is => 'ro', isa => ArrayRef[ComprehendMedical_Trait]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Traits' => {
+                             'class' => 'Paws::ComprehendMedical::Trait',
+                             'type' => 'ArrayRef[ComprehendMedical_Trait]'
+                           },
+               'EndOffset' => {
+                                'type' => 'Int'
+                              },
+               'Id' => {
+                         'type' => 'Int'
+                       },
+               'BeginOffset' => {
+                                  'type' => 'Int'
+                                },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Score' => {
+                            'type' => 'Num'
+                          },
+               'Attributes' => {
+                                 'class' => 'Paws::ComprehendMedical::Attribute',
+                                 'type' => 'ArrayRef[ComprehendMedical_Attribute]'
+                               },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +87,7 @@ Provides information about an extracted medical entity.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ComprehendMedical::Attribute>]
+=head2 Attributes => ArrayRef[ComprehendMedical_Attribute]
 
   The extracted attributes that relate to this entity.
 
@@ -84,7 +127,7 @@ the detection.
   The segment of input text extracted as this entity.
 
 
-=head2 Traits => ArrayRef[L<Paws::ComprehendMedical::Trait>]
+=head2 Traits => ArrayRef[ComprehendMedical_Trait]
 
   Contextual information for the entity
 

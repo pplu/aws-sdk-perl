@@ -1,24 +1,103 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LaunchConfiguration;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
-  has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
-  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
-  has EbsOptimized => (is => 'ro', isa => 'Bool');
-  has IamInstanceProfile => (is => 'ro', isa => 'Str');
-  has ImageId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceMonitoring => (is => 'ro', isa => 'Paws::AutoScaling::InstanceMonitoring');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has KernelId => (is => 'ro', isa => 'Str');
-  has KeyName => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationARN => (is => 'ro', isa => 'Str');
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has PlacementTenancy => (is => 'ro', isa => 'Str');
-  has RamdiskId => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SpotPrice => (is => 'ro', isa => 'Str');
-  has UserData => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Str Undef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_BlockDeviceMapping AutoScaling_InstanceMonitoring/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has BlockDeviceMappings => (is => 'ro', isa => ArrayRef[AutoScaling_BlockDeviceMapping]);
+  has ClassicLinkVPCId => (is => 'ro', isa => Str);
+  has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreatedTime => (is => 'ro', isa => Str, required => 1);
+  has EbsOptimized => (is => 'ro', isa => Bool);
+  has IamInstanceProfile => (is => 'ro', isa => Str);
+  has ImageId => (is => 'ro', isa => Str, required => 1);
+  has InstanceMonitoring => (is => 'ro', isa => AutoScaling_InstanceMonitoring);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has KernelId => (is => 'ro', isa => Str);
+  has KeyName => (is => 'ro', isa => Str);
+  has LaunchConfigurationARN => (is => 'ro', isa => Str);
+  has LaunchConfigurationName => (is => 'ro', isa => Str, required => 1);
+  has PlacementTenancy => (is => 'ro', isa => Str);
+  has RamdiskId => (is => 'ro', isa => Str);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SpotPrice => (is => 'ro', isa => Str);
+  has UserData => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageId' => {
+                              'type' => 'Str'
+                            },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'LaunchConfigurationARN' => {
+                                             'type' => 'Str'
+                                           },
+               'KernelId' => {
+                               'type' => 'Str'
+                             },
+               'KeyName' => {
+                              'type' => 'Str'
+                            },
+               'PlacementTenancy' => {
+                                       'type' => 'Str'
+                                     },
+               'InstanceMonitoring' => {
+                                         'class' => 'Paws::AutoScaling::InstanceMonitoring',
+                                         'type' => 'AutoScaling_InstanceMonitoring'
+                                       },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'EbsOptimized' => {
+                                   'type' => 'Bool'
+                                 },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'UserData' => {
+                               'type' => 'Str'
+                             },
+               'LaunchConfigurationName' => {
+                                              'type' => 'Str'
+                                            },
+               'SpotPrice' => {
+                                'type' => 'Str'
+                              },
+               'RamdiskId' => {
+                                'type' => 'Str'
+                              },
+               'ClassicLinkVPCId' => {
+                                       'type' => 'Str'
+                                     },
+               'BlockDeviceMappings' => {
+                                          'class' => 'Paws::AutoScaling::BlockDeviceMapping',
+                                          'type' => 'ArrayRef[AutoScaling_BlockDeviceMapping]'
+                                        },
+               'IamInstanceProfile' => {
+                                         'type' => 'Str'
+                                       },
+               'ClassicLinkVPCSecurityGroups' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'ImageId' => 1,
+                    'CreatedTime' => 1,
+                    'InstanceType' => 1,
+                    'LaunchConfigurationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +139,7 @@ Describes a launch configuration.
 instance.
 
 
-=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
+=head2 BlockDeviceMappings => ArrayRef[AutoScaling_BlockDeviceMapping]
 
   A block device mapping, which specifies the block devices for the
 instance.
@@ -114,7 +193,7 @@ associated with the IAM role for the instance.
   The ID of the Amazon Machine Image (AMI).
 
 
-=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
+=head2 InstanceMonitoring => AutoScaling_InstanceMonitoring
 
   Controls whether instances in this group are launched with detailed
 (C<true>) or basic (C<false>) monitoring.

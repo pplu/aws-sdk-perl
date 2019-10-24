@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetProfileResponse;
-  use Moose;
-  has Profile => (is => 'ro', isa => 'Paws::AlexaForBusiness::Profile');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Profile/;
+  has Profile => (is => 'ro', isa => AlexaForBusiness_Profile);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Profile' => {
+                              'class' => 'Paws::AlexaForBusiness::Profile',
+                              'type' => 'AlexaForBusiness_Profile'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetProfileResponse
 =head1 ATTRIBUTES
 
 
-=head2 Profile => L<Paws::AlexaForBusiness::Profile>
+=head2 Profile => AlexaForBusiness_Profile
 
 The details of the room profile requested. Required.
 

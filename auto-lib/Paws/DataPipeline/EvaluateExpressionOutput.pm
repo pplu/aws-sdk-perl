@@ -1,9 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DataPipeline::EvaluateExpressionOutput;
-  use Moose;
-  has EvaluatedExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'evaluatedExpression' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has EvaluatedExpression => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EvaluatedExpression' => {
+                                          'type' => 'Str'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'EvaluatedExpression' => 'evaluatedExpression'
+                     },
+  'IsRequired' => {
+                    'EvaluatedExpression' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::DBInstanceMessage;
-  use Moose;
-  has DBInstances => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::DBInstance]', request_name => 'DBInstance', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DocDB::Types qw/DocDB_DBInstance/;
+  has DBInstances => (is => 'ro', isa => ArrayRef[DocDB_DBInstance]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBInstances' => {
+                                  'class' => 'Paws::DocDB::DBInstance',
+                                  'type' => 'ArrayRef[DocDB_DBInstance]'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DBInstances' => 'DBInstance'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::DocDB::DBInstanceMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBInstances => ArrayRef[L<Paws::DocDB::DBInstance>]
+=head2 DBInstances => ArrayRef[DocDB_DBInstance]
 
 Detailed information about one or more DB instances.
 

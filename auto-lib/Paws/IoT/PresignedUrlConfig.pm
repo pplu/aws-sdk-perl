@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::PresignedUrlConfig;
-  use Moose;
-  has ExpiresInSec => (is => 'ro', isa => 'Int', request_name => 'expiresInSec', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoT::Types qw//;
+  has ExpiresInSec => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpiresInSec' => {
+                                   'type' => 'Int'
+                                 },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ExpiresInSec' => 'expiresInSec',
+                       'RoleArn' => 'roleArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

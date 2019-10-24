@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MediaStore;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mediastore' }
   sub signing_name { 'mediastore' }
   sub version { '2017-09-01' }
   sub target_prefix { 'MediaStore_20170901' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -174,7 +176,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =item ContainerName => Str
 
-=item [Tags => ArrayRef[L<Paws::MediaStore::Tag>]]
+=item [Tags => ArrayRef[MediaStore_Tag]]
 
 
 =back
@@ -413,7 +415,7 @@ modifies the existing policy.
 
 =item ContainerName => Str
 
-=item CorsPolicy => ArrayRef[L<Paws::MediaStore::CorsRule>]
+=item CorsPolicy => ArrayRef[MediaStore_CorsRule]
 
 
 =back
@@ -509,7 +511,7 @@ retrievable.
 
 =item Resource => Str
 
-=item Tags => ArrayRef[L<Paws::MediaStore::Tag>]
+=item Tags => ArrayRef[MediaStore_Tag]
 
 
 =back

@@ -1,11 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetOperationsForResourceResult;
-  use Moose;
-  has NextPageCount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageCount' );
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Operation/;
+  has NextPageCount => (is => 'ro', isa => Str);
+  has NextPageToken => (is => 'ro', isa => Str);
+  has Operations => (is => 'ro', isa => ArrayRef[Lightsail_Operation]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'NextPageCount' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Operations' => {
+                                 'class' => 'Paws::Lightsail::Operation',
+                                 'type' => 'ArrayRef[Lightsail_Operation]'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'NextPageCount' => 'nextPageCount',
+                       'Operations' => 'operations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -32,7 +62,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-=head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
+=head2 Operations => ArrayRef[Lightsail_Operation]
 
 An array of key-value pairs containing information about the results of
 your get operations for resource request.

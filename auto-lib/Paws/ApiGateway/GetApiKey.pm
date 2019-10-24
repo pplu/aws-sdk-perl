@@ -1,15 +1,42 @@
 
 package Paws::ApiGateway::GetApiKey;
-  use Moose;
-  has ApiKey => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'api_Key', required => 1);
-  has IncludeValue => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeValue');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw//;
+  has ApiKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IncludeValue => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApiKey');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys/{api_Key}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKey');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetApiKey');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apikeys/{api_Key}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::ApiKey');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiKey' => {
+                             'type' => 'Str'
+                           },
+               'IncludeValue' => {
+                                   'type' => 'Bool'
+                                 }
+             },
+  'ParamInURI' => {
+                    'ApiKey' => 'api_Key'
+                  },
+  'ParamInQuery' => {
+                      'IncludeValue' => 'includeValue'
+                    },
+  'IsRequired' => {
+                    'ApiKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

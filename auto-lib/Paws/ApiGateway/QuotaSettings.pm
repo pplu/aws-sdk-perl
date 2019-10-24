@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::QuotaSettings;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', request_name => 'limit', traits => ['NameInRequest']);
-  has Offset => (is => 'ro', isa => 'Int', request_name => 'offset', traits => ['NameInRequest']);
-  has Period => (is => 'ro', isa => 'Str', request_name => 'period', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ApiGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int);
+  has Offset => (is => 'ro', isa => Int);
+  has Period => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Offset' => {
+                             'type' => 'Int'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Period' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Offset' => 'offset',
+                       'Limit' => 'limit',
+                       'Period' => 'period'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

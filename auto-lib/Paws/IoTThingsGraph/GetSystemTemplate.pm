@@ -1,14 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::GetSystemTemplate;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id' , required => 1);
-  has RevisionNumber => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'revisionNumber' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RevisionNumber => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSystemTemplate');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::GetSystemTemplateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSystemTemplate');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::GetSystemTemplateResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RevisionNumber' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'RevisionNumber' => 'revisionNumber'
+                     },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

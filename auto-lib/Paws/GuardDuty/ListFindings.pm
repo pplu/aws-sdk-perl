@@ -1,18 +1,59 @@
 
 package Paws::GuardDuty::ListFindings;
-  use Moose;
-  has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
-  has FindingCriteria => (is => 'ro', isa => 'Paws::GuardDuty::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has SortCriteria => (is => 'ro', isa => 'Paws::GuardDuty::SortCriteria', traits => ['NameInRequest'], request_name => 'sortCriteria');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GuardDuty::Types qw/GuardDuty_SortCriteria GuardDuty_FindingCriteria/;
+  has DetectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FindingCriteria => (is => 'ro', isa => GuardDuty_FindingCriteria, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => GuardDuty_SortCriteria, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListFindings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/detector/{detectorId}/findings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GuardDuty::ListFindingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListFindings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/detector/{detectorId}/findings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GuardDuty::ListFindingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SortCriteria' => {
+                                   'class' => 'Paws::GuardDuty::SortCriteria',
+                                   'type' => 'GuardDuty_SortCriteria'
+                                 },
+               'FindingCriteria' => {
+                                      'class' => 'Paws::GuardDuty::FindingCriteria',
+                                      'type' => 'GuardDuty_FindingCriteria'
+                                    },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInURI' => {
+                    'DetectorId' => 'detectorId'
+                  },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SortCriteria' => 'sortCriteria',
+                       'FindingCriteria' => 'findingCriteria',
+                       'MaxResults' => 'maxResults'
+                     },
+  'IsRequired' => {
+                    'DetectorId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +120,7 @@ findings you want to list.
 
 
 
-=head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
+=head2 FindingCriteria => GuardDuty_FindingCriteria
 
 Represents the criteria used for querying findings.
 
@@ -101,7 +142,7 @@ value of NextToken from the previous response to continue listing data.
 
 
 
-=head2 SortCriteria => L<Paws::GuardDuty::SortCriteria>
+=head2 SortCriteria => GuardDuty_SortCriteria
 
 Represents the criteria used for sorting findings.
 

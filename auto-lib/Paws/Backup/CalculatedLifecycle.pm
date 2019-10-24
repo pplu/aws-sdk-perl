@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Backup::CalculatedLifecycle;
-  use Moose;
-  has DeleteAt => (is => 'ro', isa => 'Str');
-  has MoveToColdStorageAt => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has DeleteAt => (is => 'ro', isa => Str);
+  has MoveToColdStorageAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MoveToColdStorageAt' => {
+                                          'type' => 'Str'
+                                        },
+               'DeleteAt' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

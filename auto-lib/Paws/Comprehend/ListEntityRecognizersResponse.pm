@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::ListEntityRecognizersResponse;
-  use Moose;
-  has EntityRecognizerPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntityRecognizerProperties]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_EntityRecognizerProperties/;
+  has EntityRecognizerPropertiesList => (is => 'ro', isa => ArrayRef[Comprehend_EntityRecognizerProperties]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EntityRecognizerPropertiesList' => {
+                                                     'class' => 'Paws::Comprehend::EntityRecognizerProperties',
+                                                     'type' => 'ArrayRef[Comprehend_EntityRecognizerProperties]'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Comprehend::ListEntityRecognizersResponse
 =head1 ATTRIBUTES
 
 
-=head2 EntityRecognizerPropertiesList => ArrayRef[L<Paws::Comprehend::EntityRecognizerProperties>]
+=head2 EntityRecognizerPropertiesList => ArrayRef[Comprehend_EntityRecognizerProperties]
 
 The list of properties of an entity recognizer.
 

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListOfferingsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Offerings => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Offering]', traits => ['NameInRequest'], request_name => 'offerings' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Offering/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Offerings => (is => 'ro', isa => ArrayRef[DeviceFarm_Offering]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Offerings' => {
+                                'class' => 'Paws::DeviceFarm::Offering',
+                                'type' => 'ArrayRef[DeviceFarm_Offering]'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Offerings' => 'offerings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-=head2 Offerings => ArrayRef[L<Paws::DeviceFarm::Offering>]
+=head2 Offerings => ArrayRef[DeviceFarm_Offering]
 
 A value representing the list offering results.
 

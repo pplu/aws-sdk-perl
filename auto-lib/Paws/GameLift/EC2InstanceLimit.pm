@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::GameLift::EC2InstanceLimit;
-  use Moose;
-  has CurrentInstances => (is => 'ro', isa => 'Int');
-  has EC2InstanceType => (is => 'ro', isa => 'Str');
-  has InstanceLimit => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::GameLift::Types qw//;
+  has CurrentInstances => (is => 'ro', isa => Int);
+  has EC2InstanceType => (is => 'ro', isa => Str);
+  has InstanceLimit => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EC2InstanceType' => {
+                                      'type' => 'Str'
+                                    },
+               'CurrentInstances' => {
+                                       'type' => 'Int'
+                                     },
+               'InstanceLimit' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

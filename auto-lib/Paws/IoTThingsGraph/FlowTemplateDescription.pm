@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::FlowTemplateDescription;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', request_name => 'definition', traits => ['NameInRequest']);
-  has Summary => (is => 'ro', isa => 'Paws::IoTThingsGraph::FlowTemplateSummary', request_name => 'summary', traits => ['NameInRequest']);
-  has ValidatedNamespaceVersion => (is => 'ro', isa => 'Int', request_name => 'validatedNamespaceVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_FlowTemplateSummary IoTThingsGraph_DefinitionDocument/;
+  has Definition => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument);
+  has Summary => (is => 'ro', isa => IoTThingsGraph_FlowTemplateSummary);
+  has ValidatedNamespaceVersion => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ValidatedNamespaceVersion' => {
+                                                'type' => 'Int'
+                                              },
+               'Definition' => {
+                                 'class' => 'Paws::IoTThingsGraph::DefinitionDocument',
+                                 'type' => 'IoTThingsGraph_DefinitionDocument'
+                               },
+               'Summary' => {
+                              'class' => 'Paws::IoTThingsGraph::FlowTemplateSummary',
+                              'type' => 'IoTThingsGraph_FlowTemplateSummary'
+                            }
+             },
+  'NameInRequest' => {
+                       'ValidatedNamespaceVersion' => 'validatedNamespaceVersion',
+                       'Definition' => 'definition',
+                       'Summary' => 'summary'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +69,12 @@ information.
 =head1 ATTRIBUTES
 
 
-=head2 Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 Definition => IoTThingsGraph_DefinitionDocument
 
   A workflow's definition document.
 
 
-=head2 Summary => L<Paws::IoTThingsGraph::FlowTemplateSummary>
+=head2 Summary => IoTThingsGraph_FlowTemplateSummary
 
   An object that contains summary information about a workflow.
 

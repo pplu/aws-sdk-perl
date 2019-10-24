@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::InputSchemaUpdate;
-  use Moose;
-  has RecordColumnUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::RecordColumn]');
-  has RecordEncodingUpdate => (is => 'ro', isa => 'Str');
-  has RecordFormatUpdate => (is => 'ro', isa => 'Paws::KinesisAnalytics::RecordFormat');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_RecordColumn KinesisAnalytics_RecordFormat/;
+  has RecordColumnUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalytics_RecordColumn]);
+  has RecordEncodingUpdate => (is => 'ro', isa => Str);
+  has RecordFormatUpdate => (is => 'ro', isa => KinesisAnalytics_RecordFormat);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecordColumnUpdates' => {
+                                          'class' => 'Paws::KinesisAnalytics::RecordColumn',
+                                          'type' => 'ArrayRef[KinesisAnalytics_RecordColumn]'
+                                        },
+               'RecordFormatUpdate' => {
+                                         'class' => 'Paws::KinesisAnalytics::RecordFormat',
+                                         'type' => 'KinesisAnalytics_RecordFormat'
+                                       },
+               'RecordEncodingUpdate' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +63,7 @@ Describes updates for the application's input schema.
 =head1 ATTRIBUTES
 
 
-=head2 RecordColumnUpdates => ArrayRef[L<Paws::KinesisAnalytics::RecordColumn>]
+=head2 RecordColumnUpdates => ArrayRef[KinesisAnalytics_RecordColumn]
 
   A list of C<RecordColumn> objects. Each object describes the mapping of
 the streaming source element to the corresponding column in the
@@ -51,7 +76,7 @@ in-application stream.
 example, UTF-8.
 
 
-=head2 RecordFormatUpdate => L<Paws::KinesisAnalytics::RecordFormat>
+=head2 RecordFormatUpdate => KinesisAnalytics_RecordFormat
 
   Specifies the format of the records on the streaming source.
 

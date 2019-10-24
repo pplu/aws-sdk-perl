@@ -1,16 +1,82 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes;
-  use Moose;
-  has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest']);
-  has Control => (is => 'ro', isa => 'Str', request_name => 'control', traits => ['NameInRequest']);
-  has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'executionStartToCloseTimeout', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has LambdaRole => (is => 'ro', isa => 'Str', request_name => 'lambdaRole', traits => ['NameInRequest']);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'tagList', traits => ['NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest']);
-  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
-  has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'taskStartToCloseTimeout', traits => ['NameInRequest']);
-  has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
-  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', request_name => 'workflowType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowType SimpleWorkflow_TaskList/;
+  has ChildPolicy => (is => 'ro', isa => Str);
+  has Control => (is => 'ro', isa => Str);
+  has ExecutionStartToCloseTimeout => (is => 'ro', isa => Str);
+  has Input => (is => 'ro', isa => Str);
+  has LambdaRole => (is => 'ro', isa => Str);
+  has TagList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList);
+  has TaskPriority => (is => 'ro', isa => Str);
+  has TaskStartToCloseTimeout => (is => 'ro', isa => Str);
+  has WorkflowId => (is => 'ro', isa => Str, required => 1);
+  has WorkflowType => (is => 'ro', isa => SimpleWorkflow_WorkflowType, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'LambdaRole' => {
+                                 'type' => 'Str'
+                               },
+               'TaskStartToCloseTimeout' => {
+                                              'type' => 'Str'
+                                            },
+               'ChildPolicy' => {
+                                  'type' => 'Str'
+                                },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 },
+               'ExecutionStartToCloseTimeout' => {
+                                                   'type' => 'Str'
+                                                 },
+               'WorkflowType' => {
+                                   'class' => 'Paws::SimpleWorkflow::WorkflowType',
+                                   'type' => 'SimpleWorkflow_WorkflowType'
+                                 },
+               'TagList' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Control' => {
+                              'type' => 'Str'
+                            },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'WorkflowId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'LambdaRole' => 'lambdaRole',
+                       'TaskStartToCloseTimeout' => 'taskStartToCloseTimeout',
+                       'ChildPolicy' => 'childPolicy',
+                       'TaskPriority' => 'taskPriority',
+                       'ExecutionStartToCloseTimeout' => 'executionStartToCloseTimeout',
+                       'WorkflowType' => 'workflowType',
+                       'TagList' => 'tagList',
+                       'Control' => 'control',
+                       'Input' => 'input',
+                       'WorkflowId' => 'workflowId'
+                     },
+  'IsRequired' => {
+                    'WorkflowType' => 1,
+                    'WorkflowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -179,7 +245,7 @@ with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
 
-=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 TaskList => SimpleWorkflow_TaskList
 
   The name of the task list to be used for decision tasks of the child
 workflow execution.
@@ -237,7 +303,7 @@ control characters (C<\u0000-\u001f> | C<\u007f-\u009f>). Also, it must
 not contain the literal string C<arn>.
 
 
-=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => SimpleWorkflow_WorkflowType
 
   The type of the workflow execution to be started.
 

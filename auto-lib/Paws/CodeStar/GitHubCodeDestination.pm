@@ -1,12 +1,64 @@
+# Generated from default/object.tt
 package Paws::CodeStar::GitHubCodeDestination;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has IssuesEnabled => (is => 'ro', isa => 'Bool', request_name => 'issuesEnabled', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest'], required => 1);
-  has PrivateRepository => (is => 'ro', isa => 'Bool', request_name => 'privateRepository', traits => ['NameInRequest'], required => 1);
-  has Token => (is => 'ro', isa => 'Str', request_name => 'token', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeStar::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has IssuesEnabled => (is => 'ro', isa => Bool, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Owner => (is => 'ro', isa => Str, required => 1);
+  has PrivateRepository => (is => 'ro', isa => Bool, required => 1);
+  has Token => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'PrivateRepository' => {
+                                        'type' => 'Bool'
+                                      },
+               'Token' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IssuesEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Owner' => 'owner',
+                       'Type' => 'type',
+                       'PrivateRepository' => 'privateRepository',
+                       'Token' => 'token',
+                       'Name' => 'name',
+                       'IssuesEnabled' => 'issuesEnabled',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Owner' => 1,
+                    'Type' => 1,
+                    'PrivateRepository' => 1,
+                    'Token' => 1,
+                    'Name' => 1,
+                    'IssuesEnabled' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

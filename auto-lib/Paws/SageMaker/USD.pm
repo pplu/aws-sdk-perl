@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::USD;
-  use Moose;
-  has Cents => (is => 'ro', isa => 'Int');
-  has Dollars => (is => 'ro', isa => 'Int');
-  has TenthFractionsOfACent => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SageMaker::Types qw//;
+  has Cents => (is => 'ro', isa => Int);
+  has Dollars => (is => 'ro', isa => Int);
+  has TenthFractionsOfACent => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Cents' => {
+                            'type' => 'Int'
+                          },
+               'TenthFractionsOfACent' => {
+                                            'type' => 'Int'
+                                          },
+               'Dollars' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

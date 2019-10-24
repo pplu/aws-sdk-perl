@@ -1,15 +1,34 @@
+# Generated from default/map_enum.tt
 package Paws::ServiceCatalog::ServiceActionDefinitionMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AssumeRole => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
 
-  has AssumeRole => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'AssumeRole' => {
+                                          type => 'Str',                                        },
+                               'Name' => {
+                                          type => 'Str',                                        },
+                               'Parameters' => {
+                                          type => 'Str',                                        },
+                               'Version' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +64,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AssumeRole => Str
+=head2 AssumeRole => 
 
 
-=head2 Name => Str
+=head2 Name => 
 
 
-=head2 Parameters => Str
+=head2 Parameters => 
 
 
-=head2 Version => Str
+=head2 Version => 
 
 
 

@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::BuildArtifacts;
-  use Moose;
-  has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
-  has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
-  has Md5sum => (is => 'ro', isa => 'Str', request_name => 'md5sum', traits => ['NameInRequest']);
-  has OverrideArtifactName => (is => 'ro', isa => 'Bool', request_name => 'overrideArtifactName', traits => ['NameInRequest']);
-  has Sha256sum => (is => 'ro', isa => 'Str', request_name => 'sha256sum', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeBuild::Types qw//;
+  has ArtifactIdentifier => (is => 'ro', isa => Str);
+  has EncryptionDisabled => (is => 'ro', isa => Bool);
+  has Location => (is => 'ro', isa => Str);
+  has Md5sum => (is => 'ro', isa => Str);
+  has OverrideArtifactName => (is => 'ro', isa => Bool);
+  has Sha256sum => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ArtifactIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'EncryptionDisabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Sha256sum' => {
+                                'type' => 'Str'
+                              },
+               'OverrideArtifactName' => {
+                                           'type' => 'Bool'
+                                         },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Md5sum' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ArtifactIdentifier' => 'artifactIdentifier',
+                       'EncryptionDisabled' => 'encryptionDisabled',
+                       'Sha256sum' => 'sha256sum',
+                       'OverrideArtifactName' => 'overrideArtifactName',
+                       'Location' => 'location',
+                       'Md5sum' => 'md5sum'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

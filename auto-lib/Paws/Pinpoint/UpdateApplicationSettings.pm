@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::UpdateApplicationSettings;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has WriteApplicationSettingsRequest => (is => 'ro', isa => 'Paws::Pinpoint::WriteApplicationSettingsRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_WriteApplicationSettingsRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WriteApplicationSettingsRequest => (is => 'ro', isa => Pinpoint_WriteApplicationSettingsRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'WriteApplicationSettingsRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplicationSettings');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/settings');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::UpdateApplicationSettingsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplicationSettings');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/settings');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::UpdateApplicationSettingsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'WriteApplicationSettingsRequest' => {
+                                                      'class' => 'Paws::Pinpoint::WriteApplicationSettingsRequest',
+                                                      'type' => 'Pinpoint_WriteApplicationSettingsRequest'
+                                                    }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'WriteApplicationSettingsRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +98,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> WriteApplicationSettingsRequest => L<Paws::Pinpoint::WriteApplicationSettingsRequest>
+=head2 B<REQUIRED> WriteApplicationSettingsRequest => Pinpoint_WriteApplicationSettingsRequest
 
 
 

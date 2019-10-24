@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DvbNitSettings;
-  use Moose;
-  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest']);
-  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest']);
-  has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaConvert::Types qw//;
+  has NetworkId => (is => 'ro', isa => Int);
+  has NetworkName => (is => 'ro', isa => Str);
+  has NitInterval => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NitInterval' => {
+                                  'type' => 'Int'
+                                },
+               'NetworkId' => {
+                                'type' => 'Int'
+                              },
+               'NetworkName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NitInterval' => 'nitInterval',
+                       'NetworkId' => 'networkId',
+                       'NetworkName' => 'networkName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -74,7 +74,10 @@ use MooX::ClassAttribute;
                        'GrantFullControl' => 'x-amz-grant-full-control',
                        'GrantWriteACP' => 'x-amz-grant-write-acp',
                        'GrantReadACP' => 'x-amz-grant-read-acp'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

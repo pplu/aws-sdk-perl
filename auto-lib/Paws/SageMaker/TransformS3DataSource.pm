@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformS3DataSource;
-  use Moose;
-  has S3DataType => (is => 'ro', isa => 'Str', required => 1);
-  has S3Uri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has S3DataType => (is => 'ro', isa => Str, required => 1);
+  has S3Uri => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DataType' => {
+                                 'type' => 'Str'
+                               },
+               'S3Uri' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'S3DataType' => 1,
+                    'S3Uri' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

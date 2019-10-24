@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeAliasOutput;
-  use Moose;
-  has Alias => (is => 'ro', isa => 'Paws::GameLift::Alias');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_Alias/;
+  has Alias => (is => 'ro', isa => GameLift_Alias);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Alias' => {
+                            'class' => 'Paws::GameLift::Alias',
+                            'type' => 'GameLift_Alias'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::DescribeAliasOutput
 =head1 ATTRIBUTES
 
 
-=head2 Alias => L<Paws::GameLift::Alias>
+=head2 Alias => GameLift_Alias
 
 Object that contains the requested alias.
 

@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MarketplaceMetering::RegisterUsageResult;
-  use Moose;
-  has PublicKeyRotationTimestamp => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MarketplaceMetering::Types qw//;
+  has PublicKeyRotationTimestamp => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PublicKeyRotationTimestamp' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

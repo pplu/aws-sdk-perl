@@ -1,42 +1,152 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CreateCluster;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClusterSubnetGroupName => (is => 'ro', isa => 'Str');
-  has ClusterType => (is => 'ro', isa => 'Str');
-  has ClusterVersion => (is => 'ro', isa => 'Str');
-  has DBName => (is => 'ro', isa => 'Str');
-  has ElasticIp => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
-  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MaintenanceTrackName => (is => 'ro', isa => 'Str');
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
-  has NodeType => (is => 'ro', isa => 'Str', required => 1);
-  has NumberOfNodes => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has SnapshotScheduleIdentifier => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has AdditionalInfo => (is => 'ro', isa => Str, predicate => 1);
+  has AllowVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterSecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClusterSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterType => (is => 'ro', isa => Str, predicate => 1);
+  has ClusterVersion => (is => 'ro', isa => Str, predicate => 1);
+  has DBName => (is => 'ro', isa => Str, predicate => 1);
+  has ElasticIp => (is => 'ro', isa => Str, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has EnhancedVpcRouting => (is => 'ro', isa => Bool, predicate => 1);
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has IamRoles => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has MaintenanceTrackName => (is => 'ro', isa => Str, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has MasterUsername => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodeType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NumberOfNodes => (is => 'ro', isa => Int, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has SnapshotScheduleIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag], predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::CreateClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotScheduleIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'EnhancedVpcRouting' => {
+                                         'type' => 'Bool'
+                                       },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'AllowVersionUpgrade' => {
+                                          'type' => 'Bool'
+                                        },
+               'IamRoles' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'ClusterSecurityGroups' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'MaintenanceTrackName' => {
+                                           'type' => 'Str'
+                                         },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'ClusterSubnetGroupName' => {
+                                             'type' => 'Str'
+                                           },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'AutomatedSnapshotRetentionPeriod' => {
+                                                       'type' => 'Int'
+                                                     },
+               'AdditionalInfo' => {
+                                     'type' => 'Str'
+                                   },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterParameterGroupName' => {
+                                                'type' => 'Str'
+                                              },
+               'ClusterVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'HsmClientCertificateIdentifier' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ClusterType' => {
+                                  'type' => 'Str'
+                                },
+               'ElasticIp' => {
+                                'type' => 'Str'
+                              },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'NumberOfNodes' => {
+                                    'type' => 'Int'
+                                  },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBName' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'MasterUserPassword' => 1,
+                    'ClusterIdentifier' => 1,
+                    'NodeType' => 1,
+                    'MasterUsername' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -545,7 +655,7 @@ A unique identifier for the snapshot schedule.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
 A list of tag instances.
 

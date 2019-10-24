@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeMaintenanceWindowsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WindowIdentities => (is => 'ro', isa => 'ArrayRef[Paws::SSM::MaintenanceWindowIdentity]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_MaintenanceWindowIdentity/;
+  has NextToken => (is => 'ro', isa => Str);
+  has WindowIdentities => (is => 'ro', isa => ArrayRef[SSM_MaintenanceWindowIdentity]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'WindowIdentities' => {
+                                       'class' => 'Paws::SSM::MaintenanceWindowIdentity',
+                                       'type' => 'ArrayRef[SSM_MaintenanceWindowIdentity]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-=head2 WindowIdentities => ArrayRef[L<Paws::SSM::MaintenanceWindowIdentity>]
+=head2 WindowIdentities => ArrayRef[SSM_MaintenanceWindowIdentity]
 
 Information about the maintenance windows.
 

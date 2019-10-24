@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyGrantingServiceAccess;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,11 @@ package Paws::IAM::PolicyGrantingServiceAccess;
                'PolicyName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyType' => 1,
+                    'PolicyName' => 1
+                  }
 }
 ;
     return $Params_map;

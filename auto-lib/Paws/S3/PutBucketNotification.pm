@@ -44,7 +44,11 @@ use MooX::ClassAttribute;
                   },
   'ParamInHeader' => {
                        'ContentLength' => 'Content-Length'
-                     }
+                     },
+  'IsRequired' => {
+                    'NotificationConfiguration' => 1,
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Kinesis::SubscribeToShard;
-  use Moose;
-  has ConsumerARN => (is => 'ro', isa => 'Str', required => 1);
-  has ShardId => (is => 'ro', isa => 'Str', required => 1);
-  has StartingPosition => (is => 'ro', isa => 'Paws::Kinesis::StartingPosition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw/Kinesis_StartingPosition/;
+  has ConsumerARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShardId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartingPosition => (is => 'ro', isa => Kinesis_StartingPosition, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SubscribeToShard');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::SubscribeToShardOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SubscribeToShard');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kinesis::SubscribeToShardOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShardId' => {
+                              'type' => 'Str'
+                            },
+               'ConsumerARN' => {
+                                  'type' => 'Str'
+                                },
+               'StartingPosition' => {
+                                       'class' => 'Paws::Kinesis::StartingPosition',
+                                       'type' => 'Kinesis_StartingPosition'
+                                     }
+             },
+  'IsRequired' => {
+                    'ShardId' => 1,
+                    'ConsumerARN' => 1,
+                    'StartingPosition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +94,7 @@ shards for a given stream, use ListShards.
 
 
 
-=head2 B<REQUIRED> StartingPosition => L<Paws::Kinesis::StartingPosition>
+=head2 B<REQUIRED> StartingPosition => Kinesis_StartingPosition
 
 
 

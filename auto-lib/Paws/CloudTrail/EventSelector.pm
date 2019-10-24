@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudTrail::EventSelector;
-  use Moose;
-  has DataResources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::DataResource]');
-  has IncludeManagementEvents => (is => 'ro', isa => 'Bool');
-  has ReadWriteType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Str/;
+  use Paws::CloudTrail::Types qw/CloudTrail_DataResource/;
+  has DataResources => (is => 'ro', isa => ArrayRef[CloudTrail_DataResource]);
+  has IncludeManagementEvents => (is => 'ro', isa => Bool);
+  has ReadWriteType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncludeManagementEvents' => {
+                                              'type' => 'Bool'
+                                            },
+               'ReadWriteType' => {
+                                    'type' => 'Str'
+                                  },
+               'DataResources' => {
+                                    'class' => 'Paws::CloudTrail::DataResource',
+                                    'type' => 'ArrayRef[CloudTrail_DataResource]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +71,7 @@ You can configure up to five event selectors for a trail.
 =head1 ATTRIBUTES
 
 
-=head2 DataResources => ArrayRef[L<Paws::CloudTrail::DataResource>]
+=head2 DataResources => ArrayRef[CloudTrail_DataResource]
 
   CloudTrail supports data event logging for Amazon S3 objects and AWS
 Lambda functions. You can specify up to 250 resources for an individual

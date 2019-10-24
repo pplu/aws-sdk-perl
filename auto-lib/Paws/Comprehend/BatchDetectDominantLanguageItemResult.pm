@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Comprehend::BatchDetectDominantLanguageItemResult;
-  use Moose;
-  has Index => (is => 'ro', isa => 'Int');
-  has Languages => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::DominantLanguage]');
+  use Moo;
+  use Types::Standard qw/Int ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_DominantLanguage/;
+  has Index => (is => 'ro', isa => Int);
+  has Languages => (is => 'ro', isa => ArrayRef[Comprehend_DominantLanguage]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Index' => {
+                            'type' => 'Int'
+                          },
+               'Languages' => {
+                                'class' => 'Paws::Comprehend::DominantLanguage',
+                                'type' => 'ArrayRef[Comprehend_DominantLanguage]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ for each document that is successfully processed by the operation.
   The zero-based index of the document in the input list.
 
 
-=head2 Languages => ArrayRef[L<Paws::Comprehend::DominantLanguage>]
+=head2 Languages => ArrayRef[Comprehend_DominantLanguage]
 
   One or more DominantLanguage objects describing the dominant languages
 in the document.

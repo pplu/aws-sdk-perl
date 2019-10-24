@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::AccessKeyDetails;
-  use Moose;
-  has AccessKeyId => (is => 'ro', isa => 'Str', request_name => 'accessKeyId', traits => ['NameInRequest']);
-  has PrincipalId => (is => 'ro', isa => 'Str', request_name => 'principalId', traits => ['NameInRequest']);
-  has UserName => (is => 'ro', isa => 'Str', request_name => 'userName', traits => ['NameInRequest']);
-  has UserType => (is => 'ro', isa => 'Str', request_name => 'userType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has AccessKeyId => (is => 'ro', isa => Str);
+  has PrincipalId => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+  has UserType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'AccessKeyId' => {
+                                  'type' => 'Str'
+                                },
+               'PrincipalId' => {
+                                  'type' => 'Str'
+                                },
+               'UserType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'UserName' => 'userName',
+                       'AccessKeyId' => 'accessKeyId',
+                       'PrincipalId' => 'principalId',
+                       'UserType' => 'userType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

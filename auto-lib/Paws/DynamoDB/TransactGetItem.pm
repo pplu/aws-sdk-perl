@@ -1,21 +1,25 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TransactGetItem;
   use Moo;
   use Types::Standard qw//;
   use Paws::DynamoDB::Types qw/DynamoDB_Get/;
   has Get => (is => 'ro', isa => DynamoDB_Get, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Get' => {
                           'class' => 'Paws::DynamoDB::Get',
                           'type' => 'DynamoDB_Get'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'Get' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

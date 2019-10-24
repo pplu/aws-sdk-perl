@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::CreateTags;
-  use Moose;
-  has ConfigurationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'configurationIds' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Discovery::Types qw/Discovery_Tag/;
+  has ConfigurationIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Discovery_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::CreateTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::CreateTagsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::Discovery::Tag',
+                           'type' => 'ArrayRef[Discovery_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ConfigurationIds' => 'configurationIds',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ConfigurationIds' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ A list of configuration items that you want to tag.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Discovery::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Discovery_Tag]
 
 Tags that you want to associate with one or more configuration items.
 Specify the tags that you want to create in a I<key>-I<value> format.

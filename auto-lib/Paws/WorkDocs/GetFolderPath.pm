@@ -1,18 +1,59 @@
 
 package Paws::WorkDocs::GetFolderPath;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
-  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId', required => 1);
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has Fields => (is => 'ro', isa => Str, predicate => 1);
+  has FolderId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFolderPath');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/folders/{FolderId}/path');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetFolderPathResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFolderPath');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/folders/{FolderId}/path');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::GetFolderPathResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Fields' => {
+                             'type' => 'Str'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'FolderId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'FolderId' => 'FolderId'
+                  },
+  'ParamInQuery' => {
+                      'Fields' => 'fields',
+                      'Limit' => 'limit',
+                      'Marker' => 'marker'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'FolderId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

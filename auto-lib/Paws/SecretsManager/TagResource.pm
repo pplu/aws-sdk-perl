@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::TagResource;
-  use Moose;
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SecretsManager::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecretsManager::Types qw/SecretsManager_Tag/;
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SecretsManager_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecretId' => {
+                               'type' => 'Str'
+                             },
+               'Tags' => {
+                           'class' => 'Paws::SecretsManager::Tag',
+                           'type' => 'ArrayRef[SecretsManager_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'SecretId' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +92,7 @@ characters.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SecretsManager::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[SecretsManager_Tag]
 
 The tags to attach to the secret. Each element in the list consists of
 a C<Key> and a C<Value>.

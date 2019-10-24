@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Comprehend::BatchDetectEntitiesItemResult;
-  use Moose;
-  has Entities => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::Entity]');
-  has Index => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::Comprehend::Types qw/Comprehend_Entity/;
+  has Entities => (is => 'ro', isa => ArrayRef[Comprehend_Entity]);
+  has Index => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Entities' => {
+                               'class' => 'Paws::Comprehend::Entity',
+                               'type' => 'ArrayRef[Comprehend_Entity]'
+                             },
+               'Index' => {
+                            'type' => 'Int'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ for each document that is successfully processed by the operation.
 =head1 ATTRIBUTES
 
 
-=head2 Entities => ArrayRef[L<Paws::Comprehend::Entity>]
+=head2 Entities => ArrayRef[Comprehend_Entity]
 
   One or more Entity objects, one for each entity detected in the
 document.

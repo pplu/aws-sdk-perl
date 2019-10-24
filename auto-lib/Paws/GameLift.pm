@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::GameLift;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'gamelift' }
   sub signing_name { 'gamelift' }
   sub version { '2015-10-01' }
   sub target_prefix { 'GameLift' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -916,7 +918,7 @@ StartMatchBackfill
 
 =item Name => Str
 
-=item RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
+=item RoutingStrategy => GameLift_RoutingStrategy
 
 =item [Description => Str]
 
@@ -986,7 +988,7 @@ ResolveAlias
 
 =item [OperatingSystem => Str]
 
-=item [StorageLocation => L<Paws::GameLift::S3Location>]
+=item [StorageLocation => GameLift_S3Location]
 
 =item [Version => Str]
 
@@ -1090,7 +1092,7 @@ DeleteBuild
 
 =item [Description => Str]
 
-=item [EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]]
+=item [EC2InboundPermissions => ArrayRef[GameLift_IpPermission]]
 
 =item [FleetType => Str]
 
@@ -1106,9 +1108,9 @@ DeleteBuild
 
 =item [PeerVpcId => Str]
 
-=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+=item [ResourceCreationLimitPolicy => GameLift_ResourceCreationLimitPolicy]
 
-=item [RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>]
+=item [RuntimeConfiguration => GameLift_RuntimeConfiguration]
 
 =item [ScriptId => Str]
 
@@ -1295,7 +1297,7 @@ StopFleetActions
 
 =item [FleetId => Str]
 
-=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+=item [GameProperties => ArrayRef[GameLift_GameProperty]]
 
 =item [GameSessionData => Str]
 
@@ -1402,9 +1404,9 @@ StopGameSessionPlacement
 
 =item Name => Str
 
-=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+=item [Destinations => ArrayRef[GameLift_GameSessionQueueDestination]]
 
-=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+=item [PlayerLatencyPolicies => ArrayRef[GameLift_PlayerLatencyPolicy]]
 
 =item [TimeoutInSeconds => Int]
 
@@ -1495,7 +1497,7 @@ DeleteGameSessionQueue
 
 =item [Description => Str]
 
-=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+=item [GameProperties => ArrayRef[GameLift_GameProperty]]
 
 =item [GameSessionData => Str]
 
@@ -1747,7 +1749,7 @@ StopGameSessionPlacement
 
 =item PlayerIds => ArrayRef[Str|Undef]
 
-=item [PlayerDataMap => L<Paws::GameLift::PlayerDataMap>]
+=item [PlayerDataMap => GameLift_PlayerDataMap]
 
 
 =back
@@ -1815,7 +1817,7 @@ StopGameSessionPlacement
 
 =item [Name => Str]
 
-=item [StorageLocation => L<Paws::GameLift::S3Location>]
+=item [StorageLocation => GameLift_S3Location]
 
 =item [Version => Str]
 
@@ -4932,7 +4934,7 @@ DeleteScript
 
 =item [ScalingAdjustmentType => Str]
 
-=item [TargetConfiguration => L<Paws::GameLift::TargetConfiguration>]
+=item [TargetConfiguration => GameLift_TargetConfiguration]
 
 =item [Threshold => Num]
 
@@ -5465,15 +5467,15 @@ StopFleetActions
 
 =item PlacementId => Str
 
-=item [DesiredPlayerSessions => ArrayRef[L<Paws::GameLift::DesiredPlayerSession>]]
+=item [DesiredPlayerSessions => ArrayRef[GameLift_DesiredPlayerSession]]
 
-=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+=item [GameProperties => ArrayRef[GameLift_GameProperty]]
 
 =item [GameSessionData => Str]
 
 =item [GameSessionName => Str]
 
-=item [PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]]
+=item [PlayerLatencies => ArrayRef[GameLift_PlayerLatency]]
 
 
 =back
@@ -5598,7 +5600,7 @@ StopGameSessionPlacement
 
 =item GameSessionArn => Str
 
-=item Players => ArrayRef[L<Paws::GameLift::Player>]
+=item Players => ArrayRef[GameLift_Player]
 
 =item [TicketId => Str]
 
@@ -5677,7 +5679,7 @@ StartMatchBackfill
 
 =item ConfigurationName => Str
 
-=item Players => ArrayRef[L<Paws::GameLift::Player>]
+=item Players => ArrayRef[GameLift_Player]
 
 =item [TicketId => Str]
 
@@ -6082,7 +6084,7 @@ StartMatchBackfill
 
 =item [Name => Str]
 
-=item [RoutingStrategy => L<Paws::GameLift::RoutingStrategy>]
+=item [RoutingStrategy => GameLift_RoutingStrategy]
 
 
 =back
@@ -6195,7 +6197,7 @@ DeleteBuild
 
 =item [NewGameSessionProtectionPolicy => Str]
 
-=item [ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>]
+=item [ResourceCreationLimitPolicy => GameLift_ResourceCreationLimitPolicy]
 
 
 =back
@@ -6456,9 +6458,9 @@ StopFleetActions
 
 =item FleetId => Str
 
-=item [InboundPermissionAuthorizations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+=item [InboundPermissionAuthorizations => ArrayRef[GameLift_IpPermission]]
 
-=item [InboundPermissionRevocations => ArrayRef[L<Paws::GameLift::IpPermission>]]
+=item [InboundPermissionRevocations => ArrayRef[GameLift_IpPermission]]
 
 
 =back
@@ -6661,9 +6663,9 @@ StopGameSessionPlacement
 
 =item Name => Str
 
-=item [Destinations => ArrayRef[L<Paws::GameLift::GameSessionQueueDestination>]]
+=item [Destinations => ArrayRef[GameLift_GameSessionQueueDestination]]
 
-=item [PlayerLatencyPolicies => ArrayRef[L<Paws::GameLift::PlayerLatencyPolicy>]]
+=item [PlayerLatencyPolicies => ArrayRef[GameLift_PlayerLatencyPolicy]]
 
 =item [TimeoutInSeconds => Int]
 
@@ -6719,7 +6721,7 @@ DeleteGameSessionQueue
 
 =item [Description => Str]
 
-=item [GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]]
+=item [GameProperties => ArrayRef[GameLift_GameProperty]]
 
 =item [GameSessionData => Str]
 
@@ -6794,7 +6796,7 @@ DeleteMatchmakingRuleSet
 
 =item FleetId => Str
 
-=item RuntimeConfiguration => L<Paws::GameLift::RuntimeConfiguration>
+=item RuntimeConfiguration => GameLift_RuntimeConfiguration
 
 
 =back
@@ -6929,7 +6931,7 @@ StopFleetActions
 
 =item [Name => Str]
 
-=item [StorageLocation => L<Paws::GameLift::S3Location>]
+=item [StorageLocation => GameLift_S3Location]
 
 =item [Version => Str]
 

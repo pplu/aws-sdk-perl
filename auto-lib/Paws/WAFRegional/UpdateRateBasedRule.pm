@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::UpdateRateBasedRule;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RateLimit => (is => 'ro', isa => 'Int', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::RuleUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_RuleUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RateLimit => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAFRegional_RuleUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRateBasedRule');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::UpdateRateBasedRuleResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRateBasedRule');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::UpdateRateBasedRuleResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAFRegional::RuleUpdate',
+                              'type' => 'ArrayRef[WAFRegional_RuleUpdate]'
+                            },
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'RateLimit' => {
+                                'type' => 'Int'
+                              }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'RuleId' => 1,
+                    'ChangeToken' => 1,
+                    'RateLimit' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +118,7 @@ ListRateBasedRules.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAFRegional::RuleUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAFRegional_RuleUpdate]
 
 An array of C<RuleUpdate> objects that you want to insert into or
 delete from a RateBasedRule.

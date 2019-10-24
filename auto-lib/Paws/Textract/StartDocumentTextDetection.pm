@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Textract::StartDocumentTextDetection;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DocumentLocation => (is => 'ro', isa => 'Paws::Textract::DocumentLocation', required => 1);
-  has JobTag => (is => 'ro', isa => 'Str');
-  has NotificationChannel => (is => 'ro', isa => 'Paws::Textract::NotificationChannel');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Textract::Types qw/Textract_DocumentLocation Textract_NotificationChannel/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentLocation => (is => 'ro', isa => Textract_DocumentLocation, required => 1, predicate => 1);
+  has JobTag => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationChannel => (is => 'ro', isa => Textract_NotificationChannel, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartDocumentTextDetection');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Textract::StartDocumentTextDetectionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartDocumentTextDetection');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Textract::StartDocumentTextDetectionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'NotificationChannel' => {
+                                          'class' => 'Paws::Textract::NotificationChannel',
+                                          'type' => 'Textract_NotificationChannel'
+                                        },
+               'DocumentLocation' => {
+                                       'class' => 'Paws::Textract::DocumentLocation',
+                                       'type' => 'Textract_DocumentLocation'
+                                     },
+               'JobTag' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DocumentLocation' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +98,7 @@ prevent the same job from being accidentally started more than once.
 
 
 
-=head2 B<REQUIRED> DocumentLocation => L<Paws::Textract::DocumentLocation>
+=head2 B<REQUIRED> DocumentLocation => Textract_DocumentLocation
 
 The location of the document to be processed.
 
@@ -83,7 +113,7 @@ or a receipt, that the completion notification corresponds to.
 
 
 
-=head2 NotificationChannel => L<Paws::Textract::NotificationChannel>
+=head2 NotificationChannel => Textract_NotificationChannel
 
 The Amazon SNS topic ARN that you want Amazon Textract to publish the
 completion status of the operation to.

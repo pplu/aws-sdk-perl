@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Rekognition::StartPersonTracking;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has JobTag => (is => 'ro', isa => 'Str');
-  has NotificationChannel => (is => 'ro', isa => 'Paws::Rekognition::NotificationChannel');
-  has Video => (is => 'ro', isa => 'Paws::Rekognition::Video', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Rekognition::Types qw/Rekognition_Video Rekognition_NotificationChannel/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has JobTag => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationChannel => (is => 'ro', isa => Rekognition_NotificationChannel, predicate => 1);
+  has Video => (is => 'ro', isa => Rekognition_Video, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartPersonTracking');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Rekognition::StartPersonTrackingResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartPersonTracking');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Rekognition::StartPersonTrackingResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Video' => {
+                            'class' => 'Paws::Rekognition::Video',
+                            'type' => 'Rekognition_Video'
+                          },
+               'NotificationChannel' => {
+                                          'class' => 'Paws::Rekognition::NotificationChannel',
+                                          'type' => 'Rekognition_NotificationChannel'
+                                        },
+               'JobTag' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Video' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,14 +104,14 @@ status published to the Amazon Simple Notification Service topic.
 
 
 
-=head2 NotificationChannel => L<Paws::Rekognition::NotificationChannel>
+=head2 NotificationChannel => Rekognition_NotificationChannel
 
 The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 the completion status of the people detection operation to.
 
 
 
-=head2 B<REQUIRED> Video => L<Paws::Rekognition::Video>
+=head2 B<REQUIRED> Video => Rekognition_Video
 
 The video in which you want to detect people. The video must be stored
 in an Amazon S3 bucket.

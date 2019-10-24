@@ -1,18 +1,71 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserImportJobType;
-  use Moose;
-  has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
-  has CompletionDate => (is => 'ro', isa => 'Str');
-  has CompletionMessage => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has FailedUsers => (is => 'ro', isa => 'Int');
-  has ImportedUsers => (is => 'ro', isa => 'Int');
-  has JobId => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has PreSignedUrl => (is => 'ro', isa => 'Str');
-  has SkippedUsers => (is => 'ro', isa => 'Int');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UserPoolId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoIdp::Types qw//;
+  has CloudWatchLogsRoleArn => (is => 'ro', isa => Str);
+  has CompletionDate => (is => 'ro', isa => Str);
+  has CompletionMessage => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has FailedUsers => (is => 'ro', isa => Int);
+  has ImportedUsers => (is => 'ro', isa => Int);
+  has JobId => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has PreSignedUrl => (is => 'ro', isa => Str);
+  has SkippedUsers => (is => 'ro', isa => Int);
+  has StartDate => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UserPoolId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SkippedUsers' => {
+                                   'type' => 'Int'
+                                 },
+               'CloudWatchLogsRoleArn' => {
+                                            'type' => 'Str'
+                                          },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'FailedUsers' => {
+                                  'type' => 'Int'
+                                },
+               'PreSignedUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ImportedUsers' => {
+                                    'type' => 'Int'
+                                  },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'CompletionDate' => {
+                                     'type' => 'Str'
+                                   },
+               'CompletionMessage' => {
+                                        'type' => 'Str'
+                                      },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

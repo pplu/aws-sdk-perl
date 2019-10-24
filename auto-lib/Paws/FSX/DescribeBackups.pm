@@ -1,16 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::DescribeBackups;
-  use Moose;
-  has BackupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::FSX::Types qw/FSX_Filter/;
+  has BackupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[FSX_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeBackups');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::DescribeBackupsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeBackups');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::DescribeBackupsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::FSX::Filter',
+                              'type' => 'ArrayRef[FSX_Filter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'BackupIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +94,7 @@ thrown.
 
 
 
-=head2 Filters => ArrayRef[L<Paws::FSX::Filter>]
+=head2 Filters => ArrayRef[FSX_Filter]
 
 (Optional) Filters structure. Supported names are file-system-id and
 backup-type.

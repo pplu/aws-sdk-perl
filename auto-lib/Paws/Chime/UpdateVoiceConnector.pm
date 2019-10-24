@@ -1,16 +1,45 @@
 
 package Paws::Chime::UpdateVoiceConnector;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RequireEncryption => (is => 'ro', isa => 'Bool', required => 1);
-  has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Chime::Types qw//;
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequireEncryption => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has VoiceConnectorId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVoiceConnector');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/voice-connectors/{voiceConnectorId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::UpdateVoiceConnectorResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateVoiceConnector');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/voice-connectors/{voiceConnectorId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::UpdateVoiceConnectorResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceConnectorId' => {
+                                       'type' => 'Str'
+                                     },
+               'RequireEncryption' => {
+                                        'type' => 'Bool'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'VoiceConnectorId' => 'voiceConnectorId'
+                  },
+  'IsRequired' => {
+                    'VoiceConnectorId' => 1,
+                    'RequireEncryption' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

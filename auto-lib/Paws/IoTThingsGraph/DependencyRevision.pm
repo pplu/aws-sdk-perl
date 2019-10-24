@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::DependencyRevision;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has RevisionNumber => (is => 'ro', isa => 'Int', request_name => 'revisionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has RevisionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RevisionNumber' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'RevisionNumber' => 'revisionNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

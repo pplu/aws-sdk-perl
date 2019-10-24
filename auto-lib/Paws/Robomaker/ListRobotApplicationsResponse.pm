@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::ListRobotApplicationsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has RobotApplicationSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationSummary]', traits => ['NameInRequest'], request_name => 'robotApplicationSummaries');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_RobotApplicationSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has RobotApplicationSummaries => (is => 'ro', isa => ArrayRef[Robomaker_RobotApplicationSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RobotApplicationSummaries' => {
+                                                'class' => 'Paws::Robomaker::RobotApplicationSummary',
+                                                'type' => 'ArrayRef[Robomaker_RobotApplicationSummary]'
+                                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'RobotApplicationSummaries' => 'robotApplicationSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ results. This value is C<null> when there are no more results to
 return.
 
 
-=head2 RobotApplicationSummaries => ArrayRef[L<Paws::Robomaker::RobotApplicationSummary>]
+=head2 RobotApplicationSummaries => ArrayRef[Robomaker_RobotApplicationSummary]
 
 A list of robot application summaries that meet the criteria of the
 request.

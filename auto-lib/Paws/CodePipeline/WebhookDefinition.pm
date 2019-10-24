@@ -1,11 +1,61 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::WebhookDefinition;
-  use Moose;
-  has Authentication => (is => 'ro', isa => 'Str', request_name => 'authentication', traits => ['NameInRequest'], required => 1);
-  has AuthenticationConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::WebhookAuthConfiguration', request_name => 'authenticationConfiguration', traits => ['NameInRequest'], required => 1);
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::WebhookFilterRule]', request_name => 'filters', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has TargetAction => (is => 'ro', isa => 'Str', request_name => 'targetAction', traits => ['NameInRequest'], required => 1);
-  has TargetPipeline => (is => 'ro', isa => 'Str', request_name => 'targetPipeline', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_WebhookFilterRule CodePipeline_WebhookAuthConfiguration/;
+  has Authentication => (is => 'ro', isa => Str, required => 1);
+  has AuthenticationConfiguration => (is => 'ro', isa => CodePipeline_WebhookAuthConfiguration, required => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[CodePipeline_WebhookFilterRule], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has TargetAction => (is => 'ro', isa => Str, required => 1);
+  has TargetPipeline => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetAction' => {
+                                   'type' => 'Str'
+                                 },
+               'AuthenticationConfiguration' => {
+                                                  'class' => 'Paws::CodePipeline::WebhookAuthConfiguration',
+                                                  'type' => 'CodePipeline_WebhookAuthConfiguration'
+                                                },
+               'TargetPipeline' => {
+                                     'type' => 'Str'
+                                   },
+               'Filters' => {
+                              'class' => 'Paws::CodePipeline::WebhookFilterRule',
+                              'type' => 'ArrayRef[CodePipeline_WebhookFilterRule]'
+                            },
+               'Authentication' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'TargetAction' => 'targetAction',
+                       'AuthenticationConfiguration' => 'authenticationConfiguration',
+                       'TargetPipeline' => 'targetPipeline',
+                       'Filters' => 'filters',
+                       'Authentication' => 'authentication',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'TargetAction' => 1,
+                    'AuthenticationConfiguration' => 1,
+                    'TargetPipeline' => 1,
+                    'Filters' => 1,
+                    'Authentication' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +118,7 @@ origin.
 
 
 
-=head2 B<REQUIRED> AuthenticationConfiguration => L<Paws::CodePipeline::WebhookAuthConfiguration>
+=head2 B<REQUIRED> AuthenticationConfiguration => CodePipeline_WebhookAuthConfiguration
 
   Properties that configure the authentication applied to incoming
 webhook trigger requests. The required properties depend on the
@@ -77,7 +127,7 @@ must be set. For IP, only the C<AllowedIPRange >property must be set to
 a valid CIDR range. For UNAUTHENTICATED, no properties can be set.
 
 
-=head2 B<REQUIRED> Filters => ArrayRef[L<Paws::CodePipeline::WebhookFilterRule>]
+=head2 B<REQUIRED> Filters => ArrayRef[CodePipeline_WebhookFilterRule]
 
   A list of rules applied to the body/payload sent in the POST request to
 a webhook URL. All defined rules must pass for the request to be

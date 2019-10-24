@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::XRay::Edge;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Alias]');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has ReferenceId => (is => 'ro', isa => 'Int');
-  has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has SummaryStatistics => (is => 'ro', isa => 'Paws::XRay::EdgeStatistics');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int/;
+  use Paws::XRay::Types qw/XRay_Alias XRay_EdgeStatistics XRay_HistogramEntry/;
+  has Aliases => (is => 'ro', isa => ArrayRef[XRay_Alias]);
+  has EndTime => (is => 'ro', isa => Str);
+  has ReferenceId => (is => 'ro', isa => Int);
+  has ResponseTimeHistogram => (is => 'ro', isa => ArrayRef[XRay_HistogramEntry]);
+  has StartTime => (is => 'ro', isa => Str);
+  has SummaryStatistics => (is => 'ro', isa => XRay_EdgeStatistics);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReferenceId' => {
+                                  'type' => 'Int'
+                                },
+               'SummaryStatistics' => {
+                                        'class' => 'Paws::XRay::EdgeStatistics',
+                                        'type' => 'XRay_EdgeStatistics'
+                                      },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'ResponseTimeHistogram' => {
+                                            'class' => 'Paws::XRay::HistogramEntry',
+                                            'type' => 'ArrayRef[XRay_HistogramEntry]'
+                                          },
+               'Aliases' => {
+                              'class' => 'Paws::XRay::Alias',
+                              'type' => 'ArrayRef[XRay_Alias]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +76,7 @@ Information about a connection between two services.
 =head1 ATTRIBUTES
 
 
-=head2 Aliases => ArrayRef[L<Paws::XRay::Alias>]
+=head2 Aliases => ArrayRef[XRay_Alias]
 
   Aliases for the edge.
 
@@ -56,7 +91,7 @@ Information about a connection between two services.
   Identifier of the edge. Unique within a service map.
 
 
-=head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
+=head2 ResponseTimeHistogram => ArrayRef[XRay_HistogramEntry]
 
   A histogram that maps the spread of client response times on an edge.
 
@@ -66,7 +101,7 @@ Information about a connection between two services.
   The start time of the first segment on the edge.
 
 
-=head2 SummaryStatistics => L<Paws::XRay::EdgeStatistics>
+=head2 SummaryStatistics => XRay_EdgeStatistics
 
   Response statistics for segments on the edge.
 

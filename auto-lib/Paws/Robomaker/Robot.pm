@@ -1,14 +1,66 @@
+# Generated from default/object.tt
 package Paws::Robomaker::Robot;
-  use Moose;
-  has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has FleetArn => (is => 'ro', isa => 'Str', request_name => 'fleetArn', traits => ['NameInRequest']);
-  has GreenGrassGroupId => (is => 'ro', isa => 'Str', request_name => 'greenGrassGroupId', traits => ['NameInRequest']);
-  has LastDeploymentJob => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentJob', traits => ['NameInRequest']);
-  has LastDeploymentTime => (is => 'ro', isa => 'Str', request_name => 'lastDeploymentTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Architecture => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FleetArn => (is => 'ro', isa => Str);
+  has GreenGrassGroupId => (is => 'ro', isa => Str);
+  has LastDeploymentJob => (is => 'ro', isa => Str);
+  has LastDeploymentTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'GreenGrassGroupId' => {
+                                        'type' => 'Str'
+                                      },
+               'LastDeploymentJob' => {
+                                        'type' => 'Str'
+                                      },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastDeploymentTime' => {
+                                         'type' => 'Str'
+                                       },
+               'Architecture' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'GreenGrassGroupId' => 'greenGrassGroupId',
+                       'LastDeploymentJob' => 'lastDeploymentJob',
+                       'FleetArn' => 'fleetArn',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'LastDeploymentTime' => 'lastDeploymentTime',
+                       'Architecture' => 'architecture',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

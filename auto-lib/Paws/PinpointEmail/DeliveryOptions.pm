@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DeliveryOptions;
-  use Moose;
-  has SendingPoolName => (is => 'ro', isa => 'Str');
-  has TlsPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has SendingPoolName => (is => 'ro', isa => Str);
+  has TlsPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TlsPolicy' => {
+                                'type' => 'Str'
+                              },
+               'SendingPoolName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

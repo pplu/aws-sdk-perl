@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeAssociationExecutionTargetsResult;
-  use Moose;
-  has AssociationExecutionTargets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationExecutionTarget]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AssociationExecutionTarget/;
+  has AssociationExecutionTargets => (is => 'ro', isa => ArrayRef[SSM_AssociationExecutionTarget]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AssociationExecutionTargets' => {
+                                                  'class' => 'Paws::SSM::AssociationExecutionTarget',
+                                                  'type' => 'ArrayRef[SSM_AssociationExecutionTarget]'
+                                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::DescribeAssociationExecutionTargetsResult
 =head1 ATTRIBUTES
 
 
-=head2 AssociationExecutionTargets => ArrayRef[L<Paws::SSM::AssociationExecutionTarget>]
+=head2 AssociationExecutionTargets => ArrayRef[SSM_AssociationExecutionTarget]
 
 Information about the execution.
 

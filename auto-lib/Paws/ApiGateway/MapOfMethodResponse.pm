@@ -1,8 +1,23 @@
 package Paws::ApiGateway::MapOfMethodResponse;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MethodResponse/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::MethodResponse]');
+  has Map => (is => 'ro', isa => HashRef[ApiGateway_MethodResponse]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ApiGateway_MethodResponse]',
+                                          class => 'Paws::ApiGateway::MethodResponse',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::ApiGateway::MethodResponse>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

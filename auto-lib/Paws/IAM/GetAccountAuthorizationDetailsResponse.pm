@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetAccountAuthorizationDetailsResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_RoleDetail IAM_GroupDetail IAM_UserDetail IAM_ManagedPolicyDetail/;
   has GroupDetailList => (is => 'ro', isa => ArrayRef[IAM_GroupDetail]);

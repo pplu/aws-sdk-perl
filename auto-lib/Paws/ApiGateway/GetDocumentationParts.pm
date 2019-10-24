@@ -1,20 +1,67 @@
 
 package Paws::ApiGateway::GetDocumentationParts;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has LocationStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'locationStatus');
-  has NameQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
-  has Path => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'path');
-  has Position => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'position');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has Type => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'type');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has LocationStatus => (is => 'ro', isa => Str, predicate => 1);
+  has NameQuery => (is => 'ro', isa => Str, predicate => 1);
+  has Path => (is => 'ro', isa => Str, predicate => 1);
+  has Position => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDocumentationParts');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DocumentationParts');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDocumentationParts');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/documentation/parts');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DocumentationParts');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'LocationStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'NameQuery' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'ParamInQuery' => {
+                      'Type' => 'type',
+                      'Position' => 'position',
+                      'LocationStatus' => 'locationStatus',
+                      'Path' => 'path',
+                      'Limit' => 'limit',
+                      'NameQuery' => 'name'
+                    },
+  'IsRequired' => {
+                    'RestApiId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

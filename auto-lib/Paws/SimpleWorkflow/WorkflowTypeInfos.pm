@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SimpleWorkflow::WorkflowTypeInfos;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has TypeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', traits => ['NameInRequest'], request_name => 'typeInfos' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_WorkflowTypeInfo/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has TypeInfos => (is => 'ro', isa => ArrayRef[SimpleWorkflow_WorkflowTypeInfo], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'TypeInfos' => {
+                                'class' => 'Paws::SimpleWorkflow::WorkflowTypeInfo',
+                                'type' => 'ArrayRef[SimpleWorkflow_WorkflowTypeInfo]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextPageToken' => 'nextPageToken',
+                       'TypeInfos' => 'typeInfos'
+                     },
+  'IsRequired' => {
+                    'TypeInfos' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -26,7 +55,7 @@ The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
 
-=head2 B<REQUIRED> TypeInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowTypeInfo>]
+=head2 B<REQUIRED> TypeInfos => ArrayRef[SimpleWorkflow_WorkflowTypeInfo]
 
 The list of workflow type information.
 

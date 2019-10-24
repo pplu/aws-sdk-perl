@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::IoT::StepFunctionsAction;
-  use Moose;
-  has ExecutionNamePrefix => (is => 'ro', isa => 'Str', request_name => 'executionNamePrefix', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has StateMachineName => (is => 'ro', isa => 'Str', request_name => 'stateMachineName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has ExecutionNamePrefix => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has StateMachineName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ExecutionNamePrefix' => {
+                                          'type' => 'Str'
+                                        },
+               'StateMachineName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'ExecutionNamePrefix' => 'executionNamePrefix',
+                       'StateMachineName' => 'stateMachineName'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'StateMachineName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

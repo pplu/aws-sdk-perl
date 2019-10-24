@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::ModifyLoadBalancerAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAttribute]', required => 1);
-  has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_LoadBalancerAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ELBv2_LoadBalancerAttribute], required => 1, predicate => 1);
+  has LoadBalancerArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::ModifyLoadBalancerAttributesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyLoadBalancerAttributesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyLoadBalancerAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::ModifyLoadBalancerAttributesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyLoadBalancerAttributesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerArn' => {
+                                      'type' => 'Str'
+                                    },
+               'Attributes' => {
+                                 'class' => 'Paws::ELBv2::LoadBalancerAttribute',
+                                 'type' => 'ArrayRef[ELBv2_LoadBalancerAttribute]'
+                               }
+             },
+  'IsRequired' => {
+                    'LoadBalancerArn' => 1,
+                    'Attributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +130,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::ELBv2::LoadBalancerAttribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[ELBv2_LoadBalancerAttribute]
 
 The load balancer attributes.
 

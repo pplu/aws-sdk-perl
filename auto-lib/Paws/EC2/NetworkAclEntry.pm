@@ -10,7 +10,7 @@ package Paws::EC2::NetworkAclEntry;
   has RuleAction => (is => 'ro', isa => Str);
   has RuleNumber => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'RuleNumber' => {
@@ -52,8 +52,8 @@ package Paws::EC2::NetworkAclEntry;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

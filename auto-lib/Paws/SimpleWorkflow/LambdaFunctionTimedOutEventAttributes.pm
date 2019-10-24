@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes;
-  use Moose;
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
-  has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
-  has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+  has StartedEventId => (is => 'ro', isa => Int, required => 1);
+  has TimeoutType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartedEventId' => {
+                                     'type' => 'Int'
+                                   },
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'TimeoutType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StartedEventId' => 'startedEventId',
+                       'ScheduledEventId' => 'scheduledEventId',
+                       'TimeoutType' => 'timeoutType'
+                     },
+  'IsRequired' => {
+                    'StartedEventId' => 1,
+                    'ScheduledEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

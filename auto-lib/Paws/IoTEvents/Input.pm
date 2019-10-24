@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::Input;
-  use Moose;
-  has InputConfiguration => (is => 'ro', isa => 'Paws::IoTEvents::InputConfiguration', request_name => 'inputConfiguration', traits => ['NameInRequest']);
-  has InputDefinition => (is => 'ro', isa => 'Paws::IoTEvents::InputDefinition', request_name => 'inputDefinition', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTEvents::Types qw/IoTEvents_InputDefinition IoTEvents_InputConfiguration/;
+  has InputConfiguration => (is => 'ro', isa => IoTEvents_InputConfiguration);
+  has InputDefinition => (is => 'ro', isa => IoTEvents_InputDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputDefinition' => {
+                                      'class' => 'Paws::IoTEvents::InputDefinition',
+                                      'type' => 'IoTEvents_InputDefinition'
+                                    },
+               'InputConfiguration' => {
+                                         'class' => 'Paws::IoTEvents::InputConfiguration',
+                                         'type' => 'IoTEvents_InputConfiguration'
+                                       }
+             },
+  'NameInRequest' => {
+                       'InputDefinition' => 'inputDefinition',
+                       'InputConfiguration' => 'inputConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Information about the input.
 =head1 ATTRIBUTES
 
 
-=head2 InputConfiguration => L<Paws::IoTEvents::InputConfiguration>
+=head2 InputConfiguration => IoTEvents_InputConfiguration
 
   Information about the configuration of an input.
 
 
-=head2 InputDefinition => L<Paws::IoTEvents::InputDefinition>
+=head2 InputDefinition => IoTEvents_InputDefinition
 
   The definition of the input.
 

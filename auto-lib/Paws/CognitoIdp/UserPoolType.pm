@@ -1,34 +1,145 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::UserPoolType;
-  use Moose;
-  has AdminCreateUserConfig => (is => 'ro', isa => 'Paws::CognitoIdp::AdminCreateUserConfigType');
-  has AliasAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Arn => (is => 'ro', isa => 'Str');
-  has AutoVerifiedAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has CustomDomain => (is => 'ro', isa => 'Str');
-  has DeviceConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceConfigurationType');
-  has Domain => (is => 'ro', isa => 'Str');
-  has EmailConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::EmailConfigurationType');
-  has EmailConfigurationFailure => (is => 'ro', isa => 'Str');
-  has EmailVerificationMessage => (is => 'ro', isa => 'Str');
-  has EmailVerificationSubject => (is => 'ro', isa => 'Str');
-  has EstimatedNumberOfUsers => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str');
-  has LambdaConfig => (is => 'ro', isa => 'Paws::CognitoIdp::LambdaConfigType');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has MfaConfiguration => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Policies => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolPolicyType');
-  has SchemaAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::SchemaAttributeType]');
-  has SmsAuthenticationMessage => (is => 'ro', isa => 'Str');
-  has SmsConfiguration => (is => 'ro', isa => 'Paws::CognitoIdp::SmsConfigurationType');
-  has SmsConfigurationFailure => (is => 'ro', isa => 'Str');
-  has SmsVerificationMessage => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UsernameAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
-  has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
-  has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_VerificationMessageTemplateType CognitoIdp_UserPoolTagsType CognitoIdp_LambdaConfigType CognitoIdp_UserPoolPolicyType CognitoIdp_SmsConfigurationType CognitoIdp_AdminCreateUserConfigType CognitoIdp_SchemaAttributeType CognitoIdp_UserPoolAddOnsType CognitoIdp_DeviceConfigurationType CognitoIdp_EmailConfigurationType/;
+  has AdminCreateUserConfig => (is => 'ro', isa => CognitoIdp_AdminCreateUserConfigType);
+  has AliasAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Arn => (is => 'ro', isa => Str);
+  has AutoVerifiedAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreationDate => (is => 'ro', isa => Str);
+  has CustomDomain => (is => 'ro', isa => Str);
+  has DeviceConfiguration => (is => 'ro', isa => CognitoIdp_DeviceConfigurationType);
+  has Domain => (is => 'ro', isa => Str);
+  has EmailConfiguration => (is => 'ro', isa => CognitoIdp_EmailConfigurationType);
+  has EmailConfigurationFailure => (is => 'ro', isa => Str);
+  has EmailVerificationMessage => (is => 'ro', isa => Str);
+  has EmailVerificationSubject => (is => 'ro', isa => Str);
+  has EstimatedNumberOfUsers => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str);
+  has LambdaConfig => (is => 'ro', isa => CognitoIdp_LambdaConfigType);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has MfaConfiguration => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Policies => (is => 'ro', isa => CognitoIdp_UserPoolPolicyType);
+  has SchemaAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_SchemaAttributeType]);
+  has SmsAuthenticationMessage => (is => 'ro', isa => Str);
+  has SmsConfiguration => (is => 'ro', isa => CognitoIdp_SmsConfigurationType);
+  has SmsConfigurationFailure => (is => 'ro', isa => Str);
+  has SmsVerificationMessage => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UsernameAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has UserPoolAddOns => (is => 'ro', isa => CognitoIdp_UserPoolAddOnsType);
+  has UserPoolTags => (is => 'ro', isa => CognitoIdp_UserPoolTagsType);
+  has VerificationMessageTemplate => (is => 'ro', isa => CognitoIdp_VerificationMessageTemplateType);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EmailConfigurationFailure' => {
+                                                'type' => 'Str'
+                                              },
+               'DeviceConfiguration' => {
+                                          'class' => 'Paws::CognitoIdp::DeviceConfigurationType',
+                                          'type' => 'CognitoIdp_DeviceConfigurationType'
+                                        },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SmsVerificationMessage' => {
+                                             'type' => 'Str'
+                                           },
+               'SmsConfiguration' => {
+                                       'class' => 'Paws::CognitoIdp::SmsConfigurationType',
+                                       'type' => 'CognitoIdp_SmsConfigurationType'
+                                     },
+               'EmailVerificationMessage' => {
+                                               'type' => 'Str'
+                                             },
+               'LambdaConfig' => {
+                                   'class' => 'Paws::CognitoIdp::LambdaConfigType',
+                                   'type' => 'CognitoIdp_LambdaConfigType'
+                                 },
+               'Policies' => {
+                               'class' => 'Paws::CognitoIdp::UserPoolPolicyType',
+                               'type' => 'CognitoIdp_UserPoolPolicyType'
+                             },
+               'MfaConfiguration' => {
+                                       'type' => 'Str'
+                                     },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'EstimatedNumberOfUsers' => {
+                                             'type' => 'Int'
+                                           },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'AliasAttributes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'VerificationMessageTemplate' => {
+                                                  'class' => 'Paws::CognitoIdp::VerificationMessageTemplateType',
+                                                  'type' => 'CognitoIdp_VerificationMessageTemplateType'
+                                                },
+               'SmsConfigurationFailure' => {
+                                              'type' => 'Str'
+                                            },
+               'SmsAuthenticationMessage' => {
+                                               'type' => 'Str'
+                                             },
+               'UserPoolTags' => {
+                                   'class' => 'Paws::CognitoIdp::UserPoolTagsType',
+                                   'type' => 'CognitoIdp_UserPoolTagsType'
+                                 },
+               'EmailConfiguration' => {
+                                         'class' => 'Paws::CognitoIdp::EmailConfigurationType',
+                                         'type' => 'CognitoIdp_EmailConfigurationType'
+                                       },
+               'UsernameAttributes' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'SchemaAttributes' => {
+                                       'class' => 'Paws::CognitoIdp::SchemaAttributeType',
+                                       'type' => 'ArrayRef[CognitoIdp_SchemaAttributeType]'
+                                     },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'UserPoolAddOns' => {
+                                     'class' => 'Paws::CognitoIdp::UserPoolAddOnsType',
+                                     'type' => 'CognitoIdp_UserPoolAddOnsType'
+                                   },
+               'EmailVerificationSubject' => {
+                                               'type' => 'Str'
+                                             },
+               'CustomDomain' => {
+                                   'type' => 'Str'
+                                 },
+               'AdminCreateUserConfig' => {
+                                            'class' => 'Paws::CognitoIdp::AdminCreateUserConfigType',
+                                            'type' => 'CognitoIdp_AdminCreateUserConfigType'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AutoVerifiedAttributes' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +175,7 @@ A container for information about the user pool.
 =head1 ATTRIBUTES
 
 
-=head2 AdminCreateUserConfig => L<Paws::CognitoIdp::AdminCreateUserConfigType>
+=head2 AdminCreateUserConfig => CognitoIdp_AdminCreateUserConfigType
 
   The configuration for C<AdminCreateUser> requests.
 
@@ -100,7 +211,7 @@ see Using Your Own Domain for the Hosted UI
 (https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html).
 
 
-=head2 DeviceConfiguration => L<Paws::CognitoIdp::DeviceConfigurationType>
+=head2 DeviceConfiguration => CognitoIdp_DeviceConfigurationType
 
   The device configuration.
 
@@ -111,7 +222,7 @@ see Using Your Own Domain for the Hosted UI
 it.
 
 
-=head2 EmailConfiguration => L<Paws::CognitoIdp::EmailConfigurationType>
+=head2 EmailConfiguration => CognitoIdp_EmailConfigurationType
 
   The email configuration.
 
@@ -142,7 +253,7 @@ users.
   The ID of the user pool.
 
 
-=head2 LambdaConfig => L<Paws::CognitoIdp::LambdaConfigType>
+=head2 LambdaConfig => CognitoIdp_LambdaConfigType
 
   The AWS Lambda triggers associated with the user pool.
 
@@ -182,12 +293,12 @@ token.
   The name of the user pool.
 
 
-=head2 Policies => L<Paws::CognitoIdp::UserPoolPolicyType>
+=head2 Policies => CognitoIdp_UserPoolPolicyType
 
   The policies associated with the user pool.
 
 
-=head2 SchemaAttributes => ArrayRef[L<Paws::CognitoIdp::SchemaAttributeType>]
+=head2 SchemaAttributes => ArrayRef[CognitoIdp_SchemaAttributeType]
 
   A container with the schema attributes of a user pool.
 
@@ -197,7 +308,7 @@ token.
   The contents of the SMS authentication message.
 
 
-=head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>
+=head2 SmsConfiguration => CognitoIdp_SmsConfigurationType
 
   The SMS configuration.
 
@@ -224,19 +335,19 @@ users.
 usernames when a user signs up.
 
 
-=head2 UserPoolAddOns => L<Paws::CognitoIdp::UserPoolAddOnsType>
+=head2 UserPoolAddOns => CognitoIdp_UserPoolAddOnsType
 
   The user pool add-ons.
 
 
-=head2 UserPoolTags => L<Paws::CognitoIdp::UserPoolTagsType>
+=head2 UserPoolTags => CognitoIdp_UserPoolTagsType
 
   The tags that are assigned to the user pool. A tag is a label that you
 can apply to user pools to categorize and manage them in different
 ways, such as by purpose, owner, environment, or other criteria.
 
 
-=head2 VerificationMessageTemplate => L<Paws::CognitoIdp::VerificationMessageTemplateType>
+=head2 VerificationMessageTemplate => CognitoIdp_VerificationMessageTemplateType
 
   The template for verification messages.
 

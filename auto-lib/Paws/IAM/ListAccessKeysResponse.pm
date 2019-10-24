@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListAccessKeysResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_AccessKeyMetadata/;
   has AccessKeyMetadata => (is => 'ro', isa => ArrayRef[IAM_AccessKeyMetadata], required => 1);

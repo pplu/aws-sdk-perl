@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::EMR::ScalingTrigger;
-  use Moose;
-  has CloudWatchAlarmDefinition => (is => 'ro', isa => 'Paws::EMR::CloudWatchAlarmDefinition', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::EMR::Types qw/EMR_CloudWatchAlarmDefinition/;
+  has CloudWatchAlarmDefinition => (is => 'ro', isa => EMR_CloudWatchAlarmDefinition, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudWatchAlarmDefinition' => {
+                                                'class' => 'Paws::EMR::CloudWatchAlarmDefinition',
+                                                'type' => 'EMR_CloudWatchAlarmDefinition'
+                                              }
+             },
+  'IsRequired' => {
+                    'CloudWatchAlarmDefinition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ The conditions that trigger an automatic scaling activity.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CloudWatchAlarmDefinition => L<Paws::EMR::CloudWatchAlarmDefinition>
+=head2 B<REQUIRED> CloudWatchAlarmDefinition => EMR_CloudWatchAlarmDefinition
 
   The definition of a CloudWatch metric alarm. When the defined alarm
 conditions are met along with other trigger parameters, scaling

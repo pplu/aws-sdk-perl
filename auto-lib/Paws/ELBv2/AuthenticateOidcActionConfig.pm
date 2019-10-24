@@ -1,17 +1,75 @@
+# Generated from default/object.tt
 package Paws::ELBv2::AuthenticateOidcActionConfig;
-  use Moose;
-  has AuthenticationRequestExtraParams => (is => 'ro', isa => 'Paws::ELBv2::AuthenticateOidcActionAuthenticationRequestExtraParams');
-  has AuthorizationEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientSecret => (is => 'ro', isa => 'Str');
-  has Issuer => (is => 'ro', isa => 'Str', required => 1);
-  has OnUnauthenticatedRequest => (is => 'ro', isa => 'Str');
-  has Scope => (is => 'ro', isa => 'Str');
-  has SessionCookieName => (is => 'ro', isa => 'Str');
-  has SessionTimeout => (is => 'ro', isa => 'Int');
-  has TokenEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has UseExistingClientSecret => (is => 'ro', isa => 'Bool');
-  has UserInfoEndpoint => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::ELBv2::Types qw/ELBv2_AuthenticateOidcActionAuthenticationRequestExtraParams/;
+  has AuthenticationRequestExtraParams => (is => 'ro', isa => ELBv2_AuthenticateOidcActionAuthenticationRequestExtraParams);
+  has AuthorizationEndpoint => (is => 'ro', isa => Str, required => 1);
+  has ClientId => (is => 'ro', isa => Str, required => 1);
+  has ClientSecret => (is => 'ro', isa => Str);
+  has Issuer => (is => 'ro', isa => Str, required => 1);
+  has OnUnauthenticatedRequest => (is => 'ro', isa => Str);
+  has Scope => (is => 'ro', isa => Str);
+  has SessionCookieName => (is => 'ro', isa => Str);
+  has SessionTimeout => (is => 'ro', isa => Int);
+  has TokenEndpoint => (is => 'ro', isa => Str, required => 1);
+  has UseExistingClientSecret => (is => 'ro', isa => Bool);
+  has UserInfoEndpoint => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizationEndpoint' => {
+                                            'type' => 'Str'
+                                          },
+               'AuthenticationRequestExtraParams' => {
+                                                       'class' => 'Paws::ELBv2::AuthenticateOidcActionAuthenticationRequestExtraParams',
+                                                       'type' => 'ELBv2_AuthenticateOidcActionAuthenticationRequestExtraParams'
+                                                     },
+               'OnUnauthenticatedRequest' => {
+                                               'type' => 'Str'
+                                             },
+               'UserInfoEndpoint' => {
+                                       'type' => 'Str'
+                                     },
+               'UseExistingClientSecret' => {
+                                              'type' => 'Bool'
+                                            },
+               'Scope' => {
+                            'type' => 'Str'
+                          },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'SessionCookieName' => {
+                                        'type' => 'Str'
+                                      },
+               'ClientSecret' => {
+                                   'type' => 'Str'
+                                 },
+               'Issuer' => {
+                             'type' => 'Str'
+                           },
+               'TokenEndpoint' => {
+                                    'type' => 'Str'
+                                  },
+               'SessionTimeout' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'AuthorizationEndpoint' => 1,
+                    'Issuer' => 1,
+                    'UserInfoEndpoint' => 1,
+                    'TokenEndpoint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +106,7 @@ compliant with OpenID Connect (OIDC) to authenticate users.
 =head1 ATTRIBUTES
 
 
-=head2 AuthenticationRequestExtraParams => L<Paws::ELBv2::AuthenticateOidcActionAuthenticationRequestExtraParams>
+=head2 AuthenticationRequestExtraParams => ELBv2_AuthenticateOidcActionAuthenticationRequestExtraParams
 
   The query parameters (up to 10) to include in the redirect request to
 the authorization endpoint.

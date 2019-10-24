@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::AcceptReservedNodeExchangeOutputMessage;
-  use Moose;
-  has ExchangedReservedNode => (is => 'ro', isa => 'Paws::RedShift::ReservedNode');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw/RedShift_ReservedNode/;
+  has ExchangedReservedNode => (is => 'ro', isa => RedShift_ReservedNode);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExchangedReservedNode' => {
+                                            'class' => 'Paws::RedShift::ReservedNode',
+                                            'type' => 'RedShift_ReservedNode'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RedShift::AcceptReservedNodeExchangeOutputMessage
 =head1 ATTRIBUTES
 
 
-=head2 ExchangedReservedNode => L<Paws::RedShift::ReservedNode>
+=head2 ExchangedReservedNode => RedShift_ReservedNode
 
 
 

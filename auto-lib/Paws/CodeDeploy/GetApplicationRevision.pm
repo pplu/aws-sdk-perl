@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::GetApplicationRevision;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_RevisionLocation/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Revision => (is => 'ro', isa => CodeDeploy_RevisionLocation, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApplicationRevision');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetApplicationRevisionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetApplicationRevision');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeDeploy::GetApplicationRevisionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Revision' => {
+                               'class' => 'Paws::CodeDeploy::RevisionLocation',
+                               'type' => 'CodeDeploy_RevisionLocation'
+                             },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Revision' => 'revision',
+                       'ApplicationName' => 'applicationName'
+                     },
+  'IsRequired' => {
+                    'Revision' => 1,
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +103,7 @@ The name of the application that corresponds to the revision.
 
 
 
-=head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 B<REQUIRED> Revision => CodeDeploy_RevisionLocation
 
 Information about the application revision to get, including type and
 location.

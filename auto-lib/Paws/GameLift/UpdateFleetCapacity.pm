@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::UpdateFleetCapacity;
-  use Moose;
-  has DesiredInstances => (is => 'ro', isa => 'Int');
-  has FleetId => (is => 'ro', isa => 'Str', required => 1);
-  has MaxSize => (is => 'ro', isa => 'Int');
-  has MinSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GameLift::Types qw//;
+  has DesiredInstances => (is => 'ro', isa => Int, predicate => 1);
+  has FleetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxSize => (is => 'ro', isa => Int, predicate => 1);
+  has MinSize => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFleetCapacity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::UpdateFleetCapacityOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFleetCapacity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::UpdateFleetCapacityOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxSize' => {
+                              'type' => 'Int'
+                            },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'MinSize' => {
+                              'type' => 'Int'
+                            },
+               'DesiredInstances' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'IsRequired' => {
+                    'FleetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

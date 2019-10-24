@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::FSX::SelfManagedActiveDirectoryAttributes;
-  use Moose;
-  has DnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DomainName => (is => 'ro', isa => 'Str');
-  has FileSystemAdministratorsGroup => (is => 'ro', isa => 'Str');
-  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::FSX::Types qw//;
+  has DnsIps => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DomainName => (is => 'ro', isa => Str);
+  has FileSystemAdministratorsGroup => (is => 'ro', isa => Str);
+  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => Str);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'OrganizationalUnitDistinguishedName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'FileSystemAdministratorsGroup' => {
+                                                    'type' => 'Str'
+                                                  },
+               'DnsIps' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

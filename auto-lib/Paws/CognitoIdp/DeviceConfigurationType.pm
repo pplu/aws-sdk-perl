@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::DeviceConfigurationType;
-  use Moose;
-  has ChallengeRequiredOnNewDevice => (is => 'ro', isa => 'Bool');
-  has DeviceOnlyRememberedOnUserPrompt => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CognitoIdp::Types qw//;
+  has ChallengeRequiredOnNewDevice => (is => 'ro', isa => Bool);
+  has DeviceOnlyRememberedOnUserPrompt => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceOnlyRememberedOnUserPrompt' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'ChallengeRequiredOnNewDevice' => {
+                                                   'type' => 'Bool'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

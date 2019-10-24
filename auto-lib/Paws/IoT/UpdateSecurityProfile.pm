@@ -1,22 +1,81 @@
 
 package Paws::IoT::UpdateSecurityProfile;
-  use Moose;
-  has AdditionalMetricsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetain');
-  has AlertTargets => (is => 'ro', isa => 'Paws::IoT::AlertTargets', traits => ['NameInRequest'], request_name => 'alertTargets');
-  has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors');
-  has DeleteAdditionalMetricsToRetain => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'deleteAdditionalMetricsToRetain');
-  has DeleteAlertTargets => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'deleteAlertTargets');
-  has DeleteBehaviors => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'deleteBehaviors');
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'expectedVersion');
-  has SecurityProfileDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityProfileDescription');
-  has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'securityProfileName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::IoT::Types qw/IoT_Behavior IoT_AlertTargets/;
+  has AdditionalMetricsToRetain => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AlertTargets => (is => 'ro', isa => IoT_AlertTargets, predicate => 1);
+  has Behaviors => (is => 'ro', isa => ArrayRef[IoT_Behavior], predicate => 1);
+  has DeleteAdditionalMetricsToRetain => (is => 'ro', isa => Bool, predicate => 1);
+  has DeleteAlertTargets => (is => 'ro', isa => Bool, predicate => 1);
+  has DeleteBehaviors => (is => 'ro', isa => Bool, predicate => 1);
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has SecurityProfileDescription => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityProfileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSecurityProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/security-profiles/{securityProfileName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateSecurityProfileResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSecurityProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/security-profiles/{securityProfileName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateSecurityProfileResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'DeleteAlertTargets' => {
+                                         'type' => 'Bool'
+                                       },
+               'SecurityProfileName' => {
+                                          'type' => 'Str'
+                                        },
+               'Behaviors' => {
+                                'class' => 'Paws::IoT::Behavior',
+                                'type' => 'ArrayRef[IoT_Behavior]'
+                              },
+               'AlertTargets' => {
+                                   'class' => 'Paws::IoT::AlertTargets',
+                                   'type' => 'IoT_AlertTargets'
+                                 },
+               'DeleteAdditionalMetricsToRetain' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'AdditionalMetricsToRetain' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'DeleteBehaviors' => {
+                                      'type' => 'Bool'
+                                    },
+               'SecurityProfileDescription' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'ParamInURI' => {
+                    'SecurityProfileName' => 'securityProfileName'
+                  },
+  'ParamInQuery' => {
+                      'ExpectedVersion' => 'expectedVersion'
+                    },
+  'NameInRequest' => {
+                       'Behaviors' => 'behaviors',
+                       'DeleteAdditionalMetricsToRetain' => 'deleteAdditionalMetricsToRetain',
+                       'AlertTargets' => 'alertTargets',
+                       'AdditionalMetricsToRetain' => 'additionalMetricsToRetain',
+                       'DeleteAlertTargets' => 'deleteAlertTargets',
+                       'SecurityProfileDescription' => 'securityProfileDescription',
+                       'DeleteBehaviors' => 'deleteBehaviors'
+                     },
+  'IsRequired' => {
+                    'SecurityProfileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,13 +168,13 @@ also retained for any metric specified here.
 
 
 
-=head2 AlertTargets => L<Paws::IoT::AlertTargets>
+=head2 AlertTargets => IoT_AlertTargets
 
 Where the alerts are sent. (Alerts are always sent to the console.)
 
 
 
-=head2 Behaviors => ArrayRef[L<Paws::IoT::Behavior>]
+=head2 Behaviors => ArrayRef[IoT_Behavior]
 
 Specifies the behaviors that, when violated by a device (thing), cause
 an alert.

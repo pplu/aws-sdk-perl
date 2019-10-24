@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputLossBehavior;
-  use Moose;
-  has BlackFrameMsec => (is => 'ro', isa => 'Int', request_name => 'blackFrameMsec', traits => ['NameInRequest']);
-  has InputLossImageColor => (is => 'ro', isa => 'Str', request_name => 'inputLossImageColor', traits => ['NameInRequest']);
-  has InputLossImageSlate => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'inputLossImageSlate', traits => ['NameInRequest']);
-  has InputLossImageType => (is => 'ro', isa => 'Str', request_name => 'inputLossImageType', traits => ['NameInRequest']);
-  has RepeatFrameMsec => (is => 'ro', isa => 'Int', request_name => 'repeatFrameMsec', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has BlackFrameMsec => (is => 'ro', isa => Int);
+  has InputLossImageColor => (is => 'ro', isa => Str);
+  has InputLossImageSlate => (is => 'ro', isa => MediaLive_InputLocation);
+  has InputLossImageType => (is => 'ro', isa => Str);
+  has RepeatFrameMsec => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputLossImageColor' => {
+                                          'type' => 'Str'
+                                        },
+               'RepeatFrameMsec' => {
+                                      'type' => 'Int'
+                                    },
+               'BlackFrameMsec' => {
+                                     'type' => 'Int'
+                                   },
+               'InputLossImageType' => {
+                                         'type' => 'Str'
+                                       },
+               'InputLossImageSlate' => {
+                                          'class' => 'Paws::MediaLive::InputLocation',
+                                          'type' => 'MediaLive_InputLocation'
+                                        }
+             },
+  'NameInRequest' => {
+                       'InputLossImageColor' => 'inputLossImageColor',
+                       'RepeatFrameMsec' => 'repeatFrameMsec',
+                       'BlackFrameMsec' => 'blackFrameMsec',
+                       'InputLossImageType' => 'inputLossImageType',
+                       'InputLossImageSlate' => 'inputLossImageSlate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +88,7 @@ Input Loss Behavior
 use. Value: 6 hex characters representing the values of RGB.
 
 
-=head2 InputLossImageSlate => L<Paws::MediaLive::InputLocation>
+=head2 InputLossImageSlate => MediaLive_InputLocation
 
   When input loss image type is "slate" these fields specify the
 parameters for accessing the slate.

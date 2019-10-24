@@ -1,15 +1,44 @@
 
 package Paws::IoTAnalytics::UpdatePipeline;
-  use Moose;
-  has PipelineActivities => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::PipelineActivity]', traits => ['NameInRequest'], request_name => 'pipelineActivities', required => 1);
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'pipelineName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_PipelineActivity/;
+  has PipelineActivities => (is => 'ro', isa => ArrayRef[IoTAnalytics_PipelineActivity], required => 1, predicate => 1);
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipeline');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/pipelines/{pipelineName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePipeline');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/pipelines/{pipelineName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 },
+               'PipelineActivities' => {
+                                         'class' => 'Paws::IoTAnalytics::PipelineActivity',
+                                         'type' => 'ArrayRef[IoTAnalytics_PipelineActivity]'
+                                       }
+             },
+  'ParamInURI' => {
+                    'PipelineName' => 'pipelineName'
+                  },
+  'NameInRequest' => {
+                       'PipelineActivities' => 'pipelineActivities'
+                     },
+  'IsRequired' => {
+                    'PipelineName' => 1,
+                    'PipelineActivities' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +137,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+=head2 B<REQUIRED> PipelineActivities => ArrayRef[IoTAnalytics_PipelineActivity]
 
 A list of "PipelineActivity" objects. Activities perform
 transformations on your messages, such as removing, renaming or adding

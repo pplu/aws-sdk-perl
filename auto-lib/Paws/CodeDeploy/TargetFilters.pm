@@ -1,13 +1,28 @@
+# Generated from default/map_enum.tt
 package Paws::CodeDeploy::TargetFilters;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has ServerInstanceLabel => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TargetStatus => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has ServerInstanceLabel => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TargetStatus => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'ServerInstanceLabel' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                               'TargetStatus' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -43,10 +58,10 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ServerInstanceLabel => ArrayRef[Str|Undef]
+=head2 ServerInstanceLabel => 
 
 
-=head2 TargetStatus => ArrayRef[Str|Undef]
+=head2 TargetStatus => 
 
 
 

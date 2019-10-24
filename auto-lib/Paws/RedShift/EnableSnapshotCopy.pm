@@ -1,17 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::EnableSnapshotCopy;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has RetentionPeriod => (is => 'ro', isa => 'Int');
-  has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has RetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotCopyGrantName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::EnableSnapshotCopyResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EnableSnapshotCopyResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'EnableSnapshotCopy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::EnableSnapshotCopyResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'EnableSnapshotCopyResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetentionPeriod' => {
+                                      'type' => 'Int'
+                                    },
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'SnapshotCopyGrantName' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationRegion' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'DestinationRegion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

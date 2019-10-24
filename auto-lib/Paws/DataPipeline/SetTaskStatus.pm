@@ -1,17 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DataPipeline::SetTaskStatus;
-  use Moose;
-  has ErrorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorId' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
-  has ErrorStackTrace => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorStackTrace' );
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' , required => 1);
-  has TaskStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStatus' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw//;
+  has ErrorId => (is => 'ro', isa => Str, predicate => 1);
+  has ErrorMessage => (is => 'ro', isa => Str, predicate => 1);
+  has ErrorStackTrace => (is => 'ro', isa => Str, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskStatus => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTaskStatus');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::SetTaskStatusOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetTaskStatus');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DataPipeline::SetTaskStatusOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorId' => {
+                              'type' => 'Str'
+                            },
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'ErrorStackTrace' => {
+                                      'type' => 'Str'
+                                    },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'ErrorId' => 'errorId',
+                       'TaskStatus' => 'taskStatus',
+                       'TaskId' => 'taskId',
+                       'ErrorStackTrace' => 'errorStackTrace',
+                       'ErrorMessage' => 'errorMessage'
+                     },
+  'IsRequired' => {
+                    'TaskStatus' => 1,
+                    'TaskId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

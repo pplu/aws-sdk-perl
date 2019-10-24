@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::UserProfile;
-  use Moose;
-  has AllowSelfManagement => (is => 'ro', isa => 'Bool');
-  has IamUserArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SshPublicKey => (is => 'ro', isa => 'Str');
-  has SshUsername => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::OpsWorks::Types qw//;
+  has AllowSelfManagement => (is => 'ro', isa => Bool);
+  has IamUserArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SshPublicKey => (is => 'ro', isa => Str);
+  has SshUsername => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowSelfManagement' => {
+                                          'type' => 'Bool'
+                                        },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               'SshUsername' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IamUserArn' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

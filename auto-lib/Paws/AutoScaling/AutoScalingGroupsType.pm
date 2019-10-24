@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::AutoScalingGroupsType;
-  use Moose;
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AutoScalingGroup]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_AutoScalingGroup/;
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[AutoScaling_AutoScalingGroup], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingGroups' => {
+                                        'class' => 'Paws::AutoScaling::AutoScalingGroup',
+                                        'type' => 'ArrayRef[AutoScaling_AutoScalingGroup]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'AutoScalingGroups' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::AutoScaling::AutoScalingGroupsType
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AutoScalingGroups => ArrayRef[L<Paws::AutoScaling::AutoScalingGroup>]
+=head2 B<REQUIRED> AutoScalingGroups => ArrayRef[AutoScaling_AutoScalingGroup]
 
 The groups.
 

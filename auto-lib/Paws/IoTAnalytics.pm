@@ -1,14 +1,15 @@
 package Paws::IoTAnalytics;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'iotanalytics' }
   sub signing_name { 'iotanalytics' }
   sub version { '2017-11-27' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -368,7 +369,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =item ChannelName => Str
 
-=item Messages => ArrayRef[L<Paws::IoTAnalytics::Message>]
+=item Messages => ArrayRef[IoTAnalytics_Message]
 
 
 =back
@@ -404,11 +405,11 @@ Cancels the reprocessing of data through the pipeline.
 
 =item ChannelName => Str
 
-=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+=item [ChannelStorage => IoTAnalytics_ChannelStorage]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
-=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+=item [Tags => ArrayRef[IoTAnalytics_Tag]]
 
 
 =back
@@ -426,19 +427,19 @@ pipeline.
 
 =over
 
-=item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+=item Actions => ArrayRef[IoTAnalytics_DatasetAction]
 
 =item DatasetName => Str
 
-=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
+=item [ContentDeliveryRules => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
-=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+=item [Tags => ArrayRef[IoTAnalytics_Tag]]
 
-=item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+=item [Triggers => ArrayRef[IoTAnalytics_DatasetTrigger]]
 
-=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
+=item [VersioningConfiguration => IoTAnalytics_VersioningConfiguration]
 
 
 =back
@@ -478,11 +479,11 @@ query) or a "containerAction" (executing a containerized application).
 
 =item DatastoreName => Str
 
-=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
+=item [DatastoreStorage => IoTAnalytics_DatastoreStorage]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
-=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+=item [Tags => ArrayRef[IoTAnalytics_Tag]]
 
 
 =back
@@ -498,11 +499,11 @@ Creates a data store, which is a repository for messages.
 
 =over
 
-=item PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+=item PipelineActivities => ArrayRef[IoTAnalytics_PipelineActivity]
 
 =item PipelineName => Str
 
-=item [Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]]
+=item [Tags => ArrayRef[IoTAnalytics_Tag]]
 
 
 =back
@@ -820,7 +821,7 @@ Lists the tags (metadata) which you have assigned to the resource.
 
 =over
 
-=item LoggingOptions => L<Paws::IoTAnalytics::LoggingOptions>
+=item LoggingOptions => IoTAnalytics_LoggingOptions
 
 
 =back
@@ -844,7 +845,7 @@ minutes for that change to take effect.
 
 =item Payloads => ArrayRef[Str|Undef]
 
-=item PipelineActivity => L<Paws::IoTAnalytics::PipelineActivity>
+=item PipelineActivity => IoTAnalytics_PipelineActivity
 
 
 =back
@@ -906,7 +907,7 @@ Starts the reprocessing of raw message data through the pipeline.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+=item Tags => ArrayRef[IoTAnalytics_Tag]
 
 
 =back
@@ -943,9 +944,9 @@ Removes the given tags (metadata) from the resource.
 
 =item ChannelName => Str
 
-=item [ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>]
+=item [ChannelStorage => IoTAnalytics_ChannelStorage]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
 
 =back
@@ -961,17 +962,17 @@ Updates the settings of a channel.
 
 =over
 
-=item Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
+=item Actions => ArrayRef[IoTAnalytics_DatasetAction]
 
 =item DatasetName => Str
 
-=item [ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]]
+=item [ContentDeliveryRules => ArrayRef[IoTAnalytics_DatasetContentDeliveryRule]]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
-=item [Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]]
+=item [Triggers => ArrayRef[IoTAnalytics_DatasetTrigger]]
 
-=item [VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>]
+=item [VersioningConfiguration => IoTAnalytics_VersioningConfiguration]
 
 
 =back
@@ -989,9 +990,9 @@ Updates the settings of a data set.
 
 =item DatastoreName => Str
 
-=item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
+=item [DatastoreStorage => IoTAnalytics_DatastoreStorage]
 
-=item [RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>]
+=item [RetentionPeriod => IoTAnalytics_RetentionPeriod]
 
 
 =back
@@ -1007,7 +1008,7 @@ Updates the settings of a data store.
 
 =over
 
-=item PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
+=item PipelineActivities => ArrayRef[IoTAnalytics_PipelineActivity]
 
 =item PipelineName => Str
 

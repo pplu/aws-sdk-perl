@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::WriteApplicationSettingsRequest;
-  use Moose;
-  has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
-  has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
-  has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
-  has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignHook Pinpoint_QuietTime Pinpoint_CampaignLimits/;
+  has CampaignHook => (is => 'ro', isa => Pinpoint_CampaignHook);
+  has CloudWatchMetricsEnabled => (is => 'ro', isa => Bool);
+  has Limits => (is => 'ro', isa => Pinpoint_CampaignLimits);
+  has QuietTime => (is => 'ro', isa => Pinpoint_QuietTime);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limits' => {
+                             'class' => 'Paws::Pinpoint::CampaignLimits',
+                             'type' => 'Pinpoint_CampaignLimits'
+                           },
+               'QuietTime' => {
+                                'class' => 'Paws::Pinpoint::QuietTime',
+                                'type' => 'Pinpoint_QuietTime'
+                              },
+               'CloudWatchMetricsEnabled' => {
+                                               'type' => 'Bool'
+                                             },
+               'CampaignHook' => {
+                                   'class' => 'Paws::Pinpoint::CampaignHook',
+                                   'type' => 'Pinpoint_CampaignHook'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ Specifies the default settings for an application.
 =head1 ATTRIBUTES
 
 
-=head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
+=head2 CampaignHook => Pinpoint_CampaignHook
 
   The settings for the AWS Lambda function to use by default as a code
 hook for campaigns in the application. To override these settings for a
@@ -55,7 +84,7 @@ campaign.
 CloudWatch.
 
 
-=head2 Limits => L<Paws::Pinpoint::CampaignLimits>
+=head2 Limits => Pinpoint_CampaignLimits
 
   The default sending limits for campaigns in the application. To
 override these limits for a specific campaign, use the
@@ -63,7 +92,7 @@ override these limits for a specific campaign, use the
 Campaign resource to define custom limits for the campaign.
 
 
-=head2 QuietTime => L<Paws::Pinpoint::QuietTime>
+=head2 QuietTime => Pinpoint_QuietTime
 
   The default quiet time for campaigns in the application. Quiet time is
 a specific time range when campaigns don't send messages to endpoints,

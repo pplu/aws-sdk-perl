@@ -1,32 +1,101 @@
 
 package Paws::Route53::UpdateHealthCheck;
-  use Moose;
-  has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
-  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Disabled => (is => 'ro', isa => 'Bool');
-  has EnableSNI => (is => 'ro', isa => 'Bool');
-  has FailureThreshold => (is => 'ro', isa => 'Int');
-  has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
-  has HealthCheckId => (is => 'ro', isa => 'Str', uri_name => 'HealthCheckId', traits => ['ParamInURI'], required => 1);
-  has HealthCheckVersion => (is => 'ro', isa => 'Int');
-  has HealthThreshold => (is => 'ro', isa => 'Int');
-  has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');
-  has Inverted => (is => 'ro', isa => 'Bool');
-  has IPAddress => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResetElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResourcePath => (is => 'ro', isa => 'Str');
-  has SearchString => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::Route53::Types qw/Route53_AlarmIdentifier/;
+  has AlarmIdentifier => (is => 'ro', isa => Route53_AlarmIdentifier, predicate => 1);
+  has ChildHealthChecks => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Disabled => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableSNI => (is => 'ro', isa => Bool, predicate => 1);
+  has FailureThreshold => (is => 'ro', isa => Int, predicate => 1);
+  has FullyQualifiedDomainName => (is => 'ro', isa => Str, predicate => 1);
+  has HealthCheckId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has HealthCheckVersion => (is => 'ro', isa => Int, predicate => 1);
+  has HealthThreshold => (is => 'ro', isa => Int, predicate => 1);
+  has InsufficientDataHealthStatus => (is => 'ro', isa => Str, predicate => 1);
+  has Inverted => (is => 'ro', isa => Bool, predicate => 1);
+  has IPAddress => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has Regions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResetElements => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourcePath => (is => 'ro', isa => Str, predicate => 1);
+  has SearchString => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateHealthCheck');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/healthcheck/{HealthCheckId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::UpdateHealthCheckResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateHealthCheck');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/healthcheck/{HealthCheckId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::UpdateHealthCheckResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthThreshold' => {
+                                      'type' => 'Int'
+                                    },
+               'FailureThreshold' => {
+                                       'type' => 'Int'
+                                     },
+               'IPAddress' => {
+                                'type' => 'Str'
+                              },
+               'AlarmIdentifier' => {
+                                      'class' => 'Paws::Route53::AlarmIdentifier',
+                                      'type' => 'Route53_AlarmIdentifier'
+                                    },
+               'Disabled' => {
+                               'type' => 'Bool'
+                             },
+               'Regions' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SearchString' => {
+                                   'type' => 'Str'
+                                 },
+               'ResetElements' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ChildHealthChecks' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'InsufficientDataHealthStatus' => {
+                                                   'type' => 'Str'
+                                                 },
+               'HealthCheckVersion' => {
+                                         'type' => 'Int'
+                                       },
+               'HealthCheckId' => {
+                                    'type' => 'Str'
+                                  },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'FullyQualifiedDomainName' => {
+                                               'type' => 'Str'
+                                             },
+               'Inverted' => {
+                               'type' => 'Bool'
+                             },
+               'ResourcePath' => {
+                                   'type' => 'Str'
+                                 },
+               'EnableSNI' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'ParamInURI' => {
+                    'HealthCheckId' => 'HealthCheckId'
+                  },
+  'IsRequired' => {
+                    'HealthCheckId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +159,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>
+=head2 AlarmIdentifier => Route53_AlarmIdentifier
 
 A complex type that identifies the CloudWatch alarm that you want
 Amazon Route 53 health checkers to use to determine whether the

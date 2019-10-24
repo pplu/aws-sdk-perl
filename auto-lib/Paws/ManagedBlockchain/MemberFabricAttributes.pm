@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ManagedBlockchain::MemberFabricAttributes;
-  use Moose;
-  has AdminUsername => (is => 'ro', isa => 'Str');
-  has CaEndpoint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw//;
+  has AdminUsername => (is => 'ro', isa => Str);
+  has CaEndpoint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdminUsername' => {
+                                    'type' => 'Str'
+                                  },
+               'CaEndpoint' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

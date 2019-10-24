@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::Batch::ContainerOverrides;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
-  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::Batch::Types qw/Batch_ResourceRequirement Batch_KeyValuePair/;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Environment => (is => 'ro', isa => ArrayRef[Batch_KeyValuePair]);
+  has InstanceType => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Int);
+  has ResourceRequirements => (is => 'ro', isa => ArrayRef[Batch_ResourceRequirement]);
+  has Vcpus => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Environment' => {
+                                  'class' => 'Paws::Batch::KeyValuePair',
+                                  'type' => 'ArrayRef[Batch_KeyValuePair]'
+                                },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Vcpus' => {
+                            'type' => 'Int'
+                          },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Memory' => {
+                             'type' => 'Int'
+                           },
+               'ResourceRequirements' => {
+                                           'class' => 'Paws::Batch::ResourceRequirement',
+                                           'type' => 'ArrayRef[Batch_ResourceRequirement]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'Environment' => 'environment',
+                       'Command' => 'command',
+                       'Vcpus' => 'vcpus',
+                       'InstanceType' => 'instanceType',
+                       'Memory' => 'memory',
+                       'ResourceRequirements' => 'resourceRequirements'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +89,7 @@ The overrides that should be sent to a container.
 from the Docker image or the job definition.
 
 
-=head2 Environment => ArrayRef[L<Paws::Batch::KeyValuePair>]
+=head2 Environment => ArrayRef[Batch_KeyValuePair]
 
   The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or
@@ -71,7 +113,7 @@ is not valid for single-node container jobs.
 the value set in the job definition.
 
 
-=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+=head2 ResourceRequirements => ArrayRef[Batch_ResourceRequirement]
 
   The type and amount of a resource to assign to a container. This value
 overrides the value set in the job definition. Currently, the only

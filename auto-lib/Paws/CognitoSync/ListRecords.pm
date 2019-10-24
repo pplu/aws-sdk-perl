@@ -1,20 +1,69 @@
 
 package Paws::CognitoSync::ListRecords;
-  use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
-  has LastSyncCount => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'lastSyncCount');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has SyncSessionToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'syncSessionToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoSync::Types qw//;
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LastSyncCount => (is => 'ro', isa => Int, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SyncSessionToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRecords');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::ListRecordsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRecords');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::ListRecordsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LastSyncCount' => {
+                                    'type' => 'Int'
+                                  },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'SyncSessionToken' => {
+                                       'type' => 'Str'
+                                     },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'IdentityPoolId' => 'IdentityPoolId',
+                    'DatasetName' => 'DatasetName',
+                    'IdentityId' => 'IdentityId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'LastSyncCount' => 'lastSyncCount',
+                      'SyncSessionToken' => 'syncSessionToken',
+                      'MaxResults' => 'maxResults'
+                    },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1,
+                    'DatasetName' => 1,
+                    'IdentityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

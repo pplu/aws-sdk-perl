@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::Limits;
   use Moo;
   use Types::Standard qw/ArrayRef/;

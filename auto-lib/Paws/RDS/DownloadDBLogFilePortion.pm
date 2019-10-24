@@ -1,16 +1,45 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::DownloadDBLogFilePortion;
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has LogFileName => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has NumberOfLines => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::RDS::Types qw//;
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LogFileName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has NumberOfLines => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortion');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DownloadDBLogFilePortionDetails');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DownloadDBLogFilePortionResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DownloadDBLogFilePortion');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DownloadDBLogFilePortionDetails');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DownloadDBLogFilePortionResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LogFileName' => {
+                                  'type' => 'Str'
+                                },
+               'NumberOfLines' => {
+                                    'type' => 'Int'
+                                  },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1,
+                    'LogFileName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

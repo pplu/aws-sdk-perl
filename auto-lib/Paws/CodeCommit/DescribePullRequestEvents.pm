@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::DescribePullRequestEvents;
-  use Moose;
-  has ActorArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actorArn' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has PullRequestEventType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestEventType' );
-  has PullRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has ActorArn => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PullRequestEventType => (is => 'ro', isa => Str, predicate => 1);
+  has PullRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePullRequestEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::DescribePullRequestEventsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribePullRequestEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::DescribePullRequestEventsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ActorArn' => {
+                               'type' => 'Str'
+                             },
+               'PullRequestEventType' => {
+                                           'type' => 'Str'
+                                         },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'PullRequestId' => 'pullRequestId',
+                       'NextToken' => 'nextToken',
+                       'ActorArn' => 'actorArn',
+                       'PullRequestEventType' => 'pullRequestEventType',
+                       'MaxResults' => 'maxResults'
+                     },
+  'IsRequired' => {
+                    'PullRequestId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

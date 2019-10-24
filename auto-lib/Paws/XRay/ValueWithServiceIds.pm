@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::XRay::ValueWithServiceIds;
-  use Moose;
-  has AnnotationValue => (is => 'ro', isa => 'Paws::XRay::AnnotationValue');
-  has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::XRay::Types qw/XRay_AnnotationValue XRay_ServiceId/;
+  has AnnotationValue => (is => 'ro', isa => XRay_AnnotationValue);
+  has ServiceIds => (is => 'ro', isa => ArrayRef[XRay_ServiceId]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceIds' => {
+                                 'class' => 'Paws::XRay::ServiceId',
+                                 'type' => 'ArrayRef[XRay_ServiceId]'
+                               },
+               'AnnotationValue' => {
+                                      'class' => 'Paws::XRay::AnnotationValue',
+                                      'type' => 'XRay_AnnotationValue'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ Information about a segment annotation.
 =head1 ATTRIBUTES
 
 
-=head2 AnnotationValue => L<Paws::XRay::AnnotationValue>
+=head2 AnnotationValue => XRay_AnnotationValue
 
   Values of the annotation.
 
 
-=head2 ServiceIds => ArrayRef[L<Paws::XRay::ServiceId>]
+=head2 ServiceIds => ArrayRef[XRay_ServiceId]
 
   Services to which the annotation applies.
 

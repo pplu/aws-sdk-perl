@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::AddAttributesActivity;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoTAnalytics::AttributeNameMapping', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_AttributeNameMapping/;
+  has Attributes => (is => 'ro', isa => IoTAnalytics_AttributeNameMapping, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::IoTAnalytics::AttributeNameMapping',
+                                 'type' => 'IoTAnalytics_AttributeNameMapping'
+                               },
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'attributes',
+                       'Next' => 'next',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Attributes' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +72,7 @@ the message.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::IoTAnalytics::AttributeNameMapping>
+=head2 B<REQUIRED> Attributes => IoTAnalytics_AttributeNameMapping
 
   A list of 1-50 "AttributeNameMapping" objects that map an existing
 attribute to a new attribute.

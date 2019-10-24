@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::QueueConfiguration;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
@@ -27,7 +28,11 @@ package Paws::S3::QueueConfiguration;
   'NameInRequest' => {
                        'QueueArn' => 'Queue',
                        'Events' => 'Event'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueArn' => 1,
+                    'Events' => 1
+                  }
 }
 ;
     return $Params_map;

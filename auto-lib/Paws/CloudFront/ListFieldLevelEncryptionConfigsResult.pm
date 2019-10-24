@@ -1,11 +1,30 @@
 
 package Paws::CloudFront::ListFieldLevelEncryptionConfigsResult;
-  use Moose;
-  has FieldLevelEncryptionList => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionList');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionList/;
+  has FieldLevelEncryptionList => (is => 'ro', isa => CloudFront_FieldLevelEncryptionList);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'FieldLevelEncryptionList');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldLevelEncryptionList' => {
+                                               'class' => 'Paws::CloudFront::FieldLevelEncryptionList',
+                                               'type' => 'CloudFront_FieldLevelEncryptionList'
+                                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +36,7 @@ Paws::CloudFront::ListFieldLevelEncryptionConfigsResult
 =head1 ATTRIBUTES
 
 
-=head2 FieldLevelEncryptionList => L<Paws::CloudFront::FieldLevelEncryptionList>
+=head2 FieldLevelEncryptionList => CloudFront_FieldLevelEncryptionList
 
 Returns a list of all field-level encryption configurations that have
 been created in CloudFront for this account.

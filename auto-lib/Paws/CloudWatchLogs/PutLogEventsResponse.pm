@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::PutLogEventsResponse;
-  use Moose;
-  has NextSequenceToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextSequenceToken' );
-  has RejectedLogEventsInfo => (is => 'ro', isa => 'Paws::CloudWatchLogs::RejectedLogEventsInfo', traits => ['NameInRequest'], request_name => 'rejectedLogEventsInfo' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_RejectedLogEventsInfo/;
+  has NextSequenceToken => (is => 'ro', isa => Str);
+  has RejectedLogEventsInfo => (is => 'ro', isa => CloudWatchLogs_RejectedLogEventsInfo);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextSequenceToken' => {
+                                        'type' => 'Str'
+                                      },
+               'RejectedLogEventsInfo' => {
+                                            'class' => 'Paws::CloudWatchLogs::RejectedLogEventsInfo',
+                                            'type' => 'CloudWatchLogs_RejectedLogEventsInfo'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextSequenceToken' => 'nextSequenceToken',
+                       'RejectedLogEventsInfo' => 'rejectedLogEventsInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +46,7 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 The next sequence token.
 
 
-=head2 RejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
+=head2 RejectedLogEventsInfo => CloudWatchLogs_RejectedLogEventsInfo
 
 The rejected events.
 

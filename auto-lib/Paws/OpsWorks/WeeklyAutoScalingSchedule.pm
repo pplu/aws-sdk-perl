@@ -1,12 +1,54 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::WeeklyAutoScalingSchedule;
-  use Moose;
-  has Friday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Monday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Saturday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Sunday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Thursday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Tuesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Wednesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::OpsWorks::Types qw/OpsWorks_DailyAutoScalingSchedule/;
+  has Friday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Monday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Saturday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Sunday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Thursday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Tuesday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+  has Wednesday => (is => 'ro', isa => OpsWorks_DailyAutoScalingSchedule);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tuesday' => {
+                              'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                              'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                            },
+               'Saturday' => {
+                               'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                               'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                             },
+               'Sunday' => {
+                             'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                             'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                           },
+               'Wednesday' => {
+                                'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                                'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                              },
+               'Friday' => {
+                             'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                             'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                           },
+               'Thursday' => {
+                               'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                               'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                             },
+               'Monday' => {
+                             'class' => 'Paws::OpsWorks::DailyAutoScalingSchedule',
+                             'type' => 'OpsWorks_DailyAutoScalingSchedule'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,37 +110,37 @@ C<{ "12":"on", "13":"on", "14":"on", "15":"on" }>
 =head1 ATTRIBUTES
 
 
-=head2 Friday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Friday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Friday.
 
 
-=head2 Monday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Monday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Monday.
 
 
-=head2 Saturday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Saturday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Saturday.
 
 
-=head2 Sunday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Sunday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Sunday.
 
 
-=head2 Thursday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Thursday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Thursday.
 
 
-=head2 Tuesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Tuesday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Tuesday.
 
 
-=head2 Wednesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Wednesday => OpsWorks_DailyAutoScalingSchedule
 
   The schedule for Wednesday.
 

@@ -1,24 +1,87 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ResizeProgressMessage;
-  use Moose;
-  has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
-  has DataTransferProgressPercent => (is => 'ro', isa => 'Num');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
-  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
-  has ImportTablesCompleted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ImportTablesInProgress => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ImportTablesNotStarted => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Message => (is => 'ro', isa => 'Str');
-  has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
-  has ResizeType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TargetClusterType => (is => 'ro', isa => 'Str');
-  has TargetEncryptionType => (is => 'ro', isa => 'Str');
-  has TargetNodeType => (is => 'ro', isa => 'Str');
-  has TargetNumberOfNodes => (is => 'ro', isa => 'Int');
-  has TotalResizeDataInMegaBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Num Int ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has AvgResizeRateInMegaBytesPerSecond => (is => 'ro', isa => Num);
+  has DataTransferProgressPercent => (is => 'ro', isa => Num);
+  has ElapsedTimeInSeconds => (is => 'ro', isa => Int);
+  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => Int);
+  has ImportTablesCompleted => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ImportTablesInProgress => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ImportTablesNotStarted => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Message => (is => 'ro', isa => Str);
+  has ProgressInMegaBytes => (is => 'ro', isa => Int);
+  has ResizeType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TargetClusterType => (is => 'ro', isa => Str);
+  has TargetEncryptionType => (is => 'ro', isa => Str);
+  has TargetNodeType => (is => 'ro', isa => Str);
+  has TargetNumberOfNodes => (is => 'ro', isa => Int);
+  has TotalResizeDataInMegaBytes => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetEncryptionType' => {
+                                           'type' => 'Str'
+                                         },
+               'TargetClusterType' => {
+                                        'type' => 'Str'
+                                      },
+               'DataTransferProgressPercent' => {
+                                                  'type' => 'Num'
+                                                },
+               'TotalResizeDataInMegaBytes' => {
+                                                 'type' => 'Int'
+                                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ImportTablesCompleted' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'AvgResizeRateInMegaBytesPerSecond' => {
+                                                        'type' => 'Num'
+                                                      },
+               'TargetNumberOfNodes' => {
+                                          'type' => 'Int'
+                                        },
+               'ImportTablesInProgress' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'ImportTablesNotStarted' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ResizeType' => {
+                                 'type' => 'Str'
+                               },
+               'ProgressInMegaBytes' => {
+                                          'type' => 'Int'
+                                        },
+               'ElapsedTimeInSeconds' => {
+                                           'type' => 'Int'
+                                         },
+               'EstimatedTimeToCompletionInSeconds' => {
+                                                         'type' => 'Int'
+                                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TargetNodeType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

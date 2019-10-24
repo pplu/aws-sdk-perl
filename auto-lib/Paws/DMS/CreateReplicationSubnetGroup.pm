@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::CreateReplicationSubnetGroup;
-  use Moose;
-  has ReplicationSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DMS::Types qw/DMS_Tag/;
+  has ReplicationSubnetGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DMS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateReplicationSubnetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::CreateReplicationSubnetGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateReplicationSubnetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::CreateReplicationSubnetGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationSubnetGroupIdentifier' => {
+                                                       'type' => 'Str'
+                                                     },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::DMS::Tag',
+                           'type' => 'ArrayRef[DMS_Tag]'
+                         },
+               'ReplicationSubnetGroupDescription' => {
+                                                        'type' => 'Str'
+                                                      }
+             },
+  'IsRequired' => {
+                    'ReplicationSubnetGroupIdentifier' => 1,
+                    'SubnetIds' => 1,
+                    'ReplicationSubnetGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +111,7 @@ The EC2 subnet IDs for the subnet group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
+=head2 Tags => ArrayRef[DMS_Tag]
 
 The tag to be assigned to the subnet group.
 

@@ -1,16 +1,48 @@
 
 package Paws::ApiGatewayV2::UpdateDeployment;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'deploymentId', required => 1);
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeploymentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDeployment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/deployments/{deploymentId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateDeploymentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDeployment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/deployments/{deploymentId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateDeploymentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'DeploymentId' => 'deploymentId',
+                    'ApiId' => 'apiId'
+                  },
+  'NameInRequest' => {
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'DeploymentId' => 1,
+                    'ApiId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

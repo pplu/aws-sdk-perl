@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::DeviceStatusInfo;
-  use Moose;
-  has ConnectionStatus => (is => 'ro', isa => 'Str');
-  has DeviceStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::DeviceStatusDetail]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_DeviceStatusDetail/;
+  has ConnectionStatus => (is => 'ro', isa => Str);
+  has DeviceStatusDetails => (is => 'ro', isa => ArrayRef[AlexaForBusiness_DeviceStatusDetail]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceStatusDetails' => {
+                                          'class' => 'Paws::AlexaForBusiness::DeviceStatusDetail',
+                                          'type' => 'ArrayRef[AlexaForBusiness_DeviceStatusDetail]'
+                                        },
+               'ConnectionStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ Detailed information about a device's status.
 device.
 
 
-=head2 DeviceStatusDetails => ArrayRef[L<Paws::AlexaForBusiness::DeviceStatusDetail>]
+=head2 DeviceStatusDetails => ArrayRef[AlexaForBusiness_DeviceStatusDetail]
 
   One or more device status detail descriptions.
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::IntOptions;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Int');
-  has FacetEnabled => (is => 'ro', isa => 'Bool');
-  has ReturnEnabled => (is => 'ro', isa => 'Bool');
-  has SearchEnabled => (is => 'ro', isa => 'Bool');
-  has SortEnabled => (is => 'ro', isa => 'Bool');
-  has SourceField => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::CloudSearch::Types qw//;
+  has DefaultValue => (is => 'ro', isa => Int);
+  has FacetEnabled => (is => 'ro', isa => Bool);
+  has ReturnEnabled => (is => 'ro', isa => Bool);
+  has SearchEnabled => (is => 'ro', isa => Bool);
+  has SortEnabled => (is => 'ro', isa => Bool);
+  has SourceField => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'SortEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'SearchEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'FacetEnabled' => {
+                                   'type' => 'Bool'
+                                 },
+               'SourceField' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultValue' => {
+                                   'type' => 'Int'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

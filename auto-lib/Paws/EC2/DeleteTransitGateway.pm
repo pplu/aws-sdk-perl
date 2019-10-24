@@ -12,7 +12,7 @@ package Paws::EC2::DeleteTransitGateway;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteTransitGatewayResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TransitGatewayId' => {
@@ -21,11 +21,14 @@ package Paws::EC2::DeleteTransitGateway;
                'DryRun' => {
                              'type' => 'Bool'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'TransitGatewayId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

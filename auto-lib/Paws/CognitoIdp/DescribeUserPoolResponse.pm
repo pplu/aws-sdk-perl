@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::DescribeUserPoolResponse;
-  use Moose;
-  has UserPool => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_UserPoolType/;
+  has UserPool => (is => 'ro', isa => CognitoIdp_UserPoolType);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UserPool' => {
+                               'class' => 'Paws::CognitoIdp::UserPoolType',
+                               'type' => 'CognitoIdp_UserPoolType'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::CognitoIdp::DescribeUserPoolResponse
 =head1 ATTRIBUTES
 
 
-=head2 UserPool => L<Paws::CognitoIdp::UserPoolType>
+=head2 UserPool => CognitoIdp_UserPoolType
 
 The container of metadata returned by the server to describe the pool.
 

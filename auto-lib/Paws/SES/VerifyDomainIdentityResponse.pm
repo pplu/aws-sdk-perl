@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::VerifyDomainIdentityResponse;
   use Moo;
@@ -15,7 +16,10 @@ package Paws::SES::VerifyDomainIdentityResponse;
                'VerificationToken' => {
                                         'type' => 'Str'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'VerificationToken' => 1
+                  }
 }
 ;
     return $Params_map;

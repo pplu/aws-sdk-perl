@@ -1,14 +1,15 @@
 package Paws::GroundStation;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'groundstation' }
   sub signing_name { 'groundstation' }
   sub version { '2019-05-23' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -339,11 +340,11 @@ Cancels a contact with a specified contact ID.
 
 =over
 
-=item ConfigData => L<Paws::GroundStation::ConfigTypeData>
+=item ConfigData => GroundStation_ConfigTypeData
 
 =item Name => Str
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item [Tags => GroundStation_TagsMap]
 
 
 =back
@@ -361,9 +362,9 @@ Only one type of C<configData> can be specified.
 
 =over
 
-=item EndpointDetails => ArrayRef[L<Paws::GroundStation::EndpointDetails>]
+=item EndpointDetails => ArrayRef[GroundStation_EndpointDetails]
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item [Tags => GroundStation_TagsMap]
 
 
 =back
@@ -399,7 +400,7 @@ C<Config> must match a C<DataflowEndpoint> in the same group.
 
 =item [ContactPrePassDurationSeconds => Int]
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item [Tags => GroundStation_TagsMap]
 
 
 =back
@@ -719,7 +720,7 @@ Returns a list of tags or a specified resource.
 
 =item StartTime => Str
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item [Tags => GroundStation_TagsMap]
 
 
 =back
@@ -737,7 +738,7 @@ Reserves a contact using specified parameters.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::GroundStation::TagsMap>]
+=item [Tags => GroundStation_TagsMap]
 
 
 =back
@@ -771,7 +772,7 @@ Deassigns a resource tag.
 
 =over
 
-=item ConfigData => L<Paws::GroundStation::ConfigTypeData>
+=item ConfigData => GroundStation_ConfigTypeData
 
 =item ConfigId => Str
 

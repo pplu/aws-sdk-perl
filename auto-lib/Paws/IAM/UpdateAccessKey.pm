@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateAccessKey;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::UpdateAccessKey;
                'Status' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'AccessKeyId' => 1,
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

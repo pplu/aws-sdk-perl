@@ -1,16 +1,42 @@
 
 package Paws::SecurityHub::ListMembers;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has OnlyAssociated => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'OnlyAssociated');
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::SecurityHub::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has OnlyAssociated => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMembers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/members');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecurityHub::ListMembersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListMembers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/members');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecurityHub::ListMembersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'OnlyAssociated' => {
+                                     'type' => 'Bool'
+                                   },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken',
+                      'OnlyAssociated' => 'OnlyAssociated',
+                      'MaxResults' => 'MaxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

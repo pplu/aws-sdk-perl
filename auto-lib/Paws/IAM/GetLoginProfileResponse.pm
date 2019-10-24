@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetLoginProfileResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_LoginProfile/;
   has LoginProfile => (is => 'ro', isa => IAM_LoginProfile, required => 1);

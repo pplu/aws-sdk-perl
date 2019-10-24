@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::CloudWatchLogsLogStream;
-  use Moose;
-  has BatchCount => (is => 'ro', isa => 'Int');
-  has BatchSize => (is => 'ro', isa => 'Int');
-  has BufferDuration => (is => 'ro', isa => 'Int');
-  has DatetimeFormat => (is => 'ro', isa => 'Str');
-  has Encoding => (is => 'ro', isa => 'Str');
-  has File => (is => 'ro', isa => 'Str');
-  has FileFingerprintLines => (is => 'ro', isa => 'Str');
-  has InitialPosition => (is => 'ro', isa => 'Str');
-  has LogGroupName => (is => 'ro', isa => 'Str');
-  has MultiLineStartPattern => (is => 'ro', isa => 'Str');
-  has TimeZone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::OpsWorks::Types qw//;
+  has BatchCount => (is => 'ro', isa => Int);
+  has BatchSize => (is => 'ro', isa => Int);
+  has BufferDuration => (is => 'ro', isa => Int);
+  has DatetimeFormat => (is => 'ro', isa => Str);
+  has Encoding => (is => 'ro', isa => Str);
+  has File => (is => 'ro', isa => Str);
+  has FileFingerprintLines => (is => 'ro', isa => Str);
+  has InitialPosition => (is => 'ro', isa => Str);
+  has LogGroupName => (is => 'ro', isa => Str);
+  has MultiLineStartPattern => (is => 'ro', isa => Str);
+  has TimeZone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchCount' => {
+                                 'type' => 'Int'
+                               },
+               'DatetimeFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'BufferDuration' => {
+                                     'type' => 'Int'
+                                   },
+               'TimeZone' => {
+                               'type' => 'Str'
+                             },
+               'Encoding' => {
+                               'type' => 'Str'
+                             },
+               'InitialPosition' => {
+                                      'type' => 'Str'
+                                    },
+               'LogGroupName' => {
+                                   'type' => 'Str'
+                                 },
+               'MultiLineStartPattern' => {
+                                            'type' => 'Str'
+                                          },
+               'BatchSize' => {
+                                'type' => 'Int'
+                              },
+               'File' => {
+                           'type' => 'Str'
+                         },
+               'FileFingerprintLines' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteAccessKey;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::DeleteAccessKey;
                'AccessKeyId' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'AccessKeyId' => 1
+                  }
 }
 ;
     return $Params_map;

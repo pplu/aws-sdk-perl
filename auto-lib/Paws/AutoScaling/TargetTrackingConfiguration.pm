@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::TargetTrackingConfiguration;
-  use Moose;
-  has CustomizedMetricSpecification => (is => 'ro', isa => 'Paws::AutoScaling::CustomizedMetricSpecification');
-  has DisableScaleIn => (is => 'ro', isa => 'Bool');
-  has PredefinedMetricSpecification => (is => 'ro', isa => 'Paws::AutoScaling::PredefinedMetricSpecification');
-  has TargetValue => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Num/;
+  use Paws::AutoScaling::Types qw/AutoScaling_CustomizedMetricSpecification AutoScaling_PredefinedMetricSpecification/;
+  has CustomizedMetricSpecification => (is => 'ro', isa => AutoScaling_CustomizedMetricSpecification);
+  has DisableScaleIn => (is => 'ro', isa => Bool);
+  has PredefinedMetricSpecification => (is => 'ro', isa => AutoScaling_PredefinedMetricSpecification);
+  has TargetValue => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetValue' => {
+                                  'type' => 'Num'
+                                },
+               'CustomizedMetricSpecification' => {
+                                                    'class' => 'Paws::AutoScaling::CustomizedMetricSpecification',
+                                                    'type' => 'AutoScaling_CustomizedMetricSpecification'
+                                                  },
+               'PredefinedMetricSpecification' => {
+                                                    'class' => 'Paws::AutoScaling::PredefinedMetricSpecification',
+                                                    'type' => 'AutoScaling_PredefinedMetricSpecification'
+                                                  },
+               'DisableScaleIn' => {
+                                     'type' => 'Bool'
+                                   }
+             },
+  'IsRequired' => {
+                    'TargetValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +71,7 @@ Amazon EC2 Auto Scaling.
 =head1 ATTRIBUTES
 
 
-=head2 CustomizedMetricSpecification => L<Paws::AutoScaling::CustomizedMetricSpecification>
+=head2 CustomizedMetricSpecification => AutoScaling_CustomizedMetricSpecification
 
   A customized metric. You can specify either a predefined metric or a
 customized metric.
@@ -55,7 +86,7 @@ target tracking scaling policy can remove instances from the Auto
 Scaling group. The default is disabled.
 
 
-=head2 PredefinedMetricSpecification => L<Paws::AutoScaling::PredefinedMetricSpecification>
+=head2 PredefinedMetricSpecification => AutoScaling_PredefinedMetricSpecification
 
   A predefined metric. You can specify either a predefined metric or a
 customized metric.

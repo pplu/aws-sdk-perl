@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::VerifyDomainDkim;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::SES::VerifyDomainDkim;
                'Domain' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Domain' => 1
+                  }
 }
 ;
     return $Params_map;

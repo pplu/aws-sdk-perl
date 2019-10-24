@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSMv2::TagResource;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudHSMv2::Types qw/CloudHSMv2_Tag/;
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagList => (is => 'ro', isa => ArrayRef[CloudHSMv2_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSMv2::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSMv2::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'TagList' => {
+                              'class' => 'Paws::CloudHSMv2::Tag',
+                              'type' => 'ArrayRef[CloudHSMv2_Tag]'
+                            }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'TagList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ find the cluster ID, use DescribeClusters.
 
 
 
-=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
+=head2 B<REQUIRED> TagList => ArrayRef[CloudHSMv2_Tag]
 
 A list of one or more tags.
 

@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::IoT::AbortConfig;
-  use Moose;
-  has CriteriaList => (is => 'ro', isa => 'ArrayRef[Paws::IoT::AbortCriteria]', request_name => 'criteriaList', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoT::Types qw/IoT_AbortCriteria/;
+  has CriteriaList => (is => 'ro', isa => ArrayRef[IoT_AbortCriteria], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CriteriaList' => {
+                                   'class' => 'Paws::IoT::AbortCriteria',
+                                   'type' => 'ArrayRef[IoT_AbortCriteria]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'CriteriaList' => 'criteriaList'
+                     },
+  'IsRequired' => {
+                    'CriteriaList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ Details of abort criteria to abort the job.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CriteriaList => ArrayRef[L<Paws::IoT::AbortCriteria>]
+=head2 B<REQUIRED> CriteriaList => ArrayRef[IoT_AbortCriteria]
 
   The list of abort criteria to define rules to abort the job.
 

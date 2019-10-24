@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AppStream::CopyImage;
-  use Moose;
-  has DestinationImageDescription => (is => 'ro', isa => 'Str');
-  has DestinationImageName => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationRegion => (is => 'ro', isa => 'Str', required => 1);
-  has SourceImageName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw//;
+  has DestinationImageDescription => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationImageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DestinationRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceImageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyImage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppStream::CopyImageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyImage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppStream::CopyImageResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceImageName' => {
+                                      'type' => 'Str'
+                                    },
+               'DestinationImageDescription' => {
+                                                  'type' => 'Str'
+                                                },
+               'DestinationRegion' => {
+                                        'type' => 'Str'
+                                      },
+               'DestinationImageName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'SourceImageName' => 1,
+                    'DestinationRegion' => 1,
+                    'DestinationImageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::ListFileSharesOutput;
-  use Moose;
-  has FileShareInfoList => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::FileShareInfo]');
-  has Marker => (is => 'ro', isa => 'Str');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_FileShareInfo/;
+  has FileShareInfoList => (is => 'ro', isa => ArrayRef[StorageGateway_FileShareInfo]);
+  has Marker => (is => 'ro', isa => Str);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileShareInfoList' => {
+                                        'class' => 'Paws::StorageGateway::FileShareInfo',
+                                        'type' => 'ArrayRef[StorageGateway_FileShareInfo]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::StorageGateway::ListFileSharesOutput
 =head1 ATTRIBUTES
 
 
-=head2 FileShareInfoList => ArrayRef[L<Paws::StorageGateway::FileShareInfo>]
+=head2 FileShareInfoList => ArrayRef[StorageGateway_FileShareInfo]
 
 An array of information about the file gateway's file shares.
 

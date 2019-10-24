@@ -1,10 +1,38 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::GetAssessmentReportResponse;
-  use Moose;
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
-  has Url => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'url' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Url => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Url' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'Url' => 'url'
+                     },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

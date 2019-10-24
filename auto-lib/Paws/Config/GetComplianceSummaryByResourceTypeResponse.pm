@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::GetComplianceSummaryByResourceTypeResponse;
-  use Moose;
-  has ComplianceSummariesByResourceType => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceSummaryByResourceType]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ComplianceSummaryByResourceType/;
+  has ComplianceSummariesByResourceType => (is => 'ro', isa => ArrayRef[Config_ComplianceSummaryByResourceType]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ComplianceSummariesByResourceType' => {
+                                                        'class' => 'Paws::Config::ComplianceSummaryByResourceType',
+                                                        'type' => 'ArrayRef[Config_ComplianceSummaryByResourceType]'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Config::GetComplianceSummaryByResourceTypeResponse
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceSummariesByResourceType => ArrayRef[L<Paws::Config::ComplianceSummaryByResourceType>]
+=head2 ComplianceSummariesByResourceType => ArrayRef[Config_ComplianceSummaryByResourceType]
 
 The number of resources that are compliant and the number that are
 noncompliant. If one or more resource types were provided with the

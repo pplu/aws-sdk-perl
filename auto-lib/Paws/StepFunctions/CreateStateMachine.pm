@@ -1,16 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StepFunctions::CreateStateMachine;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_Tag/;
+  has Definition => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StepFunctions_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStateMachine');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::CreateStateMachineOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateStateMachine');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StepFunctions::CreateStateMachineOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Definition' => {
+                                 'type' => 'Str'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::StepFunctions::Tag',
+                           'type' => 'ArrayRef[StepFunctions_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Definition' => 'definition',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'Definition' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -103,7 +140,7 @@ machine.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+=head2 Tags => ArrayRef[StepFunctions_Tag]
 
 Tags to be added when creating a state machine.
 

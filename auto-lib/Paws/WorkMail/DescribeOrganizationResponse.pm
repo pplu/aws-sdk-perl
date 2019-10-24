@@ -1,16 +1,55 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkMail::DescribeOrganizationResponse;
-  use Moose;
-  has Alias => (is => 'ro', isa => 'Str');
-  has CompletedDate => (is => 'ro', isa => 'Str');
-  has DefaultMailDomain => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DirectoryType => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has OrganizationId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has Alias => (is => 'ro', isa => Str);
+  has CompletedDate => (is => 'ro', isa => Str);
+  has DefaultMailDomain => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DirectoryType => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has OrganizationId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'DefaultMailDomain' => {
+                                        'type' => 'Str'
+                                      },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Alias' => {
+                            'type' => 'Str'
+                          },
+               'CompletedDate' => {
+                                    'type' => 'Str'
+                                  },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DirectoryType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

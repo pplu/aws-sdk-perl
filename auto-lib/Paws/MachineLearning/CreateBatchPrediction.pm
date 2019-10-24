@@ -1,17 +1,51 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MachineLearning::CreateBatchPrediction;
-  use Moose;
-  has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str', required => 1);
-  has BatchPredictionId => (is => 'ro', isa => 'Str', required => 1);
-  has BatchPredictionName => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str', required => 1);
-  has OutputUri => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw//;
+  has BatchPredictionDataSourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BatchPredictionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BatchPredictionName => (is => 'ro', isa => Str, predicate => 1);
+  has MLModelId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputUri => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateBatchPrediction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateBatchPredictionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateBatchPrediction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MachineLearning::CreateBatchPredictionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BatchPredictionId' => {
+                                        'type' => 'Str'
+                                      },
+               'BatchPredictionName' => {
+                                          'type' => 'Str'
+                                        },
+               'OutputUri' => {
+                                'type' => 'Str'
+                              },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'BatchPredictionDataSourceId' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'IsRequired' => {
+                    'BatchPredictionId' => 1,
+                    'OutputUri' => 1,
+                    'MLModelId' => 1,
+                    'BatchPredictionDataSourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

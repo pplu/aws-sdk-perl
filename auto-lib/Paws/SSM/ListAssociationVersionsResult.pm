@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListAssociationVersionsResult;
-  use Moose;
-  has AssociationVersions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationVersionInfo]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AssociationVersionInfo/;
+  has AssociationVersions => (is => 'ro', isa => ArrayRef[SSM_AssociationVersionInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AssociationVersions' => {
+                                          'class' => 'Paws::SSM::AssociationVersionInfo',
+                                          'type' => 'ArrayRef[SSM_AssociationVersionInfo]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::ListAssociationVersionsResult
 =head1 ATTRIBUTES
 
 
-=head2 AssociationVersions => ArrayRef[L<Paws::SSM::AssociationVersionInfo>]
+=head2 AssociationVersions => ArrayRef[SSM_AssociationVersionInfo]
 
 Information about all versions of the association for the specified
 association ID.

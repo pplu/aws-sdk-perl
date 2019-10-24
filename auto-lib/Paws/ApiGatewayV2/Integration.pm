@@ -1,20 +1,98 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::Integration;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', request_name => 'connectionId', traits => ['NameInRequest']);
-  has ConnectionType => (is => 'ro', isa => 'Str', request_name => 'connectionType', traits => ['NameInRequest']);
-  has ContentHandlingStrategy => (is => 'ro', isa => 'Str', request_name => 'contentHandlingStrategy', traits => ['NameInRequest']);
-  has CredentialsArn => (is => 'ro', isa => 'Str', request_name => 'credentialsArn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has IntegrationId => (is => 'ro', isa => 'Str', request_name => 'integrationId', traits => ['NameInRequest']);
-  has IntegrationMethod => (is => 'ro', isa => 'Str', request_name => 'integrationMethod', traits => ['NameInRequest']);
-  has IntegrationResponseSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'integrationResponseSelectionExpression', traits => ['NameInRequest']);
-  has IntegrationType => (is => 'ro', isa => 'Str', request_name => 'integrationType', traits => ['NameInRequest']);
-  has IntegrationUri => (is => 'ro', isa => 'Str', request_name => 'integrationUri', traits => ['NameInRequest']);
-  has PassthroughBehavior => (is => 'ro', isa => 'Str', request_name => 'passthroughBehavior', traits => ['NameInRequest']);
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', request_name => 'requestParameters', traits => ['NameInRequest']);
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', request_name => 'requestTemplates', traits => ['NameInRequest']);
-  has TemplateSelectionExpression => (is => 'ro', isa => 'Str', request_name => 'templateSelectionExpression', traits => ['NameInRequest']);
-  has TimeoutInMillis => (is => 'ro', isa => 'Int', request_name => 'timeoutInMillis', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_TemplateMap ApiGatewayV2_IntegrationParameters/;
+  has ConnectionId => (is => 'ro', isa => Str);
+  has ConnectionType => (is => 'ro', isa => Str);
+  has ContentHandlingStrategy => (is => 'ro', isa => Str);
+  has CredentialsArn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IntegrationId => (is => 'ro', isa => Str);
+  has IntegrationMethod => (is => 'ro', isa => Str);
+  has IntegrationResponseSelectionExpression => (is => 'ro', isa => Str);
+  has IntegrationType => (is => 'ro', isa => Str);
+  has IntegrationUri => (is => 'ro', isa => Str);
+  has PassthroughBehavior => (is => 'ro', isa => Str);
+  has RequestParameters => (is => 'ro', isa => ApiGatewayV2_IntegrationParameters);
+  has RequestTemplates => (is => 'ro', isa => ApiGatewayV2_TemplateMap);
+  has TemplateSelectionExpression => (is => 'ro', isa => Str);
+  has TimeoutInMillis => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateSelectionExpression' => {
+                                                  'type' => 'Str'
+                                                },
+               'IntegrationId' => {
+                                    'type' => 'Str'
+                                  },
+               'CredentialsArn' => {
+                                     'type' => 'Str'
+                                   },
+               'RequestTemplates' => {
+                                       'class' => 'Paws::ApiGatewayV2::TemplateMap',
+                                       'type' => 'ApiGatewayV2_TemplateMap'
+                                     },
+               'IntegrationUri' => {
+                                     'type' => 'Str'
+                                   },
+               'ConnectionType' => {
+                                     'type' => 'Str'
+                                   },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'IntegrationMethod' => {
+                                        'type' => 'Str'
+                                      },
+               'RequestParameters' => {
+                                        'class' => 'Paws::ApiGatewayV2::IntegrationParameters',
+                                        'type' => 'ApiGatewayV2_IntegrationParameters'
+                                      },
+               'IntegrationResponseSelectionExpression' => {
+                                                             'type' => 'Str'
+                                                           },
+               'TimeoutInMillis' => {
+                                      'type' => 'Int'
+                                    },
+               'PassthroughBehavior' => {
+                                          'type' => 'Str'
+                                        },
+               'IntegrationType' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'ContentHandlingStrategy' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'TemplateSelectionExpression' => 'templateSelectionExpression',
+                       'IntegrationId' => 'integrationId',
+                       'CredentialsArn' => 'credentialsArn',
+                       'RequestTemplates' => 'requestTemplates',
+                       'IntegrationUri' => 'integrationUri',
+                       'ConnectionType' => 'connectionType',
+                       'ConnectionId' => 'connectionId',
+                       'IntegrationMethod' => 'integrationMethod',
+                       'RequestParameters' => 'requestParameters',
+                       'IntegrationResponseSelectionExpression' => 'integrationResponseSelectionExpression',
+                       'TimeoutInMillis' => 'timeoutInMillis',
+                       'PassthroughBehavior' => 'passthroughBehavior',
+                       'IntegrationType' => 'integrationType',
+                       'Description' => 'description',
+                       'ContentHandlingStrategy' => 'contentHandlingStrategy'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -162,7 +240,7 @@ content type defined, unmapped content types will be rejected with the
 same HTTP 415 Unsupported Media Type response.
 
 
-=head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
+=head2 RequestParameters => ApiGatewayV2_IntegrationParameters
 
   A key-value map specifying request parameters that are passed from the
 method request to the backend. The key is an integration request
@@ -174,7 +252,7 @@ where {location} is querystring, path, or header; and {name} must be a
 valid and unique method request parameter name.
 
 
-=head2 RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>
+=head2 RequestTemplates => ApiGatewayV2_TemplateMap
 
   Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the

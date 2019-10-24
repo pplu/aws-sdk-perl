@@ -7,7 +7,7 @@ package Paws::EC2::ReservedInstancesConfiguration;
   has Platform => (is => 'ro', isa => Str);
   has Scope => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Scope' => {
@@ -35,8 +35,8 @@ package Paws::EC2::ReservedInstancesConfiguration;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

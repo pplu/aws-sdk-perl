@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListAccountAliasesResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Undef Bool/;
   use Paws::IAM::Types qw//;
   has AccountAliases => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);

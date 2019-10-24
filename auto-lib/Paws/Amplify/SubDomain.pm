@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::Amplify::SubDomain;
-  use Moose;
-  has DnsRecord => (is => 'ro', isa => 'Str', request_name => 'dnsRecord', traits => ['NameInRequest'], required => 1);
-  has SubDomainSetting => (is => 'ro', isa => 'Paws::Amplify::SubDomainSetting', request_name => 'subDomainSetting', traits => ['NameInRequest'], required => 1);
-  has Verified => (is => 'ro', isa => 'Bool', request_name => 'verified', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Amplify::Types qw/Amplify_SubDomainSetting/;
+  has DnsRecord => (is => 'ro', isa => Str, required => 1);
+  has SubDomainSetting => (is => 'ro', isa => Amplify_SubDomainSetting, required => 1);
+  has Verified => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubDomainSetting' => {
+                                       'class' => 'Paws::Amplify::SubDomainSetting',
+                                       'type' => 'Amplify_SubDomainSetting'
+                                     },
+               'DnsRecord' => {
+                                'type' => 'Str'
+                              },
+               'Verified' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'NameInRequest' => {
+                       'SubDomainSetting' => 'subDomainSetting',
+                       'DnsRecord' => 'dnsRecord',
+                       'Verified' => 'verified'
+                     },
+  'IsRequired' => {
+                    'SubDomainSetting' => 1,
+                    'DnsRecord' => 1,
+                    'Verified' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +77,7 @@ Subdomain for the Domain Association.
   DNS record for the Subdomain.
 
 
-=head2 B<REQUIRED> SubDomainSetting => L<Paws::Amplify::SubDomainSetting>
+=head2 B<REQUIRED> SubDomainSetting => Amplify_SubDomainSetting
 
   Setting structure for the Subdomain.
 

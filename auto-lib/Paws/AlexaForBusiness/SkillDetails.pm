@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::SkillDetails;
-  use Moose;
-  has BulletPoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DeveloperInfo => (is => 'ro', isa => 'Paws::AlexaForBusiness::DeveloperInfo');
-  has EndUserLicenseAgreement => (is => 'ro', isa => 'Str');
-  has GenericKeywords => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InvocationPhrase => (is => 'ro', isa => 'Str');
-  has NewInThisVersionBulletPoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ProductDescription => (is => 'ro', isa => 'Str');
-  has ReleaseDate => (is => 'ro', isa => 'Str');
-  has Reviews => (is => 'ro', isa => 'Paws::AlexaForBusiness::Reviews');
-  has SkillTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_DeveloperInfo AlexaForBusiness_Reviews/;
+  has BulletPoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DeveloperInfo => (is => 'ro', isa => AlexaForBusiness_DeveloperInfo);
+  has EndUserLicenseAgreement => (is => 'ro', isa => Str);
+  has GenericKeywords => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InvocationPhrase => (is => 'ro', isa => Str);
+  has NewInThisVersionBulletPoints => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ProductDescription => (is => 'ro', isa => Str);
+  has ReleaseDate => (is => 'ro', isa => Str);
+  has Reviews => (is => 'ro', isa => AlexaForBusiness_Reviews);
+  has SkillTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReleaseDate' => {
+                                  'type' => 'Str'
+                                },
+               'BulletPoints' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'GenericKeywords' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'EndUserLicenseAgreement' => {
+                                              'type' => 'Str'
+                                            },
+               'InvocationPhrase' => {
+                                       'type' => 'Str'
+                                     },
+               'SkillTypes' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'DeveloperInfo' => {
+                                    'class' => 'Paws::AlexaForBusiness::DeveloperInfo',
+                                    'type' => 'AlexaForBusiness_DeveloperInfo'
+                                  },
+               'ProductDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Reviews' => {
+                              'class' => 'Paws::AlexaForBusiness::Reviews',
+                              'type' => 'AlexaForBusiness_Reviews'
+                            },
+               'NewInThisVersionBulletPoints' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +96,7 @@ Granular information about the skill.
   The details about what the skill supports organized as bullet points.
 
 
-=head2 DeveloperInfo => L<Paws::AlexaForBusiness::DeveloperInfo>
+=head2 DeveloperInfo => AlexaForBusiness_DeveloperInfo
 
   The details about the developer that published the skill.
 
@@ -86,7 +132,7 @@ a skill.
   The date when the skill was released.
 
 
-=head2 Reviews => L<Paws::AlexaForBusiness::Reviews>
+=head2 Reviews => AlexaForBusiness_Reviews
 
   The list of reviews for the skill, including Key and Value pair.
 

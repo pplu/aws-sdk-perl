@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::GetRuleResponse;
-  use Moose;
-  has Rule => (is => 'ro', isa => 'Paws::WAFRegional::Rule');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_Rule/;
+  has Rule => (is => 'ro', isa => WAFRegional_Rule);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Rule' => {
+                           'class' => 'Paws::WAFRegional::Rule',
+                           'type' => 'WAFRegional_Rule'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAFRegional::GetRuleResponse
 =head1 ATTRIBUTES
 
 
-=head2 Rule => L<Paws::WAFRegional::Rule>
+=head2 Rule => WAFRegional_Rule
 
 Information about the Rule that you specified in the C<GetRule>
 request. For more information, see the following topics:

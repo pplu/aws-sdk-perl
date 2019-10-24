@@ -1,18 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::JoinDomain;
-  use Moose;
-  has DomainControllers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationalUnit => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::StorageGateway::Types qw//;
+  has DomainControllers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationalUnit => (is => 'ro', isa => Str, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'JoinDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::JoinDomainOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'JoinDomain');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::JoinDomainOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'DomainControllers' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'OrganizationalUnit' => {
+                                         'type' => 'Str'
+                                       },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Password' => 1,
+                    'DomainName' => 1,
+                    'GatewayARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

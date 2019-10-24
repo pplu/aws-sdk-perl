@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::RedShift::Event;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'EventCategory', traits => ['NameInRequest']);
-  has EventId => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RedShift::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EventId => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str);
+  has SourceIdentifier => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'Date' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'EventCategories' => 'EventCategory'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

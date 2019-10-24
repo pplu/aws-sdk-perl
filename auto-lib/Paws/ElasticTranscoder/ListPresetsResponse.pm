@@ -1,10 +1,31 @@
 
 package Paws::ElasticTranscoder::ListPresetsResponse;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has Presets => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Preset]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Preset/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has Presets => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Preset]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Presets' => {
+                              'class' => 'Paws::ElasticTranscoder::Preset',
+                              'type' => 'ArrayRef[ElasticTranscoder_Preset]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +45,7 @@ reached the last page of results, the value of C<NextPageToken> is
 C<null>.
 
 
-=head2 Presets => ArrayRef[L<Paws::ElasticTranscoder::Preset>]
+=head2 Presets => ArrayRef[ElasticTranscoder_Preset]
 
 An array of C<Preset> objects.
 

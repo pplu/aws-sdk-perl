@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ECS::DeploymentConfiguration;
-  use Moose;
-  has MaximumPercent => (is => 'ro', isa => 'Int', request_name => 'maximumPercent', traits => ['NameInRequest']);
-  has MinimumHealthyPercent => (is => 'ro', isa => 'Int', request_name => 'minimumHealthyPercent', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ECS::Types qw//;
+  has MaximumPercent => (is => 'ro', isa => Int);
+  has MinimumHealthyPercent => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumPercent' => {
+                                     'type' => 'Int'
+                                   },
+               'MinimumHealthyPercent' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'NameInRequest' => {
+                       'MaximumPercent' => 'maximumPercent',
+                       'MinimumHealthyPercent' => 'minimumHealthyPercent'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

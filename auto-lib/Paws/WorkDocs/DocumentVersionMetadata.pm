@@ -1,18 +1,73 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::DocumentVersionMetadata;
-  use Moose;
-  has ContentCreatedTimestamp => (is => 'ro', isa => 'Str');
-  has ContentModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has CreatorId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has ModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
-  has Source => (is => 'ro', isa => 'Paws::WorkDocs::DocumentSourceUrlMap');
-  has Status => (is => 'ro', isa => 'Str');
-  has Thumbnail => (is => 'ro', isa => 'Paws::WorkDocs::DocumentThumbnailUrlMap');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw/WorkDocs_DocumentThumbnailUrlMap WorkDocs_DocumentSourceUrlMap/;
+  has ContentCreatedTimestamp => (is => 'ro', isa => Str);
+  has ContentModifiedTimestamp => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has CreatorId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has ModifiedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+  has Source => (is => 'ro', isa => WorkDocs_DocumentSourceUrlMap);
+  has Status => (is => 'ro', isa => Str);
+  has Thumbnail => (is => 'ro', isa => WorkDocs_DocumentThumbnailUrlMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentModifiedTimestamp' => {
+                                               'type' => 'Str'
+                                             },
+               'ContentCreatedTimestamp' => {
+                                              'type' => 'Str'
+                                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatorId' => {
+                                'type' => 'Str'
+                              },
+               'Thumbnail' => {
+                                'class' => 'Paws::WorkDocs::DocumentThumbnailUrlMap',
+                                'type' => 'WorkDocs_DocumentThumbnailUrlMap'
+                              },
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Source' => {
+                             'class' => 'Paws::WorkDocs::DocumentSourceUrlMap',
+                             'type' => 'WorkDocs_DocumentSourceUrlMap'
+                           },
+               'ModifiedTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +153,7 @@ Describes a version of a document.
   The size of the document, in bytes.
 
 
-=head2 Source => L<Paws::WorkDocs::DocumentSourceUrlMap>
+=head2 Source => WorkDocs_DocumentSourceUrlMap
 
   The source of the document.
 
@@ -108,7 +163,7 @@ Describes a version of a document.
   The status of the document.
 
 
-=head2 Thumbnail => L<Paws::WorkDocs::DocumentThumbnailUrlMap>
+=head2 Thumbnail => WorkDocs_DocumentThumbnailUrlMap
 
   The thumbnail of the document.
 

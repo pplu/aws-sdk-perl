@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::SendMessageBatch;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::SQS::SendMessageBatch;
              },
   'NameInRequest' => {
                        'Entries' => 'SendMessageBatchRequestEntry'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'Entries' => 1
+                  }
 }
 ;
     return $Params_map;

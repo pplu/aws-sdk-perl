@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::FolderMetadata;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has CreatorId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has LatestVersionSize => (is => 'ro', isa => 'Int');
-  has ModifiedTimestamp => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ParentFolderId => (is => 'ro', isa => 'Str');
-  has ResourceState => (is => 'ro', isa => 'Str');
-  has Signature => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::WorkDocs::Types qw//;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has CreatorId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LatestVersionSize => (is => 'ro', isa => Int);
+  has ModifiedTimestamp => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ParentFolderId => (is => 'ro', isa => Str);
+  has ResourceState => (is => 'ro', isa => Str);
+  has Signature => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceState' => {
+                                    'type' => 'Str'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'LatestVersionSize' => {
+                                        'type' => 'Int'
+                                      },
+               'ParentFolderId' => {
+                                     'type' => 'Str'
+                                   },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatorId' => {
+                                'type' => 'Str'
+                              },
+               'Signature' => {
+                                'type' => 'Str'
+                              },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'ModifiedTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

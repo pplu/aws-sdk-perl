@@ -1,12 +1,58 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::ECSTarget;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
-  has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
-  has TaskSetsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ECSTaskSet]', request_name => 'taskSetsInfo', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_ECSTaskSet CodeDeploy_LifecycleEvent/;
+  has DeploymentId => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LifecycleEvents => (is => 'ro', isa => ArrayRef[CodeDeploy_LifecycleEvent]);
+  has Status => (is => 'ro', isa => Str);
+  has TargetArn => (is => 'ro', isa => Str);
+  has TargetId => (is => 'ro', isa => Str);
+  has TaskSetsInfo => (is => 'ro', isa => ArrayRef[CodeDeploy_ECSTaskSet]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskSetsInfo' => {
+                                   'class' => 'Paws::CodeDeploy::ECSTaskSet',
+                                   'type' => 'ArrayRef[CodeDeploy_ECSTaskSet]'
+                                 },
+               'LifecycleEvents' => {
+                                      'class' => 'Paws::CodeDeploy::LifecycleEvent',
+                                      'type' => 'ArrayRef[CodeDeploy_LifecycleEvent]'
+                                    },
+               'TargetId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'TargetArn' => 'targetArn',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'DeploymentId' => 'deploymentId',
+                       'TaskSetsInfo' => 'taskSetsInfo',
+                       'LifecycleEvents' => 'lifecycleEvents',
+                       'TargetId' => 'targetId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +99,7 @@ Information about the target of an Amazon ECS deployment.
 a deployment.
 
 
-=head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
+=head2 LifecycleEvents => ArrayRef[CodeDeploy_LifecycleEvent]
 
   The lifecycle events of the deployment to this target Amazon ECS
 application.
@@ -74,7 +120,7 @@ application.
   The unique ID of a deployment target that has a type of C<ecsTarget>.
 
 
-=head2 TaskSetsInfo => ArrayRef[L<Paws::CodeDeploy::ECSTaskSet>]
+=head2 TaskSetsInfo => ArrayRef[CodeDeploy_ECSTaskSet]
 
   The C<ECSTaskSet> objects associated with the ECS target.
 

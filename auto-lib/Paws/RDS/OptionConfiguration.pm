@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::RDS::OptionConfiguration;
-  use Moose;
-  has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'DBSecurityGroupName', traits => ['NameInRequest']);
-  has OptionName => (is => 'ro', isa => 'Str', required => 1);
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]', request_name => 'OptionSetting', traits => ['NameInRequest']);
-  has OptionVersion => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'VpcSecurityGroupId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::RDS::Types qw/RDS_OptionSetting/;
+  has DBSecurityGroupMemberships => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OptionName => (is => 'ro', isa => Str, required => 1);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[RDS_OptionSetting]);
+  has OptionVersion => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has VpcSecurityGroupMemberships => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcSecurityGroupMemberships' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                },
+               'OptionSettings' => {
+                                     'class' => 'Paws::RDS::OptionSetting',
+                                     'type' => 'ArrayRef[RDS_OptionSetting]'
+                                   },
+               'OptionVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'OptionName' => {
+                                 'type' => 'Str'
+                               },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DBSecurityGroupMemberships' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'VpcSecurityGroupMemberships' => 'VpcSecurityGroupId',
+                       'OptionSettings' => 'OptionSetting',
+                       'DBSecurityGroupMemberships' => 'DBSecurityGroupName'
+                     },
+  'IsRequired' => {
+                    'OptionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +92,7 @@ A list of all available options
   The configuration of options to include in a group.
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
+=head2 OptionSettings => ArrayRef[RDS_OptionSetting]
 
   The option settings to include in an option group.
 

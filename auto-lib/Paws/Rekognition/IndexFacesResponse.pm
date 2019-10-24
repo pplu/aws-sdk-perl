@@ -1,12 +1,41 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::IndexFacesResponse;
-  use Moose;
-  has FaceModelVersion => (is => 'ro', isa => 'Str');
-  has FaceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceRecord]');
-  has OrientationCorrection => (is => 'ro', isa => 'Str');
-  has UnindexedFaces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::UnindexedFace]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_FaceRecord Rekognition_UnindexedFace/;
+  has FaceModelVersion => (is => 'ro', isa => Str);
+  has FaceRecords => (is => 'ro', isa => ArrayRef[Rekognition_FaceRecord]);
+  has OrientationCorrection => (is => 'ro', isa => Str);
+  has UnindexedFaces => (is => 'ro', isa => ArrayRef[Rekognition_UnindexedFace]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrientationCorrection' => {
+                                            'type' => 'Str'
+                                          },
+               'FaceModelVersion' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FaceRecords' => {
+                                  'class' => 'Paws::Rekognition::FaceRecord',
+                                  'type' => 'ArrayRef[Rekognition_FaceRecord]'
+                                },
+               'UnindexedFaces' => {
+                                     'class' => 'Paws::Rekognition::UnindexedFace',
+                                     'type' => 'ArrayRef[Rekognition_UnindexedFace]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +52,7 @@ The version number of the face detection model that's associated with
 the input collection (C<CollectionId>).
 
 
-=head2 FaceRecords => ArrayRef[L<Paws::Rekognition::FaceRecord>]
+=head2 FaceRecords => ArrayRef[Rekognition_FaceRecord]
 
 An array of faces detected and added to the collection. For more
 information, see Searching Faces in a Collection in the Amazon
@@ -68,7 +97,7 @@ can get the version of the face detection model by calling
 DescribeCollection.
 
 Valid values are: C<"ROTATE_0">, C<"ROTATE_90">, C<"ROTATE_180">, C<"ROTATE_270">
-=head2 UnindexedFaces => ArrayRef[L<Paws::Rekognition::UnindexedFace>]
+=head2 UnindexedFaces => ArrayRef[Rekognition_UnindexedFace]
 
 An array of faces that were detected in the image but weren't indexed.
 They weren't indexed because the quality filter identified them as low

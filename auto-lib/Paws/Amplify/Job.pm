@@ -1,7 +1,37 @@
+# Generated from default/object.tt
 package Paws::Amplify::Job;
-  use Moose;
-  has Steps => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::Step]', request_name => 'steps', traits => ['NameInRequest'], required => 1);
-  has Summary => (is => 'ro', isa => 'Paws::Amplify::JobSummary', request_name => 'summary', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Amplify::Types qw/Amplify_Step Amplify_JobSummary/;
+  has Steps => (is => 'ro', isa => ArrayRef[Amplify_Step], required => 1);
+  has Summary => (is => 'ro', isa => Amplify_JobSummary, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Summary' => {
+                              'class' => 'Paws::Amplify::JobSummary',
+                              'type' => 'Amplify_JobSummary'
+                            },
+               'Steps' => {
+                            'class' => 'Paws::Amplify::Step',
+                            'type' => 'ArrayRef[Amplify_Step]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Summary' => 'summary',
+                       'Steps' => 'steps'
+                     },
+  'IsRequired' => {
+                    'Summary' => 1,
+                    'Steps' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +67,12 @@ Structure for an execution job for an Amplify App.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Steps => ArrayRef[L<Paws::Amplify::Step>]
+=head2 B<REQUIRED> Steps => ArrayRef[Amplify_Step]
 
   Execution steps for an execution job, for an Amplify App.
 
 
-=head2 B<REQUIRED> Summary => L<Paws::Amplify::JobSummary>
+=head2 B<REQUIRED> Summary => Amplify_JobSummary
 
   Summary for an execution job for an Amplify App.
 

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudTrail::ResourceTag;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has TagsList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_Tag/;
+  has ResourceId => (is => 'ro', isa => Str);
+  has TagsList => (is => 'ro', isa => ArrayRef[CloudTrail_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'TagsList' => {
+                               'class' => 'Paws::CloudTrail::Tag',
+                               'type' => 'ArrayRef[CloudTrail_Tag]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ A resource tag.
   Specifies the ARN of the resource.
 
 
-=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
+=head2 TagsList => ArrayRef[CloudTrail_Tag]
 
   A list of tags.
 

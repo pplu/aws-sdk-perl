@@ -1,16 +1,46 @@
 
 package Paws::CloudSearchDomain::Suggest;
-  use Moose;
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q', required => 1);
-  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
-  has Suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Query => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Size => (is => 'ro', isa => Int, predicate => 1);
+  has Suggester => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Suggest');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/suggest?format=sdk&pretty=true');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SuggestResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Suggest');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-01-01/suggest?format=sdk&pretty=true');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearchDomain::SuggestResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Suggester' => {
+                                'type' => 'Str'
+                              },
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'Size' => {
+                           'type' => 'Int'
+                         }
+             },
+  'ParamInQuery' => {
+                      'Suggester' => 'suggester',
+                      'Query' => 'q',
+                      'Size' => 'size'
+                    },
+  'IsRequired' => {
+                    'Suggester' => 1,
+                    'Query' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::CPUUtilization;
-  use Moose;
-  has Idle => (is => 'ro', isa => 'Num');
-  has IOWait => (is => 'ro', isa => 'Num');
-  has IRQ => (is => 'ro', isa => 'Num');
-  has Nice => (is => 'ro', isa => 'Num');
-  has Privileged => (is => 'ro', isa => 'Num');
-  has SoftIRQ => (is => 'ro', isa => 'Num');
-  has System => (is => 'ro', isa => 'Num');
-  has User => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Idle => (is => 'ro', isa => Num);
+  has IOWait => (is => 'ro', isa => Num);
+  has IRQ => (is => 'ro', isa => Num);
+  has Nice => (is => 'ro', isa => Num);
+  has Privileged => (is => 'ro', isa => Num);
+  has SoftIRQ => (is => 'ro', isa => Num);
+  has System => (is => 'ro', isa => Num);
+  has User => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'System' => {
+                             'type' => 'Num'
+                           },
+               'SoftIRQ' => {
+                              'type' => 'Num'
+                            },
+               'Privileged' => {
+                                 'type' => 'Num'
+                               },
+               'User' => {
+                           'type' => 'Num'
+                         },
+               'IOWait' => {
+                             'type' => 'Num'
+                           },
+               'IRQ' => {
+                          'type' => 'Num'
+                        },
+               'Idle' => {
+                           'type' => 'Num'
+                         },
+               'Nice' => {
+                           'type' => 'Num'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

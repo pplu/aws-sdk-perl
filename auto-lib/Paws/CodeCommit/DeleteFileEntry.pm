@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::DeleteFileEntry;
-  use Moose;
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FilePath' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'FilePath' => 'filePath'
+                     },
+  'IsRequired' => {
+                    'FilePath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

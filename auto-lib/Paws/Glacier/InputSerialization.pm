@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glacier::InputSerialization;
-  use Moose;
-  has Csv => (is => 'ro', isa => 'Paws::Glacier::CSVInput', request_name => 'csv', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glacier::Types qw/Glacier_CSVInput/;
+  has Csv => (is => 'ro', isa => Glacier_CSVInput);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Csv' => {
+                          'class' => 'Paws::Glacier::CSVInput',
+                          'type' => 'Glacier_CSVInput'
+                        }
+             },
+  'NameInRequest' => {
+                       'Csv' => 'csv'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Describes how the archive is serialized.
 =head1 ATTRIBUTES
 
 
-=head2 Csv => L<Paws::Glacier::CSVInput>
+=head2 Csv => Glacier_CSVInput
 
   Describes the serialization of a CSV-encoded object.
 

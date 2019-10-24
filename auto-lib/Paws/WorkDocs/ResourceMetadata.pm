@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::ResourceMetadata;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OriginalName => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Paws::WorkDocs::UserMetadata');
-  has ParentId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has VersionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_UserMetadata/;
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OriginalName => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => WorkDocs_UserMetadata);
+  has ParentId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has VersionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'class' => 'Paws::WorkDocs::UserMetadata',
+                            'type' => 'WorkDocs_UserMetadata'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ParentId' => {
+                               'type' => 'Str'
+                             },
+               'OriginalName' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +93,7 @@ Describes the metadata of a resource.
   The original name of the resource before a rename operation.
 
 
-=head2 Owner => L<Paws::WorkDocs::UserMetadata>
+=head2 Owner => WorkDocs_UserMetadata
 
   The owner of the resource.
 

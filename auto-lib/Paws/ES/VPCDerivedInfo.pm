@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::VPCDerivedInfo;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;

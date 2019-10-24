@@ -1,15 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateAgent;
-  use Moose;
-  has ActivationKey => (is => 'ro', isa => 'Str', required => 1);
-  has AgentName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry/;
+  has ActivationKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AgentName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAgent');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateAgentResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAgent');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateAgentResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentName' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::Datasync::TagListEntry',
+                           'type' => 'ArrayRef[Datasync_TagListEntry]'
+                         },
+               'ActivationKey' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'ActivationKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +104,7 @@ that is used to identify the agent in the console.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to associate
 with the agent. The value can be an empty string. This value helps you

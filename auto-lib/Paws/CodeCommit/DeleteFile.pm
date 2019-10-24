@@ -1,20 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::DeleteFile;
-  use Moose;
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName' , required => 1);
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage' );
-  has Email => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'email' );
-  has FilePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filePath' , required => 1);
-  has KeepEmptyFolders => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'keepEmptyFolders' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has ParentCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentCommitId' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodeCommit::Types qw//;
+  has BranchName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeepEmptyFolders => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has ParentCommitId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteFile');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::DeleteFileOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteFile');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::DeleteFileOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'KeepEmptyFolders' => {
+                                       'type' => 'Bool'
+                                     },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'ParentCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'CommitMessage' => 'commitMessage',
+                       'BranchName' => 'branchName',
+                       'FilePath' => 'filePath',
+                       'KeepEmptyFolders' => 'keepEmptyFolders',
+                       'RepositoryName' => 'repositoryName',
+                       'ParentCommitId' => 'parentCommitId',
+                       'Email' => 'email',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'BranchName' => 1,
+                    'FilePath' => 1,
+                    'ParentCommitId' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

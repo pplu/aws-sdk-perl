@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Budgets::TimePeriod;
-  use Moose;
-  has End => (is => 'ro', isa => 'Str');
-  has Start => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw//;
+  has End => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Start' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

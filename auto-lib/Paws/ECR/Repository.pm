@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::ECR::Repository;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
-  has RepositoryArn => (is => 'ro', isa => 'Str', request_name => 'repositoryArn', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
-  has RepositoryUri => (is => 'ro', isa => 'Str', request_name => 'repositoryUri', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECR::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryArn => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has RepositoryUri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'RepositoryArn' => {
+                                    'type' => 'Str'
+                                  },
+               'RepositoryUri' => {
+                                    'type' => 'Str'
+                                  },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'CreatedAt' => 'createdAt',
+                       'RepositoryArn' => 'repositoryArn',
+                       'RepositoryUri' => 'repositoryUri',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

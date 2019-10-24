@@ -1,16 +1,49 @@
 
 package Paws::WorkDocs::GetFolder;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has FolderId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FolderId', required => 1);
-  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has FolderId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IncludeCustomMetadata => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFolder');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/folders/{FolderId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetFolderResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetFolder');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/folders/{FolderId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::GetFolderResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'IncludeCustomMetadata' => {
+                                            'type' => 'Bool'
+                                          },
+               'FolderId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'FolderId' => 'FolderId'
+                  },
+  'ParamInQuery' => {
+                      'IncludeCustomMetadata' => 'includeCustomMetadata'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'FolderId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

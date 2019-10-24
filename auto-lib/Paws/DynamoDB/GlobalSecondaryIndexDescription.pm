@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalSecondaryIndexDescription;
   use Moo;
   use Types::Standard qw/Bool Str Int ArrayRef/;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::GlobalSecondaryIndexDescription;
   has Projection => (is => 'ro', isa => DynamoDB_Projection);
   has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughputDescription);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ItemCount' => {
@@ -48,8 +49,8 @@ package Paws::DynamoDB::GlobalSecondaryIndexDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

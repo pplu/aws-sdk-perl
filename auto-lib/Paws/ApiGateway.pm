@@ -1,14 +1,15 @@
 package Paws::ApiGateway;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'apigateway' }
   sub signing_name { 'apigateway' }
   sub version { '2015-07-09' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -1086,9 +1087,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 =item [Name => Str]
 
-=item [StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]]
+=item [StageKeys => ArrayRef[ApiGateway_StageKey]]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 =item [Value => Str]
 
@@ -1174,7 +1175,7 @@ Creates a new BasePathMapping resource.
 
 =item [CacheClusterSize => Str]
 
-=item [CanarySettings => L<Paws::ApiGateway::DeploymentCanarySettings>]
+=item [CanarySettings => ApiGateway_DeploymentCanarySettings]
 
 =item [Description => Str]
 
@@ -1184,7 +1185,7 @@ Creates a new BasePathMapping resource.
 
 =item [TracingEnabled => Bool]
 
-=item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Variables => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -1201,7 +1202,7 @@ over the internet.
 
 =over
 
-=item Location => L<Paws::ApiGateway::DocumentationPartLocation>
+=item Location => ApiGateway_DocumentationPartLocation
 
 =item Properties => Str
 
@@ -1255,7 +1256,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [CertificatePrivateKey => Str]
 
-=item [EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>]
+=item [EndpointConfiguration => ApiGateway_EndpointConfiguration]
 
 =item [RegionalCertificateArn => Str]
 
@@ -1263,7 +1264,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item [SecurityPolicy => Str]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -1355,13 +1356,13 @@ Creates a Resource resource.
 
 =item [Description => Str]
 
-=item [EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>]
+=item [EndpointConfiguration => ApiGateway_EndpointConfiguration]
 
 =item [MinimumCompressionSize => Int]
 
 =item [Policy => Str]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 =item [Version => Str]
 
@@ -1389,17 +1390,17 @@ Creates a new RestApi resource.
 
 =item [CacheClusterSize => Str]
 
-=item [CanarySettings => L<Paws::ApiGateway::CanarySettings>]
+=item [CanarySettings => ApiGateway_CanarySettings]
 
 =item [Description => Str]
 
 =item [DocumentationVersion => Str]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 =item [TracingEnabled => Bool]
 
-=item [Variables => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Variables => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -1418,15 +1419,15 @@ for the API.
 
 =item Name => Str
 
-=item [ApiStages => ArrayRef[L<Paws::ApiGateway::ApiStage>]]
+=item [ApiStages => ArrayRef[ApiGateway_ApiStage]]
 
 =item [Description => Str]
 
-=item [Quota => L<Paws::ApiGateway::QuotaSettings>]
+=item [Quota => ApiGateway_QuotaSettings]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
-=item [Throttle => L<Paws::ApiGateway::ThrottleSettings>]
+=item [Throttle => ApiGateway_ThrottleSettings]
 
 
 =back
@@ -1470,7 +1471,7 @@ plan.
 
 =item [Description => Str]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -1911,7 +1912,7 @@ Flushes a stage's cache.
 
 =item [Description => Str]
 
-=item [Tags => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Tags => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -2266,7 +2267,7 @@ Represents a collection of DomainName resources.
 
 =item [Accepts => Str]
 
-=item [Parameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Parameters => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -2587,7 +2588,7 @@ Lists the RestApis resources for your collection.
 
 =item StageName => Str
 
-=item [Parameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Parameters => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -2877,7 +2878,7 @@ Returns: a L<Paws::ApiGateway::DocumentationPartIds> instance
 
 =item [FailOnWarnings => Bool]
 
-=item [Parameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Parameters => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -2898,9 +2899,9 @@ from an external API definition file.
 
 =item RestApiId => Str
 
-=item [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [ResponseParameters => ApiGateway_MapOfStringToString]
 
-=item [ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>]
+=item [ResponseTemplates => ApiGateway_MapOfStringToString]
 
 =item [StatusCode => Str]
 
@@ -2943,9 +2944,9 @@ type and status code on the given RestApi.
 
 =item [PassthroughBehavior => Str]
 
-=item [RequestParameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [RequestParameters => ApiGateway_MapOfStringToString]
 
-=item [RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>]
+=item [RequestTemplates => ApiGateway_MapOfStringToString]
 
 =item [TimeoutInMillis => Int]
 
@@ -2975,9 +2976,9 @@ Sets up a method's integration.
 
 =item [ContentHandling => Str]
 
-=item [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [ResponseParameters => ApiGateway_MapOfStringToString]
 
-=item [ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>]
+=item [ResponseTemplates => ApiGateway_MapOfStringToString]
 
 =item [SelectionPattern => Str]
 
@@ -3011,9 +3012,9 @@ Represents a put integration.
 
 =item [OperationName => Str]
 
-=item [RequestModels => L<Paws::ApiGateway::MapOfStringToString>]
+=item [RequestModels => ApiGateway_MapOfStringToString]
 
-=item [RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>]
+=item [RequestParameters => ApiGateway_MapOfStringToBoolean]
 
 =item [RequestValidatorId => Str]
 
@@ -3039,9 +3040,9 @@ Add a method to an existing Resource resource.
 
 =item StatusCode => Str
 
-=item [ResponseModels => L<Paws::ApiGateway::MapOfStringToString>]
+=item [ResponseModels => ApiGateway_MapOfStringToString]
 
-=item [ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>]
+=item [ResponseParameters => ApiGateway_MapOfStringToBoolean]
 
 
 =back
@@ -3065,7 +3066,7 @@ Adds a MethodResponse to an existing Method resource.
 
 =item [Mode => Str]
 
-=item [Parameters => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Parameters => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -3086,7 +3087,7 @@ overwriting the existing API.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::ApiGateway::MapOfStringToString>
+=item Tags => ApiGateway_MapOfStringToString
 
 
 =back
@@ -3106,17 +3107,17 @@ Adds or updates a tag on a given resource.
 
 =item RestApiId => Str
 
-=item [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>]
+=item [AdditionalContext => ApiGateway_MapOfStringToString]
 
 =item [Body => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Headers => ApiGateway_MapOfStringToString]
 
-=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
+=item [MultiValueHeaders => ApiGateway_MapOfStringToList]
 
 =item [PathWithQueryString => Str]
 
-=item [StageVariables => L<Paws::ApiGateway::MapOfStringToString>]
+=item [StageVariables => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -3148,13 +3149,13 @@ Use Cognito User Pool as Authorizer
 
 =item [ClientCertificateId => Str]
 
-=item [Headers => L<Paws::ApiGateway::MapOfStringToString>]
+=item [Headers => ApiGateway_MapOfStringToString]
 
-=item [MultiValueHeaders => L<Paws::ApiGateway::MapOfStringToList>]
+=item [MultiValueHeaders => ApiGateway_MapOfStringToList]
 
 =item [PathWithQueryString => Str]
 
-=item [StageVariables => L<Paws::ApiGateway::MapOfStringToString>]
+=item [StageVariables => ApiGateway_MapOfStringToString]
 
 
 =back
@@ -3189,7 +3190,7 @@ Removes a tag from a given resource.
 
 =over
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3207,7 +3208,7 @@ Changes information about the current Account resource.
 
 =item ApiKey => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3227,7 +3228,7 @@ Changes information about an ApiKey resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3250,7 +3251,7 @@ AWS CLI
 
 =item DomainName => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3268,7 +3269,7 @@ Changes information about the BasePathMapping resource.
 
 =item ClientCertificateId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3288,7 +3289,7 @@ Changes information about an ClientCertificate resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3308,7 +3309,7 @@ Changes information about a Deployment resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3328,7 +3329,7 @@ Returns: a L<Paws::ApiGateway::DocumentationPart> instance
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3346,7 +3347,7 @@ Returns: a L<Paws::ApiGateway::DocumentationVersion> instance
 
 =item DomainName => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3366,7 +3367,7 @@ Changes information about the DomainName resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3389,7 +3390,7 @@ RestApi.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3413,7 +3414,7 @@ Represents an update integration.
 
 =item StatusCode => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3435,7 +3436,7 @@ Represents an update integration response.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3459,7 +3460,7 @@ Updates an existing Method resource.
 
 =item StatusCode => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3479,7 +3480,7 @@ Updates an existing MethodResponse resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3499,7 +3500,7 @@ Changes information about a model.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3519,7 +3520,7 @@ Updates a RequestValidator of a given RestApi.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3537,7 +3538,7 @@ Changes information about a Resource resource.
 
 =item RestApiId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3557,7 +3558,7 @@ Changes information about the specified API.
 
 =item StageName => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3577,7 +3578,7 @@ Changes information about a Stage resource.
 
 =item UsagePlanId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3596,7 +3597,7 @@ associated with a specified API key.
 
 =item UsagePlanId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back
@@ -3614,7 +3615,7 @@ Updates a usage plan of a given plan Id.
 
 =item VpcLinkId => Str
 
-=item [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]]
+=item [PatchOperations => ArrayRef[ApiGateway_PatchOperation]]
 
 
 =back

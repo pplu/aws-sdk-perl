@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetTrigger;
-  use Moose;
-  has Dataset => (is => 'ro', isa => 'Paws::IoTAnalytics::TriggeringDataset', request_name => 'dataset', traits => ['NameInRequest']);
-  has Schedule => (is => 'ro', isa => 'Paws::IoTAnalytics::Schedule', request_name => 'schedule', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_Schedule IoTAnalytics_TriggeringDataset/;
+  has Dataset => (is => 'ro', isa => IoTAnalytics_TriggeringDataset);
+  has Schedule => (is => 'ro', isa => IoTAnalytics_Schedule);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schedule' => {
+                               'class' => 'Paws::IoTAnalytics::Schedule',
+                               'type' => 'IoTAnalytics_Schedule'
+                             },
+               'Dataset' => {
+                              'class' => 'Paws::IoTAnalytics::TriggeringDataset',
+                              'type' => 'IoTAnalytics_TriggeringDataset'
+                            }
+             },
+  'NameInRequest' => {
+                       'Schedule' => 'schedule',
+                       'Dataset' => 'dataset'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +64,13 @@ updated.
 =head1 ATTRIBUTES
 
 
-=head2 Dataset => L<Paws::IoTAnalytics::TriggeringDataset>
+=head2 Dataset => IoTAnalytics_TriggeringDataset
 
   The data set whose content creation triggers the creation of this data
 set's contents.
 
 
-=head2 Schedule => L<Paws::IoTAnalytics::Schedule>
+=head2 Schedule => IoTAnalytics_Schedule
 
   The "Schedule" when the trigger is initiated.
 

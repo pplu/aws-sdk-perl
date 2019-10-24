@@ -1,21 +1,89 @@
+# Generated from default/object.tt
 package Paws::Glue::Table;
-  use Moose;
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreateTime => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastAccessTime => (is => 'ro', isa => 'Str');
-  has LastAnalyzedTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Owner => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
-  has PartitionKeys => (is => 'ro', isa => 'ArrayRef[Paws::Glue::Column]');
-  has Retention => (is => 'ro', isa => 'Int');
-  has StorageDescriptor => (is => 'ro', isa => 'Paws::Glue::StorageDescriptor');
-  has TableType => (is => 'ro', isa => 'Str');
-  has UpdateTime => (is => 'ro', isa => 'Str');
-  has ViewExpandedText => (is => 'ro', isa => 'Str');
-  has ViewOriginalText => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Glue::Types qw/Glue_Column Glue_StorageDescriptor Glue_ParametersMap/;
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastAccessTime => (is => 'ro', isa => Str);
+  has LastAnalyzedTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Owner => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => Glue_ParametersMap);
+  has PartitionKeys => (is => 'ro', isa => ArrayRef[Glue_Column]);
+  has Retention => (is => 'ro', isa => Int);
+  has StorageDescriptor => (is => 'ro', isa => Glue_StorageDescriptor);
+  has TableType => (is => 'ro', isa => Str);
+  has UpdateTime => (is => 'ro', isa => Str);
+  has ViewExpandedText => (is => 'ro', isa => Str);
+  has ViewOriginalText => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastAnalyzedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'ViewExpandedText' => {
+                                       'type' => 'Str'
+                                     },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'StorageDescriptor' => {
+                                        'class' => 'Paws::Glue::StorageDescriptor',
+                                        'type' => 'Glue_StorageDescriptor'
+                                      },
+               'ViewOriginalText' => {
+                                       'type' => 'Str'
+                                     },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'Retention' => {
+                                'type' => 'Int'
+                              },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'PartitionKeys' => {
+                                    'class' => 'Paws::Glue::Column',
+                                    'type' => 'ArrayRef[Glue_Column]'
+                                  },
+               'LastAccessTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Parameters' => {
+                                 'class' => 'Paws::Glue::ParametersMap',
+                                 'type' => 'Glue_ParametersMap'
+                               },
+               'TableType' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -94,12 +162,12 @@ lowercase.
   Owner of the table.
 
 
-=head2 Parameters => L<Paws::Glue::ParametersMap>
+=head2 Parameters => Glue_ParametersMap
 
   These key-value pairs define properties associated with the table.
 
 
-=head2 PartitionKeys => ArrayRef[L<Paws::Glue::Column>]
+=head2 PartitionKeys => ArrayRef[Glue_Column]
 
   A list of columns by which the table is partitioned. Only primitive
 types are supported as partition keys.
@@ -116,7 +184,7 @@ C<"PartitionKeys": []>
   Retention time for this table.
 
 
-=head2 StorageDescriptor => L<Paws::Glue::StorageDescriptor>
+=head2 StorageDescriptor => Glue_StorageDescriptor
 
   A storage descriptor containing information about the physical storage
 of this table.

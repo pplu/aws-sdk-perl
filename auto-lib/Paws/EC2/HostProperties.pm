@@ -6,7 +6,7 @@ package Paws::EC2::HostProperties;
   has Sockets => (is => 'ro', isa => Int);
   has TotalVCpus => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Sockets' => {
@@ -30,8 +30,8 @@ package Paws::EC2::HostProperties;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

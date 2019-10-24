@@ -1,10 +1,38 @@
 
 package Paws::Amplify::ListAppsResult;
-  use Moose;
-  has Apps => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::App]', traits => ['NameInRequest'], request_name => 'apps', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Amplify::Types qw/Amplify_App/;
+  has Apps => (is => 'ro', isa => ArrayRef[Amplify_App], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Apps' => {
+                           'class' => 'Paws::Amplify::App',
+                           'type' => 'ArrayRef[Amplify_App]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Apps' => 'apps'
+                     },
+  'IsRequired' => {
+                    'Apps' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +44,7 @@ Paws::Amplify::ListAppsResult
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Apps => ArrayRef[L<Paws::Amplify::App>]
+=head2 B<REQUIRED> Apps => ArrayRef[Amplify_App]
 
 List of Amplify Apps.
 

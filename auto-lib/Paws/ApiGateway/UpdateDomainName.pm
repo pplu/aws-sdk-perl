@@ -1,15 +1,43 @@
 
 package Paws::ApiGateway::UpdateDomainName;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domain_name', required => 1);
-  has PatchOperations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::PatchOperation]', traits => ['NameInRequest'], request_name => 'patchOperations');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PatchOperation/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PatchOperations => (is => 'ro', isa => ArrayRef[ApiGateway_PatchOperation], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainName');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainName');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDomainName');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames/{domain_name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DomainName');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PatchOperations' => {
+                                      'class' => 'Paws::ApiGateway::PatchOperation',
+                                      'type' => 'ArrayRef[ApiGateway_PatchOperation]'
+                                    },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'DomainName' => 'domain_name'
+                  },
+  'NameInRequest' => {
+                       'PatchOperations' => 'patchOperations'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 
 
-=head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
+=head2 PatchOperations => ArrayRef[ApiGateway_PatchOperation]
 
 A list of update operations to be applied to the specified resource and
 in the order specified in this list.

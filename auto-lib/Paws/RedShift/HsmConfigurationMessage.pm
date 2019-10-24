@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::HsmConfigurationMessage;
-  use Moose;
-  has HsmConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::HsmConfiguration]', request_name => 'HsmConfiguration', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_HsmConfiguration/;
+  has HsmConfigurations => (is => 'ro', isa => ArrayRef[RedShift_HsmConfiguration]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'HsmConfigurations' => {
+                                        'class' => 'Paws::RedShift::HsmConfiguration',
+                                        'type' => 'ArrayRef[RedShift_HsmConfiguration]'
+                                      }
+             },
+  'NameInRequest' => {
+                       'HsmConfigurations' => 'HsmConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::HsmConfigurationMessage
 =head1 ATTRIBUTES
 
 
-=head2 HsmConfigurations => ArrayRef[L<Paws::RedShift::HsmConfiguration>]
+=head2 HsmConfigurations => ArrayRef[RedShift_HsmConfiguration]
 
 A list of C<HsmConfiguration> objects.
 

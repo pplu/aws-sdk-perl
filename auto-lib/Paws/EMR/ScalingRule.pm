@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::EMR::ScalingRule;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Paws::EMR::ScalingAction', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Trigger => (is => 'ro', isa => 'Paws::EMR::ScalingTrigger', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_ScalingTrigger EMR_ScalingAction/;
+  has Action => (is => 'ro', isa => EMR_ScalingAction, required => 1);
+  has Description => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Trigger => (is => 'ro', isa => EMR_ScalingTrigger, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Trigger' => {
+                              'class' => 'Paws::EMR::ScalingTrigger',
+                              'type' => 'EMR_ScalingTrigger'
+                            },
+               'Action' => {
+                             'class' => 'Paws::EMR::ScalingAction',
+                             'type' => 'EMR_ScalingAction'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Trigger' => 1,
+                    'Action' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +76,7 @@ scaling rules.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Action => L<Paws::EMR::ScalingAction>
+=head2 B<REQUIRED> Action => EMR_ScalingAction
 
   The conditions that trigger an automatic scaling activity.
 
@@ -59,7 +92,7 @@ scaling rules.
 unique within a scaling policy.
 
 
-=head2 B<REQUIRED> Trigger => L<Paws::EMR::ScalingTrigger>
+=head2 B<REQUIRED> Trigger => EMR_ScalingTrigger
 
   The CloudWatch alarm definition that determines when automatic scaling
 activity is triggered.

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListRemoteAccessSessionsResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RemoteAccessSessions => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::RemoteAccessSession]', traits => ['NameInRequest'], request_name => 'remoteAccessSessions' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_RemoteAccessSession/;
+  has NextToken => (is => 'ro', isa => Str);
+  has RemoteAccessSessions => (is => 'ro', isa => ArrayRef[DeviceFarm_RemoteAccessSession]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemoteAccessSessions' => {
+                                           'class' => 'Paws::DeviceFarm::RemoteAccessSession',
+                                           'type' => 'ArrayRef[DeviceFarm_RemoteAccessSession]'
+                                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RemoteAccessSessions' => 'remoteAccessSessions',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +48,7 @@ operation, which can be used to return the next set of items in the
 list.
 
 
-=head2 RemoteAccessSessions => ArrayRef[L<Paws::DeviceFarm::RemoteAccessSession>]
+=head2 RemoteAccessSessions => ArrayRef[DeviceFarm_RemoteAccessSession]
 
 A container representing the metadata from the service about each
 remote access session you are requesting.

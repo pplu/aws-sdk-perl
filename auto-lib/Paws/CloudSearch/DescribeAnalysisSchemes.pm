@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudSearch::DescribeAnalysisSchemes;
-  use Moose;
-  has AnalysisSchemeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Deployed => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CloudSearch::Types qw//;
+  has AnalysisSchemeNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Deployed => (is => 'ro', isa => Bool, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeAnalysisSchemesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeAnalysisSchemes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearch::DescribeAnalysisSchemesResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeAnalysisSchemesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Deployed' => {
+                               'type' => 'Bool'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'AnalysisSchemeNames' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

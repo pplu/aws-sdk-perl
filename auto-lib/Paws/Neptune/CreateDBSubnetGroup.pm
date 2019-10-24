@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::CreateDBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Neptune::Types qw/Neptune_Tag/;
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Neptune_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::CreateDBSubnetGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBSubnetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::CreateDBSubnetGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBSubnetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'Tags' => {
+                           'class' => 'Paws::Neptune::Tag',
+                           'type' => 'ArrayRef[Neptune_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'DBSubnetGroupName' => 1,
+                    'SubnetIds' => 1,
+                    'DBSubnetGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +109,7 @@ The EC2 Subnet IDs for the DB subnet group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Neptune::Tag>]
+=head2 Tags => ArrayRef[Neptune_Tag]
 
 The tags to be assigned to the new DB subnet group.
 

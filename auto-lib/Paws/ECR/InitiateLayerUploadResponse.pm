@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::InitiateLayerUploadResponse;
-  use Moose;
-  has PartSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'partSize' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECR::Types qw//;
+  has PartSize => (is => 'ro', isa => Int);
+  has UploadId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PartSize' => {
+                               'type' => 'Int'
+                             },
+               'UploadId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'PartSize' => 'partSize',
+                       'UploadId' => 'uploadId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Transfer::DescribeUserResponse;
-  use Moose;
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has User => (is => 'ro', isa => 'Paws::Transfer::DescribedUser', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw/Transfer_DescribedUser/;
+  has ServerId => (is => 'ro', isa => Str, required => 1);
+  has User => (is => 'ro', isa => Transfer_DescribedUser, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'User' => {
+                           'class' => 'Paws::Transfer::DescribedUser',
+                           'type' => 'Transfer_DescribedUser'
+                         },
+               'ServerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'User' => 1,
+                    'ServerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ A system-assigned unique identifier for an SFTP server that has this
 user assigned.
 
 
-=head2 B<REQUIRED> User => L<Paws::Transfer::DescribedUser>
+=head2 B<REQUIRED> User => Transfer_DescribedUser
 
 An array containing the properties of the user account for the
 C<ServerID> value that you specified.

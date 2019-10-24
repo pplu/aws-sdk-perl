@@ -1,11 +1,34 @@
 
 package Paws::MediaStoreData::PutObjectResponse;
-  use Moose;
-  has ContentSHA256 => (is => 'ro', isa => 'Str');
-  has ETag => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaStoreData::Types qw//;
+  has ContentSHA256 => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 },
+               'ContentSHA256' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

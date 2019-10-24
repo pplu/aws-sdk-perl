@@ -1,14 +1,72 @@
+# Generated from default/object.tt
 package Paws::Batch::ComputeEnvironmentDetail;
-  use Moose;
-  has ComputeEnvironmentArn => (is => 'ro', isa => 'Str', request_name => 'computeEnvironmentArn', traits => ['NameInRequest'], required => 1);
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'computeEnvironmentName', traits => ['NameInRequest'], required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', request_name => 'computeResources', traits => ['NameInRequest']);
-  has EcsClusterArn => (is => 'ro', isa => 'Str', request_name => 'ecsClusterArn', traits => ['NameInRequest'], required => 1);
-  has ServiceRole => (is => 'ro', isa => 'Str', request_name => 'serviceRole', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_ComputeResource/;
+  has ComputeEnvironmentArn => (is => 'ro', isa => Str, required => 1);
+  has ComputeEnvironmentName => (is => 'ro', isa => Str, required => 1);
+  has ComputeResources => (is => 'ro', isa => Batch_ComputeResource);
+  has EcsClusterArn => (is => 'ro', isa => Str, required => 1);
+  has ServiceRole => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ComputeEnvironmentArn' => {
+                                            'type' => 'Str'
+                                          },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ComputeEnvironmentName' => {
+                                             'type' => 'Str'
+                                           },
+               'EcsClusterArn' => {
+                                    'type' => 'Str'
+                                  },
+               'ComputeResources' => {
+                                       'class' => 'Paws::Batch::ComputeResource',
+                                       'type' => 'Batch_ComputeResource'
+                                     }
+             },
+  'NameInRequest' => {
+                       'StatusReason' => 'statusReason',
+                       'Status' => 'status',
+                       'ComputeEnvironmentArn' => 'computeEnvironmentArn',
+                       'ServiceRole' => 'serviceRole',
+                       'State' => 'state',
+                       'Type' => 'type',
+                       'ComputeEnvironmentName' => 'computeEnvironmentName',
+                       'EcsClusterArn' => 'ecsClusterArn',
+                       'ComputeResources' => 'computeResources'
+                     },
+  'IsRequired' => {
+                    'ComputeEnvironmentName' => 1,
+                    'EcsClusterArn' => 1,
+                    'ComputeEnvironmentArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +112,7 @@ An object representing an AWS Batch compute environment.
   The name of the compute environment.
 
 
-=head2 ComputeResources => L<Paws::Batch::ComputeResource>
+=head2 ComputeResources => Batch_ComputeResource
 
   The compute resources defined for the compute environment.
 

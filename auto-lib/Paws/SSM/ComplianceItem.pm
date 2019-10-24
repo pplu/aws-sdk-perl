@@ -1,14 +1,57 @@
+# Generated from default/object.tt
 package Paws::SSM::ComplianceItem;
-  use Moose;
-  has ComplianceType => (is => 'ro', isa => 'Str');
-  has Details => (is => 'ro', isa => 'Paws::SSM::ComplianceItemDetails');
-  has ExecutionSummary => (is => 'ro', isa => 'Paws::SSM::ComplianceExecutionSummary');
-  has Id => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ComplianceItemDetails SSM_ComplianceExecutionSummary/;
+  has ComplianceType => (is => 'ro', isa => Str);
+  has Details => (is => 'ro', isa => SSM_ComplianceItemDetails);
+  has ExecutionSummary => (is => 'ro', isa => SSM_ComplianceExecutionSummary);
+  has Id => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionSummary' => {
+                                       'class' => 'Paws::SSM::ComplianceExecutionSummary',
+                                       'type' => 'SSM_ComplianceExecutionSummary'
+                                     },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'ComplianceType' => {
+                                     'type' => 'Str'
+                                   },
+               'Details' => {
+                              'class' => 'Paws::SSM::ComplianceItemDetails',
+                              'type' => 'SSM_ComplianceItemDetails'
+                            },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Severity' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,12 +96,12 @@ association), Patch, or Custom:C<string> are all valid compliance
 types.
 
 
-=head2 Details => L<Paws::SSM::ComplianceItemDetails>
+=head2 Details => SSM_ComplianceItemDetails
 
   A "Key": "Value" tag combination for the compliance item.
 
 
-=head2 ExecutionSummary => L<Paws::SSM::ComplianceExecutionSummary>
+=head2 ExecutionSummary => SSM_ComplianceExecutionSummary
 
   A summary for the compliance item. The summary includes an execution
 ID, the execution type (for example, command), and the execution time.

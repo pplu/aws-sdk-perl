@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetTableVersionResponse;
-  use Moose;
-  has TableVersion => (is => 'ro', isa => 'Paws::Glue::TableVersion');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_TableVersion/;
+  has TableVersion => (is => 'ro', isa => Glue_TableVersion);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TableVersion' => {
+                                   'class' => 'Paws::Glue::TableVersion',
+                                   'type' => 'Glue_TableVersion'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetTableVersionResponse
 =head1 ATTRIBUTES
 
 
-=head2 TableVersion => L<Paws::Glue::TableVersion>
+=head2 TableVersion => Glue_TableVersion
 
 The requested table version.
 

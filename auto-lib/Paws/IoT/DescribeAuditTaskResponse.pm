@@ -1,14 +1,56 @@
 
 package Paws::IoT::DescribeAuditTaskResponse;
-  use Moose;
-  has AuditDetails => (is => 'ro', isa => 'Paws::IoT::AuditDetails', traits => ['NameInRequest'], request_name => 'auditDetails');
-  has ScheduledAuditName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'scheduledAuditName');
-  has TaskStartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStartTime');
-  has TaskStatistics => (is => 'ro', isa => 'Paws::IoT::TaskStatistics', traits => ['NameInRequest'], request_name => 'taskStatistics');
-  has TaskStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStatus');
-  has TaskType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_TaskStatistics IoT_AuditDetails/;
+  has AuditDetails => (is => 'ro', isa => IoT_AuditDetails);
+  has ScheduledAuditName => (is => 'ro', isa => Str);
+  has TaskStartTime => (is => 'ro', isa => Str);
+  has TaskStatistics => (is => 'ro', isa => IoT_TaskStatistics);
+  has TaskStatus => (is => 'ro', isa => Str);
+  has TaskType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskStatistics' => {
+                                     'class' => 'Paws::IoT::TaskStatistics',
+                                     'type' => 'IoT_TaskStatistics'
+                                   },
+               'ScheduledAuditName' => {
+                                         'type' => 'Str'
+                                       },
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'AuditDetails' => {
+                                   'class' => 'Paws::IoT::AuditDetails',
+                                   'type' => 'IoT_AuditDetails'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TaskStartTime' => {
+                                    'type' => 'Str'
+                                  },
+               'TaskType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'TaskStatistics' => 'taskStatistics',
+                       'ScheduledAuditName' => 'scheduledAuditName',
+                       'TaskStatus' => 'taskStatus',
+                       'AuditDetails' => 'auditDetails',
+                       'TaskStartTime' => 'taskStartTime',
+                       'TaskType' => 'taskType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +62,7 @@ Paws::IoT::DescribeAuditTaskResponse
 =head1 ATTRIBUTES
 
 
-=head2 AuditDetails => L<Paws::IoT::AuditDetails>
+=head2 AuditDetails => IoT_AuditDetails
 
 Detailed information about each check performed during this audit.
 
@@ -36,7 +78,7 @@ audit).
 The time the audit started.
 
 
-=head2 TaskStatistics => L<Paws::IoT::TaskStatistics>
+=head2 TaskStatistics => IoT_TaskStatistics
 
 Statistical information about the audit.
 

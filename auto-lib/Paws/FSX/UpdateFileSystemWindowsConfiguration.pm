@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::FSX::UpdateFileSystemWindowsConfiguration;
-  use Moose;
-  has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
-  has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
-  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => 'Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates');
-  has WeeklyMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::FSX::Types qw/FSX_SelfManagedActiveDirectoryConfigurationUpdates/;
+  has AutomaticBackupRetentionDays => (is => 'ro', isa => Int);
+  has DailyAutomaticBackupStartTime => (is => 'ro', isa => Str);
+  has SelfManagedActiveDirectoryConfiguration => (is => 'ro', isa => FSX_SelfManagedActiveDirectoryConfigurationUpdates);
+  has WeeklyMaintenanceStartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WeeklyMaintenanceStartTime' => {
+                                                 'type' => 'Str'
+                                               },
+               'AutomaticBackupRetentionDays' => {
+                                                   'type' => 'Int'
+                                                 },
+               'DailyAutomaticBackupStartTime' => {
+                                                    'type' => 'Str'
+                                                  },
+               'SelfManagedActiveDirectoryConfiguration' => {
+                                                              'class' => 'Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates',
+                                                              'type' => 'FSX_SelfManagedActiveDirectoryConfigurationUpdates'
+                                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +82,7 @@ maximum of 35 days.
 zone.
 
 
-=head2 SelfManagedActiveDirectoryConfiguration => L<Paws::FSX::SelfManagedActiveDirectoryConfigurationUpdates>
+=head2 SelfManagedActiveDirectoryConfiguration => FSX_SelfManagedActiveDirectoryConfigurationUpdates
 
   The configuration Amazon FSx uses to join the Windows File Server
 instance to the self-managed Microsoft AD directory.

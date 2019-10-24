@@ -1,18 +1,64 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::ConfigurationSettingsDescription;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
-  has DeploymentStatus => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str');
-  has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
-  has PlatformArn => (is => 'ro', isa => 'Str');
-  has SolutionStackName => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ConfigurationOptionSetting/;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has DateCreated => (is => 'ro', isa => Str);
+  has DateUpdated => (is => 'ro', isa => Str);
+  has DeploymentStatus => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EnvironmentName => (is => 'ro', isa => Str);
+  has OptionSettings => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]);
+  has PlatformArn => (is => 'ro', isa => Str);
+  has SolutionStackName => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DateCreated' => {
+                                  'type' => 'Str'
+                                },
+               'EnvironmentName' => {
+                                      'type' => 'Str'
+                                    },
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'OptionSettings' => {
+                                     'class' => 'Paws::ElasticBeanstalk::ConfigurationOptionSetting',
+                                     'type' => 'ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]'
+                                   },
+               'PlatformArn' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SolutionStackName' => {
+                                        'type' => 'Str'
+                                      },
+               'DateUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DeploymentStatus' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +127,7 @@ Describes this configuration set.
 If not C<null>, the name of the environment for this configuration set.
 
 
-=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=head2 OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 A list of the configuration options and their values in this
 configuration set.

@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::ApplyPendingMaintenanceAction;
-  use Moose;
-  has ApplyAction => (is => 'ro', isa => 'Str', required => 1);
-  has OptInType => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has ApplyAction => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OptInType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ApplyPendingMaintenanceAction');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::ApplyPendingMaintenanceActionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ApplyPendingMaintenanceAction');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::ApplyPendingMaintenanceActionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'ApplyAction' => {
+                                  'type' => 'Str'
+                                },
+               'OptInType' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ReplicationInstanceArn' => 1,
+                    'ApplyAction' => 1,
+                    'OptInType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

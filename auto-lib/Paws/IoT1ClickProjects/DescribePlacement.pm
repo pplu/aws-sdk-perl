@@ -1,15 +1,41 @@
 
 package Paws::IoT1ClickProjects::DescribePlacement;
-  use Moose;
-  has PlacementName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'placementName', required => 1);
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw//;
+  has PlacementName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePlacement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects/{projectName}/placements/{placementName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickProjects::DescribePlacementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribePlacement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects/{projectName}/placements/{placementName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickProjects::DescribePlacementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlacementName' => {
+                                    'type' => 'Str'
+                                  },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'PlacementName' => 'placementName',
+                    'ProjectName' => 'projectName'
+                  },
+  'IsRequired' => {
+                    'PlacementName' => 1,
+                    'ProjectName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

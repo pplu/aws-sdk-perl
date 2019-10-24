@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreateAccessKeyResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_AccessKey/;
   has AccessKey => (is => 'ro', isa => IAM_AccessKey, required => 1);

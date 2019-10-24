@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::GroundStation::ConfigListItem;
-  use Moose;
-  has ConfigArn => (is => 'ro', isa => 'Str', request_name => 'configArn', traits => ['NameInRequest']);
-  has ConfigId => (is => 'ro', isa => 'Str', request_name => 'configId', traits => ['NameInRequest']);
-  has ConfigType => (is => 'ro', isa => 'Str', request_name => 'configType', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has ConfigArn => (is => 'ro', isa => Str);
+  has ConfigId => (is => 'ro', isa => Str);
+  has ConfigType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigType' => {
+                                 'type' => 'Str'
+                               },
+               'ConfigArn' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ConfigId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ConfigType' => 'configType',
+                       'ConfigArn' => 'configArn',
+                       'Name' => 'name',
+                       'ConfigId' => 'configId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

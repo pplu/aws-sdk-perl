@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ScheduleActionStartSettings;
-  use Moose;
-  has FixedModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FixedModeScheduleActionStartSettings', request_name => 'fixedModeScheduleActionStartSettings', traits => ['NameInRequest']);
-  has FollowModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FollowModeScheduleActionStartSettings', request_name => 'followModeScheduleActionStartSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_FixedModeScheduleActionStartSettings MediaLive_FollowModeScheduleActionStartSettings/;
+  has FixedModeScheduleActionStartSettings => (is => 'ro', isa => MediaLive_FixedModeScheduleActionStartSettings);
+  has FollowModeScheduleActionStartSettings => (is => 'ro', isa => MediaLive_FollowModeScheduleActionStartSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FixedModeScheduleActionStartSettings' => {
+                                                           'class' => 'Paws::MediaLive::FixedModeScheduleActionStartSettings',
+                                                           'type' => 'MediaLive_FixedModeScheduleActionStartSettings'
+                                                         },
+               'FollowModeScheduleActionStartSettings' => {
+                                                            'class' => 'Paws::MediaLive::FollowModeScheduleActionStartSettings',
+                                                            'type' => 'MediaLive_FollowModeScheduleActionStartSettings'
+                                                          }
+             },
+  'NameInRequest' => {
+                       'FixedModeScheduleActionStartSettings' => 'fixedModeScheduleActionStartSettings',
+                       'FollowModeScheduleActionStartSettings' => 'followModeScheduleActionStartSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Settings to specify the start time for an action.
 =head1 ATTRIBUTES
 
 
-=head2 FixedModeScheduleActionStartSettings => L<Paws::MediaLive::FixedModeScheduleActionStartSettings>
+=head2 FixedModeScheduleActionStartSettings => MediaLive_FixedModeScheduleActionStartSettings
 
   Holds the start time for the action.
 
 
-=head2 FollowModeScheduleActionStartSettings => L<Paws::MediaLive::FollowModeScheduleActionStartSettings>
+=head2 FollowModeScheduleActionStartSettings => MediaLive_FollowModeScheduleActionStartSettings
 
   Specifies an action to follow for scheduling this action.
 

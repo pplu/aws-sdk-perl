@@ -1,14 +1,35 @@
 
 package Paws::DLM::DeleteLifecyclePolicy;
-  use Moose;
-  has PolicyId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DLM::Types qw//;
+  has PolicyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLifecyclePolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyId}/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DLM::DeleteLifecyclePolicyResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteLifecyclePolicy');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies/{policyId}/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DLM::DeleteLifecyclePolicyResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'PolicyId' => 'policyId'
+                  },
+  'IsRequired' => {
+                    'PolicyId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

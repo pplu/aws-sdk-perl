@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateSAMLProvider;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::CreateSAMLProvider;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'SAMLMetadataDocument' => 1,
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

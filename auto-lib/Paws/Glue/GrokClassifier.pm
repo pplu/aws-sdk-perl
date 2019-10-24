@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::Glue::GrokClassifier;
-  use Moose;
-  has Classification => (is => 'ro', isa => 'Str', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has CustomPatterns => (is => 'ro', isa => 'Str');
-  has GrokPattern => (is => 'ro', isa => 'Str', required => 1);
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw//;
+  has Classification => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str);
+  has CustomPatterns => (is => 'ro', isa => Str);
+  has GrokPattern => (is => 'ro', isa => Str, required => 1);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'GrokPattern' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'CustomPatterns' => {
+                                     'type' => 'Str'
+                                   },
+               'Classification' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'GrokPattern' => 1,
+                    'Name' => 1,
+                    'Classification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

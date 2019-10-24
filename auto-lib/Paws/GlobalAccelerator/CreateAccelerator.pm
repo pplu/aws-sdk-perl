@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GlobalAccelerator::CreateAccelerator;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has IpAddressType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GlobalAccelerator::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpAddressType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccelerator');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::CreateAcceleratorResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateAccelerator');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GlobalAccelerator::CreateAcceleratorResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'IpAddressType' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'IdempotencyToken' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

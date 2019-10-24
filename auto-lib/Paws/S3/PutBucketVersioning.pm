@@ -49,7 +49,11 @@ use MooX::ClassAttribute;
   'ParamInHeader' => {
                        'ContentLength' => 'Content-Length',
                        'MFA' => 'x-amz-mfa'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'VersioningConfiguration' => 1
+                  }
 }
 ;
     return $Params_map;

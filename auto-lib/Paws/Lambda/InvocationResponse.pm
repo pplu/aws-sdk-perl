@@ -1,14 +1,48 @@
 
 package Paws::Lambda::InvocationResponse;
-  use Moose;
-  has ExecutedVersion => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Executed-Version');
-  has FunctionError => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Function-Error');
-  has LogResult => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amz-Log-Result');
-  has Payload => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Int');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has ExecutedVersion => (is => 'ro', isa => Str);
+  has FunctionError => (is => 'ro', isa => Str);
+  has LogResult => (is => 'ro', isa => Str);
+  has Payload => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Int);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Int'
+                               },
+               'LogResult' => {
+                                'type' => 'Str'
+                              },
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutedVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'FunctionError' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'ParamInHeader' => {
+                       'LogResult' => 'X-Amz-Log-Result',
+                       'ExecutedVersion' => 'X-Amz-Executed-Version',
+                       'FunctionError' => 'X-Amz-Function-Error'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

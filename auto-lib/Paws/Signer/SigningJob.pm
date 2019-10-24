@@ -1,11 +1,54 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningJob;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has SignedObject => (is => 'ro', isa => 'Paws::Signer::SignedObject', request_name => 'signedObject', traits => ['NameInRequest']);
-  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::Signer::Source', request_name => 'source', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw/Signer_SignedObject Signer_Source Signer_SigningMaterial/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has SignedObject => (is => 'ro', isa => Signer_SignedObject);
+  has SigningMaterial => (is => 'ro', isa => Signer_SigningMaterial);
+  has Source => (is => 'ro', isa => Signer_Source);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SigningMaterial' => {
+                                      'class' => 'Paws::Signer::SigningMaterial',
+                                      'type' => 'Signer_SigningMaterial'
+                                    },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Source' => {
+                             'class' => 'Paws::Signer::Source',
+                             'type' => 'Signer_Source'
+                           },
+               'SignedObject' => {
+                                   'class' => 'Paws::Signer::SignedObject',
+                                   'type' => 'Signer_SignedObject'
+                                 },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'SigningMaterial' => 'signingMaterial',
+                       'CreatedAt' => 'createdAt',
+                       'Status' => 'status',
+                       'Source' => 'source',
+                       'SignedObject' => 'signedObject',
+                       'JobId' => 'jobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,19 +94,19 @@ Contains information about a signing job.
   The ID of the signing job.
 
 
-=head2 SignedObject => L<Paws::Signer::SignedObject>
+=head2 SignedObject => Signer_SignedObject
 
   A C<SignedObject> structure that contains information about a signing
 job's signed code image.
 
 
-=head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
+=head2 SigningMaterial => Signer_SigningMaterial
 
   A C<SigningMaterial> object that contains the Amazon Resource Name
 (ARN) of the certificate used for the signing job.
 
 
-=head2 Source => L<Paws::Signer::Source>
+=head2 Source => Signer_Source
 
   A C<Source> that contains information about a signing job's code image
 source.

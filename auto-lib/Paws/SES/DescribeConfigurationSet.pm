@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::DescribeConfigurationSet;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::SES::DescribeConfigurationSet;
                'ConfigurationSetAttributeNames' => {
                                                      'type' => 'ArrayRef[Str|Undef]'
                                                    }
-             }
+             },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1
+                  }
 }
 ;
     return $Params_map;

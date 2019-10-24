@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EventsBatch;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Paws::Pinpoint::PublicEndpoint', required => 1);
-  has Events => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEvent', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfEvent Pinpoint_PublicEndpoint/;
+  has Endpoint => (is => 'ro', isa => Pinpoint_PublicEndpoint, required => 1);
+  has Events => (is => 'ro', isa => Pinpoint_MapOfEvent, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'class' => 'Paws::Pinpoint::MapOfEvent',
+                             'type' => 'Pinpoint_MapOfEvent'
+                           },
+               'Endpoint' => {
+                               'class' => 'Paws::Pinpoint::PublicEndpoint',
+                               'type' => 'Pinpoint_PublicEndpoint'
+                             }
+             },
+  'IsRequired' => {
+                    'Events' => 1,
+                    'Endpoint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ Specifies a batch of endpoints and events to process.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Endpoint => L<Paws::Pinpoint::PublicEndpoint>
+=head2 B<REQUIRED> Endpoint => Pinpoint_PublicEndpoint
 
   A set of properties and attributes that are associated with the
 endpoint.
 
 
-=head2 B<REQUIRED> Events => L<Paws::Pinpoint::MapOfEvent>
+=head2 B<REQUIRED> Events => Pinpoint_MapOfEvent
 
   A set of properties that are associated with the event.
 

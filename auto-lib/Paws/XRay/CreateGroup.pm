@@ -1,15 +1,36 @@
 
 package Paws::XRay::CreateGroup;
-  use Moose;
-  has FilterExpression => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has FilterExpression => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/CreateGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::CreateGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/CreateGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::CreateGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'FilterExpression' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

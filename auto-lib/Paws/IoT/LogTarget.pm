@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::IoT::LogTarget;
-  use Moose;
-  has TargetName => (is => 'ro', isa => 'Str', request_name => 'targetName', traits => ['NameInRequest']);
-  has TargetType => (is => 'ro', isa => 'Str', request_name => 'targetType', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TargetName => (is => 'ro', isa => Str);
+  has TargetType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'TargetName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'TargetType' => 'targetType',
+                       'TargetName' => 'targetName'
+                     },
+  'IsRequired' => {
+                    'TargetType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

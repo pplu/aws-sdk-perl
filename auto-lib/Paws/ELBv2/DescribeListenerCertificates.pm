@@ -1,15 +1,40 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::DescribeListenerCertificates;
-  use Moose;
-  has ListenerArn => (is => 'ro', isa => 'Str', required => 1);
-  has Marker => (is => 'ro', isa => 'Str');
-  has PageSize => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ELBv2::Types qw//;
+  has ListenerArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeListenerCertificates');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::DescribeListenerCertificatesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeListenerCertificatesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeListenerCertificates');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::DescribeListenerCertificatesOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeListenerCertificatesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'ListenerArn' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ListenerArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

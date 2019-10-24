@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Config;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'config' }
   sub signing_name { 'config' }
   sub version { '2014-11-12' }
   sub target_prefix { 'StarlingDoveService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -780,7 +782,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item ConfigurationAggregatorName => Str
 
-=item ResourceIdentifiers => ArrayRef[L<Paws::Config::AggregateResourceIdentifier>]
+=item ResourceIdentifiers => ArrayRef[Config_AggregateResourceIdentifier]
 
 
 =back
@@ -813,7 +815,7 @@ The API does not return tags and relationships.
 
 =over
 
-=item ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+=item ResourceKeys => ArrayRef[Config_ResourceKey]
 
 
 =back
@@ -1080,7 +1082,7 @@ Notification of delivery failure, if the delivery failed.
 
 =item ConfigurationAggregatorName => Str
 
-=item [Filters => L<Paws::Config::ConfigRuleComplianceFilters>]
+=item [Filters => Config_ConfigRuleComplianceFilters]
 
 =item [Limit => Int]
 
@@ -1492,7 +1494,7 @@ Returns the details of one or more remediation configurations.
 
 =item [NextToken => Str]
 
-=item [ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]]
+=item [ResourceKeys => ArrayRef[Config_ResourceKey]]
 
 
 =back
@@ -1571,7 +1573,7 @@ nextToken, the results are displayed on the next page.
 
 =item ConfigurationAggregatorName => Str
 
-=item [Filters => L<Paws::Config::ConfigRuleComplianceSummaryFilters>]
+=item [Filters => Config_ConfigRuleComplianceSummaryFilters]
 
 =item [GroupByKey => Str]
 
@@ -1599,7 +1601,7 @@ nextToken, the results are displayed on the next page.
 
 =item ConfigurationAggregatorName => Str
 
-=item [Filters => L<Paws::Config::ResourceCountFilters>]
+=item [Filters => Config_ResourceCountFilters]
 
 =item [GroupByKey => Str]
 
@@ -1631,7 +1633,7 @@ accounts that are present in your aggregator.
 
 =item ConfigurationAggregatorName => Str
 
-=item ResourceIdentifier => L<Paws::Config::AggregateResourceIdentifier>
+=item ResourceIdentifier => Config_AggregateResourceIdentifier
 
 
 =back
@@ -1820,7 +1822,7 @@ GetDiscoveredResourceCounts action.
 
 =item OrganizationConfigRuleName => Str
 
-=item [Filters => L<Paws::Config::StatusDetailFilters>]
+=item [Filters => Config_StatusDetailFilters]
 
 =item [Limit => Int]
 
@@ -1888,7 +1890,7 @@ C<nextToken>.
 
 =item ResourceType => Str
 
-=item [Filters => L<Paws::Config::ResourceFilters>]
+=item [Filters => Config_ResourceFilters]
 
 =item [Limit => Int]
 
@@ -1984,7 +1986,7 @@ List the tags for AWS Config resource.
 
 =item AuthorizedAwsRegion => Str
 
-=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
+=item [Tags => ArrayRef[Config_Tag]]
 
 
 =back
@@ -2001,9 +2003,9 @@ source account and region.
 
 =over
 
-=item ConfigRule => L<Paws::Config::ConfigRule>
+=item ConfigRule => Config_ConfigRule
 
-=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
+=item [Tags => ArrayRef[Config_Tag]]
 
 
 =back
@@ -2061,11 +2063,11 @@ in the I<AWS Config Developer Guide>.
 
 =item ConfigurationAggregatorName => Str
 
-=item [AccountAggregationSources => ArrayRef[L<Paws::Config::AccountAggregationSource>]]
+=item [AccountAggregationSources => ArrayRef[Config_AccountAggregationSource]]
 
-=item [OrganizationAggregationSource => L<Paws::Config::OrganizationAggregationSource>]
+=item [OrganizationAggregationSource => Config_OrganizationAggregationSource]
 
-=item [Tags => ArrayRef[L<Paws::Config::Tag>]]
+=item [Tags => ArrayRef[Config_Tag]]
 
 
 =back
@@ -2091,7 +2093,7 @@ between AWS Config and AWS Organizations.
 
 =over
 
-=item ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
+=item ConfigurationRecorder => Config_ConfigurationRecorder
 
 
 =back
@@ -2119,7 +2121,7 @@ types.
 
 =over
 
-=item DeliveryChannel => L<Paws::Config::DeliveryChannel>
+=item DeliveryChannel => Config_DeliveryChannel
 
 
 =back
@@ -2150,7 +2152,7 @@ You can have only one delivery channel per region in your account.
 
 =item ResultToken => Str
 
-=item [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]]
+=item [Evaluations => ArrayRef[Config_Evaluation]]
 
 =item [TestMode => Bool]
 
@@ -2174,9 +2176,9 @@ invoked by an AWS Config rule.
 
 =item [ExcludedAccounts => ArrayRef[Str|Undef]]
 
-=item [OrganizationCustomRuleMetadata => L<Paws::Config::OrganizationCustomRuleMetadata>]
+=item [OrganizationCustomRuleMetadata => Config_OrganizationCustomRuleMetadata]
 
-=item [OrganizationManagedRuleMetadata => L<Paws::Config::OrganizationManagedRuleMetadata>]
+=item [OrganizationManagedRuleMetadata => Config_OrganizationManagedRuleMetadata]
 
 
 =back
@@ -2192,7 +2194,7 @@ Returns: a L<Paws::Config::PutOrganizationConfigRuleResponse> instance
 
 =over
 
-=item RemediationConfigurations => ArrayRef[L<Paws::Config::RemediationConfiguration>]
+=item RemediationConfigurations => ArrayRef[Config_RemediationConfiguration]
 
 
 =back
@@ -2350,7 +2352,7 @@ start the configuration recorder.
 
 =item ConfigRuleName => Str
 
-=item ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]
+=item ResourceKeys => ArrayRef[Config_ResourceKey]
 
 
 =back
@@ -2392,7 +2394,7 @@ to record in your AWS account.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::Config::Tag>]
+=item Tags => ArrayRef[Config_Tag]
 
 
 =back
@@ -2431,9 +2433,9 @@ Deletes specified tags from a resource.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllAggregateComplianceByConfigRules(sub { },ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+=head2 DescribeAllAggregateComplianceByConfigRules(sub { },ConfigurationAggregatorName => Str, [Filters => Config_ConfigRuleComplianceFilters, Limit => Int, NextToken => Str])
 
-=head2 DescribeAllAggregateComplianceByConfigRules(ConfigurationAggregatorName => Str, [Filters => L<Paws::Config::ConfigRuleComplianceFilters>, Limit => Int, NextToken => Str])
+=head2 DescribeAllAggregateComplianceByConfigRules(ConfigurationAggregatorName => Str, [Filters => Config_ConfigRuleComplianceFilters, Limit => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2539,9 +2541,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::DescribePendingAggregationRequestsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllRemediationExecutionStatus(sub { },ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]])
+=head2 DescribeAllRemediationExecutionStatus(sub { },ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[Config_ResourceKey]])
 
-=head2 DescribeAllRemediationExecutionStatus(ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[L<Paws::Config::ResourceKey>]])
+=head2 DescribeAllRemediationExecutionStatus(ConfigRuleName => Str, [Limit => Int, NextToken => Str, ResourceKeys => ArrayRef[Config_ResourceKey]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2611,9 +2613,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Config::GetResourceConfigHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAggregateDiscoveredResources(sub { },ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+=head2 ListAllAggregateDiscoveredResources(sub { },ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => Config_ResourceFilters, Limit => Int, NextToken => Str])
 
-=head2 ListAllAggregateDiscoveredResources(ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => L<Paws::Config::ResourceFilters>, Limit => Int, NextToken => Str])
+=head2 ListAllAggregateDiscoveredResources(ConfigurationAggregatorName => Str, ResourceType => Str, [Filters => Config_ResourceFilters, Limit => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

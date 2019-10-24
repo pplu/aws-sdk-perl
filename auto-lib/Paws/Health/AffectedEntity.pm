@@ -1,13 +1,62 @@
+# Generated from default/object.tt
 package Paws::Health::AffectedEntity;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', request_name => 'awsAccountId', traits => ['NameInRequest']);
-  has EntityArn => (is => 'ro', isa => 'Str', request_name => 'entityArn', traits => ['NameInRequest']);
-  has EntityUrl => (is => 'ro', isa => 'Str', request_name => 'entityUrl', traits => ['NameInRequest']);
-  has EntityValue => (is => 'ro', isa => 'Str', request_name => 'entityValue', traits => ['NameInRequest']);
-  has EventArn => (is => 'ro', isa => 'Str', request_name => 'eventArn', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Health::TagSet', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Health::Types qw/Health_tagSet/;
+  has AwsAccountId => (is => 'ro', isa => Str);
+  has EntityArn => (is => 'ro', isa => Str);
+  has EntityUrl => (is => 'ro', isa => Str);
+  has EntityValue => (is => 'ro', isa => Str);
+  has EventArn => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Health_tagSet);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EntityArn' => {
+                                'type' => 'Str'
+                              },
+               'EntityUrl' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'EntityValue' => {
+                                  'type' => 'Str'
+                                },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::Health::TagSet',
+                           'type' => 'Health_tagSet'
+                         },
+               'EventArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'EntityArn' => 'entityArn',
+                       'EntityUrl' => 'entityUrl',
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'StatusCode' => 'statusCode',
+                       'EntityValue' => 'entityValue',
+                       'AwsAccountId' => 'awsAccountId',
+                       'Tags' => 'tags',
+                       'EventArn' => 'eventArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +134,7 @@ arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTAN
 possible values are C<IMPAIRED>, C<UNIMPAIRED>, and C<UNKNOWN>.
 
 
-=head2 Tags => L<Paws::Health::TagSet>
+=head2 Tags => Health_tagSet
 
   A map of entity tags attached to the affected entity.
 

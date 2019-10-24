@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::AutoScalingInstancesType;
-  use Moose;
-  has AutoScalingInstances => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::AutoScalingInstanceDetails]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_AutoScalingInstanceDetails/;
+  has AutoScalingInstances => (is => 'ro', isa => ArrayRef[AutoScaling_AutoScalingInstanceDetails]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoScalingInstances' => {
+                                           'class' => 'Paws::AutoScaling::AutoScalingInstanceDetails',
+                                           'type' => 'ArrayRef[AutoScaling_AutoScalingInstanceDetails]'
+                                         },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::AutoScaling::AutoScalingInstancesType
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingInstances => ArrayRef[L<Paws::AutoScaling::AutoScalingInstanceDetails>]
+=head2 AutoScalingInstances => ArrayRef[AutoScaling_AutoScalingInstanceDetails]
 
 The instances.
 

@@ -1,21 +1,91 @@
+# Generated from default/object.tt
 package Paws::RDS::OptionGroupOption;
-  use Moose;
-  has DefaultPort => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has EngineName => (is => 'ro', isa => 'Str');
-  has MajorEngineVersion => (is => 'ro', isa => 'Str');
-  has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OptionGroupOptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupOptionSetting]', request_name => 'OptionGroupOptionSetting', traits => ['NameInRequest']);
-  has OptionGroupOptionVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionVersion]', request_name => 'OptionVersion', traits => ['NameInRequest']);
-  has OptionsConflictsWith => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'OptionConflictName', traits => ['NameInRequest']);
-  has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'OptionName', traits => ['NameInRequest']);
-  has Permanent => (is => 'ro', isa => 'Bool');
-  has Persistent => (is => 'ro', isa => 'Bool');
-  has PortRequired => (is => 'ro', isa => 'Bool');
-  has RequiresAutoMinorEngineVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has SupportsOptionVersionDowngrade => (is => 'ro', isa => 'Bool');
-  has VpcOnly => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef Bool/;
+  use Paws::RDS::Types qw/RDS_OptionGroupOptionSetting RDS_OptionVersion/;
+  has DefaultPort => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has EngineName => (is => 'ro', isa => Str);
+  has MajorEngineVersion => (is => 'ro', isa => Str);
+  has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OptionGroupOptionSettings => (is => 'ro', isa => ArrayRef[RDS_OptionGroupOptionSetting]);
+  has OptionGroupOptionVersions => (is => 'ro', isa => ArrayRef[RDS_OptionVersion]);
+  has OptionsConflictsWith => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OptionsDependedOn => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Permanent => (is => 'ro', isa => Bool);
+  has Persistent => (is => 'ro', isa => Bool);
+  has PortRequired => (is => 'ro', isa => Bool);
+  has RequiresAutoMinorEngineVersionUpgrade => (is => 'ro', isa => Bool);
+  has SupportsOptionVersionDowngrade => (is => 'ro', isa => Bool);
+  has VpcOnly => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MajorEngineVersion' => {
+                                         'type' => 'Str'
+                                       },
+               'RequiresAutoMinorEngineVersionUpgrade' => {
+                                                            'type' => 'Bool'
+                                                          },
+               'MinimumRequiredMinorEngineVersion' => {
+                                                        'type' => 'Str'
+                                                      },
+               'OptionGroupOptionSettings' => {
+                                                'class' => 'Paws::RDS::OptionGroupOptionSetting',
+                                                'type' => 'ArrayRef[RDS_OptionGroupOptionSetting]'
+                                              },
+               'OptionGroupOptionVersions' => {
+                                                'class' => 'Paws::RDS::OptionVersion',
+                                                'type' => 'ArrayRef[RDS_OptionVersion]'
+                                              },
+               'OptionsConflictsWith' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'SupportsOptionVersionDowngrade' => {
+                                                     'type' => 'Bool'
+                                                   },
+               'EngineName' => {
+                                 'type' => 'Str'
+                               },
+               'Permanent' => {
+                                'type' => 'Bool'
+                              },
+               'OptionsDependedOn' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'VpcOnly' => {
+                              'type' => 'Bool'
+                            },
+               'PortRequired' => {
+                                   'type' => 'Bool'
+                                 },
+               'Persistent' => {
+                                 'type' => 'Bool'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultPort' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'NameInRequest' => {
+                       'OptionsDependedOn' => 'OptionName',
+                       'OptionGroupOptionSettings' => 'OptionGroupOptionSetting',
+                       'OptionGroupOptionVersions' => 'OptionVersion',
+                       'OptionsConflictsWith' => 'OptionConflictName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -82,13 +152,13 @@ option.
   The name of the option.
 
 
-=head2 OptionGroupOptionSettings => ArrayRef[L<Paws::RDS::OptionGroupOptionSetting>]
+=head2 OptionGroupOptionSettings => ArrayRef[RDS_OptionGroupOptionSetting]
 
   The option settings that are available (and the default value) for each
 option in an option group.
 
 
-=head2 OptionGroupOptionVersions => ArrayRef[L<Paws::RDS::OptionVersion>]
+=head2 OptionGroupOptionVersions => ArrayRef[RDS_OptionVersion]
 
   The versions that are available for the option.
 

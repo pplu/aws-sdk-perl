@@ -1,22 +1,75 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::RegisterDomain;
-  use Moose;
-  has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
-  has AutoRenew => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has DurationInYears => (is => 'ro', isa => 'Int', required => 1);
-  has IdnLangCode => (is => 'ro', isa => 'Str');
-  has PrivacyProtectAdminContact => (is => 'ro', isa => 'Bool');
-  has PrivacyProtectRegistrantContact => (is => 'ro', isa => 'Bool');
-  has PrivacyProtectTechContact => (is => 'ro', isa => 'Bool');
-  has RegistrantContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
-  has TechContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::Route53Domains::Types qw/Route53Domains_ContactDetail/;
+  has AdminContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1, predicate => 1);
+  has AutoRenew => (is => 'ro', isa => Bool, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DurationInYears => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has IdnLangCode => (is => 'ro', isa => Str, predicate => 1);
+  has PrivacyProtectAdminContact => (is => 'ro', isa => Bool, predicate => 1);
+  has PrivacyProtectRegistrantContact => (is => 'ro', isa => Bool, predicate => 1);
+  has PrivacyProtectTechContact => (is => 'ro', isa => Bool, predicate => 1);
+  has RegistrantContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1, predicate => 1);
+  has TechContact => (is => 'ro', isa => Route53Domains_ContactDetail, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::RegisterDomainResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterDomain');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::RegisterDomainResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivacyProtectRegistrantContact' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'IdnLangCode' => {
+                                  'type' => 'Str'
+                                },
+               'PrivacyProtectTechContact' => {
+                                                'type' => 'Bool'
+                                              },
+               'PrivacyProtectAdminContact' => {
+                                                 'type' => 'Bool'
+                                               },
+               'AutoRenew' => {
+                                'type' => 'Bool'
+                              },
+               'TechContact' => {
+                                  'class' => 'Paws::Route53Domains::ContactDetail',
+                                  'type' => 'Route53Domains_ContactDetail'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'RegistrantContact' => {
+                                        'class' => 'Paws::Route53Domains::ContactDetail',
+                                        'type' => 'Route53Domains_ContactDetail'
+                                      },
+               'AdminContact' => {
+                                   'class' => 'Paws::Route53Domains::ContactDetail',
+                                   'type' => 'Route53Domains_ContactDetail'
+                                 },
+               'DurationInYears' => {
+                                      'type' => 'Int'
+                                    }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'RegistrantContact' => 1,
+                    'AdminContact' => 1,
+                    'TechContact' => 1,
+                    'DurationInYears' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -135,7 +188,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> AdminContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 
@@ -219,13 +272,13 @@ Default: C<true>
 
 
 
-=head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> RegistrantContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 
 
 
-=head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
+=head2 B<REQUIRED> TechContact => Route53Domains_ContactDetail
 
 Provides detailed contact information.
 

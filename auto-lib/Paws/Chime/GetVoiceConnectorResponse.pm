@@ -1,9 +1,27 @@
 
 package Paws::Chime::GetVoiceConnectorResponse;
-  use Moose;
-  has VoiceConnector => (is => 'ro', isa => 'Paws::Chime::VoiceConnector');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Chime::Types qw/Chime_VoiceConnector/;
+  has VoiceConnector => (is => 'ro', isa => Chime_VoiceConnector);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VoiceConnector' => {
+                                     'class' => 'Paws::Chime::VoiceConnector',
+                                     'type' => 'Chime_VoiceConnector'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Chime::GetVoiceConnectorResponse
 =head1 ATTRIBUTES
 
 
-=head2 VoiceConnector => L<Paws::Chime::VoiceConnector>
+=head2 VoiceConnector => Chime_VoiceConnector
 
 The Amazon Chime Voice Connector details.
 

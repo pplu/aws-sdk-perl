@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseSnapshotResult;
-  use Moose;
-  has RelationalDatabaseSnapshot => (is => 'ro', isa => 'Paws::Lightsail::RelationalDatabaseSnapshot', traits => ['NameInRequest'], request_name => 'relationalDatabaseSnapshot' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabaseSnapshot/;
+  has RelationalDatabaseSnapshot => (is => 'ro', isa => Lightsail_RelationalDatabaseSnapshot);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'RelationalDatabaseSnapshot' => {
+                                                 'class' => 'Paws::Lightsail::RelationalDatabaseSnapshot',
+                                                 'type' => 'Lightsail_RelationalDatabaseSnapshot'
+                                               }
+             },
+  'NameInRequest' => {
+                       'RelationalDatabaseSnapshot' => 'relationalDatabaseSnapshot'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetRelationalDatabaseSnapshotResult
 =head1 ATTRIBUTES
 
 
-=head2 RelationalDatabaseSnapshot => L<Paws::Lightsail::RelationalDatabaseSnapshot>
+=head2 RelationalDatabaseSnapshot => Lightsail_RelationalDatabaseSnapshot
 
 An object describing the specified database snapshot.
 

@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::Transfer::DescribedUser;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has HomeDirectory => (is => 'ro', isa => 'Str');
-  has Policy => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has SshPublicKeys => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::SshPublicKey]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
-  has UserName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_Tag Transfer_SshPublicKey/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has HomeDirectory => (is => 'ro', isa => Str);
+  has Policy => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has SshPublicKeys => (is => 'ro', isa => ArrayRef[Transfer_SshPublicKey]);
+  has Tags => (is => 'ro', isa => ArrayRef[Transfer_Tag]);
+  has UserName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Policy' => {
+                             'type' => 'Str'
+                           },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Transfer::Tag',
+                           'type' => 'ArrayRef[Transfer_Tag]'
+                         },
+               'SshPublicKeys' => {
+                                    'class' => 'Paws::Transfer::SshPublicKey',
+                                    'type' => 'ArrayRef[Transfer_SshPublicKey]'
+                                  },
+               'HomeDirectory' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,13 +112,13 @@ SFTP server to access your resources when servicing your SFTP user's
 transfer requests.
 
 
-=head2 SshPublicKeys => ArrayRef[L<Paws::Transfer::SshPublicKey>]
+=head2 SshPublicKeys => ArrayRef[Transfer_SshPublicKey]
 
   This property contains the public key portion of the Secure Shell (SSH)
 keys stored for the described user.
 
 
-=head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=head2 Tags => ArrayRef[Transfer_Tag]
 
   This property contains the key-value pairs for the user requested. Tag
 can be used to search for and group users for a variety of purposes.

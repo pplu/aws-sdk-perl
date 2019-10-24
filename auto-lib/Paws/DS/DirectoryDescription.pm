@@ -1,29 +1,119 @@
+# Generated from default/object.tt
 package Paws::DS::DirectoryDescription;
-  use Moose;
-  has AccessUrl => (is => 'ro', isa => 'Str');
-  has Alias => (is => 'ro', isa => 'Str');
-  has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettingsDescription');
-  has Description => (is => 'ro', isa => 'Str');
-  has DesiredNumberOfDomainControllers => (is => 'ro', isa => 'Int');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Edition => (is => 'ro', isa => 'Str');
-  has LaunchTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerDirectoryDescription => (is => 'ro', isa => 'Paws::DS::OwnerDirectoryDescription');
-  has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
-  has RadiusStatus => (is => 'ro', isa => 'Str');
-  has ShareMethod => (is => 'ro', isa => 'Str');
-  has ShareNotes => (is => 'ro', isa => 'Str');
-  has ShareStatus => (is => 'ro', isa => 'Str');
-  has ShortName => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Str');
-  has SsoEnabled => (is => 'ro', isa => 'Bool');
-  has Stage => (is => 'ro', isa => 'Str');
-  has StageLastUpdatedDateTime => (is => 'ro', isa => 'Str');
-  has StageReason => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef Bool/;
+  use Paws::DS::Types qw/DS_DirectoryVpcSettingsDescription DS_DirectoryConnectSettingsDescription DS_OwnerDirectoryDescription DS_RadiusSettings/;
+  has AccessUrl => (is => 'ro', isa => Str);
+  has Alias => (is => 'ro', isa => Str);
+  has ConnectSettings => (is => 'ro', isa => DS_DirectoryConnectSettingsDescription);
+  has Description => (is => 'ro', isa => Str);
+  has DesiredNumberOfDomainControllers => (is => 'ro', isa => Int);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DnsIpAddrs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Edition => (is => 'ro', isa => Str);
+  has LaunchTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerDirectoryDescription => (is => 'ro', isa => DS_OwnerDirectoryDescription);
+  has RadiusSettings => (is => 'ro', isa => DS_RadiusSettings);
+  has RadiusStatus => (is => 'ro', isa => Str);
+  has ShareMethod => (is => 'ro', isa => Str);
+  has ShareNotes => (is => 'ro', isa => Str);
+  has ShareStatus => (is => 'ro', isa => Str);
+  has ShortName => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Str);
+  has SsoEnabled => (is => 'ro', isa => Bool);
+  has Stage => (is => 'ro', isa => Str);
+  has StageLastUpdatedDateTime => (is => 'ro', isa => Str);
+  has StageReason => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has VpcSettings => (is => 'ro', isa => DS_DirectoryVpcSettingsDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsIpAddrs' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'ConnectSettings' => {
+                                      'class' => 'Paws::DS::DirectoryConnectSettingsDescription',
+                                      'type' => 'DS_DirectoryConnectSettingsDescription'
+                                    },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'OwnerDirectoryDescription' => {
+                                                'class' => 'Paws::DS::OwnerDirectoryDescription',
+                                                'type' => 'DS_OwnerDirectoryDescription'
+                                              },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'Size' => {
+                           'type' => 'Str'
+                         },
+               'ShareMethod' => {
+                                  'type' => 'Str'
+                                },
+               'StageLastUpdatedDateTime' => {
+                                               'type' => 'Str'
+                                             },
+               'VpcSettings' => {
+                                  'class' => 'Paws::DS::DirectoryVpcSettingsDescription',
+                                  'type' => 'DS_DirectoryVpcSettingsDescription'
+                                },
+               'LaunchTime' => {
+                                 'type' => 'Str'
+                               },
+               'AccessUrl' => {
+                                'type' => 'Str'
+                              },
+               'ShareStatus' => {
+                                  'type' => 'Str'
+                                },
+               'ShortName' => {
+                                'type' => 'Str'
+                              },
+               'Stage' => {
+                            'type' => 'Str'
+                          },
+               'Edition' => {
+                              'type' => 'Str'
+                            },
+               'Alias' => {
+                            'type' => 'Str'
+                          },
+               'ShareNotes' => {
+                                 'type' => 'Str'
+                               },
+               'StageReason' => {
+                                  'type' => 'Str'
+                                },
+               'RadiusSettings' => {
+                                     'class' => 'Paws::DS::RadiusSettings',
+                                     'type' => 'DS_RadiusSettings'
+                                   },
+               'DesiredNumberOfDomainControllers' => {
+                                                       'type' => 'Int'
+                                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'RadiusStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'SsoEnabled' => {
+                                 'type' => 'Bool'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +164,7 @@ directory, the alias is the directory identifier, such as
 C<d-XXXXXXXXXX>.
 
 
-=head2 ConnectSettings => L<Paws::DS::DirectoryConnectSettingsDescription>
+=head2 ConnectSettings => DS_DirectoryConnectSettingsDescription
 
   A DirectoryConnectSettingsDescription object that contains additional
 information about an AD Connector directory. This member is only
@@ -121,13 +211,13 @@ on-premises directory to which the AD Connector is connected.
   The fully qualified name of the directory.
 
 
-=head2 OwnerDirectoryDescription => L<Paws::DS::OwnerDirectoryDescription>
+=head2 OwnerDirectoryDescription => DS_OwnerDirectoryDescription
 
   Describes the AWS Managed Microsoft AD directory in the directory owner
 account.
 
 
-=head2 RadiusSettings => L<Paws::DS::RadiusSettings>
+=head2 RadiusSettings => DS_RadiusSettings
 
   A RadiusSettings object that contains information about the RADIUS
 server configured for this directory.
@@ -196,7 +286,7 @@ information, see EnableSso and DisableSso.
   The directory size.
 
 
-=head2 VpcSettings => L<Paws::DS::DirectoryVpcSettingsDescription>
+=head2 VpcSettings => DS_DirectoryVpcSettingsDescription
 
   A DirectoryVpcSettingsDescription object that contains additional
 information about a directory. This member is only present if the

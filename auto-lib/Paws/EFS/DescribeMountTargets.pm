@@ -1,17 +1,47 @@
 
 package Paws::EFS::DescribeMountTargets;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FileSystemId');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
-  has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MountTargetId');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has MountTargetId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMountTargets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/mount-targets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::DescribeMountTargetsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeMountTargets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/mount-targets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::DescribeMountTargetsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'MountTargetId' => {
+                                    'type' => 'Str'
+                                  },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'FileSystemId' => 'FileSystemId',
+                      'MountTargetId' => 'MountTargetId',
+                      'Marker' => 'Marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

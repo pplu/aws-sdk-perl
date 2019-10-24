@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::SageMaker::CognitoMemberDefinition;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', required => 1);
-  has UserGroup => (is => 'ro', isa => 'Str', required => 1);
-  has UserPool => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has ClientId => (is => 'ro', isa => Str, required => 1);
+  has UserGroup => (is => 'ro', isa => Str, required => 1);
+  has UserPool => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'UserPool' => {
+                               'type' => 'Str'
+                             },
+               'UserGroup' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'ClientId' => 1,
+                    'UserPool' => 1,
+                    'UserGroup' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

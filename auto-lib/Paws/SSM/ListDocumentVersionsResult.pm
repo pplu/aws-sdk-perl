@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::ListDocumentVersionsResult;
-  use Moose;
-  has DocumentVersions => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentVersionInfo]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_DocumentVersionInfo/;
+  has DocumentVersions => (is => 'ro', isa => ArrayRef[SSM_DocumentVersionInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DocumentVersions' => {
+                                       'class' => 'Paws::SSM::DocumentVersionInfo',
+                                       'type' => 'ArrayRef[SSM_DocumentVersionInfo]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SSM::ListDocumentVersionsResult
 =head1 ATTRIBUTES
 
 
-=head2 DocumentVersions => ArrayRef[L<Paws::SSM::DocumentVersionInfo>]
+=head2 DocumentVersions => ArrayRef[SSM_DocumentVersionInfo]
 
 The document versions.
 

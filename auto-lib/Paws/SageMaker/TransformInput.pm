@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformInput;
-  use Moose;
-  has CompressionType => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has DataSource => (is => 'ro', isa => 'Paws::SageMaker::TransformDataSource', required => 1);
-  has SplitType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_TransformDataSource/;
+  has CompressionType => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has DataSource => (is => 'ro', isa => SageMaker_TransformDataSource, required => 1);
+  has SplitType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSource' => {
+                                 'class' => 'Paws::SageMaker::TransformDataSource',
+                                 'type' => 'SageMaker_TransformDataSource'
+                               },
+               'SplitType' => {
+                                'type' => 'Str'
+                              },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'CompressionType' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'DataSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +84,7 @@ Amazon SageMaker uses the MIME type with each http call to transfer
 data to the transform job.
 
 
-=head2 B<REQUIRED> DataSource => L<Paws::SageMaker::TransformDataSource>
+=head2 B<REQUIRED> DataSource => SageMaker_TransformDataSource
 
   Describes the location of the channel data, which is, the S3 location
 of the input data that the model can consume.

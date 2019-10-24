@@ -1,9 +1,27 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
-  use Moose;
-  has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingNotificationTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AutoScalingNotificationTypes' => {
+                                                   'type' => 'ArrayRef[Str|Undef]'
+                                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###

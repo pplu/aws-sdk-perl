@@ -1,3 +1,4 @@
+# Generated from default/map_enum.tt
 package Paws::ES::LogPublishingOptions;
   use Moo;
   with 'Paws::API::MapParser';
@@ -15,11 +16,11 @@ package Paws::ES::LogPublishingOptions;
     our $Params_map ||= {
                     types => {
                                'ES_APPLICATION_LOGS' => {
-                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                                          type => 'ES_LogPublishingOption',                                          class => 'Paws::ES::LogPublishingOption',                                        },
                                'INDEX_SLOW_LOGS' => {
-                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                                          type => 'ES_LogPublishingOption',                                          class => 'Paws::ES::LogPublishingOption',                                        },
                                'SEARCH_SLOW_LOGS' => {
-                                          type => 'ES_LogPublishingOption',                                          class => 'ES_LogPublishingOption',                                        },
+                                          type => 'ES_LogPublishingOption',                                          class => 'Paws::ES::LogPublishingOption',                                        },
                              },
                   };
     return $Params_map;

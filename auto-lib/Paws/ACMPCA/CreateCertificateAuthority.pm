@@ -1,17 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACMPCA::CreateCertificateAuthority;
-  use Moose;
-  has CertificateAuthorityConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CertificateAuthorityConfiguration', required => 1);
-  has CertificateAuthorityType => (is => 'ro', isa => 'Str', required => 1);
-  has IdempotencyToken => (is => 'ro', isa => 'Str');
-  has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ACMPCA::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ACMPCA::Types qw/ACMPCA_Tag ACMPCA_CertificateAuthorityConfiguration ACMPCA_RevocationConfiguration/;
+  has CertificateAuthorityConfiguration => (is => 'ro', isa => ACMPCA_CertificateAuthorityConfiguration, required => 1, predicate => 1);
+  has CertificateAuthorityType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, predicate => 1);
+  has RevocationConfiguration => (is => 'ro', isa => ACMPCA_RevocationConfiguration, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ACMPCA_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCertificateAuthority');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ACMPCA::CreateCertificateAuthorityResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCertificateAuthority');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ACMPCA::CreateCertificateAuthorityResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'RevocationConfiguration' => {
+                                              'class' => 'Paws::ACMPCA::RevocationConfiguration',
+                                              'type' => 'ACMPCA_RevocationConfiguration'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::ACMPCA::Tag',
+                           'type' => 'ArrayRef[ACMPCA_Tag]'
+                         },
+               'CertificateAuthorityType' => {
+                                               'type' => 'Str'
+                                             },
+               'CertificateAuthorityConfiguration' => {
+                                                        'class' => 'Paws::ACMPCA::CertificateAuthorityConfiguration',
+                                                        'type' => 'ACMPCA_CertificateAuthorityConfiguration'
+                                                      }
+             },
+  'IsRequired' => {
+                    'CertificateAuthorityType' => 1,
+                    'CertificateAuthorityConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +123,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CertificateAuthorityConfiguration => L<Paws::ACMPCA::CertificateAuthorityConfiguration>
+=head2 B<REQUIRED> CertificateAuthorityConfiguration => ACMPCA_CertificateAuthorityConfiguration
 
 Name and bit size of the private key algorithm, the name of the signing
 algorithm, and X.500 certificate subject information.
@@ -114,7 +149,7 @@ requesting multiple certificates.
 
 
 
-=head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>
+=head2 RevocationConfiguration => ACMPCA_RevocationConfiguration
 
 Contains a Boolean value that you can use to enable a certification
 revocation list (CRL) for the CA, the name of the S3 bucket to which
@@ -125,7 +160,7 @@ CrlConfiguration structure.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ACMPCA::Tag>]
+=head2 Tags => ArrayRef[ACMPCA_Tag]
 
 Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags

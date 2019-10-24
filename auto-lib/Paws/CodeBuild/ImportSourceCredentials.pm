@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::ImportSourceCredentials;
-  use Moose;
-  has AuthType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authType' , required => 1);
-  has ServerType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serverType' , required => 1);
-  has Token => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'token' , required => 1);
-  has Username => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'username' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has AuthType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServerType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Token => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Username => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportSourceCredentials');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::ImportSourceCredentialsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportSourceCredentials');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::ImportSourceCredentialsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthType' => {
+                               'type' => 'Str'
+                             },
+               'ServerType' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'Token' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'AuthType' => 'authType',
+                       'ServerType' => 'serverType',
+                       'Username' => 'username',
+                       'Token' => 'token'
+                     },
+  'IsRequired' => {
+                    'AuthType' => 1,
+                    'ServerType' => 1,
+                    'Token' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::Conflict;
-  use Moose;
-  has ConflictMetadata => (is => 'ro', isa => 'Paws::CodeCommit::ConflictMetadata', request_name => 'conflictMetadata', traits => ['NameInRequest']);
-  has MergeHunks => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::MergeHunk]', request_name => 'mergeHunks', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_MergeHunk CodeCommit_ConflictMetadata/;
+  has ConflictMetadata => (is => 'ro', isa => CodeCommit_ConflictMetadata);
+  has MergeHunks => (is => 'ro', isa => ArrayRef[CodeCommit_MergeHunk]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MergeHunks' => {
+                                 'class' => 'Paws::CodeCommit::MergeHunk',
+                                 'type' => 'ArrayRef[CodeCommit_MergeHunk]'
+                               },
+               'ConflictMetadata' => {
+                                       'class' => 'Paws::CodeCommit::ConflictMetadata',
+                                       'type' => 'CodeCommit_ConflictMetadata'
+                                     }
+             },
+  'NameInRequest' => {
+                       'MergeHunks' => 'mergeHunks',
+                       'ConflictMetadata' => 'conflictMetadata'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Information about conflicts in a merge operation.
 =head1 ATTRIBUTES
 
 
-=head2 ConflictMetadata => L<Paws::CodeCommit::ConflictMetadata>
+=head2 ConflictMetadata => CodeCommit_ConflictMetadata
 
   Metadata about a conflict in a merge operation.
 
 
-=head2 MergeHunks => ArrayRef[L<Paws::CodeCommit::MergeHunk>]
+=head2 MergeHunks => ArrayRef[CodeCommit_MergeHunk]
 
   A list of hunks that contain the differences between files or lines
 causing the conflict.

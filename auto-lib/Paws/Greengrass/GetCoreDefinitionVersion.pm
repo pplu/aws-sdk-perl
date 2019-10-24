@@ -1,15 +1,41 @@
 
 package Paws::Greengrass::GetCoreDefinitionVersion;
-  use Moose;
-  has CoreDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionId', required => 1);
-  has CoreDefinitionVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'CoreDefinitionVersionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has CoreDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CoreDefinitionVersionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCoreDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::GetCoreDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCoreDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::GetCoreDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoreDefinitionId' => {
+                                       'type' => 'Str'
+                                     },
+               'CoreDefinitionVersionId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'ParamInURI' => {
+                    'CoreDefinitionId' => 'CoreDefinitionId',
+                    'CoreDefinitionVersionId' => 'CoreDefinitionVersionId'
+                  },
+  'IsRequired' => {
+                    'CoreDefinitionId' => 1,
+                    'CoreDefinitionVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,40 @@
 
 package Paws::CloudFront::CreateFieldLevelEncryptionProfileResult;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has FieldLevelEncryptionProfile => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfile');
-  has Location => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Location');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfile/;
+  has ETag => (is => 'ro', isa => Str);
+  has FieldLevelEncryptionProfile => (is => 'ro', isa => CloudFront_FieldLevelEncryptionProfile);
+  has Location => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldLevelEncryptionProfile' => {
+                                                  'class' => 'Paws::CloudFront::FieldLevelEncryptionProfile',
+                                                  'type' => 'CloudFront_FieldLevelEncryptionProfile'
+                                                },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInHeader' => {
+                       'ETag' => 'ETag',
+                       'Location' => 'Location'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +53,7 @@ C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 FieldLevelEncryptionProfile => L<Paws::CloudFront::FieldLevelEncryptionProfile>
+=head2 FieldLevelEncryptionProfile => CloudFront_FieldLevelEncryptionProfile
 
 Returned when you create a new field-level encryption profile.
 

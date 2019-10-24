@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::EMR::HadoopStepConfig;
-  use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Jar => (is => 'ro', isa => 'Str');
-  has MainClass => (is => 'ro', isa => 'Str');
-  has Properties => (is => 'ro', isa => 'Paws::EMR::StringMap');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EMR::Types qw/EMR_StringMap/;
+  has Args => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Jar => (is => 'ro', isa => Str);
+  has MainClass => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => EMR_StringMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Jar' => {
+                          'type' => 'Str'
+                        },
+               'MainClass' => {
+                                'type' => 'Str'
+                              },
+               'Properties' => {
+                                 'class' => 'Paws::EMR::StringMap',
+                                 'type' => 'EMR_StringMap'
+                               },
+               'Args' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +86,7 @@ specified, the JAR file should specify a main class in its manifest
 file.
 
 
-=head2 Properties => L<Paws::EMR::StringMap>
+=head2 Properties => EMR_StringMap
 
   The list of Java properties that are set when the step runs. You can
 use these properties to pass key value pairs to your main function.

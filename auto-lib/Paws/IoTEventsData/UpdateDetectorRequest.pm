@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::UpdateDetectorRequest;
-  use Moose;
-  has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest'], required => 1);
-  has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
-  has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
-  has State => (is => 'ro', isa => 'Paws::IoTEventsData::DetectorStateDefinition', request_name => 'state', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_DetectorStateDefinition/;
+  has DetectorModelName => (is => 'ro', isa => Str, required => 1);
+  has KeyValue => (is => 'ro', isa => Str);
+  has MessageId => (is => 'ro', isa => Str, required => 1);
+  has State => (is => 'ro', isa => IoTEventsData_DetectorStateDefinition, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyValue' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'class' => 'Paws::IoTEventsData::DetectorStateDefinition',
+                            'type' => 'IoTEventsData_DetectorStateDefinition'
+                          },
+               'MessageId' => {
+                                'type' => 'Str'
+                              },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'KeyValue' => 'keyValue',
+                       'State' => 'state',
+                       'MessageId' => 'messageId',
+                       'DetectorModelName' => 'detectorModelName'
+                     },
+  'IsRequired' => {
+                    'State' => 1,
+                    'MessageId' => 1,
+                    'DetectorModelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +94,7 @@ that caused the creation of this detector (instance).
 C<"messageId"> must be unique within each batch sent.
 
 
-=head2 B<REQUIRED> State => L<Paws::IoTEventsData::DetectorStateDefinition>
+=head2 B<REQUIRED> State => IoTEventsData_DetectorStateDefinition
 
   The new state, variable values, and timer settings of the detector
 (instance).

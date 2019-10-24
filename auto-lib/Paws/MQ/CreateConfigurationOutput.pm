@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MQ::CreateConfigurationOutput;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw/MQ_ConfigurationRevision/;
+  has Arn => (is => 'ro', isa => Str);
+  has Created => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LatestRevision => (is => 'ro', isa => MQ_ConfigurationRevision);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Created' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LatestRevision' => {
+                                     'class' => 'Paws::MQ::ConfigurationRevision',
+                                     'type' => 'MQ_ConfigurationRevision'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Created' => 'created',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'LatestRevision' => 'latestRevision'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +92,7 @@ Returns information about the created configuration.
   Required. The unique ID that Amazon MQ generates for the configuration.
 
 
-=head2 LatestRevision => L<Paws::MQ::ConfigurationRevision>
+=head2 LatestRevision => MQ_ConfigurationRevision
 
   The latest revision of the configuration.
 

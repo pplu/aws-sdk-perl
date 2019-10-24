@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DescribeTagsResponse;
-  use Moose;
-  has ResourceTags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::ResourceTag]', traits => ['NameInRequest'], request_name => 'resourceTags' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_ResourceTag/;
+  has ResourceTags => (is => 'ro', isa => ArrayRef[DirectConnect_ResourceTag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceTags' => {
+                                   'class' => 'Paws::DirectConnect::ResourceTag',
+                                   'type' => 'ArrayRef[DirectConnect_ResourceTag]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ResourceTags' => 'resourceTags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::DescribeTagsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResourceTags => ArrayRef[L<Paws::DirectConnect::ResourceTag>]
+=head2 ResourceTags => ArrayRef[DirectConnect_ResourceTag]
 
 Information about the tags.
 

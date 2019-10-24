@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::DirectConnectGateway;
-  use Moose;
-  has AmazonSideAsn => (is => 'ro', isa => 'Int', request_name => 'amazonSideAsn', traits => ['NameInRequest']);
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
-  has DirectConnectGatewayName => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayName', traits => ['NameInRequest']);
-  has DirectConnectGatewayState => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayState', traits => ['NameInRequest']);
-  has OwnerAccount => (is => 'ro', isa => 'Str', request_name => 'ownerAccount', traits => ['NameInRequest']);
-  has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::DirectConnect::Types qw//;
+  has AmazonSideAsn => (is => 'ro', isa => Int);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str);
+  has DirectConnectGatewayName => (is => 'ro', isa => Str);
+  has DirectConnectGatewayState => (is => 'ro', isa => Str);
+  has OwnerAccount => (is => 'ro', isa => Str);
+  has StateChangeError => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectConnectGatewayName' => {
+                                               'type' => 'Str'
+                                             },
+               'AmazonSideAsn' => {
+                                    'type' => 'Int'
+                                  },
+               'StateChangeError' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'DirectConnectGatewayState' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'NameInRequest' => {
+                       'DirectConnectGatewayName' => 'directConnectGatewayName',
+                       'AmazonSideAsn' => 'amazonSideAsn',
+                       'StateChangeError' => 'stateChangeError',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'OwnerAccount' => 'ownerAccount',
+                       'DirectConnectGatewayState' => 'directConnectGatewayState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

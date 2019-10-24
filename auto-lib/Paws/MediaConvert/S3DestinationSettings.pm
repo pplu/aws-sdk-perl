@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::S3DestinationSettings;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::S3EncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_S3EncryptionSettings/;
+  has Encryption => (is => 'ro', isa => MediaConvert_S3EncryptionSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConvert::S3EncryptionSettings',
+                                 'type' => 'MediaConvert_S3EncryptionSettings'
+                               }
+             },
+  'NameInRequest' => {
+                       'Encryption' => 'encryption'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Settings associated with S3 destination
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaConvert::S3EncryptionSettings>
+=head2 Encryption => MediaConvert_S3EncryptionSettings
 
   Settings for how your job outputs are encrypted as they are uploaded to
 Amazon S3.

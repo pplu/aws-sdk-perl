@@ -1,17 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetInventorySchema;
-  use Moose;
-  has Aggregator => (is => 'ro', isa => 'Bool');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SubType => (is => 'ro', isa => 'Bool');
-  has TypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SSM::Types qw//;
+  has Aggregator => (is => 'ro', isa => Bool, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SubType => (is => 'ro', isa => Bool, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetInventorySchema');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetInventorySchemaResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetInventorySchema');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetInventorySchemaResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Aggregator' => {
+                                 'type' => 'Bool'
+                               },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'SubType' => {
+                              'type' => 'Bool'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

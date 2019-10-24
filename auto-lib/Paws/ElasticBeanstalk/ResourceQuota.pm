@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::ResourceQuota;
-  use Moose;
-  has Maximum => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has Maximum => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Maximum' => {
+                              'type' => 'Int'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

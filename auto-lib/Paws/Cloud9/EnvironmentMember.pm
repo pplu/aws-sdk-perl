@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Cloud9::EnvironmentMember;
-  use Moose;
-  has EnvironmentId => (is => 'ro', isa => 'Str', request_name => 'environmentId', traits => ['NameInRequest']);
-  has LastAccess => (is => 'ro', isa => 'Str', request_name => 'lastAccess', traits => ['NameInRequest']);
-  has Permissions => (is => 'ro', isa => 'Str', request_name => 'permissions', traits => ['NameInRequest']);
-  has UserArn => (is => 'ro', isa => 'Str', request_name => 'userArn', traits => ['NameInRequest']);
-  has UserId => (is => 'ro', isa => 'Str', request_name => 'userId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw//;
+  has EnvironmentId => (is => 'ro', isa => Str);
+  has LastAccess => (is => 'ro', isa => Str);
+  has Permissions => (is => 'ro', isa => Str);
+  has UserArn => (is => 'ro', isa => Str);
+  has UserId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'LastAccess' => {
+                                 'type' => 'Str'
+                               },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'Permissions' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'EnvironmentId' => 'environmentId',
+                       'LastAccess' => 'lastAccess',
+                       'UserId' => 'userId',
+                       'Permissions' => 'permissions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

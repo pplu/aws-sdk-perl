@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::CreateResourceDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has ResourceDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceDefinitionId', required => 1);
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Resource]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Resource/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Resources => (is => 'ro', isa => ArrayRef[Greengrass_Resource], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateResourceDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/resources/{ResourceDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateResourceDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateResourceDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/resources/{ResourceDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateResourceDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resources' => {
+                                'class' => 'Paws::Greengrass::Resource',
+                                'type' => 'ArrayRef[Greengrass_Resource]'
+                              },
+               'ResourceDefinitionId' => {
+                                           'type' => 'Str'
+                                         },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'ParamInURI' => {
+                    'ResourceDefinitionId' => 'ResourceDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'ResourceDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +131,7 @@ The ID of the resource definition.
 
 
 
-=head2 Resources => ArrayRef[L<Paws::Greengrass::Resource>]
+=head2 Resources => ArrayRef[Greengrass_Resource]
 
 A list of resources.
 

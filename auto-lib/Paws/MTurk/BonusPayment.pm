@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::MTurk::BonusPayment;
-  use Moose;
-  has AssignmentId => (is => 'ro', isa => 'Str');
-  has BonusAmount => (is => 'ro', isa => 'Str');
-  has GrantTime => (is => 'ro', isa => 'Str');
-  has Reason => (is => 'ro', isa => 'Str');
-  has WorkerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has AssignmentId => (is => 'ro', isa => Str);
+  has BonusAmount => (is => 'ro', isa => Str);
+  has GrantTime => (is => 'ro', isa => Str);
+  has Reason => (is => 'ro', isa => Str);
+  has WorkerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'BonusAmount' => {
+                                  'type' => 'Str'
+                                },
+               'GrantTime' => {
+                                'type' => 'Str'
+                              },
+               'WorkerId' => {
+                               'type' => 'Str'
+                             },
+               'AssignmentId' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

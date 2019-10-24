@@ -1,18 +1,55 @@
 
 package Paws::CloudDirectory::CreateIndex;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has IsUnique => (is => 'ro', isa => 'Bool', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str');
-  has OrderedIndexedAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKey]', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectReference CloudDirectory_AttributeKey/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IsUnique => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has LinkName => (is => 'ro', isa => Str, predicate => 1);
+  has OrderedIndexedAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKey], required => 1, predicate => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateIndex');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/index');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateIndexResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateIndex');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/index');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::CreateIndexResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'OrderedIndexedAttributeList' => {
+                                                  'class' => 'Paws::CloudDirectory::AttributeKey',
+                                                  'type' => 'ArrayRef[CloudDirectory_AttributeKey]'
+                                                },
+               'IsUnique' => {
+                               'type' => 'Bool'
+                             },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'OrderedIndexedAttributeList' => 1,
+                    'IsUnique' => 1,
+                    'DirectoryArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,14 +117,14 @@ The name of the link between the parent object and the index object.
 
 
 
-=head2 B<REQUIRED> OrderedIndexedAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKey>]
+=head2 B<REQUIRED> OrderedIndexedAttributeList => ArrayRef[CloudDirectory_AttributeKey]
 
 Specifies the attributes that should be indexed on. Currently only a
 single attribute is supported.
 
 
 
-=head2 ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 ParentReference => CloudDirectory_ObjectReference
 
 A reference to the parent object that contains the index object.
 

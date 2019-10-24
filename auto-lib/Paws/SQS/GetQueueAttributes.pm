@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::GetQueueAttributes;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::SQS::GetQueueAttributes;
                'AttributeNames' => {
                                      'type' => 'ArrayRef[Str|Undef]'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1
+                  }
 }
 ;
     return $Params_map;

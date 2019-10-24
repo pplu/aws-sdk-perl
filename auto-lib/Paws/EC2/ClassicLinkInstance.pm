@@ -6,7 +6,7 @@ package Paws::EC2::ClassicLinkInstance;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -32,8 +32,8 @@ package Paws::EC2::ClassicLinkInstance;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Chime::AccountSettings;
-  use Moose;
-  has DisableRemoteControl => (is => 'ro', isa => 'Bool');
-  has EnableDialOut => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::Chime::Types qw//;
+  has DisableRemoteControl => (is => 'ro', isa => Bool);
+  has EnableDialOut => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisableRemoteControl' => {
+                                           'type' => 'Bool'
+                                         },
+               'EnableDialOut' => {
+                                    'type' => 'Bool'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::CloudWatchLogs;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'logs' }
   sub signing_name { 'logs' }
   sub version { '2014-03-28' }
   sub target_prefix { 'Logs_20140328' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -601,7 +603,7 @@ exported objects.
 
 =item [KmsKeyId => Str]
 
-=item [Tags => L<Paws::CloudWatchLogs::Tags>]
+=item [Tags => CloudWatchLogs_Tags]
 
 
 =back
@@ -1249,7 +1251,7 @@ against a given destination.
 
 =over
 
-=item LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
+=item LogEvents => ArrayRef[CloudWatchLogs_InputLogEvent]
 
 =item LogGroupName => Str
 
@@ -1327,7 +1329,7 @@ most likely cause is an invalid AWS access key ID or secret key.
 
 =item LogGroupName => Str
 
-=item MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+=item MetricTransformations => ArrayRef[CloudWatchLogs_MetricTransformation]
 
 
 =back
@@ -1500,7 +1502,7 @@ the specified query is not running.
 
 =item LogGroupName => Str
 
-=item Tags => L<Paws::CloudWatchLogs::Tags>
+=item Tags => CloudWatchLogs_Tags
 
 
 =back

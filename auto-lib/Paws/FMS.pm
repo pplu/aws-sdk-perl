@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::FMS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'fms' }
   sub signing_name { 'fms' }
   sub version { '2018-01-01' }
   sub target_prefix { 'AWSFMS_20180101' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -451,7 +453,7 @@ topic that AWS Firewall Manager uses to record SNS logs.
 
 =over
 
-=item Policy => L<Paws::FMS::Policy>
+=item Policy => FMS_Policy
 
 
 =back

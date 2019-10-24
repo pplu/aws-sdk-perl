@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetInvitationConfigurationResponse;
-  use Moose;
-  has ContactEmail => (is => 'ro', isa => 'Str');
-  has OrganizationName => (is => 'ro', isa => 'Str');
-  has PrivateSkillIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has ContactEmail => (is => 'ro', isa => Str);
+  has OrganizationName => (is => 'ro', isa => Str);
+  has PrivateSkillIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PrivateSkillIds' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'OrganizationName' => {
+                                       'type' => 'Str'
+                                     },
+               'ContactEmail' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

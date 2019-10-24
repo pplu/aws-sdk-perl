@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ListInventoryEntries;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryFilter]');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has TypeName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_InventoryFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_InventoryFilter], predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TypeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInventoryEntries');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListInventoryEntriesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListInventoryEntries');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ListInventoryEntriesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::SSM::InventoryFilter',
+                              'type' => 'ArrayRef[SSM_InventoryFilter]'
+                            },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'TypeName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +96,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::InventoryFilter>]
+=head2 Filters => ArrayRef[SSM_InventoryFilter]
 
 One or more filters. Use a filter to return a more specific list of
 results.

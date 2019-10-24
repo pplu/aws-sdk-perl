@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::RepositoryTrigger;
-  use Moose;
-  has Branches => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'branches', traits => ['NameInRequest']);
-  has CustomData => (is => 'ro', isa => 'Str', request_name => 'customData', traits => ['NameInRequest']);
-  has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest'], required => 1);
-  has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'events', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CodeCommit::Types qw//;
+  has Branches => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CustomData => (is => 'ro', isa => Str);
+  has DestinationArn => (is => 'ro', isa => Str, required => 1);
+  has Events => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Branches' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DestinationArn' => {
+                                     'type' => 'Str'
+                                   },
+               'CustomData' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Events' => 'events',
+                       'Branches' => 'branches',
+                       'Name' => 'name',
+                       'DestinationArn' => 'destinationArn',
+                       'CustomData' => 'customData'
+                     },
+  'IsRequired' => {
+                    'Events' => 1,
+                    'Name' => 1,
+                    'DestinationArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

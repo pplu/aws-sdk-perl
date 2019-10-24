@@ -1,15 +1,34 @@
+# Generated from default/map_enum.tt
 package Paws::ServiceCatalog::ProductViewFilters;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ServiceCatalog::Types qw//;
+  has FullTextSearch => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Owner => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ProductType => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SourceProductId => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has FullTextSearch => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Owner => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ProductType => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SourceProductId => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'FullTextSearch' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                               'Owner' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                               'ProductType' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                               'SourceProductId' => {
+                                          type => 'ArrayRef[Str|Undef]',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +64,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 FullTextSearch => ArrayRef[Str|Undef]
+=head2 FullTextSearch => 
 
 
-=head2 Owner => ArrayRef[Str|Undef]
+=head2 Owner => 
 
 
-=head2 ProductType => ArrayRef[Str|Undef]
+=head2 ProductType => 
 
 
-=head2 SourceProductId => ArrayRef[Str|Undef]
+=head2 SourceProductId => 
 
 
 

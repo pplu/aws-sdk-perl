@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::DnsConfigChange;
-  use Moose;
-  has DnsRecords => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::DnsRecord]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_DnsRecord/;
+  has DnsRecords => (is => 'ro', isa => ArrayRef[ServiceDiscovery_DnsRecord], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DnsRecords' => {
+                                 'class' => 'Paws::ServiceDiscovery::DnsRecord',
+                                 'type' => 'ArrayRef[ServiceDiscovery_DnsRecord]'
+                               }
+             },
+  'IsRequired' => {
+                    'DnsRecords' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ DNS records that AWS Cloud Map creates when you register an instance.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DnsRecords => ArrayRef[L<Paws::ServiceDiscovery::DnsRecord>]
+=head2 B<REQUIRED> DnsRecords => ArrayRef[ServiceDiscovery_DnsRecord]
 
   An array that contains one C<DnsRecord> object for each Route 53 record
 that you want AWS Cloud Map to create when you register an instance.

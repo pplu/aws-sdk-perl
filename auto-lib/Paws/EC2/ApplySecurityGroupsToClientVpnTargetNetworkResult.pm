@@ -7,7 +7,7 @@ package Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetworkResult;
   has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SecurityGroupIds' => {
@@ -22,8 +22,8 @@ package Paws::EC2::ApplySecurityGroupsToClientVpnTargetNetworkResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

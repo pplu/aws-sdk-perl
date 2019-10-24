@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::StepFunctions::ExecutionStartedEventDetails;
-  use Moose;
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Input => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Input' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'Input' => 'input'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

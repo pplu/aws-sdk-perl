@@ -17,7 +17,7 @@ package Paws::EC2::CreateLaunchTemplateVersion;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateLaunchTemplateVersionResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SourceVersion' => {
@@ -42,11 +42,14 @@ package Paws::EC2::CreateLaunchTemplateVersion;
                'LaunchTemplateName' => {
                                          'type' => 'Str'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'LaunchTemplateData' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

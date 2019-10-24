@@ -9,7 +9,7 @@ package Paws::EC2::IpPermission;
   has ToPort => (is => 'ro', isa => Int);
   has UserIdGroupPairs => (is => 'ro', isa => ArrayRef[EC2_UserIdGroupPair]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ToPort' => {
@@ -49,8 +49,8 @@ package Paws::EC2::IpPermission;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

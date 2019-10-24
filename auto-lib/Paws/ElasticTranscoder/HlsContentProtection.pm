@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::HlsContentProtection;
-  use Moose;
-  has InitializationVector => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has KeyMd5 => (is => 'ro', isa => 'Str');
-  has KeyStoragePolicy => (is => 'ro', isa => 'Str');
-  has LicenseAcquisitionUrl => (is => 'ro', isa => 'Str');
-  has Method => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has InitializationVector => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has KeyMd5 => (is => 'ro', isa => Str);
+  has KeyStoragePolicy => (is => 'ro', isa => Str);
+  has LicenseAcquisitionUrl => (is => 'ro', isa => Str);
+  has Method => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Method' => {
+                             'type' => 'Str'
+                           },
+               'KeyStoragePolicy' => {
+                                       'type' => 'Str'
+                                     },
+               'Key' => {
+                          'type' => 'Str'
+                        },
+               'InitializationVector' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseAcquisitionUrl' => {
+                                            'type' => 'Str'
+                                          },
+               'KeyMd5' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

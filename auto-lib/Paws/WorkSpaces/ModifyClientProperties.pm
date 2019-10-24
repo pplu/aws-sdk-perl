@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::ModifyClientProperties;
-  use Moose;
-  has ClientProperties => (is => 'ro', isa => 'Paws::WorkSpaces::ClientProperties', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_ClientProperties/;
+  has ClientProperties => (is => 'ro', isa => WorkSpaces_ClientProperties, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClientProperties');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::ModifyClientPropertiesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyClientProperties');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::ModifyClientPropertiesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ClientProperties' => {
+                                       'class' => 'Paws::WorkSpaces::ClientProperties',
+                                       'type' => 'WorkSpaces_ClientProperties'
+                                     }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ClientProperties' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ClientProperties => L<Paws::WorkSpaces::ClientProperties>
+=head2 B<REQUIRED> ClientProperties => WorkSpaces_ClientProperties
 
 Information about the Amazon WorkSpaces client.
 

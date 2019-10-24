@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::MediaLive::CaptionSelector;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::CaptionSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw/MediaLive_CaptionSelectorSettings/;
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SelectorSettings => (is => 'ro', isa => MediaLive_CaptionSelectorSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'SelectorSettings' => {
+                                       'class' => 'Paws::MediaLive::CaptionSelectorSettings',
+                                       'type' => 'MediaLive_CaptionSelectorSettings'
+                                     },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'LanguageCode' => 'languageCode',
+                       'SelectorSettings' => 'selectorSettings',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +84,7 @@ this caption selector with one or more caption descriptions. Names must
 be unique within an event.
 
 
-=head2 SelectorSettings => L<Paws::MediaLive::CaptionSelectorSettings>
+=head2 SelectorSettings => MediaLive_CaptionSelectorSettings
 
   Caption selector settings.
 

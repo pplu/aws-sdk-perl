@@ -1,9 +1,48 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes;
-  use Moose;
-  has ActivityId => (is => 'ro', isa => 'Str', request_name => 'activityId', traits => ['NameInRequest'], required => 1);
-  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', request_name => 'activityType', traits => ['NameInRequest'], required => 1);
-  has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
-  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_ActivityType/;
+  has ActivityId => (is => 'ro', isa => Str, required => 1);
+  has ActivityType => (is => 'ro', isa => SimpleWorkflow_ActivityType, required => 1);
+  has Cause => (is => 'ro', isa => Str, required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ActivityType' => {
+                                   'class' => 'Paws::SimpleWorkflow::ActivityType',
+                                   'type' => 'SimpleWorkflow_ActivityType'
+                                 },
+               'ActivityId' => {
+                                 'type' => 'Str'
+                               },
+               'DecisionTaskCompletedEventId' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ActivityType' => 'activityType',
+                       'ActivityId' => 'activityId',
+                       'DecisionTaskCompletedEventId' => 'decisionTaskCompletedEventId',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'ActivityType' => 1,
+                    'ActivityId' => 1,
+                    'DecisionTaskCompletedEventId' => 1,
+                    'Cause' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,7 +84,7 @@ Provides the details of the C<ScheduleActivityTaskFailed> event.
 failed.
 
 
-=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => SimpleWorkflow_ActivityType
 
   The activity type provided in the C<ScheduleActivityTask> decision that
 failed.

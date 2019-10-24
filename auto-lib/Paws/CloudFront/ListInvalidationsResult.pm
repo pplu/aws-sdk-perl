@@ -1,11 +1,30 @@
 
 package Paws::CloudFront::ListInvalidationsResult;
-  use Moose;
-  has InvalidationList => (is => 'ro', isa => 'Paws::CloudFront::InvalidationList');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_InvalidationList/;
+  has InvalidationList => (is => 'ro', isa => CloudFront_InvalidationList);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'InvalidationList');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InvalidationList' => {
+                                       'class' => 'Paws::CloudFront::InvalidationList',
+                                       'type' => 'CloudFront_InvalidationList'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +36,7 @@ Paws::CloudFront::ListInvalidationsResult
 =head1 ATTRIBUTES
 
 
-=head2 InvalidationList => L<Paws::CloudFront::InvalidationList>
+=head2 InvalidationList => CloudFront_InvalidationList
 
 Information about invalidation batches.
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::AuthorizerSummary;
-  use Moose;
-  has AuthorizerArn => (is => 'ro', isa => 'Str', request_name => 'authorizerArn', traits => ['NameInRequest']);
-  has AuthorizerName => (is => 'ro', isa => 'Str', request_name => 'authorizerName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AuthorizerArn => (is => 'ro', isa => Str);
+  has AuthorizerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   },
+               'AuthorizerArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AuthorizerName' => 'authorizerName',
+                       'AuthorizerArn' => 'authorizerArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,23 @@
 package Paws::MediaConvert::__mapOfAudioSelectorGroup;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_AudioSelectorGroup/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::MediaConvert::AudioSelectorGroup]');
+  has Map => (is => 'ro', isa => HashRef[MediaConvert_AudioSelectorGroup]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[MediaConvert_AudioSelectorGroup]',
+                                          class => 'Paws::MediaConvert::AudioSelectorGroup',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::MediaConvert::AudioSelectorGroup>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

@@ -1,14 +1,60 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeStar::DescribeUserProfileResult;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdTimestamp' , required => 1);
-  has DisplayName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayName' );
-  has EmailAddress => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'emailAddress' );
-  has LastModifiedTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedTimestamp' , required => 1);
-  has SshPublicKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sshPublicKey' );
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has CreatedTimestamp => (is => 'ro', isa => Str, required => 1);
+  has DisplayName => (is => 'ro', isa => Str);
+  has EmailAddress => (is => 'ro', isa => Str);
+  has LastModifiedTimestamp => (is => 'ro', isa => Str, required => 1);
+  has SshPublicKey => (is => 'ro', isa => Str);
+  has UserArn => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'SshPublicKey' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedTimestamp' => {
+                                            'type' => 'Str'
+                                          },
+               'EmailAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'SshPublicKey' => 'sshPublicKey',
+                       'DisplayName' => 'displayName',
+                       'LastModifiedTimestamp' => 'lastModifiedTimestamp',
+                       'EmailAddress' => 'emailAddress',
+                       'CreatedTimestamp' => 'createdTimestamp'
+                     },
+  'IsRequired' => {
+                    'UserArn' => 1,
+                    'LastModifiedTimestamp' => 1,
+                    'CreatedTimestamp' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

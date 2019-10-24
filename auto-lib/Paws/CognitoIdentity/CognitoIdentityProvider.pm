@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::CognitoIdentityProvider;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str');
-  has ProviderName => (is => 'ro', isa => 'Str');
-  has ServerSideTokenCheck => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CognitoIdentity::Types qw//;
+  has ClientId => (is => 'ro', isa => Str);
+  has ProviderName => (is => 'ro', isa => Str);
+  has ServerSideTokenCheck => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerSideTokenCheck' => {
+                                           'type' => 'Bool'
+                                         },
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

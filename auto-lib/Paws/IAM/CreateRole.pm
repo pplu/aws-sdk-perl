@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateRole;
   use Moo;
@@ -42,7 +43,11 @@ package Paws::IAM::CreateRole;
                'Description' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'AssumeRolePolicyDocument' => 1,
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

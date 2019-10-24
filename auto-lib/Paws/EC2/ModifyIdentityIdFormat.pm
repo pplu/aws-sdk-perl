@@ -13,7 +13,7 @@ package Paws::EC2::ModifyIdentityIdFormat;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UseLongIds' => {
@@ -30,11 +30,16 @@ package Paws::EC2::ModifyIdentityIdFormat;
                        'UseLongIds' => 'useLongIds',
                        'Resource' => 'resource',
                        'PrincipalArn' => 'principalArn'
-                     }
+                     },
+  'IsRequired' => {
+                    'UseLongIds' => 1,
+                    'Resource' => 1,
+                    'PrincipalArn' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

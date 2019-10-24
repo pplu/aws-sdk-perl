@@ -1,10 +1,31 @@
 
 package Paws::PinpointEmail::GetDedicatedIpsResponse;
-  use Moose;
-  has DedicatedIps => (is => 'ro', isa => 'ArrayRef[Paws::PinpointEmail::DedicatedIp]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DedicatedIp/;
+  has DedicatedIps => (is => 'ro', isa => ArrayRef[PinpointEmail_DedicatedIp]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DedicatedIps' => {
+                                   'class' => 'Paws::PinpointEmail::DedicatedIp',
+                                   'type' => 'ArrayRef[PinpointEmail_DedicatedIp]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::PinpointEmail::GetDedicatedIpsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DedicatedIps => ArrayRef[L<Paws::PinpointEmail::DedicatedIp>]
+=head2 DedicatedIps => ArrayRef[PinpointEmail_DedicatedIp]
 
 A list of dedicated IP addresses that are reserved for use by your
 Amazon Pinpoint account.

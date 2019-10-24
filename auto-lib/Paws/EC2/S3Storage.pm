@@ -7,7 +7,7 @@ package Paws::EC2::S3Storage;
   has UploadPolicy => (is => 'ro', isa => Str);
   has UploadPolicySignature => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UploadPolicy' => {
@@ -34,8 +34,8 @@ package Paws::EC2::S3Storage;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualRouterSpec;
-  use Moose;
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::VirtualRouterListener]', request_name => 'listeners', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_VirtualRouterListener/;
+  has Listeners => (is => 'ro', isa => ArrayRef[AppMesh_VirtualRouterListener]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Listeners' => {
+                                'class' => 'Paws::AppMesh::VirtualRouterListener',
+                                'type' => 'ArrayRef[AppMesh_VirtualRouterListener]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Listeners' => 'listeners'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ An object representing the specification of a virtual router.
 =head1 ATTRIBUTES
 
 
-=head2 Listeners => ArrayRef[L<Paws::AppMesh::VirtualRouterListener>]
+=head2 Listeners => ArrayRef[AppMesh_VirtualRouterListener]
 
   The listeners that the virtual router is expected to receive inbound
 traffic from. Currently only one listener is supported per virtual

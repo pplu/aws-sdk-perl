@@ -1,15 +1,59 @@
 
 package Paws::LexModels::GetImportResponse;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has FailureReason => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'failureReason');
-  has ImportId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'importId');
-  has ImportStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'importStatus');
-  has MergeStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeStrategy');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::LexModels::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ImportId => (is => 'ro', isa => Str);
+  has ImportStatus => (is => 'ro', isa => Str);
+  has MergeStrategy => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImportId' => {
+                               'type' => 'Str'
+                             },
+               'MergeStrategy' => {
+                                    'type' => 'Str'
+                                  },
+               'ImportStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'FailureReason' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ImportId' => 'importId',
+                       'CreatedDate' => 'createdDate',
+                       'ResourceType' => 'resourceType',
+                       'MergeStrategy' => 'mergeStrategy',
+                       'FailureReason' => 'failureReason',
+                       'ImportStatus' => 'importStatus',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

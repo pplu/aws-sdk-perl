@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::ConfirmDevice;
-  use Moose;
-  has AccessToken => (is => 'ro', isa => 'Str', required => 1);
-  has DeviceKey => (is => 'ro', isa => 'Str', required => 1);
-  has DeviceName => (is => 'ro', isa => 'Str');
-  has DeviceSecretVerifierConfig => (is => 'ro', isa => 'Paws::CognitoIdp::DeviceSecretVerifierConfigType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_DeviceSecretVerifierConfigType/;
+  has AccessToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeviceName => (is => 'ro', isa => Str, predicate => 1);
+  has DeviceSecretVerifierConfig => (is => 'ro', isa => CognitoIdp_DeviceSecretVerifierConfigType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmDevice');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::ConfirmDeviceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConfirmDevice');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::ConfirmDeviceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceSecretVerifierConfig' => {
+                                                 'class' => 'Paws::CognitoIdp::DeviceSecretVerifierConfigType',
+                                                 'type' => 'CognitoIdp_DeviceSecretVerifierConfigType'
+                                               },
+               'DeviceName' => {
+                                 'type' => 'Str'
+                               },
+               'AccessToken' => {
+                                  'type' => 'Str'
+                                },
+               'DeviceKey' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'AccessToken' => 1,
+                    'DeviceKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +100,7 @@ The device name.
 
 
 
-=head2 DeviceSecretVerifierConfig => L<Paws::CognitoIdp::DeviceSecretVerifierConfigType>
+=head2 DeviceSecretVerifierConfig => CognitoIdp_DeviceSecretVerifierConfigType
 
 The configuration of the device secret verifier.
 

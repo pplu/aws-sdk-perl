@@ -1,21 +1,72 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::DescribeCases;
-  use Moose;
-  has AfterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterTime' );
-  has BeforeTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeTime' );
-  has CaseIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'caseIdList' );
-  has DisplayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayId' );
-  has IncludeCommunications => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeCommunications' );
-  has IncludeResolvedCases => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResolvedCases' );
-  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool Int/;
+  use Paws::Support::Types qw//;
+  has AfterTime => (is => 'ro', isa => Str, predicate => 1);
+  has BeforeTime => (is => 'ro', isa => Str, predicate => 1);
+  has CaseIdList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DisplayId => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeCommunications => (is => 'ro', isa => Bool, predicate => 1);
+  has IncludeResolvedCases => (is => 'ro', isa => Bool, predicate => 1);
+  has Language => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCases');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeCasesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeCases');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::DescribeCasesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'AfterTime' => {
+                                'type' => 'Str'
+                              },
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'IncludeCommunications' => {
+                                            'type' => 'Bool'
+                                          },
+               'CaseIdList' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'IncludeResolvedCases' => {
+                                           'type' => 'Bool'
+                                         },
+               'BeforeTime' => {
+                                 'type' => 'Str'
+                               },
+               'DisplayId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'AfterTime' => 'afterTime',
+                       'Language' => 'language',
+                       'IncludeCommunications' => 'includeCommunications',
+                       'CaseIdList' => 'caseIdList',
+                       'MaxResults' => 'maxResults',
+                       'IncludeResolvedCases' => 'includeResolvedCases',
+                       'BeforeTime' => 'beforeTime',
+                       'DisplayId' => 'displayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

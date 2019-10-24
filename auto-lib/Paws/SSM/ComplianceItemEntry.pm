@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::SSM::ComplianceItemEntry;
-  use Moose;
-  has Details => (is => 'ro', isa => 'Paws::SSM::ComplianceItemDetails');
-  has Id => (is => 'ro', isa => 'Str');
-  has Severity => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has Title => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_ComplianceItemDetails/;
+  has Details => (is => 'ro', isa => SSM_ComplianceItemDetails);
+  has Id => (is => 'ro', isa => Str);
+  has Severity => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Details' => {
+                              'class' => 'Paws::SSM::ComplianceItemDetails',
+                              'type' => 'SSM_ComplianceItemDetails'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Severity' => {
+                               'type' => 'Str'
+                             },
+               'Title' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'Severity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ Information about a compliance item.
 =head1 ATTRIBUTES
 
 
-=head2 Details => L<Paws::SSM::ComplianceItemDetails>
+=head2 Details => SSM_ComplianceItemDetails
 
   A "Key": "Value" tag combination for the compliance item.
 

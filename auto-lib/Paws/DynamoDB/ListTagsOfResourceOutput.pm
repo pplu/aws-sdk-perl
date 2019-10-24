@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::ListTagsOfResourceOutput;
   use Moo;
@@ -7,12 +8,15 @@ package Paws::DynamoDB::ListTagsOfResourceOutput;
   has Tags => (is => 'ro', isa => ArrayRef[DynamoDB_Tag]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NextToken' => {
                                 'type' => 'Str'
                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'Tags' => {
                            'class' => 'Paws::DynamoDB::Tag',
                            'type' => 'ArrayRef[DynamoDB_Tag]'
@@ -20,8 +24,8 @@ package Paws::DynamoDB::ListTagsOfResourceOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

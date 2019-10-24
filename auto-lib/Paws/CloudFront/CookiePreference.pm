@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFront::CookiePreference;
-  use Moose;
-  has Forward => (is => 'ro', isa => 'Str', required => 1);
-  has WhitelistedNames => (is => 'ro', isa => 'Paws::CloudFront::CookieNames');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_CookieNames/;
+  has Forward => (is => 'ro', isa => Str, required => 1);
+  has WhitelistedNames => (is => 'ro', isa => CloudFront_CookieNames);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Forward' => {
+                              'type' => 'Str'
+                            },
+               'WhitelistedNames' => {
+                                       'class' => 'Paws::CloudFront::CookieNames',
+                                       'type' => 'CloudFront_CookieNames'
+                                     }
+             },
+  'IsRequired' => {
+                    'Forward' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +77,7 @@ forwarding requests to an Amazon S3 origin, specify none for the
 C<Forward> element.
 
 
-=head2 WhitelistedNames => L<Paws::CloudFront::CookieNames>
+=head2 WhitelistedNames => CloudFront_CookieNames
 
   Required if you specify C<whitelist> for the value of C<Forward:>. A
 complex type that specifies how many different cookies you want

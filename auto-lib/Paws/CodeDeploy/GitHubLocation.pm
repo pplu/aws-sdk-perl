@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::GitHubLocation;
-  use Moose;
-  has CommitId => (is => 'ro', isa => 'Str', request_name => 'commitId', traits => ['NameInRequest']);
-  has Repository => (is => 'ro', isa => 'Str', request_name => 'repository', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has CommitId => (is => 'ro', isa => Str);
+  has Repository => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'Repository' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CommitId' => 'commitId',
+                       'Repository' => 'repository'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

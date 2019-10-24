@@ -1,11 +1,40 @@
 
 package Paws::ApiGatewayV2::UpdateDomainNameResponse;
-  use Moose;
-  has ApiMappingSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingSelectionExpression');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
-  has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_DomainNameConfiguration/;
+  has ApiMappingSelectionExpression => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has DomainNameConfigurations => (is => 'ro', isa => ArrayRef[ApiGatewayV2_DomainNameConfiguration]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApiMappingSelectionExpression' => {
+                                                    'type' => 'Str'
+                                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainNameConfigurations' => {
+                                               'class' => 'Paws::ApiGatewayV2::DomainNameConfiguration',
+                                               'type' => 'ArrayRef[ApiGatewayV2_DomainNameConfiguration]'
+                                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ApiMappingSelectionExpression' => 'apiMappingSelectionExpression',
+                       'DomainNameConfigurations' => 'domainNameConfigurations',
+                       'DomainName' => 'domainName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +56,7 @@ The API mapping selection expression.
 The name of the DomainName resource.
 
 
-=head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
+=head2 DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]
 
 The domain name configurations.
 

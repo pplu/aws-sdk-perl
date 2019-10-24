@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetInstanceProfile;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::GetInstanceProfile;
                'InstanceProfileName' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'InstanceProfileName' => 1
+                  }
 }
 ;
     return $Params_map;

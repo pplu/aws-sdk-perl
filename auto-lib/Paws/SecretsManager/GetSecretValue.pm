@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SecretsManager::GetSecretValue;
-  use Moose;
-  has SecretId => (is => 'ro', isa => 'Str', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str');
-  has VersionStage => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecretsManager::Types qw//;
+  has SecretId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
+  has VersionStage => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSecretValue');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SecretsManager::GetSecretValueResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSecretValue');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SecretsManager::GetSecretValueResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionStage' => {
+                                   'type' => 'Str'
+                                 },
+               'SecretId' => {
+                               'type' => 'Str'
+                             },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'SecretId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

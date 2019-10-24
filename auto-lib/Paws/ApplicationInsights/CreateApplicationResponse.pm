@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationInsights::CreateApplicationResponse;
-  use Moose;
-  has ApplicationInfo => (is => 'ro', isa => 'Paws::ApplicationInsights::ApplicationInfo');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw/ApplicationInsights_ApplicationInfo/;
+  has ApplicationInfo => (is => 'ro', isa => ApplicationInsights_ApplicationInfo);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationInfo' => {
+                                      'class' => 'Paws::ApplicationInsights::ApplicationInfo',
+                                      'type' => 'ApplicationInsights_ApplicationInfo'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::ApplicationInsights::CreateApplicationResponse
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationInfo => L<Paws::ApplicationInsights::ApplicationInfo>
+=head2 ApplicationInfo => ApplicationInsights_ApplicationInfo
 
 Information about the application.
 

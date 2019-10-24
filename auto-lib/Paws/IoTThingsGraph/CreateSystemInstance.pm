@@ -1,19 +1,69 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::CreateSystemInstance;
-  use Moose;
-  has Definition => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', traits => ['NameInRequest'], request_name => 'definition' , required => 1);
-  has FlowActionsRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'flowActionsRoleArn' );
-  has GreengrassGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'greengrassGroupName' );
-  has MetricsConfiguration => (is => 'ro', isa => 'Paws::IoTThingsGraph::MetricsConfiguration', traits => ['NameInRequest'], request_name => 'metricsConfiguration' );
-  has S3BucketName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3BucketName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has Target => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'target' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_Tag IoTThingsGraph_DefinitionDocument IoTThingsGraph_MetricsConfiguration/;
+  has Definition => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument, required => 1, predicate => 1);
+  has FlowActionsRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has GreengrassGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has MetricsConfiguration => (is => 'ro', isa => IoTThingsGraph_MetricsConfiguration, predicate => 1);
+  has S3BucketName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTThingsGraph_Tag], predicate => 1);
+  has Target => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSystemInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::CreateSystemInstanceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSystemInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::CreateSystemInstanceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricsConfiguration' => {
+                                           'class' => 'Paws::IoTThingsGraph::MetricsConfiguration',
+                                           'type' => 'IoTThingsGraph_MetricsConfiguration'
+                                         },
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'Definition' => {
+                                 'class' => 'Paws::IoTThingsGraph::DefinitionDocument',
+                                 'type' => 'IoTThingsGraph_DefinitionDocument'
+                               },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::IoTThingsGraph::Tag',
+                           'type' => 'ArrayRef[IoTThingsGraph_Tag]'
+                         },
+               'FlowActionsRoleArn' => {
+                                         'type' => 'Str'
+                                       },
+               'GreengrassGroupName' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'NameInRequest' => {
+                       'MetricsConfiguration' => 'metricsConfiguration',
+                       'Target' => 'target',
+                       'Definition' => 'definition',
+                       'S3BucketName' => 's3BucketName',
+                       'Tags' => 'tags',
+                       'FlowActionsRoleArn' => 'flowActionsRoleArn',
+                       'GreengrassGroupName' => 'greengrassGroupName'
+                     },
+  'IsRequired' => {
+                    'Target' => 1,
+                    'Definition' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +118,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Definition => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 B<REQUIRED> Definition => IoTThingsGraph_DefinitionDocument
 
 
 
@@ -92,7 +142,7 @@ parameter is C<GREENGRASS>.
 
 
 
-=head2 MetricsConfiguration => L<Paws::IoTThingsGraph::MetricsConfiguration>
+=head2 MetricsConfiguration => IoTThingsGraph_MetricsConfiguration
 
 
 
@@ -106,7 +156,7 @@ required if the value of the C<target> parameter is C<GREENGRASS>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTThingsGraph::Tag>]
+=head2 Tags => ArrayRef[IoTThingsGraph_Tag]
 
 Metadata, consisting of key-value pairs, that can be used to categorize
 your system instances.

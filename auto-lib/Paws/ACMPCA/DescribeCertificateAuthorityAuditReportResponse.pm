@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ACMPCA::DescribeCertificateAuthorityAuditReportResponse;
-  use Moose;
-  has AuditReportStatus => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has S3BucketName => (is => 'ro', isa => 'Str');
-  has S3Key => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw//;
+  has AuditReportStatus => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has S3BucketName => (is => 'ro', isa => Str);
+  has S3Key => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'S3BucketName' => {
+                                   'type' => 'Str'
+                                 },
+               'AuditReportStatus' => {
+                                        'type' => 'Str'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

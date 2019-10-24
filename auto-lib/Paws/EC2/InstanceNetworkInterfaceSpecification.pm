@@ -15,7 +15,7 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => Int);
   has SubnetId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6Addresses' => {
@@ -76,8 +76,8 @@ package Paws::EC2::InstanceNetworkInterfaceSpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

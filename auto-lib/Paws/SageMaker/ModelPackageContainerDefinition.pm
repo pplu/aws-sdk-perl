@@ -1,10 +1,42 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ModelPackageContainerDefinition;
-  use Moose;
-  has ContainerHostname => (is => 'ro', isa => 'Str');
-  has Image => (is => 'ro', isa => 'Str', required => 1);
-  has ImageDigest => (is => 'ro', isa => 'Str');
-  has ModelDataUrl => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has ContainerHostname => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => Str, required => 1);
+  has ImageDigest => (is => 'ro', isa => Str);
+  has ModelDataUrl => (is => 'ro', isa => Str);
+  has ProductId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'ContainerHostname' => {
+                                        'type' => 'Str'
+                                      },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ModelDataUrl' => {
+                                   'type' => 'Str'
+                                 },
+               'Image' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Image' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

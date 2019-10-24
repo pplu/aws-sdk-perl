@@ -49,7 +49,11 @@ use MooX::ClassAttribute;
   'ParamInHeader' => {
                        'ContentLength' => 'Content-Length',
                        'Token' => 'x-amz-bucket-object-lock-token'
-                     }
+                     },
+  'IsRequired' => {
+                    'ReplicationConfiguration' => 1,
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::PreviewAgentsResponse;
-  use Moose;
-  has AgentPreviews => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AgentPreview]', traits => ['NameInRequest'], request_name => 'agentPreviews' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_AgentPreview/;
+  has AgentPreviews => (is => 'ro', isa => ArrayRef[Inspector_AgentPreview], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentPreviews' => {
+                                    'class' => 'Paws::Inspector::AgentPreview',
+                                    'type' => 'ArrayRef[Inspector_AgentPreview]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AgentPreviews' => 'agentPreviews',
+                       'NextToken' => 'nextToken'
+                     },
+  'IsRequired' => {
+                    'AgentPreviews' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::Inspector::PreviewAgentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AgentPreviews => ArrayRef[L<Paws::Inspector::AgentPreview>]
+=head2 B<REQUIRED> AgentPreviews => ArrayRef[Inspector_AgentPreview]
 
 The resulting list of agents.
 

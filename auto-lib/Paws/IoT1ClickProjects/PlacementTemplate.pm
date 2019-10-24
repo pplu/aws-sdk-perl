@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoT1ClickProjects::PlacementTemplate;
-  use Moose;
-  has DefaultAttributes => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DefaultPlacementAttributeMap', request_name => 'defaultAttributes', traits => ['NameInRequest']);
-  has DeviceTemplates => (is => 'ro', isa => 'Paws::IoT1ClickProjects::DeviceTemplateMap', request_name => 'deviceTemplates', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_DeviceTemplateMap IoT1ClickProjects_DefaultPlacementAttributeMap/;
+  has DefaultAttributes => (is => 'ro', isa => IoT1ClickProjects_DefaultPlacementAttributeMap);
+  has DeviceTemplates => (is => 'ro', isa => IoT1ClickProjects_DeviceTemplateMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DefaultAttributes' => {
+                                        'class' => 'Paws::IoT1ClickProjects::DefaultPlacementAttributeMap',
+                                        'type' => 'IoT1ClickProjects_DefaultPlacementAttributeMap'
+                                      },
+               'DeviceTemplates' => {
+                                      'class' => 'Paws::IoT1ClickProjects::DeviceTemplateMap',
+                                      'type' => 'IoT1ClickProjects_DeviceTemplateMap'
+                                    }
+             },
+  'NameInRequest' => {
+                       'DefaultAttributes' => 'defaultAttributes',
+                       'DeviceTemplates' => 'deviceTemplates'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ An object defining the template for a placement.
 =head1 ATTRIBUTES
 
 
-=head2 DefaultAttributes => L<Paws::IoT1ClickProjects::DefaultPlacementAttributeMap>
+=head2 DefaultAttributes => IoT1ClickProjects_DefaultPlacementAttributeMap
 
   The default attributes (key/value pairs) to be applied to all
 placements using this template.
 
 
-=head2 DeviceTemplates => L<Paws::IoT1ClickProjects::DeviceTemplateMap>
+=head2 DeviceTemplates => IoT1ClickProjects_DeviceTemplateMap
 
   An object specifying the DeviceTemplate for all placements using this
 (PlacementTemplate) template.

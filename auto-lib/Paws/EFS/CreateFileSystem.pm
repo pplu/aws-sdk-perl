@@ -1,20 +1,57 @@
 
 package Paws::EFS::CreateFileSystem;
-  use Moose;
-  has CreationToken => (is => 'ro', isa => 'Str', required => 1);
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has PerformanceMode => (is => 'ro', isa => 'Str');
-  has ProvisionedThroughputInMibps => (is => 'ro', isa => 'Num');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]');
-  has ThroughputMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Num ArrayRef/;
+  use Paws::EFS::Types qw/EFS_Tag/;
+  has CreationToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Encrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has PerformanceMode => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisionedThroughputInMibps => (is => 'ro', isa => Num, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[EFS_Tag], predicate => 1);
+  has ThroughputMode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFileSystem');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/file-systems');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::FileSystemDescription');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFileSystem');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/file-systems');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::FileSystemDescription');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisionedThroughputInMibps' => {
+                                                   'type' => 'Num'
+                                                 },
+               'ThroughputMode' => {
+                                     'type' => 'Str'
+                                   },
+               'Tags' => {
+                           'class' => 'Paws::EFS::Tag',
+                           'type' => 'ArrayRef[EFS_Tag]'
+                         },
+               'PerformanceMode' => {
+                                      'type' => 'Str'
+                                    },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'CreationToken' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'CreationToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -138,7 +175,7 @@ the I<Amazon EFS User Guide.>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::EFS::Tag>]
+=head2 Tags => ArrayRef[EFS_Tag]
 
 A value that specifies to create one or more tags associated with the
 file system. Each tag is a user-defined key-value pair. Name your file

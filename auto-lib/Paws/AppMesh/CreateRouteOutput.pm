@@ -1,10 +1,34 @@
 
 package Paws::AppMesh::CreateRouteOutput;
-  use Moose;
-  has Route => (is => 'ro', isa => 'Paws::AppMesh::RouteData', traits => ['NameInRequest'], request_name => 'route', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Route');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_RouteData/;
+  has Route => (is => 'ro', isa => AppMesh_RouteData, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Route' => {
+                            'class' => 'Paws::AppMesh::RouteData',
+                            'type' => 'AppMesh_RouteData'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Route' => 'route'
+                     },
+  'IsRequired' => {
+                    'Route' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::AppMesh::CreateRouteOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Route => L<Paws::AppMesh::RouteData>
+=head2 B<REQUIRED> Route => AppMesh_RouteData
 
 The full description of your mesh following the create call.
 

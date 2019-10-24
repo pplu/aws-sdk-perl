@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateSqlInjectionMatchSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has SqlInjectionMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SqlInjectionMatchSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_SqlInjectionMatchSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SqlInjectionMatchSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_SqlInjectionMatchSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSqlInjectionMatchSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateSqlInjectionMatchSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSqlInjectionMatchSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateSqlInjectionMatchSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAF::SqlInjectionMatchSetUpdate',
+                              'type' => 'ArrayRef[WAF_SqlInjectionMatchSetUpdate]'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'SqlInjectionMatchSetId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'ChangeToken' => 1,
+                    'SqlInjectionMatchSetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -75,7 +103,7 @@ CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAF_SqlInjectionMatchSetUpdate]
 
 An array of C<SqlInjectionMatchSetUpdate> objects that you want to
 insert into or delete from a SqlInjectionMatchSet. For more

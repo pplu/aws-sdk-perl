@@ -1,15 +1,43 @@
 
 package Paws::IoT::AttachThingPrincipal;
-  use Moose;
-  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal', required => 1);
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Principal => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachThingPrincipal');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/principals');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::AttachThingPrincipalResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachThingPrincipal');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/principals');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::AttachThingPrincipalResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'Principal' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName'
+                  },
+  'ParamInHeader' => {
+                       'Principal' => 'x-amzn-principal'
+                     },
+  'IsRequired' => {
+                    'ThingName' => 1,
+                    'Principal' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

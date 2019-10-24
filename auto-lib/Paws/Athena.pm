@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Athena;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'athena' }
   sub signing_name { 'athena' }
   sub version { '2017-05-18' }
   sub target_prefix { 'AmazonAthena' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -321,11 +323,11 @@ in the I<Amazon Athena User Guide>.
 
 =item Name => Str
 
-=item [Configuration => L<Paws::Athena::WorkGroupConfiguration>]
+=item [Configuration => Athena_WorkGroupConfiguration]
 
 =item [Description => Str]
 
-=item [Tags => ArrayRef[L<Paws::Athena::Tag>]]
+=item [Tags => ArrayRef[Athena_Tag]]
 
 
 =back
@@ -549,9 +551,9 @@ Lists available workgroups for the account.
 
 =item [ClientRequestToken => Str]
 
-=item [QueryExecutionContext => L<Paws::Athena::QueryExecutionContext>]
+=item [QueryExecutionContext => Athena_QueryExecutionContext]
 
-=item [ResultConfiguration => L<Paws::Athena::ResultConfiguration>]
+=item [ResultConfiguration => Athena_ResultConfiguration]
 
 =item [WorkGroup => Str]
 
@@ -597,7 +599,7 @@ in the I<Amazon Athena User Guide>.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::Athena::Tag>]
+=item Tags => ArrayRef[Athena_Tag]
 
 
 =back
@@ -648,7 +650,7 @@ the same time.
 
 =item WorkGroup => Str
 
-=item [ConfigurationUpdates => L<Paws::Athena::WorkGroupConfigurationUpdates>]
+=item [ConfigurationUpdates => Athena_WorkGroupConfigurationUpdates]
 
 =item [Description => Str]
 

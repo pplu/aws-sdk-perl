@@ -1,16 +1,42 @@
 
 package Paws::IoT::ListV2LoggingLevels;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has TargetType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetType');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has TargetType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListV2LoggingLevels');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2LoggingLevel');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListV2LoggingLevelsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListV2LoggingLevels');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2LoggingLevel');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::ListV2LoggingLevelsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'TargetType' => 'targetType',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

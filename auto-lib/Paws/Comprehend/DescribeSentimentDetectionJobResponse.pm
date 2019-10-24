@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DescribeSentimentDetectionJobResponse;
-  use Moose;
-  has SentimentDetectionJobProperties => (is => 'ro', isa => 'Paws::Comprehend::SentimentDetectionJobProperties');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_SentimentDetectionJobProperties/;
+  has SentimentDetectionJobProperties => (is => 'ro', isa => Comprehend_SentimentDetectionJobProperties);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SentimentDetectionJobProperties' => {
+                                                      'class' => 'Paws::Comprehend::SentimentDetectionJobProperties',
+                                                      'type' => 'Comprehend_SentimentDetectionJobProperties'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Comprehend::DescribeSentimentDetectionJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 SentimentDetectionJobProperties => L<Paws::Comprehend::SentimentDetectionJobProperties>
+=head2 SentimentDetectionJobProperties => Comprehend_SentimentDetectionJobProperties
 
 An object that contains the properties associated with a sentiment
 detection job.

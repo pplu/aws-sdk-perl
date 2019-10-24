@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaStoreData::Item;
-  use Moose;
-  has ContentLength => (is => 'ro', isa => 'Int');
-  has ContentType => (is => 'ro', isa => 'Str');
-  has ETag => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaStoreData::Types qw//;
+  has ContentLength => (is => 'ro', isa => Int);
+  has ContentType => (is => 'ro', isa => Str);
+  has ETag => (is => 'ro', isa => Str);
+  has LastModified => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ContentLength' => {
+                                    'type' => 'Int'
+                                  },
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'LastModified' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

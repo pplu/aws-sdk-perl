@@ -1,9 +1,37 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::LaunchPathSummary;
-  use Moose;
-  has ConstraintSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ConstraintSummary]');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag ServiceCatalog_ConstraintSummary/;
+  has ConstraintSummaries => (is => 'ro', isa => ArrayRef[ServiceCatalog_ConstraintSummary]);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConstraintSummaries' => {
+                                          'class' => 'Paws::ServiceCatalog::ConstraintSummary',
+                                          'type' => 'ArrayRef[ServiceCatalog_ConstraintSummary]'
+                                        },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Tags' => {
+                           'class' => 'Paws::ServiceCatalog::Tag',
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +67,7 @@ Summary information about a product path for a user.
 =head1 ATTRIBUTES
 
 
-=head2 ConstraintSummaries => ArrayRef[L<Paws::ServiceCatalog::ConstraintSummary>]
+=head2 ConstraintSummaries => ArrayRef[ServiceCatalog_ConstraintSummary]
 
   The constraints on the portfolio-product relationship.
 
@@ -54,7 +82,7 @@ Summary information about a product path for a user.
   The name of the portfolio to which the user was assigned.
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
   The tags associated with this product path.
 

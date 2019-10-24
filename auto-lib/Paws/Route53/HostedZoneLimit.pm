@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Route53::HostedZoneLimit;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Route53::Types qw//;
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Int'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

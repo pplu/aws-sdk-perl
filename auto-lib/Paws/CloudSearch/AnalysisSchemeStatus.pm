@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::AnalysisSchemeStatus;
-  use Moose;
-  has Options => (is => 'ro', isa => 'Paws::CloudSearch::AnalysisScheme', required => 1);
-  has Status => (is => 'ro', isa => 'Paws::CloudSearch::OptionStatus', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudSearch::Types qw/CloudSearch_OptionStatus CloudSearch_AnalysisScheme/;
+  has Options => (is => 'ro', isa => CloudSearch_AnalysisScheme, required => 1);
+  has Status => (is => 'ro', isa => CloudSearch_OptionStatus, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Options' => {
+                              'class' => 'Paws::CloudSearch::AnalysisScheme',
+                              'type' => 'CloudSearch_AnalysisScheme'
+                            },
+               'Status' => {
+                             'class' => 'Paws::CloudSearch::OptionStatus',
+                             'type' => 'CloudSearch_OptionStatus'
+                           }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ The status and configuration of an C<AnalysisScheme>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::CloudSearch::AnalysisScheme>
+=head2 B<REQUIRED> Options => CloudSearch_AnalysisScheme
 
   
 
 
-=head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
+=head2 B<REQUIRED> Status => CloudSearch_OptionStatus
 
   
 

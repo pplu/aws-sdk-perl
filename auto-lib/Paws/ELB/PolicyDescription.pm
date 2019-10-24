@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ELB::PolicyDescription;
-  use Moose;
-  has PolicyAttributeDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::PolicyAttributeDescription]');
-  has PolicyName => (is => 'ro', isa => 'Str');
-  has PolicyTypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ELB::Types qw/ELB_PolicyAttributeDescription/;
+  has PolicyAttributeDescriptions => (is => 'ro', isa => ArrayRef[ELB_PolicyAttributeDescription]);
+  has PolicyName => (is => 'ro', isa => Str);
+  has PolicyTypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyAttributeDescriptions' => {
+                                                  'class' => 'Paws::ELB::PolicyAttributeDescription',
+                                                  'type' => 'ArrayRef[ELB_PolicyAttributeDescription]'
+                                                },
+               'PolicyTypeName' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ Information about a policy.
 =head1 ATTRIBUTES
 
 
-=head2 PolicyAttributeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeDescription>]
+=head2 PolicyAttributeDescriptions => ArrayRef[ELB_PolicyAttributeDescription]
 
   The policy attributes.
 

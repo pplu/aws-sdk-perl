@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::GetIdentityPolicies;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::GetIdentityPolicies;
                'Identity' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyNames' => 1,
+                    'Identity' => 1
+                  }
 }
 ;
     return $Params_map;

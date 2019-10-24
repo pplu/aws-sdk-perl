@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SendBounce;
   use Moo;
@@ -39,7 +40,12 @@ package Paws::SES::SendBounce;
                'BounceSender' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'BouncedRecipientInfoList' => 1,
+                    'OriginalMessageId' => 1,
+                    'BounceSender' => 1
+                  }
 }
 ;
     return $Params_map;

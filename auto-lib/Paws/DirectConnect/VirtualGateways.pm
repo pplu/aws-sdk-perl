@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::VirtualGateways;
-  use Moose;
-  has VirtualGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualGateway]', traits => ['NameInRequest'], request_name => 'virtualGateways' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_VirtualGateway/;
+  has VirtualGateways => (is => 'ro', isa => ArrayRef[DirectConnect_VirtualGateway]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VirtualGateways' => {
+                                      'class' => 'Paws::DirectConnect::VirtualGateway',
+                                      'type' => 'ArrayRef[DirectConnect_VirtualGateway]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'VirtualGateways' => 'virtualGateways'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::VirtualGateways
 =head1 ATTRIBUTES
 
 
-=head2 VirtualGateways => ArrayRef[L<Paws::DirectConnect::VirtualGateway>]
+=head2 VirtualGateways => ArrayRef[DirectConnect_VirtualGateway]
 
 The virtual private gateways.
 

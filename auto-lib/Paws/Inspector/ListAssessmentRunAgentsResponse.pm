@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::ListAssessmentRunAgentsResponse;
-  use Moose;
-  has AssessmentRunAgents => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunAgent]', traits => ['NameInRequest'], request_name => 'assessmentRunAgents' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_AssessmentRunAgent/;
+  has AssessmentRunAgents => (is => 'ro', isa => ArrayRef[Inspector_AssessmentRunAgent], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AssessmentRunAgents' => {
+                                          'class' => 'Paws::Inspector::AssessmentRunAgent',
+                                          'type' => 'ArrayRef[Inspector_AssessmentRunAgent]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'AssessmentRunAgents' => 'assessmentRunAgents'
+                     },
+  'IsRequired' => {
+                    'AssessmentRunAgents' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +44,7 @@ Paws::Inspector::ListAssessmentRunAgentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AssessmentRunAgents => ArrayRef[L<Paws::Inspector::AssessmentRunAgent>]
+=head2 B<REQUIRED> AssessmentRunAgents => ArrayRef[Inspector_AssessmentRunAgent]
 
 A list of ARNs that specifies the agents returned by the action.
 

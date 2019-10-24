@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::ConfigureShard;
-  use Moose;
-  has NewReplicaCount => (is => 'ro', isa => 'Int', required => 1);
-  has NodeGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PreferredAvailabilityZone', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef Undef/;
+  use Paws::ElastiCache::Types qw//;
+  has NewReplicaCount => (is => 'ro', isa => Int, required => 1);
+  has NodeGroupId => (is => 'ro', isa => Str, required => 1);
+  has PreferredAvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NodeGroupId' => {
+                                  'type' => 'Str'
+                                },
+               'NewReplicaCount' => {
+                                      'type' => 'Int'
+                                    },
+               'PreferredAvailabilityZones' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               }
+             },
+  'NameInRequest' => {
+                       'PreferredAvailabilityZones' => 'PreferredAvailabilityZone'
+                     },
+  'IsRequired' => {
+                    'NodeGroupId' => 1,
+                    'NewReplicaCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

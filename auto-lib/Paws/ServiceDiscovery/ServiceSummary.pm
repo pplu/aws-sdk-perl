@@ -1,14 +1,58 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::ServiceSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has DnsConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsConfig');
-  has HealthCheckConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckConfig');
-  has HealthCheckCustomConfig => (is => 'ro', isa => 'Paws::ServiceDiscovery::HealthCheckCustomConfig');
-  has Id => (is => 'ro', isa => 'Str');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_HealthCheckCustomConfig ServiceDiscovery_DnsConfig ServiceDiscovery_HealthCheckConfig/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreateDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DnsConfig => (is => 'ro', isa => ServiceDiscovery_DnsConfig);
+  has HealthCheckConfig => (is => 'ro', isa => ServiceDiscovery_HealthCheckConfig);
+  has HealthCheckCustomConfig => (is => 'ro', isa => ServiceDiscovery_HealthCheckCustomConfig);
+  has Id => (is => 'ro', isa => Str);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'DnsConfig' => {
+                                'class' => 'Paws::ServiceDiscovery::DnsConfig',
+                                'type' => 'ServiceDiscovery_DnsConfig'
+                              },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  },
+               'HealthCheckConfig' => {
+                                        'class' => 'Paws::ServiceDiscovery::HealthCheckConfig',
+                                        'type' => 'ServiceDiscovery_HealthCheckConfig'
+                                      },
+               'HealthCheckCustomConfig' => {
+                                              'class' => 'Paws::ServiceDiscovery::HealthCheckCustomConfig',
+                                              'type' => 'ServiceDiscovery_HealthCheckCustomConfig'
+                                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,17 +104,17 @@ service when you create it.
   The description that you specify when you create the service.
 
 
-=head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
+=head2 DnsConfig => ServiceDiscovery_DnsConfig
 
   
 
 
-=head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
+=head2 HealthCheckConfig => ServiceDiscovery_HealthCheckConfig
 
   
 
 
-=head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
+=head2 HealthCheckCustomConfig => ServiceDiscovery_HealthCheckCustomConfig
 
   
 

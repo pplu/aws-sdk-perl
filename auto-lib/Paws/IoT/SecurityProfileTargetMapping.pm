@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoT::SecurityProfileTargetMapping;
-  use Moose;
-  has SecurityProfileIdentifier => (is => 'ro', isa => 'Paws::IoT::SecurityProfileIdentifier', request_name => 'securityProfileIdentifier', traits => ['NameInRequest']);
-  has Target => (is => 'ro', isa => 'Paws::IoT::SecurityProfileTarget', request_name => 'target', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_SecurityProfileIdentifier IoT_SecurityProfileTarget/;
+  has SecurityProfileIdentifier => (is => 'ro', isa => IoT_SecurityProfileIdentifier);
+  has Target => (is => 'ro', isa => IoT_SecurityProfileTarget);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'class' => 'Paws::IoT::SecurityProfileTarget',
+                             'type' => 'IoT_SecurityProfileTarget'
+                           },
+               'SecurityProfileIdentifier' => {
+                                                'class' => 'Paws::IoT::SecurityProfileIdentifier',
+                                                'type' => 'IoT_SecurityProfileIdentifier'
+                                              }
+             },
+  'NameInRequest' => {
+                       'Target' => 'target',
+                       'SecurityProfileIdentifier' => 'securityProfileIdentifier'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Information about a security profile and the target associated with it.
 =head1 ATTRIBUTES
 
 
-=head2 SecurityProfileIdentifier => L<Paws::IoT::SecurityProfileIdentifier>
+=head2 SecurityProfileIdentifier => IoT_SecurityProfileIdentifier
 
   Information that identifies the security profile.
 
 
-=head2 Target => L<Paws::IoT::SecurityProfileTarget>
+=head2 Target => IoT_SecurityProfileTarget
 
   Information about the target (thing group) associated with the security
 profile.

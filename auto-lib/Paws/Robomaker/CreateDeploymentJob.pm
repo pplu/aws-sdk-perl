@@ -1,18 +1,60 @@
 
 package Paws::Robomaker::CreateDeploymentJob;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken', required => 1);
-  has DeploymentApplicationConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DeploymentApplicationConfig]', traits => ['NameInRequest'], request_name => 'deploymentApplicationConfigs', required => 1);
-  has DeploymentConfig => (is => 'ro', isa => 'Paws::Robomaker::DeploymentConfig', traits => ['NameInRequest'], request_name => 'deploymentConfig');
-  has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_DeploymentConfig Robomaker_DeploymentApplicationConfig Robomaker_TagMap/;
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeploymentApplicationConfigs => (is => 'ro', isa => ArrayRef[Robomaker_DeploymentApplicationConfig], required => 1, predicate => 1);
+  has DeploymentConfig => (is => 'ro', isa => Robomaker_DeploymentConfig, predicate => 1);
+  has Fleet => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeploymentJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/createDeploymentJob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::CreateDeploymentJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDeploymentJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/createDeploymentJob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::CreateDeploymentJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeploymentApplicationConfigs' => {
+                                                   'class' => 'Paws::Robomaker::DeploymentApplicationConfig',
+                                                   'type' => 'ArrayRef[Robomaker_DeploymentApplicationConfig]'
+                                                 },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'DeploymentConfig' => {
+                                       'class' => 'Paws::Robomaker::DeploymentConfig',
+                                       'type' => 'Robomaker_DeploymentConfig'
+                                     },
+               'Fleet' => {
+                            'type' => 'Str'
+                          },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         }
+             },
+  'NameInRequest' => {
+                       'DeploymentApplicationConfigs' => 'deploymentApplicationConfigs',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'DeploymentConfig' => 'deploymentConfig',
+                       'Fleet' => 'fleet',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'DeploymentApplicationConfigs' => 1,
+                    'ClientRequestToken' => 1,
+                    'Fleet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,13 +131,13 @@ idempotency of the request.
 
 
 
-=head2 B<REQUIRED> DeploymentApplicationConfigs => ArrayRef[L<Paws::Robomaker::DeploymentApplicationConfig>]
+=head2 B<REQUIRED> DeploymentApplicationConfigs => ArrayRef[Robomaker_DeploymentApplicationConfig]
 
 The deployment application configuration.
 
 
 
-=head2 DeploymentConfig => L<Paws::Robomaker::DeploymentConfig>
+=head2 DeploymentConfig => Robomaker_DeploymentConfig
 
 The requested deployment configuration.
 
@@ -107,7 +149,7 @@ The Amazon Resource Name (ARN) of the fleet to deploy.
 
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 A map that contains tag keys and tag values that are attached to the
 deployment job.

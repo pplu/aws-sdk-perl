@@ -1,14 +1,33 @@
 
 package Paws::Pinpoint::PhoneNumberValidate;
-  use Moose;
-  has NumberValidateRequest => (is => 'ro', isa => 'Paws::Pinpoint::NumberValidateRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_NumberValidateRequest/;
+  has NumberValidateRequest => (is => 'ro', isa => Pinpoint_NumberValidateRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'NumberValidateRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PhoneNumberValidate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/phone/number/validate');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::NumberValidateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PhoneNumberValidate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/phone/number/validate');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::NumberValidateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberValidateRequest' => {
+                                            'class' => 'Paws::Pinpoint::NumberValidateRequest',
+                                            'type' => 'Pinpoint_NumberValidateRequest'
+                                          }
+             },
+  'IsRequired' => {
+                    'NumberValidateRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> NumberValidateRequest => L<Paws::Pinpoint::NumberValidateRequest>
+=head2 B<REQUIRED> NumberValidateRequest => Pinpoint_NumberValidateRequest
 
 
 

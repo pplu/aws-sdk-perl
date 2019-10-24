@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::ListFlowExecutionMessagesResponse;
-  use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::FlowExecutionMessage]', traits => ['NameInRequest'], request_name => 'messages' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_FlowExecutionMessage/;
+  has Messages => (is => 'ro', isa => ArrayRef[IoTThingsGraph_FlowExecutionMessage]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Messages' => {
+                               'class' => 'Paws::IoTThingsGraph::FlowExecutionMessage',
+                               'type' => 'ArrayRef[IoTThingsGraph_FlowExecutionMessage]'
+                             }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Messages' => 'messages'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::IoTThingsGraph::ListFlowExecutionMessagesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Messages => ArrayRef[L<Paws::IoTThingsGraph::FlowExecutionMessage>]
+=head2 Messages => ArrayRef[IoTThingsGraph_FlowExecutionMessage]
 
 A list of objects that contain information about events in the
 specified flow execution.

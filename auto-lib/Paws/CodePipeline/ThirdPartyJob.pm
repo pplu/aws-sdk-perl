@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ThirdPartyJob;
-  use Moose;
-  has ClientId => (is => 'ro', isa => 'Str', request_name => 'clientId', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has ClientId => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientId' => {
+                               'type' => 'Str'
+                             },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ClientId' => 'clientId',
+                       'JobId' => 'jobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

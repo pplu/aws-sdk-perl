@@ -1,10 +1,35 @@
 
 package Paws::ServerlessRepo::ListApplicationsResponse;
-  use Moose;
-  has Applications => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ApplicationSummary]', traits => ['NameInRequest'], request_name => 'applications');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ApplicationSummary/;
+  has Applications => (is => 'ro', isa => ArrayRef[ServerlessRepo_ApplicationSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Applications' => {
+                                   'class' => 'Paws::ServerlessRepo::ApplicationSummary',
+                                   'type' => 'ArrayRef[ServerlessRepo_ApplicationSummary]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Applications' => 'applications'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ServerlessRepo::ListApplicationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Applications => ArrayRef[L<Paws::ServerlessRepo::ApplicationSummary>]
+=head2 Applications => ArrayRef[ServerlessRepo_ApplicationSummary]
 
 An array of application summaries.
 

@@ -11,7 +11,7 @@ package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
   has SourceDestCheck => (is => 'ro', isa => EC2_AttributeBooleanValue);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SourceDestCheck' => {
@@ -46,8 +46,8 @@ package Paws::EC2::DescribeNetworkInterfaceAttributeResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

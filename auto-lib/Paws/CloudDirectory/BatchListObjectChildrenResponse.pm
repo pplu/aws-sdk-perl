@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListObjectChildrenResponse;
-  use Moose;
-  has Children => (is => 'ro', isa => 'Paws::CloudDirectory::LinkNameToObjectIdentifierMap');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_LinkNameToObjectIdentifierMap/;
+  has Children => (is => 'ro', isa => CloudDirectory_LinkNameToObjectIdentifierMap);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Children' => {
+                               'class' => 'Paws::CloudDirectory::LinkNameToObjectIdentifierMap',
+                               'type' => 'CloudDirectory_LinkNameToObjectIdentifierMap'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Represents the output of a ListObjectChildren response operation.
 =head1 ATTRIBUTES
 
 
-=head2 Children => L<Paws::CloudDirectory::LinkNameToObjectIdentifierMap>
+=head2 Children => CloudDirectory_LinkNameToObjectIdentifierMap
 
   The children structure, which is a map with the key as the C<LinkName>
 and C<ObjectIdentifier> as the value.

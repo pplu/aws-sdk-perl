@@ -1,12 +1,47 @@
+# Generated from default/object.tt
 package Paws::CognitoSync::Dataset;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has DatasetName => (is => 'ro', isa => 'Str');
-  has DataStorage => (is => 'ro', isa => 'Int');
-  has IdentityId => (is => 'ro', isa => 'Str');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has NumRecords => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoSync::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has DatasetName => (is => 'ro', isa => Str);
+  has DataStorage => (is => 'ro', isa => Int);
+  has IdentityId => (is => 'ro', isa => Str);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has NumRecords => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'NumRecords' => {
+                                 'type' => 'Int'
+                               },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               },
+               'DataStorage' => {
+                                  'type' => 'Int'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

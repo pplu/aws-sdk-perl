@@ -1,24 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::UpdateSMBFileShare;
-  use Moose;
-  has AdminUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultStorageClass => (is => 'ro', isa => 'Str');
-  has FileShareARN => (is => 'ro', isa => 'Str', required => 1);
-  has GuessMIMETypeEnabled => (is => 'ro', isa => 'Bool');
-  has InvalidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KMSEncrypted => (is => 'ro', isa => 'Bool');
-  has KMSKey => (is => 'ro', isa => 'Str');
-  has ObjectACL => (is => 'ro', isa => 'Str');
-  has ReadOnly => (is => 'ro', isa => 'Bool');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has SMBACLEnabled => (is => 'ro', isa => 'Bool');
-  has ValidUserList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::StorageGateway::Types qw//;
+  has AdminUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has DefaultStorageClass => (is => 'ro', isa => Str, predicate => 1);
+  has FileShareARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GuessMIMETypeEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has InvalidUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KMSEncrypted => (is => 'ro', isa => Bool, predicate => 1);
+  has KMSKey => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectACL => (is => 'ro', isa => Str, predicate => 1);
+  has ReadOnly => (is => 'ro', isa => Bool, predicate => 1);
+  has RequesterPays => (is => 'ro', isa => Bool, predicate => 1);
+  has SMBACLEnabled => (is => 'ro', isa => Bool, predicate => 1);
+  has ValidUserList => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSMBFileShare');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateSMBFileShareOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSMBFileShare');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::UpdateSMBFileShareOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReadOnly' => {
+                               'type' => 'Bool'
+                             },
+               'SMBACLEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'AdminUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'InvalidUserList' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'ObjectACL' => {
+                                'type' => 'Str'
+                              },
+               'DefaultStorageClass' => {
+                                          'type' => 'Str'
+                                        },
+               'KMSKey' => {
+                             'type' => 'Str'
+                           },
+               'ValidUserList' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'FileShareARN' => {
+                                   'type' => 'Str'
+                                 },
+               'KMSEncrypted' => {
+                                   'type' => 'Bool'
+                                 },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'GuessMIMETypeEnabled' => {
+                                           'type' => 'Bool'
+                                         }
+             },
+  'IsRequired' => {
+                    'FileShareARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

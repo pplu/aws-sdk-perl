@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::DateInterval;
-  use Moose;
-  has End => (is => 'ro', isa => 'Str', required => 1);
-  has Start => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw//;
+  has End => (is => 'ro', isa => Str, required => 1);
+  has Start => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Start' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'End' => 1,
+                    'Start' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

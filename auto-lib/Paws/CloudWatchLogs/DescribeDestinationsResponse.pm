@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::DescribeDestinationsResponse;
-  use Moose;
-  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::Destination]', traits => ['NameInRequest'], request_name => 'destinations' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_Destination/;
+  has Destinations => (is => 'ro', isa => ArrayRef[CloudWatchLogs_Destination]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Destinations' => {
+                                   'class' => 'Paws::CloudWatchLogs::Destination',
+                                   'type' => 'ArrayRef[CloudWatchLogs_Destination]'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Destinations' => 'destinations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CloudWatchLogs::DescribeDestinationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Destinations => ArrayRef[L<Paws::CloudWatchLogs::Destination>]
+=head2 Destinations => ArrayRef[CloudWatchLogs_Destination]
 
 The destinations.
 

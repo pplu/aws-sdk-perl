@@ -1,14 +1,62 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::GetMergeConflictsOutput;
-  use Moose;
-  has BaseCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'baseCommitId' );
-  has ConflictMetadataList => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::ConflictMetadata]', traits => ['NameInRequest'], request_name => 'conflictMetadataList' , required => 1);
-  has DestinationCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitId' , required => 1);
-  has Mergeable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'mergeable' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::CodeCommit::Types qw/CodeCommit_ConflictMetadata/;
+  has BaseCommitId => (is => 'ro', isa => Str);
+  has ConflictMetadataList => (is => 'ro', isa => ArrayRef[CodeCommit_ConflictMetadata], required => 1);
+  has DestinationCommitId => (is => 'ro', isa => Str, required => 1);
+  has Mergeable => (is => 'ro', isa => Bool, required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+  has SourceCommitId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'BaseCommitId' => {
+                                   'type' => 'Str'
+                                 },
+               'Mergeable' => {
+                                'type' => 'Bool'
+                              },
+               'SourceCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'DestinationCommitId' => {
+                                          'type' => 'Str'
+                                        },
+               'ConflictMetadataList' => {
+                                           'class' => 'Paws::CodeCommit::ConflictMetadata',
+                                           'type' => 'ArrayRef[CodeCommit_ConflictMetadata]'
+                                         }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'BaseCommitId' => 'baseCommitId',
+                       'Mergeable' => 'mergeable',
+                       'SourceCommitId' => 'sourceCommitId',
+                       'DestinationCommitId' => 'destinationCommitId',
+                       'ConflictMetadataList' => 'conflictMetadataList'
+                     },
+  'IsRequired' => {
+                    'Mergeable' => 1,
+                    'SourceCommitId' => 1,
+                    'DestinationCommitId' => 1,
+                    'ConflictMetadataList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +72,7 @@ Paws::CodeCommit::GetMergeConflictsOutput
 The commit ID of the merge base.
 
 
-=head2 B<REQUIRED> ConflictMetadataList => ArrayRef[L<Paws::CodeCommit::ConflictMetadata>]
+=head2 B<REQUIRED> ConflictMetadataList => ArrayRef[CodeCommit_ConflictMetadata]
 
 A list of metadata for any conflicting files. If the specified merge
 strategy is FAST_FORWARD_MERGE, this list will always be empty.

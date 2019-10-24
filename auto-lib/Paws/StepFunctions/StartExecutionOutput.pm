@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::StartExecutionOutput;
-  use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has ExecutionArn => (is => 'ro', isa => Str, required => 1);
+  has StartDate => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionArn' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ExecutionArn' => 'executionArn',
+                       'StartDate' => 'startDate'
+                     },
+  'IsRequired' => {
+                    'ExecutionArn' => 1,
+                    'StartDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

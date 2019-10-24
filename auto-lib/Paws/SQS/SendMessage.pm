@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::SendMessage;
   use Moo;
@@ -41,7 +42,11 @@ package Paws::SQS::SendMessage;
              },
   'NameInRequest' => {
                        'MessageAttributes' => 'MessageAttribute'
-                     }
+                     },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'MessageBody' => 1
+                  }
 }
 ;
     return $Params_map;

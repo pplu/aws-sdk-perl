@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::AppStream::ImagePermissions;
-  use Moose;
-  has AllowFleet => (is => 'ro', isa => 'Bool', request_name => 'allowFleet', traits => ['NameInRequest']);
-  has AllowImageBuilder => (is => 'ro', isa => 'Bool', request_name => 'allowImageBuilder', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::AppStream::Types qw//;
+  has AllowFleet => (is => 'ro', isa => Bool);
+  has AllowImageBuilder => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowFleet' => {
+                                 'type' => 'Bool'
+                               },
+               'AllowImageBuilder' => {
+                                        'type' => 'Bool'
+                                      }
+             },
+  'NameInRequest' => {
+                       'AllowFleet' => 'allowFleet',
+                       'AllowImageBuilder' => 'allowImageBuilder'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

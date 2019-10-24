@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ApplicationAutoScaling::PutScalingPolicy;
-  use Moose;
-  has PolicyName => (is => 'ro', isa => 'Str', required => 1);
-  has PolicyType => (is => 'ro', isa => 'Str');
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has StepScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration');
-  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_StepScalingPolicyConfiguration ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration/;
+  has PolicyName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PolicyType => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StepScalingPolicyConfiguration => (is => 'ro', isa => ApplicationAutoScaling_StepScalingPolicyConfiguration, predicate => 1);
+  has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutScalingPolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationAutoScaling::PutScalingPolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutScalingPolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApplicationAutoScaling::PutScalingPolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'StepScalingPolicyConfiguration' => {
+                                                     'class' => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration',
+                                                     'type' => 'ApplicationAutoScaling_StepScalingPolicyConfiguration'
+                                                   },
+               'TargetTrackingScalingPolicyConfiguration' => {
+                                                               'class' => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration',
+                                                               'type' => 'ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration'
+                                                             },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'ServiceNamespace' => 1,
+                    'ScalableDimension' => 1,
+                    'PolicyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -259,7 +301,7 @@ in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
 
-=head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
+=head2 StepScalingPolicyConfiguration => ApplicationAutoScaling_StepScalingPolicyConfiguration
 
 A step scaling policy.
 
@@ -268,7 +310,7 @@ type is C<StepScaling>.
 
 
 
-=head2 TargetTrackingScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration>
+=head2 TargetTrackingScalingPolicyConfiguration => ApplicationAutoScaling_TargetTrackingScalingPolicyConfiguration
 
 A target tracking scaling policy. Includes support for predefined or
 customized metrics.

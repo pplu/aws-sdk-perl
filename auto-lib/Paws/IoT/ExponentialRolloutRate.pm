@@ -1,8 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoT::ExponentialRolloutRate;
-  use Moose;
-  has BaseRatePerMinute => (is => 'ro', isa => 'Int', request_name => 'baseRatePerMinute', traits => ['NameInRequest'], required => 1);
-  has IncrementFactor => (is => 'ro', isa => 'Num', request_name => 'incrementFactor', traits => ['NameInRequest'], required => 1);
-  has RateIncreaseCriteria => (is => 'ro', isa => 'Paws::IoT::RateIncreaseCriteria', request_name => 'rateIncreaseCriteria', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::IoT::Types qw/IoT_RateIncreaseCriteria/;
+  has BaseRatePerMinute => (is => 'ro', isa => Int, required => 1);
+  has IncrementFactor => (is => 'ro', isa => Num, required => 1);
+  has RateIncreaseCriteria => (is => 'ro', isa => IoT_RateIncreaseCriteria, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IncrementFactor' => {
+                                      'type' => 'Num'
+                                    },
+               'RateIncreaseCriteria' => {
+                                           'class' => 'Paws::IoT::RateIncreaseCriteria',
+                                           'type' => 'IoT_RateIncreaseCriteria'
+                                         },
+               'BaseRatePerMinute' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'NameInRequest' => {
+                       'IncrementFactor' => 'incrementFactor',
+                       'RateIncreaseCriteria' => 'rateIncreaseCriteria',
+                       'BaseRatePerMinute' => 'baseRatePerMinute'
+                     },
+  'IsRequired' => {
+                    'IncrementFactor' => 1,
+                    'RateIncreaseCriteria' => 1,
+                    'BaseRatePerMinute' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +84,7 @@ define the initial rate of rollout.
   The exponential factor to increase the rate of rollout for a job.
 
 
-=head2 B<REQUIRED> RateIncreaseCriteria => L<Paws::IoT::RateIncreaseCriteria>
+=head2 B<REQUIRED> RateIncreaseCriteria => IoT_RateIncreaseCriteria
 
   The criteria to initiate the increase in rate of rollout for a job.
 

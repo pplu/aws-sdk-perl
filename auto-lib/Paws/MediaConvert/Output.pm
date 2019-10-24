@@ -1,13 +1,66 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::Output;
-  use Moose;
-  has AudioDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::AudioDescription]', request_name => 'audioDescriptions', traits => ['NameInRequest']);
-  has CaptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::CaptionDescription]', request_name => 'captionDescriptions', traits => ['NameInRequest']);
-  has ContainerSettings => (is => 'ro', isa => 'Paws::MediaConvert::ContainerSettings', request_name => 'containerSettings', traits => ['NameInRequest']);
-  has Extension => (is => 'ro', isa => 'Str', request_name => 'extension', traits => ['NameInRequest']);
-  has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
-  has OutputSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest']);
-  has Preset => (is => 'ro', isa => 'Str', request_name => 'preset', traits => ['NameInRequest']);
-  has VideoDescription => (is => 'ro', isa => 'Paws::MediaConvert::VideoDescription', request_name => 'videoDescription', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_ContainerSettings MediaConvert_AudioDescription MediaConvert_VideoDescription MediaConvert_CaptionDescription MediaConvert_OutputSettings/;
+  has AudioDescriptions => (is => 'ro', isa => ArrayRef[MediaConvert_AudioDescription]);
+  has CaptionDescriptions => (is => 'ro', isa => ArrayRef[MediaConvert_CaptionDescription]);
+  has ContainerSettings => (is => 'ro', isa => MediaConvert_ContainerSettings);
+  has Extension => (is => 'ro', isa => Str);
+  has NameModifier => (is => 'ro', isa => Str);
+  has OutputSettings => (is => 'ro', isa => MediaConvert_OutputSettings);
+  has Preset => (is => 'ro', isa => Str);
+  has VideoDescription => (is => 'ro', isa => MediaConvert_VideoDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptionDescriptions' => {
+                                          'class' => 'Paws::MediaConvert::CaptionDescription',
+                                          'type' => 'ArrayRef[MediaConvert_CaptionDescription]'
+                                        },
+               'AudioDescriptions' => {
+                                        'class' => 'Paws::MediaConvert::AudioDescription',
+                                        'type' => 'ArrayRef[MediaConvert_AudioDescription]'
+                                      },
+               'NameModifier' => {
+                                   'type' => 'Str'
+                                 },
+               'OutputSettings' => {
+                                     'class' => 'Paws::MediaConvert::OutputSettings',
+                                     'type' => 'MediaConvert_OutputSettings'
+                                   },
+               'Extension' => {
+                                'type' => 'Str'
+                              },
+               'Preset' => {
+                             'type' => 'Str'
+                           },
+               'VideoDescription' => {
+                                       'class' => 'Paws::MediaConvert::VideoDescription',
+                                       'type' => 'MediaConvert_VideoDescription'
+                                     },
+               'ContainerSettings' => {
+                                        'class' => 'Paws::MediaConvert::ContainerSettings',
+                                        'type' => 'MediaConvert_ContainerSettings'
+                                      }
+             },
+  'NameInRequest' => {
+                       'CaptionDescriptions' => 'captionDescriptions',
+                       'AudioDescriptions' => 'audioDescriptions',
+                       'NameModifier' => 'nameModifier',
+                       'OutputSettings' => 'outputSettings',
+                       'Extension' => 'extension',
+                       'Preset' => 'preset',
+                       'VideoDescription' => 'videoDescription',
+                       'ContainerSettings' => 'containerSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +97,7 @@ stream in an output group.
 =head1 ATTRIBUTES
 
 
-=head2 AudioDescriptions => ArrayRef[L<Paws::MediaConvert::AudioDescription>]
+=head2 AudioDescriptions => ArrayRef[MediaConvert_AudioDescription]
 
   (AudioDescriptions) contains groups of audio encoding settings
 organized by audio codec. Include one instance of (AudioDescriptions)
@@ -52,7 +105,7 @@ per output. (AudioDescriptions) can contain multiple groups of encoding
 settings.
 
 
-=head2 CaptionDescriptions => ArrayRef[L<Paws::MediaConvert::CaptionDescription>]
+=head2 CaptionDescriptions => ArrayRef[MediaConvert_CaptionDescription]
 
   (CaptionDescriptions) contains groups of captions settings. For each
 output that has captions, include one instance of
@@ -60,7 +113,7 @@ output that has captions, include one instance of
 groups of captions settings.
 
 
-=head2 ContainerSettings => L<Paws::MediaConvert::ContainerSettings>
+=head2 ContainerSettings => MediaConvert_ContainerSettings
 
   Container specific settings.
 
@@ -86,7 +139,7 @@ format identifiers $Number$ or $Time$ in one output, you must use them
 in the same way in all outputs of the output group.
 
 
-=head2 OutputSettings => L<Paws::MediaConvert::OutputSettings>
+=head2 OutputSettings => MediaConvert_OutputSettings
 
   Specific settings for this type of output.
 
@@ -98,7 +151,7 @@ Provide the system or custom preset name. You can specify either Preset
 (Preset) or Container settings (ContainerSettings), but not both.
 
 
-=head2 VideoDescription => L<Paws::MediaConvert::VideoDescription>
+=head2 VideoDescription => MediaConvert_VideoDescription
 
   (VideoDescription) contains a group of video encoding settings. The
 specific video settings depend on the video codec you choose when you

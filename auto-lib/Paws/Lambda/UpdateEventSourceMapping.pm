@@ -1,17 +1,47 @@
 
 package Paws::Lambda::UpdateEventSourceMapping;
-  use Moose;
-  has BatchSize => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has FunctionName => (is => 'ro', isa => 'Str');
-  has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::Lambda::Types qw//;
+  has BatchSize => (is => 'ro', isa => Int, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, predicate => 1);
+  has UUID => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateEventSourceMapping');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/event-source-mappings/{UUID}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateEventSourceMapping');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/event-source-mappings/{UUID}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'BatchSize' => {
+                                'type' => 'Int'
+                              },
+               'UUID' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'UUID' => 'UUID'
+                  },
+  'IsRequired' => {
+                    'UUID' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

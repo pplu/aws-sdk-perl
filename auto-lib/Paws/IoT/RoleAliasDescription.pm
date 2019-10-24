@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::IoT::RoleAliasDescription;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
-  has CredentialDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'credentialDurationSeconds', traits => ['NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', request_name => 'lastModifiedDate', traits => ['NameInRequest']);
-  has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
-  has RoleAlias => (is => 'ro', isa => 'Str', request_name => 'roleAlias', traits => ['NameInRequest']);
-  has RoleAliasArn => (is => 'ro', isa => 'Str', request_name => 'roleAliasArn', traits => ['NameInRequest']);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has CredentialDurationSeconds => (is => 'ro', isa => Int);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has RoleAlias => (is => 'ro', isa => Str);
+  has RoleAliasArn => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleAliasArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CredentialDurationSeconds' => {
+                                                'type' => 'Int'
+                                              },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'RoleAlias' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RoleAliasArn' => 'roleAliasArn',
+                       'Owner' => 'owner',
+                       'RoleArn' => 'roleArn',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CredentialDurationSeconds' => 'credentialDurationSeconds',
+                       'CreationDate' => 'creationDate',
+                       'RoleAlias' => 'roleAlias'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

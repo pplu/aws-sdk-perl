@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::CreateProvisioningArtifact;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactProperties', required => 1);
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProvisioningArtifactProperties/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Parameters => (is => 'ro', isa => ServiceCatalog_ProvisioningArtifactProperties, required => 1, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProvisioningArtifact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::CreateProvisioningArtifactOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProvisioningArtifact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::CreateProvisioningArtifactOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::ServiceCatalog::ProvisioningArtifactProperties',
+                                 'type' => 'ServiceCatalog_ProvisioningArtifactProperties'
+                               },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'ProductId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'Parameters' => 1,
+                    'IdempotencyToken' => 1,
+                    'ProductId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +123,7 @@ returned for each repeated request.
 
 
 
-=head2 B<REQUIRED> Parameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
+=head2 B<REQUIRED> Parameters => ServiceCatalog_ProvisioningArtifactProperties
 
 The configuration for the provisioning artifact.
 

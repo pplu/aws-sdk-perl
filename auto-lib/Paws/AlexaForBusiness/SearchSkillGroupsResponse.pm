@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::SearchSkillGroupsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SkillGroups => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::SkillGroupData]');
-  has TotalCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_SkillGroupData/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SkillGroups => (is => 'ro', isa => ArrayRef[AlexaForBusiness_SkillGroupData]);
+  has TotalCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SkillGroups' => {
+                                  'class' => 'Paws::AlexaForBusiness::SkillGroupData',
+                                  'type' => 'ArrayRef[AlexaForBusiness_SkillGroupData]'
+                                },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +46,7 @@ Paws::AlexaForBusiness::SearchSkillGroupsResponse
 The token returned to indicate that there is more data available.
 
 
-=head2 SkillGroups => ArrayRef[L<Paws::AlexaForBusiness::SkillGroupData>]
+=head2 SkillGroups => ArrayRef[AlexaForBusiness_SkillGroupData]
 
 The skill groups that meet the filter criteria, in sort order.
 

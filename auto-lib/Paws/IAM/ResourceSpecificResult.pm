@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ResourceSpecificResult;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;
@@ -28,7 +29,11 @@ package Paws::IAM::ResourceSpecificResult;
                                         'class' => 'Paws::IAM::Statement',
                                         'type' => 'ArrayRef[IAM_Statement]'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'EvalResourceName' => 1,
+                    'EvalResourceDecision' => 1
+                  }
 }
 ;
     return $Params_map;

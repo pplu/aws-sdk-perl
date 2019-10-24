@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoT::CloudwatchAlarmAction;
-  use Moose;
-  has AlarmName => (is => 'ro', isa => 'Str', request_name => 'alarmName', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has StateReason => (is => 'ro', isa => 'Str', request_name => 'stateReason', traits => ['NameInRequest'], required => 1);
-  has StateValue => (is => 'ro', isa => 'Str', request_name => 'stateValue', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AlarmName => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has StateReason => (is => 'ro', isa => Str, required => 1);
+  has StateValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateValue' => {
+                                 'type' => 'Str'
+                               },
+               'AlarmName' => {
+                                'type' => 'Str'
+                              },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'StateReason' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'StateValue' => 'stateValue',
+                       'AlarmName' => 'alarmName',
+                       'RoleArn' => 'roleArn',
+                       'StateReason' => 'stateReason'
+                     },
+  'IsRequired' => {
+                    'StateValue' => 1,
+                    'AlarmName' => 1,
+                    'RoleArn' => 1,
+                    'StateReason' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

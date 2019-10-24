@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::BatchDescribeSimulationJobResponse;
-  use Moose;
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationJob]', traits => ['NameInRequest'], request_name => 'jobs');
-  has UnprocessedJobs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'unprocessedJobs');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Robomaker::Types qw/Robomaker_SimulationJob/;
+  has Jobs => (is => 'ro', isa => ArrayRef[Robomaker_SimulationJob]);
+  has UnprocessedJobs => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UnprocessedJobs' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Jobs' => {
+                           'class' => 'Paws::Robomaker::SimulationJob',
+                           'type' => 'ArrayRef[Robomaker_SimulationJob]'
+                         }
+             },
+  'NameInRequest' => {
+                       'UnprocessedJobs' => 'unprocessedJobs',
+                       'Jobs' => 'jobs'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Robomaker::BatchDescribeSimulationJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 Jobs => ArrayRef[L<Paws::Robomaker::SimulationJob>]
+=head2 Jobs => ArrayRef[Robomaker_SimulationJob]
 
 A list of simulation jobs.
 

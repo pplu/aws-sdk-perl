@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeFleetEventsOutput;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Event]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[GameLift_Event]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Events' => {
+                             'class' => 'Paws::GameLift::Event',
+                             'type' => 'ArrayRef[GameLift_Event]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeFleetEventsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::GameLift::Event>]
+=head2 Events => ArrayRef[GameLift_Event]
 
 Collection of objects containing event log entries for the specified
 fleet.

@@ -1,21 +1,68 @@
 
 package Paws::Quicksight::RegisterUser;
-  use Moose;
-  has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
-  has Email => (is => 'ro', isa => 'Str', required => 1);
-  has IamArn => (is => 'ro', isa => 'Str');
-  has IdentityType => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
-  has SessionName => (is => 'ro', isa => 'Str');
-  has UserName => (is => 'ro', isa => 'Str');
-  has UserRole => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Quicksight::Types qw//;
+  has AwsAccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Email => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IamArn => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SessionName => (is => 'ro', isa => Str, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, predicate => 1);
+  has UserRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Quicksight::RegisterUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{AwsAccountId}/namespaces/{Namespace}/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Quicksight::RegisterUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SessionName' => {
+                                  'type' => 'Str'
+                                },
+               'IamArn' => {
+                             'type' => 'Str'
+                           },
+               'UserRole' => {
+                               'type' => 'Str'
+                             },
+               'IdentityType' => {
+                                   'type' => 'Str'
+                                 },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'AwsAccountId' => {
+                                   'type' => 'Str'
+                                 },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'Namespace' => 'Namespace',
+                    'AwsAccountId' => 'AwsAccountId'
+                  },
+  'IsRequired' => {
+                    'UserRole' => 1,
+                    'Namespace' => 1,
+                    'IdentityType' => 1,
+                    'AwsAccountId' => 1,
+                    'Email' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

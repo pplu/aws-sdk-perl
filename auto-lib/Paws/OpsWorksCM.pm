@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::OpsWorksCM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'opsworks-cm' }
   sub signing_name { 'opsworks-cm' }
   sub version { '2016-11-01' }
   sub target_prefix { 'OpsWorksCM_V2016_11_01' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -308,7 +310,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/opsworks/>
 
 =over
 
-=item EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=item EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]
 
 =item NodeName => Str
 
@@ -402,7 +404,7 @@ request are not valid.
 
 =item [Engine => Str]
 
-=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+=item [EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]]
 
 =item [EngineModel => Str]
 
@@ -640,7 +642,7 @@ request are not valid.
 
 =item ServerName => Str
 
-=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+=item [EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]]
 
 
 =back
@@ -670,7 +672,7 @@ not valid.
 
 =item ServerName => Str
 
-=item [InputAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+=item [InputAttributes => ArrayRef[OpsWorksCM_EngineAttribute]]
 
 
 =back
@@ -732,7 +734,7 @@ request are not valid.
 
 =item ServerName => Str
 
-=item [EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]]
+=item [EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]]
 
 
 =back

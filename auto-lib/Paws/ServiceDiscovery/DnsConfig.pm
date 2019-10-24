@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::DnsConfig;
-  use Moose;
-  has DnsRecords => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::DnsRecord]', required => 1);
-  has NamespaceId => (is => 'ro', isa => 'Str');
-  has RoutingPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_DnsRecord/;
+  has DnsRecords => (is => 'ro', isa => ArrayRef[ServiceDiscovery_DnsRecord], required => 1);
+  has NamespaceId => (is => 'ro', isa => Str);
+  has RoutingPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoutingPolicy' => {
+                                    'type' => 'Str'
+                                  },
+               'NamespaceId' => {
+                                  'type' => 'Str'
+                                },
+               'DnsRecords' => {
+                                 'class' => 'Paws::ServiceDiscovery::DnsRecord',
+                                 'type' => 'ArrayRef[ServiceDiscovery_DnsRecord]'
+                               }
+             },
+  'IsRequired' => {
+                    'DnsRecords' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +67,7 @@ instance.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DnsRecords => ArrayRef[L<Paws::ServiceDiscovery::DnsRecord>]
+=head2 B<REQUIRED> DnsRecords => ArrayRef[ServiceDiscovery_DnsRecord]
 
   An array that contains one C<DnsRecord> object for each Route 53 DNS
 record that you want AWS Cloud Map to create when you register an

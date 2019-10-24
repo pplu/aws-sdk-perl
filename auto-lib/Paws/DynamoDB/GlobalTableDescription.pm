@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalTableDescription;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::GlobalTableDescription;
   has GlobalTableStatus => (is => 'ro', isa => Str);
   has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_ReplicaDescription]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicationGroup' => {
@@ -30,8 +31,8 @@ package Paws::DynamoDB::GlobalTableDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

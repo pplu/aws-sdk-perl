@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateWebACL;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has DefaultAction => (is => 'ro', isa => 'Paws::WAF::WafAction');
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::WebACLUpdate]');
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_WafAction WAF_WebACLUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DefaultAction => (is => 'ro', isa => WAF_WafAction, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_WebACLUpdate], predicate => 1);
+  has WebACLId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateWebACL');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateWebACLResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateWebACL');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateWebACLResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAF::WebACLUpdate',
+                              'type' => 'ArrayRef[WAF_WebACLUpdate]'
+                            },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultAction' => {
+                                    'class' => 'Paws::WAF::WafAction',
+                                    'type' => 'WAF_WafAction'
+                                  },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ChangeToken' => 1,
+                    'WebACLId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +102,7 @@ The value returned by the most recent call to GetChangeToken.
 
 
 
-=head2 DefaultAction => L<Paws::WAF::WafAction>
+=head2 DefaultAction => WAF_WafAction
 
 A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
 performs the default action if a request doesn't match the criteria in
@@ -79,7 +110,7 @@ any of the rules in a web ACL.
 
 
 
-=head2 Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]
+=head2 Updates => ArrayRef[WAF_WebACLUpdate]
 
 An array of updates to make to the WebACL.
 

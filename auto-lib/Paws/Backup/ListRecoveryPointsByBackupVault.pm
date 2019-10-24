@@ -1,21 +1,72 @@
 
 package Paws::Backup::ListRecoveryPointsByBackupVault;
-  use Moose;
-  has BackupVaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'backupVaultName', required => 1);
-  has ByBackupPlanId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'backupPlanId');
-  has ByCreatedAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdAfter');
-  has ByCreatedBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'createdBefore');
-  has ByResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceArn');
-  has ByResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Backup::Types qw//;
+  has BackupVaultName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ByBackupPlanId => (is => 'ro', isa => Str, predicate => 1);
+  has ByCreatedAfter => (is => 'ro', isa => Str, predicate => 1);
+  has ByCreatedBefore => (is => 'ro', isa => Str, predicate => 1);
+  has ByResourceArn => (is => 'ro', isa => Str, predicate => 1);
+  has ByResourceType => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRecoveryPointsByBackupVault');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::ListRecoveryPointsByBackupVaultOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRecoveryPointsByBackupVault');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/backup-vaults/{backupVaultName}/recovery-points/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::ListRecoveryPointsByBackupVaultOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ByBackupPlanId' => {
+                                     'type' => 'Str'
+                                   },
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ByResourceArn' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'ByCreatedAfter' => {
+                                     'type' => 'Str'
+                                   },
+               'ByCreatedBefore' => {
+                                      'type' => 'Str'
+                                    },
+               'ByResourceType' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInURI' => {
+                    'BackupVaultName' => 'backupVaultName'
+                  },
+  'ParamInQuery' => {
+                      'ByCreatedAfter' => 'createdAfter',
+                      'ByBackupPlanId' => 'backupPlanId',
+                      'ByCreatedBefore' => 'createdBefore',
+                      'NextToken' => 'nextToken',
+                      'ByResourceType' => 'resourceType',
+                      'ByResourceArn' => 'resourceArn',
+                      'MaxResults' => 'maxResults'
+                    },
+  'IsRequired' => {
+                    'BackupVaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

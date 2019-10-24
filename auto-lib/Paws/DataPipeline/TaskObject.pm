@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::TaskObject;
-  use Moose;
-  has AttemptId => (is => 'ro', isa => 'Str', request_name => 'attemptId', traits => ['NameInRequest']);
-  has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', request_name => 'objects', traits => ['NameInRequest']);
-  has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_PipelineObjectMap/;
+  has AttemptId => (is => 'ro', isa => Str);
+  has Objects => (is => 'ro', isa => DataPipeline_PipelineObjectMap);
+  has PipelineId => (is => 'ro', isa => Str);
+  has TaskId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Objects' => {
+                              'class' => 'Paws::DataPipeline::PipelineObjectMap',
+                              'type' => 'DataPipeline_PipelineObjectMap'
+                            },
+               'AttemptId' => {
+                                'type' => 'Str'
+                              },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'PipelineId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Objects' => 'objects',
+                       'AttemptId' => 'attemptId',
+                       'TaskId' => 'taskId',
+                       'PipelineId' => 'pipelineId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ runner.
 value to track how many times a task is attempted.
 
 
-=head2 Objects => L<Paws::DataPipeline::PipelineObjectMap>
+=head2 Objects => DataPipeline_PipelineObjectMap
 
   Connection information for the location where the task runner will
 publish the output of the task.

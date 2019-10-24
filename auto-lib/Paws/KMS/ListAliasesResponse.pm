@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::ListAliasesResponse;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::KMS::AliasListEntry]');
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::KMS::Types qw/KMS_AliasListEntry/;
+  has Aliases => (is => 'ro', isa => ArrayRef[KMS_AliasListEntry]);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Aliases' => {
+                              'class' => 'Paws::KMS::AliasListEntry',
+                              'type' => 'ArrayRef[KMS_AliasListEntry]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::KMS::ListAliasesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Aliases => ArrayRef[L<Paws::KMS::AliasListEntry>]
+=head2 Aliases => ArrayRef[KMS_AliasListEntry]
 
 A list of aliases.
 

@@ -1,12 +1,63 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Member;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
-  has DetectorId => (is => 'ro', isa => 'Str', request_name => 'detectorId', traits => ['NameInRequest']);
-  has Email => (is => 'ro', isa => 'Str', request_name => 'email', traits => ['NameInRequest'], required => 1);
-  has InvitedAt => (is => 'ro', isa => 'Str', request_name => 'invitedAt', traits => ['NameInRequest']);
-  has MasterId => (is => 'ro', isa => 'Str', request_name => 'masterId', traits => ['NameInRequest'], required => 1);
-  has RelationshipStatus => (is => 'ro', isa => 'Str', request_name => 'relationshipStatus', traits => ['NameInRequest'], required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has DetectorId => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str, required => 1);
+  has InvitedAt => (is => 'ro', isa => Str);
+  has MasterId => (is => 'ro', isa => Str, required => 1);
+  has RelationshipStatus => (is => 'ro', isa => Str, required => 1);
+  has UpdatedAt => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationshipStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'DetectorId' => {
+                                 'type' => 'Str'
+                               },
+               'MasterId' => {
+                               'type' => 'Str'
+                             },
+               'InvitedAt' => {
+                                'type' => 'Str'
+                              },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'RelationshipStatus' => 'relationshipStatus',
+                       'UpdatedAt' => 'updatedAt',
+                       'AccountId' => 'accountId',
+                       'DetectorId' => 'detectorId',
+                       'MasterId' => 'masterId',
+                       'InvitedAt' => 'invitedAt',
+                       'Email' => 'email'
+                     },
+  'IsRequired' => {
+                    'RelationshipStatus' => 1,
+                    'UpdatedAt' => 1,
+                    'AccountId' => 1,
+                    'MasterId' => 1,
+                    'Email' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

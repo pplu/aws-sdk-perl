@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ResourceChangeDetail;
-  use Moose;
-  has CausingEntity => (is => 'ro', isa => 'Str');
-  has Evaluation => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Paws::ServiceCatalog::ResourceTargetDefinition');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ResourceTargetDefinition/;
+  has CausingEntity => (is => 'ro', isa => Str);
+  has Evaluation => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => ServiceCatalog_ResourceTargetDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'class' => 'Paws::ServiceCatalog::ResourceTargetDefinition',
+                             'type' => 'ServiceCatalog_ResourceTargetDefinition'
+                           },
+               'CausingEntity' => {
+                                    'type' => 'Str'
+                                  },
+               'Evaluation' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ and the new value is known. For dynamic evaluations, the value might
 change, and any new value will be determined when the plan is updated.
 
 
-=head2 Target => L<Paws::ServiceCatalog::ResourceTargetDefinition>
+=head2 Target => ServiceCatalog_ResourceTargetDefinition
 
   Information about the resource attribute to be modified.
 

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::EnableMFADevice;
   use Moo;
@@ -29,7 +30,13 @@ package Paws::IAM::EnableMFADevice;
                'AuthenticationCode1' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'SerialNumber' => 1,
+                    'AuthenticationCode2' => 1,
+                    'AuthenticationCode1' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,10 +1,34 @@
 
 package Paws::Pinpoint::CampaignsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::CampaignResponse]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_CampaignResponse], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::CampaignResponse',
+                           'type' => 'ArrayRef[Pinpoint_CampaignResponse]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::Pinpoint::CampaignsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::CampaignResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_CampaignResponse]
 
 An array of responses, one for each campaign that's associated with the
 application.

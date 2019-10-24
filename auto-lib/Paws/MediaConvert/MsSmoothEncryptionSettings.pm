@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MsSmoothEncryptionSettings;
-  use Moose;
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_SpekeKeyProvider/;
+  has SpekeKeyProvider => (is => 'ro', isa => MediaConvert_SpekeKeyProvider);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaConvert::SpekeKeyProvider',
+                                       'type' => 'MediaConvert_SpekeKeyProvider'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ specify the value SpekeKeyProvider.
 =head1 ATTRIBUTES
 
 
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+=head2 SpekeKeyProvider => MediaConvert_SpekeKeyProvider
 
   Settings for use with a SPEKE key provider
 

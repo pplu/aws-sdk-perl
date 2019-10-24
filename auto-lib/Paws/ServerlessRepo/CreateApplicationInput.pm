@@ -1,20 +1,101 @@
+# Generated from default/object.tt
 package Paws::ServerlessRepo::CreateApplicationInput;
-  use Moose;
-  has Author => (is => 'ro', isa => 'Str', request_name => 'author', traits => ['NameInRequest'], required => 1);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
-  has HomePageUrl => (is => 'ro', isa => 'Str', request_name => 'homePageUrl', traits => ['NameInRequest']);
-  has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'labels', traits => ['NameInRequest']);
-  has LicenseBody => (is => 'ro', isa => 'Str', request_name => 'licenseBody', traits => ['NameInRequest']);
-  has LicenseUrl => (is => 'ro', isa => 'Str', request_name => 'licenseUrl', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has ReadmeBody => (is => 'ro', isa => 'Str', request_name => 'readmeBody', traits => ['NameInRequest']);
-  has ReadmeUrl => (is => 'ro', isa => 'Str', request_name => 'readmeUrl', traits => ['NameInRequest']);
-  has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeArchiveUrl', traits => ['NameInRequest']);
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', request_name => 'sourceCodeUrl', traits => ['NameInRequest']);
-  has SpdxLicenseId => (is => 'ro', isa => 'Str', request_name => 'spdxLicenseId', traits => ['NameInRequest']);
-  has TemplateBody => (is => 'ro', isa => 'Str', request_name => 'templateBody', traits => ['NameInRequest']);
-  has TemplateUrl => (is => 'ro', isa => 'Str', request_name => 'templateUrl', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServerlessRepo::Types qw//;
+  has Author => (is => 'ro', isa => Str, required => 1);
+  has Description => (is => 'ro', isa => Str, required => 1);
+  has HomePageUrl => (is => 'ro', isa => Str);
+  has Labels => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LicenseBody => (is => 'ro', isa => Str);
+  has LicenseUrl => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has ReadmeBody => (is => 'ro', isa => Str);
+  has ReadmeUrl => (is => 'ro', isa => Str);
+  has SemanticVersion => (is => 'ro', isa => Str);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str);
+  has SourceCodeUrl => (is => 'ro', isa => Str);
+  has SpdxLicenseId => (is => 'ro', isa => Str);
+  has TemplateBody => (is => 'ro', isa => Str);
+  has TemplateUrl => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HomePageUrl' => {
+                                  'type' => 'Str'
+                                },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'ReadmeBody' => {
+                                 'type' => 'Str'
+                               },
+               'LicenseBody' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'SpdxLicenseId' => {
+                                    'type' => 'Str'
+                                  },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Labels' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'LicenseUrl' => {
+                                 'type' => 'Str'
+                               },
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         },
+               'ReadmeUrl' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Author' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'HomePageUrl' => 'homePageUrl',
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'ReadmeBody' => 'readmeBody',
+                       'LicenseBody' => 'licenseBody',
+                       'TemplateUrl' => 'templateUrl',
+                       'SpdxLicenseId' => 'spdxLicenseId',
+                       'TemplateBody' => 'templateBody',
+                       'Labels' => 'labels',
+                       'SemanticVersion' => 'semanticVersion',
+                       'LicenseUrl' => 'licenseUrl',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl',
+                       'ReadmeUrl' => 'readmeUrl',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Author' => 'author'
+                     },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Description' => 1,
+                    'Author' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

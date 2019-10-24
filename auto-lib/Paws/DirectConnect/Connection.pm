@@ -1,24 +1,106 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::Connection;
-  use Moose;
-  has AwsDevice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDevice' );
-  has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' );
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
-  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
-  has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
-  has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
-  has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
-  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
-  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
-  has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
-  has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::DirectConnect::Types qw/DirectConnect_Tag/;
+  has AwsDevice => (is => 'ro', isa => Str);
+  has AwsDeviceV2 => (is => 'ro', isa => Str);
+  has Bandwidth => (is => 'ro', isa => Str);
+  has ConnectionId => (is => 'ro', isa => Str);
+  has ConnectionName => (is => 'ro', isa => Str);
+  has ConnectionState => (is => 'ro', isa => Str);
+  has HasLogicalRedundancy => (is => 'ro', isa => Str);
+  has JumboFrameCapable => (is => 'ro', isa => Bool);
+  has LagId => (is => 'ro', isa => Str);
+  has LoaIssueTime => (is => 'ro', isa => Str);
+  has Location => (is => 'ro', isa => Str);
+  has OwnerAccount => (is => 'ro', isa => Str);
+  has PartnerName => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[DirectConnect_Tag]);
+  has Vlan => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConnectionState' => {
+                                      'type' => 'Str'
+                                    },
+               'HasLogicalRedundancy' => {
+                                           'type' => 'Str'
+                                         },
+               'Vlan' => {
+                           'type' => 'Int'
+                         },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'PartnerName' => {
+                                  'type' => 'Str'
+                                },
+               'AwsDeviceV2' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'LoaIssueTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LagId' => {
+                            'type' => 'Str'
+                          },
+               'Location' => {
+                               'type' => 'Str'
+                             },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'JumboFrameCapable' => {
+                                        'type' => 'Bool'
+                                      },
+               'ConnectionName' => {
+                                     'type' => 'Str'
+                                   },
+               'AwsDevice' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::DirectConnect::Tag',
+                           'type' => 'ArrayRef[DirectConnect_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ConnectionState' => 'connectionState',
+                       'HasLogicalRedundancy' => 'hasLogicalRedundancy',
+                       'Vlan' => 'vlan',
+                       'ConnectionId' => 'connectionId',
+                       'Bandwidth' => 'bandwidth',
+                       'PartnerName' => 'partnerName',
+                       'AwsDeviceV2' => 'awsDeviceV2',
+                       'OwnerAccount' => 'ownerAccount',
+                       'LoaIssueTime' => 'loaIssueTime',
+                       'LagId' => 'lagId',
+                       'Location' => 'location',
+                       'Region' => 'region',
+                       'JumboFrameCapable' => 'jumboFrameCapable',
+                       'ConnectionName' => 'connectionName',
+                       'AwsDevice' => 'awsDevice',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -151,7 +233,7 @@ connection.
 The AWS Region where the connection is located.
 
 
-=head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
+=head2 Tags => ArrayRef[DirectConnect_Tag]
 
 Any tags assigned to the connection.
 

@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::VoiceMessage;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has OriginationNumber => (is => 'ro', isa => 'Str');
-  has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfListOf__string/;
+  has Body => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has OriginationNumber => (is => 'ro', isa => Str);
+  has Substitutions => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has VoiceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'Substitutions' => {
+                                    'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                    'type' => 'Pinpoint_MapOfListOf__string'
+                                  },
+               'OriginationNumber' => {
+                                        'type' => 'Str'
+                                      },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +89,7 @@ from. Although it isn't required, we recommend that you specify the
 phone number in E.164 format to ensure prompt and accurate delivery.
 
 
-=head2 Substitutions => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 Substitutions => Pinpoint_MapOfListOf__string
 
   The default message variables to use in the voice message. You can
 override the default variables with individual address variables.

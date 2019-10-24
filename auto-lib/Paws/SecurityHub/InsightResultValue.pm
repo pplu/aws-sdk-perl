@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::InsightResultValue;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', required => 1);
-  has GroupByAttributeValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::SecurityHub::Types qw//;
+  has Count => (is => 'ro', isa => Int, required => 1);
+  has GroupByAttributeValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupByAttributeValue' => {
+                                            'type' => 'Str'
+                                          },
+               'Count' => {
+                            'type' => 'Int'
+                          }
+             },
+  'IsRequired' => {
+                    'GroupByAttributeValue' => 1,
+                    'Count' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

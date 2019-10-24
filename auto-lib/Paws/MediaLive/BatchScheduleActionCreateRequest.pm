@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaLive::BatchScheduleActionCreateRequest;
-  use Moose;
-  has ScheduleActions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ScheduleAction]', request_name => 'scheduleActions', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_ScheduleAction/;
+  has ScheduleActions => (is => 'ro', isa => ArrayRef[MediaLive_ScheduleAction], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduleActions' => {
+                                      'class' => 'Paws::MediaLive::ScheduleAction',
+                                      'type' => 'ArrayRef[MediaLive_ScheduleAction]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'ScheduleActions' => 'scheduleActions'
+                     },
+  'IsRequired' => {
+                    'ScheduleActions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ created (in a response).
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ScheduleActions => ArrayRef[L<Paws::MediaLive::ScheduleAction>]
+=head2 B<REQUIRED> ScheduleActions => ArrayRef[MediaLive_ScheduleAction]
 
   A list of schedule actions to create.
 

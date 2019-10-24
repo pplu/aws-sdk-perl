@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::WriteEventStream;
-  use Moose;
-  has DestinationStreamArn => (is => 'ro', isa => 'Str', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw//;
+  has DestinationStreamArn => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'DestinationStreamArn' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'DestinationStreamArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

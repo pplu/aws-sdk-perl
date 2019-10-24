@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::WAF::GeoMatchSetUpdate;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has GeoMatchConstraint => (is => 'ro', isa => 'Paws::WAF::GeoMatchConstraint', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_GeoMatchConstraint/;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has GeoMatchConstraint => (is => 'ro', isa => WAF_GeoMatchConstraint, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'GeoMatchConstraint' => {
+                                         'class' => 'Paws::WAF::GeoMatchConstraint',
+                                         'type' => 'WAF_GeoMatchConstraint'
+                                       }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'GeoMatchConstraint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ UpdateGeoMatchSet.
   Specifies whether to insert or delete a country with UpdateGeoMatchSet.
 
 
-=head2 B<REQUIRED> GeoMatchConstraint => L<Paws::WAF::GeoMatchConstraint>
+=head2 B<REQUIRED> GeoMatchConstraint => WAF_GeoMatchConstraint
 
   The country from which web requests originate that you want AWS WAF to
 search for.

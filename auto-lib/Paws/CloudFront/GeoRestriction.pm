@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudFront::GeoRestriction;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Location', traits => ['NameInRequest']);
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
-  has RestrictionType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::CloudFront::Types qw//;
+  has Items => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+  has RestrictionType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestrictionType' => {
+                                      'type' => 'Str'
+                                    },
+               'Items' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'Items' => 'Location'
+                     },
+  'IsRequired' => {
+                    'RestrictionType' => 1,
+                    'Quantity' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

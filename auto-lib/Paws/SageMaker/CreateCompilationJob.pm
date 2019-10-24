@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SageMaker::CreateCompilationJob;
-  use Moose;
-  has CompilationJobName => (is => 'ro', isa => 'Str', required => 1);
-  has InputConfig => (is => 'ro', isa => 'Paws::SageMaker::InputConfig', required => 1);
-  has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputConfig', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_InputConfig SageMaker_StoppingCondition SageMaker_OutputConfig/;
+  has CompilationJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputConfig => (is => 'ro', isa => SageMaker_InputConfig, required => 1, predicate => 1);
+  has OutputConfig => (is => 'ro', isa => SageMaker_OutputConfig, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StoppingCondition => (is => 'ro', isa => SageMaker_StoppingCondition, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCompilationJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SageMaker::CreateCompilationJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCompilationJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SageMaker::CreateCompilationJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'InputConfig' => {
+                                  'class' => 'Paws::SageMaker::InputConfig',
+                                  'type' => 'SageMaker_InputConfig'
+                                },
+               'CompilationJobName' => {
+                                         'type' => 'Str'
+                                       },
+               'StoppingCondition' => {
+                                        'class' => 'Paws::SageMaker::StoppingCondition',
+                                        'type' => 'SageMaker_StoppingCondition'
+                                      },
+               'OutputConfig' => {
+                                   'class' => 'Paws::SageMaker::OutputConfig',
+                                   'type' => 'SageMaker_OutputConfig'
+                                 }
+             },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'InputConfig' => 1,
+                    'CompilationJobName' => 1,
+                    'StoppingCondition' => 1,
+                    'OutputConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +109,7 @@ the AWS Region and within your AWS account.
 
 
 
-=head2 B<REQUIRED> InputConfig => L<Paws::SageMaker::InputConfig>
+=head2 B<REQUIRED> InputConfig => SageMaker_InputConfig
 
 Provides information about the location of input model artifacts, the
 name and shape of the expected data inputs, and the framework in which
@@ -79,7 +117,7 @@ the model was trained.
 
 
 
-=head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::OutputConfig>
+=head2 B<REQUIRED> OutputConfig => SageMaker_OutputConfig
 
 Provides information about the output location for the compiled model
 and the target device the model runs on.
@@ -121,7 +159,7 @@ Roles.
 
 
 
-=head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
+=head2 B<REQUIRED> StoppingCondition => SageMaker_StoppingCondition
 
 Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.

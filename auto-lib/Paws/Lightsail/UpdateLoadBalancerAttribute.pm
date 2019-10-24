@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::UpdateLoadBalancerAttribute;
-  use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attributeName' , required => 1);
-  has AttributeValue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attributeValue' , required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loadBalancerName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has AttributeName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AttributeValue => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateLoadBalancerAttribute');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::UpdateLoadBalancerAttributeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateLoadBalancerAttribute');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::UpdateLoadBalancerAttributeResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AttributeValue' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'LoadBalancerName' => 'loadBalancerName',
+                       'AttributeName' => 'attributeName',
+                       'AttributeValue' => 'attributeValue'
+                     },
+  'IsRequired' => {
+                    'LoadBalancerName' => 1,
+                    'AttributeName' => 1,
+                    'AttributeValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

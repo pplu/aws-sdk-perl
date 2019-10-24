@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Resolver::ListResolverEndpointIpAddressesResponse;
-  use Moose;
-  has IpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::Route53Resolver::IpAddressResponse]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_IpAddressResponse/;
+  has IpAddresses => (is => 'ro', isa => ArrayRef[Route53Resolver_IpAddressResponse]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'IpAddresses' => {
+                                  'class' => 'Paws::Route53Resolver::IpAddressResponse',
+                                  'type' => 'ArrayRef[Route53Resolver_IpAddressResponse]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::Route53Resolver::ListResolverEndpointIpAddressesResponse
 =head1 ATTRIBUTES
 
 
-=head2 IpAddresses => ArrayRef[L<Paws::Route53Resolver::IpAddressResponse>]
+=head2 IpAddresses => ArrayRef[Route53Resolver_IpAddressResponse]
 
 The IP addresses that DNS queries pass through on their way to your
 network (outbound endpoint) or on the way to Resolver (inbound

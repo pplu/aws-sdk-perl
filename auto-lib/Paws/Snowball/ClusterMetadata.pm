@@ -1,18 +1,73 @@
+# Generated from default/object.tt
 package Paws::Snowball::ClusterMetadata;
-  use Moose;
-  has AddressId => (is => 'ro', isa => 'Str');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has ClusterState => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ForwardingAddressId => (is => 'ro', isa => 'Str');
-  has JobType => (is => 'ro', isa => 'Str');
-  has KmsKeyARN => (is => 'ro', isa => 'Str');
-  has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
-  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has ShippingOption => (is => 'ro', isa => 'Str');
-  has SnowballType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_JobResource Snowball_Notification/;
+  has AddressId => (is => 'ro', isa => Str);
+  has ClusterId => (is => 'ro', isa => Str);
+  has ClusterState => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has ForwardingAddressId => (is => 'ro', isa => Str);
+  has JobType => (is => 'ro', isa => Str);
+  has KmsKeyARN => (is => 'ro', isa => Str);
+  has Notification => (is => 'ro', isa => Snowball_Notification);
+  has Resources => (is => 'ro', isa => Snowball_JobResource);
+  has RoleARN => (is => 'ro', isa => Str);
+  has ShippingOption => (is => 'ro', isa => Str);
+  has SnowballType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShippingOption' => {
+                                     'type' => 'Str'
+                                   },
+               'KmsKeyARN' => {
+                                'type' => 'Str'
+                              },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'Notification' => {
+                                   'class' => 'Paws::Snowball::Notification',
+                                   'type' => 'Snowball_Notification'
+                                 },
+               'AddressId' => {
+                                'type' => 'Str'
+                              },
+               'ForwardingAddressId' => {
+                                          'type' => 'Str'
+                                        },
+               'Resources' => {
+                                'class' => 'Paws::Snowball::JobResource',
+                                'type' => 'Snowball_JobResource'
+                              },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'ClusterState' => {
+                                   'type' => 'Str'
+                                 },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'SnowballType' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -94,13 +149,13 @@ cluster. This ARN was created using the CreateKey
 API action in AWS Key Management Service (AWS KMS).
 
 
-=head2 Notification => L<Paws::Snowball::Notification>
+=head2 Notification => Snowball_Notification
 
   The Amazon Simple Notification Service (Amazon SNS) notification
 settings for this cluster.
 
 
-=head2 Resources => L<Paws::Snowball::JobResource>
+=head2 Resources => Snowball_JobResource
 
   The arrays of JobResource objects that can include updated S3Resource
 objects or LambdaResource objects.

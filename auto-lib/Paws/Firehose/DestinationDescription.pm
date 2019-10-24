@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Firehose::DestinationDescription;
-  use Moose;
-  has DestinationId => (is => 'ro', isa => 'Str', required => 1);
-  has ElasticsearchDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationDescription');
-  has ExtendedS3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ExtendedS3DestinationDescription');
-  has RedshiftDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationDescription');
-  has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
-  has SplunkDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::SplunkDestinationDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_ElasticsearchDestinationDescription Firehose_SplunkDestinationDescription Firehose_ExtendedS3DestinationDescription Firehose_S3DestinationDescription Firehose_RedshiftDestinationDescription/;
+  has DestinationId => (is => 'ro', isa => Str, required => 1);
+  has ElasticsearchDestinationDescription => (is => 'ro', isa => Firehose_ElasticsearchDestinationDescription);
+  has ExtendedS3DestinationDescription => (is => 'ro', isa => Firehose_ExtendedS3DestinationDescription);
+  has RedshiftDestinationDescription => (is => 'ro', isa => Firehose_RedshiftDestinationDescription);
+  has S3DestinationDescription => (is => 'ro', isa => Firehose_S3DestinationDescription);
+  has SplunkDestinationDescription => (is => 'ro', isa => Firehose_SplunkDestinationDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ElasticsearchDestinationDescription' => {
+                                                          'class' => 'Paws::Firehose::ElasticsearchDestinationDescription',
+                                                          'type' => 'Firehose_ElasticsearchDestinationDescription'
+                                                        },
+               'DestinationId' => {
+                                    'type' => 'Str'
+                                  },
+               'S3DestinationDescription' => {
+                                               'class' => 'Paws::Firehose::S3DestinationDescription',
+                                               'type' => 'Firehose_S3DestinationDescription'
+                                             },
+               'ExtendedS3DestinationDescription' => {
+                                                       'class' => 'Paws::Firehose::ExtendedS3DestinationDescription',
+                                                       'type' => 'Firehose_ExtendedS3DestinationDescription'
+                                                     },
+               'RedshiftDestinationDescription' => {
+                                                     'class' => 'Paws::Firehose::RedshiftDestinationDescription',
+                                                     'type' => 'Firehose_RedshiftDestinationDescription'
+                                                   },
+               'SplunkDestinationDescription' => {
+                                                   'class' => 'Paws::Firehose::SplunkDestinationDescription',
+                                                   'type' => 'Firehose_SplunkDestinationDescription'
+                                                 }
+             },
+  'IsRequired' => {
+                    'DestinationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,27 +86,27 @@ Describes the destination for a delivery stream.
   The ID of the destination.
 
 
-=head2 ElasticsearchDestinationDescription => L<Paws::Firehose::ElasticsearchDestinationDescription>
+=head2 ElasticsearchDestinationDescription => Firehose_ElasticsearchDestinationDescription
 
   The destination in Amazon ES.
 
 
-=head2 ExtendedS3DestinationDescription => L<Paws::Firehose::ExtendedS3DestinationDescription>
+=head2 ExtendedS3DestinationDescription => Firehose_ExtendedS3DestinationDescription
 
   The destination in Amazon S3.
 
 
-=head2 RedshiftDestinationDescription => L<Paws::Firehose::RedshiftDestinationDescription>
+=head2 RedshiftDestinationDescription => Firehose_RedshiftDestinationDescription
 
   The destination in Amazon Redshift.
 
 
-=head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
+=head2 S3DestinationDescription => Firehose_S3DestinationDescription
 
   [Deprecated] The destination in Amazon S3.
 
 
-=head2 SplunkDestinationDescription => L<Paws::Firehose::SplunkDestinationDescription>
+=head2 SplunkDestinationDescription => Firehose_SplunkDestinationDescription
 
   The destination in Splunk.
 

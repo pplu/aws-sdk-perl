@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::NoiseReducerSpatialFilterSettings;
-  use Moose;
-  has PostFilterSharpenStrength => (is => 'ro', isa => 'Int', request_name => 'postFilterSharpenStrength', traits => ['NameInRequest']);
-  has Speed => (is => 'ro', isa => 'Int', request_name => 'speed', traits => ['NameInRequest']);
-  has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has PostFilterSharpenStrength => (is => 'ro', isa => Int);
+  has Speed => (is => 'ro', isa => Int);
+  has Strength => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PostFilterSharpenStrength' => {
+                                                'type' => 'Int'
+                                              },
+               'Speed' => {
+                            'type' => 'Int'
+                          },
+               'Strength' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'PostFilterSharpenStrength' => 'postFilterSharpenStrength',
+                       'Speed' => 'speed',
+                       'Strength' => 'strength'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

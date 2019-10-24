@@ -7,7 +7,7 @@ package Paws::EC2::ModifyInstanceEventStartTimeResult;
   has Event => (is => 'ro', isa => EC2_InstanceStatusEvent);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Event' => {
@@ -23,8 +23,8 @@ package Paws::EC2::ModifyInstanceEventStartTimeResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

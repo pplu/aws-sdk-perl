@@ -1,8 +1,23 @@
 package Paws::Budgets::PlannedBudgetLimits;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::Budgets::Types qw/Budgets_Spend/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::Budgets::Spend]');
+  has Map => (is => 'ro', isa => HashRef[Budgets_Spend]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[Budgets_Spend]',
+                                          class => 'Paws::Budgets::Spend',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::Budgets::Spend>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

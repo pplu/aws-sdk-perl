@@ -1,23 +1,77 @@
 
 package Paws::MediaLive::ListReservations;
-  use Moose;
-  has ChannelClass => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'channelClass');
-  has Codec => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'codec');
-  has MaximumBitrate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maximumBitrate');
-  has MaximumFramerate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maximumFramerate');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Resolution => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resolution');
-  has ResourceType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceType');
-  has SpecialFeature => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'specialFeature');
-  has VideoQuality => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'videoQuality');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw//;
+  has ChannelClass => (is => 'ro', isa => Str, predicate => 1);
+  has Codec => (is => 'ro', isa => Str, predicate => 1);
+  has MaximumBitrate => (is => 'ro', isa => Str, predicate => 1);
+  has MaximumFramerate => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Resolution => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceType => (is => 'ro', isa => Str, predicate => 1);
+  has SpecialFeature => (is => 'ro', isa => Str, predicate => 1);
+  has VideoQuality => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListReservations');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/prod/reservations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaLive::ListReservationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListReservations');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/prod/reservations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaLive::ListReservationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Codec' => {
+                            'type' => 'Str'
+                          },
+               'VideoQuality' => {
+                                   'type' => 'Str'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'MaximumFramerate' => {
+                                       'type' => 'Str'
+                                     },
+               'MaximumBitrate' => {
+                                     'type' => 'Str'
+                                   },
+               'ChannelClass' => {
+                                   'type' => 'Str'
+                                 },
+               'Resolution' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'SpecialFeature' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'ParamInQuery' => {
+                      'Codec' => 'codec',
+                      'VideoQuality' => 'videoQuality',
+                      'NextToken' => 'nextToken',
+                      'MaxResults' => 'maxResults',
+                      'MaximumFramerate' => 'maximumFramerate',
+                      'MaximumBitrate' => 'maximumBitrate',
+                      'ChannelClass' => 'channelClass',
+                      'Resolution' => 'resolution',
+                      'ResourceType' => 'resourceType',
+                      'SpecialFeature' => 'specialFeature'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

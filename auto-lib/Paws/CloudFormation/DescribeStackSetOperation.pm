@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::DescribeStackSetOperation;
-  use Moose;
-  has OperationId => (is => 'ro', isa => 'Str', required => 1);
-  has StackSetName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw//;
+  has OperationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StackSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackSetOperation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DescribeStackSetOperationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackSetOperationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeStackSetOperation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::DescribeStackSetOperationOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeStackSetOperationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OperationId' => {
+                                  'type' => 'Str'
+                                },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'OperationId' => 1,
+                    'StackSetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

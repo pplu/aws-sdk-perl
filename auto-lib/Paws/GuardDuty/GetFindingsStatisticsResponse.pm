@@ -1,9 +1,33 @@
 
 package Paws::GuardDuty::GetFindingsStatisticsResponse;
-  use Moose;
-  has FindingStatistics => (is => 'ro', isa => 'Paws::GuardDuty::FindingStatistics', traits => ['NameInRequest'], request_name => 'findingStatistics', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_FindingStatistics/;
+  has FindingStatistics => (is => 'ro', isa => GuardDuty_FindingStatistics, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FindingStatistics' => {
+                                        'class' => 'Paws::GuardDuty::FindingStatistics',
+                                        'type' => 'GuardDuty_FindingStatistics'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'FindingStatistics' => 'findingStatistics'
+                     },
+  'IsRequired' => {
+                    'FindingStatistics' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +39,7 @@ Paws::GuardDuty::GetFindingsStatisticsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FindingStatistics => L<Paws::GuardDuty::FindingStatistics>
+=head2 B<REQUIRED> FindingStatistics => GuardDuty_FindingStatistics
 
 Finding statistics object.
 

@@ -1,15 +1,63 @@
+# Generated from default/object.tt
 package Paws::RDS::GlobalCluster;
-  use Moose;
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has GlobalClusterArn => (is => 'ro', isa => 'Str');
-  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
-  has GlobalClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::GlobalClusterMember]', request_name => 'GlobalClusterMember', traits => ['NameInRequest']);
-  has GlobalClusterResourceId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDS::Types qw/RDS_GlobalClusterMember/;
+  has DatabaseName => (is => 'ro', isa => Str);
+  has DeletionProtection => (is => 'ro', isa => Bool);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has GlobalClusterArn => (is => 'ro', isa => Str);
+  has GlobalClusterIdentifier => (is => 'ro', isa => Str);
+  has GlobalClusterMembers => (is => 'ro', isa => ArrayRef[RDS_GlobalClusterMember]);
+  has GlobalClusterResourceId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'GlobalClusterResourceId' => {
+                                              'type' => 'Str'
+                                            },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'GlobalClusterMembers' => {
+                                           'class' => 'Paws::RDS::GlobalClusterMember',
+                                           'type' => 'ArrayRef[RDS_GlobalClusterMember]'
+                                         },
+               'GlobalClusterArn' => {
+                                       'type' => 'Str'
+                                     },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'GlobalClusterIdentifier' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'GlobalClusterMembers' => 'GlobalClusterMember'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +124,7 @@ A data type representing an Aurora global database.
 identifier is the unique key that identifies a global database cluster.
 
 
-=head2 GlobalClusterMembers => ArrayRef[L<Paws::RDS::GlobalClusterMember>]
+=head2 GlobalClusterMembers => ArrayRef[RDS_GlobalClusterMember]
 
   The list of cluster IDs for secondary clusters within the global
 database cluster. Currently limited to 1 item.

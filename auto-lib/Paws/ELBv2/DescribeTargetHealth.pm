@@ -1,14 +1,37 @@
+# Generated from callargs_class.tt
 
 package Paws::ELBv2::DescribeTargetHealth;
-  use Moose;
-  has TargetGroupArn => (is => 'ro', isa => 'Str', required => 1);
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::TargetDescription]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_TargetDescription/;
+  has TargetGroupArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[ELBv2_TargetDescription], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTargetHealth');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELBv2::DescribeTargetHealthOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTargetHealthResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeTargetHealth');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELBv2::DescribeTargetHealthOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeTargetHealthResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetGroupArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Targets' => {
+                              'class' => 'Paws::ELBv2::TargetDescription',
+                              'type' => 'ArrayRef[ELBv2_TargetDescription]'
+                            }
+             },
+  'IsRequired' => {
+                    'TargetGroupArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +99,7 @@ The Amazon Resource Name (ARN) of the target group.
 
 
 
-=head2 Targets => ArrayRef[L<Paws::ELBv2::TargetDescription>]
+=head2 Targets => ArrayRef[ELBv2_TargetDescription]
 
 The targets.
 

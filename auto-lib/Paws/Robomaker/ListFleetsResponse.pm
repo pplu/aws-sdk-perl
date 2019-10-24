@@ -1,10 +1,35 @@
 
 package Paws::Robomaker::ListFleetsResponse;
-  use Moose;
-  has FleetDetails => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Fleet]', traits => ['NameInRequest'], request_name => 'fleetDetails');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_Fleet/;
+  has FleetDetails => (is => 'ro', isa => ArrayRef[Robomaker_Fleet]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FleetDetails' => {
+                                   'class' => 'Paws::Robomaker::Fleet',
+                                   'type' => 'ArrayRef[Robomaker_Fleet]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'FleetDetails' => 'fleetDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Robomaker::ListFleetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FleetDetails => ArrayRef[L<Paws::Robomaker::Fleet>]
+=head2 FleetDetails => ArrayRef[Robomaker_Fleet]
 
 A list of fleet details meeting the request criteria.
 

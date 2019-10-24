@@ -1,13 +1,43 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeSnapshotScheduleOutput;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has RecurrenceInHours => (is => 'ro', isa => 'Int');
-  has StartAt => (is => 'ro', isa => 'Int');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has RecurrenceInHours => (is => 'ro', isa => Int);
+  has StartAt => (is => 'ro', isa => Int);
+  has Timezone => (is => 'ro', isa => Str);
+  has VolumeARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartAt' => {
+                              'type' => 'Int'
+                            },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'RecurrenceInHours' => {
+                                        'type' => 'Int'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

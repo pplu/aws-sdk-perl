@@ -1,18 +1,59 @@
 
 package Paws::WorkDocs::DeleteCustomMetadata;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DeleteAll => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'deleteAll');
-  has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'keys');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
-  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'versionId');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DeleteAll => (is => 'ro', isa => Bool, predicate => 1);
+  has Keys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCustomMetadata');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/customMetadata');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DeleteCustomMetadataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteCustomMetadata');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/resources/{ResourceId}/customMetadata');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DeleteCustomMetadataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'DeleteAll' => {
+                                'type' => 'Bool'
+                              },
+               'Keys' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'VersionId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'ResourceId' => 'ResourceId'
+                  },
+  'ParamInQuery' => {
+                      'DeleteAll' => 'deleteAll',
+                      'Keys' => 'keys',
+                      'VersionId' => 'versionId'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'ResourceId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,35 @@
 
 package Paws::Robomaker::CancelSimulationJob;
-  use Moose;
-  has Job => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'job', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has Job => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelSimulationJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cancelSimulationJob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::CancelSimulationJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelSimulationJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/cancelSimulationJob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::CancelSimulationJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Job' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Job' => 'job'
+                     },
+  'IsRequired' => {
+                    'Job' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

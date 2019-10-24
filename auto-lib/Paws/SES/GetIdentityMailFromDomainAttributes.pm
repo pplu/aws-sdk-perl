@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::GetIdentityMailFromDomainAttributes;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::SES::GetIdentityMailFromDomainAttributes;
                'Identities' => {
                                  'type' => 'ArrayRef[Str|Undef]'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'Identities' => 1
+                  }
 }
 ;
     return $Params_map;

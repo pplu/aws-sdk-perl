@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TransactWriteItem;
   use Moo;
   use Types::Standard qw//;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::TransactWriteItem;
   has Put => (is => 'ro', isa => DynamoDB_Put);
   has Update => (is => 'ro', isa => DynamoDB_Update);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Delete' => {
@@ -29,8 +30,8 @@ package Paws::DynamoDB::TransactWriteItem;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

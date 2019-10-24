@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutPermission;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', required => 1);
-  has Condition => (is => 'ro', isa => 'Paws::CloudWatchEvents::Condition');
-  has Principal => (is => 'ro', isa => 'Str', required => 1);
-  has StatementId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Condition/;
+  has Action => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Condition => (is => 'ro', isa => CloudWatchEvents_Condition, predicate => 1);
+  has Principal => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatementId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutPermission');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutPermission');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'StatementId' => {
+                                  'type' => 'Str'
+                                },
+               'Principal' => {
+                                'type' => 'Str'
+                              },
+               'Condition' => {
+                                'class' => 'Paws::CloudWatchEvents::Condition',
+                                'type' => 'CloudWatchEvents_Condition'
+                              }
+             },
+  'IsRequired' => {
+                    'Action' => 1,
+                    'StatementId' => 1,
+                    'Principal' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +86,7 @@ Currently, this must be C<events:PutEvents>.
 
 
 
-=head2 Condition => L<Paws::CloudWatchEvents::Condition>
+=head2 Condition => CloudWatchEvents_Condition
 
 This parameter enables you to limit the permission to accounts that
 fulfill a certain condition, such as being a member of a certain AWS

@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::UploadEntityDefinitions;
-  use Moose;
-  has DeprecateExistingEntities => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'deprecateExistingEntities' );
-  has Document => (is => 'ro', isa => 'Paws::IoTThingsGraph::DefinitionDocument', traits => ['NameInRequest'], request_name => 'document' );
-  has SyncWithPublicNamespace => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'syncWithPublicNamespace' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_DefinitionDocument/;
+  has DeprecateExistingEntities => (is => 'ro', isa => Bool, predicate => 1);
+  has Document => (is => 'ro', isa => IoTThingsGraph_DefinitionDocument, predicate => 1);
+  has SyncWithPublicNamespace => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadEntityDefinitions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::UploadEntityDefinitionsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UploadEntityDefinitions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::UploadEntityDefinitionsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Document' => {
+                               'class' => 'Paws::IoTThingsGraph::DefinitionDocument',
+                               'type' => 'IoTThingsGraph_DefinitionDocument'
+                             },
+               'SyncWithPublicNamespace' => {
+                                              'type' => 'Bool'
+                                            },
+               'DeprecateExistingEntities' => {
+                                                'type' => 'Bool'
+                                              }
+             },
+  'NameInRequest' => {
+                       'Document' => 'document',
+                       'SyncWithPublicNamespace' => 'syncWithPublicNamespace',
+                       'DeprecateExistingEntities' => 'deprecateExistingEntities'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +87,7 @@ to C<true>, the upload will create a new namespace version.
 
 
 
-=head2 Document => L<Paws::IoTThingsGraph::DefinitionDocument>
+=head2 Document => IoTThingsGraph_DefinitionDocument
 
 The C<DefinitionDocument> that defines the updated entities.
 

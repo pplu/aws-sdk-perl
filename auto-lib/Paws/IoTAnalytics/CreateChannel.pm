@@ -1,17 +1,53 @@
 
 package Paws::IoTAnalytics::CreateChannel;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelName', required => 1);
-  has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorage', traits => ['NameInRequest'], request_name => 'channelStorage');
-  has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_RetentionPeriod IoTAnalytics_Tag IoTAnalytics_ChannelStorage/;
+  has ChannelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ChannelStorage => (is => 'ro', isa => IoTAnalytics_ChannelStorage, predicate => 1);
+  has RetentionPeriod => (is => 'ro', isa => IoTAnalytics_RetentionPeriod, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[IoTAnalytics_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateChannel');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/channels');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::CreateChannelResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateChannel');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/channels');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::CreateChannelResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetentionPeriod' => {
+                                      'class' => 'Paws::IoTAnalytics::RetentionPeriod',
+                                      'type' => 'IoTAnalytics_RetentionPeriod'
+                                    },
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::IoTAnalytics::Tag',
+                           'type' => 'ArrayRef[IoTAnalytics_Tag]'
+                         },
+               'ChannelStorage' => {
+                                     'class' => 'Paws::IoTAnalytics::ChannelStorage',
+                                     'type' => 'IoTAnalytics_ChannelStorage'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RetentionPeriod' => 'retentionPeriod',
+                       'ChannelName' => 'channelName',
+                       'Tags' => 'tags',
+                       'ChannelStorage' => 'channelStorage'
+                     },
+  'IsRequired' => {
+                    'ChannelName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,19 +112,19 @@ The name of the channel.
 
 
 
-=head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>
+=head2 ChannelStorage => IoTAnalytics_ChannelStorage
 
 Where channel data is stored.
 
 
 
-=head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
+=head2 RetentionPeriod => IoTAnalytics_RetentionPeriod
 
 How long, in days, message data is kept for the channel.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::IoTAnalytics::Tag>]
+=head2 Tags => ArrayRef[IoTAnalytics_Tag]
 
 Metadata which can be used to manage the channel.
 

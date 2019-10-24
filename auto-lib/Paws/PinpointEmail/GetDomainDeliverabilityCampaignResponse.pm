@@ -1,9 +1,30 @@
 
 package Paws::PinpointEmail::GetDomainDeliverabilityCampaignResponse;
-  use Moose;
-  has DomainDeliverabilityCampaign => (is => 'ro', isa => 'Paws::PinpointEmail::DomainDeliverabilityCampaign', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_DomainDeliverabilityCampaign/;
+  has DomainDeliverabilityCampaign => (is => 'ro', isa => PinpointEmail_DomainDeliverabilityCampaign, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DomainDeliverabilityCampaign' => {
+                                                   'class' => 'Paws::PinpointEmail::DomainDeliverabilityCampaign',
+                                                   'type' => 'PinpointEmail_DomainDeliverabilityCampaign'
+                                                 }
+             },
+  'IsRequired' => {
+                    'DomainDeliverabilityCampaign' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +36,7 @@ Paws::PinpointEmail::GetDomainDeliverabilityCampaignResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DomainDeliverabilityCampaign => L<Paws::PinpointEmail::DomainDeliverabilityCampaign>
+=head2 B<REQUIRED> DomainDeliverabilityCampaign => PinpointEmail_DomainDeliverabilityCampaign
 
 An object that contains the deliverability data for the campaign.
 

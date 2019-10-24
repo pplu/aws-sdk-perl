@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetDiskSnapshotResult;
-  use Moose;
-  has DiskSnapshot => (is => 'ro', isa => 'Paws::Lightsail::DiskSnapshot', traits => ['NameInRequest'], request_name => 'diskSnapshot' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_DiskSnapshot/;
+  has DiskSnapshot => (is => 'ro', isa => Lightsail_DiskSnapshot);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DiskSnapshot' => {
+                                   'class' => 'Paws::Lightsail::DiskSnapshot',
+                                   'type' => 'Lightsail_DiskSnapshot'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DiskSnapshot' => 'diskSnapshot'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetDiskSnapshotResult
 =head1 ATTRIBUTES
 
 
-=head2 DiskSnapshot => L<Paws::Lightsail::DiskSnapshot>
+=head2 DiskSnapshot => Lightsail_DiskSnapshot
 
 An object containing information about the disk snapshot.
 

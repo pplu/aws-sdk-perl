@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::DescribeConfigurationsResponse;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::DescribeConfigurationsAttribute]', traits => ['NameInRequest'], request_name => 'configurations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_DescribeConfigurationsAttribute/;
+  has Configurations => (is => 'ro', isa => ArrayRef[Discovery_DescribeConfigurationsAttribute]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::Discovery::DescribeConfigurationsAttribute',
+                                     'type' => 'ArrayRef[Discovery_DescribeConfigurationsAttribute]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Configurations' => 'configurations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Discovery::DescribeConfigurationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::Discovery::DescribeConfigurationsAttribute>]
+=head2 Configurations => ArrayRef[Discovery_DescribeConfigurationsAttribute]
 
 A key in the response map. The value is an array of data.
 

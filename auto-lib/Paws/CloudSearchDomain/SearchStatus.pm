@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::SearchStatus;
-  use Moose;
-  has Rid => (is => 'ro', isa => 'Str', request_name => 'rid', traits => ['NameInRequest']);
-  has Timems => (is => 'ro', isa => 'Int', request_name => 'timems', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Rid => (is => 'ro', isa => Str);
+  has Timems => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rid' => {
+                          'type' => 'Str'
+                        },
+               'Timems' => {
+                             'type' => 'Int'
+                           }
+             },
+  'NameInRequest' => {
+                       'Rid' => 'rid',
+                       'Timems' => 'timems'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

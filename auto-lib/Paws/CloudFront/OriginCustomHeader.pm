@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFront::OriginCustomHeader;
-  use Moose;
-  has HeaderName => (is => 'ro', isa => 'Str', required => 1);
-  has HeaderValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw//;
+  has HeaderName => (is => 'ro', isa => Str, required => 1);
+  has HeaderValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HeaderName' => {
+                                 'type' => 'Str'
+                               },
+               'HeaderValue' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'HeaderName' => 1,
+                    'HeaderValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

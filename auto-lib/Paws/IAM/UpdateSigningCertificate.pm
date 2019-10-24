@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateSigningCertificate;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::UpdateSigningCertificate;
                'CertificateId' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'Status' => 1,
+                    'CertificateId' => 1
+                  }
 }
 ;
     return $Params_map;

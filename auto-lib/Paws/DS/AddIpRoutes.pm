@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::AddIpRoutes;
-  use Moose;
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has IpRoutes => (is => 'ro', isa => 'ArrayRef[Paws::DS::IpRoute]', required => 1);
-  has UpdateSecurityGroupForDirectoryControllers => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::DS::Types qw/DS_IpRoute/;
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpRoutes => (is => 'ro', isa => ArrayRef[DS_IpRoute], required => 1, predicate => 1);
+  has UpdateSecurityGroupForDirectoryControllers => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddIpRoutes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::AddIpRoutesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddIpRoutes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::AddIpRoutesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'UpdateSecurityGroupForDirectoryControllers' => {
+                                                                 'type' => 'Bool'
+                                                               },
+               'IpRoutes' => {
+                               'class' => 'Paws::DS::IpRoute',
+                               'type' => 'ArrayRef[DS_IpRoute]'
+                             }
+             },
+  'IsRequired' => {
+                    'DirectoryId' => 1,
+                    'IpRoutes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +80,7 @@ Identifier (ID) of the directory to which to add the address block.
 
 
 
-=head2 B<REQUIRED> IpRoutes => ArrayRef[L<Paws::DS::IpRoute>]
+=head2 B<REQUIRED> IpRoutes => ArrayRef[DS_IpRoute]
 
 IP address blocks, using CIDR format, of the traffic to route. This is
 often the IP address block of the DNS server used for your on-premises

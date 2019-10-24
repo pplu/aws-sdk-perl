@@ -1,32 +1,166 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentInfo;
-  use Moose;
-  has AdditionalDeploymentStatusInfo => (is => 'ro', isa => 'Str', request_name => 'additionalDeploymentStatusInfo', traits => ['NameInRequest']);
-  has ApplicationName => (is => 'ro', isa => 'Str', request_name => 'applicationName', traits => ['NameInRequest']);
-  has AutoRollbackConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::AutoRollbackConfiguration', request_name => 'autoRollbackConfiguration', traits => ['NameInRequest']);
-  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration', request_name => 'blueGreenDeploymentConfiguration', traits => ['NameInRequest']);
-  has CompleteTime => (is => 'ro', isa => 'Str', request_name => 'completeTime', traits => ['NameInRequest']);
-  has ComputePlatform => (is => 'ro', isa => 'Str', request_name => 'computePlatform', traits => ['NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
-  has Creator => (is => 'ro', isa => 'Str', request_name => 'creator', traits => ['NameInRequest']);
-  has DeploymentConfigName => (is => 'ro', isa => 'Str', request_name => 'deploymentConfigName', traits => ['NameInRequest']);
-  has DeploymentGroupName => (is => 'ro', isa => 'Str', request_name => 'deploymentGroupName', traits => ['NameInRequest']);
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has DeploymentOverview => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentOverview', request_name => 'deploymentOverview', traits => ['NameInRequest']);
-  has DeploymentStatusMessages => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deploymentStatusMessages', traits => ['NameInRequest']);
-  has DeploymentStyle => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentStyle', request_name => 'deploymentStyle', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', request_name => 'errorInformation', traits => ['NameInRequest']);
-  has FileExistsBehavior => (is => 'ro', isa => 'Str', request_name => 'fileExistsBehavior', traits => ['NameInRequest']);
-  has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', request_name => 'ignoreApplicationStopFailures', traits => ['NameInRequest']);
-  has InstanceTerminationWaitTimeStarted => (is => 'ro', isa => 'Bool', request_name => 'instanceTerminationWaitTimeStarted', traits => ['NameInRequest']);
-  has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
-  has PreviousRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'previousRevision', traits => ['NameInRequest']);
-  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revision', traits => ['NameInRequest']);
-  has RollbackInfo => (is => 'ro', isa => 'Paws::CodeDeploy::RollbackInfo', request_name => 'rollbackInfo', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetInstances => (is => 'ro', isa => 'Paws::CodeDeploy::TargetInstances', request_name => 'targetInstances', traits => ['NameInRequest']);
-  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => 'Bool', request_name => 'updateOutdatedInstancesOnly', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_AutoRollbackConfiguration CodeDeploy_DeploymentOverview CodeDeploy_ErrorInformation CodeDeploy_LoadBalancerInfo CodeDeploy_RevisionLocation CodeDeploy_RollbackInfo CodeDeploy_TargetInstances CodeDeploy_BlueGreenDeploymentConfiguration CodeDeploy_DeploymentStyle/;
+  has AdditionalDeploymentStatusInfo => (is => 'ro', isa => Str);
+  has ApplicationName => (is => 'ro', isa => Str);
+  has AutoRollbackConfiguration => (is => 'ro', isa => CodeDeploy_AutoRollbackConfiguration);
+  has BlueGreenDeploymentConfiguration => (is => 'ro', isa => CodeDeploy_BlueGreenDeploymentConfiguration);
+  has CompleteTime => (is => 'ro', isa => Str);
+  has ComputePlatform => (is => 'ro', isa => Str);
+  has CreateTime => (is => 'ro', isa => Str);
+  has Creator => (is => 'ro', isa => Str);
+  has DeploymentConfigName => (is => 'ro', isa => Str);
+  has DeploymentGroupName => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has DeploymentOverview => (is => 'ro', isa => CodeDeploy_DeploymentOverview);
+  has DeploymentStatusMessages => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DeploymentStyle => (is => 'ro', isa => CodeDeploy_DeploymentStyle);
+  has Description => (is => 'ro', isa => Str);
+  has ErrorInformation => (is => 'ro', isa => CodeDeploy_ErrorInformation);
+  has FileExistsBehavior => (is => 'ro', isa => Str);
+  has IgnoreApplicationStopFailures => (is => 'ro', isa => Bool);
+  has InstanceTerminationWaitTimeStarted => (is => 'ro', isa => Bool);
+  has LoadBalancerInfo => (is => 'ro', isa => CodeDeploy_LoadBalancerInfo);
+  has PreviousRevision => (is => 'ro', isa => CodeDeploy_RevisionLocation);
+  has Revision => (is => 'ro', isa => CodeDeploy_RevisionLocation);
+  has RollbackInfo => (is => 'ro', isa => CodeDeploy_RollbackInfo);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TargetInstances => (is => 'ro', isa => CodeDeploy_TargetInstances);
+  has UpdateOutdatedInstancesOnly => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlueGreenDeploymentConfiguration' => {
+                                                       'class' => 'Paws::CodeDeploy::BlueGreenDeploymentConfiguration',
+                                                       'type' => 'CodeDeploy_BlueGreenDeploymentConfiguration'
+                                                     },
+               'Revision' => {
+                               'class' => 'Paws::CodeDeploy::RevisionLocation',
+                               'type' => 'CodeDeploy_RevisionLocation'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PreviousRevision' => {
+                                       'class' => 'Paws::CodeDeploy::RevisionLocation',
+                                       'type' => 'CodeDeploy_RevisionLocation'
+                                     },
+               'IgnoreApplicationStopFailures' => {
+                                                    'type' => 'Bool'
+                                                  },
+               'InstanceTerminationWaitTimeStarted' => {
+                                                         'type' => 'Bool'
+                                                       },
+               'TargetInstances' => {
+                                      'class' => 'Paws::CodeDeploy::TargetInstances',
+                                      'type' => 'CodeDeploy_TargetInstances'
+                                    },
+               'RollbackInfo' => {
+                                   'class' => 'Paws::CodeDeploy::RollbackInfo',
+                                   'type' => 'CodeDeploy_RollbackInfo'
+                                 },
+               'FileExistsBehavior' => {
+                                         'type' => 'Str'
+                                       },
+               'ComputePlatform' => {
+                                      'type' => 'Str'
+                                    },
+               'DeploymentStyle' => {
+                                      'class' => 'Paws::CodeDeploy::DeploymentStyle',
+                                      'type' => 'CodeDeploy_DeploymentStyle'
+                                    },
+               'DeploymentConfigName' => {
+                                           'type' => 'Str'
+                                         },
+               'LoadBalancerInfo' => {
+                                       'class' => 'Paws::CodeDeploy::LoadBalancerInfo',
+                                       'type' => 'CodeDeploy_LoadBalancerInfo'
+                                     },
+               'DeploymentStatusMessages' => {
+                                               'type' => 'ArrayRef[Str|Undef]'
+                                             },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'DeploymentGroupName' => {
+                                          'type' => 'Str'
+                                        },
+               'DeploymentOverview' => {
+                                         'class' => 'Paws::CodeDeploy::DeploymentOverview',
+                                         'type' => 'CodeDeploy_DeploymentOverview'
+                                       },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               'UpdateOutdatedInstancesOnly' => {
+                                                  'type' => 'Bool'
+                                                },
+               'Creator' => {
+                              'type' => 'Str'
+                            },
+               'CompleteTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AutoRollbackConfiguration' => {
+                                                'class' => 'Paws::CodeDeploy::AutoRollbackConfiguration',
+                                                'type' => 'CodeDeploy_AutoRollbackConfiguration'
+                                              },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'AdditionalDeploymentStatusInfo' => {
+                                                     'type' => 'Str'
+                                                   },
+               'ErrorInformation' => {
+                                       'class' => 'Paws::CodeDeploy::ErrorInformation',
+                                       'type' => 'CodeDeploy_ErrorInformation'
+                                     }
+             },
+  'NameInRequest' => {
+                       'BlueGreenDeploymentConfiguration' => 'blueGreenDeploymentConfiguration',
+                       'Revision' => 'revision',
+                       'Status' => 'status',
+                       'PreviousRevision' => 'previousRevision',
+                       'IgnoreApplicationStopFailures' => 'ignoreApplicationStopFailures',
+                       'InstanceTerminationWaitTimeStarted' => 'instanceTerminationWaitTimeStarted',
+                       'TargetInstances' => 'targetInstances',
+                       'RollbackInfo' => 'rollbackInfo',
+                       'FileExistsBehavior' => 'fileExistsBehavior',
+                       'ComputePlatform' => 'computePlatform',
+                       'DeploymentStyle' => 'deploymentStyle',
+                       'DeploymentConfigName' => 'deploymentConfigName',
+                       'LoadBalancerInfo' => 'loadBalancerInfo',
+                       'DeploymentStatusMessages' => 'deploymentStatusMessages',
+                       'ApplicationName' => 'applicationName',
+                       'StartTime' => 'startTime',
+                       'DeploymentGroupName' => 'deploymentGroupName',
+                       'DeploymentOverview' => 'deploymentOverview',
+                       'CreateTime' => 'createTime',
+                       'UpdateOutdatedInstancesOnly' => 'updateOutdatedInstancesOnly',
+                       'Creator' => 'creator',
+                       'CompleteTime' => 'completeTime',
+                       'AutoRollbackConfiguration' => 'autoRollbackConfiguration',
+                       'DeploymentId' => 'deploymentId',
+                       'Description' => 'description',
+                       'AdditionalDeploymentStatusInfo' => 'additionalDeploymentStatusInfo',
+                       'ErrorInformation' => 'errorInformation'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -74,13 +208,13 @@ not terminated.
   The application name.
 
 
-=head2 AutoRollbackConfiguration => L<Paws::CodeDeploy::AutoRollbackConfiguration>
+=head2 AutoRollbackConfiguration => CodeDeploy_AutoRollbackConfiguration
 
   Information about the automatic rollback configuration associated with
 the deployment.
 
 
-=head2 BlueGreenDeploymentConfiguration => L<Paws::CodeDeploy::BlueGreenDeploymentConfiguration>
+=head2 BlueGreenDeploymentConfiguration => CodeDeploy_BlueGreenDeploymentConfiguration
 
   Information about blue/green deployment options for this deployment.
 
@@ -138,7 +272,7 @@ codeDeployRollback: A rollback process created the deployment.
   The unique ID of a deployment.
 
 
-=head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
+=head2 DeploymentOverview => CodeDeploy_DeploymentOverview
 
   A summary of the deployment status of the instances in the deployment.
 
@@ -148,7 +282,7 @@ codeDeployRollback: A rollback process created the deployment.
   Messages that contain information about the status of a deployment.
 
 
-=head2 DeploymentStyle => L<Paws::CodeDeploy::DeploymentStyle>
+=head2 DeploymentStyle => CodeDeploy_DeploymentStyle
 
   Information about the type of deployment, either in-place or
 blue/green, you want to run and whether to route deployment traffic
@@ -160,7 +294,7 @@ behind a load balancer.
   A comment about the deployment.
 
 
-=head2 ErrorInformation => L<Paws::CodeDeploy::ErrorInformation>
+=head2 ErrorInformation => CodeDeploy_ErrorInformation
 
   Information about any error associated with this deployment.
 
@@ -230,24 +364,24 @@ KEEP_ALIVE option is specified. Otherwise, 'true' as soon as the
 termination wait period starts.
 
 
-=head2 LoadBalancerInfo => L<Paws::CodeDeploy::LoadBalancerInfo>
+=head2 LoadBalancerInfo => CodeDeploy_LoadBalancerInfo
 
   Information about the load balancer used in the deployment.
 
 
-=head2 PreviousRevision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 PreviousRevision => CodeDeploy_RevisionLocation
 
   Information about the application revision that was deployed to the
 deployment group before the most recent successful deployment.
 
 
-=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 Revision => CodeDeploy_RevisionLocation
 
   Information about the location of stored application artifacts and the
 service from which to retrieve them.
 
 
-=head2 RollbackInfo => L<Paws::CodeDeploy::RollbackInfo>
+=head2 RollbackInfo => CodeDeploy_RollbackInfo
 
   Information about a deployment rollback.
 
@@ -267,7 +401,7 @@ backend servers that participate in the deployment process.
   The current state of the deployment as a whole.
 
 
-=head2 TargetInstances => L<Paws::CodeDeploy::TargetInstances>
+=head2 TargetInstances => CodeDeploy_TargetInstances
 
   Information about the instances that belong to the replacement
 environment in a blue/green deployment.

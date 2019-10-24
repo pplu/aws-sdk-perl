@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WAF::TimeWindow;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'StartTime' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

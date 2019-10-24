@@ -1,11 +1,40 @@
 
 package Paws::MQ::DescribeBrokerEngineTypesResponse;
-  use Moose;
-  has BrokerEngineTypes => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerEngineType]', traits => ['NameInRequest'], request_name => 'brokerEngineTypes');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MQ::Types qw/MQ_BrokerEngineType/;
+  has BrokerEngineTypes => (is => 'ro', isa => ArrayRef[MQ_BrokerEngineType]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerEngineTypes' => {
+                                        'class' => 'Paws::MQ::BrokerEngineType',
+                                        'type' => 'ArrayRef[MQ_BrokerEngineType]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'BrokerEngineTypes' => 'brokerEngineTypes',
+                       'NextToken' => 'nextToken',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +46,7 @@ Paws::MQ::DescribeBrokerEngineTypesResponse
 =head1 ATTRIBUTES
 
 
-=head2 BrokerEngineTypes => ArrayRef[L<Paws::MQ::BrokerEngineType>]
+=head2 BrokerEngineTypes => ArrayRef[MQ_BrokerEngineType]
 
 List of available engine types and versions.
 

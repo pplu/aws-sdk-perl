@@ -3,7 +3,7 @@ package Paws::EC2::Ipv6CidrBlock;
   use Paws::EC2::Types qw//;
   has Ipv6CidrBlock => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6CidrBlock' => {
@@ -15,8 +15,8 @@ package Paws::EC2::Ipv6CidrBlock;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

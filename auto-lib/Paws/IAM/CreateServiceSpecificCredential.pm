@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateServiceSpecificCredential;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::CreateServiceSpecificCredential;
                'ServiceName' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServiceName' => 1
+                  }
 }
 ;
     return $Params_map;

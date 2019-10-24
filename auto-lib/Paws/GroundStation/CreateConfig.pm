@@ -1,16 +1,48 @@
 
 package Paws::GroundStation::CreateConfig;
-  use Moose;
-  has ConfigData => (is => 'ro', isa => 'Paws::GroundStation::ConfigTypeData', traits => ['NameInRequest'], request_name => 'configData', required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::GroundStation::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw/GroundStation_ConfigTypeData GroundStation_TagsMap/;
+  has ConfigData => (is => 'ro', isa => GroundStation_ConfigTypeData, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => GroundStation_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GroundStation::ConfigIdResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GroundStation::ConfigIdResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigData' => {
+                                 'class' => 'Paws::GroundStation::ConfigTypeData',
+                                 'type' => 'GroundStation_ConfigTypeData'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::GroundStation::TagsMap',
+                           'type' => 'GroundStation_TagsMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ConfigData' => 'configData',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'ConfigData' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -122,7 +154,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gro
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ConfigData => L<Paws::GroundStation::ConfigTypeData>
+=head2 B<REQUIRED> ConfigData => GroundStation_ConfigTypeData
 
 Parameters of a C<Config>.
 
@@ -134,7 +166,7 @@ Name of a C<Config>.
 
 
 
-=head2 Tags => L<Paws::GroundStation::TagsMap>
+=head2 Tags => GroundStation_TagsMap
 
 Tags assigned to a C<Config>.
 

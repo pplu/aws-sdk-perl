@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::EMR::Application;
-  use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Paws::EMR::StringMap');
-  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EMR::Types qw/EMR_StringMap/;
+  has AdditionalInfo => (is => 'ro', isa => EMR_StringMap);
+  has Args => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'AdditionalInfo' => {
+                                     'class' => 'Paws::EMR::StringMap',
+                                     'type' => 'EMR_StringMap'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Args' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +77,7 @@ bootstrap action argument.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalInfo => L<Paws::EMR::StringMap>
+=head2 AdditionalInfo => EMR_StringMap
 
   This option is for advanced users only. This is meta information about
 third-party applications that third-party vendors use for testing

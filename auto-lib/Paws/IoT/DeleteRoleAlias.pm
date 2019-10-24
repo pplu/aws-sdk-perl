@@ -1,14 +1,35 @@
 
 package Paws::IoT::DeleteRoleAlias;
-  use Moose;
-  has RoleAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roleAlias', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has RoleAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRoleAlias');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/role-aliases/{roleAlias}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteRoleAliasResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteRoleAlias');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/role-aliases/{roleAlias}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteRoleAliasResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleAlias' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'RoleAlias' => 'roleAlias'
+                  },
+  'IsRequired' => {
+                    'RoleAlias' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

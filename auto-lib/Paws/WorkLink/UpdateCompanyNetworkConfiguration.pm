@@ -1,17 +1,47 @@
 
 package Paws::WorkLink::UpdateCompanyNetworkConfiguration;
-  use Moose;
-  has FleetArn => (is => 'ro', isa => 'Str', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has VpcId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::WorkLink::Types qw//;
+  has FleetArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has VpcId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCompanyNetworkConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/updateCompanyNetworkConfiguration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkLink::UpdateCompanyNetworkConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCompanyNetworkConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/updateCompanyNetworkConfiguration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkLink::UpdateCompanyNetworkConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'FleetArn' => {
+                               'type' => 'Str'
+                             },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'IsRequired' => {
+                    'VpcId' => 1,
+                    'SecurityGroupIds' => 1,
+                    'FleetArn' => 1,
+                    'SubnetIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

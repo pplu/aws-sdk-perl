@@ -1,18 +1,59 @@
 
 package Paws::PinpointEmail::ListDomainDeliverabilityCampaigns;
-  use Moose;
-  has EndDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'EndDate', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'PageSize');
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'StartDate', required => 1);
-  has SubscribedDomain => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscribedDomain', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::PinpointEmail::Types qw//;
+  has EndDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has StartDate => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubscribedDomain => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomainDeliverabilityCampaigns');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::ListDomainDeliverabilityCampaignsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListDomainDeliverabilityCampaigns');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::ListDomainDeliverabilityCampaignsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SubscribedDomain' => {
+                                       'type' => 'Str'
+                                     },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'SubscribedDomain' => 'SubscribedDomain'
+                  },
+  'ParamInQuery' => {
+                      'PageSize' => 'PageSize',
+                      'EndDate' => 'EndDate',
+                      'NextToken' => 'NextToken',
+                      'StartDate' => 'StartDate'
+                    },
+  'IsRequired' => {
+                    'EndDate' => 1,
+                    'SubscribedDomain' => 1,
+                    'StartDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

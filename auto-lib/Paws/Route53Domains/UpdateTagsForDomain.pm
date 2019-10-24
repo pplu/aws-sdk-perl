@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::UpdateTagsForDomain;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has TagsToUpdate => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53Domains::Types qw/Route53Domains_Tag/;
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagsToUpdate => (is => 'ro', isa => ArrayRef[Route53Domains_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTagsForDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateTagsForDomainResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateTagsForDomain');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::UpdateTagsForDomainResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagsToUpdate' => {
+                                   'class' => 'Paws::Route53Domains::Tag',
+                                   'type' => 'ArrayRef[Route53Domains_Tag]'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +74,7 @@ The domain for which you want to add or update tags.
 
 
 
-=head2 TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]
+=head2 TagsToUpdate => ArrayRef[Route53Domains_Tag]
 
 A list of the tag keys and values that you want to add or update. If
 you specify a key that already exists, the corresponding value will be

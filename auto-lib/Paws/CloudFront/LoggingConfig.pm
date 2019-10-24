@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudFront::LoggingConfig;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has IncludeCookies => (is => 'ro', isa => 'Bool', required => 1);
-  has Prefix => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw//;
+  has Bucket => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has IncludeCookies => (is => 'ro', isa => Bool, required => 1);
+  has Prefix => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'IncludeCookies' => {
+                                     'type' => 'Bool'
+                                   },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Bucket' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Prefix' => 1,
+                    'IncludeCookies' => 1,
+                    'Enabled' => 1,
+                    'Bucket' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

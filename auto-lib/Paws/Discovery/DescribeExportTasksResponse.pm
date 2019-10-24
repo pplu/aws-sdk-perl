@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::DescribeExportTasksResponse;
-  use Moose;
-  has ExportsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportInfo]', traits => ['NameInRequest'], request_name => 'exportsInfo' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_ExportInfo/;
+  has ExportsInfo => (is => 'ro', isa => ArrayRef[Discovery_ExportInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExportsInfo' => {
+                                  'class' => 'Paws::Discovery::ExportInfo',
+                                  'type' => 'ArrayRef[Discovery_ExportInfo]'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ExportsInfo' => 'exportsInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Discovery::DescribeExportTasksResponse
 =head1 ATTRIBUTES
 
 
-=head2 ExportsInfo => ArrayRef[L<Paws::Discovery::ExportInfo>]
+=head2 ExportsInfo => ArrayRef[Discovery_ExportInfo]
 
 Contains one or more sets of export request details. When the status of
 a request is C<SUCCEEDED>, the response includes a URL for an Amazon S3

@@ -4,7 +4,7 @@ package Paws::EC2::InstanceExportDetails;
   has InstanceId => (is => 'ro', isa => Str);
   has TargetEnvironment => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -20,8 +20,8 @@ package Paws::EC2::InstanceExportDetails;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

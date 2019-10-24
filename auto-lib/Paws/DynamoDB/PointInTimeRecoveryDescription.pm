@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::PointInTimeRecoveryDescription;
   use Moo;
   use Types::Standard qw/Str/;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::PointInTimeRecoveryDescription;
   has LatestRestorableDateTime => (is => 'ro', isa => Str);
   has PointInTimeRecoveryStatus => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'EarliestRestorableDateTime' => {
@@ -21,8 +22,8 @@ package Paws::DynamoDB::PointInTimeRecoveryDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

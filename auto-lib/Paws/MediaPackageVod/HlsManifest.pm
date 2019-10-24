@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::HlsManifest;
-  use Moose;
-  has AdMarkers => (is => 'ro', isa => 'Str', request_name => 'adMarkers', traits => ['NameInRequest']);
-  has IncludeIframeOnlyStream => (is => 'ro', isa => 'Bool', request_name => 'includeIframeOnlyStream', traits => ['NameInRequest']);
-  has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
-  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
-  has RepeatExtXKey => (is => 'ro', isa => 'Bool', request_name => 'repeatExtXKey', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackageVod::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_StreamSelection/;
+  has AdMarkers => (is => 'ro', isa => Str);
+  has IncludeIframeOnlyStream => (is => 'ro', isa => Bool);
+  has ManifestName => (is => 'ro', isa => Str);
+  has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => Int);
+  has RepeatExtXKey => (is => 'ro', isa => Bool);
+  has StreamSelection => (is => 'ro', isa => MediaPackageVod_StreamSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackageVod::StreamSelection',
+                                      'type' => 'MediaPackageVod_StreamSelection'
+                                    },
+               'ManifestName' => {
+                                   'type' => 'Str'
+                                 },
+               'ProgramDateTimeIntervalSeconds' => {
+                                                     'type' => 'Int'
+                                                   },
+               'RepeatExtXKey' => {
+                                    'type' => 'Bool'
+                                  },
+               'IncludeIframeOnlyStream' => {
+                                              'type' => 'Bool'
+                                            },
+               'AdMarkers' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'StreamSelection' => 'streamSelection',
+                       'ManifestName' => 'manifestName',
+                       'ProgramDateTimeIntervalSeconds' => 'programDateTimeIntervalSeconds',
+                       'RepeatExtXKey' => 'repeatExtXKey',
+                       'IncludeIframeOnlyStream' => 'includeIframeOnlyStream',
+                       'AdMarkers' => 'adMarkers'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +120,7 @@ output.
   When enabled, the EXT-X-KEY tag will be repeated in output manifests.
 
 
-=head2 StreamSelection => L<Paws::MediaPackageVod::StreamSelection>
+=head2 StreamSelection => MediaPackageVod_StreamSelection
 
   
 

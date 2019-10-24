@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoT::AbortCriteria;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest'], required => 1);
-  has FailureType => (is => 'ro', isa => 'Str', request_name => 'failureType', traits => ['NameInRequest'], required => 1);
-  has MinNumberOfExecutedThings => (is => 'ro', isa => 'Int', request_name => 'minNumberOfExecutedThings', traits => ['NameInRequest'], required => 1);
-  has ThresholdPercentage => (is => 'ro', isa => 'Num', request_name => 'thresholdPercentage', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Num/;
+  use Paws::IoT::Types qw//;
+  has Action => (is => 'ro', isa => Str, required => 1);
+  has FailureType => (is => 'ro', isa => Str, required => 1);
+  has MinNumberOfExecutedThings => (is => 'ro', isa => Int, required => 1);
+  has ThresholdPercentage => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThresholdPercentage' => {
+                                          'type' => 'Num'
+                                        },
+               'FailureType' => {
+                                  'type' => 'Str'
+                                },
+               'Action' => {
+                             'type' => 'Str'
+                           },
+               'MinNumberOfExecutedThings' => {
+                                                'type' => 'Int'
+                                              }
+             },
+  'NameInRequest' => {
+                       'ThresholdPercentage' => 'thresholdPercentage',
+                       'FailureType' => 'failureType',
+                       'Action' => 'action',
+                       'MinNumberOfExecutedThings' => 'minNumberOfExecutedThings'
+                     },
+  'IsRequired' => {
+                    'ThresholdPercentage' => 1,
+                    'FailureType' => 1,
+                    'Action' => 1,
+                    'MinNumberOfExecutedThings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

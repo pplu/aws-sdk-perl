@@ -1,10 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::ListStateMachinesOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has StateMachines => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::StateMachineListItem]', traits => ['NameInRequest'], request_name => 'stateMachines' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StepFunctions::Types qw/StepFunctions_StateMachineListItem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has StateMachines => (is => 'ro', isa => ArrayRef[StepFunctions_StateMachineListItem], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StateMachines' => {
+                                    'class' => 'Paws::StepFunctions::StateMachineListItem',
+                                    'type' => 'ArrayRef[StepFunctions_StateMachineListItem]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'StateMachines' => 'stateMachines'
+                     },
+  'IsRequired' => {
+                    'StateMachines' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -25,7 +54,7 @@ hours. Using an expired pagination token will return an I<HTTP 400
 InvalidToken> error.
 
 
-=head2 B<REQUIRED> StateMachines => ArrayRef[L<Paws::StepFunctions::StateMachineListItem>]
+=head2 B<REQUIRED> StateMachines => ArrayRef[StepFunctions_StateMachineListItem]
 
 
 

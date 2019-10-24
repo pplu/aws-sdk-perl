@@ -1,14 +1,31 @@
+# Generated from default/map_enum.tt
 package Paws::WorkDocs::DocumentThumbnailUrlMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw//;
+  has LARGE => (is => 'ro', isa => Str);
+  has SMALL => (is => 'ro', isa => Str);
+  has SMALL_HQ => (is => 'ro', isa => Str);
 
-  has LARGE => (is => 'ro', isa => 'Str');
-  has SMALL => (is => 'ro', isa => 'Str');
-  has SMALL_HQ => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'LARGE' => {
+                                          type => 'Str',                                        },
+                               'SMALL' => {
+                                          type => 'Str',                                        },
+                               'SMALL_HQ' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +61,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 LARGE => Str
+=head2 LARGE => 
 
 
-=head2 SMALL => Str
+=head2 SMALL => 
 
 
-=head2 SMALL_HQ => Str
+=head2 SMALL_HQ => 
 
 
 

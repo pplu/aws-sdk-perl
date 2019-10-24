@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListTargetsForPolicyResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::PolicyTargetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_PolicyTargetSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[Organizations_PolicyTargetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Targets' => {
+                              'class' => 'Paws::Organizations::PolicyTargetSummary',
+                              'type' => 'ArrayRef[Organizations_PolicyTargetSummary]'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ get the next part of the output. You should repeat this until the
 C<NextToken> response element comes back as C<null>.
 
 
-=head2 Targets => ArrayRef[L<Paws::Organizations::PolicyTargetSummary>]
+=head2 Targets => ArrayRef[Organizations_PolicyTargetSummary]
 
 A list of structures, each of which contains details about one of the
 entities to which the specified policy is attached.

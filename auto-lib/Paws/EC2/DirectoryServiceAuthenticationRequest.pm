@@ -3,7 +3,7 @@ package Paws::EC2::DirectoryServiceAuthenticationRequest;
   use Paws::EC2::Types qw//;
   has DirectoryId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DirectoryId' => {
@@ -12,8 +12,8 @@ package Paws::EC2::DirectoryServiceAuthenticationRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

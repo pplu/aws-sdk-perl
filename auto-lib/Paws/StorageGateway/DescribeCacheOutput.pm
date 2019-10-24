@@ -1,15 +1,51 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeCacheOutput;
-  use Moose;
-  has CacheAllocatedInBytes => (is => 'ro', isa => 'Int');
-  has CacheDirtyPercentage => (is => 'ro', isa => 'Num');
-  has CacheHitPercentage => (is => 'ro', isa => 'Num');
-  has CacheMissPercentage => (is => 'ro', isa => 'Num');
-  has CacheUsedPercentage => (is => 'ro', isa => 'Num');
-  has DiskIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has GatewayARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int Num ArrayRef Undef/;
+  use Paws::StorageGateway::Types qw//;
+  has CacheAllocatedInBytes => (is => 'ro', isa => Int);
+  has CacheDirtyPercentage => (is => 'ro', isa => Num);
+  has CacheHitPercentage => (is => 'ro', isa => Num);
+  has CacheMissPercentage => (is => 'ro', isa => Num);
+  has CacheUsedPercentage => (is => 'ro', isa => Num);
+  has DiskIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has GatewayARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiskIds' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'CacheMissPercentage' => {
+                                          'type' => 'Num'
+                                        },
+               'CacheAllocatedInBytes' => {
+                                            'type' => 'Int'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CacheDirtyPercentage' => {
+                                           'type' => 'Num'
+                                         },
+               'CacheHitPercentage' => {
+                                         'type' => 'Num'
+                                       },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'CacheUsedPercentage' => {
+                                          'type' => 'Num'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

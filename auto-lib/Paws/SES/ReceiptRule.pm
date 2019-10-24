@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ReceiptRule;
   use Moo;
   use Types::Standard qw/ArrayRef Bool Str Undef/;
@@ -31,7 +32,10 @@ package Paws::SES::ReceiptRule;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

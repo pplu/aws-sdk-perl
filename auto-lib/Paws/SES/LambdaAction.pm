@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::LambdaAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,10 @@ package Paws::SES::LambdaAction;
                'InvocationType' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'FunctionArn' => 1
+                  }
 }
 ;
     return $Params_map;

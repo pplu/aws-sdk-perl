@@ -1,27 +1,111 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Stack;
-  use Moose;
-  has AgentVersion => (is => 'ro', isa => 'Str');
-  has Arn => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
-  has ChefConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::ChefConfiguration');
-  has ConfigurationManager => (is => 'ro', isa => 'Paws::OpsWorks::StackConfigurationManager');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CustomCookbooksSource => (is => 'ro', isa => 'Paws::OpsWorks::Source');
-  has CustomJson => (is => 'ro', isa => 'Str');
-  has DefaultAvailabilityZone => (is => 'ro', isa => 'Str');
-  has DefaultInstanceProfileArn => (is => 'ro', isa => 'Str');
-  has DefaultOs => (is => 'ro', isa => 'Str');
-  has DefaultRootDeviceType => (is => 'ro', isa => 'Str');
-  has DefaultSshKeyName => (is => 'ro', isa => 'Str');
-  has DefaultSubnetId => (is => 'ro', isa => 'Str');
-  has HostnameTheme => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Region => (is => 'ro', isa => 'Str');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has UseCustomCookbooks => (is => 'ro', isa => 'Bool');
-  has UseOpsworksSecurityGroups => (is => 'ro', isa => 'Bool');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::OpsWorks::Types qw/OpsWorks_Source OpsWorks_StackAttributes OpsWorks_StackConfigurationManager OpsWorks_ChefConfiguration/;
+  has AgentVersion => (is => 'ro', isa => Str);
+  has Arn => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => OpsWorks_StackAttributes);
+  has ChefConfiguration => (is => 'ro', isa => OpsWorks_ChefConfiguration);
+  has ConfigurationManager => (is => 'ro', isa => OpsWorks_StackConfigurationManager);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CustomCookbooksSource => (is => 'ro', isa => OpsWorks_Source);
+  has CustomJson => (is => 'ro', isa => Str);
+  has DefaultAvailabilityZone => (is => 'ro', isa => Str);
+  has DefaultInstanceProfileArn => (is => 'ro', isa => Str);
+  has DefaultOs => (is => 'ro', isa => Str);
+  has DefaultRootDeviceType => (is => 'ro', isa => Str);
+  has DefaultSshKeyName => (is => 'ro', isa => Str);
+  has DefaultSubnetId => (is => 'ro', isa => Str);
+  has HostnameTheme => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has UseCustomCookbooks => (is => 'ro', isa => Bool);
+  has UseOpsworksSecurityGroups => (is => 'ro', isa => Bool);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomCookbooksSource' => {
+                                            'class' => 'Paws::OpsWorks::Source',
+                                            'type' => 'OpsWorks_Source'
+                                          },
+               'DefaultSshKeyName' => {
+                                        'type' => 'Str'
+                                      },
+               'DefaultSubnetId' => {
+                                      'type' => 'Str'
+                                    },
+               'DefaultRootDeviceType' => {
+                                            'type' => 'Str'
+                                          },
+               'ChefConfiguration' => {
+                                        'class' => 'Paws::OpsWorks::ChefConfiguration',
+                                        'type' => 'OpsWorks_ChefConfiguration'
+                                      },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ConfigurationManager' => {
+                                           'class' => 'Paws::OpsWorks::StackConfigurationManager',
+                                           'type' => 'OpsWorks_StackConfigurationManager'
+                                         },
+               'DefaultAvailabilityZone' => {
+                                              'type' => 'Str'
+                                            },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'UseCustomCookbooks' => {
+                                         'type' => 'Bool'
+                                       },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'HostnameTheme' => {
+                                    'type' => 'Str'
+                                  },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'CustomJson' => {
+                                 'type' => 'Str'
+                               },
+               'DefaultInstanceProfileArn' => {
+                                                'type' => 'Str'
+                                              },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'DefaultOs' => {
+                                'type' => 'Str'
+                              },
+               'UseOpsworksSecurityGroups' => {
+                                                'type' => 'Bool'
+                                              },
+               'Attributes' => {
+                                 'class' => 'Paws::OpsWorks::StackAttributes',
+                                 'type' => 'OpsWorks_StackAttributes'
+                               },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,12 +152,12 @@ or a version number for a fixed agent version.
   The stack's ARN.
 
 
-=head2 Attributes => L<Paws::OpsWorks::StackAttributes>
+=head2 Attributes => OpsWorks_StackAttributes
 
   The stack's attributes.
 
 
-=head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
+=head2 ChefConfiguration => OpsWorks_ChefConfiguration
 
   A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version. For more information, see Create a
@@ -81,7 +165,7 @@ New Stack
 (https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 
 
-=head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
+=head2 ConfigurationManager => OpsWorks_StackConfigurationManager
 
   The configuration manager.
 
@@ -91,7 +175,7 @@ New Stack
   The date when the stack was created.
 
 
-=head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
+=head2 CustomCookbooksSource => OpsWorks_Source
 
   Contains the information required to retrieve an app or cookbook from a
 repository. For more information, see Adding Apps

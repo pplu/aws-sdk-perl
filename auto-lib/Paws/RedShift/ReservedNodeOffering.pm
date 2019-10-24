@@ -1,14 +1,59 @@
+# Generated from default/object.tt
 package Paws::RedShift::ReservedNodeOffering;
-  use Moose;
-  has CurrencyCode => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has FixedPrice => (is => 'ro', isa => 'Num');
-  has NodeType => (is => 'ro', isa => 'Str');
-  has OfferingType => (is => 'ro', isa => 'Str');
-  has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]', request_name => 'RecurringCharge', traits => ['NameInRequest']);
-  has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
-  has ReservedNodeOfferingType => (is => 'ro', isa => 'Str');
-  has UsagePrice => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Int Num ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_RecurringCharge/;
+  has CurrencyCode => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has FixedPrice => (is => 'ro', isa => Num);
+  has NodeType => (is => 'ro', isa => Str);
+  has OfferingType => (is => 'ro', isa => Str);
+  has RecurringCharges => (is => 'ro', isa => ArrayRef[RedShift_RecurringCharge]);
+  has ReservedNodeOfferingId => (is => 'ro', isa => Str);
+  has ReservedNodeOfferingType => (is => 'ro', isa => Str);
+  has UsagePrice => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OfferingType' => {
+                                   'type' => 'Str'
+                                 },
+               'ReservedNodeOfferingId' => {
+                                             'type' => 'Str'
+                                           },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'CurrencyCode' => {
+                                   'type' => 'Str'
+                                 },
+               'ReservedNodeOfferingType' => {
+                                               'type' => 'Str'
+                                             },
+               'FixedPrice' => {
+                                 'type' => 'Num'
+                               },
+               'RecurringCharges' => {
+                                       'class' => 'Paws::RedShift::RecurringCharge',
+                                       'type' => 'ArrayRef[RedShift_RecurringCharge]'
+                                     },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'UsagePrice' => {
+                                 'type' => 'Num'
+                               }
+             },
+  'NameInRequest' => {
+                       'RecurringCharges' => 'RecurringCharge'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +116,7 @@ node offering.
 reserved node offering.
 
 
-=head2 RecurringCharges => ArrayRef[L<Paws::RedShift::RecurringCharge>]
+=head2 RecurringCharges => ArrayRef[RedShift_RecurringCharge]
 
   The charge to your account regardless of whether you are creating any
 clusters using the node offering. Recurring charges are only in effect

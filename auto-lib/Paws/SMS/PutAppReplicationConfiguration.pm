@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SMS::PutAppReplicationConfiguration;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appId' );
-  has ServerGroupReplicationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerGroupReplicationConfiguration]', traits => ['NameInRequest'], request_name => 'serverGroupReplicationConfigurations' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_ServerGroupReplicationConfiguration/;
+  has AppId => (is => 'ro', isa => Str, predicate => 1);
+  has ServerGroupReplicationConfigurations => (is => 'ro', isa => ArrayRef[SMS_ServerGroupReplicationConfiguration], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutAppReplicationConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SMS::PutAppReplicationConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutAppReplicationConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SMS::PutAppReplicationConfigurationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerGroupReplicationConfigurations' => {
+                                                           'class' => 'Paws::SMS::ServerGroupReplicationConfiguration',
+                                                           'type' => 'ArrayRef[SMS_ServerGroupReplicationConfiguration]'
+                                                         },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ServerGroupReplicationConfigurations' => 'serverGroupReplicationConfigurations',
+                       'AppId' => 'appId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -83,7 +107,7 @@ ID of the application tassociated with the replication configuration.
 
 
 
-=head2 ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]
+=head2 ServerGroupReplicationConfigurations => ArrayRef[SMS_ServerGroupReplicationConfiguration]
 
 Replication configurations for server groups in the application.
 

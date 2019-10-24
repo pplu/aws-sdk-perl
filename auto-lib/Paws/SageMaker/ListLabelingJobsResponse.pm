@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListLabelingJobsResponse;
-  use Moose;
-  has LabelingJobSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::LabelingJobSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobSummary/;
+  has LabelingJobSummaryList => (is => 'ro', isa => ArrayRef[SageMaker_LabelingJobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LabelingJobSummaryList' => {
+                                             'class' => 'Paws::SageMaker::LabelingJobSummary',
+                                             'type' => 'ArrayRef[SageMaker_LabelingJobSummary]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::SageMaker::ListLabelingJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 LabelingJobSummaryList => ArrayRef[L<Paws::SageMaker::LabelingJobSummary>]
+=head2 LabelingJobSummaryList => ArrayRef[SageMaker_LabelingJobSummary]
 
 An array of C<LabelingJobSummary> objects, each describing a labeling
 job.

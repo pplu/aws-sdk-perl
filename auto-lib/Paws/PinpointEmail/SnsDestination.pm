@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::SnsDestination;
-  use Moose;
-  has TopicArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has TopicArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TopicArn' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'TopicArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

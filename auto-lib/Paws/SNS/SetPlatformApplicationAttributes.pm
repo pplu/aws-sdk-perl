@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::SetPlatformApplicationAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString', required => 1);
-  has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MapStringToString/;
+  has Attributes => (is => 'ro', isa => SNS_MapStringToString, required => 1, predicate => 1);
+  has PlatformApplicationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetPlatformApplicationAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetPlatformApplicationAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlatformApplicationArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::MapStringToString',
+                                 'type' => 'SNS_MapStringToString'
+                               }
+             },
+  'IsRequired' => {
+                    'PlatformApplicationArn' => 1,
+                    'Attributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
+=head2 B<REQUIRED> Attributes => SNS_MapStringToString
 
 A map of the platform application attributes. Attributes in this map
 include the following:

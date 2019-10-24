@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::SourceTableFeatureDetails;
   use Moo;
   use Types::Standard qw/ArrayRef/;
@@ -8,7 +9,7 @@ package Paws::DynamoDB::SourceTableFeatureDetails;
   has StreamDescription => (is => 'ro', isa => DynamoDB_StreamSpecification);
   has TimeToLiveDescription => (is => 'ro', isa => DynamoDB_TimeToLiveDescription);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TimeToLiveDescription' => {
@@ -34,8 +35,8 @@ package Paws::DynamoDB::SourceTableFeatureDetails;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

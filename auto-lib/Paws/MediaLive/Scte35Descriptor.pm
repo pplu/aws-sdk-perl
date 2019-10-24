@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Scte35Descriptor;
-  use Moose;
-  has Scte35DescriptorSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35DescriptorSettings', request_name => 'scte35DescriptorSettings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Scte35DescriptorSettings/;
+  has Scte35DescriptorSettings => (is => 'ro', isa => MediaLive_Scte35DescriptorSettings, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scte35DescriptorSettings' => {
+                                               'class' => 'Paws::MediaLive::Scte35DescriptorSettings',
+                                               'type' => 'MediaLive_Scte35DescriptorSettings'
+                                             }
+             },
+  'NameInRequest' => {
+                       'Scte35DescriptorSettings' => 'scte35DescriptorSettings'
+                     },
+  'IsRequired' => {
+                    'Scte35DescriptorSettings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +60,7 @@ Holds one set of SCTE-35 Descriptor Settings.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Scte35DescriptorSettings => L<Paws::MediaLive::Scte35DescriptorSettings>
+=head2 B<REQUIRED> Scte35DescriptorSettings => MediaLive_Scte35DescriptorSettings
 
   SCTE-35 Descriptor Settings.
 

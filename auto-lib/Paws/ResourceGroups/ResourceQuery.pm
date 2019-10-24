@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ResourceGroups::ResourceQuery;
-  use Moose;
-  has Query => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw//;
+  has Query => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Query' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Query' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

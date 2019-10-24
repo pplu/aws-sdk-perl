@@ -1,3 +1,4 @@
+# Generated from json/service_class.tt
 package Paws::DynamoDB;
   use Moo;
   use Types::Standard qw/Int HashRef ArrayRef/;

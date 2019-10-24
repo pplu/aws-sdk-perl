@@ -1,17 +1,52 @@
 
 package Paws::Lambda::ListLayerVersions;
-  use Moose;
-  has CompatibleRuntime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CompatibleRuntime');
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has CompatibleRuntime => (is => 'ro', isa => Str, predicate => 1);
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListLayerVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListLayerVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListLayerVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListLayerVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'CompatibleRuntime' => {
+                                        'type' => 'Str'
+                                      },
+               'LayerName' => {
+                                'type' => 'Str'
+                              },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInURI' => {
+                    'LayerName' => 'LayerName'
+                  },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'CompatibleRuntime' => 'CompatibleRuntime',
+                      'Marker' => 'Marker'
+                    },
+  'IsRequired' => {
+                    'LayerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::ListFacesResponse;
-  use Moose;
-  has FaceModelVersion => (is => 'ro', isa => 'Str');
-  has Faces => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Face]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_Face/;
+  has FaceModelVersion => (is => 'ro', isa => Str);
+  has Faces => (is => 'ro', isa => ArrayRef[Rekognition_Face]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'FaceModelVersion' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Faces' => {
+                            'class' => 'Paws::Rekognition::Face',
+                            'type' => 'ArrayRef[Rekognition_Face]'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +47,7 @@ Version number of the face detection model associated with the input
 collection (C<CollectionId>).
 
 
-=head2 Faces => ArrayRef[L<Paws::Rekognition::Face>]
+=head2 Faces => ArrayRef[Rekognition_Face]
 
 An array of C<Face> objects.
 

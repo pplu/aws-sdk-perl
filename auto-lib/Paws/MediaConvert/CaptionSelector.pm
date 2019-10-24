@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CaptionSelector;
-  use Moose;
-  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_CaptionSourceSettings/;
+  has CustomLanguageCode => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has SourceSettings => (is => 'ro', isa => MediaConvert_CaptionSourceSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'SourceSettings' => {
+                                     'class' => 'Paws::MediaConvert::CaptionSourceSettings',
+                                     'type' => 'MediaConvert_CaptionSourceSettings'
+                                   },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'CustomLanguageCode' => 'customLanguageCode',
+                       'SourceSettings' => 'sourceSettings',
+                       'LanguageCode' => 'languageCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +91,7 @@ field (and PID field); there is no way to extract a specific language
 with pass-through captions.
 
 
-=head2 SourceSettings => L<Paws::MediaConvert::CaptionSourceSettings>
+=head2 SourceSettings => MediaConvert_CaptionSourceSettings
 
   Source settings (SourceSettings) contains the group of settings for
 captions in the input.

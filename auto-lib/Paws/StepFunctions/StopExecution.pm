@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StepFunctions::StopExecution;
-  use Moose;
-  has Cause => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cause' );
-  has Error => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'error' );
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has Cause => (is => 'ro', isa => Str, predicate => 1);
+  has Error => (is => 'ro', isa => Str, predicate => 1);
+  has ExecutionArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StepFunctions::StopExecutionOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StepFunctions::StopExecutionOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExecutionArn' => {
+                                   'type' => 'Str'
+                                 },
+               'Error' => {
+                            'type' => 'Str'
+                          },
+               'Cause' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ExecutionArn' => 'executionArn',
+                       'Error' => 'error',
+                       'Cause' => 'cause'
+                     },
+  'IsRequired' => {
+                    'ExecutionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

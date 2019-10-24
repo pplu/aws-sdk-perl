@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalSecondaryIndexInfo;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::GlobalSecondaryIndexInfo;
   has Projection => (is => 'ro', isa => DynamoDB_Projection);
   has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'IndexName' => {
@@ -28,8 +29,8 @@ package Paws::DynamoDB::GlobalSecondaryIndexInfo;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

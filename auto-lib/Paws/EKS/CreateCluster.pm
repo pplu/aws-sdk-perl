@@ -1,19 +1,64 @@
 
 package Paws::EKS::CreateCluster;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', traits => ['NameInRequest'], request_name => 'logging');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigRequest', traits => ['NameInRequest'], request_name => 'resourcesVpcConfig', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_Logging EKS_VpcConfigRequest/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Logging => (is => 'ro', isa => EKS_Logging, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourcesVpcConfig => (is => 'ro', isa => EKS_VpcConfigRequest, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::CreateClusterResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::CreateClusterResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Logging' => {
+                              'class' => 'Paws::EKS::Logging',
+                              'type' => 'EKS_Logging'
+                            },
+               'ResourcesVpcConfig' => {
+                                         'class' => 'Paws::EKS::VpcConfigRequest',
+                                         'type' => 'EKS_VpcConfigRequest'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Version' => 'version',
+                       'RoleArn' => 'roleArn',
+                       'Logging' => 'logging',
+                       'ResourcesVpcConfig' => 'resourcesVpcConfig',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RoleArn' => 1,
+                    'ResourcesVpcConfig' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +121,7 @@ idempotency of the request.
 
 
 
-=head2 Logging => L<Paws::EKS::Logging>
+=head2 Logging => EKS_Logging
 
 Enable or disable exporting the Kubernetes control plane logs for your
 cluster to CloudWatch Logs. By default, cluster control plane logs
@@ -97,7 +142,7 @@ The unique name to give to your cluster.
 
 
 
-=head2 B<REQUIRED> ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>
+=head2 B<REQUIRED> ResourcesVpcConfig => EKS_VpcConfigRequest
 
 The VPC configuration used by the cluster control plane. Amazon EKS VPC
 resources have specific requirements to work properly with Kubernetes.

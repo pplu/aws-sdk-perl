@@ -18,7 +18,10 @@ package Paws::ES::StartElasticsearchServiceSoftwareUpdate;
                'DomainName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
 }
 ;
     return $Params_map;

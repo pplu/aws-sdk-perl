@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::Config::RemediationConfiguration;
-  use Moose;
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::Config::RemediationParameters');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has TargetId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetType => (is => 'ro', isa => 'Str', required => 1);
-  has TargetVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_RemediationParameters/;
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1);
+  has Parameters => (is => 'ro', isa => Config_RemediationParameters);
+  has ResourceType => (is => 'ro', isa => Str);
+  has TargetId => (is => 'ro', isa => Str, required => 1);
+  has TargetType => (is => 'ro', isa => Str, required => 1);
+  has TargetVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Config::RemediationParameters',
+                                 'type' => 'Config_RemediationParameters'
+                               },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'TargetVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'TargetType' => 1,
+                    'ConfigRuleName' => 1,
+                    'TargetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +86,7 @@ data to execute the action.
   The name of the AWS Config rule.
 
 
-=head2 Parameters => L<Paws::Config::RemediationParameters>
+=head2 Parameters => Config_RemediationParameters
 
   An object of the RemediationParameterValue.
 

@@ -1,28 +1,117 @@
+# Generated from default/object.tt
 package Paws::RDS::OrderableDBInstanceOption;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailabilityZone]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has AvailableProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::AvailableProcessorFeature]', request_name => 'AvailableProcessorFeature', traits => ['NameInRequest']);
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MaxIopsPerDbInstance => (is => 'ro', isa => 'Int');
-  has MaxIopsPerGib => (is => 'ro', isa => 'Num');
-  has MaxStorageSize => (is => 'ro', isa => 'Int');
-  has MinIopsPerDbInstance => (is => 'ro', isa => 'Int');
-  has MinIopsPerGib => (is => 'ro', isa => 'Num');
-  has MinStorageSize => (is => 'ro', isa => 'Int');
-  has MultiAZCapable => (is => 'ro', isa => 'Bool');
-  has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
-  has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has SupportsIops => (is => 'ro', isa => 'Bool');
-  has SupportsPerformanceInsights => (is => 'ro', isa => 'Bool');
-  has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
-  has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
-  has Vpc => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Num Bool Undef/;
+  use Paws::RDS::Types qw/RDS_AvailableProcessorFeature RDS_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[RDS_AvailabilityZone]);
+  has AvailableProcessorFeatures => (is => 'ro', isa => ArrayRef[RDS_AvailableProcessorFeature]);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MaxIopsPerDbInstance => (is => 'ro', isa => Int);
+  has MaxIopsPerGib => (is => 'ro', isa => Num);
+  has MaxStorageSize => (is => 'ro', isa => Int);
+  has MinIopsPerDbInstance => (is => 'ro', isa => Int);
+  has MinIopsPerGib => (is => 'ro', isa => Num);
+  has MinStorageSize => (is => 'ro', isa => Int);
+  has MultiAZCapable => (is => 'ro', isa => Bool);
+  has ReadReplicaCapable => (is => 'ro', isa => Bool);
+  has StorageType => (is => 'ro', isa => Str);
+  has SupportedEngineModes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has SupportsEnhancedMonitoring => (is => 'ro', isa => Bool);
+  has SupportsIAMDatabaseAuthentication => (is => 'ro', isa => Bool);
+  has SupportsIops => (is => 'ro', isa => Bool);
+  has SupportsPerformanceInsights => (is => 'ro', isa => Bool);
+  has SupportsStorageAutoscaling => (is => 'ro', isa => Bool);
+  has SupportsStorageEncryption => (is => 'ro', isa => Bool);
+  has Vpc => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxStorageSize' => {
+                                     'type' => 'Int'
+                                   },
+               'Vpc' => {
+                          'type' => 'Bool'
+                        },
+               'SupportsStorageEncryption' => {
+                                                'type' => 'Bool'
+                                              },
+               'ReadReplicaCapable' => {
+                                         'type' => 'Bool'
+                                       },
+               'SupportsEnhancedMonitoring' => {
+                                                 'type' => 'Bool'
+                                               },
+               'MinIopsPerGib' => {
+                                    'type' => 'Num'
+                                  },
+               'SupportsPerformanceInsights' => {
+                                                  'type' => 'Bool'
+                                                },
+               'MultiAZCapable' => {
+                                     'type' => 'Bool'
+                                   },
+               'AvailableProcessorFeatures' => {
+                                                 'class' => 'Paws::RDS::AvailableProcessorFeature',
+                                                 'type' => 'ArrayRef[RDS_AvailableProcessorFeature]'
+                                               },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'MaxIopsPerGib' => {
+                                    'type' => 'Num'
+                                  },
+               'SupportsStorageAutoscaling' => {
+                                                 'type' => 'Bool'
+                                               },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'SupportedEngineModes' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::RDS::AvailabilityZone',
+                                        'type' => 'ArrayRef[RDS_AvailabilityZone]'
+                                      },
+               'MaxIopsPerDbInstance' => {
+                                           'type' => 'Int'
+                                         },
+               'SupportsIAMDatabaseAuthentication' => {
+                                                        'type' => 'Bool'
+                                                      },
+               'MinIopsPerDbInstance' => {
+                                           'type' => 'Int'
+                                         },
+               'MinStorageSize' => {
+                                     'type' => 'Int'
+                                   },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'SupportsIops' => {
+                                   'type' => 'Bool'
+                                 },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'AvailableProcessorFeatures' => 'AvailableProcessorFeature',
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,12 +150,12 @@ C<DescribeOrderableDBInstanceOptions> action.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::RDS::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[RDS_AvailabilityZone]
 
   A list of Availability Zones for a DB instance.
 
 
-=head2 AvailableProcessorFeatures => ArrayRef[L<Paws::RDS::AvailableProcessorFeature>]
+=head2 AvailableProcessorFeatures => ArrayRef[RDS_AvailableProcessorFeature]
 
   A list of the available processor features for the DB instance class of
 a DB instance.

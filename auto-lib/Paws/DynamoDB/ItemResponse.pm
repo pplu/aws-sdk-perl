@@ -1,10 +1,11 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ItemResponse;
   use Moo;
   use Types::Standard qw//;
   use Paws::DynamoDB::Types qw/DynamoDB_AttributeMap/;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Item' => {
@@ -14,8 +15,8 @@ package Paws::DynamoDB::ItemResponse;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

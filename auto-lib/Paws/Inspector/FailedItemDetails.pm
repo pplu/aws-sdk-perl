@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Inspector::FailedItemDetails;
-  use Moose;
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest'], required => 1);
-  has Retryable => (is => 'ro', isa => 'Bool', request_name => 'retryable', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Inspector::Types qw//;
+  has FailureCode => (is => 'ro', isa => Str, required => 1);
+  has Retryable => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'Retryable' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'NameInRequest' => {
+                       'FailureCode' => 'failureCode',
+                       'Retryable' => 'retryable'
+                     },
+  'IsRequired' => {
+                    'FailureCode' => 1,
+                    'Retryable' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

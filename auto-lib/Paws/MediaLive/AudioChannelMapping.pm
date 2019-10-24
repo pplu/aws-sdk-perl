@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioChannelMapping;
-  use Moose;
-  has InputChannelLevels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputChannelLevel]', request_name => 'inputChannelLevels', traits => ['NameInRequest'], required => 1);
-  has OutputChannel => (is => 'ro', isa => 'Int', request_name => 'outputChannel', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int/;
+  use Paws::MediaLive::Types qw/MediaLive_InputChannelLevel/;
+  has InputChannelLevels => (is => 'ro', isa => ArrayRef[MediaLive_InputChannelLevel], required => 1);
+  has OutputChannel => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputChannelLevels' => {
+                                         'class' => 'Paws::MediaLive::InputChannelLevel',
+                                         'type' => 'ArrayRef[MediaLive_InputChannelLevel]'
+                                       },
+               'OutputChannel' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'InputChannelLevels' => 'inputChannelLevels',
+                       'OutputChannel' => 'outputChannel'
+                     },
+  'IsRequired' => {
+                    'InputChannelLevels' => 1,
+                    'OutputChannel' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +66,7 @@ Audio Channel Mapping
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> InputChannelLevels => ArrayRef[L<Paws::MediaLive::InputChannelLevel>]
+=head2 B<REQUIRED> InputChannelLevels => ArrayRef[MediaLive_InputChannelLevel]
 
   Indices and gain values for each input channel that should be remixed
 into this output channel.

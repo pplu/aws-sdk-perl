@@ -7,7 +7,7 @@ package Paws::EC2::FpgaImageAttribute;
   has Name => (is => 'ro', isa => Str);
   has ProductCodes => (is => 'ro', isa => ArrayRef[EC2_ProductCode]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ProductCodes' => {
@@ -37,8 +37,8 @@ package Paws::EC2::FpgaImageAttribute;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

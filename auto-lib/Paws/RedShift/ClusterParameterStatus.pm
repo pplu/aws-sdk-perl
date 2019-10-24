@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterParameterStatus;
-  use Moose;
-  has ParameterApplyErrorDescription => (is => 'ro', isa => 'Str');
-  has ParameterApplyStatus => (is => 'ro', isa => 'Str');
-  has ParameterName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has ParameterApplyErrorDescription => (is => 'ro', isa => Str);
+  has ParameterApplyStatus => (is => 'ro', isa => Str);
+  has ParameterName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'ParameterApplyStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'ParameterApplyErrorDescription' => {
+                                                     'type' => 'Str'
+                                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

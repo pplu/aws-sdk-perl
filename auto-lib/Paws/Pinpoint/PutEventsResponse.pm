@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::PutEventsResponse;
-  use Moose;
-  has EventsResponse => (is => 'ro', isa => 'Paws::Pinpoint::EventsResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EventsResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventsResponse/;
+  has EventsResponse => (is => 'ro', isa => Pinpoint_EventsResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventsResponse' => {
+                                     'class' => 'Paws::Pinpoint::EventsResponse',
+                                     'type' => 'Pinpoint_EventsResponse'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'EventsResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::PutEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventsResponse => L<Paws::Pinpoint::EventsResponse>
+=head2 B<REQUIRED> EventsResponse => Pinpoint_EventsResponse
 
 
 

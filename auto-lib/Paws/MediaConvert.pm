@@ -1,14 +1,15 @@
 package Paws::MediaConvert;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'mediaconvert' }
   sub signing_name { 'mediaconvert' }
   sub version { '2017-08-29' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -332,9 +333,9 @@ it again.
 
 =item Role => Str
 
-=item Settings => L<Paws::MediaConvert::JobSettings>
+=item Settings => MediaConvert_JobSettings
 
-=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
+=item [AccelerationSettings => MediaConvert_AccelerationSettings]
 
 =item [BillingTagsSource => Str]
 
@@ -346,7 +347,7 @@ it again.
 
 =item [StatusUpdateInterval => Str]
 
-=item [UserMetadata => L<Paws::MediaConvert::__mapOf__string>]
+=item [UserMetadata => MediaConvert___mapOf__string]
 
 
 =back
@@ -366,9 +367,9 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item Name => Str
 
-=item Settings => L<Paws::MediaConvert::JobTemplateSettings>
+=item Settings => MediaConvert_JobTemplateSettings
 
-=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
+=item [AccelerationSettings => MediaConvert_AccelerationSettings]
 
 =item [Category => Str]
 
@@ -378,7 +379,7 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item [StatusUpdateInterval => Str]
 
-=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
+=item [Tags => MediaConvert___mapOf__string]
 
 
 =back
@@ -398,13 +399,13 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item Name => Str
 
-=item Settings => L<Paws::MediaConvert::PresetSettings>
+=item Settings => MediaConvert_PresetSettings
 
 =item [Category => Str]
 
 =item [Description => Str]
 
-=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
+=item [Tags => MediaConvert___mapOf__string]
 
 
 =back
@@ -427,9 +428,9 @@ Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =item [PricingPlan => Str]
 
-=item [ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>]
+=item [ReservationPlanSettings => MediaConvert_ReservationPlanSettings]
 
-=item [Tags => L<Paws::MediaConvert::__mapOf__string>]
+=item [Tags => MediaConvert___mapOf__string]
 
 
 =back
@@ -721,7 +722,7 @@ Retrieve the tags for a MediaConvert resource.
 
 =item Arn => Str
 
-=item Tags => L<Paws::MediaConvert::__mapOf__string>
+=item Tags => MediaConvert___mapOf__string
 
 
 =back
@@ -761,7 +762,7 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 
 =item Name => Str
 
-=item [AccelerationSettings => L<Paws::MediaConvert::AccelerationSettings>]
+=item [AccelerationSettings => MediaConvert_AccelerationSettings]
 
 =item [Category => Str]
 
@@ -769,7 +770,7 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 
 =item [Queue => Str]
 
-=item [Settings => L<Paws::MediaConvert::JobTemplateSettings>]
+=item [Settings => MediaConvert_JobTemplateSettings]
 
 =item [StatusUpdateInterval => Str]
 
@@ -793,7 +794,7 @@ Modify one of your existing job templates.
 
 =item [Description => Str]
 
-=item [Settings => L<Paws::MediaConvert::PresetSettings>]
+=item [Settings => MediaConvert_PresetSettings]
 
 
 =back
@@ -813,7 +814,7 @@ Modify one of your existing presets.
 
 =item [Description => Str]
 
-=item [ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>]
+=item [ReservationPlanSettings => MediaConvert_ReservationPlanSettings]
 
 =item [Status => Str]
 

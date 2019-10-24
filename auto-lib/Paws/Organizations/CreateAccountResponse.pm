@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::CreateAccountResponse;
-  use Moose;
-  has CreateAccountStatus => (is => 'ro', isa => 'Paws::Organizations::CreateAccountStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw/Organizations_CreateAccountStatus/;
+  has CreateAccountStatus => (is => 'ro', isa => Organizations_CreateAccountStatus);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateAccountStatus' => {
+                                          'class' => 'Paws::Organizations::CreateAccountStatus',
+                                          'type' => 'Organizations_CreateAccountStatus'
+                                        },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Organizations::CreateAccountResponse
 =head1 ATTRIBUTES
 
 
-=head2 CreateAccountStatus => L<Paws::Organizations::CreateAccountStatus>
+=head2 CreateAccountStatus => Organizations_CreateAccountStatus
 
 A structure that contains details about the request to create an
 account. This response structure might not be fully populated when you

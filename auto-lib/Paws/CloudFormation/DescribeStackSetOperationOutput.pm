@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::DescribeStackSetOperationOutput;
-  use Moose;
-  has StackSetOperation => (is => 'ro', isa => 'Paws::CloudFormation::StackSetOperation');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackSetOperation/;
+  has StackSetOperation => (is => 'ro', isa => CloudFormation_StackSetOperation);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetOperation' => {
+                                        'class' => 'Paws::CloudFormation::StackSetOperation',
+                                        'type' => 'CloudFormation_StackSetOperation'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::CloudFormation::DescribeStackSetOperationOutput
 =head1 ATTRIBUTES
 
 
-=head2 StackSetOperation => L<Paws::CloudFormation::StackSetOperation>
+=head2 StackSetOperation => CloudFormation_StackSetOperation
 
 The specified stack set operation.
 

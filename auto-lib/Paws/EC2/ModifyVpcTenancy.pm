@@ -13,7 +13,7 @@ package Paws::EC2::ModifyVpcTenancy;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyVpcTenancyResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -25,11 +25,15 @@ package Paws::EC2::ModifyVpcTenancy;
                'InstanceTenancy' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'VpcId' => 1,
+                    'InstanceTenancy' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

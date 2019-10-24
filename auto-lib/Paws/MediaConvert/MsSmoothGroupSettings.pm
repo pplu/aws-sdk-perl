@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MsSmoothGroupSettings;
-  use Moose;
-  has AudioDeduplication => (is => 'ro', isa => 'Str', request_name => 'audioDeduplication', traits => ['NameInRequest']);
-  has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
-  has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
-  has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
-  has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
-  has ManifestEncoding => (is => 'ro', isa => 'Str', request_name => 'manifestEncoding', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_DestinationSettings MediaConvert_MsSmoothEncryptionSettings/;
+  has AudioDeduplication => (is => 'ro', isa => Str);
+  has Destination => (is => 'ro', isa => Str);
+  has DestinationSettings => (is => 'ro', isa => MediaConvert_DestinationSettings);
+  has Encryption => (is => 'ro', isa => MediaConvert_MsSmoothEncryptionSettings);
+  has FragmentLength => (is => 'ro', isa => Int);
+  has ManifestEncoding => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DestinationSettings' => {
+                                          'class' => 'Paws::MediaConvert::DestinationSettings',
+                                          'type' => 'MediaConvert_DestinationSettings'
+                                        },
+               'AudioDeduplication' => {
+                                         'type' => 'Str'
+                                       },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaConvert::MsSmoothEncryptionSettings',
+                                 'type' => 'MediaConvert_MsSmoothEncryptionSettings'
+                               },
+               'ManifestEncoding' => {
+                                       'type' => 'Str'
+                                     },
+               'Destination' => {
+                                  'type' => 'Str'
+                                },
+               'FragmentLength' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'DestinationSettings' => 'destinationSettings',
+                       'AudioDeduplication' => 'audioDeduplication',
+                       'Encryption' => 'encryption',
+                       'ManifestEncoding' => 'manifestEncoding',
+                       'Destination' => 'destination',
+                       'FragmentLength' => 'fragmentLength'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,13 +99,13 @@ filename of the input file. If your job has multiple inputs, the
 service uses the filename of the first input file.
 
 
-=head2 DestinationSettings => L<Paws::MediaConvert::DestinationSettings>
+=head2 DestinationSettings => MediaConvert_DestinationSettings
 
   Settings associated with the destination. Will vary based on the type
 of destination
 
 
-=head2 Encryption => L<Paws::MediaConvert::MsSmoothEncryptionSettings>
+=head2 Encryption => MediaConvert_MsSmoothEncryptionSettings
 
   If you are using DRM, set DRM System (MsSmoothEncryptionSettings) to
 specify the value SpekeKeyProvider.

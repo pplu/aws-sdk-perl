@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::Parameter;
-  use Moose;
-  has ParameterKey => (is => 'ro', isa => 'Str');
-  has ParameterValue => (is => 'ro', isa => 'Str');
-  has ResolvedValue => (is => 'ro', isa => 'Str');
-  has UsePreviousValue => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFormation::Types qw//;
+  has ParameterKey => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+  has ResolvedValue => (is => 'ro', isa => Str);
+  has UsePreviousValue => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UsePreviousValue' => {
+                                       'type' => 'Bool'
+                                     },
+               'ResolvedValue' => {
+                                    'type' => 'Str'
+                                  },
+               'ParameterKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

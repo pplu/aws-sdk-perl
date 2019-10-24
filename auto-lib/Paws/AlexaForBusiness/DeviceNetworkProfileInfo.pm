@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::DeviceNetworkProfileInfo;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateExpirationTime => (is => 'ro', isa => 'Str');
-  has NetworkProfileArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateExpirationTime => (is => 'ro', isa => Str);
+  has NetworkProfileArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NetworkProfileArn' => {
+                                        'type' => 'Str'
+                                      },
+               'CertificateExpirationTime' => {
+                                                'type' => 'Str'
+                                              },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

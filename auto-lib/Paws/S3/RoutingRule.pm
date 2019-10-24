@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::RoutingRule;
   use Moo;
   use Types::Standard qw//;
@@ -16,7 +17,10 @@ package Paws::S3::RoutingRule;
                                 'class' => 'Paws::S3::Condition',
                                 'type' => 'S3_Condition'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'Redirect' => 1
+                  }
 }
 ;
     return $Params_map;

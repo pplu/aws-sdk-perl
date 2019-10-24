@@ -1,14 +1,15 @@
 package Paws::PinpointEmail;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'email' }
   sub signing_name { 'ses' }
   sub version { '2018-07-26' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -404,15 +405,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/ses/>
 
 =item ConfigurationSetName => Str
 
-=item [DeliveryOptions => L<Paws::PinpointEmail::DeliveryOptions>]
+=item [DeliveryOptions => PinpointEmail_DeliveryOptions]
 
-=item [ReputationOptions => L<Paws::PinpointEmail::ReputationOptions>]
+=item [ReputationOptions => PinpointEmail_ReputationOptions]
 
-=item [SendingOptions => L<Paws::PinpointEmail::SendingOptions>]
+=item [SendingOptions => PinpointEmail_SendingOptions]
 
-=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+=item [Tags => ArrayRef[PinpointEmail_Tag]]
 
-=item [TrackingOptions => L<Paws::PinpointEmail::TrackingOptions>]
+=item [TrackingOptions => PinpointEmail_TrackingOptions]
 
 
 =back
@@ -435,7 +436,7 @@ set are applied to the email.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::PinpointEmail::EventDestinationDefinition>
+=item EventDestination => PinpointEmail_EventDestinationDefinition
 
 =item EventDestinationName => Str
 
@@ -463,7 +464,7 @@ A single configuration set can include more than one event destination.
 
 =item PoolName => Str
 
-=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+=item [Tags => ArrayRef[PinpointEmail_Tag]]
 
 
 =back
@@ -483,13 +484,13 @@ Pinpoint sends it using only the IP addresses in the associated pool.
 
 =over
 
-=item Content => L<Paws::PinpointEmail::EmailContent>
+=item Content => PinpointEmail_EmailContent
 
 =item FromEmailAddress => Str
 
 =item [ReportName => Str]
 
-=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+=item [Tags => ArrayRef[PinpointEmail_Tag]]
 
 
 =back
@@ -515,7 +516,7 @@ to view the results of the test.
 
 =item EmailIdentity => Str
 
-=item [Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]]
+=item [Tags => ArrayRef[PinpointEmail_Tag]]
 
 
 =back
@@ -1136,7 +1137,7 @@ Returns: a L<Paws::PinpointEmail::PutDedicatedIpWarmupAttributesResponse> instan
 
 =item DashboardEnabled => Bool
 
-=item [SubscribedDomains => ArrayRef[L<Paws::PinpointEmail::DomainDeliverabilityTrackingOption>]]
+=item [SubscribedDomains => ArrayRef[PinpointEmail_DomainDeliverabilityTrackingOption]]
 
 
 =back
@@ -1234,13 +1235,13 @@ an email identity.
 
 =over
 
-=item Content => L<Paws::PinpointEmail::EmailContent>
+=item Content => PinpointEmail_EmailContent
 
-=item Destination => L<Paws::PinpointEmail::Destination>
+=item Destination => PinpointEmail_Destination
 
 =item [ConfigurationSetName => Str]
 
-=item [EmailTags => ArrayRef[L<Paws::PinpointEmail::MessageTag>]]
+=item [EmailTags => ArrayRef[PinpointEmail_MessageTag]]
 
 =item [FeedbackForwardingEmailAddress => Str]
 
@@ -1284,7 +1285,7 @@ valid MIME message.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::PinpointEmail::Tag>]
+=item Tags => ArrayRef[PinpointEmail_Tag]
 
 
 =back
@@ -1329,7 +1330,7 @@ Remove one or more tags (keys and values) from a specified resource.
 
 =item ConfigurationSetName => Str
 
-=item EventDestination => L<Paws::PinpointEmail::EventDestinationDefinition>
+=item EventDestination => PinpointEmail_EventDestinationDefinition
 
 =item EventDestinationName => Str
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::ParameterInlinePolicy;
-  use Moose;
-  has PolicyStatus => (is => 'ro', isa => 'Str');
-  has PolicyText => (is => 'ro', isa => 'Str');
-  has PolicyType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has PolicyStatus => (is => 'ro', isa => Str);
+  has PolicyText => (is => 'ro', isa => Str);
+  has PolicyType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyText' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyType' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyStatus' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::NestedFilters;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Filter]', required => 1);
-  has NestedPropertyName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_Filter/;
+  has Filters => (is => 'ro', isa => ArrayRef[SageMaker_Filter], required => 1);
+  has NestedPropertyName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Filters' => {
+                              'class' => 'Paws::SageMaker::Filter',
+                              'type' => 'ArrayRef[SageMaker_Filter]'
+                            },
+               'NestedPropertyName' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'Filters' => 1,
+                    'NestedPropertyName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +88,7 @@ C<'{Name:"InputDataConfig.DataSource.S3DataSource.S3Uri",
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Filters => ArrayRef[L<Paws::SageMaker::Filter>]
+=head2 B<REQUIRED> Filters => ArrayRef[SageMaker_Filter]
 
   A list of filters. Each filter acts on a property. Filters must contain
 at least one C<Filters> value. For example, a C<NestedFilters> call

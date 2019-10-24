@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ListPolicyVersionsResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str Bool ArrayRef/;
   use Paws::IAM::Types qw/IAM_PolicyVersion/;
   has IsTruncated => (is => 'ro', isa => Bool);

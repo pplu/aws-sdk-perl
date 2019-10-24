@@ -1,18 +1,61 @@
 
 package Paws::ApiGateway::PutRestApi;
-  use Moose;
-  has Body => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'body', required => 1);
-  has FailOnWarnings => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'failonwarnings');
-  has Mode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'mode');
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has Body => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FailOnWarnings => (is => 'ro', isa => Bool, predicate => 1);
+  has Mode => (is => 'ro', isa => Str, predicate => 1);
+  has Parameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRestApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RestApi');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRestApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RestApi');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                 'type' => 'ApiGateway_MapOfStringToString'
+                               },
+               'FailOnWarnings' => {
+                                     'type' => 'Bool'
+                                   },
+               'Mode' => {
+                           'type' => 'Str'
+                         },
+               'Body' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'ParamInQuery' => {
+                      'Parameters' => 'parameters',
+                      'FailOnWarnings' => 'failonwarnings',
+                      'Mode' => 'mode'
+                    },
+  'NameInRequest' => {
+                       'Body' => 'body'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'Body' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +128,7 @@ are "merge" and "overwrite". By default, the update mode is "merge".
 
 Valid values are: C<"merge">, C<"overwrite">
 
-=head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Parameters => ApiGateway_MapOfStringToString
 
 Custom header parameters as part of the request. For example, to
 exclude DocumentationParts from an imported API, set

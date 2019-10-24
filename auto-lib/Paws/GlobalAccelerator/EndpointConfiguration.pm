@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::GlobalAccelerator::EndpointConfiguration;
-  use Moose;
-  has EndpointId => (is => 'ro', isa => 'Str');
-  has Weight => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GlobalAccelerator::Types qw//;
+  has EndpointId => (is => 'ro', isa => Str);
+  has Weight => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Weight' => {
+                             'type' => 'Int'
+                           },
+               'EndpointId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

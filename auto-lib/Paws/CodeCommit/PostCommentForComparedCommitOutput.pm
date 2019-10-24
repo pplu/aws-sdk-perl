@@ -1,15 +1,62 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::PostCommentForComparedCommitOutput;
-  use Moose;
-  has AfterBlobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterBlobId' );
-  has AfterCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterCommitId' );
-  has BeforeBlobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeBlobId' );
-  has BeforeCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeCommitId' );
-  has Comment => (is => 'ro', isa => 'Paws::CodeCommit::Comment', traits => ['NameInRequest'], request_name => 'comment' );
-  has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', traits => ['NameInRequest'], request_name => 'location' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Location CodeCommit_Comment/;
+  has AfterBlobId => (is => 'ro', isa => Str);
+  has AfterCommitId => (is => 'ro', isa => Str);
+  has BeforeBlobId => (is => 'ro', isa => Str);
+  has BeforeCommitId => (is => 'ro', isa => Str);
+  has Comment => (is => 'ro', isa => CodeCommit_Comment);
+  has Location => (is => 'ro', isa => CodeCommit_Location);
+  has RepositoryName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AfterBlobId' => {
+                                  'type' => 'Str'
+                                },
+               'Comment' => {
+                              'class' => 'Paws::CodeCommit::Comment',
+                              'type' => 'CodeCommit_Comment'
+                            },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'BeforeBlobId' => {
+                                   'type' => 'Str'
+                                 },
+               'Location' => {
+                               'class' => 'Paws::CodeCommit::Location',
+                               'type' => 'CodeCommit_Location'
+                             }
+             },
+  'NameInRequest' => {
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'AfterBlobId' => 'afterBlobId',
+                       'BeforeBlobId' => 'beforeBlobId',
+                       'AfterCommitId' => 'afterCommitId',
+                       'Location' => 'location',
+                       'Comment' => 'comment',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -43,12 +90,12 @@ In the directionality you established, the full commit ID of the
 'before' commit.
 
 
-=head2 Comment => L<Paws::CodeCommit::Comment>
+=head2 Comment => CodeCommit_Comment
 
 The content of the comment you posted.
 
 
-=head2 Location => L<Paws::CodeCommit::Location>
+=head2 Location => CodeCommit_Location
 
 The location of the comment in the comparison between the two commits.
 

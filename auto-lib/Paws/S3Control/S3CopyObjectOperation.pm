@@ -1,21 +1,86 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3CopyObjectOperation;
-  use Moose;
-  has AccessControlGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Grant]');
-  has CannedAccessControlList => (is => 'ro', isa => 'Str');
-  has MetadataDirective => (is => 'ro', isa => 'Str');
-  has ModifiedSinceConstraint => (is => 'ro', isa => 'Str');
-  has NewObjectMetadata => (is => 'ro', isa => 'Paws::S3Control::S3ObjectMetadata');
-  has NewObjectTagging => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Tag]');
-  has ObjectLockLegalHoldStatus => (is => 'ro', isa => 'Str');
-  has ObjectLockMode => (is => 'ro', isa => 'Str');
-  has ObjectLockRetainUntilDate => (is => 'ro', isa => 'Str');
-  has RedirectLocation => (is => 'ro', isa => 'Str');
-  has RequesterPays => (is => 'ro', isa => 'Bool');
-  has SSEAwsKmsKeyId => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has TargetKeyPrefix => (is => 'ro', isa => 'Str');
-  has TargetResource => (is => 'ro', isa => 'Str');
-  has UnModifiedSinceConstraint => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Bool/;
+  use Paws::S3Control::Types qw/S3Control_S3Tag S3Control_S3Grant S3Control_S3ObjectMetadata/;
+  has AccessControlGrants => (is => 'ro', isa => ArrayRef[S3Control_S3Grant]);
+  has CannedAccessControlList => (is => 'ro', isa => Str);
+  has MetadataDirective => (is => 'ro', isa => Str);
+  has ModifiedSinceConstraint => (is => 'ro', isa => Str);
+  has NewObjectMetadata => (is => 'ro', isa => S3Control_S3ObjectMetadata);
+  has NewObjectTagging => (is => 'ro', isa => ArrayRef[S3Control_S3Tag]);
+  has ObjectLockLegalHoldStatus => (is => 'ro', isa => Str);
+  has ObjectLockMode => (is => 'ro', isa => Str);
+  has ObjectLockRetainUntilDate => (is => 'ro', isa => Str);
+  has RedirectLocation => (is => 'ro', isa => Str);
+  has RequesterPays => (is => 'ro', isa => Bool);
+  has SSEAwsKmsKeyId => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
+  has TargetKeyPrefix => (is => 'ro', isa => Str);
+  has TargetResource => (is => 'ro', isa => Str);
+  has UnModifiedSinceConstraint => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewObjectTagging' => {
+                                       'class' => 'Paws::S3Control::S3Tag',
+                                       'type' => 'ArrayRef[S3Control_S3Tag]'
+                                     },
+               'ModifiedSinceConstraint' => {
+                                              'type' => 'Str'
+                                            },
+               'AccessControlGrants' => {
+                                          'class' => 'Paws::S3Control::S3Grant',
+                                          'type' => 'ArrayRef[S3Control_S3Grant]'
+                                        },
+               'SSEAwsKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'TargetResource' => {
+                                     'type' => 'Str'
+                                   },
+               'ObjectLockLegalHoldStatus' => {
+                                                'type' => 'Str'
+                                              },
+               'RequesterPays' => {
+                                    'type' => 'Bool'
+                                  },
+               'ObjectLockRetainUntilDate' => {
+                                                'type' => 'Str'
+                                              },
+               'TargetKeyPrefix' => {
+                                      'type' => 'Str'
+                                    },
+               'NewObjectMetadata' => {
+                                        'class' => 'Paws::S3Control::S3ObjectMetadata',
+                                        'type' => 'S3Control_S3ObjectMetadata'
+                                      },
+               'RedirectLocation' => {
+                                       'type' => 'Str'
+                                     },
+               'MetadataDirective' => {
+                                        'type' => 'Str'
+                                      },
+               'ObjectLockMode' => {
+                                     'type' => 'Str'
+                                   },
+               'UnModifiedSinceConstraint' => {
+                                                'type' => 'Str'
+                                              },
+               'CannedAccessControlList' => {
+                                              'type' => 'Str'
+                                            },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +120,7 @@ operation, see PUT Object - Copy
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlGrants => ArrayRef[L<Paws::S3Control::S3Grant>]
+=head2 AccessControlGrants => ArrayRef[S3Control_S3Grant]
 
   
 
@@ -75,12 +140,12 @@ operation, see PUT Object - Copy
   
 
 
-=head2 NewObjectMetadata => L<Paws::S3Control::S3ObjectMetadata>
+=head2 NewObjectMetadata => S3Control_S3ObjectMetadata
 
   
 
 
-=head2 NewObjectTagging => ArrayRef[L<Paws::S3Control::S3Tag>]
+=head2 NewObjectTagging => ArrayRef[S3Control_S3Tag]
 
   
 

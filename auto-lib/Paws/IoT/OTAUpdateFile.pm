@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::IoT::OTAUpdateFile;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::AttributesMap', request_name => 'attributes', traits => ['NameInRequest']);
-  has CodeSigning => (is => 'ro', isa => 'Paws::IoT::CodeSigning', request_name => 'codeSigning', traits => ['NameInRequest']);
-  has FileLocation => (is => 'ro', isa => 'Paws::IoT::FileLocation', request_name => 'fileLocation', traits => ['NameInRequest']);
-  has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
-  has FileVersion => (is => 'ro', isa => 'Str', request_name => 'fileVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_CodeSigning IoT_FileLocation IoT_AttributesMap/;
+  has Attributes => (is => 'ro', isa => IoT_AttributesMap);
+  has CodeSigning => (is => 'ro', isa => IoT_CodeSigning);
+  has FileLocation => (is => 'ro', isa => IoT_FileLocation);
+  has FileName => (is => 'ro', isa => Str);
+  has FileVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileName' => {
+                               'type' => 'Str'
+                             },
+               'FileLocation' => {
+                                   'class' => 'Paws::IoT::FileLocation',
+                                   'type' => 'IoT_FileLocation'
+                                 },
+               'Attributes' => {
+                                 'class' => 'Paws::IoT::AttributesMap',
+                                 'type' => 'IoT_AttributesMap'
+                               },
+               'FileVersion' => {
+                                  'type' => 'Str'
+                                },
+               'CodeSigning' => {
+                                  'class' => 'Paws::IoT::CodeSigning',
+                                  'type' => 'IoT_CodeSigning'
+                                }
+             },
+  'NameInRequest' => {
+                       'FileName' => 'fileName',
+                       'FileLocation' => 'fileLocation',
+                       'Attributes' => 'attributes',
+                       'FileVersion' => 'fileVersion',
+                       'CodeSigning' => 'codeSigning'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,17 +79,17 @@ Describes a file to be associated with an OTA update.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::AttributesMap>
+=head2 Attributes => IoT_AttributesMap
 
   A list of name/attribute pairs.
 
 
-=head2 CodeSigning => L<Paws::IoT::CodeSigning>
+=head2 CodeSigning => IoT_CodeSigning
 
   The code signing method of the file.
 
 
-=head2 FileLocation => L<Paws::IoT::FileLocation>
+=head2 FileLocation => IoT_FileLocation
 
   The location of the updated firmware.
 

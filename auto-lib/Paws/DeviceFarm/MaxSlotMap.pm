@@ -1,8 +1,22 @@
 package Paws::DeviceFarm::MaxSlotMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToNativeMapParser';
+  use Types::Standard qw/HashRef Int/;
+  use Paws::DeviceFarm::Types qw//;
 
-  has Map => (is => 'ro', isa => 'HashRef[Int]');
+  has Map => (is => 'ro', isa => HashRef[Int]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[Int]',
+                                          class => '',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +51,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => Int
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

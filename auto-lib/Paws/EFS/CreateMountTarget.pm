@@ -1,17 +1,45 @@
 
 package Paws::EFS::CreateMountTarget;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IpAddress => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroups => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMountTarget');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/mount-targets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::MountTargetDescription');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMountTarget');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/mount-targets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::MountTargetDescription');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'SecurityGroups' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'SubnetId' => 1,
+                    'FileSystemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

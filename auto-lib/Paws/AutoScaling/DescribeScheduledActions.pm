@@ -1,18 +1,49 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DescribeScheduledActions;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScheduledActionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has MaxRecords => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ScheduledActionNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScheduledActions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::ScheduledActionsType');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScheduledActionsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeScheduledActions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::ScheduledActionsType');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DescribeScheduledActionsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MaxRecords' => {
+                                 'type' => 'Int'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'ScheduledActionNames' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::DomainTransferability;
-  use Moose;
-  has Transferable => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw//;
+  has Transferable => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Transferable' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

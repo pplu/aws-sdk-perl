@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ParameterRanges;
-  use Moose;
-  has CategoricalParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::CategoricalParameterRange]');
-  has ContinuousParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContinuousParameterRange]');
-  has IntegerParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::IntegerParameterRange]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_IntegerParameterRange SageMaker_ContinuousParameterRange SageMaker_CategoricalParameterRange/;
+  has CategoricalParameterRanges => (is => 'ro', isa => ArrayRef[SageMaker_CategoricalParameterRange]);
+  has ContinuousParameterRanges => (is => 'ro', isa => ArrayRef[SageMaker_ContinuousParameterRange]);
+  has IntegerParameterRanges => (is => 'ro', isa => ArrayRef[SageMaker_IntegerParameterRange]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IntegerParameterRanges' => {
+                                             'class' => 'Paws::SageMaker::IntegerParameterRange',
+                                             'type' => 'ArrayRef[SageMaker_IntegerParameterRange]'
+                                           },
+               'CategoricalParameterRanges' => {
+                                                 'class' => 'Paws::SageMaker::CategoricalParameterRange',
+                                                 'type' => 'ArrayRef[SageMaker_CategoricalParameterRange]'
+                                               },
+               'ContinuousParameterRanges' => {
+                                                'class' => 'Paws::SageMaker::ContinuousParameterRange',
+                                                'type' => 'ArrayRef[SageMaker_ContinuousParameterRange]'
+                                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,19 +73,19 @@ parameter range counts against this limit.
 =head1 ATTRIBUTES
 
 
-=head2 CategoricalParameterRanges => ArrayRef[L<Paws::SageMaker::CategoricalParameterRange>]
+=head2 CategoricalParameterRanges => ArrayRef[SageMaker_CategoricalParameterRange]
 
   The array of CategoricalParameterRange objects that specify ranges of
 categorical hyperparameters that a hyperparameter tuning job searches.
 
 
-=head2 ContinuousParameterRanges => ArrayRef[L<Paws::SageMaker::ContinuousParameterRange>]
+=head2 ContinuousParameterRanges => ArrayRef[SageMaker_ContinuousParameterRange]
 
   The array of ContinuousParameterRange objects that specify ranges of
 continuous hyperparameters that a hyperparameter tuning job searches.
 
 
-=head2 IntegerParameterRanges => ArrayRef[L<Paws::SageMaker::IntegerParameterRange>]
+=head2 IntegerParameterRanges => ArrayRef[SageMaker_IntegerParameterRange]
 
   The array of IntegerParameterRange objects that specify ranges of
 integer hyperparameters that a hyperparameter tuning job searches.

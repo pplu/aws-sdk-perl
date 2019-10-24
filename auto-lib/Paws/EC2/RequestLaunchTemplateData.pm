@@ -27,7 +27,7 @@ package Paws::EC2::RequestLaunchTemplateData;
   has TagSpecifications => (is => 'ro', isa => ArrayRef[EC2_LaunchTemplateTagSpecificationRequest]);
   has UserData => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CreditSpecification' => {
@@ -132,8 +132,8 @@ package Paws::EC2::RequestLaunchTemplateData;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

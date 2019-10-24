@@ -1,23 +1,79 @@
 
 package Paws::WorkDocs::DescribeActivities;
-  use Moose;
-  has ActivityTypes => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'activityTypes');
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime');
-  has IncludeIndirectActivities => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeIndirectActivities');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'organizationId');
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'resourceId');
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'startTime');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'userId');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::WorkDocs::Types qw//;
+  has ActivityTypes => (is => 'ro', isa => Str, predicate => 1);
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeIndirectActivities => (is => 'ro', isa => Bool, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeActivities');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/activities');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeActivitiesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeActivities');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/activities');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DescribeActivitiesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'ActivityTypes' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'IncludeIndirectActivities' => {
+                                                'type' => 'Bool'
+                                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'ParamInQuery' => {
+                      'ResourceId' => 'resourceId',
+                      'OrganizationId' => 'organizationId',
+                      'UserId' => 'userId',
+                      'Limit' => 'limit',
+                      'ActivityTypes' => 'activityTypes',
+                      'IncludeIndirectActivities' => 'includeIndirectActivities',
+                      'EndTime' => 'endTime',
+                      'StartTime' => 'startTime',
+                      'Marker' => 'marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

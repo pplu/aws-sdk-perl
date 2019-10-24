@@ -1,7 +1,37 @@
+# Generated from default/object.tt
 package Paws::LexModels::FollowUpPrompt;
-  use Moose;
-  has Prompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', request_name => 'prompt', traits => ['NameInRequest'], required => 1);
-  has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', request_name => 'rejectionStatement', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::LexModels::Types qw/LexModels_Prompt LexModels_Statement/;
+  has Prompt => (is => 'ro', isa => LexModels_Prompt, required => 1);
+  has RejectionStatement => (is => 'ro', isa => LexModels_Statement, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Prompt' => {
+                             'class' => 'Paws::LexModels::Prompt',
+                             'type' => 'LexModels_Prompt'
+                           },
+               'RejectionStatement' => {
+                                         'class' => 'Paws::LexModels::Statement',
+                                         'type' => 'LexModels_Statement'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Prompt' => 'prompt',
+                       'RejectionStatement' => 'rejectionStatement'
+                     },
+  'IsRequired' => {
+                    'Prompt' => 1,
+                    'RejectionStatement' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +69,12 @@ the user to find out whether the user wants to order drinks.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Prompt => L<Paws::LexModels::Prompt>
+=head2 B<REQUIRED> Prompt => LexModels_Prompt
 
   Prompts for information from the user.
 
 
-=head2 B<REQUIRED> RejectionStatement => L<Paws::LexModels::Statement>
+=head2 B<REQUIRED> RejectionStatement => LexModels_Statement
 
   If the user answers "no" to the question defined in the C<prompt>
 field, Amazon Lex responds with this statement to acknowledge that the

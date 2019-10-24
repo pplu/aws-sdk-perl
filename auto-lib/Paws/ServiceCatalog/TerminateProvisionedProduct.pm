@@ -1,17 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::TerminateProvisionedProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has IgnoreErrors => (is => 'ro', isa => 'Bool');
-  has ProvisionedProductId => (is => 'ro', isa => 'Str');
-  has ProvisionedProductName => (is => 'ro', isa => 'Str');
-  has TerminateToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ServiceCatalog::Types qw//;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has IgnoreErrors => (is => 'ro', isa => Bool, predicate => 1);
+  has ProvisionedProductId => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisionedProductName => (is => 'ro', isa => Str, predicate => 1);
+  has TerminateToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateProvisionedProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::TerminateProvisionedProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TerminateProvisionedProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::TerminateProvisionedProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProvisionedProductName' => {
+                                             'type' => 'Str'
+                                           },
+               'IgnoreErrors' => {
+                                   'type' => 'Bool'
+                                 },
+               'ProvisionedProductId' => {
+                                           'type' => 'Str'
+                                         },
+               'TerminateToken' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'TerminateToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

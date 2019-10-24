@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AttributeDefinition;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::AttributeDefinition;
   has AttributeName => (is => 'ro', isa => Str, required => 1);
   has AttributeType => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AttributeType' => {
@@ -14,11 +15,15 @@ package Paws::DynamoDB::AttributeDefinition;
                'AttributeName' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'AttributeType' => 1,
+                    'AttributeName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

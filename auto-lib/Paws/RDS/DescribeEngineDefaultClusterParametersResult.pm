@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DescribeEngineDefaultClusterParametersResult;
-  use Moose;
-  has EngineDefaults => (is => 'ro', isa => 'Paws::RDS::EngineDefaults');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_EngineDefaults/;
+  has EngineDefaults => (is => 'ro', isa => RDS_EngineDefaults);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EngineDefaults' => {
+                                     'class' => 'Paws::RDS::EngineDefaults',
+                                     'type' => 'RDS_EngineDefaults'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RDS::DescribeEngineDefaultClusterParametersResult
 =head1 ATTRIBUTES
 
 
-=head2 EngineDefaults => L<Paws::RDS::EngineDefaults>
+=head2 EngineDefaults => RDS_EngineDefaults
 
 
 

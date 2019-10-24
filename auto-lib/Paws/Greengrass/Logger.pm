@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Logger;
-  use Moose;
-  has Component => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Level => (is => 'ro', isa => 'Str');
-  has Space => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Greengrass::Types qw//;
+  has Component => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Level => (is => 'ro', isa => Str);
+  has Space => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Space' => {
+                            'type' => 'Int'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Level' => {
+                            'type' => 'Str'
+                          },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Component' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

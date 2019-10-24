@@ -1,19 +1,67 @@
 
 package Paws::LexRuntime::PostText;
-  use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
-  has InputText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputText', required => 1);
-  has RequestAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'requestAttributes');
-  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw/LexRuntime_StringMap/;
+  has BotAlias => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputText => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestAttributes => (is => 'ro', isa => LexRuntime_StringMap, predicate => 1);
+  has SessionAttributes => (is => 'ro', isa => LexRuntime_StringMap, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PostText');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/text');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexRuntime::PostTextResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PostText');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bot/{botName}/alias/{botAlias}/user/{userId}/text');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexRuntime::PostTextResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestAttributes' => {
+                                        'class' => 'Paws::LexRuntime::StringMap',
+                                        'type' => 'LexRuntime_StringMap'
+                                      },
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'InputText' => {
+                                'type' => 'Str'
+                              },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'SessionAttributes' => {
+                                        'class' => 'Paws::LexRuntime::StringMap',
+                                        'type' => 'LexRuntime_StringMap'
+                                      }
+             },
+  'ParamInURI' => {
+                    'BotName' => 'botName',
+                    'UserId' => 'userId',
+                    'BotAlias' => 'botAlias'
+                  },
+  'NameInRequest' => {
+                       'RequestAttributes' => 'requestAttributes',
+                       'InputText' => 'inputText',
+                       'SessionAttributes' => 'sessionAttributes'
+                     },
+  'IsRequired' => {
+                    'BotName' => 1,
+                    'UserId' => 1,
+                    'InputText' => 1,
+                    'BotAlias' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +126,7 @@ The text that the user entered (Amazon Lex interprets this text).
 
 
 
-=head2 RequestAttributes => L<Paws::LexRuntime::StringMap>
+=head2 RequestAttributes => LexRuntime_StringMap
 
 Request-specific information passed between Amazon Lex and a client
 application.
@@ -91,7 +139,7 @@ For more information, see Setting Request Attributes
 
 
 
-=head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
+=head2 SessionAttributes => LexRuntime_StringMap
 
 Application-specific information passed between Amazon Lex and a client
 application.

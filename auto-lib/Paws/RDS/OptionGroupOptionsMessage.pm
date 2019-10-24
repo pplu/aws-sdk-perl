@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::OptionGroupOptionsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has OptionGroupOptions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupOption]', request_name => 'OptionGroupOption', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_OptionGroupOption/;
+  has Marker => (is => 'ro', isa => Str);
+  has OptionGroupOptions => (is => 'ro', isa => ArrayRef[RDS_OptionGroupOption]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OptionGroupOptions' => {
+                                         'class' => 'Paws::RDS::OptionGroupOption',
+                                         'type' => 'ArrayRef[RDS_OptionGroupOption]'
+                                       },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'OptionGroupOptions' => 'OptionGroupOption'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +48,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-=head2 OptionGroupOptions => ArrayRef[L<Paws::RDS::OptionGroupOption>]
+=head2 OptionGroupOptions => ArrayRef[RDS_OptionGroupOption]
 
 
 

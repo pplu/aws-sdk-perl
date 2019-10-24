@@ -1,8 +1,22 @@
 package Paws::MachineLearning::ScoreValuePerLabelMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToNativeMapParser';
+  use Types::Standard qw/HashRef Num/;
+  use Paws::MachineLearning::Types qw//;
 
-  has Map => (is => 'ro', isa => 'HashRef[Num]');
+  has Map => (is => 'ro', isa => HashRef[Num]);
+
+  sub params_map {
+    my $params1 = {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[Num]',
+                                          class => '',
+                                        },
+                             },
+                  };
+    return $params1;
+  }
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +51,7 @@ Provides the raw classification score corresponding to each label.
 
 =head1 ATTRIBUTES
 
-=head2 Map => Num
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

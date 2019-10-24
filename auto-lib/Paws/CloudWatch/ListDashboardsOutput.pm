@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudWatch::ListDashboardsOutput;
-  use Moose;
-  has DashboardEntries => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::DashboardEntry]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatch::Types qw/CloudWatch_DashboardEntry/;
+  has DashboardEntries => (is => 'ro', isa => ArrayRef[CloudWatch_DashboardEntry]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DashboardEntries' => {
+                                       'class' => 'Paws::CloudWatch::DashboardEntry',
+                                       'type' => 'ArrayRef[CloudWatch_DashboardEntry]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::CloudWatch::ListDashboardsOutput
 =head1 ATTRIBUTES
 
 
-=head2 DashboardEntries => ArrayRef[L<Paws::CloudWatch::DashboardEntry>]
+=head2 DashboardEntries => ArrayRef[CloudWatch_DashboardEntry]
 
 The list of matching dashboards.
 

@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAFRegional::DeleteRegexPatternSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has RegexPatternSetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw//;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegexPatternSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRegexPatternSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAFRegional::DeleteRegexPatternSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteRegexPatternSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAFRegional::DeleteRegexPatternSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegexPatternSetId' => {
+                                        'type' => 'Str'
+                                      },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'RegexPatternSetId' => 1,
+                    'ChangeToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

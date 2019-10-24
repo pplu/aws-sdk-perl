@@ -1,14 +1,60 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::MetricDatum;
-  use Moose;
-  has Counts => (is => 'ro', isa => 'ArrayRef[Num]');
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has StatisticValues => (is => 'ro', isa => 'Paws::CloudWatch::StatisticSet');
-  has StorageResolution => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Num');
-  has Values => (is => 'ro', isa => 'ArrayRef[Num]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Num Str Int/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension CloudWatch_StatisticSet/;
+  has Counts => (is => 'ro', isa => ArrayRef[Num]);
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension]);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has StatisticValues => (is => 'ro', isa => CloudWatch_StatisticSet);
+  has StorageResolution => (is => 'ro', isa => Int);
+  has Timestamp => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Num);
+  has Values => (is => 'ro', isa => ArrayRef[Num]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'StorageResolution' => {
+                                        'type' => 'Int'
+                                      },
+               'StatisticValues' => {
+                                      'class' => 'Paws::CloudWatch::StatisticSet',
+                                      'type' => 'CloudWatch_StatisticSet'
+                                    },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'Values' => {
+                             'type' => 'ArrayRef[Num]'
+                           },
+               'Counts' => {
+                             'type' => 'ArrayRef[Num]'
+                           },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'MetricName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +102,7 @@ for each count. If you include a C<Counts> array, it must include the
 same amount of values as the C<Values> array.
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
   The dimensions associated with the metric.
 
@@ -66,7 +112,7 @@ same amount of values as the C<Values> array.
   The name of the metric.
 
 
-=head2 StatisticValues => L<Paws::CloudWatch::StatisticSet>
+=head2 StatisticValues => CloudWatch_StatisticSet
 
   The statistical values for the metric.
 

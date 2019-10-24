@@ -20,7 +20,7 @@ package Paws::EC2::CreateClientVpnEndpoint;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateClientVpnEndpointResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -60,11 +60,17 @@ package Paws::EC2::CreateClientVpnEndpoint;
   'NameInRequest' => {
                        'AuthenticationOptions' => 'Authentication',
                        'TagSpecifications' => 'TagSpecification'
-                     }
+                     },
+  'IsRequired' => {
+                    'ConnectionLogOptions' => 1,
+                    'ClientCidrBlock' => 1,
+                    'AuthenticationOptions' => 1,
+                    'ServerCertificateArn' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -4,7 +4,7 @@ package Paws::EC2::InstanceBlockDeviceMapping;
   has DeviceName => (is => 'ro', isa => Str);
   has Ebs => (is => 'ro', isa => EC2_EbsInstanceBlockDevice);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ebs' => {
@@ -21,8 +21,8 @@ package Paws::EC2::InstanceBlockDeviceMapping;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

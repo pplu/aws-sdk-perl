@@ -1,19 +1,91 @@
+# Generated from default/object.tt
 package Paws::RDSData::ColumnMetadata;
-  use Moose;
-  has ArrayBaseColumnType => (is => 'ro', isa => 'Int', request_name => 'arrayBaseColumnType', traits => ['NameInRequest']);
-  has IsAutoIncrement => (is => 'ro', isa => 'Bool', request_name => 'isAutoIncrement', traits => ['NameInRequest']);
-  has IsCaseSensitive => (is => 'ro', isa => 'Bool', request_name => 'isCaseSensitive', traits => ['NameInRequest']);
-  has IsCurrency => (is => 'ro', isa => 'Bool', request_name => 'isCurrency', traits => ['NameInRequest']);
-  has IsSigned => (is => 'ro', isa => 'Bool', request_name => 'isSigned', traits => ['NameInRequest']);
-  has Label => (is => 'ro', isa => 'Str', request_name => 'label', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Nullable => (is => 'ro', isa => 'Int', request_name => 'nullable', traits => ['NameInRequest']);
-  has Precision => (is => 'ro', isa => 'Int', request_name => 'precision', traits => ['NameInRequest']);
-  has Scale => (is => 'ro', isa => 'Int', request_name => 'scale', traits => ['NameInRequest']);
-  has SchemaName => (is => 'ro', isa => 'Str', request_name => 'schemaName', traits => ['NameInRequest']);
-  has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Int', request_name => 'type', traits => ['NameInRequest']);
-  has TypeName => (is => 'ro', isa => 'Str', request_name => 'typeName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::RDSData::Types qw//;
+  has ArrayBaseColumnType => (is => 'ro', isa => Int);
+  has IsAutoIncrement => (is => 'ro', isa => Bool);
+  has IsCaseSensitive => (is => 'ro', isa => Bool);
+  has IsCurrency => (is => 'ro', isa => Bool);
+  has IsSigned => (is => 'ro', isa => Bool);
+  has Label => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Nullable => (is => 'ro', isa => Int);
+  has Precision => (is => 'ro', isa => Int);
+  has Scale => (is => 'ro', isa => Int);
+  has SchemaName => (is => 'ro', isa => Str);
+  has TableName => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Int);
+  has TypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaName' => {
+                                 'type' => 'Str'
+                               },
+               'Precision' => {
+                                'type' => 'Int'
+                              },
+               'Scale' => {
+                            'type' => 'Int'
+                          },
+               'Label' => {
+                            'type' => 'Str'
+                          },
+               'ArrayBaseColumnType' => {
+                                          'type' => 'Int'
+                                        },
+               'Nullable' => {
+                               'type' => 'Int'
+                             },
+               'Type' => {
+                           'type' => 'Int'
+                         },
+               'IsCaseSensitive' => {
+                                      'type' => 'Bool'
+                                    },
+               'IsAutoIncrement' => {
+                                      'type' => 'Bool'
+                                    },
+               'IsCurrency' => {
+                                 'type' => 'Bool'
+                               },
+               'IsSigned' => {
+                               'type' => 'Bool'
+                             },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'TableName' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'SchemaName' => 'schemaName',
+                       'Precision' => 'precision',
+                       'Scale' => 'scale',
+                       'Label' => 'label',
+                       'ArrayBaseColumnType' => 'arrayBaseColumnType',
+                       'Nullable' => 'nullable',
+                       'Type' => 'type',
+                       'IsCaseSensitive' => 'isCaseSensitive',
+                       'IsAutoIncrement' => 'isAutoIncrement',
+                       'IsCurrency' => 'isCurrency',
+                       'IsSigned' => 'isSigned',
+                       'TypeName' => 'typeName',
+                       'TableName' => 'tableName',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

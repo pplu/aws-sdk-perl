@@ -6,7 +6,7 @@ package Paws::EC2::DeleteLaunchTemplateVersionsResponseErrorItem;
   has ResponseError => (is => 'ro', isa => EC2_ResponseError);
   has VersionNumber => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LaunchTemplateId' => {
@@ -31,8 +31,8 @@ package Paws::EC2::DeleteLaunchTemplateVersionsResponseErrorItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

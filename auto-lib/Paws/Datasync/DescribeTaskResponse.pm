@@ -1,20 +1,73 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeTaskResponse;
-  use Moose;
-  has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has CurrentTaskExecutionArn => (is => 'ro', isa => 'Str');
-  has DestinationLocationArn => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorDetail => (is => 'ro', isa => 'Str');
-  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has SourceLocationArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TaskArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_FilterRule Datasync_Options/;
+  has CloudWatchLogGroupArn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has CurrentTaskExecutionArn => (is => 'ro', isa => Str);
+  has DestinationLocationArn => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorDetail => (is => 'ro', isa => Str);
+  has Excludes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule]);
+  has Name => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => Datasync_Options);
+  has SourceLocationArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TaskArn => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Excludes' => {
+                               'class' => 'Paws::Datasync::FilterRule',
+                               'type' => 'ArrayRef[Datasync_FilterRule]'
+                             },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Options' => {
+                              'class' => 'Paws::Datasync::Options',
+                              'type' => 'Datasync_Options'
+                            },
+               'ErrorDetail' => {
+                                  'type' => 'Str'
+                                },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'DestinationLocationArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CurrentTaskExecutionArn' => {
+                                              'type' => 'Str'
+                                            },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SourceLocationArn' => {
+                                        'type' => 'Str'
+                                      },
+               'CloudWatchLogGroupArn' => {
+                                            'type' => 'Str'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -64,7 +117,7 @@ Detailed description of an error that was encountered during the task
 execution. You can use this information to help troubleshoot issues.
 
 
-=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Excludes => ArrayRef[Datasync_FilterRule]
 
 Specifies that the task excludes files in the transfer based on the
 specified pattern in the filter. Transfers all files in the
@@ -77,7 +130,7 @@ set.
 The name of the task that was described.
 
 
-=head2 Options => L<Paws::Datasync::Options>
+=head2 Options => Datasync_Options
 
 The set of configuration options that control the behavior of a single
 execution of the task that occurs when you call C<StartTaskExecution>.

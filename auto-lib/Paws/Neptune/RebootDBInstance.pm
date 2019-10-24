@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::RebootDBInstance;
-  use Moose;
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ForceFailover => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Neptune::Types qw//;
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ForceFailover => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::RebootDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RebootDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::RebootDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RebootDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'ForceFailover' => {
+                                    'type' => 'Bool'
+                                  }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

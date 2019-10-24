@@ -1,23 +1,91 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::CreateTaskSet;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
-  has ExternalId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'externalId' );
-  has LaunchType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchType' );
-  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
-  has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
-  has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
-  has Scale => (is => 'ro', isa => 'Paws::ECS::Scale', traits => ['NameInRequest'], request_name => 'scale' );
-  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
-  has ServiceRegistries => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceRegistry]', traits => ['NameInRequest'], request_name => 'serviceRegistries' );
-  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Scale ECS_LoadBalancer ECS_ServiceRegistry ECS_NetworkConfiguration/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Cluster => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExternalId => (is => 'ro', isa => Str, predicate => 1);
+  has LaunchType => (is => 'ro', isa => Str, predicate => 1);
+  has LoadBalancers => (is => 'ro', isa => ArrayRef[ECS_LoadBalancer], predicate => 1);
+  has NetworkConfiguration => (is => 'ro', isa => ECS_NetworkConfiguration, predicate => 1);
+  has PlatformVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Scale => (is => 'ro', isa => ECS_Scale, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ServiceRegistries => (is => 'ro', isa => ArrayRef[ECS_ServiceRegistry], predicate => 1);
+  has TaskDefinition => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTaskSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::CreateTaskSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTaskSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::CreateTaskSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchType' => {
+                                 'type' => 'Str'
+                               },
+               'ServiceRegistries' => {
+                                        'class' => 'Paws::ECS::ServiceRegistry',
+                                        'type' => 'ArrayRef[ECS_ServiceRegistry]'
+                                      },
+               'PlatformVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'TaskDefinition' => {
+                                     'type' => 'Str'
+                                   },
+               'Scale' => {
+                            'class' => 'Paws::ECS::Scale',
+                            'type' => 'ECS_Scale'
+                          },
+               'ExternalId' => {
+                                 'type' => 'Str'
+                               },
+               'Service' => {
+                              'type' => 'Str'
+                            },
+               'NetworkConfiguration' => {
+                                           'class' => 'Paws::ECS::NetworkConfiguration',
+                                           'type' => 'ECS_NetworkConfiguration'
+                                         },
+               'LoadBalancers' => {
+                                    'class' => 'Paws::ECS::LoadBalancer',
+                                    'type' => 'ArrayRef[ECS_LoadBalancer]'
+                                  },
+               'Cluster' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'LaunchType' => 'launchType',
+                       'ServiceRegistries' => 'serviceRegistries',
+                       'PlatformVersion' => 'platformVersion',
+                       'ClientToken' => 'clientToken',
+                       'TaskDefinition' => 'taskDefinition',
+                       'Scale' => 'scale',
+                       'ExternalId' => 'externalId',
+                       'Service' => 'service',
+                       'NetworkConfiguration' => 'networkConfiguration',
+                       'LoadBalancers' => 'loadBalancers',
+                       'Cluster' => 'cluster'
+                     },
+  'IsRequired' => {
+                    'TaskDefinition' => 1,
+                    'Cluster' => 1,
+                    'Service' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -120,7 +188,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 Valid values are: C<"EC2">, C<"FARGATE">
 
-=head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[ECS_LoadBalancer]
 
 A load balancer object representing the load balancer to use with the
 task set. The supported load balancer types are either an Application
@@ -128,7 +196,7 @@ Load Balancer or a Network Load Balancer.
 
 
 
-=head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
+=head2 NetworkConfiguration => ECS_NetworkConfiguration
 
 
 
@@ -143,7 +211,7 @@ default.
 
 
 
-=head2 Scale => L<Paws::ECS::Scale>
+=head2 Scale => ECS_Scale
 
 
 
@@ -156,7 +224,7 @@ create the task set in.
 
 
 
-=head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
+=head2 ServiceRegistries => ArrayRef[ECS_ServiceRegistry]
 
 The details of the service discovery registries to assign to this task
 set. For more information, see Service Discovery

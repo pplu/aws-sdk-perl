@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Support::AttachmentDetails;
-  use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
-  has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw//;
+  has AttachmentId => (is => 'ro', isa => Str);
+  has FileName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileName' => {
+                               'type' => 'Str'
+                             },
+               'AttachmentId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'FileName' => 'fileName',
+                       'AttachmentId' => 'attachmentId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

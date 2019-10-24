@@ -1,10 +1,35 @@
 
 package Paws::GroundStation::ListContactsResponse;
-  use Moose;
-  has ContactList => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::ContactData]', traits => ['NameInRequest'], request_name => 'contactList');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GroundStation::Types qw/GroundStation_ContactData/;
+  has ContactList => (is => 'ro', isa => ArrayRef[GroundStation_ContactData]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ContactList' => {
+                                  'class' => 'Paws::GroundStation::ContactData',
+                                  'type' => 'ArrayRef[GroundStation_ContactData]'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ContactList' => 'contactList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::GroundStation::ListContactsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ContactList => ArrayRef[L<Paws::GroundStation::ContactData>]
+=head2 ContactList => ArrayRef[GroundStation_ContactData]
 
 List of contacts.
 

@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::UnprocessedUpdateAction;
-  use Moose;
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has ErrorType => (is => 'ro', isa => 'Str');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str');
-  has ServiceUpdateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has ErrorType => (is => 'ro', isa => Str);
+  has ReplicationGroupId => (is => 'ro', isa => Str);
+  has ServiceUpdateName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceUpdateName' => {
+                                        'type' => 'Str'
+                                      },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ErrorType' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::StepFunctions;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'states' }
   sub signing_name { 'states' }
   sub version { '2016-11-23' }
   sub target_prefix { 'AWSStepFunctions' }
   sub json_version { "1.0" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -282,7 +284,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/step-functions/
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
+=item [Tags => ArrayRef[StepFunctions_Tag]]
 
 
 =back
@@ -313,7 +315,7 @@ and may not reflect very recent updates and changes.
 
 =item RoleArn => Str
 
-=item [Tags => ArrayRef[L<Paws::StepFunctions::Tag>]]
+=item [Tags => ArrayRef[StepFunctions_Tag]]
 
 
 =back
@@ -738,7 +740,7 @@ Stops an execution.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
+=item Tags => ArrayRef[StepFunctions_Tag]
 
 
 =back

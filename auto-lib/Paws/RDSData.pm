@@ -1,14 +1,15 @@
 package Paws::RDSData;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'rds-data' }
   sub signing_name { 'rds-data' }
   sub version { '2018-08-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -103,7 +104,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =item [Database => Str]
 
-=item [ParameterSets => ArrayRef[L<ArrayRef[Paws::RDSData::SqlParameter]>]]
+=item [ParameterSets => ArrayRef[ArrayRef[RDSData_SqlParameter]]]
 
 =item [Schema => Str]
 
@@ -225,7 +226,7 @@ C<ExecuteStatement> operation.
 
 =item [IncludeResultMetadata => Bool]
 
-=item [Parameters => ArrayRef[L<Paws::RDSData::SqlParameter>]]
+=item [Parameters => ArrayRef[RDSData_SqlParameter]]
 
 =item [Schema => Str]
 

@@ -6,7 +6,7 @@ package Paws::EC2::PublicIpv4PoolRange;
   has FirstAddress => (is => 'ro', isa => Str);
   has LastAddress => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AvailableAddressCount' => {
@@ -30,8 +30,8 @@ package Paws::EC2::PublicIpv4PoolRange;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

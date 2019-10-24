@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::DescribeMLModelsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Results => (is => 'ro', isa => 'ArrayRef[Paws::MachineLearning::MLModel]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MachineLearning::Types qw/MachineLearning_MLModel/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Results => (is => 'ro', isa => ArrayRef[MachineLearning_MLModel]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Results' => {
+                              'class' => 'Paws::MachineLearning::MLModel',
+                              'type' => 'ArrayRef[MachineLearning_MLModel]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The ID of the next page in the paginated results that indicates at
 least one more page follows.
 
 
-=head2 Results => ArrayRef[L<Paws::MachineLearning::MLModel>]
+=head2 Results => ArrayRef[MachineLearning_MLModel]
 
 A list of C<MLModel> that meet the search criteria.
 

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::CreateMatchmakingConfigurationOutput;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::GameLift::MatchmakingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_MatchmakingConfiguration/;
+  has Configuration => (is => 'ro', isa => GameLift_MatchmakingConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configuration' => {
+                                    'class' => 'Paws::GameLift::MatchmakingConfiguration',
+                                    'type' => 'GameLift_MatchmakingConfiguration'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::CreateMatchmakingConfigurationOutput
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::GameLift::MatchmakingConfiguration>
+=head2 Configuration => GameLift_MatchmakingConfiguration
 
 Object that describes the newly created matchmaking configuration.
 

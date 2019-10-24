@@ -1,19 +1,61 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transcribe::StartTranscriptionJob;
-  use Moose;
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has Media => (is => 'ro', isa => 'Paws::Transcribe::Media', required => 1);
-  has MediaFormat => (is => 'ro', isa => 'Str', required => 1);
-  has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
-  has OutputBucketName => (is => 'ro', isa => 'Str');
-  has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
-  has TranscriptionJobName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Transcribe::Types qw/Transcribe_Media Transcribe_Settings/;
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Media => (is => 'ro', isa => Transcribe_Media, required => 1, predicate => 1);
+  has MediaFormat => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MediaSampleRateHertz => (is => 'ro', isa => Int, predicate => 1);
+  has OutputBucketName => (is => 'ro', isa => Str, predicate => 1);
+  has Settings => (is => 'ro', isa => Transcribe_Settings, predicate => 1);
+  has TranscriptionJobName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartTranscriptionJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transcribe::StartTranscriptionJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartTranscriptionJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transcribe::StartTranscriptionJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Settings' => {
+                               'class' => 'Paws::Transcribe::Settings',
+                               'type' => 'Transcribe_Settings'
+                             },
+               'MediaFormat' => {
+                                  'type' => 'Str'
+                                },
+               'MediaSampleRateHertz' => {
+                                           'type' => 'Int'
+                                         },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'TranscriptionJobName' => {
+                                           'type' => 'Str'
+                                         },
+               'OutputBucketName' => {
+                                       'type' => 'Str'
+                                     },
+               'Media' => {
+                            'class' => 'Paws::Transcribe::Media',
+                            'type' => 'Transcribe_Media'
+                          }
+             },
+  'IsRequired' => {
+                    'MediaFormat' => 1,
+                    'LanguageCode' => 1,
+                    'TranscriptionJobName' => 1,
+                    'Media' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +109,7 @@ The language code for the language used in the input media file.
 
 Valid values are: C<"en-US">, C<"es-US">, C<"en-AU">, C<"fr-CA">, C<"en-GB">, C<"de-DE">, C<"pt-BR">, C<"fr-FR">, C<"it-IT">, C<"ko-KR">, C<"es-ES">, C<"en-IN">, C<"hi-IN">, C<"ar-SA">
 
-=head2 B<REQUIRED> Media => L<Paws::Transcribe::Media>
+=head2 B<REQUIRED> Media => Transcribe_Media
 
 An object that describes the input media for a transcription job.
 
@@ -108,7 +150,7 @@ this URL to download the transcription.
 
 
 
-=head2 Settings => L<Paws::Transcribe::Settings>
+=head2 Settings => Transcribe_Settings
 
 A C<Settings> object that provides optional settings for a
 transcription job.

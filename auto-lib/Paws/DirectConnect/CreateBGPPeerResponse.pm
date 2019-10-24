@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::CreateBGPPeerResponse;
-  use Moose;
-  has VirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::VirtualInterface', traits => ['NameInRequest'], request_name => 'virtualInterface' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_VirtualInterface/;
+  has VirtualInterface => (is => 'ro', isa => DirectConnect_VirtualInterface);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualInterface' => {
+                                       'class' => 'Paws::DirectConnect::VirtualInterface',
+                                       'type' => 'DirectConnect_VirtualInterface'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'VirtualInterface' => 'virtualInterface'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DirectConnect::CreateBGPPeerResponse
 =head1 ATTRIBUTES
 
 
-=head2 VirtualInterface => L<Paws::DirectConnect::VirtualInterface>
+=head2 VirtualInterface => DirectConnect_VirtualInterface
 
 The virtual interface.
 

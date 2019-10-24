@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::Personalize::HyperParameterRanges;
-  use Moose;
-  has CategoricalHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::CategoricalHyperParameterRange]', request_name => 'categoricalHyperParameterRanges', traits => ['NameInRequest']);
-  has ContinuousHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::ContinuousHyperParameterRange]', request_name => 'continuousHyperParameterRanges', traits => ['NameInRequest']);
-  has IntegerHyperParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::IntegerHyperParameterRange]', request_name => 'integerHyperParameterRanges', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_CategoricalHyperParameterRange Personalize_IntegerHyperParameterRange Personalize_ContinuousHyperParameterRange/;
+  has CategoricalHyperParameterRanges => (is => 'ro', isa => ArrayRef[Personalize_CategoricalHyperParameterRange]);
+  has ContinuousHyperParameterRanges => (is => 'ro', isa => ArrayRef[Personalize_ContinuousHyperParameterRange]);
+  has IntegerHyperParameterRanges => (is => 'ro', isa => ArrayRef[Personalize_IntegerHyperParameterRange]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContinuousHyperParameterRanges' => {
+                                                     'class' => 'Paws::Personalize::ContinuousHyperParameterRange',
+                                                     'type' => 'ArrayRef[Personalize_ContinuousHyperParameterRange]'
+                                                   },
+               'CategoricalHyperParameterRanges' => {
+                                                      'class' => 'Paws::Personalize::CategoricalHyperParameterRange',
+                                                      'type' => 'ArrayRef[Personalize_CategoricalHyperParameterRange]'
+                                                    },
+               'IntegerHyperParameterRanges' => {
+                                                  'class' => 'Paws::Personalize::IntegerHyperParameterRange',
+                                                  'type' => 'ArrayRef[Personalize_IntegerHyperParameterRange]'
+                                                }
+             },
+  'NameInRequest' => {
+                       'ContinuousHyperParameterRanges' => 'continuousHyperParameterRanges',
+                       'CategoricalHyperParameterRanges' => 'categoricalHyperParameterRanges',
+                       'IntegerHyperParameterRanges' => 'integerHyperParameterRanges'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +70,17 @@ categorical, continuous, or integer-valued.
 =head1 ATTRIBUTES
 
 
-=head2 CategoricalHyperParameterRanges => ArrayRef[L<Paws::Personalize::CategoricalHyperParameterRange>]
+=head2 CategoricalHyperParameterRanges => ArrayRef[Personalize_CategoricalHyperParameterRange]
 
   The categorical hyperparameters and their ranges.
 
 
-=head2 ContinuousHyperParameterRanges => ArrayRef[L<Paws::Personalize::ContinuousHyperParameterRange>]
+=head2 ContinuousHyperParameterRanges => ArrayRef[Personalize_ContinuousHyperParameterRange]
 
   The continuous hyperparameters and their ranges.
 
 
-=head2 IntegerHyperParameterRanges => ArrayRef[L<Paws::Personalize::IntegerHyperParameterRange>]
+=head2 IntegerHyperParameterRanges => ArrayRef[Personalize_IntegerHyperParameterRange]
 
   The integer-valued hyperparameters and their ranges.
 

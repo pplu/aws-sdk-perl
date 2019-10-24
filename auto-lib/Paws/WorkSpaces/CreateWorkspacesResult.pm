@@ -1,10 +1,33 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WorkSpaces::CreateWorkspacesResult;
-  use Moose;
-  has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedCreateWorkspaceRequest]');
-  has PendingRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Workspace]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_FailedCreateWorkspaceRequest WorkSpaces_Workspace/;
+  has FailedRequests => (is => 'ro', isa => ArrayRef[WorkSpaces_FailedCreateWorkspaceRequest]);
+  has PendingRequests => (is => 'ro', isa => ArrayRef[WorkSpaces_Workspace]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedRequests' => {
+                                     'class' => 'Paws::WorkSpaces::FailedCreateWorkspaceRequest',
+                                     'type' => 'ArrayRef[WorkSpaces_FailedCreateWorkspaceRequest]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PendingRequests' => {
+                                      'class' => 'Paws::WorkSpaces::Workspace',
+                                      'type' => 'ArrayRef[WorkSpaces_Workspace]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,12 +38,12 @@ Paws::WorkSpaces::CreateWorkspacesResult
 =head1 ATTRIBUTES
 
 
-=head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedCreateWorkspaceRequest>]
+=head2 FailedRequests => ArrayRef[WorkSpaces_FailedCreateWorkspaceRequest]
 
 Information about the WorkSpaces that could not be created.
 
 
-=head2 PendingRequests => ArrayRef[L<Paws::WorkSpaces::Workspace>]
+=head2 PendingRequests => ArrayRef[WorkSpaces_Workspace]
 
 Information about the WorkSpaces that were created.
 

@@ -1,19 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Datasync::CreateTask;
-  use Moose;
-  has CloudWatchLogGroupArn => (is => 'ro', isa => 'Str');
-  has DestinationLocationArn => (is => 'ro', isa => 'Str', required => 1);
-  has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
-  has Name => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
-  has SourceLocationArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Datasync::Types qw/Datasync_TagListEntry Datasync_FilterRule Datasync_Options/;
+  has CloudWatchLogGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationLocationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Excludes => (is => 'ro', isa => ArrayRef[Datasync_FilterRule], predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Options => (is => 'ro', isa => Datasync_Options, predicate => 1);
+  has SourceLocationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Datasync_TagListEntry], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Datasync::CreateTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Datasync::CreateTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Excludes' => {
+                               'class' => 'Paws::Datasync::FilterRule',
+                               'type' => 'ArrayRef[Datasync_FilterRule]'
+                             },
+               'Options' => {
+                              'class' => 'Paws::Datasync::Options',
+                              'type' => 'Datasync_Options'
+                            },
+               'DestinationLocationArn' => {
+                                             'type' => 'Str'
+                                           },
+               'SourceLocationArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::Datasync::TagListEntry',
+                           'type' => 'ArrayRef[Datasync_TagListEntry]'
+                         },
+               'CloudWatchLogGroupArn' => {
+                                            'type' => 'Str'
+                                          },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'DestinationLocationArn' => 1,
+                    'SourceLocationArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +142,7 @@ The Amazon Resource Name (ARN) of an AWS storage resource's location.
 
 
 
-=head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
+=head2 Excludes => ArrayRef[Datasync_FilterRule]
 
 A filter that determines which files to exclude from a task based on
 the specified pattern. Transfers all files in the taskE<rsquo>s
@@ -116,7 +157,7 @@ identify the task in the console.
 
 
 
-=head2 Options => L<Paws::Datasync::Options>
+=head2 Options => Datasync_Options
 
 The set of configuration options that control the behavior of a single
 execution of the task that occurs when you call C<StartTaskExecution>.
@@ -136,7 +177,7 @@ The Amazon Resource Name (ARN) of the source location for the task.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]
+=head2 Tags => ArrayRef[Datasync_TagListEntry]
 
 The key-value pair that represents the tag that you want to add to the
 resource. The value can be an empty string.

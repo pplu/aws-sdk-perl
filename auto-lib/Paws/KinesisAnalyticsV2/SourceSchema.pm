@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SourceSchema;
-  use Moose;
-  has RecordColumns => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::RecordColumn]', required => 1);
-  has RecordEncoding => (is => 'ro', isa => 'Str');
-  has RecordFormat => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RecordFormat', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_RecordColumn KinesisAnalyticsV2_RecordFormat/;
+  has RecordColumns => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_RecordColumn], required => 1);
+  has RecordEncoding => (is => 'ro', isa => Str);
+  has RecordFormat => (is => 'ro', isa => KinesisAnalyticsV2_RecordFormat, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecordColumns' => {
+                                    'class' => 'Paws::KinesisAnalyticsV2::RecordColumn',
+                                    'type' => 'ArrayRef[KinesisAnalyticsV2_RecordColumn]'
+                                  },
+               'RecordEncoding' => {
+                                     'type' => 'Str'
+                                   },
+               'RecordFormat' => {
+                                   'class' => 'Paws::KinesisAnalyticsV2::RecordFormat',
+                                   'type' => 'KinesisAnalyticsV2_RecordFormat'
+                                 }
+             },
+  'IsRequired' => {
+                    'RecordColumns' => 1,
+                    'RecordFormat' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +70,7 @@ stream.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RecordColumns => ArrayRef[L<Paws::KinesisAnalyticsV2::RecordColumn>]
+=head2 B<REQUIRED> RecordColumns => ArrayRef[KinesisAnalyticsV2_RecordColumn]
 
   A list of C<RecordColumn> objects.
 
@@ -52,7 +81,7 @@ stream.
 example, UTF-8.
 
 
-=head2 B<REQUIRED> RecordFormat => L<Paws::KinesisAnalyticsV2::RecordFormat>
+=head2 B<REQUIRED> RecordFormat => KinesisAnalyticsV2_RecordFormat
 
   Specifies the format of the records on the streaming source.
 

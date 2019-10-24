@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::SegmentBehaviors;
-  use Moose;
-  has Recency => (is => 'ro', isa => 'Paws::Pinpoint::RecencyDimension');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_RecencyDimension/;
+  has Recency => (is => 'ro', isa => Pinpoint_RecencyDimension);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Recency' => {
+                              'class' => 'Paws::Pinpoint::RecencyDimension',
+                              'type' => 'Pinpoint_RecencyDimension'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ a segment based on how recently an endpoint was active.
 =head1 ATTRIBUTES
 
 
-=head2 Recency => L<Paws::Pinpoint::RecencyDimension>
+=head2 Recency => Pinpoint_RecencyDimension
 
   The dimension settings that are based on how recently an endpoint was
 active.

@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MarketplaceMetering::MeterUsage;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has ProductCode => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
-  has UsageDimension => (is => 'ro', isa => 'Str', required => 1);
-  has UsageQuantity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::MarketplaceMetering::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has ProductCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsageDimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsageQuantity => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MeterUsage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceMetering::MeterUsageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MeterUsage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceMetering::MeterUsageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UsageQuantity' => {
+                                    'type' => 'Int'
+                                  },
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ProductCode' => {
+                                  'type' => 'Str'
+                                },
+               'UsageDimension' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'Timestamp' => 1,
+                    'ProductCode' => 1,
+                    'UsageDimension' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

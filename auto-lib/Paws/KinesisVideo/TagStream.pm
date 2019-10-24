@@ -1,16 +1,41 @@
 
 package Paws::KinesisVideo::TagStream;
-  use Moose;
-  has StreamARN => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'Paws::KinesisVideo::ResourceTags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideo::Types qw/KinesisVideo_ResourceTags/;
+  has StreamARN => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => KinesisVideo_ResourceTags, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tagStream');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisVideo::TagStreamOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tagStream');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisVideo::TagStreamOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::KinesisVideo::ResourceTags',
+                           'type' => 'KinesisVideo_ResourceTags'
+                         },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +82,7 @@ The name of the stream that you want to add the tag or tags to.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::KinesisVideo::ResourceTags>
+=head2 B<REQUIRED> Tags => KinesisVideo_ResourceTags
 
 A list of tags to associate with the specified stream. Each tag is a
 key-value pair (the value is optional).

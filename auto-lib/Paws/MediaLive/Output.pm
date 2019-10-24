@@ -1,10 +1,50 @@
+# Generated from default/object.tt
 package Paws::MediaLive::Output;
-  use Moose;
-  has AudioDescriptionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'audioDescriptionNames', traits => ['NameInRequest']);
-  has CaptionDescriptionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'captionDescriptionNames', traits => ['NameInRequest']);
-  has OutputName => (is => 'ro', isa => 'Str', request_name => 'outputName', traits => ['NameInRequest']);
-  has OutputSettings => (is => 'ro', isa => 'Paws::MediaLive::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest'], required => 1);
-  has VideoDescriptionName => (is => 'ro', isa => 'Str', request_name => 'videoDescriptionName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::MediaLive::Types qw/MediaLive_OutputSettings/;
+  has AudioDescriptionNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CaptionDescriptionNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OutputName => (is => 'ro', isa => Str);
+  has OutputSettings => (is => 'ro', isa => MediaLive_OutputSettings, required => 1);
+  has VideoDescriptionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptionDescriptionNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'VideoDescriptionName' => {
+                                           'type' => 'Str'
+                                         },
+               'AudioDescriptionNames' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'OutputSettings' => {
+                                     'class' => 'Paws::MediaLive::OutputSettings',
+                                     'type' => 'MediaLive_OutputSettings'
+                                   },
+               'OutputName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'CaptionDescriptionNames' => 'captionDescriptionNames',
+                       'VideoDescriptionName' => 'videoDescriptionName',
+                       'AudioDescriptionNames' => 'audioDescriptionNames',
+                       'OutputSettings' => 'outputSettings',
+                       'OutputName' => 'outputName'
+                     },
+  'IsRequired' => {
+                    'OutputSettings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +97,7 @@ output.
   The name used to identify an output.
 
 
-=head2 B<REQUIRED> OutputSettings => L<Paws::MediaLive::OutputSettings>
+=head2 B<REQUIRED> OutputSettings => MediaLive_OutputSettings
 
   Output type-specific settings.
 

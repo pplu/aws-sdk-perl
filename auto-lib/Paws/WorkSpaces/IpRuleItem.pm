@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::IpRuleItem;
-  use Moose;
-  has IpRule => (is => 'ro', isa => 'Str', request_name => 'ipRule', traits => ['NameInRequest']);
-  has RuleDesc => (is => 'ro', isa => 'Str', request_name => 'ruleDesc', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkSpaces::Types qw//;
+  has IpRule => (is => 'ro', isa => Str);
+  has RuleDesc => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IpRule' => {
+                             'type' => 'Str'
+                           },
+               'RuleDesc' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'IpRule' => 'ipRule',
+                       'RuleDesc' => 'ruleDesc'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::SMS::Server;
-  use Moose;
-  has ReplicationJobId => (is => 'ro', isa => 'Str', request_name => 'replicationJobId', traits => ['NameInRequest']);
-  has ReplicationJobTerminated => (is => 'ro', isa => 'Bool', request_name => 'replicationJobTerminated', traits => ['NameInRequest']);
-  has ServerId => (is => 'ro', isa => 'Str', request_name => 'serverId', traits => ['NameInRequest']);
-  has ServerType => (is => 'ro', isa => 'Str', request_name => 'serverType', traits => ['NameInRequest']);
-  has VmServer => (is => 'ro', isa => 'Paws::SMS::VmServer', request_name => 'vmServer', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SMS::Types qw/SMS_VmServer/;
+  has ReplicationJobId => (is => 'ro', isa => Str);
+  has ReplicationJobTerminated => (is => 'ro', isa => Bool);
+  has ServerId => (is => 'ro', isa => Str);
+  has ServerType => (is => 'ro', isa => Str);
+  has VmServer => (is => 'ro', isa => SMS_VmServer);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationJobTerminated' => {
+                                               'type' => 'Bool'
+                                             },
+               'ServerType' => {
+                                 'type' => 'Str'
+                               },
+               'ReplicationJobId' => {
+                                       'type' => 'Str'
+                                     },
+               'VmServer' => {
+                               'class' => 'Paws::SMS::VmServer',
+                               'type' => 'SMS_VmServer'
+                             },
+               'ServerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ReplicationJobTerminated' => 'replicationJobTerminated',
+                       'ServerType' => 'serverType',
+                       'ReplicationJobId' => 'replicationJobId',
+                       'VmServer' => 'vmServer',
+                       'ServerId' => 'serverId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +97,7 @@ Represents a server.
   The type of server.
 
 
-=head2 VmServer => L<Paws::SMS::VmServer>
+=head2 VmServer => SMS_VmServer
 
   Information about the VM server.
 

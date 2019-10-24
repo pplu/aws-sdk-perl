@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::LifecycleRule;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -52,7 +53,10 @@ package Paws::S3::LifecycleRule;
   'NameInRequest' => {
                        'Transitions' => 'Transition',
                        'NoncurrentVersionTransitions' => 'NoncurrentVersionTransition'
-                     }
+                     },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

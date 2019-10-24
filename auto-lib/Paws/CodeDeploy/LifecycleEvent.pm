@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::LifecycleEvent;
-  use Moose;
-  has Diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics', request_name => 'diagnostics', traits => ['NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
-  has LifecycleEventName => (is => 'ro', isa => 'Str', request_name => 'lifecycleEventName', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Diagnostics/;
+  has Diagnostics => (is => 'ro', isa => CodeDeploy_Diagnostics);
+  has EndTime => (is => 'ro', isa => Str);
+  has LifecycleEventName => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LifecycleEventName' => {
+                                         'type' => 'Str'
+                                       },
+               'Diagnostics' => {
+                                  'class' => 'Paws::CodeDeploy::Diagnostics',
+                                  'type' => 'CodeDeploy_Diagnostics'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'LifecycleEventName' => 'lifecycleEventName',
+                       'Diagnostics' => 'diagnostics',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +77,7 @@ Information about a deployment lifecycle event.
 =head1 ATTRIBUTES
 
 
-=head2 Diagnostics => L<Paws::CodeDeploy::Diagnostics>
+=head2 Diagnostics => CodeDeploy_Diagnostics
 
   Diagnostic information about the deployment lifecycle event.
 

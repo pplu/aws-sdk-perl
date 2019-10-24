@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeBandwidthRateLimitOutput;
-  use Moose;
-  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
-  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
-  has GatewayARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => Int);
+  has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => Int);
+  has GatewayARN => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AverageDownloadRateLimitInBitsPerSec' => {
+                                                           'type' => 'Int'
+                                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AverageUploadRateLimitInBitsPerSec' => {
+                                                         'type' => 'Int'
+                                                       },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

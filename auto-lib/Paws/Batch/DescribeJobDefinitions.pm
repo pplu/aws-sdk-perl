@@ -1,18 +1,52 @@
 
 package Paws::Batch::DescribeJobDefinitions;
-  use Moose;
-  has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName');
-  has JobDefinitions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'jobDefinitions');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Batch::Types qw//;
+  has JobDefinitionName => (is => 'ro', isa => Str, predicate => 1);
+  has JobDefinitions => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobDefinitions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/describejobdefinitions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::DescribeJobDefinitionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeJobDefinitions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/describejobdefinitions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::DescribeJobDefinitionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'JobDefinitionName' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'JobDefinitions' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'JobDefinitionName' => 'jobDefinitionName',
+                       'Status' => 'status',
+                       'MaxResults' => 'maxResults',
+                       'JobDefinitions' => 'jobDefinitions'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

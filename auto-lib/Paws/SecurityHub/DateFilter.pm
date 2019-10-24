@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::DateFilter;
-  use Moose;
-  has DateRange => (is => 'ro', isa => 'Paws::SecurityHub::DateRange');
-  has End => (is => 'ro', isa => 'Str');
-  has Start => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw/SecurityHub_DateRange/;
+  has DateRange => (is => 'ro', isa => SecurityHub_DateRange);
+  has End => (is => 'ro', isa => Str);
+  has Start => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'End' => {
+                          'type' => 'Str'
+                        },
+               'Start' => {
+                            'type' => 'Str'
+                          },
+               'DateRange' => {
+                                'class' => 'Paws::SecurityHub::DateRange',
+                                'type' => 'SecurityHub_DateRange'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ A date filter for querying findings.
 =head1 ATTRIBUTES
 
 
-=head2 DateRange => L<Paws::SecurityHub::DateRange>
+=head2 DateRange => SecurityHub_DateRange
 
   A date range for the date filter.
 

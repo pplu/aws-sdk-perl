@@ -1,21 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::DescribeMergeConflicts;
-  use Moose;
-  has ConflictDetailLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictDetailLevel' );
-  has ConflictResolutionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictResolutionStrategy' );
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has FilePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filePath' , required => 1);
-  has MaxMergeHunks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxMergeHunks' );
-  has MergeOption => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeOption' , required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has ConflictDetailLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictResolutionStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxMergeHunks => (is => 'ro', isa => Int, predicate => 1);
+  has MergeOption => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMergeConflicts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::DescribeMergeConflictsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeMergeConflicts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::DescribeMergeConflictsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConflictDetailLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ConflictResolutionStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'MaxMergeHunks' => {
+                                    'type' => 'Int'
+                                  },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'MergeOption' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier',
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'ConflictDetailLevel' => 'conflictDetailLevel',
+                       'NextToken' => 'nextToken',
+                       'ConflictResolutionStrategy' => 'conflictResolutionStrategy',
+                       'MaxMergeHunks' => 'maxMergeHunks',
+                       'FilePath' => 'filePath',
+                       'RepositoryName' => 'repositoryName',
+                       'MergeOption' => 'mergeOption'
+                     },
+  'IsRequired' => {
+                    'SourceCommitSpecifier' => 1,
+                    'MergeOption' => 1,
+                    'DestinationCommitSpecifier' => 1,
+                    'FilePath' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

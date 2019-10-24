@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Glue::JobNodeDetails;
-  use Moose;
-  has JobRuns => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JobRun]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Glue::Types qw/Glue_JobRun/;
+  has JobRuns => (is => 'ro', isa => ArrayRef[Glue_JobRun]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobRuns' => {
+                              'class' => 'Paws::Glue::JobRun',
+                              'type' => 'ArrayRef[Glue_JobRun]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The details of a Job node present in the workflow.
 =head1 ATTRIBUTES
 
 
-=head2 JobRuns => ArrayRef[L<Paws::Glue::JobRun>]
+=head2 JobRuns => ArrayRef[Glue_JobRun]
 
   The information for the job runs represented by the job node.
 

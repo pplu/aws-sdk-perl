@@ -1,16 +1,49 @@
 
 package Paws::WorkDocs::GetDocument;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has DocumentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DocumentId', required => 1);
-  has IncludeCustomMetadata => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeCustomMetadata');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IncludeCustomMetadata => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDocument');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/documents/{DocumentId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::GetDocumentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDocument');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/documents/{DocumentId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::GetDocumentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentId' => {
+                                 'type' => 'Str'
+                               },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'IncludeCustomMetadata' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'ParamInURI' => {
+                    'DocumentId' => 'DocumentId'
+                  },
+  'ParamInQuery' => {
+                      'IncludeCustomMetadata' => 'includeCustomMetadata'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'DocumentId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

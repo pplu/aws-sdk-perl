@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ScheduleDescribeResultModel;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has ScheduleActions => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ScheduleAction]', request_name => 'scheduleActions', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_ScheduleAction/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScheduleActions => (is => 'ro', isa => ArrayRef[MediaLive_ScheduleAction], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ScheduleActions' => {
+                                      'class' => 'Paws::MediaLive::ScheduleAction',
+                                      'type' => 'ArrayRef[MediaLive_ScheduleAction]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ScheduleActions' => 'scheduleActions'
+                     },
+  'IsRequired' => {
+                    'ScheduleActions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +70,7 @@ Results of a schedule describe.
   The next token; for use in pagination.
 
 
-=head2 B<REQUIRED> ScheduleActions => ArrayRef[L<Paws::MediaLive::ScheduleAction>]
+=head2 B<REQUIRED> ScheduleActions => ArrayRef[MediaLive_ScheduleAction]
 
   The list of actions in the schedule.
 

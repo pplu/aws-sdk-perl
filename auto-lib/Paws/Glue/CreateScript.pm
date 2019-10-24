@@ -1,15 +1,39 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateScript;
-  use Moose;
-  has DagEdges => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenEdge]');
-  has DagNodes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CodeGenNode]');
-  has Language => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_CodeGenNode Glue_CodeGenEdge/;
+  has DagEdges => (is => 'ro', isa => ArrayRef[Glue_CodeGenEdge], predicate => 1);
+  has DagNodes => (is => 'ro', isa => ArrayRef[Glue_CodeGenNode], predicate => 1);
+  has Language => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateScript');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateScriptResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateScript');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateScriptResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Language' => {
+                               'type' => 'Str'
+                             },
+               'DagNodes' => {
+                               'class' => 'Paws::Glue::CodeGenNode',
+                               'type' => 'ArrayRef[Glue_CodeGenNode]'
+                             },
+               'DagEdges' => {
+                               'class' => 'Paws::Glue::CodeGenEdge',
+                               'type' => 'ArrayRef[Glue_CodeGenEdge]'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,13 +93,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head1 ATTRIBUTES
 
 
-=head2 DagEdges => ArrayRef[L<Paws::Glue::CodeGenEdge>]
+=head2 DagEdges => ArrayRef[Glue_CodeGenEdge]
 
 A list of the edges in the DAG.
 
 
 
-=head2 DagNodes => ArrayRef[L<Paws::Glue::CodeGenNode>]
+=head2 DagNodes => ArrayRef[Glue_CodeGenNode]
 
 A list of the nodes in the DAG.
 

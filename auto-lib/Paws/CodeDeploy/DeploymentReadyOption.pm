@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::DeploymentReadyOption;
-  use Moose;
-  has ActionOnTimeout => (is => 'ro', isa => 'Str', request_name => 'actionOnTimeout', traits => ['NameInRequest']);
-  has WaitTimeInMinutes => (is => 'ro', isa => 'Int', request_name => 'waitTimeInMinutes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has ActionOnTimeout => (is => 'ro', isa => Str);
+  has WaitTimeInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WaitTimeInMinutes' => {
+                                        'type' => 'Int'
+                                      },
+               'ActionOnTimeout' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'WaitTimeInMinutes' => 'waitTimeInMinutes',
+                       'ActionOnTimeout' => 'actionOnTimeout'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

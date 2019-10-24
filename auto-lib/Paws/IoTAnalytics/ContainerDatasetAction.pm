@@ -1,9 +1,48 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::ContainerDatasetAction;
-  use Moose;
-  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest'], required => 1);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest'], required => 1);
-  has ResourceConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::ResourceConfiguration', request_name => 'resourceConfiguration', traits => ['NameInRequest'], required => 1);
-  has Variables => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Variable]', request_name => 'variables', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_Variable IoTAnalytics_ResourceConfiguration/;
+  has ExecutionRoleArn => (is => 'ro', isa => Str, required => 1);
+  has Image => (is => 'ro', isa => Str, required => 1);
+  has ResourceConfiguration => (is => 'ro', isa => IoTAnalytics_ResourceConfiguration, required => 1);
+  has Variables => (is => 'ro', isa => ArrayRef[IoTAnalytics_Variable]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Variables' => {
+                                'class' => 'Paws::IoTAnalytics::Variable',
+                                'type' => 'ArrayRef[IoTAnalytics_Variable]'
+                              },
+               'ExecutionRoleArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'ResourceConfiguration' => {
+                                            'class' => 'Paws::IoTAnalytics::ResourceConfiguration',
+                                            'type' => 'IoTAnalytics_ResourceConfiguration'
+                                          }
+             },
+  'NameInRequest' => {
+                       'Variables' => 'variables',
+                       'ExecutionRoleArn' => 'executionRoleArn',
+                       'Image' => 'image',
+                       'ResourceConfiguration' => 'resourceConfiguration'
+                     },
+  'IsRequired' => {
+                    'ExecutionRoleArn' => 1,
+                    'Image' => 1,
+                    'ResourceConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +94,12 @@ container contains an application and needed support libraries and is
 used to generate data set contents.
 
 
-=head2 B<REQUIRED> ResourceConfiguration => L<Paws::IoTAnalytics::ResourceConfiguration>
+=head2 B<REQUIRED> ResourceConfiguration => IoTAnalytics_ResourceConfiguration
 
   Configuration of the resource which executes the "containerAction".
 
 
-=head2 Variables => ArrayRef[L<Paws::IoTAnalytics::Variable>]
+=head2 Variables => ArrayRef[IoTAnalytics_Variable]
 
   The values of variables used within the context of the execution of the
 containerized application (basically, parameters passed to the

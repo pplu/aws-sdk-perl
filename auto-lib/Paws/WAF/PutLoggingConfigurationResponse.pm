@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::PutLoggingConfigurationResponse;
-  use Moose;
-  has LoggingConfiguration => (is => 'ro', isa => 'Paws::WAF::LoggingConfiguration');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAF::Types qw/WAF_LoggingConfiguration/;
+  has LoggingConfiguration => (is => 'ro', isa => WAF_LoggingConfiguration);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LoggingConfiguration' => {
+                                           'class' => 'Paws::WAF::LoggingConfiguration',
+                                           'type' => 'WAF_LoggingConfiguration'
+                                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAF::PutLoggingConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 LoggingConfiguration => L<Paws::WAF::LoggingConfiguration>
+=head2 LoggingConfiguration => WAF_LoggingConfiguration
 
 The LoggingConfiguration that you submitted in the request.
 

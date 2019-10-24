@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::UpdateCustomVerificationEmailTemplate;
   use Moo;
@@ -37,7 +38,10 @@ package Paws::SES::UpdateCustomVerificationEmailTemplate;
                'TemplateSubject' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'TemplateName' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::AppStream::DirectoryConfig;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DirectoryName => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServiceAccountCredentials => (is => 'ro', isa => 'Paws::AppStream::ServiceAccountCredentials');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::AppStream::Types qw/AppStream_ServiceAccountCredentials/;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DirectoryName => (is => 'ro', isa => Str, required => 1);
+  has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServiceAccountCredentials => (is => 'ro', isa => AppStream_ServiceAccountCredentials);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceAccountCredentials' => {
+                                                'class' => 'Paws::AppStream::ServiceAccountCredentials',
+                                                'type' => 'AppStream_ServiceAccountCredentials'
+                                              },
+               'DirectoryName' => {
+                                    'type' => 'Str'
+                                  },
+               'OrganizationalUnitDistinguishedNames' => {
+                                                           'type' => 'ArrayRef[Str|Undef]'
+                                                         }
+             },
+  'IsRequired' => {
+                    'DirectoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +87,7 @@ corp.example.com).
 accounts.
 
 
-=head2 ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
+=head2 ServiceAccountCredentials => AppStream_ServiceAccountCredentials
 
   The credentials for the service account used by the fleet or image
 builder to connect to the directory.

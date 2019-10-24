@@ -1,17 +1,70 @@
 
 package Paws::ServerlessRepo::CreateApplicationVersionResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationId');
-  has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
-  has ParameterDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::ParameterDefinition]', traits => ['NameInRequest'], request_name => 'parameterDefinitions');
-  has RequiredCapabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'requiredCapabilities');
-  has ResourcesSupported => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'resourcesSupported');
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has SourceCodeArchiveUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeArchiveUrl');
-  has SourceCodeUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCodeUrl');
-  has TemplateUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateUrl');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::ServerlessRepo::Types qw/ServerlessRepo_ParameterDefinition/;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ParameterDefinitions => (is => 'ro', isa => ArrayRef[ServerlessRepo_ParameterDefinition]);
+  has RequiredCapabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ResourcesSupported => (is => 'ro', isa => Bool);
+  has SemanticVersion => (is => 'ro', isa => Str);
+  has SourceCodeArchiveUrl => (is => 'ro', isa => Str);
+  has SourceCodeUrl => (is => 'ro', isa => Str);
+  has TemplateUrl => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceCodeUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourcesSupported' => {
+                                         'type' => 'Bool'
+                                       },
+               'ParameterDefinitions' => {
+                                           'class' => 'Paws::ServerlessRepo::ParameterDefinition',
+                                           'type' => 'ArrayRef[ServerlessRepo_ParameterDefinition]'
+                                         },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'RequiredCapabilities' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'SourceCodeArchiveUrl' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'SourceCodeUrl' => 'sourceCodeUrl',
+                       'ResourcesSupported' => 'resourcesSupported',
+                       'ParameterDefinitions' => 'parameterDefinitions',
+                       'TemplateUrl' => 'templateUrl',
+                       'RequiredCapabilities' => 'requiredCapabilities',
+                       'ApplicationId' => 'applicationId',
+                       'SemanticVersion' => 'semanticVersion',
+                       'SourceCodeArchiveUrl' => 'sourceCodeArchiveUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +86,7 @@ The application Amazon Resource Name (ARN).
 The date and time this resource was created.
 
 
-=head2 ParameterDefinitions => ArrayRef[L<Paws::ServerlessRepo::ParameterDefinition>]
+=head2 ParameterDefinitions => ArrayRef[ServerlessRepo_ParameterDefinition]
 
 An array of parameter types supported by the application.
 

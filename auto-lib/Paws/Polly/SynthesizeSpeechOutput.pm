@@ -1,12 +1,39 @@
 
 package Paws::Polly::SynthesizeSpeechOutput;
-  use Moose;
-  has AudioStream => (is => 'ro', isa => 'Str');
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has RequestCharacters => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amzn-RequestCharacters');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'AudioStream');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Int/;
+  use Paws::Polly::Types qw//;
+  has AudioStream => (is => 'ro', isa => Str);
+  has ContentType => (is => 'ro', isa => Str);
+  has RequestCharacters => (is => 'ro', isa => Int);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AudioStream' => {
+                                  'type' => 'Str'
+                                },
+               'RequestCharacters' => {
+                                        'type' => 'Int'
+                                      },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInHeader' => {
+                       'RequestCharacters' => 'x-amzn-RequestCharacters',
+                       'ContentType' => 'Content-Type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

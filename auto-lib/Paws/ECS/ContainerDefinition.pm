@@ -1,42 +1,221 @@
+# Generated from default/object.tt
 package Paws::ECS::ContainerDefinition;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
-  has Cpu => (is => 'ro', isa => 'Int', request_name => 'cpu', traits => ['NameInRequest']);
-  has DependsOn => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDependency]', request_name => 'dependsOn', traits => ['NameInRequest']);
-  has DisableNetworking => (is => 'ro', isa => 'Bool', request_name => 'disableNetworking', traits => ['NameInRequest']);
-  has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsSearchDomains', traits => ['NameInRequest']);
-  has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsServers', traits => ['NameInRequest']);
-  has DockerLabels => (is => 'ro', isa => 'Paws::ECS::DockerLabelsMap', request_name => 'dockerLabels', traits => ['NameInRequest']);
-  has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dockerSecurityOptions', traits => ['NameInRequest']);
-  has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'entryPoint', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has Essential => (is => 'ro', isa => 'Bool', request_name => 'essential', traits => ['NameInRequest']);
-  has ExtraHosts => (is => 'ro', isa => 'ArrayRef[Paws::ECS::HostEntry]', request_name => 'extraHosts', traits => ['NameInRequest']);
-  has HealthCheck => (is => 'ro', isa => 'Paws::ECS::HealthCheck', request_name => 'healthCheck', traits => ['NameInRequest']);
-  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
-  has Interactive => (is => 'ro', isa => 'Bool', request_name => 'interactive', traits => ['NameInRequest']);
-  has Links => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'links', traits => ['NameInRequest']);
-  has LinuxParameters => (is => 'ro', isa => 'Paws::ECS::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
-  has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', request_name => 'logConfiguration', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
-  has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]', request_name => 'portMappings', traits => ['NameInRequest']);
-  has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
-  has PseudoTerminal => (is => 'ro', isa => 'Bool', request_name => 'pseudoTerminal', traits => ['NameInRequest']);
-  has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
-  has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
-  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
-  has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
-  has StartTimeout => (is => 'ro', isa => 'Int', request_name => 'startTimeout', traits => ['NameInRequest']);
-  has StopTimeout => (is => 'ro', isa => 'Int', request_name => 'stopTimeout', traits => ['NameInRequest']);
-  has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
-  has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
-  has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
-  has VolumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]', request_name => 'volumesFrom', traits => ['NameInRequest']);
-  has WorkingDirectory => (is => 'ro', isa => 'Str', request_name => 'workingDirectory', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int Bool/;
+  use Paws::ECS::Types qw/ECS_LogConfiguration ECS_DockerLabelsMap ECS_VolumeFrom ECS_ResourceRequirement ECS_MountPoint ECS_SystemControl ECS_HealthCheck ECS_LinuxParameters ECS_HostEntry ECS_PortMapping ECS_KeyValuePair ECS_RepositoryCredentials ECS_Secret ECS_ContainerDependency ECS_Ulimit/;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Cpu => (is => 'ro', isa => Int);
+  has DependsOn => (is => 'ro', isa => ArrayRef[ECS_ContainerDependency]);
+  has DisableNetworking => (is => 'ro', isa => Bool);
+  has DnsSearchDomains => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DnsServers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DockerLabels => (is => 'ro', isa => ECS_DockerLabelsMap);
+  has DockerSecurityOptions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EntryPoint => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Environment => (is => 'ro', isa => ArrayRef[ECS_KeyValuePair]);
+  has Essential => (is => 'ro', isa => Bool);
+  has ExtraHosts => (is => 'ro', isa => ArrayRef[ECS_HostEntry]);
+  has HealthCheck => (is => 'ro', isa => ECS_HealthCheck);
+  has Hostname => (is => 'ro', isa => Str);
+  has Image => (is => 'ro', isa => Str);
+  has Interactive => (is => 'ro', isa => Bool);
+  has Links => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has LinuxParameters => (is => 'ro', isa => ECS_LinuxParameters);
+  has LogConfiguration => (is => 'ro', isa => ECS_LogConfiguration);
+  has Memory => (is => 'ro', isa => Int);
+  has MemoryReservation => (is => 'ro', isa => Int);
+  has MountPoints => (is => 'ro', isa => ArrayRef[ECS_MountPoint]);
+  has Name => (is => 'ro', isa => Str);
+  has PortMappings => (is => 'ro', isa => ArrayRef[ECS_PortMapping]);
+  has Privileged => (is => 'ro', isa => Bool);
+  has PseudoTerminal => (is => 'ro', isa => Bool);
+  has ReadonlyRootFilesystem => (is => 'ro', isa => Bool);
+  has RepositoryCredentials => (is => 'ro', isa => ECS_RepositoryCredentials);
+  has ResourceRequirements => (is => 'ro', isa => ArrayRef[ECS_ResourceRequirement]);
+  has Secrets => (is => 'ro', isa => ArrayRef[ECS_Secret]);
+  has StartTimeout => (is => 'ro', isa => Int);
+  has StopTimeout => (is => 'ro', isa => Int);
+  has SystemControls => (is => 'ro', isa => ArrayRef[ECS_SystemControl]);
+  has Ulimits => (is => 'ro', isa => ArrayRef[ECS_Ulimit]);
+  has User => (is => 'ro', isa => Str);
+  has VolumesFrom => (is => 'ro', isa => ArrayRef[ECS_VolumeFrom]);
+  has WorkingDirectory => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ulimits' => {
+                              'class' => 'Paws::ECS::Ulimit',
+                              'type' => 'ArrayRef[ECS_Ulimit]'
+                            },
+               'DependsOn' => {
+                                'class' => 'Paws::ECS::ContainerDependency',
+                                'type' => 'ArrayRef[ECS_ContainerDependency]'
+                              },
+               'Privileged' => {
+                                 'type' => 'Bool'
+                               },
+               'DnsServers' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'MemoryReservation' => {
+                                        'type' => 'Int'
+                                      },
+               'DnsSearchDomains' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'VolumesFrom' => {
+                                  'class' => 'Paws::ECS::VolumeFrom',
+                                  'type' => 'ArrayRef[ECS_VolumeFrom]'
+                                },
+               'SystemControls' => {
+                                     'class' => 'Paws::ECS::SystemControl',
+                                     'type' => 'ArrayRef[ECS_SystemControl]'
+                                   },
+               'PseudoTerminal' => {
+                                     'type' => 'Bool'
+                                   },
+               'ExtraHosts' => {
+                                 'class' => 'Paws::ECS::HostEntry',
+                                 'type' => 'ArrayRef[ECS_HostEntry]'
+                               },
+               'DockerSecurityOptions' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'Cpu' => {
+                          'type' => 'Int'
+                        },
+               'Environment' => {
+                                  'class' => 'Paws::ECS::KeyValuePair',
+                                  'type' => 'ArrayRef[ECS_KeyValuePair]'
+                                },
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'MountPoints' => {
+                                  'class' => 'Paws::ECS::MountPoint',
+                                  'type' => 'ArrayRef[ECS_MountPoint]'
+                                },
+               'DockerLabels' => {
+                                   'class' => 'Paws::ECS::DockerLabelsMap',
+                                   'type' => 'ECS_DockerLabelsMap'
+                                 },
+               'Links' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'WorkingDirectory' => {
+                                       'type' => 'Str'
+                                     },
+               'Interactive' => {
+                                  'type' => 'Bool'
+                                },
+               'EntryPoint' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'StartTimeout' => {
+                                   'type' => 'Int'
+                                 },
+               'User' => {
+                           'type' => 'Str'
+                         },
+               'PortMappings' => {
+                                   'class' => 'Paws::ECS::PortMapping',
+                                   'type' => 'ArrayRef[ECS_PortMapping]'
+                                 },
+               'ReadonlyRootFilesystem' => {
+                                             'type' => 'Bool'
+                                           },
+               'RepositoryCredentials' => {
+                                            'class' => 'Paws::ECS::RepositoryCredentials',
+                                            'type' => 'ECS_RepositoryCredentials'
+                                          },
+               'DisableNetworking' => {
+                                        'type' => 'Bool'
+                                      },
+               'HealthCheck' => {
+                                  'class' => 'Paws::ECS::HealthCheck',
+                                  'type' => 'ECS_HealthCheck'
+                                },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'LinuxParameters' => {
+                                      'class' => 'Paws::ECS::LinuxParameters',
+                                      'type' => 'ECS_LinuxParameters'
+                                    },
+               'ResourceRequirements' => {
+                                           'class' => 'Paws::ECS::ResourceRequirement',
+                                           'type' => 'ArrayRef[ECS_ResourceRequirement]'
+                                         },
+               'LogConfiguration' => {
+                                       'class' => 'Paws::ECS::LogConfiguration',
+                                       'type' => 'ECS_LogConfiguration'
+                                     },
+               'Essential' => {
+                                'type' => 'Bool'
+                              },
+               'Memory' => {
+                             'type' => 'Int'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'StopTimeout' => {
+                                  'type' => 'Int'
+                                },
+               'Secrets' => {
+                              'class' => 'Paws::ECS::Secret',
+                              'type' => 'ArrayRef[ECS_Secret]'
+                            }
+             },
+  'NameInRequest' => {
+                       'Ulimits' => 'ulimits',
+                       'DependsOn' => 'dependsOn',
+                       'Privileged' => 'privileged',
+                       'DnsServers' => 'dnsServers',
+                       'MemoryReservation' => 'memoryReservation',
+                       'DnsSearchDomains' => 'dnsSearchDomains',
+                       'VolumesFrom' => 'volumesFrom',
+                       'SystemControls' => 'systemControls',
+                       'PseudoTerminal' => 'pseudoTerminal',
+                       'ExtraHosts' => 'extraHosts',
+                       'DockerSecurityOptions' => 'dockerSecurityOptions',
+                       'Cpu' => 'cpu',
+                       'Environment' => 'environment',
+                       'Hostname' => 'hostname',
+                       'MountPoints' => 'mountPoints',
+                       'DockerLabels' => 'dockerLabels',
+                       'Links' => 'links',
+                       'Command' => 'command',
+                       'WorkingDirectory' => 'workingDirectory',
+                       'Interactive' => 'interactive',
+                       'EntryPoint' => 'entryPoint',
+                       'StartTimeout' => 'startTimeout',
+                       'User' => 'user',
+                       'PortMappings' => 'portMappings',
+                       'ReadonlyRootFilesystem' => 'readonlyRootFilesystem',
+                       'RepositoryCredentials' => 'repositoryCredentials',
+                       'DisableNetworking' => 'disableNetworking',
+                       'HealthCheck' => 'healthCheck',
+                       'Image' => 'image',
+                       'LinuxParameters' => 'linuxParameters',
+                       'ResourceRequirements' => 'resourceRequirements',
+                       'LogConfiguration' => 'logConfiguration',
+                       'Essential' => 'essential',
+                       'Memory' => 'memory',
+                       'Name' => 'name',
+                       'StopTimeout' => 'stopTimeout',
+                       'Secrets' => 'secrets'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -159,7 +338,7 @@ absolute limit, or a quota. Windows containers only have access to the
 specified amount of CPU that is described in the task definition.
 
 
-=head2 DependsOn => ArrayRef[L<Paws::ECS::ContainerDependency>]
+=head2 DependsOn => ArrayRef[ECS_ContainerDependency]
 
   The dependencies defined for container startup and shutdown. A
 container can contain multiple dependencies. When a dependency is
@@ -221,7 +400,7 @@ docker run (https://docs.docker.com/engine/reference/run/).
 This parameter is not supported for Windows containers.
 
 
-=head2 DockerLabels => L<Paws::ECS::DockerLabelsMap>
+=head2 DockerLabels => ECS_DockerLabelsMap
 
   A key/value map of labels to add to the container. This parameter maps
 to C<Labels> in the Create a container
@@ -277,7 +456,7 @@ https://docs.docker.com/engine/reference/builder/#entrypoint
 (https://docs.docker.com/engine/reference/builder/#entrypoint).
 
 
-=head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
+=head2 Environment => ArrayRef[ECS_KeyValuePair]
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container
@@ -308,7 +487,7 @@ more information, see Application Architecture
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
+=head2 ExtraHosts => ArrayRef[ECS_HostEntry]
 
   A list of hostnames and IP address mappings to append to the
 C</etc/hosts> file on the container. This parameter maps to
@@ -322,7 +501,7 @@ This parameter is not supported for Windows containers or tasks that
 use the C<awsvpc> network mode.
 
 
-=head2 HealthCheck => L<Paws::ECS::HealthCheck>
+=head2 HealthCheck => ECS_HealthCheck
 
   The health check command and associated configuration parameters for
 the container. This parameter maps to C<HealthCheck> in the Create a
@@ -434,7 +613,7 @@ port mappings. Network isolation is achieved on the container instance
 using security groups and VPC settings.
 
 
-=head2 LinuxParameters => L<Paws::ECS::LinuxParameters>
+=head2 LinuxParameters => ECS_LinuxParameters
 
   Linux-specific modifications that are applied to the container, such as
 Linux kernel capabilities. For more information see KernelCapabilities.
@@ -442,7 +621,7 @@ Linux kernel capabilities. For more information see KernelCapabilities.
 This parameter is not supported for Windows containers.
 
 
-=head2 LogConfiguration => L<Paws::ECS::LogConfiguration>
+=head2 LogConfiguration => ECS_LogConfiguration
 
   The log configuration specification for the container.
 
@@ -552,7 +731,7 @@ container, so you should not specify fewer than 4 MiB of memory for
 your containers.
 
 
-=head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
+=head2 MountPoints => ArrayRef[ECS_MountPoint]
 
   The mount points for data volumes in your container.
 
@@ -580,7 +759,7 @@ section of the Docker Remote API
 docker run (https://docs.docker.com/engine/reference/run/).
 
 
-=head2 PortMappings => ArrayRef[L<Paws::ECS::PortMapping>]
+=head2 PortMappings => ArrayRef[ECS_PortMapping]
 
   The list of port mappings for the container. Port mappings allow
 containers to access ports on the host container instance to send or
@@ -648,18 +827,18 @@ option to docker run (https://docs.docker.com/engine/reference/run/).
 This parameter is not supported for Windows containers.
 
 
-=head2 RepositoryCredentials => L<Paws::ECS::RepositoryCredentials>
+=head2 RepositoryCredentials => ECS_RepositoryCredentials
 
   The private repository authentication credentials to use.
 
 
-=head2 ResourceRequirements => ArrayRef[L<Paws::ECS::ResourceRequirement>]
+=head2 ResourceRequirements => ArrayRef[ECS_ResourceRequirement]
 
   The type and amount of a resource to assign to a container. The only
 supported resource is a GPU.
 
 
-=head2 Secrets => ArrayRef[L<Paws::ECS::Secret>]
+=head2 Secrets => ArrayRef[ECS_Secret]
 
   The secrets to pass to the container. For more information, see
 Specifying Sensitive Data
@@ -725,7 +904,7 @@ For more information, see Amazon ECS-optimized Linux AMI
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 SystemControls => ArrayRef[L<Paws::ECS::SystemControl>]
+=head2 SystemControls => ArrayRef[ECS_SystemControl]
 
   A list of namespaced kernel parameters to set in the container. This
 parameter maps to C<Sysctls> in the Create a container
@@ -743,7 +922,7 @@ that use the C<host> network mode, it changes the container instance's
 namespaced kernel parameters as well as the containers.
 
 
-=head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
+=head2 Ulimits => ArrayRef[ECS_Ulimit]
 
   A list of C<ulimits> to set in the container. This parameter maps to
 C<Ulimits> in the Create a container
@@ -804,7 +983,7 @@ C<uid:group>
 This parameter is not supported for Windows containers.
 
 
-=head2 VolumesFrom => ArrayRef[L<Paws::ECS::VolumeFrom>]
+=head2 VolumesFrom => ArrayRef[ECS_VolumeFrom]
 
   Data volumes to mount from another container. This parameter maps to
 C<VolumesFrom> in the Create a container

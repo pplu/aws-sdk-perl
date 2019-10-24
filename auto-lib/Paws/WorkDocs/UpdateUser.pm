@@ -1,22 +1,71 @@
 
 package Paws::WorkDocs::UpdateUser;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has GivenName => (is => 'ro', isa => 'Str');
-  has GrantPoweruserPrivileges => (is => 'ro', isa => 'Str');
-  has Locale => (is => 'ro', isa => 'Str');
-  has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
-  has Surname => (is => 'ro', isa => 'Str');
-  has TimeZoneId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has UserId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_StorageRuleType/;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has GivenName => (is => 'ro', isa => Str, predicate => 1);
+  has GrantPoweruserPrivileges => (is => 'ro', isa => Str, predicate => 1);
+  has Locale => (is => 'ro', isa => Str, predicate => 1);
+  has StorageRule => (is => 'ro', isa => WorkDocs_StorageRuleType, predicate => 1);
+  has Surname => (is => 'ro', isa => Str, predicate => 1);
+  has TimeZoneId => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/users/{UserId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::UpdateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/users/{UserId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::UpdateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Surname' => {
+                              'type' => 'Str'
+                            },
+               'GivenName' => {
+                                'type' => 'Str'
+                              },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'Locale' => {
+                             'type' => 'Str'
+                           },
+               'TimeZoneId' => {
+                                 'type' => 'Str'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'GrantPoweruserPrivileges' => {
+                                               'type' => 'Str'
+                                             },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'StorageRule' => {
+                                  'class' => 'Paws::WorkDocs::StorageRuleType',
+                                  'type' => 'WorkDocs_StorageRuleType'
+                                }
+             },
+  'ParamInURI' => {
+                    'UserId' => 'UserId'
+                  },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -89,7 +138,7 @@ The locale of the user.
 
 Valid values are: C<"en">, C<"fr">, C<"ko">, C<"de">, C<"es">, C<"ja">, C<"ru">, C<"zh_CN">, C<"zh_TW">, C<"pt_BR">, C<"default">
 
-=head2 StorageRule => L<Paws::WorkDocs::StorageRuleType>
+=head2 StorageRule => WorkDocs_StorageRuleType
 
 The amount of storage for the user.
 

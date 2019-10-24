@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaLive::AudioCodecSettings;
-  use Moose;
-  has AacSettings => (is => 'ro', isa => 'Paws::MediaLive::AacSettings', request_name => 'aacSettings', traits => ['NameInRequest']);
-  has Ac3Settings => (is => 'ro', isa => 'Paws::MediaLive::Ac3Settings', request_name => 'ac3Settings', traits => ['NameInRequest']);
-  has Eac3Settings => (is => 'ro', isa => 'Paws::MediaLive::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
-  has Mp2Settings => (is => 'ro', isa => 'Paws::MediaLive::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
-  has PassThroughSettings => (is => 'ro', isa => 'Paws::MediaLive::PassThroughSettings', request_name => 'passThroughSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_Ac3Settings MediaLive_PassThroughSettings MediaLive_Mp2Settings MediaLive_AacSettings MediaLive_Eac3Settings/;
+  has AacSettings => (is => 'ro', isa => MediaLive_AacSettings);
+  has Ac3Settings => (is => 'ro', isa => MediaLive_Ac3Settings);
+  has Eac3Settings => (is => 'ro', isa => MediaLive_Eac3Settings);
+  has Mp2Settings => (is => 'ro', isa => MediaLive_Mp2Settings);
+  has PassThroughSettings => (is => 'ro', isa => MediaLive_PassThroughSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Eac3Settings' => {
+                                   'class' => 'Paws::MediaLive::Eac3Settings',
+                                   'type' => 'MediaLive_Eac3Settings'
+                                 },
+               'Mp2Settings' => {
+                                  'class' => 'Paws::MediaLive::Mp2Settings',
+                                  'type' => 'MediaLive_Mp2Settings'
+                                },
+               'PassThroughSettings' => {
+                                          'class' => 'Paws::MediaLive::PassThroughSettings',
+                                          'type' => 'MediaLive_PassThroughSettings'
+                                        },
+               'Ac3Settings' => {
+                                  'class' => 'Paws::MediaLive::Ac3Settings',
+                                  'type' => 'MediaLive_Ac3Settings'
+                                },
+               'AacSettings' => {
+                                  'class' => 'Paws::MediaLive::AacSettings',
+                                  'type' => 'MediaLive_AacSettings'
+                                }
+             },
+  'NameInRequest' => {
+                       'Eac3Settings' => 'eac3Settings',
+                       'Mp2Settings' => 'mp2Settings',
+                       'PassThroughSettings' => 'passThroughSettings',
+                       'Ac3Settings' => 'ac3Settings',
+                       'AacSettings' => 'aacSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +81,27 @@ Audio Codec Settings
 =head1 ATTRIBUTES
 
 
-=head2 AacSettings => L<Paws::MediaLive::AacSettings>
+=head2 AacSettings => MediaLive_AacSettings
 
   
 
 
-=head2 Ac3Settings => L<Paws::MediaLive::Ac3Settings>
+=head2 Ac3Settings => MediaLive_Ac3Settings
 
   
 
 
-=head2 Eac3Settings => L<Paws::MediaLive::Eac3Settings>
+=head2 Eac3Settings => MediaLive_Eac3Settings
 
   
 
 
-=head2 Mp2Settings => L<Paws::MediaLive::Mp2Settings>
+=head2 Mp2Settings => MediaLive_Mp2Settings
 
   
 
 
-=head2 PassThroughSettings => L<Paws::MediaLive::PassThroughSettings>
+=head2 PassThroughSettings => MediaLive_PassThroughSettings
 
   
 

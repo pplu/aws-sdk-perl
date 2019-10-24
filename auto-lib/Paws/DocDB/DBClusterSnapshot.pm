@@ -1,22 +1,90 @@
+# Generated from default/object.tt
 package Paws::DocDB::DBClusterSnapshot;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AvailabilityZone', traits => ['NameInRequest']);
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');
-  has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has PercentProgress => (is => 'ro', isa => 'Int');
-  has Port => (is => 'ro', isa => 'Int');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
-  has SnapshotType => (is => 'ro', isa => 'Str');
-  has SourceDBClusterSnapshotArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageEncrypted => (is => 'ro', isa => 'Bool');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int Bool/;
+  use Paws::DocDB::Types qw//;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ClusterCreateTime => (is => 'ro', isa => Str);
+  has DBClusterIdentifier => (is => 'ro', isa => Str);
+  has DBClusterSnapshotArn => (is => 'ro', isa => Str);
+  has DBClusterSnapshotIdentifier => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has PercentProgress => (is => 'ro', isa => Int);
+  has Port => (is => 'ro', isa => Int);
+  has SnapshotCreateTime => (is => 'ro', isa => Str);
+  has SnapshotType => (is => 'ro', isa => Str);
+  has SourceDBClusterSnapshotArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StorageEncrypted => (is => 'ro', isa => Bool);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageEncrypted' => {
+                                       'type' => 'Bool'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DBClusterSnapshotIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'DBClusterSnapshotArn' => {
+                                           'type' => 'Str'
+                                         },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'SourceDBClusterSnapshotArn' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'SnapshotCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'PercentProgress' => {
+                                      'type' => 'Int'
+                                    },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'SnapshotType' => {
+                                   'type' => 'Str'
+                                 },
+               'ClusterCreateTime' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'AvailabilityZones' => 'AvailabilityZone'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

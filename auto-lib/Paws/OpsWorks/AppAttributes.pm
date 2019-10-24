@@ -1,15 +1,34 @@
+# Generated from default/map_enum.tt
 package Paws::OpsWorks::AppAttributes;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has AutoBundleOnDeploy => (is => 'ro', isa => Str);
+  has AwsFlowRubySettings => (is => 'ro', isa => Str);
+  has DocumentRoot => (is => 'ro', isa => Str);
+  has RailsEnv => (is => 'ro', isa => Str);
 
-  has AutoBundleOnDeploy => (is => 'ro', isa => 'Str');
-  has AwsFlowRubySettings => (is => 'ro', isa => 'Str');
-  has DocumentRoot => (is => 'ro', isa => 'Str');
-  has RailsEnv => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'AutoBundleOnDeploy' => {
+                                          type => 'Str',                                        },
+                               'AwsFlowRubySettings' => {
+                                          type => 'Str',                                        },
+                               'DocumentRoot' => {
+                                          type => 'Str',                                        },
+                               'RailsEnv' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -45,16 +64,16 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AutoBundleOnDeploy => Str
+=head2 AutoBundleOnDeploy => 
 
 
-=head2 AwsFlowRubySettings => Str
+=head2 AwsFlowRubySettings => 
 
 
-=head2 DocumentRoot => Str
+=head2 DocumentRoot => 
 
 
-=head2 RailsEnv => Str
+=head2 RailsEnv => 
 
 
 

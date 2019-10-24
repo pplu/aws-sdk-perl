@@ -1,15 +1,42 @@
+# Generated from callargs_class.tt
 
 package Paws::SNS::CreateTopic;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SNS::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SNS::Types qw/SNS_TopicAttributesMap SNS_Tag/;
+  has Attributes => (is => 'ro', isa => SNS_TopicAttributesMap, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SNS_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTopic');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::CreateTopicResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTopicResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateTopic');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SNS::CreateTopicResponse');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateTopicResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::TopicAttributesMap',
+                                 'type' => 'SNS_TopicAttributesMap'
+                               },
+               'Tags' => {
+                           'class' => 'Paws::SNS::Tag',
+                           'type' => 'ArrayRef[SNS_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +80,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
+=head2 Attributes => SNS_TopicAttributesMap
 
 A map of attributes with their corresponding values.
 
@@ -108,7 +135,7 @@ between 1 and 256 characters long.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SNS::Tag>]
+=head2 Tags => ArrayRef[SNS_Tag]
 
 The list of tags to add to a new topic.
 

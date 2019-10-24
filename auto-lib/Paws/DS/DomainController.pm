@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::DS::DomainController;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DnsIpAddr => (is => 'ro', isa => 'Str');
-  has DomainControllerId => (is => 'ro', isa => 'Str');
-  has LaunchTime => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusLastUpdatedDateTime => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
-  has SubnetId => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DnsIpAddr => (is => 'ro', isa => Str);
+  has DomainControllerId => (is => 'ro', isa => Str);
+  has LaunchTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusLastUpdatedDateTime => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has SubnetId => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusLastUpdatedDateTime' => {
+                                                'type' => 'Str'
+                                              },
+               'LaunchTime' => {
+                                 'type' => 'Str'
+                               },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DnsIpAddr' => {
+                                'type' => 'Str'
+                              },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'SubnetId' => {
+                               'type' => 'Str'
+                             },
+               'DomainControllerId' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

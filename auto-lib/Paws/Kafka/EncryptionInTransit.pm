@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Kafka::EncryptionInTransit;
-  use Moose;
-  has ClientBroker => (is => 'ro', isa => 'Str', request_name => 'clientBroker', traits => ['NameInRequest']);
-  has InCluster => (is => 'ro', isa => 'Bool', request_name => 'inCluster', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Kafka::Types qw//;
+  has ClientBroker => (is => 'ro', isa => Str);
+  has InCluster => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InCluster' => {
+                                'type' => 'Bool'
+                              },
+               'ClientBroker' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'InCluster' => 'inCluster',
+                       'ClientBroker' => 'clientBroker'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

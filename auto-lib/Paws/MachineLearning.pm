@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::MachineLearning;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'machinelearning' }
   sub signing_name { 'machinelearning' }
   sub version { '2014-12-12' }
   sub target_prefix { 'AmazonML_20141212' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -293,7 +295,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =item ResourceType => Str
 
-=item Tags => ArrayRef[L<Paws::MachineLearning::Tag>]
+=item Tags => ArrayRef[MachineLearning_Tag]
 
 
 =back
@@ -353,7 +355,7 @@ specified by the C<OutputUri> parameter.
 
 =item DataSourceId => Str
 
-=item RDSData => L<Paws::MachineLearning::RDSDataSpec>
+=item RDSData => MachineLearning_RDSDataSpec
 
 =item RoleARN => Str
 
@@ -393,7 +395,7 @@ attribute of the C<GetDataSource> operation response.
 
 =item DataSourceId => Str
 
-=item DataSpec => L<Paws::MachineLearning::RedshiftDataSpec>
+=item DataSpec => MachineLearning_RedshiftDataSpec
 
 =item RoleARN => Str
 
@@ -455,7 +457,7 @@ fields have the appropriate values.
 
 =item DataSourceId => Str
 
-=item DataSpec => L<Paws::MachineLearning::S3DataSpec>
+=item DataSpec => MachineLearning_S3DataSpec
 
 =item [ComputeStatistics => Bool]
 
@@ -555,7 +557,7 @@ evaluation during the creation operation.
 
 =item [MLModelName => Str]
 
-=item [Parameters => L<Paws::MachineLearning::TrainingParameters>]
+=item [Parameters => MachineLearning_TrainingParameters]
 
 =item [Recipe => Str]
 
@@ -992,7 +994,7 @@ C<GetMLModel> provides results in normal or verbose format.
 
 =item PredictEndpoint => Str
 
-=item Record => L<Paws::MachineLearning::Record>
+=item Record => MachineLearning_Record
 
 
 =back

@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ELBv2::DescribeSSLPoliciesOutput;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has SslPolicies => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SslPolicy]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELBv2::Types qw/ELBv2_SslPolicy/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has SslPolicies => (is => 'ro', isa => ArrayRef[ELBv2_SslPolicy]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SslPolicies' => {
+                                  'class' => 'Paws::ELBv2::SslPolicy',
+                                  'type' => 'ArrayRef[ELBv2_SslPolicy]'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +44,7 @@ If there are additional results, this is the marker for the next set of
 results. Otherwise, this is null.
 
 
-=head2 SslPolicies => ArrayRef[L<Paws::ELBv2::SslPolicy>]
+=head2 SslPolicies => ArrayRef[ELBv2_SslPolicy]
 
 Information about the policies.
 

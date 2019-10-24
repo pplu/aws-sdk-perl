@@ -1,15 +1,59 @@
+# Generated from default/object.tt
 package Paws::GameLift::PlayerSession;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has FleetId => (is => 'ro', isa => 'Str');
-  has GameSessionId => (is => 'ro', isa => 'Str');
-  has IpAddress => (is => 'ro', isa => 'Str');
-  has PlayerData => (is => 'ro', isa => 'Str');
-  has PlayerId => (is => 'ro', isa => 'Str');
-  has PlayerSessionId => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
-  has TerminationTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GameLift::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has FleetId => (is => 'ro', isa => Str);
+  has GameSessionId => (is => 'ro', isa => Str);
+  has IpAddress => (is => 'ro', isa => Str);
+  has PlayerData => (is => 'ro', isa => Str);
+  has PlayerId => (is => 'ro', isa => Str);
+  has PlayerSessionId => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has TerminationTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'IpAddress' => {
+                                'type' => 'Str'
+                              },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'PlayerData' => {
+                                 'type' => 'Str'
+                               },
+               'PlayerId' => {
+                               'type' => 'Str'
+                             },
+               'TerminationTime' => {
+                                      'type' => 'Str'
+                                    },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'PlayerSessionId' => {
+                                      'type' => 'Str'
+                                    },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

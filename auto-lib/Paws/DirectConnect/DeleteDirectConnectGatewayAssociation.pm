@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::DeleteDirectConnectGatewayAssociation;
-  use Moose;
-  has AssociationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'associationId' );
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'directConnectGatewayId' );
-  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has AssociationId => (is => 'ro', isa => Str, predicate => 1);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualGatewayId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDirectConnectGatewayAssociation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDirectConnectGatewayAssociation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::DeleteDirectConnectGatewayAssociationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssociationId' => {
+                                    'type' => 'Str'
+                                  },
+               'VirtualGatewayId' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'AssociationId' => 'associationId',
+                       'VirtualGatewayId' => 'virtualGatewayId',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

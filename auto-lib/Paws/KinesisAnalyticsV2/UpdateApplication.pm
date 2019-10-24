@@ -1,18 +1,56 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::UpdateApplication;
-  use Moose;
-  has ApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate');
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate]');
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has RunConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfigurationUpdate');
-  has ServiceExecutionRoleUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ApplicationConfigurationUpdate KinesisAnalyticsV2_RunConfigurationUpdate KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate/;
+  has ApplicationConfigurationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_ApplicationConfigurationUpdate, predicate => 1);
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate], predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RunConfigurationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_RunConfigurationUpdate, predicate => 1);
+  has ServiceExecutionRoleUpdate => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::UpdateApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::UpdateApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'CloudWatchLoggingOptionUpdates' => {
+                                                     'class' => 'Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate',
+                                                     'type' => 'ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate]'
+                                                   },
+               'RunConfigurationUpdate' => {
+                                             'class' => 'Paws::KinesisAnalyticsV2::RunConfigurationUpdate',
+                                             'type' => 'KinesisAnalyticsV2_RunConfigurationUpdate'
+                                           },
+               'ApplicationConfigurationUpdate' => {
+                                                     'class' => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate',
+                                                     'type' => 'KinesisAnalyticsV2_ApplicationConfigurationUpdate'
+                                                   },
+               'ServiceExecutionRoleUpdate' => {
+                                                 'type' => 'Str'
+                                               },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'CurrentApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -115,7 +153,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],    # min: 1, max: 1000; OPTIONAL
+                ],                                         # min: 1, max: 1000
                 RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
                 RecordFormatUpdate   => {
                   RecordFormatType  => 'JSON',    # values: JSON, CSV
@@ -131,7 +169,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },    # OPTIONAL
+                },
               },    # OPTIONAL
               KinesisFirehoseInputUpdate => {
                 ResourceARNUpdate => 'MyResourceARN',    # min: 1, max: 2048
@@ -180,13 +218,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],    # min: 1, max: 1000; OPTIONAL
+                ],                                         # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',    # values: JSON, CSV
+                  RecordFormatType  => 'JSON',             # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',    # min: 1
+                        'MyRecordColumnDelimiter',         # min: 1
                       RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
 
                     },    # OPTIONAL
@@ -195,7 +233,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },    # OPTIONAL
+                },
                 RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
               },    # OPTIONAL
               S3ReferenceDataSourceUpdate => {
@@ -236,7 +274,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate>
+=head2 ApplicationConfigurationUpdate => KinesisAnalyticsV2_ApplicationConfigurationUpdate
 
 Describes application configuration updates.
 
@@ -248,7 +286,7 @@ The name of the application to update.
 
 
 
-=head2 CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate>]
+=head2 CloudWatchLoggingOptionUpdates => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate]
 
 Describes application Amazon CloudWatch logging option updates. You can
 only update existing CloudWatch logging options with this action. To
@@ -264,7 +302,7 @@ version ID using DescribeApplication.
 
 
 
-=head2 RunConfigurationUpdate => L<Paws::KinesisAnalyticsV2::RunConfigurationUpdate>
+=head2 RunConfigurationUpdate => KinesisAnalyticsV2_RunConfigurationUpdate
 
 Describes updates to the application's starting parameters.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessKeyLastUsed;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,12 @@ package Paws::IAM::AccessKeyLastUsed;
                'Region' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'ServiceName' => 1,
+                    'LastUsedDate' => 1,
+                    'Region' => 1
+                  }
 }
 ;
     return $Params_map;

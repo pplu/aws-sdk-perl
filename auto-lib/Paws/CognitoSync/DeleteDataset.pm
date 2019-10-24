@@ -1,16 +1,47 @@
 
 package Paws::CognitoSync::DeleteDataset;
-  use Moose;
-  has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName', required => 1);
-  has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId', required => 1);
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw//;
+  has DatasetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDataset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DeleteDatasetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDataset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::DeleteDatasetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'DatasetName' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'IdentityPoolId' => 'IdentityPoolId',
+                    'DatasetName' => 'DatasetName',
+                    'IdentityId' => 'IdentityId'
+                  },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1,
+                    'DatasetName' => 1,
+                    'IdentityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

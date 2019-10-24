@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::EventSubscriptionsMessage;
-  use Moose;
-  has EventSubscriptionsList => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::EventSubscription]', request_name => 'EventSubscription', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_EventSubscription/;
+  has EventSubscriptionsList => (is => 'ro', isa => ArrayRef[Neptune_EventSubscription]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventSubscriptionsList' => {
+                                             'class' => 'Paws::Neptune::EventSubscription',
+                                             'type' => 'ArrayRef[Neptune_EventSubscription]'
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'EventSubscriptionsList' => 'EventSubscription'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Neptune::EventSubscriptionsMessage
 =head1 ATTRIBUTES
 
 
-=head2 EventSubscriptionsList => ArrayRef[L<Paws::Neptune::EventSubscription>]
+=head2 EventSubscriptionsList => ArrayRef[Neptune_EventSubscription]
 
 A list of EventSubscriptions data types.
 

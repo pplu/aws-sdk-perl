@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::ResourceChangeDetail;
-  use Moose;
-  has CausingEntity => (is => 'ro', isa => 'Str');
-  has ChangeSource => (is => 'ro', isa => 'Str');
-  has Evaluation => (is => 'ro', isa => 'Str');
-  has Target => (is => 'ro', isa => 'Paws::CloudFormation::ResourceTargetDefinition');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFormation::Types qw/CloudFormation_ResourceTargetDefinition/;
+  has CausingEntity => (is => 'ro', isa => Str);
+  has ChangeSource => (is => 'ro', isa => Str);
+  has Evaluation => (is => 'ro', isa => Str);
+  has Target => (is => 'ro', isa => CloudFormation_ResourceTargetDefinition);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'class' => 'Paws::CloudFormation::ResourceTargetDefinition',
+                             'type' => 'CloudFormation_ResourceTargetDefinition'
+                           },
+               'CausingEntity' => {
+                                    'type' => 'Str'
+                                  },
+               'Evaluation' => {
+                                 'type' => 'Str'
+                               },
+               'ChangeSource' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -117,7 +144,7 @@ If the resource is recreated, it will have a new physical ID, so all
 references to that resource will also be updated.
 
 
-=head2 Target => L<Paws::CloudFormation::ResourceTargetDefinition>
+=head2 Target => CloudFormation_ResourceTargetDefinition
 
   A C<ResourceTargetDefinition> structure that describes the field that
 AWS CloudFormation will change and whether the resource will be

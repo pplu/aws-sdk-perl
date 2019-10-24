@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GlobalAccelerator::CreateEndpointGroupResponse;
-  use Moose;
-  has EndpointGroup => (is => 'ro', isa => 'Paws::GlobalAccelerator::EndpointGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GlobalAccelerator::Types qw/GlobalAccelerator_EndpointGroup/;
+  has EndpointGroup => (is => 'ro', isa => GlobalAccelerator_EndpointGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointGroup' => {
+                                    'class' => 'Paws::GlobalAccelerator::EndpointGroup',
+                                    'type' => 'GlobalAccelerator_EndpointGroup'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GlobalAccelerator::CreateEndpointGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 EndpointGroup => L<Paws::GlobalAccelerator::EndpointGroup>
+=head2 EndpointGroup => GlobalAccelerator_EndpointGroup
 
 The information about the endpoint group that was created.
 

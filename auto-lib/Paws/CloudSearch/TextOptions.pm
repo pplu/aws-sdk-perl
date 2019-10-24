@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::TextOptions;
-  use Moose;
-  has AnalysisScheme => (is => 'ro', isa => 'Str');
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has HighlightEnabled => (is => 'ro', isa => 'Bool');
-  has ReturnEnabled => (is => 'ro', isa => 'Bool');
-  has SortEnabled => (is => 'ro', isa => 'Bool');
-  has SourceField => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudSearch::Types qw//;
+  has AnalysisScheme => (is => 'ro', isa => Str);
+  has DefaultValue => (is => 'ro', isa => Str);
+  has HighlightEnabled => (is => 'ro', isa => Bool);
+  has ReturnEnabled => (is => 'ro', isa => Bool);
+  has SortEnabled => (is => 'ro', isa => Bool);
+  has SourceField => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReturnEnabled' => {
+                                    'type' => 'Bool'
+                                  },
+               'SortEnabled' => {
+                                  'type' => 'Bool'
+                                },
+               'SourceField' => {
+                                  'type' => 'Str'
+                                },
+               'HighlightEnabled' => {
+                                       'type' => 'Bool'
+                                     },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'AnalysisScheme' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

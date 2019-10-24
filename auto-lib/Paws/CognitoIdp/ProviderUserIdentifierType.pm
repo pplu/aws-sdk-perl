@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::ProviderUserIdentifierType;
-  use Moose;
-  has ProviderAttributeName => (is => 'ro', isa => 'Str');
-  has ProviderAttributeValue => (is => 'ro', isa => 'Str');
-  has ProviderName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has ProviderAttributeName => (is => 'ro', isa => Str);
+  has ProviderAttributeValue => (is => 'ro', isa => Str);
+  has ProviderName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProviderAttributeName' => {
+                                            'type' => 'Str'
+                                          },
+               'ProviderAttributeValue' => {
+                                             'type' => 'Str'
+                                           },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

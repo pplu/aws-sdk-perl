@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::Instance;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
-  has CreatorRequestId => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_Attributes/;
+  has Attributes => (is => 'ro', isa => ServiceDiscovery_Attributes);
+  has CreatorRequestId => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Attributes' => {
+                                 'class' => 'Paws::ServiceDiscovery::Attributes',
+                                 'type' => 'ServiceDiscovery_Attributes'
+                               },
+               'CreatorRequestId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +66,7 @@ Cloud Map creates when you submit a C<RegisterInstance> request.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::ServiceDiscovery::Attributes>
+=head2 Attributes => ServiceDiscovery_Attributes
 
   A string map that contains the following information for the service
 that you specify in C<ServiceId>:

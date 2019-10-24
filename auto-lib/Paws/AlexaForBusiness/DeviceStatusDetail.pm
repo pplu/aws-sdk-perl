@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::DeviceStatusDetail;
-  use Moose;
-  has Code => (is => 'ro', isa => 'Str');
-  has Feature => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Code => (is => 'ro', isa => Str);
+  has Feature => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Feature' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

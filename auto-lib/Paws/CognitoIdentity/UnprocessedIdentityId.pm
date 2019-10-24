@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::UnprocessedIdentityId;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has IdentityId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has IdentityId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

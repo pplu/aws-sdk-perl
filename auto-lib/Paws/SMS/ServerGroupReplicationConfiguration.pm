@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerGroupReplicationConfiguration;
-  use Moose;
-  has ServerGroupId => (is => 'ro', isa => 'Str', request_name => 'serverGroupId', traits => ['NameInRequest']);
-  has ServerReplicationConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerReplicationConfiguration]', request_name => 'serverReplicationConfigurations', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_ServerReplicationConfiguration/;
+  has ServerGroupId => (is => 'ro', isa => Str);
+  has ServerReplicationConfigurations => (is => 'ro', isa => ArrayRef[SMS_ServerReplicationConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerReplicationConfigurations' => {
+                                                      'class' => 'Paws::SMS::ServerReplicationConfiguration',
+                                                      'type' => 'ArrayRef[SMS_ServerReplicationConfiguration]'
+                                                    },
+               'ServerGroupId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ServerReplicationConfigurations' => 'serverReplicationConfigurations',
+                       'ServerGroupId' => 'serverGroupId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ Replication configuration for a server group.
 associated with.
 
 
-=head2 ServerReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerReplicationConfiguration>]
+=head2 ServerReplicationConfigurations => ArrayRef[SMS_ServerReplicationConfiguration]
 
   Replication configuration for servers in the server group.
 

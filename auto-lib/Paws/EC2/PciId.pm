@@ -6,7 +6,7 @@ package Paws::EC2::PciId;
   has SubsystemVendorId => (is => 'ro', isa => Str);
   has VendorId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SubsystemVendorId' => {
@@ -24,8 +24,8 @@ package Paws::EC2::PciId;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

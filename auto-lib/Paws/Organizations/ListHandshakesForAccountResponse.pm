@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::ListHandshakesForAccountResponse;
-  use Moose;
-  has Handshakes => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Handshake]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Organizations::Types qw/Organizations_Handshake/;
+  has Handshakes => (is => 'ro', isa => ArrayRef[Organizations_Handshake]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Handshakes' => {
+                                 'class' => 'Paws::Organizations::Handshake',
+                                 'type' => 'ArrayRef[Organizations_Handshake]'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Organizations::ListHandshakesForAccountResponse
 =head1 ATTRIBUTES
 
 
-=head2 Handshakes => ArrayRef[L<Paws::Organizations::Handshake>]
+=head2 Handshakes => ArrayRef[Organizations_Handshake]
 
 A list of Handshake objects with details about each of the handshakes
 that is associated with the specified account.

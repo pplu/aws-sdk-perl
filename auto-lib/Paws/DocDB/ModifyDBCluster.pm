@@ -1,25 +1,81 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::ModifyDBCluster;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::DocDB::CloudwatchLogsExportConfiguration');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::DocDB::Types qw/DocDB_CloudwatchLogsExportConfiguration/;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => DocDB_CloudwatchLogsExportConfiguration, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has NewDBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::ModifyDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::ModifyDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'NewDBClusterIdentifier' => {
+                                             'type' => 'Str'
+                                           },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'CloudwatchLogsExportConfiguration' => {
+                                                        'class' => 'Paws::DocDB::CloudwatchLogsExportConfiguration',
+                                                        'type' => 'DocDB_CloudwatchLogsExportConfiguration'
+                                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -109,7 +165,7 @@ Must be a value from 1 to 35.
 
 
 
-=head2 CloudwatchLogsExportConfiguration => L<Paws::DocDB::CloudwatchLogsExportConfiguration>
+=head2 CloudwatchLogsExportConfiguration => DocDB_CloudwatchLogsExportConfiguration
 
 The configuration setting for the log types to be enabled for export to
 Amazon CloudWatch Logs for a specific DB instance or DB cluster. The

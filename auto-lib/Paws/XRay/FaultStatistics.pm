@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::XRay::FaultStatistics;
-  use Moose;
-  has OtherCount => (is => 'ro', isa => 'Int');
-  has TotalCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::XRay::Types qw//;
+  has OtherCount => (is => 'ro', isa => Int);
+  has TotalCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OtherCount' => {
+                                 'type' => 'Int'
+                               },
+               'TotalCount' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,35 @@
 
 package Paws::IoTJobsData::UpdateJobExecutionResponse;
-  use Moose;
-  has ExecutionState => (is => 'ro', isa => 'Paws::IoTJobsData::JobExecutionState', traits => ['NameInRequest'], request_name => 'executionState');
-  has JobDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDocument');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTJobsData::Types qw/IoTJobsData_JobExecutionState/;
+  has ExecutionState => (is => 'ro', isa => IoTJobsData_JobExecutionState);
+  has JobDocument => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobDocument' => {
+                                  'type' => 'Str'
+                                },
+               'ExecutionState' => {
+                                     'class' => 'Paws::IoTJobsData::JobExecutionState',
+                                     'type' => 'IoTJobsData_JobExecutionState'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'JobDocument' => 'jobDocument',
+                       'ExecutionState' => 'executionState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTJobsData::UpdateJobExecutionResponse
 =head1 ATTRIBUTES
 
 
-=head2 ExecutionState => L<Paws::IoTJobsData::JobExecutionState>
+=head2 ExecutionState => IoTJobsData_JobExecutionState
 
 A JobExecutionState object.
 

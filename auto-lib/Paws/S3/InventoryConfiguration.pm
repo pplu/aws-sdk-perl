@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::InventoryConfiguration;
   use Moo;
   use Types::Standard qw/Str Bool ArrayRef Undef/;
@@ -40,7 +41,14 @@ package Paws::S3::InventoryConfiguration;
              },
   'NameInRequest' => {
                        'OptionalFields' => 'Field'
-                     }
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'IncludedObjectVersions' => 1,
+                    'Schedule' => 1,
+                    'Destination' => 1,
+                    'IsEnabled' => 1
+                  }
 }
 ;
     return $Params_map;

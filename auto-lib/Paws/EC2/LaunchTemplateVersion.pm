@@ -10,7 +10,7 @@ package Paws::EC2::LaunchTemplateVersion;
   has VersionDescription => (is => 'ro', isa => Str);
   has VersionNumber => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LaunchTemplateId' => {
@@ -51,8 +51,8 @@ package Paws::EC2::LaunchTemplateVersion;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

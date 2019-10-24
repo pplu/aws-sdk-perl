@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ElasticBeanstalk::SourceConfiguration;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str');
-  has TemplateName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw//;
+  has ApplicationName => (is => 'ro', isa => Str);
+  has TemplateName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateName' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

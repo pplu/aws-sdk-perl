@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::LexRuntime::GenericAttachment;
-  use Moose;
-  has AttachmentLinkUrl => (is => 'ro', isa => 'Str', request_name => 'attachmentLinkUrl', traits => ['NameInRequest']);
-  has Buttons => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::Button]', request_name => 'buttons', traits => ['NameInRequest']);
-  has ImageUrl => (is => 'ro', isa => 'Str', request_name => 'imageUrl', traits => ['NameInRequest']);
-  has SubTitle => (is => 'ro', isa => 'Str', request_name => 'subTitle', traits => ['NameInRequest']);
-  has Title => (is => 'ro', isa => 'Str', request_name => 'title', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexRuntime::Types qw/LexRuntime_Button/;
+  has AttachmentLinkUrl => (is => 'ro', isa => Str);
+  has Buttons => (is => 'ro', isa => ArrayRef[LexRuntime_Button]);
+  has ImageUrl => (is => 'ro', isa => Str);
+  has SubTitle => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttachmentLinkUrl' => {
+                                        'type' => 'Str'
+                                      },
+               'SubTitle' => {
+                               'type' => 'Str'
+                             },
+               'ImageUrl' => {
+                               'type' => 'Str'
+                             },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Buttons' => {
+                              'class' => 'Paws::LexRuntime::Button',
+                              'type' => 'ArrayRef[LexRuntime_Button]'
+                            }
+             },
+  'NameInRequest' => {
+                       'AttachmentLinkUrl' => 'attachmentLinkUrl',
+                       'SubTitle' => 'subTitle',
+                       'ImageUrl' => 'imageUrl',
+                       'Title' => 'title',
+                       'Buttons' => 'buttons'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +83,7 @@ could be an image, a button, a link, or text.
   The URL of an attachment to the response card.
 
 
-=head2 Buttons => ArrayRef[L<Paws::LexRuntime::Button>]
+=head2 Buttons => ArrayRef[LexRuntime_Button]
 
   The list of options to show to the user.
 

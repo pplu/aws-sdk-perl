@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::ScalableTarget;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has MaxCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has MinCapacity => (is => 'ro', isa => 'Int', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', required => 1);
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
-  has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has MaxCapacity => (is => 'ro', isa => Int, required => 1);
+  has MinCapacity => (is => 'ro', isa => Int, required => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+  has ScalableDimension => (is => 'ro', isa => Str, required => 1);
+  has ServiceNamespace => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ServiceNamespace' => {
+                                       'type' => 'Str'
+                                     },
+               'ScalableDimension' => {
+                                        'type' => 'Str'
+                                      },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'CreationTime' => 1,
+                    'ServiceNamespace' => 1,
+                    'ScalableDimension' => 1,
+                    'MinCapacity' => 1,
+                    'MaxCapacity' => 1,
+                    'RoleARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

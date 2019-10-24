@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate;
-  use Moose;
-  has CloudWatchLoggingOptionId => (is => 'ro', isa => 'Str', required => 1);
-  has LogStreamARNUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has CloudWatchLoggingOptionId => (is => 'ro', isa => Str, required => 1);
+  has LogStreamARNUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogStreamARNUpdate' => {
+                                         'type' => 'Str'
+                                       },
+               'CloudWatchLoggingOptionId' => {
+                                                'type' => 'Str'
+                                              }
+             },
+  'IsRequired' => {
+                    'CloudWatchLoggingOptionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

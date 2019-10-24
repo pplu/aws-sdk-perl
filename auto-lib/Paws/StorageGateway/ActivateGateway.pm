@@ -1,20 +1,64 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::ActivateGateway;
-  use Moose;
-  has ActivationKey => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayName => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayRegion => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayTimezone => (is => 'ro', isa => 'Str', required => 1);
-  has GatewayType => (is => 'ro', isa => 'Str');
-  has MediumChangerType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
-  has TapeDriveType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_Tag/;
+  has ActivationKey => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayRegion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayTimezone => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GatewayType => (is => 'ro', isa => Str, predicate => 1);
+  has MediumChangerType => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[StorageGateway_Tag], predicate => 1);
+  has TapeDriveType => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ActivateGateway');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::ActivateGatewayOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ActivateGateway');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::ActivateGatewayOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayTimezone' => {
+                                      'type' => 'Str'
+                                    },
+               'TapeDriveType' => {
+                                    'type' => 'Str'
+                                  },
+               'GatewayRegion' => {
+                                    'type' => 'Str'
+                                  },
+               'GatewayType' => {
+                                  'type' => 'Str'
+                                },
+               'MediumChangerType' => {
+                                        'type' => 'Str'
+                                      },
+               'ActivationKey' => {
+                                    'type' => 'Str'
+                                  },
+               'GatewayName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::StorageGateway::Tag',
+                           'type' => 'ArrayRef[StorageGateway_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'GatewayTimezone' => 1,
+                    'GatewayRegion' => 1,
+                    'GatewayName' => 1,
+                    'ActivationKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +169,7 @@ Valid Values: "STK-L700", "AWS-Gateway-VTL"
 
 
 
-=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
+=head2 Tags => ArrayRef[StorageGateway_Tag]
 
 A list of up to 50 tags that can be assigned to the gateway. Each tag
 is a key-value pair.

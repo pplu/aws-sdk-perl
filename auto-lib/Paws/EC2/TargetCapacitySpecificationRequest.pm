@@ -6,7 +6,7 @@ package Paws::EC2::TargetCapacitySpecificationRequest;
   has SpotTargetCapacity => (is => 'ro', isa => Int);
   has TotalTargetCapacity => (is => 'ro', isa => Int, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SpotTargetCapacity' => {
@@ -21,11 +21,14 @@ package Paws::EC2::TargetCapacitySpecificationRequest;
                'OnDemandTargetCapacity' => {
                                              'type' => 'Int'
                                            }
-             }
+             },
+  'IsRequired' => {
+                    'TotalTargetCapacity' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

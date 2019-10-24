@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::GameLift::VpcPeeringConnection;
-  use Moose;
-  has FleetId => (is => 'ro', isa => 'Str');
-  has GameLiftVpcId => (is => 'ro', isa => 'Str');
-  has IpV4CidrBlock => (is => 'ro', isa => 'Str');
-  has PeerVpcId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Paws::GameLift::VpcPeeringConnectionStatus');
-  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_VpcPeeringConnectionStatus/;
+  has FleetId => (is => 'ro', isa => Str);
+  has GameLiftVpcId => (is => 'ro', isa => Str);
+  has IpV4CidrBlock => (is => 'ro', isa => Str);
+  has PeerVpcId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => GameLift_VpcPeeringConnectionStatus);
+  has VpcPeeringConnectionId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GameLiftVpcId' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'class' => 'Paws::GameLift::VpcPeeringConnectionStatus',
+                             'type' => 'GameLift_VpcPeeringConnectionStatus'
+                           },
+               'FleetId' => {
+                              'type' => 'Str'
+                            },
+               'PeerVpcId' => {
+                                'type' => 'Str'
+                              },
+               'IpV4CidrBlock' => {
+                                    'type' => 'Str'
+                                  },
+               'VpcPeeringConnectionId' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -104,7 +137,7 @@ Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 
-=head2 Status => L<Paws::GameLift::VpcPeeringConnectionStatus>
+=head2 Status => GameLift_VpcPeeringConnectionStatus
 
   Object that contains status information about the connection. Status
 indicates if a connection is pending, successful, or failed.

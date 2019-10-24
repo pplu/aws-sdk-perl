@@ -13,7 +13,7 @@ package Paws::EC2::ServiceDetail;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has VpcEndpointPolicySupported => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BaseEndpointDnsNames' => {
@@ -67,8 +67,8 @@ package Paws::EC2::ServiceDetail;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

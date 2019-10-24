@@ -1,16 +1,50 @@
 
 package Paws::IoT::TransferCertificate;
-  use Moose;
-  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId', required => 1);
-  has TargetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount', required => 1);
-  has TransferMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transferMessage');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CertificateId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetAwsAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransferMessage => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TransferCertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/transfer-certificate/{certificateId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::TransferCertificateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TransferCertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/transfer-certificate/{certificateId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::TransferCertificateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransferMessage' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateId' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetAwsAccount' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'CertificateId' => 'certificateId'
+                  },
+  'ParamInQuery' => {
+                      'TargetAwsAccount' => 'targetAwsAccount'
+                    },
+  'NameInRequest' => {
+                       'TransferMessage' => 'transferMessage'
+                     },
+  'IsRequired' => {
+                    'CertificateId' => 1,
+                    'TargetAwsAccount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Greengrass::GroupCertificateConfiguration;
-  use Moose;
-  has CertificateAuthorityExpiryInMilliseconds => (is => 'ro', isa => 'Str');
-  has CertificateExpiryInMilliseconds => (is => 'ro', isa => 'Str');
-  has GroupId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has CertificateAuthorityExpiryInMilliseconds => (is => 'ro', isa => Str);
+  has CertificateExpiryInMilliseconds => (is => 'ro', isa => Str);
+  has GroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CertificateAuthorityExpiryInMilliseconds' => {
+                                                               'type' => 'Str'
+                                                             },
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'CertificateExpiryInMilliseconds' => {
+                                                      'type' => 'Str'
+                                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

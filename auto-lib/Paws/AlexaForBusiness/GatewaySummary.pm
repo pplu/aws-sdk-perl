@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::GatewaySummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has GatewayGroupArn => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SoftwareVersion => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has GatewayGroupArn => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SoftwareVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GatewayGroupArn' => {
+                                      'type' => 'Str'
+                                    },
+               'SoftwareVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,13 +1,29 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Config::StartConfigRulesEvaluation;
-  use Moose;
-  has ConfigRuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Config::Types qw//;
+  has ConfigRuleNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartConfigRulesEvaluation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::StartConfigRulesEvaluationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartConfigRulesEvaluation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Config::StartConfigRulesEvaluationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigRuleNames' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

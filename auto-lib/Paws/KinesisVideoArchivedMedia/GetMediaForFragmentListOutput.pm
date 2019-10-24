@@ -1,11 +1,34 @@
 
 package Paws::KinesisVideoArchivedMedia::GetMediaForFragmentListOutput;
-  use Moose;
-  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
-  has Payload => (is => 'ro', isa => 'Str');
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Payload');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw//;
+  has ContentType => (is => 'ro', isa => Str);
+  has Payload => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'ContentType' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInHeader' => {
+                       'ContentType' => 'Content-Type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Route53Resolver::DeleteResolverEndpointResponse;
-  use Moose;
-  has ResolverEndpoint => (is => 'ro', isa => 'Paws::Route53Resolver::ResolverEndpoint');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Resolver::Types qw/Route53Resolver_ResolverEndpoint/;
+  has ResolverEndpoint => (is => 'ro', isa => Route53Resolver_ResolverEndpoint);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResolverEndpoint' => {
+                                       'class' => 'Paws::Route53Resolver::ResolverEndpoint',
+                                       'type' => 'Route53Resolver_ResolverEndpoint'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Route53Resolver::DeleteResolverEndpointResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResolverEndpoint => L<Paws::Route53Resolver::ResolverEndpoint>
+=head2 ResolverEndpoint => Route53Resolver_ResolverEndpoint
 
 Information about the C<DeleteResolverEndpoint> request, including the
 status of the request.

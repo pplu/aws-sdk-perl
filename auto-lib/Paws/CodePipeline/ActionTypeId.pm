@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::ActionTypeId;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest'], required => 1);
-  has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest'], required => 1);
-  has Provider => (is => 'ro', isa => 'Str', request_name => 'provider', traits => ['NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw//;
+  has Category => (is => 'ro', isa => Str, required => 1);
+  has Owner => (is => 'ro', isa => Str, required => 1);
+  has Provider => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Provider' => {
+                               'type' => 'Str'
+                             },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Owner' => 'owner',
+                       'Version' => 'version',
+                       'Provider' => 'provider',
+                       'Category' => 'category'
+                     },
+  'IsRequired' => {
+                    'Owner' => 1,
+                    'Version' => 1,
+                    'Provider' => 1,
+                    'Category' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

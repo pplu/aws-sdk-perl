@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GPSCoordinates;
-  use Moose;
-  has Latitude => (is => 'ro', isa => 'Num', required => 1);
-  has Longitude => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Pinpoint::Types qw//;
+  has Latitude => (is => 'ro', isa => Num, required => 1);
+  has Longitude => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Longitude' => {
+                                'type' => 'Num'
+                              },
+               'Latitude' => {
+                               'type' => 'Num'
+                             }
+             },
+  'IsRequired' => {
+                    'Longitude' => 1,
+                    'Latitude' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

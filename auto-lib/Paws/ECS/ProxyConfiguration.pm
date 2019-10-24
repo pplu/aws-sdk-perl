@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::ECS::ProxyConfiguration;
-  use Moose;
-  has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest'], required => 1);
-  has Properties => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'properties', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_KeyValuePair/;
+  has ContainerName => (is => 'ro', isa => Str, required => 1);
+  has Properties => (is => 'ro', isa => ArrayRef[ECS_KeyValuePair]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Properties' => {
+                                 'class' => 'Paws::ECS::KeyValuePair',
+                                 'type' => 'ArrayRef[ECS_KeyValuePair]'
+                               },
+               'ContainerName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Properties' => 'properties',
+                       'ContainerName' => 'containerName'
+                     },
+  'IsRequired' => {
+                    'ContainerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +88,7 @@ platform version 1.3.0 or later.
   The name of the container that will serve as the App Mesh proxy.
 
 
-=head2 Properties => ArrayRef[L<Paws::ECS::KeyValuePair>]
+=head2 Properties => ArrayRef[ECS_KeyValuePair]
 
   The set of network configuration parameters to provide the Container
 Network Interface (CNI) plugin, specified as key-value pairs.

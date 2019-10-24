@@ -8,7 +8,7 @@ package Paws::EC2::DescribeTrafficMirrorFiltersResult;
   has TrafficMirrorFilters => (is => 'ro', isa => ArrayRef[EC2_TrafficMirrorFilter]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TrafficMirrorFilters' => {
@@ -28,8 +28,8 @@ package Paws::EC2::DescribeTrafficMirrorFiltersResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

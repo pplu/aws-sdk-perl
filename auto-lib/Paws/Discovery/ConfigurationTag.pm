@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Discovery::ConfigurationTag;
-  use Moose;
-  has ConfigurationId => (is => 'ro', isa => 'Str', request_name => 'configurationId', traits => ['NameInRequest']);
-  has ConfigurationType => (is => 'ro', isa => 'Str', request_name => 'configurationType', traits => ['NameInRequest']);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
-  has TimeOfCreation => (is => 'ro', isa => 'Str', request_name => 'timeOfCreation', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has ConfigurationId => (is => 'ro', isa => Str);
+  has ConfigurationType => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has TimeOfCreation => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationType' => {
+                                        'type' => 'Str'
+                                      },
+               'ConfigurationId' => {
+                                      'type' => 'Str'
+                                    },
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'TimeOfCreation' => {
+                                     'type' => 'Str'
+                                   },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'ConfigurationType' => 'configurationType',
+                       'ConfigurationId' => 'configurationId',
+                       'Value' => 'value',
+                       'TimeOfCreation' => 'timeOfCreation',
+                       'Key' => 'key'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

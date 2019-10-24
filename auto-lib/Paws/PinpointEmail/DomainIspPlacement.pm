@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DomainIspPlacement;
-  use Moose;
-  has InboxPercentage => (is => 'ro', isa => 'Num');
-  has InboxRawCount => (is => 'ro', isa => 'Int');
-  has IspName => (is => 'ro', isa => 'Str');
-  has SpamPercentage => (is => 'ro', isa => 'Num');
-  has SpamRawCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has InboxPercentage => (is => 'ro', isa => Num);
+  has InboxRawCount => (is => 'ro', isa => Int);
+  has IspName => (is => 'ro', isa => Str);
+  has SpamPercentage => (is => 'ro', isa => Num);
+  has SpamRawCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpamRawCount' => {
+                                   'type' => 'Int'
+                                 },
+               'SpamPercentage' => {
+                                     'type' => 'Num'
+                                   },
+               'IspName' => {
+                              'type' => 'Str'
+                            },
+               'InboxPercentage' => {
+                                      'type' => 'Num'
+                                    },
+               'InboxRawCount' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

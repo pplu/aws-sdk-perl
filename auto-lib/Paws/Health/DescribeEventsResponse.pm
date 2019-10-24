@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Health::DescribeEventsResponse;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::Health::Event]', traits => ['NameInRequest'], request_name => 'events' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Health::Types qw/Health_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[Health_Event]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Events' => {
+                             'class' => 'Paws::Health::Event',
+                             'type' => 'ArrayRef[Health_Event]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Events' => 'events'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Health::DescribeEventsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::Health::Event>]
+=head2 Events => ArrayRef[Health_Event]
 
 The events that match the specified filter criteria.
 

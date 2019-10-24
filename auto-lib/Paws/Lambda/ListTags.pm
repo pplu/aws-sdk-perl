@@ -1,14 +1,35 @@
 
 package Paws::Lambda::ListTags;
-  use Moose;
-  has Resource => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ARN', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw//;
+  has Resource => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTags');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-03-31/tags/{ARN}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListTagsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTags');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-03-31/tags/{ARN}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListTagsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resource' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'Resource' => 'ARN'
+                  },
+  'IsRequired' => {
+                    'Resource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

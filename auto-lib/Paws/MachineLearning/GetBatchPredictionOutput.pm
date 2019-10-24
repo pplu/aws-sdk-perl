@@ -1,25 +1,91 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MachineLearning::GetBatchPredictionOutput;
-  use Moose;
-  has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
-  has BatchPredictionId => (is => 'ro', isa => 'Str');
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has InvalidRecordCount => (is => 'ro', isa => 'Int');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has LogUri => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has MLModelId => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputUri => (is => 'ro', isa => 'Str');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has TotalRecordCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MachineLearning::Types qw//;
+  has BatchPredictionDataSourceId => (is => 'ro', isa => Str);
+  has BatchPredictionId => (is => 'ro', isa => Str);
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has InputDataLocationS3 => (is => 'ro', isa => Str);
+  has InvalidRecordCount => (is => 'ro', isa => Int);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LogUri => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MLModelId => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OutputUri => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TotalRecordCount => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     },
+               'MLModelId' => {
+                                'type' => 'Str'
+                              },
+               'LogUri' => {
+                             'type' => 'Str'
+                           },
+               'BatchPredictionId' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'InputDataLocationS3' => {
+                                          'type' => 'Str'
+                                        },
+               'OutputUri' => {
+                                'type' => 'Str'
+                              },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'InvalidRecordCount' => {
+                                         'type' => 'Int'
+                                       },
+               'TotalRecordCount' => {
+                                       'type' => 'Int'
+                                     },
+               'BatchPredictionDataSourceId' => {
+                                                  'type' => 'Str'
+                                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

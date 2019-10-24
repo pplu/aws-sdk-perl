@@ -1,24 +1,87 @@
 
 package Paws::ApiGateway::CreateDomainName;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateArn');
-  has CertificateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateBody');
-  has CertificateChain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateChain');
-  has CertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificateName');
-  has CertificatePrivateKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'certificatePrivateKey');
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
-  has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
-  has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
-  has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
-  has SecurityPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'securityPolicy');
-  has Tags => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_EndpointConfiguration/;
+  has CertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateBody => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateChain => (is => 'ro', isa => Str, predicate => 1);
+  has CertificateName => (is => 'ro', isa => Str, predicate => 1);
+  has CertificatePrivateKey => (is => 'ro', isa => Str, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointConfiguration => (is => 'ro', isa => ApiGateway_EndpointConfiguration, predicate => 1);
+  has RegionalCertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  has RegionalCertificateName => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityPolicy => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomainName');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainName');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDomainName');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/domainnames');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::DomainName');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityPolicy' => {
+                                     'type' => 'Str'
+                                   },
+               'CertificateBody' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificatePrivateKey' => {
+                                            'type' => 'Str'
+                                          },
+               'CertificateName' => {
+                                      'type' => 'Str'
+                                    },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'EndpointConfiguration' => {
+                                            'class' => 'Paws::ApiGateway::EndpointConfiguration',
+                                            'type' => 'ApiGateway_EndpointConfiguration'
+                                          },
+               'RegionalCertificateArn' => {
+                                             'type' => 'Str'
+                                           },
+               'RegionalCertificateName' => {
+                                              'type' => 'Str'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::ApiGateway::MapOfStringToString',
+                           'type' => 'ApiGateway_MapOfStringToString'
+                         },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'CertificateChain' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'SecurityPolicy' => 'securityPolicy',
+                       'CertificateBody' => 'certificateBody',
+                       'CertificatePrivateKey' => 'certificatePrivateKey',
+                       'CertificateName' => 'certificateName',
+                       'CertificateArn' => 'certificateArn',
+                       'EndpointConfiguration' => 'endpointConfiguration',
+                       'RegionalCertificateArn' => 'regionalCertificateArn',
+                       'RegionalCertificateName' => 'regionalCertificateName',
+                       'Tags' => 'tags',
+                       'DomainName' => 'domainName',
+                       'CertificateChain' => 'certificateChain'
+                     },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -129,7 +192,7 @@ private key.
 
 
 
-=head2 EndpointConfiguration => L<Paws::ApiGateway::EndpointConfiguration>
+=head2 EndpointConfiguration => ApiGateway_EndpointConfiguration
 
 The endpoint configuration of this DomainName showing the endpoint
 types of the domain name.
@@ -158,7 +221,7 @@ DomainName. The valid values are C<TLS_1_0> and C<TLS_1_2>.
 
 Valid values are: C<"TLS_1_0">, C<"TLS_1_2">
 
-=head2 Tags => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Tags => ApiGateway_MapOfStringToString
 
 The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Glacier::OutputSerialization;
-  use Moose;
-  has Csv => (is => 'ro', isa => 'Paws::Glacier::CSVOutput', request_name => 'csv', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glacier::Types qw/Glacier_CSVOutput/;
+  has Csv => (is => 'ro', isa => Glacier_CSVOutput);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Csv' => {
+                          'class' => 'Paws::Glacier::CSVOutput',
+                          'type' => 'Glacier_CSVOutput'
+                        }
+             },
+  'NameInRequest' => {
+                       'Csv' => 'csv'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Describes how the select output is serialized.
 =head1 ATTRIBUTES
 
 
-=head2 Csv => L<Paws::Glacier::CSVOutput>
+=head2 Csv => Glacier_CSVOutput
 
   Describes the serialization of CSV-encoded query results.
 

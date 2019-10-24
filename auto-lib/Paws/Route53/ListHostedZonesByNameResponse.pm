@@ -1,15 +1,57 @@
 
 package Paws::Route53::ListHostedZonesByNameResponse;
-  use Moose;
-  has DNSName => (is => 'ro', isa => 'Str');
-  has HostedZoneId => (is => 'ro', isa => 'Str');
-  has HostedZones => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HostedZone]', required => 1);
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextDNSName => (is => 'ro', isa => 'Str');
-  has NextHostedZoneId => (is => 'ro', isa => 'Str');
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::Route53::Types qw/Route53_HostedZone/;
+  has DNSName => (is => 'ro', isa => Str);
+  has HostedZoneId => (is => 'ro', isa => Str);
+  has HostedZones => (is => 'ro', isa => ArrayRef[Route53_HostedZone], required => 1);
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextDNSName => (is => 'ro', isa => Str);
+  has NextHostedZoneId => (is => 'ro', isa => Str);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'HostedZones' => {
+                                  'class' => 'Paws::Route53::HostedZone',
+                                  'type' => 'ArrayRef[Route53_HostedZone]'
+                                },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'NextHostedZoneId' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextDNSName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'HostedZones' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +78,7 @@ created it.
 
 
 
-=head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
+=head2 B<REQUIRED> HostedZones => ArrayRef[Route53_HostedZone]
 
 A complex type that contains general information about the hosted zone.
 

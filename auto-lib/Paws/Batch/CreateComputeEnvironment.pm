@@ -1,18 +1,58 @@
 
 package Paws::Batch::CreateComputeEnvironment;
-  use Moose;
-  has ComputeEnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computeEnvironmentName', required => 1);
-  has ComputeResources => (is => 'ro', isa => 'Paws::Batch::ComputeResource', traits => ['NameInRequest'], request_name => 'computeResources');
-  has ServiceRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRole', required => 1);
-  has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw/Batch_ComputeResource/;
+  has ComputeEnvironmentName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ComputeResources => (is => 'ro', isa => Batch_ComputeResource, predicate => 1);
+  has ServiceRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
+  has Type => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateComputeEnvironment');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/createcomputeenvironment');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Batch::CreateComputeEnvironmentResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateComputeEnvironment');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/createcomputeenvironment');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Batch::CreateComputeEnvironmentResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ComputeEnvironmentName' => {
+                                             'type' => 'Str'
+                                           },
+               'ServiceRole' => {
+                                  'type' => 'Str'
+                                },
+               'ComputeResources' => {
+                                       'class' => 'Paws::Batch::ComputeResource',
+                                       'type' => 'Batch_ComputeResource'
+                                     },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'ComputeEnvironmentName' => 'computeEnvironmentName',
+                       'ServiceRole' => 'serviceRole',
+                       'ComputeResources' => 'computeResources',
+                       'State' => 'state'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'ComputeEnvironmentName' => 1,
+                    'ServiceRole' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -117,7 +157,7 @@ lowercase), numbers, hyphens, and underscores are allowed.
 
 
 
-=head2 ComputeResources => L<Paws::Batch::ComputeResource>
+=head2 ComputeResources => Batch_ComputeResource
 
 Details of the compute resources managed by the compute environment.
 This parameter is required for managed compute environments. For more

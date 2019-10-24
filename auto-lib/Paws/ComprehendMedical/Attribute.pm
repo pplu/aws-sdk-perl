@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::ComprehendMedical::Attribute;
-  use Moose;
-  has BeginOffset => (is => 'ro', isa => 'Int');
-  has EndOffset => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Int');
-  has RelationshipScore => (is => 'ro', isa => 'Num');
-  has Score => (is => 'ro', isa => 'Num');
-  has Text => (is => 'ro', isa => 'Str');
-  has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Trait]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Num Str ArrayRef/;
+  use Paws::ComprehendMedical::Types qw/ComprehendMedical_Trait/;
+  has BeginOffset => (is => 'ro', isa => Int);
+  has EndOffset => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Int);
+  has RelationshipScore => (is => 'ro', isa => Num);
+  has Score => (is => 'ro', isa => Num);
+  has Text => (is => 'ro', isa => Str);
+  has Traits => (is => 'ro', isa => ArrayRef[ComprehendMedical_Trait]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Traits' => {
+                             'class' => 'Paws::ComprehendMedical::Trait',
+                             'type' => 'ArrayRef[ComprehendMedical_Trait]'
+                           },
+               'EndOffset' => {
+                                'type' => 'Int'
+                              },
+               'Id' => {
+                         'type' => 'Int'
+                       },
+               'BeginOffset' => {
+                                  'type' => 'Int'
+                                },
+               'RelationshipScore' => {
+                                        'type' => 'Num'
+                                      },
+               'Text' => {
+                           'type' => 'Str'
+                         },
+               'Score' => {
+                            'type' => 'Num'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +123,7 @@ text is correctly recognized as an attribute.
   The segment of input text extracted as this attribute.
 
 
-=head2 Traits => ArrayRef[L<Paws::ComprehendMedical::Trait>]
+=head2 Traits => ArrayRef[ComprehendMedical_Trait]
 
   Contextual information for this attribute.
 

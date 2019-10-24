@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::MediaLive::InputSecurityGroup;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'inputs', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
-  has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRule]', request_name => 'whitelistRules', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaLive::Types qw/MediaLive_InputWhitelistRule MediaLive_Tags/;
+  has Arn => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Inputs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has State => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MediaLive_Tags);
+  has WhitelistRules => (is => 'ro', isa => ArrayRef[MediaLive_InputWhitelistRule]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WhitelistRules' => {
+                                     'class' => 'Paws::MediaLive::InputWhitelistRule',
+                                     'type' => 'ArrayRef[MediaLive_InputWhitelistRule]'
+                                   },
+               'Inputs' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::MediaLive::Tags',
+                           'type' => 'MediaLive_Tags'
+                         },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'WhitelistRules' => 'whitelistRules',
+                       'Inputs' => 'inputs',
+                       'Id' => 'id',
+                       'Arn' => 'arn',
+                       'Tags' => 'tags',
+                       'State' => 'state'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,12 +103,12 @@ An Input Security Group
   The current state of the Input Security Group.
 
 
-=head2 Tags => L<Paws::MediaLive::Tags>
+=head2 Tags => MediaLive_Tags
 
   A collection of key-value pairs.
 
 
-=head2 WhitelistRules => ArrayRef[L<Paws::MediaLive::InputWhitelistRule>]
+=head2 WhitelistRules => ArrayRef[MediaLive_InputWhitelistRule]
 
   Whitelist rules and their sync status
 

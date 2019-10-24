@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ItemCollectionMetrics;
   use Moo;
   use Types::Standard qw/ArrayRef Num/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::ItemCollectionMetrics;
   has ItemCollectionKey => (is => 'ro', isa => DynamoDB_ItemCollectionKeyAttributeMap);
   has SizeEstimateRangeGB => (is => 'ro', isa => ArrayRef[Num]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ItemCollectionKey' => {
@@ -18,8 +19,8 @@ package Paws::DynamoDB::ItemCollectionMetrics;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

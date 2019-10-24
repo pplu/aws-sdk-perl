@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListArtifactsResult;
-  use Moose;
-  has Artifacts => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Artifact]', traits => ['NameInRequest'], request_name => 'artifacts' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Artifact/;
+  has Artifacts => (is => 'ro', isa => ArrayRef[DeviceFarm_Artifact]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Artifacts' => {
+                                'class' => 'Paws::DeviceFarm::Artifact',
+                                'type' => 'ArrayRef[DeviceFarm_Artifact]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Artifacts' => 'artifacts',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DeviceFarm::ListArtifactsResult
 =head1 ATTRIBUTES
 
 
-=head2 Artifacts => ArrayRef[L<Paws::DeviceFarm::Artifact>]
+=head2 Artifacts => ArrayRef[DeviceFarm_Artifact]
 
 Information about the artifacts.
 

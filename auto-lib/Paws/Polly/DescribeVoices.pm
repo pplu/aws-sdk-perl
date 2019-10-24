@@ -1,16 +1,42 @@
 
 package Paws::Polly::DescribeVoices;
-  use Moose;
-  has IncludeAdditionalLanguageCodes => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'IncludeAdditionalLanguageCodes');
-  has LanguageCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'LanguageCode');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Polly::Types qw//;
+  has IncludeAdditionalLanguageCodes => (is => 'ro', isa => Bool, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVoices');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/voices');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Polly::DescribeVoicesOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeVoices');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/voices');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Polly::DescribeVoicesOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'IncludeAdditionalLanguageCodes' => {
+                                                     'type' => 'Bool'
+                                                   }
+             },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken',
+                      'LanguageCode' => 'LanguageCode',
+                      'IncludeAdditionalLanguageCodes' => 'IncludeAdditionalLanguageCodes'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

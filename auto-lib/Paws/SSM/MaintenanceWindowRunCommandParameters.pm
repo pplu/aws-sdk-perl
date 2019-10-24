@@ -1,14 +1,57 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowRunCommandParameters;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Str');
-  has DocumentHash => (is => 'ro', isa => 'Str');
-  has DocumentHashType => (is => 'ro', isa => 'Str');
-  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
-  has OutputS3BucketName => (is => 'ro', isa => 'Str');
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has TimeoutSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw/SSM_NotificationConfig SSM_Parameters/;
+  has Comment => (is => 'ro', isa => Str);
+  has DocumentHash => (is => 'ro', isa => Str);
+  has DocumentHashType => (is => 'ro', isa => Str);
+  has NotificationConfig => (is => 'ro', isa => SSM_NotificationConfig);
+  has OutputS3BucketName => (is => 'ro', isa => Str);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => SSM_Parameters);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has TimeoutSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentHashType' => {
+                                       'type' => 'Str'
+                                     },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'DocumentHash' => {
+                                   'type' => 'Str'
+                                 },
+               'TimeoutSeconds' => {
+                                     'type' => 'Int'
+                                   },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::Parameters',
+                                 'type' => 'SSM_Parameters'
+                               },
+               'NotificationConfig' => {
+                                         'class' => 'Paws::SSM::NotificationConfig',
+                                         'type' => 'SSM_NotificationConfig'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +123,7 @@ created. SHA-1 hashes have been deprecated.
   SHA-256 or SHA-1. SHA-1 hashes have been deprecated.
 
 
-=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+=head2 NotificationConfig => SSM_NotificationConfig
 
   Configurations for sending notifications about command status changes
 on a per-instance basis.
@@ -96,7 +139,7 @@ on a per-instance basis.
   The Amazon S3 bucket subfolder.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
   The parameters for the RUN_COMMAND task execution.
 

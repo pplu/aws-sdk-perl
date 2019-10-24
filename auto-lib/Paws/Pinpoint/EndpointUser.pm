@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointUser;
-  use Moose;
-  has UserAttributes => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
-  has UserId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOfListOf__string/;
+  has UserAttributes => (is => 'ro', isa => Pinpoint_MapOfListOf__string);
+  has UserId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserAttributes' => {
+                                     'class' => 'Paws::Pinpoint::MapOfListOf__string',
+                                     'type' => 'Pinpoint_MapOfListOf__string'
+                                   },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ associated with an endpoint.
 =head1 ATTRIBUTES
 
 
-=head2 UserAttributes => L<Paws::Pinpoint::MapOfListOf__string>
+=head2 UserAttributes => Pinpoint_MapOfListOf__string
 
   One or more custom attributes that describe the user by associating a
 name with an array of values. For example, the value of an attribute

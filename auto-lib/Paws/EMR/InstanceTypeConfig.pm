@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceTypeConfig;
-  use Moose;
-  has BidPrice => (is => 'ro', isa => 'Str');
-  has BidPriceAsPercentageOfOnDemandPrice => (is => 'ro', isa => 'Num');
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has EbsConfiguration => (is => 'ro', isa => 'Paws::EMR::EbsConfiguration');
-  has InstanceType => (is => 'ro', isa => 'Str', required => 1);
-  has WeightedCapacity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Num ArrayRef Int/;
+  use Paws::EMR::Types qw/EMR_EbsConfiguration EMR_Configuration/;
+  has BidPrice => (is => 'ro', isa => Str);
+  has BidPriceAsPercentageOfOnDemandPrice => (is => 'ro', isa => Num);
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has EbsConfiguration => (is => 'ro', isa => EMR_EbsConfiguration);
+  has InstanceType => (is => 'ro', isa => Str, required => 1);
+  has WeightedCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   },
+               'EbsConfiguration' => {
+                                       'class' => 'Paws::EMR::EbsConfiguration',
+                                       'type' => 'EMR_EbsConfiguration'
+                                     },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'BidPrice' => {
+                               'type' => 'Str'
+                             },
+               'WeightedCapacity' => {
+                                       'type' => 'Int'
+                                     },
+               'BidPriceAsPercentageOfOnDemandPrice' => {
+                                                          'type' => 'Num'
+                                                        }
+             },
+  'IsRequired' => {
+                    'InstanceType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,14 +101,14 @@ C<BidPriceAsPercentageOfOnDemandPrice> is provided,
 C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   A configuration classification that applies when provisioning cluster
 instances, which can include configurations for applications and
 software that run on the cluster.
 
 
-=head2 EbsConfiguration => L<Paws::EMR::EbsConfiguration>
+=head2 EbsConfiguration => EMR_EbsConfiguration
 
   The configuration of Amazon Elastic Block Storage (EBS) attached to
 each instance as defined by C<InstanceType>.

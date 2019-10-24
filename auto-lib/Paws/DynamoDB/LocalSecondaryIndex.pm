@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::LocalSecondaryIndex;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::LocalSecondaryIndex;
   has KeySchema => (is => 'ro', isa => ArrayRef[DynamoDB_KeySchemaElement], required => 1);
   has Projection => (is => 'ro', isa => DynamoDB_Projection, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'IndexName' => {
@@ -20,11 +21,16 @@ package Paws::DynamoDB::LocalSecondaryIndex;
                                  'class' => 'Paws::DynamoDB::Projection',
                                  'type' => 'DynamoDB_Projection'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1,
+                    'KeySchema' => 1,
+                    'Projection' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

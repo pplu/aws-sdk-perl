@@ -1,22 +1,72 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::CreateHITWithHITType;
-  use Moose;
-  has AssignmentReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has HITLayoutId => (is => 'ro', isa => 'Str');
-  has HITLayoutParameters => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::HITLayoutParameter]');
-  has HITReviewPolicy => (is => 'ro', isa => 'Paws::MTurk::ReviewPolicy');
-  has HITTypeId => (is => 'ro', isa => 'Str', required => 1);
-  has LifetimeInSeconds => (is => 'ro', isa => 'Int', required => 1);
-  has MaxAssignments => (is => 'ro', isa => 'Int');
-  has Question => (is => 'ro', isa => 'Str');
-  has RequesterAnnotation => (is => 'ro', isa => 'Str');
-  has UniqueRequestToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::MTurk::Types qw/MTurk_ReviewPolicy MTurk_HITLayoutParameter/;
+  has AssignmentReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy, predicate => 1);
+  has HITLayoutId => (is => 'ro', isa => Str, predicate => 1);
+  has HITLayoutParameters => (is => 'ro', isa => ArrayRef[MTurk_HITLayoutParameter], predicate => 1);
+  has HITReviewPolicy => (is => 'ro', isa => MTurk_ReviewPolicy, predicate => 1);
+  has HITTypeId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LifetimeInSeconds => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has MaxAssignments => (is => 'ro', isa => Int, predicate => 1);
+  has Question => (is => 'ro', isa => Str, predicate => 1);
+  has RequesterAnnotation => (is => 'ro', isa => Str, predicate => 1);
+  has UniqueRequestToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHITWithHITType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::CreateHITWithHITTypeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateHITWithHITType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::CreateHITWithHITTypeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HITLayoutId' => {
+                                  'type' => 'Str'
+                                },
+               'MaxAssignments' => {
+                                     'type' => 'Int'
+                                   },
+               'UniqueRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'HITReviewPolicy' => {
+                                      'class' => 'Paws::MTurk::ReviewPolicy',
+                                      'type' => 'MTurk_ReviewPolicy'
+                                    },
+               'AssignmentReviewPolicy' => {
+                                             'class' => 'Paws::MTurk::ReviewPolicy',
+                                             'type' => 'MTurk_ReviewPolicy'
+                                           },
+               'Question' => {
+                               'type' => 'Str'
+                             },
+               'LifetimeInSeconds' => {
+                                        'type' => 'Int'
+                                      },
+               'HITTypeId' => {
+                                'type' => 'Str'
+                              },
+               'HITLayoutParameters' => {
+                                          'class' => 'Paws::MTurk::HITLayoutParameter',
+                                          'type' => 'ArrayRef[MTurk_HITLayoutParameter]'
+                                        },
+               'RequesterAnnotation' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'HITTypeId' => 1,
+                    'LifetimeInSeconds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +149,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mtu
 =head1 ATTRIBUTES
 
 
-=head2 AssignmentReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 AssignmentReviewPolicy => MTurk_ReviewPolicy
 
 The Assignment-level Review Policy applies to the assignments under the
 HIT. You can specify for Mechanical Turk to take various actions based
@@ -118,7 +168,7 @@ must be provided.
 
 
 
-=head2 HITLayoutParameters => ArrayRef[L<Paws::MTurk::HITLayoutParameter>]
+=head2 HITLayoutParameters => ArrayRef[MTurk_HITLayoutParameter]
 
 If the HITLayoutId is provided, any placeholder values must be filled
 in with values using the HITLayoutParameter structure. For more
@@ -126,7 +176,7 @@ information, see HITLayout.
 
 
 
-=head2 HITReviewPolicy => L<Paws::MTurk::ReviewPolicy>
+=head2 HITReviewPolicy => MTurk_ReviewPolicy
 
 The HIT-level Review Policy applies to the HIT. You can specify for
 Mechanical Turk to take various actions based on the policy.

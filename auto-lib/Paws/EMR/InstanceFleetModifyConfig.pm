@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleetModifyConfig;
-  use Moose;
-  has InstanceFleetId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetOnDemandCapacity => (is => 'ro', isa => 'Int');
-  has TargetSpotCapacity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EMR::Types qw//;
+  has InstanceFleetId => (is => 'ro', isa => Str, required => 1);
+  has TargetOnDemandCapacity => (is => 'ro', isa => Int);
+  has TargetSpotCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetOnDemandCapacity' => {
+                                             'type' => 'Int'
+                                           },
+               'TargetSpotCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'InstanceFleetId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'InstanceFleetId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

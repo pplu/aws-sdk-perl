@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::ACM::DomainValidationOption;
-  use Moose;
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ValidationDomain => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw//;
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has ValidationDomain => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'ValidationDomain' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1,
+                    'ValidationDomain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

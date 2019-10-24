@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::StatisticSet;
-  use Moose;
-  has Maximum => (is => 'ro', isa => 'Num', required => 1);
-  has Minimum => (is => 'ro', isa => 'Num', required => 1);
-  has SampleCount => (is => 'ro', isa => 'Num', required => 1);
-  has Sum => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::CloudWatch::Types qw//;
+  has Maximum => (is => 'ro', isa => Num, required => 1);
+  has Minimum => (is => 'ro', isa => Num, required => 1);
+  has SampleCount => (is => 'ro', isa => Num, required => 1);
+  has Sum => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'Maximum' => {
+                              'type' => 'Num'
+                            },
+               'Minimum' => {
+                              'type' => 'Num'
+                            },
+               'SampleCount' => {
+                                  'type' => 'Num'
+                                }
+             },
+  'IsRequired' => {
+                    'Sum' => 1,
+                    'Maximum' => 1,
+                    'Minimum' => 1,
+                    'SampleCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

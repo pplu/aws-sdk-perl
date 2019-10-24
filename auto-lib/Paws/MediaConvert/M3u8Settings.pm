@@ -1,21 +1,101 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::M3u8Settings;
-  use Moose;
-  has AudioFramesPerPes => (is => 'ro', isa => 'Int', request_name => 'audioFramesPerPes', traits => ['NameInRequest']);
-  has AudioPids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'audioPids', traits => ['NameInRequest']);
-  has NielsenId3 => (is => 'ro', isa => 'Str', request_name => 'nielsenId3', traits => ['NameInRequest']);
-  has PatInterval => (is => 'ro', isa => 'Int', request_name => 'patInterval', traits => ['NameInRequest']);
-  has PcrControl => (is => 'ro', isa => 'Str', request_name => 'pcrControl', traits => ['NameInRequest']);
-  has PcrPid => (is => 'ro', isa => 'Int', request_name => 'pcrPid', traits => ['NameInRequest']);
-  has PmtInterval => (is => 'ro', isa => 'Int', request_name => 'pmtInterval', traits => ['NameInRequest']);
-  has PmtPid => (is => 'ro', isa => 'Int', request_name => 'pmtPid', traits => ['NameInRequest']);
-  has PrivateMetadataPid => (is => 'ro', isa => 'Int', request_name => 'privateMetadataPid', traits => ['NameInRequest']);
-  has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
-  has Scte35Pid => (is => 'ro', isa => 'Int', request_name => 'scte35Pid', traits => ['NameInRequest']);
-  has Scte35Source => (is => 'ro', isa => 'Str', request_name => 'scte35Source', traits => ['NameInRequest']);
-  has TimedMetadata => (is => 'ro', isa => 'Str', request_name => 'timedMetadata', traits => ['NameInRequest']);
-  has TimedMetadataPid => (is => 'ro', isa => 'Int', request_name => 'timedMetadataPid', traits => ['NameInRequest']);
-  has TransportStreamId => (is => 'ro', isa => 'Int', request_name => 'transportStreamId', traits => ['NameInRequest']);
-  has VideoPid => (is => 'ro', isa => 'Int', request_name => 'videoPid', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int ArrayRef Str/;
+  use Paws::MediaConvert::Types qw//;
+  has AudioFramesPerPes => (is => 'ro', isa => Int);
+  has AudioPids => (is => 'ro', isa => ArrayRef[Int]);
+  has NielsenId3 => (is => 'ro', isa => Str);
+  has PatInterval => (is => 'ro', isa => Int);
+  has PcrControl => (is => 'ro', isa => Str);
+  has PcrPid => (is => 'ro', isa => Int);
+  has PmtInterval => (is => 'ro', isa => Int);
+  has PmtPid => (is => 'ro', isa => Int);
+  has PrivateMetadataPid => (is => 'ro', isa => Int);
+  has ProgramNumber => (is => 'ro', isa => Int);
+  has Scte35Pid => (is => 'ro', isa => Int);
+  has Scte35Source => (is => 'ro', isa => Str);
+  has TimedMetadata => (is => 'ro', isa => Str);
+  has TimedMetadataPid => (is => 'ro', isa => Int);
+  has TransportStreamId => (is => 'ro', isa => Int);
+  has VideoPid => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AudioPids' => {
+                                'type' => 'ArrayRef[Int]'
+                              },
+               'AudioFramesPerPes' => {
+                                        'type' => 'Int'
+                                      },
+               'PcrPid' => {
+                             'type' => 'Int'
+                           },
+               'Scte35Source' => {
+                                   'type' => 'Str'
+                                 },
+               'NielsenId3' => {
+                                 'type' => 'Str'
+                               },
+               'TransportStreamId' => {
+                                        'type' => 'Int'
+                                      },
+               'Scte35Pid' => {
+                                'type' => 'Int'
+                              },
+               'PrivateMetadataPid' => {
+                                         'type' => 'Int'
+                                       },
+               'TimedMetadata' => {
+                                    'type' => 'Str'
+                                  },
+               'PatInterval' => {
+                                  'type' => 'Int'
+                                },
+               'PcrControl' => {
+                                 'type' => 'Str'
+                               },
+               'PmtPid' => {
+                             'type' => 'Int'
+                           },
+               'PmtInterval' => {
+                                  'type' => 'Int'
+                                },
+               'TimedMetadataPid' => {
+                                       'type' => 'Int'
+                                     },
+               'VideoPid' => {
+                               'type' => 'Int'
+                             },
+               'ProgramNumber' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AudioPids' => 'audioPids',
+                       'AudioFramesPerPes' => 'audioFramesPerPes',
+                       'PcrPid' => 'pcrPid',
+                       'Scte35Source' => 'scte35Source',
+                       'NielsenId3' => 'nielsenId3',
+                       'TransportStreamId' => 'transportStreamId',
+                       'Scte35Pid' => 'scte35Pid',
+                       'PrivateMetadataPid' => 'privateMetadataPid',
+                       'TimedMetadata' => 'timedMetadata',
+                       'PatInterval' => 'patInterval',
+                       'PcrControl' => 'pcrControl',
+                       'PmtPid' => 'pmtPid',
+                       'PmtInterval' => 'pmtInterval',
+                       'TimedMetadataPid' => 'timedMetadataPid',
+                       'VideoPid' => 'videoPid',
+                       'ProgramNumber' => 'programNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

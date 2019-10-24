@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::UpdateBudget;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has NewBudget => (is => 'ro', isa => 'Paws::Budgets::Budget', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw/Budgets_Budget/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewBudget => (is => 'ro', isa => Budgets_Budget, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBudget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::UpdateBudgetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBudget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::UpdateBudgetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewBudget' => {
+                                'class' => 'Paws::Budgets::Budget',
+                                'type' => 'Budgets_Budget'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'NewBudget' => 1,
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +63,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
           Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-        },    # OPTIONAL
+        },
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
           ForecastedSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
         CostFilters => {
           'MyGenericString' => [
@@ -76,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # key: max: 2147483647, value: OPTIONAL
+          },    # key: max: 2147483647
         },    # OPTIONAL
         TimePeriod => {
           End   => '1970-01-01T01:00:00',    # OPTIONAL
@@ -99,7 +123,7 @@ update.
 
 
 
-=head2 B<REQUIRED> NewBudget => L<Paws::Budgets::Budget>
+=head2 B<REQUIRED> NewBudget => Budgets_Budget
 
 The budget that you want to update your budget to.
 

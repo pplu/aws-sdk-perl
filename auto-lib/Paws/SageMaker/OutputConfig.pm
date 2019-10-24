@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::OutputConfig;
-  use Moose;
-  has S3OutputLocation => (is => 'ro', isa => 'Str', required => 1);
-  has TargetDevice => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has S3OutputLocation => (is => 'ro', isa => Str, required => 1);
+  has TargetDevice => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3OutputLocation' => {
+                                       'type' => 'Str'
+                                     },
+               'TargetDevice' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'S3OutputLocation' => 1,
+                    'TargetDevice' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

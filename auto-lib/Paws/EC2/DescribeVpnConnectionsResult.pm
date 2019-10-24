@@ -7,7 +7,7 @@ package Paws::EC2::DescribeVpnConnectionsResult;
   has VpnConnections => (is => 'ro', isa => ArrayRef[EC2_VpnConnection]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpnConnections' => {
@@ -23,8 +23,8 @@ package Paws::EC2::DescribeVpnConnectionsResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

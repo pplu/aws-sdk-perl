@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateInstanceProfile;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::CreateInstanceProfile;
                'Path' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'InstanceProfileName' => 1
+                  }
 }
 ;
     return $Params_map;

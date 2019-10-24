@@ -1,12 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECR::UploadLayerPartResponse;
-  use Moose;
-  has LastByteReceived => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'lastByteReceived' );
-  has RegistryId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registryId' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
-  has UploadId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uploadId' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECR::Types qw//;
+  has LastByteReceived => (is => 'ro', isa => Int);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+  has UploadId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'LastByteReceived' => {
+                                       'type' => 'Int'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UploadId' => {
+                               'type' => 'Str'
+                             },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'LastByteReceived' => 'lastByteReceived',
+                       'UploadId' => 'uploadId',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

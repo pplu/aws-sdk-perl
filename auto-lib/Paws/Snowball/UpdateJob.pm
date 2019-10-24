@@ -1,21 +1,66 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Snowball::UpdateJob;
-  use Moose;
-  has AddressId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has ForwardingAddressId => (is => 'ro', isa => 'Str');
-  has JobId => (is => 'ro', isa => 'Str', required => 1);
-  has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
-  has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has ShippingOption => (is => 'ro', isa => 'Str');
-  has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Snowball::Types qw/Snowball_JobResource Snowball_Notification/;
+  has AddressId => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ForwardingAddressId => (is => 'ro', isa => Str, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notification => (is => 'ro', isa => Snowball_Notification, predicate => 1);
+  has Resources => (is => 'ro', isa => Snowball_JobResource, predicate => 1);
+  has RoleARN => (is => 'ro', isa => Str, predicate => 1);
+  has ShippingOption => (is => 'ro', isa => Str, predicate => 1);
+  has SnowballCapacityPreference => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Snowball::UpdateJobResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Snowball::UpdateJobResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShippingOption' => {
+                                     'type' => 'Str'
+                                   },
+               'Notification' => {
+                                   'class' => 'Paws::Snowball::Notification',
+                                   'type' => 'Snowball_Notification'
+                                 },
+               'AddressId' => {
+                                'type' => 'Str'
+                              },
+               'ForwardingAddressId' => {
+                                          'type' => 'Str'
+                                        },
+               'Resources' => {
+                                'class' => 'Paws::Snowball::JobResource',
+                                'type' => 'Snowball_JobResource'
+                              },
+               'SnowballCapacityPreference' => {
+                                                 'type' => 'Str'
+                                               },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,13 +126,13 @@ C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 
 
-=head2 Notification => L<Paws::Snowball::Notification>
+=head2 Notification => Snowball_Notification
 
 The new or updated Notification object.
 
 
 
-=head2 Resources => L<Paws::Snowball::JobResource>
+=head2 Resources => Snowball_JobResource
 
 The updated C<JobResource> object, or the updated JobResource object.
 

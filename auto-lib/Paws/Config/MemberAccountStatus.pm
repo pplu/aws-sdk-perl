@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::Config::MemberAccountStatus;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has ConfigRuleName => (is => 'ro', isa => 'Str', required => 1);
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
-  has MemberAccountRuleStatus => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has ConfigRuleName => (is => 'ro', isa => Str, required => 1);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has MemberAccountRuleStatus => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigRuleName' => {
+                                     'type' => 'Str'
+                                   },
+               'MemberAccountRuleStatus' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'ConfigRuleName' => 1,
+                    'MemberAccountRuleStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

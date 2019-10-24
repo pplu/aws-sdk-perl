@@ -1,16 +1,79 @@
+# Generated from default/object.tt
 package Paws::CloudFront::StreamingDistributionSummary;
-  use Moose;
-  has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
-  has ARN => (is => 'ro', isa => 'Str', required => 1);
-  has Comment => (is => 'ro', isa => 'Str', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has PriceClass => (is => 'ro', isa => 'Str', required => 1);
-  has S3Origin => (is => 'ro', isa => 'Paws::CloudFront::S3Origin', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has TrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::TrustedSigners', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_TrustedSigners CloudFront_S3Origin CloudFront_Aliases/;
+  has Aliases => (is => 'ro', isa => CloudFront_Aliases, required => 1);
+  has ARN => (is => 'ro', isa => Str, required => 1);
+  has Comment => (is => 'ro', isa => Str, required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Enabled => (is => 'ro', isa => Bool, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has PriceClass => (is => 'ro', isa => Str, required => 1);
+  has S3Origin => (is => 'ro', isa => CloudFront_S3Origin, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has TrustedSigners => (is => 'ro', isa => CloudFront_TrustedSigners, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'S3Origin' => {
+                               'class' => 'Paws::CloudFront::S3Origin',
+                               'type' => 'CloudFront_S3Origin'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Aliases' => {
+                              'class' => 'Paws::CloudFront::Aliases',
+                              'type' => 'CloudFront_Aliases'
+                            },
+               'ARN' => {
+                          'type' => 'Str'
+                        },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'PriceClass' => {
+                                 'type' => 'Str'
+                               },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'TrustedSigners' => {
+                                     'class' => 'Paws::CloudFront::TrustedSigners',
+                                     'type' => 'CloudFront_TrustedSigners'
+                                   }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Status' => 1,
+                    'S3Origin' => 1,
+                    'Enabled' => 1,
+                    'Comment' => 1,
+                    'Aliases' => 1,
+                    'ARN' => 1,
+                    'LastModifiedTime' => 1,
+                    'PriceClass' => 1,
+                    'DomainName' => 1,
+                    'TrustedSigners' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +109,7 @@ A summary of the information for a CloudFront streaming distribution.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Aliases => L<Paws::CloudFront::Aliases>
+=head2 B<REQUIRED> Aliases => CloudFront_Aliases
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
@@ -93,7 +156,7 @@ content.
 streaming distribution.
 
 
-=head2 B<REQUIRED> S3Origin => L<Paws::CloudFront::S3Origin>
+=head2 B<REQUIRED> S3Origin => CloudFront_S3Origin
 
   A complex type that contains information about the Amazon S3 bucket
 from which you want CloudFront to get your media files for
@@ -107,7 +170,7 @@ C<Deployed>, the distribution's information is fully propagated
 throughout the Amazon CloudFront system.
 
 
-=head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
+=head2 B<REQUIRED> TrustedSigners => CloudFront_TrustedSigners
 
   A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to

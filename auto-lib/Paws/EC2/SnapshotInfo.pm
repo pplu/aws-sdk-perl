@@ -12,7 +12,7 @@ package Paws::EC2::SnapshotInfo;
   has VolumeId => (is => 'ro', isa => Str);
   has VolumeSize => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VolumeSize' => {
@@ -61,8 +61,8 @@ package Paws::EC2::SnapshotInfo;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

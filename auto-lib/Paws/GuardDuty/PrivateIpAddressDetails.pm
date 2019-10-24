@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::PrivateIpAddressDetails;
-  use Moose;
-  has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
-  has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has PrivateDnsName => (is => 'ro', isa => Str);
+  has PrivateIpAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateDnsName' => {
+                                     'type' => 'Str'
+                                   },
+               'PrivateIpAddress' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'PrivateDnsName' => 'privateDnsName',
+                       'PrivateIpAddress' => 'privateIpAddress'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

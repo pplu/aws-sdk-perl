@@ -1,9 +1,27 @@
 
 package Paws::ManagedBlockchain::GetMemberOutput;
-  use Moose;
-  has Member => (is => 'ro', isa => 'Paws::ManagedBlockchain::Member');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_Member/;
+  has Member => (is => 'ro', isa => ManagedBlockchain_Member);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Member' => {
+                             'class' => 'Paws::ManagedBlockchain::Member',
+                             'type' => 'ManagedBlockchain_Member'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::ManagedBlockchain::GetMemberOutput
 =head1 ATTRIBUTES
 
 
-=head2 Member => L<Paws::ManagedBlockchain::Member>
+=head2 Member => ManagedBlockchain_Member
 
 The properties of a member.
 

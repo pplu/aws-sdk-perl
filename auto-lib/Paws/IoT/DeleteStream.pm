@@ -1,14 +1,35 @@
 
 package Paws::IoT::DeleteStream;
-  use Moose;
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'streamId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has StreamId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteStream');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/streams/{streamId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteStreamResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteStream');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/streams/{streamId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::DeleteStreamResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'StreamId' => 'streamId'
+                  },
+  'IsRequired' => {
+                    'StreamId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

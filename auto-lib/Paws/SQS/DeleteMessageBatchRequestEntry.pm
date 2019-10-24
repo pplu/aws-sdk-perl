@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::DeleteMessageBatchRequestEntry;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::SQS::DeleteMessageBatchRequestEntry;
                'ReceiptHandle' => {
                                     'type' => 'Str'
                                   }
-             }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'ReceiptHandle' => 1
+                  }
 }
 ;
     return $Params_map;

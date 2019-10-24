@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::EMR::HadoopJarStepConfig;
-  use Moose;
-  has Args => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Jar => (is => 'ro', isa => 'Str', required => 1);
-  has MainClass => (is => 'ro', isa => 'Str');
-  has Properties => (is => 'ro', isa => 'ArrayRef[Paws::EMR::KeyValue]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::EMR::Types qw/EMR_KeyValue/;
+  has Args => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Jar => (is => 'ro', isa => Str, required => 1);
+  has MainClass => (is => 'ro', isa => Str);
+  has Properties => (is => 'ro', isa => ArrayRef[EMR_KeyValue]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Jar' => {
+                          'type' => 'Str'
+                        },
+               'MainClass' => {
+                                'type' => 'Str'
+                              },
+               'Properties' => {
+                                 'class' => 'Paws::EMR::KeyValue',
+                                 'type' => 'ArrayRef[EMR_KeyValue]'
+                               },
+               'Args' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         }
+             },
+  'IsRequired' => {
+                    'Jar' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +89,7 @@ specified, the JAR file should specify a Main-Class in its manifest
 file.
 
 
-=head2 Properties => ArrayRef[L<Paws::EMR::KeyValue>]
+=head2 Properties => ArrayRef[EMR_KeyValue]
 
   A list of Java properties that are set when the step runs. You can use
 these properties to pass key value pairs to your main function.

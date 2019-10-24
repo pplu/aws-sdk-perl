@@ -5,7 +5,7 @@ package Paws::EC2::DeleteFleetSuccessItem;
   has FleetId => (is => 'ro', isa => Str);
   has PreviousFleetState => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'FleetId' => {
@@ -25,8 +25,8 @@ package Paws::EC2::DeleteFleetSuccessItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

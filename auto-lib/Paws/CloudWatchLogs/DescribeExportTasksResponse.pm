@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchLogs::DescribeExportTasksResponse;
-  use Moose;
-  has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::ExportTask]', traits => ['NameInRequest'], request_name => 'exportTasks' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchLogs::Types qw/CloudWatchLogs_ExportTask/;
+  has ExportTasks => (is => 'ro', isa => ArrayRef[CloudWatchLogs_ExportTask]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportTasks' => {
+                                  'class' => 'Paws::CloudWatchLogs::ExportTask',
+                                  'type' => 'ArrayRef[CloudWatchLogs_ExportTask]'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ExportTasks' => 'exportTasks',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 =head1 ATTRIBUTES
 
 
-=head2 ExportTasks => ArrayRef[L<Paws::CloudWatchLogs::ExportTask>]
+=head2 ExportTasks => ArrayRef[CloudWatchLogs_ExportTask]
 
 The export tasks.
 

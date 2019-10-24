@@ -6,7 +6,7 @@ package Paws::EC2::TransitGatewayRoute;
   has TransitGatewayAttachments => (is => 'ro', isa => ArrayRef[EC2_TransitGatewayRouteAttachment]);
   has Type => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Type' => {
@@ -31,8 +31,8 @@ package Paws::EC2::TransitGatewayRoute;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::ResolveCase;
-  use Moose;
-  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw//;
+  has CaseId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResolveCase');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::ResolveCaseResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResolveCase');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::ResolveCaseResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaseId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'CaseId' => 'caseId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

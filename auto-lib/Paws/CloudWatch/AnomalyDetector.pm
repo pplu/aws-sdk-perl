@@ -1,10 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::AnomalyDetector;
-  use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::CloudWatch::AnomalyDetectorConfiguration');
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Namespace => (is => 'ro', isa => 'Str');
-  has Stat => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Dimension CloudWatch_AnomalyDetectorConfiguration/;
+  has Configuration => (is => 'ro', isa => CloudWatch_AnomalyDetectorConfiguration);
+  has Dimensions => (is => 'ro', isa => ArrayRef[CloudWatch_Dimension]);
+  has MetricName => (is => 'ro', isa => Str);
+  has Namespace => (is => 'ro', isa => Str);
+  has Stat => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Stat' => {
+                           'type' => 'Str'
+                         },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Dimensions' => {
+                                 'class' => 'Paws::CloudWatch::Dimension',
+                                 'type' => 'ArrayRef[CloudWatch_Dimension]'
+                               },
+               'Configuration' => {
+                                    'class' => 'Paws::CloudWatch::AnomalyDetectorConfiguration',
+                                    'type' => 'CloudWatch_AnomalyDetectorConfiguration'
+                                  },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,14 +73,14 @@ expected normal values when the metric is graphed.
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::CloudWatch::AnomalyDetectorConfiguration>
+=head2 Configuration => CloudWatch_AnomalyDetectorConfiguration
 
   The configuration specifies details about how the anomaly detection
 model is to be trained, including time ranges to exclude from use for
 training the model, and the time zone to use for the metric.
 
 
-=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
+=head2 Dimensions => ArrayRef[CloudWatch_Dimension]
 
   The metric dimensions associated with the anomaly detection model.
 

@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::SlotMigration;
-  use Moose;
-  has ProgressPercentage => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::ElastiCache::Types qw//;
+  has ProgressPercentage => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProgressPercentage' => {
+                                         'type' => 'Num'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

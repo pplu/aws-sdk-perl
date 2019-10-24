@@ -1,20 +1,84 @@
 
 package Paws::IoT::DescribeThingRegistrationTaskResponse;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate');
-  has FailureCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'failureCount');
-  has InputFileBucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputFileBucket');
-  has InputFileKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputFileKey');
-  has LastModifiedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastModifiedDate');
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
-  has PercentageProgress => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'percentageProgress');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has SuccessCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'successCount');
-  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId');
-  has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has FailureCount => (is => 'ro', isa => Int);
+  has InputFileBucket => (is => 'ro', isa => Str);
+  has InputFileKey => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has PercentageProgress => (is => 'ro', isa => Int);
+  has RoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SuccessCount => (is => 'ro', isa => Int);
+  has TaskId => (is => 'ro', isa => Str);
+  has TemplateBody => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputFileKey' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'InputFileBucket' => {
+                                      'type' => 'Str'
+                                    },
+               'SuccessCount' => {
+                                   'type' => 'Int'
+                                 },
+               'FailureCount' => {
+                                   'type' => 'Int'
+                                 },
+               'PercentageProgress' => {
+                                         'type' => 'Int'
+                                       },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Message' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'InputFileKey' => 'inputFileKey',
+                       'Status' => 'status',
+                       'InputFileBucket' => 'inputFileBucket',
+                       'SuccessCount' => 'successCount',
+                       'FailureCount' => 'failureCount',
+                       'PercentageProgress' => 'percentageProgress',
+                       'RoleArn' => 'roleArn',
+                       'TemplateBody' => 'templateBody',
+                       'TaskId' => 'taskId',
+                       'LastModifiedDate' => 'lastModifiedDate',
+                       'CreationDate' => 'creationDate',
+                       'Message' => 'message'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

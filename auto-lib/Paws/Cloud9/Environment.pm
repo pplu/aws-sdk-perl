@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::Cloud9::Environment;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Lifecycle => (is => 'ro', isa => 'Paws::Cloud9::EnvironmentLifecycle', request_name => 'lifecycle', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OwnerArn => (is => 'ro', isa => 'Str', request_name => 'ownerArn', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw/Cloud9_EnvironmentLifecycle/;
+  has Arn => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Lifecycle => (is => 'ro', isa => Cloud9_EnvironmentLifecycle);
+  has Name => (is => 'ro', isa => Str);
+  has OwnerArn => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'OwnerArn' => {
+                               'type' => 'Str'
+                             },
+               'Lifecycle' => {
+                                'class' => 'Paws::Cloud9::EnvironmentLifecycle',
+                                'type' => 'Cloud9_EnvironmentLifecycle'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Id' => 'id',
+                       'OwnerArn' => 'ownerArn',
+                       'Lifecycle' => 'lifecycle',
+                       'Arn' => 'arn',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +102,7 @@ Information about an AWS Cloud9 development environment.
   The ID of the environment.
 
 
-=head2 Lifecycle => L<Paws::Cloud9::EnvironmentLifecycle>
+=head2 Lifecycle => Cloud9_EnvironmentLifecycle
 
   The state of the environment in its creation or deletion lifecycle.
 

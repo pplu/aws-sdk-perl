@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetContentDeliveryDestination;
-  use Moose;
-  has IotEventsDestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::IotEventsDestinationConfiguration', request_name => 'iotEventsDestinationConfiguration', traits => ['NameInRequest']);
-  has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::S3DestinationConfiguration', request_name => 's3DestinationConfiguration', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_S3DestinationConfiguration IoTAnalytics_IotEventsDestinationConfiguration/;
+  has IotEventsDestinationConfiguration => (is => 'ro', isa => IoTAnalytics_IotEventsDestinationConfiguration);
+  has S3DestinationConfiguration => (is => 'ro', isa => IoTAnalytics_S3DestinationConfiguration);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3DestinationConfiguration' => {
+                                                 'class' => 'Paws::IoTAnalytics::S3DestinationConfiguration',
+                                                 'type' => 'IoTAnalytics_S3DestinationConfiguration'
+                                               },
+               'IotEventsDestinationConfiguration' => {
+                                                        'class' => 'Paws::IoTAnalytics::IotEventsDestinationConfiguration',
+                                                        'type' => 'IoTAnalytics_IotEventsDestinationConfiguration'
+                                                      }
+             },
+  'NameInRequest' => {
+                       'S3DestinationConfiguration' => 's3DestinationConfiguration',
+                       'IotEventsDestinationConfiguration' => 'iotEventsDestinationConfiguration'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ The destination to which data set contents are delivered.
 =head1 ATTRIBUTES
 
 
-=head2 IotEventsDestinationConfiguration => L<Paws::IoTAnalytics::IotEventsDestinationConfiguration>
+=head2 IotEventsDestinationConfiguration => IoTAnalytics_IotEventsDestinationConfiguration
 
   Configuration information for delivery of data set contents to AWS IoT
 Events.
 
 
-=head2 S3DestinationConfiguration => L<Paws::IoTAnalytics::S3DestinationConfiguration>
+=head2 S3DestinationConfiguration => IoTAnalytics_S3DestinationConfiguration
 
   Configuration information for delivery of data set contents to Amazon
 S3.

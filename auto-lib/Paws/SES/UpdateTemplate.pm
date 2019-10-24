@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::UpdateTemplate;
   use Moo;
@@ -18,7 +19,10 @@ package Paws::SES::UpdateTemplate;
                                'class' => 'Paws::SES::Template',
                                'type' => 'SES_Template'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'Template' => 1
+                  }
 }
 ;
     return $Params_map;

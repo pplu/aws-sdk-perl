@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::Firehose::HiveJsonSerDe;
-  use Moose;
-  has TimestampFormats => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Firehose::Types qw//;
+  has TimestampFormats => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampFormats' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

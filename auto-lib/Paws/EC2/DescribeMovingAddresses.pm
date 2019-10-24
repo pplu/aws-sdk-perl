@@ -15,7 +15,7 @@ package Paws::EC2::DescribeMovingAddresses;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeMovingAddressesResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'PublicIps' => {
@@ -44,8 +44,8 @@ package Paws::EC2::DescribeMovingAddresses;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

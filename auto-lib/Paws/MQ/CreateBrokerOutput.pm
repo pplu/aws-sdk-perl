@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MQ::CreateBrokerOutput;
-  use Moose;
-  has BrokerArn => (is => 'ro', isa => 'Str', request_name => 'brokerArn', traits => ['NameInRequest']);
-  has BrokerId => (is => 'ro', isa => 'Str', request_name => 'brokerId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has BrokerArn => (is => 'ro', isa => Str);
+  has BrokerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerArn' => {
+                                'type' => 'Str'
+                              },
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'BrokerArn' => 'brokerArn',
+                       'BrokerId' => 'brokerId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

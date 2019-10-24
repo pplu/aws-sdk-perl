@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::MTurk::ReviewResultDetail;
-  use Moose;
-  has ActionId => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has QuestionId => (is => 'ro', isa => 'Str');
-  has SubjectId => (is => 'ro', isa => 'Str');
-  has SubjectType => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw//;
+  has ActionId => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has QuestionId => (is => 'ro', isa => Str);
+  has SubjectId => (is => 'ro', isa => Str);
+  has SubjectType => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'ActionId' => {
+                               'type' => 'Str'
+                             },
+               'SubjectType' => {
+                                  'type' => 'Str'
+                                },
+               'SubjectId' => {
+                                'type' => 'Str'
+                              },
+               'QuestionId' => {
+                                 'type' => 'Str'
+                               },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseBlueprint;
-  use Moose;
-  has BlueprintId => (is => 'ro', isa => 'Str', request_name => 'blueprintId', traits => ['NameInRequest']);
-  has Engine => (is => 'ro', isa => 'Str', request_name => 'engine', traits => ['NameInRequest']);
-  has EngineDescription => (is => 'ro', isa => 'Str', request_name => 'engineDescription', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has EngineVersionDescription => (is => 'ro', isa => 'Str', request_name => 'engineVersionDescription', traits => ['NameInRequest']);
-  has IsEngineDefault => (is => 'ro', isa => 'Bool', request_name => 'isEngineDefault', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has BlueprintId => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineDescription => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has EngineVersionDescription => (is => 'ro', isa => Str);
+  has IsEngineDefault => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'IsEngineDefault' => {
+                                      'type' => 'Bool'
+                                    },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'BlueprintId' => {
+                                  'type' => 'Str'
+                                },
+               'EngineVersionDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'EngineDescription' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'IsEngineDefault' => 'isEngineDefault',
+                       'Engine' => 'engine',
+                       'BlueprintId' => 'blueprintId',
+                       'EngineVersionDescription' => 'engineVersionDescription',
+                       'EngineDescription' => 'engineDescription'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

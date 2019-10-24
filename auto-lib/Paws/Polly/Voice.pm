@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Polly::Voice;
-  use Moose;
-  has AdditionalLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Gender => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LanguageName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Polly::Types qw//;
+  has AdditionalLanguageCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Gender => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LanguageName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LanguageName' => {
+                                   'type' => 'Str'
+                                 },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'AdditionalLanguageCodes' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Gender' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

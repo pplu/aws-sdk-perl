@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::GetEndpointResponse;
-  use Moose;
-  has EndpointResponse => (is => 'ro', isa => 'Paws::Pinpoint::EndpointResponse', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointResponse/;
+  has EndpointResponse => (is => 'ro', isa => Pinpoint_EndpointResponse, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndpointResponse' => {
+                                       'class' => 'Paws::Pinpoint::EndpointResponse',
+                                       'type' => 'Pinpoint_EndpointResponse'
+                                     }
+             },
+  'IsRequired' => {
+                    'EndpointResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EndpointResponse => L<Paws::Pinpoint::EndpointResponse>
+=head2 B<REQUIRED> EndpointResponse => Pinpoint_EndpointResponse
 
   
 

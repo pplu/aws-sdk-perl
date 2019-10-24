@@ -1,21 +1,69 @@
 
 package Paws::Connect::GetMetricData;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has Filters => (is => 'ro', isa => 'Paws::Connect::Filters', required => 1);
-  has Groupings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has HistoricalMetrics => (is => 'ro', isa => 'ArrayRef[Paws::Connect::HistoricalMetric]', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Connect::Types qw/Connect_HistoricalMetric Connect_Filters/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => Connect_Filters, required => 1, predicate => 1);
+  has Groupings => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has HistoricalMetrics => (is => 'ro', isa => ArrayRef[Connect_HistoricalMetric], required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMetricData');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/metrics/historical/{InstanceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::GetMetricDataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMetricData');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/metrics/historical/{InstanceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::GetMetricDataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'HistoricalMetrics' => {
+                                        'class' => 'Paws::Connect::HistoricalMetric',
+                                        'type' => 'ArrayRef[Connect_HistoricalMetric]'
+                                      },
+               'Groupings' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::Connect::Filters',
+                              'type' => 'Connect_Filters'
+                            },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId'
+                  },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'Filters' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'HistoricalMetrics' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,7 +138,7 @@ hours.
 
 
 
-=head2 B<REQUIRED> Filters => L<Paws::Connect::Filters>
+=head2 B<REQUIRED> Filters => Connect_Filters
 
 A C<Filters> object that contains a list of queue IDs or queue ARNs, up
 to 100, or a list of Channels to use to filter the metrics returned in
@@ -123,7 +171,7 @@ C<HistoricalMetrics> for all queues is returned.
 
 
 
-=head2 B<REQUIRED> HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
+=head2 B<REQUIRED> HistoricalMetrics => ArrayRef[Connect_HistoricalMetric]
 
 A list of C<HistoricalMetric> objects that contain the metrics to
 retrieve with the request.

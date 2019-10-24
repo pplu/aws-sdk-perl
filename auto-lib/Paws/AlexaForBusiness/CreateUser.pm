@@ -1,18 +1,53 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::CreateUser;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has FirstName => (is => 'ro', isa => 'Str');
-  has LastName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Tag/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Email => (is => 'ro', isa => Str, predicate => 1);
+  has FirstName => (is => 'ro', isa => Str, predicate => 1);
+  has LastName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Tag], predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::CreateUserResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateUser');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::CreateUserResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'FirstName' => {
+                                'type' => 'Str'
+                              },
+               'LastName' => {
+                               'type' => 'Str'
+                             },
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::AlexaForBusiness::Tag',
+                           'type' => 'ArrayRef[AlexaForBusiness_Tag]'
+                         },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +119,7 @@ The last name for the user.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+=head2 Tags => ArrayRef[AlexaForBusiness_Tag]
 
 The tags for the user.
 

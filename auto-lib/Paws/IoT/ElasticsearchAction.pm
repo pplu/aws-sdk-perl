@@ -1,10 +1,53 @@
+# Generated from default/object.tt
 package Paws::IoT::ElasticsearchAction;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has Index => (is => 'ro', isa => 'Str', request_name => 'index', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Index => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Index' => {
+                            'type' => 'Str'
+                          },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'RoleArn' => 'roleArn',
+                       'Id' => 'id',
+                       'Index' => 'index',
+                       'Endpoint' => 'endpoint'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'RoleArn' => 1,
+                    'Id' => 1,
+                    'Index' => 1,
+                    'Endpoint' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

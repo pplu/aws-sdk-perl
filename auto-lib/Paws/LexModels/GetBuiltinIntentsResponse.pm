@@ -1,10 +1,35 @@
 
 package Paws::LexModels::GetBuiltinIntentsResponse;
-  use Moose;
-  has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::BuiltinIntentMetadata]', traits => ['NameInRequest'], request_name => 'intents');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LexModels::Types qw/LexModels_BuiltinIntentMetadata/;
+  has Intents => (is => 'ro', isa => ArrayRef[LexModels_BuiltinIntentMetadata]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Intents' => {
+                              'class' => 'Paws::LexModels::BuiltinIntentMetadata',
+                              'type' => 'ArrayRef[LexModels_BuiltinIntentMetadata]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Intents' => 'intents'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::LexModels::GetBuiltinIntentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Intents => ArrayRef[L<Paws::LexModels::BuiltinIntentMetadata>]
+=head2 Intents => ArrayRef[LexModels_BuiltinIntentMetadata]
 
 An array of C<builtinIntentMetadata> objects, one for each intent in
 the response.

@@ -1,11 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSM::GetConfigResponse;
-  use Moose;
-  has ConfigCred => (is => 'ro', isa => 'Str');
-  has ConfigFile => (is => 'ro', isa => 'Str');
-  has ConfigType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSM::Types qw//;
+  has ConfigCred => (is => 'ro', isa => Str);
+  has ConfigFile => (is => 'ro', isa => Str);
+  has ConfigType => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigType' => {
+                                 'type' => 'Str'
+                               },
+               'ConfigCred' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigFile' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

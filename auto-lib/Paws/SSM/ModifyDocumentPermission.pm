@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::ModifyDocumentPermission;
-  use Moose;
-  has AccountIdsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AccountIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has PermissionType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::SSM::Types qw//;
+  has AccountIdsToAdd => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AccountIdsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PermissionType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDocumentPermission');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ModifyDocumentPermissionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDocumentPermission');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::ModifyDocumentPermissionResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PermissionType' => {
+                                     'type' => 'Str'
+                                   },
+               'AccountIdsToRemove' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'AccountIdsToAdd' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             },
+  'IsRequired' => {
+                    'PermissionType' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

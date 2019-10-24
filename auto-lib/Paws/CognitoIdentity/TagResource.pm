@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::TagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityPoolTagsType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_IdentityPoolTagsType/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CognitoIdentity_IdentityPoolTagsType, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::TagResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::TagResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::CognitoIdentity::IdentityPoolTagsType',
+                           'type' => 'CognitoIdentity_IdentityPoolTagsType'
+                         }
+             },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +72,7 @@ to.
 
 
 
-=head2 Tags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
+=head2 Tags => CognitoIdentity_IdentityPoolTagsType
 
 The tags to assign to the identity pool.
 

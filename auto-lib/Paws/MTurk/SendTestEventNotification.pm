@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MTurk::SendTestEventNotification;
-  use Moose;
-  has Notification => (is => 'ro', isa => 'Paws::MTurk::NotificationSpecification', required => 1);
-  has TestEventType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw/MTurk_NotificationSpecification/;
+  has Notification => (is => 'ro', isa => MTurk_NotificationSpecification, required => 1, predicate => 1);
+  has TestEventType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendTestEventNotification');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MTurk::SendTestEventNotificationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendTestEventNotification');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MTurk::SendTestEventNotificationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TestEventType' => {
+                                    'type' => 'Str'
+                                  },
+               'Notification' => {
+                                   'class' => 'Paws::MTurk::NotificationSpecification',
+                                   'type' => 'MTurk_NotificationSpecification'
+                                 }
+             },
+  'IsRequired' => {
+                    'TestEventType' => 1,
+                    'Notification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mtu
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Notification => L<Paws::MTurk::NotificationSpecification>
+=head2 B<REQUIRED> Notification => MTurk_NotificationSpecification
 
 The notification specification to test. This value is identical to the
 value you would provide to the UpdateNotificationSettings operation

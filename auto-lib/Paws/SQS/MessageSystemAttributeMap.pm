@@ -1,3 +1,4 @@
+# Generated from default/map_enum.tt
 package Paws::SQS::MessageSystemAttributeMap;
   use Moo;
   with 'Paws::API::MapParser';
@@ -6,6 +7,7 @@ package Paws::SQS::MessageSystemAttributeMap;
   class_has xml_keys =>(is => 'ro', default => 'Name');
   class_has xml_values =>(is => 'ro', default => 'Value');
   use Types::Standard qw/Str/;
+  use Paws::SQS::Types qw//;
   has ApproximateFirstReceiveTimestamp => (is => 'ro', isa => Str);
   has ApproximateReceiveCount => (is => 'ro', isa => Str);
   has MessageDeduplicationId => (is => 'ro', isa => Str);
@@ -18,26 +20,19 @@ package Paws::SQS::MessageSystemAttributeMap;
     our $Params_map ||= {
                     types => {
                                'ApproximateFirstReceiveTimestamp' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'ApproximateReceiveCount' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'MessageDeduplicationId' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'MessageGroupId' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'SenderId' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'SentTimestamp' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                                'SequenceNumber' => {
-                                          type => 'Str',
-                                        },
+                                          type => 'Str',                                        },
                              },
                   };
     return $Params_map;

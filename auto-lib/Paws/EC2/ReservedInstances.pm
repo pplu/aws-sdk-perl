@@ -20,7 +20,7 @@ package Paws::EC2::ReservedInstances;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has UsagePrice => (is => 'ro', isa => Num);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'OfferingType' => {
@@ -102,8 +102,8 @@ package Paws::EC2::ReservedInstances;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

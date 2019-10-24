@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::OpsWorks::GetHostnameSuggestionResult;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str');
-  has LayerId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw//;
+  has Hostname => (is => 'ro', isa => Str);
+  has LayerId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LayerId' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

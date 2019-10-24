@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::CreateBackup;
   use Moo;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::CreateBackup;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::CreateBackupOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BackupName' => {
@@ -21,11 +22,15 @@ package Paws::DynamoDB::CreateBackup;
                'TableName' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'BackupName' => 1,
+                    'TableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

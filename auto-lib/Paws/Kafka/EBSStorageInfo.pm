@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Kafka::EBSStorageInfo;
-  use Moose;
-  has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Kafka::Types qw//;
+  has VolumeSize => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSize' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'VolumeSize' => 'volumeSize'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

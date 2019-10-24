@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CodeContentUpdate;
-  use Moose;
-  has S3ContentLocationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ContentLocationUpdate');
-  has TextContentUpdate => (is => 'ro', isa => 'Str');
-  has ZipFileContentUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_S3ContentLocationUpdate/;
+  has S3ContentLocationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_S3ContentLocationUpdate);
+  has TextContentUpdate => (is => 'ro', isa => Str);
+  has ZipFileContentUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ZipFileContentUpdate' => {
+                                           'type' => 'Str'
+                                         },
+               'TextContentUpdate' => {
+                                        'type' => 'Str'
+                                      },
+               'S3ContentLocationUpdate' => {
+                                              'class' => 'Paws::KinesisAnalyticsV2::S3ContentLocationUpdate',
+                                              'type' => 'KinesisAnalyticsV2_S3ContentLocationUpdate'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 S3ContentLocationUpdate => L<Paws::KinesisAnalyticsV2::S3ContentLocationUpdate>
+=head2 S3ContentLocationUpdate => KinesisAnalyticsV2_S3ContentLocationUpdate
 
   Describes an update to the location of code for an application.
 

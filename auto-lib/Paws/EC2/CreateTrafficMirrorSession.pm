@@ -20,7 +20,7 @@ package Paws::EC2::CreateTrafficMirrorSession;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateTrafficMirrorSessionResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -57,11 +57,17 @@ package Paws::EC2::CreateTrafficMirrorSession;
              },
   'NameInRequest' => {
                        'TagSpecifications' => 'TagSpecification'
-                     }
+                     },
+  'IsRequired' => {
+                    'TrafficMirrorTargetId' => 1,
+                    'TrafficMirrorFilterId' => 1,
+                    'NetworkInterfaceId' => 1,
+                    'SessionNumber' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

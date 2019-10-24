@@ -5,7 +5,7 @@ package Paws::EC2::PeeringConnectionOptions;
   has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => Bool);
   has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AllowEgressFromLocalVpcToRemoteClassicLink' => {
@@ -25,8 +25,8 @@ package Paws::EC2::PeeringConnectionOptions;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

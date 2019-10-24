@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::BlueInstanceTerminationOption;
-  use Moose;
-  has Action => (is => 'ro', isa => 'Str', request_name => 'action', traits => ['NameInRequest']);
-  has TerminationWaitTimeInMinutes => (is => 'ro', isa => 'Int', request_name => 'terminationWaitTimeInMinutes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has Action => (is => 'ro', isa => Str);
+  has TerminationWaitTimeInMinutes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TerminationWaitTimeInMinutes' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Action' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'TerminationWaitTimeInMinutes' => 'terminationWaitTimeInMinutes',
+                       'Action' => 'action'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

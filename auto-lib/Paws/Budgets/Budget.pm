@@ -1,15 +1,70 @@
+# Generated from default/object.tt
 package Paws::Budgets::Budget;
-  use Moose;
-  has BudgetLimit => (is => 'ro', isa => 'Paws::Budgets::Spend');
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetType => (is => 'ro', isa => 'Str', required => 1);
-  has CalculatedSpend => (is => 'ro', isa => 'Paws::Budgets::CalculatedSpend');
-  has CostFilters => (is => 'ro', isa => 'Paws::Budgets::CostFilters');
-  has CostTypes => (is => 'ro', isa => 'Paws::Budgets::CostTypes');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
-  has PlannedBudgetLimits => (is => 'ro', isa => 'Paws::Budgets::PlannedBudgetLimits');
-  has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
-  has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw/Budgets_PlannedBudgetLimits Budgets_Spend Budgets_CostTypes Budgets_CalculatedSpend Budgets_TimePeriod Budgets_CostFilters/;
+  has BudgetLimit => (is => 'ro', isa => Budgets_Spend);
+  has BudgetName => (is => 'ro', isa => Str, required => 1);
+  has BudgetType => (is => 'ro', isa => Str, required => 1);
+  has CalculatedSpend => (is => 'ro', isa => Budgets_CalculatedSpend);
+  has CostFilters => (is => 'ro', isa => Budgets_CostFilters);
+  has CostTypes => (is => 'ro', isa => Budgets_CostTypes);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has PlannedBudgetLimits => (is => 'ro', isa => Budgets_PlannedBudgetLimits);
+  has TimePeriod => (is => 'ro', isa => Budgets_TimePeriod);
+  has TimeUnit => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CalculatedSpend' => {
+                                      'class' => 'Paws::Budgets::CalculatedSpend',
+                                      'type' => 'Budgets_CalculatedSpend'
+                                    },
+               'CostTypes' => {
+                                'class' => 'Paws::Budgets::CostTypes',
+                                'type' => 'Budgets_CostTypes'
+                              },
+               'BudgetLimit' => {
+                                  'class' => 'Paws::Budgets::Spend',
+                                  'type' => 'Budgets_Spend'
+                                },
+               'TimeUnit' => {
+                               'type' => 'Str'
+                             },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               },
+               'BudgetType' => {
+                                 'type' => 'Str'
+                               },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'PlannedBudgetLimits' => {
+                                          'class' => 'Paws::Budgets::PlannedBudgetLimits',
+                                          'type' => 'Budgets_PlannedBudgetLimits'
+                                        },
+               'CostFilters' => {
+                                  'class' => 'Paws::Budgets::CostFilters',
+                                  'type' => 'Budgets_CostFilters'
+                                },
+               'TimePeriod' => {
+                                 'class' => 'Paws::Budgets::TimePeriod',
+                                 'type' => 'Budgets_TimePeriod'
+                               }
+             },
+  'IsRequired' => {
+                    'BudgetType' => 1,
+                    'TimeUnit' => 1,
+                    'BudgetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +106,7 @@ C<arn:aws:budgetservice::AccountId:budget/budgetName>
 =head1 ATTRIBUTES
 
 
-=head2 BudgetLimit => L<Paws::Budgets::Spend>
+=head2 BudgetLimit => Budgets_Spend
 
   The total amount of cost, usage, RI utilization, or RI coverage that
 you want to track with your budget.
@@ -75,12 +130,12 @@ C<:> and C<\> characters aren't allowed in C<BudgetName>.
 coverage.
 
 
-=head2 CalculatedSpend => L<Paws::Budgets::CalculatedSpend>
+=head2 CalculatedSpend => Budgets_CalculatedSpend
 
   The actual and forecasted cost or usage that the budget tracks.
 
 
-=head2 CostFilters => L<Paws::Budgets::CostFilters>
+=head2 CostFilters => Budgets_CostFilters
 
   The cost filters, such as service or tag, that are applied to a budget.
 
@@ -112,7 +167,7 @@ Amazon Elasticsearch Service
 
 
 
-=head2 CostTypes => L<Paws::Budgets::CostTypes>
+=head2 CostTypes => Budgets_CostTypes
 
   The types of costs that are included in this C<COST> budget.
 
@@ -125,7 +180,7 @@ C<CostTypes>.
   The last time that you updated this budget.
 
 
-=head2 PlannedBudgetLimits => L<Paws::Budgets::PlannedBudgetLimits>
+=head2 PlannedBudgetLimits => Budgets_PlannedBudgetLimits
 
   A map containing multiple C<BudgetLimit>, including current or future
 limits.
@@ -162,7 +217,7 @@ Budgets created without C<PlannedBudgetLimits> will only contain
 C<BudgetLimit>, and no C<PlannedBudgetLimits>.
 
 
-=head2 TimePeriod => L<Paws::Budgets::TimePeriod>
+=head2 TimePeriod => Budgets_TimePeriod
 
   The period of time that is covered by a budget. The period has a start
 date and an end date. The start date must come before the end date. The

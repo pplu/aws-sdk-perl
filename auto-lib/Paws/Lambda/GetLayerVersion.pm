@@ -1,15 +1,41 @@
 
 package Paws::Lambda::GetLayerVersion;
-  use Moose;
-  has LayerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'LayerName', required => 1);
-  has VersionNumber => (is => 'ro', isa => 'Int', traits => ['ParamInURI'], uri_name => 'VersionNumber', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has LayerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has VersionNumber => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLayerVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions/{VersionNumber}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetLayerVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLayerVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2018-10-31/layers/{LayerName}/versions/{VersionNumber}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::GetLayerVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'LayerName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'VersionNumber' => 'VersionNumber',
+                    'LayerName' => 'LayerName'
+                  },
+  'IsRequired' => {
+                    'VersionNumber' => 1,
+                    'LayerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

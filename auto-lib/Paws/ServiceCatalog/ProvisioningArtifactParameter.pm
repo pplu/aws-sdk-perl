@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningArtifactParameter;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has IsNoEcho => (is => 'ro', isa => 'Bool');
-  has ParameterConstraints => (is => 'ro', isa => 'Paws::ServiceCatalog::ParameterConstraints');
-  has ParameterKey => (is => 'ro', isa => 'Str');
-  has ParameterType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ParameterConstraints/;
+  has DefaultValue => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsNoEcho => (is => 'ro', isa => Bool);
+  has ParameterConstraints => (is => 'ro', isa => ServiceCatalog_ParameterConstraints);
+  has ParameterKey => (is => 'ro', isa => Str);
+  has ParameterType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsNoEcho' => {
+                               'type' => 'Bool'
+                             },
+               'ParameterKey' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterConstraints' => {
+                                           'class' => 'Paws::ServiceCatalog::ParameterConstraints',
+                                           'type' => 'ServiceCatalog_ParameterConstraints'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DefaultValue' => {
+                                   'type' => 'Str'
+                                 },
+               'ParameterType' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +91,7 @@ view when the parameter is retrieved. This parameter is used to hide
 sensitive information.
 
 
-=head2 ParameterConstraints => L<Paws::ServiceCatalog::ParameterConstraints>
+=head2 ParameterConstraints => ServiceCatalog_ParameterConstraints
 
   Constraints that the administrator has put on a parameter.
 

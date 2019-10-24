@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::OutputDescription;
-  use Moose;
-  has DestinationSchema => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::DestinationSchema');
-  has KinesisFirehoseOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisFirehoseOutputDescription');
-  has KinesisStreamsOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisStreamsOutputDescription');
-  has LambdaOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::LambdaOutputDescription');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_LambdaOutputDescription KinesisAnalyticsV2_DestinationSchema KinesisAnalyticsV2_KinesisStreamsOutputDescription KinesisAnalyticsV2_KinesisFirehoseOutputDescription/;
+  has DestinationSchema => (is => 'ro', isa => KinesisAnalyticsV2_DestinationSchema);
+  has KinesisFirehoseOutputDescription => (is => 'ro', isa => KinesisAnalyticsV2_KinesisFirehoseOutputDescription);
+  has KinesisStreamsOutputDescription => (is => 'ro', isa => KinesisAnalyticsV2_KinesisStreamsOutputDescription);
+  has LambdaOutputDescription => (is => 'ro', isa => KinesisAnalyticsV2_LambdaOutputDescription);
+  has Name => (is => 'ro', isa => Str);
+  has OutputId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputId' => {
+                               'type' => 'Str'
+                             },
+               'LambdaOutputDescription' => {
+                                              'class' => 'Paws::KinesisAnalyticsV2::LambdaOutputDescription',
+                                              'type' => 'KinesisAnalyticsV2_LambdaOutputDescription'
+                                            },
+               'KinesisStreamsOutputDescription' => {
+                                                      'class' => 'Paws::KinesisAnalyticsV2::KinesisStreamsOutputDescription',
+                                                      'type' => 'KinesisAnalyticsV2_KinesisStreamsOutputDescription'
+                                                    },
+               'KinesisFirehoseOutputDescription' => {
+                                                       'class' => 'Paws::KinesisAnalyticsV2::KinesisFirehoseOutputDescription',
+                                                       'type' => 'KinesisAnalyticsV2_KinesisFirehoseOutputDescription'
+                                                     },
+               'DestinationSchema' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::DestinationSchema',
+                                        'type' => 'KinesisAnalyticsV2_DestinationSchema'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,24 +81,24 @@ delivery stream.
 =head1 ATTRIBUTES
 
 
-=head2 DestinationSchema => L<Paws::KinesisAnalyticsV2::DestinationSchema>
+=head2 DestinationSchema => KinesisAnalyticsV2_DestinationSchema
 
   The data format used for writing data to the destination.
 
 
-=head2 KinesisFirehoseOutputDescription => L<Paws::KinesisAnalyticsV2::KinesisFirehoseOutputDescription>
+=head2 KinesisFirehoseOutputDescription => KinesisAnalyticsV2_KinesisFirehoseOutputDescription
 
   Describes the Kinesis Data Firehose delivery stream that is configured
 as the destination where output is written.
 
 
-=head2 KinesisStreamsOutputDescription => L<Paws::KinesisAnalyticsV2::KinesisStreamsOutputDescription>
+=head2 KinesisStreamsOutputDescription => KinesisAnalyticsV2_KinesisStreamsOutputDescription
 
   Describes the Kinesis data stream that is configured as the destination
 where output is written.
 
 
-=head2 LambdaOutputDescription => L<Paws::KinesisAnalyticsV2::LambdaOutputDescription>
+=head2 LambdaOutputDescription => KinesisAnalyticsV2_LambdaOutputDescription
 
   Describes the Lambda function that is configured as the destination
 where output is written.

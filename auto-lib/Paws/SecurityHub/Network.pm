@@ -1,16 +1,63 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::Network;
-  use Moose;
-  has DestinationDomain => (is => 'ro', isa => 'Str');
-  has DestinationIpV4 => (is => 'ro', isa => 'Str');
-  has DestinationIpV6 => (is => 'ro', isa => 'Str');
-  has DestinationPort => (is => 'ro', isa => 'Int');
-  has Direction => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has SourceDomain => (is => 'ro', isa => 'Str');
-  has SourceIpV4 => (is => 'ro', isa => 'Str');
-  has SourceIpV6 => (is => 'ro', isa => 'Str');
-  has SourceMac => (is => 'ro', isa => 'Str');
-  has SourcePort => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SecurityHub::Types qw//;
+  has DestinationDomain => (is => 'ro', isa => Str);
+  has DestinationIpV4 => (is => 'ro', isa => Str);
+  has DestinationIpV6 => (is => 'ro', isa => Str);
+  has DestinationPort => (is => 'ro', isa => Int);
+  has Direction => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has SourceDomain => (is => 'ro', isa => Str);
+  has SourceIpV4 => (is => 'ro', isa => Str);
+  has SourceIpV6 => (is => 'ro', isa => Str);
+  has SourceMac => (is => 'ro', isa => Str);
+  has SourcePort => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceIpV4' => {
+                                 'type' => 'Str'
+                               },
+               'SourcePort' => {
+                                 'type' => 'Int'
+                               },
+               'Direction' => {
+                                'type' => 'Str'
+                              },
+               'SourceDomain' => {
+                                   'type' => 'Str'
+                                 },
+               'SourceMac' => {
+                                'type' => 'Str'
+                              },
+               'DestinationPort' => {
+                                      'type' => 'Int'
+                                    },
+               'SourceIpV6' => {
+                                 'type' => 'Str'
+                               },
+               'DestinationIpV6' => {
+                                      'type' => 'Str'
+                                    },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'DestinationIpV4' => {
+                                      'type' => 'Str'
+                                    },
+               'DestinationDomain' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

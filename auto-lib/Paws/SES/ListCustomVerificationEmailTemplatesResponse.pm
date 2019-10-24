@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::ListCustomVerificationEmailTemplatesResponse;
   use Moo;

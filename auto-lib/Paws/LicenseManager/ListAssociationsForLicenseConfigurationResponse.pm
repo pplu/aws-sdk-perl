@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::LicenseManager::ListAssociationsForLicenseConfigurationResponse;
-  use Moose;
-  has LicenseConfigurationAssociations => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::LicenseConfigurationAssociation]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_LicenseConfigurationAssociation/;
+  has LicenseConfigurationAssociations => (is => 'ro', isa => ArrayRef[LicenseManager_LicenseConfigurationAssociation]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'LicenseConfigurationAssociations' => {
+                                                       'class' => 'Paws::LicenseManager::LicenseConfigurationAssociation',
+                                                       'type' => 'ArrayRef[LicenseManager_LicenseConfigurationAssociation]'
+                                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::LicenseManager::ListAssociationsForLicenseConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 LicenseConfigurationAssociations => ArrayRef[L<Paws::LicenseManager::LicenseConfigurationAssociation>]
+=head2 LicenseConfigurationAssociations => ArrayRef[LicenseManager_LicenseConfigurationAssociation]
 
 Lists association objects for the license configuration, each
 containing the association time, number of consumed licenses, resource

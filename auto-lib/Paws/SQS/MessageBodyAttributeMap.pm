@@ -1,3 +1,4 @@
+# Generated from default/map_str_to_obj.tt
 package Paws::SQS::MessageBodyAttributeMap;
   use Moo;
   with 'Paws::API::StrToObjMapParser';

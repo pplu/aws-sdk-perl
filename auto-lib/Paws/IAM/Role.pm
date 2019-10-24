@@ -1,9 +1,14 @@
+# Generated from default/object.tt
 package Paws::IAM::Role;
   use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
   use Types::Standard qw/Str Int ArrayRef/;
   use Paws::IAM::Types qw/IAM_Tag IAM_AttachedPermissionsBoundary/;
   has Arn => (is => 'ro', isa => Str, required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->AssumeRolePolicyDocument)); });
   has CreateDate => (is => 'ro', isa => Str, required => 1);
   has Description => (is => 'ro', isa => Str);
   has MaxSessionDuration => (is => 'ro', isa => Int);
@@ -48,7 +53,14 @@ package Paws::IAM::Role;
                'Description' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'CreateDate' => 1,
+                    'RoleId' => 1,
+                    'Path' => 1,
+                    'Arn' => 1,
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

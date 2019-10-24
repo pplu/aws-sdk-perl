@@ -49,7 +49,10 @@ use MooX::ClassAttribute;
   'ParamInHeader' => {
                        'RequestPayer' => 'x-amz-request-payer',
                        'Token' => 'x-amz-bucket-object-lock-token'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1
+                  }
 }
 ;
     return $Params_map;

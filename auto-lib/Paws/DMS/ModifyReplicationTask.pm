@@ -1,20 +1,60 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DMS::ModifyReplicationTask;
-  use Moose;
-  has CdcStartPosition => (is => 'ro', isa => 'Str');
-  has CdcStartTime => (is => 'ro', isa => 'Str');
-  has CdcStopPosition => (is => 'ro', isa => 'Str');
-  has MigrationType => (is => 'ro', isa => 'Str');
-  has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
-  has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
-  has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
-  has TableMappings => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has CdcStartPosition => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStartTime => (is => 'ro', isa => Str, predicate => 1);
+  has CdcStopPosition => (is => 'ro', isa => Str, predicate => 1);
+  has MigrationType => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationTaskArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReplicationTaskIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationTaskSettings => (is => 'ro', isa => Str, predicate => 1);
+  has TableMappings => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DMS::ModifyReplicationTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReplicationTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DMS::ModifyReplicationTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReplicationTaskIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'ReplicationTaskArn' => {
+                                         'type' => 'Str'
+                                       },
+               'TableMappings' => {
+                                    'type' => 'Str'
+                                  },
+               'CdcStartPosition' => {
+                                       'type' => 'Str'
+                                     },
+               'CdcStopPosition' => {
+                                      'type' => 'Str'
+                                    },
+               'MigrationType' => {
+                                    'type' => 'Str'
+                                  },
+               'ReplicationTaskSettings' => {
+                                              'type' => 'Str'
+                                            },
+               'CdcStartTime' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ReplicationTaskArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

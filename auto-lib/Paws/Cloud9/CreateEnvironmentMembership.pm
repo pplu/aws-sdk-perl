@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Cloud9::CreateEnvironmentMembership;
-  use Moose;
-  has EnvironmentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentId' , required => 1);
-  has Permissions => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'permissions' , required => 1);
-  has UserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userArn' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Cloud9::Types qw//;
+  has EnvironmentId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Permissions => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateEnvironmentMembership');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Cloud9::CreateEnvironmentMembershipResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateEnvironmentMembership');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Cloud9::CreateEnvironmentMembershipResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserArn' => {
+                              'type' => 'Str'
+                            },
+               'EnvironmentId' => {
+                                    'type' => 'Str'
+                                  },
+               'Permissions' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'UserArn' => 'userArn',
+                       'EnvironmentId' => 'environmentId',
+                       'Permissions' => 'permissions'
+                     },
+  'IsRequired' => {
+                    'UserArn' => 1,
+                    'EnvironmentId' => 1,
+                    'Permissions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

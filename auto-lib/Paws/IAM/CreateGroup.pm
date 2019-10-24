@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreateGroup;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::CreateGroup;
                'Path' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
 }
 ;
     return $Params_map;

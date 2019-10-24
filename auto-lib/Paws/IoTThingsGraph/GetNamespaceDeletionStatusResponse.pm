@@ -1,13 +1,50 @@
+# Generated from json/callresult_class.tt
 
 package Paws::IoTThingsGraph::GetNamespaceDeletionStatusResponse;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorCode' );
-  has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage' );
-  has NamespaceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceArn' );
-  has NamespaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceName' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has NamespaceArn => (is => 'ro', isa => Str);
+  has NamespaceName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'NamespaceArn' => {
+                                   'type' => 'Str'
+                                 },
+               'NamespaceName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'ErrorCode' => 'errorCode',
+                       'Status' => 'status',
+                       'ErrorMessage' => 'errorMessage',
+                       'NamespaceArn' => 'namespaceArn',
+                       'NamespaceName' => 'namespaceName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

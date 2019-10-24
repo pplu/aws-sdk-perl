@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::ListIdentitiesResponse;
   use Moo;
@@ -19,7 +20,10 @@ package Paws::SES::ListIdentitiesResponse;
                '_request_id' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'Identities' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdentity::IdentityPoolShortDescription;
-  use Moose;
-  has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has IdentityPoolName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw//;
+  has IdentityPoolId => (is => 'ro', isa => Str);
+  has IdentityPoolName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdentityPoolName' => {
+                                       'type' => 'Str'
+                                     },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

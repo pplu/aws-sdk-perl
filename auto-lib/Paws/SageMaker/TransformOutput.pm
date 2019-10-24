@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TransformOutput;
-  use Moose;
-  has Accept => (is => 'ro', isa => 'Str');
-  has AssembleWith => (is => 'ro', isa => 'Str');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has S3OutputPath => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has Accept => (is => 'ro', isa => Str);
+  has AssembleWith => (is => 'ro', isa => Str);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has S3OutputPath => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AssembleWith' => {
+                                   'type' => 'Str'
+                                 },
+               'Accept' => {
+                             'type' => 'Str'
+                           },
+               'S3OutputPath' => {
+                                   'type' => 'Str'
+                                 },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'S3OutputPath' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

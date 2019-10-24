@@ -1,26 +1,100 @@
 
 package Paws::ApiGatewayV2::UpdateRoute;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has ApiKeyRequired => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'apiKeyRequired');
-  has AuthorizationScopes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'authorizationScopes');
-  has AuthorizationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizationType');
-  has AuthorizerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerId');
-  has ModelSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelSelectionExpression');
-  has OperationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'operationName');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteModels', traits => ['NameInRequest'], request_name => 'requestModels');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
-  has RouteId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeId', required => 1);
-  has RouteKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeKey');
-  has RouteResponseSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeResponseSelectionExpression');
-  has Target => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'target');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_RouteModels ApiGatewayV2_RouteParameters/;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ApiKeyRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has AuthorizationScopes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has AuthorizationType => (is => 'ro', isa => Str, predicate => 1);
+  has AuthorizerId => (is => 'ro', isa => Str, predicate => 1);
+  has ModelSelectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has OperationName => (is => 'ro', isa => Str, predicate => 1);
+  has RequestModels => (is => 'ro', isa => ApiGatewayV2_RouteModels, predicate => 1);
+  has RequestParameters => (is => 'ro', isa => ApiGatewayV2_RouteParameters, predicate => 1);
+  has RouteId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteKey => (is => 'ro', isa => Str, predicate => 1);
+  has RouteResponseSelectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Target => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateRouteResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRoute');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateRouteResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Target' => {
+                             'type' => 'Str'
+                           },
+               'AuthorizationScopes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'OperationName' => {
+                                    'type' => 'Str'
+                                  },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'ModelSelectionExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'RouteId' => {
+                              'type' => 'Str'
+                            },
+               'AuthorizerId' => {
+                                   'type' => 'Str'
+                                 },
+               'RouteKey' => {
+                               'type' => 'Str'
+                             },
+               'RouteResponseSelectionExpression' => {
+                                                       'type' => 'Str'
+                                                     },
+               'RequestParameters' => {
+                                        'class' => 'Paws::ApiGatewayV2::RouteParameters',
+                                        'type' => 'ApiGatewayV2_RouteParameters'
+                                      },
+               'RequestModels' => {
+                                    'class' => 'Paws::ApiGatewayV2::RouteModels',
+                                    'type' => 'ApiGatewayV2_RouteModels'
+                                  },
+               'ApiKeyRequired' => {
+                                     'type' => 'Bool'
+                                   },
+               'AuthorizationType' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId',
+                    'RouteId' => 'routeId'
+                  },
+  'NameInRequest' => {
+                       'Target' => 'target',
+                       'AuthorizationScopes' => 'authorizationScopes',
+                       'OperationName' => 'operationName',
+                       'ModelSelectionExpression' => 'modelSelectionExpression',
+                       'AuthorizerId' => 'authorizerId',
+                       'RouteKey' => 'routeKey',
+                       'RouteResponseSelectionExpression' => 'routeResponseSelectionExpression',
+                       'RequestParameters' => 'requestParameters',
+                       'RequestModels' => 'requestModels',
+                       'ApiKeyRequired' => 'apiKeyRequired',
+                       'AuthorizationType' => 'authorizationType'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1,
+                    'RouteId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -127,13 +201,13 @@ The operation name for the route.
 
 
 
-=head2 RequestModels => L<Paws::ApiGatewayV2::RouteModels>
+=head2 RequestModels => ApiGatewayV2_RouteModels
 
 The request models for the route.
 
 
 
-=head2 RequestParameters => L<Paws::ApiGatewayV2::RouteParameters>
+=head2 RequestParameters => ApiGatewayV2_RouteParameters
 
 The request parameters for the route.
 

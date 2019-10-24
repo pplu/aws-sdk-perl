@@ -1,18 +1,52 @@
 
 package Paws::IoT::AddThingToThingGroup;
-  use Moose;
-  has OverrideDynamicGroups => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'overrideDynamicGroups');
-  has ThingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingArn');
-  has ThingGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupArn');
-  has ThingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingGroupName');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'thingName');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has OverrideDynamicGroups => (is => 'ro', isa => Bool, predicate => 1);
+  has ThingArn => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupArn => (is => 'ro', isa => Str, predicate => 1);
+  has ThingGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddThingToThingGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/thing-groups/addThingToThingGroup');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::AddThingToThingGroupResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddThingToThingGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/thing-groups/addThingToThingGroup');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::AddThingToThingGroupResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'ThingGroupName' => {
+                                     'type' => 'Str'
+                                   },
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ThingGroupArn' => {
+                                    'type' => 'Str'
+                                  },
+               'OverrideDynamicGroups' => {
+                                            'type' => 'Bool'
+                                          }
+             },
+  'NameInRequest' => {
+                       'ThingArn' => 'thingArn',
+                       'ThingGroupName' => 'thingGroupName',
+                       'ThingName' => 'thingName',
+                       'ThingGroupArn' => 'thingGroupArn',
+                       'OverrideDynamicGroups' => 'overrideDynamicGroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

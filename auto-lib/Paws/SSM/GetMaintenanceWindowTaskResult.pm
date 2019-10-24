@@ -1,22 +1,83 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetMaintenanceWindowTaskResult;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has LoggingInfo => (is => 'ro', isa => 'Paws::SSM::LoggingInfo');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has TaskArn => (is => 'ro', isa => 'Str');
-  has TaskInvocationParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters');
-  has TaskParameters => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowTaskParameters');
-  has TaskType => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str');
-  has WindowTaskId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target SSM_LoggingInfo SSM_MaintenanceWindowTaskInvocationParameters SSM_MaintenanceWindowTaskParameters/;
+  has Description => (is => 'ro', isa => Str);
+  has LoggingInfo => (is => 'ro', isa => SSM_LoggingInfo);
+  has MaxConcurrency => (is => 'ro', isa => Str);
+  has MaxErrors => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target]);
+  has TaskArn => (is => 'ro', isa => Str);
+  has TaskInvocationParameters => (is => 'ro', isa => SSM_MaintenanceWindowTaskInvocationParameters);
+  has TaskParameters => (is => 'ro', isa => SSM_MaintenanceWindowTaskParameters);
+  has TaskType => (is => 'ro', isa => Str);
+  has WindowId => (is => 'ro', isa => Str);
+  has WindowTaskId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'LoggingInfo' => {
+                                  'class' => 'Paws::SSM::LoggingInfo',
+                                  'type' => 'SSM_LoggingInfo'
+                                },
+               'TaskArn' => {
+                              'type' => 'Str'
+                            },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'WindowTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskParameters' => {
+                                     'class' => 'Paws::SSM::MaintenanceWindowTaskParameters',
+                                     'type' => 'SSM_MaintenanceWindowTaskParameters'
+                                   },
+               'TaskType' => {
+                               'type' => 'Str'
+                             },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TaskInvocationParameters' => {
+                                               'class' => 'Paws::SSM::MaintenanceWindowTaskInvocationParameters',
+                                               'type' => 'SSM_MaintenanceWindowTaskInvocationParameters'
+                                             },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -32,7 +93,7 @@ Paws::SSM::GetMaintenanceWindowTaskResult
 The retrieved task description.
 
 
-=head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
+=head2 LoggingInfo => SSM_LoggingInfo
 
 The location in Amazon S3 where the task results are logged.
 
@@ -74,7 +135,7 @@ Notification Service (Amazon SNS) notifications for maintenance window
 Run Command tasks.
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 The targets where the task should run.
 
@@ -87,12 +148,12 @@ name/ARN. For LAMBDA tasks, the value is the function name/ARN. For
 STEP_FUNCTION tasks, the value is the state machine ARN.
 
 
-=head2 TaskInvocationParameters => L<Paws::SSM::MaintenanceWindowTaskInvocationParameters>
+=head2 TaskInvocationParameters => SSM_MaintenanceWindowTaskInvocationParameters
 
 The parameters to pass to the task when it runs.
 
 
-=head2 TaskParameters => L<Paws::SSM::MaintenanceWindowTaskParameters>
+=head2 TaskParameters => SSM_MaintenanceWindowTaskParameters
 
 The parameters to pass to the task when it runs.
 

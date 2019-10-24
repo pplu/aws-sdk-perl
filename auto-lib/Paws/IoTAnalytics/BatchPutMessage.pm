@@ -1,15 +1,42 @@
 
 package Paws::IoTAnalytics::BatchPutMessage;
-  use Moose;
-  has ChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelName', required => 1);
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Message]', traits => ['NameInRequest'], request_name => 'messages', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_Message/;
+  has ChannelName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Messages => (is => 'ro', isa => ArrayRef[IoTAnalytics_Message], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutMessage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/messages/batch');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::BatchPutMessageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchPutMessage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/messages/batch');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::BatchPutMessageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChannelName' => {
+                                  'type' => 'Str'
+                                },
+               'Messages' => {
+                               'class' => 'Paws::IoTAnalytics::Message',
+                               'type' => 'ArrayRef[IoTAnalytics_Message]'
+                             }
+             },
+  'NameInRequest' => {
+                       'ChannelName' => 'channelName',
+                       'Messages' => 'messages'
+                     },
+  'IsRequired' => {
+                    'ChannelName' => 1,
+                    'Messages' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +87,7 @@ The name of the channel where the messages are sent.
 
 
 
-=head2 B<REQUIRED> Messages => ArrayRef[L<Paws::IoTAnalytics::Message>]
+=head2 B<REQUIRED> Messages => ArrayRef[IoTAnalytics_Message]
 
 The list of messages to be sent. Each message has format: '{
 "messageId": "string", "payload": "string"}'.

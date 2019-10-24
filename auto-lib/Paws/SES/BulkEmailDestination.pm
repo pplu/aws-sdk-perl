@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::BulkEmailDestination;
   use Moo;
   use Types::Standard qw/ArrayRef Str/;
@@ -20,7 +21,10 @@ package Paws::SES::BulkEmailDestination;
                'ReplacementTemplateData' => {
                                               'type' => 'Str'
                                             }
-             }
+             },
+  'IsRequired' => {
+                    'Destination' => 1
+                  }
 }
 ;
     return $Params_map;

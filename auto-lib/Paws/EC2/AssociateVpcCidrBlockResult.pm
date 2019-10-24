@@ -9,7 +9,7 @@ package Paws::EC2::AssociateVpcCidrBlockResult;
   has VpcId => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'VpcId' => {
@@ -34,8 +34,8 @@ package Paws::EC2::AssociateVpcCidrBlockResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

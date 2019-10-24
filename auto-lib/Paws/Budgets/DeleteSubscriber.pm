@@ -1,16 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::DeleteSubscriber;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
-  has Notification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
-  has Subscriber => (is => 'ro', isa => 'Paws::Budgets::Subscriber', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw/Budgets_Notification Budgets_Subscriber/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BudgetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notification => (is => 'ro', isa => Budgets_Notification, required => 1, predicate => 1);
+  has Subscriber => (is => 'ro', isa => Budgets_Subscriber, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteSubscriber');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::DeleteSubscriberResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteSubscriber');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::DeleteSubscriberResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Subscriber' => {
+                                 'class' => 'Paws::Budgets::Subscriber',
+                                 'type' => 'Budgets_Subscriber'
+                               },
+               'Notification' => {
+                                   'class' => 'Paws::Budgets::Notification',
+                                   'type' => 'Budgets_Notification'
+                                 },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'Subscriber' => 1,
+                    'Notification' => 1,
+                    'BudgetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,13 +102,13 @@ The name of the budget whose subscriber you want to delete.
 
 
 
-=head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
+=head2 B<REQUIRED> Notification => Budgets_Notification
 
 The notification whose subscriber you want to delete.
 
 
 
-=head2 B<REQUIRED> Subscriber => L<Paws::Budgets::Subscriber>
+=head2 B<REQUIRED> Subscriber => Budgets_Subscriber
 
 The subscriber that you want to delete.
 

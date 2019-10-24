@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ACM::Filters;
-  use Moose;
-  has ExtendedKeyUsage => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'extendedKeyUsage', traits => ['NameInRequest']);
-  has KeyTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'keyTypes', traits => ['NameInRequest']);
-  has KeyUsage => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'keyUsage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::ACM::Types qw//;
+  has ExtendedKeyUsage => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has KeyTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has KeyUsage => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyUsage' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'KeyTypes' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'ExtendedKeyUsage' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     }
+             },
+  'NameInRequest' => {
+                       'KeyUsage' => 'keyUsage',
+                       'KeyTypes' => 'keyTypes',
+                       'ExtendedKeyUsage' => 'extendedKeyUsage'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

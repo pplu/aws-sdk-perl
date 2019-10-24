@@ -1,19 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::CreateGrant;
-  use Moose;
-  has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
-  has GranteePrincipal => (is => 'ro', isa => 'Str', required => 1);
-  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has Operations => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has RetiringPrincipal => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::KMS::Types qw/KMS_GrantConstraints/;
+  has Constraints => (is => 'ro', isa => KMS_GrantConstraints, predicate => 1);
+  has GranteePrincipal => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has GrantTokens => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KeyId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Operations => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has RetiringPrincipal => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGrant');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::CreateGrantResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateGrant');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::CreateGrantResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RetiringPrincipal' => {
+                                        'type' => 'Str'
+                                      },
+               'GrantTokens' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'GranteePrincipal' => {
+                                       'type' => 'Str'
+                                     },
+               'KeyId' => {
+                            'type' => 'Str'
+                          },
+               'Constraints' => {
+                                  'class' => 'Paws::KMS::GrantConstraints',
+                                  'type' => 'KMS_GrantConstraints'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Operations' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'GranteePrincipal' => 1,
+                    'KeyId' => 1,
+                    'Operations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head1 ATTRIBUTES
 
 
-=head2 Constraints => L<Paws::KMS::GrantConstraints>
+=head2 Constraints => KMS_GrantConstraints
 
 Allows a cryptographic operation only when the encryption context
 matches or includes the encryption context specified in this structure.

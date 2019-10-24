@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StorageGateway::DescribeTapeRecoveryPointsOutput;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has TapeRecoveryPointInfos => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::TapeRecoveryPointInfo]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::StorageGateway::Types qw/StorageGateway_TapeRecoveryPointInfo/;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has TapeRecoveryPointInfos => (is => 'ro', isa => ArrayRef[StorageGateway_TapeRecoveryPointInfo]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TapeRecoveryPointInfos' => {
+                                             'class' => 'Paws::StorageGateway::TapeRecoveryPointInfo',
+                                             'type' => 'ArrayRef[StorageGateway_TapeRecoveryPointInfo]'
+                                           },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -31,7 +56,7 @@ tape recovery points in the list. If there are no more recovery points
 to describe, this field does not appear in the response.
 
 
-=head2 TapeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::TapeRecoveryPointInfo>]
+=head2 TapeRecoveryPointInfos => ArrayRef[StorageGateway_TapeRecoveryPointInfo]
 
 An array of TapeRecoveryPointInfos that are available for the specified
 gateway.

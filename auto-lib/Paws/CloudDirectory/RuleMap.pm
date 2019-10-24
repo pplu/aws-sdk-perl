@@ -1,8 +1,23 @@
 package Paws::CloudDirectory::RuleMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_Rule/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::CloudDirectory::Rule]');
+  has Map => (is => 'ro', isa => HashRef[CloudDirectory_Rule]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[CloudDirectory_Rule]',
+                                          class => 'Paws::CloudDirectory::Rule',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::CloudDirectory::Rule>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

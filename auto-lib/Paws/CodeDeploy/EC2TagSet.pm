@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::EC2TagSet;
-  use Moose;
-  has Ec2TagSetList => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeDeploy::EC2TagFilter]]', request_name => 'ec2TagSetList', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_EC2TagFilter/;
+  has Ec2TagSetList => (is => 'ro', isa => ArrayRef[ArrayRef[CodeDeploy_EC2TagFilter]]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ec2TagSetList' => {
+                                    'class' => 'Paws::CodeDeploy::EC2TagFilter',
+                                    'type' => 'ArrayRef[ArrayRef[CodeDeploy_EC2TagFilter]]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Ec2TagSetList' => 'ec2TagSetList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Information about groups of EC2 instance tags.
 =head1 ATTRIBUTES
 
 
-=head2 Ec2TagSetList => ArrayRef[L<ArrayRef[Paws::CodeDeploy::EC2TagFilter]>]
+=head2 Ec2TagSetList => ArrayRef[ArrayRef[CodeDeploy_EC2TagFilter]]
 
   A list that contains other lists of EC2 instance tag groups. For an
 instance to be included in the deployment group, it must be identified

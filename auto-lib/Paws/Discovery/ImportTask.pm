@@ -1,18 +1,86 @@
+# Generated from default/object.tt
 package Paws::Discovery::ImportTask;
-  use Moose;
-  has ApplicationImportFailure => (is => 'ro', isa => 'Int', request_name => 'applicationImportFailure', traits => ['NameInRequest']);
-  has ApplicationImportSuccess => (is => 'ro', isa => 'Int', request_name => 'applicationImportSuccess', traits => ['NameInRequest']);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
-  has ErrorsAndFailedEntriesZip => (is => 'ro', isa => 'Str', request_name => 'errorsAndFailedEntriesZip', traits => ['NameInRequest']);
-  has ImportCompletionTime => (is => 'ro', isa => 'Str', request_name => 'importCompletionTime', traits => ['NameInRequest']);
-  has ImportDeletedTime => (is => 'ro', isa => 'Str', request_name => 'importDeletedTime', traits => ['NameInRequest']);
-  has ImportRequestTime => (is => 'ro', isa => 'Str', request_name => 'importRequestTime', traits => ['NameInRequest']);
-  has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest']);
-  has ImportUrl => (is => 'ro', isa => 'Str', request_name => 'importUrl', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has ServerImportFailure => (is => 'ro', isa => 'Int', request_name => 'serverImportFailure', traits => ['NameInRequest']);
-  has ServerImportSuccess => (is => 'ro', isa => 'Int', request_name => 'serverImportSuccess', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Discovery::Types qw//;
+  has ApplicationImportFailure => (is => 'ro', isa => Int);
+  has ApplicationImportSuccess => (is => 'ro', isa => Int);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has ErrorsAndFailedEntriesZip => (is => 'ro', isa => Str);
+  has ImportCompletionTime => (is => 'ro', isa => Str);
+  has ImportDeletedTime => (is => 'ro', isa => Str);
+  has ImportRequestTime => (is => 'ro', isa => Str);
+  has ImportTaskId => (is => 'ro', isa => Str);
+  has ImportUrl => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ServerImportFailure => (is => 'ro', isa => Int);
+  has ServerImportSuccess => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerImportSuccess' => {
+                                          'type' => 'Int'
+                                        },
+               'ImportUrl' => {
+                                'type' => 'Str'
+                              },
+               'ImportTaskId' => {
+                                   'type' => 'Str'
+                                 },
+               'ImportDeletedTime' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ErrorsAndFailedEntriesZip' => {
+                                                'type' => 'Str'
+                                              },
+               'ServerImportFailure' => {
+                                          'type' => 'Int'
+                                        },
+               'ApplicationImportFailure' => {
+                                               'type' => 'Int'
+                                             },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ImportRequestTime' => {
+                                        'type' => 'Str'
+                                      },
+               'ApplicationImportSuccess' => {
+                                               'type' => 'Int'
+                                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ImportCompletionTime' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'NameInRequest' => {
+                       'ServerImportSuccess' => 'serverImportSuccess',
+                       'ImportUrl' => 'importUrl',
+                       'ImportTaskId' => 'importTaskId',
+                       'ImportDeletedTime' => 'importDeletedTime',
+                       'Status' => 'status',
+                       'ErrorsAndFailedEntriesZip' => 'errorsAndFailedEntriesZip',
+                       'ServerImportFailure' => 'serverImportFailure',
+                       'ApplicationImportFailure' => 'applicationImportFailure',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'ImportRequestTime' => 'importRequestTime',
+                       'ApplicationImportSuccess' => 'applicationImportSuccess',
+                       'Name' => 'name',
+                       'ImportCompletionTime' => 'importCompletionTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

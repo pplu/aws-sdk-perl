@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::Variable;
-  use Moose;
-  has DatasetContentVersionValue => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentVersionValue', request_name => 'datasetContentVersionValue', traits => ['NameInRequest']);
-  has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has OutputFileUriValue => (is => 'ro', isa => 'Paws::IoTAnalytics::OutputFileUriValue', request_name => 'outputFileUriValue', traits => ['NameInRequest']);
-  has StringValue => (is => 'ro', isa => 'Str', request_name => 'stringValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_OutputFileUriValue IoTAnalytics_DatasetContentVersionValue/;
+  has DatasetContentVersionValue => (is => 'ro', isa => IoTAnalytics_DatasetContentVersionValue);
+  has DoubleValue => (is => 'ro', isa => Num);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has OutputFileUriValue => (is => 'ro', isa => IoTAnalytics_OutputFileUriValue);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DoubleValue' => {
+                                  'type' => 'Num'
+                                },
+               'StringValue' => {
+                                  'type' => 'Str'
+                                },
+               'OutputFileUriValue' => {
+                                         'class' => 'Paws::IoTAnalytics::OutputFileUriValue',
+                                         'type' => 'IoTAnalytics_OutputFileUriValue'
+                                       },
+               'DatasetContentVersionValue' => {
+                                                 'class' => 'Paws::IoTAnalytics::DatasetContentVersionValue',
+                                                 'type' => 'IoTAnalytics_DatasetContentVersionValue'
+                                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'DoubleValue' => 'doubleValue',
+                       'StringValue' => 'stringValue',
+                       'OutputFileUriValue' => 'outputFileUriValue',
+                       'DatasetContentVersionValue' => 'datasetContentVersionValue',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +83,7 @@ execution. Each variable must have a name and a value given by one of
 =head1 ATTRIBUTES
 
 
-=head2 DatasetContentVersionValue => L<Paws::IoTAnalytics::DatasetContentVersionValue>
+=head2 DatasetContentVersionValue => IoTAnalytics_DatasetContentVersionValue
 
   The value of the variable as a structure that specifies a data set
 content version.
@@ -58,7 +99,7 @@ content version.
   The name of the variable.
 
 
-=head2 OutputFileUriValue => L<Paws::IoTAnalytics::OutputFileUriValue>
+=head2 OutputFileUriValue => IoTAnalytics_OutputFileUriValue
 
   The value of the variable as a structure that specifies an output file
 URI.

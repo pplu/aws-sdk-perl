@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::GameLift::Script;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ScriptId => (is => 'ro', isa => 'Str');
-  has SizeOnDisk => (is => 'ro', isa => 'Int');
-  has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::GameLift::Types qw/GameLift_S3Location/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ScriptId => (is => 'ro', isa => Str);
+  has SizeOnDisk => (is => 'ro', isa => Int);
+  has StorageLocation => (is => 'ro', isa => GameLift_S3Location);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeOnDisk' => {
+                                 'type' => 'Int'
+                               },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ScriptId' => {
+                               'type' => 'Str'
+                             },
+               'StorageLocation' => {
+                                      'class' => 'Paws::GameLift::S3Location',
+                                      'type' => 'GameLift_S3Location'
+                                    },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +125,7 @@ need to be unique.
 files are uploaded from an S3 location, this value remains at "0".
 
 
-=head2 StorageLocation => L<Paws::GameLift::S3Location>
+=head2 StorageLocation => GameLift_S3Location
 
   
 

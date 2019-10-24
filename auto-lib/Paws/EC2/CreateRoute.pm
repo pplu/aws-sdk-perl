@@ -21,7 +21,7 @@ package Paws::EC2::CreateRoute;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateRouteResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NatGatewayId' => {
@@ -69,11 +69,14 @@ package Paws::EC2::CreateRoute;
                        'GatewayId' => 'gatewayId',
                        'NetworkInterfaceId' => 'networkInterfaceId',
                        'VpcPeeringConnectionId' => 'vpcPeeringConnectionId'
-                     }
+                     },
+  'IsRequired' => {
+                    'RouteTableId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

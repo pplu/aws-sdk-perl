@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::LoadBalancerInfo;
-  use Moose;
-  has ElbInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::ELBInfo]', request_name => 'elbInfoList', traits => ['NameInRequest']);
-  has TargetGroupInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupInfo]', request_name => 'targetGroupInfoList', traits => ['NameInRequest']);
-  has TargetGroupPairInfoList => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TargetGroupPairInfo]', request_name => 'targetGroupPairInfoList', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_TargetGroupInfo CodeDeploy_ELBInfo CodeDeploy_TargetGroupPairInfo/;
+  has ElbInfoList => (is => 'ro', isa => ArrayRef[CodeDeploy_ELBInfo]);
+  has TargetGroupInfoList => (is => 'ro', isa => ArrayRef[CodeDeploy_TargetGroupInfo]);
+  has TargetGroupPairInfoList => (is => 'ro', isa => ArrayRef[CodeDeploy_TargetGroupPairInfo]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetGroupPairInfoList' => {
+                                              'class' => 'Paws::CodeDeploy::TargetGroupPairInfo',
+                                              'type' => 'ArrayRef[CodeDeploy_TargetGroupPairInfo]'
+                                            },
+               'ElbInfoList' => {
+                                  'class' => 'Paws::CodeDeploy::ELBInfo',
+                                  'type' => 'ArrayRef[CodeDeploy_ELBInfo]'
+                                },
+               'TargetGroupInfoList' => {
+                                          'class' => 'Paws::CodeDeploy::TargetGroupInfo',
+                                          'type' => 'ArrayRef[CodeDeploy_TargetGroupInfo]'
+                                        }
+             },
+  'NameInRequest' => {
+                       'TargetGroupPairInfoList' => 'targetGroupPairInfoList',
+                       'ElbInfoList' => 'elbInfoList',
+                       'TargetGroupInfoList' => 'targetGroupInfoList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +70,7 @@ group used in a deployment.
 =head1 ATTRIBUTES
 
 
-=head2 ElbInfoList => ArrayRef[L<Paws::CodeDeploy::ELBInfo>]
+=head2 ElbInfoList => ArrayRef[CodeDeploy_ELBInfo]
 
   An array that contains information about the load balancer to use for
 load balancing in a deployment. In Elastic Load Balancing, load
@@ -48,7 +79,7 @@ balancers are used with Classic Load Balancers.
 Adding more than one load balancer to the array is not supported.
 
 
-=head2 TargetGroupInfoList => ArrayRef[L<Paws::CodeDeploy::TargetGroupInfo>]
+=head2 TargetGroupInfoList => ArrayRef[CodeDeploy_TargetGroupInfo]
 
   An array that contains information about the target group to use for
 load balancing in a deployment. In Elastic Load Balancing, target
@@ -57,7 +88,7 @@ groups are used with Application Load Balancers.
 Adding more than one target group to the array is not supported.
 
 
-=head2 TargetGroupPairInfoList => ArrayRef[L<Paws::CodeDeploy::TargetGroupPairInfo>]
+=head2 TargetGroupPairInfoList => ArrayRef[CodeDeploy_TargetGroupPairInfo]
 
   The target group pair information. This is an array of
 C<TargeGroupPairInfo> objects with a maximum size of one.

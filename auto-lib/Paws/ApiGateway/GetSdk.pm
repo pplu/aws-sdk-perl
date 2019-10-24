@@ -1,17 +1,55 @@
 
 package Paws::ApiGateway::GetSdk;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdk_type', required => 1);
-  has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stage_name', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has Parameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SdkType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StageName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSdk');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::SdkResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSdk');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::SdkResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                 'type' => 'ApiGateway_MapOfStringToString'
+                               },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'SdkType' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id',
+                    'StageName' => 'stage_name',
+                    'SdkType' => 'sdk_type'
+                  },
+  'ParamInQuery' => {
+                      'Parameters' => 'parameters'
+                    },
+  'IsRequired' => {
+                    'RestApiId' => 1,
+                    'StageName' => 1,
+                    'SdkType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +89,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Parameters => ApiGateway_MapOfStringToString
 
 A string-to-string key-value map of query parameters
 C<sdkType>-dependent properties of the SDK. For C<sdkType> of

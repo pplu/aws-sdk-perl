@@ -1,15 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::UpdateServicePrimaryTaskSet;
-  use Moose;
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
-  has PrimaryTaskSet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'primaryTaskSet' , required => 1);
-  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has Cluster => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PrimaryTaskSet => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Service => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServicePrimaryTaskSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::UpdateServicePrimaryTaskSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServicePrimaryTaskSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::UpdateServicePrimaryTaskSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrimaryTaskSet' => {
+                                     'type' => 'Str'
+                                   },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'Service' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'PrimaryTaskSet' => 'primaryTaskSet',
+                       'Cluster' => 'cluster',
+                       'Service' => 'service'
+                     },
+  'IsRequired' => {
+                    'PrimaryTaskSet' => 1,
+                    'Cluster' => 1,
+                    'Service' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

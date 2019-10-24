@@ -4,7 +4,7 @@ package Paws::EC2::IamInstanceProfile;
   has Arn => (is => 'ro', isa => Str);
   has Id => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Id' => {
@@ -20,8 +20,8 @@ package Paws::EC2::IamInstanceProfile;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BackupSummary;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -13,7 +14,7 @@ package Paws::DynamoDB::BackupSummary;
   has TableId => (is => 'ro', isa => Str);
   has TableName => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BackupType' => {
@@ -49,8 +50,8 @@ package Paws::DynamoDB::BackupSummary;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

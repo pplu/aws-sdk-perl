@@ -1,25 +1,85 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::CreateCluster;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ClusterName => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has NodeType => (is => 'ro', isa => 'Str', required => 1);
-  has NotificationTopicArn => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationFactor => (is => 'ro', isa => 'Int', required => 1);
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SSESpecification => (is => 'ro', isa => 'Paws::DAX::SSESpecification');
-  has SubnetGroupName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DAX::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::DAX::Types qw/DAX_Tag DAX_SSESpecification/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ClusterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has IamRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NodeType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NotificationTopicArn => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ReplicationFactor => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SSESpecification => (is => 'ro', isa => DAX_SSESpecification, predicate => 1);
+  has SubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DAX_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::CreateClusterResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::CreateClusterResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubnetGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'AvailabilityZones' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'NodeType' => {
+                               'type' => 'Str'
+                             },
+               'NotificationTopicArn' => {
+                                           'type' => 'Str'
+                                         },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'IamRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationFactor' => {
+                                        'type' => 'Int'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::DAX::Tag',
+                           'type' => 'ArrayRef[DAX_Tag]'
+                         },
+               'SSESpecification' => {
+                                       'class' => 'Paws::DAX::SSESpecification',
+                                       'type' => 'DAX_SSESpecification'
+                                     },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'IamRoleArn' => 1,
+                    'ClusterName' => 1,
+                    'ReplicationFactor' => 1,
+                    'NodeType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -212,7 +272,7 @@ security group to each node.
 
 
 
-=head2 SSESpecification => L<Paws::DAX::SSESpecification>
+=head2 SSESpecification => DAX_SSESpecification
 
 Represents the settings used to enable server-side encryption on the
 cluster.
@@ -228,7 +288,7 @@ subnets that you specify in a subnet group must exist in the same VPC.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DAX::Tag>]
+=head2 Tags => ArrayRef[DAX_Tag]
 
 A set of tags to associate with the DAX cluster.
 

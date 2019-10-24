@@ -1,23 +1,79 @@
 
 package Paws::WorkDocs::DescribeUsers;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has Fields => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fields');
-  has Include => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'include');
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker');
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
-  has OrganizationId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'organizationId');
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query');
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
-  has UserIds => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'userIds');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WorkDocs::Types qw//;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has Fields => (is => 'ro', isa => Str, predicate => 1);
+  has Include => (is => 'ro', isa => Str, predicate => 1);
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has Order => (is => 'ro', isa => Str, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, predicate => 1);
+  has Query => (is => 'ro', isa => Str, predicate => 1);
+  has Sort => (is => 'ro', isa => Str, predicate => 1);
+  has UserIds => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeUsers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::DescribeUsersResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeUsers');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::DescribeUsersResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Fields' => {
+                             'type' => 'Str'
+                           },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'Sort' => {
+                           'type' => 'Str'
+                         },
+               'UserIds' => {
+                              'type' => 'Str'
+                            },
+               'Include' => {
+                              'type' => 'Str'
+                            },
+               'Order' => {
+                            'type' => 'Str'
+                          },
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'Fields' => 'fields',
+                      'OrganizationId' => 'organizationId',
+                      'Limit' => 'limit',
+                      'Sort' => 'sort',
+                      'UserIds' => 'userIds',
+                      'Include' => 'include',
+                      'Order' => 'order',
+                      'Query' => 'query',
+                      'Marker' => 'marker'
+                    },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

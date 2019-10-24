@@ -1,17 +1,42 @@
 
 package Paws::Route53::ChangeResourceRecordSets;
-  use Moose;
-  has ChangeBatch => (is => 'ro', isa => 'Paws::Route53::ChangeBatch', required => 1);
-  has HostedZoneId => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw/Route53_ChangeBatch/;
+  has ChangeBatch => (is => 'ro', isa => Route53_ChangeBatch, required => 1, predicate => 1);
+  has HostedZoneId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ChangeResourceRecordSets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzone/{Id}/rrset/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeResourceRecordSetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ChangeResourceRecordSets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzone/{Id}/rrset/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ChangeResourceRecordSetsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeBatch' => {
+                                  'class' => 'Paws::Route53::ChangeBatch',
+                                  'type' => 'Route53_ChangeBatch'
+                                },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'HostedZoneId' => 'Id'
+                  },
+  'IsRequired' => {
+                    'ChangeBatch' => 1,
+                    'HostedZoneId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -94,7 +119,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ChangeBatch => L<Paws::Route53::ChangeBatch>
+=head2 B<REQUIRED> ChangeBatch => Route53_ChangeBatch
 
 A complex type that contains an optional comment and the C<Changes>
 element.

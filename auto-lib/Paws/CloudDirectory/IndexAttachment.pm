@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::IndexAttachment;
-  use Moose;
-  has IndexedAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
-  has ObjectIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_AttributeKeyAndValue/;
+  has IndexedAttributes => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue]);
+  has ObjectIdentifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IndexedAttributes' => {
+                                        'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                        'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                                      },
+               'ObjectIdentifier' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Represents an index and an attached object.
 =head1 ATTRIBUTES
 
 
-=head2 IndexedAttributes => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 IndexedAttributes => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
   The indexed attribute values.
 

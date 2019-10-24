@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ECS::VersionInfo;
-  use Moose;
-  has AgentHash => (is => 'ro', isa => 'Str', request_name => 'agentHash', traits => ['NameInRequest']);
-  has AgentVersion => (is => 'ro', isa => 'Str', request_name => 'agentVersion', traits => ['NameInRequest']);
-  has DockerVersion => (is => 'ro', isa => 'Str', request_name => 'dockerVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ECS::Types qw//;
+  has AgentHash => (is => 'ro', isa => Str);
+  has AgentVersion => (is => 'ro', isa => Str);
+  has DockerVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AgentHash' => {
+                                'type' => 'Str'
+                              },
+               'AgentVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'DockerVersion' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AgentHash' => 'agentHash',
+                       'AgentVersion' => 'agentVersion',
+                       'DockerVersion' => 'dockerVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

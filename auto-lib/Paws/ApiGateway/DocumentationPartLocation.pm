@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::DocumentationPartLocation;
-  use Moose;
-  has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
-  has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw//;
+  has Method => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Path => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Method' => {
+                             'type' => 'Str'
+                           },
+               'Path' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'StatusCode' => 'statusCode',
+                       'Type' => 'type',
+                       'Method' => 'method',
+                       'Path' => 'path',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

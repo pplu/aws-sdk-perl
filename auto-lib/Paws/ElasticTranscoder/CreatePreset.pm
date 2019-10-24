@@ -1,19 +1,56 @@
 
 package Paws::ElasticTranscoder::CreatePreset;
-  use Moose;
-  has Audio => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioParameters');
-  has Container => (is => 'ro', isa => 'Str', required => 1);
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Thumbnails => (is => 'ro', isa => 'Paws::ElasticTranscoder::Thumbnails');
-  has Video => (is => 'ro', isa => 'Paws::ElasticTranscoder::VideoParameters');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_VideoParameters ElasticTranscoder_AudioParameters ElasticTranscoder_Thumbnails/;
+  has Audio => (is => 'ro', isa => ElasticTranscoder_AudioParameters, predicate => 1);
+  has Container => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Thumbnails => (is => 'ro', isa => ElasticTranscoder_Thumbnails, predicate => 1);
+  has Video => (is => 'ro', isa => ElasticTranscoder_VideoParameters, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePreset');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreatePresetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePreset');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/presets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::CreatePresetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Video' => {
+                            'class' => 'Paws::ElasticTranscoder::VideoParameters',
+                            'type' => 'ElasticTranscoder_VideoParameters'
+                          },
+               'Thumbnails' => {
+                                 'class' => 'Paws::ElasticTranscoder::Thumbnails',
+                                 'type' => 'ElasticTranscoder_Thumbnails'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Container' => {
+                                'type' => 'Str'
+                              },
+               'Audio' => {
+                            'class' => 'Paws::ElasticTranscoder::AudioParameters',
+                            'type' => 'ElasticTranscoder_AudioParameters'
+                          }
+             },
+  'IsRequired' => {
+                    'Name' => 1,
+                    'Container' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -108,7 +145,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
+=head2 Audio => ElasticTranscoder_AudioParameters
 
 A section of the request body that specifies the audio parameters.
 
@@ -135,14 +172,14 @@ AWS account, but uniqueness is not enforced.
 
 
 
-=head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
+=head2 Thumbnails => ElasticTranscoder_Thumbnails
 
 A section of the request body that specifies the thumbnail parameters,
 if any.
 
 
 
-=head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
+=head2 Video => ElasticTranscoder_VideoParameters
 
 A section of the request body that specifies the video parameters.
 

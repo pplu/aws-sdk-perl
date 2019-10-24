@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeComplianceByConfigRuleResponse;
-  use Moose;
-  has ComplianceByConfigRules => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceByConfigRule]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ComplianceByConfigRule/;
+  has ComplianceByConfigRules => (is => 'ro', isa => ArrayRef[Config_ComplianceByConfigRule]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ComplianceByConfigRules' => {
+                                              'class' => 'Paws::Config::ComplianceByConfigRule',
+                                              'type' => 'ArrayRef[Config_ComplianceByConfigRule]'
+                                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Config::DescribeComplianceByConfigRuleResponse
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceByConfigRules => ArrayRef[L<Paws::Config::ComplianceByConfigRule>]
+=head2 ComplianceByConfigRules => ArrayRef[Config_ComplianceByConfigRule]
 
 Indicates whether each of the specified AWS Config rules is compliant.
 

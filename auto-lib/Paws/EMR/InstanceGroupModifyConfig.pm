@@ -1,10 +1,44 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceGroupModifyConfig;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::EMR::Types qw/EMR_Configuration EMR_ShrinkPolicy/;
+  has Configurations => (is => 'ro', isa => ArrayRef[EMR_Configuration]);
+  has EC2InstanceIdsToTerminate => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has InstanceCount => (is => 'ro', isa => Int);
+  has InstanceGroupId => (is => 'ro', isa => Str, required => 1);
+  has ShrinkPolicy => (is => 'ro', isa => EMR_ShrinkPolicy);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::EMR::Configuration',
+                                     'type' => 'ArrayRef[EMR_Configuration]'
+                                   },
+               'ShrinkPolicy' => {
+                                   'class' => 'Paws::EMR::ShrinkPolicy',
+                                   'type' => 'EMR_ShrinkPolicy'
+                                 },
+               'EC2InstanceIdsToTerminate' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'InstanceGroupId' => {
+                                      'type' => 'Str'
+                                    },
+               'InstanceCount' => {
+                                    'type' => 'Int'
+                                  }
+             },
+  'IsRequired' => {
+                    'InstanceGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +74,7 @@ Modify the size or configurations of an instance group.
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
+=head2 Configurations => ArrayRef[EMR_Configuration]
 
   A list of new or modified configurations to apply for an instance
 group.
@@ -62,7 +96,7 @@ the instance group will not return to its original requested size.
   Unique ID of the instance group to expand or shrink.
 
 
-=head2 ShrinkPolicy => L<Paws::EMR::ShrinkPolicy>
+=head2 ShrinkPolicy => EMR_ShrinkPolicy
 
   Policy for customizing shrink operations.
 

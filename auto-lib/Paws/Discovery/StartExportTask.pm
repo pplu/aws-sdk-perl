@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::StartExportTask;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
-  has ExportDataFormat => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'exportDataFormat' );
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ExportFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Discovery::Types qw/Discovery_ExportFilter/;
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has ExportDataFormat => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Filters => (is => 'ro', isa => ArrayRef[Discovery_ExportFilter], predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartExportTask');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::StartExportTaskResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartExportTask');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::StartExportTaskResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportDataFormat' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'Filters' => {
+                              'class' => 'Paws::Discovery::ExportFilter',
+                              'type' => 'ArrayRef[Discovery_ExportFilter]'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'ExportDataFormat' => 'exportDataFormat',
+                       'Filters' => 'filters',
+                       'StartTime' => 'startTime',
+                       'EndTime' => 'endTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +105,7 @@ B<Note:> I<The> C<GRAPHML> I<option has been deprecated.>
 
 
 
-=head2 Filters => ArrayRef[L<Paws::Discovery::ExportFilter>]
+=head2 Filters => ArrayRef[Discovery_ExportFilter]
 
 If a filter is present, it selects the single C<agentId> of the
 Application Discovery Agent for which data is exported. The C<agentId>

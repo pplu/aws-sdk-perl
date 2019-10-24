@@ -1,11 +1,49 @@
+# Generated from default/object.tt
 package Paws::FSX::SelfManagedActiveDirectoryConfiguration;
-  use Moose;
-  has DnsIps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has FileSystemAdministratorsGroup => (is => 'ro', isa => 'Str');
-  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => 'Str');
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::FSX::Types qw//;
+  has DnsIps => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has FileSystemAdministratorsGroup => (is => 'ro', isa => Str);
+  has OrganizationalUnitDistinguishedName => (is => 'ro', isa => Str);
+  has Password => (is => 'ro', isa => Str, required => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'OrganizationalUnitDistinguishedName' => {
+                                                          'type' => 'Str'
+                                                        },
+               'FileSystemAdministratorsGroup' => {
+                                                    'type' => 'Str'
+                                                  },
+               'DnsIps' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Password' => 1,
+                    'DomainName' => 1,
+                    'DnsIps' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

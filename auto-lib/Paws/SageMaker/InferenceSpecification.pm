@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::SageMaker::InferenceSpecification;
-  use Moose;
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ModelPackageContainerDefinition]', required => 1);
-  has SupportedContentTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedRealtimeInferenceInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedResponseMIMETypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has SupportedTransformInstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::SageMaker::Types qw/SageMaker_ModelPackageContainerDefinition/;
+  has Containers => (is => 'ro', isa => ArrayRef[SageMaker_ModelPackageContainerDefinition], required => 1);
+  has SupportedContentTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SupportedRealtimeInferenceInstanceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SupportedResponseMIMETypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has SupportedTransformInstanceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Containers' => {
+                                 'class' => 'Paws::SageMaker::ModelPackageContainerDefinition',
+                                 'type' => 'ArrayRef[SageMaker_ModelPackageContainerDefinition]'
+                               },
+               'SupportedRealtimeInferenceInstanceTypes' => {
+                                                              'type' => 'ArrayRef[Str|Undef]'
+                                                            },
+               'SupportedContentTypes' => {
+                                            'type' => 'ArrayRef[Str|Undef]'
+                                          },
+               'SupportedResponseMIMETypes' => {
+                                                 'type' => 'ArrayRef[Str|Undef]'
+                                               },
+               'SupportedTransformInstanceTypes' => {
+                                                      'type' => 'ArrayRef[Str|Undef]'
+                                                    }
+             },
+  'IsRequired' => {
+                    'Containers' => 1,
+                    'SupportedRealtimeInferenceInstanceTypes' => 1,
+                    'SupportedContentTypes' => 1,
+                    'SupportedResponseMIMETypes' => 1,
+                    'SupportedTransformInstanceTypes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +78,7 @@ run.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Containers => ArrayRef[L<Paws::SageMaker::ModelPackageContainerDefinition>]
+=head2 B<REQUIRED> Containers => ArrayRef[SageMaker_ModelPackageContainerDefinition]
 
   The Amazon ECR registry path of the Docker image that contains the
 inference code.

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalTable;
   use Moo;
   use Types::Standard qw/Str ArrayRef/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::GlobalTable;
   has GlobalTableName => (is => 'ro', isa => Str);
   has ReplicationGroup => (is => 'ro', isa => ArrayRef[DynamoDB_Replica]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicationGroup' => {
@@ -18,8 +19,8 @@ package Paws::DynamoDB::GlobalTable;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

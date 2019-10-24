@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::StopWorkspaces;
-  use Moose;
-  has StopWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::StopRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_StopRequest/;
+  has StopWorkspaceRequests => (is => 'ro', isa => ArrayRef[WorkSpaces_StopRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopWorkspaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::StopWorkspacesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopWorkspaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::StopWorkspacesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StopWorkspaceRequests' => {
+                                            'class' => 'Paws::WorkSpaces::StopRequest',
+                                            'type' => 'ArrayRef[WorkSpaces_StopRequest]'
+                                          }
+             },
+  'IsRequired' => {
+                    'StopWorkspaceRequests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +68,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> StopWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::StopRequest>]
+=head2 B<REQUIRED> StopWorkspaceRequests => ArrayRef[WorkSpaces_StopRequest]
 
 The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
 

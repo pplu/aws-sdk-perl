@@ -1,17 +1,52 @@
 
 package Paws::ApiGateway::CreateRequestValidator;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has ValidateRequestBody => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestBody');
-  has ValidateRequestParameters => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'validateRequestParameters');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGateway::Types qw//;
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidateRequestBody => (is => 'ro', isa => Bool, predicate => 1);
+  has ValidateRequestParameters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRequestValidator');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/requestvalidators');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::RequestValidator');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRequestValidator');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/requestvalidators');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::RequestValidator');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ValidateRequestParameters' => {
+                                                'type' => 'Bool'
+                                              },
+               'ValidateRequestBody' => {
+                                          'type' => 'Bool'
+                                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'RestApiId' => 'restapi_id'
+                  },
+  'NameInRequest' => {
+                       'ValidateRequestParameters' => 'validateRequestParameters',
+                       'ValidateRequestBody' => 'validateRequestBody',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'RestApiId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

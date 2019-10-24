@@ -4,7 +4,7 @@ package Paws::EC2::DnsServersOptionsModifyStructure;
   has CustomDnsServers => (is => 'ro', isa => ArrayRef[Str|Undef]);
   has Enabled => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CustomDnsServers' => {
@@ -16,8 +16,8 @@ package Paws::EC2::DnsServersOptionsModifyStructure;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::InstallToRemoteAccessSessionResult;
-  use Moose;
-  has AppUpload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['NameInRequest'], request_name => 'appUpload' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Upload/;
+  has AppUpload => (is => 'ro', isa => DeviceFarm_Upload);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AppUpload' => {
+                                'class' => 'Paws::DeviceFarm::Upload',
+                                'type' => 'DeviceFarm_Upload'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AppUpload' => 'appUpload'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::InstallToRemoteAccessSessionResult
 =head1 ATTRIBUTES
 
 
-=head2 AppUpload => L<Paws::DeviceFarm::Upload>
+=head2 AppUpload => DeviceFarm_Upload
 
 An app to upload or that has been uploaded.
 

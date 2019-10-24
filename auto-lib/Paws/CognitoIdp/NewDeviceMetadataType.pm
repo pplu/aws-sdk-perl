@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::NewDeviceMetadataType;
-  use Moose;
-  has DeviceGroupKey => (is => 'ro', isa => 'Str');
-  has DeviceKey => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has DeviceGroupKey => (is => 'ro', isa => Str);
+  has DeviceKey => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceGroupKey' => {
+                                     'type' => 'Str'
+                                   },
+               'DeviceKey' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

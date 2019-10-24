@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::EndpointResponse]', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EndpointResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_EndpointResponse], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::EndpointResponse',
+                           'type' => 'ArrayRef[Pinpoint_EndpointResponse]'
+                         }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ user ID.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::EndpointResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_EndpointResponse]
 
   An array of responses, one for each endpoint that's associated with the
 user ID.

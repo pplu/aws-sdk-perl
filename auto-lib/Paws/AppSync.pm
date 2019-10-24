@@ -1,14 +1,15 @@
 package Paws::AppSync;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'appsync' }
   sub signing_name { 'appsync' }
   sub version { '2017-07-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -427,15 +428,15 @@ executing your API.
 
 =item [Description => Str]
 
-=item [DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>]
+=item [DynamodbConfig => AppSync_DynamodbDataSourceConfig]
 
-=item [ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>]
+=item [ElasticsearchConfig => AppSync_ElasticsearchDataSourceConfig]
 
-=item [HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>]
+=item [HttpConfig => AppSync_HttpDataSourceConfig]
 
-=item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
+=item [LambdaConfig => AppSync_LambdaDataSourceConfig]
 
-=item [RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>]
+=item [RelationalDatabaseConfig => AppSync_RelationalDatabaseDataSourceConfig]
 
 =item [ServiceRoleArn => Str]
 
@@ -488,15 +489,15 @@ compose the resolver logic.
 
 =item Name => Str
 
-=item [AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]]
+=item [AdditionalAuthenticationProviders => ArrayRef[AppSync_AdditionalAuthenticationProvider]]
 
-=item [LogConfig => L<Paws::AppSync::LogConfig>]
+=item [LogConfig => AppSync_LogConfig]
 
-=item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
+=item [OpenIDConnectConfig => AppSync_OpenIDConnectConfig]
 
-=item [Tags => L<Paws::AppSync::TagMap>]
+=item [Tags => AppSync_TagMap]
 
-=item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
+=item [UserPoolConfig => AppSync_UserPoolConfig]
 
 
 =back
@@ -524,7 +525,7 @@ Creates a C<GraphqlApi> object.
 
 =item [Kind => Str]
 
-=item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
+=item [PipelineConfig => AppSync_PipelineConfig]
 
 =item [ResponseMappingTemplate => Str]
 
@@ -988,7 +989,7 @@ This operation is asynchronous. Use to determine when it has completed.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::AppSync::TagMap>
+=item Tags => AppSync_TagMap
 
 
 =back
@@ -1052,15 +1053,15 @@ Updates an API key.
 
 =item [Description => Str]
 
-=item [DynamodbConfig => L<Paws::AppSync::DynamodbDataSourceConfig>]
+=item [DynamodbConfig => AppSync_DynamodbDataSourceConfig]
 
-=item [ElasticsearchConfig => L<Paws::AppSync::ElasticsearchDataSourceConfig>]
+=item [ElasticsearchConfig => AppSync_ElasticsearchDataSourceConfig]
 
-=item [HttpConfig => L<Paws::AppSync::HttpDataSourceConfig>]
+=item [HttpConfig => AppSync_HttpDataSourceConfig]
 
-=item [LambdaConfig => L<Paws::AppSync::LambdaDataSourceConfig>]
+=item [LambdaConfig => AppSync_LambdaDataSourceConfig]
 
-=item [RelationalDatabaseConfig => L<Paws::AppSync::RelationalDatabaseDataSourceConfig>]
+=item [RelationalDatabaseConfig => AppSync_RelationalDatabaseDataSourceConfig]
 
 =item [ServiceRoleArn => Str]
 
@@ -1112,15 +1113,15 @@ Updates a C<Function> object.
 
 =item Name => Str
 
-=item [AdditionalAuthenticationProviders => ArrayRef[L<Paws::AppSync::AdditionalAuthenticationProvider>]]
+=item [AdditionalAuthenticationProviders => ArrayRef[AppSync_AdditionalAuthenticationProvider]]
 
 =item [AuthenticationType => Str]
 
-=item [LogConfig => L<Paws::AppSync::LogConfig>]
+=item [LogConfig => AppSync_LogConfig]
 
-=item [OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>]
+=item [OpenIDConnectConfig => AppSync_OpenIDConnectConfig]
 
-=item [UserPoolConfig => L<Paws::AppSync::UserPoolConfig>]
+=item [UserPoolConfig => AppSync_UserPoolConfig]
 
 
 =back
@@ -1148,7 +1149,7 @@ Updates a C<GraphqlApi> object.
 
 =item [Kind => Str]
 
-=item [PipelineConfig => L<Paws::AppSync::PipelineConfig>]
+=item [PipelineConfig => AppSync_PipelineConfig]
 
 =item [ResponseMappingTemplate => Str]
 

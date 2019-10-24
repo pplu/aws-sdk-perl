@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::AppStream;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'appstream2' }
   sub signing_name { 'appstream' }
   sub version { '2016-12-01' }
   sub target_prefix { 'PhotonAdminProxyService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -564,7 +566,7 @@ Associates the specified fleet with the specified stack.
 
 =over
 
-=item UserStackAssociations => ArrayRef[L<Paws::AppStream::UserStackAssociation>]
+=item UserStackAssociations => ArrayRef[AppStream_UserStackAssociation]
 
 
 =back
@@ -582,7 +584,7 @@ an Active Directory domain.
 
 =over
 
-=item UserStackAssociations => ArrayRef[L<Paws::AppStream::UserStackAssociation>]
+=item UserStackAssociations => ArrayRef[AppStream_UserStackAssociation]
 
 
 =back
@@ -626,7 +628,7 @@ copied.
 
 =item OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef]
 
-=item ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
+=item ServiceAccountCredentials => AppStream_ServiceAccountCredentials
 
 
 =back
@@ -644,7 +646,7 @@ image builders to Microsoft Active Directory domains.
 
 =over
 
-=item ComputeCapacity => L<Paws::AppStream::ComputeCapacity>
+=item ComputeCapacity => AppStream_ComputeCapacity
 
 =item InstanceType => Str
 
@@ -656,7 +658,7 @@ image builders to Microsoft Active Directory domains.
 
 =item [DisplayName => Str]
 
-=item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
+=item [DomainJoinInfo => AppStream_DomainJoinInfo]
 
 =item [EnableDefaultInternetAccess => Bool]
 
@@ -670,9 +672,9 @@ image builders to Microsoft Active Directory domains.
 
 =item [MaxUserDurationInSeconds => Int]
 
-=item [Tags => L<Paws::AppStream::Tags>]
+=item [Tags => AppStream_Tags]
 
-=item [VpcConfig => L<Paws::AppStream::VpcConfig>]
+=item [VpcConfig => AppStream_VpcConfig]
 
 
 =back
@@ -699,7 +701,7 @@ specified image.
 
 =item [DisplayName => Str]
 
-=item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
+=item [DomainJoinInfo => AppStream_DomainJoinInfo]
 
 =item [EnableDefaultInternetAccess => Bool]
 
@@ -707,9 +709,9 @@ specified image.
 
 =item [ImageName => Str]
 
-=item [Tags => L<Paws::AppStream::Tags>]
+=item [Tags => AppStream_Tags]
 
-=item [VpcConfig => L<Paws::AppStream::VpcConfig>]
+=item [VpcConfig => AppStream_VpcConfig]
 
 
 =back
@@ -749,7 +751,7 @@ Creates a URL to start an image builder streaming session.
 
 =item Name => Str
 
-=item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
+=item [ApplicationSettings => AppStream_ApplicationSettings]
 
 =item [Description => Str]
 
@@ -759,11 +761,11 @@ Creates a URL to start an image builder streaming session.
 
 =item [RedirectURL => Str]
 
-=item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+=item [StorageConnectors => ArrayRef[AppStream_StorageConnector]]
 
-=item [Tags => L<Paws::AppStream::Tags>]
+=item [Tags => AppStream_Tags]
 
-=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
+=item [UserSettings => ArrayRef[AppStream_UserSetting]]
 
 
 =back
@@ -1433,7 +1435,7 @@ Stops the specified image builder.
 
 =item ResourceArn => Str
 
-=item Tags => L<Paws::AppStream::Tags>
+=item Tags => AppStream_Tags
 
 
 =back
@@ -1490,7 +1492,7 @@ in the I<Amazon AppStream 2.0 Developer Guide>.
 
 =item [OrganizationalUnitDistinguishedNames => ArrayRef[Str|Undef]]
 
-=item [ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>]
+=item [ServiceAccountCredentials => AppStream_ServiceAccountCredentials]
 
 
 =back
@@ -1510,7 +1512,7 @@ and image builders to Microsoft Active Directory domains.
 
 =item [AttributesToDelete => ArrayRef[Str|Undef]]
 
-=item [ComputeCapacity => L<Paws::AppStream::ComputeCapacity>]
+=item [ComputeCapacity => AppStream_ComputeCapacity]
 
 =item [DeleteVpcConfig => Bool]
 
@@ -1520,7 +1522,7 @@ and image builders to Microsoft Active Directory domains.
 
 =item [DisplayName => Str]
 
-=item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
+=item [DomainJoinInfo => AppStream_DomainJoinInfo]
 
 =item [EnableDefaultInternetAccess => Bool]
 
@@ -1536,7 +1538,7 @@ and image builders to Microsoft Active Directory domains.
 
 =item [Name => Str]
 
-=item [VpcConfig => L<Paws::AppStream::VpcConfig>]
+=item [VpcConfig => AppStream_VpcConfig]
 
 
 =back
@@ -1558,7 +1560,7 @@ fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
 
 =over
 
-=item ImagePermissions => L<Paws::AppStream::ImagePermissions>
+=item ImagePermissions => AppStream_ImagePermissions
 
 =item Name => Str
 
@@ -1580,7 +1582,7 @@ Adds or updates permissions for the specified private image.
 
 =item Name => Str
 
-=item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
+=item [ApplicationSettings => AppStream_ApplicationSettings]
 
 =item [AttributesToDelete => ArrayRef[Str|Undef]]
 
@@ -1594,9 +1596,9 @@ Adds or updates permissions for the specified private image.
 
 =item [RedirectURL => Str]
 
-=item [StorageConnectors => ArrayRef[L<Paws::AppStream::StorageConnector>]]
+=item [StorageConnectors => ArrayRef[AppStream_StorageConnector]]
 
-=item [UserSettings => ArrayRef[L<Paws::AppStream::UserSetting>]]
+=item [UserSettings => ArrayRef[AppStream_UserSetting]]
 
 
 =back

@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::Config::ConfigExportDeliveryInfo;
-  use Moose;
-  has LastAttemptTime => (is => 'ro', isa => 'Str', request_name => 'lastAttemptTime', traits => ['NameInRequest']);
-  has LastErrorCode => (is => 'ro', isa => 'Str', request_name => 'lastErrorCode', traits => ['NameInRequest']);
-  has LastErrorMessage => (is => 'ro', isa => 'Str', request_name => 'lastErrorMessage', traits => ['NameInRequest']);
-  has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
-  has LastSuccessfulTime => (is => 'ro', isa => 'Str', request_name => 'lastSuccessfulTime', traits => ['NameInRequest']);
-  has NextDeliveryTime => (is => 'ro', isa => 'Str', request_name => 'nextDeliveryTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw//;
+  has LastAttemptTime => (is => 'ro', isa => Str);
+  has LastErrorCode => (is => 'ro', isa => Str);
+  has LastErrorMessage => (is => 'ro', isa => Str);
+  has LastStatus => (is => 'ro', isa => Str);
+  has LastSuccessfulTime => (is => 'ro', isa => Str);
+  has NextDeliveryTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastErrorCode' => {
+                                    'type' => 'Str'
+                                  },
+               'LastAttemptTime' => {
+                                      'type' => 'Str'
+                                    },
+               'LastStatus' => {
+                                 'type' => 'Str'
+                               },
+               'LastErrorMessage' => {
+                                       'type' => 'Str'
+                                     },
+               'NextDeliveryTime' => {
+                                       'type' => 'Str'
+                                     },
+               'LastSuccessfulTime' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'NameInRequest' => {
+                       'LastErrorCode' => 'lastErrorCode',
+                       'LastAttemptTime' => 'lastAttemptTime',
+                       'LastStatus' => 'lastStatus',
+                       'LastErrorMessage' => 'lastErrorMessage',
+                       'NextDeliveryTime' => 'nextDeliveryTime',
+                       'LastSuccessfulTime' => 'lastSuccessfulTime'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

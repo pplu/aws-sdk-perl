@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::ECS::HealthCheck;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest'], required => 1);
-  has Interval => (is => 'ro', isa => 'Int', request_name => 'interval', traits => ['NameInRequest']);
-  has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
-  has StartPeriod => (is => 'ro', isa => 'Int', request_name => 'startPeriod', traits => ['NameInRequest']);
-  has Timeout => (is => 'ro', isa => 'Int', request_name => 'timeout', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::ECS::Types qw//;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Interval => (is => 'ro', isa => Int);
+  has Retries => (is => 'ro', isa => Int);
+  has StartPeriod => (is => 'ro', isa => Int);
+  has Timeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Retries' => {
+                              'type' => 'Int'
+                            },
+               'Interval' => {
+                               'type' => 'Int'
+                             },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'StartPeriod' => {
+                                  'type' => 'Int'
+                                },
+               'Timeout' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'Retries' => 'retries',
+                       'Interval' => 'interval',
+                       'Command' => 'command',
+                       'StartPeriod' => 'startPeriod',
+                       'Timeout' => 'timeout'
+                     },
+  'IsRequired' => {
+                    'Command' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

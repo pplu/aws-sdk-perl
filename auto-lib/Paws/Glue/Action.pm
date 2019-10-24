@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::Glue::Action;
-  use Moose;
-  has Arguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
-  has CrawlerName => (is => 'ro', isa => 'Str');
-  has JobName => (is => 'ro', isa => 'Str');
-  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
-  has SecurityConfiguration => (is => 'ro', isa => 'Str');
-  has Timeout => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Glue::Types qw/Glue_NotificationProperty Glue_GenericMap/;
+  has Arguments => (is => 'ro', isa => Glue_GenericMap);
+  has CrawlerName => (is => 'ro', isa => Str);
+  has JobName => (is => 'ro', isa => Str);
+  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty);
+  has SecurityConfiguration => (is => 'ro', isa => Str);
+  has Timeout => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityConfiguration' => {
+                                            'type' => 'Str'
+                                          },
+               'CrawlerName' => {
+                                  'type' => 'Str'
+                                },
+               'Arguments' => {
+                                'class' => 'Paws::Glue::GenericMap',
+                                'type' => 'Glue_GenericMap'
+                              },
+               'Timeout' => {
+                              'type' => 'Int'
+                            },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'NotificationProperty' => {
+                                           'class' => 'Paws::Glue::NotificationProperty',
+                                           'type' => 'Glue_NotificationProperty'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +75,7 @@ Defines an action to be initiated by a trigger.
 =head1 ATTRIBUTES
 
 
-=head2 Arguments => L<Paws::Glue::GenericMap>
+=head2 Arguments => Glue_GenericMap
 
   The job arguments used when this trigger fires. For this job run, they
 replace the default arguments set in the job definition itself.
@@ -70,7 +104,7 @@ topic in the developer guide.
   The name of a job to be executed.
 
 
-=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
+=head2 NotificationProperty => Glue_NotificationProperty
 
   Specifies configuration properties of a job run notification.
 

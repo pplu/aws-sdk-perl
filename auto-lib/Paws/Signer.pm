@@ -1,14 +1,15 @@
 package Paws::Signer;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'signer' }
   sub signing_name { 'signer' }
   sub version { '2017-08-25' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -339,11 +340,11 @@ all of your signing jobs have been returned.
 
 =item ProfileName => Str
 
-=item SigningMaterial => L<Paws::Signer::SigningMaterial>
+=item SigningMaterial => Signer_SigningMaterial
 
-=item [Overrides => L<Paws::Signer::SigningPlatformOverrides>]
+=item [Overrides => Signer_SigningPlatformOverrides]
 
-=item [SigningParameters => L<Paws::Signer::SigningParameters>]
+=item [SigningParameters => Signer_SigningParameters]
 
 
 =back
@@ -365,9 +366,9 @@ http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
 
 =item ClientRequestToken => Str
 
-=item Destination => L<Paws::Signer::Destination>
+=item Destination => Signer_Destination
 
-=item Source => L<Paws::Signer::Source>
+=item Source => Signer_Source
 
 =item [ProfileName => Str]
 

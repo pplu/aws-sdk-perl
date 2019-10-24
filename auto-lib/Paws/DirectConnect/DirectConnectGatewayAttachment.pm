@@ -1,12 +1,56 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::DirectConnectGatewayAttachment;
-  use Moose;
-  has AttachmentState => (is => 'ro', isa => 'Str', request_name => 'attachmentState', traits => ['NameInRequest']);
-  has AttachmentType => (is => 'ro', isa => 'Str', request_name => 'attachmentType', traits => ['NameInRequest']);
-  has DirectConnectGatewayId => (is => 'ro', isa => 'Str', request_name => 'directConnectGatewayId', traits => ['NameInRequest']);
-  has StateChangeError => (is => 'ro', isa => 'Str', request_name => 'stateChangeError', traits => ['NameInRequest']);
-  has VirtualInterfaceId => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceId', traits => ['NameInRequest']);
-  has VirtualInterfaceOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceOwnerAccount', traits => ['NameInRequest']);
-  has VirtualInterfaceRegion => (is => 'ro', isa => 'Str', request_name => 'virtualInterfaceRegion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw//;
+  has AttachmentState => (is => 'ro', isa => Str);
+  has AttachmentType => (is => 'ro', isa => Str);
+  has DirectConnectGatewayId => (is => 'ro', isa => Str);
+  has StateChangeError => (is => 'ro', isa => Str);
+  has VirtualInterfaceId => (is => 'ro', isa => Str);
+  has VirtualInterfaceOwnerAccount => (is => 'ro', isa => Str);
+  has VirtualInterfaceRegion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VirtualInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'StateChangeError' => {
+                                       'type' => 'Str'
+                                     },
+               'DirectConnectGatewayId' => {
+                                             'type' => 'Str'
+                                           },
+               'AttachmentType' => {
+                                     'type' => 'Str'
+                                   },
+               'VirtualInterfaceOwnerAccount' => {
+                                                   'type' => 'Str'
+                                                 },
+               'VirtualInterfaceRegion' => {
+                                             'type' => 'Str'
+                                           },
+               'AttachmentState' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'VirtualInterfaceId' => 'virtualInterfaceId',
+                       'StateChangeError' => 'stateChangeError',
+                       'DirectConnectGatewayId' => 'directConnectGatewayId',
+                       'AttachmentType' => 'attachmentType',
+                       'VirtualInterfaceOwnerAccount' => 'virtualInterfaceOwnerAccount',
+                       'VirtualInterfaceRegion' => 'virtualInterfaceRegion',
+                       'AttachmentState' => 'attachmentState'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

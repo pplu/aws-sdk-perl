@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CopyOptionGroup;
-  use Moose;
-  has SourceOptionGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TargetOptionGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has TargetOptionGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has SourceOptionGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TargetOptionGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetOptionGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyOptionGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyOptionGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyOptionGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyOptionGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CopyOptionGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyOptionGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetOptionGroupIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'SourceOptionGroupIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'TargetOptionGroupDescription' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'TargetOptionGroupIdentifier' => 1,
+                    'SourceOptionGroupIdentifier' => 1,
+                    'TargetOptionGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +108,7 @@ C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

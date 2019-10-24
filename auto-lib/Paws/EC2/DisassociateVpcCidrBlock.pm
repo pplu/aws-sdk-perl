@@ -11,7 +11,7 @@ package Paws::EC2::DisassociateVpcCidrBlock;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DisassociateVpcCidrBlockResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AssociationId' => {
@@ -20,11 +20,14 @@ package Paws::EC2::DisassociateVpcCidrBlock;
              },
   'NameInRequest' => {
                        'AssociationId' => 'associationId'
-                     }
+                     },
+  'IsRequired' => {
+                    'AssociationId' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,11 +1,39 @@
 
 package Paws::SecurityHub::BatchImportFindingsResponse;
-  use Moose;
-  has FailedCount => (is => 'ro', isa => 'Int', required => 1);
-  has FailedFindings => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::ImportFindingsError]');
-  has SuccessCount => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_ImportFindingsError/;
+  has FailedCount => (is => 'ro', isa => Int, required => 1);
+  has FailedFindings => (is => 'ro', isa => ArrayRef[SecurityHub_ImportFindingsError]);
+  has SuccessCount => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailedFindings' => {
+                                     'class' => 'Paws::SecurityHub::ImportFindingsError',
+                                     'type' => 'ArrayRef[SecurityHub_ImportFindingsError]'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SuccessCount' => {
+                                   'type' => 'Int'
+                                 },
+               'FailedCount' => {
+                                  'type' => 'Int'
+                                }
+             },
+  'IsRequired' => {
+                    'SuccessCount' => 1,
+                    'FailedCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +50,7 @@ Paws::SecurityHub::BatchImportFindingsResponse
 The number of findings that failed to import.
 
 
-=head2 FailedFindings => ArrayRef[L<Paws::SecurityHub::ImportFindingsError>]
+=head2 FailedFindings => ArrayRef[SecurityHub_ImportFindingsError]
 
 The list of the findings that failed to import.
 

@@ -1,14 +1,33 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::FailoverDBCluster;
-  use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw//;
+  has DBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has TargetDBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'FailoverDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::FailoverDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'FailoverDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'FailoverDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::FailoverDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'FailoverDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetDBInstanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

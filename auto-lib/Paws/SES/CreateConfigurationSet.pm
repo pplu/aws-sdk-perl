@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::CreateConfigurationSet;
   use Moo;
@@ -18,7 +19,10 @@ package Paws::SES::CreateConfigurationSet;
                                        'class' => 'Paws::SES::ConfigurationSet',
                                        'type' => 'SES_ConfigurationSet'
                                      }
-             }
+             },
+  'IsRequired' => {
+                    'ConfigurationSet' => 1
+                  }
 }
 ;
     return $Params_map;

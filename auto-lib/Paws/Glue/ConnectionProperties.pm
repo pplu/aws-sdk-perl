@@ -1,24 +1,61 @@
+# Generated from default/map_enum.tt
 package Paws::Glue::ConnectionProperties;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CONFIG_FILES => (is => 'ro', isa => Str);
+  has ENCRYPTED_PASSWORD => (is => 'ro', isa => Str);
+  has HOST => (is => 'ro', isa => Str);
+  has INSTANCE_ID => (is => 'ro', isa => Str);
+  has JDBC_CONNECTION_URL => (is => 'ro', isa => Str);
+  has JDBC_DRIVER_CLASS_NAME => (is => 'ro', isa => Str);
+  has JDBC_DRIVER_JAR_URI => (is => 'ro', isa => Str);
+  has JDBC_ENFORCE_SSL => (is => 'ro', isa => Str);
+  has JDBC_ENGINE => (is => 'ro', isa => Str);
+  has JDBC_ENGINE_VERSION => (is => 'ro', isa => Str);
+  has PASSWORD => (is => 'ro', isa => Str);
+  has PORT => (is => 'ro', isa => Str);
+  has USERNAME => (is => 'ro', isa => Str);
 
-  has CONFIG_FILES => (is => 'ro', isa => 'Str');
-  has ENCRYPTED_PASSWORD => (is => 'ro', isa => 'Str');
-  has HOST => (is => 'ro', isa => 'Str');
-  has INSTANCE_ID => (is => 'ro', isa => 'Str');
-  has JDBC_CONNECTION_URL => (is => 'ro', isa => 'Str');
-  has JDBC_DRIVER_CLASS_NAME => (is => 'ro', isa => 'Str');
-  has JDBC_DRIVER_JAR_URI => (is => 'ro', isa => 'Str');
-  has JDBC_ENFORCE_SSL => (is => 'ro', isa => 'Str');
-  has JDBC_ENGINE => (is => 'ro', isa => 'Str');
-  has JDBC_ENGINE_VERSION => (is => 'ro', isa => 'Str');
-  has PASSWORD => (is => 'ro', isa => 'Str');
-  has PORT => (is => 'ro', isa => 'Str');
-  has USERNAME => (is => 'ro', isa => 'Str');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'CONFIG_FILES' => {
+                                          type => 'Str',                                        },
+                               'ENCRYPTED_PASSWORD' => {
+                                          type => 'Str',                                        },
+                               'HOST' => {
+                                          type => 'Str',                                        },
+                               'INSTANCE_ID' => {
+                                          type => 'Str',                                        },
+                               'JDBC_CONNECTION_URL' => {
+                                          type => 'Str',                                        },
+                               'JDBC_DRIVER_CLASS_NAME' => {
+                                          type => 'Str',                                        },
+                               'JDBC_DRIVER_JAR_URI' => {
+                                          type => 'Str',                                        },
+                               'JDBC_ENFORCE_SSL' => {
+                                          type => 'Str',                                        },
+                               'JDBC_ENGINE' => {
+                                          type => 'Str',                                        },
+                               'JDBC_ENGINE_VERSION' => {
+                                          type => 'Str',                                        },
+                               'PASSWORD' => {
+                                          type => 'Str',                                        },
+                               'PORT' => {
+                                          type => 'Str',                                        },
+                               'USERNAME' => {
+                                          type => 'Str',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,43 +91,43 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CONFIG_FILES => Str
+=head2 CONFIG_FILES => 
 
 
-=head2 ENCRYPTED_PASSWORD => Str
+=head2 ENCRYPTED_PASSWORD => 
 
 
-=head2 HOST => Str
+=head2 HOST => 
 
 
-=head2 INSTANCE_ID => Str
+=head2 INSTANCE_ID => 
 
 
-=head2 JDBC_CONNECTION_URL => Str
+=head2 JDBC_CONNECTION_URL => 
 
 
-=head2 JDBC_DRIVER_CLASS_NAME => Str
+=head2 JDBC_DRIVER_CLASS_NAME => 
 
 
-=head2 JDBC_DRIVER_JAR_URI => Str
+=head2 JDBC_DRIVER_JAR_URI => 
 
 
-=head2 JDBC_ENFORCE_SSL => Str
+=head2 JDBC_ENFORCE_SSL => 
 
 
-=head2 JDBC_ENGINE => Str
+=head2 JDBC_ENGINE => 
 
 
-=head2 JDBC_ENGINE_VERSION => Str
+=head2 JDBC_ENGINE_VERSION => 
 
 
-=head2 PASSWORD => Str
+=head2 PASSWORD => 
 
 
-=head2 PORT => Str
+=head2 PORT => 
 
 
-=head2 USERNAME => Str
+=head2 USERNAME => 
 
 
 

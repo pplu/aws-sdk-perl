@@ -1,15 +1,53 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Datasync::DescribeAgentResponse;
-  use Moose;
-  has AgentArn => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has EndpointOptions => (is => 'ro', isa => 'Paws::Datasync::EndpointOptions');
-  has LastConnectionTime => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has PrivateLinkConfig => (is => 'ro', isa => 'Paws::Datasync::PrivateLinkConfig');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Datasync::Types qw/Datasync_PrivateLinkConfig Datasync_EndpointOptions/;
+  has AgentArn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has EndpointOptions => (is => 'ro', isa => Datasync_EndpointOptions);
+  has LastConnectionTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has PrivateLinkConfig => (is => 'ro', isa => Datasync_PrivateLinkConfig);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'AgentArn' => {
+                               'type' => 'Str'
+                             },
+               'PrivateLinkConfig' => {
+                                        'class' => 'Paws::Datasync::PrivateLinkConfig',
+                                        'type' => 'Datasync_PrivateLinkConfig'
+                                      },
+               'EndpointOptions' => {
+                                      'class' => 'Paws::Datasync::EndpointOptions',
+                                      'type' => 'Datasync_EndpointOptions'
+                                    },
+               'LastConnectionTime' => {
+                                         'type' => 'Str'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -31,7 +69,7 @@ The time that the agent was activated (that is, created in your
 account).
 
 
-=head2 EndpointOptions => L<Paws::Datasync::EndpointOptions>
+=head2 EndpointOptions => Datasync_EndpointOptions
 
 
 
@@ -46,7 +84,7 @@ The time that the agent last connected to DataSyc.
 The name of the agent.
 
 
-=head2 PrivateLinkConfig => L<Paws::Datasync::PrivateLinkConfig>
+=head2 PrivateLinkConfig => Datasync_PrivateLinkConfig
 
 
 

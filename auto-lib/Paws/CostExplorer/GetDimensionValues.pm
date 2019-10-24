@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CostExplorer::GetDimensionValues;
-  use Moose;
-  has Context => (is => 'ro', isa => 'Str');
-  has Dimension => (is => 'ro', isa => 'Str', required => 1);
-  has NextPageToken => (is => 'ro', isa => 'Str');
-  has SearchString => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval/;
+  has Context => (is => 'ro', isa => Str, predicate => 1);
+  has Dimension => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextPageToken => (is => 'ro', isa => Str, predicate => 1);
+  has SearchString => (is => 'ro', isa => Str, predicate => 1);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDimensionValues');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetDimensionValuesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDimensionValues');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CostExplorer::GetDimensionValuesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               'Dimension' => {
+                                'type' => 'Str'
+                              },
+               'SearchString' => {
+                                   'type' => 'Str'
+                                 },
+               'Context' => {
+                              'type' => 'Str'
+                            },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               }
+             },
+  'IsRequired' => {
+                    'Dimension' => 1,
+                    'TimePeriod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -219,7 +252,7 @@ The value that you want to search the filter values for.
 
 
 
-=head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 B<REQUIRED> TimePeriod => CostExplorer_DateInterval
 
 The start and end dates for retrieving the dimension values. The start
 date is inclusive, but the end date is exclusive. For example, if

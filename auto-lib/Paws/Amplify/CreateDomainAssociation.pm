@@ -1,17 +1,55 @@
 
 package Paws::Amplify::CreateDomainAssociation;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName', required => 1);
-  has EnableAutoSubDomain => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoSubDomain');
-  has SubDomainSettings => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::SubDomainSetting]', traits => ['NameInRequest'], request_name => 'subDomainSettings', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Amplify::Types qw/Amplify_SubDomainSetting/;
+  has AppId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EnableAutoSubDomain => (is => 'ro', isa => Bool, predicate => 1);
+  has SubDomainSettings => (is => 'ro', isa => ArrayRef[Amplify_SubDomainSetting], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDomainAssociation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apps/{appId}/domains');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::CreateDomainAssociationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDomainAssociation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apps/{appId}/domains');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::CreateDomainAssociationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubDomainSettings' => {
+                                        'class' => 'Paws::Amplify::SubDomainSetting',
+                                        'type' => 'ArrayRef[Amplify_SubDomainSetting]'
+                                      },
+               'EnableAutoSubDomain' => {
+                                          'type' => 'Bool'
+                                        },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInURI' => {
+                    'AppId' => 'appId'
+                  },
+  'NameInRequest' => {
+                       'SubDomainSettings' => 'subDomainSettings',
+                       'EnableAutoSubDomain' => 'enableAutoSubDomain',
+                       'DomainName' => 'domainName'
+                     },
+  'IsRequired' => {
+                    'SubDomainSettings' => 1,
+                    'DomainName' => 1,
+                    'AppId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +112,7 @@ Enables automated creation of Subdomains for branches.
 
 
 
-=head2 B<REQUIRED> SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
+=head2 B<REQUIRED> SubDomainSettings => ArrayRef[Amplify_SubDomainSetting]
 
 Setting structure for the Subdomain.
 

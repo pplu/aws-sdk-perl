@@ -1,19 +1,56 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::ModifyDBInstance;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has PromotionTier => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::DocDB::Types qw//;
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has AutoMinorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has DBInstanceClass => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewDBInstanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PromotionTier => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::ModifyDBInstanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBInstanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::ModifyDBInstanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBInstanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'PromotionTier' => {
+                                    'type' => 'Int'
+                                  },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'AutoMinorVersionUpgrade' => {
+                                              'type' => 'Bool'
+                                            },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'NewDBInstanceIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'DBInstanceIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

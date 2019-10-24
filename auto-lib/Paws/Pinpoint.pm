@@ -1,14 +1,15 @@
 package Paws::Pinpoint;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'pinpoint' }
   sub signing_name { 'mobiletargeting' }
   sub version { '2016-12-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -441,7 +442,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 =over
 
-=item CreateApplicationRequest => L<Paws::Pinpoint::CreateApplicationRequest>
+=item CreateApplicationRequest => Pinpoint_CreateApplicationRequest
 
 
 =back
@@ -459,7 +460,7 @@ Creates an application.
 
 =item ApplicationId => Str
 
-=item WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>
+=item WriteCampaignRequest => Pinpoint_WriteCampaignRequest
 
 
 =back
@@ -478,7 +479,7 @@ existing campaign for an application.
 
 =item ApplicationId => Str
 
-=item ExportJobRequest => L<Paws::Pinpoint::ExportJobRequest>
+=item ExportJobRequest => Pinpoint_ExportJobRequest
 
 
 =back
@@ -496,7 +497,7 @@ Creates a new export job for an application.
 
 =item ApplicationId => Str
 
-=item ImportJobRequest => L<Paws::Pinpoint::ImportJobRequest>
+=item ImportJobRequest => Pinpoint_ImportJobRequest
 
 
 =back
@@ -514,7 +515,7 @@ Creates a new import job for an application.
 
 =item ApplicationId => Str
 
-=item WriteSegmentRequest => L<Paws::Pinpoint::WriteSegmentRequest>
+=item WriteSegmentRequest => Pinpoint_WriteSegmentRequest
 
 
 =back
@@ -1433,7 +1434,7 @@ application, campaign, or segment.
 
 =over
 
-=item NumberValidateRequest => L<Paws::Pinpoint::NumberValidateRequest>
+=item NumberValidateRequest => Pinpoint_NumberValidateRequest
 
 
 =back
@@ -1451,7 +1452,7 @@ Retrieves information about a phone number.
 
 =item ApplicationId => Str
 
-=item EventsRequest => L<Paws::Pinpoint::EventsRequest>
+=item EventsRequest => Pinpoint_EventsRequest
 
 
 =back
@@ -1470,7 +1471,7 @@ endpoint data that existing events are associated with.
 
 =item ApplicationId => Str
 
-=item WriteEventStream => L<Paws::Pinpoint::WriteEventStream>
+=item WriteEventStream => Pinpoint_WriteEventStream
 
 
 =back
@@ -1491,7 +1492,7 @@ of an existing event stream for an application.
 
 =item AttributeType => Str
 
-=item UpdateAttributesRequest => L<Paws::Pinpoint::UpdateAttributesRequest>
+=item UpdateAttributesRequest => Pinpoint_UpdateAttributesRequest
 
 
 =back
@@ -1510,7 +1511,7 @@ the endpoints that are associated with an application.
 
 =item ApplicationId => Str
 
-=item MessageRequest => L<Paws::Pinpoint::MessageRequest>
+=item MessageRequest => Pinpoint_MessageRequest
 
 
 =back
@@ -1528,7 +1529,7 @@ Creates and sends a direct message.
 
 =item ApplicationId => Str
 
-=item SendUsersMessageRequest => L<Paws::Pinpoint::SendUsersMessageRequest>
+=item SendUsersMessageRequest => Pinpoint_SendUsersMessageRequest
 
 
 =back
@@ -1546,7 +1547,7 @@ Creates and sends a message to a list of users.
 
 =item ResourceArn => Str
 
-=item TagsModel => L<Paws::Pinpoint::TagsModel>
+=item TagsModel => Pinpoint_TagsModel
 
 
 =back
@@ -1582,7 +1583,7 @@ campaign, or segment.
 
 =over
 
-=item ADMChannelRequest => L<Paws::Pinpoint::ADMChannelRequest>
+=item ADMChannelRequest => Pinpoint_ADMChannelRequest
 
 =item ApplicationId => Str
 
@@ -1600,7 +1601,7 @@ Updates the ADM channel settings for an application.
 
 =over
 
-=item APNSChannelRequest => L<Paws::Pinpoint::APNSChannelRequest>
+=item APNSChannelRequest => Pinpoint_APNSChannelRequest
 
 =item ApplicationId => Str
 
@@ -1618,7 +1619,7 @@ Updates the APNs channel settings for an application.
 
 =over
 
-=item APNSSandboxChannelRequest => L<Paws::Pinpoint::APNSSandboxChannelRequest>
+=item APNSSandboxChannelRequest => Pinpoint_APNSSandboxChannelRequest
 
 =item ApplicationId => Str
 
@@ -1636,7 +1637,7 @@ Updates the APNs sandbox channel settings for an application.
 
 =over
 
-=item APNSVoipChannelRequest => L<Paws::Pinpoint::APNSVoipChannelRequest>
+=item APNSVoipChannelRequest => Pinpoint_APNSVoipChannelRequest
 
 =item ApplicationId => Str
 
@@ -1654,7 +1655,7 @@ Updates the APNs VoIP channel settings for an application.
 
 =over
 
-=item APNSVoipSandboxChannelRequest => L<Paws::Pinpoint::APNSVoipSandboxChannelRequest>
+=item APNSVoipSandboxChannelRequest => Pinpoint_APNSVoipSandboxChannelRequest
 
 =item ApplicationId => Str
 
@@ -1675,7 +1676,7 @@ application.
 
 =item ApplicationId => Str
 
-=item WriteApplicationSettingsRequest => L<Paws::Pinpoint::WriteApplicationSettingsRequest>
+=item WriteApplicationSettingsRequest => Pinpoint_WriteApplicationSettingsRequest
 
 
 =back
@@ -1693,7 +1694,7 @@ Updates the settings for an application.
 
 =item ApplicationId => Str
 
-=item BaiduChannelRequest => L<Paws::Pinpoint::BaiduChannelRequest>
+=item BaiduChannelRequest => Pinpoint_BaiduChannelRequest
 
 
 =back
@@ -1713,7 +1714,7 @@ Updates the settings of the Baidu channel for an application.
 
 =item CampaignId => Str
 
-=item WriteCampaignRequest => L<Paws::Pinpoint::WriteCampaignRequest>
+=item WriteCampaignRequest => Pinpoint_WriteCampaignRequest
 
 
 =back
@@ -1731,7 +1732,7 @@ Updates the settings for a campaign.
 
 =item ApplicationId => Str
 
-=item EmailChannelRequest => L<Paws::Pinpoint::EmailChannelRequest>
+=item EmailChannelRequest => Pinpoint_EmailChannelRequest
 
 
 =back
@@ -1752,7 +1753,7 @@ application.
 
 =item EndpointId => Str
 
-=item EndpointRequest => L<Paws::Pinpoint::EndpointRequest>
+=item EndpointRequest => Pinpoint_EndpointRequest
 
 
 =back
@@ -1773,7 +1774,7 @@ UserAttributes properties) for an endpoint.
 
 =item ApplicationId => Str
 
-=item EndpointBatchRequest => L<Paws::Pinpoint::EndpointBatchRequest>
+=item EndpointBatchRequest => Pinpoint_EndpointBatchRequest
 
 
 =back
@@ -1795,7 +1796,7 @@ batch of endpoints.
 
 =item ApplicationId => Str
 
-=item GCMChannelRequest => L<Paws::Pinpoint::GCMChannelRequest>
+=item GCMChannelRequest => Pinpoint_GCMChannelRequest
 
 
 =back
@@ -1815,7 +1816,7 @@ Updates the status and settings of the GCM channel for an application.
 
 =item SegmentId => Str
 
-=item WriteSegmentRequest => L<Paws::Pinpoint::WriteSegmentRequest>
+=item WriteSegmentRequest => Pinpoint_WriteSegmentRequest
 
 
 =back
@@ -1835,7 +1836,7 @@ with an application.
 
 =item ApplicationId => Str
 
-=item SMSChannelRequest => L<Paws::Pinpoint::SMSChannelRequest>
+=item SMSChannelRequest => Pinpoint_SMSChannelRequest
 
 
 =back
@@ -1853,7 +1854,7 @@ Updates the status and settings of the SMS channel for an application.
 
 =item ApplicationId => Str
 
-=item VoiceChannelRequest => L<Paws::Pinpoint::VoiceChannelRequest>
+=item VoiceChannelRequest => Pinpoint_VoiceChannelRequest
 
 
 =back

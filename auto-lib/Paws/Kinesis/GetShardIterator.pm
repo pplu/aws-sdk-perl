@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Kinesis::GetShardIterator;
-  use Moose;
-  has ShardId => (is => 'ro', isa => 'Str', required => 1);
-  has ShardIteratorType => (is => 'ro', isa => 'Str', required => 1);
-  has StartingSequenceNumber => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has ShardId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShardIteratorType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartingSequenceNumber => (is => 'ro', isa => Str, predicate => 1);
+  has StreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Timestamp => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetShardIterator');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::GetShardIteratorOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetShardIterator');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kinesis::GetShardIteratorOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ShardId' => {
+                              'type' => 'Str'
+                            },
+               'ShardIteratorType' => {
+                                        'type' => 'Str'
+                                      },
+               'StreamName' => {
+                                 'type' => 'Str'
+                               },
+               'StartingSequenceNumber' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'ShardId' => 1,
+                    'ShardIteratorType' => 1,
+                    'StreamName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

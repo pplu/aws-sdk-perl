@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::Rekognition::TextDetection;
-  use Moose;
-  has Confidence => (is => 'ro', isa => 'Num');
-  has DetectedText => (is => 'ro', isa => 'Str');
-  has Geometry => (is => 'ro', isa => 'Paws::Rekognition::Geometry');
-  has Id => (is => 'ro', isa => 'Int');
-  has ParentId => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str Int/;
+  use Paws::Rekognition::Types qw/Rekognition_Geometry/;
+  has Confidence => (is => 'ro', isa => Num);
+  has DetectedText => (is => 'ro', isa => Str);
+  has Geometry => (is => 'ro', isa => Rekognition_Geometry);
+  has Id => (is => 'ro', isa => Int);
+  has ParentId => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Int'
+                       },
+               'DetectedText' => {
+                                   'type' => 'Str'
+                                 },
+               'Confidence' => {
+                                 'type' => 'Num'
+                               },
+               'ParentId' => {
+                               'type' => 'Int'
+                             },
+               'Geometry' => {
+                               'class' => 'Paws::Rekognition::Geometry',
+                               'type' => 'Rekognition_Geometry'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +97,7 @@ detected text.
   The word or line of text recognized by Amazon Rekognition.
 
 
-=head2 Geometry => L<Paws::Rekognition::Geometry>
+=head2 Geometry => Rekognition_Geometry
 
   The location of the detected text on the image. Includes an axis
 aligned coarse bounding box surrounding the text and a finer grain

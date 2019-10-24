@@ -1,15 +1,37 @@
 
 package Paws::ServerlessRepo::ListApplications;
-  use Moose;
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxItems');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServerlessRepo::Types qw//;
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListApplications');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/applications');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServerlessRepo::ListApplicationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListApplications');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/applications');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServerlessRepo::ListApplicationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'MaxItems' => 'maxItems',
+                      'NextToken' => 'nextToken'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

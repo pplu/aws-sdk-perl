@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Snowball::LambdaResource;
-  use Moose;
-  has EventTriggers => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::EventTriggerDefinition]');
-  has LambdaArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Snowball::Types qw/Snowball_EventTriggerDefinition/;
+  has EventTriggers => (is => 'ro', isa => ArrayRef[Snowball_EventTriggerDefinition]);
+  has LambdaArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LambdaArn' => {
+                                'type' => 'Str'
+                              },
+               'EventTriggers' => {
+                                    'class' => 'Paws::Snowball::EventTriggerDefinition',
+                                    'type' => 'ArrayRef[Snowball_EventTriggerDefinition]'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Identifies
 =head1 ATTRIBUTES
 
 
-=head2 EventTriggers => ArrayRef[L<Paws::Snowball::EventTriggerDefinition>]
+=head2 EventTriggers => ArrayRef[Snowball_EventTriggerDefinition]
 
   The array of ARNs for S3Resource objects to trigger the LambdaResource
 objects associated with this job.

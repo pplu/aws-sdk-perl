@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::MarketplaceMetering::BatchMeterUsage;
-  use Moose;
-  has ProductCode => (is => 'ro', isa => 'Str', required => 1);
-  has UsageRecords => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceMetering::UsageRecord]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MarketplaceMetering::Types qw/MarketplaceMetering_UsageRecord/;
+  has ProductCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UsageRecords => (is => 'ro', isa => ArrayRef[MarketplaceMetering_UsageRecord], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchMeterUsage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MarketplaceMetering::BatchMeterUsageResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchMeterUsage');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MarketplaceMetering::BatchMeterUsageResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UsageRecords' => {
+                                   'class' => 'Paws::MarketplaceMetering::UsageRecord',
+                                   'type' => 'ArrayRef[MarketplaceMetering_UsageRecord]'
+                                 },
+               'ProductCode' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'UsageRecords' => 1,
+                    'ProductCode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +86,7 @@ publishing of a new product.
 
 
 
-=head2 B<REQUIRED> UsageRecords => ArrayRef[L<Paws::MarketplaceMetering::UsageRecord>]
+=head2 B<REQUIRED> UsageRecords => ArrayRef[MarketplaceMetering_UsageRecord]
 
 The set of UsageRecords to submit. BatchMeterUsage accepts up to 25
 UsageRecords at a time.

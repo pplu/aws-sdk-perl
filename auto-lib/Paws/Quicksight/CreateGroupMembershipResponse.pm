@@ -1,11 +1,35 @@
 
 package Paws::Quicksight::CreateGroupMembershipResponse;
-  use Moose;
-  has GroupMember => (is => 'ro', isa => 'Paws::Quicksight::GroupMember');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Quicksight::Types qw/Quicksight_GroupMember/;
+  has GroupMember => (is => 'ro', isa => Quicksight_GroupMember);
+  has RequestId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'GroupMember' => {
+                                  'class' => 'Paws::Quicksight::GroupMember',
+                                  'type' => 'Quicksight_GroupMember'
+                                },
+               'Status' => {
+                             'type' => 'Int'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +41,7 @@ Paws::Quicksight::CreateGroupMembershipResponse
 =head1 ATTRIBUTES
 
 
-=head2 GroupMember => L<Paws::Quicksight::GroupMember>
+=head2 GroupMember => Quicksight_GroupMember
 
 The group member.
 

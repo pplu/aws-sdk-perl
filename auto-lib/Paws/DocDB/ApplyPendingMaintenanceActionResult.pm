@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::DocDB::ApplyPendingMaintenanceActionResult;
-  use Moose;
-  has ResourcePendingMaintenanceActions => (is => 'ro', isa => 'Paws::DocDB::ResourcePendingMaintenanceActions');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DocDB::Types qw/DocDB_ResourcePendingMaintenanceActions/;
+  has ResourcePendingMaintenanceActions => (is => 'ro', isa => DocDB_ResourcePendingMaintenanceActions);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ResourcePendingMaintenanceActions' => {
+                                                        'class' => 'Paws::DocDB::ResourcePendingMaintenanceActions',
+                                                        'type' => 'DocDB_ResourcePendingMaintenanceActions'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::DocDB::ApplyPendingMaintenanceActionResult
 =head1 ATTRIBUTES
 
 
-=head2 ResourcePendingMaintenanceActions => L<Paws::DocDB::ResourcePendingMaintenanceActions>
+=head2 ResourcePendingMaintenanceActions => DocDB_ResourcePendingMaintenanceActions
 
 
 

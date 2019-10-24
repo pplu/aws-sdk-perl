@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::UnlinkIdentity;
-  use Moose;
-  has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap', required => 1);
-  has LoginsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_LoginsMap/;
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Logins => (is => 'ro', isa => CognitoIdentity_LoginsMap, required => 1, predicate => 1);
+  has LoginsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UnlinkIdentity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UnlinkIdentity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Logins' => {
+                             'class' => 'Paws::CognitoIdentity::LoginsMap',
+                             'type' => 'CognitoIdentity_LoginsMap'
+                           },
+               'LoginsToRemove' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Logins' => 1,
+                    'LoginsToRemove' => 1,
+                    'IdentityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ A unique identifier in the format REGION:GUID.
 
 
 
-=head2 B<REQUIRED> Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 B<REQUIRED> Logins => CognitoIdentity_LoginsMap
 
 A set of optional name-value pairs that map provider names to provider
 tokens.

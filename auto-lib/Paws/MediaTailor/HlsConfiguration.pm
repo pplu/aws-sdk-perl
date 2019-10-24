@@ -1,6 +1,23 @@
+# Generated from default/object.tt
 package Paws::MediaTailor::HlsConfiguration;
-  use Moose;
-  has ManifestEndpointPrefix => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaTailor::Types qw//;
+  has ManifestEndpointPrefix => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ManifestEndpointPrefix' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

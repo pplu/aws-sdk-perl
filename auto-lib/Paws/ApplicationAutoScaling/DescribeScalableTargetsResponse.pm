@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ApplicationAutoScaling::DescribeScalableTargetsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScalableTargets => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::ScalableTarget]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApplicationAutoScaling::Types qw/ApplicationAutoScaling_ScalableTarget/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScalableTargets => (is => 'ro', isa => ArrayRef[ApplicationAutoScaling_ScalableTarget]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScalableTargets' => {
+                                      'class' => 'Paws::ApplicationAutoScaling::ScalableTarget',
+                                      'type' => 'ArrayRef[ApplicationAutoScaling_ScalableTarget]'
+                                    },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token required to get the next set of results. This value is
 C<null> if there are no more results to return.
 
 
-=head2 ScalableTargets => ArrayRef[L<Paws::ApplicationAutoScaling::ScalableTarget>]
+=head2 ScalableTargets => ArrayRef[ApplicationAutoScaling_ScalableTarget]
 
 The scalable targets that match the request parameters.
 

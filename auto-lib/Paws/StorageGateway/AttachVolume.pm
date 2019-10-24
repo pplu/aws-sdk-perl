@@ -1,17 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::AttachVolume;
-  use Moose;
-  has DiskId => (is => 'ro', isa => 'Str');
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str', required => 1);
-  has TargetName => (is => 'ro', isa => 'Str');
-  has VolumeARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has DiskId => (is => 'ro', isa => Str, predicate => 1);
+  has GatewayARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NetworkInterfaceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetName => (is => 'ro', isa => Str, predicate => 1);
+  has VolumeARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVolume');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::AttachVolumeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AttachVolume');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::AttachVolumeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DiskId' => {
+                             'type' => 'Str'
+                           },
+               'TargetName' => {
+                                 'type' => 'Str'
+                               },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'NetworkInterfaceId' => 1,
+                    'GatewayARN' => 1,
+                    'VolumeARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

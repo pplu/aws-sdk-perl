@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Discovery::DescribeAgentsResponse;
-  use Moose;
-  has AgentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentInfo]', traits => ['NameInRequest'], request_name => 'agentsInfo' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Discovery::Types qw/Discovery_AgentInfo/;
+  has AgentsInfo => (is => 'ro', isa => ArrayRef[Discovery_AgentInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AgentsInfo' => {
+                                 'class' => 'Paws::Discovery::AgentInfo',
+                                 'type' => 'ArrayRef[Discovery_AgentInfo]'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'AgentsInfo' => 'agentsInfo'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Discovery::DescribeAgentsResponse
 =head1 ATTRIBUTES
 
 
-=head2 AgentsInfo => ArrayRef[L<Paws::Discovery::AgentInfo>]
+=head2 AgentsInfo => ArrayRef[Discovery_AgentInfo]
 
 Lists agents or the Connector by ID or lists all agents/Connectors
 associated with your user account if you did not specify an

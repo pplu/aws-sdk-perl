@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::CreatePolicyVersion;
   use Moo;
@@ -25,7 +26,11 @@ package Paws::IAM::CreatePolicyVersion;
                'PolicyDocument' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyArn' => 1,
+                    'PolicyDocument' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetServiceLastAccessedDetailsWithEntitiesResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool/;
   use Paws::IAM::Types qw/IAM_ErrorDetails IAM_EntityDetails/;
   has EntityDetailsList => (is => 'ro', isa => ArrayRef[IAM_EntityDetails], required => 1);

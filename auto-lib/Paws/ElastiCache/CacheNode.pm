@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::CacheNode;
-  use Moose;
-  has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
-  has CacheNodeId => (is => 'ro', isa => 'Str');
-  has CacheNodeStatus => (is => 'ro', isa => 'Str');
-  has CustomerAvailabilityZone => (is => 'ro', isa => 'Str');
-  has Endpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
-  has ParameterGroupStatus => (is => 'ro', isa => 'Str');
-  has SourceCacheNodeId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw/ElastiCache_Endpoint/;
+  has CacheNodeCreateTime => (is => 'ro', isa => Str);
+  has CacheNodeId => (is => 'ro', isa => Str);
+  has CacheNodeStatus => (is => 'ro', isa => Str);
+  has CustomerAvailabilityZone => (is => 'ro', isa => Str);
+  has Endpoint => (is => 'ro', isa => ElastiCache_Endpoint);
+  has ParameterGroupStatus => (is => 'ro', isa => Str);
+  has SourceCacheNodeId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCacheNodeId' => {
+                                        'type' => 'Str'
+                                      },
+               'CacheNodeCreateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CacheNodeId' => {
+                                  'type' => 'Str'
+                                },
+               'Endpoint' => {
+                               'class' => 'Paws::ElastiCache::Endpoint',
+                               'type' => 'ElastiCache_Endpoint'
+                             },
+               'CustomerAvailabilityZone' => {
+                                               'type' => 'Str'
+                                             },
+               'CacheNodeStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'ParameterGroupStatus' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -179,7 +215,7 @@ identifies every cache node used in a customer's AWS account.
   The Availability Zone where this node was created and now resides.
 
 
-=head2 Endpoint => L<Paws::ElastiCache::Endpoint>
+=head2 Endpoint => ElastiCache_Endpoint
 
   The hostname for connecting to this cache node.
 

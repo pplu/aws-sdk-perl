@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::StartApplication;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has RunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfiguration', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_RunConfiguration/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RunConfiguration => (is => 'ro', isa => KinesisAnalyticsV2_RunConfiguration, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::StartApplicationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartApplication');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::StartApplicationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RunConfiguration' => {
+                                       'class' => 'Paws::KinesisAnalyticsV2::RunConfiguration',
+                                       'type' => 'KinesisAnalyticsV2_RunConfiguration'
+                                     },
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'RunConfiguration' => 1,
+                    'ApplicationName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +87,7 @@ The name of the application.
 
 
 
-=head2 B<REQUIRED> RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>
+=head2 B<REQUIRED> RunConfiguration => KinesisAnalyticsV2_RunConfiguration
 
 Identifies the run configuration (start parameters) of a Kinesis Data
 Analytics application.

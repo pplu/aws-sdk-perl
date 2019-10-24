@@ -1,10 +1,31 @@
 
 package Paws::Glacier::ListJobsOutput;
-  use Moose;
-  has JobList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::GlacierJobDescription]');
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glacier::Types qw/Glacier_GlacierJobDescription/;
+  has JobList => (is => 'ro', isa => ArrayRef[Glacier_GlacierJobDescription]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'JobList' => {
+                              'class' => 'Paws::Glacier::GlacierJobDescription',
+                              'type' => 'ArrayRef[Glacier_GlacierJobDescription]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Glacier::ListJobsOutput
 =head1 ATTRIBUTES
 
 
-=head2 JobList => ArrayRef[L<Paws::Glacier::GlacierJobDescription>]
+=head2 JobList => ArrayRef[Glacier_GlacierJobDescription]
 
 A list of job objects. Each job object contains metadata describing the
 job.

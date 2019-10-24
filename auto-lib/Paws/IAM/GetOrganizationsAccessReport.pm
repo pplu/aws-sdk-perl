@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetOrganizationsAccessReport;
   use Moo;
@@ -29,7 +30,10 @@ package Paws::IAM::GetOrganizationsAccessReport;
                'JobId' => {
                             'type' => 'Str'
                           }
-             }
+             },
+  'IsRequired' => {
+                    'JobId' => 1
+                  }
 }
 ;
     return $Params_map;

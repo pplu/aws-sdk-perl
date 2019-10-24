@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::DescribeMaintenanceWindowExecutionTasksResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has WindowExecutionTaskIdentities => (is => 'ro', isa => 'ArrayRef[Paws::SSM::MaintenanceWindowExecutionTaskIdentity]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_MaintenanceWindowExecutionTaskIdentity/;
+  has NextToken => (is => 'ro', isa => Str);
+  has WindowExecutionTaskIdentities => (is => 'ro', isa => ArrayRef[SSM_MaintenanceWindowExecutionTaskIdentity]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'WindowExecutionTaskIdentities' => {
+                                                    'class' => 'Paws::SSM::MaintenanceWindowExecutionTaskIdentity',
+                                                    'type' => 'ArrayRef[SSM_MaintenanceWindowExecutionTaskIdentity]'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-=head2 WindowExecutionTaskIdentities => ArrayRef[L<Paws::SSM::MaintenanceWindowExecutionTaskIdentity>]
+=head2 WindowExecutionTaskIdentities => ArrayRef[SSM_MaintenanceWindowExecutionTaskIdentity]
 
 Information about the task executions.
 

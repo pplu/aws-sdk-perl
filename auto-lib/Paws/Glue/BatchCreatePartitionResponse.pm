@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::BatchCreatePartitionResponse;
-  use Moose;
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PartitionError]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_PartitionError/;
+  has Errors => (is => 'ro', isa => ArrayRef[Glue_PartitionError]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Errors' => {
+                             'class' => 'Paws::Glue::PartitionError',
+                             'type' => 'ArrayRef[Glue_PartitionError]'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::BatchCreatePartitionResponse
 =head1 ATTRIBUTES
 
 
-=head2 Errors => ArrayRef[L<Paws::Glue::PartitionError>]
+=head2 Errors => ArrayRef[Glue_PartitionError]
 
 Errors encountered when trying to create the requested partitions.
 

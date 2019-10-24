@@ -1,15 +1,42 @@
 
 package Paws::MobileHub::UpdateProject;
-  use Moose;
-  has Contents => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contents');
-  has ProjectId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'projectId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has Contents => (is => 'ro', isa => Str, predicate => 1);
+  has ProjectId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Contents');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/update');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MobileHub::UpdateProjectResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/update');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MobileHub::UpdateProjectResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Contents' => {
+                               'type' => 'Str'
+                             },
+               'ProjectId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'ProjectId' => 'projectId'
+                    },
+  'NameInRequest' => {
+                       'Contents' => 'contents'
+                     },
+  'IsRequired' => {
+                    'ProjectId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

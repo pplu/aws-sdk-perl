@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Lightsail::DiskMap;
-  use Moose;
-  has NewDiskName => (is => 'ro', isa => 'Str', request_name => 'newDiskName', traits => ['NameInRequest']);
-  has OriginalDiskPath => (is => 'ro', isa => 'Str', request_name => 'originalDiskPath', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has NewDiskName => (is => 'ro', isa => Str);
+  has OriginalDiskPath => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OriginalDiskPath' => {
+                                       'type' => 'Str'
+                                     },
+               'NewDiskName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'OriginalDiskPath' => 'originalDiskPath',
+                       'NewDiskName' => 'newDiskName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

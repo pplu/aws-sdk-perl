@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SecurityHub::AwsS3BucketDetails;
-  use Moose;
-  has OwnerId => (is => 'ro', isa => 'Str');
-  has OwnerName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SecurityHub::Types qw//;
+  has OwnerId => (is => 'ro', isa => Str);
+  has OwnerName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'OwnerName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

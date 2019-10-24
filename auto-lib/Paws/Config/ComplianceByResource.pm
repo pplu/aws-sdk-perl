@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Config::ComplianceByResource;
-  use Moose;
-  has Compliance => (is => 'ro', isa => 'Paws::Config::Compliance');
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Config::Types qw/Config_Compliance/;
+  has Compliance => (is => 'ro', isa => Config_Compliance);
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Compliance' => {
+                                 'class' => 'Paws::Config::Compliance',
+                                 'type' => 'Config_Compliance'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +65,7 @@ noncompliant if it does not comply with one or more of these rules.
 =head1 ATTRIBUTES
 
 
-=head2 Compliance => L<Paws::Config::Compliance>
+=head2 Compliance => Config_Compliance
 
   Indicates whether the AWS resource complies with all of the AWS Config
 rules that evaluated it.

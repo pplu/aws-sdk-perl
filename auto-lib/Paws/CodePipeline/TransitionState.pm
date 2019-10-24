@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::TransitionState;
-  use Moose;
-  has DisabledReason => (is => 'ro', isa => 'Str', request_name => 'disabledReason', traits => ['NameInRequest']);
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has LastChangedAt => (is => 'ro', isa => 'Str', request_name => 'lastChangedAt', traits => ['NameInRequest']);
-  has LastChangedBy => (is => 'ro', isa => 'Str', request_name => 'lastChangedBy', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::CodePipeline::Types qw//;
+  has DisabledReason => (is => 'ro', isa => Str);
+  has Enabled => (is => 'ro', isa => Bool);
+  has LastChangedAt => (is => 'ro', isa => Str);
+  has LastChangedBy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'LastChangedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'LastChangedBy' => {
+                                    'type' => 'Str'
+                                  },
+               'DisabledReason' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'LastChangedAt' => 'lastChangedAt',
+                       'LastChangedBy' => 'lastChangedBy',
+                       'DisabledReason' => 'disabledReason'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

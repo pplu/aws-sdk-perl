@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::Glue::CrawlerMetrics;
-  use Moose;
-  has CrawlerName => (is => 'ro', isa => 'Str');
-  has LastRuntimeSeconds => (is => 'ro', isa => 'Num');
-  has MedianRuntimeSeconds => (is => 'ro', isa => 'Num');
-  has StillEstimating => (is => 'ro', isa => 'Bool');
-  has TablesCreated => (is => 'ro', isa => 'Int');
-  has TablesDeleted => (is => 'ro', isa => 'Int');
-  has TablesUpdated => (is => 'ro', isa => 'Int');
-  has TimeLeftSeconds => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num Bool Int/;
+  use Paws::Glue::Types qw//;
+  has CrawlerName => (is => 'ro', isa => Str);
+  has LastRuntimeSeconds => (is => 'ro', isa => Num);
+  has MedianRuntimeSeconds => (is => 'ro', isa => Num);
+  has StillEstimating => (is => 'ro', isa => Bool);
+  has TablesCreated => (is => 'ro', isa => Int);
+  has TablesDeleted => (is => 'ro', isa => Int);
+  has TablesUpdated => (is => 'ro', isa => Int);
+  has TimeLeftSeconds => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeLeftSeconds' => {
+                                      'type' => 'Num'
+                                    },
+               'LastRuntimeSeconds' => {
+                                         'type' => 'Num'
+                                       },
+               'CrawlerName' => {
+                                  'type' => 'Str'
+                                },
+               'TablesDeleted' => {
+                                    'type' => 'Int'
+                                  },
+               'MedianRuntimeSeconds' => {
+                                           'type' => 'Num'
+                                         },
+               'StillEstimating' => {
+                                      'type' => 'Bool'
+                                    },
+               'TablesCreated' => {
+                                    'type' => 'Int'
+                                  },
+               'TablesUpdated' => {
+                                    'type' => 'Int'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

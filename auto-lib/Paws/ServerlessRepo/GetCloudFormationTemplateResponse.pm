@@ -1,15 +1,59 @@
 
 package Paws::ServerlessRepo::GetCloudFormationTemplateResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationId');
-  has CreationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationTime');
-  has ExpirationTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expirationTime');
-  has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
-  has TemplateId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateId');
-  has TemplateUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateUrl');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServerlessRepo::Types qw//;
+  has ApplicationId => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has SemanticVersion => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TemplateId => (is => 'ro', isa => Str);
+  has TemplateUrl => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TemplateUrl' => {
+                                  'type' => 'Str'
+                                },
+               'TemplateId' => {
+                                 'type' => 'Str'
+                               },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SemanticVersion' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'ApplicationId' => 'applicationId',
+                       'ExpirationTime' => 'expirationTime',
+                       'Status' => 'status',
+                       'SemanticVersion' => 'semanticVersion',
+                       'TemplateUrl' => 'templateUrl',
+                       'TemplateId' => 'templateId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

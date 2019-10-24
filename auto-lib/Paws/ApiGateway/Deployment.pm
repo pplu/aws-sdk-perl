@@ -1,12 +1,45 @@
 
 package Paws::ApiGateway::Deployment;
-  use Moose;
-  has ApiSummary => (is => 'ro', isa => 'Paws::ApiGateway::PathToMapOfMethodSnapshot', traits => ['NameInRequest'], request_name => 'apiSummary');
-  has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_PathToMapOfMethodSnapshot/;
+  has ApiSummary => (is => 'ro', isa => ApiGateway_PathToMapOfMethodSnapshot);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ApiSummary' => {
+                                 'class' => 'Paws::ApiGateway::PathToMapOfMethodSnapshot',
+                                 'type' => 'ApiGateway_PathToMapOfMethodSnapshot'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'CreatedDate' => 'createdDate',
+                       'Id' => 'id',
+                       'ApiSummary' => 'apiSummary',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +51,7 @@ Paws::ApiGateway::Deployment
 =head1 ATTRIBUTES
 
 
-=head2 ApiSummary => L<Paws::ApiGateway::PathToMapOfMethodSnapshot>
+=head2 ApiSummary => ApiGateway_PathToMapOfMethodSnapshot
 
 A summary of the RestApi at the date and time that the deployment
 resource was created.

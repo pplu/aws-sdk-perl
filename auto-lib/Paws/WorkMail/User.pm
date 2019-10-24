@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::WorkMail::User;
-  use Moose;
-  has DisabledDate => (is => 'ro', isa => 'Str');
-  has DisplayName => (is => 'ro', isa => 'Str');
-  has Email => (is => 'ro', isa => 'Str');
-  has EnabledDate => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has UserRole => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has DisabledDate => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has Email => (is => 'ro', isa => Str);
+  has EnabledDate => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has UserRole => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'UserRole' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'DisabledDate' => {
+                                   'type' => 'Str'
+                                 },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'Email' => {
+                            'type' => 'Str'
+                          },
+               'EnabledDate' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

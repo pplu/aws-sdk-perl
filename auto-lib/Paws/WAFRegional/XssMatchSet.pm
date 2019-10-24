@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::XssMatchSet;
-  use Moose;
-  has Name => (is => 'ro', isa => 'Str');
-  has XssMatchSetId => (is => 'ro', isa => 'Str', required => 1);
-  has XssMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::XssMatchTuple]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_XssMatchTuple/;
+  has Name => (is => 'ro', isa => Str);
+  has XssMatchSetId => (is => 'ro', isa => Str, required => 1);
+  has XssMatchTuples => (is => 'ro', isa => ArrayRef[WAFRegional_XssMatchTuple], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'XssMatchSetId' => {
+                                    'type' => 'Str'
+                                  },
+               'XssMatchTuples' => {
+                                     'class' => 'Paws::WAFRegional::XssMatchTuple',
+                                     'type' => 'ArrayRef[WAFRegional_XssMatchTuple]'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'XssMatchSetId' => 1,
+                    'XssMatchTuples' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +89,7 @@ C<XssMatchSetId> is returned by CreateXssMatchSet and by
 ListXssMatchSets.
 
 
-=head2 B<REQUIRED> XssMatchTuples => ArrayRef[L<Paws::WAFRegional::XssMatchTuple>]
+=head2 B<REQUIRED> XssMatchTuples => ArrayRef[WAFRegional_XssMatchTuple]
 
   Specifies the parts of web requests that you want to inspect for
 cross-site scripting attacks.

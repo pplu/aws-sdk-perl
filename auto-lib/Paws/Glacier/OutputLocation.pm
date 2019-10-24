@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Glacier::OutputLocation;
-  use Moose;
-  has S3 => (is => 'ro', isa => 'Paws::Glacier::S3Location');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Glacier::Types qw/Glacier_S3Location/;
+  has S3 => (is => 'ro', isa => Glacier_S3Location);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3' => {
+                         'class' => 'Paws::Glacier::S3Location',
+                         'type' => 'Glacier_S3Location'
+                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ are stored.
 =head1 ATTRIBUTES
 
 
-=head2 S3 => L<Paws::Glacier::S3Location>
+=head2 S3 => Glacier_S3Location
 
   Describes an S3 location that will receive the results of the job
 request.

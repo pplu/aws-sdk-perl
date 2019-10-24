@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::KMS::ListResourceTagsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::KMS::Tag]');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::KMS::Types qw/KMS_Tag/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[KMS_Tag]);
+  has Truncated => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::KMS::Tag',
+                           'type' => 'ArrayRef[KMS_Tag]'
+                         },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +49,7 @@ value to use for the C<Marker> parameter in a subsequent request.
 Do not assume or infer any information from this value.
 
 
-=head2 Tags => ArrayRef[L<Paws::KMS::Tag>]
+=head2 Tags => ArrayRef[KMS_Tag]
 
 A list of tags. Each tag consists of a tag key and a tag value.
 

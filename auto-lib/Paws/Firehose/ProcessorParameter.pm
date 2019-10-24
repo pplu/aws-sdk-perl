@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Firehose::ProcessorParameter;
-  use Moose;
-  has ParameterName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw//;
+  has ParameterName => (is => 'ro', isa => Str, required => 1);
+  has ParameterValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'ParameterName' => 1,
+                    'ParameterValue' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

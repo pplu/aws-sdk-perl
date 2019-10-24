@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::RDS::ScalingConfiguration;
-  use Moose;
-  has AutoPause => (is => 'ro', isa => 'Bool');
-  has MaxCapacity => (is => 'ro', isa => 'Int');
-  has MinCapacity => (is => 'ro', isa => 'Int');
-  has SecondsUntilAutoPause => (is => 'ro', isa => 'Int');
-  has TimeoutAction => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::RDS::Types qw//;
+  has AutoPause => (is => 'ro', isa => Bool);
+  has MaxCapacity => (is => 'ro', isa => Int);
+  has MinCapacity => (is => 'ro', isa => Int);
+  has SecondsUntilAutoPause => (is => 'ro', isa => Int);
+  has TimeoutAction => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoPause' => {
+                                'type' => 'Bool'
+                              },
+               'SecondsUntilAutoPause' => {
+                                            'type' => 'Int'
+                                          },
+               'MinCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'MaxCapacity' => {
+                                  'type' => 'Int'
+                                },
+               'TimeoutAction' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

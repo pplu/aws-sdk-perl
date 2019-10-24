@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Macie::AssociateS3Resources;
-  use Moose;
-  has MemberAccountId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'memberAccountId' );
-  has S3Resources => (is => 'ro', isa => 'ArrayRef[Paws::Macie::S3ResourceClassification]', traits => ['NameInRequest'], request_name => 's3Resources' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Macie::Types qw/Macie_S3ResourceClassification/;
+  has MemberAccountId => (is => 'ro', isa => Str, predicate => 1);
+  has S3Resources => (is => 'ro', isa => ArrayRef[Macie_S3ResourceClassification], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssociateS3Resources');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Macie::AssociateS3ResourcesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AssociateS3Resources');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Macie::AssociateS3ResourcesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MemberAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'S3Resources' => {
+                                  'class' => 'Paws::Macie::S3ResourceClassification',
+                                  'type' => 'ArrayRef[Macie_S3ResourceClassification]'
+                                }
+             },
+  'NameInRequest' => {
+                       'MemberAccountId' => 'memberAccountId',
+                       'S3Resources' => 's3Resources'
+                     },
+  'IsRequired' => {
+                    'S3Resources' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +89,7 @@ associate with Macie.
 
 
 
-=head2 B<REQUIRED> S3Resources => ArrayRef[L<Paws::Macie::S3ResourceClassification>]
+=head2 B<REQUIRED> S3Resources => ArrayRef[Macie_S3ResourceClassification]
 
 The S3 resources that you want to associate with Amazon Macie for
 monitoring and data classification.

@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AppStream::DeleteImageResult;
-  use Moose;
-  has Image => (is => 'ro', isa => 'Paws::AppStream::Image');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw/AppStream_Image/;
+  has Image => (is => 'ro', isa => AppStream_Image);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Image' => {
+                            'class' => 'Paws::AppStream::Image',
+                            'type' => 'AppStream_Image'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AppStream::DeleteImageResult
 =head1 ATTRIBUTES
 
 
-=head2 Image => L<Paws::AppStream::Image>
+=head2 Image => AppStream_Image
 
 Information about the image.
 

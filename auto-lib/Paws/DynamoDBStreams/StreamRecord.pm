@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::DynamoDBStreams::StreamRecord;
-  use Moose;
-  has ApproximateCreationDateTime => (is => 'ro', isa => 'Str');
-  has Keys => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
-  has NewImage => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
-  has OldImage => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
-  has SequenceNumber => (is => 'ro', isa => 'Str');
-  has SizeBytes => (is => 'ro', isa => 'Int');
-  has StreamViewType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DynamoDBStreams::Types qw/DynamoDBStreams_AttributeMap/;
+  has ApproximateCreationDateTime => (is => 'ro', isa => Str);
+  has Keys => (is => 'ro', isa => DynamoDBStreams_AttributeMap);
+  has NewImage => (is => 'ro', isa => DynamoDBStreams_AttributeMap);
+  has OldImage => (is => 'ro', isa => DynamoDBStreams_AttributeMap);
+  has SequenceNumber => (is => 'ro', isa => Str);
+  has SizeBytes => (is => 'ro', isa => Int);
+  has StreamViewType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamViewType' => {
+                                     'type' => 'Str'
+                                   },
+               'NewImage' => {
+                               'class' => 'Paws::DynamoDBStreams::AttributeMap',
+                               'type' => 'DynamoDBStreams_AttributeMap'
+                             },
+               'SequenceNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'ApproximateCreationDateTime' => {
+                                                  'type' => 'Str'
+                                                },
+               'Keys' => {
+                           'class' => 'Paws::DynamoDBStreams::AttributeMap',
+                           'type' => 'DynamoDBStreams_AttributeMap'
+                         },
+               'SizeBytes' => {
+                                'type' => 'Int'
+                              },
+               'OldImage' => {
+                               'class' => 'Paws::DynamoDBStreams::AttributeMap',
+                               'type' => 'DynamoDBStreams_AttributeMap'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,17 +87,17 @@ item in a DynamoDB table.
 UNIX epoch time (http://www.epochconverter.com/) format.
 
 
-=head2 Keys => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 Keys => DynamoDBStreams_AttributeMap
 
   The primary key attribute(s) for the DynamoDB item that was modified.
 
 
-=head2 NewImage => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 NewImage => DynamoDBStreams_AttributeMap
 
   The item in the DynamoDB table as it appeared after it was modified.
 
 
-=head2 OldImage => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 OldImage => DynamoDBStreams_AttributeMap
 
   The item in the DynamoDB table as it appeared before it was modified.
 

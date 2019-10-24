@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::CreatePlayerSessions;
-  use Moose;
-  has GameSessionId => (is => 'ro', isa => 'Str', required => 1);
-  has PlayerDataMap => (is => 'ro', isa => 'Paws::GameLift::PlayerDataMap');
-  has PlayerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::GameLift::Types qw/GameLift_PlayerDataMap/;
+  has GameSessionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PlayerDataMap => (is => 'ro', isa => GameLift_PlayerDataMap, predicate => 1);
+  has PlayerIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlayerSessions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::CreatePlayerSessionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePlayerSessions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::CreatePlayerSessionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlayerIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'PlayerDataMap' => {
+                                    'class' => 'Paws::GameLift::PlayerDataMap',
+                                    'type' => 'GameLift_PlayerDataMap'
+                                  },
+               'GameSessionId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'PlayerIds' => 1,
+                    'GameSessionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +84,7 @@ Unique identifier for the game session to add players to.
 
 
 
-=head2 PlayerDataMap => L<Paws::GameLift::PlayerDataMap>
+=head2 PlayerDataMap => GameLift_PlayerDataMap
 
 Map of string pairs, each specifying a player ID and a set of
 developer-defined information related to the player. Amazon GameLift

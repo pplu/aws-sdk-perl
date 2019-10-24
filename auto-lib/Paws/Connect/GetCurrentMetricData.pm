@@ -1,19 +1,59 @@
 
 package Paws::Connect::GetCurrentMetricData;
-  use Moose;
-  has CurrentMetrics => (is => 'ro', isa => 'ArrayRef[Paws::Connect::CurrentMetric]', required => 1);
-  has Filters => (is => 'ro', isa => 'Paws::Connect::Filters', required => 1);
-  has Groupings => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Connect::Types qw/Connect_Filters Connect_CurrentMetric/;
+  has CurrentMetrics => (is => 'ro', isa => ArrayRef[Connect_CurrentMetric], required => 1, predicate => 1);
+  has Filters => (is => 'ro', isa => Connect_Filters, required => 1, predicate => 1);
+  has Groupings => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCurrentMetricData');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/metrics/current/{InstanceId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::GetCurrentMetricDataResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetCurrentMetricData');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/metrics/current/{InstanceId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::GetCurrentMetricDataResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Groupings' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'CurrentMetrics' => {
+                                     'class' => 'Paws::Connect::CurrentMetric',
+                                     'type' => 'ArrayRef[Connect_CurrentMetric]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::Connect::Filters',
+                              'type' => 'Connect_Filters'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInURI' => {
+                    'InstanceId' => 'InstanceId'
+                  },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'CurrentMetrics' => 1,
+                    'Filters' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +109,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
+=head2 B<REQUIRED> CurrentMetrics => ArrayRef[Connect_CurrentMetric]
 
 A list of C<CurrentMetric> objects for the metrics to retrieve. Each
 C<CurrentMetric> includes a name of a metric to retrieve and the unit
@@ -125,7 +165,7 @@ Unit: COUNT
 
 
 
-=head2 B<REQUIRED> Filters => L<Paws::Connect::Filters>
+=head2 B<REQUIRED> Filters => Connect_Filters
 
 A C<Filters> object that contains a list of queue IDs or queue ARNs, up
 to 100, or list of Channels to use to filter the metrics returned in

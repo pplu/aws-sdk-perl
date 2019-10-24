@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::DBEngineVersionMessage;
-  use Moose;
-  has DBEngineVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBEngineVersion]', request_name => 'DBEngineVersion', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_DBEngineVersion/;
+  has DBEngineVersions => (is => 'ro', isa => ArrayRef[RDS_DBEngineVersion]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBEngineVersions' => {
+                                       'class' => 'Paws::RDS::DBEngineVersion',
+                                       'type' => 'ArrayRef[RDS_DBEngineVersion]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DBEngineVersions' => 'DBEngineVersion'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::DBEngineVersionMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBEngineVersions => ArrayRef[L<Paws::RDS::DBEngineVersion>]
+=head2 DBEngineVersions => ArrayRef[RDS_DBEngineVersion]
 
 A list of C<DBEngineVersion> elements.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ContinuousBackupsDescription;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::ContinuousBackupsDescription;
   has ContinuousBackupsStatus => (is => 'ro', isa => Str, required => 1);
   has PointInTimeRecoveryDescription => (is => 'ro', isa => DynamoDB_PointInTimeRecoveryDescription);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ContinuousBackupsStatus' => {
@@ -15,11 +16,14 @@ package Paws::DynamoDB::ContinuousBackupsDescription;
                                                      'class' => 'Paws::DynamoDB::PointInTimeRecoveryDescription',
                                                      'type' => 'DynamoDB_PointInTimeRecoveryDescription'
                                                    }
-             }
+             },
+  'IsRequired' => {
+                    'ContinuousBackupsStatus' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

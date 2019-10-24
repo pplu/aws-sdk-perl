@@ -1,9 +1,27 @@
 
 package Paws::EFS::LifecycleConfigurationDescription;
-  use Moose;
-  has LifecyclePolicies => (is => 'ro', isa => 'ArrayRef[Paws::EFS::LifecyclePolicy]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EFS::Types qw/EFS_LifecyclePolicy/;
+  has LifecyclePolicies => (is => 'ro', isa => ArrayRef[EFS_LifecyclePolicy]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LifecyclePolicies' => {
+                                        'class' => 'Paws::EFS::LifecyclePolicy',
+                                        'type' => 'ArrayRef[EFS_LifecyclePolicy]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::EFS::LifecycleConfigurationDescription
 =head1 ATTRIBUTES
 
 
-=head2 LifecyclePolicies => ArrayRef[L<Paws::EFS::LifecyclePolicy>]
+=head2 LifecyclePolicies => ArrayRef[EFS_LifecyclePolicy]
 
 An array of lifecycle management policies. Currently, EFS supports a
 maximum of one policy per file system.

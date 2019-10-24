@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::CreateSizeConstraintSetResponse;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str');
-  has SizeConstraintSet => (is => 'ro', isa => 'Paws::WAFRegional::SizeConstraintSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SizeConstraintSet/;
+  has ChangeToken => (is => 'ro', isa => Str);
+  has SizeConstraintSet => (is => 'ro', isa => WAFRegional_SizeConstraintSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SizeConstraintSet' => {
+                                        'class' => 'Paws::WAFRegional::SizeConstraintSet',
+                                        'type' => 'WAFRegional_SizeConstraintSet'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +45,7 @@ query the status of the request. For more information, see
 GetChangeTokenStatus.
 
 
-=head2 SizeConstraintSet => L<Paws::WAFRegional::SizeConstraintSet>
+=head2 SizeConstraintSet => WAFRegional_SizeConstraintSet
 
 A SizeConstraintSet that contains no C<SizeConstraint> objects.
 

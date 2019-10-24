@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ECS::ListTaskDefinitionsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has TaskDefinitionArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'taskDefinitionArns' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ECS::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has TaskDefinitionArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TaskDefinitionArns' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'TaskDefinitionArns' => 'taskDefinitionArns'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

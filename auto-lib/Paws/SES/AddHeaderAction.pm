@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::AddHeaderAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::SES::AddHeaderAction;
                'HeaderValue' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'HeaderName' => 1,
+                    'HeaderValue' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::ELB::LBCookieStickinessPolicy;
-  use Moose;
-  has CookieExpirationPeriod => (is => 'ro', isa => 'Int');
-  has PolicyName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ELB::Types qw//;
+  has CookieExpirationPeriod => (is => 'ro', isa => Int);
+  has PolicyName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CookieExpirationPeriod' => {
+                                             'type' => 'Int'
+                                           },
+               'PolicyName' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

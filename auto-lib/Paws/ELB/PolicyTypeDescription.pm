@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::ELB::PolicyTypeDescription;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has PolicyAttributeTypeDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::PolicyAttributeTypeDescription]');
-  has PolicyTypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ELB::Types qw/ELB_PolicyAttributeTypeDescription/;
+  has Description => (is => 'ro', isa => Str);
+  has PolicyAttributeTypeDescriptions => (is => 'ro', isa => ArrayRef[ELB_PolicyAttributeTypeDescription]);
+  has PolicyTypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyTypeName' => {
+                                     'type' => 'Str'
+                                   },
+               'PolicyAttributeTypeDescriptions' => {
+                                                      'class' => 'Paws::ELB::PolicyAttributeTypeDescription',
+                                                      'type' => 'ArrayRef[ELB_PolicyAttributeTypeDescription]'
+                                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Information about a policy type.
   A description of the policy type.
 
 
-=head2 PolicyAttributeTypeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeTypeDescription>]
+=head2 PolicyAttributeTypeDescriptions => ArrayRef[ELB_PolicyAttributeTypeDescription]
 
   The description of the policy attributes associated with the policies
 defined by Elastic Load Balancing.

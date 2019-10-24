@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::ListStreamConsumersOutput;
-  use Moose;
-  has Consumers => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Consumer]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kinesis::Types qw/Kinesis_Consumer/;
+  has Consumers => (is => 'ro', isa => ArrayRef[Kinesis_Consumer]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Consumers' => {
+                                'class' => 'Paws::Kinesis::Consumer',
+                                'type' => 'ArrayRef[Kinesis_Consumer]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Kinesis::ListStreamConsumersOutput
 =head1 ATTRIBUTES
 
 
-=head2 Consumers => ArrayRef[L<Paws::Kinesis::Consumer>]
+=head2 Consumers => ArrayRef[Kinesis_Consumer]
 
 An array of JSON objects. Each object represents one registered
 consumer.

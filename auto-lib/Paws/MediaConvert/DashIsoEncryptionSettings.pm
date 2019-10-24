@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::DashIsoEncryptionSettings;
-  use Moose;
-  has PlaybackDeviceCompatibility => (is => 'ro', isa => 'Str', request_name => 'playbackDeviceCompatibility', traits => ['NameInRequest']);
-  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProvider', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_SpekeKeyProvider/;
+  has PlaybackDeviceCompatibility => (is => 'ro', isa => Str);
+  has SpekeKeyProvider => (is => 'ro', isa => MediaConvert_SpekeKeyProvider);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SpekeKeyProvider' => {
+                                       'class' => 'Paws::MediaConvert::SpekeKeyProvider',
+                                       'type' => 'MediaConvert_SpekeKeyProvider'
+                                     },
+               'PlaybackDeviceCompatibility' => {
+                                                  'type' => 'Str'
+                                                }
+             },
+  'NameInRequest' => {
+                       'SpekeKeyProvider' => 'spekeKeyProvider',
+                       'PlaybackDeviceCompatibility' => 'playbackDeviceCompatibility'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +73,7 @@ that output, the service will exclude the access unit delimiter and
 will leave the SEI NAL units unencrypted.
 
 
-=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
+=head2 SpekeKeyProvider => MediaConvert_SpekeKeyProvider
 
   Settings for use with a SPEKE key provider
 

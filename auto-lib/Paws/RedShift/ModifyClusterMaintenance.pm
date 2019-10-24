@@ -1,18 +1,52 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::ModifyClusterMaintenance;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DeferMaintenance => (is => 'ro', isa => 'Bool');
-  has DeferMaintenanceDuration => (is => 'ro', isa => 'Int');
-  has DeferMaintenanceEndTime => (is => 'ro', isa => 'Str');
-  has DeferMaintenanceIdentifier => (is => 'ro', isa => 'Str');
-  has DeferMaintenanceStartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::RedShift::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DeferMaintenance => (is => 'ro', isa => Bool, predicate => 1);
+  has DeferMaintenanceDuration => (is => 'ro', isa => Int, predicate => 1);
+  has DeferMaintenanceEndTime => (is => 'ro', isa => Str, predicate => 1);
+  has DeferMaintenanceIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has DeferMaintenanceStartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClusterMaintenance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ModifyClusterMaintenanceResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterMaintenanceResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyClusterMaintenance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::ModifyClusterMaintenanceResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyClusterMaintenanceResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'DeferMaintenanceStartTime' => {
+                                                'type' => 'Str'
+                                              },
+               'DeferMaintenanceDuration' => {
+                                               'type' => 'Int'
+                                             },
+               'DeferMaintenanceIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'DeferMaintenanceEndTime' => {
+                                              'type' => 'Str'
+                                            },
+               'DeferMaintenance' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

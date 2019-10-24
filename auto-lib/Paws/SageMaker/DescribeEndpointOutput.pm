@@ -1,16 +1,64 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeEndpointOutput;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointArn => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointConfigName => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointName => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointStatus => (is => 'ro', isa => 'Str', required => 1);
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has ProductionVariants => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProductionVariantSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_ProductionVariantSummary/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EndpointArn => (is => 'ro', isa => Str, required => 1);
+  has EndpointConfigName => (is => 'ro', isa => Str, required => 1);
+  has EndpointName => (is => 'ro', isa => Str, required => 1);
+  has EndpointStatus => (is => 'ro', isa => Str, required => 1);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has ProductionVariants => (is => 'ro', isa => ArrayRef[SageMaker_ProductionVariantSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointName' => {
+                                   'type' => 'Str'
+                                 },
+               'EndpointConfigName' => {
+                                         'type' => 'Str'
+                                       },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'EndpointArn' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'ProductionVariants' => {
+                                         'class' => 'Paws::SageMaker::ProductionVariantSummary',
+                                         'type' => 'ArrayRef[SageMaker_ProductionVariantSummary]'
+                                       },
+               'EndpointStatus' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'EndpointName' => 1,
+                    'LastModifiedTime' => 1,
+                    'EndpointArn' => 1,
+                    'EndpointConfigName' => 1,
+                    'EndpointStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -108,7 +156,7 @@ If the status of the endpoint is C<Failed>, the reason why it failed.
 A timestamp that shows when the endpoint was last modified.
 
 
-=head2 ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariantSummary>]
+=head2 ProductionVariants => ArrayRef[SageMaker_ProductionVariantSummary]
 
 An array of ProductionVariantSummary objects, one for each model hosted
 behind this endpoint.

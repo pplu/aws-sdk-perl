@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::CmafEncryptionSettings;
-  use Moose;
-  has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
-  has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
-  has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
-  has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_StaticKeyProvider/;
+  has ConstantInitializationVector => (is => 'ro', isa => Str);
+  has EncryptionMethod => (is => 'ro', isa => Str);
+  has InitializationVectorInManifest => (is => 'ro', isa => Str);
+  has StaticKeyProvider => (is => 'ro', isa => MediaConvert_StaticKeyProvider);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'InitializationVectorInManifest' => {
+                                                     'type' => 'Str'
+                                                   },
+               'StaticKeyProvider' => {
+                                        'class' => 'Paws::MediaConvert::StaticKeyProvider',
+                                        'type' => 'MediaConvert_StaticKeyProvider'
+                                      },
+               'ConstantInitializationVector' => {
+                                                   'type' => 'Str'
+                                                 },
+               'EncryptionMethod' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'InitializationVectorInManifest' => 'initializationVectorInManifest',
+                       'StaticKeyProvider' => 'staticKeyProvider',
+                       'ConstantInitializationVector' => 'constantInitializationVector',
+                       'EncryptionMethod' => 'encryptionMethod'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +99,7 @@ is listed in the manifest. Otherwise Initialization Vector is not in
 the manifest.
 
 
-=head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
+=head2 StaticKeyProvider => MediaConvert_StaticKeyProvider
 
   Use these settings to set up encryption with a static key provider.
 

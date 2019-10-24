@@ -1,12 +1,52 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::Schedule;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has EventFilter => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEventFilter');
-  has Frequency => (is => 'ro', isa => 'Str');
-  has IsLocalTime => (is => 'ro', isa => 'Bool');
-  has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
-  has Timezone => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignEventFilter Pinpoint_QuietTime/;
+  has EndTime => (is => 'ro', isa => Str);
+  has EventFilter => (is => 'ro', isa => Pinpoint_CampaignEventFilter);
+  has Frequency => (is => 'ro', isa => Str);
+  has IsLocalTime => (is => 'ro', isa => Bool);
+  has QuietTime => (is => 'ro', isa => Pinpoint_QuietTime);
+  has StartTime => (is => 'ro', isa => Str, required => 1);
+  has Timezone => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Frequency' => {
+                                'type' => 'Str'
+                              },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'QuietTime' => {
+                                'class' => 'Paws::Pinpoint::QuietTime',
+                                'type' => 'Pinpoint_QuietTime'
+                              },
+               'EventFilter' => {
+                                  'class' => 'Paws::Pinpoint::CampaignEventFilter',
+                                  'type' => 'Pinpoint_CampaignEventFilter'
+                                },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'IsLocalTime' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'IsRequired' => {
+                    'StartTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +87,7 @@ Specifies the schedule settings for a campaign.
   The scheduled time, in ISO 8601 format, for the campaign to end.
 
 
-=head2 EventFilter => L<Paws::Pinpoint::CampaignEventFilter>
+=head2 EventFilter => Pinpoint_CampaignEventFilter
 
   The type of event that causes the campaign to be sent, if the value of
 the Frequency property is EVENT.
@@ -66,7 +106,7 @@ each recipient's local time. To base the schedule on each recipient's
 local time, set this value to true.
 
 
-=head2 QuietTime => L<Paws::Pinpoint::QuietTime>
+=head2 QuietTime => Pinpoint_QuietTime
 
   The default quiet time for the campaign. Quiet time is a specific time
 range when a campaign doesn't send messages to endpoints, if all the

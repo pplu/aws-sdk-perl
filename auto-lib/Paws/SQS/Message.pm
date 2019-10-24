@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::Message;
   use Moo;
   use Types::Standard qw/Str/;

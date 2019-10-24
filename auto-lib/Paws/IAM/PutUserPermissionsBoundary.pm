@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::PutUserPermissionsBoundary;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::PutUserPermissionsBoundary;
                'PermissionsBoundary' => {
                                           'type' => 'Str'
                                         }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'PermissionsBoundary' => 1
+                  }
 }
 ;
     return $Params_map;

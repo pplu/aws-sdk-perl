@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityNotificationAttributes;
   use Moo;
   use Types::Standard qw/Str Bool/;
@@ -34,7 +35,10 @@ package Paws::SES::IdentityNotificationAttributes;
                'HeadersInComplaintNotificationsEnabled' => {
                                                              'type' => 'Bool'
                                                            }
-             }
+             },
+  'IsRequired' => {
+                    'ForwardingEnabled' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,15 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::ListBuildsForProject;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
-  has SortOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortOrder' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeBuild::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListBuildsForProject');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::ListBuildsForProjectOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListBuildsForProject');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::ListBuildsForProjectOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'SortOrder' => 'sortOrder',
+                       'ProjectName' => 'projectName'
+                     },
+  'IsRequired' => {
+                    'ProjectName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

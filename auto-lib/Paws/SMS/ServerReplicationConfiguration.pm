@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::SMS::ServerReplicationConfiguration;
-  use Moose;
-  has Server => (is => 'ro', isa => 'Paws::SMS::Server', request_name => 'server', traits => ['NameInRequest']);
-  has ServerReplicationParameters => (is => 'ro', isa => 'Paws::SMS::ServerReplicationParameters', request_name => 'serverReplicationParameters', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SMS::Types qw/SMS_ServerReplicationParameters SMS_Server/;
+  has Server => (is => 'ro', isa => SMS_Server);
+  has ServerReplicationParameters => (is => 'ro', isa => SMS_ServerReplicationParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Server' => {
+                             'class' => 'Paws::SMS::Server',
+                             'type' => 'SMS_Server'
+                           },
+               'ServerReplicationParameters' => {
+                                                  'class' => 'Paws::SMS::ServerReplicationParameters',
+                                                  'type' => 'SMS_ServerReplicationParameters'
+                                                }
+             },
+  'NameInRequest' => {
+                       'Server' => 'server',
+                       'ServerReplicationParameters' => 'serverReplicationParameters'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +63,13 @@ Replication configuration of a server.
 =head1 ATTRIBUTES
 
 
-=head2 Server => L<Paws::SMS::Server>
+=head2 Server => SMS_Server
 
   Identifier of the server this replication configuration is associated
 with.
 
 
-=head2 ServerReplicationParameters => L<Paws::SMS::ServerReplicationParameters>
+=head2 ServerReplicationParameters => SMS_ServerReplicationParameters
 
   Parameters for replicating the server.
 

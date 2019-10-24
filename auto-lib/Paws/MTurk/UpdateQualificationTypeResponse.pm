@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MTurk::UpdateQualificationTypeResponse;
-  use Moose;
-  has QualificationType => (is => 'ro', isa => 'Paws::MTurk::QualificationType');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MTurk::Types qw/MTurk_QualificationType/;
+  has QualificationType => (is => 'ro', isa => MTurk_QualificationType);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'QualificationType' => {
+                                        'class' => 'Paws::MTurk::QualificationType',
+                                        'type' => 'MTurk_QualificationType'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::MTurk::UpdateQualificationTypeResponse
 =head1 ATTRIBUTES
 
 
-=head2 QualificationType => L<Paws::MTurk::QualificationType>
+=head2 QualificationType => MTurk_QualificationType
 
 Contains a QualificationType data structure.
 

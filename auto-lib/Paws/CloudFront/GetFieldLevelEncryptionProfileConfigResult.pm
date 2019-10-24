@@ -1,12 +1,37 @@
 
 package Paws::CloudFront::GetFieldLevelEncryptionProfileConfigResult;
-  use Moose;
-  has ETag => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'ETag');
-  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig');
+  use Moo;
 
-  use MooseX::ClassAttribute;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfileConfig/;
+  has ETag => (is => 'ro', isa => Str);
+  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionProfileConfig);
+
+  use MooX::ClassAttribute;
   class_has _payload => (is => 'ro', default => 'FieldLevelEncryptionProfileConfig');
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ETag' => {
+                           'type' => 'Str'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FieldLevelEncryptionProfileConfig' => {
+                                                        'class' => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig',
+                                                        'type' => 'CloudFront_FieldLevelEncryptionProfileConfig'
+                                                      }
+             },
+  'ParamInHeader' => {
+                       'ETag' => 'ETag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ result. For example: C<E2QWRUHAPOMQZL>.
 
 
 
-=head2 FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=head2 FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
 Return the field-level encryption profile configuration information.
 

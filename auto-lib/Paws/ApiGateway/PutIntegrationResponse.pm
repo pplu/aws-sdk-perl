@@ -1,21 +1,77 @@
 
 package Paws::ApiGateway::PutIntegrationResponse;
-  use Moose;
-  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'http_method', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource_id', required => 1);
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseParameters');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'responseTemplates');
-  has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restapi_id', required => 1);
-  has SelectionPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'selectionPattern');
-  has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'status_code', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has ContentHandling => (is => 'ro', isa => Str, predicate => 1);
+  has HttpMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResponseParameters => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has ResponseTemplates => (is => 'ro', isa => ApiGateway_MapOfStringToString, predicate => 1);
+  has RestApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SelectionPattern => (is => 'ro', isa => Str, predicate => 1);
+  has StatusCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutIntegrationResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutIntegrationResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestApiId' => {
+                                'type' => 'Str'
+                              },
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'ContentHandling' => {
+                                      'type' => 'Str'
+                                    },
+               'ResponseTemplates' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                        'type' => 'ApiGateway_MapOfStringToString'
+                                      },
+               'ResponseParameters' => {
+                                         'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                         'type' => 'ApiGateway_MapOfStringToString'
+                                       },
+               'StatusCode' => {
+                                 'type' => 'Str'
+                               },
+               'SelectionPattern' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'ParamInURI' => {
+                    'StatusCode' => 'status_code',
+                    'RestApiId' => 'restapi_id',
+                    'ResourceId' => 'resource_id',
+                    'HttpMethod' => 'http_method'
+                  },
+  'NameInRequest' => {
+                       'SelectionPattern' => 'selectionPattern',
+                       'ContentHandling' => 'contentHandling',
+                       'ResponseTemplates' => 'responseTemplates',
+                       'ResponseParameters' => 'responseParameters'
+                     },
+  'IsRequired' => {
+                    'StatusCode' => 1,
+                    'RestApiId' => 1,
+                    'ResourceId' => 1,
+                    'HttpMethod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +156,7 @@ identifier.
 
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseParameters => ApiGateway_MapOfStringToString
 
 A key-value map specifying response parameters that are passed to the
 method response from the back end. The key is a method response header
@@ -116,7 +172,7 @@ JSON expression without the C<$> prefix.
 
 
 
-=head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseTemplates => ApiGateway_MapOfStringToString
 
 Specifies a put integration response's templates.
 

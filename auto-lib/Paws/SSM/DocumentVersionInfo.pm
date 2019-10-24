@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::SSM::DocumentVersionInfo;
-  use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusInformation => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::SSM::Types qw//;
+  has CreatedDate => (is => 'ro', isa => Str);
+  has DocumentFormat => (is => 'ro', isa => Str);
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has IsDefaultVersion => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusInformation => (is => 'ro', isa => Str);
+  has VersionName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'IsDefaultVersion' => {
+                                       'type' => 'Bool'
+                                     },
+               'StatusInformation' => {
+                                        'type' => 'Str'
+                                      },
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

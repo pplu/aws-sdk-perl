@@ -1,14 +1,35 @@
 
 package Paws::MQ::RebootBroker;
-  use Moose;
-  has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has BrokerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootBroker');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/brokers/{broker-id}/reboot');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MQ::RebootBrokerResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RebootBroker');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/brokers/{broker-id}/reboot');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MQ::RebootBrokerResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BrokerId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'BrokerId' => 'broker-id'
+                  },
+  'IsRequired' => {
+                    'BrokerId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

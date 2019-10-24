@@ -1,12 +1,47 @@
 
 package Paws::Pinpoint::ApplicationResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string/;
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Arn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +70,7 @@ The display name of the application. This name is displayed as the
 B<Project name> on the Amazon Pinpoint console.
 
 
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 Tags => Pinpoint_MapOf__string
 
 A string-to-string map of key-value pairs that identifies the tags that
 are associated with the application. Each tag consists of a required

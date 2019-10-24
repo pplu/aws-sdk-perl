@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::AppSync::ApiKey;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has Expires => (is => 'ro', isa => 'Int', request_name => 'expires', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppSync::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has Expires => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Expires' => {
+                              'type' => 'Int'
+                            }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Description' => 'description',
+                       'Expires' => 'expires'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

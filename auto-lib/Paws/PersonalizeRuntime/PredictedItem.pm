@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::PersonalizeRuntime::PredictedItem;
-  use Moose;
-  has ItemId => (is => 'ro', isa => 'Str', request_name => 'itemId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PersonalizeRuntime::Types qw//;
+  has ItemId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ItemId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ItemId' => 'itemId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

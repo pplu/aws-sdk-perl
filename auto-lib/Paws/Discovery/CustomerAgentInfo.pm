@@ -1,12 +1,65 @@
+# Generated from default/object.tt
 package Paws::Discovery::CustomerAgentInfo;
-  use Moose;
-  has ActiveAgents => (is => 'ro', isa => 'Int', request_name => 'activeAgents', traits => ['NameInRequest'], required => 1);
-  has BlackListedAgents => (is => 'ro', isa => 'Int', request_name => 'blackListedAgents', traits => ['NameInRequest'], required => 1);
-  has HealthyAgents => (is => 'ro', isa => 'Int', request_name => 'healthyAgents', traits => ['NameInRequest'], required => 1);
-  has ShutdownAgents => (is => 'ro', isa => 'Int', request_name => 'shutdownAgents', traits => ['NameInRequest'], required => 1);
-  has TotalAgents => (is => 'ro', isa => 'Int', request_name => 'totalAgents', traits => ['NameInRequest'], required => 1);
-  has UnhealthyAgents => (is => 'ro', isa => 'Int', request_name => 'unhealthyAgents', traits => ['NameInRequest'], required => 1);
-  has UnknownAgents => (is => 'ro', isa => 'Int', request_name => 'unknownAgents', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Discovery::Types qw//;
+  has ActiveAgents => (is => 'ro', isa => Int, required => 1);
+  has BlackListedAgents => (is => 'ro', isa => Int, required => 1);
+  has HealthyAgents => (is => 'ro', isa => Int, required => 1);
+  has ShutdownAgents => (is => 'ro', isa => Int, required => 1);
+  has TotalAgents => (is => 'ro', isa => Int, required => 1);
+  has UnhealthyAgents => (is => 'ro', isa => Int, required => 1);
+  has UnknownAgents => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BlackListedAgents' => {
+                                        'type' => 'Int'
+                                      },
+               'TotalAgents' => {
+                                  'type' => 'Int'
+                                },
+               'HealthyAgents' => {
+                                    'type' => 'Int'
+                                  },
+               'UnhealthyAgents' => {
+                                      'type' => 'Int'
+                                    },
+               'ActiveAgents' => {
+                                   'type' => 'Int'
+                                 },
+               'UnknownAgents' => {
+                                    'type' => 'Int'
+                                  },
+               'ShutdownAgents' => {
+                                     'type' => 'Int'
+                                   }
+             },
+  'NameInRequest' => {
+                       'BlackListedAgents' => 'blackListedAgents',
+                       'TotalAgents' => 'totalAgents',
+                       'HealthyAgents' => 'healthyAgents',
+                       'UnhealthyAgents' => 'unhealthyAgents',
+                       'ActiveAgents' => 'activeAgents',
+                       'UnknownAgents' => 'unknownAgents',
+                       'ShutdownAgents' => 'shutdownAgents'
+                     },
+  'IsRequired' => {
+                    'BlackListedAgents' => 1,
+                    'TotalAgents' => 1,
+                    'HealthyAgents' => 1,
+                    'UnhealthyAgents' => 1,
+                    'ActiveAgents' => 1,
+                    'UnknownAgents' => 1,
+                    'ShutdownAgents' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Neptune::EngineDefaults;
-  use Moose;
-  has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
-  has Marker => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Parameter]', request_name => 'Parameter', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_Parameter/;
+  has DBParameterGroupFamily => (is => 'ro', isa => Str);
+  has Marker => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[Neptune_Parameter]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::Neptune::Parameter',
+                                 'type' => 'ArrayRef[Neptune_Parameter]'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           },
+               'DBParameterGroupFamily' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'Parameters' => 'Parameter'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +79,7 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by C<MaxRecords> .
 
 
-=head2 Parameters => ArrayRef[L<Paws::Neptune::Parameter>]
+=head2 Parameters => ArrayRef[Neptune_Parameter]
 
   Contains a list of engine default parameters.
 

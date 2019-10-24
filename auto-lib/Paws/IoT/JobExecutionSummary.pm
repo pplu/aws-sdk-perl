@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::JobExecutionSummary;
-  use Moose;
-  has ExecutionNumber => (is => 'ro', isa => 'Int', request_name => 'executionNumber', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has QueuedAt => (is => 'ro', isa => 'Str', request_name => 'queuedAt', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::IoT::Types qw//;
+  has ExecutionNumber => (is => 'ro', isa => Int);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has QueuedAt => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'QueuedAt' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'StartedAt' => 'startedAt',
+                       'ExecutionNumber' => 'executionNumber',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'QueuedAt' => 'queuedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::SMS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'sms' }
   sub signing_name { 'sms' }
   sub version { '2016-10-24' }
   sub target_prefix { 'AWSServerMigrationService_V2016_10_24' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -348,9 +350,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =item [RoleName => Str]
 
-=item [ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]]
+=item [ServerGroups => ArrayRef[SMS_ServerGroup]]
 
-=item [Tags => ArrayRef[L<Paws::SMS::Tag>]]
+=item [Tags => ArrayRef[SMS_Tag]]
 
 
 =back
@@ -663,7 +665,7 @@ Describes the replication runs for the specified replication job.
 
 =item [NextToken => Str]
 
-=item [VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]]
+=item [VmServerAddressList => ArrayRef[SMS_VmServerAddress]]
 
 
 =back
@@ -740,7 +742,7 @@ Returns a list of summaries for all applications.
 
 =item [RoleName => Str]
 
-=item [ServerGroupLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerGroupLaunchConfiguration>]]
+=item [ServerGroupLaunchConfigurations => ArrayRef[SMS_ServerGroupLaunchConfiguration]]
 
 
 =back
@@ -758,7 +760,7 @@ Creates a launch configuration for an application.
 
 =item [AppId => Str]
 
-=item [ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]]
+=item [ServerGroupReplicationConfigurations => ArrayRef[SMS_ServerGroupReplicationConfiguration]]
 
 
 =back
@@ -853,9 +855,9 @@ Terminates the stack for an application.
 
 =item [RoleName => Str]
 
-=item [ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]]
+=item [ServerGroups => ArrayRef[SMS_ServerGroup]]
 
-=item [Tags => ArrayRef[L<Paws::SMS::Tag>]]
+=item [Tags => ArrayRef[SMS_Tag]]
 
 
 =back
@@ -941,9 +943,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::SMS::GetReplicationRunsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllServers(sub { },[MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]])
+=head2 GetAllServers(sub { },[MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[SMS_VmServerAddress]])
 
-=head2 GetAllServers([MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[L<Paws::SMS::VmServerAddress>]])
+=head2 GetAllServers([MaxResults => Int, NextToken => Str, VmServerAddressList => ArrayRef[SMS_VmServerAddress]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

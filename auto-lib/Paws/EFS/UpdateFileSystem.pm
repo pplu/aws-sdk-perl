@@ -1,16 +1,43 @@
 
 package Paws::EFS::UpdateFileSystem;
-  use Moose;
-  has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId', required => 1);
-  has ProvisionedThroughputInMibps => (is => 'ro', isa => 'Num');
-  has ThroughputMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::EFS::Types qw//;
+  has FileSystemId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisionedThroughputInMibps => (is => 'ro', isa => Num, predicate => 1);
+  has ThroughputMode => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFileSystem');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/file-systems/{FileSystemId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::FileSystemDescription');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFileSystem');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-02-01/file-systems/{FileSystemId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EFS::FileSystemDescription');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProvisionedThroughputInMibps' => {
+                                                   'type' => 'Num'
+                                                 },
+               'ThroughputMode' => {
+                                     'type' => 'Str'
+                                   },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'FileSystemId' => 'FileSystemId'
+                  },
+  'IsRequired' => {
+                    'FileSystemId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

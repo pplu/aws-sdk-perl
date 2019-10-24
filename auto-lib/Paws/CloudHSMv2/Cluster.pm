@@ -1,18 +1,74 @@
+# Generated from default/object.tt
 package Paws::CloudHSMv2::Cluster;
-  use Moose;
-  has BackupPolicy => (is => 'ro', isa => 'Str');
-  has Certificates => (is => 'ro', isa => 'Paws::CloudHSMv2::Certificates');
-  has ClusterId => (is => 'ro', isa => 'Str');
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
-  has Hsms => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Hsm]');
-  has HsmType => (is => 'ro', isa => 'Str');
-  has PreCoPassword => (is => 'ro', isa => 'Str');
-  has SecurityGroup => (is => 'ro', isa => 'Str');
-  has SourceBackupId => (is => 'ro', isa => 'Str');
-  has State => (is => 'ro', isa => 'Str');
-  has StateMessage => (is => 'ro', isa => 'Str');
-  has SubnetMapping => (is => 'ro', isa => 'Paws::CloudHSMv2::ExternalSubnetMapping');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudHSMv2::Types qw/CloudHSMv2_ExternalSubnetMapping CloudHSMv2_Hsm CloudHSMv2_Certificates/;
+  has BackupPolicy => (is => 'ro', isa => Str);
+  has Certificates => (is => 'ro', isa => CloudHSMv2_Certificates);
+  has ClusterId => (is => 'ro', isa => Str);
+  has CreateTimestamp => (is => 'ro', isa => Str);
+  has Hsms => (is => 'ro', isa => ArrayRef[CloudHSMv2_Hsm]);
+  has HsmType => (is => 'ro', isa => Str);
+  has PreCoPassword => (is => 'ro', isa => Str);
+  has SecurityGroup => (is => 'ro', isa => Str);
+  has SourceBackupId => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => Str);
+  has StateMessage => (is => 'ro', isa => Str);
+  has SubnetMapping => (is => 'ro', isa => CloudHSMv2_ExternalSubnetMapping);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmType' => {
+                              'type' => 'Str'
+                            },
+               'SubnetMapping' => {
+                                    'class' => 'Paws::CloudHSMv2::ExternalSubnetMapping',
+                                    'type' => 'CloudHSMv2_ExternalSubnetMapping'
+                                  },
+               'SecurityGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'ClusterId' => {
+                                'type' => 'Str'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'Hsms' => {
+                           'class' => 'Paws::CloudHSMv2::Hsm',
+                           'type' => 'ArrayRef[CloudHSMv2_Hsm]'
+                         },
+               'StateMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'PreCoPassword' => {
+                                    'type' => 'Str'
+                                  },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'CreateTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'BackupPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'Certificates' => {
+                                   'class' => 'Paws::CloudHSMv2::Certificates',
+                                   'type' => 'CloudHSMv2_Certificates'
+                                 },
+               'SourceBackupId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +109,7 @@ Contains information about an AWS CloudHSM cluster.
   The cluster's backup policy.
 
 
-=head2 Certificates => L<Paws::CloudHSMv2::Certificates>
+=head2 Certificates => CloudHSMv2_Certificates
 
   Contains one or more certificates or a certificate signing request
 (CSR).
@@ -69,7 +125,7 @@ Contains information about an AWS CloudHSM cluster.
   The date and time when the cluster was created.
 
 
-=head2 Hsms => ArrayRef[L<Paws::CloudHSMv2::Hsm>]
+=head2 Hsms => ArrayRef[CloudHSMv2_Hsm]
 
   Contains information about the HSMs in the cluster.
 
@@ -105,7 +161,7 @@ value exists only when the cluster was created from a backup.
   A description of the cluster's state.
 
 
-=head2 SubnetMapping => L<Paws::CloudHSMv2::ExternalSubnetMapping>
+=head2 SubnetMapping => CloudHSMv2_ExternalSubnetMapping
 
   A map of the cluster's subnets and their corresponding Availability
 Zones.

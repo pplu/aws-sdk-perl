@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::ListedEntitlement;
-  use Moose;
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
-  has EntitlementName => (is => 'ro', isa => 'Str', request_name => 'entitlementName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConnect::Types qw//;
+  has EntitlementArn => (is => 'ro', isa => Str, required => 1);
+  has EntitlementName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EntitlementName' => {
+                                      'type' => 'Str'
+                                    },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'EntitlementName' => 'entitlementName',
+                       'EntitlementArn' => 'entitlementArn'
+                     },
+  'IsRequired' => {
+                    'EntitlementName' => 1,
+                    'EntitlementArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,22 +1,78 @@
 
 package Paws::RDSData::ExecuteStatement;
-  use Moose;
-  has ContinueAfterTimeout => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'continueAfterTimeout');
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has IncludeResultMetadata => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResultMetadata');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::SqlParameter]', traits => ['NameInRequest'], request_name => 'parameters');
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
-  has Sql => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sql', required => 1);
-  has TransactionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transactionId');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_SqlParameter/;
+  has ContinueAfterTimeout => (is => 'ro', isa => Bool, predicate => 1);
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has IncludeResultMetadata => (is => 'ro', isa => Bool, predicate => 1);
+  has Parameters => (is => 'ro', isa => ArrayRef[RDSData_SqlParameter], predicate => 1);
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SecretArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Sql => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TransactionId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExecuteStatement');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/Execute');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::ExecuteStatementResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExecuteStatement');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/Execute');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::ExecuteStatementResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'IncludeResultMetadata' => {
+                                            'type' => 'Bool'
+                                          },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'ContinueAfterTimeout' => {
+                                           'type' => 'Bool'
+                                         },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::RDSData::SqlParameter',
+                                 'type' => 'ArrayRef[RDSData_SqlParameter]'
+                               },
+               'Sql' => {
+                          'type' => 'Str'
+                        },
+               'TransactionId' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Schema' => 'schema',
+                       'IncludeResultMetadata' => 'includeResultMetadata',
+                       'ResourceArn' => 'resourceArn',
+                       'Database' => 'database',
+                       'ContinueAfterTimeout' => 'continueAfterTimeout',
+                       'SecretArn' => 'secretArn',
+                       'Parameters' => 'parameters',
+                       'Sql' => 'sql',
+                       'TransactionId' => 'transactionId'
+                     },
+  'IsRequired' => {
+                    'ResourceArn' => 1,
+                    'Sql' => 1,
+                    'SecretArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -101,7 +157,7 @@ A value that indicates whether to include metadata in the results.
 
 
 
-=head2 Parameters => ArrayRef[L<Paws::RDSData::SqlParameter>]
+=head2 Parameters => ArrayRef[RDSData_SqlParameter]
 
 The parameters for the SQL statement.
 

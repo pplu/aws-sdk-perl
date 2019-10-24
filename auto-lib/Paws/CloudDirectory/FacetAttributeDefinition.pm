@@ -1,9 +1,40 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::FacetAttributeDefinition;
-  use Moose;
-  has DefaultValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
-  has IsImmutable => (is => 'ro', isa => 'Bool');
-  has Rules => (is => 'ro', isa => 'Paws::CloudDirectory::RuleMap');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_RuleMap CloudDirectory_TypedAttributeValue/;
+  has DefaultValue => (is => 'ro', isa => CloudDirectory_TypedAttributeValue);
+  has IsImmutable => (is => 'ro', isa => Bool);
+  has Rules => (is => 'ro', isa => CloudDirectory_RuleMap);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Rules' => {
+                            'class' => 'Paws::CloudDirectory::RuleMap',
+                            'type' => 'CloudDirectory_RuleMap'
+                          },
+               'IsImmutable' => {
+                                  'type' => 'Bool'
+                                },
+               'DefaultValue' => {
+                                   'class' => 'Paws::CloudDirectory::TypedAttributeValue',
+                                   'type' => 'CloudDirectory_TypedAttributeValue'
+                                 }
+             },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +72,7 @@ for more information.
 =head1 ATTRIBUTES
 
 
-=head2 DefaultValue => L<Paws::CloudDirectory::TypedAttributeValue>
+=head2 DefaultValue => CloudDirectory_TypedAttributeValue
 
   The default value of the attribute (if configured).
 
@@ -51,7 +82,7 @@ for more information.
   Whether the attribute is mutable or not.
 
 
-=head2 Rules => L<Paws::CloudDirectory::RuleMap>
+=head2 Rules => CloudDirectory_RuleMap
 
   Validation rules attached to the attribute definition.
 

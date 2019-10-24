@@ -6,7 +6,7 @@ package Paws::EC2::VolumeStatusAction;
   has EventId => (is => 'ro', isa => Str);
   has EventType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Code' => {
@@ -30,8 +30,8 @@ package Paws::EC2::VolumeStatusAction;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

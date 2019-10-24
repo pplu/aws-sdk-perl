@@ -1,13 +1,52 @@
+# Generated from default/object.tt
 package Paws::ServiceDiscovery::Operation;
-  use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'Paws::ServiceDiscovery::OperationTargetsMap');
-  has Type => (is => 'ro', isa => 'Str');
-  has UpdateDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceDiscovery::Types qw/ServiceDiscovery_OperationTargetsMap/;
+  has CreateDate => (is => 'ro', isa => Str);
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => ServiceDiscovery_OperationTargetsMap);
+  has Type => (is => 'ro', isa => Str);
+  has UpdateDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreateDate' => {
+                                 'type' => 'Str'
+                               },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'Targets' => {
+                              'class' => 'Paws::ServiceDiscovery::OperationTargetsMap',
+                              'type' => 'ServiceDiscovery_OperationTargetsMap'
+                            },
+               'UpdateDate' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -129,7 +168,7 @@ C<ErrorMessage>.
 
 
 
-=head2 Targets => L<Paws::ServiceDiscovery::OperationTargetsMap>
+=head2 Targets => ServiceDiscovery_OperationTargetsMap
 
   The name of the target entity that is associated with the operation:
 

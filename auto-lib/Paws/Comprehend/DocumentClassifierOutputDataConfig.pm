@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Comprehend::DocumentClassifierOutputDataConfig;
-  use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has S3Uri => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has S3Uri => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Uri' => {
+                            'type' => 'Str'
+                          },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchListPolicyAttachmentsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ObjectIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudDirectory::Types qw//;
+  has NextToken => (is => 'ro', isa => Str);
+  has ObjectIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ObjectIdentifiers' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

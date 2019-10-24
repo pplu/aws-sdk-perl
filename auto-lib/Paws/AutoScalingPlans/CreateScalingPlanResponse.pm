@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AutoScalingPlans::CreateScalingPlanResponse;
-  use Moose;
-  has ScalingPlanVersion => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScalingPlans::Types qw//;
+  has ScalingPlanVersion => (is => 'ro', isa => Int, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ScalingPlanVersion' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'IsRequired' => {
+                    'ScalingPlanVersion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

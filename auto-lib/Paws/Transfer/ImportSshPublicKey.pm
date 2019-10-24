@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::ImportSshPublicKey;
-  use Moose;
-  has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has SshPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Transfer::Types qw//;
+  has ServerId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SshPublicKeyBody => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ImportSshPublicKey');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::ImportSshPublicKeyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ImportSshPublicKey');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Transfer::ImportSshPublicKeyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'ServerId' => {
+                               'type' => 'Str'
+                             },
+               'SshPublicKeyBody' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'ServerId' => 1,
+                    'SshPublicKeyBody' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

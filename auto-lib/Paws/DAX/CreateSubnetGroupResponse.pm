@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DAX::CreateSubnetGroupResponse;
-  use Moose;
-  has SubnetGroup => (is => 'ro', isa => 'Paws::DAX::SubnetGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw/DAX_SubnetGroup/;
+  has SubnetGroup => (is => 'ro', isa => DAX_SubnetGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SubnetGroup' => {
+                                  'class' => 'Paws::DAX::SubnetGroup',
+                                  'type' => 'DAX_SubnetGroup'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DAX::CreateSubnetGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 SubnetGroup => L<Paws::DAX::SubnetGroup>
+=head2 SubnetGroup => DAX_SubnetGroup
 
 Represents the output of a I<CreateSubnetGroup> operation.
 

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::SizeConstraint;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has FieldToMatch => (is => 'ro', isa => 'Paws::WAFRegional::FieldToMatch', required => 1);
-  has Size => (is => 'ro', isa => 'Int', required => 1);
-  has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WAFRegional::Types qw/WAFRegional_FieldToMatch/;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has FieldToMatch => (is => 'ro', isa => WAFRegional_FieldToMatch, required => 1);
+  has Size => (is => 'ro', isa => Int, required => 1);
+  has TextTransformation => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FieldToMatch' => {
+                                   'class' => 'Paws::WAFRegional::FieldToMatch',
+                                   'type' => 'WAFRegional_FieldToMatch'
+                                 },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'TextTransformation' => {
+                                         'type' => 'Str'
+                                       },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'FieldToMatch' => 1,
+                    'Size' => 1,
+                    'TextTransformation' => 1,
+                    'ComparisonOperator' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -70,7 +103,7 @@ B<GT>: Used to test if the C<Size> is strictly greater than the size of
 the C<FieldToMatch>
 
 
-=head2 B<REQUIRED> FieldToMatch => L<Paws::WAFRegional::FieldToMatch>
+=head2 B<REQUIRED> FieldToMatch => WAFRegional_FieldToMatch
 
   Specifies where in a web request to look for the size constraint.
 

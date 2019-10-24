@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::Signer::S3Source;
-  use Moose;
-  has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
-  has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest'], required => 1);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Signer::Types qw//;
+  has BucketName => (is => 'ro', isa => Str, required => 1);
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'BucketName' => 'bucketName',
+                       'Version' => 'version',
+                       'Key' => 'key'
+                     },
+  'IsRequired' => {
+                    'BucketName' => 1,
+                    'Version' => 1,
+                    'Key' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

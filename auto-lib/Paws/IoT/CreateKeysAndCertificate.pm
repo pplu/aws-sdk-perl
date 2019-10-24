@@ -1,14 +1,32 @@
 
 package Paws::IoT::CreateKeysAndCertificate;
-  use Moose;
-  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::IoT::Types qw//;
+  has SetAsActive => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateKeysAndCertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/keys-and-certificate');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateKeysAndCertificateResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateKeysAndCertificate');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/keys-and-certificate');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::CreateKeysAndCertificateResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SetAsActive' => {
+                                  'type' => 'Bool'
+                                }
+             },
+  'ParamInQuery' => {
+                      'SetAsActive' => 'setAsActive'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

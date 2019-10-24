@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::ApiGateway::DeploymentCanarySettings;
-  use Moose;
-  has PercentTraffic => (is => 'ro', isa => 'Num', request_name => 'percentTraffic', traits => ['NameInRequest']);
-  has StageVariableOverrides => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', request_name => 'stageVariableOverrides', traits => ['NameInRequest']);
-  has UseStageCache => (is => 'ro', isa => 'Bool', request_name => 'useStageCache', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num Bool/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString/;
+  has PercentTraffic => (is => 'ro', isa => Num);
+  has StageVariableOverrides => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has UseStageCache => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PercentTraffic' => {
+                                     'type' => 'Num'
+                                   },
+               'UseStageCache' => {
+                                    'type' => 'Bool'
+                                  },
+               'StageVariableOverrides' => {
+                                             'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                             'type' => 'ApiGateway_MapOfStringToString'
+                                           }
+             },
+  'NameInRequest' => {
+                       'PercentTraffic' => 'percentTraffic',
+                       'UseStageCache' => 'useStageCache',
+                       'StageVariableOverrides' => 'stageVariableOverrides'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +72,7 @@ The input configuration for a canary deployment.
   The percentage (0.0-100.0) of traffic routed to the canary deployment.
 
 
-=head2 StageVariableOverrides => L<Paws::ApiGateway::MapOfStringToString>
+=head2 StageVariableOverrides => ApiGateway_MapOfStringToString
 
   A stage variable overrides used for the canary release deployment. They
 can override existing stage variables or add new stage variables for

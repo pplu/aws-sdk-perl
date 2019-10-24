@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::Glacier::S3Location;
-  use Moose;
-  has AccessControlList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::Grant]');
-  has BucketName => (is => 'ro', isa => 'Str');
-  has CannedACL => (is => 'ro', isa => 'Str');
-  has Encryption => (is => 'ro', isa => 'Paws::Glacier::Encryption');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has StorageClass => (is => 'ro', isa => 'Str');
-  has Tagging => (is => 'ro', isa => 'Paws::Glacier::Hashmap');
-  has UserMetadata => (is => 'ro', isa => 'Paws::Glacier::Hashmap');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Glacier::Types qw/Glacier_hashmap Glacier_Grant Glacier_Encryption/;
+  has AccessControlList => (is => 'ro', isa => ArrayRef[Glacier_Grant]);
+  has BucketName => (is => 'ro', isa => Str);
+  has CannedACL => (is => 'ro', isa => Str);
+  has Encryption => (is => 'ro', isa => Glacier_Encryption);
+  has Prefix => (is => 'ro', isa => Str);
+  has StorageClass => (is => 'ro', isa => Str);
+  has Tagging => (is => 'ro', isa => Glacier_hashmap);
+  has UserMetadata => (is => 'ro', isa => Glacier_hashmap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessControlList' => {
+                                        'class' => 'Paws::Glacier::Grant',
+                                        'type' => 'ArrayRef[Glacier_Grant]'
+                                      },
+               'UserMetadata' => {
+                                   'class' => 'Paws::Glacier::Hashmap',
+                                   'type' => 'Glacier_hashmap'
+                                 },
+               'Tagging' => {
+                              'class' => 'Paws::Glacier::Hashmap',
+                              'type' => 'Glacier_hashmap'
+                            },
+               'BucketName' => {
+                                 'type' => 'Str'
+                               },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'Encryption' => {
+                                 'class' => 'Paws::Glacier::Encryption',
+                                 'type' => 'Glacier_Encryption'
+                               },
+               'CannedACL' => {
+                                'type' => 'Str'
+                              },
+               'StorageClass' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +86,7 @@ job results are stored.
 =head1 ATTRIBUTES
 
 
-=head2 AccessControlList => ArrayRef[L<Paws::Glacier::Grant>]
+=head2 AccessControlList => ArrayRef[Glacier_Grant]
 
   A list of grants that control access to the staged results.
 
@@ -59,7 +101,7 @@ job results are stored.
   The canned access control list (ACL) to apply to the job results.
 
 
-=head2 Encryption => L<Paws::Glacier::Encryption>
+=head2 Encryption => Glacier_Encryption
 
   Contains information about the encryption used to store the job results
 in Amazon S3.
@@ -75,12 +117,12 @@ in Amazon S3.
   The storage class used to store the job results.
 
 
-=head2 Tagging => L<Paws::Glacier::Hashmap>
+=head2 Tagging => Glacier_hashmap
 
   The tag-set that is applied to the job results.
 
 
-=head2 UserMetadata => L<Paws::Glacier::Hashmap>
+=head2 UserMetadata => Glacier_hashmap
 
   A map of metadata to store with the job results in Amazon S3.
 

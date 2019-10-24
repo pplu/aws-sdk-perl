@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::IoT::AuditTaskMetadata;
-  use Moose;
-  has TaskId => (is => 'ro', isa => 'Str', request_name => 'taskId', traits => ['NameInRequest']);
-  has TaskStatus => (is => 'ro', isa => 'Str', request_name => 'taskStatus', traits => ['NameInRequest']);
-  has TaskType => (is => 'ro', isa => 'Str', request_name => 'taskType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has TaskId => (is => 'ro', isa => Str);
+  has TaskStatus => (is => 'ro', isa => Str);
+  has TaskType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'TaskType' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'TaskStatus' => 'taskStatus',
+                       'TaskId' => 'taskId',
+                       'TaskType' => 'taskType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

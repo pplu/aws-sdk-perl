@@ -1,17 +1,50 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CreateDBClusterEndpoint;
-  use Moose;
-  has DBClusterEndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has EndpointType => (is => 'ro', isa => 'Str', required => 1);
-  has ExcludedMembers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StaticMembers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::RDS::Types qw//;
+  has DBClusterEndpointIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EndpointType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ExcludedMembers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StaticMembers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterEndpoint');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterEndpoint');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterEndpointResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBClusterEndpoint');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::DBClusterEndpoint');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBClusterEndpointResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StaticMembers' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'EndpointType' => {
+                                   'type' => 'Str'
+                                 },
+               'DBClusterEndpointIdentifier' => {
+                                                  'type' => 'Str'
+                                                },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'ExcludedMembers' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             },
+  'IsRequired' => {
+                    'EndpointType' => 1,
+                    'DBClusterEndpointIdentifier' => 1,
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

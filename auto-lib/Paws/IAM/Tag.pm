@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::Tag;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,11 @@ package Paws::IAM::Tag;
                'Key' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

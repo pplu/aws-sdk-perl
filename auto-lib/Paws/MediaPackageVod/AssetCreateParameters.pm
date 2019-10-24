@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::AssetCreateParameters;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
-  has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest'], required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
-  has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
-  has SourceRoleArn => (is => 'ro', isa => 'Str', request_name => 'sourceRoleArn', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw//;
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has PackagingGroupId => (is => 'ro', isa => Str, required => 1);
+  has ResourceId => (is => 'ro', isa => Str);
+  has SourceArn => (is => 'ro', isa => Str, required => 1);
+  has SourceRoleArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'SourceRoleArn' => {
+                                    'type' => 'Str'
+                                  },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'SourceRoleArn' => 'sourceRoleArn',
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'SourceArn' => 'sourceArn',
+                       'Id' => 'id'
+                     },
+  'IsRequired' => {
+                    'SourceRoleArn' => 1,
+                    'PackagingGroupId' => 1,
+                    'SourceArn' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

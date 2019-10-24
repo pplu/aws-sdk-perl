@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::FlowExecutionSummary;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has FlowExecutionId => (is => 'ro', isa => 'Str', request_name => 'flowExecutionId', traits => ['NameInRequest']);
-  has FlowTemplateId => (is => 'ro', isa => 'Str', request_name => 'flowTemplateId', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has SystemInstanceId => (is => 'ro', isa => 'Str', request_name => 'systemInstanceId', traits => ['NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FlowExecutionId => (is => 'ro', isa => Str);
+  has FlowTemplateId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has SystemInstanceId => (is => 'ro', isa => Str);
+  has UpdatedAt => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FlowExecutionId' => {
+                                      'type' => 'Str'
+                                    },
+               'FlowTemplateId' => {
+                                     'type' => 'Str'
+                                   },
+               'UpdatedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SystemInstanceId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'FlowExecutionId' => 'flowExecutionId',
+                       'FlowTemplateId' => 'flowTemplateId',
+                       'UpdatedAt' => 'updatedAt',
+                       'CreatedAt' => 'createdAt',
+                       'Status' => 'status',
+                       'SystemInstanceId' => 'systemInstanceId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

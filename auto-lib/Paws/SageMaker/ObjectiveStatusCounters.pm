@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ObjectiveStatusCounters;
-  use Moose;
-  has Failed => (is => 'ro', isa => 'Int');
-  has Pending => (is => 'ro', isa => 'Int');
-  has Succeeded => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SageMaker::Types qw//;
+  has Failed => (is => 'ro', isa => Int);
+  has Pending => (is => 'ro', isa => Int);
+  has Succeeded => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Succeeded' => {
+                                'type' => 'Int'
+                              },
+               'Pending' => {
+                              'type' => 'Int'
+                            },
+               'Failed' => {
+                             'type' => 'Int'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

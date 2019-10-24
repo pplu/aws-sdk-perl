@@ -1,14 +1,36 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::DetectStackDrift;
-  use Moose;
-  has LogicalResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw//;
+  has LogicalResourceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has StackName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetectStackDrift');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DetectStackDriftOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetectStackDriftResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetectStackDrift');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::DetectStackDriftOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DetectStackDriftResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LogicalResourceIds' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'StackName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'StackName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

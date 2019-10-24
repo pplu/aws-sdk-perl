@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::IoTThingsGraph::SystemTemplateSummary;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has RevisionNumber => (is => 'ro', isa => 'Int', request_name => 'revisionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoTThingsGraph::Types qw//;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has RevisionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'RevisionNumber' => {
+                                     'type' => 'Int'
+                                   },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'CreatedAt' => 'createdAt',
+                       'RevisionNumber' => 'revisionNumber',
+                       'Arn' => 'arn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

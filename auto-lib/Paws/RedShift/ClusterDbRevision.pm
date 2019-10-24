@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::RedShift::ClusterDbRevision;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has CurrentDatabaseRevision => (is => 'ro', isa => 'Str');
-  has DatabaseRevisionReleaseDate => (is => 'ro', isa => 'Str');
-  has RevisionTargets => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RevisionTarget]', request_name => 'RevisionTarget', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_RevisionTarget/;
+  has ClusterIdentifier => (is => 'ro', isa => Str);
+  has CurrentDatabaseRevision => (is => 'ro', isa => Str);
+  has DatabaseRevisionReleaseDate => (is => 'ro', isa => Str);
+  has RevisionTargets => (is => 'ro', isa => ArrayRef[RedShift_RevisionTarget]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'RevisionTargets' => {
+                                      'class' => 'Paws::RedShift::RevisionTarget',
+                                      'type' => 'ArrayRef[RedShift_RevisionTarget]'
+                                    },
+               'DatabaseRevisionReleaseDate' => {
+                                                  'type' => 'Str'
+                                                },
+               'CurrentDatabaseRevision' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'NameInRequest' => {
+                       'RevisionTargets' => 'RevisionTarget'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +84,7 @@ Describes a C<ClusterDbRevision>.
   The date on which the database revision was released.
 
 
-=head2 RevisionTargets => ArrayRef[L<Paws::RedShift::RevisionTarget>]
+=head2 RevisionTargets => ArrayRef[RedShift_RevisionTarget]
 
   A list of C<RevisionTarget> objects, where each object describes the
 database revision that a cluster can be updated to.

@@ -1,18 +1,57 @@
 
 package Paws::RDSData::ExecuteSql;
-  use Moose;
-  has AwsSecretStoreArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsSecretStoreArn', required => 1);
-  has Database => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'database');
-  has DbClusterOrInstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dbClusterOrInstanceArn', required => 1);
-  has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
-  has SqlStatements => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sqlStatements', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDSData::Types qw//;
+  has AwsSecretStoreArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Database => (is => 'ro', isa => Str, predicate => 1);
+  has DbClusterOrInstanceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Schema => (is => 'ro', isa => Str, predicate => 1);
+  has SqlStatements => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExecuteSql');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/ExecuteSql');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDSData::ExecuteSqlResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ExecuteSql');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/ExecuteSql');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDSData::ExecuteSqlResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SqlStatements' => {
+                                    'type' => 'Str'
+                                  },
+               'Schema' => {
+                             'type' => 'Str'
+                           },
+               'AwsSecretStoreArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Database' => {
+                               'type' => 'Str'
+                             },
+               'DbClusterOrInstanceArn' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'SqlStatements' => 'sqlStatements',
+                       'Schema' => 'schema',
+                       'AwsSecretStoreArn' => 'awsSecretStoreArn',
+                       'Database' => 'database',
+                       'DbClusterOrInstanceArn' => 'dbClusterOrInstanceArn'
+                     },
+  'IsRequired' => {
+                    'SqlStatements' => 1,
+                    'AwsSecretStoreArn' => 1,
+                    'DbClusterOrInstanceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

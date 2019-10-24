@@ -71,7 +71,10 @@ package Paws::ES::CreateElasticsearchDomain;
                'DomainName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
 }
 ;
     return $Params_map;

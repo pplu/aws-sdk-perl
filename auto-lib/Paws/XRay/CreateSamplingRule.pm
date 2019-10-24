@@ -1,14 +1,33 @@
 
 package Paws::XRay::CreateSamplingRule;
-  use Moose;
-  has SamplingRule => (is => 'ro', isa => 'Paws::XRay::SamplingRule', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw/XRay_SamplingRule/;
+  has SamplingRule => (is => 'ro', isa => XRay_SamplingRule, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSamplingRule');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/CreateSamplingRule');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::CreateSamplingRuleResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateSamplingRule');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/CreateSamplingRule');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::CreateSamplingRuleResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SamplingRule' => {
+                                   'class' => 'Paws::XRay::SamplingRule',
+                                   'type' => 'XRay_SamplingRule'
+                                 }
+             },
+  'IsRequired' => {
+                    'SamplingRule' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +80,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SamplingRule => L<Paws::XRay::SamplingRule>
+=head2 B<REQUIRED> SamplingRule => XRay_SamplingRule
 
 The rule definition.
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListNotebookInstanceLifecycleConfigsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has NotebookInstanceLifecycleConfigs => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::NotebookInstanceLifecycleConfigSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_NotebookInstanceLifecycleConfigSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has NotebookInstanceLifecycleConfigs => (is => 'ro', isa => ArrayRef[SageMaker_NotebookInstanceLifecycleConfigSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NotebookInstanceLifecycleConfigs' => {
+                                                       'class' => 'Paws::SageMaker::NotebookInstanceLifecycleConfigSummary',
+                                                       'type' => 'ArrayRef[SageMaker_NotebookInstanceLifecycleConfigSummary]'
+                                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ get the next set of lifecycle configurations, use it in the next
 request.
 
 
-=head2 NotebookInstanceLifecycleConfigs => ArrayRef[L<Paws::SageMaker::NotebookInstanceLifecycleConfigSummary>]
+=head2 NotebookInstanceLifecycleConfigs => ArrayRef[SageMaker_NotebookInstanceLifecycleConfigSummary]
 
 An array of C<NotebookInstanceLifecycleConfiguration> objects, each
 listing a lifecycle configuration.

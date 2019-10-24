@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::PauseStateScheduleActionSettings;
-  use Moose;
-  has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::PipelinePauseStateSettings]', request_name => 'pipelines', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::MediaLive::Types qw/MediaLive_PipelinePauseStateSettings/;
+  has Pipelines => (is => 'ro', isa => ArrayRef[MediaLive_PipelinePauseStateSettings]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pipelines' => {
+                                'class' => 'Paws::MediaLive::PipelinePauseStateSettings',
+                                'type' => 'ArrayRef[MediaLive_PipelinePauseStateSettings]'
+                              }
+             },
+  'NameInRequest' => {
+                       'Pipelines' => 'pipelines'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Settings for the action to set pause state of a channel.
 =head1 ATTRIBUTES
 
 
-=head2 Pipelines => ArrayRef[L<Paws::MediaLive::PipelinePauseStateSettings>]
+=head2 Pipelines => ArrayRef[MediaLive_PipelinePauseStateSettings]
 
   
 

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Firehose::TagDeliveryStream;
-  use Moose;
-  has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Firehose::Types qw/Firehose_Tag/;
+  has DeliveryStreamName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Firehose_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagDeliveryStream');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Firehose::TagDeliveryStreamOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagDeliveryStream');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Firehose::TagDeliveryStreamOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeliveryStreamName' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::Firehose::Tag',
+                           'type' => 'ArrayRef[Firehose_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'DeliveryStreamName' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +76,7 @@ The name of the delivery stream to which you want to add the tags.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Firehose::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Firehose_Tag]
 
 A set of key-value pairs to use to create the tags.
 

@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::ListBackupsOutput;
   use Moo;
@@ -7,7 +8,7 @@ package Paws::DynamoDB::ListBackupsOutput;
   has LastEvaluatedBackupArn => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BackupSummaries' => {
@@ -16,12 +17,15 @@ package Paws::DynamoDB::ListBackupsOutput;
                                     },
                'LastEvaluatedBackupArn' => {
                                              'type' => 'Str'
-                                           }
+                                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

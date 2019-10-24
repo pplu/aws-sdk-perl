@@ -1,17 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::DescribeCommunications;
-  use Moose;
-  has AfterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterTime' );
-  has BeforeTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeTime' );
-  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' , required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Support::Types qw//;
+  has AfterTime => (is => 'ro', isa => Str, predicate => 1);
+  has BeforeTime => (is => 'ro', isa => Str, predicate => 1);
+  has CaseId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCommunications');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeCommunicationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeCommunications');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::DescribeCommunicationsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'CaseId' => {
+                             'type' => 'Str'
+                           },
+               'AfterTime' => {
+                                'type' => 'Str'
+                              },
+               'BeforeTime' => {
+                                 'type' => 'Str'
+                               },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'CaseId' => 'caseId',
+                       'AfterTime' => 'afterTime',
+                       'BeforeTime' => 'beforeTime',
+                       'MaxResults' => 'maxResults'
+                     },
+  'IsRequired' => {
+                    'CaseId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

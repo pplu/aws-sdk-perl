@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::CodePipeline::Job;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
-  has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', request_name => 'data', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Nonce => (is => 'ro', isa => 'Str', request_name => 'nonce', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodePipeline::Types qw/CodePipeline_JobData/;
+  has AccountId => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => CodePipeline_JobData);
+  has Id => (is => 'ro', isa => Str);
+  has Nonce => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Nonce' => {
+                            'type' => 'Str'
+                          },
+               'Data' => {
+                           'class' => 'Paws::CodePipeline::JobData',
+                           'type' => 'CodePipeline_JobData'
+                         }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'AccountId' => 'accountId',
+                       'Nonce' => 'nonce',
+                       'Data' => 'data'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +77,7 @@ Represents information about a job.
   The ID of the AWS account to use when performing the job.
 
 
-=head2 Data => L<Paws::CodePipeline::JobData>
+=head2 Data => CodePipeline_JobData
 
   Additional data about a job.
 

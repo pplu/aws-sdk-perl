@@ -1,14 +1,35 @@
 
 package Paws::Kafka::DescribeClusterOperation;
-  use Moose;
-  has ClusterOperationArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterOperationArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kafka::Types qw//;
+  has ClusterOperationArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeClusterOperation');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/operations/{clusterOperationArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::DescribeClusterOperationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeClusterOperation');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/operations/{clusterOperationArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::DescribeClusterOperationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterOperationArn' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'ParamInURI' => {
+                    'ClusterOperationArn' => 'clusterOperationArn'
+                  },
+  'IsRequired' => {
+                    'ClusterOperationArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

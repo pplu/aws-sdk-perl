@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::UpdatePrimaryEmailAddress;
-  use Moose;
-  has Email => (is => 'ro', isa => 'Str', required => 1);
-  has EntityId => (is => 'ro', isa => 'Str', required => 1);
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has Email => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EntityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePrimaryEmailAddress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::UpdatePrimaryEmailAddressResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePrimaryEmailAddress');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::UpdatePrimaryEmailAddressResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'EntityId' => {
+                               'type' => 'Str'
+                             },
+               'Email' => {
+                            'type' => 'Str'
+                          }
+             },
+  'IsRequired' => {
+                    'OrganizationId' => 1,
+                    'EntityId' => 1,
+                    'Email' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

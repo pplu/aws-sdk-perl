@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::RedShift::HsmConfiguration;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has HsmIpAddress => (is => 'ro', isa => 'Str');
-  has HsmPartitionName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has Description => (is => 'ro', isa => Str);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str);
+  has HsmIpAddress => (is => 'ro', isa => Str);
+  has HsmPartitionName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmPartitionName' => {
+                                       'type' => 'Str'
+                                     },
+               'HsmIpAddress' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +97,7 @@ HSM.
 will store their database encryption keys.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   The list of tags for the HSM configuration.
 

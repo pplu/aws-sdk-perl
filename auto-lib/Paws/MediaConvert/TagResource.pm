@@ -1,15 +1,42 @@
 
 package Paws::MediaConvert::TagResource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::MediaConvert::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert___mapOf__string/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => MediaConvert___mapOf__string, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::MediaConvert::__mapOf__string',
+                           'type' => 'MediaConvert___mapOf__string'
+                         }
+             },
+  'NameInRequest' => {
+                       'Arn' => 'arn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +75,7 @@ get the ARN, send a GET request with the resource name.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::MediaConvert::__mapOf__string>
+=head2 B<REQUIRED> Tags => MediaConvert___mapOf__string
 
 The tags that you want to add to the resource. You can tag resources
 with a key-value pair or with only a key.

@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Rekognition::Geometry;
-  use Moose;
-  has BoundingBox => (is => 'ro', isa => 'Paws::Rekognition::BoundingBox');
-  has Polygon => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::Point]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_Point Rekognition_BoundingBox/;
+  has BoundingBox => (is => 'ro', isa => Rekognition_BoundingBox);
+  has Polygon => (is => 'ro', isa => ArrayRef[Rekognition_Point]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Polygon' => {
+                              'class' => 'Paws::Rekognition::Point',
+                              'type' => 'ArrayRef[Rekognition_Point]'
+                            },
+               'BoundingBox' => {
+                                  'class' => 'Paws::Rekognition::BoundingBox',
+                                  'type' => 'Rekognition_BoundingBox'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +60,13 @@ an image.
 =head1 ATTRIBUTES
 
 
-=head2 BoundingBox => L<Paws::Rekognition::BoundingBox>
+=head2 BoundingBox => Rekognition_BoundingBox
 
   An axis-aligned coarse representation of the detected text's location
 on the image.
 
 
-=head2 Polygon => ArrayRef[L<Paws::Rekognition::Point>]
+=head2 Polygon => ArrayRef[Rekognition_Point]
 
   Within the bounding box, a fine-grained polygon around the detected
 text.

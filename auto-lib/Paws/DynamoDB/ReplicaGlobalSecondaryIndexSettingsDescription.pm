@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -9,7 +10,7 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
   has ProvisionedWriteCapacityAutoScalingSettings => (is => 'ro', isa => DynamoDB_AutoScalingSettingsDescription);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'IndexName' => {
@@ -32,11 +33,14 @@ package Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsDescription;
                'IndexStatus' => {
                                   'type' => 'Str'
                                 }
-             }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::Detector;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
-  has DetectorModelVersion => (is => 'ro', isa => 'Str', request_name => 'detectorModelVersion', traits => ['NameInRequest']);
-  has KeyValue => (is => 'ro', isa => 'Str', request_name => 'keyValue', traits => ['NameInRequest']);
-  has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
-  has State => (is => 'ro', isa => 'Paws::IoTEventsData::DetectorState', request_name => 'state', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_DetectorState/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has DetectorModelName => (is => 'ro', isa => Str);
+  has DetectorModelVersion => (is => 'ro', isa => Str);
+  has KeyValue => (is => 'ro', isa => Str);
+  has LastUpdateTime => (is => 'ro', isa => Str);
+  has State => (is => 'ro', isa => IoTEventsData_DetectorState);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastUpdateTime' => {
+                                     'type' => 'Str'
+                                   },
+               'DetectorModelVersion' => {
+                                           'type' => 'Str'
+                                         },
+               'KeyValue' => {
+                               'type' => 'Str'
+                             },
+               'State' => {
+                            'class' => 'Paws::IoTEventsData::DetectorState',
+                            'type' => 'IoTEventsData_DetectorState'
+                          },
+               'DetectorModelName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'LastUpdateTime' => 'lastUpdateTime',
+                       'DetectorModelVersion' => 'detectorModelVersion',
+                       'KeyValue' => 'keyValue',
+                       'State' => 'state',
+                       'DetectorModelName' => 'detectorModelName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -68,7 +109,7 @@ creation of this detector (instance).
   The time the detector (instance) was last updated.
 
 
-=head2 State => L<Paws::IoTEventsData::DetectorState>
+=head2 State => IoTEventsData_DetectorState
 
   The current state of the detector (instance).
 

@@ -1,13 +1,63 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::CommentsForPullRequest;
-  use Moose;
-  has AfterBlobId => (is => 'ro', isa => 'Str', request_name => 'afterBlobId', traits => ['NameInRequest']);
-  has AfterCommitId => (is => 'ro', isa => 'Str', request_name => 'afterCommitId', traits => ['NameInRequest']);
-  has BeforeBlobId => (is => 'ro', isa => 'Str', request_name => 'beforeBlobId', traits => ['NameInRequest']);
-  has BeforeCommitId => (is => 'ro', isa => 'Str', request_name => 'beforeCommitId', traits => ['NameInRequest']);
-  has Comments => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::Comment]', request_name => 'comments', traits => ['NameInRequest']);
-  has Location => (is => 'ro', isa => 'Paws::CodeCommit::Location', request_name => 'location', traits => ['NameInRequest']);
-  has PullRequestId => (is => 'ro', isa => 'Str', request_name => 'pullRequestId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Location CodeCommit_Comment/;
+  has AfterBlobId => (is => 'ro', isa => Str);
+  has AfterCommitId => (is => 'ro', isa => Str);
+  has BeforeBlobId => (is => 'ro', isa => Str);
+  has BeforeCommitId => (is => 'ro', isa => Str);
+  has Comments => (is => 'ro', isa => ArrayRef[CodeCommit_Comment]);
+  has Location => (is => 'ro', isa => CodeCommit_Location);
+  has PullRequestId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Comments' => {
+                               'class' => 'Paws::CodeCommit::Comment',
+                               'type' => 'ArrayRef[CodeCommit_Comment]'
+                             },
+               'AfterBlobId' => {
+                                  'type' => 'Str'
+                                },
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   },
+               'BeforeCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'AfterCommitId' => {
+                                    'type' => 'Str'
+                                  },
+               'BeforeBlobId' => {
+                                   'type' => 'Str'
+                                 },
+               'Location' => {
+                               'class' => 'Paws::CodeCommit::Location',
+                               'type' => 'CodeCommit_Location'
+                             }
+             },
+  'NameInRequest' => {
+                       'Comments' => 'comments',
+                       'AfterBlobId' => 'afterBlobId',
+                       'PullRequestId' => 'pullRequestId',
+                       'RepositoryName' => 'repositoryName',
+                       'BeforeCommitId' => 'beforeCommitId',
+                       'AfterCommitId' => 'afterCommitId',
+                       'BeforeBlobId' => 'beforeBlobId',
+                       'Location' => 'location'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,13 +119,13 @@ superceded by the after commit in the source branch when and if you
 merge the source branch into the destination branch.
 
 
-=head2 Comments => ArrayRef[L<Paws::CodeCommit::Comment>]
+=head2 Comments => ArrayRef[CodeCommit_Comment]
 
   An array of comment objects. Each comment object contains information
 about a comment on the pull request.
 
 
-=head2 Location => L<Paws::CodeCommit::Location>
+=head2 Location => CodeCommit_Location
 
   Location information about the comment on the pull request, including
 the file name, line number, and whether the version of the file where

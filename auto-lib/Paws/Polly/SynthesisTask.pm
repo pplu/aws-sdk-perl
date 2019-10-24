@@ -1,19 +1,75 @@
+# Generated from default/object.tt
 package Paws::Polly::SynthesisTask;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has OutputFormat => (is => 'ro', isa => 'Str');
-  has OutputUri => (is => 'ro', isa => 'Str');
-  has RequestCharacters => (is => 'ro', isa => 'Int');
-  has SampleRate => (is => 'ro', isa => 'Str');
-  has SnsTopicArn => (is => 'ro', isa => 'Str');
-  has SpeechMarkTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TaskId => (is => 'ro', isa => 'Str');
-  has TaskStatus => (is => 'ro', isa => 'Str');
-  has TaskStatusReason => (is => 'ro', isa => 'Str');
-  has TextType => (is => 'ro', isa => 'Str');
-  has VoiceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::Polly::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has LexiconNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has OutputFormat => (is => 'ro', isa => Str);
+  has OutputUri => (is => 'ro', isa => Str);
+  has RequestCharacters => (is => 'ro', isa => Int);
+  has SampleRate => (is => 'ro', isa => Str);
+  has SnsTopicArn => (is => 'ro', isa => Str);
+  has SpeechMarkTypes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TaskId => (is => 'ro', isa => Str);
+  has TaskStatus => (is => 'ro', isa => Str);
+  has TaskStatusReason => (is => 'ro', isa => Str);
+  has TextType => (is => 'ro', isa => Str);
+  has VoiceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TextType' => {
+                               'type' => 'Str'
+                             },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'SpeechMarkTypes' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'RequestCharacters' => {
+                                        'type' => 'Int'
+                                      },
+               'SnsTopicArn' => {
+                                  'type' => 'Str'
+                                },
+               'SampleRate' => {
+                                 'type' => 'Str'
+                               },
+               'VoiceId' => {
+                              'type' => 'Str'
+                            },
+               'OutputFormat' => {
+                                   'type' => 'Str'
+                                 },
+               'TaskStatusReason' => {
+                                       'type' => 'Str'
+                                     },
+               'TaskStatus' => {
+                                 'type' => 'Str'
+                               },
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'LexiconNames' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'OutputUri' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

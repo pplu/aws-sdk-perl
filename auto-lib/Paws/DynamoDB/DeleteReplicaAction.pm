@@ -1,20 +1,24 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::DeleteReplicaAction;
   use Moo;
   use Types::Standard qw/Str/;
   use Paws::DynamoDB::Types qw//;
   has RegionName => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'RegionName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'RegionName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

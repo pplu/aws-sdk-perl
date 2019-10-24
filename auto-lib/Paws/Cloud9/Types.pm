@@ -1,0 +1,36 @@
+package Paws::Cloud9::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type Cloud9_BadRequestException, { class => 'Paws::Cloud9::BadRequestException' };
+  class_type Cloud9_ConflictException, { class => 'Paws::Cloud9::ConflictException' };
+  class_type Cloud9_CreateEnvironmentEC2Request, { class => 'Paws::Cloud9::CreateEnvironmentEC2Request' };
+  class_type Cloud9_CreateEnvironmentEC2Result, { class => 'Paws::Cloud9::CreateEnvironmentEC2Result' };
+  class_type Cloud9_CreateEnvironmentMembershipRequest, { class => 'Paws::Cloud9::CreateEnvironmentMembershipRequest' };
+  class_type Cloud9_CreateEnvironmentMembershipResult, { class => 'Paws::Cloud9::CreateEnvironmentMembershipResult' };
+  class_type Cloud9_DeleteEnvironmentMembershipRequest, { class => 'Paws::Cloud9::DeleteEnvironmentMembershipRequest' };
+  class_type Cloud9_DeleteEnvironmentMembershipResult, { class => 'Paws::Cloud9::DeleteEnvironmentMembershipResult' };
+  class_type Cloud9_DeleteEnvironmentRequest, { class => 'Paws::Cloud9::DeleteEnvironmentRequest' };
+  class_type Cloud9_DeleteEnvironmentResult, { class => 'Paws::Cloud9::DeleteEnvironmentResult' };
+  class_type Cloud9_DescribeEnvironmentMembershipsRequest, { class => 'Paws::Cloud9::DescribeEnvironmentMembershipsRequest' };
+  class_type Cloud9_DescribeEnvironmentMembershipsResult, { class => 'Paws::Cloud9::DescribeEnvironmentMembershipsResult' };
+  class_type Cloud9_DescribeEnvironmentsRequest, { class => 'Paws::Cloud9::DescribeEnvironmentsRequest' };
+  class_type Cloud9_DescribeEnvironmentsResult, { class => 'Paws::Cloud9::DescribeEnvironmentsResult' };
+  class_type Cloud9_DescribeEnvironmentStatusRequest, { class => 'Paws::Cloud9::DescribeEnvironmentStatusRequest' };
+  class_type Cloud9_DescribeEnvironmentStatusResult, { class => 'Paws::Cloud9::DescribeEnvironmentStatusResult' };
+  class_type Cloud9_Environment, { class => 'Paws::Cloud9::Environment' };
+  class_type Cloud9_EnvironmentLifecycle, { class => 'Paws::Cloud9::EnvironmentLifecycle' };
+  class_type Cloud9_EnvironmentMember, { class => 'Paws::Cloud9::EnvironmentMember' };
+  class_type Cloud9_ForbiddenException, { class => 'Paws::Cloud9::ForbiddenException' };
+  class_type Cloud9_InternalServerErrorException, { class => 'Paws::Cloud9::InternalServerErrorException' };
+  class_type Cloud9_LimitExceededException, { class => 'Paws::Cloud9::LimitExceededException' };
+  class_type Cloud9_ListEnvironmentsRequest, { class => 'Paws::Cloud9::ListEnvironmentsRequest' };
+  class_type Cloud9_ListEnvironmentsResult, { class => 'Paws::Cloud9::ListEnvironmentsResult' };
+  class_type Cloud9_NotFoundException, { class => 'Paws::Cloud9::NotFoundException' };
+  class_type Cloud9_TooManyRequestsException, { class => 'Paws::Cloud9::TooManyRequestsException' };
+  class_type Cloud9_UpdateEnvironmentMembershipRequest, { class => 'Paws::Cloud9::UpdateEnvironmentMembershipRequest' };
+  class_type Cloud9_UpdateEnvironmentMembershipResult, { class => 'Paws::Cloud9::UpdateEnvironmentMembershipResult' };
+  class_type Cloud9_UpdateEnvironmentRequest, { class => 'Paws::Cloud9::UpdateEnvironmentRequest' };
+  class_type Cloud9_UpdateEnvironmentResult, { class => 'Paws::Cloud9::UpdateEnvironmentResult' };
+
+1;

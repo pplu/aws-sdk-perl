@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Transfer::TagResource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Transfer::Types qw/Transfer_Tag/;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Transfer_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Transfer::Tag',
+                           'type' => 'ArrayRef[Transfer_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'Arn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ server, user, or role.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Transfer::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[Transfer_Tag]
 
 Key-value pairs assigned to ARNs that you can use to group and search
 for resources by type. You can attach this metadata to user accounts

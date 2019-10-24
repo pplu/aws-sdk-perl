@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDS::RecurringCharge;
-  use Moose;
-  has RecurringChargeAmount => (is => 'ro', isa => 'Num');
-  has RecurringChargeFrequency => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Str/;
+  use Paws::RDS::Types qw//;
+  has RecurringChargeAmount => (is => 'ro', isa => Num);
+  has RecurringChargeFrequency => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RecurringChargeFrequency' => {
+                                               'type' => 'Str'
+                                             },
+               'RecurringChargeAmount' => {
+                                            'type' => 'Num'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

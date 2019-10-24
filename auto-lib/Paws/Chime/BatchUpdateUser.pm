@@ -1,15 +1,41 @@
 
 package Paws::Chime::BatchUpdateUser;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
-  has UpdateUserRequestItems => (is => 'ro', isa => 'ArrayRef[Paws::Chime::UpdateUserRequestItem]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_UpdateUserRequestItem/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UpdateUserRequestItems => (is => 'ro', isa => ArrayRef[Chime_UpdateUserRequestItem], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchUpdateUser');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/accounts/{accountId}/users');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Chime::BatchUpdateUserResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchUpdateUser');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/accounts/{accountId}/users');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Chime::BatchUpdateUserResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'UpdateUserRequestItems' => {
+                                             'class' => 'Paws::Chime::UpdateUserRequestItem',
+                                             'type' => 'ArrayRef[Chime_UpdateUserRequestItem]'
+                                           }
+             },
+  'ParamInURI' => {
+                    'AccountId' => 'accountId'
+                  },
+  'IsRequired' => {
+                    'AccountId' => 1,
+                    'UpdateUserRequestItems' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +84,7 @@ The Amazon Chime account ID.
 
 
 
-=head2 B<REQUIRED> UpdateUserRequestItems => ArrayRef[L<Paws::Chime::UpdateUserRequestItem>]
+=head2 B<REQUIRED> UpdateUserRequestItems => ArrayRef[Chime_UpdateUserRequestItem]
 
 The request containing the user IDs and details to update.
 

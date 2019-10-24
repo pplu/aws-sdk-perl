@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::UpdateSizeConstraintSet;
-  use Moose;
-  has ChangeToken => (is => 'ro', isa => 'Str', required => 1);
-  has SizeConstraintSetId => (is => 'ro', isa => 'Str', required => 1);
-  has Updates => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SizeConstraintSetUpdate]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_SizeConstraintSetUpdate/;
+  has ChangeToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SizeConstraintSetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Updates => (is => 'ro', isa => ArrayRef[WAF_SizeConstraintSetUpdate], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSizeConstraintSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::UpdateSizeConstraintSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateSizeConstraintSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::UpdateSizeConstraintSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Updates' => {
+                              'class' => 'Paws::WAF::SizeConstraintSetUpdate',
+                              'type' => 'ArrayRef[WAF_SizeConstraintSetUpdate]'
+                            },
+               'SizeConstraintSetId' => {
+                                          'type' => 'Str'
+                                        },
+               'ChangeToken' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Updates' => 1,
+                    'SizeConstraintSetId' => 1,
+                    'ChangeToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +104,7 @@ and by ListSizeConstraintSets.
 
 
 
-=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::SizeConstraintSetUpdate>]
+=head2 B<REQUIRED> Updates => ArrayRef[WAF_SizeConstraintSetUpdate]
 
 An array of C<SizeConstraintSetUpdate> objects that you want to insert
 into or delete from a SizeConstraintSet. For more information, see the

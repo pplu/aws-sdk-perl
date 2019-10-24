@@ -1,10 +1,35 @@
 
 package Paws::Kafka::ListConfigurationsResponse;
-  use Moose;
-  has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::Configuration]', traits => ['NameInRequest'], request_name => 'configurations');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_Configuration/;
+  has Configurations => (is => 'ro', isa => ArrayRef[Kafka_Configuration]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Configurations' => {
+                                     'class' => 'Paws::Kafka::Configuration',
+                                     'type' => 'ArrayRef[Kafka_Configuration]'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Configurations' => 'configurations',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Kafka::ListConfigurationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Configurations => ArrayRef[L<Paws::Kafka::Configuration>]
+=head2 Configurations => ArrayRef[Kafka_Configuration]
 
 An array of MSK configurations.
 

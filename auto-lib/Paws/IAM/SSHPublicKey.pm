@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::SSHPublicKey;
   use Moo;
   use Types::Standard qw/Str/;
@@ -30,7 +31,14 @@ package Paws::IAM::SSHPublicKey;
                'SSHPublicKeyId' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'Fingerprint' => 1,
+                    'SSHPublicKeyBody' => 1,
+                    'Status' => 1,
+                    'SSHPublicKeyId' => 1
+                  }
 }
 ;
     return $Params_map;

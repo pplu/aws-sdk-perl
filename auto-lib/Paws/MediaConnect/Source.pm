@@ -1,14 +1,72 @@
+# Generated from default/object.tt
 package Paws::MediaConnect::Source;
-  use Moose;
-  has Decryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'decryption', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
-  has IngestIp => (is => 'ro', isa => 'Str', request_name => 'ingestIp', traits => ['NameInRequest']);
-  has IngestPort => (is => 'ro', isa => 'Int', request_name => 'ingestPort', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
-  has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
-  has WhitelistCidr => (is => 'ro', isa => 'Str', request_name => 'whitelistCidr', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_Transport MediaConnect_Encryption/;
+  has Decryption => (is => 'ro', isa => MediaConnect_Encryption);
+  has Description => (is => 'ro', isa => Str);
+  has EntitlementArn => (is => 'ro', isa => Str);
+  has IngestIp => (is => 'ro', isa => Str);
+  has IngestPort => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has SourceArn => (is => 'ro', isa => Str, required => 1);
+  has Transport => (is => 'ro', isa => MediaConnect_Transport);
+  has WhitelistCidr => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IngestPort' => {
+                                 'type' => 'Int'
+                               },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Decryption' => {
+                                 'class' => 'Paws::MediaConnect::Encryption',
+                                 'type' => 'MediaConnect_Encryption'
+                               },
+               'IngestIp' => {
+                               'type' => 'Str'
+                             },
+               'WhitelistCidr' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Transport' => {
+                                'class' => 'Paws::MediaConnect::Transport',
+                                'type' => 'MediaConnect_Transport'
+                              }
+             },
+  'NameInRequest' => {
+                       'IngestPort' => 'ingestPort',
+                       'SourceArn' => 'sourceArn',
+                       'EntitlementArn' => 'entitlementArn',
+                       'Decryption' => 'decryption',
+                       'IngestIp' => 'ingestIp',
+                       'WhitelistCidr' => 'whitelistCidr',
+                       'Description' => 'description',
+                       'Name' => 'name',
+                       'Transport' => 'transport'
+                     },
+  'IsRequired' => {
+                    'SourceArn' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +102,7 @@ The settings for the source of the flow.
 =head1 ATTRIBUTES
 
 
-=head2 Decryption => L<Paws::MediaConnect::Encryption>
+=head2 Decryption => MediaConnect_Encryption
 
   The type of encryption that is used on the content ingested from this
 source.
@@ -83,7 +141,7 @@ originator and the ARN is generated as part of the originator's flow.
   The ARN of the source.
 
 
-=head2 Transport => L<Paws::MediaConnect::Transport>
+=head2 Transport => MediaConnect_Transport
 
   Attributes related to the transport stream that are used in the source.
 

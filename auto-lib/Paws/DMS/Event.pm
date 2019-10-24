@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::DMS::Event;
-  use Moose;
-  has Date => (is => 'ro', isa => 'Str');
-  has EventCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Message => (is => 'ro', isa => 'Str');
-  has SourceIdentifier => (is => 'ro', isa => 'Str');
-  has SourceType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DMS::Types qw//;
+  has Date => (is => 'ro', isa => Str);
+  has EventCategories => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Message => (is => 'ro', isa => Str);
+  has SourceIdentifier => (is => 'ro', isa => Str);
+  has SourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventCategories' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'SourceType' => {
+                                 'type' => 'Str'
+                               },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SourceIdentifier' => {
+                                       'type' => 'Str'
+                                     },
+               'Date' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

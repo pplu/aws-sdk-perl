@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::Firehose::KinesisStreamSourceDescription;
-  use Moose;
-  has DeliveryStartTimestamp => (is => 'ro', isa => 'Str');
-  has KinesisStreamARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw//;
+  has DeliveryStartTimestamp => (is => 'ro', isa => Str);
+  has KinesisStreamARN => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisStreamARN' => {
+                                       'type' => 'Str'
+                                     },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'DeliveryStartTimestamp' => {
+                                             'type' => 'Str'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

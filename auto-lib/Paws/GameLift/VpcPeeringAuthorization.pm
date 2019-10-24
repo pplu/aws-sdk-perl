@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::GameLift::VpcPeeringAuthorization;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has ExpirationTime => (is => 'ro', isa => 'Str');
-  has GameLiftAwsAccountId => (is => 'ro', isa => 'Str');
-  has PeerVpcAwsAccountId => (is => 'ro', isa => 'Str');
-  has PeerVpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has CreationTime => (is => 'ro', isa => Str);
+  has ExpirationTime => (is => 'ro', isa => Str);
+  has GameLiftAwsAccountId => (is => 'ro', isa => Str);
+  has PeerVpcAwsAccountId => (is => 'ro', isa => Str);
+  has PeerVpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'PeerVpcAwsAccountId' => {
+                                          'type' => 'Str'
+                                        },
+               'ExpirationTime' => {
+                                     'type' => 'Str'
+                                   },
+               'PeerVpcId' => {
+                                'type' => 'Str'
+                              },
+               'GameLiftAwsAccountId' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

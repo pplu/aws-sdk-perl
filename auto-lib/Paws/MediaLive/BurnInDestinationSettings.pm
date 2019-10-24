@@ -1,22 +1,107 @@
+# Generated from default/object.tt
 package Paws::MediaLive::BurnInDestinationSettings;
-  use Moose;
-  has Alignment => (is => 'ro', isa => 'Str', request_name => 'alignment', traits => ['NameInRequest']);
-  has BackgroundColor => (is => 'ro', isa => 'Str', request_name => 'backgroundColor', traits => ['NameInRequest']);
-  has BackgroundOpacity => (is => 'ro', isa => 'Int', request_name => 'backgroundOpacity', traits => ['NameInRequest']);
-  has Font => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'font', traits => ['NameInRequest']);
-  has FontColor => (is => 'ro', isa => 'Str', request_name => 'fontColor', traits => ['NameInRequest']);
-  has FontOpacity => (is => 'ro', isa => 'Int', request_name => 'fontOpacity', traits => ['NameInRequest']);
-  has FontResolution => (is => 'ro', isa => 'Int', request_name => 'fontResolution', traits => ['NameInRequest']);
-  has FontSize => (is => 'ro', isa => 'Str', request_name => 'fontSize', traits => ['NameInRequest']);
-  has OutlineColor => (is => 'ro', isa => 'Str', request_name => 'outlineColor', traits => ['NameInRequest']);
-  has OutlineSize => (is => 'ro', isa => 'Int', request_name => 'outlineSize', traits => ['NameInRequest']);
-  has ShadowColor => (is => 'ro', isa => 'Str', request_name => 'shadowColor', traits => ['NameInRequest']);
-  has ShadowOpacity => (is => 'ro', isa => 'Int', request_name => 'shadowOpacity', traits => ['NameInRequest']);
-  has ShadowXOffset => (is => 'ro', isa => 'Int', request_name => 'shadowXOffset', traits => ['NameInRequest']);
-  has ShadowYOffset => (is => 'ro', isa => 'Int', request_name => 'shadowYOffset', traits => ['NameInRequest']);
-  has TeletextGridControl => (is => 'ro', isa => 'Str', request_name => 'teletextGridControl', traits => ['NameInRequest']);
-  has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
-  has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaLive::Types qw/MediaLive_InputLocation/;
+  has Alignment => (is => 'ro', isa => Str);
+  has BackgroundColor => (is => 'ro', isa => Str);
+  has BackgroundOpacity => (is => 'ro', isa => Int);
+  has Font => (is => 'ro', isa => MediaLive_InputLocation);
+  has FontColor => (is => 'ro', isa => Str);
+  has FontOpacity => (is => 'ro', isa => Int);
+  has FontResolution => (is => 'ro', isa => Int);
+  has FontSize => (is => 'ro', isa => Str);
+  has OutlineColor => (is => 'ro', isa => Str);
+  has OutlineSize => (is => 'ro', isa => Int);
+  has ShadowColor => (is => 'ro', isa => Str);
+  has ShadowOpacity => (is => 'ro', isa => Int);
+  has ShadowXOffset => (is => 'ro', isa => Int);
+  has ShadowYOffset => (is => 'ro', isa => Int);
+  has TeletextGridControl => (is => 'ro', isa => Str);
+  has XPosition => (is => 'ro', isa => Int);
+  has YPosition => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FontSize' => {
+                               'type' => 'Str'
+                             },
+               'YPosition' => {
+                                'type' => 'Int'
+                              },
+               'OutlineSize' => {
+                                  'type' => 'Int'
+                                },
+               'BackgroundOpacity' => {
+                                        'type' => 'Int'
+                                      },
+               'OutlineColor' => {
+                                   'type' => 'Str'
+                                 },
+               'BackgroundColor' => {
+                                      'type' => 'Str'
+                                    },
+               'ShadowYOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'TeletextGridControl' => {
+                                          'type' => 'Str'
+                                        },
+               'FontColor' => {
+                                'type' => 'Str'
+                              },
+               'Font' => {
+                           'class' => 'Paws::MediaLive::InputLocation',
+                           'type' => 'MediaLive_InputLocation'
+                         },
+               'FontResolution' => {
+                                     'type' => 'Int'
+                                   },
+               'ShadowOpacity' => {
+                                    'type' => 'Int'
+                                  },
+               'FontOpacity' => {
+                                  'type' => 'Int'
+                                },
+               'Alignment' => {
+                                'type' => 'Str'
+                              },
+               'ShadowColor' => {
+                                  'type' => 'Str'
+                                },
+               'ShadowXOffset' => {
+                                    'type' => 'Int'
+                                  },
+               'XPosition' => {
+                                'type' => 'Int'
+                              }
+             },
+  'NameInRequest' => {
+                       'FontSize' => 'fontSize',
+                       'YPosition' => 'yPosition',
+                       'OutlineSize' => 'outlineSize',
+                       'BackgroundOpacity' => 'backgroundOpacity',
+                       'OutlineColor' => 'outlineColor',
+                       'BackgroundColor' => 'backgroundColor',
+                       'ShadowYOffset' => 'shadowYOffset',
+                       'TeletextGridControl' => 'teletextGridControl',
+                       'FontColor' => 'fontColor',
+                       'Font' => 'font',
+                       'FontResolution' => 'fontResolution',
+                       'ShadowOpacity' => 'shadowOpacity',
+                       'FontOpacity' => 'fontOpacity',
+                       'Alignment' => 'alignment',
+                       'ShadowColor' => 'shadowColor',
+                       'ShadowXOffset' => 'shadowXOffset',
+                       'XPosition' => 'xPosition'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +163,7 @@ transparent. Leaving this parameter out is equivalent to setting it to
 0 (transparent). All burn-in and DVB-Sub font settings must match.
 
 
-=head2 Font => L<Paws::MediaLive::InputLocation>
+=head2 Font => MediaLive_InputLocation
 
   External font file used for caption burn-in. File extension must be
 'ttf' or 'tte'. Although the user can select output fonts for many

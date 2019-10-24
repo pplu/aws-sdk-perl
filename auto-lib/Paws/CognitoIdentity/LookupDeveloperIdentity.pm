@@ -1,17 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::LookupDeveloperIdentity;
-  use Moose;
-  has DeveloperUserIdentifier => (is => 'ro', isa => 'Str');
-  has IdentityId => (is => 'ro', isa => 'Str');
-  has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CognitoIdentity::Types qw//;
+  has DeveloperUserIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityId => (is => 'ro', isa => Str, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'LookupDeveloperIdentity');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::LookupDeveloperIdentityResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'LookupDeveloperIdentity');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::LookupDeveloperIdentityResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DeveloperUserIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

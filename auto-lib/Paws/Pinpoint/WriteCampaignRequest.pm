@@ -1,19 +1,84 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::WriteCampaignRequest;
-  use Moose;
-  has AdditionalTreatments => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::WriteTreatmentResource]');
-  has Description => (is => 'ro', isa => 'Str');
-  has HoldoutPercent => (is => 'ro', isa => 'Int');
-  has Hook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
-  has IsPaused => (is => 'ro', isa => 'Bool');
-  has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::MessageConfiguration');
-  has Name => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Paws::Pinpoint::Schedule');
-  has SegmentId => (is => 'ro', isa => 'Str');
-  has SegmentVersion => (is => 'ro', isa => 'Int');
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
-  has TreatmentDescription => (is => 'ro', isa => 'Str');
-  has TreatmentName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str Int Bool/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MessageConfiguration Pinpoint_CampaignHook Pinpoint_Schedule Pinpoint_CampaignLimits Pinpoint_WriteTreatmentResource/;
+  has AdditionalTreatments => (is => 'ro', isa => ArrayRef[Pinpoint_WriteTreatmentResource]);
+  has Description => (is => 'ro', isa => Str);
+  has HoldoutPercent => (is => 'ro', isa => Int);
+  has Hook => (is => 'ro', isa => Pinpoint_CampaignHook);
+  has IsPaused => (is => 'ro', isa => Bool);
+  has Limits => (is => 'ro', isa => Pinpoint_CampaignLimits);
+  has MessageConfiguration => (is => 'ro', isa => Pinpoint_MessageConfiguration);
+  has Name => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Pinpoint_Schedule);
+  has SegmentId => (is => 'ro', isa => Str);
+  has SegmentVersion => (is => 'ro', isa => Int);
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has TreatmentDescription => (is => 'ro', isa => Str);
+  has TreatmentName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentVersion' => {
+                                     'type' => 'Int'
+                                   },
+               'SegmentId' => {
+                                'type' => 'Str'
+                              },
+               'HoldoutPercent' => {
+                                     'type' => 'Int'
+                                   },
+               'Limits' => {
+                             'class' => 'Paws::Pinpoint::CampaignLimits',
+                             'type' => 'Pinpoint_CampaignLimits'
+                           },
+               'TreatmentDescription' => {
+                                           'type' => 'Str'
+                                         },
+               'IsPaused' => {
+                               'type' => 'Bool'
+                             },
+               'TreatmentName' => {
+                                    'type' => 'Str'
+                                  },
+               'Hook' => {
+                           'class' => 'Paws::Pinpoint::CampaignHook',
+                           'type' => 'Pinpoint_CampaignHook'
+                         },
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         },
+               'Schedule' => {
+                               'class' => 'Paws::Pinpoint::Schedule',
+                               'type' => 'Pinpoint_Schedule'
+                             },
+               'AdditionalTreatments' => {
+                                           'class' => 'Paws::Pinpoint::WriteTreatmentResource',
+                                           'type' => 'ArrayRef[Pinpoint_WriteTreatmentResource]'
+                                         },
+               'MessageConfiguration' => {
+                                           'class' => 'Paws::Pinpoint::MessageConfiguration',
+                                           'type' => 'Pinpoint_MessageConfiguration'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +114,7 @@ Specifies the configuration and other settings for a campaign.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalTreatments => ArrayRef[L<Paws::Pinpoint::WriteTreatmentResource>]
+=head2 AdditionalTreatments => ArrayRef[Pinpoint_WriteTreatmentResource]
 
   An array of requests that defines additional treatments for the
 campaign, in addition to the default treatment for the campaign.
@@ -66,7 +131,7 @@ campaign, in addition to the default treatment for the campaign.
 receive messages from the campaign.
 
 
-=head2 Hook => L<Paws::Pinpoint::CampaignHook>
+=head2 Hook => Pinpoint_CampaignHook
 
   The settings for the AWS Lambda function to use as a code hook for the
 campaign.
@@ -78,12 +143,12 @@ campaign.
 unless you resume it by setting this value to false.
 
 
-=head2 Limits => L<Paws::Pinpoint::CampaignLimits>
+=head2 Limits => Pinpoint_CampaignLimits
 
   The messaging limits for the campaign.
 
 
-=head2 MessageConfiguration => L<Paws::Pinpoint::MessageConfiguration>
+=head2 MessageConfiguration => Pinpoint_MessageConfiguration
 
   The message configuration settings for the campaign.
 
@@ -93,7 +158,7 @@ unless you resume it by setting this value to false.
   The custom name of the campaign.
 
 
-=head2 Schedule => L<Paws::Pinpoint::Schedule>
+=head2 Schedule => Pinpoint_Schedule
 
   The schedule settings for the campaign.
 
@@ -108,7 +173,7 @@ unless you resume it by setting this value to false.
   The version of the segment to associate with the campaign.
 
 
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 Tags => Pinpoint_MapOf__string
 
   A string-to-string map of key-value pairs that defines the tags to
 associate with the campaign. Each tag consists of a required tag key

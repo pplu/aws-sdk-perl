@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::IoT::JobSummary;
-  use Moose;
-  has CompletedAt => (is => 'ro', isa => 'Str', request_name => 'completedAt', traits => ['NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has JobArn => (is => 'ro', isa => 'Str', request_name => 'jobArn', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetSelection => (is => 'ro', isa => 'Str', request_name => 'targetSelection', traits => ['NameInRequest']);
-  has ThingGroupId => (is => 'ro', isa => 'Str', request_name => 'thingGroupId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has CompletedAt => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has JobArn => (is => 'ro', isa => Str);
+  has JobId => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has TargetSelection => (is => 'ro', isa => Str);
+  has ThingGroupId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CompletedAt' => {
+                                  'type' => 'Str'
+                                },
+               'ThingGroupId' => {
+                                   'type' => 'Str'
+                                 },
+               'JobArn' => {
+                             'type' => 'Str'
+                           },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'TargetSelection' => {
+                                      'type' => 'Str'
+                                    },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'CompletedAt' => 'completedAt',
+                       'ThingGroupId' => 'thingGroupId',
+                       'JobArn' => 'jobArn',
+                       'CreatedAt' => 'createdAt',
+                       'TargetSelection' => 'targetSelection',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'JobId' => 'jobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -7,7 +7,7 @@ package Paws::EC2::LaunchTemplateSpotMarketOptionsRequest;
   has SpotInstanceType => (is => 'ro', isa => Str);
   has ValidUntil => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceInterruptionBehavior' => {
@@ -28,8 +28,8 @@ package Paws::EC2::LaunchTemplateSpotMarketOptionsRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

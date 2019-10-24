@@ -1,18 +1,52 @@
 
 package Paws::DLM::GetLifecyclePolicies;
-  use Moose;
-  has PolicyIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'policyIds');
-  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'resourceTypes');
-  has State => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'state');
-  has TagsToAdd => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'tagsToAdd');
-  has TargetTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'targetTags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DLM::Types qw//;
+  has PolicyIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ResourceTypes => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has State => (is => 'ro', isa => Str, predicate => 1);
+  has TagsToAdd => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has TargetTags => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLifecyclePolicies');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DLM::GetLifecyclePoliciesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetLifecyclePolicies');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/policies');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DLM::GetLifecyclePoliciesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetTags' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'PolicyIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'TagsToAdd' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'ResourceTypes' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'ParamInQuery' => {
+                      'TargetTags' => 'targetTags',
+                      'PolicyIds' => 'policyIds',
+                      'TagsToAdd' => 'tagsToAdd',
+                      'State' => 'state',
+                      'ResourceTypes' => 'resourceTypes'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

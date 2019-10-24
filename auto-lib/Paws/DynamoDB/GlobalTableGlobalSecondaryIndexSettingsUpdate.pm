@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
   has ProvisionedWriteCapacityAutoScalingSettingsUpdate => (is => 'ro', isa => DynamoDB_AutoScalingSettingsUpdate);
   has ProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'IndexName' => {
@@ -19,11 +20,14 @@ package Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate;
                                                                         'class' => 'Paws::DynamoDB::AutoScalingSettingsUpdate',
                                                                         'type' => 'DynamoDB_AutoScalingSettingsUpdate'
                                                                       }
-             }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

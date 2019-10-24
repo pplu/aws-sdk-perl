@@ -1,33 +1,114 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::ModifyDBCluster;
-  use Moose;
-  has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has ApplyImmediately => (is => 'ro', isa => 'Bool');
-  has BacktrackWindow => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => 'Paws::RDS::CloudwatchLogsExportConfiguration');
-  has CopyTagsToSnapshot => (is => 'ro', isa => 'Bool');
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBClusterParameterGroupName => (is => 'ro', isa => 'Str');
-  has DBInstanceParameterGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
-  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has NewDBClusterIdentifier => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::RDS::Types qw/RDS_ScalingConfiguration RDS_CloudwatchLogsExportConfiguration/;
+  has AllowMajorVersionUpgrade => (is => 'ro', isa => Bool, predicate => 1);
+  has ApplyImmediately => (is => 'ro', isa => Bool, predicate => 1);
+  has BacktrackWindow => (is => 'ro', isa => Int, predicate => 1);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has CloudwatchLogsExportConfiguration => (is => 'ro', isa => RDS_CloudwatchLogsExportConfiguration, predicate => 1);
+  has CopyTagsToSnapshot => (is => 'ro', isa => Bool, predicate => 1);
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBClusterParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DBInstanceParameterGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableHttpEndpoint => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableIAMDatabaseAuthentication => (is => 'ro', isa => Bool, predicate => 1);
+  has EngineVersion => (is => 'ro', isa => Str, predicate => 1);
+  has MasterUserPassword => (is => 'ro', isa => Str, predicate => 1);
+  has NewDBClusterIdentifier => (is => 'ro', isa => Str, predicate => 1);
+  has OptionGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ScalingConfiguration => (is => 'ro', isa => RDS_ScalingConfiguration, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::ModifyDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::ModifyDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'NewDBClusterIdentifier' => {
+                                             'type' => 'Str'
+                                           },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'CloudwatchLogsExportConfiguration' => {
+                                                        'class' => 'Paws::RDS::CloudwatchLogsExportConfiguration',
+                                                        'type' => 'RDS_CloudwatchLogsExportConfiguration'
+                                                      },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'BacktrackWindow' => {
+                                      'type' => 'Int'
+                                    },
+               'EnableIAMDatabaseAuthentication' => {
+                                                      'type' => 'Bool'
+                                                    },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'CopyTagsToSnapshot' => {
+                                         'type' => 'Bool'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'AllowMajorVersionUpgrade' => {
+                                               'type' => 'Bool'
+                                             },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'DBInstanceParameterGroupName' => {
+                                                   'type' => 'Str'
+                                                 },
+               'DBClusterParameterGroupName' => {
+                                                  'type' => 'Str'
+                                                },
+               'EnableHttpEndpoint' => {
+                                         'type' => 'Bool'
+                                       },
+               'ScalingConfiguration' => {
+                                           'class' => 'Paws::RDS::ScalingConfiguration',
+                                           'type' => 'RDS_ScalingConfiguration'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -137,7 +218,7 @@ Must be a value from 1 to 35
 
 
 
-=head2 CloudwatchLogsExportConfiguration => L<Paws::RDS::CloudwatchLogsExportConfiguration>
+=head2 CloudwatchLogsExportConfiguration => RDS_CloudwatchLogsExportConfiguration
 
 The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB cluster.
@@ -362,7 +443,7 @@ Constraints: Minimum 30-minute window.
 
 
 
-=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+=head2 ScalingConfiguration => RDS_ScalingConfiguration
 
 The scaling properties of the DB cluster. You can only modify scaling
 properties for DB clusters in C<serverless> DB engine mode.

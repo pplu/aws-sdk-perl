@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::ListTags;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ResourceIdList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudTrail::Types qw//;
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceIdList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTags');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::ListTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTags');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::ListTagsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ResourceIdList' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'ResourceIdList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::Session;
-  use Moose;
-  has Duration => (is => 'ro', isa => 'Int');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has StartTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has StopTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Pinpoint::Types qw//;
+  has Duration => (is => 'ro', isa => Int);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has StartTimestamp => (is => 'ro', isa => Str, required => 1);
+  has StopTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTimestamp' => {
+                                     'type' => 'Str'
+                                   },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'StopTimestamp' => {
+                                    'type' => 'Str'
+                                  },
+               'Duration' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'StartTimestamp' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

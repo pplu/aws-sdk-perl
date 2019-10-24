@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::DS::SharedDirectory;
-  use Moose;
-  has CreatedDateTime => (is => 'ro', isa => 'Str');
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str');
-  has OwnerAccountId => (is => 'ro', isa => 'Str');
-  has OwnerDirectoryId => (is => 'ro', isa => 'Str');
-  has SharedAccountId => (is => 'ro', isa => 'Str');
-  has SharedDirectoryId => (is => 'ro', isa => 'Str');
-  has ShareMethod => (is => 'ro', isa => 'Str');
-  has ShareNotes => (is => 'ro', isa => 'Str');
-  has ShareStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw//;
+  has CreatedDateTime => (is => 'ro', isa => Str);
+  has LastUpdatedDateTime => (is => 'ro', isa => Str);
+  has OwnerAccountId => (is => 'ro', isa => Str);
+  has OwnerDirectoryId => (is => 'ro', isa => Str);
+  has SharedAccountId => (is => 'ro', isa => Str);
+  has SharedDirectoryId => (is => 'ro', isa => Str);
+  has ShareMethod => (is => 'ro', isa => Str);
+  has ShareNotes => (is => 'ro', isa => Str);
+  has ShareStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SharedDirectoryId' => {
+                                        'type' => 'Str'
+                                      },
+               'OwnerDirectoryId' => {
+                                       'type' => 'Str'
+                                     },
+               'ShareStatus' => {
+                                  'type' => 'Str'
+                                },
+               'LastUpdatedDateTime' => {
+                                          'type' => 'Str'
+                                        },
+               'CreatedDateTime' => {
+                                      'type' => 'Str'
+                                    },
+               'SharedAccountId' => {
+                                      'type' => 'Str'
+                                    },
+               'ShareNotes' => {
+                                 'type' => 'Str'
+                               },
+               'ShareMethod' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerAccountId' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

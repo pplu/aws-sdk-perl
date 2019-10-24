@@ -1,18 +1,49 @@
 
 package Paws::CloudFront::UpdateFieldLevelEncryptionProfile;
-  use Moose;
-  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig', required => 1);
-  has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
-  has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudFront::Types qw/CloudFront_FieldLevelEncryptionProfileConfig/;
+  has FieldLevelEncryptionProfileConfig => (is => 'ro', isa => CloudFront_FieldLevelEncryptionProfileConfig, required => 1, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IfMatch => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFieldLevelEncryptionProfile');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/field-level-encryption-profile/{Id}/config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFieldLevelEncryptionProfile');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2019-03-26/field-level-encryption-profile/{Id}/config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFront::UpdateFieldLevelEncryptionProfileResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IfMatch' => {
+                              'type' => 'Str'
+                            },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'FieldLevelEncryptionProfileConfig' => {
+                                                        'class' => 'Paws::CloudFront::FieldLevelEncryptionProfileConfig',
+                                                        'type' => 'CloudFront_FieldLevelEncryptionProfileConfig'
+                                                      }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'ParamInHeader' => {
+                       'IfMatch' => 'If-Match'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'FieldLevelEncryptionProfileConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +102,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => L<Paws::CloudFront::FieldLevelEncryptionProfileConfig>
+=head2 B<REQUIRED> FieldLevelEncryptionProfileConfig => CloudFront_FieldLevelEncryptionProfileConfig
 
 Request to update a field-level encryption profile.
 

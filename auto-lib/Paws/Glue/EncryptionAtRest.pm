@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::Glue::EncryptionAtRest;
-  use Moose;
-  has CatalogEncryptionMode => (is => 'ro', isa => 'Str', required => 1);
-  has SseAwsKmsKeyId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CatalogEncryptionMode => (is => 'ro', isa => Str, required => 1);
+  has SseAwsKmsKeyId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SseAwsKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'CatalogEncryptionMode' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'CatalogEncryptionMode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

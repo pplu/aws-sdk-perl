@@ -1,10 +1,35 @@
 
 package Paws::ApiGateway::DocumentationVersions;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::DocumentationVersion]', traits => ['NameInRequest'], request_name => 'item');
-  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_DocumentationVersion/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGateway_DocumentationVersion]);
+  has Position => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'Items' => {
+                            'class' => 'Paws::ApiGateway::DocumentationVersion',
+                            'type' => 'ArrayRef[ApiGateway_DocumentationVersion]'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Position' => 'position',
+                       'Items' => 'item'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ApiGateway::DocumentationVersions
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGateway::DocumentationVersion>]
+=head2 Items => ArrayRef[ApiGateway_DocumentationVersion]
 
 The current page of elements from this collection.
 

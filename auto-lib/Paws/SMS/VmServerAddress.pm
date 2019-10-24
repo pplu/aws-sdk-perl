@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::SMS::VmServerAddress;
-  use Moose;
-  has VmId => (is => 'ro', isa => 'Str', request_name => 'vmId', traits => ['NameInRequest']);
-  has VmManagerId => (is => 'ro', isa => 'Str', request_name => 'vmManagerId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SMS::Types qw//;
+  has VmId => (is => 'ro', isa => Str);
+  has VmManagerId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VmManagerId' => {
+                                  'type' => 'Str'
+                                },
+               'VmId' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'VmManagerId' => 'vmManagerId',
+                       'VmId' => 'vmId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

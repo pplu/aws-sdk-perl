@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeBuild::BatchGetProjects;
-  use Moose;
-  has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'names' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeBuild::Types qw//;
+  has Names => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetProjects');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeBuild::BatchGetProjectsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchGetProjects');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeBuild::BatchGetProjectsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Names' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Names' => 'names'
+                     },
+  'IsRequired' => {
+                    'Names' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

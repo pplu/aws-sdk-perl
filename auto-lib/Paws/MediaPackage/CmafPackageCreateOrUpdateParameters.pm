@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::CmafPackageCreateOrUpdateParameters;
-  use Moose;
-  has Encryption => (is => 'ro', isa => 'Paws::MediaPackage::CmafEncryption', request_name => 'encryption', traits => ['NameInRequest']);
-  has HlsManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackage::HlsManifestCreateOrUpdateParameters]', request_name => 'hlsManifests', traits => ['NameInRequest']);
-  has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
-  has SegmentPrefix => (is => 'ro', isa => 'Str', request_name => 'segmentPrefix', traits => ['NameInRequest']);
-  has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Int Str/;
+  use Paws::MediaPackage::Types qw/MediaPackage_CmafEncryption MediaPackage_HlsManifestCreateOrUpdateParameters MediaPackage_StreamSelection/;
+  has Encryption => (is => 'ro', isa => MediaPackage_CmafEncryption);
+  has HlsManifests => (is => 'ro', isa => ArrayRef[MediaPackage_HlsManifestCreateOrUpdateParameters]);
+  has SegmentDurationSeconds => (is => 'ro', isa => Int);
+  has SegmentPrefix => (is => 'ro', isa => Str);
+  has StreamSelection => (is => 'ro', isa => MediaPackage_StreamSelection);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamSelection' => {
+                                      'class' => 'Paws::MediaPackage::StreamSelection',
+                                      'type' => 'MediaPackage_StreamSelection'
+                                    },
+               'HlsManifests' => {
+                                   'class' => 'Paws::MediaPackage::HlsManifestCreateOrUpdateParameters',
+                                   'type' => 'ArrayRef[MediaPackage_HlsManifestCreateOrUpdateParameters]'
+                                 },
+               'SegmentDurationSeconds' => {
+                                             'type' => 'Int'
+                                           },
+               'Encryption' => {
+                                 'class' => 'Paws::MediaPackage::CmafEncryption',
+                                 'type' => 'MediaPackage_CmafEncryption'
+                               },
+               'SegmentPrefix' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'StreamSelection' => 'streamSelection',
+                       'HlsManifests' => 'hlsManifests',
+                       'SegmentDurationSeconds' => 'segmentDurationSeconds',
+                       'Encryption' => 'encryption',
+                       'SegmentPrefix' => 'segmentPrefix'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +79,12 @@ A Common Media Application Format (CMAF) packaging configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Encryption => L<Paws::MediaPackage::CmafEncryption>
+=head2 Encryption => MediaPackage_CmafEncryption
 
   
 
 
-=head2 HlsManifests => ArrayRef[L<Paws::MediaPackage::HlsManifestCreateOrUpdateParameters>]
+=head2 HlsManifests => ArrayRef[MediaPackage_HlsManifestCreateOrUpdateParameters]
 
   A list of HLS manifest configurations
 
@@ -62,7 +101,7 @@ to the nearest multiple of the source segment duration.
 segment. If not specified, it defaults to the ChannelId.
 
 
-=head2 StreamSelection => L<Paws::MediaPackage::StreamSelection>
+=head2 StreamSelection => MediaPackage_StreamSelection
 
   
 

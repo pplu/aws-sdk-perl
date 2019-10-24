@@ -1,17 +1,45 @@
 
 package Paws::XRay::PutTelemetryRecords;
-  use Moose;
-  has EC2InstanceId => (is => 'ro', isa => 'Str');
-  has Hostname => (is => 'ro', isa => 'Str');
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has TelemetryRecords => (is => 'ro', isa => 'ArrayRef[Paws::XRay::TelemetryRecord]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_TelemetryRecord/;
+  has EC2InstanceId => (is => 'ro', isa => Str, predicate => 1);
+  has Hostname => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceARN => (is => 'ro', isa => Str, predicate => 1);
+  has TelemetryRecords => (is => 'ro', isa => ArrayRef[XRay_TelemetryRecord], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutTelemetryRecords');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TelemetryRecords');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::PutTelemetryRecordsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutTelemetryRecords');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TelemetryRecords');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::PutTelemetryRecordsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             },
+               'EC2InstanceId' => {
+                                    'type' => 'Str'
+                                  },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'TelemetryRecords' => {
+                                       'class' => 'Paws::XRay::TelemetryRecord',
+                                       'type' => 'ArrayRef[XRay_TelemetryRecord]'
+                                     }
+             },
+  'IsRequired' => {
+                    'TelemetryRecords' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -79,7 +107,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 
 
 
-=head2 B<REQUIRED> TelemetryRecords => ArrayRef[L<Paws::XRay::TelemetryRecord>]
+=head2 B<REQUIRED> TelemetryRecords => ArrayRef[XRay_TelemetryRecord]
 
 
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::EvaluationResult;
   use Moo;
   use Types::Standard qw/Str ArrayRef Undef/;
@@ -42,7 +43,11 @@ package Paws::IAM::EvaluationResult;
                                         'class' => 'Paws::IAM::Statement',
                                         'type' => 'ArrayRef[IAM_Statement]'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'EvalActionName' => 1,
+                    'EvalDecision' => 1
+                  }
 }
 ;
     return $Params_map;

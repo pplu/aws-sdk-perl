@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::AppSpecContent;
-  use Moose;
-  has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
-  has Sha256 => (is => 'ro', isa => 'Str', request_name => 'sha256', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeDeploy::Types qw//;
+  has Content => (is => 'ro', isa => Str);
+  has Sha256 => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'Sha256' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Content' => 'content',
+                       'Sha256' => 'sha256'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

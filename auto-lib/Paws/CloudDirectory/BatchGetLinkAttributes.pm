@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchGetLinkAttributes;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       },
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'TypedLinkSpecifier' => 1,
+                    'AttributeNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +69,7 @@ BatchReadRequest$Operations.
   A list of attribute names whose values will be retrieved.
 
 
-=head2 B<REQUIRED> TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 B<REQUIRED> TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
   Allows a typed link specifier to be accepted as input.
 

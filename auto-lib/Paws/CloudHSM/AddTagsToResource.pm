@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudHSM::AddTagsToResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSM::Tag]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudHSM::Types qw/CloudHSM_Tag/;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagList => (is => 'ro', isa => ArrayRef[CloudHSM_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::AddTagsToResourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddTagsToResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudHSM::AddTagsToResourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagList' => {
+                              'class' => 'Paws::CloudHSM::Tag',
+                              'type' => 'ArrayRef[CloudHSM_Tag]'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'TagList' => 1,
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +82,7 @@ The Amazon Resource Name (ARN) of the AWS CloudHSM resource to tag.
 
 
 
-=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::CloudHSM::Tag>]
+=head2 B<REQUIRED> TagList => ArrayRef[CloudHSM_Tag]
 
 One or more tags.
 

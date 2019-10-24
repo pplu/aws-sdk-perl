@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::ObjectIdentifier;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,10 @@ package Paws::S3::ObjectIdentifier;
                'VersionId' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

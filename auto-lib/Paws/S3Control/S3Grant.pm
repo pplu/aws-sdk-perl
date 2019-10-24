@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::S3Control::S3Grant;
-  use Moose;
-  has Grantee => (is => 'ro', isa => 'Paws::S3Control::S3Grantee');
-  has Permission => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw/S3Control_S3Grantee/;
+  has Grantee => (is => 'ro', isa => S3Control_S3Grantee);
+  has Permission => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Permission' => {
+                                 'type' => 'Str'
+                               },
+               'Grantee' => {
+                              'class' => 'Paws::S3Control::S3Grantee',
+                              'type' => 'S3Control_S3Grantee'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Grantee => L<Paws::S3Control::S3Grantee>
+=head2 Grantee => S3Control_S3Grantee
 
   
 

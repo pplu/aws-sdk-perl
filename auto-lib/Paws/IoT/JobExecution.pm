@@ -1,16 +1,77 @@
+# Generated from default/object.tt
 package Paws::IoT::JobExecution;
-  use Moose;
-  has ApproximateSecondsBeforeTimedOut => (is => 'ro', isa => 'Int', request_name => 'approximateSecondsBeforeTimedOut', traits => ['NameInRequest']);
-  has ExecutionNumber => (is => 'ro', isa => 'Int', request_name => 'executionNumber', traits => ['NameInRequest']);
-  has ForceCanceled => (is => 'ro', isa => 'Bool', request_name => 'forceCanceled', traits => ['NameInRequest']);
-  has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has QueuedAt => (is => 'ro', isa => 'Str', request_name => 'queuedAt', traits => ['NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusDetails => (is => 'ro', isa => 'Paws::IoT::JobExecutionStatusDetails', request_name => 'statusDetails', traits => ['NameInRequest']);
-  has ThingArn => (is => 'ro', isa => 'Str', request_name => 'thingArn', traits => ['NameInRequest']);
-  has VersionNumber => (is => 'ro', isa => 'Int', request_name => 'versionNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Bool Str/;
+  use Paws::IoT::Types qw/IoT_JobExecutionStatusDetails/;
+  has ApproximateSecondsBeforeTimedOut => (is => 'ro', isa => Int);
+  has ExecutionNumber => (is => 'ro', isa => Int);
+  has ForceCanceled => (is => 'ro', isa => Bool);
+  has JobId => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has QueuedAt => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusDetails => (is => 'ro', isa => IoT_JobExecutionStatusDetails);
+  has ThingArn => (is => 'ro', isa => Str);
+  has VersionNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApproximateSecondsBeforeTimedOut' => {
+                                                       'type' => 'Int'
+                                                     },
+               'ThingArn' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'ExecutionNumber' => {
+                                      'type' => 'Int'
+                                    },
+               'StatusDetails' => {
+                                    'class' => 'Paws::IoT::JobExecutionStatusDetails',
+                                    'type' => 'IoT_JobExecutionStatusDetails'
+                                  },
+               'QueuedAt' => {
+                               'type' => 'Str'
+                             },
+               'VersionNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'ForceCanceled' => {
+                                    'type' => 'Bool'
+                                  },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ApproximateSecondsBeforeTimedOut' => 'approximateSecondsBeforeTimedOut',
+                       'ThingArn' => 'thingArn',
+                       'Status' => 'status',
+                       'StartedAt' => 'startedAt',
+                       'ExecutionNumber' => 'executionNumber',
+                       'StatusDetails' => 'statusDetails',
+                       'QueuedAt' => 'queuedAt',
+                       'VersionNumber' => 'versionNumber',
+                       'ForceCanceled' => 'forceCanceled',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'JobId' => 'jobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +159,7 @@ queued.
 SUCCEEDED, TIMED_OUT, CANCELED, or REJECTED).
 
 
-=head2 StatusDetails => L<Paws::IoT::JobExecutionStatusDetails>
+=head2 StatusDetails => IoT_JobExecutionStatusDetails
 
   A collection of name/value pairs that describe the status of the job
 execution.

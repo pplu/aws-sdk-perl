@@ -1,16 +1,50 @@
 
 package Paws::Kafka::UpdateBrokerStorage;
-  use Moose;
-  has ClusterArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterArn', required => 1);
-  has CurrentVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentVersion', required => 1);
-  has TargetBrokerEBSVolumeInfo => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::BrokerEBSVolumeInfo]', traits => ['NameInRequest'], request_name => 'targetBrokerEBSVolumeInfo', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_BrokerEBSVolumeInfo/;
+  has ClusterArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentVersion => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetBrokerEBSVolumeInfo => (is => 'ro', isa => ArrayRef[Kafka_BrokerEBSVolumeInfo], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBrokerStorage');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/clusters/{clusterArn}/nodes/storage');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kafka::UpdateBrokerStorageResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateBrokerStorage');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/clusters/{clusterArn}/nodes/storage');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Kafka::UpdateBrokerStorageResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentVersion' => {
+                                     'type' => 'Str'
+                                   },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'TargetBrokerEBSVolumeInfo' => {
+                                                'class' => 'Paws::Kafka::BrokerEBSVolumeInfo',
+                                                'type' => 'ArrayRef[Kafka_BrokerEBSVolumeInfo]'
+                                              }
+             },
+  'ParamInURI' => {
+                    'ClusterArn' => 'clusterArn'
+                  },
+  'NameInRequest' => {
+                       'CurrentVersion' => 'currentVersion',
+                       'TargetBrokerEBSVolumeInfo' => 'targetBrokerEBSVolumeInfo'
+                     },
+  'IsRequired' => {
+                    'CurrentVersion' => 1,
+                    'ClusterArn' => 1,
+                    'TargetBrokerEBSVolumeInfo' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -69,7 +103,7 @@ generate a new version.
 
 
 
-=head2 B<REQUIRED> TargetBrokerEBSVolumeInfo => ArrayRef[L<Paws::Kafka::BrokerEBSVolumeInfo>]
+=head2 B<REQUIRED> TargetBrokerEBSVolumeInfo => ArrayRef[Kafka_BrokerEBSVolumeInfo]
 
 Describes the target volume size and the ID of the broker to apply the
 update to.

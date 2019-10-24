@@ -1,12 +1,61 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::Problem;
-  use Moose;
-  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', request_name => 'device', traits => ['NameInRequest']);
-  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'job', traits => ['NameInRequest']);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest']);
-  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'run', traits => ['NameInRequest']);
-  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'suite', traits => ['NameInRequest']);
-  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', request_name => 'test', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Device DeviceFarm_ProblemDetail/;
+  has Device => (is => 'ro', isa => DeviceFarm_Device);
+  has Job => (is => 'ro', isa => DeviceFarm_ProblemDetail);
+  has Message => (is => 'ro', isa => Str);
+  has Result => (is => 'ro', isa => Str);
+  has Run => (is => 'ro', isa => DeviceFarm_ProblemDetail);
+  has Suite => (is => 'ro', isa => DeviceFarm_ProblemDetail);
+  has Test => (is => 'ro', isa => DeviceFarm_ProblemDetail);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'Device' => {
+                             'class' => 'Paws::DeviceFarm::Device',
+                             'type' => 'DeviceFarm_Device'
+                           },
+               'Job' => {
+                          'class' => 'Paws::DeviceFarm::ProblemDetail',
+                          'type' => 'DeviceFarm_ProblemDetail'
+                        },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'Test' => {
+                           'class' => 'Paws::DeviceFarm::ProblemDetail',
+                           'type' => 'DeviceFarm_ProblemDetail'
+                         },
+               'Suite' => {
+                            'class' => 'Paws::DeviceFarm::ProblemDetail',
+                            'type' => 'DeviceFarm_ProblemDetail'
+                          },
+               'Run' => {
+                          'class' => 'Paws::DeviceFarm::ProblemDetail',
+                          'type' => 'DeviceFarm_ProblemDetail'
+                        }
+             },
+  'NameInRequest' => {
+                       'Result' => 'result',
+                       'Device' => 'device',
+                       'Job' => 'job',
+                       'Message' => 'message',
+                       'Test' => 'test',
+                       'Suite' => 'suite',
+                       'Run' => 'run'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,12 +91,12 @@ Represents a specific warning or failure.
 =head1 ATTRIBUTES
 
 
-=head2 Device => L<Paws::DeviceFarm::Device>
+=head2 Device => DeviceFarm_Device
 
   Information about the associated device.
 
 
-=head2 Job => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Job => DeviceFarm_ProblemDetail
 
   Information about the associated job.
 
@@ -97,17 +146,17 @@ STOPPED: A stopped condition.
 
 
 
-=head2 Run => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Run => DeviceFarm_ProblemDetail
 
   Information about the associated run.
 
 
-=head2 Suite => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Suite => DeviceFarm_ProblemDetail
 
   Information about the associated suite.
 
 
-=head2 Test => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Test => DeviceFarm_ProblemDetail
 
   Information about the associated test.
 

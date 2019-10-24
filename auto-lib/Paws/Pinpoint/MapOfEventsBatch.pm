@@ -1,8 +1,23 @@
 package Paws::Pinpoint::MapOfEventsBatch;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventsBatch/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::Pinpoint::EventsBatch]');
+  has Map => (is => 'ro', isa => HashRef[Pinpoint_EventsBatch]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[Pinpoint_EventsBatch]',
+                                          class => 'Paws::Pinpoint::EventsBatch',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::Pinpoint::EventsBatch>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoT::CertificateValidity;
-  use Moose;
-  has NotAfter => (is => 'ro', isa => 'Str', request_name => 'notAfter', traits => ['NameInRequest']);
-  has NotBefore => (is => 'ro', isa => 'Str', request_name => 'notBefore', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'NotAfter' => 'notAfter',
+                       'NotBefore' => 'notBefore'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

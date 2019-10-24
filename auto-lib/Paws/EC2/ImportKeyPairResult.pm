@@ -8,7 +8,7 @@ package Paws::EC2::ImportKeyPairResult;
   has KeyName => (is => 'ro', isa => Str);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'KeyName' => {
@@ -27,8 +27,8 @@ package Paws::EC2::ImportKeyPairResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

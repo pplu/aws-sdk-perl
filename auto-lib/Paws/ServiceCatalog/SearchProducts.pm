@@ -1,18 +1,50 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::SearchProducts;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewFilters');
-  has PageSize => (is => 'ro', isa => 'Int');
-  has PageToken => (is => 'ro', isa => 'Str');
-  has SortBy => (is => 'ro', isa => 'Str');
-  has SortOrder => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProductViewFilters/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has Filters => (is => 'ro', isa => ServiceCatalog_ProductViewFilters, predicate => 1);
+  has PageSize => (is => 'ro', isa => Int, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortBy => (is => 'ro', isa => Str, predicate => 1);
+  has SortOrder => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchProducts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::SearchProductsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchProducts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::SearchProductsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageSize' => {
+                               'type' => 'Int'
+                             },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'Filters' => {
+                              'class' => 'Paws::ServiceCatalog::ProductViewFilters',
+                              'type' => 'ServiceCatalog_ProductViewFilters'
+                            },
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'SortBy' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -81,7 +113,7 @@ C<zh> - Chinese
 
 
 
-=head2 Filters => L<Paws::ServiceCatalog::ProductViewFilters>
+=head2 Filters => ServiceCatalog_ProductViewFilters
 
 The search filters. If no search filters are specified, the output
 includes all products to which the caller has access.

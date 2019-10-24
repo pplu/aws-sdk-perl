@@ -1,14 +1,74 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::CreateStageInput;
-  use Moose;
-  has AccessLogSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::AccessLogSettings', request_name => 'accessLogSettings', traits => ['NameInRequest']);
-  has ClientCertificateId => (is => 'ro', isa => 'Str', request_name => 'clientCertificateId', traits => ['NameInRequest']);
-  has DefaultRouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettings', request_name => 'defaultRouteSettings', traits => ['NameInRequest']);
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has RouteSettings => (is => 'ro', isa => 'Paws::ApiGatewayV2::RouteSettingsMap', request_name => 'routeSettings', traits => ['NameInRequest']);
-  has StageName => (is => 'ro', isa => 'Str', request_name => 'stageName', traits => ['NameInRequest'], required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGatewayV2::StageVariablesMap', request_name => 'stageVariables', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw/ApiGatewayV2_StageVariablesMap ApiGatewayV2_Tags ApiGatewayV2_AccessLogSettings ApiGatewayV2_RouteSettings ApiGatewayV2_RouteSettingsMap/;
+  has AccessLogSettings => (is => 'ro', isa => ApiGatewayV2_AccessLogSettings);
+  has ClientCertificateId => (is => 'ro', isa => Str);
+  has DefaultRouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettings);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has RouteSettings => (is => 'ro', isa => ApiGatewayV2_RouteSettingsMap);
+  has StageName => (is => 'ro', isa => Str, required => 1);
+  has StageVariables => (is => 'ro', isa => ApiGatewayV2_StageVariablesMap);
+  has Tags => (is => 'ro', isa => ApiGatewayV2_Tags);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AccessLogSettings' => {
+                                        'class' => 'Paws::ApiGatewayV2::AccessLogSettings',
+                                        'type' => 'ApiGatewayV2_AccessLogSettings'
+                                      },
+               'StageVariables' => {
+                                     'class' => 'Paws::ApiGatewayV2::StageVariablesMap',
+                                     'type' => 'ApiGatewayV2_StageVariablesMap'
+                                   },
+               'RouteSettings' => {
+                                    'class' => 'Paws::ApiGatewayV2::RouteSettingsMap',
+                                    'type' => 'ApiGatewayV2_RouteSettingsMap'
+                                  },
+               'StageName' => {
+                                'type' => 'Str'
+                              },
+               'ClientCertificateId' => {
+                                          'type' => 'Str'
+                                        },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::ApiGatewayV2::Tags',
+                           'type' => 'ApiGatewayV2_Tags'
+                         },
+               'DefaultRouteSettings' => {
+                                           'class' => 'Paws::ApiGatewayV2::RouteSettings',
+                                           'type' => 'ApiGatewayV2_RouteSettings'
+                                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AccessLogSettings' => 'accessLogSettings',
+                       'StageVariables' => 'stageVariables',
+                       'RouteSettings' => 'routeSettings',
+                       'StageName' => 'stageName',
+                       'ClientCertificateId' => 'clientCertificateId',
+                       'DeploymentId' => 'deploymentId',
+                       'Tags' => 'tags',
+                       'DefaultRouteSettings' => 'defaultRouteSettings',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'StageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +104,7 @@ Represents the input parameters for a CreateStage request.
 =head1 ATTRIBUTES
 
 
-=head2 AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>
+=head2 AccessLogSettings => ApiGatewayV2_AccessLogSettings
 
   Settings for logging access in this stage.
 
@@ -54,7 +114,7 @@ Represents the input parameters for a CreateStage request.
   The identifier of a client certificate for a Stage.
 
 
-=head2 DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>
+=head2 DefaultRouteSettings => ApiGatewayV2_RouteSettings
 
   The default route settings for the stage.
 
@@ -69,7 +129,7 @@ Represents the input parameters for a CreateStage request.
   The description for the API stage.
 
 
-=head2 RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>
+=head2 RouteSettings => ApiGatewayV2_RouteSettingsMap
 
   Route settings for the stage.
 
@@ -79,14 +139,14 @@ Represents the input parameters for a CreateStage request.
   The name of the stage.
 
 
-=head2 StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>
+=head2 StageVariables => ApiGatewayV2_StageVariablesMap
 
   A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
 [A-Za-z0-9-._~:/?#&=,]+.
 
 
-=head2 Tags => L<Paws::ApiGatewayV2::Tags>
+=head2 Tags => ApiGatewayV2_Tags
 
   The key-value map of strings. The valid character set is
 [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not

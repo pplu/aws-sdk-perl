@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::Destination;
-  use Moose;
-  has S3Destination => (is => 'ro', isa => 'Paws::IoT::S3Destination', request_name => 's3Destination', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_S3Destination/;
+  has S3Destination => (is => 'ro', isa => IoT_S3Destination);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3Destination' => {
+                                    'class' => 'Paws::IoT::S3Destination',
+                                    'type' => 'IoT_S3Destination'
+                                  }
+             },
+  'NameInRequest' => {
+                       'S3Destination' => 's3Destination'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Describes the location of the updated firmware.
 =head1 ATTRIBUTES
 
 
-=head2 S3Destination => L<Paws::IoT::S3Destination>
+=head2 S3Destination => IoT_S3Destination
 
   Describes the location in S3 of the updated firmware.
 

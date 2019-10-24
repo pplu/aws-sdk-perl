@@ -1,28 +1,112 @@
+# Generated from default/object.tt
 package Paws::RDS::DBInstanceAutomatedBackup;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has DBInstanceArn => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DbiResourceId => (is => 'ro', isa => 'Str');
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has OptionGroupName => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has Region => (is => 'ro', isa => 'Str');
-  has RestoreWindow => (is => 'ro', isa => 'Paws::RDS::RestoreWindow');
-  has Status => (is => 'ro', isa => 'Str');
-  has StorageType => (is => 'ro', isa => 'Str');
-  has TdeCredentialArn => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::RDS::Types qw/RDS_RestoreWindow/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has AvailabilityZone => (is => 'ro', isa => Str);
+  has DBInstanceArn => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DbiResourceId => (is => 'ro', isa => Str);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => Bool);
+  has InstanceCreateTime => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUsername => (is => 'ro', isa => Str);
+  has OptionGroupName => (is => 'ro', isa => Str);
+  has Port => (is => 'ro', isa => Int);
+  has Region => (is => 'ro', isa => Str);
+  has RestoreWindow => (is => 'ro', isa => RDS_RestoreWindow);
+  has Status => (is => 'ro', isa => Str);
+  has StorageType => (is => 'ro', isa => Str);
+  has TdeCredentialArn => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'MasterUsername' => {
+                                     'type' => 'Str'
+                                   },
+               'DBInstanceArn' => {
+                                    'type' => 'Str'
+                                  },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'InstanceCreateTime' => {
+                                         'type' => 'Str'
+                                       },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'IAMDatabaseAuthenticationEnabled' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'OptionGroupName' => {
+                                      'type' => 'Str'
+                                    },
+               'DbiResourceId' => {
+                                    'type' => 'Str'
+                                  },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'TdeCredentialArn' => {
+                                       'type' => 'Str'
+                                     },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'RestoreWindow' => {
+                                    'class' => 'Paws::RDS::RestoreWindow',
+                                    'type' => 'RDS_RestoreWindow'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -158,7 +242,7 @@ Valid Values: C<1150-65535>
   The AWS Region associated with the automated backup.
 
 
-=head2 RestoreWindow => L<Paws::RDS::RestoreWindow>
+=head2 RestoreWindow => RDS_RestoreWindow
 
   Earliest and latest time an instance can be restored to.
 

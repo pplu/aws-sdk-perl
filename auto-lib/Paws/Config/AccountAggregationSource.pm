@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::Config::AccountAggregationSource;
-  use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has AllAwsRegions => (is => 'ro', isa => 'Bool');
-  has AwsRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool/;
+  use Paws::Config::Types qw//;
+  has AccountIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has AllAwsRegions => (is => 'ro', isa => Bool);
+  has AwsRegions => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllAwsRegions' => {
+                                    'type' => 'Bool'
+                                  },
+               'AccountIds' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'AwsRegions' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             },
+  'IsRequired' => {
+                    'AccountIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

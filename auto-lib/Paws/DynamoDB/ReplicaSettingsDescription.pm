@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::ReplicaSettingsDescription;
   use Moo;
   use Types::Standard qw/Str ArrayRef Int/;
@@ -11,7 +12,7 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
   has ReplicaProvisionedWriteCapacityUnits => (is => 'ro', isa => Int);
   has ReplicaStatus => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicaProvisionedWriteCapacityUnits' => {
@@ -42,11 +43,14 @@ package Paws::DynamoDB::ReplicaSettingsDescription;
                                                 'class' => 'Paws::DynamoDB::BillingModeSummary',
                                                 'type' => 'DynamoDB_BillingModeSummary'
                                               }
-             }
+             },
+  'IsRequired' => {
+                    'RegionName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

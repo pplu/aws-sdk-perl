@@ -1,8 +1,23 @@
 package Paws::ApiGateway::MapOfApiStageThrottleSettings;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_ThrottleSettings/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::ThrottleSettings]');
+  has Map => (is => 'ro', isa => HashRef[ApiGateway_ThrottleSettings]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[ApiGateway_ThrottleSettings]',
+                                          class => 'Paws::ApiGateway::ThrottleSettings',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::ApiGateway::ThrottleSettings>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

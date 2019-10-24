@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeDeploy::RemoveTagsFromOnPremisesInstances;
-  use Moose;
-  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_Tag/;
+  has InstanceNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodeDeploy_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTagsFromOnPremisesInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RemoveTagsFromOnPremisesInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::CodeDeploy::Tag',
+                           'type' => 'ArrayRef[CodeDeploy_Tag]'
+                         },
+               'InstanceNames' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags',
+                       'InstanceNames' => 'instanceNames'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1,
+                    'InstanceNames' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +80,7 @@ The names of the on-premises instances from which to remove tags.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[CodeDeploy_Tag]
 
 The tag key-value pairs to remove from the on-premises instances.
 

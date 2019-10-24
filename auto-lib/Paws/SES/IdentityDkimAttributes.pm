@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::IdentityDkimAttributes;
   use Moo;
   use Types::Standard qw/Bool ArrayRef Undef Str/;
@@ -18,7 +19,11 @@ package Paws::SES::IdentityDkimAttributes;
                'DkimVerificationStatus' => {
                                              'type' => 'Str'
                                            }
-             }
+             },
+  'IsRequired' => {
+                    'DkimEnabled' => 1,
+                    'DkimVerificationStatus' => 1
+                  }
 }
 ;
     return $Params_map;

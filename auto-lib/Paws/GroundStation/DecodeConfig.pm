@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::GroundStation::DecodeConfig;
-  use Moose;
-  has UnvalidatedJSON => (is => 'ro', isa => 'Str', request_name => 'unvalidatedJSON', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has UnvalidatedJSON => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UnvalidatedJSON' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'UnvalidatedJSON' => 'unvalidatedJSON'
+                     },
+  'IsRequired' => {
+                    'UnvalidatedJSON' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

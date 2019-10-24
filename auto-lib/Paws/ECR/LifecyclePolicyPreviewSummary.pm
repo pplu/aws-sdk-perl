@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::ECR::LifecyclePolicyPreviewSummary;
-  use Moose;
-  has ExpiringImageTotalCount => (is => 'ro', isa => 'Int', request_name => 'expiringImageTotalCount', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ECR::Types qw//;
+  has ExpiringImageTotalCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExpiringImageTotalCount' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'NameInRequest' => {
+                       'ExpiringImageTotalCount' => 'expiringImageTotalCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

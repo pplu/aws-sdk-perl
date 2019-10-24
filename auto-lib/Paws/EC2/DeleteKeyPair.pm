@@ -12,7 +12,7 @@ package Paws::EC2::DeleteKeyPair;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DryRun' => {
@@ -24,11 +24,14 @@ package Paws::EC2::DeleteKeyPair;
              },
   'NameInRequest' => {
                        'DryRun' => 'dryRun'
-                     }
+                     },
+  'IsRequired' => {
+                    'KeyName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

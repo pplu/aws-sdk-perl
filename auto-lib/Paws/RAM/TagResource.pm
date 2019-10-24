@@ -1,15 +1,42 @@
 
 package Paws::RAM::TagResource;
-  use Moose;
-  has ResourceShareArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareArn', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Tag]', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RAM::Types qw/RAM_Tag/;
+  has ResourceShareArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RAM_Tag], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/tagresource');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RAM::TagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/tagresource');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RAM::TagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Tags' => {
+                           'class' => 'Paws::RAM::Tag',
+                           'type' => 'ArrayRef[RAM_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ResourceShareArn' => 1,
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +80,7 @@ The Amazon Resource Name (ARN) of the resource share.
 
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RAM::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[RAM_Tag]
 
 One or more tags.
 

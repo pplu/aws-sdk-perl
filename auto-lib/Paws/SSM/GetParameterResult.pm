@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetParameterResult;
-  use Moose;
-  has Parameter => (is => 'ro', isa => 'Paws::SSM::Parameter');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_Parameter/;
+  has Parameter => (is => 'ro', isa => SSM_Parameter);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Parameter' => {
+                                'class' => 'Paws::SSM::Parameter',
+                                'type' => 'SSM_Parameter'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::SSM::GetParameterResult
 =head1 ATTRIBUTES
 
 
-=head2 Parameter => L<Paws::SSM::Parameter>
+=head2 Parameter => SSM_Parameter
 
 Information about a parameter.
 

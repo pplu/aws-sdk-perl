@@ -1,19 +1,65 @@
 
 package Paws::MediaPackageVod::CreatePackagingConfiguration;
-  use Moose;
-  has CmafPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::CmafPackage', traits => ['NameInRequest'], request_name => 'cmafPackage');
-  has DashPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::DashPackage', traits => ['NameInRequest'], request_name => 'dashPackage');
-  has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::HlsPackage', traits => ['NameInRequest'], request_name => 'hlsPackage');
-  has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
-  has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
-  has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_HlsPackage MediaPackageVod_DashPackage MediaPackageVod_MssPackage MediaPackageVod_CmafPackage/;
+  has CmafPackage => (is => 'ro', isa => MediaPackageVod_CmafPackage, predicate => 1);
+  has DashPackage => (is => 'ro', isa => MediaPackageVod_DashPackage, predicate => 1);
+  has HlsPackage => (is => 'ro', isa => MediaPackageVod_HlsPackage, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MssPackage => (is => 'ro', isa => MediaPackageVod_MssPackage, predicate => 1);
+  has PackagingGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePackagingConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/packaging_configurations');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaPackageVod::CreatePackagingConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePackagingConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/packaging_configurations');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaPackageVod::CreatePackagingConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MssPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::MssPackage',
+                                 'type' => 'MediaPackageVod_MssPackage'
+                               },
+               'CmafPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::CmafPackage',
+                                  'type' => 'MediaPackageVod_CmafPackage'
+                                },
+               'PackagingGroupId' => {
+                                       'type' => 'Str'
+                                     },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'HlsPackage' => {
+                                 'class' => 'Paws::MediaPackageVod::HlsPackage',
+                                 'type' => 'MediaPackageVod_HlsPackage'
+                               },
+               'DashPackage' => {
+                                  'class' => 'Paws::MediaPackageVod::DashPackage',
+                                  'type' => 'MediaPackageVod_DashPackage'
+                                }
+             },
+  'NameInRequest' => {
+                       'MssPackage' => 'mssPackage',
+                       'CmafPackage' => 'cmafPackage',
+                       'PackagingGroupId' => 'packagingGroupId',
+                       'Id' => 'id',
+                       'HlsPackage' => 'hlsPackage',
+                       'DashPackage' => 'dashPackage'
+                     },
+  'IsRequired' => {
+                    'PackagingGroupId' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -166,19 +212,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 CmafPackage => L<Paws::MediaPackageVod::CmafPackage>
+=head2 CmafPackage => MediaPackageVod_CmafPackage
 
 
 
 
 
-=head2 DashPackage => L<Paws::MediaPackageVod::DashPackage>
+=head2 DashPackage => MediaPackageVod_DashPackage
 
 
 
 
 
-=head2 HlsPackage => L<Paws::MediaPackageVod::HlsPackage>
+=head2 HlsPackage => MediaPackageVod_HlsPackage
 
 
 
@@ -190,7 +236,7 @@ The ID of the PackagingConfiguration.
 
 
 
-=head2 MssPackage => L<Paws::MediaPackageVod::MssPackage>
+=head2 MssPackage => MediaPackageVod_MssPackage
 
 
 

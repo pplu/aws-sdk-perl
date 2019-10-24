@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminSetUserMFAPreference;
-  use Moose;
-  has SMSMfaSettings => (is => 'ro', isa => 'Paws::CognitoIdp::SMSMfaSettingsType');
-  has SoftwareTokenMfaSettings => (is => 'ro', isa => 'Paws::CognitoIdp::SoftwareTokenMfaSettingsType');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_SMSMfaSettingsType CognitoIdp_SoftwareTokenMfaSettingsType/;
+  has SMSMfaSettings => (is => 'ro', isa => CognitoIdp_SMSMfaSettingsType, predicate => 1);
+  has SoftwareTokenMfaSettings => (is => 'ro', isa => CognitoIdp_SoftwareTokenMfaSettingsType, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminSetUserMFAPreference');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminSetUserMFAPreference');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminSetUserMFAPreferenceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'SMSMfaSettings' => {
+                                     'class' => 'Paws::CognitoIdp::SMSMfaSettingsType',
+                                     'type' => 'CognitoIdp_SMSMfaSettingsType'
+                                   },
+               'SoftwareTokenMfaSettings' => {
+                                               'class' => 'Paws::CognitoIdp::SoftwareTokenMfaSettingsType',
+                                               'type' => 'CognitoIdp_SoftwareTokenMfaSettingsType'
+                                             }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +81,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 SMSMfaSettings => L<Paws::CognitoIdp::SMSMfaSettingsType>
+=head2 SMSMfaSettings => CognitoIdp_SMSMfaSettingsType
 
 The SMS text message MFA settings.
 
 
 
-=head2 SoftwareTokenMfaSettings => L<Paws::CognitoIdp::SoftwareTokenMfaSettingsType>
+=head2 SoftwareTokenMfaSettings => CognitoIdp_SoftwareTokenMfaSettingsType
 
 The time-based one-time password software token MFA settings.
 

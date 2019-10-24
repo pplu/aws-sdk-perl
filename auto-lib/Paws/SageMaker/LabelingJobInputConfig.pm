@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobInputConfig;
-  use Moose;
-  has DataAttributes => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobDataAttributes');
-  has DataSource => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobDataSource', required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobDataSource SageMaker_LabelingJobDataAttributes/;
+  has DataAttributes => (is => 'ro', isa => SageMaker_LabelingJobDataAttributes);
+  has DataSource => (is => 'ro', isa => SageMaker_LabelingJobDataSource, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataSource' => {
+                                 'class' => 'Paws::SageMaker::LabelingJobDataSource',
+                                 'type' => 'SageMaker_LabelingJobDataSource'
+                               },
+               'DataAttributes' => {
+                                     'class' => 'Paws::SageMaker::LabelingJobDataAttributes',
+                                     'type' => 'SageMaker_LabelingJobDataAttributes'
+                                   }
+             },
+  'IsRequired' => {
+                    'DataSource' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +62,12 @@ Input configuration information for a labeling job.
 =head1 ATTRIBUTES
 
 
-=head2 DataAttributes => L<Paws::SageMaker::LabelingJobDataAttributes>
+=head2 DataAttributes => SageMaker_LabelingJobDataAttributes
 
   Attributes of the data specified by the customer.
 
 
-=head2 B<REQUIRED> DataSource => L<Paws::SageMaker::LabelingJobDataSource>
+=head2 B<REQUIRED> DataSource => SageMaker_LabelingJobDataSource
 
   The location of the input data.
 

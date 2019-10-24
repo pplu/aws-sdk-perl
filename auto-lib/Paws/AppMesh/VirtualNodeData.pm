@@ -1,10 +1,56 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualNodeData;
-  use Moose;
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualNodeStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has VirtualNodeName => (is => 'ro', isa => 'Str', request_name => 'virtualNodeName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_ResourceMetadata AppMesh_VirtualNodeStatus AppMesh_VirtualNodeSpec/;
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => AppMesh_ResourceMetadata, required => 1);
+  has Spec => (is => 'ro', isa => AppMesh_VirtualNodeSpec, required => 1);
+  has Status => (is => 'ro', isa => AppMesh_VirtualNodeStatus, required => 1);
+  has VirtualNodeName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::VirtualNodeSpec',
+                           'type' => 'AppMesh_VirtualNodeSpec'
+                         },
+               'Status' => {
+                             'class' => 'Paws::AppMesh::VirtualNodeStatus',
+                             'type' => 'AppMesh_VirtualNodeStatus'
+                           },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'VirtualNodeName' => {
+                                      'type' => 'Str'
+                                    },
+               'Metadata' => {
+                               'class' => 'Paws::AppMesh::ResourceMetadata',
+                               'type' => 'AppMesh_ResourceMetadata'
+                             }
+             },
+  'NameInRequest' => {
+                       'Spec' => 'spec',
+                       'Status' => 'status',
+                       'MeshName' => 'meshName',
+                       'VirtualNodeName' => 'virtualNodeName',
+                       'Metadata' => 'metadata'
+                     },
+  'IsRequired' => {
+                    'Spec' => 1,
+                    'Status' => 1,
+                    'MeshName' => 1,
+                    'VirtualNodeName' => 1,
+                    'Metadata' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,17 +91,17 @@ An object representing a virtual node returned by a describe operation.
   The name of the service mesh that the virtual node resides in.
 
 
-=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => AppMesh_ResourceMetadata
 
   The associated metadata for the virtual node.
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualNodeSpec>
+=head2 B<REQUIRED> Spec => AppMesh_VirtualNodeSpec
 
   The specifications of the virtual node.
 
 
-=head2 B<REQUIRED> Status => L<Paws::AppMesh::VirtualNodeStatus>
+=head2 B<REQUIRED> Status => AppMesh_VirtualNodeStatus
 
   The current status for the virtual node.
 

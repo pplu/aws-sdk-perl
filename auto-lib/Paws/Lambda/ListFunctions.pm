@@ -1,17 +1,47 @@
 
 package Paws::Lambda::ListFunctions;
-  use Moose;
-  has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionVersion');
-  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker');
-  has MasterRegion => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MasterRegion');
-  has MaxItems => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxItems');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Lambda::Types qw//;
+  has FunctionVersion => (is => 'ro', isa => Str, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has MasterRegion => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListFunctions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListFunctionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListFunctions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::ListFunctionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'MasterRegion' => {
+                                   'type' => 'Str'
+                                 },
+               'FunctionVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'ParamInQuery' => {
+                      'MaxItems' => 'MaxItems',
+                      'MasterRegion' => 'MasterRegion',
+                      'FunctionVersion' => 'FunctionVersion',
+                      'Marker' => 'Marker'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

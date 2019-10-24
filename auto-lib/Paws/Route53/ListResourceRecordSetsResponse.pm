@@ -1,14 +1,53 @@
 
 package Paws::Route53::ListResourceRecordSetsResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has NextRecordIdentifier => (is => 'ro', isa => 'Str');
-  has NextRecordName => (is => 'ro', isa => 'Str');
-  has NextRecordType => (is => 'ro', isa => 'Str');
-  has ResourceRecordSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecordSet]', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Route53::Types qw/Route53_ResourceRecordSet/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has NextRecordIdentifier => (is => 'ro', isa => Str);
+  has NextRecordName => (is => 'ro', isa => Str);
+  has NextRecordType => (is => 'ro', isa => Str);
+  has ResourceRecordSets => (is => 'ro', isa => ArrayRef[Route53_ResourceRecordSet], required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextRecordName' => {
+                                     'type' => 'Str'
+                                   },
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'ResourceRecordSets' => {
+                                         'class' => 'Paws::Route53::ResourceRecordSet',
+                                         'type' => 'ArrayRef[Route53_ResourceRecordSet]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextRecordIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'NextRecordType' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'ResourceRecordSets' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +102,7 @@ This element is present only if C<IsTruncated> is true.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
 
-=head2 B<REQUIRED> ResourceRecordSets => ArrayRef[L<Paws::Route53::ResourceRecordSet>]
+=head2 B<REQUIRED> ResourceRecordSets => ArrayRef[Route53_ResourceRecordSet]
 
 Information about multiple resource record sets.
 

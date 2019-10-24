@@ -1,22 +1,111 @@
+# Generated from default/object.tt
 package Paws::Robomaker::SimulationJob;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
-  has FailureBehavior => (is => 'ro', isa => 'Str', request_name => 'failureBehavior', traits => ['NameInRequest']);
-  has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has IamRole => (is => 'ro', isa => 'Str', request_name => 'iamRole', traits => ['NameInRequest']);
-  has LastStartedAt => (is => 'ro', isa => 'Str', request_name => 'lastStartedAt', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'maxJobDurationInSeconds', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', request_name => 'outputLocation', traits => ['NameInRequest']);
-  has RobotApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationConfig]', request_name => 'robotApplications', traits => ['NameInRequest']);
-  has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', request_name => 'simulationApplications', traits => ['NameInRequest']);
-  has SimulationTimeMillis => (is => 'ro', isa => 'Int', request_name => 'simulationTimeMillis', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', request_name => 'tags', traits => ['NameInRequest']);
-  has VpcConfig => (is => 'ro', isa => 'Paws::Robomaker::VPCConfigResponse', request_name => 'vpcConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_RobotApplicationConfig Robomaker_VPCConfigResponse Robomaker_OutputLocation Robomaker_SimulationApplicationConfig Robomaker_TagMap/;
+  has Arn => (is => 'ro', isa => Str);
+  has ClientRequestToken => (is => 'ro', isa => Str);
+  has FailureBehavior => (is => 'ro', isa => Str);
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has IamRole => (is => 'ro', isa => Str);
+  has LastStartedAt => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has MaxJobDurationInSeconds => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str);
+  has OutputLocation => (is => 'ro', isa => Robomaker_OutputLocation);
+  has RobotApplications => (is => 'ro', isa => ArrayRef[Robomaker_RobotApplicationConfig]);
+  has SimulationApplications => (is => 'ro', isa => ArrayRef[Robomaker_SimulationApplicationConfig]);
+  has SimulationTimeMillis => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
+  has VpcConfig => (is => 'ro', isa => Robomaker_VPCConfigResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SimulationApplications' => {
+                                             'class' => 'Paws::Robomaker::SimulationApplicationConfig',
+                                             'type' => 'ArrayRef[Robomaker_SimulationApplicationConfig]'
+                                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OutputLocation' => {
+                                     'class' => 'Paws::Robomaker::OutputLocation',
+                                     'type' => 'Robomaker_OutputLocation'
+                                   },
+               'FailureBehavior' => {
+                                      'type' => 'Str'
+                                    },
+               'LastStartedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'SimulationTimeMillis' => {
+                                           'type' => 'Int'
+                                         },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                },
+               'VpcConfig' => {
+                                'class' => 'Paws::Robomaker::VPCConfigResponse',
+                                'type' => 'Robomaker_VPCConfigResponse'
+                              },
+               'RobotApplications' => {
+                                        'class' => 'Paws::Robomaker::RobotApplicationConfig',
+                                        'type' => 'ArrayRef[Robomaker_RobotApplicationConfig]'
+                                      },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'IamRole' => {
+                              'type' => 'Str'
+                            },
+               'MaxJobDurationInSeconds' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'NameInRequest' => {
+                       'SimulationApplications' => 'simulationApplications',
+                       'Status' => 'status',
+                       'OutputLocation' => 'outputLocation',
+                       'FailureBehavior' => 'failureBehavior',
+                       'LastStartedAt' => 'lastStartedAt',
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'FailureReason' => 'failureReason',
+                       'Arn' => 'arn',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'SimulationTimeMillis' => 'simulationTimeMillis',
+                       'FailureCode' => 'failureCode',
+                       'VpcConfig' => 'vpcConfig',
+                       'RobotApplications' => 'robotApplications',
+                       'Tags' => 'tags',
+                       'Name' => 'name',
+                       'IamRole' => 'iamRole',
+                       'MaxJobDurationInSeconds' => 'maxJobDurationInSeconds'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -120,17 +209,17 @@ days (691,200 seconds) or less.
   The name of the simulation job.
 
 
-=head2 OutputLocation => L<Paws::Robomaker::OutputLocation>
+=head2 OutputLocation => Robomaker_OutputLocation
 
   Location for output files generated by the simulation job.
 
 
-=head2 RobotApplications => ArrayRef[L<Paws::Robomaker::RobotApplicationConfig>]
+=head2 RobotApplications => ArrayRef[Robomaker_RobotApplicationConfig]
 
   A list of robot applications.
 
 
-=head2 SimulationApplications => ArrayRef[L<Paws::Robomaker::SimulationApplicationConfig>]
+=head2 SimulationApplications => ArrayRef[Robomaker_SimulationApplicationConfig]
 
   A list of simulation applications.
 
@@ -145,13 +234,13 @@ days (691,200 seconds) or less.
   Status of the simulation job.
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
   A map that contains tag keys and tag values that are attached to the
 simulation job.
 
 
-=head2 VpcConfig => L<Paws::Robomaker::VPCConfigResponse>
+=head2 VpcConfig => Robomaker_VPCConfigResponse
 
   VPC configuration information.
 

@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::DomainSummary;
-  use Moose;
-  has AutoRenew => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expiry => (is => 'ro', isa => 'Str');
-  has TransferLock => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::Route53Domains::Types qw//;
+  has AutoRenew => (is => 'ro', isa => Bool);
+  has DomainName => (is => 'ro', isa => Str, required => 1);
+  has Expiry => (is => 'ro', isa => Str);
+  has TransferLock => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Expiry' => {
+                             'type' => 'Str'
+                           },
+               'AutoRenew' => {
+                                'type' => 'Bool'
+                              },
+               'TransferLock' => {
+                                   'type' => 'Bool'
+                                 },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

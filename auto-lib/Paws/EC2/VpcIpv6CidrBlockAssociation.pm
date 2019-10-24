@@ -5,7 +5,7 @@ package Paws::EC2::VpcIpv6CidrBlockAssociation;
   has Ipv6CidrBlock => (is => 'ro', isa => Str);
   has Ipv6CidrBlockState => (is => 'ro', isa => EC2_VpcCidrBlockState);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Ipv6CidrBlockState' => {
@@ -26,8 +26,8 @@ package Paws::EC2::VpcIpv6CidrBlockAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

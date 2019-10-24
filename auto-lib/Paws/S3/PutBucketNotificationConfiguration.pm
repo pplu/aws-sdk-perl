@@ -27,6 +27,10 @@ use MooX::ClassAttribute;
              },
   'ParamInURI' => {
                     'Bucket' => 'Bucket'
+                  },
+  'IsRequired' => {
+                    'NotificationConfiguration' => 1,
+                    'Bucket' => 1
                   }
 }
 ;

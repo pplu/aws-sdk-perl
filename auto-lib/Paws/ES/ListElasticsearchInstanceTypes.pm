@@ -38,7 +38,10 @@ package Paws::ES::ListElasticsearchInstanceTypes;
                       'NextToken' => 'nextToken',
                       'DomainName' => 'domainName',
                       'MaxResults' => 'maxResults'
-                    }
+                    },
+  'IsRequired' => {
+                    'ElasticsearchVersion' => 1
+                  }
 }
 ;
     return $Params_map;

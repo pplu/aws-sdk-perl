@@ -1,14 +1,68 @@
+# Generated from default/object.tt
 package Paws::ECS::Cluster;
-  use Moose;
-  has ActiveServicesCount => (is => 'ro', isa => 'Int', request_name => 'activeServicesCount', traits => ['NameInRequest']);
-  has ClusterArn => (is => 'ro', isa => 'Str', request_name => 'clusterArn', traits => ['NameInRequest']);
-  has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
-  has PendingTasksCount => (is => 'ro', isa => 'Int', request_name => 'pendingTasksCount', traits => ['NameInRequest']);
-  has RegisteredContainerInstancesCount => (is => 'ro', isa => 'Int', request_name => 'registeredContainerInstancesCount', traits => ['NameInRequest']);
-  has RunningTasksCount => (is => 'ro', isa => 'Int', request_name => 'runningTasksCount', traits => ['NameInRequest']);
-  has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Tag ECS_KeyValuePair/;
+  has ActiveServicesCount => (is => 'ro', isa => Int);
+  has ClusterArn => (is => 'ro', isa => Str);
+  has ClusterName => (is => 'ro', isa => Str);
+  has PendingTasksCount => (is => 'ro', isa => Int);
+  has RegisteredContainerInstancesCount => (is => 'ro', isa => Int);
+  has RunningTasksCount => (is => 'ro', isa => Int);
+  has Statistics => (is => 'ro', isa => ArrayRef[ECS_KeyValuePair]);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Statistics' => {
+                                 'class' => 'Paws::ECS::KeyValuePair',
+                                 'type' => 'ArrayRef[ECS_KeyValuePair]'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ClusterArn' => {
+                                 'type' => 'Str'
+                               },
+               'PendingTasksCount' => {
+                                        'type' => 'Int'
+                                      },
+               'ClusterName' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         },
+               'RunningTasksCount' => {
+                                        'type' => 'Int'
+                                      },
+               'ActiveServicesCount' => {
+                                          'type' => 'Int'
+                                        },
+               'RegisteredContainerInstancesCount' => {
+                                                        'type' => 'Int'
+                                                      }
+             },
+  'NameInRequest' => {
+                       'Statistics' => 'statistics',
+                       'Status' => 'status',
+                       'ClusterArn' => 'clusterArn',
+                       'PendingTasksCount' => 'pendingTasksCount',
+                       'ClusterName' => 'clusterName',
+                       'Tags' => 'tags',
+                       'RunningTasksCount' => 'runningTasksCount',
+                       'ActiveServicesCount' => 'activeServicesCount',
+                       'RegisteredContainerInstancesCount' => 'registeredContainerInstancesCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -84,7 +138,7 @@ includes container instances in both C<ACTIVE> and C<DRAINING> status.
   The number of tasks in the cluster that are in the C<RUNNING> state.
 
 
-=head2 Statistics => ArrayRef[L<Paws::ECS::KeyValuePair>]
+=head2 Statistics => ArrayRef[ECS_KeyValuePair]
 
   Additional information about your clusters that are separated by launch
 type, including:
@@ -135,7 +189,7 @@ instances with the cluster and the associated instances can accept
 tasks.
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
   The metadata that you apply to the cluster to help you categorize and
 organize them. Each tag consists of a key and an optional value, both

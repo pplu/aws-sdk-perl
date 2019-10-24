@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage;
-  use Moose;
-  has SolutionStackDetails => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::SolutionStackDescription]');
-  has SolutionStacks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_SolutionStackDescription/;
+  has SolutionStackDetails => (is => 'ro', isa => ArrayRef[ElasticBeanstalk_SolutionStackDescription]);
+  has SolutionStacks => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SolutionStacks' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'SolutionStackDetails' => {
+                                           'class' => 'Paws::ElasticBeanstalk::SolutionStackDescription',
+                                           'type' => 'ArrayRef[ElasticBeanstalk_SolutionStackDescription]'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +38,7 @@ Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage
 =head1 ATTRIBUTES
 
 
-=head2 SolutionStackDetails => ArrayRef[L<Paws::ElasticBeanstalk::SolutionStackDescription>]
+=head2 SolutionStackDetails => ArrayRef[ElasticBeanstalk_SolutionStackDescription]
 
 A list of available solution stacks and their SolutionStackDescription.
 

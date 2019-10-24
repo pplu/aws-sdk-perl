@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::BillingRecord;
-  use Moose;
-  has BillDate => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
-  has InvoiceId => (is => 'ro', isa => 'Str');
-  has Operation => (is => 'ro', isa => 'Str');
-  has Price => (is => 'ro', isa => 'Num');
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Route53Domains::Types qw//;
+  has BillDate => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has InvoiceId => (is => 'ro', isa => Str);
+  has Operation => (is => 'ro', isa => Str);
+  has Price => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InvoiceId' => {
+                                'type' => 'Str'
+                              },
+               'BillDate' => {
+                               'type' => 'Str'
+                             },
+               'Price' => {
+                            'type' => 'Num'
+                          },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Operation' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

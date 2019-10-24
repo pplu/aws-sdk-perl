@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchGetObjectAttributes;
-  use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
-  has SchemaFacet => (is => 'ro', isa => 'Paws::CloudDirectory::SchemaFacet', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet CloudDirectory_ObjectReference/;
+  has AttributeNames => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+  has SchemaFacet => (is => 'ro', isa => CloudDirectory_SchemaFacet, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeNames' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    },
+               'SchemaFacet' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'CloudDirectory_SchemaFacet'
+                                }
+             },
+  'IsRequired' => {
+                    'AttributeNames' => 1,
+                    'ObjectReference' => 1,
+                    'SchemaFacet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -45,13 +75,13 @@ GetObjectAttributes and BatchReadRequest$Operations.
   List of attribute names whose values will be retrieved.
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   Reference that identifies the object whose attributes will be
 retrieved.
 
 
-=head2 B<REQUIRED> SchemaFacet => L<Paws::CloudDirectory::SchemaFacet>
+=head2 B<REQUIRED> SchemaFacet => CloudDirectory_SchemaFacet
 
   Identifier for the facet whose attributes will be retrieved. See
 SchemaFacet for details.

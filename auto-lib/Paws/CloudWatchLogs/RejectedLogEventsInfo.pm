@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudWatchLogs::RejectedLogEventsInfo;
-  use Moose;
-  has ExpiredLogEventEndIndex => (is => 'ro', isa => 'Int', request_name => 'expiredLogEventEndIndex', traits => ['NameInRequest']);
-  has TooNewLogEventStartIndex => (is => 'ro', isa => 'Int', request_name => 'tooNewLogEventStartIndex', traits => ['NameInRequest']);
-  has TooOldLogEventEndIndex => (is => 'ro', isa => 'Int', request_name => 'tooOldLogEventEndIndex', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CloudWatchLogs::Types qw//;
+  has ExpiredLogEventEndIndex => (is => 'ro', isa => Int);
+  has TooNewLogEventStartIndex => (is => 'ro', isa => Int);
+  has TooOldLogEventEndIndex => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TooNewLogEventStartIndex' => {
+                                               'type' => 'Int'
+                                             },
+               'ExpiredLogEventEndIndex' => {
+                                              'type' => 'Int'
+                                            },
+               'TooOldLogEventEndIndex' => {
+                                             'type' => 'Int'
+                                           }
+             },
+  'NameInRequest' => {
+                       'TooNewLogEventStartIndex' => 'tooNewLogEventStartIndex',
+                       'ExpiredLogEventEndIndex' => 'expiredLogEventEndIndex',
+                       'TooOldLogEventEndIndex' => 'tooOldLogEventEndIndex'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

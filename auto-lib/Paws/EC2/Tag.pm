@@ -4,7 +4,7 @@ package Paws::EC2::Tag;
   has Key => (is => 'ro', isa => Str);
   has Value => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Value' => {
@@ -20,8 +20,8 @@ package Paws::EC2::Tag;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

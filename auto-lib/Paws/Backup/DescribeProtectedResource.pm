@@ -1,14 +1,35 @@
 
 package Paws::Backup::DescribeProtectedResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceArn', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeProtectedResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/resources/{resourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Backup::DescribeProtectedResourceOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeProtectedResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/resources/{resourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Backup::DescribeProtectedResourceOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ResourceArn' => 'resourceArn'
+                  },
+  'IsRequired' => {
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

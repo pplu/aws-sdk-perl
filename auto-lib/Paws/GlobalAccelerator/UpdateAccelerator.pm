@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GlobalAccelerator::UpdateAccelerator;
-  use Moose;
-  has AcceleratorArn => (is => 'ro', isa => 'Str', required => 1);
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has IpAddressType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::GlobalAccelerator::Types qw//;
+  has AcceleratorArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Enabled => (is => 'ro', isa => Bool, predicate => 1);
+  has IpAddressType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccelerator');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GlobalAccelerator::UpdateAcceleratorResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAccelerator');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GlobalAccelerator::UpdateAcceleratorResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AcceleratorArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'IpAddressType' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'AcceleratorArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

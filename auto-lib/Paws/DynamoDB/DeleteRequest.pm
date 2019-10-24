@@ -1,21 +1,25 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::DeleteRequest;
   use Moo;
   use Types::Standard qw//;
   use Paws::DynamoDB::Types qw/DynamoDB_Key/;
   has Key => (is => 'ro', isa => DynamoDB_Key, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Key' => {
                           'class' => 'Paws::DynamoDB::Key',
                           'type' => 'DynamoDB_Key'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'Key' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

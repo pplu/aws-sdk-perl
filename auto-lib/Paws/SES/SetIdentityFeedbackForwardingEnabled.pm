@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SetIdentityFeedbackForwardingEnabled;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::SES::SetIdentityFeedbackForwardingEnabled;
                'Identity' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'ForwardingEnabled' => 1,
+                    'Identity' => 1
+                  }
 }
 ;
     return $Params_map;

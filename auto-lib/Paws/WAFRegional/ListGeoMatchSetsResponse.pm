@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListGeoMatchSetsResponse;
-  use Moose;
-  has GeoMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::GeoMatchSetSummary]');
-  has NextMarker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_GeoMatchSetSummary/;
+  has GeoMatchSets => (is => 'ro', isa => ArrayRef[WAFRegional_GeoMatchSetSummary]);
+  has NextMarker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'GeoMatchSets' => {
+                                   'class' => 'Paws::WAFRegional::GeoMatchSetSummary',
+                                   'type' => 'ArrayRef[WAFRegional_GeoMatchSetSummary]'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::WAFRegional::ListGeoMatchSetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 GeoMatchSets => ArrayRef[L<Paws::WAFRegional::GeoMatchSetSummary>]
+=head2 GeoMatchSets => ArrayRef[WAFRegional_GeoMatchSetSummary]
 
 An array of GeoMatchSetSummary objects.
 

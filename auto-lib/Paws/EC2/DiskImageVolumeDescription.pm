@@ -4,7 +4,7 @@ package Paws::EC2::DiskImageVolumeDescription;
   has Id => (is => 'ro', isa => Str);
   has Size => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Size' => {
@@ -20,8 +20,8 @@ package Paws::EC2::DiskImageVolumeDescription;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

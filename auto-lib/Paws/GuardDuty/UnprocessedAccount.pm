@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::UnprocessedAccount;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
-  has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1);
+  has Result => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Result' => {
+                             'type' => 'Str'
+                           },
+               'AccountId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Result' => 'result',
+                       'AccountId' => 'accountId'
+                     },
+  'IsRequired' => {
+                    'Result' => 1,
+                    'AccountId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

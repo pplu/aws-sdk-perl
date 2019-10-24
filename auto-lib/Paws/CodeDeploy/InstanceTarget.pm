@@ -1,12 +1,57 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::InstanceTarget;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has InstanceLabel => (is => 'ro', isa => 'Str', request_name => 'instanceLabel', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest']);
-  has TargetId => (is => 'ro', isa => 'Str', request_name => 'targetId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_LifecycleEvent/;
+  has DeploymentId => (is => 'ro', isa => Str);
+  has InstanceLabel => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LifecycleEvents => (is => 'ro', isa => ArrayRef[CodeDeploy_LifecycleEvent]);
+  has Status => (is => 'ro', isa => Str);
+  has TargetArn => (is => 'ro', isa => Str);
+  has TargetId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'TargetArn' => {
+                                'type' => 'Str'
+                              },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'LifecycleEvents' => {
+                                      'class' => 'Paws::CodeDeploy::LifecycleEvent',
+                                      'type' => 'ArrayRef[CodeDeploy_LifecycleEvent]'
+                                    },
+               'InstanceLabel' => {
+                                    'type' => 'Str'
+                                  },
+               'TargetId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'TargetArn' => 'targetArn',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'DeploymentId' => 'deploymentId',
+                       'LifecycleEvents' => 'lifecycleEvents',
+                       'InstanceLabel' => 'instanceLabel',
+                       'TargetId' => 'targetId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +104,7 @@ uses the EC2/On-premises compute platform.
   The date and time when the target instance was updated by a deployment.
 
 
-=head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
+=head2 LifecycleEvents => ArrayRef[CodeDeploy_LifecycleEvent]
 
   The lifecycle events of the deployment to this target instance.
 

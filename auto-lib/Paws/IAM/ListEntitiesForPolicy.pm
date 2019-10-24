@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListEntitiesForPolicy;
   use Moo;
@@ -37,7 +38,10 @@ package Paws::IAM::ListEntitiesForPolicy;
                'Marker' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'PolicyArn' => 1
+                  }
 }
 ;
     return $Params_map;

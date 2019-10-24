@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::FSX::DeleteFileSystemWindowsConfiguration;
-  use Moose;
-  has FinalBackupTags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
-  has SkipFinalBackup => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool/;
+  use Paws::FSX::Types qw/FSX_Tag/;
+  has FinalBackupTags => (is => 'ro', isa => ArrayRef[FSX_Tag]);
+  has SkipFinalBackup => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SkipFinalBackup' => {
+                                      'type' => 'Bool'
+                                    },
+               'FinalBackupTags' => {
+                                      'class' => 'Paws::FSX::Tag',
+                                      'type' => 'ArrayRef[FSX_Tag]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ the C<DeleteFileSystem> operation.
 =head1 ATTRIBUTES
 
 
-=head2 FinalBackupTags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 FinalBackupTags => ArrayRef[FSX_Tag]
 
   A set of tags for your final backup.
 

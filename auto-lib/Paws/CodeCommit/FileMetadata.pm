@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::FileMetadata;
-  use Moose;
-  has AbsolutePath => (is => 'ro', isa => 'Str', request_name => 'absolutePath', traits => ['NameInRequest']);
-  has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
-  has FileMode => (is => 'ro', isa => 'Str', request_name => 'fileMode', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has AbsolutePath => (is => 'ro', isa => Str);
+  has BlobId => (is => 'ro', isa => Str);
+  has FileMode => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FileMode' => {
+                               'type' => 'Str'
+                             },
+               'AbsolutePath' => {
+                                   'type' => 'Str'
+                                 },
+               'BlobId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'FileMode' => 'fileMode',
+                       'AbsolutePath' => 'absolutePath',
+                       'BlobId' => 'blobId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

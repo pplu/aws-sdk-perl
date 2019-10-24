@@ -1,29 +1,100 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::SendCommand;
-  use Moose;
-  has CloudWatchOutputConfig => (is => 'ro', isa => 'Paws::SSM::CloudWatchOutputConfig');
-  has Comment => (is => 'ro', isa => 'Str');
-  has DocumentHash => (is => 'ro', isa => 'Str');
-  has DocumentHashType => (is => 'ro', isa => 'Str');
-  has DocumentName => (is => 'ro', isa => 'Str', required => 1);
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxConcurrency => (is => 'ro', isa => 'Str');
-  has MaxErrors => (is => 'ro', isa => 'Str');
-  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
-  has OutputS3BucketName => (is => 'ro', isa => 'Str');
-  has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has OutputS3Region => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has TimeoutSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::SSM::Types qw/SSM_Target SSM_NotificationConfig SSM_Parameters SSM_CloudWatchOutputConfig/;
+  has CloudWatchOutputConfig => (is => 'ro', isa => SSM_CloudWatchOutputConfig, predicate => 1);
+  has Comment => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentHash => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentHashType => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DocumentVersion => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has MaxConcurrency => (is => 'ro', isa => Str, predicate => 1);
+  has MaxErrors => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationConfig => (is => 'ro', isa => SSM_NotificationConfig, predicate => 1);
+  has OutputS3BucketName => (is => 'ro', isa => Str, predicate => 1);
+  has OutputS3KeyPrefix => (is => 'ro', isa => Str, predicate => 1);
+  has OutputS3Region => (is => 'ro', isa => Str, predicate => 1);
+  has Parameters => (is => 'ro', isa => SSM_Parameters, predicate => 1);
+  has ServiceRoleArn => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], predicate => 1);
+  has TimeoutSeconds => (is => 'ro', isa => Int, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendCommand');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::SendCommandResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SendCommand');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::SendCommandResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputS3Region' => {
+                                     'type' => 'Str'
+                                   },
+               'DocumentName' => {
+                                   'type' => 'Str'
+                                 },
+               'TimeoutSeconds' => {
+                                     'type' => 'Int'
+                                   },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'DocumentHashType' => {
+                                       'type' => 'Str'
+                                     },
+               'OutputS3BucketName' => {
+                                         'type' => 'Str'
+                                       },
+               'OutputS3KeyPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'DocumentHash' => {
+                                   'type' => 'Str'
+                                 },
+               'CloudWatchOutputConfig' => {
+                                             'class' => 'Paws::SSM::CloudWatchOutputConfig',
+                                             'type' => 'SSM_CloudWatchOutputConfig'
+                                           },
+               'MaxErrors' => {
+                                'type' => 'Str'
+                              },
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::Parameters',
+                                 'type' => 'SSM_Parameters'
+                               },
+               'NotificationConfig' => {
+                                         'class' => 'Paws::SSM::NotificationConfig',
+                                         'type' => 'SSM_NotificationConfig'
+                                       },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'MaxConcurrency' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'DocumentName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +163,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 CloudWatchOutputConfig => L<Paws::SSM::CloudWatchOutputConfig>
+=head2 CloudWatchOutputConfig => SSM_CloudWatchOutputConfig
 
 Enables Systems Manager to send Run Command output to Amazon CloudWatch
 Logs.
@@ -182,7 +253,7 @@ in the I<AWS Systems Manager User Guide>.
 
 
 
-=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+=head2 NotificationConfig => SSM_NotificationConfig
 
 Configurations for sending notifications.
 
@@ -210,7 +281,7 @@ Amazon S3 bucket region.
 
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => SSM_Parameters
 
 The required and optional parameters specified in the document being
 run.
@@ -225,7 +296,7 @@ commands.
 
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 (Optional) An array of search criteria that targets instances using a
 Key,Value combination that you specify. Targets is required if you

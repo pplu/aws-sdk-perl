@@ -12,7 +12,7 @@ package Paws::EC2::AssociateIamInstanceProfile;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::AssociateIamInstanceProfileResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -22,11 +22,15 @@ package Paws::EC2::AssociateIamInstanceProfile;
                                          'class' => 'Paws::EC2::IamInstanceProfileSpecification',
                                          'type' => 'EC2_IamInstanceProfileSpecification'
                                        }
-             }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'IamInstanceProfile' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

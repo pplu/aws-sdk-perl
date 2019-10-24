@@ -1,10 +1,31 @@
 
 package Paws::Chime::ListPhoneNumbersResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::Chime::PhoneNumber]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_PhoneNumber/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PhoneNumbers => (is => 'ro', isa => ArrayRef[Chime_PhoneNumber]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumbers' => {
+                                   'class' => 'Paws::Chime::PhoneNumber',
+                                   'type' => 'ArrayRef[Chime_PhoneNumber]'
+                                 },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +42,7 @@ Paws::Chime::ListPhoneNumbersResponse
 The token to use to retrieve the next page of results.
 
 
-=head2 PhoneNumbers => ArrayRef[L<Paws::Chime::PhoneNumber>]
+=head2 PhoneNumbers => ArrayRef[Chime_PhoneNumber]
 
 The phone number details.
 

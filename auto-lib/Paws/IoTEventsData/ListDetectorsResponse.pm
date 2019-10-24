@@ -1,10 +1,35 @@
 
 package Paws::IoTEventsData::ListDetectorsResponse;
-  use Moose;
-  has DetectorSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::DetectorSummary]', traits => ['NameInRequest'], request_name => 'detectorSummaries');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_DetectorSummary/;
+  has DetectorSummaries => (is => 'ro', isa => ArrayRef[IoTEventsData_DetectorSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'DetectorSummaries' => {
+                                        'class' => 'Paws::IoTEventsData::DetectorSummary',
+                                        'type' => 'ArrayRef[IoTEventsData_DetectorSummary]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'DetectorSummaries' => 'detectorSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::IoTEventsData::ListDetectorsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DetectorSummaries => ArrayRef[L<Paws::IoTEventsData::DetectorSummary>]
+=head2 DetectorSummaries => ArrayRef[IoTEventsData_DetectorSummary]
 
 A list of summary information about the detectors (instances).
 

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateServerCertificate;
   use Moo;
@@ -25,7 +26,10 @@ package Paws::IAM::UpdateServerCertificate;
                'NewPath' => {
                               'type' => 'Str'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'ServerCertificateName' => 1
+                  }
 }
 ;
     return $Params_map;

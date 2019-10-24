@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetCrawlerMetricsResponse;
-  use Moose;
-  has CrawlerMetricsList => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CrawlerMetrics]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glue::Types qw/Glue_CrawlerMetrics/;
+  has CrawlerMetricsList => (is => 'ro', isa => ArrayRef[Glue_CrawlerMetrics]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'CrawlerMetricsList' => {
+                                         'class' => 'Paws::Glue::CrawlerMetrics',
+                                         'type' => 'ArrayRef[Glue_CrawlerMetrics]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Glue::GetCrawlerMetricsResponse
 =head1 ATTRIBUTES
 
 
-=head2 CrawlerMetricsList => ArrayRef[L<Paws::Glue::CrawlerMetrics>]
+=head2 CrawlerMetricsList => ArrayRef[Glue_CrawlerMetrics]
 
 A list of metrics for the specified crawler.
 

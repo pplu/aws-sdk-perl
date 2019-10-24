@@ -1,16 +1,67 @@
 
 package Paws::LexRuntime::PostTextResponse;
-  use Moose;
-  has DialogState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dialogState');
-  has IntentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentName');
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message');
-  has MessageFormat => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'messageFormat');
-  has ResponseCard => (is => 'ro', isa => 'Paws::LexRuntime::ResponseCard', traits => ['NameInRequest'], request_name => 'responseCard');
-  has SessionAttributes => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'sessionAttributes');
-  has Slots => (is => 'ro', isa => 'Paws::LexRuntime::StringMap', traits => ['NameInRequest'], request_name => 'slots');
-  has SlotToElicit => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotToElicit');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexRuntime::Types qw/LexRuntime_StringMap LexRuntime_ResponseCard/;
+  has DialogState => (is => 'ro', isa => Str);
+  has IntentName => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has MessageFormat => (is => 'ro', isa => Str);
+  has ResponseCard => (is => 'ro', isa => LexRuntime_ResponseCard);
+  has SessionAttributes => (is => 'ro', isa => LexRuntime_StringMap);
+  has Slots => (is => 'ro', isa => LexRuntime_StringMap);
+  has SlotToElicit => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DialogState' => {
+                                  'type' => 'Str'
+                                },
+               'ResponseCard' => {
+                                   'class' => 'Paws::LexRuntime::ResponseCard',
+                                   'type' => 'LexRuntime_ResponseCard'
+                                 },
+               'MessageFormat' => {
+                                    'type' => 'Str'
+                                  },
+               'IntentName' => {
+                                 'type' => 'Str'
+                               },
+               'Slots' => {
+                            'class' => 'Paws::LexRuntime::StringMap',
+                            'type' => 'LexRuntime_StringMap'
+                          },
+               'SlotToElicit' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'SessionAttributes' => {
+                                        'class' => 'Paws::LexRuntime::StringMap',
+                                        'type' => 'LexRuntime_StringMap'
+                                      }
+             },
+  'NameInRequest' => {
+                       'DialogState' => 'dialogState',
+                       'ResponseCard' => 'responseCard',
+                       'MessageFormat' => 'messageFormat',
+                       'IntentName' => 'intentName',
+                       'Slots' => 'slots',
+                       'Message' => 'message',
+                       'SlotToElicit' => 'slotToElicit',
+                       'SessionAttributes' => 'sessionAttributes'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -141,7 +192,7 @@ when the intent was created.
 
 
 Valid values are: C<"PlainText">, C<"CustomPayload">, C<"SSML">, C<"Composite">
-=head2 ResponseCard => L<Paws::LexRuntime::ResponseCard>
+=head2 ResponseCard => LexRuntime_ResponseCard
 
 Represents the options that the user has to respond to the current
 prompt. Response Card can come from the bot configuration (in the
@@ -149,13 +200,13 @@ Amazon Lex console, choose the settings button next to a slot) or from
 a code hook (Lambda function).
 
 
-=head2 SessionAttributes => L<Paws::LexRuntime::StringMap>
+=head2 SessionAttributes => LexRuntime_StringMap
 
 A map of key-value pairs representing the session-specific context
 information.
 
 
-=head2 Slots => L<Paws::LexRuntime::StringMap>
+=head2 Slots => LexRuntime_StringMap
 
 The intent slots that Amazon Lex detected from the user input in the
 conversation.

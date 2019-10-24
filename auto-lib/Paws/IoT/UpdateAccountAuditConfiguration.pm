@@ -1,16 +1,44 @@
 
 package Paws::IoT::UpdateAccountAuditConfiguration;
-  use Moose;
-  has AuditCheckConfigurations => (is => 'ro', isa => 'Paws::IoT::AuditCheckConfigurations', traits => ['NameInRequest'], request_name => 'auditCheckConfigurations');
-  has AuditNotificationTargetConfigurations => (is => 'ro', isa => 'Paws::IoT::AuditNotificationTargetConfigurations', traits => ['NameInRequest'], request_name => 'auditNotificationTargetConfigurations');
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw/IoT_AuditCheckConfigurations IoT_AuditNotificationTargetConfigurations/;
+  has AuditCheckConfigurations => (is => 'ro', isa => IoT_AuditCheckConfigurations, predicate => 1);
+  has AuditNotificationTargetConfigurations => (is => 'ro', isa => IoT_AuditNotificationTargetConfigurations, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateAccountAuditConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/audit/configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::UpdateAccountAuditConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateAccountAuditConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/audit/configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT::UpdateAccountAuditConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'AuditNotificationTargetConfigurations' => {
+                                                            'class' => 'Paws::IoT::AuditNotificationTargetConfigurations',
+                                                            'type' => 'IoT_AuditNotificationTargetConfigurations'
+                                                          },
+               'AuditCheckConfigurations' => {
+                                               'class' => 'Paws::IoT::AuditCheckConfigurations',
+                                               'type' => 'IoT_AuditCheckConfigurations'
+                                             }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'AuditNotificationTargetConfigurations' => 'auditNotificationTargetConfigurations',
+                       'AuditCheckConfigurations' => 'auditCheckConfigurations'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +81,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 AuditCheckConfigurations => L<Paws::IoT::AuditCheckConfigurations>
+=head2 AuditCheckConfigurations => IoT_AuditCheckConfigurations
 
 Specifies which audit checks are enabled and disabled for this account.
 Use C<DescribeAccountAuditConfiguration> to see the list of all checks
@@ -72,7 +100,7 @@ is required and must specify at least one enabled check.
 
 
 
-=head2 AuditNotificationTargetConfigurations => L<Paws::IoT::AuditNotificationTargetConfigurations>
+=head2 AuditNotificationTargetConfigurations => IoT_AuditNotificationTargetConfigurations
 
 Information about the targets to which audit notifications are sent.
 

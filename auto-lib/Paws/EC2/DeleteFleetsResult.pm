@@ -8,7 +8,7 @@ package Paws::EC2::DeleteFleetsResult;
   has UnsuccessfulFleetDeletions => (is => 'ro', isa => ArrayRef[EC2_DeleteFleetErrorItem]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'UnsuccessfulFleetDeletions' => {
@@ -29,8 +29,8 @@ package Paws::EC2::DeleteFleetsResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

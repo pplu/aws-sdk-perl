@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::InputCaptions;
-  use Moose;
-  has CaptionSources => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CaptionSource]');
-  has MergePolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_CaptionSource/;
+  has CaptionSources => (is => 'ro', isa => ArrayRef[ElasticTranscoder_CaptionSource]);
+  has MergePolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CaptionSources' => {
+                                     'class' => 'Paws::ElasticTranscoder::CaptionSource',
+                                     'type' => 'ArrayRef[ElasticTranscoder_CaptionSource]'
+                                   },
+               'MergePolicy' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ The captions to be created, if any.
 =head1 ATTRIBUTES
 
 
-=head2 CaptionSources => ArrayRef[L<Paws::ElasticTranscoder::CaptionSource>]
+=head2 CaptionSources => ArrayRef[ElasticTranscoder_CaptionSource]
 
   Source files for the input sidecar captions used during the transcoding
 process. To omit all sidecar captions, leave C<CaptionSources> blank.

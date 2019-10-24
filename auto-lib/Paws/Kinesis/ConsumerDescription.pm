@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Kinesis::ConsumerDescription;
-  use Moose;
-  has ConsumerARN => (is => 'ro', isa => 'Str', required => 1);
-  has ConsumerCreationTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has ConsumerName => (is => 'ro', isa => 'Str', required => 1);
-  has ConsumerStatus => (is => 'ro', isa => 'Str', required => 1);
-  has StreamARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has ConsumerARN => (is => 'ro', isa => Str, required => 1);
+  has ConsumerCreationTimestamp => (is => 'ro', isa => Str, required => 1);
+  has ConsumerName => (is => 'ro', isa => Str, required => 1);
+  has ConsumerStatus => (is => 'ro', isa => Str, required => 1);
+  has StreamARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StreamARN' => {
+                                'type' => 'Str'
+                              },
+               'ConsumerName' => {
+                                   'type' => 'Str'
+                                 },
+               'ConsumerARN' => {
+                                  'type' => 'Str'
+                                },
+               'ConsumerCreationTimestamp' => {
+                                                'type' => 'Str'
+                                              },
+               'ConsumerStatus' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'IsRequired' => {
+                    'StreamARN' => 1,
+                    'ConsumerName' => 1,
+                    'ConsumerARN' => 1,
+                    'ConsumerCreationTimestamp' => 1,
+                    'ConsumerStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

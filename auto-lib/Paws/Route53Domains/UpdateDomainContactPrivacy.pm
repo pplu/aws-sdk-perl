@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Route53Domains::UpdateDomainContactPrivacy;
-  use Moose;
-  has AdminPrivacy => (is => 'ro', isa => 'Bool');
-  has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has RegistrantPrivacy => (is => 'ro', isa => 'Bool');
-  has TechPrivacy => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Route53Domains::Types qw//;
+  has AdminPrivacy => (is => 'ro', isa => Bool, predicate => 1);
+  has DomainName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RegistrantPrivacy => (is => 'ro', isa => Bool, predicate => 1);
+  has TechPrivacy => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainContactPrivacy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateDomainContactPrivacyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateDomainContactPrivacy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53Domains::UpdateDomainContactPrivacyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TechPrivacy' => {
+                                  'type' => 'Bool'
+                                },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'RegistrantPrivacy' => {
+                                        'type' => 'Bool'
+                                      },
+               'AdminPrivacy' => {
+                                   'type' => 'Bool'
+                                 }
+             },
+  'IsRequired' => {
+                    'DomainName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

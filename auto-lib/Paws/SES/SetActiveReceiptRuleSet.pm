@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SetActiveReceiptRuleSet;
   use Moo;

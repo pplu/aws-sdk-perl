@@ -1,17 +1,54 @@
 
 package Paws::EKS::UpdateClusterConfig;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
-  has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', traits => ['NameInRequest'], request_name => 'logging');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigRequest', traits => ['NameInRequest'], request_name => 'resourcesVpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EKS::Types qw/EKS_Logging EKS_VpcConfigRequest/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has Logging => (is => 'ro', isa => EKS_Logging, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ResourcesVpcConfig => (is => 'ro', isa => EKS_VpcConfigRequest, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateClusterConfig');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/clusters/{name}/update-config');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EKS::UpdateClusterConfigResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateClusterConfig');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/clusters/{name}/update-config');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EKS::UpdateClusterConfigResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Logging' => {
+                              'class' => 'Paws::EKS::Logging',
+                              'type' => 'EKS_Logging'
+                            },
+               'ResourcesVpcConfig' => {
+                                         'class' => 'Paws::EKS::VpcConfigRequest',
+                                         'type' => 'EKS_VpcConfigRequest'
+                                       },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Logging' => 'logging',
+                       'ResourcesVpcConfig' => 'resourcesVpcConfig'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +109,7 @@ idempotency of the request.
 
 
 
-=head2 Logging => L<Paws::EKS::Logging>
+=head2 Logging => EKS_Logging
 
 Enable or disable exporting the Kubernetes control plane logs for your
 cluster to CloudWatch Logs. By default, cluster control plane logs
@@ -93,7 +130,7 @@ The name of the Amazon EKS cluster to update.
 
 
 
-=head2 ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>
+=head2 ResourcesVpcConfig => EKS_VpcConfigRequest
 
 
 

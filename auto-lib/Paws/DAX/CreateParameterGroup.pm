@@ -1,14 +1,36 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DAX::CreateParameterGroup;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DAX::Types qw//;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has ParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DAX::CreateParameterGroupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DAX::CreateParameterGroupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ParameterGroupName' => {
+                                         'type' => 'Str'
+                                       },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

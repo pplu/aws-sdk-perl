@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::IoT::AuthResult;
-  use Moose;
-  has Allowed => (is => 'ro', isa => 'Paws::IoT::Allowed', request_name => 'allowed', traits => ['NameInRequest']);
-  has AuthDecision => (is => 'ro', isa => 'Str', request_name => 'authDecision', traits => ['NameInRequest']);
-  has AuthInfo => (is => 'ro', isa => 'Paws::IoT::AuthInfo', request_name => 'authInfo', traits => ['NameInRequest']);
-  has Denied => (is => 'ro', isa => 'Paws::IoT::Denied', request_name => 'denied', traits => ['NameInRequest']);
-  has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'missingContextValues', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::IoT::Types qw/IoT_AuthInfo IoT_Denied IoT_Allowed/;
+  has Allowed => (is => 'ro', isa => IoT_Allowed);
+  has AuthDecision => (is => 'ro', isa => Str);
+  has AuthInfo => (is => 'ro', isa => IoT_AuthInfo);
+  has Denied => (is => 'ro', isa => IoT_Denied);
+  has MissingContextValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MissingContextValues' => {
+                                           'type' => 'ArrayRef[Str|Undef]'
+                                         },
+               'AuthInfo' => {
+                               'class' => 'Paws::IoT::AuthInfo',
+                               'type' => 'IoT_AuthInfo'
+                             },
+               'Denied' => {
+                             'class' => 'Paws::IoT::Denied',
+                             'type' => 'IoT_Denied'
+                           },
+               'Allowed' => {
+                              'class' => 'Paws::IoT::Allowed',
+                              'type' => 'IoT_Allowed'
+                            },
+               'AuthDecision' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'MissingContextValues' => 'missingContextValues',
+                       'AuthInfo' => 'authInfo',
+                       'Denied' => 'denied',
+                       'Allowed' => 'allowed',
+                       'AuthDecision' => 'authDecision'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +79,7 @@ The authorizer result.
 =head1 ATTRIBUTES
 
 
-=head2 Allowed => L<Paws::IoT::Allowed>
+=head2 Allowed => IoT_Allowed
 
   The policies and statements that allowed the specified action.
 
@@ -52,12 +91,12 @@ are taken into account when determining the authorization decision. An
 explicit deny statement can override multiple allow statements.
 
 
-=head2 AuthInfo => L<Paws::IoT::AuthInfo>
+=head2 AuthInfo => IoT_AuthInfo
 
   Authorization information.
 
 
-=head2 Denied => L<Paws::IoT::Denied>
+=head2 Denied => IoT_Denied
 
   The policies and statements that denied the specified action.
 

@@ -1,17 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::GetMergeOptions;
-  use Moose;
-  has ConflictDetailLevel => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictDetailLevel' );
-  has ConflictResolutionStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'conflictResolutionStrategy' );
-  has DestinationCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCommitSpecifier' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitSpecifier' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has ConflictDetailLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ConflictResolutionStrategy => (is => 'ro', isa => Str, predicate => 1);
+  has DestinationCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMergeOptions');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::GetMergeOptionsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMergeOptions');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::GetMergeOptionsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'DestinationCommitSpecifier' => {
+                                                 'type' => 'Str'
+                                               },
+               'ConflictDetailLevel' => {
+                                          'type' => 'Str'
+                                        },
+               'ConflictResolutionStrategy' => {
+                                                 'type' => 'Str'
+                                               },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'SourceCommitSpecifier' => 'sourceCommitSpecifier',
+                       'DestinationCommitSpecifier' => 'destinationCommitSpecifier',
+                       'ConflictDetailLevel' => 'conflictDetailLevel',
+                       'ConflictResolutionStrategy' => 'conflictResolutionStrategy',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'SourceCommitSpecifier' => 1,
+                    'DestinationCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

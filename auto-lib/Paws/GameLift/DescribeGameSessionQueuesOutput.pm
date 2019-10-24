@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::DescribeGameSessionQueuesOutput;
-  use Moose;
-  has GameSessionQueues => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameSessionQueue]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_GameSessionQueue/;
+  has GameSessionQueues => (is => 'ro', isa => ArrayRef[GameLift_GameSessionQueue]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GameSessionQueues' => {
+                                        'class' => 'Paws::GameLift::GameSessionQueue',
+                                        'type' => 'ArrayRef[GameLift_GameSessionQueue]'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::GameLift::DescribeGameSessionQueuesOutput
 =head1 ATTRIBUTES
 
 
-=head2 GameSessionQueues => ArrayRef[L<Paws::GameLift::GameSessionQueue>]
+=head2 GameSessionQueues => ArrayRef[GameLift_GameSessionQueue]
 
 Collection of objects that describes the requested game session queues.
 

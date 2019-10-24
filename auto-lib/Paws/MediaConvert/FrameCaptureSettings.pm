@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::FrameCaptureSettings;
-  use Moose;
-  has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
-  has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
-  has MaxCaptures => (is => 'ro', isa => 'Int', request_name => 'maxCaptures', traits => ['NameInRequest']);
-  has Quality => (is => 'ro', isa => 'Int', request_name => 'quality', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has FramerateDenominator => (is => 'ro', isa => Int);
+  has FramerateNumerator => (is => 'ro', isa => Int);
+  has MaxCaptures => (is => 'ro', isa => Int);
+  has Quality => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Quality' => {
+                              'type' => 'Int'
+                            },
+               'FramerateDenominator' => {
+                                           'type' => 'Int'
+                                         },
+               'MaxCaptures' => {
+                                  'type' => 'Int'
+                                },
+               'FramerateNumerator' => {
+                                         'type' => 'Int'
+                                       }
+             },
+  'NameInRequest' => {
+                       'Quality' => 'quality',
+                       'FramerateDenominator' => 'framerateDenominator',
+                       'MaxCaptures' => 'maxCaptures',
+                       'FramerateNumerator' => 'framerateNumerator'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

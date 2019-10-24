@@ -1,20 +1,84 @@
 
 package Paws::Pinpoint::SegmentResponse;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
-  has Dimensions => (is => 'ro', isa => 'Paws::Pinpoint::SegmentDimensions');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has ImportDefinition => (is => 'ro', isa => 'Paws::Pinpoint::SegmentImportResource');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SegmentGroups => (is => 'ro', isa => 'Paws::Pinpoint::SegmentGroupList');
-  has SegmentType => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_SegmentImportResource Pinpoint_SegmentGroupList Pinpoint_SegmentDimensions/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has Arn => (is => 'ro', isa => Str, required => 1);
+  has CreationDate => (is => 'ro', isa => Str, required => 1);
+  has Dimensions => (is => 'ro', isa => Pinpoint_SegmentDimensions);
+  has Id => (is => 'ro', isa => Str, required => 1);
+  has ImportDefinition => (is => 'ro', isa => Pinpoint_SegmentImportResource);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SegmentGroups => (is => 'ro', isa => Pinpoint_SegmentGroupList);
+  has SegmentType => (is => 'ro', isa => Str, required => 1);
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has Version => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SegmentGroups' => {
+                                    'class' => 'Paws::Pinpoint::SegmentGroupList',
+                                    'type' => 'Pinpoint_SegmentGroupList'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Dimensions' => {
+                                 'class' => 'Paws::Pinpoint::SegmentDimensions',
+                                 'type' => 'Pinpoint_SegmentDimensions'
+                               },
+               'ImportDefinition' => {
+                                       'class' => 'Paws::Pinpoint::SegmentImportResource',
+                                       'type' => 'Pinpoint_SegmentImportResource'
+                                     },
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'SegmentType' => {
+                                  'type' => 'Str'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'Id' => 1,
+                    'SegmentType' => 1,
+                    'CreationDate' => 1,
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +106,7 @@ The Amazon Resource Name (ARN) of the segment.
 The date and time when the segment was created.
 
 
-=head2 Dimensions => L<Paws::Pinpoint::SegmentDimensions>
+=head2 Dimensions => Pinpoint_SegmentDimensions
 
 The dimension settings for the segment.
 
@@ -52,7 +116,7 @@ The dimension settings for the segment.
 The unique identifier for the segment.
 
 
-=head2 ImportDefinition => L<Paws::Pinpoint::SegmentImportResource>
+=head2 ImportDefinition => Pinpoint_SegmentImportResource
 
 The settings for the import job that's associated with the segment.
 
@@ -67,7 +131,7 @@ The date and time when the segment was last modified.
 The name of the segment.
 
 
-=head2 SegmentGroups => L<Paws::Pinpoint::SegmentGroupList>
+=head2 SegmentGroups => Pinpoint_SegmentGroupList
 
 A list of one or more segment groups that apply to the segment. Each
 segment group consists of zero or more base segments and the dimensions
@@ -97,7 +161,7 @@ over time.
 
 
 Valid values are: C<"DIMENSIONAL">, C<"IMPORT">
-=head2 Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 Tags => Pinpoint_MapOf__string
 
 A string-to-string map of key-value pairs that identifies the tags that
 are associated with the segment. Each tag consists of a required tag

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::TrackListMessage;
-  use Moose;
-  has MaintenanceTracks => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::MaintenanceTrack]', request_name => 'MaintenanceTrack', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_MaintenanceTrack/;
+  has MaintenanceTracks => (is => 'ro', isa => ArrayRef[RedShift_MaintenanceTrack]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaintenanceTracks' => {
+                                        'class' => 'Paws::RedShift::MaintenanceTrack',
+                                        'type' => 'ArrayRef[RedShift_MaintenanceTrack]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'MaintenanceTracks' => 'MaintenanceTrack'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RedShift::TrackListMessage
 =head1 ATTRIBUTES
 
 
-=head2 MaintenanceTracks => ArrayRef[L<Paws::RedShift::MaintenanceTrack>]
+=head2 MaintenanceTracks => ArrayRef[RedShift_MaintenanceTrack]
 
 A list of maintenance tracks output by the C<DescribeClusterTracks>
 operation.

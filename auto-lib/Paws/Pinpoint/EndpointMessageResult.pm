@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::EndpointMessageResult;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has DeliveryStatus => (is => 'ro', isa => 'Str', required => 1);
-  has MessageId => (is => 'ro', isa => 'Str');
-  has StatusCode => (is => 'ro', isa => 'Int', required => 1);
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has UpdatedToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Pinpoint::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has DeliveryStatus => (is => 'ro', isa => Str, required => 1);
+  has MessageId => (is => 'ro', isa => Str);
+  has StatusCode => (is => 'ro', isa => Int, required => 1);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has UpdatedToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StatusCode' => {
+                                 'type' => 'Int'
+                               },
+               'DeliveryStatus' => {
+                                     'type' => 'Str'
+                                   },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'UpdatedToken' => {
+                                   'type' => 'Str'
+                                 },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'MessageId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'StatusCode' => 1,
+                    'DeliveryStatus' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

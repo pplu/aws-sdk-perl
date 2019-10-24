@@ -1,28 +1,112 @@
+# Generated from default/object.tt
 package Paws::OpsWorksCM::Server;
-  use Moose;
-  has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
-  has BackupRetentionCount => (is => 'ro', isa => 'Int');
-  has CloudFormationStackArn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Engine => (is => 'ro', isa => 'Str');
-  has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
-  has EngineModel => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceProfileArn => (is => 'ro', isa => 'Str');
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has KeyPair => (is => 'ro', isa => 'Str');
-  has MaintenanceStatus => (is => 'ro', isa => 'Str');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ServerArn => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str');
-  has ServiceRoleArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Bool Int Str ArrayRef Undef/;
+  use Paws::OpsWorksCM::Types qw/OpsWorksCM_EngineAttribute/;
+  has AssociatePublicIpAddress => (is => 'ro', isa => Bool);
+  has BackupRetentionCount => (is => 'ro', isa => Int);
+  has CloudFormationStackArn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DisableAutomatedBackup => (is => 'ro', isa => Bool);
+  has Endpoint => (is => 'ro', isa => Str);
+  has Engine => (is => 'ro', isa => Str);
+  has EngineAttributes => (is => 'ro', isa => ArrayRef[OpsWorksCM_EngineAttribute]);
+  has EngineModel => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has InstanceProfileArn => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has KeyPair => (is => 'ro', isa => Str);
+  has MaintenanceStatus => (is => 'ro', isa => Str);
+  has PreferredBackupWindow => (is => 'ro', isa => Str);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has ServerArn => (is => 'ro', isa => Str);
+  has ServerName => (is => 'ro', isa => Str);
+  has ServiceRoleArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CloudFormationStackArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'ServerArn' => {
+                                'type' => 'Str'
+                              },
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'EngineModel' => {
+                                  'type' => 'Str'
+                                },
+               'InstanceProfileArn' => {
+                                         'type' => 'Str'
+                                       },
+               'MaintenanceStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'ServiceRoleArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'AssociatePublicIpAddress' => {
+                                               'type' => 'Bool'
+                                             },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Engine' => {
+                             'type' => 'Str'
+                           },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRetentionCount' => {
+                                           'type' => 'Int'
+                                         },
+               'DisableAutomatedBackup' => {
+                                             'type' => 'Bool'
+                                           },
+               'KeyPair' => {
+                              'type' => 'Str'
+                            },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               },
+               'EngineAttributes' => {
+                                       'class' => 'Paws::OpsWorksCM::EngineAttribute',
+                                       'type' => 'ArrayRef[OpsWorksCM_EngineAttribute]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +180,7 @@ C<myserver-asdfghjkl.us-east-1.opsworks.io>
 C<ChefAutomate> and C<Puppet>.
 
 
-=head2 EngineAttributes => ArrayRef[L<Paws::OpsWorksCM::EngineAttribute>]
+=head2 EngineAttributes => ArrayRef[OpsWorksCM_EngineAttribute]
 
   The response of a createServer() request returns the master credential
 to access the server in EngineAttributes. These credentials are not

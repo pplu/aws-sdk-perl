@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudFront::ContentTypeProfileConfig;
-  use Moose;
-  has ContentTypeProfiles => (is => 'ro', isa => 'Paws::CloudFront::ContentTypeProfiles');
-  has ForwardWhenContentTypeIsUnknown => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::CloudFront::Types qw/CloudFront_ContentTypeProfiles/;
+  has ContentTypeProfiles => (is => 'ro', isa => CloudFront_ContentTypeProfiles);
+  has ForwardWhenContentTypeIsUnknown => (is => 'ro', isa => Bool, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContentTypeProfiles' => {
+                                          'class' => 'Paws::CloudFront::ContentTypeProfiles',
+                                          'type' => 'CloudFront_ContentTypeProfiles'
+                                        },
+               'ForwardWhenContentTypeIsUnknown' => {
+                                                      'type' => 'Bool'
+                                                    }
+             },
+  'IsRequired' => {
+                    'ForwardWhenContentTypeIsUnknown' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +62,7 @@ mapping.
 =head1 ATTRIBUTES
 
 
-=head2 ContentTypeProfiles => L<Paws::CloudFront::ContentTypeProfiles>
+=head2 ContentTypeProfiles => CloudFront_ContentTypeProfiles
 
   The configuration for a field-level encryption content type-profile.
 

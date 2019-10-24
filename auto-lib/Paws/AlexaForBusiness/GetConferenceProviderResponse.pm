@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::AlexaForBusiness::GetConferenceProviderResponse;
-  use Moose;
-  has ConferenceProvider => (is => 'ro', isa => 'Paws::AlexaForBusiness::ConferenceProvider');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_ConferenceProvider/;
+  has ConferenceProvider => (is => 'ro', isa => AlexaForBusiness_ConferenceProvider);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConferenceProvider' => {
+                                         'class' => 'Paws::AlexaForBusiness::ConferenceProvider',
+                                         'type' => 'AlexaForBusiness_ConferenceProvider'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::AlexaForBusiness::GetConferenceProviderResponse
 =head1 ATTRIBUTES
 
 
-=head2 ConferenceProvider => L<Paws::AlexaForBusiness::ConferenceProvider>
+=head2 ConferenceProvider => AlexaForBusiness_ConferenceProvider
 
 The conference provider.
 

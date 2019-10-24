@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::AutoScalingPlans::PredefinedLoadMetricSpecification;
-  use Moose;
-  has PredefinedLoadMetricType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScalingPlans::Types qw//;
+  has PredefinedLoadMetricType => (is => 'ro', isa => Str, required => 1);
+  has ResourceLabel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PredefinedLoadMetricType' => {
+                                               'type' => 'Str'
+                                             },
+               'ResourceLabel' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'PredefinedLoadMetricType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

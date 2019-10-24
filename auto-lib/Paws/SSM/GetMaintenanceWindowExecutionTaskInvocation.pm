@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetMaintenanceWindowExecutionTaskInvocation;
-  use Moose;
-  has InvocationId => (is => 'ro', isa => 'Str', required => 1);
-  has TaskId => (is => 'ro', isa => 'Str', required => 1);
-  has WindowExecutionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has InvocationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TaskId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WindowExecutionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetMaintenanceWindowExecutionTaskInvocation');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetMaintenanceWindowExecutionTaskInvocation');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetMaintenanceWindowExecutionTaskInvocationResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskId' => {
+                             'type' => 'Str'
+                           },
+               'WindowExecutionId' => {
+                                        'type' => 'Str'
+                                      },
+               'InvocationId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'TaskId' => 1,
+                    'WindowExecutionId' => 1,
+                    'InvocationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

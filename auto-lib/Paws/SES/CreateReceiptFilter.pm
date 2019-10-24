@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::CreateReceiptFilter;
   use Moo;
@@ -18,7 +19,10 @@ package Paws::SES::CreateReceiptFilter;
                              'class' => 'Paws::SES::ReceiptFilter',
                              'type' => 'SES_ReceiptFilter'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Filter' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,13 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::GetPersonTrackingResponse;
-  use Moose;
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Persons => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::PersonDetection]');
-  has StatusMessage => (is => 'ro', isa => 'Str');
-  has VideoMetadata => (is => 'ro', isa => 'Paws::Rekognition::VideoMetadata');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_PersonDetection Rekognition_VideoMetadata/;
+  has JobStatus => (is => 'ro', isa => Str);
+  has NextToken => (is => 'ro', isa => Str);
+  has Persons => (is => 'ro', isa => ArrayRef[Rekognition_PersonDetection]);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has VideoMetadata => (is => 'ro', isa => Rekognition_VideoMetadata);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'VideoMetadata' => {
+                                    'class' => 'Paws::Rekognition::VideoMetadata',
+                                    'type' => 'Rekognition_VideoMetadata'
+                                  },
+               'Persons' => {
+                              'class' => 'Paws::Rekognition::PersonDetection',
+                              'type' => 'ArrayRef[Rekognition_PersonDetection]'
+                            },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -30,7 +62,7 @@ token that you can use in the subsequent request to retrieve the next
 set of persons.
 
 
-=head2 Persons => ArrayRef[L<Paws::Rekognition::PersonDetection>]
+=head2 Persons => ArrayRef[Rekognition_PersonDetection]
 
 An array of the persons detected in the video and the time(s) their
 path was tracked throughout the video. An array element will exist for
@@ -43,7 +75,7 @@ If the job fails, C<StatusMessage> provides a descriptive error
 message.
 
 
-=head2 VideoMetadata => L<Paws::Rekognition::VideoMetadata>
+=head2 VideoMetadata => Rekognition_VideoMetadata
 
 Information about a video that Amazon Rekognition Video analyzed.
 C<Videometadata> is returned in every page of paginated responses from

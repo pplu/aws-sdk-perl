@@ -1,17 +1,59 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::AllocateConnectionOnInterconnect;
-  use Moose;
-  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
-  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
-  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' , required => 1);
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
-  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has Bandwidth => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConnectionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InterconnectId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Vlan => (is => 'ro', isa => Int, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateConnectionOnInterconnect');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Connection');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AllocateConnectionOnInterconnect');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::Connection');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InterconnectId' => {
+                                     'type' => 'Str'
+                                   },
+               'Bandwidth' => {
+                                'type' => 'Str'
+                              },
+               'ConnectionName' => {
+                                     'type' => 'Str'
+                                   },
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'Vlan' => {
+                           'type' => 'Int'
+                         }
+             },
+  'NameInRequest' => {
+                       'InterconnectId' => 'interconnectId',
+                       'Bandwidth' => 'bandwidth',
+                       'ConnectionName' => 'connectionName',
+                       'OwnerAccount' => 'ownerAccount',
+                       'Vlan' => 'vlan'
+                     },
+  'IsRequired' => {
+                    'InterconnectId' => 1,
+                    'Bandwidth' => 1,
+                    'ConnectionName' => 1,
+                    'OwnerAccount' => 1,
+                    'Vlan' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

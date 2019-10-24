@@ -7,7 +7,7 @@ package Paws::EC2::GetLaunchTemplateDataResult;
   has LaunchTemplateData => (is => 'ro', isa => EC2_ResponseLaunchTemplateData);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                '_request_id' => {
@@ -23,8 +23,8 @@ package Paws::EC2::GetLaunchTemplateDataResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

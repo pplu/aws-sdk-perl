@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Personalize::ListDatasetImportJobsResponse;
-  use Moose;
-  has DatasetImportJobs => (is => 'ro', isa => 'ArrayRef[Paws::Personalize::DatasetImportJobSummary]', traits => ['NameInRequest'], request_name => 'datasetImportJobs' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Personalize::Types qw/Personalize_DatasetImportJobSummary/;
+  has DatasetImportJobs => (is => 'ro', isa => ArrayRef[Personalize_DatasetImportJobSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DatasetImportJobs' => {
+                                        'class' => 'Paws::Personalize::DatasetImportJobSummary',
+                                        'type' => 'ArrayRef[Personalize_DatasetImportJobSummary]'
+                                      },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DatasetImportJobs' => 'datasetImportJobs',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::Personalize::ListDatasetImportJobsResponse
 =head1 ATTRIBUTES
 
 
-=head2 DatasetImportJobs => ArrayRef[L<Paws::Personalize::DatasetImportJobSummary>]
+=head2 DatasetImportJobs => ArrayRef[Personalize_DatasetImportJobSummary]
 
 The list of dataset import jobs.
 

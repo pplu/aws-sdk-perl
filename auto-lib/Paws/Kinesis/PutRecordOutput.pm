@@ -1,11 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Kinesis::PutRecordOutput;
-  use Moose;
-  has EncryptionType => (is => 'ro', isa => 'Str');
-  has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
-  has ShardId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has EncryptionType => (is => 'ro', isa => Str);
+  has SequenceNumber => (is => 'ro', isa => Str, required => 1);
+  has ShardId => (is => 'ro', isa => Str, required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EncryptionType' => {
+                                     'type' => 'Str'
+                                   },
+               'ShardId' => {
+                              'type' => 'Str'
+                            },
+               'SequenceNumber' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ShardId' => 1,
+                    'SequenceNumber' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

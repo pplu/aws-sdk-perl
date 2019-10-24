@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SageMaker::GitConfig;
-  use Moose;
-  has Branch => (is => 'ro', isa => 'Str');
-  has RepositoryUrl => (is => 'ro', isa => 'Str', required => 1);
-  has SecretArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has Branch => (is => 'ro', isa => Str);
+  has RepositoryUrl => (is => 'ro', isa => Str, required => 1);
+  has SecretArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryUrl' => {
+                                    'type' => 'Str'
+                                  },
+               'Branch' => {
+                             'type' => 'Str'
+                           },
+               'SecretArn' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RepositoryUrl' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

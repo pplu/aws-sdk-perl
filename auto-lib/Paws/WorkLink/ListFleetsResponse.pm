@@ -1,10 +1,31 @@
 
 package Paws::WorkLink::ListFleetsResponse;
-  use Moose;
-  has FleetSummaryList => (is => 'ro', isa => 'ArrayRef[Paws::WorkLink::FleetSummary]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkLink::Types qw/WorkLink_FleetSummary/;
+  has FleetSummaryList => (is => 'ro', isa => ArrayRef[WorkLink_FleetSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'FleetSummaryList' => {
+                                       'class' => 'Paws::WorkLink::FleetSummary',
+                                       'type' => 'ArrayRef[WorkLink_FleetSummary]'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::WorkLink::ListFleetsResponse
 =head1 ATTRIBUTES
 
 
-=head2 FleetSummaryList => ArrayRef[L<Paws::WorkLink::FleetSummary>]
+=head2 FleetSummaryList => ArrayRef[WorkLink_FleetSummary]
 
 The summary list of the fleets.
 

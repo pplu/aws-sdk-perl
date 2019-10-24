@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::ListEndpointsOutput;
-  use Moose;
-  has Endpoints => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::EndpointSummary]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_EndpointSummary/;
+  has Endpoints => (is => 'ro', isa => ArrayRef[SageMaker_EndpointSummary], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Endpoints' => {
+                                'class' => 'Paws::SageMaker::EndpointSummary',
+                                'type' => 'ArrayRef[SageMaker_EndpointSummary]'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Endpoints' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +40,7 @@ Paws::SageMaker::ListEndpointsOutput
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Endpoints => ArrayRef[L<Paws::SageMaker::EndpointSummary>]
+=head2 B<REQUIRED> Endpoints => ArrayRef[SageMaker_EndpointSummary]
 
 An array or endpoint objects.
 

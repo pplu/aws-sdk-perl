@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetAccountSettingsResult;
-  use Moose;
-  has AccountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings', traits => ['NameInRequest'], request_name => 'accountSettings' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_AccountSettings/;
+  has AccountSettings => (is => 'ro', isa => DeviceFarm_AccountSettings);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AccountSettings' => {
+                                      'class' => 'Paws::DeviceFarm::AccountSettings',
+                                      'type' => 'DeviceFarm_AccountSettings'
+                                    }
+             },
+  'NameInRequest' => {
+                       'AccountSettings' => 'accountSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::DeviceFarm::GetAccountSettingsResult
 =head1 ATTRIBUTES
 
 
-=head2 AccountSettings => L<Paws::DeviceFarm::AccountSettings>
+=head2 AccountSettings => DeviceFarm_AccountSettings
 
 The account settings.
 

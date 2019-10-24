@@ -1,17 +1,53 @@
 
 package Paws::WorkDocs::AddResourcePermissions;
-  use Moose;
-  has AuthenticationToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Authentication');
-  has NotificationOptions => (is => 'ro', isa => 'Paws::WorkDocs::NotificationOptions');
-  has Principals => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::SharePrincipal]', required => 1);
-  has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ResourceId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_NotificationOptions WorkDocs_SharePrincipal/;
+  has AuthenticationToken => (is => 'ro', isa => Str, predicate => 1);
+  has NotificationOptions => (is => 'ro', isa => WorkDocs_NotificationOptions, predicate => 1);
+  has Principals => (is => 'ro', isa => ArrayRef[WorkDocs_SharePrincipal], required => 1, predicate => 1);
+  has ResourceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddResourcePermissions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/api/v1/resources/{ResourceId}/permissions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkDocs::AddResourcePermissionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddResourcePermissions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/api/v1/resources/{ResourceId}/permissions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkDocs::AddResourcePermissionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'NotificationOptions' => {
+                                          'class' => 'Paws::WorkDocs::NotificationOptions',
+                                          'type' => 'WorkDocs_NotificationOptions'
+                                        },
+               'AuthenticationToken' => {
+                                          'type' => 'Str'
+                                        },
+               'Principals' => {
+                                 'class' => 'Paws::WorkDocs::SharePrincipal',
+                                 'type' => 'ArrayRef[WorkDocs_SharePrincipal]'
+                               }
+             },
+  'ParamInURI' => {
+                    'ResourceId' => 'ResourceId'
+                  },
+  'ParamInHeader' => {
+                       'AuthenticationToken' => 'Authentication'
+                     },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'Principals' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -68,13 +104,13 @@ credentials.
 
 
 
-=head2 NotificationOptions => L<Paws::WorkDocs::NotificationOptions>
+=head2 NotificationOptions => WorkDocs_NotificationOptions
 
 The notification options.
 
 
 
-=head2 B<REQUIRED> Principals => ArrayRef[L<Paws::WorkDocs::SharePrincipal>]
+=head2 B<REQUIRED> Principals => ArrayRef[WorkDocs_SharePrincipal]
 
 The users, groups, or organization being granted permission.
 

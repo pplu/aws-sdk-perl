@@ -1,22 +1,97 @@
 
 package Paws::ApiGateway::Integration;
-  use Moose;
-  has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'cacheKeyParameters');
-  has CacheNamespace => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cacheNamespace');
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId');
-  has ConnectionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionType');
-  has ContentHandling => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentHandling');
-  has Credentials => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentials');
-  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'httpMethod');
-  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse', traits => ['NameInRequest'], request_name => 'integrationResponses');
-  has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestParameters');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['NameInRequest'], request_name => 'requestTemplates');
-  has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
-  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type');
-  has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Int/;
+  use Paws::ApiGateway::Types qw/ApiGateway_MapOfStringToString ApiGateway_MapOfIntegrationResponse/;
+  has CacheKeyParameters => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CacheNamespace => (is => 'ro', isa => Str);
+  has ConnectionId => (is => 'ro', isa => Str);
+  has ConnectionType => (is => 'ro', isa => Str);
+  has ContentHandling => (is => 'ro', isa => Str);
+  has Credentials => (is => 'ro', isa => Str);
+  has HttpMethod => (is => 'ro', isa => Str);
+  has IntegrationResponses => (is => 'ro', isa => ApiGateway_MapOfIntegrationResponse);
+  has PassthroughBehavior => (is => 'ro', isa => Str);
+  has RequestParameters => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has RequestTemplates => (is => 'ro', isa => ApiGateway_MapOfStringToString);
+  has TimeoutInMillis => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str);
+  has Uri => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HttpMethod' => {
+                                 'type' => 'Str'
+                               },
+               'Credentials' => {
+                                  'type' => 'Str'
+                                },
+               'ContentHandling' => {
+                                      'type' => 'Str'
+                                    },
+               'RequestTemplates' => {
+                                       'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                       'type' => 'ApiGateway_MapOfStringToString'
+                                     },
+               'IntegrationResponses' => {
+                                           'class' => 'Paws::ApiGateway::MapOfIntegrationResponse',
+                                           'type' => 'ApiGateway_MapOfIntegrationResponse'
+                                         },
+               'ConnectionType' => {
+                                     'type' => 'Str'
+                                   },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'RequestParameters' => {
+                                        'class' => 'Paws::ApiGateway::MapOfStringToString',
+                                        'type' => 'ApiGateway_MapOfStringToString'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CacheKeyParameters' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'TimeoutInMillis' => {
+                                      'type' => 'Int'
+                                    },
+               'PassthroughBehavior' => {
+                                          'type' => 'Str'
+                                        },
+               'CacheNamespace' => {
+                                     'type' => 'Str'
+                                   },
+               'Uri' => {
+                          'type' => 'Str'
+                        }
+             },
+  'NameInRequest' => {
+                       'HttpMethod' => 'httpMethod',
+                       'Credentials' => 'credentials',
+                       'ContentHandling' => 'contentHandling',
+                       'RequestTemplates' => 'requestTemplates',
+                       'IntegrationResponses' => 'integrationResponses',
+                       'ConnectionType' => 'connectionType',
+                       'ConnectionId' => 'connectionId',
+                       'Type' => 'type',
+                       'RequestParameters' => 'requestParameters',
+                       'CacheKeyParameters' => 'cacheKeyParameters',
+                       'TimeoutInMillis' => 'timeoutInMillis',
+                       'PassthroughBehavior' => 'passthroughBehavior',
+                       'CacheNamespace' => 'cacheNamespace',
+                       'Uri' => 'uri'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -99,7 +174,7 @@ permissions on supported AWS services, specify null.
 Specifies the integration's HTTP method type.
 
 
-=head2 IntegrationResponses => L<Paws::ApiGateway::MapOfIntegrationResponse>
+=head2 IntegrationResponses => ApiGateway_MapOfIntegrationResponse
 
 Specifies the integration's responses.
 
@@ -153,7 +228,7 @@ defined in the integration request.
 
 
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestParameters => ApiGateway_MapOfStringToString
 
 A key-value map specifying request parameters that are passed from the
 method request to the back end. The key is an integration request
@@ -165,7 +240,7 @@ where C<location> is C<querystring>, C<path>, or C<header> and C<name>
 must be a valid and unique method request parameter name.
 
 
-=head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestTemplates => ApiGateway_MapOfStringToString
 
 Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the

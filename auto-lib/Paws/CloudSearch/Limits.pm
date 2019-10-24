@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CloudSearch::Limits;
-  use Moose;
-  has MaximumPartitionCount => (is => 'ro', isa => 'Int', required => 1);
-  has MaximumReplicationCount => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::CloudSearch::Types qw//;
+  has MaximumPartitionCount => (is => 'ro', isa => Int, required => 1);
+  has MaximumReplicationCount => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaximumPartitionCount' => {
+                                            'type' => 'Int'
+                                          },
+               'MaximumReplicationCount' => {
+                                              'type' => 'Int'
+                                            }
+             },
+  'IsRequired' => {
+                    'MaximumPartitionCount' => 1,
+                    'MaximumReplicationCount' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

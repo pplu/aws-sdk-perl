@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdentity::GetOpenIdToken;
-  use Moose;
-  has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_LoginsMap/;
+  has IdentityId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Logins => (is => 'ro', isa => CognitoIdentity_LoginsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOpenIdToken');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::GetOpenIdTokenResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetOpenIdToken');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdentity::GetOpenIdTokenResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Logins' => {
+                             'class' => 'Paws::CognitoIdentity::LoginsMap',
+                             'type' => 'CognitoIdentity_LoginsMap'
+                           },
+               'IdentityId' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'IdentityId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ A unique identifier in the format REGION:GUID.
 
 
 
-=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 Logins => CognitoIdentity_LoginsMap
 
 A set of optional name-value pairs that map provider names to provider
 tokens. When using graph.facebook.com and www.amazon.com, supply the

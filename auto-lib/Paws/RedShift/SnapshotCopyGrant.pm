@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::RedShift::SnapshotCopyGrant;
-  use Moose;
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has SnapshotCopyGrantName => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has SnapshotCopyGrantName => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotCopyGrantName' => {
+                                            'type' => 'Str'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +83,7 @@ which Amazon Redshift is granted permission.
   The name of the snapshot copy grant.
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
   A list of tag instances.
 

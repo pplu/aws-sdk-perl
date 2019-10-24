@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::UpdateGlobalTableSettings;
   use Moo;
@@ -16,7 +17,7 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateGlobalTableSettingsOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'GlobalTableProvisionedWriteCapacityUnits' => {
@@ -40,11 +41,14 @@ package Paws::DynamoDB::UpdateGlobalTableSettings;
                                                                     'class' => 'Paws::DynamoDB::GlobalTableGlobalSecondaryIndexSettingsUpdate',
                                                                     'type' => 'ArrayRef[DynamoDB_GlobalTableGlobalSecondaryIndexSettingsUpdate]'
                                                                   }
-             }
+             },
+  'IsRequired' => {
+                    'GlobalTableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

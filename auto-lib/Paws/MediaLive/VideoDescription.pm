@@ -1,12 +1,60 @@
+# Generated from default/object.tt
 package Paws::MediaLive::VideoDescription;
-  use Moose;
-  has CodecSettings => (is => 'ro', isa => 'Paws::MediaLive::VideoCodecSettings', request_name => 'codecSettings', traits => ['NameInRequest']);
-  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has RespondToAfd => (is => 'ro', isa => 'Str', request_name => 'respondToAfd', traits => ['NameInRequest']);
-  has ScalingBehavior => (is => 'ro', isa => 'Str', request_name => 'scalingBehavior', traits => ['NameInRequest']);
-  has Sharpness => (is => 'ro', isa => 'Int', request_name => 'sharpness', traits => ['NameInRequest']);
-  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaLive::Types qw/MediaLive_VideoCodecSettings/;
+  has CodecSettings => (is => 'ro', isa => MediaLive_VideoCodecSettings);
+  has Height => (is => 'ro', isa => Int);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has RespondToAfd => (is => 'ro', isa => Str);
+  has ScalingBehavior => (is => 'ro', isa => Str);
+  has Sharpness => (is => 'ro', isa => Int);
+  has Width => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sharpness' => {
+                                'type' => 'Int'
+                              },
+               'Height' => {
+                             'type' => 'Int'
+                           },
+               'Width' => {
+                            'type' => 'Int'
+                          },
+               'ScalingBehavior' => {
+                                      'type' => 'Str'
+                                    },
+               'CodecSettings' => {
+                                    'class' => 'Paws::MediaLive::VideoCodecSettings',
+                                    'type' => 'MediaLive_VideoCodecSettings'
+                                  },
+               'RespondToAfd' => {
+                                   'type' => 'Str'
+                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Sharpness' => 'sharpness',
+                       'Height' => 'height',
+                       'Width' => 'width',
+                       'ScalingBehavior' => 'scalingBehavior',
+                       'CodecSettings' => 'codecSettings',
+                       'RespondToAfd' => 'respondToAfd',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +90,7 @@ Video settings for this stream.
 =head1 ATTRIBUTES
 
 
-=head2 CodecSettings => L<Paws::MediaLive::VideoCodecSettings>
+=head2 CodecSettings => MediaLive_VideoCodecSettings
 
   Video codec settings.
 

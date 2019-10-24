@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::Firehose::S3DestinationConfiguration;
-  use Moose;
-  has BucketARN => (is => 'ro', isa => 'Str', required => 1);
-  has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints');
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has CompressionFormat => (is => 'ro', isa => 'Str');
-  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
-  has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
-  has Prefix => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_CloudWatchLoggingOptions Firehose_BufferingHints Firehose_EncryptionConfiguration/;
+  has BucketARN => (is => 'ro', isa => Str, required => 1);
+  has BufferingHints => (is => 'ro', isa => Firehose_BufferingHints);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has CompressionFormat => (is => 'ro', isa => Str);
+  has EncryptionConfiguration => (is => 'ro', isa => Firehose_EncryptionConfiguration);
+  has ErrorOutputPrefix => (is => 'ro', isa => Str);
+  has Prefix => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CompressionFormat' => {
+                                        'type' => 'Str'
+                                      },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'BufferingHints' => {
+                                     'class' => 'Paws::Firehose::BufferingHints',
+                                     'type' => 'Firehose_BufferingHints'
+                                   },
+               'Prefix' => {
+                             'type' => 'Str'
+                           },
+               'EncryptionConfiguration' => {
+                                              'class' => 'Paws::Firehose::EncryptionConfiguration',
+                                              'type' => 'Firehose_EncryptionConfiguration'
+                                            },
+               'ErrorOutputPrefix' => {
+                                        'type' => 'Str'
+                                      },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'BucketARN' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'RoleARN' => 1,
+                    'BucketARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +95,13 @@ Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 
-=head2 BufferingHints => L<Paws::Firehose::BufferingHints>
+=head2 BufferingHints => Firehose_BufferingHints
 
   The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The CloudWatch logging options for your delivery stream.
 
@@ -71,7 +116,7 @@ Amazon Redshift destinations because they are not supported by the
 Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 
 
-=head2 EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
+=head2 EncryptionConfiguration => Firehose_EncryptionConfiguration
 
   The encryption configuration. If no value is specified, the default is
 no encryption.

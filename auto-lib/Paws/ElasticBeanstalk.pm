@@ -1,14 +1,16 @@
+# Generated from service_class.tt
 package Paws::ElasticBeanstalk;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'elasticbeanstalk' }
   sub signing_name { 'elasticbeanstalk' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -500,9 +502,9 @@ for details.
 
 =item [Description => Str]
 
-=item [ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>]
+=item [ResourceLifecycleConfig => ElasticBeanstalk_ApplicationResourceLifecycleConfig]
 
-=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [Tags => ArrayRef[ElasticBeanstalk_Tag]]
 
 
 =back
@@ -525,17 +527,17 @@ C<default> and no application versions.
 
 =item [AutoCreateApplication => Bool]
 
-=item [BuildConfiguration => L<Paws::ElasticBeanstalk::BuildConfiguration>]
+=item [BuildConfiguration => ElasticBeanstalk_BuildConfiguration]
 
 =item [Description => Str]
 
 =item [Process => Bool]
 
-=item [SourceBuildInformation => L<Paws::ElasticBeanstalk::SourceBuildInformation>]
+=item [SourceBuildInformation => ElasticBeanstalk_SourceBuildInformation]
 
-=item [SourceBundle => L<Paws::ElasticBeanstalk::S3Location>]
+=item [SourceBundle => ElasticBeanstalk_S3Location]
 
-=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [Tags => ArrayRef[ElasticBeanstalk_Tag]]
 
 
 =back
@@ -578,15 +580,15 @@ attempt to launch an environment from the application version.
 
 =item [EnvironmentId => Str]
 
-=item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+=item [OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]]
 
 =item [PlatformArn => Str]
 
 =item [SolutionStackName => Str]
 
-=item [SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>]
+=item [SourceConfiguration => ElasticBeanstalk_SourceConfiguration]
 
-=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [Tags => ArrayRef[ElasticBeanstalk_Tag]]
 
 
 =back
@@ -636,19 +638,19 @@ ListAvailableSolutionStacks
 
 =item [GroupName => Str]
 
-=item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+=item [OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]]
 
-=item [OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]]
+=item [OptionsToRemove => ArrayRef[ElasticBeanstalk_OptionSpecification]]
 
 =item [PlatformArn => Str]
 
 =item [SolutionStackName => Str]
 
-=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [Tags => ArrayRef[ElasticBeanstalk_Tag]]
 
 =item [TemplateName => Str]
 
-=item [Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>]
+=item [Tier => ElasticBeanstalk_EnvironmentTier]
 
 =item [VersionLabel => Str]
 
@@ -667,7 +669,7 @@ specified configuration.
 
 =over
 
-=item PlatformDefinitionBundle => L<Paws::ElasticBeanstalk::S3Location>
+=item PlatformDefinitionBundle => ElasticBeanstalk_S3Location
 
 =item PlatformName => Str
 
@@ -675,9 +677,9 @@ specified configuration.
 
 =item [EnvironmentName => Str]
 
-=item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+=item [OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]]
 
-=item [Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [Tags => ArrayRef[ElasticBeanstalk_Tag]]
 
 
 =back
@@ -886,7 +888,7 @@ Retrieve a list of application versions.
 
 =item [EnvironmentName => Str]
 
-=item [Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]]
+=item [Options => ArrayRef[ElasticBeanstalk_OptionSpecification]]
 
 =item [PlatformArn => Str]
 
@@ -1163,7 +1165,7 @@ version first and then in reverse chronological order.
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>]]
+=item [Filters => ArrayRef[ElasticBeanstalk_PlatformFilter]]
 
 =item [MaxRecords => Int]
 
@@ -1385,7 +1387,7 @@ remains unchanged. To clear these properties, specify an empty string.
 
 =item ApplicationName => Str
 
-=item ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
+=item ResourceLifecycleConfig => ElasticBeanstalk_ApplicationResourceLifecycleConfig
 
 
 =back
@@ -1431,9 +1433,9 @@ remains unchanged. To clear properties, specify an empty string.
 
 =item [Description => Str]
 
-=item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+=item [OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]]
 
-=item [OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]]
+=item [OptionsToRemove => ArrayRef[ElasticBeanstalk_OptionSpecification]]
 
 
 =back
@@ -1475,9 +1477,9 @@ DescribeConfigurationOptions
 
 =item [GroupName => Str]
 
-=item [OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]]
+=item [OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]]
 
-=item [OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]]
+=item [OptionsToRemove => ArrayRef[ElasticBeanstalk_OptionSpecification]]
 
 =item [PlatformArn => Str]
 
@@ -1485,7 +1487,7 @@ DescribeConfigurationOptions
 
 =item [TemplateName => Str]
 
-=item [Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>]
+=item [Tier => ElasticBeanstalk_EnvironmentTier]
 
 =item [VersionLabel => Str]
 
@@ -1517,7 +1519,7 @@ descriptions with different C<DeploymentStatus> values.
 
 =item ResourceArn => Str
 
-=item [TagsToAdd => ArrayRef[L<Paws::ElasticBeanstalk::Tag>]]
+=item [TagsToAdd => ArrayRef[ElasticBeanstalk_Tag]]
 
 =item [TagsToRemove => ArrayRef[Str|Undef]]
 
@@ -1566,7 +1568,7 @@ User Policy
 
 =item ApplicationName => Str
 
-=item OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
+=item OptionSettings => ArrayRef[ElasticBeanstalk_ConfigurationOptionSetting]
 
 =item [EnvironmentName => Str]
 
@@ -1640,9 +1642,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ElasticBeanstalk::EventDescriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllPlatformVersions(sub { },[Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>], MaxRecords => Int, NextToken => Str])
+=head2 ListAllPlatformVersions(sub { },[Filters => ArrayRef[ElasticBeanstalk_PlatformFilter], MaxRecords => Int, NextToken => Str])
 
-=head2 ListAllPlatformVersions([Filters => ArrayRef[L<Paws::ElasticBeanstalk::PlatformFilter>], MaxRecords => Int, NextToken => Str])
+=head2 ListAllPlatformVersions([Filters => ArrayRef[ElasticBeanstalk_PlatformFilter], MaxRecords => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

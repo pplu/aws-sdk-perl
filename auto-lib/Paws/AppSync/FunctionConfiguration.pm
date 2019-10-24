@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::AppSync::FunctionConfiguration;
-  use Moose;
-  has DataSourceName => (is => 'ro', isa => 'Str', request_name => 'dataSourceName', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FunctionArn => (is => 'ro', isa => 'Str', request_name => 'functionArn', traits => ['NameInRequest']);
-  has FunctionId => (is => 'ro', isa => 'Str', request_name => 'functionId', traits => ['NameInRequest']);
-  has FunctionVersion => (is => 'ro', isa => 'Str', request_name => 'functionVersion', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'requestMappingTemplate', traits => ['NameInRequest']);
-  has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw//;
+  has DataSourceName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FunctionArn => (is => 'ro', isa => Str);
+  has FunctionId => (is => 'ro', isa => Str);
+  has FunctionVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RequestMappingTemplate => (is => 'ro', isa => Str);
+  has ResponseMappingTemplate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestMappingTemplate' => {
+                                             'type' => 'Str'
+                                           },
+               'FunctionId' => {
+                                 'type' => 'Str'
+                               },
+               'DataSourceName' => {
+                                     'type' => 'Str'
+                                   },
+               'ResponseMappingTemplate' => {
+                                              'type' => 'Str'
+                                            },
+               'FunctionVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'RequestMappingTemplate' => 'requestMappingTemplate',
+                       'FunctionId' => 'functionId',
+                       'DataSourceName' => 'dataSourceName',
+                       'ResponseMappingTemplate' => 'responseMappingTemplate',
+                       'FunctionVersion' => 'functionVersion',
+                       'FunctionArn' => 'functionArn',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

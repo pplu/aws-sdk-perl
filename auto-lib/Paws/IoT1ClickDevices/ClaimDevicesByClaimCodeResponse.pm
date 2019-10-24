@@ -1,10 +1,34 @@
 
 package Paws::IoT1ClickDevices::ClaimDevicesByClaimCodeResponse;
-  use Moose;
-  has ClaimCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'claimCode');
-  has Total => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'total');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::IoT1ClickDevices::Types qw//;
+  has ClaimCode => (is => 'ro', isa => Str);
+  has Total => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Total' => {
+                            'type' => 'Int'
+                          },
+               'ClaimCode' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Total' => 'total',
+                       'ClaimCode' => 'claimCode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

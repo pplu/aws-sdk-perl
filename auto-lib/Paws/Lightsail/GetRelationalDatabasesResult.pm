@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabasesResult;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has RelationalDatabases => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::RelationalDatabase]', traits => ['NameInRequest'], request_name => 'relationalDatabases' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabase/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has RelationalDatabases => (is => 'ro', isa => ArrayRef[Lightsail_RelationalDatabase]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationalDatabases' => {
+                                          'class' => 'Paws::Lightsail::RelationalDatabase',
+                                          'type' => 'ArrayRef[Lightsail_RelationalDatabase]'
+                                        },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RelationalDatabases' => 'relationalDatabases',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ A token used for advancing to the next page of results from your get
 relational databases request.
 
 
-=head2 RelationalDatabases => ArrayRef[L<Paws::Lightsail::RelationalDatabase>]
+=head2 RelationalDatabases => ArrayRef[Lightsail_RelationalDatabase]
 
 An object describing the result of your get relational databases
 request.

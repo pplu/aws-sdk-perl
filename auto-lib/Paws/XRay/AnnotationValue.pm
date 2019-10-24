@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::XRay::AnnotationValue;
-  use Moose;
-  has BooleanValue => (is => 'ro', isa => 'Bool');
-  has NumberValue => (is => 'ro', isa => 'Num');
-  has StringValue => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Num Str/;
+  use Paws::XRay::Types qw//;
+  has BooleanValue => (is => 'ro', isa => Bool);
+  has NumberValue => (is => 'ro', isa => Num);
+  has StringValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StringValue' => {
+                                  'type' => 'Str'
+                                },
+               'BooleanValue' => {
+                                   'type' => 'Bool'
+                                 },
+               'NumberValue' => {
+                                  'type' => 'Num'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

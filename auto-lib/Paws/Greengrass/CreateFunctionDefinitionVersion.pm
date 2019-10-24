@@ -1,17 +1,52 @@
 
 package Paws::Greengrass::CreateFunctionDefinitionVersion;
-  use Moose;
-  has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has DefaultConfig => (is => 'ro', isa => 'Paws::Greengrass::FunctionDefaultConfig');
-  has FunctionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionDefinitionId', required => 1);
-  has Functions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Function]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionDefaultConfig Greengrass_Function/;
+  has AmznClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has DefaultConfig => (is => 'ro', isa => Greengrass_FunctionDefaultConfig, predicate => 1);
+  has FunctionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Functions => (is => 'ro', isa => ArrayRef[Greengrass_Function], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFunctionDefinitionVersion');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::CreateFunctionDefinitionVersionResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFunctionDefinitionVersion');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/functions/{FunctionDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::CreateFunctionDefinitionVersionResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FunctionDefinitionId' => {
+                                           'type' => 'Str'
+                                         },
+               'Functions' => {
+                                'class' => 'Paws::Greengrass::Function',
+                                'type' => 'ArrayRef[Greengrass_Function]'
+                              },
+               'AmznClientToken' => {
+                                      'type' => 'Str'
+                                    },
+               'DefaultConfig' => {
+                                    'class' => 'Paws::Greengrass::FunctionDefaultConfig',
+                                    'type' => 'Greengrass_FunctionDefaultConfig'
+                                  }
+             },
+  'ParamInURI' => {
+                    'FunctionDefinitionId' => 'FunctionDefinitionId'
+                  },
+  'ParamInHeader' => {
+                       'AmznClientToken' => 'X-Amzn-Client-Token'
+                     },
+  'IsRequired' => {
+                    'FunctionDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +137,7 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 DefaultConfig => L<Paws::Greengrass::FunctionDefaultConfig>
+=head2 DefaultConfig => Greengrass_FunctionDefaultConfig
 
 The default configuration that applies to all Lambda functions in this
 function definition version. Individual Lambda functions can override
@@ -116,7 +151,7 @@ The ID of the Lambda function definition.
 
 
 
-=head2 Functions => ArrayRef[L<Paws::Greengrass::Function>]
+=head2 Functions => ArrayRef[Greengrass_Function]
 
 A list of Lambda functions in this function definition version.
 

@@ -1,24 +1,77 @@
 
 package Paws::S3Control::CreateJob;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
-  has ConfirmationRequired => (is => 'ro', isa => 'Bool');
-  has Description => (is => 'ro', isa => 'Str');
-  has Manifest => (is => 'ro', isa => 'Paws::S3Control::JobManifest', required => 1);
-  has Operation => (is => 'ro', isa => 'Paws::S3Control::JobOperation', required => 1);
-  has Priority => (is => 'ro', isa => 'Int', required => 1);
-  has Report => (is => 'ro', isa => 'Paws::S3Control::JobReport', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::S3Control::Types qw/S3Control_JobOperation S3Control_JobManifest S3Control_JobReport/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfirmationRequired => (is => 'ro', isa => Bool, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Manifest => (is => 'ro', isa => S3Control_JobManifest, required => 1, predicate => 1);
+  has Operation => (is => 'ro', isa => S3Control_JobOperation, required => 1, predicate => 1);
+  has Priority => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has Report => (is => 'ro', isa => S3Control_JobReport, required => 1, predicate => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20180820/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::CreateJobResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20180820/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3Control::CreateJobResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'ConfirmationRequired' => {
+                                           'type' => 'Bool'
+                                         },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'Manifest' => {
+                               'class' => 'Paws::S3Control::JobManifest',
+                               'type' => 'S3Control_JobManifest'
+                             },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Report' => {
+                             'class' => 'Paws::S3Control::JobReport',
+                             'type' => 'S3Control_JobReport'
+                           },
+               'Operation' => {
+                                'class' => 'Paws::S3Control::JobOperation',
+                                'type' => 'S3Control_JobOperation'
+                              }
+             },
+  'ParamInHeader' => {
+                       'AccountId' => 'x-amz-account-id'
+                     },
+  'IsRequired' => {
+                    'ClientRequestToken' => 1,
+                    'RoleArn' => 1,
+                    'Manifest' => 1,
+                    'AccountId' => 1,
+                    'Priority' => 1,
+                    'Report' => 1,
+                    'Operation' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -219,13 +272,13 @@ multiple jobs.
 
 
 
-=head2 B<REQUIRED> Manifest => L<Paws::S3Control::JobManifest>
+=head2 B<REQUIRED> Manifest => S3Control_JobManifest
 
 Configuration parameters for the manifest.
 
 
 
-=head2 B<REQUIRED> Operation => L<Paws::S3Control::JobOperation>
+=head2 B<REQUIRED> Operation => S3Control_JobOperation
 
 The operation that you want this job to perform on each object listed
 in the manifest. For more information about the available operations,
@@ -242,7 +295,7 @@ priority.
 
 
 
-=head2 B<REQUIRED> Report => L<Paws::S3Control::JobReport>
+=head2 B<REQUIRED> Report => S3Control_JobReport
 
 Configuration parameters for the optional job-completion report.
 

@@ -1,23 +1,93 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::DataSource;
-  use Moose;
-  has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has ComputeTime => (is => 'ro', isa => 'Int');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CreatedByIamUser => (is => 'ro', isa => 'Str');
-  has DataLocationS3 => (is => 'ro', isa => 'Str');
-  has DataRearrangement => (is => 'ro', isa => 'Str');
-  has DataSizeInBytes => (is => 'ro', isa => 'Int');
-  has DataSourceId => (is => 'ro', isa => 'Str');
-  has FinishedAt => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has Message => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberOfFiles => (is => 'ro', isa => 'Int');
-  has RDSMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RDSMetadata');
-  has RedshiftMetadata => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftMetadata');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has StartedAt => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RedshiftMetadata MachineLearning_RDSMetadata/;
+  has ComputeStatistics => (is => 'ro', isa => Bool);
+  has ComputeTime => (is => 'ro', isa => Int);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CreatedByIamUser => (is => 'ro', isa => Str);
+  has DataLocationS3 => (is => 'ro', isa => Str);
+  has DataRearrangement => (is => 'ro', isa => Str);
+  has DataSizeInBytes => (is => 'ro', isa => Int);
+  has DataSourceId => (is => 'ro', isa => Str);
+  has FinishedAt => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Message => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has NumberOfFiles => (is => 'ro', isa => Int);
+  has RDSMetadata => (is => 'ro', isa => MachineLearning_RDSMetadata);
+  has RedshiftMetadata => (is => 'ro', isa => MachineLearning_RedshiftMetadata);
+  has RoleARN => (is => 'ro', isa => Str);
+  has StartedAt => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StartedAt' => {
+                                'type' => 'Str'
+                              },
+               'CreatedByIamUser' => {
+                                       'type' => 'Str'
+                                     },
+               'DataSourceId' => {
+                                   'type' => 'Str'
+                                 },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'ComputeStatistics' => {
+                                        'type' => 'Bool'
+                                      },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'RDSMetadata' => {
+                                  'class' => 'Paws::MachineLearning::RDSMetadata',
+                                  'type' => 'MachineLearning_RDSMetadata'
+                                },
+               'NumberOfFiles' => {
+                                    'type' => 'Int'
+                                  },
+               'DataSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'ComputeTime' => {
+                                  'type' => 'Int'
+                                },
+               'DataLocationS3' => {
+                                     'type' => 'Str'
+                                   },
+               'RedshiftMetadata' => {
+                                       'class' => 'Paws::MachineLearning::RedshiftMetadata',
+                                       'type' => 'MachineLearning_RedshiftMetadata'
+                                     },
+               'DataRearrangement' => {
+                                        'type' => 'Str'
+                                      },
+               'FinishedAt' => {
+                                 'type' => 'Str'
+                               },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -130,12 +200,12 @@ C<DataSource>.
   The number of data files referenced by the C<DataSource>.
 
 
-=head2 RDSMetadata => L<Paws::MachineLearning::RDSMetadata>
+=head2 RDSMetadata => MachineLearning_RDSMetadata
 
   
 
 
-=head2 RedshiftMetadata => L<Paws::MachineLearning::RedshiftMetadata>
+=head2 RedshiftMetadata => MachineLearning_RedshiftMetadata
 
   
 

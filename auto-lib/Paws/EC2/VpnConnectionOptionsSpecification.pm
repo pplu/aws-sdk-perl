@@ -4,7 +4,7 @@ package Paws::EC2::VpnConnectionOptionsSpecification;
   has StaticRoutesOnly => (is => 'ro', isa => Bool);
   has TunnelOptions => (is => 'ro', isa => ArrayRef[EC2_VpnTunnelOptionsSpecification]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TunnelOptions' => {
@@ -20,8 +20,8 @@ package Paws::EC2::VpnConnectionOptionsSpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

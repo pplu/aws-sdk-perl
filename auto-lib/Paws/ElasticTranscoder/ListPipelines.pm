@@ -1,15 +1,37 @@
 
 package Paws::ElasticTranscoder::ListPipelines;
-  use Moose;
-  has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending');
-  has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has Ascending => (is => 'ro', isa => Str, predicate => 1);
+  has PageToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPipelines');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPipelinesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListPipelines');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/pipelines');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::ListPipelinesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PageToken' => {
+                                'type' => 'Str'
+                              },
+               'Ascending' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInQuery' => {
+                      'PageToken' => 'PageToken',
+                      'Ascending' => 'Ascending'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

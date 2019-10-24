@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaLive::MediaPackageOutputDestinationSettings;
-  use Moose;
-  has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has ChannelId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ChannelId' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'ChannelId' => 'channelId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

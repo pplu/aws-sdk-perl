@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::VideoPreprocessor;
-  use Moose;
-  has ColorCorrector => (is => 'ro', isa => 'Paws::MediaConvert::ColorCorrector', request_name => 'colorCorrector', traits => ['NameInRequest']);
-  has Deinterlacer => (is => 'ro', isa => 'Paws::MediaConvert::Deinterlacer', request_name => 'deinterlacer', traits => ['NameInRequest']);
-  has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
-  has NoiseReducer => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducer', request_name => 'noiseReducer', traits => ['NameInRequest']);
-  has TimecodeBurnin => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeBurnin', request_name => 'timecodeBurnin', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaConvert::Types qw/MediaConvert_ColorCorrector MediaConvert_TimecodeBurnin MediaConvert_NoiseReducer MediaConvert_ImageInserter MediaConvert_Deinterlacer/;
+  has ColorCorrector => (is => 'ro', isa => MediaConvert_ColorCorrector);
+  has Deinterlacer => (is => 'ro', isa => MediaConvert_Deinterlacer);
+  has ImageInserter => (is => 'ro', isa => MediaConvert_ImageInserter);
+  has NoiseReducer => (is => 'ro', isa => MediaConvert_NoiseReducer);
+  has TimecodeBurnin => (is => 'ro', isa => MediaConvert_TimecodeBurnin);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ImageInserter' => {
+                                    'class' => 'Paws::MediaConvert::ImageInserter',
+                                    'type' => 'MediaConvert_ImageInserter'
+                                  },
+               'TimecodeBurnin' => {
+                                     'class' => 'Paws::MediaConvert::TimecodeBurnin',
+                                     'type' => 'MediaConvert_TimecodeBurnin'
+                                   },
+               'NoiseReducer' => {
+                                   'class' => 'Paws::MediaConvert::NoiseReducer',
+                                   'type' => 'MediaConvert_NoiseReducer'
+                                 },
+               'Deinterlacer' => {
+                                   'class' => 'Paws::MediaConvert::Deinterlacer',
+                                   'type' => 'MediaConvert_Deinterlacer'
+                                 },
+               'ColorCorrector' => {
+                                     'class' => 'Paws::MediaConvert::ColorCorrector',
+                                     'type' => 'MediaConvert_ColorCorrector'
+                                   }
+             },
+  'NameInRequest' => {
+                       'ImageInserter' => 'imageInserter',
+                       'TimecodeBurnin' => 'timecodeBurnin',
+                       'NoiseReducer' => 'noiseReducer',
+                       'Deinterlacer' => 'deinterlacer',
+                       'ColorCorrector' => 'colorCorrector'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,34 +83,34 @@ These features are disabled by default.
 =head1 ATTRIBUTES
 
 
-=head2 ColorCorrector => L<Paws::MediaConvert::ColorCorrector>
+=head2 ColorCorrector => MediaConvert_ColorCorrector
 
   Enable the Color corrector (ColorCorrector) feature if necessary.
 Enable or disable this feature for each output individually. This
 setting is disabled by default.
 
 
-=head2 Deinterlacer => L<Paws::MediaConvert::Deinterlacer>
+=head2 Deinterlacer => MediaConvert_Deinterlacer
 
   Use Deinterlacer (Deinterlacer) to produce smoother motion and a
 clearer picture.
 
 
-=head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
+=head2 ImageInserter => MediaConvert_ImageInserter
 
   Enable the Image inserter (ImageInserter) feature to include a graphic
 overlay on your video. Enable or disable this feature for each output
 individually. This setting is disabled by default.
 
 
-=head2 NoiseReducer => L<Paws::MediaConvert::NoiseReducer>
+=head2 NoiseReducer => MediaConvert_NoiseReducer
 
   Enable the Noise reducer (NoiseReducer) feature to remove noise from
 your video output if necessary. Enable or disable this feature for each
 output individually. This setting is disabled by default.
 
 
-=head2 TimecodeBurnin => L<Paws::MediaConvert::TimecodeBurnin>
+=head2 TimecodeBurnin => MediaConvert_TimecodeBurnin
 
   Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and
 specified prefix into the output.

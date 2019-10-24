@@ -1,9 +1,30 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::AddCommunicationToCaseResponse;
-  use Moose;
-  has Result => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'result' );
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Support::Types qw//;
+  has Result => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Result' => {
+                             'type' => 'Bool'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Result' => 'result'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

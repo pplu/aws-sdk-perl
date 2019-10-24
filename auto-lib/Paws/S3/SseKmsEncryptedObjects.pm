@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::SseKmsEncryptedObjects;
   use Moo;
   use Types::Standard qw/Str/;
@@ -10,7 +11,10 @@ package Paws::S3::SseKmsEncryptedObjects;
                'Status' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

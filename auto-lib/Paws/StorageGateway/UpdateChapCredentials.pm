@@ -1,16 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::UpdateChapCredentials;
-  use Moose;
-  has InitiatorName => (is => 'ro', isa => 'Str', required => 1);
-  has SecretToAuthenticateInitiator => (is => 'ro', isa => 'Str', required => 1);
-  has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
-  has TargetARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StorageGateway::Types qw//;
+  has InitiatorName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecretToAuthenticateInitiator => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SecretToAuthenticateTarget => (is => 'ro', isa => Str, predicate => 1);
+  has TargetARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateChapCredentials');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateChapCredentialsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateChapCredentials');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::UpdateChapCredentialsOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetARN' => {
+                                'type' => 'Str'
+                              },
+               'SecretToAuthenticateTarget' => {
+                                                 'type' => 'Str'
+                                               },
+               'SecretToAuthenticateInitiator' => {
+                                                    'type' => 'Str'
+                                                  },
+               'InitiatorName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'TargetARN' => 1,
+                    'SecretToAuthenticateInitiator' => 1,
+                    'InitiatorName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

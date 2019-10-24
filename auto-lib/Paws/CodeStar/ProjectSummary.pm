@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeStar::ProjectSummary;
-  use Moose;
-  has ProjectArn => (is => 'ro', isa => 'Str', request_name => 'projectArn', traits => ['NameInRequest']);
-  has ProjectId => (is => 'ro', isa => 'Str', request_name => 'projectId', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw//;
+  has ProjectArn => (is => 'ro', isa => Str);
+  has ProjectId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectId' => {
+                                'type' => 'Str'
+                              },
+               'ProjectArn' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ProjectId' => 'projectId',
+                       'ProjectArn' => 'projectArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SES::SendEmail;
   use Moo;
@@ -52,7 +53,12 @@ package Paws::SES::SendEmail;
                'ReturnPath' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'Message' => 1,
+                    'Source' => 1,
+                    'Destination' => 1
+                  }
 }
 ;
     return $Params_map;

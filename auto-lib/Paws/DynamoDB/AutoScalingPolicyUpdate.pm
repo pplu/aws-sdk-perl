@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::AutoScalingPolicyUpdate;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::AutoScalingPolicyUpdate;
   has PolicyName => (is => 'ro', isa => Str);
   has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => DynamoDB_AutoScalingTargetTrackingScalingPolicyConfigurationUpdate, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TargetTrackingScalingPolicyConfiguration' => {
@@ -15,11 +16,14 @@ package Paws::DynamoDB::AutoScalingPolicyUpdate;
                'PolicyName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'TargetTrackingScalingPolicyConfiguration' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

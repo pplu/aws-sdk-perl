@@ -8,7 +8,7 @@ package Paws::EC2::CreateTrafficMirrorFilterRuleResult;
   has TrafficMirrorFilterRule => (is => 'ro', isa => EC2_TrafficMirrorFilterRule);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TrafficMirrorFilterRule' => {
@@ -28,8 +28,8 @@ package Paws::EC2::CreateTrafficMirrorFilterRuleResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

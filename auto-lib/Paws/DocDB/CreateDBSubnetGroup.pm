@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::CreateDBSubnetGroup;
-  use Moose;
-  has DBSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has DBSubnetGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::CreateDBSubnetGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSubnetGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDBSubnetGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::CreateDBSubnetGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateDBSubnetGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'DBSubnetGroupDescription' => {
+                                               'type' => 'Str'
+                                             },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'DBSubnetGroupName' => 1,
+                    'SubnetIds' => 1,
+                    'DBSubnetGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +109,7 @@ The Amazon EC2 subnet IDs for the DB subnet group.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the DB subnet group.
 

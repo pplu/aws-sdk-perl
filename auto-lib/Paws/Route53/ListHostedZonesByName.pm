@@ -1,18 +1,43 @@
 
 package Paws::Route53::ListHostedZonesByName;
-  use Moose;
-  has DNSName => (is => 'ro', isa => 'Str', query_name => 'dnsname', traits => ['ParamInQuery']);
-  has HostedZoneId => (is => 'ro', isa => 'Str', query_name => 'hostedzoneid', traits => ['ParamInQuery']);
-  has MaxItems => (is => 'ro', isa => 'Str', query_name => 'maxitems', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53::Types qw//;
+  has DNSName => (is => 'ro', isa => Str, predicate => 1);
+  has HostedZoneId => (is => 'ro', isa => Str, predicate => 1);
+  has MaxItems => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListHostedZonesByName');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-04-01/hostedzonesbyname');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListHostedZonesByNameResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListHostedZonesByName');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-04-01/hostedzonesbyname');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Route53::ListHostedZonesByNameResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'DNSName' => {
+                              'type' => 'Str'
+                            },
+               'HostedZoneId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInQuery' => {
+                      'MaxItems' => 'maxitems',
+                      'DNSName' => 'dnsname',
+                      'HostedZoneId' => 'hostedzoneid'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

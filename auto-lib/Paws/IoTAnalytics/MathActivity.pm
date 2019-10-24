@@ -1,9 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::MathActivity;
-  use Moose;
-  has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest'], required => 1);
-  has Math => (is => 'ro', isa => 'Str', request_name => 'math', traits => ['NameInRequest'], required => 1);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
-  has Next => (is => 'ro', isa => 'Str', request_name => 'next', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has Attribute => (is => 'ro', isa => Str, required => 1);
+  has Math => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Next => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Math' => {
+                           'type' => 'Str'
+                         },
+               'Attribute' => {
+                                'type' => 'Str'
+                              },
+               'Next' => {
+                           'type' => 'Str'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Math' => 'math',
+                       'Attribute' => 'attribute',
+                       'Next' => 'next',
+                       'Name' => 'name'
+                     },
+  'IsRequired' => {
+                    'Math' => 1,
+                    'Attribute' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,57 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::Action;
-  use Moose;
-  has ClearTimer => (is => 'ro', isa => 'Paws::IoTEvents::ClearTimerAction', request_name => 'clearTimer', traits => ['NameInRequest']);
-  has IotTopicPublish => (is => 'ro', isa => 'Paws::IoTEvents::IotTopicPublishAction', request_name => 'iotTopicPublish', traits => ['NameInRequest']);
-  has ResetTimer => (is => 'ro', isa => 'Paws::IoTEvents::ResetTimerAction', request_name => 'resetTimer', traits => ['NameInRequest']);
-  has SetTimer => (is => 'ro', isa => 'Paws::IoTEvents::SetTimerAction', request_name => 'setTimer', traits => ['NameInRequest']);
-  has SetVariable => (is => 'ro', isa => 'Paws::IoTEvents::SetVariableAction', request_name => 'setVariable', traits => ['NameInRequest']);
-  has Sns => (is => 'ro', isa => 'Paws::IoTEvents::SNSTopicPublishAction', request_name => 'sns', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::IoTEvents::Types qw/IoTEvents_SetVariableAction IoTEvents_SNSTopicPublishAction IoTEvents_SetTimerAction IoTEvents_ResetTimerAction IoTEvents_ClearTimerAction IoTEvents_IotTopicPublishAction/;
+  has ClearTimer => (is => 'ro', isa => IoTEvents_ClearTimerAction);
+  has IotTopicPublish => (is => 'ro', isa => IoTEvents_IotTopicPublishAction);
+  has ResetTimer => (is => 'ro', isa => IoTEvents_ResetTimerAction);
+  has SetTimer => (is => 'ro', isa => IoTEvents_SetTimerAction);
+  has SetVariable => (is => 'ro', isa => IoTEvents_SetVariableAction);
+  has Sns => (is => 'ro', isa => IoTEvents_SNSTopicPublishAction);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SetTimer' => {
+                               'class' => 'Paws::IoTEvents::SetTimerAction',
+                               'type' => 'IoTEvents_SetTimerAction'
+                             },
+               'Sns' => {
+                          'class' => 'Paws::IoTEvents::SNSTopicPublishAction',
+                          'type' => 'IoTEvents_SNSTopicPublishAction'
+                        },
+               'IotTopicPublish' => {
+                                      'class' => 'Paws::IoTEvents::IotTopicPublishAction',
+                                      'type' => 'IoTEvents_IotTopicPublishAction'
+                                    },
+               'ClearTimer' => {
+                                 'class' => 'Paws::IoTEvents::ClearTimerAction',
+                                 'type' => 'IoTEvents_ClearTimerAction'
+                               },
+               'SetVariable' => {
+                                  'class' => 'Paws::IoTEvents::SetVariableAction',
+                                  'type' => 'IoTEvents_SetVariableAction'
+                                },
+               'ResetTimer' => {
+                                 'class' => 'Paws::IoTEvents::ResetTimerAction',
+                                 'type' => 'IoTEvents_ResetTimerAction'
+                               }
+             },
+  'NameInRequest' => {
+                       'SetTimer' => 'setTimer',
+                       'Sns' => 'sns',
+                       'IotTopicPublish' => 'iotTopicPublish',
+                       'ClearTimer' => 'clearTimer',
+                       'SetVariable' => 'setVariable',
+                       'ResetTimer' => 'resetTimer'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,33 +87,33 @@ An action to be performed when the C<condition> is TRUE.
 =head1 ATTRIBUTES
 
 
-=head2 ClearTimer => L<Paws::IoTEvents::ClearTimerAction>
+=head2 ClearTimer => IoTEvents_ClearTimerAction
 
   Information needed to clear the timer.
 
 
-=head2 IotTopicPublish => L<Paws::IoTEvents::IotTopicPublishAction>
+=head2 IotTopicPublish => IoTEvents_IotTopicPublishAction
 
   Publishes an MQTT message with the given topic to the AWS IoT Message
 Broker.
 
 
-=head2 ResetTimer => L<Paws::IoTEvents::ResetTimerAction>
+=head2 ResetTimer => IoTEvents_ResetTimerAction
 
   Information needed to reset the timer.
 
 
-=head2 SetTimer => L<Paws::IoTEvents::SetTimerAction>
+=head2 SetTimer => IoTEvents_SetTimerAction
 
   Information needed to set the timer.
 
 
-=head2 SetVariable => L<Paws::IoTEvents::SetVariableAction>
+=head2 SetVariable => IoTEvents_SetVariableAction
 
   Sets a variable to a specified value.
 
 
-=head2 Sns => L<Paws::IoTEvents::SNSTopicPublishAction>
+=head2 Sns => IoTEvents_SNSTopicPublishAction
 
   Sends an Amazon SNS message.
 

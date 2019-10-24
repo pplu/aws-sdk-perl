@@ -1,16 +1,48 @@
 
 package Paws::IoT1ClickProjects::UpdateProject;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has PlacementTemplate => (is => 'ro', isa => 'Paws::IoT1ClickProjects::PlacementTemplate', traits => ['NameInRequest'], request_name => 'placementTemplate');
-  has ProjectName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'projectName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT1ClickProjects::Types qw/IoT1ClickProjects_PlacementTemplate/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has PlacementTemplate => (is => 'ro', isa => IoT1ClickProjects_PlacementTemplate, predicate => 1);
+  has ProjectName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/projects/{projectName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT1ClickProjects::UpdateProjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/projects/{projectName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoT1ClickProjects::UpdateProjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProjectName' => {
+                                  'type' => 'Str'
+                                },
+               'PlacementTemplate' => {
+                                        'class' => 'Paws::IoT1ClickProjects::PlacementTemplate',
+                                        'type' => 'IoT1ClickProjects_PlacementTemplate'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'ProjectName' => 'projectName'
+                  },
+  'NameInRequest' => {
+                       'PlacementTemplate' => 'placementTemplate',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'ProjectName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +94,7 @@ An optional user-defined description for the project.
 
 
 
-=head2 PlacementTemplate => L<Paws::IoT1ClickProjects::PlacementTemplate>
+=head2 PlacementTemplate => IoT1ClickProjects_PlacementTemplate
 
 An object defining the project update. Once a project has been created,
 you cannot add device template names to the project. However, for a

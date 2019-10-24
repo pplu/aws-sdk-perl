@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes;
-  use Moose;
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ScheduledEventId' => 'scheduledEventId'
+                     },
+  'IsRequired' => {
+                    'ScheduledEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

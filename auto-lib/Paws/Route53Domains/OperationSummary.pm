@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::Route53Domains::OperationSummary;
-  use Moose;
-  has OperationId => (is => 'ro', isa => 'Str', required => 1);
-  has Status => (is => 'ro', isa => 'Str', required => 1);
-  has SubmittedDate => (is => 'ro', isa => 'Str', required => 1);
-  has Type => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Route53Domains::Types qw//;
+  has OperationId => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has SubmittedDate => (is => 'ro', isa => Str, required => 1);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SubmittedDate' => {
+                                    'type' => 'Str'
+                                  },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OperationId' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'SubmittedDate' => 1,
+                    'Status' => 1,
+                    'OperationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

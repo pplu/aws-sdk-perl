@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Support::ResolveCaseResponse;
-  use Moose;
-  has FinalCaseStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'finalCaseStatus' );
-  has InitialCaseStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'initialCaseStatus' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Support::Types qw//;
+  has FinalCaseStatus => (is => 'ro', isa => Str);
+  has InitialCaseStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InitialCaseStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'FinalCaseStatus' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'InitialCaseStatus' => 'initialCaseStatus',
+                       'FinalCaseStatus' => 'finalCaseStatus'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

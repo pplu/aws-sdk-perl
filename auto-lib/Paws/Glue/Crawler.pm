@@ -1,22 +1,91 @@
+# Generated from default/object.tt
 package Paws::Glue::Crawler;
-  use Moose;
-  has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Configuration => (is => 'ro', isa => 'Str');
-  has CrawlElapsedTime => (is => 'ro', isa => 'Int');
-  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastCrawl => (is => 'ro', isa => 'Paws::Glue::LastCrawlInfo');
-  has LastUpdated => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Role => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Paws::Glue::Schedule');
-  has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
-  has State => (is => 'ro', isa => 'Str');
-  has TablePrefix => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'Paws::Glue::CrawlerTargets');
-  has Version => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::Glue::Types qw/Glue_LastCrawlInfo Glue_SchemaChangePolicy Glue_CrawlerTargets Glue_Schedule/;
+  has Classifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Configuration => (is => 'ro', isa => Str);
+  has CrawlElapsedTime => (is => 'ro', isa => Int);
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has DatabaseName => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastCrawl => (is => 'ro', isa => Glue_LastCrawlInfo);
+  has LastUpdated => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Role => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Glue_Schedule);
+  has SchemaChangePolicy => (is => 'ro', isa => Glue_SchemaChangePolicy);
+  has State => (is => 'ro', isa => Str);
+  has TablePrefix => (is => 'ro', isa => Str);
+  has Targets => (is => 'ro', isa => Glue_CrawlerTargets);
+  has Version => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TablePrefix' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'type' => 'Str'
+                          },
+               'LastUpdated' => {
+                                  'type' => 'Str'
+                                },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'LastCrawl' => {
+                                'class' => 'Paws::Glue::LastCrawlInfo',
+                                'type' => 'Glue_LastCrawlInfo'
+                              },
+               'CrawlerSecurityConfiguration' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'Configuration' => {
+                                    'type' => 'Str'
+                                  },
+               'SchemaChangePolicy' => {
+                                         'class' => 'Paws::Glue::SchemaChangePolicy',
+                                         'type' => 'Glue_SchemaChangePolicy'
+                                       },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'Targets' => {
+                              'class' => 'Paws::Glue::CrawlerTargets',
+                              'type' => 'Glue_CrawlerTargets'
+                            },
+               'CrawlElapsedTime' => {
+                                       'type' => 'Int'
+                                     },
+               'Schedule' => {
+                               'class' => 'Paws::Glue::Schedule',
+                               'type' => 'Glue_Schedule'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'Classifiers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -96,7 +165,7 @@ crawler.
   A description of the crawler.
 
 
-=head2 LastCrawl => L<Paws::Glue::LastCrawlInfo>
+=head2 LastCrawl => Glue_LastCrawlInfo
 
   The status of the last crawl, and potentially error information if an
 error occurred.
@@ -119,12 +188,12 @@ customer resources, such as Amazon Simple Storage Service (Amazon S3)
 data.
 
 
-=head2 Schedule => L<Paws::Glue::Schedule>
+=head2 Schedule => Glue_Schedule
 
   For scheduled crawlers, the schedule when the crawler runs.
 
 
-=head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
+=head2 SchemaChangePolicy => Glue_SchemaChangePolicy
 
   The policy that specifies update and delete behaviors for the crawler.
 
@@ -139,7 +208,7 @@ data.
   The prefix added to the names of tables that are created.
 
 
-=head2 Targets => L<Paws::Glue::CrawlerTargets>
+=head2 Targets => Glue_CrawlerTargets
 
   A collection of targets to crawl.
 

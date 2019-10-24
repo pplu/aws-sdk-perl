@@ -1,13 +1,45 @@
+# Generated from json/callresult_class.tt
 
 package Paws::PerformanceInsights::DescribeDimensionKeysResponse;
-  use Moose;
-  has AlignedEndTime => (is => 'ro', isa => 'Str');
-  has AlignedStartTime => (is => 'ro', isa => 'Str');
-  has Keys => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::DimensionKeyDescription]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PartitionKeys => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::ResponsePartitionKey]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_ResponsePartitionKey PerformanceInsights_DimensionKeyDescription/;
+  has AlignedEndTime => (is => 'ro', isa => Str);
+  has AlignedStartTime => (is => 'ro', isa => Str);
+  has Keys => (is => 'ro', isa => ArrayRef[PerformanceInsights_DimensionKeyDescription]);
+  has NextToken => (is => 'ro', isa => Str);
+  has PartitionKeys => (is => 'ro', isa => ArrayRef[PerformanceInsights_ResponsePartitionKey]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AlignedStartTime' => {
+                                       'type' => 'Str'
+                                     },
+               'AlignedEndTime' => {
+                                     'type' => 'Str'
+                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PartitionKeys' => {
+                                    'class' => 'Paws::PerformanceInsights::ResponsePartitionKey',
+                                    'type' => 'ArrayRef[PerformanceInsights_ResponsePartitionKey]'
+                                  },
+               'Keys' => {
+                           'class' => 'Paws::PerformanceInsights::DimensionKeyDescription',
+                           'type' => 'ArrayRef[PerformanceInsights_DimensionKeyDescription]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -34,7 +66,7 @@ C<AlignedStartTime> will be less than or equal to the value of the
 user-specified C<StartTime>.
 
 
-=head2 Keys => ArrayRef[L<Paws::PerformanceInsights::DimensionKeyDescription>]
+=head2 Keys => ArrayRef[PerformanceInsights_DimensionKeyDescription]
 
 The dimension keys that were requested.
 
@@ -46,7 +78,7 @@ parameter is specified, the response includes only records beyond the
 token, up to the value specified by C<MaxRecords>.
 
 
-=head2 PartitionKeys => ArrayRef[L<Paws::PerformanceInsights::ResponsePartitionKey>]
+=head2 PartitionKeys => ArrayRef[PerformanceInsights_ResponsePartitionKey]
 
 If C<PartitionBy> was present in the request, C<PartitionKeys> contains
 the breakdown of dimension keys by the specified partitions.

@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::EsamManifestConfirmConditionNotification;
-  use Moose;
-  has MccXml => (is => 'ro', isa => 'Str', request_name => 'mccXml', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw//;
+  has MccXml => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MccXml' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'MccXml' => 'mccXml'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

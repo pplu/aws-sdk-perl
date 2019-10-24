@@ -1,16 +1,47 @@
 
 package Paws::ApiGatewayV2::GetRouteResponse;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has RouteId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeId', required => 1);
-  has RouteResponseId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeResponseId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteResponseId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetRouteResponse');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::GetRouteResponseResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetRouteResponse');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}/routes/{routeId}/routeresponses/{routeResponseId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::GetRouteResponseResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RouteResponseId' => {
+                                      'type' => 'Str'
+                                    },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'RouteId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'RouteResponseId' => 'routeResponseId',
+                    'ApiId' => 'apiId',
+                    'RouteId' => 'routeId'
+                  },
+  'IsRequired' => {
+                    'RouteResponseId' => 1,
+                    'ApiId' => 1,
+                    'RouteId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

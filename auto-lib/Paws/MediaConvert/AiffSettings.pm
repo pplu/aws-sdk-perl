@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AiffSettings;
-  use Moose;
-  has BitDepth => (is => 'ro', isa => 'Int', request_name => 'bitDepth', traits => ['NameInRequest']);
-  has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
-  has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has BitDepth => (is => 'ro', isa => Int);
+  has Channels => (is => 'ro', isa => Int);
+  has SampleRate => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Channels' => {
+                               'type' => 'Int'
+                             },
+               'BitDepth' => {
+                               'type' => 'Int'
+                             },
+               'SampleRate' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'Channels' => 'channels',
+                       'BitDepth' => 'bitDepth',
+                       'SampleRate' => 'sampleRate'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SMS::ListAppsResponse;
-  use Moose;
-  has Apps => (is => 'ro', isa => 'ArrayRef[Paws::SMS::AppSummary]', traits => ['NameInRequest'], request_name => 'apps' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_AppSummary/;
+  has Apps => (is => 'ro', isa => ArrayRef[SMS_AppSummary]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Apps' => {
+                           'class' => 'Paws::SMS::AppSummary',
+                           'type' => 'ArrayRef[SMS_AppSummary]'
+                         },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Apps' => 'apps'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::SMS::ListAppsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Apps => ArrayRef[L<Paws::SMS::AppSummary>]
+=head2 Apps => ArrayRef[SMS_AppSummary]
 
 A list of application summaries.
 

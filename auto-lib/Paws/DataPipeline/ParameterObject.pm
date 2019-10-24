@@ -1,7 +1,36 @@
+# Generated from default/object.tt
 package Paws::DataPipeline::ParameterObject;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterAttribute]', request_name => 'attributes', traits => ['NameInRequest'], required => 1);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::DataPipeline::Types qw/DataPipeline_ParameterAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[DataPipeline_ParameterAttribute], required => 1);
+  has Id => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Attributes' => {
+                                 'class' => 'Paws::DataPipeline::ParameterAttribute',
+                                 'type' => 'ArrayRef[DataPipeline_ParameterAttribute]'
+                               }
+             },
+  'NameInRequest' => {
+                       'Id' => 'id',
+                       'Attributes' => 'attributes'
+                     },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'Attributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +66,7 @@ Contains information about a parameter object.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::DataPipeline::ParameterAttribute>]
+=head2 B<REQUIRED> Attributes => ArrayRef[DataPipeline_ParameterAttribute]
 
   The attributes of the parameter object.
 

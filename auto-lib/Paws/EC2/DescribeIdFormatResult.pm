@@ -7,7 +7,7 @@ package Paws::EC2::DescribeIdFormatResult;
   has Statuses => (is => 'ro', isa => ArrayRef[EC2_IdFormat]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Statuses' => {
@@ -23,8 +23,8 @@ package Paws::EC2::DescribeIdFormatResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

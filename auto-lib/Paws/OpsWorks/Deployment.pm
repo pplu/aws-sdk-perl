@@ -1,17 +1,68 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Deployment;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str');
-  has Command => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommand');
-  has Comment => (is => 'ro', isa => 'Str');
-  has CompletedAt => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CustomJson => (is => 'ro', isa => 'Str');
-  has DeploymentId => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has IamUserArn => (is => 'ro', isa => 'Str');
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has StackId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_DeploymentCommand/;
+  has AppId => (is => 'ro', isa => Str);
+  has Command => (is => 'ro', isa => OpsWorks_DeploymentCommand);
+  has Comment => (is => 'ro', isa => Str);
+  has CompletedAt => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CustomJson => (is => 'ro', isa => Str);
+  has DeploymentId => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has IamUserArn => (is => 'ro', isa => Str);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has StackId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CompletedAt' => {
+                                  'type' => 'Str'
+                                },
+               'Comment' => {
+                              'type' => 'Str'
+                            },
+               'Command' => {
+                              'class' => 'Paws::OpsWorks::DeploymentCommand',
+                              'type' => 'OpsWorks_DeploymentCommand'
+                            },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'CustomJson' => {
+                                 'type' => 'Str'
+                               },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'IamUserArn' => {
+                                 'type' => 'Str'
+                               },
+               'AppId' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +103,7 @@ Describes a deployment of a stack or app.
   The app ID.
 
 
-=head2 Command => L<Paws::OpsWorks::DeploymentCommand>
+=head2 Command => OpsWorks_DeploymentCommand
 
   Used to specify a stack or deployment command.
 

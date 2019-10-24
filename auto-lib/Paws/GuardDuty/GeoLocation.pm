@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::GeoLocation;
-  use Moose;
-  has Lat => (is => 'ro', isa => 'Num', request_name => 'lat', traits => ['NameInRequest']);
-  has Lon => (is => 'ro', isa => 'Num', request_name => 'lon', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::GuardDuty::Types qw//;
+  has Lat => (is => 'ro', isa => Num);
+  has Lon => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Lon' => {
+                          'type' => 'Num'
+                        },
+               'Lat' => {
+                          'type' => 'Num'
+                        }
+             },
+  'NameInRequest' => {
+                       'Lon' => 'lon',
+                       'Lat' => 'lat'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

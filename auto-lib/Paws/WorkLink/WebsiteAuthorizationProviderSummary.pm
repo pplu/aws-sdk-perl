@@ -1,9 +1,38 @@
+# Generated from default/object.tt
 package Paws::WorkLink::WebsiteAuthorizationProviderSummary;
-  use Moose;
-  has AuthorizationProviderId => (is => 'ro', isa => 'Str');
-  has AuthorizationProviderType => (is => 'ro', isa => 'Str', required => 1);
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkLink::Types qw//;
+  has AuthorizationProviderId => (is => 'ro', isa => Str);
+  has AuthorizationProviderType => (is => 'ro', isa => Str, required => 1);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'AuthorizationProviderType' => {
+                                                'type' => 'Str'
+                                              },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'AuthorizationProviderId' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'AuthorizationProviderType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

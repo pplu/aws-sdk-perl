@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::IoT::ImplicitDeny;
-  use Moose;
-  has Policies => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Policy]', request_name => 'policies', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::IoT::Types qw/IoT_Policy/;
+  has Policies => (is => 'ro', isa => ArrayRef[IoT_Policy]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Policies' => {
+                               'class' => 'Paws::IoT::Policy',
+                               'type' => 'ArrayRef[IoT_Policy]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Policies' => 'policies'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +59,7 @@ implicit deny.
 =head1 ATTRIBUTES
 
 
-=head2 Policies => ArrayRef[L<Paws::IoT::Policy>]
+=head2 Policies => ArrayRef[IoT_Policy]
 
   Policies that don't contain a matching allow or deny statement for the
 specified action on the specified resource.

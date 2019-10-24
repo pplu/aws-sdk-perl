@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SSM::AttachmentContent;
-  use Moose;
-  has Hash => (is => 'ro', isa => 'Str');
-  has HashType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Size => (is => 'ro', isa => 'Int');
-  has Url => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has Hash => (is => 'ro', isa => Str);
+  has HashType => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Size => (is => 'ro', isa => Int);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HashType' => {
+                               'type' => 'Str'
+                             },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Hash' => {
+                           'type' => 'Str'
+                         },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

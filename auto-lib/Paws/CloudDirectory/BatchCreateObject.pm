@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchCreateObject;
-  use Moose;
-  has BatchReferenceName => (is => 'ro', isa => 'Str');
-  has LinkName => (is => 'ro', isa => 'Str');
-  has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]', required => 1);
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
-  has SchemaFacet => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet CloudDirectory_ObjectReference CloudDirectory_AttributeKeyAndValue/;
+  has BatchReferenceName => (is => 'ro', isa => Str);
+  has LinkName => (is => 'ro', isa => Str);
+  has ObjectAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue], required => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference);
+  has SchemaFacet => (is => 'ro', isa => ArrayRef[CloudDirectory_SchemaFacet], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'ObjectAttributeList' => {
+                                          'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                          'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                                        },
+               'BatchReferenceName' => {
+                                         'type' => 'Str'
+                                       },
+               'SchemaFacet' => {
+                                  'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                  'type' => 'ArrayRef[CloudDirectory_SchemaFacet]'
+                                },
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'ObjectAttributeList' => 1,
+                    'SchemaFacet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -52,19 +88,19 @@ for more information.
   The name of the link.
 
 
-=head2 B<REQUIRED> ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 B<REQUIRED> ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
   An attribute map, which contains an attribute ARN as the key and
 attribute value as the map value.
 
 
-=head2 ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 ParentReference => CloudDirectory_ObjectReference
 
   If specified, the parent reference to which this object will be
 attached.
 
 
-=head2 B<REQUIRED> SchemaFacet => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+=head2 B<REQUIRED> SchemaFacet => ArrayRef[CloudDirectory_SchemaFacet]
 
   A list of C<FacetArns> that will be associated with the object. For
 more information, see arns.

@@ -1,16 +1,47 @@
 
 package Paws::Greengrass::ListSubscriptionDefinitionVersions;
-  use Moose;
-  has MaxResults => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
-  has SubscriptionDefinitionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'SubscriptionDefinitionId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has MaxResults => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SubscriptionDefinitionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSubscriptionDefinitionVersions');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Greengrass::ListSubscriptionDefinitionVersionsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListSubscriptionDefinitionVersions');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Greengrass::ListSubscriptionDefinitionVersionsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubscriptionDefinitionId' => {
+                                               'type' => 'Str'
+                                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'ParamInURI' => {
+                    'SubscriptionDefinitionId' => 'SubscriptionDefinitionId'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'NextToken',
+                      'MaxResults' => 'MaxResults'
+                    },
+  'IsRequired' => {
+                    'SubscriptionDefinitionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

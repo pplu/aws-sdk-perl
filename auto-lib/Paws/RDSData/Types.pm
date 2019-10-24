@@ -1,0 +1,34 @@
+package Paws::RDSData::Types;
+  use Type::Library qw/-base/;
+  use Type::Utils qw/class_type/;
+
+  class_type RDSData_BadRequestException, { class => 'Paws::RDSData::BadRequestException' };
+  class_type RDSData_BatchExecuteStatementRequest, { class => 'Paws::RDSData::BatchExecuteStatementRequest' };
+  class_type RDSData_BatchExecuteStatementResponse, { class => 'Paws::RDSData::BatchExecuteStatementResponse' };
+  class_type RDSData_BeginTransactionRequest, { class => 'Paws::RDSData::BeginTransactionRequest' };
+  class_type RDSData_BeginTransactionResponse, { class => 'Paws::RDSData::BeginTransactionResponse' };
+  class_type RDSData_ColumnMetadata, { class => 'Paws::RDSData::ColumnMetadata' };
+  class_type RDSData_CommitTransactionRequest, { class => 'Paws::RDSData::CommitTransactionRequest' };
+  class_type RDSData_CommitTransactionResponse, { class => 'Paws::RDSData::CommitTransactionResponse' };
+  class_type RDSData_ExecuteSqlRequest, { class => 'Paws::RDSData::ExecuteSqlRequest' };
+  class_type RDSData_ExecuteSqlResponse, { class => 'Paws::RDSData::ExecuteSqlResponse' };
+  class_type RDSData_ExecuteStatementRequest, { class => 'Paws::RDSData::ExecuteStatementRequest' };
+  class_type RDSData_ExecuteStatementResponse, { class => 'Paws::RDSData::ExecuteStatementResponse' };
+  class_type RDSData_Field, { class => 'Paws::RDSData::Field' };
+  class_type RDSData_ForbiddenException, { class => 'Paws::RDSData::ForbiddenException' };
+  class_type RDSData_InternalServerErrorException, { class => 'Paws::RDSData::InternalServerErrorException' };
+  class_type RDSData_NotFoundException, { class => 'Paws::RDSData::NotFoundException' };
+  class_type RDSData_Record, { class => 'Paws::RDSData::Record' };
+  class_type RDSData_ResultFrame, { class => 'Paws::RDSData::ResultFrame' };
+  class_type RDSData_ResultSetMetadata, { class => 'Paws::RDSData::ResultSetMetadata' };
+  class_type RDSData_RollbackTransactionRequest, { class => 'Paws::RDSData::RollbackTransactionRequest' };
+  class_type RDSData_RollbackTransactionResponse, { class => 'Paws::RDSData::RollbackTransactionResponse' };
+  class_type RDSData_ServiceUnavailableError, { class => 'Paws::RDSData::ServiceUnavailableError' };
+  class_type RDSData_SqlParameter, { class => 'Paws::RDSData::SqlParameter' };
+  class_type RDSData_SqlStatementResult, { class => 'Paws::RDSData::SqlStatementResult' };
+  class_type RDSData_StatementTimeoutException, { class => 'Paws::RDSData::StatementTimeoutException' };
+  class_type RDSData_StructValue, { class => 'Paws::RDSData::StructValue' };
+  class_type RDSData_UpdateResult, { class => 'Paws::RDSData::UpdateResult' };
+  class_type RDSData_Value, { class => 'Paws::RDSData::Value' };
+
+1;

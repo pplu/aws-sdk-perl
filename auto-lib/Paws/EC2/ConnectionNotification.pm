@@ -9,7 +9,7 @@ package Paws::EC2::ConnectionNotification;
   has ServiceId => (is => 'ro', isa => Str);
   has VpcEndpointId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ConnectionNotificationType' => {
@@ -45,8 +45,8 @@ package Paws::EC2::ConnectionNotification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

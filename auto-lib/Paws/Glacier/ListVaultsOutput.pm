@@ -1,10 +1,31 @@
 
 package Paws::Glacier::ListVaultsOutput;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has VaultList => (is => 'ro', isa => 'ArrayRef[Paws::Glacier::DescribeVaultOutput]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Glacier::Types qw/Glacier_DescribeVaultOutput/;
+  has Marker => (is => 'ro', isa => Str);
+  has VaultList => (is => 'ro', isa => ArrayRef[Glacier_DescribeVaultOutput]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VaultList' => {
+                                'class' => 'Paws::Glacier::DescribeVaultOutput',
+                                'type' => 'ArrayRef[Glacier_DescribeVaultOutput]'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +44,7 @@ the marker in another List Vaults request to obtain more vaults in the
 list.
 
 
-=head2 VaultList => ArrayRef[L<Paws::Glacier::DescribeVaultOutput>]
+=head2 VaultList => ArrayRef[Glacier_DescribeVaultOutput]
 
 List of vaults.
 

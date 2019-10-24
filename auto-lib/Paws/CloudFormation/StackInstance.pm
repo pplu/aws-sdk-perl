@@ -1,12 +1,48 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackInstance;
-  use Moose;
-  has Account => (is => 'ro', isa => 'Str');
-  has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has Region => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has StatusReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter/;
+  has Account => (is => 'ro', isa => Str);
+  has ParameterOverrides => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter]);
+  has Region => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has StackSetId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'StatusReason' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'ParameterOverrides' => {
+                                         'class' => 'Paws::CloudFormation::Parameter',
+                                         'type' => 'ArrayRef[CloudFormation_Parameter]'
+                                       },
+               'Account' => {
+                              'type' => 'Str'
+                            },
+               'Region' => {
+                             'type' => 'Str'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +90,7 @@ the stack status.
   The name of the AWS account that the stack instance is associated with.
 
 
-=head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 ParameterOverrides => ArrayRef[CloudFormation_Parameter]
 
   A list of parameters from the stack set template whose values have been
 overridden in this stack instance.

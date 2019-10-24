@@ -4,7 +4,7 @@ package Paws::EC2::CancelSpotFleetRequestsErrorItem;
   has Error => (is => 'ro', isa => EC2_CancelSpotFleetRequestsError);
   has SpotFleetRequestId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Error' => {
@@ -21,8 +21,8 @@ package Paws::EC2::CancelSpotFleetRequestsErrorItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

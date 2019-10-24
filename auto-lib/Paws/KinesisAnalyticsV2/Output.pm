@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::Output;
-  use Moose;
-  has DestinationSchema => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::DestinationSchema', required => 1);
-  has KinesisFirehoseOutput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisFirehoseOutput');
-  has KinesisStreamsOutput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisStreamsOutput');
-  has LambdaOutput => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::LambdaOutput');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_LambdaOutput KinesisAnalyticsV2_DestinationSchema KinesisAnalyticsV2_KinesisStreamsOutput KinesisAnalyticsV2_KinesisFirehoseOutput/;
+  has DestinationSchema => (is => 'ro', isa => KinesisAnalyticsV2_DestinationSchema, required => 1);
+  has KinesisFirehoseOutput => (is => 'ro', isa => KinesisAnalyticsV2_KinesisFirehoseOutput);
+  has KinesisStreamsOutput => (is => 'ro', isa => KinesisAnalyticsV2_KinesisStreamsOutput);
+  has LambdaOutput => (is => 'ro', isa => KinesisAnalyticsV2_LambdaOutput);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KinesisFirehoseOutput' => {
+                                            'class' => 'Paws::KinesisAnalyticsV2::KinesisFirehoseOutput',
+                                            'type' => 'KinesisAnalyticsV2_KinesisFirehoseOutput'
+                                          },
+               'KinesisStreamsOutput' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::KinesisStreamsOutput',
+                                           'type' => 'KinesisAnalyticsV2_KinesisStreamsOutput'
+                                         },
+               'LambdaOutput' => {
+                                   'class' => 'Paws::KinesisAnalyticsV2::LambdaOutput',
+                                   'type' => 'KinesisAnalyticsV2_LambdaOutput'
+                                 },
+               'DestinationSchema' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::DestinationSchema',
+                                        'type' => 'KinesisAnalyticsV2_DestinationSchema'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'DestinationSchema' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,23 +81,23 @@ Firehose delivery stream.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DestinationSchema => L<Paws::KinesisAnalyticsV2::DestinationSchema>
+=head2 B<REQUIRED> DestinationSchema => KinesisAnalyticsV2_DestinationSchema
 
   Describes the data format when records are written to the destination.
 
 
-=head2 KinesisFirehoseOutput => L<Paws::KinesisAnalyticsV2::KinesisFirehoseOutput>
+=head2 KinesisFirehoseOutput => KinesisAnalyticsV2_KinesisFirehoseOutput
 
   Identifies an Amazon Kinesis Data Firehose delivery stream as the
 destination.
 
 
-=head2 KinesisStreamsOutput => L<Paws::KinesisAnalyticsV2::KinesisStreamsOutput>
+=head2 KinesisStreamsOutput => KinesisAnalyticsV2_KinesisStreamsOutput
 
   Identifies an Amazon Kinesis data stream as the destination.
 
 
-=head2 LambdaOutput => L<Paws::KinesisAnalyticsV2::LambdaOutput>
+=head2 LambdaOutput => KinesisAnalyticsV2_LambdaOutput
 
   Identifies an AWS Lambda function as the destination.
 

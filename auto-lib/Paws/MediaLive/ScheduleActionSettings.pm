@@ -1,13 +1,69 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ScheduleActionSettings;
-  use Moose;
-  has HlsTimedMetadataSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings', request_name => 'hlsTimedMetadataSettings', traits => ['NameInRequest']);
-  has InputSwitchSettings => (is => 'ro', isa => 'Paws::MediaLive::InputSwitchScheduleActionSettings', request_name => 'inputSwitchSettings', traits => ['NameInRequest']);
-  has PauseStateSettings => (is => 'ro', isa => 'Paws::MediaLive::PauseStateScheduleActionSettings', request_name => 'pauseStateSettings', traits => ['NameInRequest']);
-  has Scte35ReturnToNetworkSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings', request_name => 'scte35ReturnToNetworkSettings', traits => ['NameInRequest']);
-  has Scte35SpliceInsertSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings', request_name => 'scte35SpliceInsertSettings', traits => ['NameInRequest']);
-  has Scte35TimeSignalSettings => (is => 'ro', isa => 'Paws::MediaLive::Scte35TimeSignalScheduleActionSettings', request_name => 'scte35TimeSignalSettings', traits => ['NameInRequest']);
-  has StaticImageActivateSettings => (is => 'ro', isa => 'Paws::MediaLive::StaticImageActivateScheduleActionSettings', request_name => 'staticImageActivateSettings', traits => ['NameInRequest']);
-  has StaticImageDeactivateSettings => (is => 'ro', isa => 'Paws::MediaLive::StaticImageDeactivateScheduleActionSettings', request_name => 'staticImageDeactivateSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_PauseStateScheduleActionSettings MediaLive_HlsTimedMetadataScheduleActionSettings MediaLive_Scte35TimeSignalScheduleActionSettings MediaLive_StaticImageActivateScheduleActionSettings MediaLive_Scte35ReturnToNetworkScheduleActionSettings MediaLive_StaticImageDeactivateScheduleActionSettings MediaLive_InputSwitchScheduleActionSettings MediaLive_Scte35SpliceInsertScheduleActionSettings/;
+  has HlsTimedMetadataSettings => (is => 'ro', isa => MediaLive_HlsTimedMetadataScheduleActionSettings);
+  has InputSwitchSettings => (is => 'ro', isa => MediaLive_InputSwitchScheduleActionSettings);
+  has PauseStateSettings => (is => 'ro', isa => MediaLive_PauseStateScheduleActionSettings);
+  has Scte35ReturnToNetworkSettings => (is => 'ro', isa => MediaLive_Scte35ReturnToNetworkScheduleActionSettings);
+  has Scte35SpliceInsertSettings => (is => 'ro', isa => MediaLive_Scte35SpliceInsertScheduleActionSettings);
+  has Scte35TimeSignalSettings => (is => 'ro', isa => MediaLive_Scte35TimeSignalScheduleActionSettings);
+  has StaticImageActivateSettings => (is => 'ro', isa => MediaLive_StaticImageActivateScheduleActionSettings);
+  has StaticImageDeactivateSettings => (is => 'ro', isa => MediaLive_StaticImageDeactivateScheduleActionSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Scte35SpliceInsertSettings' => {
+                                                 'class' => 'Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings',
+                                                 'type' => 'MediaLive_Scte35SpliceInsertScheduleActionSettings'
+                                               },
+               'Scte35ReturnToNetworkSettings' => {
+                                                    'class' => 'Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings',
+                                                    'type' => 'MediaLive_Scte35ReturnToNetworkScheduleActionSettings'
+                                                  },
+               'InputSwitchSettings' => {
+                                          'class' => 'Paws::MediaLive::InputSwitchScheduleActionSettings',
+                                          'type' => 'MediaLive_InputSwitchScheduleActionSettings'
+                                        },
+               'PauseStateSettings' => {
+                                         'class' => 'Paws::MediaLive::PauseStateScheduleActionSettings',
+                                         'type' => 'MediaLive_PauseStateScheduleActionSettings'
+                                       },
+               'Scte35TimeSignalSettings' => {
+                                               'class' => 'Paws::MediaLive::Scte35TimeSignalScheduleActionSettings',
+                                               'type' => 'MediaLive_Scte35TimeSignalScheduleActionSettings'
+                                             },
+               'StaticImageDeactivateSettings' => {
+                                                    'class' => 'Paws::MediaLive::StaticImageDeactivateScheduleActionSettings',
+                                                    'type' => 'MediaLive_StaticImageDeactivateScheduleActionSettings'
+                                                  },
+               'HlsTimedMetadataSettings' => {
+                                               'class' => 'Paws::MediaLive::HlsTimedMetadataScheduleActionSettings',
+                                               'type' => 'MediaLive_HlsTimedMetadataScheduleActionSettings'
+                                             },
+               'StaticImageActivateSettings' => {
+                                                  'class' => 'Paws::MediaLive::StaticImageActivateScheduleActionSettings',
+                                                  'type' => 'MediaLive_StaticImageActivateScheduleActionSettings'
+                                                }
+             },
+  'NameInRequest' => {
+                       'Scte35SpliceInsertSettings' => 'scte35SpliceInsertSettings',
+                       'Scte35ReturnToNetworkSettings' => 'scte35ReturnToNetworkSettings',
+                       'InputSwitchSettings' => 'inputSwitchSettings',
+                       'PauseStateSettings' => 'pauseStateSettings',
+                       'Scte35TimeSignalSettings' => 'scte35TimeSignalSettings',
+                       'StaticImageDeactivateSettings' => 'staticImageDeactivateSettings',
+                       'HlsTimedMetadataSettings' => 'hlsTimedMetadataSettings',
+                       'StaticImageActivateSettings' => 'staticImageActivateSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,42 +99,42 @@ Holds the settings for a single schedule action.
 =head1 ATTRIBUTES
 
 
-=head2 HlsTimedMetadataSettings => L<Paws::MediaLive::HlsTimedMetadataScheduleActionSettings>
+=head2 HlsTimedMetadataSettings => MediaLive_HlsTimedMetadataScheduleActionSettings
 
   Action to insert HLS metadata
 
 
-=head2 InputSwitchSettings => L<Paws::MediaLive::InputSwitchScheduleActionSettings>
+=head2 InputSwitchSettings => MediaLive_InputSwitchScheduleActionSettings
 
   Action to switch the input
 
 
-=head2 PauseStateSettings => L<Paws::MediaLive::PauseStateScheduleActionSettings>
+=head2 PauseStateSettings => MediaLive_PauseStateScheduleActionSettings
 
   Action to pause or unpause one or both channel pipelines
 
 
-=head2 Scte35ReturnToNetworkSettings => L<Paws::MediaLive::Scte35ReturnToNetworkScheduleActionSettings>
+=head2 Scte35ReturnToNetworkSettings => MediaLive_Scte35ReturnToNetworkScheduleActionSettings
 
   Action to insert SCTE-35 return_to_network message
 
 
-=head2 Scte35SpliceInsertSettings => L<Paws::MediaLive::Scte35SpliceInsertScheduleActionSettings>
+=head2 Scte35SpliceInsertSettings => MediaLive_Scte35SpliceInsertScheduleActionSettings
 
   Action to insert SCTE-35 splice_insert message
 
 
-=head2 Scte35TimeSignalSettings => L<Paws::MediaLive::Scte35TimeSignalScheduleActionSettings>
+=head2 Scte35TimeSignalSettings => MediaLive_Scte35TimeSignalScheduleActionSettings
 
   Action to insert SCTE-35 time_signal message
 
 
-=head2 StaticImageActivateSettings => L<Paws::MediaLive::StaticImageActivateScheduleActionSettings>
+=head2 StaticImageActivateSettings => MediaLive_StaticImageActivateScheduleActionSettings
 
   Action to activate a static image overlay
 
 
-=head2 StaticImageDeactivateSettings => L<Paws::MediaLive::StaticImageDeactivateScheduleActionSettings>
+=head2 StaticImageDeactivateSettings => MediaLive_StaticImageDeactivateScheduleActionSettings
 
   Action to deactivate a static image overlay
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudHSMv2::DescribeBackupsResponse;
-  use Moose;
-  has Backups => (is => 'ro', isa => 'ArrayRef[Paws::CloudHSMv2::Backup]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudHSMv2::Types qw/CloudHSMv2_Backup/;
+  has Backups => (is => 'ro', isa => ArrayRef[CloudHSMv2_Backup]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Backups' => {
+                              'class' => 'Paws::CloudHSMv2::Backup',
+                              'type' => 'ArrayRef[CloudHSMv2_Backup]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::CloudHSMv2::DescribeBackupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Backups => ArrayRef[L<Paws::CloudHSMv2::Backup>]
+=head2 Backups => ArrayRef[CloudHSMv2_Backup]
 
 A list of backups.
 

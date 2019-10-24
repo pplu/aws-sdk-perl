@@ -4,7 +4,7 @@ package Paws::EC2::LaunchTemplateTagSpecificationRequest;
   has ResourceType => (is => 'ro', isa => Str);
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ResourceType' => {
@@ -20,8 +20,8 @@ package Paws::EC2::LaunchTemplateTagSpecificationRequest;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

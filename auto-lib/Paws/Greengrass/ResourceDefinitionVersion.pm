@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::ResourceDefinitionVersion;
-  use Moose;
-  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Resource]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Resource/;
+  has Resources => (is => 'ro', isa => ArrayRef[Greengrass_Resource]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Resources' => {
+                                'class' => 'Paws::Greengrass::Resource',
+                                'type' => 'ArrayRef[Greengrass_Resource]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about a resource definition version.
 =head1 ATTRIBUTES
 
 
-=head2 Resources => ArrayRef[L<Paws::Greengrass::Resource>]
+=head2 Resources => ArrayRef[Greengrass_Resource]
 
   A list of resources.
 

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::TimeBasedAutoScalingConfiguration;
-  use Moose;
-  has AutoScalingSchedule => (is => 'ro', isa => 'Paws::OpsWorks::WeeklyAutoScalingSchedule');
-  has InstanceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorks::Types qw/OpsWorks_WeeklyAutoScalingSchedule/;
+  has AutoScalingSchedule => (is => 'ro', isa => OpsWorks_WeeklyAutoScalingSchedule);
+  has InstanceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'AutoScalingSchedule' => {
+                                          'class' => 'Paws::OpsWorks::WeeklyAutoScalingSchedule',
+                                          'type' => 'OpsWorks_WeeklyAutoScalingSchedule'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Describes an instance's time-based auto scaling configuration.
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
+=head2 AutoScalingSchedule => OpsWorks_WeeklyAutoScalingSchedule
 
   A C<WeeklyAutoScalingSchedule> object with the instance schedule.
 

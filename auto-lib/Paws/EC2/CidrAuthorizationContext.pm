@@ -4,7 +4,7 @@ package Paws::EC2::CidrAuthorizationContext;
   has Message => (is => 'ro', isa => Str, required => 1);
   has Signature => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Signature' => {
@@ -13,11 +13,15 @@ package Paws::EC2::CidrAuthorizationContext;
                'Message' => {
                               'type' => 'Str'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'Signature' => 1,
+                    'Message' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

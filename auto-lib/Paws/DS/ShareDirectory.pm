@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DS::ShareDirectory;
-  use Moose;
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has ShareMethod => (is => 'ro', isa => 'Str', required => 1);
-  has ShareNotes => (is => 'ro', isa => 'Str');
-  has ShareTarget => (is => 'ro', isa => 'Paws::DS::ShareTarget', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DS::Types qw/DS_ShareTarget/;
+  has DirectoryId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShareMethod => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ShareNotes => (is => 'ro', isa => Str, predicate => 1);
+  has ShareTarget => (is => 'ro', isa => DS_ShareTarget, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ShareDirectory');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::ShareDirectoryResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ShareDirectory');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DS::ShareDirectoryResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShareTarget' => {
+                                  'class' => 'Paws::DS::ShareTarget',
+                                  'type' => 'DS_ShareTarget'
+                                },
+               'ShareNotes' => {
+                                 'type' => 'Str'
+                               },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'ShareMethod' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'ShareTarget' => 1,
+                    'DirectoryId' => 1,
+                    'ShareMethod' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +108,7 @@ the share invitation.
 
 
 
-=head2 B<REQUIRED> ShareTarget => L<Paws::DS::ShareTarget>
+=head2 B<REQUIRED> ShareTarget => DS_ShareTarget
 
 Identifier for the directory consumer account with whom the directory
 is to be shared.

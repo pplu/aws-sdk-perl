@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::ResetServiceSpecificCredentialResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_ServiceSpecificCredential/;
   has ServiceSpecificCredential => (is => 'ro', isa => IAM_ServiceSpecificCredential);

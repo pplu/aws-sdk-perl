@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::Webhook;
-  use Moose;
-  has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
-  has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', request_name => 'filterGroups', traits => ['NameInRequest']);
-  has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
-  has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
-  has Secret => (is => 'ro', isa => 'Str', request_name => 'secret', traits => ['NameInRequest']);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeBuild::Types qw/CodeBuild_WebhookFilter/;
+  has BranchFilter => (is => 'ro', isa => Str);
+  has FilterGroups => (is => 'ro', isa => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]);
+  has LastModifiedSecret => (is => 'ro', isa => Str);
+  has PayloadUrl => (is => 'ro', isa => Str);
+  has Secret => (is => 'ro', isa => Str);
+  has Url => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedSecret' => {
+                                         'type' => 'Str'
+                                       },
+               'BranchFilter' => {
+                                   'type' => 'Str'
+                                 },
+               'PayloadUrl' => {
+                                 'type' => 'Str'
+                               },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'FilterGroups' => {
+                                   'class' => 'Paws::CodeBuild::WebhookFilter',
+                                   'type' => 'ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]'
+                                 },
+               'Secret' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'LastModifiedSecret' => 'lastModifiedSecret',
+                       'BranchFilter' => 'branchFilter',
+                       'PayloadUrl' => 'payloadUrl',
+                       'Url' => 'url',
+                       'FilterGroups' => 'filterGroups',
+                       'Secret' => 'secret'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +94,7 @@ It is recommended that you use C<filterGroups> instead of
 C<branchFilter>.
 
 
-=head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
+=head2 FilterGroups => ArrayRef[ArrayRef[CodeBuild_WebhookFilter]]
 
   An array of arrays of C<WebhookFilter> objects used to determine which
 webhooks are triggered. At least one C<WebhookFilter> in the array must

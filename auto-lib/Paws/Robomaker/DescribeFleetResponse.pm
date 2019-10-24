@@ -1,16 +1,66 @@
 
 package Paws::Robomaker::DescribeFleetResponse;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
-  has CreatedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdAt');
-  has LastDeploymentJob => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentJob');
-  has LastDeploymentStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentStatus');
-  has LastDeploymentTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastDeploymentTime');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has Robots => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::Robot]', traits => ['NameInRequest'], request_name => 'robots');
-  has Tags => (is => 'ro', isa => 'Paws::Robomaker::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Robomaker::Types qw/Robomaker_Robot Robomaker_TagMap/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has LastDeploymentJob => (is => 'ro', isa => Str);
+  has LastDeploymentStatus => (is => 'ro', isa => Str);
+  has LastDeploymentTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Robots => (is => 'ro', isa => ArrayRef[Robomaker_Robot]);
+  has Tags => (is => 'ro', isa => Robomaker_TagMap);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastDeploymentJob' => {
+                                        'type' => 'Str'
+                                      },
+               'LastDeploymentStatus' => {
+                                           'type' => 'Str'
+                                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'LastDeploymentTime' => {
+                                         'type' => 'Str'
+                                       },
+               'Robots' => {
+                             'class' => 'Paws::Robomaker::Robot',
+                             'type' => 'ArrayRef[Robomaker_Robot]'
+                           },
+               'Tags' => {
+                           'class' => 'Paws::Robomaker::TagMap',
+                           'type' => 'Robomaker_TagMap'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'LastDeploymentJob' => 'lastDeploymentJob',
+                       'LastDeploymentStatus' => 'lastDeploymentStatus',
+                       'CreatedAt' => 'createdAt',
+                       'Arn' => 'arn',
+                       'LastDeploymentTime' => 'lastDeploymentTime',
+                       'Robots' => 'robots',
+                       'Tags' => 'tags',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -52,12 +102,12 @@ The time of the last deployment.
 The name of the fleet.
 
 
-=head2 Robots => ArrayRef[L<Paws::Robomaker::Robot>]
+=head2 Robots => ArrayRef[Robomaker_Robot]
 
 A list of robots.
 
 
-=head2 Tags => L<Paws::Robomaker::TagMap>
+=head2 Tags => Robomaker_TagMap
 
 The list of all tags added to the specified fleet.
 

@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::Inspector::InspectorServiceAttributes;
-  use Moose;
-  has AssessmentRunArn => (is => 'ro', isa => 'Str', request_name => 'assessmentRunArn', traits => ['NameInRequest']);
-  has RulesPackageArn => (is => 'ro', isa => 'Str', request_name => 'rulesPackageArn', traits => ['NameInRequest']);
-  has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Inspector::Types qw//;
+  has AssessmentRunArn => (is => 'ro', isa => Str);
+  has RulesPackageArn => (is => 'ro', isa => Str);
+  has SchemaVersion => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaVersion' => {
+                                    'type' => 'Int'
+                                  },
+               'AssessmentRunArn' => {
+                                       'type' => 'Str'
+                                     },
+               'RulesPackageArn' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'SchemaVersion' => 'schemaVersion',
+                       'AssessmentRunArn' => 'assessmentRunArn',
+                       'RulesPackageArn' => 'rulesPackageArn'
+                     },
+  'IsRequired' => {
+                    'SchemaVersion' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

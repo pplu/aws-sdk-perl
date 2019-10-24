@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::GetIPSetResponse;
-  use Moose;
-  has IPSet => (is => 'ro', isa => 'Paws::WAFRegional::IPSet');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WAFRegional::Types qw/WAFRegional_IPSet/;
+  has IPSet => (is => 'ro', isa => WAFRegional_IPSet);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IPSet' => {
+                            'class' => 'Paws::WAFRegional::IPSet',
+                            'type' => 'WAFRegional_IPSet'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::WAFRegional::GetIPSetResponse
 =head1 ATTRIBUTES
 
 
-=head2 IPSet => L<Paws::WAFRegional::IPSet>
+=head2 IPSet => WAFRegional_IPSet
 
 Information about the IPSet that you specified in the C<GetIPSet>
 request. For more information, see the following topics:

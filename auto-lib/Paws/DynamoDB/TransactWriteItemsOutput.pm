@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::TransactWriteItemsOutput;
   use Moo;
@@ -7,13 +8,16 @@ package Paws::DynamoDB::TransactWriteItemsOutput;
   has ItemCollectionMetrics => (is => 'ro', isa => DynamoDB_ItemCollectionMetricsPerTable);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ConsumedCapacity' => {
                                        'class' => 'Paws::DynamoDB::ConsumedCapacity',
                                        'type' => 'ArrayRef[DynamoDB_ConsumedCapacity]'
                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
                'ItemCollectionMetrics' => {
                                             'class' => 'Paws::DynamoDB::ItemCollectionMetricsPerTable',
                                             'type' => 'DynamoDB_ItemCollectionMetricsPerTable'
@@ -21,8 +25,8 @@ package Paws::DynamoDB::TransactWriteItemsOutput;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

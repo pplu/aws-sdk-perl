@@ -1,15 +1,40 @@
 
 package Paws::ResourceGroups::Untag;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Arn', required => 1);
-  has Keys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ResourceGroups::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Keys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Untag');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/resources/{Arn}/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::UntagOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Untag');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/resources/{Arn}/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::UntagOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Keys' => {
+                           'type' => 'ArrayRef[Str|Undef]'
+                         },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'ParamInURI' => {
+                    'Arn' => 'Arn'
+                  },
+  'IsRequired' => {
+                    'Keys' => 1,
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

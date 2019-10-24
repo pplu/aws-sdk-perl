@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::VolumeRecoveryPointInfo;
-  use Moose;
-  has VolumeARN => (is => 'ro', isa => 'Str');
-  has VolumeRecoveryPointTime => (is => 'ro', isa => 'Str');
-  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
-  has VolumeUsageInBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has VolumeARN => (is => 'ro', isa => Str);
+  has VolumeRecoveryPointTime => (is => 'ro', isa => Str);
+  has VolumeSizeInBytes => (is => 'ro', isa => Int);
+  has VolumeUsageInBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VolumeSizeInBytes' => {
+                                        'type' => 'Int'
+                                      },
+               'VolumeUsageInBytes' => {
+                                         'type' => 'Int'
+                                       },
+               'VolumeRecoveryPointTime' => {
+                                              'type' => 'Str'
+                                            },
+               'VolumeARN' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

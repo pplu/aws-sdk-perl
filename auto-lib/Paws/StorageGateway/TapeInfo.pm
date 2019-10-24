@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::TapeInfo;
-  use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str');
-  has PoolId => (is => 'ro', isa => 'Str');
-  has TapeARN => (is => 'ro', isa => 'Str');
-  has TapeBarcode => (is => 'ro', isa => 'Str');
-  has TapeSizeInBytes => (is => 'ro', isa => 'Int');
-  has TapeStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has GatewayARN => (is => 'ro', isa => Str);
+  has PoolId => (is => 'ro', isa => Str);
+  has TapeARN => (is => 'ro', isa => Str);
+  has TapeBarcode => (is => 'ro', isa => Str);
+  has TapeSizeInBytes => (is => 'ro', isa => Int);
+  has TapeStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TapeSizeInBytes' => {
+                                      'type' => 'Int'
+                                    },
+               'TapeBarcode' => {
+                                  'type' => 'Str'
+                                },
+               'TapeARN' => {
+                              'type' => 'Str'
+                            },
+               'PoolId' => {
+                             'type' => 'Str'
+                           },
+               'TapeStatus' => {
+                                 'type' => 'Str'
+                               },
+               'GatewayARN' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

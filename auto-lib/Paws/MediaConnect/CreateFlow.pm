@@ -1,18 +1,59 @@
 
 package Paws::MediaConnect::CreateFlow;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone');
-  has Entitlements => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::GrantEntitlementRequest]', traits => ['NameInRequest'], request_name => 'entitlements');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::AddOutputRequest]', traits => ['NameInRequest'], request_name => 'outputs');
-  has Source => (is => 'ro', isa => 'Paws::MediaConnect::SetSourceRequest', traits => ['NameInRequest'], request_name => 'source', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_GrantEntitlementRequest MediaConnect_AddOutputRequest MediaConnect_SetSourceRequest/;
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has Entitlements => (is => 'ro', isa => ArrayRef[MediaConnect_GrantEntitlementRequest], predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Outputs => (is => 'ro', isa => ArrayRef[MediaConnect_AddOutputRequest], predicate => 1);
+  has Source => (is => 'ro', isa => MediaConnect_SetSourceRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFlow');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::CreateFlowResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFlow');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::CreateFlowResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source' => {
+                             'class' => 'Paws::MediaConnect::SetSourceRequest',
+                             'type' => 'MediaConnect_SetSourceRequest'
+                           },
+               'Outputs' => {
+                              'class' => 'Paws::MediaConnect::AddOutputRequest',
+                              'type' => 'ArrayRef[MediaConnect_AddOutputRequest]'
+                            },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Entitlements' => {
+                                   'class' => 'Paws::MediaConnect::GrantEntitlementRequest',
+                                   'type' => 'ArrayRef[MediaConnect_GrantEntitlementRequest]'
+                                 },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Source' => 'source',
+                       'Outputs' => 'outputs',
+                       'Name' => 'name',
+                       'Entitlements' => 'entitlements',
+                       'AvailabilityZone' => 'availabilityZone'
+                     },
+  'IsRequired' => {
+                    'Source' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -121,7 +162,7 @@ Region.
 
 
 
-=head2 Entitlements => ArrayRef[L<Paws::MediaConnect::GrantEntitlementRequest>]
+=head2 Entitlements => ArrayRef[MediaConnect_GrantEntitlementRequest]
 
 The entitlements that you want to grant on a flow.
 
@@ -133,13 +174,13 @@ The name of the flow.
 
 
 
-=head2 Outputs => ArrayRef[L<Paws::MediaConnect::AddOutputRequest>]
+=head2 Outputs => ArrayRef[MediaConnect_AddOutputRequest]
 
 The outputs that you want to add to this flow.
 
 
 
-=head2 B<REQUIRED> Source => L<Paws::MediaConnect::SetSourceRequest>
+=head2 B<REQUIRED> Source => MediaConnect_SetSourceRequest
 
 
 

@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::AlexaForBusiness::ProfileData;
-  use Moose;
-  has Address => (is => 'ro', isa => 'Str');
-  has DistanceUnit => (is => 'ro', isa => 'Str');
-  has IsDefault => (is => 'ro', isa => 'Bool');
-  has ProfileArn => (is => 'ro', isa => 'Str');
-  has ProfileName => (is => 'ro', isa => 'Str');
-  has TemperatureUnit => (is => 'ro', isa => 'Str');
-  has Timezone => (is => 'ro', isa => 'Str');
-  has WakeWord => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::AlexaForBusiness::Types qw//;
+  has Address => (is => 'ro', isa => Str);
+  has DistanceUnit => (is => 'ro', isa => Str);
+  has IsDefault => (is => 'ro', isa => Bool);
+  has ProfileArn => (is => 'ro', isa => Str);
+  has ProfileName => (is => 'ro', isa => Str);
+  has TemperatureUnit => (is => 'ro', isa => Str);
+  has Timezone => (is => 'ro', isa => Str);
+  has WakeWord => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsDefault' => {
+                                'type' => 'Bool'
+                              },
+               'Timezone' => {
+                               'type' => 'Str'
+                             },
+               'Address' => {
+                              'type' => 'Str'
+                            },
+               'ProfileName' => {
+                                  'type' => 'Str'
+                                },
+               'ProfileArn' => {
+                                 'type' => 'Str'
+                               },
+               'TemperatureUnit' => {
+                                      'type' => 'Str'
+                                    },
+               'WakeWord' => {
+                               'type' => 'Str'
+                             },
+               'DistanceUnit' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

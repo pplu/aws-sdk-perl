@@ -1,16 +1,46 @@
+# Generated from callargs_class.tt
 
 package Paws::RedShift::CreateClusterSnapshot;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
-  has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_Tag/;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ManualSnapshotRetentionPeriod => (is => 'ro', isa => Int, predicate => 1);
+  has SnapshotIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RedShift_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateClusterSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterSnapshotResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateClusterSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RedShift::CreateClusterSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CreateClusterSnapshotResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'ManualSnapshotRetentionPeriod' => {
+                                                    'type' => 'Int'
+                                                  },
+               'SnapshotIdentifier' => {
+                                         'type' => 'Str'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::RedShift::Tag',
+                           'type' => 'ArrayRef[RedShift_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'SnapshotIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -102,7 +132,7 @@ Example: C<my-snapshot-id>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
+=head2 Tags => ArrayRef[RedShift_Tag]
 
 A list of tag instances.
 

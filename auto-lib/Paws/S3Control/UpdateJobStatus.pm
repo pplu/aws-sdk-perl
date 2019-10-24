@@ -1,19 +1,57 @@
 
 package Paws::S3Control::UpdateJobStatus;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', header_name => 'x-amz-account-id', traits => ['ParamInHeader'], required => 1);
-  has JobId => (is => 'ro', isa => 'Str', uri_name => 'id', traits => ['ParamInURI'], required => 1);
-  has RequestedJobStatus => (is => 'ro', isa => 'Str', query_name => 'requestedJobStatus', traits => ['ParamInQuery'], required => 1);
-  has StatusUpdateReason => (is => 'ro', isa => 'Str', query_name => 'statusUpdateReason', traits => ['ParamInQuery']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RequestedJobStatus => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusUpdateReason => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJobStatus');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20180820/jobs/{id}/status');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3Control::UpdateJobStatusResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateJobStatus');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20180820/jobs/{id}/status');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::S3Control::UpdateJobStatusResult');
+  class_has _result_key => (isa => Str, is => 'ro');
   
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestedJobStatus' => {
+                                         'type' => 'Str'
+                                       },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'StatusUpdateReason' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'ParamInURI' => {
+                    'JobId' => 'id'
+                  },
+  'ParamInQuery' => {
+                      'RequestedJobStatus' => 'requestedJobStatus',
+                      'StatusUpdateReason' => 'statusUpdateReason'
+                    },
+  'ParamInHeader' => {
+                       'AccountId' => 'x-amz-account-id'
+                     },
+  'IsRequired' => {
+                    'RequestedJobStatus' => 1,
+                    'AccountId' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

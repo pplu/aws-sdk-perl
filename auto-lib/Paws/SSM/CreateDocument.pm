@@ -1,20 +1,63 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreateDocument;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
-  has Content => (is => 'ro', isa => 'Str', required => 1);
-  has DocumentFormat => (is => 'ro', isa => 'Str');
-  has DocumentType => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
-  has TargetType => (is => 'ro', isa => 'Str');
-  has VersionName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_AttachmentsSource SSM_Tag/;
+  has Attachments => (is => 'ro', isa => ArrayRef[SSM_AttachmentsSource], predicate => 1);
+  has Content => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DocumentFormat => (is => 'ro', isa => Str, predicate => 1);
+  has DocumentType => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
+  has TargetType => (is => 'ro', isa => Str, predicate => 1);
+  has VersionName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDocument');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateDocumentResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateDocument');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreateDocumentResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DocumentType' => {
+                                   'type' => 'Str'
+                                 },
+               'Attachments' => {
+                                  'class' => 'Paws::SSM::AttachmentsSource',
+                                  'type' => 'ArrayRef[SSM_AttachmentsSource]'
+                                },
+               'VersionName' => {
+                                  'type' => 'Str'
+                                },
+               'TargetType' => {
+                                 'type' => 'Str'
+                               },
+               'Content' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'DocumentFormat' => {
+                                     'type' => 'Str'
+                                   },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Content' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -71,7 +114,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::SSM::AttachmentsSource>]
+=head2 Attachments => ArrayRef[SSM_AttachmentsSource]
 
 A list of key and value pairs that describe attachments to a version of
 a document.
@@ -124,7 +167,7 @@ C<amzn>
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

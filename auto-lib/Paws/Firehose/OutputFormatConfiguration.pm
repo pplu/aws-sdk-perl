@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Firehose::OutputFormatConfiguration;
-  use Moose;
-  has Serializer => (is => 'ro', isa => 'Paws::Firehose::Serializer');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Firehose::Types qw/Firehose_Serializer/;
+  has Serializer => (is => 'ro', isa => Firehose_Serializer);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Serializer' => {
+                                 'class' => 'Paws::Firehose::Serializer',
+                                 'type' => 'Firehose_Serializer'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +55,7 @@ convert the format of your data before it writes it to Amazon S3.
 =head1 ATTRIBUTES
 
 
-=head2 Serializer => L<Paws::Firehose::Serializer>
+=head2 Serializer => Firehose_Serializer
 
   Specifies which serializer to use. You can choose either the ORC SerDe
 or the Parquet SerDe. If both are non-null, the server rejects the

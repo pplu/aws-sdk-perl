@@ -1,16 +1,47 @@
 
 package Paws::PinpointEmail::UpdateConfigurationSetEventDestination;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ConfigurationSetName', required => 1);
-  has EventDestination => (is => 'ro', isa => 'Paws::PinpointEmail::EventDestinationDefinition', required => 1);
-  has EventDestinationName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EventDestinationName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_EventDestinationDefinition/;
+  has ConfigurationSetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventDestination => (is => 'ro', isa => PinpointEmail_EventDestinationDefinition, required => 1, predicate => 1);
+  has EventDestinationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationSetEventDestination');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::UpdateConfigurationSetEventDestinationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateConfigurationSetEventDestination');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::UpdateConfigurationSetEventDestinationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         },
+               'EventDestinationName' => {
+                                           'type' => 'Str'
+                                         },
+               'EventDestination' => {
+                                       'class' => 'Paws::PinpointEmail::EventDestinationDefinition',
+                                       'type' => 'PinpointEmail_EventDestinationDefinition'
+                                     }
+             },
+  'ParamInURI' => {
+                    'ConfigurationSetName' => 'ConfigurationSetName',
+                    'EventDestinationName' => 'EventDestinationName'
+                  },
+  'IsRequired' => {
+                    'ConfigurationSetName' => 1,
+                    'EventDestinationName' => 1,
+                    'EventDestination' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +113,7 @@ that you want to modify.
 
 
 
-=head2 B<REQUIRED> EventDestination => L<Paws::PinpointEmail::EventDestinationDefinition>
+=head2 B<REQUIRED> EventDestination => PinpointEmail_EventDestinationDefinition
 
 An object that defines the event destination.
 

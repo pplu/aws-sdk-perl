@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::PutItem;
   use Moo;
@@ -20,7 +21,7 @@ package Paws::DynamoDB::PutItem;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::PutItemOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ExpressionAttributeValues' => {
@@ -57,11 +58,15 @@ package Paws::DynamoDB::PutItem;
                                'class' => 'Paws::DynamoDB::ExpectedAttributeMap',
                                'type' => 'DynamoDB_ExpectedAttributeMap'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'Item' => 1,
+                    'TableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

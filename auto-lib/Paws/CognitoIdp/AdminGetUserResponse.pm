@@ -1,17 +1,64 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CognitoIdp::AdminGetUserResponse;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has MFAOptions => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::MFAOptionType]');
-  has PreferredMfaSetting => (is => 'ro', isa => 'Str');
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has UserCreateDate => (is => 'ro', isa => 'Str');
-  has UserLastModifiedDate => (is => 'ro', isa => 'Str');
-  has UserMFASettingList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType CognitoIdp_MFAOptionType/;
+  has Enabled => (is => 'ro', isa => Bool);
+  has MFAOptions => (is => 'ro', isa => ArrayRef[CognitoIdp_MFAOptionType]);
+  has PreferredMfaSetting => (is => 'ro', isa => Str);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType]);
+  has UserCreateDate => (is => 'ro', isa => Str);
+  has UserLastModifiedDate => (is => 'ro', isa => Str);
+  has UserMFASettingList => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Username => (is => 'ro', isa => Str, required => 1);
+  has UserStatus => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserStatus' => {
+                                 'type' => 'Str'
+                               },
+               'UserMFASettingList' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'MFAOptions' => {
+                                 'class' => 'Paws::CognitoIdp::MFAOptionType',
+                                 'type' => 'ArrayRef[CognitoIdp_MFAOptionType]'
+                               },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'PreferredMfaSetting' => {
+                                          'type' => 'Str'
+                                        },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UserAttributes' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   },
+               'UserCreateDate' => {
+                                     'type' => 'Str'
+                                   },
+               'UserLastModifiedDate' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'Username' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -27,7 +74,7 @@ Paws::CognitoIdp::AdminGetUserResponse
 Indicates that the status is enabled.
 
 
-=head2 MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
+=head2 MFAOptions => ArrayRef[CognitoIdp_MFAOptionType]
 
 Specifies the options for MFA (e.g., email or phone number).
 
@@ -37,7 +84,7 @@ Specifies the options for MFA (e.g., email or phone number).
 The user's preferred MFA setting.
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs representing user attributes.
 

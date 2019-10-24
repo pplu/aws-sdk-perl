@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::MediaPackageVod::PackagingGroupList;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
-  has PackagingGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaPackageVod::PackagingGroup]', request_name => 'packagingGroups', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaPackageVod::Types qw/MediaPackageVod_PackagingGroup/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PackagingGroups => (is => 'ro', isa => ArrayRef[MediaPackageVod_PackagingGroup]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PackagingGroups' => {
+                                      'class' => 'Paws::MediaPackageVod::PackagingGroup',
+                                      'type' => 'ArrayRef[MediaPackageVod_PackagingGroup]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'PackagingGroups' => 'packagingGroups'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +68,7 @@ A collection of MediaPackage VOD PackagingGroup resources.
 collection.
 
 
-=head2 PackagingGroups => ArrayRef[L<Paws::MediaPackageVod::PackagingGroup>]
+=head2 PackagingGroups => ArrayRef[MediaPackageVod_PackagingGroup]
 
   A list of MediaPackage VOD PackagingGroup resources.
 

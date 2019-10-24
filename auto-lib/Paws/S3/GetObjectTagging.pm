@@ -34,7 +34,11 @@ use MooX::ClassAttribute;
                   },
   'ParamInQuery' => {
                       'VersionId' => 'versionId'
-                    }
+                    },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

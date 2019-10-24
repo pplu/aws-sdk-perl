@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::EventDestination;
   use Moo;
   use Types::Standard qw/Bool ArrayRef Undef Str/;
@@ -33,7 +34,11 @@ package Paws::SES::EventDestination;
                'Name' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'MatchingEventTypes' => 1,
+                    'Name' => 1
+                  }
 }
 ;
     return $Params_map;

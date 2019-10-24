@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeCommit::BatchDescribeMergeConflictsError;
-  use Moose;
-  has ExceptionName => (is => 'ro', isa => 'Str', request_name => 'exceptionName', traits => ['NameInRequest'], required => 1);
-  has FilePath => (is => 'ro', isa => 'Str', request_name => 'filePath', traits => ['NameInRequest'], required => 1);
-  has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has ExceptionName => (is => 'ro', isa => Str, required => 1);
+  has FilePath => (is => 'ro', isa => Str, required => 1);
+  has Message => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Message' => {
+                              'type' => 'Str'
+                            },
+               'FilePath' => {
+                               'type' => 'Str'
+                             },
+               'ExceptionName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Message' => 'message',
+                       'FilePath' => 'filePath',
+                       'ExceptionName' => 'exceptionName'
+                     },
+  'IsRequired' => {
+                    'Message' => 1,
+                    'FilePath' => 1,
+                    'ExceptionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Snowball::ListJobsResult;
-  use Moose;
-  has JobListEntries => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::JobListEntry]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Snowball::Types qw/Snowball_JobListEntry/;
+  has JobListEntries => (is => 'ro', isa => ArrayRef[Snowball_JobListEntry]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'JobListEntries' => {
+                                     'class' => 'Paws::Snowball::JobListEntry',
+                                     'type' => 'ArrayRef[Snowball_JobListEntry]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Snowball::ListJobsResult
 =head1 ATTRIBUTES
 
 
-=head2 JobListEntries => ArrayRef[L<Paws::Snowball::JobListEntry>]
+=head2 JobListEntries => ArrayRef[Snowball_JobListEntry]
 
 Each C<JobListEntry> object contains a job's state, a job's ID, and a
 value that indicates whether the job is a job part, in the case of

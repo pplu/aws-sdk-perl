@@ -1,8 +1,23 @@
 package Paws::CodePipeline::ArtifactStoreMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ArtifactStore/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::CodePipeline::ArtifactStore]');
+  has Map => (is => 'ro', isa => HashRef[CodePipeline_ArtifactStore]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[CodePipeline_ArtifactStore]',
+                                          class => 'Paws::CodePipeline::ArtifactStore',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::CodePipeline::ArtifactStore>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

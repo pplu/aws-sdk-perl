@@ -1,27 +1,100 @@
 
 package Paws::CloudSearchDomain::Search;
-  use Moose;
-  has Cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor');
-  has Expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr');
-  has Facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet');
-  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fq');
-  has Highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight');
-  has Partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial');
-  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q', required => 1);
-  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.options');
-  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.parser');
-  has Return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return');
-  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size');
-  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort');
-  has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start');
-  has Stats => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'stats');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Cursor => (is => 'ro', isa => Str, predicate => 1);
+  has Expr => (is => 'ro', isa => Str, predicate => 1);
+  has Facet => (is => 'ro', isa => Str, predicate => 1);
+  has FilterQuery => (is => 'ro', isa => Str, predicate => 1);
+  has Highlight => (is => 'ro', isa => Str, predicate => 1);
+  has Partial => (is => 'ro', isa => Bool, predicate => 1);
+  has Query => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has QueryOptions => (is => 'ro', isa => Str, predicate => 1);
+  has QueryParser => (is => 'ro', isa => Str, predicate => 1);
+  has Return => (is => 'ro', isa => Str, predicate => 1);
+  has Size => (is => 'ro', isa => Int, predicate => 1);
+  has Sort => (is => 'ro', isa => Str, predicate => 1);
+  has Start => (is => 'ro', isa => Int, predicate => 1);
+  has Stats => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'Search');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/search?format=sdk&pretty=true');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SearchResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'Search');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2013-01-01/search?format=sdk&pretty=true');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudSearchDomain::SearchResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Return' => {
+                             'type' => 'Str'
+                           },
+               'QueryParser' => {
+                                  'type' => 'Str'
+                                },
+               'Facet' => {
+                            'type' => 'Str'
+                          },
+               'QueryOptions' => {
+                                   'type' => 'Str'
+                                 },
+               'FilterQuery' => {
+                                  'type' => 'Str'
+                                },
+               'Start' => {
+                            'type' => 'Int'
+                          },
+               'Sort' => {
+                           'type' => 'Str'
+                         },
+               'Partial' => {
+                              'type' => 'Bool'
+                            },
+               'Query' => {
+                            'type' => 'Str'
+                          },
+               'Size' => {
+                           'type' => 'Int'
+                         },
+               'Highlight' => {
+                                'type' => 'Str'
+                              },
+               'Expr' => {
+                           'type' => 'Str'
+                         },
+               'Cursor' => {
+                             'type' => 'Str'
+                           },
+               'Stats' => {
+                            'type' => 'Str'
+                          }
+             },
+  'ParamInQuery' => {
+                      'Return' => 'return',
+                      'QueryParser' => 'q.parser',
+                      'Facet' => 'facet',
+                      'QueryOptions' => 'q.options',
+                      'FilterQuery' => 'fq',
+                      'Start' => 'start',
+                      'Sort' => 'sort',
+                      'Partial' => 'partial',
+                      'Query' => 'q',
+                      'Size' => 'size',
+                      'Highlight' => 'highlight',
+                      'Expr' => 'expr',
+                      'Cursor' => 'cursor',
+                      'Stats' => 'stats'
+                    },
+  'IsRequired' => {
+                    'Query' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

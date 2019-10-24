@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::IoTThingsGraph::SearchSystemInstances;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::IoTThingsGraph::SystemInstanceFilter]', traits => ['NameInRequest'], request_name => 'filters' );
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::IoTThingsGraph::Types qw/IoTThingsGraph_SystemInstanceFilter/;
+  has Filters => (is => 'ro', isa => ArrayRef[IoTThingsGraph_SystemInstanceFilter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchSystemInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTThingsGraph::SearchSystemInstancesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchSystemInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTThingsGraph::SearchSystemInstancesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::IoTThingsGraph::SystemInstanceFilter',
+                              'type' => 'ArrayRef[IoTThingsGraph_SystemInstanceFilter]'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Filters' => 'filters',
+                       'MaxResults' => 'maxResults'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +82,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::IoTThingsGraph::SystemInstanceFilter>]
+=head2 Filters => ArrayRef[IoTThingsGraph_SystemInstanceFilter]
 
 Optional filter to apply to the search. Valid filters are
 C<SYSTEM_TEMPLATE_ID>, C<STATUS>, and C<GREENGRASS_GROUP_NAME>.

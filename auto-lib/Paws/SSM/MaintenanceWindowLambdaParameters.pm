@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowLambdaParameters;
-  use Moose;
-  has ClientContext => (is => 'ro', isa => 'Str');
-  has Payload => (is => 'ro', isa => 'Str');
-  has Qualifier => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has ClientContext => (is => 'ro', isa => Str);
+  has Payload => (is => 'ro', isa => Str);
+  has Qualifier => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Qualifier' => {
+                                'type' => 'Str'
+                              },
+               'Payload' => {
+                              'type' => 'Str'
+                            },
+               'ClientContext' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

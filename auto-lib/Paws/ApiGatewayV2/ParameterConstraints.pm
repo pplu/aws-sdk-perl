@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::ApiGatewayV2::ParameterConstraints;
-  use Moose;
-  has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has Required => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Required' => {
+                               'type' => 'Bool'
+                             }
+             },
+  'NameInRequest' => {
+                       'Required' => 'required'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::MFADevice;
   use Moo;
   use Types::Standard qw/Str/;
@@ -18,7 +19,12 @@ package Paws::IAM::MFADevice;
                'SerialNumber' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'EnableDate' => 1,
+                    'SerialNumber' => 1
+                  }
 }
 ;
     return $Params_map;

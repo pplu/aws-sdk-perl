@@ -1,21 +1,76 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Lightsail::CreateRelationalDatabaseFromSnapshot;
-  use Moose;
-  has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' );
-  has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible' );
-  has RelationalDatabaseBundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseBundleId' );
-  has RelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseName' , required => 1);
-  has RelationalDatabaseSnapshotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'relationalDatabaseSnapshotName' );
-  has RestoreTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'restoreTime' );
-  has SourceRelationalDatabaseName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRelationalDatabaseName' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'useLatestRestorableTime' );
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_Tag/;
+  has AvailabilityZone => (is => 'ro', isa => Str, predicate => 1);
+  has PubliclyAccessible => (is => 'ro', isa => Bool, predicate => 1);
+  has RelationalDatabaseBundleId => (is => 'ro', isa => Str, predicate => 1);
+  has RelationalDatabaseName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RelationalDatabaseSnapshotName => (is => 'ro', isa => Str, predicate => 1);
+  has RestoreTime => (is => 'ro', isa => Str, predicate => 1);
+  has SourceRelationalDatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[Lightsail_Tag], predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRelationalDatabaseFromSnapshot');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lightsail::CreateRelationalDatabaseFromSnapshotResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRelationalDatabaseFromSnapshot');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lightsail::CreateRelationalDatabaseFromSnapshotResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UseLatestRestorableTime' => {
+                                              'type' => 'Bool'
+                                            },
+               'SourceRelationalDatabaseName' => {
+                                                   'type' => 'Str'
+                                                 },
+               'RelationalDatabaseSnapshotName' => {
+                                                     'type' => 'Str'
+                                                   },
+               'AvailabilityZone' => {
+                                       'type' => 'Str'
+                                     },
+               'RestoreTime' => {
+                                  'type' => 'Str'
+                                },
+               'PubliclyAccessible' => {
+                                         'type' => 'Bool'
+                                       },
+               'Tags' => {
+                           'class' => 'Paws::Lightsail::Tag',
+                           'type' => 'ArrayRef[Lightsail_Tag]'
+                         },
+               'RelationalDatabaseBundleId' => {
+                                                 'type' => 'Str'
+                                               },
+               'RelationalDatabaseName' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'NameInRequest' => {
+                       'UseLatestRestorableTime' => 'useLatestRestorableTime',
+                       'SourceRelationalDatabaseName' => 'sourceRelationalDatabaseName',
+                       'RelationalDatabaseSnapshotName' => 'relationalDatabaseSnapshotName',
+                       'AvailabilityZone' => 'availabilityZone',
+                       'RestoreTime' => 'restoreTime',
+                       'PubliclyAccessible' => 'publiclyAccessible',
+                       'Tags' => 'tags',
+                       'RelationalDatabaseBundleId' => 'relationalDatabaseBundleId',
+                       'RelationalDatabaseName' => 'relationalDatabaseName'
+                     },
+  'IsRequired' => {
+                    'RelationalDatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -166,7 +221,7 @@ The name of the source database.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=head2 Tags => ArrayRef[Lightsail_Tag]
 
 The tag keys and optional values to add to the resource during create.
 

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseHardware;
-  use Moose;
-  has CpuCount => (is => 'ro', isa => 'Int', request_name => 'cpuCount', traits => ['NameInRequest']);
-  has DiskSizeInGb => (is => 'ro', isa => 'Int', request_name => 'diskSizeInGb', traits => ['NameInRequest']);
-  has RamSizeInGb => (is => 'ro', isa => 'Num', request_name => 'ramSizeInGb', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Num/;
+  use Paws::Lightsail::Types qw//;
+  has CpuCount => (is => 'ro', isa => Int);
+  has DiskSizeInGb => (is => 'ro', isa => Int);
+  has RamSizeInGb => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RamSizeInGb' => {
+                                  'type' => 'Num'
+                                },
+               'DiskSizeInGb' => {
+                                   'type' => 'Int'
+                                 },
+               'CpuCount' => {
+                               'type' => 'Int'
+                             }
+             },
+  'NameInRequest' => {
+                       'RamSizeInGb' => 'ramSizeInGb',
+                       'DiskSizeInGb' => 'diskSizeInGb',
+                       'CpuCount' => 'cpuCount'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

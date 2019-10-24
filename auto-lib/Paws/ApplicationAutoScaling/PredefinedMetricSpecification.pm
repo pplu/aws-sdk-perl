@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::ApplicationAutoScaling::PredefinedMetricSpecification;
-  use Moose;
-  has PredefinedMetricType => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceLabel => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationAutoScaling::Types qw//;
+  has PredefinedMetricType => (is => 'ro', isa => Str, required => 1);
+  has ResourceLabel => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceLabel' => {
+                                    'type' => 'Str'
+                                  },
+               'PredefinedMetricType' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'PredefinedMetricType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

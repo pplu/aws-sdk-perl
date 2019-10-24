@@ -1,11 +1,45 @@
+# Generated from default/object.tt
 package Paws::DS::OwnerDirectoryDescription;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str');
-  has DirectoryId => (is => 'ro', isa => 'Str');
-  has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
-  has RadiusStatus => (is => 'ro', isa => 'Str');
-  has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::DS::Types qw/DS_DirectoryVpcSettingsDescription DS_RadiusSettings/;
+  has AccountId => (is => 'ro', isa => Str);
+  has DirectoryId => (is => 'ro', isa => Str);
+  has DnsIpAddrs => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RadiusSettings => (is => 'ro', isa => DS_RadiusSettings);
+  has RadiusStatus => (is => 'ro', isa => Str);
+  has VpcSettings => (is => 'ro', isa => DS_DirectoryVpcSettingsDescription);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'RadiusSettings' => {
+                                     'class' => 'Paws::DS::RadiusSettings',
+                                     'type' => 'DS_RadiusSettings'
+                                   },
+               'VpcSettings' => {
+                                  'class' => 'Paws::DS::DirectoryVpcSettingsDescription',
+                                  'type' => 'DS_DirectoryVpcSettingsDescription'
+                                },
+               'RadiusStatus' => {
+                                   'type' => 'Str'
+                                 },
+               'DnsIpAddrs' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +92,7 @@ owner account.
   IP address of the directoryE<rsquo>s domain controllers.
 
 
-=head2 RadiusSettings => L<Paws::DS::RadiusSettings>
+=head2 RadiusSettings => DS_RadiusSettings
 
   A RadiusSettings object that contains information about the RADIUS
 server.
@@ -69,7 +103,7 @@ server.
   Information about the status of the RADIUS server.
 
 
-=head2 VpcSettings => L<Paws::DS::DirectoryVpcSettingsDescription>
+=head2 VpcSettings => DS_DirectoryVpcSettingsDescription
 
   Information about the VPC settings for the directory.
 

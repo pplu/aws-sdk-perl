@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ACM::ResendValidationEmail;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
-  has Domain => (is => 'ro', isa => 'Str', required => 1);
-  has ValidationDomain => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACM::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Domain => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ValidationDomain => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResendValidationEmail');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResendValidationEmail');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ValidationDomain' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'Domain' => 1,
+                    'CertificateArn' => 1,
+                    'ValidationDomain' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

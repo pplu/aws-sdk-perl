@@ -1,8 +1,41 @@
+# Generated from default/object.tt
 package Paws::CodeStar::Toolchain;
-  use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
-  has Source => (is => 'ro', isa => 'Paws::CodeStar::ToolchainSource', request_name => 'source', traits => ['NameInRequest'], required => 1);
-  has StackParameters => (is => 'ro', isa => 'Paws::CodeStar::TemplateParameterMap', request_name => 'stackParameters', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeStar::Types qw/CodeStar_ToolchainSource CodeStar_TemplateParameterMap/;
+  has RoleArn => (is => 'ro', isa => Str);
+  has Source => (is => 'ro', isa => CodeStar_ToolchainSource, required => 1);
+  has StackParameters => (is => 'ro', isa => CodeStar_TemplateParameterMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'StackParameters' => {
+                                      'class' => 'Paws::CodeStar::TemplateParameterMap',
+                                      'type' => 'CodeStar_TemplateParameterMap'
+                                    },
+               'Source' => {
+                             'class' => 'Paws::CodeStar::ToolchainSource',
+                             'type' => 'CodeStar_ToolchainSource'
+                           }
+             },
+  'NameInRequest' => {
+                       'RoleArn' => 'roleArn',
+                       'StackParameters' => 'stackParameters',
+                       'Source' => 'source'
+                     },
+  'IsRequired' => {
+                    'Source' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,14 +79,14 @@ CloudFormation.
 during stack provisioning.
 
 
-=head2 B<REQUIRED> Source => L<Paws::CodeStar::ToolchainSource>
+=head2 B<REQUIRED> Source => CodeStar_ToolchainSource
 
   The Amazon S3 location where the toolchain template file provided with
 the project request is stored. AWS CodeStar retrieves the file during
 project creation.
 
 
-=head2 StackParameters => L<Paws::CodeStar::TemplateParameterMap>
+=head2 StackParameters => CodeStar_TemplateParameterMap
 
   The list of parameter overrides to be passed into the toolchain
 template during stack provisioning, if any.

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::CustomerArtifactPaths;
-  use Moose;
-  has AndroidPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'androidPaths', traits => ['NameInRequest']);
-  has DeviceHostPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deviceHostPaths', traits => ['NameInRequest']);
-  has IosPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'iosPaths', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::DeviceFarm::Types qw//;
+  has AndroidPaths => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DeviceHostPaths => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IosPaths => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceHostPaths' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'IosPaths' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'AndroidPaths' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 }
+             },
+  'NameInRequest' => {
+                       'DeviceHostPaths' => 'deviceHostPaths',
+                       'IosPaths' => 'iosPaths',
+                       'AndroidPaths' => 'androidPaths'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

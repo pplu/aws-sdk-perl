@@ -1,10 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::SpekeKeyProvider;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
-  has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest'], required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
-  has SystemIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'systemIds', traits => ['NameInRequest'], required => 1);
-  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaPackage::Types qw//;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has ResourceId => (is => 'ro', isa => Str, required => 1);
+  has RoleArn => (is => 'ro', isa => Str, required => 1);
+  has SystemIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has Url => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'Url' => {
+                          'type' => 'Str'
+                        },
+               'SystemIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'ResourceId' => 'resourceId',
+                       'RoleArn' => 'roleArn',
+                       'CertificateArn' => 'certificateArn',
+                       'Url' => 'url',
+                       'SystemIds' => 'systemIds'
+                     },
+  'IsRequired' => {
+                    'ResourceId' => 1,
+                    'RoleArn' => 1,
+                    'Url' => 1,
+                    'SystemIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

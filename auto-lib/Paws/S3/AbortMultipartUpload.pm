@@ -41,7 +41,12 @@ use MooX::ClassAttribute;
                     },
   'ParamInHeader' => {
                        'RequestPayer' => 'x-amz-request-payer'
-                     }
+                     },
+  'IsRequired' => {
+                    'Bucket' => 1,
+                    'UploadId' => 1,
+                    'Key' => 1
+                  }
 }
 ;
     return $Params_map;

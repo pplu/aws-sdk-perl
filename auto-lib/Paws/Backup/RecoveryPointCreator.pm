@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Backup::RecoveryPointCreator;
-  use Moose;
-  has BackupPlanArn => (is => 'ro', isa => 'Str');
-  has BackupPlanId => (is => 'ro', isa => 'Str');
-  has BackupPlanVersion => (is => 'ro', isa => 'Str');
-  has BackupRuleId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Backup::Types qw//;
+  has BackupPlanArn => (is => 'ro', isa => Str);
+  has BackupPlanId => (is => 'ro', isa => Str);
+  has BackupPlanVersion => (is => 'ro', isa => Str);
+  has BackupRuleId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupPlanId' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupRuleId' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupPlanVersion' => {
+                                        'type' => 'Str'
+                                      },
+               'BackupPlanArn' => {
+                                    'type' => 'Str'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

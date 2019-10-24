@@ -1,10 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::EC2InstanceConnect::SendSSHPublicKeyResponse;
-  use Moose;
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Success => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::EC2InstanceConnect::Types qw//;
+  has RequestId => (is => 'ro', isa => Str);
+  has Success => (is => 'ro', isa => Bool);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Success' => {
+                              'type' => 'Bool'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

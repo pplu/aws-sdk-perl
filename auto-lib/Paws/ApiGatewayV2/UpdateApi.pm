@@ -1,20 +1,67 @@
 
 package Paws::ApiGatewayV2::UpdateApi;
-  use Moose;
-  has ApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'apiId', required => 1);
-  has ApiKeySelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiKeySelectionExpression');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has DisableSchemaValidation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableSchemaValidation');
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
-  has RouteSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeSelectionExpression');
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::ApiGatewayV2::Types qw//;
+  has ApiId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ApiKeySelectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has DisableSchemaValidation => (is => 'ro', isa => Bool, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has RouteSelectionExpression => (is => 'ro', isa => Str, predicate => 1);
+  has Version => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApi');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v2/apis/{apiId}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGatewayV2::UpdateApiResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateApi');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v2/apis/{apiId}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PATCH');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ApiGatewayV2::UpdateApiResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'RouteSelectionExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'ApiKeySelectionExpression' => {
+                                                'type' => 'Str'
+                                              },
+               'ApiId' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'DisableSchemaValidation' => {
+                                              'type' => 'Bool'
+                                            }
+             },
+  'ParamInURI' => {
+                    'ApiId' => 'apiId'
+                  },
+  'NameInRequest' => {
+                       'Version' => 'version',
+                       'RouteSelectionExpression' => 'routeSelectionExpression',
+                       'ApiKeySelectionExpression' => 'apiKeySelectionExpression',
+                       'Name' => 'name',
+                       'Description' => 'description',
+                       'DisableSchemaValidation' => 'disableSchemaValidation'
+                     },
+  'IsRequired' => {
+                    'ApiId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

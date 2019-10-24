@@ -8,7 +8,7 @@ package Paws::EC2::NetworkInterfacePermission;
   has Permission => (is => 'ro', isa => Str);
   has PermissionState => (is => 'ro', isa => EC2_NetworkInterfacePermissionState);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'AwsService' => {
@@ -41,8 +41,8 @@ package Paws::EC2::NetworkInterfacePermission;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

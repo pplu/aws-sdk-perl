@@ -1,10 +1,35 @@
 
 package Paws::ApiGateway::Resources;
-  use Moose;
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::ApiGateway::Resource]', traits => ['NameInRequest'], request_name => 'item');
-  has Position => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'position');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ApiGateway::Types qw/ApiGateway_Resource/;
+  has Items => (is => 'ro', isa => ArrayRef[ApiGateway_Resource]);
+  has Position => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Position' => {
+                               'type' => 'Str'
+                             },
+               'Items' => {
+                            'class' => 'Paws::ApiGateway::Resource',
+                            'type' => 'ArrayRef[ApiGateway_Resource]'
+                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'Position' => 'position',
+                       'Items' => 'item'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::ApiGateway::Resources
 =head1 ATTRIBUTES
 
 
-=head2 Items => ArrayRef[L<Paws::ApiGateway::Resource>]
+=head2 Items => ArrayRef[ApiGateway_Resource]
 
 The current page of elements from this collection.
 

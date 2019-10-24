@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ForecastResult;
-  use Moose;
-  has MeanValue => (is => 'ro', isa => 'Str');
-  has PredictionIntervalLowerBound => (is => 'ro', isa => 'Str');
-  has PredictionIntervalUpperBound => (is => 'ro', isa => 'Str');
-  has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CostExplorer::Types qw/CostExplorer_DateInterval/;
+  has MeanValue => (is => 'ro', isa => Str);
+  has PredictionIntervalLowerBound => (is => 'ro', isa => Str);
+  has PredictionIntervalUpperBound => (is => 'ro', isa => Str);
+  has TimePeriod => (is => 'ro', isa => CostExplorer_DateInterval);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PredictionIntervalUpperBound' => {
+                                                   'type' => 'Str'
+                                                 },
+               'PredictionIntervalLowerBound' => {
+                                                   'type' => 'Str'
+                                                 },
+               'MeanValue' => {
+                                'type' => 'Str'
+                              },
+               'TimePeriod' => {
+                                 'class' => 'Paws::CostExplorer::DateInterval',
+                                 'type' => 'CostExplorer_DateInterval'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +81,7 @@ The forecast created for your query.
   The upper limit for the prediction interval.
 
 
-=head2 TimePeriod => L<Paws::CostExplorer::DateInterval>
+=head2 TimePeriod => CostExplorer_DateInterval
 
   The period of time that the forecast covers.
 

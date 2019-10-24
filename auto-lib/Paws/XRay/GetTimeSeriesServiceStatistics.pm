@@ -1,20 +1,57 @@
 
 package Paws::XRay::GetTimeSeriesServiceStatistics;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has EntitySelectorExpression => (is => 'ro', isa => 'Str');
-  has GroupARN => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Period => (is => 'ro', isa => 'Int');
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::XRay::Types qw//;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EntitySelectorExpression => (is => 'ro', isa => Str, predicate => 1);
+  has GroupARN => (is => 'ro', isa => Str, predicate => 1);
+  has GroupName => (is => 'ro', isa => Str, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Period => (is => 'ro', isa => Int, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTimeSeriesServiceStatistics');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/TimeSeriesServiceStatistics');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetTimeSeriesServiceStatisticsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetTimeSeriesServiceStatistics');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/TimeSeriesServiceStatistics');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetTimeSeriesServiceStatisticsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupARN' => {
+                               'type' => 'Str'
+                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'EntitySelectorExpression' => {
+                                               'type' => 'Str'
+                                             },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'Period' => {
+                             'type' => 'Int'
+                           }
+             },
+  'IsRequired' => {
+                    'StartTime' => 1,
+                    'EndTime' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

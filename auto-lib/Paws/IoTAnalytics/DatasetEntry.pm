@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetEntry;
-  use Moose;
-  has DataURI => (is => 'ro', isa => 'Str', request_name => 'dataURI', traits => ['NameInRequest']);
-  has EntryName => (is => 'ro', isa => 'Str', request_name => 'entryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has DataURI => (is => 'ro', isa => Str);
+  has EntryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataURI' => {
+                              'type' => 'Str'
+                            },
+               'EntryName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'DataURI' => 'dataURI',
+                       'EntryName' => 'entryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

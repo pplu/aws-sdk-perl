@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessDetail;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -30,7 +31,11 @@ package Paws::IAM::AccessDetail;
                'Region' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'ServiceNamespace' => 1,
+                    'ServiceName' => 1
+                  }
 }
 ;
     return $Params_map;

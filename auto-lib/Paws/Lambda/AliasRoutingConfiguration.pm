@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Lambda::AliasRoutingConfiguration;
-  use Moose;
-  has AdditionalVersionWeights => (is => 'ro', isa => 'Paws::Lambda::AdditionalVersionWeights');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Lambda::Types qw/Lambda_AdditionalVersionWeights/;
+  has AdditionalVersionWeights => (is => 'ro', isa => Lambda_AdditionalVersionWeights);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AdditionalVersionWeights' => {
+                                               'class' => 'Paws::Lambda::AdditionalVersionWeights',
+                                               'type' => 'Lambda_AdditionalVersionWeights'
+                                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +56,7 @@ configuration of a Lambda function alias.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalVersionWeights => L<Paws::Lambda::AdditionalVersionWeights>
+=head2 AdditionalVersionWeights => Lambda_AdditionalVersionWeights
 
   The name of the second alias, and the percentage of traffic that's
 routed to it.

@@ -1,20 +1,94 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchWriteOperationResponse;
-  use Moose;
-  has AddFacetToObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAddFacetToObjectResponse');
-  has AttachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachObjectResponse');
-  has AttachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachPolicyResponse');
-  has AttachToIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachToIndexResponse');
-  has AttachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchAttachTypedLinkResponse');
-  has CreateIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateIndexResponse');
-  has CreateObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchCreateObjectResponse');
-  has DeleteObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDeleteObjectResponse');
-  has DetachFromIndex => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachFromIndexResponse');
-  has DetachObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachObjectResponse');
-  has DetachPolicy => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachPolicyResponse');
-  has DetachTypedLink => (is => 'ro', isa => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse');
-  has RemoveFacetFromObject => (is => 'ro', isa => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse');
-  has UpdateLinkAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateLinkAttributesResponse');
-  has UpdateObjectAttributes => (is => 'ro', isa => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_BatchDetachTypedLinkResponse CloudDirectory_BatchCreateIndexResponse CloudDirectory_BatchDetachPolicyResponse CloudDirectory_BatchDetachObjectResponse CloudDirectory_BatchAddFacetToObjectResponse CloudDirectory_BatchAttachPolicyResponse CloudDirectory_BatchAttachObjectResponse CloudDirectory_BatchDeleteObjectResponse CloudDirectory_BatchAttachToIndexResponse CloudDirectory_BatchDetachFromIndexResponse CloudDirectory_BatchUpdateObjectAttributesResponse CloudDirectory_BatchUpdateLinkAttributesResponse CloudDirectory_BatchAttachTypedLinkResponse CloudDirectory_BatchCreateObjectResponse CloudDirectory_BatchRemoveFacetFromObjectResponse/;
+  has AddFacetToObject => (is => 'ro', isa => CloudDirectory_BatchAddFacetToObjectResponse);
+  has AttachObject => (is => 'ro', isa => CloudDirectory_BatchAttachObjectResponse);
+  has AttachPolicy => (is => 'ro', isa => CloudDirectory_BatchAttachPolicyResponse);
+  has AttachToIndex => (is => 'ro', isa => CloudDirectory_BatchAttachToIndexResponse);
+  has AttachTypedLink => (is => 'ro', isa => CloudDirectory_BatchAttachTypedLinkResponse);
+  has CreateIndex => (is => 'ro', isa => CloudDirectory_BatchCreateIndexResponse);
+  has CreateObject => (is => 'ro', isa => CloudDirectory_BatchCreateObjectResponse);
+  has DeleteObject => (is => 'ro', isa => CloudDirectory_BatchDeleteObjectResponse);
+  has DetachFromIndex => (is => 'ro', isa => CloudDirectory_BatchDetachFromIndexResponse);
+  has DetachObject => (is => 'ro', isa => CloudDirectory_BatchDetachObjectResponse);
+  has DetachPolicy => (is => 'ro', isa => CloudDirectory_BatchDetachPolicyResponse);
+  has DetachTypedLink => (is => 'ro', isa => CloudDirectory_BatchDetachTypedLinkResponse);
+  has RemoveFacetFromObject => (is => 'ro', isa => CloudDirectory_BatchRemoveFacetFromObjectResponse);
+  has UpdateLinkAttributes => (is => 'ro', isa => CloudDirectory_BatchUpdateLinkAttributesResponse);
+  has UpdateObjectAttributes => (is => 'ro', isa => CloudDirectory_BatchUpdateObjectAttributesResponse);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DetachPolicy' => {
+                                   'class' => 'Paws::CloudDirectory::BatchDetachPolicyResponse',
+                                   'type' => 'CloudDirectory_BatchDetachPolicyResponse'
+                                 },
+               'CreateIndex' => {
+                                  'class' => 'Paws::CloudDirectory::BatchCreateIndexResponse',
+                                  'type' => 'CloudDirectory_BatchCreateIndexResponse'
+                                },
+               'AttachTypedLink' => {
+                                      'class' => 'Paws::CloudDirectory::BatchAttachTypedLinkResponse',
+                                      'type' => 'CloudDirectory_BatchAttachTypedLinkResponse'
+                                    },
+               'DetachTypedLink' => {
+                                      'class' => 'Paws::CloudDirectory::BatchDetachTypedLinkResponse',
+                                      'type' => 'CloudDirectory_BatchDetachTypedLinkResponse'
+                                    },
+               'DetachFromIndex' => {
+                                      'class' => 'Paws::CloudDirectory::BatchDetachFromIndexResponse',
+                                      'type' => 'CloudDirectory_BatchDetachFromIndexResponse'
+                                    },
+               'DeleteObject' => {
+                                   'class' => 'Paws::CloudDirectory::BatchDeleteObjectResponse',
+                                   'type' => 'CloudDirectory_BatchDeleteObjectResponse'
+                                 },
+               'AttachPolicy' => {
+                                   'class' => 'Paws::CloudDirectory::BatchAttachPolicyResponse',
+                                   'type' => 'CloudDirectory_BatchAttachPolicyResponse'
+                                 },
+               'RemoveFacetFromObject' => {
+                                            'class' => 'Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse',
+                                            'type' => 'CloudDirectory_BatchRemoveFacetFromObjectResponse'
+                                          },
+               'AddFacetToObject' => {
+                                       'class' => 'Paws::CloudDirectory::BatchAddFacetToObjectResponse',
+                                       'type' => 'CloudDirectory_BatchAddFacetToObjectResponse'
+                                     },
+               'DetachObject' => {
+                                   'class' => 'Paws::CloudDirectory::BatchDetachObjectResponse',
+                                   'type' => 'CloudDirectory_BatchDetachObjectResponse'
+                                 },
+               'AttachObject' => {
+                                   'class' => 'Paws::CloudDirectory::BatchAttachObjectResponse',
+                                   'type' => 'CloudDirectory_BatchAttachObjectResponse'
+                                 },
+               'AttachToIndex' => {
+                                    'class' => 'Paws::CloudDirectory::BatchAttachToIndexResponse',
+                                    'type' => 'CloudDirectory_BatchAttachToIndexResponse'
+                                  },
+               'UpdateObjectAttributes' => {
+                                             'class' => 'Paws::CloudDirectory::BatchUpdateObjectAttributesResponse',
+                                             'type' => 'CloudDirectory_BatchUpdateObjectAttributesResponse'
+                                           },
+               'CreateObject' => {
+                                   'class' => 'Paws::CloudDirectory::BatchCreateObjectResponse',
+                                   'type' => 'CloudDirectory_BatchCreateObjectResponse'
+                                 },
+               'UpdateLinkAttributes' => {
+                                           'class' => 'Paws::CloudDirectory::BatchUpdateLinkAttributesResponse',
+                                           'type' => 'CloudDirectory_BatchUpdateLinkAttributesResponse'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,84 +124,84 @@ Represents the output of a C<BatchWrite> response operation.
 =head1 ATTRIBUTES
 
 
-=head2 AddFacetToObject => L<Paws::CloudDirectory::BatchAddFacetToObjectResponse>
+=head2 AddFacetToObject => CloudDirectory_BatchAddFacetToObjectResponse
 
   The result of an add facet to object batch operation.
 
 
-=head2 AttachObject => L<Paws::CloudDirectory::BatchAttachObjectResponse>
+=head2 AttachObject => CloudDirectory_BatchAttachObjectResponse
 
   Attaches an object to a Directory.
 
 
-=head2 AttachPolicy => L<Paws::CloudDirectory::BatchAttachPolicyResponse>
+=head2 AttachPolicy => CloudDirectory_BatchAttachPolicyResponse
 
   Attaches a policy object to a regular object. An object can have a
 limited number of attached policies.
 
 
-=head2 AttachToIndex => L<Paws::CloudDirectory::BatchAttachToIndexResponse>
+=head2 AttachToIndex => CloudDirectory_BatchAttachToIndexResponse
 
   Attaches the specified object to the specified index.
 
 
-=head2 AttachTypedLink => L<Paws::CloudDirectory::BatchAttachTypedLinkResponse>
+=head2 AttachTypedLink => CloudDirectory_BatchAttachTypedLinkResponse
 
   Attaches a typed link to a specified source and target object. For more
 information, see Typed Links
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
-=head2 CreateIndex => L<Paws::CloudDirectory::BatchCreateIndexResponse>
+=head2 CreateIndex => CloudDirectory_BatchCreateIndexResponse
 
   Creates an index object. See Indexing and search
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.htm)
 for more information.
 
 
-=head2 CreateObject => L<Paws::CloudDirectory::BatchCreateObjectResponse>
+=head2 CreateObject => CloudDirectory_BatchCreateObjectResponse
 
   Creates an object in a Directory.
 
 
-=head2 DeleteObject => L<Paws::CloudDirectory::BatchDeleteObjectResponse>
+=head2 DeleteObject => CloudDirectory_BatchDeleteObjectResponse
 
   Deletes an object in a Directory.
 
 
-=head2 DetachFromIndex => L<Paws::CloudDirectory::BatchDetachFromIndexResponse>
+=head2 DetachFromIndex => CloudDirectory_BatchDetachFromIndexResponse
 
   Detaches the specified object from the specified index.
 
 
-=head2 DetachObject => L<Paws::CloudDirectory::BatchDetachObjectResponse>
+=head2 DetachObject => CloudDirectory_BatchDetachObjectResponse
 
   Detaches an object from a Directory.
 
 
-=head2 DetachPolicy => L<Paws::CloudDirectory::BatchDetachPolicyResponse>
+=head2 DetachPolicy => CloudDirectory_BatchDetachPolicyResponse
 
   Detaches a policy from a Directory.
 
 
-=head2 DetachTypedLink => L<Paws::CloudDirectory::BatchDetachTypedLinkResponse>
+=head2 DetachTypedLink => CloudDirectory_BatchDetachTypedLinkResponse
 
   Detaches a typed link from a specified source and target object. For
 more information, see Typed Links
 (https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 
 
-=head2 RemoveFacetFromObject => L<Paws::CloudDirectory::BatchRemoveFacetFromObjectResponse>
+=head2 RemoveFacetFromObject => CloudDirectory_BatchRemoveFacetFromObjectResponse
 
   The result of a batch remove facet from object operation.
 
 
-=head2 UpdateLinkAttributes => L<Paws::CloudDirectory::BatchUpdateLinkAttributesResponse>
+=head2 UpdateLinkAttributes => CloudDirectory_BatchUpdateLinkAttributesResponse
 
   Represents the output of a C<BatchWrite> response operation.
 
 
-=head2 UpdateObjectAttributes => L<Paws::CloudDirectory::BatchUpdateObjectAttributesResponse>
+=head2 UpdateObjectAttributes => CloudDirectory_BatchUpdateObjectAttributesResponse
 
   Updates a given objectE<rsquo>s attributes.
 

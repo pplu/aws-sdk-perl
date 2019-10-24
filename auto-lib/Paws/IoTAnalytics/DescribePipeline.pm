@@ -1,14 +1,35 @@
 
 package Paws::IoTAnalytics::DescribePipeline;
-  use Moose;
-  has PipelineName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'pipelineName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw//;
+  has PipelineName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePipeline');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/pipelines/{pipelineName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTAnalytics::DescribePipelineResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribePipeline');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/pipelines/{pipelineName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::IoTAnalytics::DescribePipelineResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PipelineName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'ParamInURI' => {
+                    'PipelineName' => 'pipelineName'
+                  },
+  'IsRequired' => {
+                    'PipelineName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

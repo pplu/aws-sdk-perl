@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::CloudFront::InvalidationList;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::InvalidationSummary]', request_name => 'InvalidationSummary', traits => ['NameInRequest']);
-  has Marker => (is => 'ro', isa => 'Str', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has Quantity => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Str Int/;
+  use Paws::CloudFront::Types qw/CloudFront_InvalidationSummary/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has Items => (is => 'ro', isa => ArrayRef[CloudFront_InvalidationSummary]);
+  has Marker => (is => 'ro', isa => Str, required => 1);
+  has MaxItems => (is => 'ro', isa => Int, required => 1);
+  has NextMarker => (is => 'ro', isa => Str);
+  has Quantity => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             },
+               'Items' => {
+                            'class' => 'Paws::CloudFront::InvalidationSummary',
+                            'type' => 'ArrayRef[CloudFront_InvalidationSummary]'
+                          },
+               'Quantity' => {
+                               'type' => 'Int'
+                             },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Items' => 'InvalidationSummary'
+                     },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'Quantity' => 1,
+                    'Marker' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -53,7 +95,7 @@ pagination request using the C<Marker> request parameter to retrieve
 more invalidation batches in the list.
 
 
-=head2 Items => ArrayRef[L<Paws::CloudFront::InvalidationSummary>]
+=head2 Items => ArrayRef[CloudFront_InvalidationSummary]
 
   A complex type that contains one C<InvalidationSummary> element for
 each invalidation batch created by the current AWS account.

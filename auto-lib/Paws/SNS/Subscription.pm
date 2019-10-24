@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SNS::Subscription;
-  use Moose;
-  has Endpoint => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has Protocol => (is => 'ro', isa => 'Str');
-  has SubscriptionArn => (is => 'ro', isa => 'Str');
-  has TopicArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw//;
+  has Endpoint => (is => 'ro', isa => Str);
+  has Owner => (is => 'ro', isa => Str);
+  has Protocol => (is => 'ro', isa => Str);
+  has SubscriptionArn => (is => 'ro', isa => Str);
+  has TopicArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'SubscriptionArn' => {
+                                      'type' => 'Str'
+                                    },
+               'TopicArn' => {
+                               'type' => 'Str'
+                             },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'Endpoint' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

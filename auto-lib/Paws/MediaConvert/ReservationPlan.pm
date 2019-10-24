@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::ReservationPlan;
-  use Moose;
-  has Commitment => (is => 'ro', isa => 'Str', request_name => 'commitment', traits => ['NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', request_name => 'expiresAt', traits => ['NameInRequest']);
-  has PurchasedAt => (is => 'ro', isa => 'Str', request_name => 'purchasedAt', traits => ['NameInRequest']);
-  has RenewalType => (is => 'ro', isa => 'Str', request_name => 'renewalType', traits => ['NameInRequest']);
-  has ReservedSlots => (is => 'ro', isa => 'Int', request_name => 'reservedSlots', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Commitment => (is => 'ro', isa => Str);
+  has ExpiresAt => (is => 'ro', isa => Str);
+  has PurchasedAt => (is => 'ro', isa => Str);
+  has RenewalType => (is => 'ro', isa => Str);
+  has ReservedSlots => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RenewalType' => {
+                                  'type' => 'Str'
+                                },
+               'Commitment' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ReservedSlots' => {
+                                    'type' => 'Int'
+                                  },
+               'PurchasedAt' => {
+                                  'type' => 'Str'
+                                },
+               'ExpiresAt' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'RenewalType' => 'renewalType',
+                       'Commitment' => 'commitment',
+                       'Status' => 'status',
+                       'ReservedSlots' => 'reservedSlots',
+                       'PurchasedAt' => 'purchasedAt',
+                       'ExpiresAt' => 'expiresAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

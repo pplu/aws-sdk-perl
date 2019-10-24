@@ -1,17 +1,51 @@
 
 package Paws::ManagedBlockchain::CreateMember;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
-  has InvitationId => (is => 'ro', isa => 'Str', required => 1);
-  has MemberConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberConfiguration', required => 1);
-  has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ManagedBlockchain::Types qw/ManagedBlockchain_MemberConfiguration/;
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InvitationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MemberConfiguration => (is => 'ro', isa => ManagedBlockchain_MemberConfiguration, required => 1, predicate => 1);
+  has NetworkId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMember');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::CreateMemberOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateMember');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/networks/{networkId}/members');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ManagedBlockchain::CreateMemberOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'NetworkId' => {
+                                'type' => 'Str'
+                              },
+               'InvitationId' => {
+                                   'type' => 'Str'
+                                 },
+               'MemberConfiguration' => {
+                                          'class' => 'Paws::ManagedBlockchain::MemberConfiguration',
+                                          'type' => 'ManagedBlockchain_MemberConfiguration'
+                                        }
+             },
+  'ParamInURI' => {
+                    'NetworkId' => 'networkId'
+                  },
+  'IsRequired' => {
+                    'ClientRequestToken' => 1,
+                    'NetworkId' => 1,
+                    'InvitationId' => 1,
+                    'MemberConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +111,7 @@ join the network.
 
 
 
-=head2 B<REQUIRED> MemberConfiguration => L<Paws::ManagedBlockchain::MemberConfiguration>
+=head2 B<REQUIRED> MemberConfiguration => ManagedBlockchain_MemberConfiguration
 
 Member configuration parameters.
 

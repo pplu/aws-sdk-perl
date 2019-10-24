@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::RedShift::RestoreStatus;
-  use Moose;
-  has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
-  has ElapsedTimeInSeconds => (is => 'ro', isa => 'Int');
-  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => 'Int');
-  has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
-  has SnapshotSizeInMegaBytes => (is => 'ro', isa => 'Int');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Num Int Str/;
+  use Paws::RedShift::Types qw//;
+  has CurrentRestoreRateInMegaBytesPerSecond => (is => 'ro', isa => Num);
+  has ElapsedTimeInSeconds => (is => 'ro', isa => Int);
+  has EstimatedTimeToCompletionInSeconds => (is => 'ro', isa => Int);
+  has ProgressInMegaBytes => (is => 'ro', isa => Int);
+  has SnapshotSizeInMegaBytes => (is => 'ro', isa => Int);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CurrentRestoreRateInMegaBytesPerSecond' => {
+                                                             'type' => 'Num'
+                                                           },
+               'EstimatedTimeToCompletionInSeconds' => {
+                                                         'type' => 'Int'
+                                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'SnapshotSizeInMegaBytes' => {
+                                              'type' => 'Int'
+                                            },
+               'ProgressInMegaBytes' => {
+                                          'type' => 'Int'
+                                        },
+               'ElapsedTimeInSeconds' => {
+                                           'type' => 'Int'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

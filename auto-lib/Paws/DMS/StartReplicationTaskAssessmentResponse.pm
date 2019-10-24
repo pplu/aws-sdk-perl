@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DMS::StartReplicationTaskAssessmentResponse;
-  use Moose;
-  has ReplicationTask => (is => 'ro', isa => 'Paws::DMS::ReplicationTask');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw/DMS_ReplicationTask/;
+  has ReplicationTask => (is => 'ro', isa => DMS_ReplicationTask);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ReplicationTask' => {
+                                      'class' => 'Paws::DMS::ReplicationTask',
+                                      'type' => 'DMS_ReplicationTask'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::DMS::StartReplicationTaskAssessmentResponse
 =head1 ATTRIBUTES
 
 
-=head2 ReplicationTask => L<Paws::DMS::ReplicationTask>
+=head2 ReplicationTask => DMS_ReplicationTask
 
 The assessed replication task.
 

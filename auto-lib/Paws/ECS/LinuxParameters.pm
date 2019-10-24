@@ -1,10 +1,49 @@
+# Generated from default/object.tt
 package Paws::ECS::LinuxParameters;
-  use Moose;
-  has Capabilities => (is => 'ro', isa => 'Paws::ECS::KernelCapabilities', request_name => 'capabilities', traits => ['NameInRequest']);
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Device]', request_name => 'devices', traits => ['NameInRequest']);
-  has InitProcessEnabled => (is => 'ro', isa => 'Bool', request_name => 'initProcessEnabled', traits => ['NameInRequest']);
-  has SharedMemorySize => (is => 'ro', isa => 'Int', request_name => 'sharedMemorySize', traits => ['NameInRequest']);
-  has Tmpfs => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tmpfs]', request_name => 'tmpfs', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Bool Int/;
+  use Paws::ECS::Types qw/ECS_Device ECS_KernelCapabilities ECS_Tmpfs/;
+  has Capabilities => (is => 'ro', isa => ECS_KernelCapabilities);
+  has Devices => (is => 'ro', isa => ArrayRef[ECS_Device]);
+  has InitProcessEnabled => (is => 'ro', isa => Bool);
+  has SharedMemorySize => (is => 'ro', isa => Int);
+  has Tmpfs => (is => 'ro', isa => ArrayRef[ECS_Tmpfs]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Devices' => {
+                              'class' => 'Paws::ECS::Device',
+                              'type' => 'ArrayRef[ECS_Device]'
+                            },
+               'InitProcessEnabled' => {
+                                         'type' => 'Bool'
+                                       },
+               'Tmpfs' => {
+                            'class' => 'Paws::ECS::Tmpfs',
+                            'type' => 'ArrayRef[ECS_Tmpfs]'
+                          },
+               'Capabilities' => {
+                                   'class' => 'Paws::ECS::KernelCapabilities',
+                                   'type' => 'ECS_KernelCapabilities'
+                                 },
+               'SharedMemorySize' => {
+                                       'type' => 'Int'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Devices' => 'devices',
+                       'InitProcessEnabled' => 'initProcessEnabled',
+                       'Tmpfs' => 'tmpfs',
+                       'Capabilities' => 'capabilities',
+                       'SharedMemorySize' => 'sharedMemorySize'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +80,7 @@ KernelCapabilities.
 =head1 ATTRIBUTES
 
 
-=head2 Capabilities => L<Paws::ECS::KernelCapabilities>
+=head2 Capabilities => ECS_KernelCapabilities
 
   The Linux capabilities for the container that are added to or dropped
 from the default configuration provided by Docker.
@@ -50,7 +89,7 @@ If you are using tasks that use the Fargate launch type,
 C<capabilities> is supported but the C<add> parameter is not supported.
 
 
-=head2 Devices => ArrayRef[L<Paws::ECS::Device>]
+=head2 Devices => ArrayRef[ECS_Device]
 
   Any host devices to expose to the container. This parameter maps to
 C<Devices> in the Create a container
@@ -85,7 +124,7 @@ If you are using tasks that use the Fargate launch type, the
 C<sharedMemorySize> parameter is not supported.
 
 
-=head2 Tmpfs => ArrayRef[L<Paws::ECS::Tmpfs>]
+=head2 Tmpfs => ArrayRef[ECS_Tmpfs]
 
   The container path, mount options, and size (in MiB) of the tmpfs
 mount. This parameter maps to the C<--tmpfs> option to docker run

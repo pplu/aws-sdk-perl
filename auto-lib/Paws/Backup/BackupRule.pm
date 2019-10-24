@@ -1,13 +1,57 @@
+# Generated from default/object.tt
 package Paws::Backup::BackupRule;
-  use Moose;
-  has CompletionWindowMinutes => (is => 'ro', isa => 'Int');
-  has Lifecycle => (is => 'ro', isa => 'Paws::Backup::Lifecycle');
-  has RecoveryPointTags => (is => 'ro', isa => 'Paws::Backup::Tags');
-  has RuleId => (is => 'ro', isa => 'Str');
-  has RuleName => (is => 'ro', isa => 'Str', required => 1);
-  has ScheduleExpression => (is => 'ro', isa => 'Str');
-  has StartWindowMinutes => (is => 'ro', isa => 'Int');
-  has TargetBackupVaultName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Backup::Types qw/Backup_Lifecycle Backup_Tags/;
+  has CompletionWindowMinutes => (is => 'ro', isa => Int);
+  has Lifecycle => (is => 'ro', isa => Backup_Lifecycle);
+  has RecoveryPointTags => (is => 'ro', isa => Backup_Tags);
+  has RuleId => (is => 'ro', isa => Str);
+  has RuleName => (is => 'ro', isa => Str, required => 1);
+  has ScheduleExpression => (is => 'ro', isa => Str);
+  has StartWindowMinutes => (is => 'ro', isa => Int);
+  has TargetBackupVaultName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'TargetBackupVaultName' => {
+                                            'type' => 'Str'
+                                          },
+               'ScheduleExpression' => {
+                                         'type' => 'Str'
+                                       },
+               'Lifecycle' => {
+                                'class' => 'Paws::Backup::Lifecycle',
+                                'type' => 'Backup_Lifecycle'
+                              },
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'StartWindowMinutes' => {
+                                         'type' => 'Int'
+                                       },
+               'CompletionWindowMinutes' => {
+                                              'type' => 'Int'
+                                            },
+               'RecoveryPointTags' => {
+                                        'class' => 'Paws::Backup::Tags',
+                                        'type' => 'Backup_Tags'
+                                      }
+             },
+  'IsRequired' => {
+                    'RuleName' => 1,
+                    'TargetBackupVaultName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +94,7 @@ must be completed or it is canceled by AWS Backup. This value is
 optional.
 
 
-=head2 Lifecycle => L<Paws::Backup::Lifecycle>
+=head2 Lifecycle => Backup_Lifecycle
 
   The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. AWS Backup transitions and expires backups
@@ -64,7 +108,7 @@ daysE<rdquo> setting cannot be changed after a backup has been
 transitioned to cold.
 
 
-=head2 RecoveryPointTags => L<Paws::Backup::Tags>
+=head2 RecoveryPointTags => Backup_Tags
 
   An array of key-value pair strings that are assigned to resources that
 are associated with this rule when restored from backup.

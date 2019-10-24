@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteAccountAlias;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteAccountAlias;
                'AccountAlias' => {
                                    'type' => 'Str'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'AccountAlias' => 1
+                  }
 }
 ;
     return $Params_map;

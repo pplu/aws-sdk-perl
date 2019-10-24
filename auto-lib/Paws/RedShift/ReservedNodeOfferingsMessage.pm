@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RedShift::ReservedNodeOfferingsMessage;
-  use Moose;
-  has Marker => (is => 'ro', isa => 'Str');
-  has ReservedNodeOfferings => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ReservedNodeOffering]', request_name => 'ReservedNodeOffering', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RedShift::Types qw/RedShift_ReservedNodeOffering/;
+  has Marker => (is => 'ro', isa => Str);
+  has ReservedNodeOfferings => (is => 'ro', isa => ArrayRef[RedShift_ReservedNodeOffering]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservedNodeOfferings' => {
+                                            'class' => 'Paws::RedShift::ReservedNodeOffering',
+                                            'type' => 'ArrayRef[RedShift_ReservedNodeOffering]'
+                                          },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ReservedNodeOfferings' => 'ReservedNodeOffering'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +51,7 @@ the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
 
-=head2 ReservedNodeOfferings => ArrayRef[L<Paws::RedShift::ReservedNodeOffering>]
+=head2 ReservedNodeOfferings => ArrayRef[RedShift_ReservedNodeOffering]
 
 A list of C<ReservedNodeOffering> objects.
 

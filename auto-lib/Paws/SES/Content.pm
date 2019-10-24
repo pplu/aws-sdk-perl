@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::Content;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,10 @@ package Paws::SES::Content;
                'Data' => {
                            'type' => 'Str'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'Data' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,18 +1,57 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::CreateIdentityProvider;
-  use Moose;
-  has AttributeMapping => (is => 'ro', isa => 'Paws::CognitoIdp::AttributeMappingType');
-  has IdpIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ProviderDetails => (is => 'ro', isa => 'Paws::CognitoIdp::ProviderDetailsType', required => 1);
-  has ProviderName => (is => 'ro', isa => 'Str', required => 1);
-  has ProviderType => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_ProviderDetailsType CognitoIdp_AttributeMappingType/;
+  has AttributeMapping => (is => 'ro', isa => CognitoIdp_AttributeMappingType, predicate => 1);
+  has IdpIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ProviderDetails => (is => 'ro', isa => CognitoIdp_ProviderDetailsType, required => 1, predicate => 1);
+  has ProviderName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProviderType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateIdentityProvider');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::CreateIdentityProviderResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateIdentityProvider');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::CreateIdentityProviderResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IdpIdentifiers' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'AttributeMapping' => {
+                                       'class' => 'Paws::CognitoIdp::AttributeMappingType',
+                                       'type' => 'CognitoIdp_AttributeMappingType'
+                                     },
+               'ProviderDetails' => {
+                                      'class' => 'Paws::CognitoIdp::ProviderDetailsType',
+                                      'type' => 'CognitoIdp_ProviderDetailsType'
+                                    },
+               'ProviderType' => {
+                                   'type' => 'Str'
+                                 },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'ProviderDetails' => 1,
+                    'ProviderType' => 1,
+                    'ProviderName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +95,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 AttributeMapping => L<Paws::CognitoIdp::AttributeMappingType>
+=head2 AttributeMapping => CognitoIdp_AttributeMappingType
 
 A mapping of identity provider attributes to standard and custom user
 pool attributes.
@@ -69,7 +108,7 @@ A list of identity provider identifiers.
 
 
 
-=head2 B<REQUIRED> ProviderDetails => L<Paws::CognitoIdp::ProviderDetailsType>
+=head2 B<REQUIRED> ProviderDetails => CognitoIdp_ProviderDetailsType
 
 The identity provider details, such as C<MetadataURL> and
 C<MetadataFile>.

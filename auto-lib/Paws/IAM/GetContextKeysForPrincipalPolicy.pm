@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::GetContextKeysForPrincipalPolicy;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::GetContextKeysForPrincipalPolicy;
                'PolicyInputList' => {
                                       'type' => 'ArrayRef[Str|Undef]'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'PolicySourceArn' => 1
+                  }
 }
 ;
     return $Params_map;

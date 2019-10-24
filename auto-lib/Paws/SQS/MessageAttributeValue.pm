@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::MessageAttributeValue;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
@@ -30,7 +31,10 @@ package Paws::SQS::MessageAttributeValue;
   'NameInRequest' => {
                        'StringListValues' => 'StringListValue',
                        'BinaryListValues' => 'BinaryListValue'
-                     }
+                     },
+  'IsRequired' => {
+                    'DataType' => 1
+                  }
 }
 ;
     return $Params_map;

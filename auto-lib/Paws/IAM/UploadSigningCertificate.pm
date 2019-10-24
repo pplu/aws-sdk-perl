@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UploadSigningCertificate;
   use Moo;
@@ -21,7 +22,10 @@ package Paws::IAM::UploadSigningCertificate;
                'CertificateBody' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'CertificateBody' => 1
+                  }
 }
 ;
     return $Params_map;

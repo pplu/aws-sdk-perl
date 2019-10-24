@@ -3,7 +3,7 @@ package Paws::EC2::HibernationOptionsRequest;
   use Paws::EC2::Types qw//;
   has Configured => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Configured' => {
@@ -12,8 +12,8 @@ package Paws::EC2::HibernationOptionsRequest;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

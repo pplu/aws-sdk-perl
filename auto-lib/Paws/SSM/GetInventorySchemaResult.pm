@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::GetInventorySchemaResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Schemas => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryItemSchema]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SSM::Types qw/SSM_InventoryItemSchema/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Schemas => (is => 'ro', isa => ArrayRef[SSM_InventoryItemSchema]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Schemas' => {
+                              'class' => 'Paws::SSM::InventoryItemSchema',
+                              'type' => 'ArrayRef[SSM_InventoryItemSchema]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
 
 
-=head2 Schemas => ArrayRef[L<Paws::SSM::InventoryItemSchema>]
+=head2 Schemas => ArrayRef[SSM_InventoryItemSchema]
 
 Inventory schemas returned by the request.
 

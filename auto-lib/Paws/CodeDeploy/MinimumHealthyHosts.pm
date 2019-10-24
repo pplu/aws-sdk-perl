@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::MinimumHealthyHosts;
-  use Moose;
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Int', request_name => 'value', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeDeploy::Types qw//;
+  has Type => (is => 'ro', isa => Str);
+  has Value => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Int'
+                          },
+               'Type' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Value' => 'value',
+                       'Type' => 'type'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

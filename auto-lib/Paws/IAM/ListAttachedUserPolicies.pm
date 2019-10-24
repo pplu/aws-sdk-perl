@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::ListAttachedUserPolicies;
   use Moo;
@@ -29,7 +30,10 @@ package Paws::IAM::ListAttachedUserPolicies;
                'Marker' => {
                              'type' => 'Str'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1
+                  }
 }
 ;
     return $Params_map;

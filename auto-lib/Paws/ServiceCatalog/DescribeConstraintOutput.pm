@@ -1,11 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::ServiceCatalog::DescribeConstraintOutput;
-  use Moose;
-  has ConstraintDetail => (is => 'ro', isa => 'Paws::ServiceCatalog::ConstraintDetail');
-  has ConstraintParameters => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ConstraintDetail/;
+  has ConstraintDetail => (is => 'ro', isa => ServiceCatalog_ConstraintDetail);
+  has ConstraintParameters => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConstraintParameters' => {
+                                           'type' => 'Str'
+                                         },
+               'ConstraintDetail' => {
+                                       'class' => 'Paws::ServiceCatalog::ConstraintDetail',
+                                       'type' => 'ServiceCatalog_ConstraintDetail'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,7 +41,7 @@ Paws::ServiceCatalog::DescribeConstraintOutput
 =head1 ATTRIBUTES
 
 
-=head2 ConstraintDetail => L<Paws::ServiceCatalog::ConstraintDetail>
+=head2 ConstraintDetail => ServiceCatalog_ConstraintDetail
 
 Information about the constraint.
 

@@ -1,18 +1,61 @@
 
 package Paws::IoT::CancelJobExecution;
-  use Moose;
-  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'expectedVersion');
-  has Force => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'force');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
-  has StatusDetails => (is => 'ro', isa => 'Paws::IoT::DetailsMap', traits => ['NameInRequest'], request_name => 'statusDetails');
-  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::IoT::Types qw/IoT_DetailsMap/;
+  has ExpectedVersion => (is => 'ro', isa => Int, predicate => 1);
+  has Force => (is => 'ro', isa => Bool, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StatusDetails => (is => 'ro', isa => IoT_DetailsMap, predicate => 1);
+  has ThingName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CancelJobExecution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/jobs/{jobId}/cancel');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CancelJobExecution');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/things/{thingName}/jobs/{jobId}/cancel');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ThingName' => {
+                                'type' => 'Str'
+                              },
+               'ExpectedVersion' => {
+                                      'type' => 'Int'
+                                    },
+               'StatusDetails' => {
+                                    'class' => 'Paws::IoT::DetailsMap',
+                                    'type' => 'IoT_DetailsMap'
+                                  },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'Force' => {
+                            'type' => 'Bool'
+                          }
+             },
+  'ParamInURI' => {
+                    'ThingName' => 'thingName',
+                    'JobId' => 'jobId'
+                  },
+  'ParamInQuery' => {
+                      'Force' => 'force'
+                    },
+  'NameInRequest' => {
+                       'ExpectedVersion' => 'expectedVersion',
+                       'StatusDetails' => 'statusDetails'
+                     },
+  'IsRequired' => {
+                    'ThingName' => 1,
+                    'JobId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +125,7 @@ The ID of the job to be canceled.
 
 
 
-=head2 StatusDetails => L<Paws::IoT::DetailsMap>
+=head2 StatusDetails => IoT_DetailsMap
 
 A collection of name/value pairs that describe the status of the job
 execution. If not specified, the statusDetails are unchanged. You can

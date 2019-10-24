@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::Greengrass::DeviceDefinitionVersion;
-  use Moose;
-  has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Device]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::Greengrass::Types qw/Greengrass_Device/;
+  has Devices => (is => 'ro', isa => ArrayRef[Greengrass_Device]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Devices' => {
+                              'class' => 'Paws::Greengrass::Device',
+                              'type' => 'ArrayRef[Greengrass_Device]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Information about a device definition version.
 =head1 ATTRIBUTES
 
 
-=head2 Devices => ArrayRef[L<Paws::Greengrass::Device>]
+=head2 Devices => ArrayRef[Greengrass_Device]
 
   A list of devices in the definition version.
 

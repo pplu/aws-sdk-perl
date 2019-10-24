@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::CreateVpcPeeringAuthorizationOutput;
-  use Moose;
-  has VpcPeeringAuthorization => (is => 'ro', isa => 'Paws::GameLift::VpcPeeringAuthorization');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw/GameLift_VpcPeeringAuthorization/;
+  has VpcPeeringAuthorization => (is => 'ro', isa => GameLift_VpcPeeringAuthorization);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcPeeringAuthorization' => {
+                                              'class' => 'Paws::GameLift::VpcPeeringAuthorization',
+                                              'type' => 'GameLift_VpcPeeringAuthorization'
+                                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::GameLift::CreateVpcPeeringAuthorizationOutput
 =head1 ATTRIBUTES
 
 
-=head2 VpcPeeringAuthorization => L<Paws::GameLift::VpcPeeringAuthorization>
+=head2 VpcPeeringAuthorization => GameLift_VpcPeeringAuthorization
 
 Details on the requested VPC peering authorization, including
 expiration.

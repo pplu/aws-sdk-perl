@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Inspector::SecurityGroup;
-  use Moose;
-  has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
-  has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Inspector::Types qw//;
+  has GroupId => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupId' => {
+                              'type' => 'Str'
+                            },
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'GroupId' => 'groupId',
+                       'GroupName' => 'groupName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

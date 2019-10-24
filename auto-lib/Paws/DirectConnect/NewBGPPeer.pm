@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::DirectConnect::NewBGPPeer;
-  use Moose;
-  has AddressFamily => (is => 'ro', isa => 'Str', request_name => 'addressFamily', traits => ['NameInRequest']);
-  has AmazonAddress => (is => 'ro', isa => 'Str', request_name => 'amazonAddress', traits => ['NameInRequest']);
-  has Asn => (is => 'ro', isa => 'Int', request_name => 'asn', traits => ['NameInRequest']);
-  has AuthKey => (is => 'ro', isa => 'Str', request_name => 'authKey', traits => ['NameInRequest']);
-  has CustomerAddress => (is => 'ro', isa => 'Str', request_name => 'customerAddress', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::DirectConnect::Types qw//;
+  has AddressFamily => (is => 'ro', isa => Str);
+  has AmazonAddress => (is => 'ro', isa => Str);
+  has Asn => (is => 'ro', isa => Int);
+  has AuthKey => (is => 'ro', isa => Str);
+  has CustomerAddress => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AddressFamily' => {
+                                    'type' => 'Str'
+                                  },
+               'AuthKey' => {
+                              'type' => 'Str'
+                            },
+               'Asn' => {
+                          'type' => 'Int'
+                        },
+               'CustomerAddress' => {
+                                      'type' => 'Str'
+                                    },
+               'AmazonAddress' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AddressFamily' => 'addressFamily',
+                       'AuthKey' => 'authKey',
+                       'Asn' => 'asn',
+                       'CustomerAddress' => 'customerAddress',
+                       'AmazonAddress' => 'amazonAddress'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

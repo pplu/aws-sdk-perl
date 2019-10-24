@@ -1,13 +1,58 @@
+# Generated from default/object.tt
 package Paws::WorkSpaces::WorkspaceRequest;
-  use Moose;
-  has BundleId => (is => 'ro', isa => 'Str', required => 1);
-  has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
-  has RootVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
-  has UserVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
-  has VolumeEncryptionKey => (is => 'ro', isa => 'Str');
-  has WorkspaceProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceProperties');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_WorkspaceProperties WorkSpaces_Tag/;
+  has BundleId => (is => 'ro', isa => Str, required => 1);
+  has DirectoryId => (is => 'ro', isa => Str, required => 1);
+  has RootVolumeEncryptionEnabled => (is => 'ro', isa => Bool);
+  has Tags => (is => 'ro', isa => ArrayRef[WorkSpaces_Tag]);
+  has UserName => (is => 'ro', isa => Str, required => 1);
+  has UserVolumeEncryptionEnabled => (is => 'ro', isa => Bool);
+  has VolumeEncryptionKey => (is => 'ro', isa => Str);
+  has WorkspaceProperties => (is => 'ro', isa => WorkSpaces_WorkspaceProperties);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkspaceProperties' => {
+                                          'class' => 'Paws::WorkSpaces::WorkspaceProperties',
+                                          'type' => 'WorkSpaces_WorkspaceProperties'
+                                        },
+               'BundleId' => {
+                               'type' => 'Str'
+                             },
+               'UserVolumeEncryptionEnabled' => {
+                                                  'type' => 'Bool'
+                                                },
+               'UserName' => {
+                               'type' => 'Str'
+                             },
+               'VolumeEncryptionKey' => {
+                                          'type' => 'Str'
+                                        },
+               'DirectoryId' => {
+                                  'type' => 'Str'
+                                },
+               'RootVolumeEncryptionEnabled' => {
+                                                  'type' => 'Bool'
+                                                },
+               'Tags' => {
+                           'class' => 'Paws::WorkSpaces::Tag',
+                           'type' => 'ArrayRef[WorkSpaces_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'DirectoryId' => 1,
+                    'BundleId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +106,7 @@ available directories.
   Indicates whether the data stored on the root volume is encrypted.
 
 
-=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+=head2 Tags => ArrayRef[WorkSpaces_Tag]
 
   The tags for the WorkSpace.
 
@@ -82,7 +127,7 @@ the AWS Directory Service directory for the WorkSpace.
   The KMS key used to encrypt data stored on your WorkSpace.
 
 
-=head2 WorkspaceProperties => L<Paws::WorkSpaces::WorkspaceProperties>
+=head2 WorkspaceProperties => WorkSpaces_WorkspaceProperties
 
   The WorkSpace properties.
 

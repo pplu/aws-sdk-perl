@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::LicenseManager::ListUsageForLicenseConfigurationResponse;
-  use Moose;
-  has LicenseConfigurationUsageList => (is => 'ro', isa => 'ArrayRef[Paws::LicenseManager::LicenseConfigurationUsage]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::LicenseManager::Types qw/LicenseManager_LicenseConfigurationUsage/;
+  has LicenseConfigurationUsageList => (is => 'ro', isa => ArrayRef[LicenseManager_LicenseConfigurationUsage]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LicenseConfigurationUsageList' => {
+                                                    'class' => 'Paws::LicenseManager::LicenseConfigurationUsage',
+                                                    'type' => 'ArrayRef[LicenseManager_LicenseConfigurationUsage]'
+                                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::LicenseManager::ListUsageForLicenseConfigurationResponse
 =head1 ATTRIBUTES
 
 
-=head2 LicenseConfigurationUsageList => ArrayRef[L<Paws::LicenseManager::LicenseConfigurationUsage>]
+=head2 LicenseConfigurationUsageList => ArrayRef[LicenseManager_LicenseConfigurationUsage]
 
 An array of C<LicenseConfigurationUsage> objects.
 

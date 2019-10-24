@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::CORSRule;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str Int/;
@@ -32,7 +33,11 @@ package Paws::S3::CORSRule;
                        'AllowedHeaders' => 'AllowedHeader',
                        'AllowedOrigins' => 'AllowedOrigin',
                        'AllowedMethods' => 'AllowedMethod'
-                     }
+                     },
+  'IsRequired' => {
+                    'AllowedOrigins' => 1,
+                    'AllowedMethods' => 1
+                  }
 }
 ;
     return $Params_map;

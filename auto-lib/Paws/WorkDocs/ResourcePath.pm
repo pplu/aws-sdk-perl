@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::ResourcePath;
-  use Moose;
-  has Components => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::ResourcePathComponent]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::WorkDocs::Types qw/WorkDocs_ResourcePathComponent/;
+  has Components => (is => 'ro', isa => ArrayRef[WorkDocs_ResourcePathComponent]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Components' => {
+                                 'class' => 'Paws::WorkDocs::ResourcePathComponent',
+                                 'type' => 'ArrayRef[WorkDocs_ResourcePathComponent]'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Describes the path information of a resource.
 =head1 ATTRIBUTES
 
 
-=head2 Components => ArrayRef[L<Paws::WorkDocs::ResourcePathComponent>]
+=head2 Components => ArrayRef[WorkDocs_ResourcePathComponent]
 
   The components of the resource path.
 

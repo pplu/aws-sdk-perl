@@ -1,15 +1,44 @@
 
 package Paws::MediaConnect::AddFlowOutputs;
-  use Moose;
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::AddOutputRequest]', traits => ['NameInRequest'], request_name => 'outputs', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MediaConnect::Types qw/MediaConnect_AddOutputRequest/;
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Outputs => (is => 'ro', isa => ArrayRef[MediaConnect_AddOutputRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddFlowOutputs');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/outputs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::AddFlowOutputsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddFlowOutputs');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/outputs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::AddFlowOutputsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Outputs' => {
+                              'class' => 'Paws::MediaConnect::AddOutputRequest',
+                              'type' => 'ArrayRef[MediaConnect_AddOutputRequest]'
+                            },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'FlowArn' => 'flowArn'
+                  },
+  'NameInRequest' => {
+                       'Outputs' => 'outputs'
+                     },
+  'IsRequired' => {
+                    'Outputs' => 1,
+                    'FlowArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +105,7 @@ The flow that you want to add outputs to.
 
 
 
-=head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::MediaConnect::AddOutputRequest>]
+=head2 B<REQUIRED> Outputs => ArrayRef[MediaConnect_AddOutputRequest]
 
 A list of outputs that you want to add.
 

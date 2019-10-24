@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::VersioningConfiguration;
-  use Moose;
-  has MaxVersions => (is => 'ro', isa => 'Int', request_name => 'maxVersions', traits => ['NameInRequest']);
-  has Unlimited => (is => 'ro', isa => 'Bool', request_name => 'unlimited', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Bool/;
+  use Paws::IoTAnalytics::Types qw//;
+  has MaxVersions => (is => 'ro', isa => Int);
+  has Unlimited => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxVersions' => {
+                                  'type' => 'Int'
+                                },
+               'Unlimited' => {
+                                'type' => 'Bool'
+                              }
+             },
+  'NameInRequest' => {
+                       'MaxVersions' => 'maxVersions',
+                       'Unlimited' => 'unlimited'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

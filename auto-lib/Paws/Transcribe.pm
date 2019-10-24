@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Transcribe;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'transcribe' }
   sub signing_name { 'transcribe' }
   sub version { '2017-10-26' }
   sub target_prefix { 'Transcribe' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -240,7 +242,7 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item LanguageCode => Str
 
-=item Media => L<Paws::Transcribe::Media>
+=item Media => Transcribe_Media
 
 =item MediaFormat => Str
 
@@ -250,7 +252,7 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item [OutputBucketName => Str]
 
-=item [Settings => L<Paws::Transcribe::Settings>]
+=item [Settings => Transcribe_Settings]
 
 
 =back

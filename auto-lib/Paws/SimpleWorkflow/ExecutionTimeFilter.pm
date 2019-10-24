@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ExecutionTimeFilter;
-  use Moose;
-  has LatestDate => (is => 'ro', isa => 'Str', request_name => 'latestDate', traits => ['NameInRequest']);
-  has OldestDate => (is => 'ro', isa => 'Str', request_name => 'oldestDate', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has LatestDate => (is => 'ro', isa => Str);
+  has OldestDate => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OldestDate' => {
+                                 'type' => 'Str'
+                               },
+               'LatestDate' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'OldestDate' => 'oldestDate',
+                       'LatestDate' => 'latestDate'
+                     },
+  'IsRequired' => {
+                    'OldestDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

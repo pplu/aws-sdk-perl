@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ServerCertificateMetadata;
   use Moo;
   use Types::Standard qw/Str/;
@@ -30,7 +31,13 @@ package Paws::IAM::ServerCertificateMetadata;
                'ServerCertificateName' => {
                                             'type' => 'Str'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'ServerCertificateId' => 1,
+                    'Path' => 1,
+                    'Arn' => 1,
+                    'ServerCertificateName' => 1
+                  }
 }
 ;
     return $Params_map;

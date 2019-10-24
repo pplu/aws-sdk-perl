@@ -1,16 +1,47 @@
 
 package Paws::PersonalizeRuntime::GetPersonalizedRanking;
-  use Moose;
-  has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn', required => 1);
-  has InputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputList', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::PersonalizeRuntime::Types qw//;
+  has CampaignArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InputList => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPersonalizedRanking');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/personalize-ranking');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PersonalizeRuntime::GetPersonalizedRankingResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetPersonalizedRanking');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/personalize-ranking');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PersonalizeRuntime::GetPersonalizedRankingResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserId' => {
+                             'type' => 'Str'
+                           },
+               'CampaignArn' => {
+                                  'type' => 'Str'
+                                },
+               'InputList' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              }
+             },
+  'NameInRequest' => {
+                       'UserId' => 'userId',
+                       'CampaignArn' => 'campaignArn',
+                       'InputList' => 'inputList'
+                     },
+  'IsRequired' => {
+                    'UserId' => 1,
+                    'CampaignArn' => 1,
+                    'InputList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

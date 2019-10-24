@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::ModifyDBSubnetGroupResult;
-  use Moose;
-  has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_DBSubnetGroup/;
+  has DBSubnetGroup => (is => 'ro', isa => RDS_DBSubnetGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBSubnetGroup' => {
+                                    'class' => 'Paws::RDS::DBSubnetGroup',
+                                    'type' => 'RDS_DBSubnetGroup'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RDS::ModifyDBSubnetGroupResult
 =head1 ATTRIBUTES
 
 
-=head2 DBSubnetGroup => L<Paws::RDS::DBSubnetGroup>
+=head2 DBSubnetGroup => RDS_DBSubnetGroup
 
 
 

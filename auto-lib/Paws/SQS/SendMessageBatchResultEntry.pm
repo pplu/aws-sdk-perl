@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SQS::SendMessageBatchResultEntry;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,12 @@ package Paws::SQS::SendMessageBatchResultEntry;
                'MessageId' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'Id' => 1,
+                    'MD5OfMessageBody' => 1,
+                    'MessageId' => 1
+                  }
 }
 ;
     return $Params_map;

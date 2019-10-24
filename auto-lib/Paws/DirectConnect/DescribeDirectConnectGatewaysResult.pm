@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DirectConnect::DescribeDirectConnectGatewaysResult;
-  use Moose;
-  has DirectConnectGateways => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::DirectConnectGateway]', traits => ['NameInRequest'], request_name => 'directConnectGateways' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DirectConnect::Types qw/DirectConnect_DirectConnectGateway/;
+  has DirectConnectGateways => (is => 'ro', isa => ArrayRef[DirectConnect_DirectConnectGateway]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DirectConnectGateways' => {
+                                            'class' => 'Paws::DirectConnect::DirectConnectGateway',
+                                            'type' => 'ArrayRef[DirectConnect_DirectConnectGateway]'
+                                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'DirectConnectGateways' => 'directConnectGateways',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::DirectConnect::DescribeDirectConnectGatewaysResult
 =head1 ATTRIBUTES
 
 
-=head2 DirectConnectGateways => ArrayRef[L<Paws::DirectConnect::DirectConnectGateway>]
+=head2 DirectConnectGateways => ArrayRef[DirectConnect_DirectConnectGateway]
 
 The Direct Connect gateways.
 

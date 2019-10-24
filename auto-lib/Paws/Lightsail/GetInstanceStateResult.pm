@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetInstanceStateResult;
-  use Moose;
-  has State => (is => 'ro', isa => 'Paws::Lightsail::InstanceState', traits => ['NameInRequest'], request_name => 'state' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw/Lightsail_InstanceState/;
+  has State => (is => 'ro', isa => Lightsail_InstanceState);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'State' => {
+                            'class' => 'Paws::Lightsail::InstanceState',
+                            'type' => 'Lightsail_InstanceState'
+                          }
+             },
+  'NameInRequest' => {
+                       'State' => 'state'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::Lightsail::GetInstanceStateResult
 =head1 ATTRIBUTES
 
 
-=head2 State => L<Paws::Lightsail::InstanceState>
+=head2 State => Lightsail_InstanceState
 
 The state of the instance.
 

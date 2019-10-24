@@ -4,7 +4,7 @@ package Paws::EC2::NetworkInterfaceAttachmentChanges;
   has AttachmentId => (is => 'ro', isa => Str);
   has DeleteOnTermination => (is => 'ro', isa => Bool);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DeleteOnTermination' => {
@@ -20,8 +20,8 @@ package Paws::EC2::NetworkInterfaceAttachmentChanges;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

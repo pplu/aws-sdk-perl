@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::MetricDimension;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has Value => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Num/;
+  use Paws::Pinpoint::Types qw//;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has Value => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Num'
+                          },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'ComparisonOperator' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

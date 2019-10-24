@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::DetectDominantLanguageResponse;
-  use Moose;
-  has Languages => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::DominantLanguage]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_DominantLanguage/;
+  has Languages => (is => 'ro', isa => ArrayRef[Comprehend_DominantLanguage]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Languages' => {
+                                'class' => 'Paws::Comprehend::DominantLanguage',
+                                'type' => 'ArrayRef[Comprehend_DominantLanguage]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Comprehend::DetectDominantLanguageResponse
 =head1 ATTRIBUTES
 
 
-=head2 Languages => ArrayRef[L<Paws::Comprehend::DominantLanguage>]
+=head2 Languages => ArrayRef[Comprehend_DominantLanguage]
 
 The languages that Amazon Comprehend detected in the input text. For
 each language, the response returns the RFC 5646 language code and the

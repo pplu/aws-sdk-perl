@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
   has IndexName => (is => 'ro', isa => Str, required => 1);
   has ProvisionedThroughput => (is => 'ro', isa => DynamoDB_ProvisionedThroughput, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'IndexName' => {
@@ -15,11 +16,15 @@ package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
                                             'class' => 'Paws::DynamoDB::ProvisionedThroughput',
                                             'type' => 'DynamoDB_ProvisionedThroughput'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'IndexName' => 1,
+                    'ProvisionedThroughput' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

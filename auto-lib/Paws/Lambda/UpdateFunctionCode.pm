@@ -1,21 +1,63 @@
 
 package Paws::Lambda::UpdateFunctionCode;
-  use Moose;
-  has DryRun => (is => 'ro', isa => 'Bool');
-  has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
-  has Publish => (is => 'ro', isa => 'Bool');
-  has RevisionId => (is => 'ro', isa => 'Str');
-  has S3Bucket => (is => 'ro', isa => 'Str');
-  has S3Key => (is => 'ro', isa => 'Str');
-  has S3ObjectVersion => (is => 'ro', isa => 'Str');
-  has ZipFile => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lambda::Types qw//;
+  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
+  has FunctionName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Publish => (is => 'ro', isa => Bool, predicate => 1);
+  has RevisionId => (is => 'ro', isa => Str, predicate => 1);
+  has S3Bucket => (is => 'ro', isa => Str, predicate => 1);
+  has S3Key => (is => 'ro', isa => Str, predicate => 1);
+  has S3ObjectVersion => (is => 'ro', isa => Str, predicate => 1);
+  has ZipFile => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/code');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFunctionCode');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2015-03-31/functions/{FunctionName}/code');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DryRun' => {
+                             'type' => 'Bool'
+                           },
+               'S3Key' => {
+                            'type' => 'Str'
+                          },
+               'S3ObjectVersion' => {
+                                      'type' => 'Str'
+                                    },
+               'S3Bucket' => {
+                               'type' => 'Str'
+                             },
+               'RevisionId' => {
+                                 'type' => 'Str'
+                               },
+               'Publish' => {
+                              'type' => 'Bool'
+                            },
+               'FunctionName' => {
+                                   'type' => 'Str'
+                                 },
+               'ZipFile' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'FunctionName' => 'FunctionName'
+                  },
+  'IsRequired' => {
+                    'FunctionName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

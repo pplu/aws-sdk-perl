@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::SageMaker::DesiredWeightAndCapacity;
-  use Moose;
-  has DesiredInstanceCount => (is => 'ro', isa => 'Int');
-  has DesiredWeight => (is => 'ro', isa => 'Num');
-  has VariantName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Int Num Str/;
+  use Paws::SageMaker::Types qw//;
+  has DesiredInstanceCount => (is => 'ro', isa => Int);
+  has DesiredWeight => (is => 'ro', isa => Num);
+  has VariantName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VariantName' => {
+                                  'type' => 'Str'
+                                },
+               'DesiredWeight' => {
+                                    'type' => 'Num'
+                                  },
+               'DesiredInstanceCount' => {
+                                           'type' => 'Int'
+                                         }
+             },
+  'IsRequired' => {
+                    'VariantName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

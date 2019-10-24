@@ -1,25 +1,84 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::CreatePatchBaseline;
-  use Moose;
-  has ApprovalRules => (is => 'ro', isa => 'Paws::SSM::PatchRuleGroup');
-  has ApprovedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => 'Str');
-  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => 'Bool');
-  has ClientToken => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has GlobalFilters => (is => 'ro', isa => 'Paws::SSM::PatchFilterGroup');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has OperatingSystem => (is => 'ro', isa => 'Str');
-  has RejectedPatches => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has RejectedPatchesAction => (is => 'ro', isa => 'Str');
-  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchSource]');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::SSM::Types qw/SSM_PatchSource SSM_PatchFilterGroup SSM_Tag SSM_PatchRuleGroup/;
+  has ApprovalRules => (is => 'ro', isa => SSM_PatchRuleGroup, predicate => 1);
+  has ApprovedPatches => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ApprovedPatchesComplianceLevel => (is => 'ro', isa => Str, predicate => 1);
+  has ApprovedPatchesEnableNonSecurity => (is => 'ro', isa => Bool, predicate => 1);
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has GlobalFilters => (is => 'ro', isa => SSM_PatchFilterGroup, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OperatingSystem => (is => 'ro', isa => Str, predicate => 1);
+  has RejectedPatches => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has RejectedPatchesAction => (is => 'ro', isa => Str, predicate => 1);
+  has Sources => (is => 'ro', isa => ArrayRef[SSM_PatchSource], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SSM_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePatchBaseline');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreatePatchBaselineResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePatchBaseline');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::CreatePatchBaselineResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'GlobalFilters' => {
+                                    'class' => 'Paws::SSM::PatchFilterGroup',
+                                    'type' => 'SSM_PatchFilterGroup'
+                                  },
+               'ApprovedPatches' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'RejectedPatches' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    },
+               'Sources' => {
+                              'class' => 'Paws::SSM::PatchSource',
+                              'type' => 'ArrayRef[SSM_PatchSource]'
+                            },
+               'ApprovedPatchesEnableNonSecurity' => {
+                                                       'type' => 'Bool'
+                                                     },
+               'RejectedPatchesAction' => {
+                                            'type' => 'Str'
+                                          },
+               'ApprovalRules' => {
+                                    'class' => 'Paws::SSM::PatchRuleGroup',
+                                    'type' => 'SSM_PatchRuleGroup'
+                                  },
+               'ApprovedPatchesComplianceLevel' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Tags' => {
+                           'class' => 'Paws::SSM::Tag',
+                           'type' => 'ArrayRef[SSM_Tag]'
+                         },
+               'OperatingSystem' => {
+                                      'type' => 'Str'
+                                    },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -125,7 +184,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head1 ATTRIBUTES
 
 
-=head2 ApprovalRules => L<Paws::SSM::PatchRuleGroup>
+=head2 ApprovalRules => SSM_PatchRuleGroup
 
 A set of rules used to include patches in the baseline.
 
@@ -171,7 +230,7 @@ A description of the patch baseline.
 
 
 
-=head2 GlobalFilters => L<Paws::SSM::PatchFilterGroup>
+=head2 GlobalFilters => SSM_PatchFilterGroup
 
 A set of global filters used to include patches in the baseline.
 
@@ -230,7 +289,7 @@ baseline, and its status is reported as I<InstalledRejected>.
 
 Valid values are: C<"ALLOW_AS_DEPENDENCY">, C<"BLOCK">
 
-=head2 Sources => ArrayRef[L<Paws::SSM::PatchSource>]
+=head2 Sources => ArrayRef[SSM_PatchSource]
 
 Information about the patches to use to update the instances, including
 target operating systems and source repositories. Applies to Linux
@@ -238,7 +297,7 @@ instances only.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SSM::Tag>]
+=head2 Tags => ArrayRef[SSM_Tag]
 
 Optional metadata that you assign to a resource. Tags enable you to
 categorize a resource in different ways, such as by purpose, owner, or

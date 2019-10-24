@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::ECS::NetworkBinding;
-  use Moose;
-  has BindIP => (is => 'ro', isa => 'Str', request_name => 'bindIP', traits => ['NameInRequest']);
-  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
-  has HostPort => (is => 'ro', isa => 'Int', request_name => 'hostPort', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::ECS::Types qw//;
+  has BindIP => (is => 'ro', isa => Str);
+  has ContainerPort => (is => 'ro', isa => Int);
+  has HostPort => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerPort' => {
+                                    'type' => 'Int'
+                                  },
+               'HostPort' => {
+                               'type' => 'Int'
+                             },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'BindIP' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'ContainerPort' => 'containerPort',
+                       'HostPort' => 'hostPort',
+                       'Protocol' => 'protocol',
+                       'BindIP' => 'bindIP'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

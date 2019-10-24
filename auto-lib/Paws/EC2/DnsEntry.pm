@@ -4,7 +4,7 @@ package Paws::EC2::DnsEntry;
   has DnsName => (is => 'ro', isa => Str);
   has HostedZoneId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DnsName' => {
@@ -20,8 +20,8 @@ package Paws::EC2::DnsEntry;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

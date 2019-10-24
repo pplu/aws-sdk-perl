@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Route53::CloudWatchAlarmConfiguration;
-  use Moose;
-  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
-  has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Dimension]', request_name => 'Dimension', traits => ['NameInRequest']);
-  has EvaluationPeriods => (is => 'ro', isa => 'Int', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str', required => 1);
-  has Namespace => (is => 'ro', isa => 'Str', required => 1);
-  has Period => (is => 'ro', isa => 'Int', required => 1);
-  has Statistic => (is => 'ro', isa => 'Str', required => 1);
-  has Threshold => (is => 'ro', isa => 'Num', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int Num/;
+  use Paws::Route53::Types qw/Route53_Dimension/;
+  has ComparisonOperator => (is => 'ro', isa => Str, required => 1);
+  has Dimensions => (is => 'ro', isa => ArrayRef[Route53_Dimension]);
+  has EvaluationPeriods => (is => 'ro', isa => Int, required => 1);
+  has MetricName => (is => 'ro', isa => Str, required => 1);
+  has Namespace => (is => 'ro', isa => Str, required => 1);
+  has Period => (is => 'ro', isa => Int, required => 1);
+  has Statistic => (is => 'ro', isa => Str, required => 1);
+  has Threshold => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Dimensions' => {
+                                 'class' => 'Paws::Route53::Dimension',
+                                 'type' => 'ArrayRef[Route53_Dimension]'
+                               },
+               'EvaluationPeriods' => {
+                                        'type' => 'Int'
+                                      },
+               'Period' => {
+                             'type' => 'Int'
+                           },
+               'ComparisonOperator' => {
+                                         'type' => 'Str'
+                                       },
+               'Statistic' => {
+                                'type' => 'Str'
+                              },
+               'Namespace' => {
+                                'type' => 'Str'
+                              },
+               'Threshold' => {
+                                'type' => 'Num'
+                              },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Dimensions' => 'Dimension'
+                     },
+  'IsRequired' => {
+                    'Namespace' => 1,
+                    'Threshold' => 1,
+                    'EvaluationPeriods' => 1,
+                    'Period' => 1,
+                    'MetricName' => 1,
+                    'ComparisonOperator' => 1,
+                    'Statistic' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +101,7 @@ that Amazon Route 53 is monitoring for this health check.
 arithmetic operation that is used for the comparison.
 
 
-=head2 Dimensions => ArrayRef[L<Paws::Route53::Dimension>]
+=head2 Dimensions => ArrayRef[Route53_Dimension]
 
   For the metric that the CloudWatch alarm is associated with, a complex
 type that contains information about the dimensions for the metric. For

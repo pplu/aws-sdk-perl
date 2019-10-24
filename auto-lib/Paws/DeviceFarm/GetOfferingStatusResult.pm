@@ -1,11 +1,42 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::GetOfferingStatusResult;
-  use Moose;
-  has Current => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['NameInRequest'], request_name => 'current' );
-  has NextPeriod => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatusMap', traits => ['NameInRequest'], request_name => 'nextPeriod' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_OfferingStatusMap/;
+  has Current => (is => 'ro', isa => DeviceFarm_OfferingStatusMap);
+  has NextPeriod => (is => 'ro', isa => DeviceFarm_OfferingStatusMap);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Current' => {
+                              'class' => 'Paws::DeviceFarm::OfferingStatusMap',
+                              'type' => 'DeviceFarm_OfferingStatusMap'
+                            },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextPeriod' => {
+                                 'class' => 'Paws::DeviceFarm::OfferingStatusMap',
+                                 'type' => 'DeviceFarm_OfferingStatusMap'
+                               }
+             },
+  'NameInRequest' => {
+                       'Current' => 'current',
+                       'NextToken' => 'nextToken',
+                       'NextPeriod' => 'nextPeriod'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -16,12 +47,12 @@ Paws::DeviceFarm::GetOfferingStatusResult
 =head1 ATTRIBUTES
 
 
-=head2 Current => L<Paws::DeviceFarm::OfferingStatusMap>
+=head2 Current => DeviceFarm_OfferingStatusMap
 
 When specified, gets the offering status for the current period.
 
 
-=head2 NextPeriod => L<Paws::DeviceFarm::OfferingStatusMap>
+=head2 NextPeriod => DeviceFarm_OfferingStatusMap
 
 When specified, gets the offering status for the next period.
 

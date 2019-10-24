@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodePipeline::ListWebhooksOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Webhooks => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ListWebhookItem]', traits => ['NameInRequest'], request_name => 'webhooks' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ListWebhookItem/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Webhooks => (is => 'ro', isa => ArrayRef[CodePipeline_ListWebhookItem]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Webhooks' => {
+                               'class' => 'Paws::CodePipeline::ListWebhookItem',
+                               'type' => 'ArrayRef[CodePipeline_ListWebhookItem]'
+                             }
+             },
+  'NameInRequest' => {
+                       'Webhooks' => 'webhooks'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +47,7 @@ identifier is also returned and can be used in a subsequent
 ListWebhooks call to return the next set of webhooks in the list.
 
 
-=head2 Webhooks => ArrayRef[L<Paws::CodePipeline::ListWebhookItem>]
+=head2 Webhooks => ArrayRef[CodePipeline_ListWebhookItem]
 
 The JSON detail returned for each webhook in the list output for the
 ListWebhooks call.

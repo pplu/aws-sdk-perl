@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteSSHPublicKey;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::DeleteSSHPublicKey;
                'SSHPublicKeyId' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'SSHPublicKeyId' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,8 +1,43 @@
+# Generated from default/object.tt
 package Paws::IoTEventsData::DetectorStateDefinition;
-  use Moose;
-  has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest'], required => 1);
-  has Timers => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::TimerDefinition]', request_name => 'timers', traits => ['NameInRequest'], required => 1);
-  has Variables => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::VariableDefinition]', request_name => 'variables', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTEventsData::Types qw/IoTEventsData_VariableDefinition IoTEventsData_TimerDefinition/;
+  has StateName => (is => 'ro', isa => Str, required => 1);
+  has Timers => (is => 'ro', isa => ArrayRef[IoTEventsData_TimerDefinition], required => 1);
+  has Variables => (is => 'ro', isa => ArrayRef[IoTEventsData_VariableDefinition], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Variables' => {
+                                'class' => 'Paws::IoTEventsData::VariableDefinition',
+                                'type' => 'ArrayRef[IoTEventsData_VariableDefinition]'
+                              },
+               'Timers' => {
+                             'class' => 'Paws::IoTEventsData::TimerDefinition',
+                             'type' => 'ArrayRef[IoTEventsData_TimerDefinition]'
+                           },
+               'StateName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Variables' => 'variables',
+                       'Timers' => 'timers',
+                       'StateName' => 'stateName'
+                     },
+  'IsRequired' => {
+                    'Variables' => 1,
+                    'Timers' => 1,
+                    'StateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,13 +79,13 @@ The new state, variable values, and timer settings of the detector
   The name of the new state of the detector (instance).
 
 
-=head2 B<REQUIRED> Timers => ArrayRef[L<Paws::IoTEventsData::TimerDefinition>]
+=head2 B<REQUIRED> Timers => ArrayRef[IoTEventsData_TimerDefinition]
 
   The new values of the detector's timers. Any timer whose value isn't
 specified is cleared, and its timeout event won't occur.
 
 
-=head2 B<REQUIRED> Variables => ArrayRef[L<Paws::IoTEventsData::VariableDefinition>]
+=head2 B<REQUIRED> Variables => ArrayRef[IoTEventsData_VariableDefinition]
 
   The new values of the detector's variables. Any variable whose value
 isn't specified is cleared.

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::PutGroupPolicy;
   use Moo;
@@ -25,7 +26,12 @@ package Paws::IAM::PutGroupPolicy;
                'PolicyName' => {
                                  'type' => 'Str'
                                }
-             }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1,
+                    'PolicyDocument' => 1,
+                    'PolicyName' => 1
+                  }
 }
 ;
     return $Params_map;

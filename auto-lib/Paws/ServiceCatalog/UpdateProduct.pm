@@ -1,23 +1,73 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::UpdateProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has AddTags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
-  has Description => (is => 'ro', isa => 'Str');
-  has Distributor => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has Owner => (is => 'ro', isa => 'Str');
-  has RemoveTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SupportDescription => (is => 'ro', isa => 'Str');
-  has SupportEmail => (is => 'ro', isa => 'Str');
-  has SupportUrl => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has AddTags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Distributor => (is => 'ro', isa => Str, predicate => 1);
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has Owner => (is => 'ro', isa => Str, predicate => 1);
+  has RemoveTags => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SupportDescription => (is => 'ro', isa => Str, predicate => 1);
+  has SupportEmail => (is => 'ro', isa => Str, predicate => 1);
+  has SupportUrl => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::UpdateProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::UpdateProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SupportDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'RemoveTags' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'SupportEmail' => {
+                                   'type' => 'Str'
+                                 },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'SupportUrl' => {
+                                 'type' => 'Str'
+                               },
+               'Distributor' => {
+                                  'type' => 'Str'
+                                },
+               'AddTags' => {
+                              'class' => 'Paws::ServiceCatalog::Tag',
+                              'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                            },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +145,7 @@ C<zh> - Chinese
 
 
 
-=head2 AddTags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 AddTags => ArrayRef[ServiceCatalog_Tag]
 
 The tags to add to the product.
 

@@ -20,7 +20,7 @@ package Paws::EC2::SpotFleetLaunchSpecification;
   has UserData => (is => 'ro', isa => Str);
   has WeightedCapacity => (is => 'ro', isa => Num);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ImageId' => {
@@ -107,8 +107,8 @@ package Paws::EC2::SpotFleetLaunchSpecification;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

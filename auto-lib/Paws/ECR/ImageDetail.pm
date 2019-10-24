@@ -1,11 +1,51 @@
+# Generated from default/object.tt
 package Paws::ECR::ImageDetail;
-  use Moose;
-  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
-  has ImagePushedAt => (is => 'ro', isa => 'Str', request_name => 'imagePushedAt', traits => ['NameInRequest']);
-  has ImageSizeInBytes => (is => 'ro', isa => 'Int', request_name => 'imageSizeInBytes', traits => ['NameInRequest']);
-  has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'imageTags', traits => ['NameInRequest']);
-  has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
-  has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::ECR::Types qw//;
+  has ImageDigest => (is => 'ro', isa => Str);
+  has ImagePushedAt => (is => 'ro', isa => Str);
+  has ImageSizeInBytes => (is => 'ro', isa => Int);
+  has ImageTags => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RegistryId => (is => 'ro', isa => Str);
+  has RepositoryName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RegistryId' => {
+                                 'type' => 'Str'
+                               },
+               'ImagePushedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'ImageDigest' => {
+                                  'type' => 'Str'
+                                },
+               'ImageSizeInBytes' => {
+                                       'type' => 'Int'
+                                     },
+               'ImageTags' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RegistryId' => 'registryId',
+                       'ImagePushedAt' => 'imagePushedAt',
+                       'ImageDigest' => 'imageDigest',
+                       'ImageSizeInBytes' => 'imageSizeInBytes',
+                       'ImageTags' => 'imageTags',
+                       'RepositoryName' => 'repositoryName'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

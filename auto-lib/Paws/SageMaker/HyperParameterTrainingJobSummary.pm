@@ -1,16 +1,72 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterTrainingJobSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has FinalHyperParameterTuningJobObjectiveMetric => (is => 'ro', isa => 'Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric');
-  has ObjectiveStatus => (is => 'ro', isa => 'Str');
-  has TrainingEndTime => (is => 'ro', isa => 'Str');
-  has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingStartTime => (is => 'ro', isa => 'Str');
-  has TunedHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters', required => 1);
-  has TuningJobName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_HyperParameters SageMaker_FinalHyperParameterTuningJobObjectiveMetric/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has FailureReason => (is => 'ro', isa => Str);
+  has FinalHyperParameterTuningJobObjectiveMetric => (is => 'ro', isa => SageMaker_FinalHyperParameterTuningJobObjectiveMetric);
+  has ObjectiveStatus => (is => 'ro', isa => Str);
+  has TrainingEndTime => (is => 'ro', isa => Str);
+  has TrainingJobArn => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobName => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobStatus => (is => 'ro', isa => Str, required => 1);
+  has TrainingStartTime => (is => 'ro', isa => Str);
+  has TunedHyperParameters => (is => 'ro', isa => SageMaker_HyperParameters, required => 1);
+  has TuningJobName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'TrainingJobArn' => {
+                                     'type' => 'Str'
+                                   },
+               'TunedHyperParameters' => {
+                                           'class' => 'Paws::SageMaker::HyperParameters',
+                                           'type' => 'SageMaker_HyperParameters'
+                                         },
+               'TrainingEndTime' => {
+                                      'type' => 'Str'
+                                    },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'TrainingJobStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'TuningJobName' => {
+                                    'type' => 'Str'
+                                  },
+               'TrainingJobName' => {
+                                      'type' => 'Str'
+                                    },
+               'FinalHyperParameterTuningJobObjectiveMetric' => {
+                                                                  'class' => 'Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric',
+                                                                  'type' => 'SageMaker_FinalHyperParameterTuningJobObjectiveMetric'
+                                                                },
+               'ObjectiveStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'TrainingStartTime' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'TrainingJobStatus' => 1,
+                    'TrainingJobArn' => 1,
+                    'TrainingJobName' => 1,
+                    'TunedHyperParameters' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +112,7 @@ Specifies summary information about a training job.
   The reason that the training job failed.
 
 
-=head2 FinalHyperParameterTuningJobObjectiveMetric => L<Paws::SageMaker::FinalHyperParameterTuningJobObjectiveMetric>
+=head2 FinalHyperParameterTuningJobObjectiveMetric => SageMaker_FinalHyperParameterTuningJobObjectiveMetric
 
   The FinalHyperParameterTuningJobObjectiveMetric object that specifies
 the value of the objective metric of the tuning job that launched this
@@ -128,7 +184,7 @@ jobs, this is the time when Amazon SageMaker detects a job failure.
   The date and time that the training job started.
 
 
-=head2 B<REQUIRED> TunedHyperParameters => L<Paws::SageMaker::HyperParameters>
+=head2 B<REQUIRED> TunedHyperParameters => SageMaker_HyperParameters
 
   A list of the hyperparameters for which you specified ranges to search.
 

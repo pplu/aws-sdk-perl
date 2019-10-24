@@ -1,8 +1,23 @@
 package Paws::CognitoIdentity::RoleMappingMap;
-  use Moose;
+  use Moo;
   with 'Paws::API::StrToObjMapParser';
+  use Types::Standard qw/HashRef/;
+  use Paws::CognitoIdentity::Types qw/CognitoIdentity_RoleMapping/;
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::CognitoIdentity::RoleMapping]');
+  has Map => (is => 'ro', isa => HashRef[CognitoIdentity_RoleMapping]);
+
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'Map' => {
+                                          type => 'HashRef[CognitoIdentity_RoleMapping]',
+                                          class => 'Paws::CognitoIdentity::RoleMapping',
+                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +52,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::CognitoIdentity::RoleMapping>
+=head2 Map => 
 
 Use the Map method to retrieve a HashRef to the map
 

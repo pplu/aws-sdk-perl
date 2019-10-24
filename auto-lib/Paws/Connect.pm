@@ -1,14 +1,15 @@
 package Paws::Connect;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'connect' }
   sub signing_name { 'connect' }
   sub version { '2017-08-08' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -295,7 +296,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item InstanceId => Str
 
-=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=item PhoneConfig => Connect_UserPhoneConfig
 
 =item RoutingProfileId => Str
 
@@ -307,7 +308,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =item [HierarchyGroupId => Str]
 
-=item [IdentityInfo => L<Paws::Connect::UserIdentityInfo>]
+=item [IdentityInfo => Connect_UserIdentityInfo]
 
 =item [Password => Str]
 
@@ -416,9 +417,9 @@ Retrieves the contact attributes associated with a contact.
 
 =over
 
-=item CurrentMetrics => ArrayRef[L<Paws::Connect::CurrentMetric>]
+=item CurrentMetrics => ArrayRef[Connect_CurrentMetric]
 
-=item Filters => L<Paws::Connect::Filters>
+=item Filters => Connect_Filters
 
 =item InstanceId => Str
 
@@ -464,9 +465,9 @@ Retrieves a token for federation.
 
 =item EndTime => Str
 
-=item Filters => L<Paws::Connect::Filters>
+=item Filters => Connect_Filters
 
-=item HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>]
+=item HistoricalMetrics => ArrayRef[Connect_HistoricalMetric]
 
 =item InstanceId => Str
 
@@ -588,7 +589,7 @@ objects.
 
 =item InstanceId => Str
 
-=item [Attributes => L<Paws::Connect::Attributes>]
+=item [Attributes => Connect_Attributes]
 
 =item [ClientToken => Str]
 
@@ -639,7 +640,7 @@ C<connect:StopContact> action.
 
 =over
 
-=item Attributes => L<Paws::Connect::Attributes>
+=item Attributes => Connect_Attributes
 
 =item InitialContactId => Str
 
@@ -702,7 +703,7 @@ Assigns the specified hierarchy group to the user.
 
 =over
 
-=item IdentityInfo => L<Paws::Connect::UserIdentityInfo>
+=item IdentityInfo => Connect_UserIdentityInfo
 
 =item InstanceId => Str
 
@@ -725,7 +726,7 @@ C<UserIdentityInfo> object, including email, first name, and last name.
 
 =item InstanceId => Str
 
-=item PhoneConfig => L<Paws::Connect::UserPhoneConfig>
+=item PhoneConfig => Connect_UserPhoneConfig
 
 =item UserId => Str
 
@@ -786,9 +787,9 @@ Updates the security profiles assigned to the user.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 GetAllMetricData(sub { },EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 GetAllMetricData(sub { },EndTime => Str, Filters => Connect_Filters, HistoricalMetrics => ArrayRef[Connect_HistoricalMetric], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
-=head2 GetAllMetricData(EndTime => Str, Filters => L<Paws::Connect::Filters>, HistoricalMetrics => ArrayRef[L<Paws::Connect::HistoricalMetric>], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+=head2 GetAllMetricData(EndTime => Str, Filters => Connect_Filters, HistoricalMetrics => ArrayRef[Connect_HistoricalMetric], InstanceId => Str, StartTime => Str, [Groupings => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

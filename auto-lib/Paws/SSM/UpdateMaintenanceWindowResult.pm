@@ -1,19 +1,67 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SSM::UpdateMaintenanceWindowResult;
-  use Moose;
-  has AllowUnassociatedTargets => (is => 'ro', isa => 'Bool');
-  has Cutoff => (is => 'ro', isa => 'Int');
-  has Description => (is => 'ro', isa => 'Str');
-  has Duration => (is => 'ro', isa => 'Int');
-  has Enabled => (is => 'ro', isa => 'Bool');
-  has EndDate => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has ScheduleTimezone => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
-  has WindowId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int/;
+  use Paws::SSM::Types qw//;
+  has AllowUnassociatedTargets => (is => 'ro', isa => Bool);
+  has Cutoff => (is => 'ro', isa => Int);
+  has Description => (is => 'ro', isa => Str);
+  has Duration => (is => 'ro', isa => Int);
+  has Enabled => (is => 'ro', isa => Bool);
+  has EndDate => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Schedule => (is => 'ro', isa => Str);
+  has ScheduleTimezone => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str);
+  has WindowId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EndDate' => {
+                              'type' => 'Str'
+                            },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'ScheduleTimezone' => {
+                                       'type' => 'Str'
+                                     },
+               'AllowUnassociatedTargets' => {
+                                               'type' => 'Bool'
+                                             },
+               'Cutoff' => {
+                             'type' => 'Int'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'StartDate' => {
+                                'type' => 'Str'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Duration' => {
+                               'type' => 'Int'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

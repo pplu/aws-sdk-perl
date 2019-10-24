@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::AddRoleToInstanceProfile;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::AddRoleToInstanceProfile;
                'RoleName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'InstanceProfileName' => 1,
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

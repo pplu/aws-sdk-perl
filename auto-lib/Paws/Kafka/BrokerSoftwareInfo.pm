@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Kafka::BrokerSoftwareInfo;
-  use Moose;
-  has ConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'configurationArn', traits => ['NameInRequest']);
-  has ConfigurationRevision => (is => 'ro', isa => 'Int', request_name => 'configurationRevision', traits => ['NameInRequest']);
-  has KafkaVersion => (is => 'ro', isa => 'Str', request_name => 'kafkaVersion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Kafka::Types qw//;
+  has ConfigurationArn => (is => 'ro', isa => Str);
+  has ConfigurationRevision => (is => 'ro', isa => Int);
+  has KafkaVersion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KafkaVersion' => {
+                                   'type' => 'Str'
+                                 },
+               'ConfigurationRevision' => {
+                                            'type' => 'Int'
+                                          },
+               'ConfigurationArn' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'NameInRequest' => {
+                       'KafkaVersion' => 'kafkaVersion',
+                       'ConfigurationRevision' => 'configurationRevision',
+                       'ConfigurationArn' => 'configurationArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

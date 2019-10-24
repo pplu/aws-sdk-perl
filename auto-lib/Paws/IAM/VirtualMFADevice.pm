@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::VirtualMFADevice;
   use Moo;
   use Types::Standard qw/Str/;
@@ -27,7 +28,10 @@ package Paws::IAM::VirtualMFADevice;
                'QRCodePNG' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'SerialNumber' => 1
+                  }
 }
 ;
     return $Params_map;

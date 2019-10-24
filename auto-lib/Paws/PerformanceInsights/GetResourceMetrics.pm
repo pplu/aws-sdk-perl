@@ -1,20 +1,65 @@
+# Generated from json/callargs_class.tt
 
 package Paws::PerformanceInsights::GetResourceMetrics;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has Identifier => (is => 'ro', isa => 'Str', required => 1);
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has MetricQueries => (is => 'ro', isa => 'ArrayRef[Paws::PerformanceInsights::MetricQuery]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
-  has PeriodInSeconds => (is => 'ro', isa => 'Int');
-  has ServiceType => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::PerformanceInsights::Types qw/PerformanceInsights_MetricQuery/;
+  has EndTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Identifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has MetricQueries => (is => 'ro', isa => ArrayRef[PerformanceInsights_MetricQuery], required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has PeriodInSeconds => (is => 'ro', isa => Int, predicate => 1);
+  has ServiceType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetResourceMetrics');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PerformanceInsights::GetResourceMetricsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetResourceMetrics');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PerformanceInsights::GetResourceMetricsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'PeriodInSeconds' => {
+                                      'type' => 'Int'
+                                    },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'Identifier' => {
+                                 'type' => 'Str'
+                               },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'MetricQueries' => {
+                                    'class' => 'Paws::PerformanceInsights::MetricQuery',
+                                    'type' => 'ArrayRef[PerformanceInsights_MetricQuery]'
+                                  }
+             },
+  'IsRequired' => {
+                    'ServiceType' => 1,
+                    'Identifier' => 1,
+                    'StartTime' => 1,
+                    'EndTime' => 1,
+                    'MetricQueries' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +145,7 @@ retrieved.
 
 
 
-=head2 B<REQUIRED> MetricQueries => ArrayRef[L<Paws::PerformanceInsights::MetricQuery>]
+=head2 B<REQUIRED> MetricQueries => ArrayRef[PerformanceInsights_MetricQuery]
 
 An array of one or more queries to perform. Each query must specify a
 Performance Insights metric, and can optionally specify aggregation and

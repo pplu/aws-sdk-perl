@@ -1,14 +1,41 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Support::AddAttachmentsToSet;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::Support::Attachment]', traits => ['NameInRequest'], request_name => 'attachments' , required => 1);
-  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Support::Types qw/Support_Attachment/;
+  has Attachments => (is => 'ro', isa => ArrayRef[Support_Attachment], required => 1, predicate => 1);
+  has AttachmentSetId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddAttachmentsToSet');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::AddAttachmentsToSetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddAttachmentsToSet');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Support::AddAttachmentsToSetResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attachments' => {
+                                  'class' => 'Paws::Support::Attachment',
+                                  'type' => 'ArrayRef[Support_Attachment]'
+                                },
+               'AttachmentSetId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Attachments' => 'attachments',
+                       'AttachmentSetId' => 'attachmentSetId'
+                     },
+  'IsRequired' => {
+                    'Attachments' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sup
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attachments => ArrayRef[L<Paws::Support::Attachment>]
+=head2 B<REQUIRED> Attachments => ArrayRef[Support_Attachment]
 
 One or more attachments to add to the set. The limit is 3 attachments
 per set, and the size limit is 5 MB per attachment.

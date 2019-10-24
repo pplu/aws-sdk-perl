@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeConfigRuleEvaluationStatusResponse;
-  use Moose;
-  has ConfigRulesEvaluationStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigRuleEvaluationStatus]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ConfigRuleEvaluationStatus/;
+  has ConfigRulesEvaluationStatus => (is => 'ro', isa => ArrayRef[Config_ConfigRuleEvaluationStatus]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ConfigRulesEvaluationStatus' => {
+                                                  'class' => 'Paws::Config::ConfigRuleEvaluationStatus',
+                                                  'type' => 'ArrayRef[Config_ConfigRuleEvaluationStatus]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Config::DescribeConfigRuleEvaluationStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 ConfigRulesEvaluationStatus => ArrayRef[L<Paws::Config::ConfigRuleEvaluationStatus>]
+=head2 ConfigRulesEvaluationStatus => ArrayRef[Config_ConfigRuleEvaluationStatus]
 
 Status information about your AWS managed Config rules.
 

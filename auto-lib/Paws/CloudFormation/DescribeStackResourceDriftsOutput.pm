@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::CloudFormation::DescribeStackResourceDriftsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StackResourceDrifts => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackResourceDrift]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_StackResourceDrift/;
+  has NextToken => (is => 'ro', isa => Str);
+  has StackResourceDrifts => (is => 'ro', isa => ArrayRef[CloudFormation_StackResourceDrift], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'StackResourceDrifts' => {
+                                          'class' => 'Paws::CloudFormation::StackResourceDrift',
+                                          'type' => 'ArrayRef[CloudFormation_StackResourceDrift]'
+                                        }
+             },
+  'IsRequired' => {
+                    'StackResourceDrifts' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +50,7 @@ request object's C<NextToken> parameter. If the request returns all
 results, C<NextToken> is set to C<null>.
 
 
-=head2 B<REQUIRED> StackResourceDrifts => ArrayRef[L<Paws::CloudFormation::StackResourceDrift>]
+=head2 B<REQUIRED> StackResourceDrifts => ArrayRef[CloudFormation_StackResourceDrift]
 
 Drift information for the resources that have been checked for drift in
 the specified stack. This includes actual and expected configuration

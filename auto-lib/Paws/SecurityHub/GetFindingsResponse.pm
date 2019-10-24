@@ -1,10 +1,34 @@
 
 package Paws::SecurityHub::GetFindingsResponse;
-  use Moose;
-  has Findings => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsSecurityFinding]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SecurityHub::Types qw/SecurityHub_AwsSecurityFinding/;
+  has Findings => (is => 'ro', isa => ArrayRef[SecurityHub_AwsSecurityFinding], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Findings' => {
+                               'class' => 'Paws::SecurityHub::AwsSecurityFinding',
+                               'type' => 'ArrayRef[SecurityHub_AwsSecurityFinding]'
+                             }
+             },
+  'IsRequired' => {
+                    'Findings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +40,7 @@ Paws::SecurityHub::GetFindingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Findings => ArrayRef[L<Paws::SecurityHub::AwsSecurityFinding>]
+=head2 B<REQUIRED> Findings => ArrayRef[SecurityHub_AwsSecurityFinding]
 
 The findings that matched the filters specified in the request.
 

@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateManagedInstanceRole;
-  use Moose;
-  has IamRole => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has IamRole => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateManagedInstanceRole');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateManagedInstanceRoleResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateManagedInstanceRole');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateManagedInstanceRoleResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'IamRole' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'IamRole' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

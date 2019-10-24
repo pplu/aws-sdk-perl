@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::CostExplorer::ReservationCoverageGroup;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::CostExplorer::Attributes');
-  has Coverage => (is => 'ro', isa => 'Paws::CostExplorer::Coverage');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CostExplorer::Types qw/CostExplorer_Coverage CostExplorer_Attributes/;
+  has Attributes => (is => 'ro', isa => CostExplorer_Attributes);
+  has Coverage => (is => 'ro', isa => CostExplorer_Coverage);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::CostExplorer::Attributes',
+                                 'type' => 'CostExplorer_Attributes'
+                               },
+               'Coverage' => {
+                               'class' => 'Paws::CostExplorer::Coverage',
+                               'type' => 'CostExplorer_Coverage'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +59,12 @@ A group of reservations that share a set of attributes.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::CostExplorer::Attributes>
+=head2 Attributes => CostExplorer_Attributes
 
   The attributes for this group of reservations.
 
 
-=head2 Coverage => L<Paws::CostExplorer::Coverage>
+=head2 Coverage => CostExplorer_Coverage
 
   How much instance usage this group of reservations covered.
 

@@ -1,31 +1,128 @@
+# Generated from default/object.tt
 package Paws::ACM::CertificateDetail;
-  use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has CertificateAuthorityArn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has DomainName => (is => 'ro', isa => 'Str');
-  has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
-  has ExtendedKeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::ExtendedKeyUsage]');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has ImportedAt => (is => 'ro', isa => 'Str');
-  has InUseBy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has IssuedAt => (is => 'ro', isa => 'Str');
-  has Issuer => (is => 'ro', isa => 'Str');
-  has KeyAlgorithm => (is => 'ro', isa => 'Str');
-  has KeyUsages => (is => 'ro', isa => 'ArrayRef[Paws::ACM::KeyUsage]');
-  has NotAfter => (is => 'ro', isa => 'Str');
-  has NotBefore => (is => 'ro', isa => 'Str');
-  has Options => (is => 'ro', isa => 'Paws::ACM::CertificateOptions');
-  has RenewalEligibility => (is => 'ro', isa => 'Str');
-  has RenewalSummary => (is => 'ro', isa => 'Paws::ACM::RenewalSummary');
-  has RevocationReason => (is => 'ro', isa => 'Str');
-  has RevokedAt => (is => 'ro', isa => 'Str');
-  has Serial => (is => 'ro', isa => 'Str');
-  has SignatureAlgorithm => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Subject => (is => 'ro', isa => 'Str');
-  has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::ACM::Types qw/ACM_DomainValidation ACM_KeyUsage ACM_ExtendedKeyUsage ACM_RenewalSummary ACM_CertificateOptions/;
+  has CertificateArn => (is => 'ro', isa => Str);
+  has CertificateAuthorityArn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has DomainName => (is => 'ro', isa => Str);
+  has DomainValidationOptions => (is => 'ro', isa => ArrayRef[ACM_DomainValidation]);
+  has ExtendedKeyUsages => (is => 'ro', isa => ArrayRef[ACM_ExtendedKeyUsage]);
+  has FailureReason => (is => 'ro', isa => Str);
+  has ImportedAt => (is => 'ro', isa => Str);
+  has InUseBy => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has IssuedAt => (is => 'ro', isa => Str);
+  has Issuer => (is => 'ro', isa => Str);
+  has KeyAlgorithm => (is => 'ro', isa => Str);
+  has KeyUsages => (is => 'ro', isa => ArrayRef[ACM_KeyUsage]);
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+  has Options => (is => 'ro', isa => ACM_CertificateOptions);
+  has RenewalEligibility => (is => 'ro', isa => Str);
+  has RenewalSummary => (is => 'ro', isa => ACM_RenewalSummary);
+  has RevocationReason => (is => 'ro', isa => Str);
+  has RevokedAt => (is => 'ro', isa => Str);
+  has Serial => (is => 'ro', isa => Str);
+  has SignatureAlgorithm => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Subject => (is => 'ro', isa => Str);
+  has SubjectAlternativeNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RenewalEligibility' => {
+                                         'type' => 'Str'
+                                       },
+               'IssuedAt' => {
+                               'type' => 'Str'
+                             },
+               'Options' => {
+                              'class' => 'Paws::ACM::CertificateOptions',
+                              'type' => 'ACM_CertificateOptions'
+                            },
+               'ImportedAt' => {
+                                 'type' => 'Str'
+                               },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Serial' => {
+                             'type' => 'Str'
+                           },
+               'RevocationReason' => {
+                                       'type' => 'Str'
+                                     },
+               'DomainValidationOptions' => {
+                                              'class' => 'Paws::ACM::DomainValidation',
+                                              'type' => 'ArrayRef[ACM_DomainValidation]'
+                                            },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'RevokedAt' => {
+                                'type' => 'Str'
+                              },
+               'KeyAlgorithm' => {
+                                   'type' => 'Str'
+                                 },
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'Subject' => {
+                              'type' => 'Str'
+                            },
+               'CertificateArn' => {
+                                     'type' => 'Str'
+                                   },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              },
+               'InUseBy' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'SignatureAlgorithm' => {
+                                         'type' => 'Str'
+                                       },
+               'CertificateAuthorityArn' => {
+                                              'type' => 'Str'
+                                            },
+               'SubjectAlternativeNames' => {
+                                              'type' => 'ArrayRef[Str|Undef]'
+                                            },
+               'DomainName' => {
+                                 'type' => 'Str'
+                               },
+               'Issuer' => {
+                             'type' => 'Str'
+                           },
+               'RenewalSummary' => {
+                                     'class' => 'Paws::ACM::RenewalSummary',
+                                     'type' => 'ACM_RenewalSummary'
+                                   },
+               'ExtendedKeyUsages' => {
+                                        'class' => 'Paws::ACM::ExtendedKeyUsage',
+                                        'type' => 'ArrayRef[ACM_ExtendedKeyUsage]'
+                                      },
+               'KeyUsages' => {
+                                'class' => 'Paws::ACM::KeyUsage',
+                                'type' => 'ArrayRef[ACM_KeyUsage]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -91,14 +188,14 @@ when the certificate type is C<AMAZON_ISSUED>.
 www.example.com or example.com.
 
 
-=head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
+=head2 DomainValidationOptions => ArrayRef[ACM_DomainValidation]
 
   Contains information about the initial validation of each domain name
 that occurs as a result of the RequestCertificate request. This field
 exists only when the certificate type is C<AMAZON_ISSUED>.
 
 
-=head2 ExtendedKeyUsages => ArrayRef[L<Paws::ACM::ExtendedKeyUsage>]
+=head2 ExtendedKeyUsages => ArrayRef[ACM_ExtendedKeyUsage]
 
   Contains a list of Extended Key Usage X.509 v3 extension objects. Each
 object specifies a purpose for which the certificate public key can be
@@ -143,7 +240,7 @@ certificate.
   The algorithm that was used to generate the public-private key pair.
 
 
-=head2 KeyUsages => ArrayRef[L<Paws::ACM::KeyUsage>]
+=head2 KeyUsages => ArrayRef[ACM_KeyUsage]
 
   A list of Key Usage X.509 v3 extension objects. Each object is a string
 value that identifies the purpose of the public key contained in the
@@ -161,7 +258,7 @@ KEY_ENCHIPHERMENT, NON_REPUDIATION, and more.
   The time before which the certificate is not valid.
 
 
-=head2 Options => L<Paws::ACM::CertificateOptions>
+=head2 Options => ACM_CertificateOptions
 
   Value that specifies whether to add the certificate to a transparency
 log. Certificate transparency makes it possible to detect SSL
@@ -177,7 +274,7 @@ time, only exported private certificates can be renewed with the
 RenewCertificate command.
 
 
-=head2 RenewalSummary => L<Paws::ACM::RenewalSummary>
+=head2 RenewalSummary => ACM_RenewalSummary
 
   Contains information about the status of ACM's managed renewal
 (https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for

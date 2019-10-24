@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::LexModels::BotChannelAssociation;
-  use Moose;
-  has BotAlias => (is => 'ro', isa => 'Str', request_name => 'botAlias', traits => ['NameInRequest']);
-  has BotConfiguration => (is => 'ro', isa => 'Paws::LexModels::ChannelConfigurationMap', request_name => 'botConfiguration', traits => ['NameInRequest']);
-  has BotName => (is => 'ro', isa => 'Str', request_name => 'botName', traits => ['NameInRequest']);
-  has CreatedDate => (is => 'ro', isa => 'Str', request_name => 'createdDate', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LexModels::Types qw/LexModels_ChannelConfigurationMap/;
+  has BotAlias => (is => 'ro', isa => Str);
+  has BotConfiguration => (is => 'ro', isa => LexModels_ChannelConfigurationMap);
+  has BotName => (is => 'ro', isa => Str);
+  has CreatedDate => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'BotAlias' => {
+                               'type' => 'Str'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedDate' => {
+                                  'type' => 'Str'
+                                },
+               'BotConfiguration' => {
+                                       'class' => 'Paws::LexModels::ChannelConfigurationMap',
+                                       'type' => 'LexModels_ChannelConfigurationMap'
+                                     },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'BotName' => 'botName',
+                       'Status' => 'status',
+                       'BotAlias' => 'botAlias',
+                       'Type' => 'type',
+                       'CreatedDate' => 'createdDate',
+                       'BotConfiguration' => 'botConfiguration',
+                       'FailureReason' => 'failureReason',
+                       'Description' => 'description',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +104,7 @@ messaging platform.
 which this association is being made.
 
 
-=head2 BotConfiguration => L<Paws::LexModels::ChannelConfigurationMap>
+=head2 BotConfiguration => LexModels_ChannelConfigurationMap
 
   Provides information necessary to communicate with the messaging
 platform.

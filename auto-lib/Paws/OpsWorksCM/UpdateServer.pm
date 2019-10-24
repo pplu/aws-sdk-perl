@@ -1,17 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorksCM::UpdateServer;
-  use Moose;
-  has BackupRetentionCount => (is => 'ro', isa => 'Int');
-  has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
-  has PreferredBackupWindow => (is => 'ro', isa => 'Str');
-  has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int Bool/;
+  use Paws::OpsWorksCM::Types qw//;
+  has BackupRetentionCount => (is => 'ro', isa => Int, predicate => 1);
+  has DisableAutomatedBackup => (is => 'ro', isa => Bool, predicate => 1);
+  has PreferredBackupWindow => (is => 'ro', isa => Str, predicate => 1);
+  has PreferredMaintenanceWindow => (is => 'ro', isa => Str, predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorksCM::UpdateServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorksCM::UpdateServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DisableAutomatedBackup' => {
+                                             'type' => 'Bool'
+                                           },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'PreferredBackupWindow' => {
+                                            'type' => 'Str'
+                                          },
+               'BackupRetentionCount' => {
+                                           'type' => 'Int'
+                                         },
+               'PreferredMaintenanceWindow' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'ServerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

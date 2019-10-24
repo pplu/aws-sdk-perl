@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetAccountPasswordPolicyResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_PasswordPolicy/;
   has PasswordPolicy => (is => 'ro', isa => IAM_PasswordPolicy, required => 1);

@@ -1,19 +1,64 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::GetDifferences;
-  use Moose;
-  has AfterCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterCommitSpecifier' , required => 1);
-  has AfterPath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterPath' );
-  has BeforeCommitSpecifier => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeCommitSpecifier' );
-  has BeforePath => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforePath' );
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CodeCommit::Types qw//;
+  has AfterCommitSpecifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has AfterPath => (is => 'ro', isa => Str, predicate => 1);
+  has BeforeCommitSpecifier => (is => 'ro', isa => Str, predicate => 1);
+  has BeforePath => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDifferences');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::GetDifferencesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetDifferences');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::GetDifferencesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'BeforePath' => {
+                                 'type' => 'Str'
+                               },
+               'BeforeCommitSpecifier' => {
+                                            'type' => 'Str'
+                                          },
+               'AfterPath' => {
+                                'type' => 'Str'
+                              },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               },
+               'AfterCommitSpecifier' => {
+                                           'type' => 'Str'
+                                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'BeforePath' => 'beforePath',
+                       'BeforeCommitSpecifier' => 'beforeCommitSpecifier',
+                       'AfterPath' => 'afterPath',
+                       'AfterCommitSpecifier' => 'afterCommitSpecifier',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'AfterCommitSpecifier' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

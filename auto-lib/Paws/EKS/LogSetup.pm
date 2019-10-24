@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::EKS::LogSetup;
-  use Moose;
-  has Enabled => (is => 'ro', isa => 'Bool', request_name => 'enabled', traits => ['NameInRequest']);
-  has Types => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'types', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool ArrayRef Undef Str/;
+  use Paws::EKS::Types qw//;
+  has Enabled => (is => 'ro', isa => Bool);
+  has Types => (is => 'ro', isa => ArrayRef[Str|Undef]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Enabled' => {
+                              'type' => 'Bool'
+                            },
+               'Types' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          }
+             },
+  'NameInRequest' => {
+                       'Enabled' => 'enabled',
+                       'Types' => 'types'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

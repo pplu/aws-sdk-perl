@@ -1,16 +1,45 @@
+# Generated from json/callargs_class.tt
 
 package Paws::OpsWorksCM::RestoreServer;
-  use Moose;
-  has BackupId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceType => (is => 'ro', isa => 'Str');
-  has KeyPair => (is => 'ro', isa => 'Str');
-  has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::OpsWorksCM::Types qw//;
+  has BackupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceType => (is => 'ro', isa => Str, predicate => 1);
+  has KeyPair => (is => 'ro', isa => Str, predicate => 1);
+  has ServerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreServer');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorksCM::RestoreServerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreServer');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::OpsWorksCM::RestoreServerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyPair' => {
+                              'type' => 'Str'
+                            },
+               'ServerName' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'BackupId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'ServerName' => 1,
+                    'BackupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UntagRole;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UntagRole;
                'RoleName' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'RoleName' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -6,7 +6,7 @@ package Paws::EC2::TagDescription;
   has ResourceType => (is => 'ro', isa => Str);
   has Value => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ResourceId' => {
@@ -30,8 +30,8 @@ package Paws::EC2::TagDescription;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

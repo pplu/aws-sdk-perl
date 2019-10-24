@@ -1,21 +1,77 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::RegisterContainerInstance;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has ContainerInstanceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstanceArn' );
-  has InstanceIdentityDocument => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocument' );
-  has InstanceIdentityDocumentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceIdentityDocumentSignature' );
-  has PlatformDevices => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlatformDevice]', traits => ['NameInRequest'], request_name => 'platformDevices' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has TotalResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', traits => ['NameInRequest'], request_name => 'totalResources' );
-  has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', traits => ['NameInRequest'], request_name => 'versionInfo' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_Tag ECS_Resource ECS_PlatformDevice ECS_VersionInfo ECS_Attribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[ECS_Attribute], predicate => 1);
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has ContainerInstanceArn => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIdentityDocument => (is => 'ro', isa => Str, predicate => 1);
+  has InstanceIdentityDocumentSignature => (is => 'ro', isa => Str, predicate => 1);
+  has PlatformDevices => (is => 'ro', isa => ArrayRef[ECS_PlatformDevice], predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ECS_Tag], predicate => 1);
+  has TotalResources => (is => 'ro', isa => ArrayRef[ECS_Resource], predicate => 1);
+  has VersionInfo => (is => 'ro', isa => ECS_VersionInfo, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterContainerInstance');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RegisterContainerInstanceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterContainerInstance');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::RegisterContainerInstanceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TotalResources' => {
+                                     'class' => 'Paws::ECS::Resource',
+                                     'type' => 'ArrayRef[ECS_Resource]'
+                                   },
+               'InstanceIdentityDocumentSignature' => {
+                                                        'type' => 'Str'
+                                                      },
+               'PlatformDevices' => {
+                                      'class' => 'Paws::ECS::PlatformDevice',
+                                      'type' => 'ArrayRef[ECS_PlatformDevice]'
+                                    },
+               'Attributes' => {
+                                 'class' => 'Paws::ECS::Attribute',
+                                 'type' => 'ArrayRef[ECS_Attribute]'
+                               },
+               'ContainerInstanceArn' => {
+                                           'type' => 'Str'
+                                         },
+               'InstanceIdentityDocument' => {
+                                               'type' => 'Str'
+                                             },
+               'VersionInfo' => {
+                                  'class' => 'Paws::ECS::VersionInfo',
+                                  'type' => 'ECS_VersionInfo'
+                                },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'Tags' => {
+                           'class' => 'Paws::ECS::Tag',
+                           'type' => 'ArrayRef[ECS_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'TotalResources' => 'totalResources',
+                       'InstanceIdentityDocumentSignature' => 'instanceIdentityDocumentSignature',
+                       'PlatformDevices' => 'platformDevices',
+                       'Attributes' => 'attributes',
+                       'ContainerInstanceArn' => 'containerInstanceArn',
+                       'InstanceIdentityDocument' => 'instanceIdentityDocument',
+                       'VersionInfo' => 'versionInfo',
+                       'Cluster' => 'cluster',
+                       'Tags' => 'tags'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +151,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 Attributes => ArrayRef[ECS_Attribute]
 
 The container instance attributes that this container instance
 supports.
@@ -134,14 +190,14 @@ http://169.254.169.254/latest/dynamic/instance-identity/signature/>
 
 
 
-=head2 PlatformDevices => ArrayRef[L<Paws::ECS::PlatformDevice>]
+=head2 PlatformDevices => ArrayRef[ECS_PlatformDevice]
 
 The devices that are available on the container instance. The only
 supported device type is a GPU.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
+=head2 Tags => ArrayRef[ECS_Tag]
 
 The metadata that you apply to the container instance to help you
 categorize and organize them. Each tag consists of a key and an
@@ -151,13 +207,13 @@ length of 256 characters.
 
 
 
-=head2 TotalResources => ArrayRef[L<Paws::ECS::Resource>]
+=head2 TotalResources => ArrayRef[ECS_Resource]
 
 The resources available on the instance.
 
 
 
-=head2 VersionInfo => L<Paws::ECS::VersionInfo>
+=head2 VersionInfo => ECS_VersionInfo
 
 The version information for the Amazon ECS container agent and Docker
 daemon running on the container instance.

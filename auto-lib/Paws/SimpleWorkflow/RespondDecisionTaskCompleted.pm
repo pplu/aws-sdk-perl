@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::RespondDecisionTaskCompleted;
-  use Moose;
-  has Decisions => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::Decision]', traits => ['NameInRequest'], request_name => 'decisions' );
-  has ExecutionContext => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionContext' );
-  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_Decision/;
+  has Decisions => (is => 'ro', isa => ArrayRef[SimpleWorkflow_Decision], predicate => 1);
+  has ExecutionContext => (is => 'ro', isa => Str, predicate => 1);
+  has TaskToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RespondDecisionTaskCompleted');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RespondDecisionTaskCompleted');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Decisions' => {
+                                'class' => 'Paws::SimpleWorkflow::Decision',
+                                'type' => 'ArrayRef[SimpleWorkflow_Decision]'
+                              },
+               'ExecutionContext' => {
+                                       'type' => 'Str'
+                                     },
+               'TaskToken' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Decisions' => 'decisions',
+                       'ExecutionContext' => 'executionContext',
+                       'TaskToken' => 'taskToken'
+                     },
+  'IsRequired' => {
+                    'TaskToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TaskPriority => 'MyTaskPriority',    # OPTIONAL
             TaskStartToCloseTimeout =>
               'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
-            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64
+            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64; OPTIONAL
           },    # OPTIONAL
           FailWorkflowExecutionDecisionAttributes => {
             Details => 'MyData',             # max: 32768; OPTIONAL
@@ -85,7 +116,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ActivityId   => 'MyActivityId',    # min: 1, max: 256
             ActivityType => {
               Name    => 'MyName',             # min: 1, max: 256
-              Version => 'MyVersion',          # min: 1, max: 64
+              Version => 'MyVersion',          # min: 1, max: 64; OPTIONAL
 
             },
             Control => 'MyData',               # max: 32768; OPTIONAL
@@ -123,7 +154,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             WorkflowId   => 'MyWorkflowId',    # min: 1, max: 256
             WorkflowType => {
               Name    => 'MyName',             # min: 1, max: 256
-              Version => 'MyVersion',          # min: 1, max: 64
+              Version => 'MyVersion',          # min: 1, max: 64; OPTIONAL
 
             },
             ChildPolicy => 'TERMINATE'
@@ -161,7 +192,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/swf
 =head1 ATTRIBUTES
 
 
-=head2 Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
+=head2 Decisions => ArrayRef[SimpleWorkflow_Decision]
 
 The list of decisions (possibly empty) made by the decider while
 processing this decision task. See the docs for the Decision structure

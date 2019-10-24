@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::Lightsail::Region;
-  use Moose;
-  has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', request_name => 'availabilityZones', traits => ['NameInRequest']);
-  has ContinentCode => (is => 'ro', isa => 'Str', request_name => 'continentCode', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has RelationalDatabaseAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AvailabilityZone]', request_name => 'relationalDatabaseAvailabilityZones', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Lightsail::Types qw/Lightsail_AvailabilityZone/;
+  has AvailabilityZones => (is => 'ro', isa => ArrayRef[Lightsail_AvailabilityZone]);
+  has ContinentCode => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has DisplayName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has RelationalDatabaseAvailabilityZones => (is => 'ro', isa => ArrayRef[Lightsail_AvailabilityZone]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationalDatabaseAvailabilityZones' => {
+                                                          'class' => 'Paws::Lightsail::AvailabilityZone',
+                                                          'type' => 'ArrayRef[Lightsail_AvailabilityZone]'
+                                                        },
+               'DisplayName' => {
+                                  'type' => 'Str'
+                                },
+               'AvailabilityZones' => {
+                                        'class' => 'Paws::Lightsail::AvailabilityZone',
+                                        'type' => 'ArrayRef[Lightsail_AvailabilityZone]'
+                                      },
+               'ContinentCode' => {
+                                    'type' => 'Str'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RelationalDatabaseAvailabilityZones' => 'relationalDatabaseAvailabilityZones',
+                       'DisplayName' => 'displayName',
+                       'AvailabilityZones' => 'availabilityZones',
+                       'ContinentCode' => 'continentCode',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +83,7 @@ Describes the AWS Region.
 =head1 ATTRIBUTES
 
 
-=head2 AvailabilityZones => ArrayRef[L<Paws::Lightsail::AvailabilityZone>]
+=head2 AvailabilityZones => ArrayRef[Lightsail_AvailabilityZone]
 
   The Availability Zones. Follows the format C<us-east-2a>
 (case-sensitive).
@@ -68,7 +110,7 @@ to serve users in the eastern United States and eastern Canada>).
   The region name (e.g., C<us-east-2>).
 
 
-=head2 RelationalDatabaseAvailabilityZones => ArrayRef[L<Paws::Lightsail::AvailabilityZone>]
+=head2 RelationalDatabaseAvailabilityZones => ArrayRef[Lightsail_AvailabilityZone]
 
   The Availability Zones for databases. Follows the format C<us-east-2a>
 (case-sensitive).

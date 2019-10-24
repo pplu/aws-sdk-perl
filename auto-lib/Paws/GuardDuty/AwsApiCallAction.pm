@@ -1,10 +1,48 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::AwsApiCallAction;
-  use Moose;
-  has Api => (is => 'ro', isa => 'Str', request_name => 'api', traits => ['NameInRequest']);
-  has CallerType => (is => 'ro', isa => 'Str', request_name => 'callerType', traits => ['NameInRequest']);
-  has DomainDetails => (is => 'ro', isa => 'Paws::GuardDuty::DomainDetails', request_name => 'domainDetails', traits => ['NameInRequest']);
-  has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
-  has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_RemoteIpDetails GuardDuty_DomainDetails/;
+  has Api => (is => 'ro', isa => Str);
+  has CallerType => (is => 'ro', isa => Str);
+  has DomainDetails => (is => 'ro', isa => GuardDuty_DomainDetails);
+  has RemoteIpDetails => (is => 'ro', isa => GuardDuty_RemoteIpDetails);
+  has ServiceName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'DomainDetails' => {
+                                    'class' => 'Paws::GuardDuty::DomainDetails',
+                                    'type' => 'GuardDuty_DomainDetails'
+                                  },
+               'RemoteIpDetails' => {
+                                      'class' => 'Paws::GuardDuty::RemoteIpDetails',
+                                      'type' => 'GuardDuty_RemoteIpDetails'
+                                    },
+               'Api' => {
+                          'type' => 'Str'
+                        },
+               'CallerType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'ServiceName' => 'serviceName',
+                       'DomainDetails' => 'domainDetails',
+                       'RemoteIpDetails' => 'remoteIpDetails',
+                       'Api' => 'api',
+                       'CallerType' => 'callerType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,12 +88,12 @@ This class has no description
   AWS API caller type.
 
 
-=head2 DomainDetails => L<Paws::GuardDuty::DomainDetails>
+=head2 DomainDetails => GuardDuty_DomainDetails
 
   Domain information for the AWS API call.
 
 
-=head2 RemoteIpDetails => L<Paws::GuardDuty::RemoteIpDetails>
+=head2 RemoteIpDetails => GuardDuty_RemoteIpDetails
 
   Remote IP information of the connection.
 

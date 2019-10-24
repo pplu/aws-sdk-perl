@@ -5,7 +5,7 @@ package Paws::EC2::DiskImageDetail;
   has Format => (is => 'ro', isa => Str, required => 1);
   has ImportManifestUrl => (is => 'ro', isa => Str, required => 1);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ImportManifestUrl' => {
@@ -22,11 +22,16 @@ package Paws::EC2::DiskImageDetail;
                        'ImportManifestUrl' => 'importManifestUrl',
                        'Format' => 'format',
                        'Bytes' => 'bytes'
-                     }
+                     },
+  'IsRequired' => {
+                    'ImportManifestUrl' => 1,
+                    'Format' => 1,
+                    'Bytes' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

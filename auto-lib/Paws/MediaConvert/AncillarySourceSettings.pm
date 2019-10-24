@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AncillarySourceSettings;
-  use Moose;
-  has SourceAncillaryChannelNumber => (is => 'ro', isa => 'Int', request_name => 'sourceAncillaryChannelNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::MediaConvert::Types qw//;
+  has SourceAncillaryChannelNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceAncillaryChannelNumber' => {
+                                                   'type' => 'Int'
+                                                 }
+             },
+  'NameInRequest' => {
+                       'SourceAncillaryChannelNumber' => 'sourceAncillaryChannelNumber'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

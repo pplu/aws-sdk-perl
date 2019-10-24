@@ -20,7 +20,7 @@ package Paws::EC2::Snapshot;
   has VolumeSize => (is => 'ro', isa => Int);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DataEncryptionKeyId' => {
@@ -88,8 +88,8 @@ package Paws::EC2::Snapshot;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,14 +1,38 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::PutEventSelectors;
-  use Moose;
-  has EventSelectors => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::EventSelector]', required => 1);
-  has TrailName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudTrail::Types qw/CloudTrail_EventSelector/;
+  has EventSelectors => (is => 'ro', isa => ArrayRef[CloudTrail_EventSelector], required => 1, predicate => 1);
+  has TrailName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEventSelectors');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::PutEventSelectorsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEventSelectors');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::PutEventSelectorsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventSelectors' => {
+                                     'class' => 'Paws::CloudTrail::EventSelector',
+                                     'type' => 'ArrayRef[CloudTrail_EventSelector]'
+                                   },
+               'TrailName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'IsRequired' => {
+                    'EventSelectors' => 1,
+                    'TrailName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
+=head2 B<REQUIRED> EventSelectors => ArrayRef[CloudTrail_EventSelector]
 
 Specifies the settings for your event selectors. You can configure up
 to five event selectors for a trail.

@@ -1,17 +1,53 @@
 
 package Paws::MediaConvert::UpdateQueue;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
-  has ReservationPlanSettings => (is => 'ro', isa => 'Paws::MediaConvert::ReservationPlanSettings', traits => ['NameInRequest'], request_name => 'reservationPlanSettings');
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_ReservationPlanSettings/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReservationPlanSettings => (is => 'ro', isa => MediaConvert_ReservationPlanSettings, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateQueue');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/queues/{name}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::UpdateQueueResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateQueue');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/queues/{name}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::UpdateQueueResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReservationPlanSettings' => {
+                                              'class' => 'Paws::MediaConvert::ReservationPlanSettings',
+                                              'type' => 'MediaConvert_ReservationPlanSettings'
+                                            },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInURI' => {
+                    'Name' => 'name'
+                  },
+  'NameInRequest' => {
+                       'ReservationPlanSettings' => 'reservationPlanSettings',
+                       'Status' => 'status',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +102,7 @@ The name of the queue that you are modifying.
 
 
 
-=head2 ReservationPlanSettings => L<Paws::MediaConvert::ReservationPlanSettings>
+=head2 ReservationPlanSettings => MediaConvert_ReservationPlanSettings
 
 The new details of your pricing plan for your reserved queue. When you
 set up a new pricing plan to replace an expired one, you enter into

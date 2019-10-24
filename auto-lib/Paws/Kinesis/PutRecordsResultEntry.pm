@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Kinesis::PutRecordsResultEntry;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has SequenceNumber => (is => 'ro', isa => 'Str');
-  has ShardId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Kinesis::Types qw//;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has SequenceNumber => (is => 'ro', isa => Str);
+  has ShardId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShardId' => {
+                              'type' => 'Str'
+                            },
+               'SequenceNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

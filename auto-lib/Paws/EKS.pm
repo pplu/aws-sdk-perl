@@ -1,14 +1,15 @@
 package Paws::EKS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'eks' }
   sub signing_name { 'eks' }
   sub version { '2017-11-01' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -156,13 +157,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 =item Name => Str
 
-=item ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>
+=item ResourcesVpcConfig => EKS_VpcConfigRequest
 
 =item RoleArn => Str
 
 =item [ClientRequestToken => Str]
 
-=item [Logging => L<Paws::EKS::Logging>]
+=item [Logging => EKS_Logging]
 
 =item [Version => Str]
 
@@ -342,9 +343,9 @@ account, in the specified Region.
 
 =item [ClientRequestToken => Str]
 
-=item [Logging => L<Paws::EKS::Logging>]
+=item [Logging => EKS_Logging]
 
-=item [ResourcesVpcConfig => L<Paws::EKS::VpcConfigRequest>]
+=item [ResourcesVpcConfig => EKS_VpcConfigRequest]
 
 
 =back

@@ -1,16 +1,49 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Budgets::CreateNotification;
-  use Moose;
-  has AccountId => (is => 'ro', isa => 'Str', required => 1);
-  has BudgetName => (is => 'ro', isa => 'Str', required => 1);
-  has Notification => (is => 'ro', isa => 'Paws::Budgets::Notification', required => 1);
-  has Subscribers => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Subscriber]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Budgets::Types qw/Budgets_Notification Budgets_Subscriber/;
+  has AccountId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BudgetName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notification => (is => 'ro', isa => Budgets_Notification, required => 1, predicate => 1);
+  has Subscribers => (is => 'ro', isa => ArrayRef[Budgets_Subscriber], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNotification');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Budgets::CreateNotificationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateNotification');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Budgets::CreateNotificationResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Subscribers' => {
+                                  'class' => 'Paws::Budgets::Subscriber',
+                                  'type' => 'ArrayRef[Budgets_Subscriber]'
+                                },
+               'AccountId' => {
+                                'type' => 'Str'
+                              },
+               'Notification' => {
+                                   'class' => 'Paws::Budgets::Notification',
+                                   'type' => 'Budgets_Notification'
+                                 },
+               'BudgetName' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'Subscribers' => 1,
+                    'AccountId' => 1,
+                    'Notification' => 1,
+                    'BudgetName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -73,13 +106,13 @@ names must be unique within an account.
 
 
 
-=head2 B<REQUIRED> Notification => L<Paws::Budgets::Notification>
+=head2 B<REQUIRED> Notification => Budgets_Notification
 
 The notification that you want to create.
 
 
 
-=head2 B<REQUIRED> Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
+=head2 B<REQUIRED> Subscribers => ArrayRef[Budgets_Subscriber]
 
 A list of subscribers that you want to associate with the notification.
 Each notification can have one SNS subscriber and up to 10 email

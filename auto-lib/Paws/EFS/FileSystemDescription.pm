@@ -1,22 +1,91 @@
 
 package Paws::EFS::FileSystemDescription;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has CreationToken => (is => 'ro', isa => 'Str', required => 1);
-  has Encrypted => (is => 'ro', isa => 'Bool');
-  has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str');
-  has NumberOfMountTargets => (is => 'ro', isa => 'Int', required => 1);
-  has OwnerId => (is => 'ro', isa => 'Str', required => 1);
-  has PerformanceMode => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedThroughputInMibps => (is => 'ro', isa => 'Num');
-  has SizeInBytes => (is => 'ro', isa => 'Paws::EFS::FileSystemSize', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
-  has ThroughputMode => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Bool Int Num ArrayRef/;
+  use Paws::EFS::Types qw/EFS_Tag EFS_FileSystemSize/;
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has CreationToken => (is => 'ro', isa => Str, required => 1);
+  has Encrypted => (is => 'ro', isa => Bool);
+  has FileSystemId => (is => 'ro', isa => Str, required => 1);
+  has KmsKeyId => (is => 'ro', isa => Str);
+  has LifeCycleState => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+  has NumberOfMountTargets => (is => 'ro', isa => Int, required => 1);
+  has OwnerId => (is => 'ro', isa => Str, required => 1);
+  has PerformanceMode => (is => 'ro', isa => Str, required => 1);
+  has ProvisionedThroughputInMibps => (is => 'ro', isa => Num);
+  has SizeInBytes => (is => 'ro', isa => EFS_FileSystemSize, required => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[EFS_Tag], required => 1);
+  has ThroughputMode => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NumberOfMountTargets' => {
+                                           'type' => 'Int'
+                                         },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'FileSystemId' => {
+                                   'type' => 'Str'
+                                 },
+               'OwnerId' => {
+                              'type' => 'Str'
+                            },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'Encrypted' => {
+                                'type' => 'Bool'
+                              },
+               'CreationToken' => {
+                                    'type' => 'Str'
+                                  },
+               'SizeInBytes' => {
+                                  'class' => 'Paws::EFS::FileSystemSize',
+                                  'type' => 'EFS_FileSystemSize'
+                                },
+               'ProvisionedThroughputInMibps' => {
+                                                   'type' => 'Num'
+                                                 },
+               'LifeCycleState' => {
+                                     'type' => 'Str'
+                                   },
+               'ThroughputMode' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::EFS::Tag',
+                           'type' => 'ArrayRef[EFS_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'PerformanceMode' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'NumberOfMountTargets' => 1,
+                    'CreationTime' => 1,
+                    'FileSystemId' => 1,
+                    'OwnerId' => 1,
+                    'CreationToken' => 1,
+                    'SizeInBytes' => 1,
+                    'LifeCycleState' => 1,
+                    'Tags' => 1,
+                    'PerformanceMode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -97,7 +166,7 @@ information, see Amazon EFS Limits That You Can Increase
 the I<Amazon EFS User Guide.>
 
 
-=head2 B<REQUIRED> SizeInBytes => L<Paws::EFS::FileSystemSize>
+=head2 B<REQUIRED> SizeInBytes => EFS_FileSystemSize
 
 The latest known metered size (in bytes) of data stored in the file
 system, in its C<Value> field, and the time at which that size was
@@ -111,7 +180,7 @@ than a couple of hours. Otherwise, the value is not the exact size that
 the file system was at any point in time.
 
 
-=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[EFS_Tag]
 
 The tags associated with the file system, presented as an array of
 C<Tag> objects.

@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaPackage::StreamSelection;
-  use Moose;
-  has MaxVideoBitsPerSecond => (is => 'ro', isa => 'Int', request_name => 'maxVideoBitsPerSecond', traits => ['NameInRequest']);
-  has MinVideoBitsPerSecond => (is => 'ro', isa => 'Int', request_name => 'minVideoBitsPerSecond', traits => ['NameInRequest']);
-  has StreamOrder => (is => 'ro', isa => 'Str', request_name => 'streamOrder', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::MediaPackage::Types qw//;
+  has MaxVideoBitsPerSecond => (is => 'ro', isa => Int);
+  has MinVideoBitsPerSecond => (is => 'ro', isa => Int);
+  has StreamOrder => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MinVideoBitsPerSecond' => {
+                                            'type' => 'Int'
+                                          },
+               'StreamOrder' => {
+                                  'type' => 'Str'
+                                },
+               'MaxVideoBitsPerSecond' => {
+                                            'type' => 'Int'
+                                          }
+             },
+  'NameInRequest' => {
+                       'MinVideoBitsPerSecond' => 'minVideoBitsPerSecond',
+                       'StreamOrder' => 'streamOrder',
+                       'MaxVideoBitsPerSecond' => 'maxVideoBitsPerSecond'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

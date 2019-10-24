@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::SendTemplatedEmailResponse;
   use Moo;
@@ -15,7 +16,10 @@ package Paws::SES::SendTemplatedEmailResponse;
                'MessageId' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'MessageId' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -1,16 +1,44 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KMS::UpdateCustomKeyStore;
-  use Moose;
-  has CloudHsmClusterId => (is => 'ro', isa => 'Str');
-  has CustomKeyStoreId => (is => 'ro', isa => 'Str', required => 1);
-  has KeyStorePassword => (is => 'ro', isa => 'Str');
-  has NewCustomKeyStoreName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has CloudHsmClusterId => (is => 'ro', isa => Str, predicate => 1);
+  has CustomKeyStoreId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has KeyStorePassword => (is => 'ro', isa => Str, predicate => 1);
+  has NewCustomKeyStoreName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCustomKeyStore');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::UpdateCustomKeyStoreResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCustomKeyStore');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KMS::UpdateCustomKeyStoreResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'KeyStorePassword' => {
+                                       'type' => 'Str'
+                                     },
+               'NewCustomKeyStoreName' => {
+                                            'type' => 'Str'
+                                          },
+               'CustomKeyStoreId' => {
+                                       'type' => 'Str'
+                                     },
+               'CloudHsmClusterId' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'IsRequired' => {
+                    'CustomKeyStoreId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

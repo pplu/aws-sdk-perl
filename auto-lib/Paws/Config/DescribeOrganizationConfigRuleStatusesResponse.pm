@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeOrganizationConfigRuleStatusesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has OrganizationConfigRuleStatuses => (is => 'ro', isa => 'ArrayRef[Paws::Config::OrganizationConfigRuleStatus]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_OrganizationConfigRuleStatus/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OrganizationConfigRuleStatuses => (is => 'ro', isa => ArrayRef[Config_OrganizationConfigRuleStatus]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OrganizationConfigRuleStatuses' => {
+                                                     'class' => 'Paws::Config::OrganizationConfigRuleStatus',
+                                                     'type' => 'ArrayRef[Config_OrganizationConfigRuleStatus]'
+                                                   },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::Config::DescribeOrganizationConfigRuleStatusesResponse
 
 
 
-=head2 OrganizationConfigRuleStatuses => ArrayRef[L<Paws::Config::OrganizationConfigRuleStatus>]
+=head2 OrganizationConfigRuleStatuses => ArrayRef[Config_OrganizationConfigRuleStatus]
 
 
 

@@ -1,14 +1,15 @@
 package Paws::ManagedBlockchain;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'managedblockchain' }
   sub signing_name { 'managedblockchain' }
   sub version { '2018-09-24' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -155,7 +156,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/man
 
 =item InvitationId => Str
 
-=item MemberConfiguration => L<Paws::ManagedBlockchain::MemberConfiguration>
+=item MemberConfiguration => ManagedBlockchain_MemberConfiguration
 
 =item NetworkId => Str
 
@@ -179,15 +180,15 @@ Creates a member within a Managed Blockchain network.
 
 =item FrameworkVersion => Str
 
-=item MemberConfiguration => L<Paws::ManagedBlockchain::MemberConfiguration>
+=item MemberConfiguration => ManagedBlockchain_MemberConfiguration
 
 =item Name => Str
 
-=item VotingPolicy => L<Paws::ManagedBlockchain::VotingPolicy>
+=item VotingPolicy => ManagedBlockchain_VotingPolicy
 
 =item [Description => Str]
 
-=item [FrameworkConfiguration => L<Paws::ManagedBlockchain::NetworkFrameworkConfiguration>]
+=item [FrameworkConfiguration => ManagedBlockchain_NetworkFrameworkConfiguration]
 
 
 =back
@@ -209,7 +210,7 @@ Creates a new blockchain network using Amazon Managed Blockchain.
 
 =item NetworkId => Str
 
-=item NodeConfiguration => L<Paws::ManagedBlockchain::NodeConfiguration>
+=item NodeConfiguration => ManagedBlockchain_NodeConfiguration
 
 
 =back
@@ -225,7 +226,7 @@ Creates a peer node in a member.
 
 =over
 
-=item Actions => L<Paws::ManagedBlockchain::ProposalActions>
+=item Actions => ManagedBlockchain_ProposalActions
 
 =item ClientRequestToken => Str
 

@@ -1,12 +1,39 @@
 
 package Paws::Quicksight::ListGroupsResponse;
-  use Moose;
-  has GroupList => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::Group]');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::Quicksight::Types qw/Quicksight_Group/;
+  has GroupList => (is => 'ro', isa => ArrayRef[Quicksight_Group]);
+  has NextToken => (is => 'ro', isa => Str);
+  has RequestId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Int'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'GroupList' => {
+                                'class' => 'Paws::Quicksight::Group',
+                                'type' => 'ArrayRef[Quicksight_Group]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +45,7 @@ Paws::Quicksight::ListGroupsResponse
 =head1 ATTRIBUTES
 
 
-=head2 GroupList => ArrayRef[L<Paws::Quicksight::Group>]
+=head2 GroupList => ArrayRef[Quicksight_Group]
 
 The list of the groups.
 

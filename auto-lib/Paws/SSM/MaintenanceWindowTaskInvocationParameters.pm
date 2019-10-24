@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowTaskInvocationParameters;
-  use Moose;
-  has Automation => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowAutomationParameters');
-  has Lambda => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowLambdaParameters');
-  has RunCommand => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowRunCommandParameters');
-  has StepFunctions => (is => 'ro', isa => 'Paws::SSM::MaintenanceWindowStepFunctionsParameters');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::SSM::Types qw/SSM_MaintenanceWindowLambdaParameters SSM_MaintenanceWindowStepFunctionsParameters SSM_MaintenanceWindowAutomationParameters SSM_MaintenanceWindowRunCommandParameters/;
+  has Automation => (is => 'ro', isa => SSM_MaintenanceWindowAutomationParameters);
+  has Lambda => (is => 'ro', isa => SSM_MaintenanceWindowLambdaParameters);
+  has RunCommand => (is => 'ro', isa => SSM_MaintenanceWindowRunCommandParameters);
+  has StepFunctions => (is => 'ro', isa => SSM_MaintenanceWindowStepFunctionsParameters);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Lambda' => {
+                             'class' => 'Paws::SSM::MaintenanceWindowLambdaParameters',
+                             'type' => 'SSM_MaintenanceWindowLambdaParameters'
+                           },
+               'Automation' => {
+                                 'class' => 'Paws::SSM::MaintenanceWindowAutomationParameters',
+                                 'type' => 'SSM_MaintenanceWindowAutomationParameters'
+                               },
+               'RunCommand' => {
+                                 'class' => 'Paws::SSM::MaintenanceWindowRunCommandParameters',
+                                 'type' => 'SSM_MaintenanceWindowRunCommandParameters'
+                               },
+               'StepFunctions' => {
+                                    'class' => 'Paws::SSM::MaintenanceWindowStepFunctionsParameters',
+                                    'type' => 'SSM_MaintenanceWindowStepFunctionsParameters'
+                                  }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +69,22 @@ The parameters for task execution.
 =head1 ATTRIBUTES
 
 
-=head2 Automation => L<Paws::SSM::MaintenanceWindowAutomationParameters>
+=head2 Automation => SSM_MaintenanceWindowAutomationParameters
 
   The parameters for an AUTOMATION task type.
 
 
-=head2 Lambda => L<Paws::SSM::MaintenanceWindowLambdaParameters>
+=head2 Lambda => SSM_MaintenanceWindowLambdaParameters
 
   The parameters for a LAMBDA task type.
 
 
-=head2 RunCommand => L<Paws::SSM::MaintenanceWindowRunCommandParameters>
+=head2 RunCommand => SSM_MaintenanceWindowRunCommandParameters
 
   The parameters for a RUN_COMMAND task type.
 
 
-=head2 StepFunctions => L<Paws::SSM::MaintenanceWindowStepFunctionsParameters>
+=head2 StepFunctions => SSM_MaintenanceWindowStepFunctionsParameters
 
   The parameters for a STEP_FUNCTION task type.
 

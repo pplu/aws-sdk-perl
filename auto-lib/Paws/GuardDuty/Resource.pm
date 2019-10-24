@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::Resource;
-  use Moose;
-  has AccessKeyDetails => (is => 'ro', isa => 'Paws::GuardDuty::AccessKeyDetails', request_name => 'accessKeyDetails', traits => ['NameInRequest']);
-  has InstanceDetails => (is => 'ro', isa => 'Paws::GuardDuty::InstanceDetails', request_name => 'instanceDetails', traits => ['NameInRequest']);
-  has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw/GuardDuty_InstanceDetails GuardDuty_AccessKeyDetails/;
+  has AccessKeyDetails => (is => 'ro', isa => GuardDuty_AccessKeyDetails);
+  has InstanceDetails => (is => 'ro', isa => GuardDuty_InstanceDetails);
+  has ResourceType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'InstanceDetails' => {
+                                      'class' => 'Paws::GuardDuty::InstanceDetails',
+                                      'type' => 'GuardDuty_InstanceDetails'
+                                    },
+               'AccessKeyDetails' => {
+                                       'class' => 'Paws::GuardDuty::AccessKeyDetails',
+                                       'type' => 'GuardDuty_AccessKeyDetails'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ResourceType' => 'resourceType',
+                       'InstanceDetails' => 'instanceDetails',
+                       'AccessKeyDetails' => 'accessKeyDetails'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +68,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AccessKeyDetails => L<Paws::GuardDuty::AccessKeyDetails>
+=head2 AccessKeyDetails => GuardDuty_AccessKeyDetails
 
   The IAM access key details (IAM user information) of a user that
 engaged in the activity that prompted GuardDuty to generate a finding.
 
 
-=head2 InstanceDetails => L<Paws::GuardDuty::InstanceDetails>
+=head2 InstanceDetails => GuardDuty_InstanceDetails
 
   The information about the EC2 instance associated with the activity
 that prompted GuardDuty to generate a finding.

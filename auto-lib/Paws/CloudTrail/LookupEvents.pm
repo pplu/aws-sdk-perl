@@ -1,17 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CloudTrail::LookupEvents;
-  use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
-  has LookupAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::LookupAttribute]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::CloudTrail::Types qw/CloudTrail_LookupAttribute/;
+  has EndTime => (is => 'ro', isa => Str, predicate => 1);
+  has LookupAttributes => (is => 'ro', isa => ArrayRef[CloudTrail_LookupAttribute], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has StartTime => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'LookupEvents');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::LookupEventsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'LookupEvents');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudTrail::LookupEventsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LookupAttributes' => {
+                                       'class' => 'Paws::CloudTrail::LookupAttribute',
+                                       'type' => 'ArrayRef[CloudTrail_LookupAttribute]'
+                                     },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'EndTime' => {
+                              'type' => 'Str'
+                            },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +96,7 @@ time, an error is returned.
 
 
 
-=head2 LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>]
+=head2 LookupAttributes => ArrayRef[CloudTrail_LookupAttribute]
 
 Contains a list of lookup attributes. Currently the list can contain
 only one item.

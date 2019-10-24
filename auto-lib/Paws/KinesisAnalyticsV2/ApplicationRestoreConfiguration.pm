@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration;
-  use Moose;
-  has ApplicationRestoreType => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw//;
+  has ApplicationRestoreType => (is => 'ro', isa => Str, required => 1);
+  has SnapshotName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SnapshotName' => {
+                                   'type' => 'Str'
+                                 },
+               'ApplicationRestoreType' => {
+                                             'type' => 'Str'
+                                           }
+             },
+  'IsRequired' => {
+                    'ApplicationRestoreType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

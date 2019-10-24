@@ -1,19 +1,96 @@
+# Generated from default/object.tt
 package Paws::Batch::ContainerProperties;
-  use Moose;
-  has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
-  has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
-  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
-  has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
-  has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
-  has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
-  has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
-  has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
-  has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
-  has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
-  has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
-  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int Bool/;
+  use Paws::Batch::Types qw/Batch_Volume Batch_Ulimit Batch_MountPoint Batch_ResourceRequirement Batch_KeyValuePair/;
+  has Command => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Environment => (is => 'ro', isa => ArrayRef[Batch_KeyValuePair]);
+  has Image => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has JobRoleArn => (is => 'ro', isa => Str);
+  has Memory => (is => 'ro', isa => Int);
+  has MountPoints => (is => 'ro', isa => ArrayRef[Batch_MountPoint]);
+  has Privileged => (is => 'ro', isa => Bool);
+  has ReadonlyRootFilesystem => (is => 'ro', isa => Bool);
+  has ResourceRequirements => (is => 'ro', isa => ArrayRef[Batch_ResourceRequirement]);
+  has Ulimits => (is => 'ro', isa => ArrayRef[Batch_Ulimit]);
+  has User => (is => 'ro', isa => Str);
+  has Vcpus => (is => 'ro', isa => Int);
+  has Volumes => (is => 'ro', isa => ArrayRef[Batch_Volume]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Ulimits' => {
+                              'class' => 'Paws::Batch::Ulimit',
+                              'type' => 'ArrayRef[Batch_Ulimit]'
+                            },
+               'Environment' => {
+                                  'class' => 'Paws::Batch::KeyValuePair',
+                                  'type' => 'ArrayRef[Batch_KeyValuePair]'
+                                },
+               'Volumes' => {
+                              'class' => 'Paws::Batch::Volume',
+                              'type' => 'ArrayRef[Batch_Volume]'
+                            },
+               'JobRoleArn' => {
+                                 'type' => 'Str'
+                               },
+               'Vcpus' => {
+                            'type' => 'Int'
+                          },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Privileged' => {
+                                 'type' => 'Bool'
+                               },
+               'User' => {
+                           'type' => 'Str'
+                         },
+               'MountPoints' => {
+                                  'class' => 'Paws::Batch::MountPoint',
+                                  'type' => 'ArrayRef[Batch_MountPoint]'
+                                },
+               'Image' => {
+                            'type' => 'Str'
+                          },
+               'ResourceRequirements' => {
+                                           'class' => 'Paws::Batch::ResourceRequirement',
+                                           'type' => 'ArrayRef[Batch_ResourceRequirement]'
+                                         },
+               'ReadonlyRootFilesystem' => {
+                                             'type' => 'Bool'
+                                           },
+               'Command' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Memory' => {
+                             'type' => 'Int'
+                           }
+             },
+  'NameInRequest' => {
+                       'Ulimits' => 'ulimits',
+                       'Environment' => 'environment',
+                       'Volumes' => 'volumes',
+                       'JobRoleArn' => 'jobRoleArn',
+                       'Vcpus' => 'vcpus',
+                       'InstanceType' => 'instanceType',
+                       'Privileged' => 'privileged',
+                       'User' => 'user',
+                       'MountPoints' => 'mountPoints',
+                       'Image' => 'image',
+                       'ResourceRequirements' => 'resourceRequirements',
+                       'ReadonlyRootFilesystem' => 'readonlyRootFilesystem',
+                       'Command' => 'command',
+                       'Memory' => 'memory'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -62,7 +139,7 @@ see https://docs.docker.com/engine/reference/builder/#cmd
 (https://docs.docker.com/engine/reference/builder/#cmd).
 
 
-=head2 Environment => ArrayRef[L<Paws::Batch::KeyValuePair>]
+=head2 Environment => ArrayRef[Batch_KeyValuePair]
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container
@@ -151,7 +228,7 @@ see Memory Management
 in the I<AWS Batch User Guide>.
 
 
-=head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
+=head2 MountPoints => ArrayRef[Batch_MountPoint]
 
   The mount points for data volumes in your container. This parameter
 maps to C<Volumes> in the Create a container
@@ -182,13 +259,13 @@ of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 and the C<--read-only> option to C<docker run>.
 
 
-=head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
+=head2 ResourceRequirements => ArrayRef[Batch_ResourceRequirement]
 
   The type and amount of a resource to assign to a container. Currently,
 the only supported resource is C<GPU>.
 
 
-=head2 Ulimits => ArrayRef[L<Paws::Batch::Ulimit>]
+=head2 Ulimits => ArrayRef[Batch_Ulimit]
 
   A list of C<ulimits> to set in the container. This parameter maps to
 C<Ulimits> in the Create a container
@@ -219,7 +296,7 @@ and the C<--cpu-shares> option to docker run
 equivalent to 1,024 CPU shares. You must specify at least one vCPU.
 
 
-=head2 Volumes => ArrayRef[L<Paws::Batch::Volume>]
+=head2 Volumes => ArrayRef[Batch_Volume]
 
   A list of data volumes used in a job.
 

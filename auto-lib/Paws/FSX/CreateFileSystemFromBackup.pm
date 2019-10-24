@@ -1,18 +1,55 @@
+# Generated from json/callargs_class.tt
 
 package Paws::FSX::CreateFileSystemFromBackup;
-  use Moose;
-  has BackupId => (is => 'ro', isa => 'Str', required => 1);
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Tag]');
-  has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::CreateFileSystemWindowsConfiguration');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::FSX::Types qw/FSX_CreateFileSystemWindowsConfiguration FSX_Tag/;
+  has BackupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has SecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has SubnetIds => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[FSX_Tag], predicate => 1);
+  has WindowsConfiguration => (is => 'ro', isa => FSX_CreateFileSystemWindowsConfiguration, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFileSystemFromBackup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::FSX::CreateFileSystemFromBackupResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateFileSystemFromBackup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::FSX::CreateFileSystemFromBackupResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SecurityGroupIds' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'WindowsConfiguration' => {
+                                           'class' => 'Paws::FSX::CreateFileSystemWindowsConfiguration',
+                                           'type' => 'FSX_CreateFileSystemWindowsConfiguration'
+                                         },
+               'BackupId' => {
+                               'type' => 'Str'
+                             },
+               'SubnetIds' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'Tags' => {
+                           'class' => 'Paws::FSX::Tag',
+                           'type' => 'ArrayRef[FSX_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'BackupId' => 1,
+                    'SubnetIds' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -113,7 +150,7 @@ also launched in that subnet's Availability Zone.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
+=head2 Tags => ArrayRef[FSX_Tag]
 
 The tags to be applied to the file system at file system creation. The
 key value of the C<Name> tag appears in the console as the file system
@@ -121,7 +158,7 @@ name.
 
 
 
-=head2 WindowsConfiguration => L<Paws::FSX::CreateFileSystemWindowsConfiguration>
+=head2 WindowsConfiguration => FSX_CreateFileSystemWindowsConfiguration
 
 The configuration for this Microsoft Windows file system.
 

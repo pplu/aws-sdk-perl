@@ -13,7 +13,7 @@ package Paws::EC2::DeleteLaunchTemplate;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteLaunchTemplateResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'LaunchTemplateId' => {
@@ -28,8 +28,8 @@ package Paws::EC2::DeleteLaunchTemplate;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

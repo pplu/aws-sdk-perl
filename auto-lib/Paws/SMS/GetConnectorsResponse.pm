@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SMS::GetConnectorsResponse;
-  use Moose;
-  has ConnectorList => (is => 'ro', isa => 'ArrayRef[Paws::SMS::Connector]', traits => ['NameInRequest'], request_name => 'connectorList' );
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SMS::Types qw/SMS_Connector/;
+  has ConnectorList => (is => 'ro', isa => ArrayRef[SMS_Connector]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ConnectorList' => {
+                                    'class' => 'Paws::SMS::Connector',
+                                    'type' => 'ArrayRef[SMS_Connector]'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'ConnectorList' => 'connectorList'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +41,7 @@ Paws::SMS::GetConnectorsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ConnectorList => ArrayRef[L<Paws::SMS::Connector>]
+=head2 ConnectorList => ArrayRef[SMS_Connector]
 
 Information about the registered connectors.
 

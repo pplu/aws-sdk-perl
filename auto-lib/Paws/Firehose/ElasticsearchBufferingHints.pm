@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Firehose::ElasticsearchBufferingHints;
-  use Moose;
-  has IntervalInSeconds => (is => 'ro', isa => 'Int');
-  has SizeInMBs => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Firehose::Types qw//;
+  has IntervalInSeconds => (is => 'ro', isa => Int);
+  has SizeInMBs => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeInMBs' => {
+                                'type' => 'Int'
+                              },
+               'IntervalInSeconds' => {
+                                        'type' => 'Int'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

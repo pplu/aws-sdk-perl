@@ -1,8 +1,37 @@
+# Generated from default/object.tt
 package Paws::Support::Service;
-  use Moose;
-  has Categories => (is => 'ro', isa => 'ArrayRef[Paws::Support::Category]', request_name => 'categories', traits => ['NameInRequest']);
-  has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Support::Types qw/Support_Category/;
+  has Categories => (is => 'ro', isa => ArrayRef[Support_Category]);
+  has Code => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Code' => {
+                           'type' => 'Str'
+                         },
+               'Categories' => {
+                                 'class' => 'Paws::Support::Category',
+                                 'type' => 'ArrayRef[Support_Category]'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Code' => 'code',
+                       'Categories' => 'categories',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +68,7 @@ operation.
 =head1 ATTRIBUTES
 
 
-=head2 Categories => ArrayRef[L<Paws::Support::Category>]
+=head2 Categories => ArrayRef[Support_Category]
 
   A list of categories that describe the type of support issue a case
 describes. Categories consist of a category name and a category code.

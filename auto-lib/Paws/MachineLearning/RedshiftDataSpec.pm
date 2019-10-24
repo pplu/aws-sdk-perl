@@ -1,12 +1,55 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RedshiftDataSpec;
-  use Moose;
-  has DatabaseCredentials => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDatabaseCredentials', required => 1);
-  has DatabaseInformation => (is => 'ro', isa => 'Paws::MachineLearning::RedshiftDatabase', required => 1);
-  has DataRearrangement => (is => 'ro', isa => 'Str');
-  has DataSchema => (is => 'ro', isa => 'Str');
-  has DataSchemaUri => (is => 'ro', isa => 'Str');
-  has S3StagingLocation => (is => 'ro', isa => 'Str', required => 1);
-  has SelectSqlQuery => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw/MachineLearning_RedshiftDatabase MachineLearning_RedshiftDatabaseCredentials/;
+  has DatabaseCredentials => (is => 'ro', isa => MachineLearning_RedshiftDatabaseCredentials, required => 1);
+  has DatabaseInformation => (is => 'ro', isa => MachineLearning_RedshiftDatabase, required => 1);
+  has DataRearrangement => (is => 'ro', isa => Str);
+  has DataSchema => (is => 'ro', isa => Str);
+  has DataSchemaUri => (is => 'ro', isa => Str);
+  has S3StagingLocation => (is => 'ro', isa => Str, required => 1);
+  has SelectSqlQuery => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DataRearrangement' => {
+                                        'type' => 'Str'
+                                      },
+               'DataSchemaUri' => {
+                                    'type' => 'Str'
+                                  },
+               'DatabaseInformation' => {
+                                          'class' => 'Paws::MachineLearning::RedshiftDatabase',
+                                          'type' => 'MachineLearning_RedshiftDatabase'
+                                        },
+               'DataSchema' => {
+                                 'type' => 'Str'
+                               },
+               'S3StagingLocation' => {
+                                        'type' => 'Str'
+                                      },
+               'SelectSqlQuery' => {
+                                     'type' => 'Str'
+                                   },
+               'DatabaseCredentials' => {
+                                          'class' => 'Paws::MachineLearning::RedshiftDatabaseCredentials',
+                                          'type' => 'MachineLearning_RedshiftDatabaseCredentials'
+                                        }
+             },
+  'IsRequired' => {
+                    'DatabaseInformation' => 1,
+                    'S3StagingLocation' => 1,
+                    'SelectSqlQuery' => 1,
+                    'DatabaseCredentials' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,13 +85,13 @@ Describes the data specification of an Amazon Redshift C<DataSource>.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RedshiftDatabaseCredentials>
+=head2 B<REQUIRED> DatabaseCredentials => MachineLearning_RedshiftDatabaseCredentials
 
   Describes AWS Identity and Access Management (IAM) credentials that are
 used connect to the Amazon Redshift database.
 
 
-=head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RedshiftDatabase>
+=head2 B<REQUIRED> DatabaseInformation => MachineLearning_RedshiftDatabase
 
   Describes the C<DatabaseName> and C<ClusterIdentifier> for an Amazon
 Redshift C<DataSource>.

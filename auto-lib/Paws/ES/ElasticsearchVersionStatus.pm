@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::ES::ElasticsearchVersionStatus;
   use Moo;
   use Types::Standard qw/Str/;
@@ -15,7 +16,11 @@ package Paws::ES::ElasticsearchVersionStatus;
                              'class' => 'Paws::ES::OptionStatus',
                              'type' => 'ES_OptionStatus'
                            }
-             }
+             },
+  'IsRequired' => {
+                    'Options' => 1,
+                    'Status' => 1
+                  }
 }
 ;
     return $Params_map;

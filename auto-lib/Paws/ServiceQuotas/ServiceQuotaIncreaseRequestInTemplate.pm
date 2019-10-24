@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ServiceQuotas::ServiceQuotaIncreaseRequestInTemplate;
-  use Moose;
-  has AwsRegion => (is => 'ro', isa => 'Str');
-  has DesiredValue => (is => 'ro', isa => 'Num');
-  has GlobalQuota => (is => 'ro', isa => 'Bool');
-  has QuotaCode => (is => 'ro', isa => 'Str');
-  has QuotaName => (is => 'ro', isa => 'Str');
-  has ServiceCode => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str');
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Num Bool/;
+  use Paws::ServiceQuotas::Types qw//;
+  has AwsRegion => (is => 'ro', isa => Str);
+  has DesiredValue => (is => 'ro', isa => Num);
+  has GlobalQuota => (is => 'ro', isa => Bool);
+  has QuotaCode => (is => 'ro', isa => Str);
+  has QuotaName => (is => 'ro', isa => Str);
+  has ServiceCode => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceCode' => {
+                                  'type' => 'Str'
+                                },
+               'DesiredValue' => {
+                                   'type' => 'Num'
+                                 },
+               'AwsRegion' => {
+                                'type' => 'Str'
+                              },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'QuotaCode' => {
+                                'type' => 'Str'
+                              },
+               'GlobalQuota' => {
+                                  'type' => 'Bool'
+                                },
+               'QuotaName' => {
+                                'type' => 'Str'
+                              },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

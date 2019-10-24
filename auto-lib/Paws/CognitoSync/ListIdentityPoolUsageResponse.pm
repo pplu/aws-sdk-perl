@@ -1,12 +1,39 @@
 
 package Paws::CognitoSync::ListIdentityPoolUsageResponse;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int');
-  has IdentityPoolUsages => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::IdentityPoolUsage]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::CognitoSync::Types qw/CognitoSync_IdentityPoolUsage/;
+  has Count => (is => 'ro', isa => Int);
+  has IdentityPoolUsages => (is => 'ro', isa => ArrayRef[CognitoSync_IdentityPoolUsage]);
+  has MaxResults => (is => 'ro', isa => Int);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityPoolUsages' => {
+                                         'class' => 'Paws::CognitoSync::IdentityPoolUsage',
+                                         'type' => 'ArrayRef[CognitoSync_IdentityPoolUsage]'
+                                       },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +50,7 @@ Paws::CognitoSync::ListIdentityPoolUsageResponse
 Total number of identities for the identity pool.
 
 
-=head2 IdentityPoolUsages => ArrayRef[L<Paws::CognitoSync::IdentityPoolUsage>]
+=head2 IdentityPoolUsages => ArrayRef[CognitoSync_IdentityPoolUsage]
 
 Usage information for the identity pools.
 

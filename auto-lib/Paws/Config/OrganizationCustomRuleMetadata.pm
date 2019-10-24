@@ -1,14 +1,59 @@
+# Generated from default/object.tt
 package Paws::Config::OrganizationCustomRuleMetadata;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has InputParameters => (is => 'ro', isa => 'Str');
-  has LambdaFunctionArn => (is => 'ro', isa => 'Str', required => 1);
-  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
-  has OrganizationConfigRuleTriggerTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ResourceIdScope => (is => 'ro', isa => 'Str');
-  has ResourceTypesScope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TagKeyScope => (is => 'ro', isa => 'Str');
-  has TagValueScope => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Config::Types qw//;
+  has Description => (is => 'ro', isa => Str);
+  has InputParameters => (is => 'ro', isa => Str);
+  has LambdaFunctionArn => (is => 'ro', isa => Str, required => 1);
+  has MaximumExecutionFrequency => (is => 'ro', isa => Str);
+  has OrganizationConfigRuleTriggerTypes => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has ResourceIdScope => (is => 'ro', isa => Str);
+  has ResourceTypesScope => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TagKeyScope => (is => 'ro', isa => Str);
+  has TagValueScope => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputParameters' => {
+                                      'type' => 'Str'
+                                    },
+               'MaximumExecutionFrequency' => {
+                                                'type' => 'Str'
+                                              },
+               'ResourceTypesScope' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ResourceIdScope' => {
+                                      'type' => 'Str'
+                                    },
+               'TagValueScope' => {
+                                    'type' => 'Str'
+                                  },
+               'OrganizationConfigRuleTriggerTypes' => {
+                                                         'type' => 'ArrayRef[Str|Undef]'
+                                                       },
+               'LambdaFunctionArn' => {
+                                        'type' => 'Str'
+                                      },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'TagKeyScope' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'OrganizationConfigRuleTriggerTypes' => 1,
+                    'LambdaFunctionArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

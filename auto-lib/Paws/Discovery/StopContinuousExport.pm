@@ -1,13 +1,35 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Discovery::StopContinuousExport;
-  use Moose;
-  has ExportId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'exportId' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has ExportId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopContinuousExport');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Discovery::StopContinuousExportResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StopContinuousExport');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Discovery::StopContinuousExportResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ExportId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ExportId' => 'exportId'
+                     },
+  'IsRequired' => {
+                    'ExportId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

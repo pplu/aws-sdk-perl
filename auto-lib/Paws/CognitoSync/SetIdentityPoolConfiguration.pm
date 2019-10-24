@@ -1,16 +1,45 @@
 
 package Paws::CognitoSync::SetIdentityPoolConfiguration;
-  use Moose;
-  has CognitoStreams => (is => 'ro', isa => 'Paws::CognitoSync::CognitoStreams');
-  has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId', required => 1);
-  has PushSync => (is => 'ro', isa => 'Paws::CognitoSync::PushSync');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoSync::Types qw/CognitoSync_PushSync CognitoSync_CognitoStreams/;
+  has CognitoStreams => (is => 'ro', isa => CognitoSync_CognitoStreams, predicate => 1);
+  has IdentityPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has PushSync => (is => 'ro', isa => CognitoSync_PushSync, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityPoolConfiguration');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/configuration');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::SetIdentityPoolConfigurationResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SetIdentityPoolConfiguration');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/identitypools/{IdentityPoolId}/configuration');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoSync::SetIdentityPoolConfigurationResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PushSync' => {
+                               'class' => 'Paws::CognitoSync::PushSync',
+                               'type' => 'CognitoSync_PushSync'
+                             },
+               'IdentityPoolId' => {
+                                     'type' => 'Str'
+                                   },
+               'CognitoStreams' => {
+                                     'class' => 'Paws::CognitoSync::CognitoStreams',
+                                     'type' => 'CognitoSync_CognitoStreams'
+                                   }
+             },
+  'ParamInURI' => {
+                    'IdentityPoolId' => 'IdentityPoolId'
+                  },
+  'IsRequired' => {
+                    'IdentityPoolId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -57,7 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 CognitoStreams => L<Paws::CognitoSync::CognitoStreams>
+=head2 CognitoStreams => CognitoSync_CognitoStreams
 
 Options to apply to this identity pool for Amazon Cognito streams.
 
@@ -71,7 +100,7 @@ Cognito. This is the ID of the pool to modify.
 
 
 
-=head2 PushSync => L<Paws::CognitoSync::PushSync>
+=head2 PushSync => CognitoSync_PushSync
 
 Options to apply to this identity pool for push synchronization.
 

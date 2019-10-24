@@ -1,3 +1,4 @@
+# Generated from callresult_class.tt
 
 package Paws::SES::GetIdentityDkimAttributesResponse;
   use Moo;
@@ -16,7 +17,10 @@ package Paws::SES::GetIdentityDkimAttributesResponse;
                                      'class' => 'Paws::SES::DkimAttributes',
                                      'type' => 'SES_DkimAttributes'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'DkimAttributes' => 1
+                  }
 }
 ;
     return $Params_map;

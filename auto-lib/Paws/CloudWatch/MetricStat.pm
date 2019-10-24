@@ -1,9 +1,41 @@
+# Generated from default/object.tt
 package Paws::CloudWatch::MetricStat;
-  use Moose;
-  has Metric => (is => 'ro', isa => 'Paws::CloudWatch::Metric', required => 1);
-  has Period => (is => 'ro', isa => 'Int', required => 1);
-  has Stat => (is => 'ro', isa => 'Str', required => 1);
-  has Unit => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::CloudWatch::Types qw/CloudWatch_Metric/;
+  has Metric => (is => 'ro', isa => CloudWatch_Metric, required => 1);
+  has Period => (is => 'ro', isa => Int, required => 1);
+  has Stat => (is => 'ro', isa => Str, required => 1);
+  has Unit => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Metric' => {
+                             'class' => 'Paws::CloudWatch::Metric',
+                             'type' => 'CloudWatch_Metric'
+                           },
+               'Stat' => {
+                           'type' => 'Str'
+                         },
+               'Unit' => {
+                           'type' => 'Str'
+                         },
+               'Period' => {
+                             'type' => 'Int'
+                           }
+             },
+  'IsRequired' => {
+                    'Metric' => 1,
+                    'Stat' => 1,
+                    'Period' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +72,7 @@ statistics, period, and units.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Metric => L<Paws::CloudWatch::Metric>
+=head2 B<REQUIRED> Metric => CloudWatch_Metric
 
   The metric to return, including the metric name, namespace, and
 dimensions.

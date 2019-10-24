@@ -1,23 +1,74 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::UpdateCrawler;
-  use Moose;
-  has Classifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Configuration => (is => 'ro', isa => 'Str');
-  has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
-  has DatabaseName => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Role => (is => 'ro', isa => 'Str');
-  has Schedule => (is => 'ro', isa => 'Str');
-  has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
-  has TablePrefix => (is => 'ro', isa => 'Str');
-  has Targets => (is => 'ro', isa => 'Paws::Glue::CrawlerTargets');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Glue::Types qw/Glue_SchemaChangePolicy Glue_CrawlerTargets/;
+  has Classifiers => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has Configuration => (is => 'ro', isa => Str, predicate => 1);
+  has CrawlerSecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
+  has DatabaseName => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Role => (is => 'ro', isa => Str, predicate => 1);
+  has Schedule => (is => 'ro', isa => Str, predicate => 1);
+  has SchemaChangePolicy => (is => 'ro', isa => Glue_SchemaChangePolicy, predicate => 1);
+  has TablePrefix => (is => 'ro', isa => Str, predicate => 1);
+  has Targets => (is => 'ro', isa => Glue_CrawlerTargets, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCrawler');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::UpdateCrawlerResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateCrawler');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::UpdateCrawlerResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TablePrefix' => {
+                                  'type' => 'Str'
+                                },
+               'Role' => {
+                           'type' => 'Str'
+                         },
+               'CrawlerSecurityConfiguration' => {
+                                                   'type' => 'Str'
+                                                 },
+               'Configuration' => {
+                                    'type' => 'Str'
+                                  },
+               'SchemaChangePolicy' => {
+                                         'class' => 'Paws::Glue::SchemaChangePolicy',
+                                         'type' => 'Glue_SchemaChangePolicy'
+                                       },
+               'Targets' => {
+                              'class' => 'Paws::Glue::CrawlerTargets',
+                              'type' => 'Glue_CrawlerTargets'
+                            },
+               'Schedule' => {
+                               'type' => 'Str'
+                             },
+               'Classifiers' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -161,7 +212,7 @@ For example, to run something every day at 12:15 UTC, specify C<cron(15
 
 
 
-=head2 SchemaChangePolicy => L<Paws::Glue::SchemaChangePolicy>
+=head2 SchemaChangePolicy => Glue_SchemaChangePolicy
 
 The policy for the crawler's update and deletion behavior.
 
@@ -173,7 +224,7 @@ The table prefix used for catalog tables that are created.
 
 
 
-=head2 Targets => L<Paws::Glue::CrawlerTargets>
+=head2 Targets => Glue_CrawlerTargets
 
 A list of targets to crawl.
 

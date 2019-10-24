@@ -1,18 +1,55 @@
 
 package Paws::CloudDirectory::CreateObject;
-  use Moose;
-  has DirectoryArn => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-data-partition', required => 1);
-  has LinkName => (is => 'ro', isa => 'Str');
-  has ObjectAttributeList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
-  has ParentReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference');
-  has SchemaFacets => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::SchemaFacet]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_SchemaFacet CloudDirectory_ObjectReference CloudDirectory_AttributeKeyAndValue/;
+  has DirectoryArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has LinkName => (is => 'ro', isa => Str, predicate => 1);
+  has ObjectAttributeList => (is => 'ro', isa => ArrayRef[CloudDirectory_AttributeKeyAndValue], predicate => 1);
+  has ParentReference => (is => 'ro', isa => CloudDirectory_ObjectReference, predicate => 1);
+  has SchemaFacets => (is => 'ro', isa => ArrayRef[CloudDirectory_SchemaFacet], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateObject');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/amazonclouddirectory/2017-01-11/object');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudDirectory::CreateObjectResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateObject');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/amazonclouddirectory/2017-01-11/object');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudDirectory::CreateObjectResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LinkName' => {
+                               'type' => 'Str'
+                             },
+               'ObjectAttributeList' => {
+                                          'class' => 'Paws::CloudDirectory::AttributeKeyAndValue',
+                                          'type' => 'ArrayRef[CloudDirectory_AttributeKeyAndValue]'
+                                        },
+               'SchemaFacets' => {
+                                   'class' => 'Paws::CloudDirectory::SchemaFacet',
+                                   'type' => 'ArrayRef[CloudDirectory_SchemaFacet]'
+                                 },
+               'DirectoryArn' => {
+                                   'type' => 'Str'
+                                 },
+               'ParentReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'ParamInHeader' => {
+                       'DirectoryArn' => 'x-amz-data-partition'
+                     },
+  'IsRequired' => {
+                    'SchemaFacets' => 1,
+                    'DirectoryArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -90,21 +127,21 @@ The name of link that is used to attach this object to a parent.
 
 
 
-=head2 ObjectAttributeList => ArrayRef[L<Paws::CloudDirectory::AttributeKeyAndValue>]
+=head2 ObjectAttributeList => ArrayRef[CloudDirectory_AttributeKeyAndValue]
 
 The attribute map whose attribute ARN contains the key and attribute
 value as the map value.
 
 
 
-=head2 ParentReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 ParentReference => CloudDirectory_ObjectReference
 
 If specified, the parent reference to which this object will be
 attached.
 
 
 
-=head2 B<REQUIRED> SchemaFacets => ArrayRef[L<Paws::CloudDirectory::SchemaFacet>]
+=head2 B<REQUIRED> SchemaFacets => ArrayRef[CloudDirectory_SchemaFacet]
 
 A list of schema facets to be associated with the object. Do not
 provide minor version components. See SchemaFacet for details.

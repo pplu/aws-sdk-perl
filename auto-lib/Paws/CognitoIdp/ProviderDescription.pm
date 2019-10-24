@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::ProviderDescription;
-  use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has ProviderName => (is => 'ro', isa => 'Str');
-  has ProviderType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has CreationDate => (is => 'ro', isa => Str);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has ProviderName => (is => 'ro', isa => Str);
+  has ProviderType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'ProviderType' => {
+                                   'type' => 'Str'
+                                 },
+               'ProviderName' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

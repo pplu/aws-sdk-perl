@@ -1,9 +1,34 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Inspector::GetTelemetryMetadataResponse;
-  use Moose;
-  has TelemetryMetadata => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::TelemetryMetadata]', traits => ['NameInRequest'], request_name => 'telemetryMetadata' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Inspector::Types qw/Inspector_TelemetryMetadata/;
+  has TelemetryMetadata => (is => 'ro', isa => ArrayRef[Inspector_TelemetryMetadata], required => 1);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TelemetryMetadata' => {
+                                        'class' => 'Paws::Inspector::TelemetryMetadata',
+                                        'type' => 'ArrayRef[Inspector_TelemetryMetadata]'
+                                      },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TelemetryMetadata' => 'telemetryMetadata'
+                     },
+  'IsRequired' => {
+                    'TelemetryMetadata' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +39,7 @@ Paws::Inspector::GetTelemetryMetadataResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TelemetryMetadata => ArrayRef[L<Paws::Inspector::TelemetryMetadata>]
+=head2 B<REQUIRED> TelemetryMetadata => ArrayRef[Inspector_TelemetryMetadata]
 
 Telemetry details.
 

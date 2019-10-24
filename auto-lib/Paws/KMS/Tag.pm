@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::KMS::Tag;
-  use Moose;
-  has TagKey => (is => 'ro', isa => 'Str', required => 1);
-  has TagValue => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KMS::Types qw//;
+  has TagKey => (is => 'ro', isa => Str, required => 1);
+  has TagValue => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagValue' => {
+                               'type' => 'Str'
+                             },
+               'TagKey' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'TagValue' => 1,
+                    'TagKey' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

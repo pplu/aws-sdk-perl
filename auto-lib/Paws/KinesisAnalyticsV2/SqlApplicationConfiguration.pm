@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::SqlApplicationConfiguration;
-  use Moose;
-  has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::Input]');
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::Output]');
-  has ReferenceDataSources => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::ReferenceDataSource]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_Output KinesisAnalyticsV2_ReferenceDataSource KinesisAnalyticsV2_Input/;
+  has Inputs => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_Input]);
+  has Outputs => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_Output]);
+  has ReferenceDataSources => (is => 'ro', isa => ArrayRef[KinesisAnalyticsV2_ReferenceDataSource]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Inputs' => {
+                             'class' => 'Paws::KinesisAnalyticsV2::Input',
+                             'type' => 'ArrayRef[KinesisAnalyticsV2_Input]'
+                           },
+               'ReferenceDataSources' => {
+                                           'class' => 'Paws::KinesisAnalyticsV2::ReferenceDataSource',
+                                           'type' => 'ArrayRef[KinesisAnalyticsV2_ReferenceDataSource]'
+                                         },
+               'Outputs' => {
+                              'class' => 'Paws::KinesisAnalyticsV2::Output',
+                              'type' => 'ArrayRef[KinesisAnalyticsV2_Output]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +65,19 @@ SQL-based Kinesis Data Analytics application.
 =head1 ATTRIBUTES
 
 
-=head2 Inputs => ArrayRef[L<Paws::KinesisAnalyticsV2::Input>]
+=head2 Inputs => ArrayRef[KinesisAnalyticsV2_Input]
 
   The array of Input objects describing the input streams used by the
 application.
 
 
-=head2 Outputs => ArrayRef[L<Paws::KinesisAnalyticsV2::Output>]
+=head2 Outputs => ArrayRef[KinesisAnalyticsV2_Output]
 
   The array of Output objects describing the destination streams used by
 the application.
 
 
-=head2 ReferenceDataSources => ArrayRef[L<Paws::KinesisAnalyticsV2::ReferenceDataSource>]
+=head2 ReferenceDataSources => ArrayRef[KinesisAnalyticsV2_ReferenceDataSource]
 
   The array of ReferenceDataSource objects describing the reference data
 sources used by the application.

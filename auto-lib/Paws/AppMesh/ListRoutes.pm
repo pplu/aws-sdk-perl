@@ -1,17 +1,53 @@
 
 package Paws::AppMesh::ListRoutes;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'limit');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AppMesh::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRoutes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::ListRoutesOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListRoutes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::ListRoutesOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'ParamInURI' => {
+                    'MeshName' => 'meshName',
+                    'VirtualRouterName' => 'virtualRouterName'
+                  },
+  'ParamInQuery' => {
+                      'NextToken' => 'nextToken',
+                      'Limit' => 'limit'
+                    },
+  'IsRequired' => {
+                    'MeshName' => 1,
+                    'VirtualRouterName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UntagUser;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UntagUser;
                'TagKeys' => {
                               'type' => 'ArrayRef[Str|Undef]'
                             }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'TagKeys' => 1
+                  }
 }
 ;
     return $Params_map;

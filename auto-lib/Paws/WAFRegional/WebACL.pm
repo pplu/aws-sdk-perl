@@ -1,11 +1,50 @@
+# Generated from default/object.tt
 package Paws::WAFRegional::WebACL;
-  use Moose;
-  has DefaultAction => (is => 'ro', isa => 'Paws::WAFRegional::WafAction', required => 1);
-  has MetricName => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::ActivatedRule]', required => 1);
-  has WebACLArn => (is => 'ro', isa => 'Str');
-  has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_ActivatedRule WAFRegional_WafAction/;
+  has DefaultAction => (is => 'ro', isa => WAFRegional_WafAction, required => 1);
+  has MetricName => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[WAFRegional_ActivatedRule], required => 1);
+  has WebACLArn => (is => 'ro', isa => Str);
+  has WebACLId => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WebACLArn' => {
+                                'type' => 'Str'
+                              },
+               'Rules' => {
+                            'class' => 'Paws::WAFRegional::ActivatedRule',
+                            'type' => 'ArrayRef[WAFRegional_ActivatedRule]'
+                          },
+               'DefaultAction' => {
+                                    'class' => 'Paws::WAFRegional::WafAction',
+                                    'type' => 'WAFRegional_WafAction'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'MetricName' => {
+                                 'type' => 'Str'
+                               },
+               'WebACLId' => {
+                               'type' => 'Str'
+                             }
+             },
+  'IsRequired' => {
+                    'Rules' => 1,
+                    'DefaultAction' => 1,
+                    'WebACLId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,7 +89,7 @@ information, see UpdateWebACL.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DefaultAction => L<Paws::WAFRegional::WafAction>
+=head2 B<REQUIRED> DefaultAction => WAFRegional_WafAction
 
   The action to perform if none of the C<Rules> contained in the
 C<WebACL> match. The action is specified by the WafAction object.
@@ -72,7 +111,7 @@ C<WebACL>.
 name of a C<WebACL> after you create it.
 
 
-=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::WAFRegional::ActivatedRule>]
+=head2 B<REQUIRED> Rules => ArrayRef[WAFRegional_ActivatedRule]
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.

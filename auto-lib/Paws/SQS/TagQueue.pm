@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::SQS::TagQueue;
   use Moo;
@@ -22,7 +23,11 @@ package Paws::SQS::TagQueue;
                            'class' => 'Paws::SQS::TagMap',
                            'type' => 'SQS_TagMap'
                          }
-             }
+             },
+  'IsRequired' => {
+                    'QueueUrl' => 1,
+                    'Tags' => 1
+                  }
 }
 ;
     return $Params_map;

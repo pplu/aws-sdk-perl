@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::ImportExport::ListJobsOutput;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool');
-  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Job]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::ImportExport::Types qw/ImportExport_Job/;
+  has IsTruncated => (is => 'ro', isa => Bool);
+  has Jobs => (is => 'ro', isa => ArrayRef[ImportExport_Job]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Jobs' => {
+                           'class' => 'Paws::ImportExport::Job',
+                           'type' => 'ArrayRef[ImportExport_Job]'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +43,7 @@ Paws::ImportExport::ListJobsOutput
 
 
 
-=head2 Jobs => ArrayRef[L<Paws::ImportExport::Job>]
+=head2 Jobs => ArrayRef[ImportExport_Job]
 
 
 

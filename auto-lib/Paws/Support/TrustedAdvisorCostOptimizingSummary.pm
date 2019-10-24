@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorCostOptimizingSummary;
-  use Moose;
-  has EstimatedMonthlySavings => (is => 'ro', isa => 'Num', request_name => 'estimatedMonthlySavings', traits => ['NameInRequest'], required => 1);
-  has EstimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', request_name => 'estimatedPercentMonthlySavings', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Num/;
+  use Paws::Support::Types qw//;
+  has EstimatedMonthlySavings => (is => 'ro', isa => Num, required => 1);
+  has EstimatedPercentMonthlySavings => (is => 'ro', isa => Num, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EstimatedPercentMonthlySavings' => {
+                                                     'type' => 'Num'
+                                                   },
+               'EstimatedMonthlySavings' => {
+                                              'type' => 'Num'
+                                            }
+             },
+  'NameInRequest' => {
+                       'EstimatedPercentMonthlySavings' => 'estimatedPercentMonthlySavings',
+                       'EstimatedMonthlySavings' => 'estimatedMonthlySavings'
+                     },
+  'IsRequired' => {
+                    'EstimatedPercentMonthlySavings' => 1,
+                    'EstimatedMonthlySavings' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

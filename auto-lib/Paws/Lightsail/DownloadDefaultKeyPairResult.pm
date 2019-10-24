@@ -1,10 +1,35 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::DownloadDefaultKeyPairResult;
-  use Moose;
-  has PrivateKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'privateKeyBase64' );
-  has PublicKeyBase64 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'publicKeyBase64' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lightsail::Types qw//;
+  has PrivateKeyBase64 => (is => 'ro', isa => Str);
+  has PublicKeyBase64 => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateKeyBase64' => {
+                                       'type' => 'Str'
+                                     },
+               'PublicKeyBase64' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'PrivateKeyBase64' => 'privateKeyBase64',
+                       'PublicKeyBase64' => 'publicKeyBase64'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

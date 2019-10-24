@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::Batch::NetworkInterface;
-  use Moose;
-  has AttachmentId => (is => 'ro', isa => 'Str', request_name => 'attachmentId', traits => ['NameInRequest']);
-  has Ipv6Address => (is => 'ro', isa => 'Str', request_name => 'ipv6Address', traits => ['NameInRequest']);
-  has PrivateIpv4Address => (is => 'ro', isa => 'Str', request_name => 'privateIpv4Address', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Batch::Types qw//;
+  has AttachmentId => (is => 'ro', isa => Str);
+  has Ipv6Address => (is => 'ro', isa => Str);
+  has PrivateIpv4Address => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PrivateIpv4Address' => {
+                                         'type' => 'Str'
+                                       },
+               'Ipv6Address' => {
+                                  'type' => 'Str'
+                                },
+               'AttachmentId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'PrivateIpv4Address' => 'privateIpv4Address',
+                       'Ipv6Address' => 'ipv6Address',
+                       'AttachmentId' => 'attachmentId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

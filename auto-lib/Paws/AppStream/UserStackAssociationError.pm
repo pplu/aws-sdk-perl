@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::AppStream::UserStackAssociationError;
-  use Moose;
-  has ErrorCode => (is => 'ro', isa => 'Str');
-  has ErrorMessage => (is => 'ro', isa => 'Str');
-  has UserStackAssociation => (is => 'ro', isa => 'Paws::AppStream::UserStackAssociation');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppStream::Types qw/AppStream_UserStackAssociation/;
+  has ErrorCode => (is => 'ro', isa => Str);
+  has ErrorMessage => (is => 'ro', isa => Str);
+  has UserStackAssociation => (is => 'ro', isa => AppStream_UserStackAssociation);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ErrorCode' => {
+                                'type' => 'Str'
+                              },
+               'UserStackAssociation' => {
+                                           'class' => 'Paws::AppStream::UserStackAssociation',
+                                           'type' => 'AppStream_UserStackAssociation'
+                                         },
+               'ErrorMessage' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +75,7 @@ be associated with or disassociated from a stack.
 canE<rsquo>t be associated with or disassociated from a stack.
 
 
-=head2 UserStackAssociation => L<Paws::AppStream::UserStackAssociation>
+=head2 UserStackAssociation => AppStream_UserStackAssociation
 
   Information about the user and associated stack.
 

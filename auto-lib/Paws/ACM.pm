@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::ACM;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'acm' }
   sub signing_name { 'acm' }
   sub version { '2015-12-08' }
   sub target_prefix { 'CertificateManager' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -154,7 +156,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 
 =item CertificateArn => Str
 
-=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+=item Tags => ArrayRef[ACM_Tag]
 
 
 =back
@@ -384,7 +386,7 @@ of the imported certificate.
 
 =item [CertificateStatuses => ArrayRef[Str|Undef]]
 
-=item [Includes => L<Paws::ACM::Filters>]
+=item [Includes => ACM_Filters]
 
 =item [MaxItems => Int]
 
@@ -427,7 +429,7 @@ To delete a tag, use the RemoveTagsFromCertificate action.
 
 =item CertificateArn => Str
 
-=item Tags => ArrayRef[L<Paws::ACM::Tag>]
+=item Tags => ArrayRef[ACM_Tag]
 
 
 =back
@@ -478,11 +480,11 @@ in the ACM User Guide.
 
 =item [CertificateAuthorityArn => Str]
 
-=item [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>]]
+=item [DomainValidationOptions => ArrayRef[ACM_DomainValidationOption]]
 
 =item [IdempotencyToken => Str]
 
-=item [Options => L<Paws::ACM::CertificateOptions>]
+=item [Options => ACM_CertificateOptions]
 
 =item [SubjectAlternativeNames => ArrayRef[Str|Undef]]
 
@@ -549,7 +551,7 @@ Configure Email for your Domain
 
 =item CertificateArn => Str
 
-=item Options => L<Paws::ACM::CertificateOptions>
+=item Options => ACM_CertificateOptions
 
 
 =back
@@ -571,9 +573,9 @@ Certificate Transparency Logging
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
+=head2 ListAllCertificates(sub { },[CertificateStatuses => ArrayRef[Str|Undef], Includes => ACM_Filters, MaxItems => Int, NextToken => Str])
 
-=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => L<Paws::ACM::Filters>, MaxItems => Int, NextToken => Str])
+=head2 ListAllCertificates([CertificateStatuses => ArrayRef[Str|Undef], Includes => ACM_Filters, MaxItems => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

@@ -1,18 +1,55 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ModifyReplicationGroupShardConfiguration;
-  use Moose;
-  has ApplyImmediately => (is => 'ro', isa => 'Bool', required => 1);
-  has NodeGroupCount => (is => 'ro', isa => 'Int', required => 1);
-  has NodeGroupsToRemove => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has NodeGroupsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ReplicationGroupId => (is => 'ro', isa => 'Str', required => 1);
-  has ReshardingConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ReshardingConfiguration]');
+  use Moo;
+  use Types::Standard qw/Str Bool Int ArrayRef Undef/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ReshardingConfiguration/;
+  has ApplyImmediately => (is => 'ro', isa => Bool, required => 1, predicate => 1);
+  has NodeGroupCount => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has NodeGroupsToRemove => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has NodeGroupsToRetain => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ReplicationGroupId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ReshardingConfiguration => (is => 'ro', isa => ArrayRef[ElastiCache_ReshardingConfiguration], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupShardConfiguration');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyReplicationGroupShardConfigurationResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyReplicationGroupShardConfiguration');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ModifyReplicationGroupShardConfigurationResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ReshardingConfiguration' => {
+                                              'class' => 'Paws::ElastiCache::ReshardingConfiguration',
+                                              'type' => 'ArrayRef[ElastiCache_ReshardingConfiguration]'
+                                            },
+               'NodeGroupCount' => {
+                                     'type' => 'Int'
+                                   },
+               'ApplyImmediately' => {
+                                       'type' => 'Bool'
+                                     },
+               'NodeGroupsToRemove' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       },
+               'ReplicationGroupId' => {
+                                         'type' => 'Str'
+                                       },
+               'NodeGroupsToRetain' => {
+                                         'type' => 'ArrayRef[Str|Undef]'
+                                       }
+             },
+  'IsRequired' => {
+                    'NodeGroupCount' => 1,
+                    'ApplyImmediately' => 1,
+                    'ReplicationGroupId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -111,7 +148,7 @@ group) on which the shards are to be configured.
 
 
 
-=head2 ReshardingConfiguration => ArrayRef[L<Paws::ElastiCache::ReshardingConfiguration>]
+=head2 ReshardingConfiguration => ArrayRef[ElastiCache_ReshardingConfiguration]
 
 Specifies the preferred availability zones for each node group in the
 cluster. If the value of C<NodeGroupCount> is greater than the current

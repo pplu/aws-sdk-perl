@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Lightsail::GetRelationalDatabaseEventsResult;
-  use Moose;
-  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
-  has RelationalDatabaseEvents => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::RelationalDatabaseEvent]', traits => ['NameInRequest'], request_name => 'relationalDatabaseEvents' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Lightsail::Types qw/Lightsail_RelationalDatabaseEvent/;
+  has NextPageToken => (is => 'ro', isa => Str);
+  has RelationalDatabaseEvents => (is => 'ro', isa => ArrayRef[Lightsail_RelationalDatabaseEvent]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelationalDatabaseEvents' => {
+                                               'class' => 'Paws::Lightsail::RelationalDatabaseEvent',
+                                               'type' => 'ArrayRef[Lightsail_RelationalDatabaseEvent]'
+                                             },
+               'NextPageToken' => {
+                                    'type' => 'Str'
+                                  },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'RelationalDatabaseEvents' => 'relationalDatabaseEvents',
+                       'NextPageToken' => 'nextPageToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +47,7 @@ A token used for advancing to the next page of results from your get
 relational database events request.
 
 
-=head2 RelationalDatabaseEvents => ArrayRef[L<Paws::Lightsail::RelationalDatabaseEvent>]
+=head2 RelationalDatabaseEvents => ArrayRef[Lightsail_RelationalDatabaseEvent]
 
 An object describing the result of your get relational database events
 request.

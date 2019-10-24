@@ -1,13 +1,55 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::AuthEventType;
-  use Moose;
-  has ChallengeResponses => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::ChallengeResponseType]');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has EventContextData => (is => 'ro', isa => 'Paws::CognitoIdp::EventContextDataType');
-  has EventFeedback => (is => 'ro', isa => 'Paws::CognitoIdp::EventFeedbackType');
-  has EventId => (is => 'ro', isa => 'Str');
-  has EventResponse => (is => 'ro', isa => 'Str');
-  has EventRisk => (is => 'ro', isa => 'Paws::CognitoIdp::EventRiskType');
-  has EventType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_EventFeedbackType CognitoIdp_ChallengeResponseType CognitoIdp_EventRiskType CognitoIdp_EventContextDataType/;
+  has ChallengeResponses => (is => 'ro', isa => ArrayRef[CognitoIdp_ChallengeResponseType]);
+  has CreationDate => (is => 'ro', isa => Str);
+  has EventContextData => (is => 'ro', isa => CognitoIdp_EventContextDataType);
+  has EventFeedback => (is => 'ro', isa => CognitoIdp_EventFeedbackType);
+  has EventId => (is => 'ro', isa => Str);
+  has EventResponse => (is => 'ro', isa => Str);
+  has EventRisk => (is => 'ro', isa => CognitoIdp_EventRiskType);
+  has EventType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EventFeedback' => {
+                                    'class' => 'Paws::CognitoIdp::EventFeedbackType',
+                                    'type' => 'CognitoIdp_EventFeedbackType'
+                                  },
+               'EventRisk' => {
+                                'class' => 'Paws::CognitoIdp::EventRiskType',
+                                'type' => 'CognitoIdp_EventRiskType'
+                              },
+               'EventResponse' => {
+                                    'type' => 'Str'
+                                  },
+               'EventId' => {
+                              'type' => 'Str'
+                            },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'EventType' => {
+                                'type' => 'Str'
+                              },
+               'ChallengeResponses' => {
+                                         'class' => 'Paws::CognitoIdp::ChallengeResponseType',
+                                         'type' => 'ArrayRef[CognitoIdp_ChallengeResponseType]'
+                                       },
+               'EventContextData' => {
+                                       'class' => 'Paws::CognitoIdp::EventContextDataType',
+                                       'type' => 'CognitoIdp_EventContextDataType'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +85,7 @@ The authentication event type.
 =head1 ATTRIBUTES
 
 
-=head2 ChallengeResponses => ArrayRef[L<Paws::CognitoIdp::ChallengeResponseType>]
+=head2 ChallengeResponses => ArrayRef[CognitoIdp_ChallengeResponseType]
 
   The challenge responses.
 
@@ -53,14 +95,14 @@ The authentication event type.
   The creation date
 
 
-=head2 EventContextData => L<Paws::CognitoIdp::EventContextDataType>
+=head2 EventContextData => CognitoIdp_EventContextDataType
 
   The user context data captured at the time of an event request. It
 provides additional information about the client from which event the
 request is received.
 
 
-=head2 EventFeedback => L<Paws::CognitoIdp::EventFeedbackType>
+=head2 EventFeedback => CognitoIdp_EventFeedbackType
 
   A flag specifying the user feedback captured at the time of an event
 request is good or bad.
@@ -76,7 +118,7 @@ request is good or bad.
   The event response.
 
 
-=head2 EventRisk => L<Paws::CognitoIdp::EventRiskType>
+=head2 EventRisk => CognitoIdp_EventRiskType
 
   The event risk.
 

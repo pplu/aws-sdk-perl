@@ -1,15 +1,42 @@
 
 package Paws::MediaConvert::UntagResource;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'arn', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'tagKeys');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::MediaConvert::Types qw//;
+  has Arn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/tags/{arn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::UntagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/tags/{arn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::UntagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        }
+             },
+  'ParamInURI' => {
+                    'Arn' => 'arn'
+                  },
+  'NameInRequest' => {
+                       'TagKeys' => 'tagKeys'
+                     },
+  'IsRequired' => {
+                    'Arn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,18 +1,84 @@
+# Generated from default/object.tt
 package Paws::XRay::SamplingRule;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::XRay::AttributeMap');
-  has FixedRate => (is => 'ro', isa => 'Num', required => 1);
-  has Host => (is => 'ro', isa => 'Str', required => 1);
-  has HTTPMethod => (is => 'ro', isa => 'Str', required => 1);
-  has Priority => (is => 'ro', isa => 'Int', required => 1);
-  has ReservoirSize => (is => 'ro', isa => 'Int', required => 1);
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
-  has RuleARN => (is => 'ro', isa => 'Str');
-  has RuleName => (is => 'ro', isa => 'Str');
-  has ServiceName => (is => 'ro', isa => 'Str', required => 1);
-  has ServiceType => (is => 'ro', isa => 'Str', required => 1);
-  has URLPath => (is => 'ro', isa => 'Str', required => 1);
-  has Version => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Num Str Int/;
+  use Paws::XRay::Types qw/XRay_AttributeMap/;
+  has Attributes => (is => 'ro', isa => XRay_AttributeMap);
+  has FixedRate => (is => 'ro', isa => Num, required => 1);
+  has Host => (is => 'ro', isa => Str, required => 1);
+  has HTTPMethod => (is => 'ro', isa => Str, required => 1);
+  has Priority => (is => 'ro', isa => Int, required => 1);
+  has ReservoirSize => (is => 'ro', isa => Int, required => 1);
+  has ResourceARN => (is => 'ro', isa => Str, required => 1);
+  has RuleARN => (is => 'ro', isa => Str);
+  has RuleName => (is => 'ro', isa => Str);
+  has ServiceName => (is => 'ro', isa => Str, required => 1);
+  has ServiceType => (is => 'ro', isa => Str, required => 1);
+  has URLPath => (is => 'ro', isa => Str, required => 1);
+  has Version => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServiceType' => {
+                                  'type' => 'Str'
+                                },
+               'ServiceName' => {
+                                  'type' => 'Str'
+                                },
+               'FixedRate' => {
+                                'type' => 'Num'
+                              },
+               'URLPath' => {
+                              'type' => 'Str'
+                            },
+               'RuleName' => {
+                               'type' => 'Str'
+                             },
+               'Version' => {
+                              'type' => 'Int'
+                            },
+               'Attributes' => {
+                                 'class' => 'Paws::XRay::AttributeMap',
+                                 'type' => 'XRay_AttributeMap'
+                               },
+               'ReservoirSize' => {
+                                    'type' => 'Int'
+                                  },
+               'HTTPMethod' => {
+                                 'type' => 'Str'
+                               },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'RuleARN' => {
+                              'type' => 'Str'
+                            },
+               'Host' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'ServiceType' => 1,
+                    'ServiceName' => 1,
+                    'FixedRate' => 1,
+                    'URLPath' => 1,
+                    'Version' => 1,
+                    'ReservoirSize' => 1,
+                    'HTTPMethod' => 1,
+                    'Priority' => 1,
+                    'ResourceARN' => 1,
+                    'Host' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +117,7 @@ properties.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::XRay::AttributeMap>
+=head2 Attributes => XRay_AttributeMap
 
   Matches attributes derived from the request.
 

@@ -1,15 +1,41 @@
 
 package Paws::ElasticTranscoder::UpdatePipelineNotifications;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id', required => 1);
-  has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Notifications/;
+  has Id => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Notifications => (is => 'ro', isa => ElasticTranscoder_Notifications, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipelineNotifications');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}/notifications');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdatePipelineNotifications');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2012-09-25/pipelines/{Id}/notifications');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Notifications' => {
+                                    'class' => 'Paws::ElasticTranscoder::Notifications',
+                                    'type' => 'ElasticTranscoder_Notifications'
+                                  },
+               'Id' => {
+                         'type' => 'Str'
+                       }
+             },
+  'ParamInURI' => {
+                    'Id' => 'Id'
+                  },
+  'IsRequired' => {
+                    'Notifications' => 1,
+                    'Id' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +85,7 @@ notification settings.
 
 
 
-=head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
+=head2 B<REQUIRED> Notifications => ElasticTranscoder_Notifications
 
 The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.

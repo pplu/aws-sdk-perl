@@ -1,13 +1,51 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Thumbnails;
-  use Moose;
-  has AspectRatio => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str');
-  has Interval => (is => 'ro', isa => 'Str');
-  has MaxHeight => (is => 'ro', isa => 'Str');
-  has MaxWidth => (is => 'ro', isa => 'Str');
-  has PaddingPolicy => (is => 'ro', isa => 'Str');
-  has Resolution => (is => 'ro', isa => 'Str');
-  has SizingPolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has AspectRatio => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has Interval => (is => 'ro', isa => Str);
+  has MaxHeight => (is => 'ro', isa => Str);
+  has MaxWidth => (is => 'ro', isa => Str);
+  has PaddingPolicy => (is => 'ro', isa => Str);
+  has Resolution => (is => 'ro', isa => Str);
+  has SizingPolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxWidth' => {
+                               'type' => 'Str'
+                             },
+               'SizingPolicy' => {
+                                   'type' => 'Str'
+                                 },
+               'MaxHeight' => {
+                                'type' => 'Str'
+                              },
+               'Interval' => {
+                               'type' => 'Str'
+                             },
+               'PaddingPolicy' => {
+                                    'type' => 'Str'
+                                  },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'Resolution' => {
+                                 'type' => 'Str'
+                               },
+               'AspectRatio' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

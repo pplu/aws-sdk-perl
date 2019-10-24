@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SSM::MaintenanceWindowAutomationParameters;
-  use Moose;
-  has DocumentVersion => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::AutomationParameterMap');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw/SSM_AutomationParameterMap/;
+  has DocumentVersion => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => SSM_AutomationParameterMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Parameters' => {
+                                 'class' => 'Paws::SSM::AutomationParameterMap',
+                                 'type' => 'SSM_AutomationParameterMap'
+                               },
+               'DocumentVersion' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +63,7 @@ The parameters for an AUTOMATION task type.
   The version of an Automation document to use during task execution.
 
 
-=head2 Parameters => L<Paws::SSM::AutomationParameterMap>
+=head2 Parameters => SSM_AutomationParameterMap
 
   The parameters for the AUTOMATION task.
 

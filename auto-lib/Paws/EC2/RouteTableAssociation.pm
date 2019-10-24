@@ -6,7 +6,7 @@ package Paws::EC2::RouteTableAssociation;
   has RouteTableId => (is => 'ro', isa => Str);
   has SubnetId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'SubnetId' => {
@@ -30,8 +30,8 @@ package Paws::EC2::RouteTableAssociation;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

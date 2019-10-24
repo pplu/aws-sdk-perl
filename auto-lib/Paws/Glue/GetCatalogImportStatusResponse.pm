@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetCatalogImportStatusResponse;
-  use Moose;
-  has ImportStatus => (is => 'ro', isa => 'Paws::Glue::CatalogImportStatus');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw/Glue_CatalogImportStatus/;
+  has ImportStatus => (is => 'ro', isa => Glue_CatalogImportStatus);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ImportStatus' => {
+                                   'class' => 'Paws::Glue::CatalogImportStatus',
+                                   'type' => 'Glue_CatalogImportStatus'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Glue::GetCatalogImportStatusResponse
 =head1 ATTRIBUTES
 
 
-=head2 ImportStatus => L<Paws::Glue::CatalogImportStatus>
+=head2 ImportStatus => Glue_CatalogImportStatus
 
 The status of the specified catalog migration.
 

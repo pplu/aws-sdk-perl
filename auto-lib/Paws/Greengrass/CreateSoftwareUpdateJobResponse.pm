@@ -1,10 +1,30 @@
 
 package Paws::Greengrass::CreateSoftwareUpdateJobResponse;
-  use Moose;
-  has IotJobArn => (is => 'ro', isa => 'Str');
-  has IotJobId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw//;
+  has IotJobArn => (is => 'ro', isa => Str);
+  has IotJobId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IotJobId' => {
+                               'type' => 'Str'
+                             },
+               'IotJobArn' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

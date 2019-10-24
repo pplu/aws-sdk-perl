@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::Lightsail::RelationalDatabaseParameter;
-  use Moose;
-  has AllowedValues => (is => 'ro', isa => 'Str', request_name => 'allowedValues', traits => ['NameInRequest']);
-  has ApplyMethod => (is => 'ro', isa => 'Str', request_name => 'applyMethod', traits => ['NameInRequest']);
-  has ApplyType => (is => 'ro', isa => 'Str', request_name => 'applyType', traits => ['NameInRequest']);
-  has DataType => (is => 'ro', isa => 'Str', request_name => 'dataType', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
-  has IsModifiable => (is => 'ro', isa => 'Bool', request_name => 'isModifiable', traits => ['NameInRequest']);
-  has ParameterName => (is => 'ro', isa => 'Str', request_name => 'parameterName', traits => ['NameInRequest']);
-  has ParameterValue => (is => 'ro', isa => 'Str', request_name => 'parameterValue', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Lightsail::Types qw//;
+  has AllowedValues => (is => 'ro', isa => Str);
+  has ApplyMethod => (is => 'ro', isa => Str);
+  has ApplyType => (is => 'ro', isa => Str);
+  has DataType => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has IsModifiable => (is => 'ro', isa => Bool);
+  has ParameterName => (is => 'ro', isa => Str);
+  has ParameterValue => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowedValues' => {
+                                    'type' => 'Str'
+                                  },
+               'ApplyType' => {
+                                'type' => 'Str'
+                              },
+               'IsModifiable' => {
+                                   'type' => 'Bool'
+                                 },
+               'ParameterValue' => {
+                                     'type' => 'Str'
+                                   },
+               'ParameterName' => {
+                                    'type' => 'Str'
+                                  },
+               'ApplyMethod' => {
+                                  'type' => 'Str'
+                                },
+               'DataType' => {
+                               'type' => 'Str'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'AllowedValues' => 'allowedValues',
+                       'ApplyType' => 'applyType',
+                       'IsModifiable' => 'isModifiable',
+                       'ParameterValue' => 'parameterValue',
+                       'ParameterName' => 'parameterName',
+                       'ApplyMethod' => 'applyMethod',
+                       'DataType' => 'dataType',
+                       'Description' => 'description'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

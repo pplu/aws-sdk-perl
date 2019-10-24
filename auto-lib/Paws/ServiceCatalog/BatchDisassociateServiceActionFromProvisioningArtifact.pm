@@ -1,14 +1,37 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifact;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has ServiceActionAssociations => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ServiceActionAssociation]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ServiceActionAssociation/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has ServiceActionAssociations => (is => 'ro', isa => ArrayRef[ServiceCatalog_ServiceActionAssociation], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchDisassociateServiceActionFromProvisioningArtifact');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifactOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'BatchDisassociateServiceActionFromProvisioningArtifact');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::BatchDisassociateServiceActionFromProvisioningArtifactOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ServiceActionAssociations' => {
+                                                'class' => 'Paws::ServiceCatalog::ServiceActionAssociation',
+                                                'type' => 'ArrayRef[ServiceCatalog_ServiceActionAssociation]'
+                                              }
+             },
+  'IsRequired' => {
+                    'ServiceActionAssociations' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -78,7 +101,7 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> ServiceActionAssociations => ArrayRef[L<Paws::ServiceCatalog::ServiceActionAssociation>]
+=head2 B<REQUIRED> ServiceActionAssociations => ArrayRef[ServiceCatalog_ServiceActionAssociation]
 
 One or more associations, each consisting of the Action ID, the Product
 ID, and the Provisioning Artifact ID.

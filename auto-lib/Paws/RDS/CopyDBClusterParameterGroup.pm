@@ -1,16 +1,47 @@
+# Generated from callargs_class.tt
 
 package Paws::RDS::CopyDBClusterParameterGroup;
-  use Moose;
-  has SourceDBClusterParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
-  has TargetDBClusterParameterGroupDescription => (is => 'ro', isa => 'Str', required => 1);
-  has TargetDBClusterParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has SourceDBClusterParameterGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[RDS_Tag], predicate => 1);
+  has TargetDBClusterParameterGroupDescription => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TargetDBClusterParameterGroupIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBClusterParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBClusterParameterGroupResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBClusterParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CopyDBClusterParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::RDS::CopyDBClusterParameterGroupResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'CopyDBClusterParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceDBClusterParameterGroupIdentifier' => {
+                                                              'type' => 'Str'
+                                                            },
+               'TargetDBClusterParameterGroupIdentifier' => {
+                                                              'type' => 'Str'
+                                                            },
+               'TargetDBClusterParameterGroupDescription' => {
+                                                               'type' => 'Str'
+                                                             },
+               'Tags' => {
+                           'class' => 'Paws::RDS::Tag',
+                           'type' => 'ArrayRef[RDS_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'SourceDBClusterParameterGroupIdentifier' => 1,
+                    'TargetDBClusterParameterGroupIdentifier' => 1,
+                    'TargetDBClusterParameterGroupDescription' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -80,7 +111,7 @@ C<arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
+=head2 Tags => ArrayRef[RDS_Tag]
 
 
 

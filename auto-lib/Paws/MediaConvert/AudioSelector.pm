@@ -1,15 +1,72 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::AudioSelector;
-  use Moose;
-  has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
-  has DefaultSelection => (is => 'ro', isa => 'Str', request_name => 'defaultSelection', traits => ['NameInRequest']);
-  has ExternalAudioFileInput => (is => 'ro', isa => 'Str', request_name => 'externalAudioFileInput', traits => ['NameInRequest']);
-  has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
-  has Offset => (is => 'ro', isa => 'Int', request_name => 'offset', traits => ['NameInRequest']);
-  has Pids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'pids', traits => ['NameInRequest']);
-  has ProgramSelection => (is => 'ro', isa => 'Int', request_name => 'programSelection', traits => ['NameInRequest']);
-  has RemixSettings => (is => 'ro', isa => 'Paws::MediaConvert::RemixSettings', request_name => 'remixSettings', traits => ['NameInRequest']);
-  has SelectorType => (is => 'ro', isa => 'Str', request_name => 'selectorType', traits => ['NameInRequest']);
-  has Tracks => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'tracks', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::MediaConvert::Types qw/MediaConvert_RemixSettings/;
+  has CustomLanguageCode => (is => 'ro', isa => Str);
+  has DefaultSelection => (is => 'ro', isa => Str);
+  has ExternalAudioFileInput => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Offset => (is => 'ro', isa => Int);
+  has Pids => (is => 'ro', isa => ArrayRef[Int]);
+  has ProgramSelection => (is => 'ro', isa => Int);
+  has RemixSettings => (is => 'ro', isa => MediaConvert_RemixSettings);
+  has SelectorType => (is => 'ro', isa => Str);
+  has Tracks => (is => 'ro', isa => ArrayRef[Int]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RemixSettings' => {
+                                    'class' => 'Paws::MediaConvert::RemixSettings',
+                                    'type' => 'MediaConvert_RemixSettings'
+                                  },
+               'ProgramSelection' => {
+                                       'type' => 'Int'
+                                     },
+               'Offset' => {
+                             'type' => 'Int'
+                           },
+               'ExternalAudioFileInput' => {
+                                             'type' => 'Str'
+                                           },
+               'Pids' => {
+                           'type' => 'ArrayRef[Int]'
+                         },
+               'CustomLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'Tracks' => {
+                             'type' => 'ArrayRef[Int]'
+                           },
+               'DefaultSelection' => {
+                                       'type' => 'Str'
+                                     },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'SelectorType' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'RemixSettings' => 'remixSettings',
+                       'ProgramSelection' => 'programSelection',
+                       'Offset' => 'offset',
+                       'ExternalAudioFileInput' => 'externalAudioFileInput',
+                       'Pids' => 'pids',
+                       'CustomLanguageCode' => 'customLanguageCode',
+                       'Tracks' => 'tracks',
+                       'DefaultSelection' => 'defaultSelection',
+                       'LanguageCode' => 'languageCode',
+                       'SelectorType' => 'selectorType'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +152,7 @@ have the service ignore the program IDs and include all the programs in
 the track.
 
 
-=head2 RemixSettings => L<Paws::MediaConvert::RemixSettings>
+=head2 RemixSettings => MediaConvert_RemixSettings
 
   Use these settings to reorder the audio channels of one input to match
 those of another input. This allows you to combine the two files into a

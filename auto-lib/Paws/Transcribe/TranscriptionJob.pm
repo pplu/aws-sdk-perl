@@ -1,16 +1,66 @@
+# Generated from default/object.tt
 package Paws::Transcribe::TranscriptionJob;
-  use Moose;
-  has CompletionTime => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str');
-  has Media => (is => 'ro', isa => 'Paws::Transcribe::Media');
-  has MediaFormat => (is => 'ro', isa => 'Str');
-  has MediaSampleRateHertz => (is => 'ro', isa => 'Int');
-  has Settings => (is => 'ro', isa => 'Paws::Transcribe::Settings');
-  has Transcript => (is => 'ro', isa => 'Paws::Transcribe::Transcript');
-  has TranscriptionJobName => (is => 'ro', isa => 'Str');
-  has TranscriptionJobStatus => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Transcribe::Types qw/Transcribe_Transcript Transcribe_Media Transcribe_Settings/;
+  has CompletionTime => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LanguageCode => (is => 'ro', isa => Str);
+  has Media => (is => 'ro', isa => Transcribe_Media);
+  has MediaFormat => (is => 'ro', isa => Str);
+  has MediaSampleRateHertz => (is => 'ro', isa => Int);
+  has Settings => (is => 'ro', isa => Transcribe_Settings);
+  has Transcript => (is => 'ro', isa => Transcribe_Transcript);
+  has TranscriptionJobName => (is => 'ro', isa => Str);
+  has TranscriptionJobStatus => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Settings' => {
+                               'class' => 'Paws::Transcribe::Settings',
+                               'type' => 'Transcribe_Settings'
+                             },
+               'TranscriptionJobStatus' => {
+                                             'type' => 'Str'
+                                           },
+               'TranscriptionJobName' => {
+                                           'type' => 'Str'
+                                         },
+               'Media' => {
+                            'class' => 'Paws::Transcribe::Media',
+                            'type' => 'Transcribe_Media'
+                          },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'MediaFormat' => {
+                                  'type' => 'Str'
+                                },
+               'MediaSampleRateHertz' => {
+                                           'type' => 'Int'
+                                         },
+               'CompletionTime' => {
+                                     'type' => 'Str'
+                                   },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 },
+               'Transcript' => {
+                                 'class' => 'Paws::Transcribe::Transcript',
+                                 'type' => 'Transcribe_Transcript'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -118,7 +168,7 @@ in the I<Amazon Web Services General Reference>.
   The language code for the input speech.
 
 
-=head2 Media => L<Paws::Transcribe::Media>
+=head2 Media => Transcribe_Media
 
   An object that describes the input media for the transcription job.
 
@@ -133,7 +183,7 @@ in the I<Amazon Web Services General Reference>.
   The sample rate, in Hertz, of the audio track in the input media file.
 
 
-=head2 Settings => L<Paws::Transcribe::Settings>
+=head2 Settings => Transcribe_Settings
 
   Optional settings for the transcription job. Use these settings to turn
 on speaker recognition, to set the maximum number of speakers that
@@ -141,7 +191,7 @@ should be identified and to specify a custom vocabulary to use when
 processing the transcription job.
 
 
-=head2 Transcript => L<Paws::Transcribe::Transcript>
+=head2 Transcript => Transcribe_Transcript
 
   An object that describes the output of the transcription job.
 

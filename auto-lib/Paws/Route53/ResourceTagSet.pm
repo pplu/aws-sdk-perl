@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::Route53::ResourceTagSet;
-  use Moose;
-  has ResourceId => (is => 'ro', isa => 'Str');
-  has ResourceType => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Route53::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Route53::Types qw/Route53_Tag/;
+  has ResourceId => (is => 'ro', isa => Str);
+  has ResourceType => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[Route53_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceId' => {
+                                 'type' => 'Str'
+                               },
+               'ResourceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::Route53::Tag',
+                           'type' => 'ArrayRef[Route53_Tag]'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +88,7 @@ The resource type for hosted zones is C<hostedzone>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::Route53::Tag>]
+=head2 Tags => ArrayRef[Route53_Tag]
 
   The tags associated with the specified resource.
 

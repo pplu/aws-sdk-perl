@@ -1,11 +1,47 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::OutputDescription;
-  use Moose;
-  has DestinationSchema => (is => 'ro', isa => 'Paws::KinesisAnalytics::DestinationSchema');
-  has KinesisFirehoseOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisFirehoseOutputDescription');
-  has KinesisStreamsOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::KinesisStreamsOutputDescription');
-  has LambdaOutputDescription => (is => 'ro', isa => 'Paws::KinesisAnalytics::LambdaOutputDescription');
-  has Name => (is => 'ro', isa => 'Str');
-  has OutputId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_KinesisFirehoseOutputDescription KinesisAnalytics_LambdaOutputDescription KinesisAnalytics_KinesisStreamsOutputDescription KinesisAnalytics_DestinationSchema/;
+  has DestinationSchema => (is => 'ro', isa => KinesisAnalytics_DestinationSchema);
+  has KinesisFirehoseOutputDescription => (is => 'ro', isa => KinesisAnalytics_KinesisFirehoseOutputDescription);
+  has KinesisStreamsOutputDescription => (is => 'ro', isa => KinesisAnalytics_KinesisStreamsOutputDescription);
+  has LambdaOutputDescription => (is => 'ro', isa => KinesisAnalytics_LambdaOutputDescription);
+  has Name => (is => 'ro', isa => Str);
+  has OutputId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputId' => {
+                               'type' => 'Str'
+                             },
+               'LambdaOutputDescription' => {
+                                              'class' => 'Paws::KinesisAnalytics::LambdaOutputDescription',
+                                              'type' => 'KinesisAnalytics_LambdaOutputDescription'
+                                            },
+               'KinesisStreamsOutputDescription' => {
+                                                      'class' => 'Paws::KinesisAnalytics::KinesisStreamsOutputDescription',
+                                                      'type' => 'KinesisAnalytics_KinesisStreamsOutputDescription'
+                                                    },
+               'KinesisFirehoseOutputDescription' => {
+                                                       'class' => 'Paws::KinesisAnalytics::KinesisFirehoseOutputDescription',
+                                                       'type' => 'KinesisAnalytics_KinesisFirehoseOutputDescription'
+                                                     },
+               'DestinationSchema' => {
+                                        'class' => 'Paws::KinesisAnalytics::DestinationSchema',
+                                        'type' => 'KinesisAnalytics_DestinationSchema'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,24 +80,24 @@ Kinesis Firehose delivery stream.
 =head1 ATTRIBUTES
 
 
-=head2 DestinationSchema => L<Paws::KinesisAnalytics::DestinationSchema>
+=head2 DestinationSchema => KinesisAnalytics_DestinationSchema
 
   Data format used for writing data to the destination.
 
 
-=head2 KinesisFirehoseOutputDescription => L<Paws::KinesisAnalytics::KinesisFirehoseOutputDescription>
+=head2 KinesisFirehoseOutputDescription => KinesisAnalytics_KinesisFirehoseOutputDescription
 
   Describes the Amazon Kinesis Firehose delivery stream configured as the
 destination where output is written.
 
 
-=head2 KinesisStreamsOutputDescription => L<Paws::KinesisAnalytics::KinesisStreamsOutputDescription>
+=head2 KinesisStreamsOutputDescription => KinesisAnalytics_KinesisStreamsOutputDescription
 
   Describes Amazon Kinesis stream configured as the destination where
 output is written.
 
 
-=head2 LambdaOutputDescription => L<Paws::KinesisAnalytics::LambdaOutputDescription>
+=head2 LambdaOutputDescription => KinesisAnalytics_LambdaOutputDescription
 
   Describes the AWS Lambda function configured as the destination where
 output is written.

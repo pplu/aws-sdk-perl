@@ -1,12 +1,46 @@
 
 package Paws::Route53::ListTrafficPolicyVersionsResponse;
-  use Moose;
-  has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
-  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
-  has TrafficPolicies => (is => 'ro', isa => 'ArrayRef[Paws::Route53::TrafficPolicy]', required => 1);
-  has TrafficPolicyVersionMarker => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::Route53::Types qw/Route53_TrafficPolicy/;
+  has IsTruncated => (is => 'ro', isa => Bool, required => 1);
+  has MaxItems => (is => 'ro', isa => Str, required => 1);
+  has TrafficPolicies => (is => 'ro', isa => ArrayRef[Route53_TrafficPolicy], required => 1);
+  has TrafficPolicyVersionMarker => (is => 'ro', isa => Str, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IsTruncated' => {
+                                  'type' => 'Bool'
+                                },
+               'MaxItems' => {
+                               'type' => 'Str'
+                             },
+               'TrafficPolicies' => {
+                                      'class' => 'Paws::Route53::TrafficPolicy',
+                                      'type' => 'ArrayRef[Route53_TrafficPolicy]'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'TrafficPolicyVersionMarker' => {
+                                                 'type' => 'Str'
+                                               }
+             },
+  'IsRequired' => {
+                    'IsTruncated' => 1,
+                    'MaxItems' => 1,
+                    'TrafficPolicies' => 1,
+                    'TrafficPolicyVersionMarker' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +70,7 @@ response.
 
 
 
-=head2 B<REQUIRED> TrafficPolicies => ArrayRef[L<Paws::Route53::TrafficPolicy>]
+=head2 B<REQUIRED> TrafficPolicies => ArrayRef[Route53_TrafficPolicy]
 
 A list that contains one C<TrafficPolicy> element for each traffic
 policy version that is associated with the specified traffic policy.

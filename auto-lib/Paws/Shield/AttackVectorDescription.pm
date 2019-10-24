@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::Shield::AttackVectorDescription;
-  use Moose;
-  has VectorType => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Shield::Types qw//;
+  has VectorType => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VectorType' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'IsRequired' => {
+                    'VectorType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

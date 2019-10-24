@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::ElastiCache::ResetCacheParameterGroup;
-  use Moose;
-  has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ParameterNameValue]');
-  has ResetAllParameters => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Bool/;
+  use Paws::ElastiCache::Types qw/ElastiCache_ParameterNameValue/;
+  has CacheParameterGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ParameterNameValues => (is => 'ro', isa => ArrayRef[ElastiCache_ParameterNameValue], predicate => 1);
+  has ResetAllParameters => (is => 'ro', isa => Bool, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheParameterGroupNameMessage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroupResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetCacheParameterGroup');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ElastiCache::CacheParameterGroupNameMessage');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ResetCacheParameterGroupResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResetAllParameters' => {
+                                         'type' => 'Bool'
+                                       },
+               'CacheParameterGroupName' => {
+                                              'type' => 'Str'
+                                            },
+               'ParameterNameValues' => {
+                                          'class' => 'Paws::ElastiCache::ParameterNameValue',
+                                          'type' => 'ArrayRef[ElastiCache_ParameterNameValue]'
+                                        }
+             },
+  'IsRequired' => {
+                    'CacheParameterGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +85,7 @@ The name of the cache parameter group to reset.
 
 
 
-=head2 ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
+=head2 ParameterNameValues => ArrayRef[ElastiCache_ParameterNameValue]
 
 An array of parameter names to reset to their default values. If
 C<ResetAllParameters> is C<true>, do not use C<ParameterNameValues>. If

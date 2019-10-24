@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::JobAlbumArt;
-  use Moose;
-  has Artwork => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Artwork]');
-  has MergePolicy => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::ElasticTranscoder::Types qw/ElasticTranscoder_Artwork/;
+  has Artwork => (is => 'ro', isa => ArrayRef[ElasticTranscoder_Artwork]);
+  has MergePolicy => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Artwork' => {
+                              'class' => 'Paws::ElasticTranscoder::Artwork',
+                              'type' => 'ArrayRef[ElasticTranscoder_Artwork]'
+                            },
+               'MergePolicy' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ The .jpg or .png file associated with an audio file.
 =head1 ATTRIBUTES
 
 
-=head2 Artwork => ArrayRef[L<Paws::ElasticTranscoder::Artwork>]
+=head2 Artwork => ArrayRef[ElasticTranscoder_Artwork]
 
   The file to be used as album art. There can be multiple artworks
 associated with an audio file, to a maximum of 20. Valid formats are

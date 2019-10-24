@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::SSM::ResolvedTargets;
-  use Moose;
-  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Truncated => (is => 'ro', isa => 'Bool');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Bool/;
+  use Paws::SSM::Types qw//;
+  has ParameterValues => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Truncated => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Truncated' => {
+                                'type' => 'Bool'
+                              },
+               'ParameterValues' => {
+                                      'type' => 'ArrayRef[Str|Undef]'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

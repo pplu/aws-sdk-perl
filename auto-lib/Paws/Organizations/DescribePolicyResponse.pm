@@ -1,9 +1,28 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Organizations::DescribePolicyResponse;
-  use Moose;
-  has Policy => (is => 'ro', isa => 'Paws::Organizations::Policy');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Organizations::Types qw/Organizations_Policy/;
+  has Policy => (is => 'ro', isa => Organizations_Policy);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Policy' => {
+                             'class' => 'Paws::Organizations::Policy',
+                             'type' => 'Organizations_Policy'
+                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +33,7 @@ Paws::Organizations::DescribePolicyResponse
 =head1 ATTRIBUTES
 
 
-=head2 Policy => L<Paws::Organizations::Policy>
+=head2 Policy => Organizations_Policy
 
 A structure that contains details about the specified policy.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::Template;
   use Moo;
   use Types::Standard qw/Str/;
@@ -22,7 +23,10 @@ package Paws::SES::Template;
                'HtmlPart' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'TemplateName' => 1
+                  }
 }
 ;
     return $Params_map;

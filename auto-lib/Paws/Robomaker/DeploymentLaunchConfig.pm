@@ -1,10 +1,51 @@
+# Generated from default/object.tt
 package Paws::Robomaker::DeploymentLaunchConfig;
-  use Moose;
-  has EnvironmentVariables => (is => 'ro', isa => 'Paws::Robomaker::EnvironmentVariableMap', request_name => 'environmentVariables', traits => ['NameInRequest']);
-  has LaunchFile => (is => 'ro', isa => 'Str', request_name => 'launchFile', traits => ['NameInRequest'], required => 1);
-  has PackageName => (is => 'ro', isa => 'Str', request_name => 'packageName', traits => ['NameInRequest'], required => 1);
-  has PostLaunchFile => (is => 'ro', isa => 'Str', request_name => 'postLaunchFile', traits => ['NameInRequest']);
-  has PreLaunchFile => (is => 'ro', isa => 'Str', request_name => 'preLaunchFile', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw/Robomaker_EnvironmentVariableMap/;
+  has EnvironmentVariables => (is => 'ro', isa => Robomaker_EnvironmentVariableMap);
+  has LaunchFile => (is => 'ro', isa => Str, required => 1);
+  has PackageName => (is => 'ro', isa => Str, required => 1);
+  has PostLaunchFile => (is => 'ro', isa => Str);
+  has PreLaunchFile => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchFile' => {
+                                 'type' => 'Str'
+                               },
+               'EnvironmentVariables' => {
+                                           'class' => 'Paws::Robomaker::EnvironmentVariableMap',
+                                           'type' => 'Robomaker_EnvironmentVariableMap'
+                                         },
+               'PostLaunchFile' => {
+                                     'type' => 'Str'
+                                   },
+               'PreLaunchFile' => {
+                                    'type' => 'Str'
+                                  },
+               'PackageName' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'LaunchFile' => 'launchFile',
+                       'EnvironmentVariables' => 'environmentVariables',
+                       'PostLaunchFile' => 'postLaunchFile',
+                       'PreLaunchFile' => 'preLaunchFile',
+                       'PackageName' => 'packageName'
+                     },
+  'IsRequired' => {
+                    'LaunchFile' => 1,
+                    'PackageName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +81,7 @@ Configuration information for a deployment launch.
 =head1 ATTRIBUTES
 
 
-=head2 EnvironmentVariables => L<Paws::Robomaker::EnvironmentVariableMap>
+=head2 EnvironmentVariables => Robomaker_EnvironmentVariableMap
 
   An array of key/value pairs specifying environment variables for the
 robot application

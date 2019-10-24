@@ -1,15 +1,41 @@
 
 package Paws::Pinpoint::PutEvents;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'application-id', required => 1);
-  has EventsRequest => (is => 'ro', isa => 'Paws::Pinpoint::EventsRequest', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_EventsRequest/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EventsRequest => (is => 'ro', isa => Pinpoint_EventsRequest, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'EventsRequest');
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutEvents');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/apps/{application-id}/events');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Pinpoint::PutEventsResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutEvents');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/apps/{application-id}/events');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Pinpoint::PutEventsResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'EventsRequest' => {
+                                    'class' => 'Paws::Pinpoint::EventsRequest',
+                                    'type' => 'Pinpoint_EventsRequest'
+                                  }
+             },
+  'ParamInURI' => {
+                    'ApplicationId' => 'application-id'
+                  },
+  'IsRequired' => {
+                    'ApplicationId' => 1,
+                    'EventsRequest' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -55,19 +81,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Location       => {
                 City       => 'My__string',
                 Country    => 'My__string',
-                Latitude   => 1,              # OPTIONAL
-                Longitude  => 1,              # OPTIONAL
+                Latitude   => 1,
+                Longitude  => 1,
                 PostalCode => 'My__string',
                 Region     => 'My__string',
               },    # OPTIONAL
-              Metrics => {
-                'My__string' => 1,    # , value: OPTIONAL
-              },    # OPTIONAL
+              Metrics   => { 'My__string' => 1, },    # OPTIONAL
               OptOut    => 'My__string',
               RequestId => 'My__string',
               User      => {
                 UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-                ,    # OPTIONAL
+                ,                                     # OPTIONAL
                 UserId => 'My__string',
               },    # OPTIONAL
             },
@@ -80,14 +104,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 AppVersionCode => 'My__string',
                 Attributes     => { 'My__string' => 'My__string', },  # OPTIONAL
                 ClientSdkVersion => 'My__string',
-                Metrics          => {
-                  'My__string' => 1,    # , value: OPTIONAL
-                },    # OPTIONAL
-                SdkName => 'My__string',
-                Session => {
+                Metrics          => { 'My__string' => 1, },           # OPTIONAL
+                SdkName          => 'My__string',
+                Session          => {
                   Id             => 'My__string',
                   StartTimestamp => 'My__string',
-                  Duration       => 1,              # OPTIONAL
+                  Duration       => 1,                                # OPTIONAL
                   StopTimestamp  => 'My__string',
                 },    # OPTIONAL
               },
@@ -118,7 +140,7 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 
 
-=head2 B<REQUIRED> EventsRequest => L<Paws::Pinpoint::EventsRequest>
+=head2 B<REQUIRED> EventsRequest => Pinpoint_EventsRequest
 
 
 

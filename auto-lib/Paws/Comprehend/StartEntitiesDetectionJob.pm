@@ -1,21 +1,70 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Comprehend::StartEntitiesDetectionJob;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str');
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
-  has EntityRecognizerArn => (is => 'ro', isa => 'Str');
-  has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig', required => 1);
-  has JobName => (is => 'ro', isa => 'Str');
-  has LanguageCode => (is => 'ro', isa => 'Str', required => 1);
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig', required => 1);
-  has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw/Comprehend_OutputDataConfig Comprehend_VpcConfig Comprehend_InputDataConfig/;
+  has ClientRequestToken => (is => 'ro', isa => Str, predicate => 1);
+  has DataAccessRoleArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has EntityRecognizerArn => (is => 'ro', isa => Str, predicate => 1);
+  has InputDataConfig => (is => 'ro', isa => Comprehend_InputDataConfig, required => 1, predicate => 1);
+  has JobName => (is => 'ro', isa => Str, predicate => 1);
+  has LanguageCode => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has OutputDataConfig => (is => 'ro', isa => Comprehend_OutputDataConfig, required => 1, predicate => 1);
+  has VolumeKmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has VpcConfig => (is => 'ro', isa => Comprehend_VpcConfig, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartEntitiesDetectionJob');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Comprehend::StartEntitiesDetectionJobResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartEntitiesDetectionJob');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Comprehend::StartEntitiesDetectionJobResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InputDataConfig' => {
+                                      'class' => 'Paws::Comprehend::InputDataConfig',
+                                      'type' => 'Comprehend_InputDataConfig'
+                                    },
+               'OutputDataConfig' => {
+                                       'class' => 'Paws::Comprehend::OutputDataConfig',
+                                       'type' => 'Comprehend_OutputDataConfig'
+                                     },
+               'JobName' => {
+                              'type' => 'Str'
+                            },
+               'VolumeKmsKeyId' => {
+                                     'type' => 'Str'
+                                   },
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'DataAccessRoleArn' => {
+                                        'type' => 'Str'
+                                      },
+               'EntityRecognizerArn' => {
+                                          'type' => 'Str'
+                                        },
+               'VpcConfig' => {
+                                'class' => 'Paws::Comprehend::VpcConfig',
+                                'type' => 'Comprehend_VpcConfig'
+                              },
+               'LanguageCode' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'InputDataConfig' => 1,
+                    'DataAccessRoleArn' => 1,
+                    'LanguageCode' => 1,
+                    'OutputDataConfig' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +149,7 @@ optional and is only used for a custom entity recognition job.
 
 
 
-=head2 B<REQUIRED> InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+=head2 B<REQUIRED> InputDataConfig => Comprehend_InputDataConfig
 
 Specifies the format and location of the input data for the job.
 
@@ -123,7 +172,7 @@ for training the model is used instead.
 
 Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
 
-=head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+=head2 B<REQUIRED> OutputDataConfig => Comprehend_OutputDataConfig
 
 Specifies where to send the output files.
 
@@ -152,7 +201,7 @@ C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
 
 
 
-=head2 VpcConfig => L<Paws::Comprehend::VpcConfig>
+=head2 VpcConfig => Comprehend_VpcConfig
 
 Configuration parameters for an optional private Virtual Private Cloud
 (VPC) containing the resources you are using for your entity detection

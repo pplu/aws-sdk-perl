@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::SchemaFacet;
-  use Moose;
-  has FacetName => (is => 'ro', isa => 'Str');
-  has SchemaArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has FacetName => (is => 'ro', isa => Str);
+  has SchemaArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SchemaArn' => {
+                                'type' => 'Str'
+                              },
+               'FacetName' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

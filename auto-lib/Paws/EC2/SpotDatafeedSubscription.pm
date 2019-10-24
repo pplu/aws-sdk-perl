@@ -7,7 +7,7 @@ package Paws::EC2::SpotDatafeedSubscription;
   has Prefix => (is => 'ro', isa => Str);
   has State => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Prefix' => {
@@ -36,8 +36,8 @@ package Paws::EC2::SpotDatafeedSubscription;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

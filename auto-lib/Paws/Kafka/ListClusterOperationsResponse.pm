@@ -1,10 +1,35 @@
 
 package Paws::Kafka::ListClusterOperationsResponse;
-  use Moose;
-  has ClusterOperationInfoList => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::ClusterOperationInfo]', traits => ['NameInRequest'], request_name => 'clusterOperationInfoList');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Kafka::Types qw/Kafka_ClusterOperationInfo/;
+  has ClusterOperationInfoList => (is => 'ro', isa => ArrayRef[Kafka_ClusterOperationInfo]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterOperationInfoList' => {
+                                               'class' => 'Paws::Kafka::ClusterOperationInfo',
+                                               'type' => 'ArrayRef[Kafka_ClusterOperationInfo]'
+                                             },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ClusterOperationInfoList' => 'clusterOperationInfoList',
+                       'NextToken' => 'nextToken'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Kafka::ListClusterOperationsResponse
 =head1 ATTRIBUTES
 
 
-=head2 ClusterOperationInfoList => ArrayRef[L<Paws::Kafka::ClusterOperationInfo>]
+=head2 ClusterOperationInfoList => ArrayRef[Kafka_ClusterOperationInfo]
 
 An array of cluster operation information objects.
 

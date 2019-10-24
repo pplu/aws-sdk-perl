@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::SDB::DeletableItem;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]', request_name => 'Attribute', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'ItemName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SDB::Types qw/SDB_DeletableAttribute/;
+  has Attributes => (is => 'ro', isa => ArrayRef[SDB_DeletableAttribute]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Attributes' => {
+                                 'class' => 'Paws::SDB::DeletableAttribute',
+                                 'type' => 'ArrayRef[SDB_DeletableAttribute]'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Attributes' => 'Attribute',
+                       'Name' => 'ItemName'
+                     },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +65,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]
+=head2 Attributes => ArrayRef[SDB_DeletableAttribute]
 
   
 

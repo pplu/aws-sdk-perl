@@ -1,9 +1,26 @@
 
 package Paws::CloudDirectory::GetTypedLinkFacetInformationResponse;
-  use Moose;
-  has IdentityAttributeOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudDirectory::Types qw//;
+  has IdentityAttributeOrder => (is => 'ro', isa => ArrayRef[Str|Undef]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'IdentityAttributeOrder' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

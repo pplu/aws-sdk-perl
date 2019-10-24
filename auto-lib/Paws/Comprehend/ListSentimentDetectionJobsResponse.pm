@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Comprehend::ListSentimentDetectionJobsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SentimentDetectionJobPropertiesList => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::SentimentDetectionJobProperties]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Comprehend::Types qw/Comprehend_SentimentDetectionJobProperties/;
+  has NextToken => (is => 'ro', isa => Str);
+  has SentimentDetectionJobPropertiesList => (is => 'ro', isa => ArrayRef[Comprehend_SentimentDetectionJobProperties]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SentimentDetectionJobPropertiesList' => {
+                                                          'class' => 'Paws::Comprehend::SentimentDetectionJobProperties',
+                                                          'type' => 'ArrayRef[Comprehend_SentimentDetectionJobProperties]'
+                                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -20,7 +42,7 @@ Paws::Comprehend::ListSentimentDetectionJobsResponse
 Identifies the next page of results to return.
 
 
-=head2 SentimentDetectionJobPropertiesList => ArrayRef[L<Paws::Comprehend::SentimentDetectionJobProperties>]
+=head2 SentimentDetectionJobPropertiesList => ArrayRef[Comprehend_SentimentDetectionJobProperties]
 
 A list containing the properties of each job that is returned.
 

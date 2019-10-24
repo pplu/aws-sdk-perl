@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::Greengrass::Function;
-  use Moose;
-  has FunctionArn => (is => 'ro', isa => 'Str');
-  has FunctionConfiguration => (is => 'ro', isa => 'Paws::Greengrass::FunctionConfiguration');
-  has Id => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Greengrass::Types qw/Greengrass_FunctionConfiguration/;
+  has FunctionArn => (is => 'ro', isa => Str);
+  has FunctionConfiguration => (is => 'ro', isa => Greengrass_FunctionConfiguration);
+  has Id => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'FunctionArn' => {
+                                  'type' => 'Str'
+                                },
+               'FunctionConfiguration' => {
+                                            'class' => 'Paws::Greengrass::FunctionConfiguration',
+                                            'type' => 'Greengrass_FunctionConfiguration'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +67,7 @@ Information about a Lambda function.
   The ARN of the Lambda function.
 
 
-=head2 FunctionConfiguration => L<Paws::Greengrass::FunctionConfiguration>
+=head2 FunctionConfiguration => Greengrass_FunctionConfiguration
 
   The configuration of the Lambda function.
 

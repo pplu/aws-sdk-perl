@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::ListRegexMatchSetsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has RegexMatchSets => (is => 'ro', isa => 'ArrayRef[Paws::WAF::RegexMatchSetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAF::Types qw/WAF_RegexMatchSetSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has RegexMatchSets => (is => 'ro', isa => ArrayRef[WAF_RegexMatchSetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               },
+               'RegexMatchSets' => {
+                                     'class' => 'Paws::WAF::RegexMatchSetSummary',
+                                     'type' => 'ArrayRef[WAF_RegexMatchSetSummary]'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,7 +46,7 @@ another C<ListRegexMatchSets> request, and specify the C<NextMarker>
 value from the response in the C<NextMarker> value in the next request.
 
 
-=head2 RegexMatchSets => ArrayRef[L<Paws::WAF::RegexMatchSetSummary>]
+=head2 RegexMatchSets => ArrayRef[WAF_RegexMatchSetSummary]
 
 An array of RegexMatchSetSummary objects.
 

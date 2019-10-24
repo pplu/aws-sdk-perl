@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::AppMesh::DnsServiceDiscovery;
-  use Moose;
-  has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw//;
+  has Hostname => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Hostname' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Hostname' => 'hostname'
+                     },
+  'IsRequired' => {
+                    'Hostname' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::MQ::CreateConfigurationInput;
-  use Moose;
-  has EngineType => (is => 'ro', isa => 'Str', request_name => 'engineType', traits => ['NameInRequest']);
-  has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::MQ::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw/MQ___mapOf__string/;
+  has EngineType => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => MQ___mapOf__string);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::MQ::__mapOf__string',
+                           'type' => 'MQ___mapOf__string'
+                         },
+               'EngineType' => {
+                                 'type' => 'Str'
+                               },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'EngineVersion' => 'engineVersion',
+                       'Tags' => 'tags',
+                       'EngineType' => 'engineType',
+                       'Name' => 'name'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -60,7 +93,7 @@ alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 1-150 characters long.
 
 
-=head2 Tags => L<Paws::MQ::__mapOf__string>
+=head2 Tags => MQ___mapOf__string
 
   Create tags when creating the configuration.
 

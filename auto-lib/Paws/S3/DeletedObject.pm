@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::S3::DeletedObject;
   use Moo;
   use Types::Standard qw/Bool Str/;

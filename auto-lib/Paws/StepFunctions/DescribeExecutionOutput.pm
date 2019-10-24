@@ -1,16 +1,72 @@
+# Generated from json/callresult_class.tt
 
 package Paws::StepFunctions::DescribeExecutionOutput;
-  use Moose;
-  has ExecutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionArn' , required => 1);
-  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' , required => 1);
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
-  has Output => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'output' );
-  has StartDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startDate' , required => 1);
-  has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
-  has StopDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stopDate' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::StepFunctions::Types qw//;
+  has ExecutionArn => (is => 'ro', isa => Str, required => 1);
+  has Input => (is => 'ro', isa => Str, required => 1);
+  has Name => (is => 'ro', isa => Str);
+  has Output => (is => 'ro', isa => Str);
+  has StartDate => (is => 'ro', isa => Str, required => 1);
+  has StateMachineArn => (is => 'ro', isa => Str, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has StopDate => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'StateMachineArn' => {
+                                      'type' => 'Str'
+                                    },
+               'ExecutionArn' => {
+                                   'type' => 'Str'
+                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Output' => {
+                             'type' => 'Str'
+                           },
+               'StopDate' => {
+                               'type' => 'Str'
+                             },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'StartDate' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'Status' => 'status',
+                       'StateMachineArn' => 'stateMachineArn',
+                       'ExecutionArn' => 'executionArn',
+                       'Output' => 'output',
+                       'Input' => 'input',
+                       'StopDate' => 'stopDate',
+                       'Name' => 'name',
+                       'StartDate' => 'startDate'
+                     },
+  'IsRequired' => {
+                    'ExecutionArn' => 1,
+                    'Status' => 1,
+                    'Input' => 1,
+                    'StateMachineArn' => 1,
+                    'StartDate' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

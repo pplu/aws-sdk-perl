@@ -1,17 +1,80 @@
+# Generated from default/object.tt
 package Paws::SageMaker::LabelingJobSummary;
-  use Moose;
-  has AnnotationConsolidationLambdaArn => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has InputConfig => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobInputConfig');
-  has LabelCounters => (is => 'ro', isa => 'Paws::SageMaker::LabelCounters', required => 1);
-  has LabelingJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has LabelingJobName => (is => 'ro', isa => 'Str', required => 1);
-  has LabelingJobOutput => (is => 'ro', isa => 'Paws::SageMaker::LabelingJobOutput');
-  has LabelingJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
-  has PreHumanTaskLambdaArn => (is => 'ro', isa => 'Str', required => 1);
-  has WorkteamArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw/SageMaker_LabelingJobInputConfig SageMaker_LabelingJobOutput SageMaker_LabelCounters/;
+  has AnnotationConsolidationLambdaArn => (is => 'ro', isa => Str);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has FailureReason => (is => 'ro', isa => Str);
+  has InputConfig => (is => 'ro', isa => SageMaker_LabelingJobInputConfig);
+  has LabelCounters => (is => 'ro', isa => SageMaker_LabelCounters, required => 1);
+  has LabelingJobArn => (is => 'ro', isa => Str, required => 1);
+  has LabelingJobName => (is => 'ro', isa => Str, required => 1);
+  has LabelingJobOutput => (is => 'ro', isa => SageMaker_LabelingJobOutput);
+  has LabelingJobStatus => (is => 'ro', isa => Str, required => 1);
+  has LastModifiedTime => (is => 'ro', isa => Str, required => 1);
+  has PreHumanTaskLambdaArn => (is => 'ro', isa => Str, required => 1);
+  has WorkteamArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AnnotationConsolidationLambdaArn' => {
+                                                       'type' => 'Str'
+                                                     },
+               'LabelingJobStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'LabelingJobOutput' => {
+                                        'class' => 'Paws::SageMaker::LabelingJobOutput',
+                                        'type' => 'SageMaker_LabelingJobOutput'
+                                      },
+               'WorkteamArn' => {
+                                  'type' => 'Str'
+                                },
+               'PreHumanTaskLambdaArn' => {
+                                            'type' => 'Str'
+                                          },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'LabelCounters' => {
+                                    'class' => 'Paws::SageMaker::LabelCounters',
+                                    'type' => 'SageMaker_LabelCounters'
+                                  },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'InputConfig' => {
+                                  'class' => 'Paws::SageMaker::LabelingJobInputConfig',
+                                  'type' => 'SageMaker_LabelingJobInputConfig'
+                                },
+               'LabelingJobArn' => {
+                                     'type' => 'Str'
+                                   },
+               'LabelingJobName' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'LabelingJobStatus' => 1,
+                    'WorkteamArn' => 1,
+                    'PreHumanTaskLambdaArn' => 1,
+                    'LabelCounters' => 1,
+                    'LastModifiedTime' => 1,
+                    'LabelingJobArn' => 1,
+                    'LabelingJobName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,12 +129,12 @@ data object. For more information, see Annotation Consolidation
 description of the error.
 
 
-=head2 InputConfig => L<Paws::SageMaker::LabelingJobInputConfig>
+=head2 InputConfig => SageMaker_LabelingJobInputConfig
 
   Input configuration for the labeling job.
 
 
-=head2 B<REQUIRED> LabelCounters => L<Paws::SageMaker::LabelCounters>
+=head2 B<REQUIRED> LabelCounters => SageMaker_LabelCounters
 
   Counts showing the progress of the labeling job.
 
@@ -87,7 +150,7 @@ created.
   The name of the labeling job.
 
 
-=head2 LabelingJobOutput => L<Paws::SageMaker::LabelingJobOutput>
+=head2 LabelingJobOutput => SageMaker_LabelingJobOutput
 
   The location of the output produced by the labeling job.
 

@@ -1,7 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisVideoArchivedMedia::FragmentSelector;
-  use Moose;
-  has FragmentSelectorType => (is => 'ro', isa => 'Str', required => 1);
-  has TimestampRange => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::TimestampRange', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_TimestampRange/;
+  has FragmentSelectorType => (is => 'ro', isa => Str, required => 1);
+  has TimestampRange => (is => 'ro', isa => KinesisVideoArchivedMedia_TimestampRange, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimestampRange' => {
+                                     'class' => 'Paws::KinesisVideoArchivedMedia::TimestampRange',
+                                     'type' => 'KinesisVideoArchivedMedia_TimestampRange'
+                                   },
+               'FragmentSelectorType' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'TimestampRange' => 1,
+                    'FragmentSelectorType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +97,7 @@ A fragment selector range with a start time of 00:00:01 and end time of
   The origin of the timestamps to use (Server or Producer).
 
 
-=head2 B<REQUIRED> TimestampRange => L<Paws::KinesisVideoArchivedMedia::TimestampRange>
+=head2 B<REQUIRED> TimestampRange => KinesisVideoArchivedMedia_TimestampRange
 
   The range of timestamps to return.
 

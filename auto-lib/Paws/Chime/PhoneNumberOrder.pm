@@ -1,11 +1,44 @@
+# Generated from default/object.tt
 package Paws::Chime::PhoneNumberOrder;
-  use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has OrderedPhoneNumbers => (is => 'ro', isa => 'ArrayRef[Paws::Chime::OrderedPhoneNumber]');
-  has PhoneNumberOrderId => (is => 'ro', isa => 'Str');
-  has ProductType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Chime::Types qw/Chime_OrderedPhoneNumber/;
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has OrderedPhoneNumbers => (is => 'ro', isa => ArrayRef[Chime_OrderedPhoneNumber]);
+  has PhoneNumberOrderId => (is => 'ro', isa => Str);
+  has ProductType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PhoneNumberOrderId' => {
+                                         'type' => 'Str'
+                                       },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'OrderedPhoneNumbers' => {
+                                          'class' => 'Paws::Chime::OrderedPhoneNumber',
+                                          'type' => 'ArrayRef[Chime_OrderedPhoneNumber]'
+                                        },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +79,7 @@ The details of a phone number order created for Amazon Chime.
   The phone number order creation timestamp, in ISO 8601 format.
 
 
-=head2 OrderedPhoneNumbers => ArrayRef[L<Paws::Chime::OrderedPhoneNumber>]
+=head2 OrderedPhoneNumbers => ArrayRef[Chime_OrderedPhoneNumber]
 
   The ordered phone number details, such as the phone number in E.164
 format and the phone number status.

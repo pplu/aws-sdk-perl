@@ -8,7 +8,7 @@ package Paws::EC2::DescribePublicIpv4PoolsResult;
   has PublicIpv4Pools => (is => 'ro', isa => ArrayRef[EC2_PublicIpv4Pool]);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'NextToken' => {
@@ -28,8 +28,8 @@ package Paws::EC2::DescribePublicIpv4PoolsResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

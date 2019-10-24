@@ -1,8 +1,34 @@
+# Generated from default/object.tt
 package Paws::EMR::SimpleScalingPolicyConfiguration;
-  use Moose;
-  has AdjustmentType => (is => 'ro', isa => 'Str');
-  has CoolDown => (is => 'ro', isa => 'Int');
-  has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::EMR::Types qw//;
+  has AdjustmentType => (is => 'ro', isa => Str);
+  has CoolDown => (is => 'ro', isa => Int);
+  has ScalingAdjustment => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CoolDown' => {
+                               'type' => 'Int'
+                             },
+               'AdjustmentType' => {
+                                     'type' => 'Str'
+                                   },
+               'ScalingAdjustment' => {
+                                        'type' => 'Int'
+                                      }
+             },
+  'IsRequired' => {
+                    'ScalingAdjustment' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

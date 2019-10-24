@@ -1,6 +1,29 @@
+# Generated from default/object.tt
 package Paws::MediaLive::FixedModeScheduleActionStartSettings;
-  use Moose;
-  has Time => (is => 'ro', isa => 'Str', request_name => 'time', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaLive::Types qw//;
+  has Time => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Time' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Time' => 'time'
+                     },
+  'IsRequired' => {
+                    'Time' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

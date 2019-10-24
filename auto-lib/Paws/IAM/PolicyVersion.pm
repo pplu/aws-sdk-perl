@@ -1,9 +1,14 @@
+# Generated from default/object.tt
 package Paws::IAM::PolicyVersion;
   use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
   use Types::Standard qw/Str Bool/;
   use Paws::IAM::Types qw//;
   has CreateDate => (is => 'ro', isa => Str);
   has Document => (is => 'ro', isa => Str);
+  has Policy => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json(URL::Encode::url_decode($self->Document)); });
   has IsDefaultVersion => (is => 'ro', isa => Bool);
   has VersionId => (is => 'ro', isa => Str);
 

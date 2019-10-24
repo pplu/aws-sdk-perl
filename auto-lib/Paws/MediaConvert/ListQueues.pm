@@ -1,17 +1,47 @@
 
 package Paws::MediaConvert::ListQueues;
-  use Moose;
-  has ListBy => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'listBy');
-  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
-  has Order => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'order');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has ListBy => (is => 'ro', isa => Str, predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has Order => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueues');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2017-08-29/queues');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConvert::ListQueuesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListQueues');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/2017-08-29/queues');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConvert::ListQueuesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Order' => {
+                            'type' => 'Str'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'ListBy' => {
+                             'type' => 'Str'
+                           },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             },
+  'ParamInQuery' => {
+                      'Order' => 'order',
+                      'NextToken' => 'nextToken',
+                      'ListBy' => 'listBy',
+                      'MaxResults' => 'maxResults'
+                    }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

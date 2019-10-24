@@ -1,12 +1,39 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Glue::GetResourcePolicyResponse;
-  use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str');
-  has PolicyHash => (is => 'ro', isa => 'Str');
-  has PolicyInJson => (is => 'ro', isa => 'Str');
-  has UpdateTime => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has CreateTime => (is => 'ro', isa => Str);
+  has PolicyHash => (is => 'ro', isa => Str);
+  has PolicyInJson => (is => 'ro', isa => Str);
+  has UpdateTime => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyInJson' => {
+                                   'type' => 'Str'
+                                 },
+               'CreateTime' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'UpdateTime' => {
+                                 'type' => 'Str'
+                               },
+               'PolicyHash' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 

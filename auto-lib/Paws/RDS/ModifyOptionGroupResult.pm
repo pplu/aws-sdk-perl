@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::ModifyOptionGroupResult;
-  use Moose;
-  has OptionGroup => (is => 'ro', isa => 'Paws::RDS::OptionGroup');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RDS::Types qw/RDS_OptionGroup/;
+  has OptionGroup => (is => 'ro', isa => RDS_OptionGroup);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OptionGroup' => {
+                                  'class' => 'Paws::RDS::OptionGroup',
+                                  'type' => 'RDS_OptionGroup'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::RDS::ModifyOptionGroupResult
 =head1 ATTRIBUTES
 
 
-=head2 OptionGroup => L<Paws::RDS::OptionGroup>
+=head2 OptionGroup => RDS_OptionGroup
 
 
 

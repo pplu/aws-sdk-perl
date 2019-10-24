@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::StorageGateway::ListTagsForResource;
-  use Moose;
-  has Limit => (is => 'ro', isa => 'Int');
-  has Marker => (is => 'ro', isa => 'Str');
-  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::StorageGateway::Types qw//;
+  has Limit => (is => 'ro', isa => Int, predicate => 1);
+  has Marker => (is => 'ro', isa => Str, predicate => 1);
+  has ResourceARN => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::ListTagsForResourceOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ListTagsForResource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::StorageGateway::ListTagsForResourceOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Limit' => {
+                            'type' => 'Int'
+                          },
+               'ResourceARN' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'ResourceARN' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

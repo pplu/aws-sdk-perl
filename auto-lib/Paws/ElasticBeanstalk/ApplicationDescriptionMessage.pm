@@ -1,9 +1,28 @@
+# Generated from callresult_class.tt
 
 package Paws::ElasticBeanstalk::ApplicationDescriptionMessage;
-  use Moose;
-  has Application => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationDescription');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElasticBeanstalk::Types qw/ElasticBeanstalk_ApplicationDescription/;
+  has Application => (is => 'ro', isa => ElasticBeanstalk_ApplicationDescription);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Application' => {
+                                  'class' => 'Paws::ElasticBeanstalk::ApplicationDescription',
+                                  'type' => 'ElasticBeanstalk_ApplicationDescription'
+                                },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +34,7 @@ Paws::ElasticBeanstalk::ApplicationDescriptionMessage
 =head1 ATTRIBUTES
 
 
-=head2 Application => L<Paws::ElasticBeanstalk::ApplicationDescription>
+=head2 Application => ElasticBeanstalk_ApplicationDescription
 
 The ApplicationDescription of the application.
 

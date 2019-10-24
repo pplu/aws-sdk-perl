@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateOpenIDConnectProviderThumbprint;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UpdateOpenIDConnectProviderThumbprint;
                'ThumbprintList' => {
                                      'type' => 'ArrayRef[Str|Undef]'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'OpenIDConnectProviderArn' => 1,
+                    'ThumbprintList' => 1
+                  }
 }
 ;
     return $Params_map;

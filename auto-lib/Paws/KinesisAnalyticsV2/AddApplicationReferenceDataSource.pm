@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::KinesisAnalyticsV2::AddApplicationReferenceDataSource;
-  use Moose;
-  has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
-  has ReferenceDataSource => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ReferenceDataSource', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_ReferenceDataSource/;
+  has ApplicationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CurrentApplicationVersionId => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has ReferenceDataSource => (is => 'ro', isa => KinesisAnalyticsV2_ReferenceDataSource, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddApplicationReferenceDataSource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationReferenceDataSourceResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AddApplicationReferenceDataSource');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::KinesisAnalyticsV2::AddApplicationReferenceDataSourceResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationName' => {
+                                      'type' => 'Str'
+                                    },
+               'ReferenceDataSource' => {
+                                          'class' => 'Paws::KinesisAnalyticsV2::ReferenceDataSource',
+                                          'type' => 'KinesisAnalyticsV2_ReferenceDataSource'
+                                        },
+               'CurrentApplicationVersionId' => {
+                                                  'type' => 'Int'
+                                                }
+             },
+  'IsRequired' => {
+                    'ApplicationName' => 1,
+                    'ReferenceDataSource' => 1,
+                    'CurrentApplicationVersionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -100,7 +128,7 @@ current version, the C<ConcurrentModificationException> is returned.
 
 
 
-=head2 B<REQUIRED> ReferenceDataSource => L<Paws::KinesisAnalyticsV2::ReferenceDataSource>
+=head2 B<REQUIRED> ReferenceDataSource => KinesisAnalyticsV2_ReferenceDataSource
 
 The reference data source can be an object in your Amazon S3 bucket.
 Kinesis Data Analytics reads the object and copies the data into the

@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkMail::ResetPassword;
-  use Moose;
-  has OrganizationId => (is => 'ro', isa => 'Str', required => 1);
-  has Password => (is => 'ro', isa => 'Str', required => 1);
-  has UserId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkMail::Types qw//;
+  has OrganizationId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Password => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetPassword');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkMail::ResetPasswordResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ResetPassword');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkMail::ResetPasswordResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Password' => {
+                               'type' => 'Str'
+                             },
+               'OrganizationId' => {
+                                     'type' => 'Str'
+                                   },
+               'UserId' => {
+                             'type' => 'Str'
+                           }
+             },
+  'IsRequired' => {
+                    'Password' => 1,
+                    'OrganizationId' => 1,
+                    'UserId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

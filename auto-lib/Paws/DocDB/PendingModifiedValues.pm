@@ -1,19 +1,76 @@
+# Generated from default/object.tt
 package Paws::DocDB::PendingModifiedValues;
-  use Moose;
-  has AllocatedStorage => (is => 'ro', isa => 'Int');
-  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
-  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
-  has DBInstanceClass => (is => 'ro', isa => 'Str');
-  has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has EngineVersion => (is => 'ro', isa => 'Str');
-  has Iops => (is => 'ro', isa => 'Int');
-  has LicenseModel => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
-  has MultiAZ => (is => 'ro', isa => 'Bool');
-  has PendingCloudwatchLogsExports => (is => 'ro', isa => 'Paws::DocDB::PendingCloudwatchLogsExports');
-  has Port => (is => 'ro', isa => 'Int');
-  has StorageType => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str Bool/;
+  use Paws::DocDB::Types qw/DocDB_PendingCloudwatchLogsExports/;
+  has AllocatedStorage => (is => 'ro', isa => Int);
+  has BackupRetentionPeriod => (is => 'ro', isa => Int);
+  has CACertificateIdentifier => (is => 'ro', isa => Str);
+  has DBInstanceClass => (is => 'ro', isa => Str);
+  has DBInstanceIdentifier => (is => 'ro', isa => Str);
+  has DBSubnetGroupName => (is => 'ro', isa => Str);
+  has EngineVersion => (is => 'ro', isa => Str);
+  has Iops => (is => 'ro', isa => Int);
+  has LicenseModel => (is => 'ro', isa => Str);
+  has MasterUserPassword => (is => 'ro', isa => Str);
+  has MultiAZ => (is => 'ro', isa => Bool);
+  has PendingCloudwatchLogsExports => (is => 'ro', isa => DocDB_PendingCloudwatchLogsExports);
+  has Port => (is => 'ro', isa => Int);
+  has StorageType => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MasterUserPassword' => {
+                                         'type' => 'Str'
+                                       },
+               'EngineVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'DBInstanceIdentifier' => {
+                                           'type' => 'Str'
+                                         },
+               'LicenseModel' => {
+                                   'type' => 'Str'
+                                 },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'PendingCloudwatchLogsExports' => {
+                                                   'class' => 'Paws::DocDB::PendingCloudwatchLogsExports',
+                                                   'type' => 'DocDB_PendingCloudwatchLogsExports'
+                                                 },
+               'CACertificateIdentifier' => {
+                                              'type' => 'Str'
+                                            },
+               'AllocatedStorage' => {
+                                       'type' => 'Int'
+                                     },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'StorageType' => {
+                                  'type' => 'Str'
+                                },
+               'MultiAZ' => {
+                              'type' => 'Bool'
+                            },
+               'Iops' => {
+                           'type' => 'Int'
+                         },
+               'BackupRetentionPeriod' => {
+                                            'type' => 'Int'
+                                          },
+               'DBInstanceClass' => {
+                                      'type' => 'Str'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -116,7 +173,7 @@ credentials for the DB instance.
 deployment.
 
 
-=head2 PendingCloudwatchLogsExports => L<Paws::DocDB::PendingCloudwatchLogsExports>
+=head2 PendingCloudwatchLogsExports => DocDB_PendingCloudwatchLogsExports
 
   A list of the log types whose configuration is still pending. These log
 types are in the process of being activated or deactivated.

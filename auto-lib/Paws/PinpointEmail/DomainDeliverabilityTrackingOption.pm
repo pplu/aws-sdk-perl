@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::DomainDeliverabilityTrackingOption;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str');
-  has InboxPlacementTrackingOption => (is => 'ro', isa => 'Paws::PinpointEmail::InboxPlacementTrackingOption');
-  has SubscriptionStartDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_InboxPlacementTrackingOption/;
+  has Domain => (is => 'ro', isa => Str);
+  has InboxPlacementTrackingOption => (is => 'ro', isa => PinpointEmail_InboxPlacementTrackingOption);
+  has SubscriptionStartDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InboxPlacementTrackingOption' => {
+                                                   'class' => 'Paws::PinpointEmail::InboxPlacementTrackingOption',
+                                                   'type' => 'PinpointEmail_InboxPlacementTrackingOption'
+                                                 },
+               'Domain' => {
+                             'type' => 'Str'
+                           },
+               'SubscriptionStartDate' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +73,7 @@ domain.
 currently has an active Deliverability dashboard subscription.
 
 
-=head2 InboxPlacementTrackingOption => L<Paws::PinpointEmail::InboxPlacementTrackingOption>
+=head2 InboxPlacementTrackingOption => PinpointEmail_InboxPlacementTrackingOption
 
   An object that contains information about the inbox placement data
 settings for the domain.

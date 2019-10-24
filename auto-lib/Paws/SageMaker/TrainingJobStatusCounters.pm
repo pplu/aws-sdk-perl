@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::TrainingJobStatusCounters;
-  use Moose;
-  has Completed => (is => 'ro', isa => 'Int');
-  has InProgress => (is => 'ro', isa => 'Int');
-  has NonRetryableError => (is => 'ro', isa => 'Int');
-  has RetryableError => (is => 'ro', isa => 'Int');
-  has Stopped => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::SageMaker::Types qw//;
+  has Completed => (is => 'ro', isa => Int);
+  has InProgress => (is => 'ro', isa => Int);
+  has NonRetryableError => (is => 'ro', isa => Int);
+  has RetryableError => (is => 'ro', isa => Int);
+  has Stopped => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Completed' => {
+                                'type' => 'Int'
+                              },
+               'RetryableError' => {
+                                     'type' => 'Int'
+                                   },
+               'Stopped' => {
+                              'type' => 'Int'
+                            },
+               'NonRetryableError' => {
+                                        'type' => 'Int'
+                                      },
+               'InProgress' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

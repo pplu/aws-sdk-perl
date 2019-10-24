@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes;
-  use Moose;
-  has Identity => (is => 'ro', isa => 'Str', request_name => 'identity', traits => ['NameInRequest']);
-  has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SimpleWorkflow::Types qw//;
+  has Identity => (is => 'ro', isa => Str);
+  has ScheduledEventId => (is => 'ro', isa => Int, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ScheduledEventId' => {
+                                       'type' => 'Int'
+                                     },
+               'Identity' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ScheduledEventId' => 'scheduledEventId',
+                       'Identity' => 'identity'
+                     },
+  'IsRequired' => {
+                    'ScheduledEventId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

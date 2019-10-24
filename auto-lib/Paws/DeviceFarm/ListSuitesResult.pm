@@ -1,10 +1,36 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DeviceFarm::ListSuitesResult;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has Suites => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Suite]', traits => ['NameInRequest'], request_name => 'suites' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DeviceFarm::Types qw/DeviceFarm_Suite/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Suites => (is => 'ro', isa => ArrayRef[DeviceFarm_Suite]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Suites' => {
+                             'class' => 'Paws::DeviceFarm::Suite',
+                             'type' => 'ArrayRef[DeviceFarm_Suite]'
+                           }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'Suites' => 'suites'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -23,7 +49,7 @@ subsequent call to this operation to return the next set of items in
 the list.
 
 
-=head2 Suites => ArrayRef[L<Paws::DeviceFarm::Suite>]
+=head2 Suites => ArrayRef[DeviceFarm_Suite]
 
 Information about the suites.
 

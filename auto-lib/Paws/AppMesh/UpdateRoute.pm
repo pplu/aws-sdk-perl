@@ -1,18 +1,61 @@
 
 package Paws::AppMesh::UpdateRoute;
-  use Moose;
-  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
-  has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
-  has RouteName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeName', required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_RouteSpec/;
+  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
+  has MeshName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RouteName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Spec => (is => 'ro', isa => AppMesh_RouteSpec, required => 1, predicate => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRoute');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AppMesh::UpdateRouteOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateRoute');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v20190125/meshes/{meshName}/virtualRouter/{virtualRouterName}/routes/{routeName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AppMesh::UpdateRouteOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::RouteSpec',
+                           'type' => 'AppMesh_RouteSpec'
+                         },
+               'RouteName' => {
+                                'type' => 'Str'
+                              },
+               'ClientToken' => {
+                                  'type' => 'Str'
+                                },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      }
+             },
+  'ParamInURI' => {
+                    'RouteName' => 'routeName',
+                    'MeshName' => 'meshName',
+                    'VirtualRouterName' => 'virtualRouterName'
+                  },
+  'NameInRequest' => {
+                       'Spec' => 'spec',
+                       'ClientToken' => 'clientToken'
+                     },
+  'IsRequired' => {
+                    'Spec' => 1,
+                    'RouteName' => 1,
+                    'MeshName' => 1,
+                    'VirtualRouterName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -104,7 +147,7 @@ The name of the route to update.
 
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::RouteSpec>
+=head2 B<REQUIRED> Spec => AppMesh_RouteSpec
 
 The new route specification to apply. This overwrites the existing
 data.

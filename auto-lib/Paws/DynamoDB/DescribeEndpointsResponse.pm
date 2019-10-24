@@ -1,3 +1,4 @@
+# Generated from json/callresult_class.tt
 
 package Paws::DynamoDB::DescribeEndpointsResponse;
   use Moo;
@@ -6,18 +7,24 @@ package Paws::DynamoDB::DescribeEndpointsResponse;
   has Endpoints => (is => 'ro', isa => ArrayRef[DynamoDB_Endpoint], required => 1);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Endpoints' => {
                                 'class' => 'Paws::DynamoDB::Endpoint',
                                 'type' => 'ArrayRef[DynamoDB_Endpoint]'
-                              }
-             }
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Endpoints' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 ### main pod documentation begin ###

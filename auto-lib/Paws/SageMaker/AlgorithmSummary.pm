@@ -1,10 +1,45 @@
+# Generated from default/object.tt
 package Paws::SageMaker::AlgorithmSummary;
-  use Moose;
-  has AlgorithmArn => (is => 'ro', isa => 'Str', required => 1);
-  has AlgorithmDescription => (is => 'ro', isa => 'Str');
-  has AlgorithmName => (is => 'ro', isa => 'Str', required => 1);
-  has AlgorithmStatus => (is => 'ro', isa => 'Str', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has AlgorithmArn => (is => 'ro', isa => Str, required => 1);
+  has AlgorithmDescription => (is => 'ro', isa => Str);
+  has AlgorithmName => (is => 'ro', isa => Str, required => 1);
+  has AlgorithmStatus => (is => 'ro', isa => Str, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'AlgorithmStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'AlgorithmName' => {
+                                    'type' => 'Str'
+                                  },
+               'AlgorithmDescription' => {
+                                           'type' => 'Str'
+                                         },
+               'AlgorithmArn' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'AlgorithmStatus' => 1,
+                    'AlgorithmName' => 1,
+                    'AlgorithmArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

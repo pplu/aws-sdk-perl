@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::Projection;
   use Moo;
   use Types::Standard qw/ArrayRef Undef Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::Projection;
   has NonKeyAttributes => (is => 'ro', isa => ArrayRef[Str|Undef]);
   has ProjectionType => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ProjectionType' => {
@@ -17,8 +18,8 @@ package Paws::DynamoDB::Projection;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

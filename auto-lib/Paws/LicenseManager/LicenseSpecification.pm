@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::LicenseManager::LicenseSpecification;
-  use Moose;
-  has LicenseConfigurationArn => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::LicenseManager::Types qw//;
+  has LicenseConfigurationArn => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LicenseConfigurationArn' => {
+                                              'type' => 'Str'
+                                            }
+             },
+  'IsRequired' => {
+                    'LicenseConfigurationArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

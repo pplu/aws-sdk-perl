@@ -1,15 +1,61 @@
+# Generated from default/object.tt
 package Paws::Chime::PhoneNumber;
-  use Moose;
-  has Associations => (is => 'ro', isa => 'ArrayRef[Paws::Chime::PhoneNumberAssociation]');
-  has Capabilities => (is => 'ro', isa => 'Paws::Chime::PhoneNumberCapabilities');
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
-  has DeletionTimestamp => (is => 'ro', isa => 'Str');
-  has E164PhoneNumber => (is => 'ro', isa => 'Str');
-  has PhoneNumberId => (is => 'ro', isa => 'Str');
-  has ProductType => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has UpdatedTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Chime::Types qw/Chime_PhoneNumberAssociation Chime_PhoneNumberCapabilities/;
+  has Associations => (is => 'ro', isa => ArrayRef[Chime_PhoneNumberAssociation]);
+  has Capabilities => (is => 'ro', isa => Chime_PhoneNumberCapabilities);
+  has CreatedTimestamp => (is => 'ro', isa => Str);
+  has DeletionTimestamp => (is => 'ro', isa => Str);
+  has E164PhoneNumber => (is => 'ro', isa => Str);
+  has PhoneNumberId => (is => 'ro', isa => Str);
+  has ProductType => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has UpdatedTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'DeletionTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'CreatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'Associations' => {
+                                   'class' => 'Paws::Chime::PhoneNumberAssociation',
+                                   'type' => 'ArrayRef[Chime_PhoneNumberAssociation]'
+                                 },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'UpdatedTimestamp' => {
+                                       'type' => 'Str'
+                                     },
+               'PhoneNumberId' => {
+                                    'type' => 'Str'
+                                  },
+               'Capabilities' => {
+                                   'class' => 'Paws::Chime::PhoneNumberCapabilities',
+                                   'type' => 'Chime_PhoneNumberCapabilities'
+                                 },
+               'E164PhoneNumber' => {
+                                      'type' => 'Str'
+                                    },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +92,12 @@ Chime Voice Connector.
 =head1 ATTRIBUTES
 
 
-=head2 Associations => ArrayRef[L<Paws::Chime::PhoneNumberAssociation>]
+=head2 Associations => ArrayRef[Chime_PhoneNumberAssociation]
 
   The phone number associations.
 
 
-=head2 Capabilities => L<Paws::Chime::PhoneNumberCapabilities>
+=head2 Capabilities => Chime_PhoneNumberCapabilities
 
   The phone number capabilities.
 

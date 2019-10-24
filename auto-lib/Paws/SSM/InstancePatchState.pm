@@ -1,21 +1,91 @@
+# Generated from default/object.tt
 package Paws::SSM::InstancePatchState;
-  use Moose;
-  has BaselineId => (is => 'ro', isa => 'Str', required => 1);
-  has FailedCount => (is => 'ro', isa => 'Int');
-  has InstalledCount => (is => 'ro', isa => 'Int');
-  has InstalledOtherCount => (is => 'ro', isa => 'Int');
-  has InstalledRejectedCount => (is => 'ro', isa => 'Int');
-  has InstallOverrideList => (is => 'ro', isa => 'Str');
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has MissingCount => (is => 'ro', isa => 'Int');
-  has NotApplicableCount => (is => 'ro', isa => 'Int');
-  has Operation => (is => 'ro', isa => 'Str', required => 1);
-  has OperationEndTime => (is => 'ro', isa => 'Str', required => 1);
-  has OperationStartTime => (is => 'ro', isa => 'Str', required => 1);
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
-  has SnapshotId => (is => 'ro', isa => 'Str');
-  has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::SSM::Types qw//;
+  has BaselineId => (is => 'ro', isa => Str, required => 1);
+  has FailedCount => (is => 'ro', isa => Int);
+  has InstalledCount => (is => 'ro', isa => Int);
+  has InstalledOtherCount => (is => 'ro', isa => Int);
+  has InstalledRejectedCount => (is => 'ro', isa => Int);
+  has InstallOverrideList => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str, required => 1);
+  has MissingCount => (is => 'ro', isa => Int);
+  has NotApplicableCount => (is => 'ro', isa => Int);
+  has Operation => (is => 'ro', isa => Str, required => 1);
+  has OperationEndTime => (is => 'ro', isa => Str, required => 1);
+  has OperationStartTime => (is => 'ro', isa => Str, required => 1);
+  has OwnerInformation => (is => 'ro', isa => Str);
+  has PatchGroup => (is => 'ro', isa => Str, required => 1);
+  has SnapshotId => (is => 'ro', isa => Str);
+  has UnreportedNotApplicableCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PatchGroup' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'InstalledCount' => {
+                                     'type' => 'Int'
+                                   },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               'InstalledOtherCount' => {
+                                          'type' => 'Int'
+                                        },
+               'MissingCount' => {
+                                   'type' => 'Int'
+                                 },
+               'InstallOverrideList' => {
+                                          'type' => 'Str'
+                                        },
+               'OperationEndTime' => {
+                                       'type' => 'Str'
+                                     },
+               'BaselineId' => {
+                                 'type' => 'Str'
+                               },
+               'UnreportedNotApplicableCount' => {
+                                                   'type' => 'Int'
+                                                 },
+               'Operation' => {
+                                'type' => 'Str'
+                              },
+               'FailedCount' => {
+                                  'type' => 'Int'
+                                },
+               'NotApplicableCount' => {
+                                         'type' => 'Int'
+                                       },
+               'OperationStartTime' => {
+                                         'type' => 'Str'
+                                       },
+               'InstalledRejectedCount' => {
+                                             'type' => 'Int'
+                                           },
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'PatchGroup' => 1,
+                    'InstanceId' => 1,
+                    'OperationEndTime' => 1,
+                    'BaselineId' => 1,
+                    'OperationStartTime' => 1,
+                    'Operation' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

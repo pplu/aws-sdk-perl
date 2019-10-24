@@ -1,15 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::AllocatePublicVirtualInterface;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has NewPublicVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterfaceAllocation', traits => ['NameInRequest'], request_name => 'newPublicVirtualInterfaceAllocation' , required => 1);
-  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_NewPublicVirtualInterfaceAllocation/;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewPublicVirtualInterfaceAllocation => (is => 'ro', isa => DirectConnect_NewPublicVirtualInterfaceAllocation, required => 1, predicate => 1);
+  has OwnerAccount => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocatePublicVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AllocatePublicVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OwnerAccount' => {
+                                   'type' => 'Str'
+                                 },
+               'NewPublicVirtualInterfaceAllocation' => {
+                                                          'class' => 'Paws::DirectConnect::NewPublicVirtualInterfaceAllocation',
+                                                          'type' => 'DirectConnect_NewPublicVirtualInterfaceAllocation'
+                                                        },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'OwnerAccount' => 'ownerAccount',
+                       'NewPublicVirtualInterfaceAllocation' => 'newPublicVirtualInterfaceAllocation',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'IsRequired' => {
+                    'OwnerAccount' => 1,
+                    'NewPublicVirtualInterfaceAllocation' => 1,
+                    'ConnectionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +131,7 @@ provisioned.
 
 
 
-=head2 B<REQUIRED> NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
+=head2 B<REQUIRED> NewPublicVirtualInterfaceAllocation => DirectConnect_NewPublicVirtualInterfaceAllocation
 
 Information about the public virtual interface.
 

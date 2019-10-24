@@ -1,11 +1,60 @@
+# Generated from default/object.tt
 package Paws::Support::TrustedAdvisorCheckSummary;
-  use Moose;
-  has CategorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', request_name => 'categorySpecificSummary', traits => ['NameInRequest'], required => 1);
-  has CheckId => (is => 'ro', isa => 'Str', request_name => 'checkId', traits => ['NameInRequest'], required => 1);
-  has HasFlaggedResources => (is => 'ro', isa => 'Bool', request_name => 'hasFlaggedResources', traits => ['NameInRequest']);
-  has ResourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', request_name => 'resourcesSummary', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::Support::Types qw/Support_TrustedAdvisorCategorySpecificSummary Support_TrustedAdvisorResourcesSummary/;
+  has CategorySpecificSummary => (is => 'ro', isa => Support_TrustedAdvisorCategorySpecificSummary, required => 1);
+  has CheckId => (is => 'ro', isa => Str, required => 1);
+  has HasFlaggedResources => (is => 'ro', isa => Bool);
+  has ResourcesSummary => (is => 'ro', isa => Support_TrustedAdvisorResourcesSummary, required => 1);
+  has Status => (is => 'ro', isa => Str, required => 1);
+  has Timestamp => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Timestamp' => {
+                                'type' => 'Str'
+                              },
+               'ResourcesSummary' => {
+                                       'class' => 'Paws::Support::TrustedAdvisorResourcesSummary',
+                                       'type' => 'Support_TrustedAdvisorResourcesSummary'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CategorySpecificSummary' => {
+                                              'class' => 'Paws::Support::TrustedAdvisorCategorySpecificSummary',
+                                              'type' => 'Support_TrustedAdvisorCategorySpecificSummary'
+                                            },
+               'HasFlaggedResources' => {
+                                          'type' => 'Bool'
+                                        },
+               'CheckId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'NameInRequest' => {
+                       'Timestamp' => 'timestamp',
+                       'ResourcesSummary' => 'resourcesSummary',
+                       'Status' => 'status',
+                       'CategorySpecificSummary' => 'categorySpecificSummary',
+                       'HasFlaggedResources' => 'hasFlaggedResources',
+                       'CheckId' => 'checkId'
+                     },
+  'IsRequired' => {
+                    'Timestamp' => 1,
+                    'ResourcesSummary' => 1,
+                    'Status' => 1,
+                    'CategorySpecificSummary' => 1,
+                    'CheckId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +91,7 @@ status, last refresh, and number of resources examined.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CategorySpecificSummary => L<Paws::Support::TrustedAdvisorCategorySpecificSummary>
+=head2 B<REQUIRED> CategorySpecificSummary => Support_TrustedAdvisorCategorySpecificSummary
 
   Summary information that relates to the category of the check. Cost
 Optimizing is the only category that is currently supported.
@@ -58,7 +107,7 @@ Optimizing is the only category that is currently supported.
   Specifies whether the Trusted Advisor check has flagged resources.
 
 
-=head2 B<REQUIRED> ResourcesSummary => L<Paws::Support::TrustedAdvisorResourcesSummary>
+=head2 B<REQUIRED> ResourcesSummary => Support_TrustedAdvisorResourcesSummary
 
   
 

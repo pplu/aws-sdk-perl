@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::S3Control::JobFailure;
-  use Moose;
-  has FailureCode => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::S3Control::Types qw//;
+  has FailureCode => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'FailureCode' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

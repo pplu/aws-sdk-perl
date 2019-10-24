@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::Lambda::EnvironmentResponse;
-  use Moose;
-  has Error => (is => 'ro', isa => 'Paws::Lambda::EnvironmentError');
-  has Variables => (is => 'ro', isa => 'Paws::Lambda::EnvironmentVariables');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Lambda::Types qw/Lambda_EnvironmentVariables Lambda_EnvironmentError/;
+  has Error => (is => 'ro', isa => Lambda_EnvironmentError);
+  has Variables => (is => 'ro', isa => Lambda_EnvironmentVariables);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Variables' => {
+                                'class' => 'Paws::Lambda::EnvironmentVariables',
+                                'type' => 'Lambda_EnvironmentVariables'
+                              },
+               'Error' => {
+                            'class' => 'Paws::Lambda::EnvironmentError',
+                            'type' => 'Lambda_EnvironmentError'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +60,12 @@ variables.
 =head1 ATTRIBUTES
 
 
-=head2 Error => L<Paws::Lambda::EnvironmentError>
+=head2 Error => Lambda_EnvironmentError
 
   Error messages for environment variables that couldn't be applied.
 
 
-=head2 Variables => L<Paws::Lambda::EnvironmentVariables>
+=head2 Variables => Lambda_EnvironmentVariables
 
   Environment variable key-value pairs.
 

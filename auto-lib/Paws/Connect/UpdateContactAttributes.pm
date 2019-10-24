@@ -1,16 +1,43 @@
 
 package Paws::Connect::UpdateContactAttributes;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::Connect::Attributes', required => 1);
-  has InitialContactId => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_Attributes/;
+  has Attributes => (is => 'ro', isa => Connect_Attributes, required => 1, predicate => 1);
+  has InitialContactId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateContactAttributes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/contact/attributes');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::UpdateContactAttributesResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateContactAttributes');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/contact/attributes');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Connect::UpdateContactAttributesResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'Attributes' => {
+                                 'class' => 'Paws::Connect::Attributes',
+                                 'type' => 'Connect_Attributes'
+                               },
+               'InitialContactId' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'InstanceId' => 1,
+                    'Attributes' => 1,
+                    'InitialContactId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::Connect::Attributes>
+=head2 B<REQUIRED> Attributes => Connect_Attributes
 
 Specify a custom key-value pair using an attribute map. The attributes
 are standard Amazon Connect attributes, and can be accessed in contact

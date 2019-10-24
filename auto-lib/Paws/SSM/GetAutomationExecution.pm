@@ -1,13 +1,32 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::GetAutomationExecution;
-  use Moose;
-  has AutomationExecutionId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SSM::Types qw//;
+  has AutomationExecutionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetAutomationExecution');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::GetAutomationExecutionResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetAutomationExecution');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::GetAutomationExecutionResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutomationExecutionId' => {
+                                            'type' => 'Str'
+                                          }
+             },
+  'IsRequired' => {
+                    'AutomationExecutionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

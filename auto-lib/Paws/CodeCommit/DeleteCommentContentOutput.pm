@@ -1,9 +1,31 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CodeCommit::DeleteCommentContentOutput;
-  use Moose;
-  has Comment => (is => 'ro', isa => 'Paws::CodeCommit::Comment', traits => ['NameInRequest'], request_name => 'comment' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_Comment/;
+  has Comment => (is => 'ro', isa => CodeCommit_Comment);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Comment' => {
+                              'class' => 'Paws::CodeCommit::Comment',
+                              'type' => 'CodeCommit_Comment'
+                            }
+             },
+  'NameInRequest' => {
+                       'Comment' => 'comment'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -14,7 +36,7 @@ Paws::CodeCommit::DeleteCommentContentOutput
 =head1 ATTRIBUTES
 
 
-=head2 Comment => L<Paws::CodeCommit::Comment>
+=head2 Comment => CodeCommit_Comment
 
 Information about the comment you just deleted.
 

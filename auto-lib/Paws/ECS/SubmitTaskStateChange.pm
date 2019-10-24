@@ -1,21 +1,74 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ECS::SubmitTaskStateChange;
-  use Moose;
-  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::AttachmentStateChange]', traits => ['NameInRequest'], request_name => 'attachments' );
-  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
-  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerStateChange]', traits => ['NameInRequest'], request_name => 'containers' );
-  has ExecutionStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStoppedAt' );
-  has PullStartedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStartedAt' );
-  has PullStoppedAt => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullStoppedAt' );
-  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
-  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ECS::Types qw/ECS_ContainerStateChange ECS_AttachmentStateChange/;
+  has Attachments => (is => 'ro', isa => ArrayRef[ECS_AttachmentStateChange], predicate => 1);
+  has Cluster => (is => 'ro', isa => Str, predicate => 1);
+  has Containers => (is => 'ro', isa => ArrayRef[ECS_ContainerStateChange], predicate => 1);
+  has ExecutionStoppedAt => (is => 'ro', isa => Str, predicate => 1);
+  has PullStartedAt => (is => 'ro', isa => Str, predicate => 1);
+  has PullStoppedAt => (is => 'ro', isa => Str, predicate => 1);
+  has Reason => (is => 'ro', isa => Str, predicate => 1);
+  has Status => (is => 'ro', isa => Str, predicate => 1);
+  has Task => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SubmitTaskStateChange');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::SubmitTaskStateChangeResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SubmitTaskStateChange');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECS::SubmitTaskStateChangeResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Containers' => {
+                                 'class' => 'Paws::ECS::ContainerStateChange',
+                                 'type' => 'ArrayRef[ECS_ContainerStateChange]'
+                               },
+               'ExecutionStoppedAt' => {
+                                         'type' => 'Str'
+                                       },
+               'Attachments' => {
+                                  'class' => 'Paws::ECS::AttachmentStateChange',
+                                  'type' => 'ArrayRef[ECS_AttachmentStateChange]'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Task' => {
+                           'type' => 'Str'
+                         },
+               'PullStoppedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'Reason' => {
+                             'type' => 'Str'
+                           },
+               'Cluster' => {
+                              'type' => 'Str'
+                            },
+               'PullStartedAt' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Containers' => 'containers',
+                       'ExecutionStoppedAt' => 'executionStoppedAt',
+                       'Attachments' => 'attachments',
+                       'Status' => 'status',
+                       'Task' => 'task',
+                       'PullStoppedAt' => 'pullStoppedAt',
+                       'Reason' => 'reason',
+                       'Cluster' => 'cluster',
+                       'PullStartedAt' => 'pullStartedAt'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -82,7 +135,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 =head1 ATTRIBUTES
 
 
-=head2 Attachments => ArrayRef[L<Paws::ECS::AttachmentStateChange>]
+=head2 Attachments => ArrayRef[ECS_AttachmentStateChange]
 
 Any attachments associated with the state change request.
 
@@ -95,7 +148,7 @@ hosts the task.
 
 
 
-=head2 Containers => ArrayRef[L<Paws::ECS::ContainerStateChange>]
+=head2 Containers => ArrayRef[ECS_ContainerStateChange]
 
 Any containers associated with the state change request.
 

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAFRegional::ListSizeConstraintSetsResponse;
-  use Moose;
-  has NextMarker => (is => 'ro', isa => 'Str');
-  has SizeConstraintSets => (is => 'ro', isa => 'ArrayRef[Paws::WAFRegional::SizeConstraintSetSummary]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WAFRegional::Types qw/WAFRegional_SizeConstraintSetSummary/;
+  has NextMarker => (is => 'ro', isa => Str);
+  has SizeConstraintSets => (is => 'ro', isa => ArrayRef[WAFRegional_SizeConstraintSetSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SizeConstraintSets' => {
+                                         'class' => 'Paws::WAFRegional::SizeConstraintSetSummary',
+                                         'type' => 'ArrayRef[WAFRegional_SizeConstraintSetSummary]'
+                                       },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'NextMarker' => {
+                                 'type' => 'Str'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -25,7 +47,7 @@ C<NextMarker> value from the response in the C<NextMarker> value in the
 next request.
 
 
-=head2 SizeConstraintSets => ArrayRef[L<Paws::WAFRegional::SizeConstraintSetSummary>]
+=head2 SizeConstraintSets => ArrayRef[WAFRegional_SizeConstraintSetSummary]
 
 An array of SizeConstraintSetSummary objects.
 

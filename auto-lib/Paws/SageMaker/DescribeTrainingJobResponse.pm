@@ -1,32 +1,140 @@
+# Generated from json/callresult_class.tt
 
 package Paws::SageMaker::DescribeTrainingJobResponse;
-  use Moose;
-  has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
-  has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
-  has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
-  has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
-  has LabelingJobArn => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has ModelArtifacts => (is => 'ro', isa => 'Paws::SageMaker::ModelArtifacts', required => 1);
-  has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig');
-  has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
-  has SecondaryStatus => (is => 'ro', isa => 'Str', required => 1);
-  has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
-  has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
-  has TrainingEndTime => (is => 'ro', isa => 'Str');
-  has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
-  has TrainingStartTime => (is => 'ro', isa => 'Str');
-  has TuningJobArn => (is => 'ro', isa => 'Str');
-  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_StoppingCondition SageMaker_HyperParameters SageMaker_ResourceConfig SageMaker_AlgorithmSpecification SageMaker_OutputDataConfig SageMaker_Channel SageMaker_MetricData SageMaker_ModelArtifacts SageMaker_SecondaryStatusTransition SageMaker_VpcConfig/;
+  has AlgorithmSpecification => (is => 'ro', isa => SageMaker_AlgorithmSpecification, required => 1);
+  has CreationTime => (is => 'ro', isa => Str, required => 1);
+  has EnableInterContainerTrafficEncryption => (is => 'ro', isa => Bool);
+  has EnableNetworkIsolation => (is => 'ro', isa => Bool);
+  has FailureReason => (is => 'ro', isa => Str);
+  has FinalMetricDataList => (is => 'ro', isa => ArrayRef[SageMaker_MetricData]);
+  has HyperParameters => (is => 'ro', isa => SageMaker_HyperParameters);
+  has InputDataConfig => (is => 'ro', isa => ArrayRef[SageMaker_Channel]);
+  has LabelingJobArn => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has ModelArtifacts => (is => 'ro', isa => SageMaker_ModelArtifacts, required => 1);
+  has OutputDataConfig => (is => 'ro', isa => SageMaker_OutputDataConfig);
+  has ResourceConfig => (is => 'ro', isa => SageMaker_ResourceConfig, required => 1);
+  has RoleArn => (is => 'ro', isa => Str);
+  has SecondaryStatus => (is => 'ro', isa => Str, required => 1);
+  has SecondaryStatusTransitions => (is => 'ro', isa => ArrayRef[SageMaker_SecondaryStatusTransition]);
+  has StoppingCondition => (is => 'ro', isa => SageMaker_StoppingCondition, required => 1);
+  has TrainingEndTime => (is => 'ro', isa => Str);
+  has TrainingJobArn => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobName => (is => 'ro', isa => Str, required => 1);
+  has TrainingJobStatus => (is => 'ro', isa => Str, required => 1);
+  has TrainingStartTime => (is => 'ro', isa => Str);
+  has TuningJobArn => (is => 'ro', isa => Str);
+  has VpcConfig => (is => 'ro', isa => SageMaker_VpcConfig);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TuningJobArn' => {
+                                   'type' => 'Str'
+                                 },
+               'EnableNetworkIsolation' => {
+                                             'type' => 'Bool'
+                                           },
+               'TrainingEndTime' => {
+                                      'type' => 'Str'
+                                    },
+               'ResourceConfig' => {
+                                     'class' => 'Paws::SageMaker::ResourceConfig',
+                                     'type' => 'SageMaker_ResourceConfig'
+                                   },
+               'OutputDataConfig' => {
+                                       'class' => 'Paws::SageMaker::OutputDataConfig',
+                                       'type' => 'SageMaker_OutputDataConfig'
+                                     },
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'TrainingJobStatus' => {
+                                        'type' => 'Str'
+                                      },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'AlgorithmSpecification' => {
+                                             'class' => 'Paws::SageMaker::AlgorithmSpecification',
+                                             'type' => 'SageMaker_AlgorithmSpecification'
+                                           },
+               'TrainingStartTime' => {
+                                        'type' => 'Str'
+                                      },
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'InputDataConfig' => {
+                                      'class' => 'Paws::SageMaker::Channel',
+                                      'type' => 'ArrayRef[SageMaker_Channel]'
+                                    },
+               'TrainingJobArn' => {
+                                     'type' => 'Str'
+                                   },
+               'ModelArtifacts' => {
+                                     'class' => 'Paws::SageMaker::ModelArtifacts',
+                                     'type' => 'SageMaker_ModelArtifacts'
+                                   },
+               'FinalMetricDataList' => {
+                                          'class' => 'Paws::SageMaker::MetricData',
+                                          'type' => 'ArrayRef[SageMaker_MetricData]'
+                                        },
+               'EnableInterContainerTrafficEncryption' => {
+                                                            'type' => 'Bool'
+                                                          },
+               'StoppingCondition' => {
+                                        'class' => 'Paws::SageMaker::StoppingCondition',
+                                        'type' => 'SageMaker_StoppingCondition'
+                                      },
+               'HyperParameters' => {
+                                      'class' => 'Paws::SageMaker::HyperParameters',
+                                      'type' => 'SageMaker_HyperParameters'
+                                    },
+               'SecondaryStatus' => {
+                                      'type' => 'Str'
+                                    },
+               'TrainingJobName' => {
+                                      'type' => 'Str'
+                                    },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'VpcConfig' => {
+                                'class' => 'Paws::SageMaker::VpcConfig',
+                                'type' => 'SageMaker_VpcConfig'
+                              },
+               'LabelingJobArn' => {
+                                     'type' => 'Str'
+                                   },
+               'SecondaryStatusTransitions' => {
+                                                 'class' => 'Paws::SageMaker::SecondaryStatusTransition',
+                                                 'type' => 'ArrayRef[SageMaker_SecondaryStatusTransition]'
+                                               }
+             },
+  'IsRequired' => {
+                    'CreationTime' => 1,
+                    'TrainingJobArn' => 1,
+                    'ModelArtifacts' => 1,
+                    'ResourceConfig' => 1,
+                    'StoppingCondition' => 1,
+                    'SecondaryStatus' => 1,
+                    'TrainingJobStatus' => 1,
+                    'TrainingJobName' => 1,
+                    'AlgorithmSpecification' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -37,7 +145,7 @@ Paws::SageMaker::DescribeTrainingJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AlgorithmSpecification => L<Paws::SageMaker::AlgorithmSpecification>
+=head2 B<REQUIRED> AlgorithmSpecification => SageMaker_AlgorithmSpecification
 
 Information about the algorithm used for training, and algorithm
 metadata.
@@ -76,19 +184,19 @@ isolation.
 If the training job failed, the reason it failed.
 
 
-=head2 FinalMetricDataList => ArrayRef[L<Paws::SageMaker::MetricData>]
+=head2 FinalMetricDataList => ArrayRef[SageMaker_MetricData]
 
 A collection of C<MetricData> objects that specify the names, values,
 and dates and times that the training algorithm emitted to Amazon
 CloudWatch.
 
 
-=head2 HyperParameters => L<Paws::SageMaker::HyperParameters>
+=head2 HyperParameters => SageMaker_HyperParameters
 
 Algorithm-specific parameters.
 
 
-=head2 InputDataConfig => ArrayRef[L<Paws::SageMaker::Channel>]
+=head2 InputDataConfig => ArrayRef[SageMaker_Channel]
 
 An array of C<Channel> objects that describes each data input channel.
 
@@ -105,20 +213,20 @@ A timestamp that indicates when the status of the training job was last
 modified.
 
 
-=head2 B<REQUIRED> ModelArtifacts => L<Paws::SageMaker::ModelArtifacts>
+=head2 B<REQUIRED> ModelArtifacts => SageMaker_ModelArtifacts
 
 Information about the Amazon S3 location that is configured for storing
 model artifacts.
 
 
-=head2 OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
+=head2 OutputDataConfig => SageMaker_OutputDataConfig
 
 The S3 path where model artifacts that you configured when creating the
 job are stored. Amazon SageMaker creates subfolders for model
 artifacts.
 
 
-=head2 B<REQUIRED> ResourceConfig => L<Paws::SageMaker::ResourceConfig>
+=head2 B<REQUIRED> ResourceConfig => SageMaker_ResourceConfig
 
 Resources, including ML compute instances and ML storage volumes, that
 are configured for model training.
@@ -237,13 +345,13 @@ C<DownloadingTrainingImage>
 
 
 Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">
-=head2 SecondaryStatusTransitions => ArrayRef[L<Paws::SageMaker::SecondaryStatusTransition>]
+=head2 SecondaryStatusTransitions => ArrayRef[SageMaker_SecondaryStatusTransition]
 
 A history of all of the secondary statuses that the training job has
 transitioned through.
 
 
-=head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
+=head2 B<REQUIRED> StoppingCondition => SageMaker_StoppingCondition
 
 Specifies a limit to how long a model training job can run. When the
 job reaches the time limit, Amazon SageMaker ends the training job. Use
@@ -324,7 +432,7 @@ The Amazon Resource Name (ARN) of the associated hyperparameter tuning
 job if the training job was launched by a hyperparameter tuning job.
 
 
-=head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
+=head2 VpcConfig => SageMaker_VpcConfig
 
 A VpcConfig object that specifies the VPC that this training job has
 access to. For more information, see Protect Training Jobs by Using an

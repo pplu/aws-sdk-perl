@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::UpdateGlobalTable;
   use Moo;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::UpdateGlobalTable;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateGlobalTableOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReplicaUpdates' => {
@@ -22,11 +23,15 @@ package Paws::DynamoDB::UpdateGlobalTable;
                'GlobalTableName' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'ReplicaUpdates' => 1,
+                    'GlobalTableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

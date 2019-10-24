@@ -1,21 +1,74 @@
 
 package Paws::Amplify::StartJob;
-  use Moose;
-  has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has BranchName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'branchName', required => 1);
-  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId');
-  has CommitMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitMessage');
-  has CommitTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitTime');
-  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId');
-  has JobReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobReason');
-  has JobType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobType', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Amplify::Types qw//;
+  has AppId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BranchName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has CommitId => (is => 'ro', isa => Str, predicate => 1);
+  has CommitMessage => (is => 'ro', isa => Str, predicate => 1);
+  has CommitTime => (is => 'ro', isa => Str, predicate => 1);
+  has JobId => (is => 'ro', isa => Str, predicate => 1);
+  has JobReason => (is => 'ro', isa => Str, predicate => 1);
+  has JobType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apps/{appId}/branches/{branchName}/jobs');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Amplify::StartJobResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/apps/{appId}/branches/{branchName}/jobs');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Amplify::StartJobResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CommitMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'BranchName' => {
+                                 'type' => 'Str'
+                               },
+               'CommitTime' => {
+                                 'type' => 'Str'
+                               },
+               'CommitId' => {
+                               'type' => 'Str'
+                             },
+               'JobType' => {
+                              'type' => 'Str'
+                            },
+               'JobId' => {
+                            'type' => 'Str'
+                          },
+               'AppId' => {
+                            'type' => 'Str'
+                          },
+               'JobReason' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'BranchName' => 'branchName',
+                    'AppId' => 'appId'
+                  },
+  'NameInRequest' => {
+                       'CommitMessage' => 'commitMessage',
+                       'JobType' => 'jobType',
+                       'JobId' => 'jobId',
+                       'CommitTime' => 'commitTime',
+                       'CommitId' => 'commitId',
+                       'JobReason' => 'jobReason'
+                     },
+  'IsRequired' => {
+                    'JobType' => 1,
+                    'BranchName' => 1,
+                    'AppId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

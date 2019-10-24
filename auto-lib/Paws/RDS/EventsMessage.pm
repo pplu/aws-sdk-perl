@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::EventsMessage;
-  use Moose;
-  has Events => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Event]', request_name => 'Event', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Event/;
+  has Events => (is => 'ro', isa => ArrayRef[RDS_Event]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Events' => {
+                             'class' => 'Paws::RDS::Event',
+                             'type' => 'ArrayRef[RDS_Event]'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Events' => 'Event'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::RDS::EventsMessage
 =head1 ATTRIBUTES
 
 
-=head2 Events => ArrayRef[L<Paws::RDS::Event>]
+=head2 Events => ArrayRef[RDS_Event]
 
 A list of C<Event> instances.
 

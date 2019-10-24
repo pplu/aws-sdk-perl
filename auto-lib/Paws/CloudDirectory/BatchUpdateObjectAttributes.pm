@@ -1,7 +1,33 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchUpdateObjectAttributes;
-  use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeUpdate]', required => 1);
-  has ObjectReference => (is => 'ro', isa => 'Paws::CloudDirectory::ObjectReference', required => 1);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_ObjectAttributeUpdate CloudDirectory_ObjectReference/;
+  has AttributeUpdates => (is => 'ro', isa => ArrayRef[CloudDirectory_ObjectAttributeUpdate], required => 1);
+  has ObjectReference => (is => 'ro', isa => CloudDirectory_ObjectReference, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AttributeUpdates' => {
+                                       'class' => 'Paws::CloudDirectory::ObjectAttributeUpdate',
+                                       'type' => 'ArrayRef[CloudDirectory_ObjectAttributeUpdate]'
+                                     },
+               'ObjectReference' => {
+                                      'class' => 'Paws::CloudDirectory::ObjectReference',
+                                      'type' => 'CloudDirectory_ObjectReference'
+                                    }
+             },
+  'IsRequired' => {
+                    'AttributeUpdates' => 1,
+                    'ObjectReference' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +63,12 @@ Represents the output of a C<BatchUpdate> operation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AttributeUpdates => ArrayRef[L<Paws::CloudDirectory::ObjectAttributeUpdate>]
+=head2 B<REQUIRED> AttributeUpdates => ArrayRef[CloudDirectory_ObjectAttributeUpdate]
 
   Attributes update structure.
 
 
-=head2 B<REQUIRED> ObjectReference => L<Paws::CloudDirectory::ObjectReference>
+=head2 B<REQUIRED> ObjectReference => CloudDirectory_ObjectReference
 
   Reference that identifies the object.
 

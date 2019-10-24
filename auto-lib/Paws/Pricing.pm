@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Pricing;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'api.pricing' }
   sub signing_name { 'pricing' }
   sub version { '2017-10-15' }
   sub target_prefix { 'AWSPriceListService' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -230,7 +232,7 @@ in the AWS Billing and Cost Management User Guide
 
 =over
 
-=item [Filters => ArrayRef[L<Paws::Pricing::Filter>]]
+=item [Filters => ArrayRef[Pricing_Filter]]
 
 =item [FormatVersion => Str]
 
@@ -280,9 +282,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Pricing::GetAttributeValuesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllProducts(sub { },[Filters => ArrayRef[L<Paws::Pricing::Filter>], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+=head2 GetAllProducts(sub { },[Filters => ArrayRef[Pricing_Filter], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
 
-=head2 GetAllProducts([Filters => ArrayRef[L<Paws::Pricing::Filter>], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
+=head2 GetAllProducts([Filters => ArrayRef[Pricing_Filter], FormatVersion => Str, MaxResults => Int, NextToken => Str, ServiceCode => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

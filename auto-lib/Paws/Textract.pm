@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Textract;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'textract' }
   sub signing_name { 'textract' }
   sub version { '2018-06-27' }
   sub target_prefix { 'Textract' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -89,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tex
 
 =over
 
-=item Document => L<Paws::Textract::Document>
+=item Document => Textract_Document
 
 =item FeatureTypes => ArrayRef[Str|Undef]
 
@@ -149,7 +151,7 @@ For more information, see Document Text Analysis
 
 =over
 
-=item Document => L<Paws::Textract::Document>
+=item Document => Textract_Document
 
 
 =back
@@ -306,7 +308,7 @@ For more information, see Document Text Detection
 
 =over
 
-=item DocumentLocation => L<Paws::Textract::DocumentLocation>
+=item DocumentLocation => Textract_DocumentLocation
 
 =item FeatureTypes => ArrayRef[Str|Undef]
 
@@ -314,7 +316,7 @@ For more information, see Document Text Detection
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Textract::NotificationChannel>]
+=item [NotificationChannel => Textract_NotificationChannel]
 
 
 =back
@@ -350,13 +352,13 @@ For more information, see Document Text Analysis
 
 =over
 
-=item DocumentLocation => L<Paws::Textract::DocumentLocation>
+=item DocumentLocation => Textract_DocumentLocation
 
 =item [ClientRequestToken => Str]
 
 =item [JobTag => Str]
 
-=item [NotificationChannel => L<Paws::Textract::NotificationChannel>]
+=item [NotificationChannel => Textract_NotificationChannel]
 
 
 =back

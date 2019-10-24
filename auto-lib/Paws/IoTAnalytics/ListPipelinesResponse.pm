@@ -1,10 +1,35 @@
 
 package Paws::IoTAnalytics::ListPipelinesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has PipelineSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::PipelineSummary]', traits => ['NameInRequest'], request_name => 'pipelineSummaries');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_PipelineSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has PipelineSummaries => (is => 'ro', isa => ArrayRef[IoTAnalytics_PipelineSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'PipelineSummaries' => {
+                                        'class' => 'Paws::IoTAnalytics::PipelineSummary',
+                                        'type' => 'ArrayRef[IoTAnalytics_PipelineSummary]'
+                                      }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'PipelineSummaries' => 'pipelineSummaries'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +47,7 @@ The token to retrieve the next set of results, or C<null> if there are
 no more results.
 
 
-=head2 PipelineSummaries => ArrayRef[L<Paws::IoTAnalytics::PipelineSummary>]
+=head2 PipelineSummaries => ArrayRef[IoTAnalytics_PipelineSummary]
 
 A list of "PipelineSummary" objects.
 

@@ -1,15 +1,41 @@
 
 package Paws::PinpointEmail::UntagResource;
-  use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'ResourceArn', required => 1);
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'TagKeys', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::PinpointEmail::Types qw//;
+  has ResourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TagKeys => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UntagResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/tags');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::UntagResourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UntagResource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/tags');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::UntagResourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagKeys' => {
+                              'type' => 'ArrayRef[Str|Undef]'
+                            },
+               'ResourceArn' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'ParamInQuery' => {
+                      'TagKeys' => 'TagKeys',
+                      'ResourceArn' => 'ResourceArn'
+                    },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'ResourceArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

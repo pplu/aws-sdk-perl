@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::RDSData::UpdateResult;
-  use Moose;
-  has GeneratedFields => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::Field]', request_name => 'generatedFields', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::RDSData::Types qw/RDSData_Field/;
+  has GeneratedFields => (is => 'ro', isa => ArrayRef[RDSData_Field]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GeneratedFields' => {
+                                      'class' => 'Paws::RDSData::Field',
+                                      'type' => 'ArrayRef[RDSData_Field]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'GeneratedFields' => 'generatedFields'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ The response elements represent the results of an update.
 =head1 ATTRIBUTES
 
 
-=head2 GeneratedFields => ArrayRef[L<Paws::RDSData::Field>]
+=head2 GeneratedFields => ArrayRef[RDSData_Field]
 
   Values for fields generated during the request.
 

@@ -1,10 +1,32 @@
 
 package Paws::WorkDocs::GetDocumentResponse;
-  use Moose;
-  has CustomMetadata => (is => 'ro', isa => 'Paws::WorkDocs::CustomMetadataMap');
-  has Metadata => (is => 'ro', isa => 'Paws::WorkDocs::DocumentMetadata');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::WorkDocs::Types qw/WorkDocs_DocumentMetadata WorkDocs_CustomMetadataMap/;
+  has CustomMetadata => (is => 'ro', isa => WorkDocs_CustomMetadataMap);
+  has Metadata => (is => 'ro', isa => WorkDocs_DocumentMetadata);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CustomMetadata' => {
+                                     'class' => 'Paws::WorkDocs::CustomMetadataMap',
+                                     'type' => 'WorkDocs_CustomMetadataMap'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Metadata' => {
+                               'class' => 'Paws::WorkDocs::DocumentMetadata',
+                               'type' => 'WorkDocs_DocumentMetadata'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,12 +38,12 @@ Paws::WorkDocs::GetDocumentResponse
 =head1 ATTRIBUTES
 
 
-=head2 CustomMetadata => L<Paws::WorkDocs::CustomMetadataMap>
+=head2 CustomMetadata => WorkDocs_CustomMetadataMap
 
 The custom metadata on the document.
 
 
-=head2 Metadata => L<Paws::WorkDocs::DocumentMetadata>
+=head2 Metadata => WorkDocs_DocumentMetadata
 
 The metadata details of the document.
 

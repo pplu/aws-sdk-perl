@@ -1,15 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CognitoIdp::AdminUpdateUserAttributes;
-  use Moose;
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]', required => 1);
-  has Username => (is => 'ro', isa => 'Str', required => 1);
-  has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType/;
+  has UserAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType], required => 1, predicate => 1);
+  has Username => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has UserPoolId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'AdminUpdateUserAttributes');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdp::AdminUpdateUserAttributesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'AdminUpdateUserAttributes');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CognitoIdp::AdminUpdateUserAttributesResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UserPoolId' => {
+                                 'type' => 'Str'
+                               },
+               'Username' => {
+                               'type' => 'Str'
+                             },
+               'UserAttributes' => {
+                                     'class' => 'Paws::CognitoIdp::AttributeType',
+                                     'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                   }
+             },
+  'IsRequired' => {
+                    'UserPoolId' => 1,
+                    'Username' => 1,
+                    'UserAttributes' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 B<REQUIRED> UserAttributes => ArrayRef[CognitoIdp_AttributeType]
 
 An array of name-value pairs representing user attributes.
 

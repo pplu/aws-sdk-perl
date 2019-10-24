@@ -1,17 +1,69 @@
+# Generated from default/object.tt
 package Paws::ACMPCA::CertificateAuthority;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CertificateAuthorityConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::CertificateAuthorityConfiguration');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has FailureReason => (is => 'ro', isa => 'Str');
-  has LastStateChangeAt => (is => 'ro', isa => 'Str');
-  has NotAfter => (is => 'ro', isa => 'Str');
-  has NotBefore => (is => 'ro', isa => 'Str');
-  has RestorableUntil => (is => 'ro', isa => 'Str');
-  has RevocationConfiguration => (is => 'ro', isa => 'Paws::ACMPCA::RevocationConfiguration');
-  has Serial => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ACMPCA::Types qw/ACMPCA_CertificateAuthorityConfiguration ACMPCA_RevocationConfiguration/;
+  has Arn => (is => 'ro', isa => Str);
+  has CertificateAuthorityConfiguration => (is => 'ro', isa => ACMPCA_CertificateAuthorityConfiguration);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has FailureReason => (is => 'ro', isa => Str);
+  has LastStateChangeAt => (is => 'ro', isa => Str);
+  has NotAfter => (is => 'ro', isa => Str);
+  has NotBefore => (is => 'ro', isa => Str);
+  has RestorableUntil => (is => 'ro', isa => Str);
+  has RevocationConfiguration => (is => 'ro', isa => ACMPCA_RevocationConfiguration);
+  has Serial => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RestorableUntil' => {
+                                      'type' => 'Str'
+                                    },
+               'NotAfter' => {
+                               'type' => 'Str'
+                             },
+               'LastStateChangeAt' => {
+                                        'type' => 'Str'
+                                      },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Serial' => {
+                             'type' => 'Str'
+                           },
+               'NotBefore' => {
+                                'type' => 'Str'
+                              },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'FailureReason' => {
+                                    'type' => 'Str'
+                                  },
+               'RevocationConfiguration' => {
+                                              'class' => 'Paws::ACMPCA::RevocationConfiguration',
+                                              'type' => 'ACMPCA_RevocationConfiguration'
+                                            },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CertificateAuthorityConfiguration' => {
+                                                        'class' => 'Paws::ACMPCA::CertificateAuthorityConfiguration',
+                                                        'type' => 'ACMPCA_CertificateAuthorityConfiguration'
+                                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +115,7 @@ certificate into AWS Certificate Manager (ACM).
 The format is C< I<12345678-1234-1234-1234-123456789012> >.
 
 
-=head2 CertificateAuthorityConfiguration => L<Paws::ACMPCA::CertificateAuthorityConfiguration>
+=head2 CertificateAuthorityConfiguration => ACMPCA_CertificateAuthorityConfiguration
 
   Your private CA configuration.
 
@@ -100,7 +152,7 @@ information, see the C<PermanentDeletionTimeInDays> parameter of the
 DeleteCertificateAuthorityRequest action.
 
 
-=head2 RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>
+=head2 RevocationConfiguration => ACMPCA_RevocationConfiguration
 
   Information about the certificate revocation list (CRL) created and
 maintained by your private CA.

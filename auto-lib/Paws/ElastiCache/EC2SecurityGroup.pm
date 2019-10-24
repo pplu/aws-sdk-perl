@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ElastiCache::EC2SecurityGroup;
-  use Moose;
-  has EC2SecurityGroupName => (is => 'ro', isa => 'Str');
-  has EC2SecurityGroupOwnerId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ElastiCache::Types qw//;
+  has EC2SecurityGroupName => (is => 'ro', isa => Str);
+  has EC2SecurityGroupOwnerId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'EC2SecurityGroupOwnerId' => {
+                                              'type' => 'Str'
+                                            },
+               'EC2SecurityGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

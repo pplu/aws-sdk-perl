@@ -1,20 +1,79 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodePipeline::CreateCustomActionType;
-  use Moose;
-  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category' , required => 1);
-  has ConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', traits => ['NameInRequest'], request_name => 'configurationProperties' );
-  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'inputArtifactDetails' , required => 1);
-  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'outputArtifactDetails' , required => 1);
-  has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
-  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', traits => ['NameInRequest'], request_name => 'settings' );
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodePipeline::Types qw/CodePipeline_ActionTypeSettings CodePipeline_Tag CodePipeline_ArtifactDetails CodePipeline_ActionConfigurationProperty/;
+  has Category => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ConfigurationProperties => (is => 'ro', isa => ArrayRef[CodePipeline_ActionConfigurationProperty], predicate => 1);
+  has InputArtifactDetails => (is => 'ro', isa => CodePipeline_ArtifactDetails, required => 1, predicate => 1);
+  has OutputArtifactDetails => (is => 'ro', isa => CodePipeline_ArtifactDetails, required => 1, predicate => 1);
+  has Provider => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Settings => (is => 'ro', isa => CodePipeline_ActionTypeSettings, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[CodePipeline_Tag], predicate => 1);
+  has Version => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomActionType');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::CreateCustomActionTypeOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateCustomActionType');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodePipeline::CreateCustomActionTypeOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationProperties' => {
+                                              'class' => 'Paws::CodePipeline::ActionConfigurationProperty',
+                                              'type' => 'ArrayRef[CodePipeline_ActionConfigurationProperty]'
+                                            },
+               'Settings' => {
+                               'class' => 'Paws::CodePipeline::ActionTypeSettings',
+                               'type' => 'CodePipeline_ActionTypeSettings'
+                             },
+               'OutputArtifactDetails' => {
+                                            'class' => 'Paws::CodePipeline::ArtifactDetails',
+                                            'type' => 'CodePipeline_ArtifactDetails'
+                                          },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Provider' => {
+                               'type' => 'Str'
+                             },
+               'InputArtifactDetails' => {
+                                           'class' => 'Paws::CodePipeline::ArtifactDetails',
+                                           'type' => 'CodePipeline_ArtifactDetails'
+                                         },
+               'Tags' => {
+                           'class' => 'Paws::CodePipeline::Tag',
+                           'type' => 'ArrayRef[CodePipeline_Tag]'
+                         },
+               'Category' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ConfigurationProperties' => 'configurationProperties',
+                       'Settings' => 'settings',
+                       'OutputArtifactDetails' => 'outputArtifactDetails',
+                       'Version' => 'version',
+                       'Provider' => 'provider',
+                       'InputArtifactDetails' => 'inputArtifactDetails',
+                       'Tags' => 'tags',
+                       'Category' => 'category'
+                     },
+  'IsRequired' => {
+                    'Version' => 1,
+                    'Provider' => 1,
+                    'InputArtifactDetails' => 1,
+                    'OutputArtifactDetails' => 1,
+                    'Category' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -98,7 +157,7 @@ not currently functional. These values are reserved for future use.
 
 Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
-=head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
+=head2 ConfigurationProperties => ArrayRef[CodePipeline_ActionConfigurationProperty]
 
 The configuration properties for the custom action.
 
@@ -111,14 +170,14 @@ Pipeline
 
 
 
-=head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> InputArtifactDetails => CodePipeline_ArtifactDetails
 
 The details of the input artifact for the action, such as its commit
 ID.
 
 
 
-=head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> OutputArtifactDetails => CodePipeline_ArtifactDetails
 
 The details of the output artifact of the action, such as its commit
 ID.
@@ -132,13 +191,13 @@ CodeDeploy.
 
 
 
-=head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
+=head2 Settings => CodePipeline_ActionTypeSettings
 
 URLs that provide users information about this custom action.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]
+=head2 Tags => ArrayRef[CodePipeline_Tag]
 
 The tags for the custom action.
 

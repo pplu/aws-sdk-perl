@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::ExportJobsResponse;
-  use Moose;
-  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ExportJobResponse]', required => 1);
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ExportJobResponse/;
+  has Item => (is => 'ro', isa => ArrayRef[Pinpoint_ExportJobResponse], required => 1);
+  has NextToken => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Item' => {
+                           'class' => 'Paws::Pinpoint::ExportJobResponse',
+                           'type' => 'ArrayRef[Pinpoint_ExportJobResponse]'
+                         }
+             },
+  'IsRequired' => {
+                    'Item' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +63,7 @@ definitions to a file.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => ArrayRef[L<Paws::Pinpoint::ExportJobResponse>]
+=head2 B<REQUIRED> Item => ArrayRef[Pinpoint_ExportJobResponse]
 
   An array of responses, one for each export job that's associated with
 the application (Export Jobs resource) or segment (Segment Export Jobs

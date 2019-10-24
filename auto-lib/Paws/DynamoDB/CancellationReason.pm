@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::CancellationReason;
   use Moo;
   use Types::Standard qw/Str/;
@@ -6,7 +7,7 @@ package Paws::DynamoDB::CancellationReason;
   has Item => (is => 'ro', isa => DynamoDB_AttributeMap);
   has Message => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Code' => {
@@ -22,8 +23,8 @@ package Paws::DynamoDB::CancellationReason;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

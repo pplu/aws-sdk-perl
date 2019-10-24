@@ -1,10 +1,34 @@
 
 package Paws::IoT::CreateAuthorizerResponse;
-  use Moose;
-  has AuthorizerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerArn');
-  has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authorizerName');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AuthorizerArn => (is => 'ro', isa => Str);
+  has AuthorizerName => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthorizerName' => {
+                                     'type' => 'Str'
+                                   },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'AuthorizerArn' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'AuthorizerName' => 'authorizerName',
+                       'AuthorizerArn' => 'authorizerArn'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

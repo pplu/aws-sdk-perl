@@ -4,7 +4,7 @@ package Paws::EC2::LoadPermissionModifications;
   has Add => (is => 'ro', isa => ArrayRef[EC2_LoadPermissionRequest]);
   has Remove => (is => 'ro', isa => ArrayRef[EC2_LoadPermissionRequest]);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Remove' => {
@@ -18,8 +18,8 @@ package Paws::EC2::LoadPermissionModifications;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

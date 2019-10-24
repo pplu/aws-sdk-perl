@@ -1,24 +1,82 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::CreateProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Distributor => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Owner => (is => 'ro', isa => 'Str', required => 1);
-  has ProductType => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactParameters => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactProperties', required => 1);
-  has SupportDescription => (is => 'ro', isa => 'Str');
-  has SupportEmail => (is => 'ro', isa => 'Str');
-  has SupportUrl => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag ServiceCatalog_ProvisioningArtifactProperties/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Distributor => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Owner => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProductType => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisioningArtifactParameters => (is => 'ro', isa => ServiceCatalog_ProvisioningArtifactProperties, required => 1, predicate => 1);
+  has SupportDescription => (is => 'ro', isa => Str, predicate => 1);
+  has SupportEmail => (is => 'ro', isa => Str, predicate => 1);
+  has SupportUrl => (is => 'ro', isa => Str, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::CreateProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::CreateProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SupportDescription' => {
+                                         'type' => 'Str'
+                                       },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'SupportEmail' => {
+                                   'type' => 'Str'
+                                 },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'Owner' => {
+                            'type' => 'Str'
+                          },
+               'SupportUrl' => {
+                                 'type' => 'Str'
+                               },
+               'Distributor' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisioningArtifactParameters' => {
+                                                     'class' => 'Paws::ServiceCatalog::ProvisioningArtifactProperties',
+                                                     'type' => 'ServiceCatalog_ProvisioningArtifactProperties'
+                                                   },
+               'Tags' => {
+                           'class' => 'Paws::ServiceCatalog::Tag',
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'ProductType' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'IsRequired' => {
+                    'Owner' => 1,
+                    'ProvisioningArtifactParameters' => 1,
+                    'IdempotencyToken' => 1,
+                    'Name' => 1,
+                    'ProductType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -144,7 +202,7 @@ The type of product.
 
 Valid values are: C<"CLOUD_FORMATION_TEMPLATE">, C<"MARKETPLACE">
 
-=head2 B<REQUIRED> ProvisioningArtifactParameters => L<Paws::ServiceCatalog::ProvisioningArtifactProperties>
+=head2 B<REQUIRED> ProvisioningArtifactParameters => ServiceCatalog_ProvisioningArtifactProperties
 
 The configuration of the provisioning artifact.
 
@@ -168,7 +226,7 @@ The contact URL for product support.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
 One or more tags.
 

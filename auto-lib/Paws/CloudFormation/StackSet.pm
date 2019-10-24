@@ -1,16 +1,69 @@
+# Generated from default/object.tt
 package Paws::CloudFormation::StackSet;
-  use Moose;
-  has AdministrationRoleARN => (is => 'ro', isa => 'Str');
-  has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Description => (is => 'ro', isa => 'Str');
-  has ExecutionRoleName => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has StackSetARN => (is => 'ro', isa => 'Str');
-  has StackSetId => (is => 'ro', isa => 'Str');
-  has StackSetName => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
-  has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute']);
+  use Moo;
+  use JSON::MaybeXS;
+  use URL::Encode;
+
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter CloudFormation_Tag/;
+  has AdministrationRoleARN => (is => 'ro', isa => Str);
+  has Capabilities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Description => (is => 'ro', isa => Str);
+  has ExecutionRoleName => (is => 'ro', isa => Str);
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter]);
+  has StackSetARN => (is => 'ro', isa => Str);
+  has StackSetId => (is => 'ro', isa => Str);
+  has StackSetName => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[CloudFormation_Tag]);
+  has TemplateBody => (is => 'ro', isa => Str);
+  has Template => ( is => 'lazy', builder => sub { my $self = shift;  return decode_json($self->TemplateBody); });
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StackSetId' => {
+                                 'type' => 'Str'
+                               },
+               'StackSetARN' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ExecutionRoleName' => {
+                                        'type' => 'Str'
+                                      },
+               'StackSetName' => {
+                                   'type' => 'Str'
+                                 },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 },
+               'Tags' => {
+                           'class' => 'Paws::CloudFormation::Tag',
+                           'type' => 'ArrayRef[CloudFormation_Tag]'
+                         },
+               'AdministrationRoleARN' => {
+                                            'type' => 'Str'
+                                          },
+               'Capabilities' => {
+                                   'type' => 'ArrayRef[Str|Undef]'
+                                 },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -88,7 +141,7 @@ Use customized execution roles to control which stack resources users
 and groups can include in their stack sets.
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
   A list of input parameters for a stack set.
 
@@ -113,7 +166,7 @@ and groups can include in their stack sets.
   The status of the stack set.
 
 
-=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+=head2 Tags => ArrayRef[CloudFormation_Tag]
 
   A list of tags that specify information about the stack set. A maximum
 number of 50 tags can be specified.

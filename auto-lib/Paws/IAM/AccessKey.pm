@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::AccessKey;
   use Moo;
   use Types::Standard qw/Str/;
@@ -26,7 +27,13 @@ package Paws::IAM::AccessKey;
                'SecretAccessKey' => {
                                       'type' => 'Str'
                                     }
-             }
+             },
+  'IsRequired' => {
+                    'UserName' => 1,
+                    'AccessKeyId' => 1,
+                    'Status' => 1,
+                    'SecretAccessKey' => 1
+                  }
 }
 ;
     return $Params_map;

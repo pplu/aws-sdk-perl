@@ -1,6 +1,30 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::TagsModel;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string/;
+  has Tags => (is => 'ro', isa => Pinpoint_MapOf__string, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tags' => {
+                           'class' => 'Paws::Pinpoint::MapOf__string',
+                           'type' => 'Pinpoint_MapOf__string'
+                         }
+             },
+  'NameInRequest' => {
+                       'Tags' => 'tags'
+                     },
+  'IsRequired' => {
+                    'Tags' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +61,7 @@ segment.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Tags => L<Paws::Pinpoint::MapOf__string>
+=head2 B<REQUIRED> Tags => Pinpoint_MapOf__string
 
   A string-to-string map of key-value pairs that defines the tags for an
 application, campaign, or segment. A project, campaign, or segment can

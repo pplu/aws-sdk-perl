@@ -1,12 +1,55 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::InputUpdate;
-  use Moose;
-  has InputId => (is => 'ro', isa => 'Str', required => 1);
-  has InputParallelismUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputParallelismUpdate');
-  has InputProcessingConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputProcessingConfigurationUpdate');
-  has InputSchemaUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::InputSchemaUpdate');
-  has KinesisFirehoseInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisFirehoseInputUpdate');
-  has KinesisStreamsInputUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::KinesisStreamsInputUpdate');
-  has NamePrefixUpdate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_InputSchemaUpdate KinesisAnalyticsV2_KinesisStreamsInputUpdate KinesisAnalyticsV2_InputParallelismUpdate KinesisAnalyticsV2_InputProcessingConfigurationUpdate KinesisAnalyticsV2_KinesisFirehoseInputUpdate/;
+  has InputId => (is => 'ro', isa => Str, required => 1);
+  has InputParallelismUpdate => (is => 'ro', isa => KinesisAnalyticsV2_InputParallelismUpdate);
+  has InputProcessingConfigurationUpdate => (is => 'ro', isa => KinesisAnalyticsV2_InputProcessingConfigurationUpdate);
+  has InputSchemaUpdate => (is => 'ro', isa => KinesisAnalyticsV2_InputSchemaUpdate);
+  has KinesisFirehoseInputUpdate => (is => 'ro', isa => KinesisAnalyticsV2_KinesisFirehoseInputUpdate);
+  has KinesisStreamsInputUpdate => (is => 'ro', isa => KinesisAnalyticsV2_KinesisStreamsInputUpdate);
+  has NamePrefixUpdate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NamePrefixUpdate' => {
+                                       'type' => 'Str'
+                                     },
+               'KinesisFirehoseInputUpdate' => {
+                                                 'class' => 'Paws::KinesisAnalyticsV2::KinesisFirehoseInputUpdate',
+                                                 'type' => 'KinesisAnalyticsV2_KinesisFirehoseInputUpdate'
+                                               },
+               'KinesisStreamsInputUpdate' => {
+                                                'class' => 'Paws::KinesisAnalyticsV2::KinesisStreamsInputUpdate',
+                                                'type' => 'KinesisAnalyticsV2_KinesisStreamsInputUpdate'
+                                              },
+               'InputSchemaUpdate' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::InputSchemaUpdate',
+                                        'type' => 'KinesisAnalyticsV2_InputSchemaUpdate'
+                                      },
+               'InputProcessingConfigurationUpdate' => {
+                                                         'class' => 'Paws::KinesisAnalyticsV2::InputProcessingConfigurationUpdate',
+                                                         'type' => 'KinesisAnalyticsV2_InputProcessingConfigurationUpdate'
+                                                       },
+               'InputParallelismUpdate' => {
+                                             'class' => 'Paws::KinesisAnalyticsV2::InputParallelismUpdate',
+                                             'type' => 'KinesisAnalyticsV2_InputParallelismUpdate'
+                                           },
+               'InputId' => {
+                              'type' => 'Str'
+                            }
+             },
+  'IsRequired' => {
+                    'InputId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,31 +92,31 @@ of an application).
   The input ID of the application input to be updated.
 
 
-=head2 InputParallelismUpdate => L<Paws::KinesisAnalyticsV2::InputParallelismUpdate>
+=head2 InputParallelismUpdate => KinesisAnalyticsV2_InputParallelismUpdate
 
   Describes the parallelism updates (the number of in-application streams
 Kinesis Data Analytics creates for the specific streaming source).
 
 
-=head2 InputProcessingConfigurationUpdate => L<Paws::KinesisAnalyticsV2::InputProcessingConfigurationUpdate>
+=head2 InputProcessingConfigurationUpdate => KinesisAnalyticsV2_InputProcessingConfigurationUpdate
 
   Describes updates to an InputProcessingConfiguration.
 
 
-=head2 InputSchemaUpdate => L<Paws::KinesisAnalyticsV2::InputSchemaUpdate>
+=head2 InputSchemaUpdate => KinesisAnalyticsV2_InputSchemaUpdate
 
   Describes the data format on the streaming source, and how record
 elements on the streaming source map to columns of the in-application
 stream that is created.
 
 
-=head2 KinesisFirehoseInputUpdate => L<Paws::KinesisAnalyticsV2::KinesisFirehoseInputUpdate>
+=head2 KinesisFirehoseInputUpdate => KinesisAnalyticsV2_KinesisFirehoseInputUpdate
 
   If a Kinesis Data Firehose delivery stream is the streaming source to
 be updated, provides an updated stream ARN.
 
 
-=head2 KinesisStreamsInputUpdate => L<Paws::KinesisAnalyticsV2::KinesisStreamsInputUpdate>
+=head2 KinesisStreamsInputUpdate => KinesisAnalyticsV2_KinesisStreamsInputUpdate
 
   If a Kinesis data stream is the streaming source to be updated,
 provides an updated stream Amazon Resource Name (ARN).

@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::SNS::PlatformApplication;
-  use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
-  has PlatformApplicationArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SNS::Types qw/SNS_MapStringToString/;
+  has Attributes => (is => 'ro', isa => SNS_MapStringToString);
+  has PlatformApplicationArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PlatformApplicationArn' => {
+                                             'type' => 'Str'
+                                           },
+               'Attributes' => {
+                                 'class' => 'Paws::SNS::MapStringToString',
+                                 'type' => 'SNS_MapStringToString'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Platform application object.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => SNS_MapStringToString
 
   Attributes for platform application object.
 

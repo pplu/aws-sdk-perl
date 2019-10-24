@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::WAF;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'waf' }
   sub signing_name { 'waf' }
   sub version { '2015-08-24' }
   sub target_prefix { 'AWSWAF_20150824' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -1004,7 +1006,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RateLimit => Int
 
-=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
+=item [Tags => ArrayRef[WAF_Tag]]
 
 
 =back
@@ -1233,7 +1235,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
+=item [Tags => ArrayRef[WAF_Tag]]
 
 
 =back
@@ -1316,7 +1318,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
+=item [Tags => ArrayRef[WAF_Tag]]
 
 
 =back
@@ -1465,13 +1467,13 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item ChangeToken => Str
 
-=item DefaultAction => L<Paws::WAF::WafAction>
+=item DefaultAction => WAF_WafAction
 
 =item MetricName => Str
 
 =item Name => Str
 
-=item [Tags => ArrayRef[L<Paws::WAF::Tag>]]
+=item [Tags => ArrayRef[WAF_Tag]]
 
 
 =back
@@ -2382,7 +2384,7 @@ To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 
 =item RuleId => Str
 
-=item TimeWindow => L<Paws::WAF::TimeWindow>
+=item TimeWindow => WAF_TimeWindow
 
 =item WebAclId => Str
 
@@ -2768,7 +2770,7 @@ Returns an array of XssMatchSet objects.
 
 =over
 
-=item LoggingConfiguration => L<Paws::WAF::LoggingConfiguration>
+=item LoggingConfiguration => WAF_LoggingConfiguration
 
 
 =back
@@ -2884,7 +2886,7 @@ below.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::WAF::Tag>]
+=item Tags => ArrayRef[WAF_Tag]
 
 
 =back
@@ -2922,7 +2924,7 @@ Returns: a L<Paws::WAF::UntagResourceResponse> instance
 
 =item ChangeToken => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>]
+=item Updates => ArrayRef[WAF_ByteMatchSetUpdate]
 
 
 =back
@@ -3003,7 +3005,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item GeoMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::GeoMatchSetUpdate>]
+=item Updates => ArrayRef[WAF_GeoMatchSetUpdate]
 
 
 =back
@@ -3072,7 +3074,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item IPSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>]
+=item Updates => ArrayRef[WAF_IPSetUpdate]
 
 
 =back
@@ -3181,7 +3183,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::RuleUpdate>]
+=item Updates => ArrayRef[WAF_RuleUpdate]
 
 
 =back
@@ -3259,7 +3261,7 @@ requests to your login page without affecting the rest of your site.
 
 =item RegexMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::RegexMatchSetUpdate>]
+=item Updates => ArrayRef[WAF_RegexMatchSetUpdate]
 
 
 =back
@@ -3339,7 +3341,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RegexPatternSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::RegexPatternSetUpdate>]
+=item Updates => ArrayRef[WAF_RegexPatternSetUpdate]
 
 
 =back
@@ -3423,7 +3425,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::RuleUpdate>]
+=item Updates => ArrayRef[WAF_RuleUpdate]
 
 
 =back
@@ -3503,7 +3505,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item RuleGroupId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::RuleGroupUpdate>]
+=item Updates => ArrayRef[WAF_RuleGroupUpdate]
 
 
 =back
@@ -3560,7 +3562,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item SizeConstraintSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::SizeConstraintSetUpdate>]
+=item Updates => ArrayRef[WAF_SizeConstraintSetUpdate]
 
 
 =back
@@ -3651,7 +3653,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item SqlInjectionMatchSetId => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>]
+=item Updates => ArrayRef[WAF_SqlInjectionMatchSetUpdate]
 
 
 =back
@@ -3729,9 +3731,9 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item WebACLId => Str
 
-=item [DefaultAction => L<Paws::WAF::WafAction>]
+=item [DefaultAction => WAF_WafAction]
 
-=item [Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]]
+=item [Updates => ArrayRef[WAF_WebACLUpdate]]
 
 
 =back
@@ -3836,7 +3838,7 @@ HTTP requests, see the AWS WAF Developer Guide
 
 =item ChangeToken => Str
 
-=item Updates => ArrayRef[L<Paws::WAF::XssMatchSetUpdate>]
+=item Updates => ArrayRef[WAF_XssMatchSetUpdate]
 
 =item XssMatchSetId => Str
 

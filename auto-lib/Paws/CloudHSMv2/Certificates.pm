@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::CloudHSMv2::Certificates;
-  use Moose;
-  has AwsHardwareCertificate => (is => 'ro', isa => 'Str');
-  has ClusterCertificate => (is => 'ro', isa => 'Str');
-  has ClusterCsr => (is => 'ro', isa => 'Str');
-  has HsmCertificate => (is => 'ro', isa => 'Str');
-  has ManufacturerHardwareCertificate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CloudHSMv2::Types qw//;
+  has AwsHardwareCertificate => (is => 'ro', isa => Str);
+  has ClusterCertificate => (is => 'ro', isa => Str);
+  has ClusterCsr => (is => 'ro', isa => Str);
+  has HsmCertificate => (is => 'ro', isa => Str);
+  has ManufacturerHardwareCertificate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterCsr' => {
+                                 'type' => 'Str'
+                               },
+               'ClusterCertificate' => {
+                                         'type' => 'Str'
+                                       },
+               'ManufacturerHardwareCertificate' => {
+                                                      'type' => 'Str'
+                                                    },
+               'AwsHardwareCertificate' => {
+                                             'type' => 'Str'
+                                           },
+               'HsmCertificate' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

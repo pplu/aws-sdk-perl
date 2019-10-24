@@ -1,24 +1,89 @@
 
 package Paws::MediaConnect::UpdateFlowSource;
-  use Moose;
-  has Decryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'decryption');
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
-  has EntitlementArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'entitlementArn');
-  has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
-  has IngestPort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ingestPort');
-  has MaxBitrate => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBitrate');
-  has MaxLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxLatency');
-  has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol');
-  has SourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sourceArn', required => 1);
-  has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
-  has WhitelistCidr => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'whitelistCidr');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConnect::Types qw/MediaConnect_UpdateEncryption/;
+  has Decryption => (is => 'ro', isa => MediaConnect_UpdateEncryption, predicate => 1);
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has EntitlementArn => (is => 'ro', isa => Str, predicate => 1);
+  has FlowArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has IngestPort => (is => 'ro', isa => Int, predicate => 1);
+  has MaxBitrate => (is => 'ro', isa => Int, predicate => 1);
+  has MaxLatency => (is => 'ro', isa => Int, predicate => 1);
+  has Protocol => (is => 'ro', isa => Str, predicate => 1);
+  has SourceArn => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has StreamId => (is => 'ro', isa => Str, predicate => 1);
+  has WhitelistCidr => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFlowSource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/flows/{flowArn}/source/{sourceArn}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MediaConnect::UpdateFlowSourceResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateFlowSource');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/flows/{flowArn}/source/{sourceArn}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'PUT');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::MediaConnect::UpdateFlowSourceResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'IngestPort' => {
+                                 'type' => 'Int'
+                               },
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'MaxBitrate' => {
+                                 'type' => 'Int'
+                               },
+               'EntitlementArn' => {
+                                     'type' => 'Str'
+                                   },
+               'StreamId' => {
+                               'type' => 'Str'
+                             },
+               'MaxLatency' => {
+                                 'type' => 'Int'
+                               },
+               'Decryption' => {
+                                 'class' => 'Paws::MediaConnect::UpdateEncryption',
+                                 'type' => 'MediaConnect_UpdateEncryption'
+                               },
+               'Protocol' => {
+                               'type' => 'Str'
+                             },
+               'WhitelistCidr' => {
+                                    'type' => 'Str'
+                                  },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'FlowArn' => {
+                              'type' => 'Str'
+                            }
+             },
+  'ParamInURI' => {
+                    'SourceArn' => 'sourceArn',
+                    'FlowArn' => 'flowArn'
+                  },
+  'NameInRequest' => {
+                       'IngestPort' => 'ingestPort',
+                       'MaxBitrate' => 'maxBitrate',
+                       'EntitlementArn' => 'entitlementArn',
+                       'StreamId' => 'streamId',
+                       'MaxLatency' => 'maxLatency',
+                       'Decryption' => 'decryption',
+                       'Protocol' => 'protocol',
+                       'WhitelistCidr' => 'whitelistCidr',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'SourceArn' => 1,
+                    'FlowArn' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +139,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
-=head2 Decryption => L<Paws::MediaConnect::UpdateEncryption>
+=head2 Decryption => MediaConnect_UpdateEncryption
 
 The type of encryption used on the content ingested from this source.
 

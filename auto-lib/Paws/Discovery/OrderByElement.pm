@@ -1,7 +1,34 @@
+# Generated from default/object.tt
 package Paws::Discovery::OrderByElement;
-  use Moose;
-  has FieldName => (is => 'ro', isa => 'Str', request_name => 'fieldName', traits => ['NameInRequest'], required => 1);
-  has SortOrder => (is => 'ro', isa => 'Str', request_name => 'sortOrder', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Discovery::Types qw//;
+  has FieldName => (is => 'ro', isa => Str, required => 1);
+  has SortOrder => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SortOrder' => {
+                                'type' => 'Str'
+                              },
+               'FieldName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'SortOrder' => 'sortOrder',
+                       'FieldName' => 'fieldName'
+                     },
+  'IsRequired' => {
+                    'FieldName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

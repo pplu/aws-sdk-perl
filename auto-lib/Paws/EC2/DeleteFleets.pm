@@ -13,7 +13,7 @@ package Paws::EC2::DeleteFleets;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DeleteFleetsResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TerminateInstances' => {
@@ -28,11 +28,15 @@ package Paws::EC2::DeleteFleets;
              },
   'NameInRequest' => {
                        'FleetIds' => 'FleetId'
-                     }
+                     },
+  'IsRequired' => {
+                    'TerminateInstances' => 1,
+                    'FleetIds' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

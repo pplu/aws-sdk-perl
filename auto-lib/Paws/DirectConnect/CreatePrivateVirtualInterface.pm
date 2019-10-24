@@ -1,14 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DirectConnect::CreatePrivateVirtualInterface;
-  use Moose;
-  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
-  has NewPrivateVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPrivateVirtualInterface', traits => ['NameInRequest'], request_name => 'newPrivateVirtualInterface' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DirectConnect::Types qw/DirectConnect_NewPrivateVirtualInterface/;
+  has ConnectionId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has NewPrivateVirtualInterface => (is => 'ro', isa => DirectConnect_NewPrivateVirtualInterface, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePrivateVirtualInterface');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreatePrivateVirtualInterface');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NewPrivateVirtualInterface' => {
+                                                 'class' => 'Paws::DirectConnect::NewPrivateVirtualInterface',
+                                                 'type' => 'DirectConnect_NewPrivateVirtualInterface'
+                                               },
+               'ConnectionId' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'NewPrivateVirtualInterface' => 'newPrivateVirtualInterface',
+                       'ConnectionId' => 'connectionId'
+                     },
+  'IsRequired' => {
+                    'NewPrivateVirtualInterface' => 1,
+                    'ConnectionId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +120,7 @@ The ID of the connection.
 
 
 
-=head2 B<REQUIRED> NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>
+=head2 B<REQUIRED> NewPrivateVirtualInterface => DirectConnect_NewPrivateVirtualInterface
 
 Information about the private virtual interface.
 

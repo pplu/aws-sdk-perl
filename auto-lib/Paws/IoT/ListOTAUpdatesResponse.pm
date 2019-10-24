@@ -1,10 +1,35 @@
 
 package Paws::IoT::ListOTAUpdatesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has OtaUpdates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateSummary]', traits => ['NameInRequest'], request_name => 'otaUpdates');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::IoT::Types qw/IoT_OTAUpdateSummary/;
+  has NextToken => (is => 'ro', isa => Str);
+  has OtaUpdates => (is => 'ro', isa => ArrayRef[IoT_OTAUpdateSummary]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'OtaUpdates' => {
+                                 'class' => 'Paws::IoT::OTAUpdateSummary',
+                                 'type' => 'ArrayRef[IoT_OTAUpdateSummary]'
+                               }
+             },
+  'NameInRequest' => {
+                       'NextToken' => 'nextToken',
+                       'OtaUpdates' => 'otaUpdates'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +46,7 @@ Paws::IoT::ListOTAUpdatesResponse
 A token to use to get the next set of results.
 
 
-=head2 OtaUpdates => ArrayRef[L<Paws::IoT::OTAUpdateSummary>]
+=head2 OtaUpdates => ArrayRef[IoT_OTAUpdateSummary]
 
 A list of OTA update jobs.
 

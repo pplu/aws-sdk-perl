@@ -1,9 +1,47 @@
+# Generated from default/object.tt
 package Paws::IoTEvents::State;
-  use Moose;
-  has OnEnter => (is => 'ro', isa => 'Paws::IoTEvents::OnEnterLifecycle', request_name => 'onEnter', traits => ['NameInRequest']);
-  has OnExit => (is => 'ro', isa => 'Paws::IoTEvents::OnExitLifecycle', request_name => 'onExit', traits => ['NameInRequest']);
-  has OnInput => (is => 'ro', isa => 'Paws::IoTEvents::OnInputLifecycle', request_name => 'onInput', traits => ['NameInRequest']);
-  has StateName => (is => 'ro', isa => 'Str', request_name => 'stateName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTEvents::Types qw/IoTEvents_OnEnterLifecycle IoTEvents_OnInputLifecycle IoTEvents_OnExitLifecycle/;
+  has OnEnter => (is => 'ro', isa => IoTEvents_OnEnterLifecycle);
+  has OnExit => (is => 'ro', isa => IoTEvents_OnExitLifecycle);
+  has OnInput => (is => 'ro', isa => IoTEvents_OnInputLifecycle);
+  has StateName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OnEnter' => {
+                              'class' => 'Paws::IoTEvents::OnEnterLifecycle',
+                              'type' => 'IoTEvents_OnEnterLifecycle'
+                            },
+               'OnExit' => {
+                             'class' => 'Paws::IoTEvents::OnExitLifecycle',
+                             'type' => 'IoTEvents_OnExitLifecycle'
+                           },
+               'OnInput' => {
+                              'class' => 'Paws::IoTEvents::OnInputLifecycle',
+                              'type' => 'IoTEvents_OnInputLifecycle'
+                            },
+               'StateName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'NameInRequest' => {
+                       'OnEnter' => 'onEnter',
+                       'OnExit' => 'onExit',
+                       'OnInput' => 'onInput',
+                       'StateName' => 'stateName'
+                     },
+  'IsRequired' => {
+                    'StateName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +77,19 @@ Information that defines a state of a detector.
 =head1 ATTRIBUTES
 
 
-=head2 OnEnter => L<Paws::IoTEvents::OnEnterLifecycle>
+=head2 OnEnter => IoTEvents_OnEnterLifecycle
 
   When entering this state, perform these C<actions> if the C<condition>
 is TRUE.
 
 
-=head2 OnExit => L<Paws::IoTEvents::OnExitLifecycle>
+=head2 OnExit => IoTEvents_OnExitLifecycle
 
   When exiting this state, perform these C<actions> if the specified
 C<condition> is TRUE.
 
 
-=head2 OnInput => L<Paws::IoTEvents::OnInputLifecycle>
+=head2 OnInput => IoTEvents_OnInputLifecycle
 
   When an input is received and the C<condition> is TRUE, perform the
 specified C<actions>.

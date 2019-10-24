@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::EKS::Update;
-  use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
-  has Errors => (is => 'ro', isa => 'ArrayRef[Paws::EKS::ErrorDetail]', request_name => 'errors', traits => ['NameInRequest']);
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Params => (is => 'ro', isa => 'ArrayRef[Paws::EKS::UpdateParam]', request_name => 'params', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::EKS::Types qw/EKS_UpdateParam EKS_ErrorDetail/;
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Errors => (is => 'ro', isa => ArrayRef[EKS_ErrorDetail]);
+  has Id => (is => 'ro', isa => Str);
+  has Params => (is => 'ro', isa => ArrayRef[EKS_UpdateParam]);
+  has Status => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'Params' => {
+                             'class' => 'Paws::EKS::UpdateParam',
+                             'type' => 'ArrayRef[EKS_UpdateParam]'
+                           },
+               'Errors' => {
+                             'class' => 'Paws::EKS::ErrorDetail',
+                             'type' => 'ArrayRef[EKS_ErrorDetail]'
+                           }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Id' => 'id',
+                       'CreatedAt' => 'createdAt',
+                       'Status' => 'status',
+                       'Params' => 'params',
+                       'Errors' => 'errors'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +88,7 @@ An object representing an asynchronous update.
   The Unix epoch timestamp in seconds for when the update was created.
 
 
-=head2 Errors => ArrayRef[L<Paws::EKS::ErrorDetail>]
+=head2 Errors => ArrayRef[EKS_ErrorDetail]
 
   Any errors associated with a C<Failed> update.
 
@@ -56,7 +98,7 @@ An object representing an asynchronous update.
   A UUID that is used to track the update.
 
 
-=head2 Params => ArrayRef[L<Paws::EKS::UpdateParam>]
+=head2 Params => ArrayRef[EKS_UpdateParam]
 
   A key-value map that contains the parameters associated with the
 update.

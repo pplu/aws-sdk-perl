@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::BatchAttachTypedLinkResponse;
-  use Moose;
-  has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::CloudDirectory::Types qw/CloudDirectory_TypedLinkSpecifier/;
+  has TypedLinkSpecifier => (is => 'ro', isa => CloudDirectory_TypedLinkSpecifier);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TypedLinkSpecifier' => {
+                                         'class' => 'Paws::CloudDirectory::TypedLinkSpecifier',
+                                         'type' => 'CloudDirectory_TypedLinkSpecifier'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ Represents the output of a AttachTypedLink response operation.
 =head1 ATTRIBUTES
 
 
-=head2 TypedLinkSpecifier => L<Paws::CloudDirectory::TypedLinkSpecifier>
+=head2 TypedLinkSpecifier => CloudDirectory_TypedLinkSpecifier
 
   Returns a typed link specifier as output.
 

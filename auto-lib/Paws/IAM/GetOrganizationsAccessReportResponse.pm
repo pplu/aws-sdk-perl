@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::GetOrganizationsAccessReportResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str ArrayRef Bool Int/;
   use Paws::IAM::Types qw/IAM_ErrorDetails IAM_AccessDetail/;
   has AccessDetails => (is => 'ro', isa => ArrayRef[IAM_AccessDetail]);

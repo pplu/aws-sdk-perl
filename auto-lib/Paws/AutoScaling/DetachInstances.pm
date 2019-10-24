@@ -1,15 +1,41 @@
+# Generated from callargs_class.tt
 
 package Paws::AutoScaling::DetachInstances;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => 'Bool', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef Bool/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has InstanceIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has ShouldDecrementDesiredCapacity => (is => 'ro', isa => Bool, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachInstances');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DetachInstancesAnswer');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DetachInstancesResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DetachInstances');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AutoScaling::DetachInstancesAnswer');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'DetachInstancesResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShouldDecrementDesiredCapacity' => {
+                                                     'type' => 'Bool'
+                                                   },
+               'InstanceIds' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         }
+             },
+  'IsRequired' => {
+                    'ShouldDecrementDesiredCapacity' => 1,
+                    'AutoScalingGroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

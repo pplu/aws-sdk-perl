@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::UpdateAssumeRolePolicy;
   use Moo;
@@ -21,7 +22,11 @@ package Paws::IAM::UpdateAssumeRolePolicy;
                'PolicyDocument' => {
                                      'type' => 'Str'
                                    }
-             }
+             },
+  'IsRequired' => {
+                    'RoleName' => 1,
+                    'PolicyDocument' => 1
+                  }
 }
 ;
     return $Params_map;

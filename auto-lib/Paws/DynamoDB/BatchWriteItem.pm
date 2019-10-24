@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::BatchWriteItem;
   use Moo;
@@ -13,7 +14,7 @@ package Paws::DynamoDB::BatchWriteItem;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::BatchWriteItemOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'ReturnConsumedCapacity' => {
@@ -26,11 +27,14 @@ package Paws::DynamoDB::BatchWriteItem;
                                    'class' => 'Paws::DynamoDB::BatchWriteItemRequestMap',
                                    'type' => 'DynamoDB_BatchWriteItemRequestMap'
                                  }
-             }
+             },
+  'IsRequired' => {
+                    'RequestItems' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

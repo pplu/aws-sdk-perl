@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::Greengrass::FunctionRunAsConfig;
-  use Moose;
-  has Gid => (is => 'ro', isa => 'Int');
-  has Uid => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::Greengrass::Types qw//;
+  has Gid => (is => 'ro', isa => Int);
+  has Uid => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Gid' => {
+                          'type' => 'Int'
+                        },
+               'Uid' => {
+                          'type' => 'Int'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

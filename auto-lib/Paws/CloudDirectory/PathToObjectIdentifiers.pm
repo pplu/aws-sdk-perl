@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::CloudDirectory::PathToObjectIdentifiers;
-  use Moose;
-  has ObjectIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Path => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::CloudDirectory::Types qw//;
+  has ObjectIdentifiers => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Path => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ObjectIdentifiers' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Path' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

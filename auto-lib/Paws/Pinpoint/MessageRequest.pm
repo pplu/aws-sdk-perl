@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::Pinpoint::MessageRequest;
-  use Moose;
-  has Addresses => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAddressConfiguration');
-  has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
-  has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
-  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
-  has TraceId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_MapOf__string Pinpoint_MapOfEndpointSendConfiguration Pinpoint_MapOfAddressConfiguration Pinpoint_DirectMessageConfiguration/;
+  has Addresses => (is => 'ro', isa => Pinpoint_MapOfAddressConfiguration);
+  has Context => (is => 'ro', isa => Pinpoint_MapOf__string);
+  has Endpoints => (is => 'ro', isa => Pinpoint_MapOfEndpointSendConfiguration);
+  has MessageConfiguration => (is => 'ro', isa => Pinpoint_DirectMessageConfiguration, required => 1);
+  has TraceId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Endpoints' => {
+                                'class' => 'Paws::Pinpoint::MapOfEndpointSendConfiguration',
+                                'type' => 'Pinpoint_MapOfEndpointSendConfiguration'
+                              },
+               'TraceId' => {
+                              'type' => 'Str'
+                            },
+               'MessageConfiguration' => {
+                                           'class' => 'Paws::Pinpoint::DirectMessageConfiguration',
+                                           'type' => 'Pinpoint_DirectMessageConfiguration'
+                                         },
+               'Context' => {
+                              'class' => 'Paws::Pinpoint::MapOf__string',
+                              'type' => 'Pinpoint_MapOf__string'
+                            },
+               'Addresses' => {
+                                'class' => 'Paws::Pinpoint::MapOfAddressConfiguration',
+                                'type' => 'Pinpoint_MapOfAddressConfiguration'
+                              }
+             },
+  'IsRequired' => {
+                    'MessageConfiguration' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +77,7 @@ a message.
 =head1 ATTRIBUTES
 
 
-=head2 Addresses => L<Paws::Pinpoint::MapOfAddressConfiguration>
+=head2 Addresses => Pinpoint_MapOfAddressConfiguration
 
   A map of key-value pairs, where each key is an address and each value
 is an AddressConfiguration object. An address can be a push
@@ -50,7 +86,7 @@ AddressConfiguration object to tailor the message for an address by
 specifying settings such as content overrides and message variables.
 
 
-=head2 Context => L<Paws::Pinpoint::MapOf__string>
+=head2 Context => Pinpoint_MapOf__string
 
   A map of custom attributes to attach to the message. For a push
 notification, this payload is added to the data.pinpoint object. For an
@@ -58,7 +94,7 @@ email or text message, this payload is added to email/SMS delivery
 receipt event attributes.
 
 
-=head2 Endpoints => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
+=head2 Endpoints => Pinpoint_MapOfEndpointSendConfiguration
 
   A map of key-value pairs, where each key is an endpoint ID and each
 value is an EndpointSendConfiguration object. You can use an
@@ -66,7 +102,7 @@ EndpointSendConfiguration object to tailor the message for an endpoint
 by specifying settings such as content overrides and message variables.
 
 
-=head2 B<REQUIRED> MessageConfiguration => L<Paws::Pinpoint::DirectMessageConfiguration>
+=head2 B<REQUIRED> MessageConfiguration => Pinpoint_DirectMessageConfiguration
 
   The set of properties that defines the configuration settings for the
 message.

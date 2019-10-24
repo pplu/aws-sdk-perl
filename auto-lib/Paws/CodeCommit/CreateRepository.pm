@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::CreateRepository;
-  use Moose;
-  has RepositoryDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryDescription' );
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::CodeCommit::TagsMap', traits => ['NameInRequest'], request_name => 'tags' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw/CodeCommit_TagsMap/;
+  has RepositoryDescription => (is => 'ro', isa => Str, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => CodeCommit_TagsMap, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRepository');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::CreateRepositoryOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRepository');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::CreateRepositoryOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RepositoryDescription' => {
+                                            'type' => 'Str'
+                                          },
+               'Tags' => {
+                           'class' => 'Paws::CodeCommit::TagsMap',
+                           'type' => 'CodeCommit_TagsMap'
+                         },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'RepositoryDescription' => 'repositoryDescription',
+                       'Tags' => 'tags',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -74,7 +105,7 @@ in the AWS CodeCommit User Guide. The suffix ".git" is prohibited.
 
 
 
-=head2 Tags => L<Paws::CodeCommit::TagsMap>
+=head2 Tags => CodeCommit_TagsMap
 
 One or more tag key-value pairs to use when tagging this repository.
 

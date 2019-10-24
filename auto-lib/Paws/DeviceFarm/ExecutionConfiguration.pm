@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::DeviceFarm::ExecutionConfiguration;
-  use Moose;
-  has AccountsCleanup => (is => 'ro', isa => 'Bool', request_name => 'accountsCleanup', traits => ['NameInRequest']);
-  has AppPackagesCleanup => (is => 'ro', isa => 'Bool', request_name => 'appPackagesCleanup', traits => ['NameInRequest']);
-  has JobTimeoutMinutes => (is => 'ro', isa => 'Int', request_name => 'jobTimeoutMinutes', traits => ['NameInRequest']);
-  has SkipAppResign => (is => 'ro', isa => 'Bool', request_name => 'skipAppResign', traits => ['NameInRequest']);
-  has VideoCapture => (is => 'ro', isa => 'Bool', request_name => 'videoCapture', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Int/;
+  use Paws::DeviceFarm::Types qw//;
+  has AccountsCleanup => (is => 'ro', isa => Bool);
+  has AppPackagesCleanup => (is => 'ro', isa => Bool);
+  has JobTimeoutMinutes => (is => 'ro', isa => Int);
+  has SkipAppResign => (is => 'ro', isa => Bool);
+  has VideoCapture => (is => 'ro', isa => Bool);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VideoCapture' => {
+                                   'type' => 'Bool'
+                                 },
+               'AccountsCleanup' => {
+                                      'type' => 'Bool'
+                                    },
+               'JobTimeoutMinutes' => {
+                                        'type' => 'Int'
+                                      },
+               'SkipAppResign' => {
+                                    'type' => 'Bool'
+                                  },
+               'AppPackagesCleanup' => {
+                                         'type' => 'Bool'
+                                       }
+             },
+  'NameInRequest' => {
+                       'VideoCapture' => 'videoCapture',
+                       'AccountsCleanup' => 'accountsCleanup',
+                       'JobTimeoutMinutes' => 'jobTimeoutMinutes',
+                       'SkipAppResign' => 'skipAppResign',
+                       'AppPackagesCleanup' => 'appPackagesCleanup'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

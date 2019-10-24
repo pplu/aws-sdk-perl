@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::DMS::RefreshSchemasStatus;
-  use Moose;
-  has EndpointArn => (is => 'ro', isa => 'Str');
-  has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has LastRefreshDate => (is => 'ro', isa => 'Str');
-  has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::DMS::Types qw//;
+  has EndpointArn => (is => 'ro', isa => Str);
+  has LastFailureMessage => (is => 'ro', isa => Str);
+  has LastRefreshDate => (is => 'ro', isa => Str);
+  has ReplicationInstanceArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ReplicationInstanceArn' => {
+                                             'type' => 'Str'
+                                           },
+               'EndpointArn' => {
+                                  'type' => 'Str'
+                                },
+               'LastRefreshDate' => {
+                                      'type' => 'Str'
+                                    },
+               'LastFailureMessage' => {
+                                         'type' => 'Str'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

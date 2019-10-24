@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::XRay::Group;
-  use Moose;
-  has FilterExpression => (is => 'ro', isa => 'Str');
-  has GroupARN => (is => 'ro', isa => 'Str');
-  has GroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::XRay::Types qw//;
+  has FilterExpression => (is => 'ro', isa => Str);
+  has GroupARN => (is => 'ro', isa => Str);
+  has GroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupARN' => {
+                               'type' => 'Str'
+                             },
+               'GroupName' => {
+                                'type' => 'Str'
+                              },
+               'FilterExpression' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,55 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::LifecycleHook;
-  use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has DefaultResult => (is => 'ro', isa => 'Str');
-  has GlobalTimeout => (is => 'ro', isa => 'Int');
-  has HeartbeatTimeout => (is => 'ro', isa => 'Int');
-  has LifecycleHookName => (is => 'ro', isa => 'Str');
-  has LifecycleTransition => (is => 'ro', isa => 'Str');
-  has NotificationMetadata => (is => 'ro', isa => 'Str');
-  has NotificationTargetARN => (is => 'ro', isa => 'Str');
-  has RoleARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::AutoScaling::Types qw//;
+  has AutoScalingGroupName => (is => 'ro', isa => Str);
+  has DefaultResult => (is => 'ro', isa => Str);
+  has GlobalTimeout => (is => 'ro', isa => Int);
+  has HeartbeatTimeout => (is => 'ro', isa => Int);
+  has LifecycleHookName => (is => 'ro', isa => Str);
+  has LifecycleTransition => (is => 'ro', isa => Str);
+  has NotificationMetadata => (is => 'ro', isa => Str);
+  has NotificationTargetARN => (is => 'ro', isa => Str);
+  has RoleARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NotificationMetadata' => {
+                                           'type' => 'Str'
+                                         },
+               'LifecycleTransition' => {
+                                          'type' => 'Str'
+                                        },
+               'LifecycleHookName' => {
+                                        'type' => 'Str'
+                                      },
+               'GlobalTimeout' => {
+                                    'type' => 'Int'
+                                  },
+               'AutoScalingGroupName' => {
+                                           'type' => 'Str'
+                                         },
+               'NotificationTargetARN' => {
+                                            'type' => 'Str'
+                                          },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'DefaultResult' => {
+                                    'type' => 'Str'
+                                  },
+               'HeartbeatTimeout' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

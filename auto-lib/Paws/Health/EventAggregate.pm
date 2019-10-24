@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Health::EventAggregate;
-  use Moose;
-  has AggregateValue => (is => 'ro', isa => 'Str', request_name => 'aggregateValue', traits => ['NameInRequest']);
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Health::Types qw//;
+  has AggregateValue => (is => 'ro', isa => Str);
+  has Count => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'AggregateValue' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'Count' => 'count',
+                       'AggregateValue' => 'aggregateValue'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

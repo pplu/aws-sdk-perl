@@ -1,11 +1,35 @@
 
 package Paws::Quicksight::DescribeGroupResponse;
-  use Moose;
-  has Group => (is => 'ro', isa => 'Paws::Quicksight::Group');
-  has RequestId => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::Quicksight::Types qw/Quicksight_Group/;
+  has Group => (is => 'ro', isa => Quicksight_Group);
+  has RequestId => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Int);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RequestId' => {
+                                'type' => 'Str'
+                              },
+               'Status' => {
+                             'type' => 'Int'
+                           },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Group' => {
+                            'class' => 'Paws::Quicksight::Group',
+                            'type' => 'Quicksight_Group'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -17,7 +41,7 @@ Paws::Quicksight::DescribeGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 Group => L<Paws::Quicksight::Group>
+=head2 Group => Quicksight_Group
 
 The name of the group.
 

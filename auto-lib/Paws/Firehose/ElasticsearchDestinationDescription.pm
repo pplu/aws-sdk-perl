@@ -1,16 +1,68 @@
+# Generated from default/object.tt
 package Paws::Firehose::ElasticsearchDestinationDescription;
-  use Moose;
-  has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchBufferingHints');
-  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
-  has DomainARN => (is => 'ro', isa => 'Str');
-  has IndexName => (is => 'ro', isa => 'Str');
-  has IndexRotationPeriod => (is => 'ro', isa => 'Str');
-  has ProcessingConfiguration => (is => 'ro', isa => 'Paws::Firehose::ProcessingConfiguration');
-  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchRetryOptions');
-  has RoleARN => (is => 'ro', isa => 'Str');
-  has S3BackupMode => (is => 'ro', isa => 'Str');
-  has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
-  has TypeName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Firehose::Types qw/Firehose_ProcessingConfiguration Firehose_CloudWatchLoggingOptions Firehose_ElasticsearchBufferingHints Firehose_ElasticsearchRetryOptions Firehose_S3DestinationDescription/;
+  has BufferingHints => (is => 'ro', isa => Firehose_ElasticsearchBufferingHints);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => Firehose_CloudWatchLoggingOptions);
+  has DomainARN => (is => 'ro', isa => Str);
+  has IndexName => (is => 'ro', isa => Str);
+  has IndexRotationPeriod => (is => 'ro', isa => Str);
+  has ProcessingConfiguration => (is => 'ro', isa => Firehose_ProcessingConfiguration);
+  has RetryOptions => (is => 'ro', isa => Firehose_ElasticsearchRetryOptions);
+  has RoleARN => (is => 'ro', isa => Str);
+  has S3BackupMode => (is => 'ro', isa => Str);
+  has S3DestinationDescription => (is => 'ro', isa => Firehose_S3DestinationDescription);
+  has TypeName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ProcessingConfiguration' => {
+                                              'class' => 'Paws::Firehose::ProcessingConfiguration',
+                                              'type' => 'Firehose_ProcessingConfiguration'
+                                            },
+               'CloudWatchLoggingOptions' => {
+                                               'class' => 'Paws::Firehose::CloudWatchLoggingOptions',
+                                               'type' => 'Firehose_CloudWatchLoggingOptions'
+                                             },
+               'S3BackupMode' => {
+                                   'type' => 'Str'
+                                 },
+               'BufferingHints' => {
+                                     'class' => 'Paws::Firehose::ElasticsearchBufferingHints',
+                                     'type' => 'Firehose_ElasticsearchBufferingHints'
+                                   },
+               'RetryOptions' => {
+                                   'class' => 'Paws::Firehose::ElasticsearchRetryOptions',
+                                   'type' => 'Firehose_ElasticsearchRetryOptions'
+                                 },
+               'IndexRotationPeriod' => {
+                                          'type' => 'Str'
+                                        },
+               'DomainARN' => {
+                                'type' => 'Str'
+                              },
+               'IndexName' => {
+                                'type' => 'Str'
+                              },
+               'S3DestinationDescription' => {
+                                               'class' => 'Paws::Firehose::S3DestinationDescription',
+                                               'type' => 'Firehose_S3DestinationDescription'
+                                             },
+               'RoleARN' => {
+                              'type' => 'Str'
+                            },
+               'TypeName' => {
+                               'type' => 'Str'
+                             }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,12 +98,12 @@ The destination description in Amazon ES.
 =head1 ATTRIBUTES
 
 
-=head2 BufferingHints => L<Paws::Firehose::ElasticsearchBufferingHints>
+=head2 BufferingHints => Firehose_ElasticsearchBufferingHints
 
   The buffering options.
 
 
-=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+=head2 CloudWatchLoggingOptions => Firehose_CloudWatchLoggingOptions
 
   The Amazon CloudWatch logging options.
 
@@ -73,12 +125,12 @@ Resource Names (ARNs) and AWS Service Namespaces
   The Elasticsearch index rotation period
 
 
-=head2 ProcessingConfiguration => L<Paws::Firehose::ProcessingConfiguration>
+=head2 ProcessingConfiguration => Firehose_ProcessingConfiguration
 
   The data processing configuration.
 
 
-=head2 RetryOptions => L<Paws::Firehose::ElasticsearchRetryOptions>
+=head2 RetryOptions => Firehose_ElasticsearchRetryOptions
 
   The Amazon ES retry options.
 
@@ -96,7 +148,7 @@ Namespaces
   The Amazon S3 backup mode.
 
 
-=head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
+=head2 S3DestinationDescription => Firehose_S3DestinationDescription
 
   The Amazon S3 destination.
 

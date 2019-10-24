@@ -12,7 +12,7 @@ package Paws::EC2::DescribeIdentityIdFormat;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeIdentityIdFormatResult');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Resource' => {
@@ -25,11 +25,14 @@ package Paws::EC2::DescribeIdentityIdFormat;
   'NameInRequest' => {
                        'Resource' => 'resource',
                        'PrincipalArn' => 'principalArn'
-                     }
+                     },
+  'IsRequired' => {
+                    'PrincipalArn' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

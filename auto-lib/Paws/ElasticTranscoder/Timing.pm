@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ElasticTranscoder::Timing;
-  use Moose;
-  has FinishTimeMillis => (is => 'ro', isa => 'Int');
-  has StartTimeMillis => (is => 'ro', isa => 'Int');
-  has SubmitTimeMillis => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::ElasticTranscoder::Types qw//;
+  has FinishTimeMillis => (is => 'ro', isa => Int);
+  has StartTimeMillis => (is => 'ro', isa => Int);
+  has SubmitTimeMillis => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StartTimeMillis' => {
+                                      'type' => 'Int'
+                                    },
+               'FinishTimeMillis' => {
+                                       'type' => 'Int'
+                                     },
+               'SubmitTimeMillis' => {
+                                       'type' => 'Int'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

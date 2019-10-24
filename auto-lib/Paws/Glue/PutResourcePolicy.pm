@@ -1,15 +1,40 @@
+# Generated from json/callargs_class.tt
 
 package Paws::Glue::PutResourcePolicy;
-  use Moose;
-  has PolicyExistsCondition => (is => 'ro', isa => 'Str');
-  has PolicyHashCondition => (is => 'ro', isa => 'Str');
-  has PolicyInJson => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glue::Types qw//;
+  has PolicyExistsCondition => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyHashCondition => (is => 'ro', isa => Str, predicate => 1);
+  has PolicyInJson => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutResourcePolicy');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::PutResourcePolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PutResourcePolicy');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::PutResourcePolicyResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PolicyInJson' => {
+                                   'type' => 'Str'
+                                 },
+               'PolicyExistsCondition' => {
+                                            'type' => 'Str'
+                                          },
+               'PolicyHashCondition' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'PolicyInJson' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

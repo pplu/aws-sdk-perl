@@ -1,16 +1,49 @@
 
 package Paws::LexModels::GetUtterancesView;
-  use Moose;
-  has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botname', required => 1);
-  has BotVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['ParamInQuery'], query_name => 'bot_versions', required => 1);
-  has StatusType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status_type', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::LexModels::Types qw//;
+  has BotName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has BotVersions => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1, predicate => 1);
+  has StatusType => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUtterancesView');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/bots/{botname}/utterances?view=aggregation');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::LexModels::GetUtterancesViewResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetUtterancesView');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/bots/{botname}/utterances?view=aggregation');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::LexModels::GetUtterancesViewResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BotName' => {
+                              'type' => 'Str'
+                            },
+               'StatusType' => {
+                                 'type' => 'Str'
+                               },
+               'BotVersions' => {
+                                  'type' => 'ArrayRef[Str|Undef]'
+                                }
+             },
+  'ParamInURI' => {
+                    'BotName' => 'botname'
+                  },
+  'ParamInQuery' => {
+                      'StatusType' => 'status_type',
+                      'BotVersions' => 'bot_versions'
+                    },
+  'IsRequired' => {
+                    'BotName' => 1,
+                    'StatusType' => 1,
+                    'BotVersions' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

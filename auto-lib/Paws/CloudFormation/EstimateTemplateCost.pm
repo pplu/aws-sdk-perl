@@ -1,15 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::CloudFormation::EstimateTemplateCost;
-  use Moose;
-  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
-  has TemplateBody => (is => 'ro', isa => 'Str');
-  has TemplateURL => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudFormation::Types qw/CloudFormation_Parameter/;
+  has Parameters => (is => 'ro', isa => ArrayRef[CloudFormation_Parameter], predicate => 1);
+  has TemplateBody => (is => 'ro', isa => Str, predicate => 1);
+  has TemplateURL => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCost');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::EstimateTemplateCostOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'EstimateTemplateCostResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'EstimateTemplateCost');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudFormation::EstimateTemplateCostOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'EstimateTemplateCostResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TemplateURL' => {
+                                  'type' => 'Str'
+                                },
+               'Parameters' => {
+                                 'class' => 'Paws::CloudFormation::Parameter',
+                                 'type' => 'ArrayRef[CloudFormation_Parameter]'
+                               },
+               'TemplateBody' => {
+                                   'type' => 'Str'
+                                 }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
+=head2 Parameters => ArrayRef[CloudFormation_Parameter]
 
 A list of C<Parameter> structures that specify input parameters.
 

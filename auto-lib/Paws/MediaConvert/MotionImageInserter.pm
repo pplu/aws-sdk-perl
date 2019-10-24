@@ -1,11 +1,53 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::MotionImageInserter;
-  use Moose;
-  has Framerate => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInsertionFramerate', request_name => 'framerate', traits => ['NameInRequest']);
-  has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
-  has InsertionMode => (is => 'ro', isa => 'Str', request_name => 'insertionMode', traits => ['NameInRequest']);
-  has Offset => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInsertionOffset', request_name => 'offset', traits => ['NameInRequest']);
-  has Playback => (is => 'ro', isa => 'Str', request_name => 'playback', traits => ['NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MediaConvert::Types qw/MediaConvert_MotionImageInsertionFramerate MediaConvert_MotionImageInsertionOffset/;
+  has Framerate => (is => 'ro', isa => MediaConvert_MotionImageInsertionFramerate);
+  has Input => (is => 'ro', isa => Str);
+  has InsertionMode => (is => 'ro', isa => Str);
+  has Offset => (is => 'ro', isa => MediaConvert_MotionImageInsertionOffset);
+  has Playback => (is => 'ro', isa => Str);
+  has StartTime => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Offset' => {
+                             'class' => 'Paws::MediaConvert::MotionImageInsertionOffset',
+                             'type' => 'MediaConvert_MotionImageInsertionOffset'
+                           },
+               'Playback' => {
+                               'type' => 'Str'
+                             },
+               'StartTime' => {
+                                'type' => 'Str'
+                              },
+               'Input' => {
+                            'type' => 'Str'
+                          },
+               'Framerate' => {
+                                'class' => 'Paws::MediaConvert::MotionImageInsertionFramerate',
+                                'type' => 'MediaConvert_MotionImageInsertionFramerate'
+                              },
+               'InsertionMode' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Offset' => 'offset',
+                       'Playback' => 'playback',
+                       'StartTime' => 'startTime',
+                       'Input' => 'input',
+                       'Framerate' => 'framerate',
+                       'InsertionMode' => 'insertionMode'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +84,7 @@ specify.
 =head1 ATTRIBUTES
 
 
-=head2 Framerate => L<Paws::MediaConvert::MotionImageInsertionFramerate>
+=head2 Framerate => MediaConvert_MotionImageInsertionFramerate
 
   If your motion graphic asset is a .mov file, keep this setting
 unspecified. If your motion graphic asset is a series of .png files,
@@ -75,7 +117,7 @@ overlay_00.png, there can be 100 images in the sequence.
 overlay. You can choose either a .mov file or a series of .png files.
 
 
-=head2 Offset => L<Paws::MediaConvert::MotionImageInsertionOffset>
+=head2 Offset => MediaConvert_MotionImageInsertionOffset
 
   Use Offset to specify the placement of your motion graphic overlay on
 the video frame. Specify in pixels, from the upper-left corner of the

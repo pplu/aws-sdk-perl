@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::SuggestionMatch;
-  use Moose;
-  has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
-  has Score => (is => 'ro', isa => 'Int', request_name => 'score', traits => ['NameInRequest']);
-  has Suggestion => (is => 'ro', isa => 'Str', request_name => 'suggestion', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Id => (is => 'ro', isa => Str);
+  has Score => (is => 'ro', isa => Int);
+  has Suggestion => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Score' => {
+                            'type' => 'Int'
+                          },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'Suggestion' => {
+                                 'type' => 'Str'
+                               }
+             },
+  'NameInRequest' => {
+                       'Score' => 'score',
+                       'Id' => 'id',
+                       'Suggestion' => 'suggestion'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

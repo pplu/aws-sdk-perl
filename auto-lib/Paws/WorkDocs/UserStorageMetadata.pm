@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::WorkDocs::UserStorageMetadata;
-  use Moose;
-  has StorageRule => (is => 'ro', isa => 'Paws::WorkDocs::StorageRuleType');
-  has StorageUtilizedInBytes => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Int/;
+  use Paws::WorkDocs::Types qw/WorkDocs_StorageRuleType/;
+  has StorageRule => (is => 'ro', isa => WorkDocs_StorageRuleType);
+  has StorageUtilizedInBytes => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StorageRule' => {
+                                  'class' => 'Paws::WorkDocs::StorageRuleType',
+                                  'type' => 'WorkDocs_StorageRuleType'
+                                },
+               'StorageUtilizedInBytes' => {
+                                             'type' => 'Int'
+                                           }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +58,7 @@ Describes the storage for a user.
 =head1 ATTRIBUTES
 
 
-=head2 StorageRule => L<Paws::WorkDocs::StorageRuleType>
+=head2 StorageRule => WorkDocs_StorageRuleType
 
   The storage for a user.
 

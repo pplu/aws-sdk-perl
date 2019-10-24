@@ -1,8 +1,35 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::EnvironmentVariable;
-  use Moose;
-  has Key => (is => 'ro', isa => 'Str', required => 1);
-  has Secure => (is => 'ro', isa => 'Bool');
-  has Value => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::OpsWorks::Types qw//;
+  has Key => (is => 'ro', isa => Str, required => 1);
+  has Secure => (is => 'ro', isa => Bool);
+  has Value => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Value' => {
+                            'type' => 'Str'
+                          },
+               'Secure' => {
+                             'type' => 'Bool'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             },
+  'IsRequired' => {
+                    'Value' => 1,
+                    'Key' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

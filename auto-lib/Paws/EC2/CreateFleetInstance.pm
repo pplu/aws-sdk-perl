@@ -7,7 +7,7 @@ package Paws::EC2::CreateFleetInstance;
   has Lifecycle => (is => 'ro', isa => Str);
   has Platform => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Platform' => {
@@ -36,8 +36,8 @@ package Paws::EC2::CreateFleetInstance;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

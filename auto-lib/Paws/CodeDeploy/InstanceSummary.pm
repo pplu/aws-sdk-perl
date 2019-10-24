@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::CodeDeploy::InstanceSummary;
-  use Moose;
-  has DeploymentId => (is => 'ro', isa => 'Str', request_name => 'deploymentId', traits => ['NameInRequest']);
-  has InstanceId => (is => 'ro', isa => 'Str', request_name => 'instanceId', traits => ['NameInRequest']);
-  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
-  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
-  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', request_name => 'lifecycleEvents', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CodeDeploy::Types qw/CodeDeploy_LifecycleEvent/;
+  has DeploymentId => (is => 'ro', isa => Str);
+  has InstanceId => (is => 'ro', isa => Str);
+  has InstanceType => (is => 'ro', isa => Str);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has LifecycleEvents => (is => 'ro', isa => ArrayRef[CodeDeploy_LifecycleEvent]);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'InstanceId' => {
+                                 'type' => 'Str'
+                               },
+               'InstanceType' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'DeploymentId' => {
+                                   'type' => 'Str'
+                                 },
+               'LifecycleEvents' => {
+                                      'class' => 'Paws::CodeDeploy::LifecycleEvent',
+                                      'type' => 'ArrayRef[CodeDeploy_LifecycleEvent]'
+                                    }
+             },
+  'NameInRequest' => {
+                       'InstanceId' => 'instanceId',
+                       'InstanceType' => 'instanceType',
+                       'Status' => 'status',
+                       'LastUpdatedAt' => 'lastUpdatedAt',
+                       'DeploymentId' => 'deploymentId',
+                       'LifecycleEvents' => 'lifecycleEvents'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -76,7 +117,7 @@ GREEN: The instance is part of the replacement environment.
 updated.
 
 
-=head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
+=head2 LifecycleEvents => ArrayRef[CodeDeploy_LifecycleEvent]
 
   A list of lifecycle events for this instance.
 

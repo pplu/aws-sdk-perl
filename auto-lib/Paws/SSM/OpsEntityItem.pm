@@ -1,6 +1,24 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsEntityItem;
-  use Moose;
-  has Content => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsEntityItemEntry]');
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::SSM::Types qw/SSM_OpsEntityItemEntry/;
+  has Content => (is => 'ro', isa => ArrayRef[SSM_OpsEntityItemEntry]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Content' => {
+                              'class' => 'Paws::SSM::OpsEntityItemEntry',
+                              'type' => 'ArrayRef[SSM_OpsEntityItemEntry]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +54,7 @@ The OpsItem summaries result item.
 =head1 ATTRIBUTES
 
 
-=head2 Content => ArrayRef[L<Paws::SSM::OpsEntityItemEntry>]
+=head2 Content => ArrayRef[SSM_OpsEntityItemEntry]
 
   The detailed data content for an OpsItem summaries result item.
 

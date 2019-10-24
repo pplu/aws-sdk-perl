@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::Comprehend::TopicsDetectionJobFilter;
-  use Moose;
-  has JobName => (is => 'ro', isa => 'Str');
-  has JobStatus => (is => 'ro', isa => 'Str');
-  has SubmitTimeAfter => (is => 'ro', isa => 'Str');
-  has SubmitTimeBefore => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Comprehend::Types qw//;
+  has JobName => (is => 'ro', isa => Str);
+  has JobStatus => (is => 'ro', isa => Str);
+  has SubmitTimeAfter => (is => 'ro', isa => Str);
+  has SubmitTimeBefore => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SubmitTimeBefore' => {
+                                       'type' => 'Str'
+                                     },
+               'SubmitTimeAfter' => {
+                                      'type' => 'Str'
+                                    },
+               'JobStatus' => {
+                                'type' => 'Str'
+                              },
+               'JobName' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

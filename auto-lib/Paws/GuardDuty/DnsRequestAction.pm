@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::GuardDuty::DnsRequestAction;
-  use Moose;
-  has Domain => (is => 'ro', isa => 'Str', request_name => 'domain', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GuardDuty::Types qw//;
+  has Domain => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Domain' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'Domain' => 'domain'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

@@ -1,14 +1,29 @@
 
 package Paws::PinpointSMSVoice::CreateConfigurationSet;
-  use Moose;
-  has ConfigurationSetName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointSMSVoice::Types qw//;
+  has ConfigurationSetName => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConfigurationSet');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/sms-voice/configuration-sets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointSMSVoice::CreateConfigurationSetResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateConfigurationSet');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/sms-voice/configuration-sets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointSMSVoice::CreateConfigurationSetResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationSetName' => {
+                                           'type' => 'Str'
+                                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

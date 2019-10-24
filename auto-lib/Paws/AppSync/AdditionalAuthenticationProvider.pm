@@ -1,8 +1,38 @@
+# Generated from default/object.tt
 package Paws::AppSync::AdditionalAuthenticationProvider;
-  use Moose;
-  has AuthenticationType => (is => 'ro', isa => 'Str', request_name => 'authenticationType', traits => ['NameInRequest']);
-  has OpenIDConnectConfig => (is => 'ro', isa => 'Paws::AppSync::OpenIDConnectConfig', request_name => 'openIDConnectConfig', traits => ['NameInRequest']);
-  has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::CognitoUserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppSync::Types qw/AppSync_CognitoUserPoolConfig AppSync_OpenIDConnectConfig/;
+  has AuthenticationType => (is => 'ro', isa => Str);
+  has OpenIDConnectConfig => (is => 'ro', isa => AppSync_OpenIDConnectConfig);
+  has UserPoolConfig => (is => 'ro', isa => AppSync_CognitoUserPoolConfig);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuthenticationType' => {
+                                         'type' => 'Str'
+                                       },
+               'UserPoolConfig' => {
+                                     'class' => 'Paws::AppSync::CognitoUserPoolConfig',
+                                     'type' => 'AppSync_CognitoUserPoolConfig'
+                                   },
+               'OpenIDConnectConfig' => {
+                                          'class' => 'Paws::AppSync::OpenIDConnectConfig',
+                                          'type' => 'AppSync_OpenIDConnectConfig'
+                                        }
+             },
+  'NameInRequest' => {
+                       'AuthenticationType' => 'authenticationType',
+                       'UserPoolConfig' => 'userPoolConfig',
+                       'OpenIDConnectConfig' => 'openIDConnectConfig'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -44,12 +74,12 @@ Describes an additional authentication provider.
 pools.
 
 
-=head2 OpenIDConnectConfig => L<Paws::AppSync::OpenIDConnectConfig>
+=head2 OpenIDConnectConfig => AppSync_OpenIDConnectConfig
 
   The OpenID Connect configuration.
 
 
-=head2 UserPoolConfig => L<Paws::AppSync::CognitoUserPoolConfig>
+=head2 UserPoolConfig => AppSync_CognitoUserPoolConfig
 
   The Amazon Cognito user pool configuration.
 

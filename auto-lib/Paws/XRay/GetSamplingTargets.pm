@@ -1,14 +1,33 @@
 
 package Paws::XRay::GetSamplingTargets;
-  use Moose;
-  has SamplingStatisticsDocuments => (is => 'ro', isa => 'ArrayRef[Paws::XRay::SamplingStatisticsDocument]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::XRay::Types qw/XRay_SamplingStatisticsDocument/;
+  has SamplingStatisticsDocuments => (is => 'ro', isa => ArrayRef[XRay_SamplingStatisticsDocument], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSamplingTargets');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/SamplingTargets');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::XRay::GetSamplingTargetsResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSamplingTargets');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/SamplingTargets');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::XRay::GetSamplingTargetsResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SamplingStatisticsDocuments' => {
+                                                  'class' => 'Paws::XRay::SamplingStatisticsDocument',
+                                                  'type' => 'ArrayRef[XRay_SamplingStatisticsDocument]'
+                                                }
+             },
+  'IsRequired' => {
+                    'SamplingStatisticsDocuments' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +77,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> SamplingStatisticsDocuments => ArrayRef[L<Paws::XRay::SamplingStatisticsDocument>]
+=head2 B<REQUIRED> SamplingStatisticsDocuments => ArrayRef[XRay_SamplingStatisticsDocument]
 
 Information about rules that the service is using to sample requests.
 

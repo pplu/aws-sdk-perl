@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::StorageGateway::VolumeiSCSIAttributes;
-  use Moose;
-  has ChapEnabled => (is => 'ro', isa => 'Bool');
-  has LunNumber => (is => 'ro', isa => 'Int');
-  has NetworkInterfaceId => (is => 'ro', isa => 'Str');
-  has NetworkInterfacePort => (is => 'ro', isa => 'Int');
-  has TargetARN => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Int Str/;
+  use Paws::StorageGateway::Types qw//;
+  has ChapEnabled => (is => 'ro', isa => Bool);
+  has LunNumber => (is => 'ro', isa => Int);
+  has NetworkInterfaceId => (is => 'ro', isa => Str);
+  has NetworkInterfacePort => (is => 'ro', isa => Int);
+  has TargetARN => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TargetARN' => {
+                                'type' => 'Str'
+                              },
+               'LunNumber' => {
+                                'type' => 'Int'
+                              },
+               'NetworkInterfacePort' => {
+                                           'type' => 'Int'
+                                         },
+               'NetworkInterfaceId' => {
+                                         'type' => 'Str'
+                                       },
+               'ChapEnabled' => {
+                                  'type' => 'Bool'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

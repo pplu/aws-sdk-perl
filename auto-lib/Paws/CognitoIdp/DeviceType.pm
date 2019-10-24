@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::DeviceType;
-  use Moose;
-  has DeviceAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdp::AttributeType]');
-  has DeviceCreateDate => (is => 'ro', isa => 'Str');
-  has DeviceKey => (is => 'ro', isa => 'Str');
-  has DeviceLastAuthenticatedDate => (is => 'ro', isa => 'Str');
-  has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::CognitoIdp::Types qw/CognitoIdp_AttributeType/;
+  has DeviceAttributes => (is => 'ro', isa => ArrayRef[CognitoIdp_AttributeType]);
+  has DeviceCreateDate => (is => 'ro', isa => Str);
+  has DeviceKey => (is => 'ro', isa => Str);
+  has DeviceLastAuthenticatedDate => (is => 'ro', isa => Str);
+  has DeviceLastModifiedDate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DeviceLastModifiedDate' => {
+                                             'type' => 'Str'
+                                           },
+               'DeviceLastAuthenticatedDate' => {
+                                                  'type' => 'Str'
+                                                },
+               'DeviceAttributes' => {
+                                       'class' => 'Paws::CognitoIdp::AttributeType',
+                                       'type' => 'ArrayRef[CognitoIdp_AttributeType]'
+                                     },
+               'DeviceKey' => {
+                                'type' => 'Str'
+                              },
+               'DeviceCreateDate' => {
+                                       'type' => 'Str'
+                                     }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +70,7 @@ The device type.
 =head1 ATTRIBUTES
 
 
-=head2 DeviceAttributes => ArrayRef[L<Paws::CognitoIdp::AttributeType>]
+=head2 DeviceAttributes => ArrayRef[CognitoIdp_AttributeType]
 
   The device attributes.
 

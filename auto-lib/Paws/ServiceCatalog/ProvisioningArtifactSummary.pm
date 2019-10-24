@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProvisioningArtifactSummary;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactMetadata => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisioningArtifactInfo');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProvisioningArtifactInfo/;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Id => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has ProvisioningArtifactMetadata => (is => 'ro', isa => ServiceCatalog_ProvisioningArtifactInfo);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Id' => {
+                         'type' => 'Str'
+                       },
+               'ProvisioningArtifactMetadata' => {
+                                                   'class' => 'Paws::ServiceCatalog::ProvisioningArtifactInfo',
+                                                   'type' => 'ServiceCatalog_ProvisioningArtifactInfo'
+                                                 },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +91,7 @@ version) for a product.
   The name of the provisioning artifact.
 
 
-=head2 ProvisioningArtifactMetadata => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
+=head2 ProvisioningArtifactMetadata => ServiceCatalog_ProvisioningArtifactInfo
 
   The metadata for the provisioning artifact. This is used with AWS
 Marketplace products.

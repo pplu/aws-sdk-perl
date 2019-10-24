@@ -1,7 +1,27 @@
+# Generated from default/object.tt
 package Paws::AutoScaling::EnabledMetric;
-  use Moose;
-  has Granularity => (is => 'ro', isa => 'Str');
-  has Metric => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AutoScaling::Types qw//;
+  has Granularity => (is => 'ro', isa => Str);
+  has Metric => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Metric' => {
+                             'type' => 'Str'
+                           },
+               'Granularity' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

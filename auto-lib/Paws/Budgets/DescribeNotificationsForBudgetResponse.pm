@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Budgets::DescribeNotificationsForBudgetResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Budgets::Notification]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Budgets::Types qw/Budgets_Notification/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Notifications => (is => 'ro', isa => ArrayRef[Budgets_Notification]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Notifications' => {
+                                    'class' => 'Paws::Budgets::Notification',
+                                    'type' => 'ArrayRef[Budgets_Notification]'
+                                  },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ The pagination token in the service response that indicates the next
 set of results that you can retrieve.
 
 
-=head2 Notifications => ArrayRef[L<Paws::Budgets::Notification>]
+=head2 Notifications => ArrayRef[Budgets_Notification]
 
 A list of notifications that are associated with a budget.
 

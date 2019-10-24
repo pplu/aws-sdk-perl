@@ -1,8 +1,33 @@
+# Generated from default/object.tt
 package Paws::EMR::ClusterStatus;
-  use Moose;
-  has State => (is => 'ro', isa => 'Str');
-  has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::ClusterStateChangeReason');
-  has Timeline => (is => 'ro', isa => 'Paws::EMR::ClusterTimeline');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::EMR::Types qw/EMR_ClusterStateChangeReason EMR_ClusterTimeline/;
+  has State => (is => 'ro', isa => Str);
+  has StateChangeReason => (is => 'ro', isa => EMR_ClusterStateChangeReason);
+  has Timeline => (is => 'ro', isa => EMR_ClusterTimeline);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'StateChangeReason' => {
+                                        'class' => 'Paws::EMR::ClusterStateChangeReason',
+                                        'type' => 'EMR_ClusterStateChangeReason'
+                                      },
+               'Timeline' => {
+                               'class' => 'Paws::EMR::ClusterTimeline',
+                               'type' => 'EMR_ClusterTimeline'
+                             },
+               'State' => {
+                            'type' => 'Str'
+                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +68,12 @@ The detailed status of the cluster.
   The current state of the cluster.
 
 
-=head2 StateChangeReason => L<Paws::EMR::ClusterStateChangeReason>
+=head2 StateChangeReason => EMR_ClusterStateChangeReason
 
   The reason for the cluster status change.
 
 
-=head2 Timeline => L<Paws::EMR::ClusterTimeline>
+=head2 Timeline => EMR_ClusterTimeline
 
   A timeline that represents the status of a cluster over the lifetime of
 the cluster.

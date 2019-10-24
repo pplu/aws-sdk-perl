@@ -1,19 +1,58 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SSM::UpdateMaintenanceWindowTarget;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has OwnerInformation => (is => 'ro', isa => 'Str');
-  has Replace => (is => 'ro', isa => 'Bool');
-  has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
-  has WindowId => (is => 'ro', isa => 'Str', required => 1);
-  has WindowTargetId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef/;
+  use Paws::SSM::Types qw/SSM_Target/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, predicate => 1);
+  has OwnerInformation => (is => 'ro', isa => Str, predicate => 1);
+  has Replace => (is => 'ro', isa => Bool, predicate => 1);
+  has Targets => (is => 'ro', isa => ArrayRef[SSM_Target], predicate => 1);
+  has WindowId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has WindowTargetId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateMaintenanceWindowTarget');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::UpdateMaintenanceWindowTargetResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateMaintenanceWindowTarget');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::SSM::UpdateMaintenanceWindowTargetResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Replace' => {
+                              'type' => 'Bool'
+                            },
+               'Targets' => {
+                              'class' => 'Paws::SSM::Target',
+                              'type' => 'ArrayRef[SSM_Target]'
+                            },
+               'WindowTargetId' => {
+                                     'type' => 'Str'
+                                   },
+               'WindowId' => {
+                               'type' => 'Str'
+                             },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OwnerInformation' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'WindowTargetId' => 1,
+                    'WindowId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -95,7 +134,7 @@ API request. Optional fields that are not specified are set to null.
 
 
 
-=head2 Targets => ArrayRef[L<Paws::SSM::Target>]
+=head2 Targets => ArrayRef[SSM_Target]
 
 The targets to add or replace.
 

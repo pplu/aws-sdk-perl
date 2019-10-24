@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::SourceTableDetails;
   use Moo;
   use Types::Standard qw/Str Int ArrayRef/;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::SourceTableDetails;
   has TableName => (is => 'ro', isa => Str, required => 1);
   has TableSizeBytes => (is => 'ro', isa => Int);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BillingMode' => {
@@ -44,11 +45,18 @@ package Paws::DynamoDB::SourceTableDetails;
                                             'class' => 'Paws::DynamoDB::ProvisionedThroughput',
                                             'type' => 'DynamoDB_ProvisionedThroughput'
                                           }
-             }
+             },
+  'IsRequired' => {
+                    'TableId' => 1,
+                    'KeySchema' => 1,
+                    'TableName' => 1,
+                    'TableCreationDateTime' => 1,
+                    'ProvisionedThroughput' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

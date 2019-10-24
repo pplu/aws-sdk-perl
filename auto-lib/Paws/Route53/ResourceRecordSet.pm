@@ -1,18 +1,81 @@
+# Generated from default/object.tt
 package Paws::Route53::ResourceRecordSet;
-  use Moose;
-  has AliasTarget => (is => 'ro', isa => 'Paws::Route53::AliasTarget');
-  has Failover => (is => 'ro', isa => 'Str');
-  has GeoLocation => (is => 'ro', isa => 'Paws::Route53::GeoLocation');
-  has HealthCheckId => (is => 'ro', isa => 'Str');
-  has MultiValueAnswer => (is => 'ro', isa => 'Bool');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Region => (is => 'ro', isa => 'Str');
-  has ResourceRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceRecord]', request_name => 'ResourceRecord', traits => ['NameInRequest']);
-  has SetIdentifier => (is => 'ro', isa => 'Str');
-  has TrafficPolicyInstanceId => (is => 'ro', isa => 'Str');
-  has TTL => (is => 'ro', isa => 'Int');
-  has Type => (is => 'ro', isa => 'Str', required => 1);
-  has Weight => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Int/;
+  use Paws::Route53::Types qw/Route53_GeoLocation Route53_ResourceRecord Route53_AliasTarget/;
+  has AliasTarget => (is => 'ro', isa => Route53_AliasTarget);
+  has Failover => (is => 'ro', isa => Str);
+  has GeoLocation => (is => 'ro', isa => Route53_GeoLocation);
+  has HealthCheckId => (is => 'ro', isa => Str);
+  has MultiValueAnswer => (is => 'ro', isa => Bool);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has Region => (is => 'ro', isa => Str);
+  has ResourceRecords => (is => 'ro', isa => ArrayRef[Route53_ResourceRecord]);
+  has SetIdentifier => (is => 'ro', isa => Str);
+  has TrafficPolicyInstanceId => (is => 'ro', isa => Str);
+  has TTL => (is => 'ro', isa => Int);
+  has Type => (is => 'ro', isa => Str, required => 1);
+  has Weight => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TrafficPolicyInstanceId' => {
+                                              'type' => 'Str'
+                                            },
+               'ResourceRecords' => {
+                                      'class' => 'Paws::Route53::ResourceRecord',
+                                      'type' => 'ArrayRef[Route53_ResourceRecord]'
+                                    },
+               'Failover' => {
+                               'type' => 'Str'
+                             },
+               'HealthCheckId' => {
+                                    'type' => 'Str'
+                                  },
+               'Weight' => {
+                             'type' => 'Int'
+                           },
+               'AliasTarget' => {
+                                  'class' => 'Paws::Route53::AliasTarget',
+                                  'type' => 'Route53_AliasTarget'
+                                },
+               'GeoLocation' => {
+                                  'class' => 'Paws::Route53::GeoLocation',
+                                  'type' => 'Route53_GeoLocation'
+                                },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SetIdentifier' => {
+                                    'type' => 'Str'
+                                  },
+               'TTL' => {
+                          'type' => 'Int'
+                        },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'MultiValueAnswer' => {
+                                       'type' => 'Bool'
+                                     }
+             },
+  'NameInRequest' => {
+                       'ResourceRecords' => 'ResourceRecord'
+                     },
+  'IsRequired' => {
+                    'Type' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +111,7 @@ Information about the resource record set to create or delete.
 =head1 ATTRIBUTES
 
 
-=head2 AliasTarget => L<Paws::Route53::AliasTarget>
+=head2 AliasTarget => Route53_AliasTarget
 
   I<Alias resource record sets only:> Information about the AWS resource,
 such as a CloudFront distribution or an Amazon S3 bucket, that you want
@@ -149,7 +212,7 @@ Configuring Failover in a Private Hosted Zone
 
 
 
-=head2 GeoLocation => L<Paws::Route53::GeoLocation>
+=head2 GeoLocation => Route53_GeoLocation
 
   I<Geolocation resource record sets only:> A complex type that lets you
 control how Amazon Route 53 responds to DNS queries based on the
@@ -523,7 +586,7 @@ sets.
 
 
 
-=head2 ResourceRecords => ArrayRef[L<Paws::Route53::ResourceRecord>]
+=head2 ResourceRecords => ArrayRef[Route53_ResourceRecord]
 
   Information about the resource records to act upon.
 

@@ -1,11 +1,43 @@
+# Generated from default/object.tt
 package Paws::Backup::RecoveryPointByResource;
-  use Moose;
-  has BackupSizeBytes => (is => 'ro', isa => 'Int');
-  has BackupVaultName => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has EncryptionKeyArn => (is => 'ro', isa => 'Str');
-  has RecoveryPointArn => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::Backup::Types qw//;
+  has BackupSizeBytes => (is => 'ro', isa => Int);
+  has BackupVaultName => (is => 'ro', isa => Str);
+  has CreationDate => (is => 'ro', isa => Str);
+  has EncryptionKeyArn => (is => 'ro', isa => Str);
+  has RecoveryPointArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'BackupVaultName' => {
+                                      'type' => 'Str'
+                                    },
+               'EncryptionKeyArn' => {
+                                       'type' => 'Str'
+                                     },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreationDate' => {
+                                   'type' => 'Str'
+                                 },
+               'RecoveryPointArn' => {
+                                       'type' => 'Str'
+                                     },
+               'BackupSizeBytes' => {
+                                      'type' => 'Int'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

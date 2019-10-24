@@ -1,16 +1,43 @@
+# Generated from json/callargs_class.tt
 
 package Paws::AlexaForBusiness::SearchContacts;
-  use Moose;
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Filter]');
-  has MaxResults => (is => 'ro', isa => 'Int');
-  has NextToken => (is => 'ro', isa => 'Str');
-  has SortCriteria => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Sort]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::AlexaForBusiness::Types qw/AlexaForBusiness_Filter AlexaForBusiness_Sort/;
+  has Filters => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Filter], predicate => 1);
+  has MaxResults => (is => 'ro', isa => Int, predicate => 1);
+  has NextToken => (is => 'ro', isa => Str, predicate => 1);
+  has SortCriteria => (is => 'ro', isa => ArrayRef[AlexaForBusiness_Sort], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SearchContacts');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AlexaForBusiness::SearchContactsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SearchContacts');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::AlexaForBusiness::SearchContactsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'Filters' => {
+                              'class' => 'Paws::AlexaForBusiness::Filter',
+                              'type' => 'ArrayRef[AlexaForBusiness_Filter]'
+                            },
+               'SortCriteria' => {
+                                   'class' => 'Paws::AlexaForBusiness::Sort',
+                                   'type' => 'ArrayRef[AlexaForBusiness_Sort]'
+                                 },
+               'MaxResults' => {
+                                 'type' => 'Int'
+                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +93,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b
 =head1 ATTRIBUTES
 
 
-=head2 Filters => ArrayRef[L<Paws::AlexaForBusiness::Filter>]
+=head2 Filters => ArrayRef[AlexaForBusiness_Filter]
 
 The filters to use to list a specified set of address books. The
 supported filter keys are DisplayName, FirstName, LastName, and
@@ -91,7 +118,7 @@ specified by MaxResults.
 
 
 
-=head2 SortCriteria => ArrayRef[L<Paws::AlexaForBusiness::Sort>]
+=head2 SortCriteria => ArrayRef[AlexaForBusiness_Sort]
 
 The sort order to use in listing the specified set of contacts. The
 supported sort keys are DisplayName, FirstName, and LastName.

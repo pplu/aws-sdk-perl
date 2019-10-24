@@ -1,10 +1,47 @@
+# Generated from default/object.tt
 package Paws::MQ::LogsSummary;
-  use Moose;
-  has Audit => (is => 'ro', isa => 'Bool', request_name => 'audit', traits => ['NameInRequest']);
-  has AuditLogGroup => (is => 'ro', isa => 'Str', request_name => 'auditLogGroup', traits => ['NameInRequest']);
-  has General => (is => 'ro', isa => 'Bool', request_name => 'general', traits => ['NameInRequest']);
-  has GeneralLogGroup => (is => 'ro', isa => 'Str', request_name => 'generalLogGroup', traits => ['NameInRequest']);
-  has Pending => (is => 'ro', isa => 'Paws::MQ::PendingLogs', request_name => 'pending', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str/;
+  use Paws::MQ::Types qw/MQ_PendingLogs/;
+  has Audit => (is => 'ro', isa => Bool);
+  has AuditLogGroup => (is => 'ro', isa => Str);
+  has General => (is => 'ro', isa => Bool);
+  has GeneralLogGroup => (is => 'ro', isa => Str);
+  has Pending => (is => 'ro', isa => MQ_PendingLogs);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AuditLogGroup' => {
+                                    'type' => 'Str'
+                                  },
+               'GeneralLogGroup' => {
+                                      'type' => 'Str'
+                                    },
+               'Pending' => {
+                              'class' => 'Paws::MQ::PendingLogs',
+                              'type' => 'MQ_PendingLogs'
+                            },
+               'General' => {
+                              'type' => 'Bool'
+                            },
+               'Audit' => {
+                            'type' => 'Bool'
+                          }
+             },
+  'NameInRequest' => {
+                       'AuditLogGroup' => 'auditLogGroup',
+                       'GeneralLogGroup' => 'generalLogGroup',
+                       'Pending' => 'pending',
+                       'General' => 'general',
+                       'Audit' => 'audit'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +101,7 @@ sent.
 sent.
 
 
-=head2 Pending => L<Paws::MQ::PendingLogs>
+=head2 Pending => MQ_PendingLogs
 
   The list of information about logs pending to be deployed for the
 specified broker.

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::MigrationHub::ListCreatedArtifactsResult;
-  use Moose;
-  has CreatedArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::MigrationHub::CreatedArtifact]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::MigrationHub::Types qw/MigrationHub_CreatedArtifact/;
+  has CreatedArtifactList => (is => 'ro', isa => ArrayRef[MigrationHub_CreatedArtifact]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'CreatedArtifactList' => {
+                                          'class' => 'Paws::MigrationHub::CreatedArtifact',
+                                          'type' => 'ArrayRef[MigrationHub_CreatedArtifact]'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::MigrationHub::ListCreatedArtifactsResult
 =head1 ATTRIBUTES
 
 
-=head2 CreatedArtifactList => ArrayRef[L<Paws::MigrationHub::CreatedArtifact>]
+=head2 CreatedArtifactList => ArrayRef[MigrationHub_CreatedArtifact]
 
 List of created artifacts up to the maximum number of results specified
 in the request.

@@ -1,10 +1,32 @@
+# Generated from callresult_class.tt
 
 package Paws::AutoScaling::ScheduledActionsType;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has ScheduledUpdateGroupActions => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::ScheduledUpdateGroupAction]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::AutoScaling::Types qw/AutoScaling_ScheduledUpdateGroupAction/;
+  has NextToken => (is => 'ro', isa => Str);
+  has ScheduledUpdateGroupActions => (is => 'ro', isa => ArrayRef[AutoScaling_ScheduledUpdateGroupAction]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ScheduledUpdateGroupActions' => {
+                                                  'class' => 'Paws::AutoScaling::ScheduledUpdateGroupAction',
+                                                  'type' => 'ArrayRef[AutoScaling_ScheduledUpdateGroupAction]'
+                                                }
+             }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +46,7 @@ this string for the C<NextToken> value when requesting the next set of
 items. This value is null when there are no more items to return.
 
 
-=head2 ScheduledUpdateGroupActions => ArrayRef[L<Paws::AutoScaling::ScheduledUpdateGroupAction>]
+=head2 ScheduledUpdateGroupActions => ArrayRef[AutoScaling_ScheduledUpdateGroupAction]
 
 The scheduled actions.
 

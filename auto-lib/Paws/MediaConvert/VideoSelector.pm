@@ -1,11 +1,52 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::VideoSelector;
-  use Moose;
-  has ColorSpace => (is => 'ro', isa => 'Str', request_name => 'colorSpace', traits => ['NameInRequest']);
-  has ColorSpaceUsage => (is => 'ro', isa => 'Str', request_name => 'colorSpaceUsage', traits => ['NameInRequest']);
-  has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
-  has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
-  has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
-  has Rotate => (is => 'ro', isa => 'Str', request_name => 'rotate', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw/MediaConvert_Hdr10Metadata/;
+  has ColorSpace => (is => 'ro', isa => Str);
+  has ColorSpaceUsage => (is => 'ro', isa => Str);
+  has Hdr10Metadata => (is => 'ro', isa => MediaConvert_Hdr10Metadata);
+  has Pid => (is => 'ro', isa => Int);
+  has ProgramNumber => (is => 'ro', isa => Int);
+  has Rotate => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Pid' => {
+                          'type' => 'Int'
+                        },
+               'ColorSpaceUsage' => {
+                                      'type' => 'Str'
+                                    },
+               'Rotate' => {
+                             'type' => 'Str'
+                           },
+               'ColorSpace' => {
+                                 'type' => 'Str'
+                               },
+               'ProgramNumber' => {
+                                    'type' => 'Int'
+                                  },
+               'Hdr10Metadata' => {
+                                    'class' => 'Paws::MediaConvert::Hdr10Metadata',
+                                    'type' => 'MediaConvert_Hdr10Metadata'
+                                  }
+             },
+  'NameInRequest' => {
+                       'Pid' => 'pid',
+                       'ColorSpaceUsage' => 'colorSpaceUsage',
+                       'Rotate' => 'rotate',
+                       'ColorSpace' => 'colorSpace',
+                       'ProgramNumber' => 'programNumber',
+                       'Hdr10Metadata' => 'hdr10Metadata'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +107,7 @@ the source. If source has no color metadata, the system will use
 user-supplied color metadata values if available.
 
 
-=head2 Hdr10Metadata => L<Paws::MediaConvert::Hdr10Metadata>
+=head2 Hdr10Metadata => MediaConvert_Hdr10Metadata
 
   Use the "HDR master display information" (Hdr10Metadata) settings to
 correct HDR metadata or to provide missing metadata. These values vary

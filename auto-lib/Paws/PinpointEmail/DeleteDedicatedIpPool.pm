@@ -1,14 +1,35 @@
 
 package Paws::PinpointEmail::DeleteDedicatedIpPool;
-  use Moose;
-  has PoolName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'PoolName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has PoolName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDedicatedIpPool');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/v1/email/dedicated-ip-pools/{PoolName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::PinpointEmail::DeleteDedicatedIpPoolResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'DeleteDedicatedIpPool');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/v1/email/dedicated-ip-pools/{PoolName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'DELETE');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::PinpointEmail::DeleteDedicatedIpPoolResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PoolName' => {
+                               'type' => 'Str'
+                             }
+             },
+  'ParamInURI' => {
+                    'PoolName' => 'PoolName'
+                  },
+  'IsRequired' => {
+                    'PoolName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

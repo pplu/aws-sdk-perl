@@ -3,7 +3,7 @@ package Paws::EC2::SuccessfulInstanceCreditSpecificationItem;
   use Paws::EC2::Types qw//;
   has InstanceId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'InstanceId' => {
@@ -15,8 +15,8 @@ package Paws::EC2::SuccessfulInstanceCreditSpecificationItem;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

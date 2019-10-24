@@ -1,12 +1,25 @@
+# Generated from default/map_enum.tt
 package Paws::IoT::AlertTargets;
-  use Moose;
+  use Moo;
   with 'Paws::API::MapParser';
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
+  use Types::Standard qw//;
+  use Paws::IoT::Types qw/IoT_AlertTarget/;
+  has SNS => (is => 'ro', isa => IoT_AlertTarget);
 
-  has SNS => (is => 'ro', isa => 'Paws::IoT::AlertTarget');
+  sub params_map {
+    our $Params_map ||= {
+                    types => {
+                               'SNS' => {
+                                          type => 'IoT_AlertTarget',                                          class => 'Paws::IoT::AlertTarget',                                        },
+                             },
+                  };
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +55,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 SNS => L<Paws::IoT::AlertTarget>
+=head2 SNS => 
 
 
 

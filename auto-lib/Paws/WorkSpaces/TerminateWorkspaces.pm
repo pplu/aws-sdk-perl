@@ -1,13 +1,33 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WorkSpaces::TerminateWorkspaces;
-  use Moose;
-  has TerminateWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::TerminateRequest]', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::WorkSpaces::Types qw/WorkSpaces_TerminateRequest/;
+  has TerminateWorkspaceRequests => (is => 'ro', isa => ArrayRef[WorkSpaces_TerminateRequest], required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateWorkspaces');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::TerminateWorkspacesResult');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'TerminateWorkspaces');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WorkSpaces::TerminateWorkspacesResult');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TerminateWorkspaceRequests' => {
+                                                 'class' => 'Paws::WorkSpaces::TerminateRequest',
+                                                 'type' => 'ArrayRef[WorkSpaces_TerminateRequest]'
+                                               }
+             },
+  'IsRequired' => {
+                    'TerminateWorkspaceRequests' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +69,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>]
+=head2 B<REQUIRED> TerminateWorkspaceRequests => ArrayRef[WorkSpaces_TerminateRequest]
 
 The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 

@@ -1,9 +1,39 @@
+# Generated from default/object.tt
 package Paws::SageMaker::HyperParameterAlgorithmSpecification;
-  use Moose;
-  has AlgorithmName => (is => 'ro', isa => 'Str');
-  has MetricDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricDefinition]');
-  has TrainingImage => (is => 'ro', isa => 'Str');
-  has TrainingInputMode => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SageMaker::Types qw/SageMaker_MetricDefinition/;
+  has AlgorithmName => (is => 'ro', isa => Str);
+  has MetricDefinitions => (is => 'ro', isa => ArrayRef[SageMaker_MetricDefinition]);
+  has TrainingImage => (is => 'ro', isa => Str);
+  has TrainingInputMode => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MetricDefinitions' => {
+                                        'class' => 'Paws::SageMaker::MetricDefinition',
+                                        'type' => 'ArrayRef[SageMaker_MetricDefinition]'
+                                      },
+               'TrainingInputMode' => {
+                                        'type' => 'Str'
+                                      },
+               'TrainingImage' => {
+                                    'type' => 'Str'
+                                  },
+               'AlgorithmName' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'IsRequired' => {
+                    'TrainingInputMode' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +77,7 @@ job. If you specify a value for this parameter, do not specify a value
 for C<TrainingImage>.
 
 
-=head2 MetricDefinitions => ArrayRef[L<Paws::SageMaker::MetricDefinition>]
+=head2 MetricDefinitions => ArrayRef[SageMaker_MetricDefinition]
 
   An array of MetricDefinition objects that specify the metrics that the
 algorithm emits.

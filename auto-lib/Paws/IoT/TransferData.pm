@@ -1,10 +1,46 @@
+# Generated from default/object.tt
 package Paws::IoT::TransferData;
-  use Moose;
-  has AcceptDate => (is => 'ro', isa => 'Str', request_name => 'acceptDate', traits => ['NameInRequest']);
-  has RejectDate => (is => 'ro', isa => 'Str', request_name => 'rejectDate', traits => ['NameInRequest']);
-  has RejectReason => (is => 'ro', isa => 'Str', request_name => 'rejectReason', traits => ['NameInRequest']);
-  has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
-  has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoT::Types qw//;
+  has AcceptDate => (is => 'ro', isa => Str);
+  has RejectDate => (is => 'ro', isa => Str);
+  has RejectReason => (is => 'ro', isa => Str);
+  has TransferDate => (is => 'ro', isa => Str);
+  has TransferMessage => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TransferMessage' => {
+                                      'type' => 'Str'
+                                    },
+               'TransferDate' => {
+                                   'type' => 'Str'
+                                 },
+               'RejectDate' => {
+                                 'type' => 'Str'
+                               },
+               'AcceptDate' => {
+                                 'type' => 'Str'
+                               },
+               'RejectReason' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TransferMessage' => 'transferMessage',
+                       'TransferDate' => 'transferDate',
+                       'RejectDate' => 'rejectDate',
+                       'AcceptDate' => 'acceptDate',
+                       'RejectReason' => 'rejectReason'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

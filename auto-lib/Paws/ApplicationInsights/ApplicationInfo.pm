@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::ApplicationInsights::ApplicationInfo;
-  use Moose;
-  has LifeCycle => (is => 'ro', isa => 'Str');
-  has Remarks => (is => 'ro', isa => 'Str');
-  has ResourceGroupName => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ApplicationInsights::Types qw//;
+  has LifeCycle => (is => 'ro', isa => Str);
+  has Remarks => (is => 'ro', isa => Str);
+  has ResourceGroupName => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResourceGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'Remarks' => {
+                              'type' => 'Str'
+                            },
+               'LifeCycle' => {
+                                'type' => 'Str'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

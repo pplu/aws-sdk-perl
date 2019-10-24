@@ -1,9 +1,36 @@
+# Generated from default/object.tt
 package Paws::ServiceCatalog::ProductViewDetail;
-  use Moose;
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has ProductARN => (is => 'ro', isa => 'Str');
-  has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProductViewSummary/;
+  has CreatedTime => (is => 'ro', isa => Str);
+  has ProductARN => (is => 'ro', isa => Str);
+  has ProductViewSummary => (is => 'ro', isa => ServiceCatalog_ProductViewSummary);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ProductARN' => {
+                                 'type' => 'Str'
+                               },
+               'ProductViewSummary' => {
+                                         'class' => 'Paws::ServiceCatalog::ProductViewSummary',
+                                         'type' => 'ServiceCatalog_ProductViewSummary'
+                                       }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +76,7 @@ Information about a product view.
   The ARN of the product.
 
 
-=head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>
+=head2 ProductViewSummary => ServiceCatalog_ProductViewSummary
 
   Summary information about the product view.
 

@@ -1,3 +1,4 @@
+# Generated from callargs_class.tt
 
 package Paws::IAM::DeleteGroup;
   use Moo;
@@ -17,7 +18,10 @@ package Paws::IAM::DeleteGroup;
                'GroupName' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
 }
 ;
     return $Params_map;

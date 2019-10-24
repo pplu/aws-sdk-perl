@@ -1,15 +1,60 @@
+# Generated from default/object.tt
 package Paws::Translate::TerminologyProperties;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has EncryptionKey => (is => 'ro', isa => 'Paws::Translate::EncryptionKey');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
-  has Name => (is => 'ro', isa => 'Str');
-  has SizeBytes => (is => 'ro', isa => 'Int');
-  has SourceLanguageCode => (is => 'ro', isa => 'Str');
-  has TargetLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has TermCount => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef Undef/;
+  use Paws::Translate::Types qw/Translate_EncryptionKey/;
+  has Arn => (is => 'ro', isa => Str);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has EncryptionKey => (is => 'ro', isa => Translate_EncryptionKey);
+  has LastUpdatedAt => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has SizeBytes => (is => 'ro', isa => Int);
+  has SourceLanguageCode => (is => 'ro', isa => Str);
+  has TargetLanguageCodes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has TermCount => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceLanguageCode' => {
+                                         'type' => 'Str'
+                                       },
+               'TargetLanguageCodes' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'TermCount' => {
+                                'type' => 'Int'
+                              },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'EncryptionKey' => {
+                                    'class' => 'Paws::Translate::EncryptionKey',
+                                    'type' => 'Translate_EncryptionKey'
+                                  },
+               'LastUpdatedAt' => {
+                                    'type' => 'Str'
+                                  },
+               'SizeBytes' => {
+                                'type' => 'Int'
+                              },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +106,7 @@ timestamp.
   The description of the custom terminology properties.
 
 
-=head2 EncryptionKey => L<Paws::Translate::EncryptionKey>
+=head2 EncryptionKey => Translate_EncryptionKey
 
   The encryption key for the custom terminology.
 

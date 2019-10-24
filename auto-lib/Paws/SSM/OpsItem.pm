@@ -1,19 +1,78 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsItem;
-  use Moose;
-  has CreatedBy => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
-  has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
-  has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
-  has OpsItemId => (is => 'ro', isa => 'Str');
-  has Priority => (is => 'ro', isa => 'Int');
-  has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
-  has Source => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
-  has Title => (is => 'ro', isa => 'Str');
-  has Version => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::SSM::Types qw/SSM_OpsItemOperationalData SSM_OpsItemNotification SSM_RelatedOpsItem/;
+  has CreatedBy => (is => 'ro', isa => Str);
+  has CreatedTime => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has LastModifiedBy => (is => 'ro', isa => Str);
+  has LastModifiedTime => (is => 'ro', isa => Str);
+  has Notifications => (is => 'ro', isa => ArrayRef[SSM_OpsItemNotification]);
+  has OperationalData => (is => 'ro', isa => SSM_OpsItemOperationalData);
+  has OpsItemId => (is => 'ro', isa => Str);
+  has Priority => (is => 'ro', isa => Int);
+  has RelatedOpsItems => (is => 'ro', isa => ArrayRef[SSM_RelatedOpsItem]);
+  has Source => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has Title => (is => 'ro', isa => Str);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RelatedOpsItems' => {
+                                      'class' => 'Paws::SSM::RelatedOpsItem',
+                                      'type' => 'ArrayRef[SSM_RelatedOpsItem]'
+                                    },
+               'LastModifiedBy' => {
+                                     'type' => 'Str'
+                                   },
+               'CreatedTime' => {
+                                  'type' => 'Str'
+                                },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'CreatedBy' => {
+                                'type' => 'Str'
+                              },
+               'Title' => {
+                            'type' => 'Str'
+                          },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'Notifications' => {
+                                    'class' => 'Paws::SSM::OpsItemNotification',
+                                    'type' => 'ArrayRef[SSM_OpsItemNotification]'
+                                  },
+               'OpsItemId' => {
+                                'type' => 'Str'
+                              },
+               'LastModifiedTime' => {
+                                       'type' => 'Str'
+                                     },
+               'Source' => {
+                             'type' => 'Str'
+                           },
+               'Priority' => {
+                               'type' => 'Int'
+                             },
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'OperationalData' => {
+                                      'class' => 'Paws::SSM::OpsItemOperationalData',
+                                      'type' => 'SSM_OpsItemOperationalData'
+                                    }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -79,13 +138,13 @@ in the I<AWS Systems Manager User Guide>.
   The date and time the OpsItem was last updated.
 
 
-=head2 Notifications => ArrayRef[L<Paws::SSM::OpsItemNotification>]
+=head2 Notifications => ArrayRef[SSM_OpsItemNotification]
 
   The Amazon Resource Name (ARN) of an SNS topic where notifications are
 sent when this OpsItem is edited or changed.
 
 
-=head2 OperationalData => L<Paws::SSM::OpsItemOperationalData>
+=head2 OperationalData => SSM_OpsItemOperationalData
 
   Operational data is custom data that provides useful reference details
 about the OpsItem. For example, you can specify log files, error
@@ -123,7 +182,7 @@ in the I<AWS Systems Manager User Guide>.
 system.
 
 
-=head2 RelatedOpsItems => ArrayRef[L<Paws::SSM::RelatedOpsItem>]
+=head2 RelatedOpsItems => ArrayRef[SSM_RelatedOpsItem]
 
   One or more OpsItems that share something in common with the current
 OpsItem. For example, related OpsItems can include OpsItems with

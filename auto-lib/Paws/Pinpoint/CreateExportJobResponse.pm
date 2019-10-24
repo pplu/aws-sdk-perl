@@ -1,10 +1,31 @@
 
 package Paws::Pinpoint::CreateExportJobResponse;
-  use Moose;
-  has ExportJobResponse => (is => 'ro', isa => 'Paws::Pinpoint::ExportJobResponse', required => 1);
-  use MooseX::ClassAttribute;
+  use Moo;  use MooX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'ExportJobResponse');
-  has _request_id => (is => 'ro', isa => 'Str');
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_ExportJobResponse/;
+  has ExportJobResponse => (is => 'ro', isa => Pinpoint_ExportJobResponse, required => 1);
+
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ExportJobResponse' => {
+                                        'class' => 'Paws::Pinpoint::ExportJobResponse',
+                                        'type' => 'Pinpoint_ExportJobResponse'
+                                      }
+             },
+  'IsRequired' => {
+                    'ExportJobResponse' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::Pinpoint::CreateExportJobResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ExportJobResponse => L<Paws::Pinpoint::ExportJobResponse>
+=head2 B<REQUIRED> ExportJobResponse => Pinpoint_ExportJobResponse
 
 
 

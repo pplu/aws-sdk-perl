@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::CloudWatchEvents::ListRulesResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Rule]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Rule/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Rules => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Rule]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Rules' => {
+                            'class' => 'Paws::CloudWatchEvents::Rule',
+                            'type' => 'ArrayRef[CloudWatchEvents_Rule]'
+                          },
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -21,7 +43,7 @@ Indicates whether there are additional results to retrieve. If there
 are no more results, the value is null.
 
 
-=head2 Rules => ArrayRef[L<Paws::CloudWatchEvents::Rule>]
+=head2 Rules => ArrayRef[CloudWatchEvents_Rule]
 
 The rules that match the specified criteria.
 

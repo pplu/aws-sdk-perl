@@ -1,15 +1,46 @@
+# Generated from json/callargs_class.tt
 
 package Paws::CodeCommit::MergePullRequestByFastForward;
-  use Moose;
-  has PullRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pullRequestId' , required => 1);
-  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
-  has SourceCommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceCommitId' );
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CodeCommit::Types qw//;
+  has PullRequestId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has SourceCommitId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'MergePullRequestByFastForward');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::MergePullRequestByFastForwardOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'MergePullRequestByFastForward');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CodeCommit::MergePullRequestByFastForwardOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PullRequestId' => {
+                                    'type' => 'Str'
+                                  },
+               'SourceCommitId' => {
+                                     'type' => 'Str'
+                                   },
+               'RepositoryName' => {
+                                     'type' => 'Str'
+                                   }
+             },
+  'NameInRequest' => {
+                       'PullRequestId' => 'pullRequestId',
+                       'SourceCommitId' => 'sourceCommitId',
+                       'RepositoryName' => 'repositoryName'
+                     },
+  'IsRequired' => {
+                    'PullRequestId' => 1,
+                    'RepositoryName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

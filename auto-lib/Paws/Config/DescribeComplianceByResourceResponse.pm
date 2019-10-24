@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Config::DescribeComplianceByResourceResponse;
-  use Moose;
-  has ComplianceByResources => (is => 'ro', isa => 'ArrayRef[Paws::Config::ComplianceByResource]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Config::Types qw/Config_ComplianceByResource/;
+  has ComplianceByResources => (is => 'ro', isa => ArrayRef[Config_ComplianceByResource]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'ComplianceByResources' => {
+                                            'class' => 'Paws::Config::ComplianceByResource',
+                                            'type' => 'ArrayRef[Config_ComplianceByResource]'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -15,7 +37,7 @@ Paws::Config::DescribeComplianceByResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceByResources => ArrayRef[L<Paws::Config::ComplianceByResource>]
+=head2 ComplianceByResources => ArrayRef[Config_ComplianceByResource]
 
 Indicates whether the specified AWS resource complies with all of the
 AWS Config rules that evaluate it.

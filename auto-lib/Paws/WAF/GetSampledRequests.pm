@@ -1,16 +1,48 @@
+# Generated from json/callargs_class.tt
 
 package Paws::WAF::GetSampledRequests;
-  use Moose;
-  has MaxItems => (is => 'ro', isa => 'Int', required => 1);
-  has RuleId => (is => 'ro', isa => 'Str', required => 1);
-  has TimeWindow => (is => 'ro', isa => 'Paws::WAF::TimeWindow', required => 1);
-  has WebAclId => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::WAF::Types qw/WAF_TimeWindow/;
+  has MaxItems => (is => 'ro', isa => Int, required => 1, predicate => 1);
+  has RuleId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has TimeWindow => (is => 'ro', isa => WAF_TimeWindow, required => 1, predicate => 1);
+  has WebAclId => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSampledRequests');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WAF::GetSampledRequestsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetSampledRequests');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::WAF::GetSampledRequestsResponse');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeWindow' => {
+                                 'class' => 'Paws::WAF::TimeWindow',
+                                 'type' => 'WAF_TimeWindow'
+                               },
+               'WebAclId' => {
+                               'type' => 'Str'
+                             },
+               'RuleId' => {
+                             'type' => 'Str'
+                           },
+               'MaxItems' => {
+                               'type' => 'Int'
+                             }
+             },
+  'IsRequired' => {
+                    'TimeWindow' => 1,
+                    'WebAclId' => 1,
+                    'RuleId' => 1,
+                    'MaxItems' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -91,7 +123,7 @@ specified C<WebACL>.
 
 
 
-=head2 B<REQUIRED> TimeWindow => L<Paws::WAF::TimeWindow>
+=head2 B<REQUIRED> TimeWindow => WAF_TimeWindow
 
 The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.

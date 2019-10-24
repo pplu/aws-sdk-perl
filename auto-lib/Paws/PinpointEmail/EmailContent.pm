@@ -1,7 +1,29 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::EmailContent;
-  use Moose;
-  has Raw => (is => 'ro', isa => 'Paws::PinpointEmail::RawMessage');
-  has Simple => (is => 'ro', isa => 'Paws::PinpointEmail::Message');
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_Message PinpointEmail_RawMessage/;
+  has Raw => (is => 'ro', isa => PinpointEmail_RawMessage);
+  has Simple => (is => 'ro', isa => PinpointEmail_Message);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Simple' => {
+                             'class' => 'Paws::PinpointEmail::Message',
+                             'type' => 'PinpointEmail_Message'
+                           },
+               'Raw' => {
+                          'class' => 'Paws::PinpointEmail::RawMessage',
+                          'type' => 'PinpointEmail_RawMessage'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +64,7 @@ include attachments and custom headers.
 =head1 ATTRIBUTES
 
 
-=head2 Raw => L<Paws::PinpointEmail::RawMessage>
+=head2 Raw => PinpointEmail_RawMessage
 
   The raw email message. The message has to meet the following criteria:
 
@@ -87,7 +109,7 @@ characters. This restriction is defined in RFC 5321
 
 
 
-=head2 Simple => L<Paws::PinpointEmail::Message>
+=head2 Simple => PinpointEmail_Message
 
   The simple email message. The message consists of a subject and a
 message body.

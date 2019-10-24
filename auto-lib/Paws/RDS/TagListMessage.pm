@@ -1,9 +1,31 @@
+# Generated from callresult_class.tt
 
 package Paws::RDS::TagListMessage;
-  use Moose;
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', request_name => 'Tag', traits => ['NameInRequest',]);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::RDS::Types qw/RDS_Tag/;
+  has TagList => (is => 'ro', isa => ArrayRef[RDS_Tag]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TagList' => {
+                              'class' => 'Paws::RDS::Tag',
+                              'type' => 'ArrayRef[RDS_Tag]'
+                            },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'TagList' => 'Tag'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +37,7 @@ Paws::RDS::TagListMessage
 =head1 ATTRIBUTES
 
 
-=head2 TagList => ArrayRef[L<Paws::RDS::Tag>]
+=head2 TagList => ArrayRef[RDS_Tag]
 
 List of tags returned by the ListTagsForResource operation.
 

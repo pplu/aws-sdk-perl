@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::DAX;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'dax' }
   sub signing_name { 'dax' }
   sub version { '2017-04-19' }
   sub target_prefix { 'AmazonDAXV3' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -349,11 +351,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
-=item [SSESpecification => L<Paws::DAX::SSESpecification>]
+=item [SSESpecification => DAX_SSESpecification]
 
 =item [SubnetGroupName => Str]
 
-=item [Tags => ArrayRef[L<Paws::DAX::Tag>]]
+=item [Tags => ArrayRef[DAX_Tag]]
 
 
 =back
@@ -704,7 +706,7 @@ REBOOTING.
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::DAX::Tag>]
+=item Tags => ArrayRef[DAX_Tag]
 
 
 =back
@@ -772,7 +774,7 @@ parameters and the new values.
 
 =item ParameterGroupName => Str
 
-=item ParameterNameValues => ArrayRef[L<Paws::DAX::ParameterNameValue>]
+=item ParameterNameValues => ArrayRef[DAX_ParameterNameValue]
 
 
 =back

@@ -1,8 +1,39 @@
+# Generated from default/object.tt
 package Paws::CodeBuild::ProjectCache;
-  use Moose;
-  has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
-  has Modes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'modes', traits => ['NameInRequest']);
-  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::CodeBuild::Types qw//;
+  has Location => (is => 'ro', isa => Str);
+  has Modes => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Type => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'Modes' => {
+                            'type' => 'ArrayRef[Str|Undef]'
+                          },
+               'Location' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'Type' => 'type',
+                       'Modes' => 'modes',
+                       'Location' => 'location'
+                     },
+  'IsRequired' => {
+                    'Type' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

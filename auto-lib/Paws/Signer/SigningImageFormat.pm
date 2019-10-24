@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::Signer::SigningImageFormat;
-  use Moose;
-  has DefaultFormat => (is => 'ro', isa => 'Str', request_name => 'defaultFormat', traits => ['NameInRequest'], required => 1);
-  has SupportedFormats => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedFormats', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Undef/;
+  use Paws::Signer::Types qw//;
+  has DefaultFormat => (is => 'ro', isa => Str, required => 1);
+  has SupportedFormats => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SupportedFormats' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'DefaultFormat' => {
+                                    'type' => 'Str'
+                                  }
+             },
+  'NameInRequest' => {
+                       'SupportedFormats' => 'supportedFormats',
+                       'DefaultFormat' => 'defaultFormat'
+                     },
+  'IsRequired' => {
+                    'SupportedFormats' => 1,
+                    'DefaultFormat' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

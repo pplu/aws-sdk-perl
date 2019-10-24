@@ -1,13 +1,32 @@
+# Generated from callargs_class.tt
 
 package Paws::Neptune::PromoteReadReplicaDBCluster;
-  use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Neptune::Types qw//;
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Neptune::PromoteReadReplicaDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaDBClusterResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'PromoteReadReplicaDBCluster');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Neptune::PromoteReadReplicaDBClusterResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'PromoteReadReplicaDBClusterResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        }
+             },
+  'IsRequired' => {
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

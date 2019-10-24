@@ -1,6 +1,27 @@
+# Generated from default/object.tt
 package Paws::MediaLive::ArchiveContainerSettings;
-  use Moose;
-  has M2tsSettings => (is => 'ro', isa => 'Paws::MediaLive::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw//;
+  use Paws::MediaLive::Types qw/MediaLive_M2tsSettings/;
+  has M2tsSettings => (is => 'ro', isa => MediaLive_M2tsSettings);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'M2tsSettings' => {
+                                   'class' => 'Paws::MediaLive::M2tsSettings',
+                                   'type' => 'MediaLive_M2tsSettings'
+                                 }
+             },
+  'NameInRequest' => {
+                       'M2tsSettings' => 'm2tsSettings'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +57,7 @@ Archive Container Settings
 =head1 ATTRIBUTES
 
 
-=head2 M2tsSettings => L<Paws::MediaLive::M2tsSettings>
+=head2 M2tsSettings => MediaLive_M2tsSettings
 
   
 

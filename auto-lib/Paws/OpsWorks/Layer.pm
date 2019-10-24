@@ -1,28 +1,117 @@
+# Generated from default/object.tt
 package Paws::OpsWorks::Layer;
-  use Moose;
-  has Arn => (is => 'ro', isa => 'Str');
-  has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::LayerAttributes');
-  has AutoAssignElasticIps => (is => 'ro', isa => 'Bool');
-  has AutoAssignPublicIps => (is => 'ro', isa => 'Bool');
-  has CloudWatchLogsConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::CloudWatchLogsConfiguration');
-  has CreatedAt => (is => 'ro', isa => 'Str');
-  has CustomInstanceProfileArn => (is => 'ro', isa => 'Str');
-  has CustomJson => (is => 'ro', isa => 'Str');
-  has CustomRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
-  has CustomSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has DefaultRecipes => (is => 'ro', isa => 'Paws::OpsWorks::Recipes');
-  has DefaultSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has EnableAutoHealing => (is => 'ro', isa => 'Bool');
-  has InstallUpdatesOnBoot => (is => 'ro', isa => 'Bool');
-  has LayerId => (is => 'ro', isa => 'Str');
-  has LifecycleEventConfiguration => (is => 'ro', isa => 'Paws::OpsWorks::LifecycleEventConfiguration');
-  has Name => (is => 'ro', isa => 'Str');
-  has Packages => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Shortname => (is => 'ro', isa => 'Str');
-  has StackId => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
-  has UseEbsOptimizedInstances => (is => 'ro', isa => 'Bool');
-  has VolumeConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::VolumeConfiguration]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef/;
+  use Paws::OpsWorks::Types qw/OpsWorks_VolumeConfiguration OpsWorks_LayerAttributes OpsWorks_Recipes OpsWorks_CloudWatchLogsConfiguration OpsWorks_LifecycleEventConfiguration/;
+  has Arn => (is => 'ro', isa => Str);
+  has Attributes => (is => 'ro', isa => OpsWorks_LayerAttributes);
+  has AutoAssignElasticIps => (is => 'ro', isa => Bool);
+  has AutoAssignPublicIps => (is => 'ro', isa => Bool);
+  has CloudWatchLogsConfiguration => (is => 'ro', isa => OpsWorks_CloudWatchLogsConfiguration);
+  has CreatedAt => (is => 'ro', isa => Str);
+  has CustomInstanceProfileArn => (is => 'ro', isa => Str);
+  has CustomJson => (is => 'ro', isa => Str);
+  has CustomRecipes => (is => 'ro', isa => OpsWorks_Recipes);
+  has CustomSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has DefaultRecipes => (is => 'ro', isa => OpsWorks_Recipes);
+  has DefaultSecurityGroupNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has EnableAutoHealing => (is => 'ro', isa => Bool);
+  has InstallUpdatesOnBoot => (is => 'ro', isa => Bool);
+  has LayerId => (is => 'ro', isa => Str);
+  has LifecycleEventConfiguration => (is => 'ro', isa => OpsWorks_LifecycleEventConfiguration);
+  has Name => (is => 'ro', isa => Str);
+  has Packages => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Shortname => (is => 'ro', isa => Str);
+  has StackId => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+  has UseEbsOptimizedInstances => (is => 'ro', isa => Bool);
+  has VolumeConfigurations => (is => 'ro', isa => ArrayRef[OpsWorks_VolumeConfiguration]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AutoAssignElasticIps' => {
+                                           'type' => 'Bool'
+                                         },
+               'CustomSecurityGroupIds' => {
+                                             'type' => 'ArrayRef[Str|Undef]'
+                                           },
+               'DefaultSecurityGroupNames' => {
+                                                'type' => 'ArrayRef[Str|Undef]'
+                                              },
+               'UseEbsOptimizedInstances' => {
+                                               'type' => 'Bool'
+                                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'CreatedAt' => {
+                                'type' => 'Str'
+                              },
+               'StackId' => {
+                              'type' => 'Str'
+                            },
+               'AutoAssignPublicIps' => {
+                                          'type' => 'Bool'
+                                        },
+               'Arn' => {
+                          'type' => 'Str'
+                        },
+               'CustomJson' => {
+                                 'type' => 'Str'
+                               },
+               'Packages' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'DefaultRecipes' => {
+                                     'class' => 'Paws::OpsWorks::Recipes',
+                                     'type' => 'OpsWorks_Recipes'
+                                   },
+               'CustomInstanceProfileArn' => {
+                                               'type' => 'Str'
+                                             },
+               'LayerId' => {
+                              'type' => 'Str'
+                            },
+               'LifecycleEventConfiguration' => {
+                                                  'class' => 'Paws::OpsWorks::LifecycleEventConfiguration',
+                                                  'type' => 'OpsWorks_LifecycleEventConfiguration'
+                                                },
+               'InstallUpdatesOnBoot' => {
+                                           'type' => 'Bool'
+                                         },
+               'VolumeConfigurations' => {
+                                           'class' => 'Paws::OpsWorks::VolumeConfiguration',
+                                           'type' => 'ArrayRef[OpsWorks_VolumeConfiguration]'
+                                         },
+               'EnableAutoHealing' => {
+                                        'type' => 'Bool'
+                                      },
+               'Shortname' => {
+                                'type' => 'Str'
+                              },
+               'CloudWatchLogsConfiguration' => {
+                                                  'class' => 'Paws::OpsWorks::CloudWatchLogsConfiguration',
+                                                  'type' => 'OpsWorks_CloudWatchLogsConfiguration'
+                                                },
+               'Attributes' => {
+                                 'class' => 'Paws::OpsWorks::LayerAttributes',
+                                 'type' => 'OpsWorks_LayerAttributes'
+                               },
+               'CustomRecipes' => {
+                                    'class' => 'Paws::OpsWorks::Recipes',
+                                    'type' => 'OpsWorks_Recipes'
+                                  },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +152,7 @@ Describes a layer.
   The Amazon Resource Number (ARN) of a layer.
 
 
-=head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
+=head2 Attributes => OpsWorks_LayerAttributes
 
   The layer attributes.
 
@@ -91,7 +180,7 @@ How to Edit a Layer
 (https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html).
 
 
-=head2 CloudWatchLogsConfiguration => L<Paws::OpsWorks::CloudWatchLogsConfiguration>
+=head2 CloudWatchLogsConfiguration => OpsWorks_CloudWatchLogsConfiguration
 
   The Amazon CloudWatch Logs configuration settings for the layer.
 
@@ -114,7 +203,7 @@ instances. For more information about IAM ARNs, see Using Identifiers
 configuration and deployment attributes.
 
 
-=head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
+=head2 CustomRecipes => OpsWorks_Recipes
 
   A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
@@ -125,7 +214,7 @@ recipes.
   An array containing the layer's custom security group IDs.
 
 
-=head2 DefaultRecipes => L<Paws::OpsWorks::Recipes>
+=head2 DefaultRecipes => OpsWorks_Recipes
 
   AWS OpsWorks Stacks supports five lifecycle events: B<setup>,
 B<configuration>, B<deploy>, B<undeploy>, and B<shutdown>. For each
@@ -171,7 +260,7 @@ that your instances have the latest security updates.
   The layer ID.
 
 
-=head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
+=head2 LifecycleEventConfiguration => OpsWorks_LifecycleEventConfiguration
 
   A C<LifeCycleEventConfiguration> object that specifies the Shutdown
 event configuration.
@@ -207,7 +296,7 @@ event configuration.
   Whether the layer uses Amazon EBS-optimized instances.
 
 
-=head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
+=head2 VolumeConfigurations => ArrayRef[OpsWorks_VolumeConfiguration]
 
   A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.

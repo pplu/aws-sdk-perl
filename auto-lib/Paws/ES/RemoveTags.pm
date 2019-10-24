@@ -22,7 +22,11 @@ package Paws::ES::RemoveTags;
                'ARN' => {
                           'type' => 'Str'
                         }
-             }
+             },
+  'IsRequired' => {
+                    'TagKeys' => 1,
+                    'ARN' => 1
+                  }
 }
 ;
     return $Params_map;

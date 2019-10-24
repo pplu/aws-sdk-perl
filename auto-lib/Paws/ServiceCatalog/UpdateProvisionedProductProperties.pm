@@ -1,16 +1,47 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::UpdateProvisionedProductProperties;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisionedProductProperties => (is => 'ro', isa => 'Paws::ServiceCatalog::ProvisionedProductProperties', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_ProvisionedProductProperties/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has IdempotencyToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisionedProductId => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has ProvisionedProductProperties => (is => 'ro', isa => ServiceCatalog_ProvisionedProductProperties, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProvisionedProductProperties');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::UpdateProvisionedProductPropertiesOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProvisionedProductProperties');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::UpdateProvisionedProductPropertiesOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'IdempotencyToken' => {
+                                       'type' => 'Str'
+                                     },
+               'ProvisionedProductId' => {
+                                           'type' => 'Str'
+                                         },
+               'ProvisionedProductProperties' => {
+                                                   'class' => 'Paws::ServiceCatalog::ProvisionedProductProperties',
+                                                   'type' => 'ServiceCatalog_ProvisionedProductProperties'
+                                                 }
+             },
+  'IsRequired' => {
+                    'IdempotencyToken' => 1,
+                    'ProvisionedProductId' => 1,
+                    'ProvisionedProductProperties' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -93,7 +124,7 @@ The identifier of the provisioned product.
 
 
 
-=head2 B<REQUIRED> ProvisionedProductProperties => L<Paws::ServiceCatalog::ProvisionedProductProperties>
+=head2 B<REQUIRED> ProvisionedProductProperties => ServiceCatalog_ProvisionedProductProperties
 
 A map that contains the provisioned product properties to be updated.
 

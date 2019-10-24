@@ -1,3 +1,4 @@
+# Generated from json/callargs_class.tt
 
 package Paws::DynamoDB::UpdateTimeToLive;
   use Moo;
@@ -12,7 +13,7 @@ package Paws::DynamoDB::UpdateTimeToLive;
   class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DynamoDB::UpdateTimeToLiveOutput');
   class_has _result_key => (isa => Str, is => 'ro');
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TimeToLiveSpecification' => {
@@ -22,11 +23,15 @@ package Paws::DynamoDB::UpdateTimeToLive;
                'TableName' => {
                                 'type' => 'Str'
                               }
-             }
+             },
+  'IsRequired' => {
+                    'TimeToLiveSpecification' => 1,
+                    'TableName' => 1
+                  }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

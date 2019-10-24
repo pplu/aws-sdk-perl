@@ -1,8 +1,40 @@
+# Generated from default/object.tt
 package Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes;
-  use Moose;
-  has StartToCloseTimeout => (is => 'ro', isa => 'Str', request_name => 'startToCloseTimeout', traits => ['NameInRequest']);
-  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', request_name => 'taskList', traits => ['NameInRequest'], required => 1);
-  has TaskPriority => (is => 'ro', isa => 'Str', request_name => 'taskPriority', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_TaskList/;
+  has StartToCloseTimeout => (is => 'ro', isa => Str);
+  has TaskList => (is => 'ro', isa => SimpleWorkflow_TaskList, required => 1);
+  has TaskPriority => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TaskList' => {
+                               'class' => 'Paws::SimpleWorkflow::TaskList',
+                               'type' => 'SimpleWorkflow_TaskList'
+                             },
+               'StartToCloseTimeout' => {
+                                          'type' => 'Str'
+                                        },
+               'TaskPriority' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'NameInRequest' => {
+                       'TaskList' => 'taskList',
+                       'StartToCloseTimeout' => 'startToCloseTimeout',
+                       'TaskPriority' => 'taskPriority'
+                     },
+  'IsRequired' => {
+                    'TaskList' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +79,7 @@ The duration is specified in seconds, an integer greater than or equal
 to C<0>. You can use C<NONE> to specify unlimited duration.
 
 
-=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => SimpleWorkflow_TaskList
 
   The name of the task list in which the decision task was scheduled.
 

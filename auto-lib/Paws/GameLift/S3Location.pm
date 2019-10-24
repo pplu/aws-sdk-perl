@@ -1,9 +1,35 @@
+# Generated from default/object.tt
 package Paws::GameLift::S3Location;
-  use Moose;
-  has Bucket => (is => 'ro', isa => 'Str');
-  has Key => (is => 'ro', isa => 'Str');
-  has ObjectVersion => (is => 'ro', isa => 'Str');
-  has RoleArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GameLift::Types qw//;
+  has Bucket => (is => 'ro', isa => Str);
+  has Key => (is => 'ro', isa => Str);
+  has ObjectVersion => (is => 'ro', isa => Str);
+  has RoleArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'RoleArn' => {
+                              'type' => 'Str'
+                            },
+               'ObjectVersion' => {
+                                    'type' => 'Str'
+                                  },
+               'Bucket' => {
+                             'type' => 'Str'
+                           },
+               'Key' => {
+                          'type' => 'Str'
+                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

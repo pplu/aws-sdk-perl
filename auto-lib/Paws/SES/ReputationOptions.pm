@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::ReputationOptions;
   use Moo;
   use Types::Standard qw/Str Bool/;

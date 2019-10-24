@@ -1,15 +1,62 @@
+# Generated from default/object.tt
 package Paws::Glacier::JobParameters;
-  use Moose;
-  has ArchiveId => (is => 'ro', isa => 'Str');
-  has Description => (is => 'ro', isa => 'Str');
-  has Format => (is => 'ro', isa => 'Str');
-  has InventoryRetrievalParameters => (is => 'ro', isa => 'Paws::Glacier::InventoryRetrievalJobInput');
-  has OutputLocation => (is => 'ro', isa => 'Paws::Glacier::OutputLocation');
-  has RetrievalByteRange => (is => 'ro', isa => 'Str');
-  has SelectParameters => (is => 'ro', isa => 'Paws::Glacier::SelectParameters');
-  has SNSTopic => (is => 'ro', isa => 'Str');
-  has Tier => (is => 'ro', isa => 'Str');
-  has Type => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Glacier::Types qw/Glacier_OutputLocation Glacier_SelectParameters Glacier_InventoryRetrievalJobInput/;
+  has ArchiveId => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+  has Format => (is => 'ro', isa => Str);
+  has InventoryRetrievalParameters => (is => 'ro', isa => Glacier_InventoryRetrievalJobInput);
+  has OutputLocation => (is => 'ro', isa => Glacier_OutputLocation);
+  has RetrievalByteRange => (is => 'ro', isa => Str);
+  has SelectParameters => (is => 'ro', isa => Glacier_SelectParameters);
+  has SNSTopic => (is => 'ro', isa => Str);
+  has Tier => (is => 'ro', isa => Str);
+  has Type => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Tier' => {
+                           'type' => 'Str'
+                         },
+               'RetrievalByteRange' => {
+                                         'type' => 'Str'
+                                       },
+               'InventoryRetrievalParameters' => {
+                                                   'class' => 'Paws::Glacier::InventoryRetrievalJobInput',
+                                                   'type' => 'Glacier_InventoryRetrievalJobInput'
+                                                 },
+               'OutputLocation' => {
+                                     'class' => 'Paws::Glacier::OutputLocation',
+                                     'type' => 'Glacier_OutputLocation'
+                                   },
+               'Format' => {
+                             'type' => 'Str'
+                           },
+               'ArchiveId' => {
+                                'type' => 'Str'
+                              },
+               'SNSTopic' => {
+                               'type' => 'Str'
+                             },
+               'Type' => {
+                           'type' => 'Str'
+                         },
+               'SelectParameters' => {
+                                       'class' => 'Paws::Glacier::SelectParameters',
+                                       'type' => 'Glacier_SelectParameters'
+                                     },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -69,12 +116,12 @@ are initiating an inventory job and do not specify a Format field, JSON
 is the default format. Valid values are "CSV" and "JSON".
 
 
-=head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobInput>
+=head2 InventoryRetrievalParameters => Glacier_InventoryRetrievalJobInput
 
   Input parameters used for range inventory retrieval.
 
 
-=head2 OutputLocation => L<Paws::Glacier::OutputLocation>
+=head2 OutputLocation => Glacier_OutputLocation
 
   Contains information about the location where the select job results
 are stored.
@@ -95,7 +142,7 @@ An error occurs if you specify this field for an inventory retrieval
 job request.
 
 
-=head2 SelectParameters => L<Paws::Glacier::SelectParameters>
+=head2 SelectParameters => Glacier_SelectParameters
 
   Contains the parameters that define a job.
 

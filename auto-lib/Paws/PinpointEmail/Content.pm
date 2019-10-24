@@ -1,7 +1,30 @@
+# Generated from default/object.tt
 package Paws::PinpointEmail::Content;
-  use Moose;
-  has Charset => (is => 'ro', isa => 'Str');
-  has Data => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::PinpointEmail::Types qw//;
+  has Charset => (is => 'ro', isa => Str);
+  has Data => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Charset' => {
+                              'type' => 'Str'
+                            },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Data' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

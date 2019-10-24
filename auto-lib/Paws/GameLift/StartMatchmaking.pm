@@ -1,15 +1,42 @@
+# Generated from json/callargs_class.tt
 
 package Paws::GameLift::StartMatchmaking;
-  use Moose;
-  has ConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has Players => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Player]', required => 1);
-  has TicketId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Player/;
+  has ConfigurationName => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Players => (is => 'ro', isa => ArrayRef[GameLift_Player], required => 1, predicate => 1);
+  has TicketId => (is => 'ro', isa => Str, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartMatchmaking');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::GameLift::StartMatchmakingOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'StartMatchmaking');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::GameLift::StartMatchmakingOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ConfigurationName' => {
+                                        'type' => 'Str'
+                                      },
+               'TicketId' => {
+                               'type' => 'Str'
+                             },
+               'Players' => {
+                              'class' => 'Paws::GameLift::Player',
+                              'type' => 'ArrayRef[GameLift_Player]'
+                            }
+             },
+  'IsRequired' => {
+                    'ConfigurationName' => 1,
+                    'Players' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -38,19 +65,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           PlayerAttributes => {
             'MyNonZeroAndMaxString' => {
-              N   => 1,                          # OPTIONAL
-              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+              N   => 1,
+              S   => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
               SDM => {
-                'MyNonZeroAndMaxString' =>
-                  1,    # key: min: 1, max: 1024; OPTIONAL, value: OPTIONAL
+                'MyNonZeroAndMaxString' => 1,    # key: min: 1, max: 1024
               },    # OPTIONAL
               SL => [
-                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024; OPTIONAL
+                'MyNonZeroAndMaxString', ...    # min: 1, max: 1024
               ],                                # OPTIONAL
-            },    # key: min: 1, max: 1024; OPTIONAL
+            },    # key: min: 1, max: 1024
           },    # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
-          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
+          Team     => 'MyNonZeroAndMaxString',    # min: 1, max: 1024
         },
         ...
       ],
@@ -76,7 +102,7 @@ request.
 
 
 
-=head2 B<REQUIRED> Players => ArrayRef[L<Paws::GameLift::Player>]
+=head2 B<REQUIRED> Players => ArrayRef[GameLift_Player]
 
 Information on each player to be matched. This information must include
 a player ID, and may contain player attributes and latency data to be

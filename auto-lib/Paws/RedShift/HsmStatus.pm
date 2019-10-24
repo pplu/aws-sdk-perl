@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::RedShift::HsmStatus;
-  use Moose;
-  has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
-  has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
-  has Status => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::RedShift::Types qw//;
+  has HsmClientCertificateIdentifier => (is => 'ro', isa => Str);
+  has HsmConfigurationIdentifier => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HsmClientCertificateIdentifier' => {
+                                                     'type' => 'Str'
+                                                   },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'HsmConfigurationIdentifier' => {
+                                                 'type' => 'Str'
+                                               }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

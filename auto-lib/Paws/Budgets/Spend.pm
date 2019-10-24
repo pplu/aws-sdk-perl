@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::Budgets::Spend;
-  use Moose;
-  has Amount => (is => 'ro', isa => 'Str', required => 1);
-  has Unit => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Budgets::Types qw//;
+  has Amount => (is => 'ro', isa => Str, required => 1);
+  has Unit => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Amount' => {
+                             'type' => 'Str'
+                           },
+               'Unit' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'Amount' => 1,
+                    'Unit' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

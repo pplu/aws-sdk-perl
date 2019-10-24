@@ -1,10 +1,40 @@
+# Generated from default/object.tt
 package Paws::DMS::ReplicationSubnetGroup;
-  use Moose;
-  has ReplicationSubnetGroupDescription => (is => 'ro', isa => 'Str');
-  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str');
-  has SubnetGroupStatus => (is => 'ro', isa => 'Str');
-  has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Subnet]');
-  has VpcId => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::DMS::Types qw/DMS_Subnet/;
+  has ReplicationSubnetGroupDescription => (is => 'ro', isa => Str);
+  has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => Str);
+  has SubnetGroupStatus => (is => 'ro', isa => Str);
+  has Subnets => (is => 'ro', isa => ArrayRef[DMS_Subnet]);
+  has VpcId => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'VpcId' => {
+                            'type' => 'Str'
+                          },
+               'ReplicationSubnetGroupIdentifier' => {
+                                                       'type' => 'Str'
+                                                     },
+               'Subnets' => {
+                              'class' => 'Paws::DMS::Subnet',
+                              'type' => 'ArrayRef[DMS_Subnet]'
+                            },
+               'ReplicationSubnetGroupDescription' => {
+                                                        'type' => 'Str'
+                                                      },
+               'SubnetGroupStatus' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +85,7 @@ This class has no description
   The status of the subnet group.
 
 
-=head2 Subnets => ArrayRef[L<Paws::DMS::Subnet>]
+=head2 Subnets => ArrayRef[DMS_Subnet]
 
   The subnets that are in the subnet group.
 

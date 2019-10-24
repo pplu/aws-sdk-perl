@@ -1,9 +1,45 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualNodeSpec;
-  use Moose;
-  has Backends => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::Backend]', request_name => 'backends', traits => ['NameInRequest']);
-  has Listeners => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::Listener]', request_name => 'listeners', traits => ['NameInRequest']);
-  has Logging => (is => 'ro', isa => 'Paws::AppMesh::Logging', request_name => 'logging', traits => ['NameInRequest']);
-  has ServiceDiscovery => (is => 'ro', isa => 'Paws::AppMesh::ServiceDiscovery', request_name => 'serviceDiscovery', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef/;
+  use Paws::AppMesh::Types qw/AppMesh_Logging AppMesh_Backend AppMesh_Listener AppMesh_ServiceDiscovery/;
+  has Backends => (is => 'ro', isa => ArrayRef[AppMesh_Backend]);
+  has Listeners => (is => 'ro', isa => ArrayRef[AppMesh_Listener]);
+  has Logging => (is => 'ro', isa => AppMesh_Logging);
+  has ServiceDiscovery => (is => 'ro', isa => AppMesh_ServiceDiscovery);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Logging' => {
+                              'class' => 'Paws::AppMesh::Logging',
+                              'type' => 'AppMesh_Logging'
+                            },
+               'Backends' => {
+                               'class' => 'Paws::AppMesh::Backend',
+                               'type' => 'ArrayRef[AppMesh_Backend]'
+                             },
+               'Listeners' => {
+                                'class' => 'Paws::AppMesh::Listener',
+                                'type' => 'ArrayRef[AppMesh_Listener]'
+                              },
+               'ServiceDiscovery' => {
+                                       'class' => 'Paws::AppMesh::ServiceDiscovery',
+                                       'type' => 'AppMesh_ServiceDiscovery'
+                                     }
+             },
+  'NameInRequest' => {
+                       'Logging' => 'logging',
+                       'Backends' => 'backends',
+                       'Listeners' => 'listeners',
+                       'ServiceDiscovery' => 'serviceDiscovery'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -39,26 +75,26 @@ An object representing the specification of a virtual node.
 =head1 ATTRIBUTES
 
 
-=head2 Backends => ArrayRef[L<Paws::AppMesh::Backend>]
+=head2 Backends => ArrayRef[AppMesh_Backend]
 
   The backends that the virtual node is expected to send outbound traffic
 to.
 
 
-=head2 Listeners => ArrayRef[L<Paws::AppMesh::Listener>]
+=head2 Listeners => ArrayRef[AppMesh_Listener]
 
   The listeners that the virtual node is expected to receive inbound
 traffic from. Currently only one listener is supported per virtual
 node.
 
 
-=head2 Logging => L<Paws::AppMesh::Logging>
+=head2 Logging => AppMesh_Logging
 
   The inbound and outbound access logging information for the virtual
 node.
 
 
-=head2 ServiceDiscovery => L<Paws::AppMesh::ServiceDiscovery>
+=head2 ServiceDiscovery => AppMesh_ServiceDiscovery
 
   The service discovery information for the virtual node. If your virtual
 node does not expect ingress traffic, you can omit this parameter.

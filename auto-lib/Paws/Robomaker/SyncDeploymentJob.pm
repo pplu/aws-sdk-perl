@@ -1,15 +1,41 @@
 
 package Paws::Robomaker::SyncDeploymentJob;
-  use Moose;
-  has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken', required => 1);
-  has Fleet => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'fleet', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Robomaker::Types qw//;
+  has ClientRequestToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Fleet => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'SyncDeploymentJob');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/syncDeploymentJob');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Robomaker::SyncDeploymentJobResponse');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'SyncDeploymentJob');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/syncDeploymentJob');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'POST');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Robomaker::SyncDeploymentJobResponse');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClientRequestToken' => {
+                                         'type' => 'Str'
+                                       },
+               'Fleet' => {
+                            'type' => 'Str'
+                          }
+             },
+  'NameInRequest' => {
+                       'ClientRequestToken' => 'clientRequestToken',
+                       'Fleet' => 'fleet'
+                     },
+  'IsRequired' => {
+                    'ClientRequestToken' => 1,
+                    'Fleet' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

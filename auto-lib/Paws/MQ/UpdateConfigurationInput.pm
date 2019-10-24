@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MQ::UpdateConfigurationInput;
-  use Moose;
-  has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
-  has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MQ::Types qw//;
+  has Data => (is => 'ro', isa => Str);
+  has Description => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Description' => {
+                                  'type' => 'Str'
+                                },
+               'Data' => {
+                           'type' => 'Str'
+                         }
+             },
+  'NameInRequest' => {
+                       'Description' => 'description',
+                       'Data' => 'data'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

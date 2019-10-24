@@ -1,10 +1,39 @@
+# Generated from default/object.tt
 package Paws::KinesisVideoArchivedMedia::Fragment;
-  use Moose;
-  has FragmentLengthInMilliseconds => (is => 'ro', isa => 'Int');
-  has FragmentNumber => (is => 'ro', isa => 'Str');
-  has FragmentSizeInBytes => (is => 'ro', isa => 'Int');
-  has ProducerTimestamp => (is => 'ro', isa => 'Str');
-  has ServerTimestamp => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::KinesisVideoArchivedMedia::Types qw//;
+  has FragmentLengthInMilliseconds => (is => 'ro', isa => Int);
+  has FragmentNumber => (is => 'ro', isa => Str);
+  has FragmentSizeInBytes => (is => 'ro', isa => Int);
+  has ProducerTimestamp => (is => 'ro', isa => Str);
+  has ServerTimestamp => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ServerTimestamp' => {
+                                      'type' => 'Str'
+                                    },
+               'ProducerTimestamp' => {
+                                        'type' => 'Str'
+                                      },
+               'FragmentLengthInMilliseconds' => {
+                                                   'type' => 'Int'
+                                                 },
+               'FragmentNumber' => {
+                                     'type' => 'Str'
+                                   },
+               'FragmentSizeInBytes' => {
+                                          'type' => 'Int'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

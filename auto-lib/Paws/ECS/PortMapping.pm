@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::ECS::PortMapping;
-  use Moose;
-  has ContainerPort => (is => 'ro', isa => 'Int', request_name => 'containerPort', traits => ['NameInRequest']);
-  has HostPort => (is => 'ro', isa => 'Int', request_name => 'hostPort', traits => ['NameInRequest']);
-  has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str/;
+  use Paws::ECS::Types qw//;
+  has ContainerPort => (is => 'ro', isa => Int);
+  has HostPort => (is => 'ro', isa => Int);
+  has Protocol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ContainerPort' => {
+                                    'type' => 'Int'
+                                  },
+               'HostPort' => {
+                               'type' => 'Int'
+                             },
+               'Protocol' => {
+                               'type' => 'Str'
+                             }
+             },
+  'NameInRequest' => {
+                       'ContainerPort' => 'containerPort',
+                       'HostPort' => 'hostPort',
+                       'Protocol' => 'protocol'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

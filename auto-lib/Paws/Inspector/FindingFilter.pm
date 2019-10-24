@@ -1,13 +1,64 @@
+# Generated from default/object.tt
 package Paws::Inspector::FindingFilter;
-  use Moose;
-  has AgentIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'agentIds', traits => ['NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'attributes', traits => ['NameInRequest']);
-  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
-  has CreationTimeRange => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', request_name => 'creationTimeRange', traits => ['NameInRequest']);
-  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ruleNames', traits => ['NameInRequest']);
-  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'rulesPackageArns', traits => ['NameInRequest']);
-  has Severities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'severities', traits => ['NameInRequest']);
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', request_name => 'userAttributes', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str/;
+  use Paws::Inspector::Types qw/Inspector_Attribute Inspector_TimestampRange/;
+  has AgentIds => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Attributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute]);
+  has AutoScalingGroups => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has CreationTimeRange => (is => 'ro', isa => Inspector_TimestampRange);
+  has RuleNames => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has RulesPackageArns => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Severities => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has UserAttributes => (is => 'ro', isa => ArrayRef[Inspector_Attribute]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Severities' => {
+                                 'type' => 'ArrayRef[Str|Undef]'
+                               },
+               'RuleNames' => {
+                                'type' => 'ArrayRef[Str|Undef]'
+                              },
+               'RulesPackageArns' => {
+                                       'type' => 'ArrayRef[Str|Undef]'
+                                     },
+               'AutoScalingGroups' => {
+                                        'type' => 'ArrayRef[Str|Undef]'
+                                      },
+               'Attributes' => {
+                                 'class' => 'Paws::Inspector::Attribute',
+                                 'type' => 'ArrayRef[Inspector_Attribute]'
+                               },
+               'AgentIds' => {
+                               'type' => 'ArrayRef[Str|Undef]'
+                             },
+               'UserAttributes' => {
+                                     'class' => 'Paws::Inspector::Attribute',
+                                     'type' => 'ArrayRef[Inspector_Attribute]'
+                                   },
+               'CreationTimeRange' => {
+                                        'class' => 'Paws::Inspector::TimestampRange',
+                                        'type' => 'Inspector_TimestampRange'
+                                      }
+             },
+  'NameInRequest' => {
+                       'Severities' => 'severities',
+                       'RuleNames' => 'ruleNames',
+                       'RulesPackageArns' => 'rulesPackageArns',
+                       'AutoScalingGroups' => 'autoScalingGroups',
+                       'Attributes' => 'attributes',
+                       'AgentIds' => 'agentIds',
+                       'UserAttributes' => 'userAttributes',
+                       'CreationTimeRange' => 'creationTimeRange'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +102,7 @@ this data type property must be the exact match of the value of the
 B<agentId> property of the Finding data type.
 
 
-=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[Inspector_Attribute]
 
   For a record to match a filter, the list of values that are specified
 for this data type property must be contained in the list of values of
@@ -65,7 +116,7 @@ this data type property must be the exact match of the value of the
 B<autoScalingGroup> property of the Finding data type.
 
 
-=head2 CreationTimeRange => L<Paws::Inspector::TimestampRange>
+=head2 CreationTimeRange => Inspector_TimestampRange
 
   The time range during which the finding is generated.
 
@@ -91,7 +142,7 @@ this data type property must be the exact match of the value of the
 B<severity> property of the Finding data type.
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 UserAttributes => ArrayRef[Inspector_Attribute]
 
   For a record to match a filter, the value that is specified for this
 data type property must be contained in the list of values of the

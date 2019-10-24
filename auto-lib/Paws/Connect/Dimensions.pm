@@ -1,7 +1,28 @@
+# Generated from default/object.tt
 package Paws::Connect::Dimensions;
-  use Moose;
-  has Channel => (is => 'ro', isa => 'Str');
-  has Queue => (is => 'ro', isa => 'Paws::Connect::QueueReference');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Connect::Types qw/Connect_QueueReference/;
+  has Channel => (is => 'ro', isa => Str);
+  has Queue => (is => 'ro', isa => Connect_QueueReference);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Queue' => {
+                            'class' => 'Paws::Connect::QueueReference',
+                            'type' => 'Connect_QueueReference'
+                          },
+               'Channel' => {
+                              'type' => 'Str'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +64,7 @@ metric.
   The channel used for grouping and filters. Only VOICE is supported.
 
 
-=head2 Queue => L<Paws::Connect::QueueReference>
+=head2 Queue => Connect_QueueReference
 
   A C<QueueReference> object used as one part of dimension for the
 metrics results.

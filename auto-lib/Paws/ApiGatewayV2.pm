@@ -1,14 +1,15 @@
 package Paws::ApiGatewayV2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'apigateway' }
   sub signing_name { 'apigateway' }
   sub version { '2018-11-29' }
   sub flattened_arrays { 0 }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
@@ -593,7 +594,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/apigateway/>
 
 =item [DisableSchemaValidation => Bool]
 
-=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+=item [Tags => ApiGatewayV2_Tags]
 
 =item [Version => Str]
 
@@ -687,9 +688,9 @@ Creates a Deployment for an API.
 
 =item DomainName => Str
 
-=item [DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]]
+=item [DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]]
 
-=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+=item [Tags => ApiGatewayV2_Tags]
 
 
 =back
@@ -725,9 +726,9 @@ Creates a domain name.
 
 =item [PassthroughBehavior => Str]
 
-=item [RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
+=item [RequestParameters => ApiGatewayV2_IntegrationParameters]
 
-=item [RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
+=item [RequestTemplates => ApiGatewayV2_TemplateMap]
 
 =item [TemplateSelectionExpression => Str]
 
@@ -755,9 +756,9 @@ Creates an Integration.
 
 =item [ContentHandlingStrategy => Str]
 
-=item [ResponseParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
+=item [ResponseParameters => ApiGatewayV2_IntegrationParameters]
 
-=item [ResponseTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
+=item [ResponseTemplates => ApiGatewayV2_TemplateMap]
 
 =item [TemplateSelectionExpression => Str]
 
@@ -815,9 +816,9 @@ Creates a Model for an API.
 
 =item [OperationName => Str]
 
-=item [RequestModels => L<Paws::ApiGatewayV2::RouteModels>]
+=item [RequestModels => ApiGatewayV2_RouteModels]
 
-=item [RequestParameters => L<Paws::ApiGatewayV2::RouteParameters>]
+=item [RequestParameters => ApiGatewayV2_RouteParameters]
 
 =item [RouteResponseSelectionExpression => Str]
 
@@ -845,9 +846,9 @@ Creates a Route for an API.
 
 =item [ModelSelectionExpression => Str]
 
-=item [ResponseModels => L<Paws::ApiGatewayV2::RouteModels>]
+=item [ResponseModels => ApiGatewayV2_RouteModels]
 
-=item [ResponseParameters => L<Paws::ApiGatewayV2::RouteParameters>]
+=item [ResponseParameters => ApiGatewayV2_RouteParameters]
 
 
 =back
@@ -867,21 +868,21 @@ Creates a RouteResponse for a Route.
 
 =item StageName => Str
 
-=item [AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>]
+=item [AccessLogSettings => ApiGatewayV2_AccessLogSettings]
 
 =item [ClientCertificateId => Str]
 
-=item [DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>]
+=item [DefaultRouteSettings => ApiGatewayV2_RouteSettings]
 
 =item [DeploymentId => Str]
 
 =item [Description => Str]
 
-=item [RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>]
+=item [RouteSettings => ApiGatewayV2_RouteSettingsMap]
 
-=item [StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>]
+=item [StageVariables => ApiGatewayV2_StageVariablesMap]
 
-=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+=item [Tags => ApiGatewayV2_Tags]
 
 
 =back
@@ -1549,7 +1550,7 @@ Gets the Tags for an API.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::ApiGatewayV2::Tags>]
+=item [Tags => ApiGatewayV2_Tags]
 
 
 =back
@@ -1691,7 +1692,7 @@ Updates a Deployment.
 
 =item DomainName => Str
 
-=item [DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]]
+=item [DomainNameConfigurations => ArrayRef[ApiGatewayV2_DomainNameConfiguration]]
 
 
 =back
@@ -1729,9 +1730,9 @@ Updates a domain name.
 
 =item [PassthroughBehavior => Str]
 
-=item [RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
+=item [RequestParameters => ApiGatewayV2_IntegrationParameters]
 
-=item [RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
+=item [RequestTemplates => ApiGatewayV2_TemplateMap]
 
 =item [TemplateSelectionExpression => Str]
 
@@ -1761,9 +1762,9 @@ Updates an Integration.
 
 =item [IntegrationResponseKey => Str]
 
-=item [ResponseParameters => L<Paws::ApiGatewayV2::IntegrationParameters>]
+=item [ResponseParameters => ApiGatewayV2_IntegrationParameters]
 
-=item [ResponseTemplates => L<Paws::ApiGatewayV2::TemplateMap>]
+=item [ResponseTemplates => ApiGatewayV2_TemplateMap]
 
 =item [TemplateSelectionExpression => Str]
 
@@ -1823,9 +1824,9 @@ Updates a Model.
 
 =item [OperationName => Str]
 
-=item [RequestModels => L<Paws::ApiGatewayV2::RouteModels>]
+=item [RequestModels => ApiGatewayV2_RouteModels]
 
-=item [RequestParameters => L<Paws::ApiGatewayV2::RouteParameters>]
+=item [RequestParameters => ApiGatewayV2_RouteParameters]
 
 =item [RouteKey => Str]
 
@@ -1855,9 +1856,9 @@ Updates a Route.
 
 =item [ModelSelectionExpression => Str]
 
-=item [ResponseModels => L<Paws::ApiGatewayV2::RouteModels>]
+=item [ResponseModels => ApiGatewayV2_RouteModels]
 
-=item [ResponseParameters => L<Paws::ApiGatewayV2::RouteParameters>]
+=item [ResponseParameters => ApiGatewayV2_RouteParameters]
 
 =item [RouteResponseKey => Str]
 
@@ -1879,19 +1880,19 @@ Updates a RouteResponse.
 
 =item StageName => Str
 
-=item [AccessLogSettings => L<Paws::ApiGatewayV2::AccessLogSettings>]
+=item [AccessLogSettings => ApiGatewayV2_AccessLogSettings]
 
 =item [ClientCertificateId => Str]
 
-=item [DefaultRouteSettings => L<Paws::ApiGatewayV2::RouteSettings>]
+=item [DefaultRouteSettings => ApiGatewayV2_RouteSettings]
 
 =item [DeploymentId => Str]
 
 =item [Description => Str]
 
-=item [RouteSettings => L<Paws::ApiGatewayV2::RouteSettingsMap>]
+=item [RouteSettings => ApiGatewayV2_RouteSettingsMap]
 
-=item [StageVariables => L<Paws::ApiGatewayV2::StageVariablesMap>]
+=item [StageVariables => ApiGatewayV2_StageVariablesMap]
 
 
 =back

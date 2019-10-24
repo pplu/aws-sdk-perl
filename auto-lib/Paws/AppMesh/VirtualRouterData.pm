@@ -1,10 +1,56 @@
+# Generated from default/object.tt
 package Paws::AppMesh::VirtualRouterData;
-  use Moose;
-  has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::AppMesh::ResourceMetadata', request_name => 'metadata', traits => ['NameInRequest'], required => 1);
-  has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterSpec', request_name => 'spec', traits => ['NameInRequest'], required => 1);
-  has Status => (is => 'ro', isa => 'Paws::AppMesh::VirtualRouterStatus', request_name => 'status', traits => ['NameInRequest'], required => 1);
-  has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::AppMesh::Types qw/AppMesh_ResourceMetadata AppMesh_VirtualRouterSpec AppMesh_VirtualRouterStatus/;
+  has MeshName => (is => 'ro', isa => Str, required => 1);
+  has Metadata => (is => 'ro', isa => AppMesh_ResourceMetadata, required => 1);
+  has Spec => (is => 'ro', isa => AppMesh_VirtualRouterSpec, required => 1);
+  has Status => (is => 'ro', isa => AppMesh_VirtualRouterStatus, required => 1);
+  has VirtualRouterName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Spec' => {
+                           'class' => 'Paws::AppMesh::VirtualRouterSpec',
+                           'type' => 'AppMesh_VirtualRouterSpec'
+                         },
+               'Status' => {
+                             'class' => 'Paws::AppMesh::VirtualRouterStatus',
+                             'type' => 'AppMesh_VirtualRouterStatus'
+                           },
+               'MeshName' => {
+                               'type' => 'Str'
+                             },
+               'VirtualRouterName' => {
+                                        'type' => 'Str'
+                                      },
+               'Metadata' => {
+                               'class' => 'Paws::AppMesh::ResourceMetadata',
+                               'type' => 'AppMesh_ResourceMetadata'
+                             }
+             },
+  'NameInRequest' => {
+                       'Spec' => 'spec',
+                       'Status' => 'status',
+                       'MeshName' => 'meshName',
+                       'VirtualRouterName' => 'virtualRouterName',
+                       'Metadata' => 'metadata'
+                     },
+  'IsRequired' => {
+                    'Spec' => 1,
+                    'Status' => 1,
+                    'MeshName' => 1,
+                    'VirtualRouterName' => 1,
+                    'Metadata' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,17 +92,17 @@ operation.
   The name of the service mesh that the virtual router resides in.
 
 
-=head2 B<REQUIRED> Metadata => L<Paws::AppMesh::ResourceMetadata>
+=head2 B<REQUIRED> Metadata => AppMesh_ResourceMetadata
 
   The associated metadata for the virtual router.
 
 
-=head2 B<REQUIRED> Spec => L<Paws::AppMesh::VirtualRouterSpec>
+=head2 B<REQUIRED> Spec => AppMesh_VirtualRouterSpec
 
   The specifications of the virtual router.
 
 
-=head2 B<REQUIRED> Status => L<Paws::AppMesh::VirtualRouterStatus>
+=head2 B<REQUIRED> Status => AppMesh_VirtualRouterStatus
 
   The current status of the virtual router.
 

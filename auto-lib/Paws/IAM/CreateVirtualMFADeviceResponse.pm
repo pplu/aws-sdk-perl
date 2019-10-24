@@ -1,8 +1,7 @@
+# Generated from callresult_class.tt
 
 package Paws::IAM::CreateVirtualMFADeviceResponse;
   use Moo;
-  use JSON::MaybeXS;
-  use URL::Encode;
   use Types::Standard qw/Str/;
   use Paws::IAM::Types qw/IAM_VirtualMFADevice/;
   has VirtualMFADevice => (is => 'ro', isa => IAM_VirtualMFADevice, required => 1);

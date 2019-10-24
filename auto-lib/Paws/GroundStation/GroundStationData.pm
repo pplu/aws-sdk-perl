@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::GroundStation::GroundStationData;
-  use Moose;
-  has GroundStationId => (is => 'ro', isa => 'Str', request_name => 'groundStationId', traits => ['NameInRequest']);
-  has GroundStationName => (is => 'ro', isa => 'Str', request_name => 'groundStationName', traits => ['NameInRequest']);
-  has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::GroundStation::Types qw//;
+  has GroundStationId => (is => 'ro', isa => Str);
+  has GroundStationName => (is => 'ro', isa => Str);
+  has Region => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroundStationName' => {
+                                        'type' => 'Str'
+                                      },
+               'Region' => {
+                             'type' => 'Str'
+                           },
+               'GroundStationId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'GroundStationName' => 'groundStationName',
+                       'Region' => 'region',
+                       'GroundStationId' => 'groundStationId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

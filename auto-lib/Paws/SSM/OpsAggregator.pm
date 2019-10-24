@@ -1,11 +1,46 @@
+# Generated from default/object.tt
 package Paws::SSM::OpsAggregator;
-  use Moose;
-  has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsAggregator]');
-  has AggregatorType => (is => 'ro', isa => 'Str');
-  has AttributeName => (is => 'ro', isa => 'Str');
-  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsFilter]');
-  has TypeName => (is => 'ro', isa => 'Str');
-  has Values => (is => 'ro', isa => 'Paws::SSM::OpsAggregatorValueMap');
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::SSM::Types qw/SSM_OpsFilter SSM_OpsAggregatorValueMap SSM_OpsAggregator/;
+  has Aggregators => (is => 'ro', isa => ArrayRef[SSM_OpsAggregator]);
+  has AggregatorType => (is => 'ro', isa => Str);
+  has AttributeName => (is => 'ro', isa => Str);
+  has Filters => (is => 'ro', isa => ArrayRef[SSM_OpsFilter]);
+  has TypeName => (is => 'ro', isa => Str);
+  has Values => (is => 'ro', isa => SSM_OpsAggregatorValueMap);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Aggregators' => {
+                                  'class' => 'Paws::SSM::OpsAggregator',
+                                  'type' => 'ArrayRef[SSM_OpsAggregator]'
+                                },
+               'Values' => {
+                             'class' => 'Paws::SSM::OpsAggregatorValueMap',
+                             'type' => 'SSM_OpsAggregatorValueMap'
+                           },
+               'Filters' => {
+                              'class' => 'Paws::SSM::OpsFilter',
+                              'type' => 'ArrayRef[SSM_OpsFilter]'
+                            },
+               'TypeName' => {
+                               'type' => 'Str'
+                             },
+               'AttributeName' => {
+                                    'type' => 'Str'
+                                  },
+               'AggregatorType' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +78,7 @@ CreatedTime>, to name a few.
 =head1 ATTRIBUTES
 
 
-=head2 Aggregators => ArrayRef[L<Paws::SSM::OpsAggregator>]
+=head2 Aggregators => ArrayRef[SSM_OpsAggregator]
 
   A nested aggregator for viewing counts of OpsItems.
 
@@ -59,7 +94,7 @@ CreatedTime>, to name a few.
 OpsItems.
 
 
-=head2 Filters => ArrayRef[L<Paws::SSM::OpsFilter>]
+=head2 Filters => ArrayRef[SSM_OpsFilter]
 
   The aggregator filters.
 
@@ -69,7 +104,7 @@ OpsItems.
   The data type name to use for viewing counts of OpsItems.
 
 
-=head2 Values => L<Paws::SSM::OpsAggregatorValueMap>
+=head2 Values => SSM_OpsAggregatorValueMap
 
   The aggregator value.
 

@@ -1,8 +1,31 @@
+# Generated from default/object.tt
 package Paws::CognitoIdp::EmailConfigurationType;
-  use Moose;
-  has EmailSendingAccount => (is => 'ro', isa => 'Str');
-  has ReplyToEmailAddress => (is => 'ro', isa => 'Str');
-  has SourceArn => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::CognitoIdp::Types qw//;
+  has EmailSendingAccount => (is => 'ro', isa => Str);
+  has ReplyToEmailAddress => (is => 'ro', isa => Str);
+  has SourceArn => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SourceArn' => {
+                                'type' => 'Str'
+                              },
+               'ReplyToEmailAddress' => {
+                                          'type' => 'Str'
+                                        },
+               'EmailSendingAccount' => {
+                                          'type' => 'Str'
+                                        }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

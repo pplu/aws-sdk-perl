@@ -1,6 +1,26 @@
+# Generated from default/object.tt
 package Paws::SageMaker::ModelArtifacts;
-  use Moose;
-  has S3ModelArtifacts => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::SageMaker::Types qw//;
+  has S3ModelArtifacts => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'S3ModelArtifacts' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'S3ModelArtifacts' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

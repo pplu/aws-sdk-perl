@@ -1,22 +1,71 @@
+# Generated from json/callargs_class.tt
 
 package Paws::ServiceCatalog::UpdateProvisionedProduct;
-  use Moose;
-  has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has PathId => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str');
-  has ProvisionedProductId => (is => 'ro', isa => 'Str');
-  has ProvisionedProductName => (is => 'ro', isa => 'Str');
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
-  has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UpdateProvisioningParameter]');
-  has ProvisioningPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::UpdateProvisioningPreferences');
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
-  has UpdateToken => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::ServiceCatalog::Types qw/ServiceCatalog_Tag ServiceCatalog_UpdateProvisioningPreferences ServiceCatalog_UpdateProvisioningParameter/;
+  has AcceptLanguage => (is => 'ro', isa => Str, predicate => 1);
+  has PathId => (is => 'ro', isa => Str, predicate => 1);
+  has ProductId => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisionedProductId => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisionedProductName => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisioningArtifactId => (is => 'ro', isa => Str, predicate => 1);
+  has ProvisioningParameters => (is => 'ro', isa => ArrayRef[ServiceCatalog_UpdateProvisioningParameter], predicate => 1);
+  has ProvisioningPreferences => (is => 'ro', isa => ServiceCatalog_UpdateProvisioningPreferences, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[ServiceCatalog_Tag], predicate => 1);
+  has UpdateToken => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateProvisionedProduct');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ServiceCatalog::UpdateProvisionedProductOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'UpdateProvisionedProduct');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ServiceCatalog::UpdateProvisionedProductOutput');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'PathId' => {
+                             'type' => 'Str'
+                           },
+               'UpdateToken' => {
+                                  'type' => 'Str'
+                                },
+               'ProvisionedProductId' => {
+                                           'type' => 'Str'
+                                         },
+               'ProvisioningPreferences' => {
+                                              'class' => 'Paws::ServiceCatalog::UpdateProvisioningPreferences',
+                                              'type' => 'ServiceCatalog_UpdateProvisioningPreferences'
+                                            },
+               'ProductId' => {
+                                'type' => 'Str'
+                              },
+               'ProvisioningParameters' => {
+                                             'class' => 'Paws::ServiceCatalog::UpdateProvisioningParameter',
+                                             'type' => 'ArrayRef[ServiceCatalog_UpdateProvisioningParameter]'
+                                           },
+               'AcceptLanguage' => {
+                                     'type' => 'Str'
+                                   },
+               'ProvisionedProductName' => {
+                                             'type' => 'Str'
+                                           },
+               'ProvisioningArtifactId' => {
+                                             'type' => 'Str'
+                                           },
+               'Tags' => {
+                           'class' => 'Paws::ServiceCatalog::Tag',
+                           'type' => 'ArrayRef[ServiceCatalog_Tag]'
+                         }
+             },
+  'IsRequired' => {
+                    'UpdateToken' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -140,20 +189,20 @@ The identifier of the provisioning artifact.
 
 
 
-=head2 ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]
+=head2 ProvisioningParameters => ArrayRef[ServiceCatalog_UpdateProvisioningParameter]
 
 The new parameters.
 
 
 
-=head2 ProvisioningPreferences => L<Paws::ServiceCatalog::UpdateProvisioningPreferences>
+=head2 ProvisioningPreferences => ServiceCatalog_UpdateProvisioningPreferences
 
 An object that contains information about the provisioning preferences
 for a stack set.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::ServiceCatalog::Tag>]
+=head2 Tags => ArrayRef[ServiceCatalog_Tag]
 
 One or more tags. Requires the product to have C<RESOURCE_UPDATE>
 constraint with C<TagUpdatesOnProvisionedProduct> set to C<ALLOWED> to

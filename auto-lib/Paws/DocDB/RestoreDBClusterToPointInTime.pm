@@ -1,23 +1,74 @@
+# Generated from callargs_class.tt
 
 package Paws::DocDB::RestoreDBClusterToPointInTime;
-  use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has DeletionProtection => (is => 'ro', isa => 'Bool');
-  has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has KmsKeyId => (is => 'ro', isa => 'Str');
-  has Port => (is => 'ro', isa => 'Int');
-  has RestoreToTime => (is => 'ro', isa => 'Str');
-  has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
-  has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
-  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  use Moo;
+  use Types::Standard qw/Str Bool ArrayRef Undef Int/;
+  use Paws::DocDB::Types qw/DocDB_Tag/;
+  has DBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has DBSubnetGroupName => (is => 'ro', isa => Str, predicate => 1);
+  has DeletionProtection => (is => 'ro', isa => Bool, predicate => 1);
+  has EnableCloudwatchLogsExports => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  has KmsKeyId => (is => 'ro', isa => Str, predicate => 1);
+  has Port => (is => 'ro', isa => Int, predicate => 1);
+  has RestoreToTime => (is => 'ro', isa => Str, predicate => 1);
+  has SourceDBClusterIdentifier => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[DocDB_Tag], predicate => 1);
+  has UseLatestRestorableTime => (is => 'ro', isa => Bool, predicate => 1);
+  has VpcSecurityGroupIds => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTime');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DocDB::RestoreDBClusterToPointInTimeResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RestoreDBClusterToPointInTime');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::DocDB::RestoreDBClusterToPointInTimeResult');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'UseLatestRestorableTime' => {
+                                              'type' => 'Bool'
+                                            },
+               'DeletionProtection' => {
+                                         'type' => 'Bool'
+                                       },
+               'Port' => {
+                           'type' => 'Int'
+                         },
+               'KmsKeyId' => {
+                               'type' => 'Str'
+                             },
+               'VpcSecurityGroupIds' => {
+                                          'type' => 'ArrayRef[Str|Undef]'
+                                        },
+               'DBSubnetGroupName' => {
+                                        'type' => 'Str'
+                                      },
+               'SourceDBClusterIdentifier' => {
+                                                'type' => 'Str'
+                                              },
+               'DBClusterIdentifier' => {
+                                          'type' => 'Str'
+                                        },
+               'RestoreToTime' => {
+                                    'type' => 'Str'
+                                  },
+               'Tags' => {
+                           'class' => 'Paws::DocDB::Tag',
+                           'type' => 'ArrayRef[DocDB_Tag]'
+                         },
+               'EnableCloudwatchLogsExports' => {
+                                                  'type' => 'ArrayRef[Str|Undef]'
+                                                }
+             },
+  'IsRequired' => {
+                    'SourceDBClusterIdentifier' => 1,
+                    'DBClusterIdentifier' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -222,7 +273,7 @@ Must match the identifier of an existing C<DBCluster>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
+=head2 Tags => ArrayRef[DocDB_Tag]
 
 The tags to be assigned to the restored DB cluster.
 

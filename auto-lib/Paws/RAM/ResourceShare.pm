@@ -1,14 +1,67 @@
+# Generated from default/object.tt
 package Paws::RAM::ResourceShare;
-  use Moose;
-  has AllowExternalPrincipals => (is => 'ro', isa => 'Bool', request_name => 'allowExternalPrincipals', traits => ['NameInRequest']);
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
-  has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
-  has OwningAccountId => (is => 'ro', isa => 'Str', request_name => 'owningAccountId', traits => ['NameInRequest']);
-  has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
-  has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef/;
+  use Paws::RAM::Types qw/RAM_Tag/;
+  has AllowExternalPrincipals => (is => 'ro', isa => Bool);
+  has CreationTime => (is => 'ro', isa => Str);
+  has LastUpdatedTime => (is => 'ro', isa => Str);
+  has Name => (is => 'ro', isa => Str);
+  has OwningAccountId => (is => 'ro', isa => Str);
+  has ResourceShareArn => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => Str);
+  has StatusMessage => (is => 'ro', isa => Str);
+  has Tags => (is => 'ro', isa => ArrayRef[RAM_Tag]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'type' => 'Str'
+                           },
+               'ResourceShareArn' => {
+                                       'type' => 'Str'
+                                     },
+               'LastUpdatedTime' => {
+                                      'type' => 'Str'
+                                    },
+               'AllowExternalPrincipals' => {
+                                              'type' => 'Bool'
+                                            },
+               'Tags' => {
+                           'class' => 'Paws::RAM::Tag',
+                           'type' => 'ArrayRef[RAM_Tag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'StatusMessage' => {
+                                    'type' => 'Str'
+                                  },
+               'OwningAccountId' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'Status' => 'status',
+                       'ResourceShareArn' => 'resourceShareArn',
+                       'LastUpdatedTime' => 'lastUpdatedTime',
+                       'AllowExternalPrincipals' => 'allowExternalPrincipals',
+                       'Tags' => 'tags',
+                       'Name' => 'name',
+                       'StatusMessage' => 'statusMessage',
+                       'OwningAccountId' => 'owningAccountId'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -85,7 +138,7 @@ associated with a resource share.
   A message about the status of the resource share.
 
 
-=head2 Tags => ArrayRef[L<Paws::RAM::Tag>]
+=head2 Tags => ArrayRef[RAM_Tag]
 
   The tags for the resource share.
 

@@ -1,11 +1,48 @@
+# Generated from default/object.tt
 package Paws::EMR::InstanceFleetConfig;
-  use Moose;
-  has InstanceFleetType => (is => 'ro', isa => 'Str', required => 1);
-  has InstanceTypeConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EMR::InstanceTypeConfig]');
-  has LaunchSpecifications => (is => 'ro', isa => 'Paws::EMR::InstanceFleetProvisioningSpecifications');
-  has Name => (is => 'ro', isa => 'Str');
-  has TargetOnDemandCapacity => (is => 'ro', isa => 'Int');
-  has TargetSpotCapacity => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef Int/;
+  use Paws::EMR::Types qw/EMR_InstanceFleetProvisioningSpecifications EMR_InstanceTypeConfig/;
+  has InstanceFleetType => (is => 'ro', isa => Str, required => 1);
+  has InstanceTypeConfigs => (is => 'ro', isa => ArrayRef[EMR_InstanceTypeConfig]);
+  has LaunchSpecifications => (is => 'ro', isa => EMR_InstanceFleetProvisioningSpecifications);
+  has Name => (is => 'ro', isa => Str);
+  has TargetOnDemandCapacity => (is => 'ro', isa => Int);
+  has TargetSpotCapacity => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'LaunchSpecifications' => {
+                                           'class' => 'Paws::EMR::InstanceFleetProvisioningSpecifications',
+                                           'type' => 'EMR_InstanceFleetProvisioningSpecifications'
+                                         },
+               'TargetOnDemandCapacity' => {
+                                             'type' => 'Int'
+                                           },
+               'TargetSpotCapacity' => {
+                                         'type' => 'Int'
+                                       },
+               'InstanceTypeConfigs' => {
+                                          'class' => 'Paws::EMR::InstanceTypeConfig',
+                                          'type' => 'ArrayRef[EMR_InstanceTypeConfig]'
+                                        },
+               'InstanceFleetType' => {
+                                        'type' => 'Str'
+                                      },
+               'Name' => {
+                           'type' => 'Str'
+                         }
+             },
+  'IsRequired' => {
+                    'InstanceFleetType' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -50,13 +87,13 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 MASTER,CORE,and TASK.
 
 
-=head2 InstanceTypeConfigs => ArrayRef[L<Paws::EMR::InstanceTypeConfig>]
+=head2 InstanceTypeConfigs => ArrayRef[EMR_InstanceTypeConfig]
 
   The instance type configurations that define the EC2 instances in the
 instance fleet.
 
 
-=head2 LaunchSpecifications => L<Paws::EMR::InstanceFleetProvisioningSpecifications>
+=head2 LaunchSpecifications => EMR_InstanceFleetProvisioningSpecifications
 
   The launch specification for the instance fleet.
 

@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::Lightsail;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'lightsail' }
   sub signing_name { 'lightsail' }
   sub version { '2016-11-28' }
   sub target_prefix { 'Lightsail_20161128' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -1157,7 +1159,7 @@ Attaches a static IP address to a specific Amazon Lightsail instance.
 
 =item InstanceName => Str
 
-=item PortInfo => L<Paws::Lightsail::PortInfo>
+=item PortInfo => Lightsail_PortInfo
 
 
 =back
@@ -1199,7 +1201,7 @@ Amazon Lightsail.
 
 =over
 
-=item Instances => ArrayRef[L<Paws::Lightsail::InstanceEntry>]
+=item Instances => ArrayRef[Lightsail_InstanceEntry]
 
 
 =back
@@ -1229,7 +1231,7 @@ export snapshot record.
 
 =item SizeInGb => Int
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1261,7 +1263,7 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item SizeInGb => Int
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1294,7 +1296,7 @@ Dev Guide
 
 =item [InstanceName => Str]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1339,7 +1341,7 @@ via request tags. For more information, see the Lightsail Dev Guide
 
 =item DomainName => Str
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1359,7 +1361,7 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =over
 
-=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+=item DomainEntry => Lightsail_DomainEntry
 
 =item DomainName => Str
 
@@ -1396,7 +1398,7 @@ more information, see the Lightsail Dev Guide
 
 =item [KeyPairName => Str]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 =item [UserData => Str]
 
@@ -1432,11 +1434,11 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item InstanceSnapshotName => Str
 
-=item [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>]
+=item [AttachedDiskMapping => Lightsail_AttachedDiskMap]
 
 =item [KeyPairName => Str]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 =item [UserData => Str]
 
@@ -1465,7 +1467,7 @@ the Lightsail Dev Guide
 
 =item InstanceSnapshotName => Str
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1490,7 +1492,7 @@ Guide
 
 =item KeyPairName => Str
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1522,7 +1524,7 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item [HealthCheckPath => Str]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1558,7 +1560,7 @@ via request tags. For more information, see the Lightsail Dev Guide
 
 =item [CertificateAlternativeNames => ArrayRef[Str|Undef]]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1603,7 +1605,7 @@ Dev Guide
 
 =item [PubliclyAccessible => Bool]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1638,7 +1640,7 @@ Guide
 
 =item [SourceRelationalDatabaseName => Str]
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 =item [UseLatestRestorableTime => Bool]
 
@@ -1671,7 +1673,7 @@ information, see the Lightsail Dev Guide
 
 =item RelationalDatabaseSnapshotName => Str
 
-=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+=item [Tags => ArrayRef[Lightsail_Tag]]
 
 
 =back
@@ -1768,7 +1770,7 @@ more information, see the Lightsail Dev Guide
 
 =over
 
-=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+=item DomainEntry => Lightsail_DomainEntry
 
 =item DomainName => Str
 
@@ -2963,7 +2965,7 @@ peered.
 
 =item InstanceName => Str
 
-=item PortInfo => L<Paws::Lightsail::PortInfo>
+=item PortInfo => Lightsail_PortInfo
 
 
 =back
@@ -3000,7 +3002,7 @@ Tries to peer the Lightsail VPC with the user's default VPC.
 
 =item InstanceName => Str
 
-=item PortInfos => ArrayRef[L<Paws::Lightsail::PortInfo>]
+=item PortInfos => ArrayRef[Lightsail_PortInfo]
 
 
 =back
@@ -3189,7 +3191,7 @@ Guide
 
 =item ResourceName => Str
 
-=item Tags => ArrayRef[L<Paws::Lightsail::Tag>]
+=item Tags => ArrayRef[Lightsail_Tag]
 
 
 =back
@@ -3252,7 +3254,7 @@ resourceName. For more information, see the Lightsail Dev Guide
 
 =over
 
-=item DomainEntry => L<Paws::Lightsail::DomainEntry>
+=item DomainEntry => Lightsail_DomainEntry
 
 =item DomainName => Str
 
@@ -3344,7 +3346,7 @@ Guide
 
 =over
 
-=item Parameters => ArrayRef[L<Paws::Lightsail::RelationalDatabaseParameter>]
+=item Parameters => ArrayRef[Lightsail_RelationalDatabaseParameter]
 
 =item RelationalDatabaseName => Str
 

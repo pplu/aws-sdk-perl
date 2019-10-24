@@ -1,11 +1,39 @@
 
 package Paws::MobileHub::ExportProjectResult;
-  use Moose;
-  has DownloadUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'downloadUrl');
-  has ShareUrl => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'shareUrl');
-  has SnapshotId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'snapshotId');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MobileHub::Types qw//;
+  has DownloadUrl => (is => 'ro', isa => Str);
+  has ShareUrl => (is => 'ro', isa => Str);
+  has SnapshotId => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ShareUrl' => {
+                               'type' => 'Str'
+                             },
+               'SnapshotId' => {
+                                 'type' => 'Str'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DownloadUrl' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'ShareUrl' => 'shareUrl',
+                       'SnapshotId' => 'snapshotId',
+                       'DownloadUrl' => 'downloadUrl'
+                     }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

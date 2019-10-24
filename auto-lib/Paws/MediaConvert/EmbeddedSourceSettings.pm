@@ -1,8 +1,36 @@
+# Generated from default/object.tt
 package Paws::MediaConvert::EmbeddedSourceSettings;
-  use Moose;
-  has Convert608To708 => (is => 'ro', isa => 'Str', request_name => 'convert608To708', traits => ['NameInRequest']);
-  has Source608ChannelNumber => (is => 'ro', isa => 'Int', request_name => 'source608ChannelNumber', traits => ['NameInRequest']);
-  has Source608TrackNumber => (is => 'ro', isa => 'Int', request_name => 'source608TrackNumber', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str Int/;
+  use Paws::MediaConvert::Types qw//;
+  has Convert608To708 => (is => 'ro', isa => Str);
+  has Source608ChannelNumber => (is => 'ro', isa => Int);
+  has Source608TrackNumber => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Source608ChannelNumber' => {
+                                             'type' => 'Int'
+                                           },
+               'Source608TrackNumber' => {
+                                           'type' => 'Int'
+                                         },
+               'Convert608To708' => {
+                                      'type' => 'Str'
+                                    }
+             },
+  'NameInRequest' => {
+                       'Source608ChannelNumber' => 'source608ChannelNumber',
+                       'Source608TrackNumber' => 'source608TrackNumber',
+                       'Convert608To708' => 'convert608To708'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

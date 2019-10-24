@@ -1,16 +1,52 @@
+# Generated from json/callargs_class.tt
 
 package Paws::SimpleWorkflow::RegisterDomain;
-  use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
-  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
-  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::ResourceTag]', traits => ['NameInRequest'], request_name => 'tags' );
-  has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowExecutionRetentionPeriodInDays' , required => 1);
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::SimpleWorkflow::Types qw/SimpleWorkflow_ResourceTag/;
+  has Description => (is => 'ro', isa => Str, predicate => 1);
+  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
+  has Tags => (is => 'ro', isa => ArrayRef[SimpleWorkflow_ResourceTag], predicate => 1);
+  has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterDomain');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
-  class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'RegisterDomain');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::API::Response');
+  class_has _result_key => (isa => Str, is => 'ro');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'WorkflowExecutionRetentionPeriodInDays' => {
+                                                             'type' => 'Str'
+                                                           },
+               'Tags' => {
+                           'class' => 'Paws::SimpleWorkflow::ResourceTag',
+                           'type' => 'ArrayRef[SimpleWorkflow_ResourceTag]'
+                         },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'Description' => {
+                                  'type' => 'Str'
+                                }
+             },
+  'NameInRequest' => {
+                       'WorkflowExecutionRetentionPeriodInDays' => 'workflowExecutionRetentionPeriodInDays',
+                       'Tags' => 'tags',
+                       'Name' => 'name',
+                       'Description' => 'description'
+                     },
+  'IsRequired' => {
+                    'WorkflowExecutionRetentionPeriodInDays' => 1,
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +103,7 @@ not I<be> the literal string C<arn>.
 
 
 
-=head2 Tags => ArrayRef[L<Paws::SimpleWorkflow::ResourceTag>]
+=head2 Tags => ArrayRef[SimpleWorkflow_ResourceTag]
 
 Tags to be added when registering a domain.
 

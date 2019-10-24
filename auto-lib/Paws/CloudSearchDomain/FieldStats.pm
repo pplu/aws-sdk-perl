@@ -1,13 +1,61 @@
+# Generated from default/object.tt
 package Paws::CloudSearchDomain::FieldStats;
-  use Moose;
-  has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
-  has Max => (is => 'ro', isa => 'Str', request_name => 'max', traits => ['NameInRequest']);
-  has Mean => (is => 'ro', isa => 'Str', request_name => 'mean', traits => ['NameInRequest']);
-  has Min => (is => 'ro', isa => 'Str', request_name => 'min', traits => ['NameInRequest']);
-  has Missing => (is => 'ro', isa => 'Int', request_name => 'missing', traits => ['NameInRequest']);
-  has Stddev => (is => 'ro', isa => 'Num', request_name => 'stddev', traits => ['NameInRequest']);
-  has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
-  has SumOfSquares => (is => 'ro', isa => 'Num', request_name => 'sumOfSquares', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Int Str Num/;
+  use Paws::CloudSearchDomain::Types qw//;
+  has Count => (is => 'ro', isa => Int);
+  has Max => (is => 'ro', isa => Str);
+  has Mean => (is => 'ro', isa => Str);
+  has Min => (is => 'ro', isa => Str);
+  has Missing => (is => 'ro', isa => Int);
+  has Stddev => (is => 'ro', isa => Num);
+  has Sum => (is => 'ro', isa => Num);
+  has SumOfSquares => (is => 'ro', isa => Num);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'Sum' => {
+                          'type' => 'Num'
+                        },
+               'Mean' => {
+                           'type' => 'Str'
+                         },
+               'Max' => {
+                          'type' => 'Str'
+                        },
+               'Stddev' => {
+                             'type' => 'Num'
+                           },
+               'Count' => {
+                            'type' => 'Int'
+                          },
+               'Min' => {
+                          'type' => 'Str'
+                        },
+               'Missing' => {
+                              'type' => 'Int'
+                            },
+               'SumOfSquares' => {
+                                   'type' => 'Num'
+                                 }
+             },
+  'NameInRequest' => {
+                       'Sum' => 'sum',
+                       'Mean' => 'mean',
+                       'Max' => 'max',
+                       'Stddev' => 'stddev',
+                       'Count' => 'count',
+                       'Min' => 'min',
+                       'Missing' => 'missing',
+                       'SumOfSquares' => 'sumOfSquares'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

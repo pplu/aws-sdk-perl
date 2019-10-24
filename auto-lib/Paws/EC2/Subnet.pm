@@ -16,7 +16,7 @@ package Paws::EC2::Subnet;
   has Tags => (is => 'ro', isa => ArrayRef[EC2_Tag]);
   has VpcId => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'CidrBlock' => {
@@ -82,8 +82,8 @@ package Paws::EC2::Subnet;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

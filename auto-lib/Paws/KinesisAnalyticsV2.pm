@@ -1,15 +1,17 @@
+# Generated from json/service_class.tt
 package Paws::KinesisAnalyticsV2;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int HashRef ArrayRef/;
   sub service { 'kinesisanalytics' }
   sub signing_name { 'kinesisanalytics' }
   sub version { '2018-05-23' }
   sub target_prefix { 'KinesisAnalytics_20180523' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
-  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+  has max_attempts => (is => 'ro', isa => Int, default => 5);
+  has retry => (is => 'ro', isa => HashRef, default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -229,7 +231,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =item ApplicationName => Str
 
-=item CloudWatchLoggingOption => L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>
+=item CloudWatchLoggingOption => KinesisAnalyticsV2_CloudWatchLoggingOption
 
 =item CurrentApplicationVersionId => Int
 
@@ -252,7 +254,7 @@ configuration errors.
 
 =item CurrentApplicationVersionId => Int
 
-=item Input => L<Paws::KinesisAnalyticsV2::Input>
+=item Input => KinesisAnalyticsV2_Input
 
 
 =back
@@ -284,7 +286,7 @@ version.
 
 =item InputId => Str
 
-=item InputProcessingConfiguration => L<Paws::KinesisAnalyticsV2::InputProcessingConfiguration>
+=item InputProcessingConfiguration => KinesisAnalyticsV2_InputProcessingConfiguration
 
 
 =back
@@ -308,7 +310,7 @@ only input processor available is AWS Lambda
 
 =item CurrentApplicationVersionId => Int
 
-=item Output => L<Paws::KinesisAnalyticsV2::Output>
+=item Output => KinesisAnalyticsV2_Output
 
 
 =back
@@ -347,7 +349,7 @@ version.
 
 =item CurrentApplicationVersionId => Int
 
-=item ReferenceDataSource => L<Paws::KinesisAnalyticsV2::ReferenceDataSource>
+=item ReferenceDataSource => KinesisAnalyticsV2_ReferenceDataSource
 
 
 =back
@@ -377,13 +379,13 @@ to columns in the resulting in-application table.
 
 =item ServiceExecutionRole => Str
 
-=item [ApplicationConfiguration => L<Paws::KinesisAnalyticsV2::ApplicationConfiguration>]
+=item [ApplicationConfiguration => KinesisAnalyticsV2_ApplicationConfiguration]
 
 =item [ApplicationDescription => Str]
 
-=item [CloudWatchLoggingOptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOption>]]
+=item [CloudWatchLoggingOptions => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOption]]
 
-=item [Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]]
+=item [Tags => ArrayRef[KinesisAnalyticsV2_Tag]]
 
 
 =back
@@ -590,13 +592,13 @@ Returns information about a snapshot of application state data.
 
 =item ServiceExecutionRole => Str
 
-=item [InputProcessingConfiguration => L<Paws::KinesisAnalyticsV2::InputProcessingConfiguration>]
+=item [InputProcessingConfiguration => KinesisAnalyticsV2_InputProcessingConfiguration]
 
-=item [InputStartingPositionConfiguration => L<Paws::KinesisAnalyticsV2::InputStartingPositionConfiguration>]
+=item [InputStartingPositionConfiguration => KinesisAnalyticsV2_InputStartingPositionConfiguration]
 
 =item [ResourceARN => Str]
 
-=item [S3Configuration => L<Paws::KinesisAnalyticsV2::S3Configuration>]
+=item [S3Configuration => KinesisAnalyticsV2_S3Configuration]
 
 
 =back
@@ -683,7 +685,7 @@ Retrieves the list of key-value tags assigned to the application.
 
 =item ApplicationName => Str
 
-=item RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>
+=item RunConfiguration => KinesisAnalyticsV2_RunConfiguration
 
 
 =back
@@ -721,7 +723,7 @@ operation to find the application state.
 
 =item ResourceARN => Str
 
-=item Tags => ArrayRef[L<Paws::KinesisAnalyticsV2::Tag>]
+=item Tags => ArrayRef[KinesisAnalyticsV2_Tag]
 
 
 =back
@@ -761,11 +763,11 @@ Removes one or more tags from a Kinesis Analytics application.
 
 =item CurrentApplicationVersionId => Int
 
-=item [ApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate>]
+=item [ApplicationConfigurationUpdate => KinesisAnalyticsV2_ApplicationConfigurationUpdate]
 
-=item [CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionUpdate>]]
+=item [CloudWatchLoggingOptionUpdates => ArrayRef[KinesisAnalyticsV2_CloudWatchLoggingOptionUpdate]]
 
-=item [RunConfigurationUpdate => L<Paws::KinesisAnalyticsV2::RunConfigurationUpdate>]
+=item [RunConfigurationUpdate => KinesisAnalyticsV2_RunConfigurationUpdate]
 
 =item [ServiceExecutionRoleUpdate => Str]
 

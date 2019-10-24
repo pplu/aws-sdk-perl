@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::IAM::ServiceLastAccessed;
   use Moo;
   use Types::Standard qw/Str Int/;
@@ -26,7 +27,11 @@ package Paws::IAM::ServiceLastAccessed;
                'LastAuthenticated' => {
                                         'type' => 'Str'
                                       }
-             }
+             },
+  'IsRequired' => {
+                    'ServiceNamespace' => 1,
+                    'ServiceName' => 1
+                  }
 }
 ;
     return $Params_map;

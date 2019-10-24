@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::SES::SNSAction;
   use Moo;
   use Types::Standard qw/Str/;
@@ -14,7 +15,10 @@ package Paws::SES::SNSAction;
                'TopicArn' => {
                                'type' => 'Str'
                              }
-             }
+             },
+  'IsRequired' => {
+                    'TopicArn' => 1
+                  }
 }
 ;
     return $Params_map;

@@ -5,7 +5,7 @@ package Paws::EC2::ReservationValue;
   has RemainingTotalValue => (is => 'ro', isa => Str);
   has RemainingUpfrontValue => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'RemainingUpfrontValue' => {
@@ -25,8 +25,8 @@ package Paws::EC2::ReservationValue;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,9 +1,42 @@
+# Generated from default/object.tt
 package Paws::IoTAnalytics::DatasetContentSummary;
-  use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
-  has ScheduleTime => (is => 'ro', isa => 'Str', request_name => 'scheduleTime', traits => ['NameInRequest']);
-  has Status => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentStatus', request_name => 'status', traits => ['NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::IoTAnalytics::Types qw/IoTAnalytics_DatasetContentStatus/;
+  has CreationTime => (is => 'ro', isa => Str);
+  has ScheduleTime => (is => 'ro', isa => Str);
+  has Status => (is => 'ro', isa => IoTAnalytics_DatasetContentStatus);
+  has Version => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'CreationTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Version' => {
+                              'type' => 'Str'
+                            },
+               'ScheduleTime' => {
+                                   'type' => 'Str'
+                                 },
+               'Status' => {
+                             'class' => 'Paws::IoTAnalytics::DatasetContentStatus',
+                             'type' => 'IoTAnalytics_DatasetContentStatus'
+                           }
+             },
+  'NameInRequest' => {
+                       'CreationTime' => 'creationTime',
+                       'Version' => 'version',
+                       'ScheduleTime' => 'scheduleTime',
+                       'Status' => 'status'
+                     }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +82,7 @@ Summary information about data set contents.
   The time the creation of the data set contents was scheduled to start.
 
 
-=head2 Status => L<Paws::IoTAnalytics::DatasetContentStatus>
+=head2 Status => IoTAnalytics_DatasetContentStatus
 
   The status of the data set contents.
 

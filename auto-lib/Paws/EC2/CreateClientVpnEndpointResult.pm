@@ -9,7 +9,7 @@ package Paws::EC2::CreateClientVpnEndpointResult;
   has Status => (is => 'ro', isa => EC2_ClientVpnEndpointStatus);
 
   has _request_id => (is => 'ro', isa => Str);
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'DnsName' => {
@@ -33,8 +33,8 @@ package Paws::EC2::CreateClientVpnEndpointResult;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

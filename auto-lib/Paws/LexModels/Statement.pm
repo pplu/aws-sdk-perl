@@ -1,7 +1,35 @@
+# Generated from default/object.tt
 package Paws::LexModels::Statement;
-  use Moose;
-  has Messages => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Message]', request_name => 'messages', traits => ['NameInRequest'], required => 1);
-  has ResponseCard => (is => 'ro', isa => 'Str', request_name => 'responseCard', traits => ['NameInRequest']);
+  use Moo;
+  use Types::Standard qw/ArrayRef Str/;
+  use Paws::LexModels::Types qw/LexModels_Message/;
+  has Messages => (is => 'ro', isa => ArrayRef[LexModels_Message], required => 1);
+  has ResponseCard => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ResponseCard' => {
+                                   'type' => 'Str'
+                                 },
+               'Messages' => {
+                               'class' => 'Paws::LexModels::Message',
+                               'type' => 'ArrayRef[LexModels_Message]'
+                             }
+             },
+  'NameInRequest' => {
+                       'ResponseCard' => 'responseCard',
+                       'Messages' => 'messages'
+                     },
+  'IsRequired' => {
+                    'Messages' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +66,7 @@ runtime, Amazon Lex selects the message to convey.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Messages => ArrayRef[L<Paws::LexModels::Message>]
+=head2 B<REQUIRED> Messages => ArrayRef[LexModels_Message]
 
   A collection of message objects.
 

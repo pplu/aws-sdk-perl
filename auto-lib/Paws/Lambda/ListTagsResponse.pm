@@ -1,9 +1,27 @@
 
 package Paws::Lambda::ListTagsResponse;
-  use Moose;
-  has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Lambda::Types qw/Lambda_Tags/;
+  has Tags => (is => 'ro', isa => Lambda_Tags);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Tags' => {
+                           'class' => 'Paws::Lambda::Tags',
+                           'type' => 'Lambda_Tags'
+                         }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -15,7 +33,7 @@ Paws::Lambda::ListTagsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Tags => L<Paws::Lambda::Tags>
+=head2 Tags => Lambda_Tags
 
 The function's tags.
 

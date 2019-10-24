@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::Rekognition::ListStreamProcessorsResponse;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has StreamProcessors => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::StreamProcessor]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Rekognition::Types qw/Rekognition_StreamProcessor/;
+  has NextToken => (is => 'ro', isa => Str);
+  has StreamProcessors => (is => 'ro', isa => ArrayRef[Rekognition_StreamProcessor]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               'StreamProcessors' => {
+                                       'class' => 'Paws::Rekognition::StreamProcessor',
+                                       'type' => 'ArrayRef[Rekognition_StreamProcessor]'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ token that you can use in the subsequent request to retrieve the next
 set of stream processors.
 
 
-=head2 StreamProcessors => ArrayRef[L<Paws::Rekognition::StreamProcessor>]
+=head2 StreamProcessors => ArrayRef[Rekognition_StreamProcessor]
 
 List of stream processors that you have created.
 

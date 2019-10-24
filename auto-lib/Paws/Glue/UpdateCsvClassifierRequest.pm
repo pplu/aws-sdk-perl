@@ -1,12 +1,50 @@
+# Generated from default/object.tt
 package Paws::Glue::UpdateCsvClassifierRequest;
-  use Moose;
-  has AllowSingleColumn => (is => 'ro', isa => 'Bool');
-  has ContainsHeader => (is => 'ro', isa => 'Str');
-  has Delimiter => (is => 'ro', isa => 'Str');
-  has DisableValueTrimming => (is => 'ro', isa => 'Bool');
-  has Header => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has QuoteSymbol => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Bool Str ArrayRef Undef/;
+  use Paws::Glue::Types qw//;
+  has AllowSingleColumn => (is => 'ro', isa => Bool);
+  has ContainsHeader => (is => 'ro', isa => Str);
+  has Delimiter => (is => 'ro', isa => Str);
+  has DisableValueTrimming => (is => 'ro', isa => Bool);
+  has Header => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has Name => (is => 'ro', isa => Str, required => 1);
+  has QuoteSymbol => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'AllowSingleColumn' => {
+                                        'type' => 'Bool'
+                                      },
+               'QuoteSymbol' => {
+                                  'type' => 'Str'
+                                },
+               'ContainsHeader' => {
+                                     'type' => 'Str'
+                                   },
+               'Delimiter' => {
+                                'type' => 'Str'
+                              },
+               'Name' => {
+                           'type' => 'Str'
+                         },
+               'DisableValueTrimming' => {
+                                           'type' => 'Bool'
+                                         },
+               'Header' => {
+                             'type' => 'ArrayRef[Str|Undef]'
+                           }
+             },
+  'IsRequired' => {
+                    'Name' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

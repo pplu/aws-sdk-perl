@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalytics::ApplicationUpdate;
-  use Moose;
-  has ApplicationCodeUpdate => (is => 'ro', isa => 'Str');
-  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::CloudWatchLoggingOptionUpdate]');
-  has InputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::InputUpdate]');
-  has OutputUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::OutputUpdate]');
-  has ReferenceDataSourceUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ReferenceDataSourceUpdate]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisAnalytics::Types qw/KinesisAnalytics_CloudWatchLoggingOptionUpdate KinesisAnalytics_OutputUpdate KinesisAnalytics_ReferenceDataSourceUpdate KinesisAnalytics_InputUpdate/;
+  has ApplicationCodeUpdate => (is => 'ro', isa => Str);
+  has CloudWatchLoggingOptionUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionUpdate]);
+  has InputUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalytics_InputUpdate]);
+  has OutputUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalytics_OutputUpdate]);
+  has ReferenceDataSourceUpdates => (is => 'ro', isa => ArrayRef[KinesisAnalytics_ReferenceDataSourceUpdate]);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'OutputUpdates' => {
+                                    'class' => 'Paws::KinesisAnalytics::OutputUpdate',
+                                    'type' => 'ArrayRef[KinesisAnalytics_OutputUpdate]'
+                                  },
+               'CloudWatchLoggingOptionUpdates' => {
+                                                     'class' => 'Paws::KinesisAnalytics::CloudWatchLoggingOptionUpdate',
+                                                     'type' => 'ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionUpdate]'
+                                                   },
+               'ReferenceDataSourceUpdates' => {
+                                                 'class' => 'Paws::KinesisAnalytics::ReferenceDataSourceUpdate',
+                                                 'type' => 'ArrayRef[KinesisAnalytics_ReferenceDataSourceUpdate]'
+                                               },
+               'InputUpdates' => {
+                                   'class' => 'Paws::KinesisAnalytics::InputUpdate',
+                                   'type' => 'ArrayRef[KinesisAnalytics_InputUpdate]'
+                                 },
+               'ApplicationCodeUpdate' => {
+                                            'type' => 'Str'
+                                          }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -46,22 +79,22 @@ application.
   Describes application code updates.
 
 
-=head2 CloudWatchLoggingOptionUpdates => ArrayRef[L<Paws::KinesisAnalytics::CloudWatchLoggingOptionUpdate>]
+=head2 CloudWatchLoggingOptionUpdates => ArrayRef[KinesisAnalytics_CloudWatchLoggingOptionUpdate]
 
   Describes application CloudWatch logging option updates.
 
 
-=head2 InputUpdates => ArrayRef[L<Paws::KinesisAnalytics::InputUpdate>]
+=head2 InputUpdates => ArrayRef[KinesisAnalytics_InputUpdate]
 
   Describes application input configuration updates.
 
 
-=head2 OutputUpdates => ArrayRef[L<Paws::KinesisAnalytics::OutputUpdate>]
+=head2 OutputUpdates => ArrayRef[KinesisAnalytics_OutputUpdate]
 
   Describes application output configuration updates.
 
 
-=head2 ReferenceDataSourceUpdates => ArrayRef[L<Paws::KinesisAnalytics::ReferenceDataSourceUpdate>]
+=head2 ReferenceDataSourceUpdates => ArrayRef[KinesisAnalytics_ReferenceDataSourceUpdate]
 
   Describes application reference data source updates.
 

@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::TimeToLiveDescription;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::TimeToLiveDescription;
   has AttributeName => (is => 'ro', isa => Str);
   has TimeToLiveStatus => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'TimeToLiveStatus' => {
@@ -17,8 +18,8 @@ package Paws::DynamoDB::TimeToLiveDescription;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

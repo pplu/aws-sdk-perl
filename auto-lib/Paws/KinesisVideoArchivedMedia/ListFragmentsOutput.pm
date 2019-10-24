@@ -1,10 +1,31 @@
 
 package Paws::KinesisVideoArchivedMedia::ListFragmentsOutput;
-  use Moose;
-  has Fragments => (is => 'ro', isa => 'ArrayRef[Paws::KinesisVideoArchivedMedia::Fragment]');
-  has NextToken => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::KinesisVideoArchivedMedia::Types qw/KinesisVideoArchivedMedia_Fragment/;
+  has Fragments => (is => 'ro', isa => ArrayRef[KinesisVideoArchivedMedia_Fragment]);
+  has NextToken => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Fragments' => {
+                                'class' => 'Paws::KinesisVideoArchivedMedia::Fragment',
+                                'type' => 'ArrayRef[KinesisVideoArchivedMedia_Fragment]'
+                              }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +37,7 @@ Paws::KinesisVideoArchivedMedia::ListFragmentsOutput
 =head1 ATTRIBUTES
 
 
-=head2 Fragments => ArrayRef[L<Paws::KinesisVideoArchivedMedia::Fragment>]
+=head2 Fragments => ArrayRef[KinesisVideoArchivedMedia_Fragment]
 
 A list of archived Fragment objects from the stream that meet the
 selector criteria. Results are in no specific order, even across pages.

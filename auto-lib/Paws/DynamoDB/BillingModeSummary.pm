@@ -1,3 +1,4 @@
+# Generated from default/object.tt
 package Paws::DynamoDB::BillingModeSummary;
   use Moo;
   use Types::Standard qw/Str/;
@@ -5,7 +6,7 @@ package Paws::DynamoDB::BillingModeSummary;
   has BillingMode => (is => 'ro', isa => Str);
   has LastUpdateToPayPerRequestDateTime => (is => 'ro', isa => Str);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'BillingMode' => {
@@ -17,8 +18,8 @@ package Paws::DynamoDB::BillingModeSummary;
              }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 
 1;

@@ -1,10 +1,32 @@
+# Generated from json/callresult_class.tt
 
 package Paws::GameLift::ListScriptsOutput;
-  use Moose;
-  has NextToken => (is => 'ro', isa => 'Str');
-  has Scripts => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Script]');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::GameLift::Types qw/GameLift_Script/;
+  has NextToken => (is => 'ro', isa => Str);
+  has Scripts => (is => 'ro', isa => ArrayRef[GameLift_Script]);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'NextToken' => {
+                                'type' => 'Str'
+                              },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'Scripts' => {
+                              'class' => 'Paws::GameLift::Script',
+                              'type' => 'ArrayRef[GameLift_Script]'
+                            }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -22,7 +44,7 @@ call to this action. If no token is returned, these results represent
 the end of the list.
 
 
-=head2 Scripts => ArrayRef[L<Paws::GameLift::Script>]
+=head2 Scripts => ArrayRef[GameLift_Script]
 
 Set of properties describing the requested script.
 

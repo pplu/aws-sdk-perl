@@ -4,7 +4,7 @@ package Paws::EC2::PricingDetail;
   has Count => (is => 'ro', isa => Int);
   has Price => (is => 'ro', isa => Num);
 
-      sub params_map {
+    sub params_map {
     our $Params_map ||= {
   'types' => {
                'Price' => {
@@ -20,8 +20,8 @@ package Paws::EC2::PricingDetail;
                      }
 }
 ;
-      return $Params_map;
-    }
+    return $Params_map;
+  }
 
 1;
 

@@ -1,10 +1,35 @@
+# Generated from callresult_class.tt
 
 package Paws::Neptune::DBParameterGroupsMessage;
-  use Moose;
-  has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::DBParameterGroup]', request_name => 'DBParameterGroup', traits => ['NameInRequest',]);
-  has Marker => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str ArrayRef/;
+  use Paws::Neptune::Types qw/Neptune_DBParameterGroup/;
+  has DBParameterGroups => (is => 'ro', isa => ArrayRef[Neptune_DBParameterGroup]);
+  has Marker => (is => 'ro', isa => Str);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'DBParameterGroups' => {
+                                        'class' => 'Paws::Neptune::DBParameterGroup',
+                                        'type' => 'ArrayRef[Neptune_DBParameterGroup]'
+                                      },
+               'Marker' => {
+                             'type' => 'Str'
+                           }
+             },
+  'NameInRequest' => {
+                       'DBParameterGroups' => 'DBParameterGroup'
+                     }
+}
+;
+    return $Params_map;
+  }
+  
 1;
 
 ### main pod documentation begin ###
@@ -16,7 +41,7 @@ Paws::Neptune::DBParameterGroupsMessage
 =head1 ATTRIBUTES
 
 
-=head2 DBParameterGroups => ArrayRef[L<Paws::Neptune::DBParameterGroup>]
+=head2 DBParameterGroups => ArrayRef[Neptune_DBParameterGroup]
 
 A list of DBParameterGroup instances.
 

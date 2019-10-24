@@ -1,13 +1,48 @@
 
 package Paws::Pinpoint::ApplicationSettingsResource;
-  use Moose;
-  has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
-  has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
-  has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
-  has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::Pinpoint::Types qw/Pinpoint_CampaignHook Pinpoint_QuietTime Pinpoint_CampaignLimits/;
+  has ApplicationId => (is => 'ro', isa => Str, required => 1);
+  has CampaignHook => (is => 'ro', isa => Pinpoint_CampaignHook);
+  has LastModifiedDate => (is => 'ro', isa => Str);
+  has Limits => (is => 'ro', isa => Pinpoint_CampaignLimits);
+  has QuietTime => (is => 'ro', isa => Pinpoint_QuietTime);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ApplicationId' => {
+                                    'type' => 'Str'
+                                  },
+               'Limits' => {
+                             'class' => 'Paws::Pinpoint::CampaignLimits',
+                             'type' => 'Pinpoint_CampaignLimits'
+                           },
+               'LastModifiedDate' => {
+                                       'type' => 'Str'
+                                     },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'QuietTime' => {
+                                'class' => 'Paws::Pinpoint::QuietTime',
+                                'type' => 'Pinpoint_QuietTime'
+                              },
+               'CampaignHook' => {
+                                   'class' => 'Paws::Pinpoint::CampaignHook',
+                                   'type' => 'Pinpoint_CampaignHook'
+                                 }
+             },
+  'IsRequired' => {
+                    'ApplicationId' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +60,7 @@ The unique identifier for the application. This identifier is displayed
 as the B<Project ID> on the Amazon Pinpoint console.
 
 
-=head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
+=head2 CampaignHook => Pinpoint_CampaignHook
 
 The settings for the AWS Lambda function to use by default as a code
 hook for campaigns in the application.
@@ -37,12 +72,12 @@ The date and time, in ISO 8601 format, when the application's settings
 were last modified.
 
 
-=head2 Limits => L<Paws::Pinpoint::CampaignLimits>
+=head2 Limits => Pinpoint_CampaignLimits
 
 The default sending limits for campaigns in the application.
 
 
-=head2 QuietTime => L<Paws::Pinpoint::QuietTime>
+=head2 QuietTime => Pinpoint_QuietTime
 
 The default quiet time for campaigns in the application. Quiet time is
 a specific time range when campaigns don't send messages to endpoints,

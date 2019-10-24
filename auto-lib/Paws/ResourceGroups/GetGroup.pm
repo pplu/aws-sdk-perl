@@ -1,14 +1,35 @@
 
 package Paws::ResourceGroups::GetGroup;
-  use Moose;
-  has GroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupName', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ResourceGroups::Types qw//;
+  has GroupName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetGroup');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/groups/{GroupName}');
-  class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ResourceGroups::GetGroupOutput');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'GetGroup');
+  class_has _api_uri  => (isa => Str, is => 'ro', default => '/groups/{GroupName}');
+  class_has _api_method  => (isa => Str, is => 'ro', default => 'GET');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ResourceGroups::GetGroupOutput');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'GroupName' => {
+                                'type' => 'Str'
+                              }
+             },
+  'ParamInURI' => {
+                    'GroupName' => 'GroupName'
+                  },
+  'IsRequired' => {
+                    'GroupName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###

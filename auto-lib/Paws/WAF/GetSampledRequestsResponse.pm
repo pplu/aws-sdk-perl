@@ -1,11 +1,37 @@
+# Generated from json/callresult_class.tt
 
 package Paws::WAF::GetSampledRequestsResponse;
-  use Moose;
-  has PopulationSize => (is => 'ro', isa => 'Int');
-  has SampledRequests => (is => 'ro', isa => 'ArrayRef[Paws::WAF::SampledHTTPRequest]');
-  has TimeWindow => (is => 'ro', isa => 'Paws::WAF::TimeWindow');
+  use Moo;
+  use Types::Standard qw/Str Int ArrayRef/;
+  use Paws::WAF::Types qw/WAF_TimeWindow WAF_SampledHTTPRequest/;
+  has PopulationSize => (is => 'ro', isa => Int);
+  has SampledRequests => (is => 'ro', isa => ArrayRef[WAF_SampledHTTPRequest]);
+  has TimeWindow => (is => 'ro', isa => WAF_TimeWindow);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TimeWindow' => {
+                                 'class' => 'Paws::WAF::TimeWindow',
+                                 'type' => 'WAF_TimeWindow'
+                               },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SampledRequests' => {
+                                      'class' => 'Paws::WAF::SampledHTTPRequest',
+                                      'type' => 'ArrayRef[WAF_SampledHTTPRequest]'
+                                    },
+               'PopulationSize' => {
+                                     'type' => 'Int'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
 
 ### main pod documentation begin ###
 
@@ -24,13 +50,13 @@ C<MaxItems>, the sample includes every request that your AWS resource
 received during the specified time range.
 
 
-=head2 SampledRequests => ArrayRef[L<Paws::WAF::SampledHTTPRequest>]
+=head2 SampledRequests => ArrayRef[WAF_SampledHTTPRequest]
 
 A complex type that contains detailed information about each of the
 requests in the sample.
 
 
-=head2 TimeWindow => L<Paws::WAF::TimeWindow>
+=head2 TimeWindow => WAF_TimeWindow
 
 Usually, C<TimeWindow> is the time range that you specified in the
 C<GetSampledRequests> request. However, if your AWS resource received

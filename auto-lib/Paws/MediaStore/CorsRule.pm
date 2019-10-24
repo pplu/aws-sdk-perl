@@ -1,10 +1,43 @@
+# Generated from default/object.tt
 package Paws::MediaStore::CorsRule;
-  use Moose;
-  has AllowedHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has AllowedMethods => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has AllowedOrigins => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ExposeHeaders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has MaxAgeSeconds => (is => 'ro', isa => 'Int');
+  use Moo;
+  use Types::Standard qw/ArrayRef Undef Str Int/;
+  use Paws::MediaStore::Types qw//;
+  has AllowedHeaders => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has AllowedMethods => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has AllowedOrigins => (is => 'ro', isa => ArrayRef[Str|Undef], required => 1);
+  has ExposeHeaders => (is => 'ro', isa => ArrayRef[Str|Undef]);
+  has MaxAgeSeconds => (is => 'ro', isa => Int);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'MaxAgeSeconds' => {
+                                    'type' => 'Int'
+                                  },
+               'ExposeHeaders' => {
+                                    'type' => 'ArrayRef[Str|Undef]'
+                                  },
+               'AllowedHeaders' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AllowedOrigins' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   },
+               'AllowedMethods' => {
+                                     'type' => 'ArrayRef[Str|Undef]'
+                                   }
+             },
+  'IsRequired' => {
+                    'AllowedHeaders' => 1,
+                    'AllowedOrigins' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

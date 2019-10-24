@@ -1,13 +1,43 @@
 
 package Paws::PinpointEmail::GetAccountResponse;
-  use Moose;
-  has DedicatedIpAutoWarmupEnabled => (is => 'ro', isa => 'Bool');
-  has EnforcementStatus => (is => 'ro', isa => 'Str');
-  has ProductionAccessEnabled => (is => 'ro', isa => 'Bool');
-  has SendingEnabled => (is => 'ro', isa => 'Bool');
-  has SendQuota => (is => 'ro', isa => 'Paws::PinpointEmail::SendQuota');
+  use Moo;
+  use Types::Standard qw/Str Bool/;
+  use Paws::PinpointEmail::Types qw/PinpointEmail_SendQuota/;
+  has DedicatedIpAutoWarmupEnabled => (is => 'ro', isa => Bool);
+  has EnforcementStatus => (is => 'ro', isa => Str);
+  has ProductionAccessEnabled => (is => 'ro', isa => Bool);
+  has SendingEnabled => (is => 'ro', isa => Bool);
+  has SendQuota => (is => 'ro', isa => PinpointEmail_SendQuota);
 
-  has _request_id => (is => 'ro', isa => 'Str');
+  has _request_id => (is => 'ro', isa => Str);
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'SendQuota' => {
+                                'class' => 'Paws::PinpointEmail::SendQuota',
+                                'type' => 'PinpointEmail_SendQuota'
+                              },
+               'ProductionAccessEnabled' => {
+                                              'type' => 'Bool'
+                                            },
+               'DedicatedIpAutoWarmupEnabled' => {
+                                                   'type' => 'Bool'
+                                                 },
+               '_request_id' => {
+                                  'type' => 'Str'
+                                },
+               'SendingEnabled' => {
+                                     'type' => 'Bool'
+                                   },
+               'EnforcementStatus' => {
+                                        'type' => 'Str'
+                                      }
+             }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -77,7 +107,7 @@ Indicates whether or not email sending is enabled for your Amazon
 Pinpoint account in the current AWS Region.
 
 
-=head2 SendQuota => L<Paws::PinpointEmail::SendQuota>
+=head2 SendQuota => PinpointEmail_SendQuota
 
 An object that contains information about the per-day and per-second
 sending limits for your Amazon Pinpoint account in the current AWS

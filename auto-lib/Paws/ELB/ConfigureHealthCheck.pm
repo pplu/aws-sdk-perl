@@ -1,14 +1,38 @@
+# Generated from callargs_class.tt
 
 package Paws::ELB::ConfigureHealthCheck;
-  use Moose;
-  has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck', required => 1);
-  has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::ELB::Types qw/ELB_HealthCheck/;
+  has HealthCheck => (is => 'ro', isa => ELB_HealthCheck, required => 1, predicate => 1);
+  has LoadBalancerName => (is => 'ro', isa => Str, required => 1, predicate => 1);
 
-  use MooseX::ClassAttribute;
+  use MooX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheck');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::ConfigureHealthCheckOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheckResult');
+  class_has _api_call => (isa => Str, is => 'ro', default => 'ConfigureHealthCheck');
+  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ELB::ConfigureHealthCheckOutput');
+  class_has _result_key => (isa => Str, is => 'ro', default => 'ConfigureHealthCheckResult');
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'HealthCheck' => {
+                                  'class' => 'Paws::ELB::HealthCheck',
+                                  'type' => 'ELB_HealthCheck'
+                                },
+               'LoadBalancerName' => {
+                                       'type' => 'Str'
+                                     }
+             },
+  'IsRequired' => {
+                    'HealthCheck' => 1,
+                    'LoadBalancerName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +78,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HealthCheck => L<Paws::ELB::HealthCheck>
+=head2 B<REQUIRED> HealthCheck => ELB_HealthCheck
 
 The configuration information.
 

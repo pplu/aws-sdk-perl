@@ -1,7 +1,31 @@
+# Generated from default/object.tt
 package Paws::MachineLearning::RedshiftDatabase;
-  use Moose;
-  has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::MachineLearning::Types qw//;
+  has ClusterIdentifier => (is => 'ro', isa => Str, required => 1);
+  has DatabaseName => (is => 'ro', isa => Str, required => 1);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'ClusterIdentifier' => {
+                                        'type' => 'Str'
+                                      },
+               'DatabaseName' => {
+                                   'type' => 'Str'
+                                 }
+             },
+  'IsRequired' => {
+                    'ClusterIdentifier' => 1,
+                    'DatabaseName' => 1
+                  }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###

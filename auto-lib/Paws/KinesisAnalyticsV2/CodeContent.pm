@@ -1,8 +1,32 @@
+# Generated from default/object.tt
 package Paws::KinesisAnalyticsV2::CodeContent;
-  use Moose;
-  has S3ContentLocation => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::S3ContentLocation');
-  has TextContent => (is => 'ro', isa => 'Str');
-  has ZipFileContent => (is => 'ro', isa => 'Str');
+  use Moo;
+  use Types::Standard qw/Str/;
+  use Paws::KinesisAnalyticsV2::Types qw/KinesisAnalyticsV2_S3ContentLocation/;
+  has S3ContentLocation => (is => 'ro', isa => KinesisAnalyticsV2_S3ContentLocation);
+  has TextContent => (is => 'ro', isa => Str);
+  has ZipFileContent => (is => 'ro', isa => Str);
+
+    sub params_map {
+    our $Params_map ||= {
+  'types' => {
+               'TextContent' => {
+                                  'type' => 'Str'
+                                },
+               'S3ContentLocation' => {
+                                        'class' => 'Paws::KinesisAnalyticsV2::S3ContentLocation',
+                                        'type' => 'KinesisAnalyticsV2_S3ContentLocation'
+                                      },
+               'ZipFileContent' => {
+                                     'type' => 'Str'
+                                   }
+             }
+}
+;
+    return $Params_map;
+  }
+
+
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +64,7 @@ application.
 =head1 ATTRIBUTES
 
 
-=head2 S3ContentLocation => L<Paws::KinesisAnalyticsV2::S3ContentLocation>
+=head2 S3ContentLocation => KinesisAnalyticsV2_S3ContentLocation
 
   Information about the Amazon S3 bucket containing the application code.
 
