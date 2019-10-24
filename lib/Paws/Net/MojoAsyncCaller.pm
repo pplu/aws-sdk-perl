@@ -1,5 +1,5 @@
 package Paws::Net::MojoAsyncCaller;
-  use Moose;
+  use Moo;
   with 'Paws::Net::CallerRole';
   use Paws::Net::APIResponse;
 

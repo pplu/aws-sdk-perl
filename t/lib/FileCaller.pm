@@ -64,5 +64,5 @@ package FileCaller;
     return $res;
   }
 
-  no Moose;
+  no Moo;
 1;

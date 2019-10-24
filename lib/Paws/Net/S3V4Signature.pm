@@ -1,7 +1,7 @@
 package Paws::Net::S3V4Signature;
   # This is just a copy of the V4Signature code, as for now, I don't know the
   # differences between S3 and S3V4 signatures
-  use Moose::Role;
+  use Moo::Role;
   use Net::Amazon::Signature::V4;
   #requires 'region';
   requires 'service';

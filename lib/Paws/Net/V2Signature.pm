@@ -1,5 +1,5 @@
 package Paws::Net::V2Signature;
-  use Moose::Role;
+  use Moo::Role;
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
   use Carp;

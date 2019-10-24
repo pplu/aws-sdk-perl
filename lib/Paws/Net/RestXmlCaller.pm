@@ -5,7 +5,6 @@ package Paws::Net::RestXmlCaller;
   use POSIX qw(strftime);
   use URI::Template;
   use URI::Escape;
-  use Moose::Util;
 
   use Paws::Net::RestXMLResponse;
 

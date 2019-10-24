@@ -1,5 +1,5 @@
 package Test04::StubUANoMetadata;
-  use Moose;
+  use Moo;
 
   sub get {
     my ($self, $url) = @_;

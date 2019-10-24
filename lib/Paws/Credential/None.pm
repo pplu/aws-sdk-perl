@@ -1,5 +1,5 @@
 package Paws::Credential::None;
-  use Moose;
+  use Moo;
   with 'Paws::Credential';
 
   sub access_key { q{} }
@@ -8,6 +8,6 @@ package Paws::Credential::None;
 
   sub session_token { q{} }
 
-  no Moose;
+  no Moo;
 
 1;

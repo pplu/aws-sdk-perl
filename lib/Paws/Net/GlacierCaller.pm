@@ -1,5 +1,5 @@
 package Paws::Net::GlacierCaller;
-  use Moose::Role;
+  use Moo::Role;
   use JSON::MaybeXS;
 
   with 'Paws::Net::RestJsonCaller';

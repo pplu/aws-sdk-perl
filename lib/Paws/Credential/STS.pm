@@ -1,11 +1,12 @@
 package Paws::Credential::STS;
-  use Moose;
+  use Moo;
+  use Types::Standard qw/Int Str Undef Maybe InstanceOf/;
   use DateTime::Format::ISO8601;
   with 'Paws::Credential';
 
   has expiration => (
     is => 'rw',
-    isa => 'Int',
+    isa => Int,
     lazy => 1,
     default => sub { 0 }
   );
@@ -30,16 +31,16 @@ package Paws::Credential::STS;
     $self->actual_creds->SessionToken;
   }
 
-  has sts_region => (is => 'ro', isa => 'Str|Undef', default => sub { undef });
+  has sts_region => (is => 'ro', isa => Str|Undef, default => sub { undef });
 
-  has sts => (is => 'ro', isa => 'Paws::STS', lazy => 1, default => sub {
+  has sts => (is => 'ro', isa => InstanceOf['Paws::STS'], lazy => 1, default => sub {
     my $self = shift;
     Paws->service('STS', region => $self->sts_region);
   });
 
-  has Name => (is => 'rw', isa => 'Str', required => 1);
-  has DurationSeconds => (is => 'rw', isa => 'Maybe[Int]');
-  has Policy => (is => 'rw', isa => 'Maybe[Str]');
+  has Name => (is => 'rw', isa => Str, required => 1);
+  has DurationSeconds => (is => 'rw', isa => Maybe[Int]);
+  has Policy => (is => 'rw', isa => Maybe[Str]);
 
   sub _refresh {
     my $self = shift;
@@ -56,7 +57,7 @@ package Paws::Credential::STS;
     $self->expiration(DateTime::Format::ISO8601->parse_datetime($result->Credentials->Expiration)->epoch);
   }
 
-  no Moose;
+  no Moo;
 1;
 ### main pod documentation begin ###
 

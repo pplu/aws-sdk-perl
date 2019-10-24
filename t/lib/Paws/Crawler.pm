@@ -1,6 +1,6 @@
 package Paws::Crawler;
 
-use Moose;
+use Moo;
 use Scalar::Util 'blessed';
 
 sub resolve_path {
