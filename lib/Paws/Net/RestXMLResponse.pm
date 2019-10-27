@@ -6,14 +6,14 @@ package Paws::Net::RestXMLResponse;
   use Paws::Exception;
 
   sub unserialize_response {
-    my ($self, $data) = @_;
+    my ($self, $data,$keep_root) = @_;
 
     return {} if (not defined $data or $data eq '');
-    
     my $xml = XML::Simple->new(
       ForceArray    => qr/^(?:item|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
+	  KeepRoot => $keep_root 
     );
     return $xml->parse_string($data);
   }
@@ -303,7 +303,17 @@ package Paws::Net::RestXMLResponse;
       if (not defined $content or $content eq '') {
         $unserialized_struct = {}
       } else {
-        $unserialized_struct = eval { $self->unserialize_response( $content ) };
+        my $keep_root = 0;
+        
+		$keep_root = 1
+          if ($ret_class->can('_keep_root'));
+        
+		$unserialized_struct = eval { $self->unserialize_response( $content,$keep_root ) };
+
+        if ($keep_root){
+            $unserialized_struct->{$ret_class->_keep_root()} = $unserialized_struct->{$ret_class->_keep_root()}->{content};
+        }
+
         if ($@){
           return Paws::Exception->new(
             message => $@,
