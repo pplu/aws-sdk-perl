@@ -4,7 +4,7 @@ package Paws::Net::RestXMLResponse;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
-
+use Data::Dumper;
   sub unserialize_response {
     my ($self, $data,$keep_root) = @_;
 
@@ -20,7 +20,6 @@ package Paws::Net::RestXMLResponse;
 
   sub process {
     my ($self, $call_object, $response) = @_;
-
     if ( $response->status >= 300 ) {
         return $self->error_to_exception($call_object, $response);
     } else {
@@ -297,7 +296,7 @@ package Paws::Net::RestXMLResponse;
  
     my $unserialized_struct;
 
-    if ($ret_class->can('_stream_param')) {
+    if ($ret_class->can('_stream_param') or $ret_class->can('_payload')) {
       $unserialized_struct = {}
     } else {
       if (not defined $content or $content eq '') {
@@ -342,6 +341,10 @@ package Paws::Net::RestXMLResponse;
       if ($ret_class->can('_stream_param')) {
         $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
+	  if ($ret_class->can('_payload')) {
+        $unserialized_struct->{ $ret_class->_payload } = $content
+      }
+
 
       foreach my $key (keys %$headers){
         $unserialized_struct->{lc $key} = $headers->{$key};
