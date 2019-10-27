@@ -139,8 +139,6 @@ package Paws::Net::RestXMLResponse;
       next if (not my $meta = $class->meta->get_attribute($att));
       my $key = $meta->does('NameInRequest') ? $meta->request_name :
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
-				#  if ($meta->does('ParamInResponse')
-				#
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
 
@@ -154,7 +152,7 @@ package Paws::Net::RestXMLResponse;
       # Free-form paramaters passed in the HTTP headers
 	  #
 
-      if ( $meta->does('ParamInResponse')){
+      if ( $meta->does('ParamInStatus')){
 		  $key = $meta->response_name;
           $args{ $meta->name } = $result->{$key};
 	  } elsif ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 

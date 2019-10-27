@@ -9,7 +9,7 @@ package [% c.api %]::[% op_name %];
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.locationName) %]
     [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]'
-	[%- ELSIF (shape.members.$param_name.location == 'statusCode') %], traits => ['ParamInResponse'], response_name => '[% shape.members.$param_name.locationName %]'
+	[%- ELSIF (shape.members.$param_name.location == 'statusCode') %], traits => ['ParamInStatus'], response_name => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'headers') %], traits => ['ParamInHeaders'], header_prefix => '[% shape.members.$param_name.locationName %]'
     [%- ELSIF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName -%]' 
     [%- ELSIF (shape.members.$param_name.location ==        'uri') %], traits => ['ParamInURI']    , uri_name     => '[% shape.members.$param_name.locationName -%]' 
