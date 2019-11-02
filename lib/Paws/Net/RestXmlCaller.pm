@@ -198,7 +198,12 @@ package Paws::Net::RestXmlCaller;
 
         if ( ref $attribute_value ) {
           my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+          if ($call->can('_namspace_uri')){
+             $xml .= sprintf '<%s xmlns="%s">%s</%s>', $location, $call->_namspace_uri(),$self->_to_xml($attribute_value), $location;
+		  }
+		  else {
+            $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+		  }
         }
         else {
            $xml .= $attribute_value;
@@ -255,7 +260,6 @@ package Paws::Net::RestXmlCaller;
     $self->_to_header_params($request, $call);
 
     $self->sign($request);
-
     return $request;
   }
 1;
