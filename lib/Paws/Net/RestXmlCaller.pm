@@ -21,6 +21,8 @@ package Paws::Net::RestXmlCaller;
   sub array_flatten_string {
     my $self = shift;
 	my ($name) =  shift;
+    $name=""
+	  unless($name);
     return ($self->flattened_arrays)?'%s.'.$name.'%d':'%s.member.%d';
   }
 
@@ -162,14 +164,21 @@ package Paws::Net::RestXmlCaller;
           $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
         }
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-          my $location = $attribute->request_name;
-          $xml .= "<${att_name}>" . ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } ) . "</${att_name}>";
-      } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
-		 my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
+      
+		  my $location = $attribute->request_name;
+
+		  $xml .= ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } );
+          
+          $xml .= "<${att_name}>".$xml ."</${att_name}>"
+		    unless($attribute->does('Flatten'));
+      
+	  } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
+		  my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
 
           $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
 		  $xml ="<$att_name>$xml</$att_name>"
-		    if( $attribute->does('NameInRequest'));
+		    if( $attribute->does('NameInRequest')
+			  and !$attribute->does('Flatten'));
       } else {
         if ($attribute->does('NameInRequest')) {
           my $location = $attribute->request_name;
@@ -198,7 +207,10 @@ package Paws::Net::RestXmlCaller;
 
         if ( ref $attribute_value ) {
           my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
-          if ($call->can('_namspace_uri')){
+          if ($attribute->does('Flatten')){
+             $xml .= $self->_to_xml($attribute_value);
+          }
+          elsif ($call->can('_namspace_uri')){
              $xml .= sprintf '<%s xmlns="%s">%s</%s>', $location, $call->_namspace_uri(),$self->_to_xml($attribute_value), $location;
 		  }
 		  else {
@@ -258,7 +270,6 @@ package Paws::Net::RestXmlCaller;
     }
 
     $self->_to_header_params($request, $call);
-
     $self->sign($request);
     return $request;
   }

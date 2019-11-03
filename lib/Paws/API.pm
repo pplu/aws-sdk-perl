@@ -46,5 +46,10 @@ package Paws::API::Attribute::Trait::ParamInStatus;
   Moose::Util::meta_attribute_alias('ParamInStatus');
   has response_name => (is => 'ro', isa => 'Str');
   #response_name  
-  
+
+package Paws::API::Attribute::Trait::Flatten;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('Flatten');
+
 1;
