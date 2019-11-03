@@ -20,8 +20,7 @@ package Paws::Net::RestXMLResponse;
 
   sub process {
     my ($self, $call_object, $response) = @_;
-
-    if ( $response->status >= 300 ) {
+	if ( $response->status >= 300 ) {
         return $self->error_to_exception($call_object, $response);
     } else {
         return $self->response_to_object($call_object, $response);
@@ -307,8 +306,12 @@ package Paws::Net::RestXMLResponse;
       $unserialized_struct = {}
     } else {
       if (not defined $content or $content eq '') {
-        $unserialized_struct = {}
-      } else {
+        $unserialized_struct = {};
+      } elsif (exists($headers->{'content-type'})
+		       and $headers->{'content-type'} eq 'application/json'
+	           and $ret_class->can('_payload')){
+        $unserialized_struct->{$ret_class->_payload} = $content;
+	  } else {
         $unserialized_struct = eval { $self->unserialize_response( $content ) };
         if ($@){
           return Paws::Exception->new(
