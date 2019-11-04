@@ -1,41 +1,15 @@
-# Generated from json/callargs_class.tt
 
 package Paws::ECR::CreateRepository;
-  use Moo;
-  use Types::Standard qw/Str ArrayRef/;
-  use Paws::ECR::Types qw/ECR_Tag/;
-  has RepositoryName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has Tags => (is => 'ro', isa => ArrayRef[ECR_Tag], predicate => 1);
+  use Moose;
+  has ImageTagMutability => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTagMutability' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateRepository');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'Tags' => {
-                           'class' => 'Paws::ECR::Tag',
-                           'type' => 'ArrayRef[ECR_Tag]'
-                         },
-               'RepositoryName' => {
-                                     'type' => 'Str'
-                                   }
-             },
-  'NameInRequest' => {
-                       'Tags' => 'tags',
-                       'RepositoryName' => 'repositoryName'
-                     },
-  'IsRequired' => {
-                    'RepositoryName' => 1
-                  }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRepository');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECR::CreateRepositoryResponse');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -72,6 +46,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 ImageTagMutability => Str
+
+The tag mutability setting for the repository. If this parameter is
+omitted, the default setting of C<MUTABLE> will be used which will
+allow image tags to be overwritten. If C<IMMUTABLE> is specified, all
+image tags within the repository will be immutable which will prevent
+them from being overwritten.
+
+Valid values are: C<"MUTABLE">, C<"IMMUTABLE">
+
 =head2 B<REQUIRED> RepositoryName => Str
 
 The name to use for the repository. The repository name may be
@@ -81,9 +65,13 @@ C<project-a/nginx-web-app>).
 
 
 
-=head2 Tags => ArrayRef[ECR_Tag]
+=head2 Tags => ArrayRef[L<Paws::ECR::Tag>]
 
-
+The metadata that you apply to the repository to help you categorize
+and organize them. Each tag consists of a key and an optional value,
+both of which you define. Tag keys can have a maximum character length
+of 128 characters, and tag values can have a maximum length of 256
+characters.
 
 
 

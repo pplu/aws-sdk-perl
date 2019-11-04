@@ -68,7 +68,7 @@ The current account setting for a resource.
 
 =head2 Name => Str
 
-  The account resource name.
+  The Amazon ECS resource name.
 
 
 =head2 PrincipalArn => Str
@@ -79,10 +79,8 @@ root user. If this field is omitted, the authenticated user is assumed.
 
 =head2 Value => Str
 
-  The current account setting for the resource name. If C<enabled>, the
-resource receives the new Amazon Resource Name (ARN) and resource
-identifier (ID) format. If C<disabled>, the resource receives the old
-Amazon Resource Name (ARN) and resource identifier (ID) format.
+  Whether the account setting is enabled or disabled for the specified
+resource.
 
 
 

@@ -65,14 +65,14 @@ target based on one or more pieces of data extracted from the event.
 =head2 InputPathsMap => CloudWatchEvents_TransformerPaths
 
   Map of JSON paths to be extracted from the event. You can then insert
-these in the template in C<InputTemplate> to produce the output you
-want to be sent to the target.
+these in the template in C<InputTemplate> to produce the output to be
+sent to the target.
 
 C<InputPathsMap> is an array key-value pairs, where each value is a
 valid JSON path. You can have as many as 10 key-value pairs. You must
 use JSON dot notation, not bracket notation.
 
-The keys cannot start with "AWS."
+The keys can't start with C<"AWS">.
 
 
 =head2 B<REQUIRED> InputTemplate => Str
@@ -80,7 +80,7 @@ The keys cannot start with "AWS."
   Input template where you specify placeholders that will be filled with
 the values of the keys from C<InputPathsMap> to customize the data sent
 to the target. Enclose each C<InputPathsMaps> value in brackets:
-E<lt>I<value>E<gt> The InputTemplate must be valid JSON.
+E<lt>I<value>E<gt>. The InputTemplate must be valid JSON.
 
 If C<InputTemplate> is a JSON object (surrounded by curly braces), the
 following restrictions apply:
@@ -89,11 +89,11 @@ following restrictions apply:
 
 =item *
 
-The placeholder cannot be used as an object key.
+The placeholder can't be used as an object key
 
 =item *
 
-Object values cannot include quote marks.
+Object values can't include quote marks
 
 =back
 

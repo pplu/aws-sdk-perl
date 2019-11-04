@@ -52,19 +52,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobBo
 
 =head1 DESCRIPTION
 
-Specifies how Job bookmark data should be encrypted.
+Specifies how job bookmark data should be encrypted.
 
 =head1 ATTRIBUTES
 
 
 =head2 JobBookmarksEncryptionMode => Str
 
-  The encryption mode to use for Job bookmarks data.
+  The encryption mode to use for job bookmarks data.
 
 
 =head2 KmsKeyArn => Str
 
-  The AWS ARN of the KMS key to be used to encrypt the data.
+  The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the
+data.
 
 
 

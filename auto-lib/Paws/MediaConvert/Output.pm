@@ -154,8 +154,8 @@ Provide the system or custom preset name. You can specify either Preset
 =head2 VideoDescription => MediaConvert_VideoDescription
 
   (VideoDescription) contains a group of video encoding settings. The
-specific video settings depend on the video codec you choose when you
-specify a value for Video codec (codec). Include one instance of
+specific video settings depend on the video codec that you choose when
+you specify a value for Video codec (codec). Include one instance of
 (VideoDescription) per output.
 
 

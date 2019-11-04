@@ -177,8 +177,9 @@ Required when you set (Type) under
 
 =head2 AdMarkers => ArrayRef[Str|Undef]
 
-  Choose one or more ad marker types to pass SCTE35 signals through to
-this group of Apple HLS outputs.
+  Choose one or more ad marker types to decorate your Apple HLS manifest.
+This setting does not determine whether SCTE-35 markers appear in the
+outputs themselves.
 
 
 =head2 BaseUrl => Str

@@ -38,7 +38,7 @@ Paws::CloudWatchEvents::ListTagsForResource - Arguments for method ListTagsForRe
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTagsForResource on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method ListTagsForResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
@@ -64,7 +64,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the CloudWatch Events rule for which you want to view tags.
+The ARN of the rule for which you want to view tags.
 
 
 

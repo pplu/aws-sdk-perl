@@ -1,33 +1,8 @@
-# Generated from default/object.tt
 package Paws::MediaLive::ScheduleActionStartSettings;
-  use Moo;
-  use Types::Standard qw//;
-  use Paws::MediaLive::Types qw/MediaLive_FixedModeScheduleActionStartSettings MediaLive_FollowModeScheduleActionStartSettings/;
-  has FixedModeScheduleActionStartSettings => (is => 'ro', isa => MediaLive_FixedModeScheduleActionStartSettings);
-  has FollowModeScheduleActionStartSettings => (is => 'ro', isa => MediaLive_FollowModeScheduleActionStartSettings);
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'FixedModeScheduleActionStartSettings' => {
-                                                           'class' => 'Paws::MediaLive::FixedModeScheduleActionStartSettings',
-                                                           'type' => 'MediaLive_FixedModeScheduleActionStartSettings'
-                                                         },
-               'FollowModeScheduleActionStartSettings' => {
-                                                            'class' => 'Paws::MediaLive::FollowModeScheduleActionStartSettings',
-                                                            'type' => 'MediaLive_FollowModeScheduleActionStartSettings'
-                                                          }
-             },
-  'NameInRequest' => {
-                       'FixedModeScheduleActionStartSettings' => 'fixedModeScheduleActionStartSettings',
-                       'FollowModeScheduleActionStartSettings' => 'followModeScheduleActionStartSettings'
-                     }
-}
-;
-    return $Params_map;
-  }
-
-
+  use Moose;
+  has FixedModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FixedModeScheduleActionStartSettings', request_name => 'fixedModeScheduleActionStartSettings', traits => ['NameInRequest']);
+  has FollowModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::FollowModeScheduleActionStartSettings', request_name => 'followModeScheduleActionStartSettings', traits => ['NameInRequest']);
+  has ImmediateModeScheduleActionStartSettings => (is => 'ro', isa => 'Paws::MediaLive::ImmediateModeScheduleActionStartSettings', request_name => 'immediateModeScheduleActionStartSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ScheduleActionStartSettings object:
 
-  $service_obj->Method(Att1 => { FixedModeScheduleActionStartSettings => $value, ..., FollowModeScheduleActionStartSettings => $value  });
+  $service_obj->Method(Att1 => { FixedModeScheduleActionStartSettings => $value, ..., ImmediateModeScheduleActionStartSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,19 +33,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Settings to specify the start time for an action.
+Settings to specify when an action should occur. Only one of the
+options must be selected.
 
 =head1 ATTRIBUTES
 
 
-=head2 FixedModeScheduleActionStartSettings => MediaLive_FixedModeScheduleActionStartSettings
+=head2 FixedModeScheduleActionStartSettings => L<Paws::MediaLive::FixedModeScheduleActionStartSettings>
 
-  Holds the start time for the action.
+  Option for specifying the start time for an action.
 
 
-=head2 FollowModeScheduleActionStartSettings => MediaLive_FollowModeScheduleActionStartSettings
+=head2 FollowModeScheduleActionStartSettings => L<Paws::MediaLive::FollowModeScheduleActionStartSettings>
 
-  Specifies an action to follow for scheduling this action.
+  Option for specifying an action as relative to another action.
+
+
+=head2 ImmediateModeScheduleActionStartSettings => L<Paws::MediaLive::ImmediateModeScheduleActionStartSettings>
+
+  Option for specifying an action that should be applied immediately.
 
 
 

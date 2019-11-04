@@ -1,17 +1,15 @@
-# Generated from json/service_class.tt
 package Paws::ECR;
-  use Moo;
-  use Types::Standard qw/Int HashRef ArrayRef/;
+  use Moose;
   sub service { 'api.ecr' }
   sub signing_name { 'ecr' }
   sub version { '2015-09-21' }
   sub target_prefix { 'AmazonEC2ContainerRegistry_V20150921' }
   sub json_version { "1.1" }
-  has max_attempts => (is => 'ro', isa => Int, default => 5);
-  has retry => (is => 'ro', isa => HashRef, default => sub {
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
-  has retriables => (is => 'ro', isa => ArrayRef, default => sub { [
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
@@ -110,6 +108,11 @@ package Paws::ECR;
   sub PutImage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutImageTagMutability {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutImageTagMutability', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutLifecyclePolicy {
@@ -214,7 +217,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageTagMutability PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -241,6 +244,8 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
   );
 
 =head1 DESCRIPTION
+
+Amazon Elastic Container Registry
 
 Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
 registry service. Customers can use the familiar Docker CLI to push,
@@ -284,7 +289,7 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =over
 
-=item ImageIds => ArrayRef[ECR_ImageIdentifier]
+=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
 
 =item RepositoryName => Str
 
@@ -312,7 +317,7 @@ the image's digest in your request.
 
 =over
 
-=item ImageIds => ArrayRef[ECR_ImageIdentifier]
+=item ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
 
 =item RepositoryName => Str
 
@@ -367,7 +372,9 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =item RepositoryName => Str
 
-=item [Tags => ArrayRef[ECR_Tag]]
+=item [ImageTagMutability => Str]
+
+=item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
 
 
 =back
@@ -442,9 +449,9 @@ Deletes the repository policy from a specified repository.
 
 =item RepositoryName => Str
 
-=item [Filter => ECR_DescribeImagesFilter]
+=item [Filter => L<Paws::ECR::DescribeImagesFilter>]
 
-=item [ImageIds => ArrayRef[ECR_ImageIdentifier]]
+=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
 
 =item [MaxResults => Int]
 
@@ -565,9 +572,9 @@ Retrieves the specified lifecycle policy.
 
 =item RepositoryName => Str
 
-=item [Filter => ECR_LifecyclePolicyPreviewFilter]
+=item [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>]
 
-=item [ImageIds => ArrayRef[ECR_ImageIdentifier]]
+=item [ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]]
 
 =item [MaxResults => Int]
 
@@ -632,7 +639,7 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =item RepositoryName => Str
 
-=item [Filter => ECR_ListImagesFilter]
+=item [Filter => L<Paws::ECR::ListImagesFilter>]
 
 =item [MaxResults => Int]
 
@@ -700,6 +707,26 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
+=head2 PutImageTagMutability
+
+=over
+
+=item ImageTagMutability => Str
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::PutImageTagMutability>
+
+Returns: a L<Paws::ECR::PutImageTagMutabilityResponse> instance
+
+Updates the image tag mutability settings for a repository.
+
+
 =head2 PutLifecyclePolicy
 
 =over
@@ -719,7 +746,7 @@ Returns: a L<Paws::ECR::PutLifecyclePolicyResponse> instance
 
 Creates or updates a lifecycle policy. For information about lifecycle
 policy syntax, see Lifecycle Policy Template
-(http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 
 =head2 SetRepositoryPolicy
@@ -742,7 +769,9 @@ Each argument is described in detail in: L<Paws::ECR::SetRepositoryPolicy>
 Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 
 Applies a repository policy on a specified repository to control access
-permissions.
+permissions. For more information, see Amazon ECR Repository Policies
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+in the I<Amazon Elastic Container Registry User Guide>.
 
 
 =head2 StartLifecyclePolicyPreview
@@ -772,7 +801,7 @@ see the results before creating the lifecycle policy.
 
 =item ResourceArn => Str
 
-=item Tags => ArrayRef[ECR_Tag]
+=item Tags => ArrayRef[L<Paws::ECR::Tag>]
 
 
 =back
@@ -840,9 +869,9 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => ECR_DescribeImagesFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 DescribeAllImages(RepositoryName => Str, [Filter => ECR_DescribeImagesFilter, ImageIds => ArrayRef[ECR_ImageIdentifier], MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 DescribeAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::DescribeImagesFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -864,9 +893,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECR::DescribeRepositoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => ECR_ListImagesFilter, MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
-=head2 ListAllImages(RepositoryName => Str, [Filter => ECR_ListImagesFilter, MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListAllImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

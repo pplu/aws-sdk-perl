@@ -43,7 +43,7 @@ Paws::CloudWatchEvents::UntagResource - Arguments for method UntagResource on L<
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method UntagResource on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method UntagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UntagResource.
@@ -67,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the CloudWatch Events rule from which you are removing tags.
+The ARN of the rule that you're removing tags from.
 
 
 

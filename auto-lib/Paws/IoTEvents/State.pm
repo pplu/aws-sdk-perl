@@ -79,20 +79,20 @@ Information that defines a state of a detector.
 
 =head2 OnEnter => IoTEvents_OnEnterLifecycle
 
-  When entering this state, perform these C<actions> if the C<condition>
-is TRUE.
+  When entering this state, perform these C<"actions"> if the
+C<"condition"> is TRUE.
 
 
 =head2 OnExit => IoTEvents_OnExitLifecycle
 
-  When exiting this state, perform these C<actions> if the specified
-C<condition> is TRUE.
+  When exiting this state, perform these C<"actions"> if the specified
+C<"condition"> is TRUE.
 
 
 =head2 OnInput => IoTEvents_OnInputLifecycle
 
-  When an input is received and the C<condition> is TRUE, perform the
-specified C<actions>.
+  When an input is received and the C<"condition"> is TRUE, perform the
+specified C<"actions">.
 
 
 =head2 B<REQUIRED> StateName => Str

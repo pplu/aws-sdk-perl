@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Cloud
 
 =head1 DESCRIPTION
 
-Specifies how CloudWatch data should be encrypted.
+Specifies how Amazon CloudWatch data should be encrypted.
 
 =head1 ATTRIBUTES
 
@@ -64,7 +64,8 @@ Specifies how CloudWatch data should be encrypted.
 
 =head2 KmsKeyArn => Str
 
-  The AWS ARN of the KMS key to be used to encrypt the data.
+  The Amazon Resource Name (ARN) of the KMS key to be used to encrypt the
+data.
 
 
 

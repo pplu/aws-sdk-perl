@@ -94,8 +94,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -115,6 +128,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -134,8 +151,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -155,6 +185,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -174,8 +208,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -195,6 +242,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -214,8 +265,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TimerName => 'MyTimerName',    # min: 1, max: 128
 
                       },    # OPTIONAL
+                      Firehose => {
+                        DeliveryStreamName => 'MyDeliveryStreamName',
+                        Separator          => 'MyFirehoseSeparator',  # OPTIONAL
+                      },    # OPTIONAL
+                      IotEvents => {
+                        InputName => 'MyInputName',    # min: 1, max: 128
+
+                      },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
+
+                      },    # OPTIONAL
+                      Lambda => {
+                        FunctionArn =>
+                          'MyAmazonResourceName',    # min: 1, max: 2048
 
                       },    # OPTIONAL
                       ResetTimer => {
@@ -235,6 +299,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Sns => {
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
 
+                      },    # OPTIONAL
+                      Sqs => {
+                        QueueUrl  => 'MyQueueUrl',
+                        UseBase64 => 1,              # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
@@ -312,7 +380,7 @@ its operations.
 
 =head2 Tags => ArrayRef[IoTEvents_Tag]
 
-Metadata which can be used to manage the detector model.
+Metadata that can be used to manage the detector model.
 
 
 

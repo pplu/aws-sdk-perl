@@ -1020,8 +1020,13 @@ Returns: nothing
 
 Deletes the specified scaling policy.
 
-Deleting a policy deletes the underlying alarm action, but does not
-delete the alarm, even if it no longer has an associated action.
+Deleting either a step scaling policy or a simple scaling policy
+deletes the underlying alarm action, but does not delete the alarm,
+even if it no longer has an associated action.
+
+For more information, see Deleting a Scaling Policy
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DeleteScheduledAction
@@ -1395,8 +1400,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledA
 Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
 Describes the actions scheduled for your Auto Scaling group that
-haven't run. To describe the actions that have already run, use
-DescribeScalingActivities.
+haven't run or that have not reached their end time. To describe the
+actions that have already run, use DescribeScalingActivities.
 
 
 =head2 DescribeTags
@@ -2093,40 +2098,58 @@ Returns: nothing
 
 Updates the configuration for the specified Auto Scaling group.
 
-The new settings take effect on any scaling activities after this call
-returns. Scaling activities that are currently in progress aren't
-affected.
+To update an Auto Scaling group, specify the name of the group and the
+parameter that you want to change. Any parameters that you don't
+specify are not changed by this update request. The new settings take
+effect on any scaling activities after this call returns. Scaling
+activities that are currently in progress aren't affected.
 
-To update an Auto Scaling group with a launch configuration with
-C<InstanceMonitoring> set to C<false>, you must first disable the
-collection of group metrics. Otherwise, you get an error. If you have
-previously enabled the collection of group metrics, you can disable it
-using DisableMetricsCollection.
+If you associate a new launch configuration or template with an Auto
+Scaling group, all new instances will get the updated configuration,
+but existing instances continue to run with the configuration that they
+were originally launched with. When you update a group to specify a
+mixed instances policy instead of a launch configuration or template,
+existing instances may be replaced to match the new purchasing options
+that you specified in the policy. For example, if the group currently
+has 100% On-Demand capacity and the policy specifies 50% Spot capacity,
+this means that half of your instances will be gradually terminated and
+relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
+Scaling launches new instances before terminating the old ones, so that
+updating your group does not compromise the performance or availability
+of your application.
 
-Note the following:
+Note the following about changing C<DesiredCapacity>, C<MaxSize>, or
+C<MinSize>:
 
 =over
 
 =item *
 
+If a scale-in event occurs as a result of a new C<DesiredCapacity>
+value that is lower than the current size of the group, the Auto
+Scaling group uses its termination policy to determine which instances
+to terminate.
+
+=item *
+
 If you specify a new value for C<MinSize> without specifying a value
 for C<DesiredCapacity>, and the new C<MinSize> is larger than the
-current size of the group, we implicitly call SetDesiredCapacity to set
-the size of the group to the new value of C<MinSize>.
+current size of the group, this sets the group's C<DesiredCapacity> to
+the new C<MinSize> value.
 
 =item *
 
 If you specify a new value for C<MaxSize> without specifying a value
 for C<DesiredCapacity>, and the new C<MaxSize> is smaller than the
-current size of the group, we implicitly call SetDesiredCapacity to set
-the size of the group to the new value of C<MaxSize>.
-
-=item *
-
-All other optional parameters are left unchanged if not specified.
+current size of the group, this sets the group's C<DesiredCapacity> to
+the new C<MaxSize> value.
 
 =back
 
+To see which parameters have been set, use DescribeAutoScalingGroups.
+You can also view the scaling policies for an Auto Scaling group using
+DescribePolicies. If the group has scaling policies, you can update
+them using PutScalingPolicy.
 
 
 

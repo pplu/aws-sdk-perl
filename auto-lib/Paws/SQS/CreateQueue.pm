@@ -101,7 +101,7 @@ Amazon SQS retains a message. Valid values: An integer from 60 seconds
 
 C<Policy> - The queue's policy. A valid AWS policy. For more
 information about policy structure, see Overview of AWS IAM Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
 in the I<Amazon IAM User Guide>.
 
 =item *
@@ -116,7 +116,7 @@ C<RedrivePolicy> - The string that includes the parameters for the
 dead-letter queue functionality of the source queue. For more
 information about the redrive policy and dead-letter queues, see Using
 Amazon SQS Dead-Letter Queues
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over
@@ -146,13 +146,13 @@ C<VisibilityTimeout> - The visibility timeout for the queue, in
 seconds. Valid values: An integer from 0 to 43,200 (12 hours). Default:
 30. For more information about the visibility timeout, see Visibility
 Timeout
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =back
 
 The following attributes apply only to server-side-encryption
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 
 =over
 
@@ -160,43 +160,44 @@ The following attributes apply only to server-side-encryption
 
 C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
 for Amazon SQS or a custom CMK. For more information, see Key Terms
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 While the alias of the AWS-managed CMK for Amazon SQS is always
 C<alias/aws/sqs>, the alias of a custom CMK can, for example, be
 C<alias/I<MyAlias> >. For more examples, see KeyId
-(http://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 in the I<AWS Key Management Service API Reference>.
 
 =item *
 
 C<KmsDataKeyReusePeriodSeconds> - The length of time, in seconds, for
 which Amazon SQS can reuse a data key
-(http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
 to encrypt or decrypt messages before calling AWS KMS again. An integer
 representing seconds, between 60 seconds (1 minute) and 86,400 seconds
 (24 hours). Default: 300 (5 minutes). A shorter time period provides
 better security but results in more calls to KMS which might incur
 charges after Free Tier. For more information, see How Does the Data
 Key Reuse Period Work?
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 
 =back
 
 The following attributes apply only to FIFO (first-in-first-out) queues
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 
 =over
 
 =item *
 
 C<FifoQueue> - Designates a queue as FIFO. Valid values: C<true>,
-C<false>. You can provide this attribute only during queue creation.
-You can't change it for an existing queue. When you set this attribute,
-you must also provide the C<MessageGroupId> for your messages
-explicitly.
+C<false>. If you don't specify the C<FifoQueue> attribute, Amazon SQS
+creates a standard queue. You can provide this attribute only during
+queue creation. You can't change it for an existing queue. When you set
+this attribute, you must also provide the C<MessageGroupId> for your
+messages explicitly.
 
 For more information, see FIFO Queue Logic
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =item *
@@ -204,7 +205,7 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 C<ContentBasedDeduplication> - Enables content-based deduplication.
 Valid values: C<true>, C<false>. For more information, see Exactly-Once
 Processing
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 =over

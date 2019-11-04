@@ -61,8 +61,9 @@ policy for a role session or a federated user session.
 
   The Amazon Resource Name (ARN) of the IAM managed policy to use as a
 session policy for the role. For more information about ARNs, see
-Amazon Resource Names (ARNs) and AWS Service Namespaces in the I<AWS
-General Reference>.
+Amazon Resource Names (ARNs) and AWS Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 

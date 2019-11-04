@@ -61,7 +61,7 @@ is TRUE.
 =head2 Events => ArrayRef[IoTEvents_Event]
 
   Specifies the actions that are performed when the state is entered and
-the C<condition> is TRUE.
+the C<"condition"> is TRUE.
 
 
 

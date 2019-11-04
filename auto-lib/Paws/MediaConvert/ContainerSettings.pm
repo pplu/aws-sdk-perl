@@ -124,7 +124,8 @@ within the asset.
 
 =head2 Mp4Settings => MediaConvert_Mp4Settings
 
-  Settings for MP4 Container
+  Settings for MP4 container. You can create audio-only AAC outputs with
+this container.
 
 
 

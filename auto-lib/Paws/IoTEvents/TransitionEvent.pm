@@ -73,7 +73,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 =head1 DESCRIPTION
 
 Specifies the actions performed and the next state entered when a
-C<condition> evaluates to TRUE.
+C<"condition"> evaluates to TRUE.
 
 =head1 ATTRIBUTES
 
@@ -86,7 +86,7 @@ C<condition> evaluates to TRUE.
 =head2 B<REQUIRED> Condition => Str
 
   [Required] A Boolean expression that when TRUE causes the actions to be
-performed and the C<nextState> to be entered.
+performed and the C<"nextState"> to be entered.
 
 
 =head2 B<REQUIRED> EventName => Str

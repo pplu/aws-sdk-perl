@@ -58,7 +58,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 Information about the EC2 instances that are to be sent the command,
 specified as key-value pairs. Each C<RunCommandTarget> block can
-include only one key, but this key may specify multiple values.
+include only one key, but this key can specify multiple values.
 
 =head1 ATTRIBUTES
 

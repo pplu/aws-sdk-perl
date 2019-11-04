@@ -164,7 +164,7 @@ valueE<gt>.
   The resource that the task uses during execution. For RUN_COMMAND and
 AUTOMATION task types, C<TaskArn> is the Systems Manager document name
 or ARN. For LAMBDA tasks, it's the function name or ARN. For
-STEP_FUNCTION tasks, it's the state machine ARN.
+STEP_FUNCTIONS tasks, it's the state machine ARN.
 
 
 =head2 TaskParameters => SSM_MaintenanceWindowTaskParameters
@@ -181,7 +181,7 @@ window task types, see MaintenanceWindowTaskInvocationParameters.
 =head2 Type => Str
 
   The type of task. The type can be one of the following: RUN_COMMAND,
-AUTOMATION, LAMBDA, or STEP_FUNCTION.
+AUTOMATION, LAMBDA, or STEP_FUNCTIONS.
 
 
 =head2 WindowId => Str

@@ -94,14 +94,15 @@ Required when you set (Codec) under
 
 =head2 Bitrate => Int
 
-  Average bitrate in bits/second. Valid bitrates depend on the coding
-mode.
+  Specify the average bitrate in bits per second. Valid bitrates depend
+on the coding mode.
 
 
 =head2 BitstreamMode => Str
 
-  Specifies the "Bitstream Mode" (bsmod) for the emitted AC-3 stream. See
-ATSC A/52-2012 for background on these values.
+  Specify the bitstream mode for the AC-3 stream that the encoder emits.
+For more information about the AC3 bitstream mode, see ATSC A/52-2012
+(Annex E).
 
 
 =head2 CodingMode => Str
@@ -137,7 +138,7 @@ will be used.
 
 =head2 SampleRate => Int
 
-  Sample rate in hz. Sample rate is always 48000.
+  This value is always 48000. It represents the sample rate in Hz.
 
 
 

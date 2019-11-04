@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageIds => [
         {
           ImageDigest => 'MyImageDigest',    # OPTIONAL
-          ImageTag    => 'MyImageTag',       # OPTIONAL
+          ImageTag    => 'MyImageTag',       # min: 1, max: 300; OPTIONAL
         },
         ...
       ],                                     # OPTIONAL
@@ -153,7 +153,7 @@ registry, the default registry is assumed.
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-A list of repositories to describe.
+The repository that contains the images to describe.
 
 
 

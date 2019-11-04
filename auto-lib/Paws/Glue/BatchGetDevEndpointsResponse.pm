@@ -39,12 +39,12 @@ Paws::Glue::BatchGetDevEndpointsResponse
 
 =head2 DevEndpoints => ArrayRef[Glue_DevEndpoint]
 
-A list of DevEndpoint definitions.
+A list of C<DevEndpoint> definitions.
 
 
 =head2 DevEndpointsNotFound => ArrayRef[Str|Undef]
 
-A list of DevEndpoints not found.
+A list of C<DevEndpoints> not found.
 
 
 =head2 _request_id => Str

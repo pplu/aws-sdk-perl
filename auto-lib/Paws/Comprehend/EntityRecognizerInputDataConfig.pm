@@ -90,7 +90,9 @@ Specifies the format and location of the input data.
 
 =head2 B<REQUIRED> EntityTypes => ArrayRef[Comprehend_EntityTypesListItem]
 
-  The entity types in the input data for an entity recognizer.
+  The entity types in the input data for an entity recognizer. A maximum
+of 12 entity types can be used at one time to train an entity
+recognizer.
 
 
 

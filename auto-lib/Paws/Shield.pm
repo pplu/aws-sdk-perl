@@ -213,8 +213,8 @@ Each argument is described in detail in: L<Paws::Shield::AssociateDRTLogBucket>
 Returns: a L<Paws::Shield::AssociateDRTLogBucketResponse> instance
 
 Authorizes the DDoS Response team (DRT) to access the specified Amazon
-S3 bucket containing your flow logs. You can associate up to 10 Amazon
-S3 buckets with your subscription.
+S3 bucket containing your AWS WAF logs. You can associate up to 10
+Amazon S3 buckets with your subscription.
 
 To use the services of the DRT and make an C<AssociateDRTLogBucket>
 request, you must be subscribed to the Business Support plan
@@ -322,6 +322,11 @@ assist you during a suspected DDoS attack. For more information see
 Authorize the DDoS Response Team to Create Rules and Web ACLs on Your
 Behalf
 (https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html).
+
+To use the services of the DRT, you must be subscribed to the Business
+Support plan (https://aws.amazon.com/premiumsupport/business-support/)
+or the Enterprise Support plan
+(https://aws.amazon.com/premiumsupport/enterprise-support/).
 
 When you initally create a subscription, your subscription is set to be
 automatically renewed at the end of the existing subscription period.
@@ -454,7 +459,7 @@ Each argument is described in detail in: L<Paws::Shield::DisassociateDRTLogBucke
 Returns: a L<Paws::Shield::DisassociateDRTLogBucketResponse> instance
 
 Removes the DDoS Response team's (DRT) access to the specified Amazon
-S3 bucket containing your flow logs.
+S3 bucket containing your AWS WAF logs.
 
 To make a C<DisassociateDRTLogBucket> request, you must be subscribed
 to the Business Support plan

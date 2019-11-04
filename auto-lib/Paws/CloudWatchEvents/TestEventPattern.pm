@@ -43,7 +43,7 @@ Paws::CloudWatchEvents::TestEventPattern - Arguments for method TestEventPattern
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TestEventPattern on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method TestEventPattern.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TestEventPattern.
@@ -76,9 +76,9 @@ The event, in JSON format, to test against the event pattern.
 
 =head2 B<REQUIRED> EventPattern => Str
 
-The event pattern. For more information, see Events and Event Patterns
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
-in the I<Amazon CloudWatch Events User Guide>.
+The event pattern. For more information, see Event Patterns
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+in the I<Amazon EventBridge User Guide>.
 
 
 

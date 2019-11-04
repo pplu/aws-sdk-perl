@@ -287,6 +287,16 @@ package Paws::Glue;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetJobBookmark {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetJobBookmark', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetJobBookmarks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Glue::GetJobBookmarks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetJobRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Glue::GetJobRun', @_);
@@ -701,6 +711,29 @@ package Paws::Glue;
 
     return undef
   }
+  sub GetAllJobBookmarks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetJobBookmarks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetJobBookmarks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->JobBookmarkEntries }, @{ $next_result->JobBookmarkEntries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'JobBookmarkEntries') foreach (@{ $result->JobBookmarkEntries });
+        $result = $self->GetJobBookmarks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'JobBookmarkEntries') foreach (@{ $result->JobBookmarkEntries });
+    }
+
+    return undef
+  }
   sub GetAllJobRuns {
     my $self = shift;
 
@@ -887,7 +920,7 @@ package Paws::Glue;
   }
 
 
-  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
+  sub operations { qw/BatchCreatePartition BatchDeleteConnection BatchDeletePartition BatchDeleteTable BatchDeleteTableVersion BatchGetCrawlers BatchGetDevEndpoints BatchGetJobs BatchGetPartition BatchGetTriggers BatchGetWorkflows BatchStopJobRun CreateClassifier CreateConnection CreateCrawler CreateDatabase CreateDevEndpoint CreateJob CreatePartition CreateScript CreateSecurityConfiguration CreateTable CreateTrigger CreateUserDefinedFunction CreateWorkflow DeleteClassifier DeleteConnection DeleteCrawler DeleteDatabase DeleteDevEndpoint DeleteJob DeletePartition DeleteResourcePolicy DeleteSecurityConfiguration DeleteTable DeleteTableVersion DeleteTrigger DeleteUserDefinedFunction DeleteWorkflow GetCatalogImportStatus GetClassifier GetClassifiers GetConnection GetConnections GetCrawler GetCrawlerMetrics GetCrawlers GetDatabase GetDatabases GetDataCatalogEncryptionSettings GetDataflowGraph GetDevEndpoint GetDevEndpoints GetJob GetJobBookmark GetJobBookmarks GetJobRun GetJobRuns GetJobs GetMapping GetPartition GetPartitions GetPlan GetResourcePolicy GetSecurityConfiguration GetSecurityConfigurations GetTable GetTables GetTableVersion GetTableVersions GetTags GetTrigger GetTriggers GetUserDefinedFunction GetUserDefinedFunctions GetWorkflow GetWorkflowRun GetWorkflowRunProperties GetWorkflowRuns ImportCatalogToGlue ListCrawlers ListDevEndpoints ListJobs ListTriggers ListWorkflows PutDataCatalogEncryptionSettings PutResourcePolicy PutWorkflowRunProperties ResetJobBookmark StartCrawler StartCrawlerSchedule StartJobRun StartTrigger StartWorkflowRun StopCrawler StopCrawlerSchedule StopTrigger TagResource UntagResource UpdateClassifier UpdateConnection UpdateCrawler UpdateCrawlerSchedule UpdateDatabase UpdateDevEndpoint UpdateJob UpdatePartition UpdateTable UpdateTrigger UpdateUserDefinedFunction UpdateWorkflow / }
 
 1;
 
@@ -1072,11 +1105,11 @@ Each argument is described in detail in: L<Paws::Glue::BatchGetDevEndpoints>
 
 Returns: a L<Paws::Glue::BatchGetDevEndpointsResponse> instance
 
-Returns a list of resource metadata for a given list of DevEndpoint
-names. After calling the C<ListDevEndpoints> operation, you can call
-this operation to access the data to which you have been granted
-permissions. This operation supports all IAM permissions, including
-permission conditions that uses tags.
+Returns a list of resource metadata for a given list of development
+endpoint names. After calling the C<ListDevEndpoints> operation, you
+can call this operation to access the data to which you have been
+granted permissions. This operation supports all IAM permissions,
+including permission conditions that uses tags.
 
 
 =head2 BatchGetJobs
@@ -1298,6 +1331,8 @@ Creates a new database in a Data Catalog.
 
 =item [NumberOfNodes => Int]
 
+=item [NumberOfWorkers => Int]
+
 =item [PublicKey => Str]
 
 =item [PublicKeys => ArrayRef[Str|Undef]]
@@ -1310,6 +1345,8 @@ Creates a new database in a Data Catalog.
 
 =item [Tags => Glue_TagsMap]
 
+=item [WorkerType => Str]
+
 
 =back
 
@@ -1317,7 +1354,7 @@ Each argument is described in detail in: L<Paws::Glue::CreateDevEndpoint>
 
 Returns: a L<Paws::Glue::CreateDevEndpointResponse> instance
 
-Creates a new DevEndpoint.
+Creates a new development endpoint.
 
 
 =head2 CreateJob
@@ -1339,6 +1376,8 @@ Creates a new DevEndpoint.
 =item [Description => Str]
 
 =item [ExecutionProperty => Glue_ExecutionProperty]
+
+=item [GlueVersion => Str]
 
 =item [LogUri => Str]
 
@@ -1425,7 +1464,12 @@ Each argument is described in detail in: L<Paws::Glue::CreateSecurityConfigurati
 
 Returns: a L<Paws::Glue::CreateSecurityConfigurationResponse> instance
 
-Creates a new security configuration.
+Creates a new security configuration. A security configuration is a set
+of security properties that can be used by AWS Glue. You can use a
+security configuration to encrypt data at rest. For information about
+using security configurations in AWS Glue, see Encrypting Data Written
+by Crawlers, Jobs, and Development Endpoints
+(https://docs.aws.amazon.com/glue/latest/dg/encryption-security-configuration.html).
 
 
 =head2 CreateTable
@@ -1617,7 +1661,7 @@ Each argument is described in detail in: L<Paws::Glue::DeleteDevEndpoint>
 
 Returns: a L<Paws::Glue::DeleteDevEndpointResponse> instance
 
-Deletes a specified DevEndpoint.
+Deletes a specified development endpoint.
 
 
 =head2 DeleteJob
@@ -2028,7 +2072,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoint>
 
 Returns: a L<Paws::Glue::GetDevEndpointResponse> instance
 
-Retrieves information about a specified DevEndpoint.
+Retrieves information about a specified development endpoint.
 
 When you create a development endpoint in a virtual private cloud
 (VPC), AWS Glue returns only a private IP address, and the public IP
@@ -2051,7 +2095,7 @@ Each argument is described in detail in: L<Paws::Glue::GetDevEndpoints>
 
 Returns: a L<Paws::Glue::GetDevEndpointsResponse> instance
 
-Retrieves all the DevEndpoints in this AWS account.
+Retrieves all the development endpoints in this AWS account.
 
 When you create a development endpoint in a virtual private cloud
 (VPC), AWS Glue returns only a private IP address and the public IP
@@ -2073,6 +2117,45 @@ Each argument is described in detail in: L<Paws::Glue::GetJob>
 Returns: a L<Paws::Glue::GetJobResponse> instance
 
 Retrieves an existing job definition.
+
+
+=head2 GetJobBookmark
+
+=over
+
+=item JobName => Str
+
+=item [RunId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetJobBookmark>
+
+Returns: a L<Paws::Glue::GetJobBookmarkResponse> instance
+
+Returns information on a job bookmark entry.
+
+
+=head2 GetJobBookmarks
+
+=over
+
+=item JobName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Glue::GetJobBookmarks>
+
+Returns: a L<Paws::Glue::GetJobBookmarksResponse> instance
+
+Returns information on the job bookmark entries. The list is ordered on
+decreasing version numbers.
 
 
 =head2 GetJobRun
@@ -2755,6 +2838,8 @@ the value otherwise adds the property to existing properties.
 
 =item JobName => Str
 
+=item [RunId => Str]
+
 
 =back
 
@@ -3104,7 +3189,7 @@ Each argument is described in detail in: L<Paws::Glue::UpdateDevEndpoint>
 
 Returns: a L<Paws::Glue::UpdateDevEndpointResponse> instance
 
-Updates a specified DevEndpoint.
+Updates a specified development endpoint.
 
 
 =head2 UpdateJob
@@ -3307,6 +3392,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DevEndpoints, passing the object as the first parameter, and the string 'DevEndpoints' as the second parameter 
 
 If not, it will return a a L<Paws::Glue::GetDevEndpointsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllJobBookmarks(sub { },JobName => Str, [MaxResults => Int, NextToken => Int])
+
+=head2 GetAllJobBookmarks(JobName => Str, [MaxResults => Int, NextToken => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - JobBookmarkEntries, passing the object as the first parameter, and the string 'JobBookmarkEntries' as the second parameter 
+
+If not, it will return a a L<Paws::Glue::GetJobBookmarksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllJobRuns(sub { },JobName => Str, [MaxResults => Int, NextToken => Str])

@@ -67,7 +67,7 @@ digest. For information about MD5, see RFC1321
 
 An attribute containing the C<MessageId> of the message sent to the
 queue. For more information, see Queue and Message Identifiers
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 

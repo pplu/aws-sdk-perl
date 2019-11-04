@@ -92,18 +92,18 @@ left unchanged if not specified.
 
 =head2 EndTime => Str
 
-  The time for the recurring schedule to end. Amazon EC2 Auto Scaling
-does not perform the action after this time.
+  The date and time for the recurring schedule to end. Amazon EC2 Auto
+Scaling does not perform the action after this time.
 
 
 =head2 MaxSize => Int
 
-  The maximum size of the group.
+  The maximum number of instances in the Auto Scaling group.
 
 
 =head2 MinSize => Int
 
-  The minimum size of the group.
+  The minimum number of instances in the Auto Scaling group.
 
 
 =head2 Recurrence => Str
@@ -114,6 +114,9 @@ format consists of five fields separated by white spaces: [Minute]
 in quotes (for example, C<"30 0 1 1,6,12 *">). For more information
 about this format, see Crontab (http://crontab.org).
 
+When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
+form the boundaries of when the recurring action starts and stops.
+
 
 =head2 B<REQUIRED> ScheduledActionName => Str
 
@@ -122,8 +125,9 @@ about this format, see Crontab (http://crontab.org).
 
 =head2 StartTime => Str
 
-  The time for the action to start, in YYYY-MM-DDThh:mm:ssZ format in
-UTC/GMT only and in quotes (for example, C<"2019-06-01T00:00:00Z">).
+  The date and time for the action to start, in YYYY-MM-DDThh:mm:ssZ
+format in UTC/GMT only and in quotes (for example,
+C<"2019-06-01T00:00:00Z">).
 
 If you specify C<Recurrence> and C<StartTime>, Amazon EC2 Auto Scaling
 performs the action at this time, and then performs the action based on

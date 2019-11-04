@@ -121,7 +121,7 @@ The name you want to give to the input.
 
 =head2 Tags => ArrayRef[IoTEvents_Tag]
 
-Metadata which can be used to manage the input.
+Metadata that can be used to manage the input.
 
 
 

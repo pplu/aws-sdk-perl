@@ -103,7 +103,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 CopyTagsFromSource => Str
 
-Copies the tags from the specified instance to all snapshots.
+Copies the tags from the specified volume to corresponding snapshot.
 
 Valid values are: C<"volume">
 

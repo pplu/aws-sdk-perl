@@ -91,8 +91,7 @@ network interfaces by the Auto Scaling group.
 =item *
 
 C<ALBRequestCountPerTarget> - Number of requests completed per target
-in an Application Load Balancer or a Network Load Balancer target
-group.
+in an Application Load Balancer target group.
 
 =back
 

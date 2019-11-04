@@ -47,6 +47,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetReservationUtilization', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRightsizingRecommendation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetRightsizingRecommendation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetTags', @_);
@@ -60,7 +65,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetTags GetUsageForecast / }
+  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetTags GetUsageForecast / }
 
 1;
 
@@ -365,6 +370,35 @@ in an organization have access to member accounts. You can filter data
 by dimensions in a time period. You can use C<GetDimensionValues> to
 determine the possible dimension values. Currently, you can group only
 by C<SUBSCRIPTION_ID>.
+
+
+=head2 GetRightsizingRecommendation
+
+=over
+
+=item Service => Str
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [NextPageToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetRightsizingRecommendation>
+
+Returns: a L<Paws::CostExplorer::GetRightsizingRecommendationResponse> instance
+
+Creates recommendations that helps you save cost by identifying idle
+and underutilized Amazon EC2 instances.
+
+Recommendations are generated to either downsize or terminate
+instances, along with providing savings detail and metrics. For details
+on calculation and function, see Optimizing Your Cost with Rightsizing
+Recommendations
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-what-is.html).
 
 
 =head2 GetTags

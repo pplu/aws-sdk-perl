@@ -115,8 +115,8 @@ use to quickly create a job.
 
 =head2 AccelerationSettings => MediaConvert_AccelerationSettings
 
-  Accelerated transcoding is currently in private preview. Contact AWS
-for more information.
+  Accelerated transcoding can significantly speed up jobs with long,
+visually complex content.
 
 
 =head2 Arn => Str

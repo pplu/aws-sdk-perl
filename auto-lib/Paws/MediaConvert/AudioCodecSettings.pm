@@ -1,62 +1,13 @@
-# Generated from default/object.tt
 package Paws::MediaConvert::AudioCodecSettings;
-  use Moo;
-  use Types::Standard qw/Str/;
-  use Paws::MediaConvert::Types qw/MediaConvert_AacSettings MediaConvert_WavSettings MediaConvert_Mp2Settings MediaConvert_Eac3Settings MediaConvert_Ac3Settings MediaConvert_AiffSettings/;
-  has AacSettings => (is => 'ro', isa => MediaConvert_AacSettings);
-  has Ac3Settings => (is => 'ro', isa => MediaConvert_Ac3Settings);
-  has AiffSettings => (is => 'ro', isa => MediaConvert_AiffSettings);
-  has Codec => (is => 'ro', isa => Str);
-  has Eac3Settings => (is => 'ro', isa => MediaConvert_Eac3Settings);
-  has Mp2Settings => (is => 'ro', isa => MediaConvert_Mp2Settings);
-  has WavSettings => (is => 'ro', isa => MediaConvert_WavSettings);
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'Codec' => {
-                            'type' => 'Str'
-                          },
-               'WavSettings' => {
-                                  'class' => 'Paws::MediaConvert::WavSettings',
-                                  'type' => 'MediaConvert_WavSettings'
-                                },
-               'Eac3Settings' => {
-                                   'class' => 'Paws::MediaConvert::Eac3Settings',
-                                   'type' => 'MediaConvert_Eac3Settings'
-                                 },
-               'Mp2Settings' => {
-                                  'class' => 'Paws::MediaConvert::Mp2Settings',
-                                  'type' => 'MediaConvert_Mp2Settings'
-                                },
-               'AiffSettings' => {
-                                   'class' => 'Paws::MediaConvert::AiffSettings',
-                                   'type' => 'MediaConvert_AiffSettings'
-                                 },
-               'Ac3Settings' => {
-                                  'class' => 'Paws::MediaConvert::Ac3Settings',
-                                  'type' => 'MediaConvert_Ac3Settings'
-                                },
-               'AacSettings' => {
-                                  'class' => 'Paws::MediaConvert::AacSettings',
-                                  'type' => 'MediaConvert_AacSettings'
-                                }
-             },
-  'NameInRequest' => {
-                       'Codec' => 'codec',
-                       'WavSettings' => 'wavSettings',
-                       'Eac3Settings' => 'eac3Settings',
-                       'Mp2Settings' => 'mp2Settings',
-                       'AiffSettings' => 'aiffSettings',
-                       'Ac3Settings' => 'ac3Settings',
-                       'AacSettings' => 'aacSettings'
-                     }
-}
-;
-    return $Params_map;
-  }
-
-
+  use Moose;
+  has AacSettings => (is => 'ro', isa => 'Paws::MediaConvert::AacSettings', request_name => 'aacSettings', traits => ['NameInRequest']);
+  has Ac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Ac3Settings', request_name => 'ac3Settings', traits => ['NameInRequest']);
+  has AiffSettings => (is => 'ro', isa => 'Paws::MediaConvert::AiffSettings', request_name => 'aiffSettings', traits => ['NameInRequest']);
+  has Codec => (is => 'ro', isa => 'Str', request_name => 'codec', traits => ['NameInRequest']);
+  has Eac3AtmosSettings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3AtmosSettings', request_name => 'eac3AtmosSettings', traits => ['NameInRequest']);
+  has Eac3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Eac3Settings', request_name => 'eac3Settings', traits => ['NameInRequest']);
+  has Mp2Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp2Settings', request_name => 'mp2Settings', traits => ['NameInRequest']);
+  has WavSettings => (is => 'ro', isa => 'Paws::MediaConvert::WavSettings', request_name => 'wavSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -89,16 +40,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 Audio codec settings (CodecSettings) under (AudioDescriptions) contains
 the group of settings related to audio encoding. The settings in this
-group vary depending on the value you choose for Audio codec (Codec).
-For each codec enum you choose, define the corresponding settings
-object. The following lists the codec enum, settings object pairs. *
-AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
-AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
+group vary depending on the value that you choose for Audio codec
+(Codec). For each codec enum that you choose, define the corresponding
+settings object. The following lists the codec enum, settings object
+pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
+AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS,
+Eac3AtmosSettings
 
 =head1 ATTRIBUTES
 
 
-=head2 AacSettings => MediaConvert_AacSettings
+=head2 AacSettings => L<Paws::MediaConvert::AacSettings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AAC. The service
@@ -110,13 +62,13 @@ you use the setting Bitrate (bitrate). Defaults and valid values depend
 on the rate control mode.
 
 
-=head2 Ac3Settings => MediaConvert_Ac3Settings
+=head2 Ac3Settings => L<Paws::MediaConvert::Ac3Settings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AC3.
 
 
-=head2 AiffSettings => MediaConvert_AiffSettings
+=head2 AiffSettings => L<Paws::MediaConvert::AiffSettings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value AIFF.
@@ -127,19 +79,25 @@ on the rate control mode.
   Type of Audio codec.
 
 
-=head2 Eac3Settings => MediaConvert_Eac3Settings
+=head2 Eac3AtmosSettings => L<Paws::MediaConvert::Eac3AtmosSettings>
+
+  Required when you set (Codec) under
+(AudioDescriptions)E<gt>(CodecSettings) to the value EAC3_ATMOS.
+
+
+=head2 Eac3Settings => L<Paws::MediaConvert::Eac3Settings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value EAC3.
 
 
-=head2 Mp2Settings => MediaConvert_Mp2Settings
+=head2 Mp2Settings => L<Paws::MediaConvert::Mp2Settings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value MP2.
 
 
-=head2 WavSettings => MediaConvert_WavSettings
+=head2 WavSettings => L<Paws::MediaConvert::WavSettings>
 
   Required when you set (Codec) under
 (AudioDescriptions)E<gt>(CodecSettings) to the value WAV.

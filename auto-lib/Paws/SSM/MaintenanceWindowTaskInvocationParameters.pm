@@ -86,7 +86,7 @@ The parameters for task execution.
 
 =head2 StepFunctions => SSM_MaintenanceWindowStepFunctionsParameters
 
-  The parameters for a STEP_FUNCTION task type.
+  The parameters for a STEP_FUNCTIONS task type.
 
 
 

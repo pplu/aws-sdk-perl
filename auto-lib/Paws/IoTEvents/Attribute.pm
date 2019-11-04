@@ -71,7 +71,7 @@ structure. Use this to specify an attribute from the JSON payload that
 is made available by the input. Inputs are derived from messages sent
 to the AWS IoT Events system (C<BatchPutMessage>). Each such message
 contains a JSON payload, and the attribute (and its paired value)
-specified here are available for use in the C<condition> expressions
+specified here are available for use in the C<"condition"> expressions
 used by detectors.
 
 Syntax: C<E<lt>field-nameE<gt>.E<lt>field-nameE<gt>...>

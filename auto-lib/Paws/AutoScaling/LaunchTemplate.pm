@@ -73,9 +73,7 @@ ID or launch template name in the request.
 
   Any parameters that you specify override the same parameters in the
 launch template. Currently, the only supported override is instance
-type.
-
-You must specify between 2 and 20 overrides.
+type. You must specify between 2 and 20 overrides.
 
 
 

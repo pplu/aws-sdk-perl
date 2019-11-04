@@ -1,39 +1,11 @@
-# Generated from default/object.tt
 package Paws::CloudWatchEvents::PutEventsRequestEntry;
-  use Moo;
-  use Types::Standard qw/Str ArrayRef Undef/;
-  use Paws::CloudWatchEvents::Types qw//;
-  has Detail => (is => 'ro', isa => Str);
-  has DetailType => (is => 'ro', isa => Str);
-  has Resources => (is => 'ro', isa => ArrayRef[Str|Undef]);
-  has Source => (is => 'ro', isa => Str);
-  has Time => (is => 'ro', isa => Str);
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'Detail' => {
-                             'type' => 'Str'
-                           },
-               'Time' => {
-                           'type' => 'Str'
-                         },
-               'Resources' => {
-                                'type' => 'ArrayRef[Str|Undef]'
-                              },
-               'DetailType' => {
-                                 'type' => 'Str'
-                               },
-               'Source' => {
-                             'type' => 'Str'
-                           }
-             }
-}
-;
-    return $Params_map;
-  }
-
-
+  use Moose;
+  has Detail => (is => 'ro', isa => 'Str');
+  has DetailType => (is => 'ro', isa => 'Str');
+  has EventBusName => (is => 'ro', isa => 'Str');
+  has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Source => (is => 'ro', isa => 'Str');
+  has Time => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -72,19 +44,25 @@ Represents an event to be submitted.
 =head2 Detail => Str
 
   A valid JSON string. There is no other schema imposed. The JSON string
-may contain fields and nested subobjects.
+can contain fields and nested subobjects.
 
 
 =head2 DetailType => Str
 
-  Free-form string used to decide what fields to expect in the event
+  Free-form string used to decide which fields to expect in the event
 detail.
+
+
+=head2 EventBusName => Str
+
+  The event bus that will receive the event. Only the rules that are
+associated with this event bus can match the event.
 
 
 =head2 Resources => ArrayRef[Str|Undef]
 
-  AWS resources, identified by Amazon Resource Name (ARN), which the
-event primarily concerns. Any number, including zero, may be present.
+  AWS resources, identified by Amazon Resource Name (ARN), that the event
+primarily concerns. Any number, including zero, can be present.
 
 
 =head2 Source => Str
@@ -94,9 +72,9 @@ event primarily concerns. Any number, including zero, may be present.
 
 =head2 Time => Str
 
-  The time stamp of the event, per RFC3339
-(https://www.rfc-editor.org/rfc/rfc3339.txt). If no time stamp is
-provided, the time stamp of the PutEvents call is used.
+  The timestamp of the event, per RFC3339
+(https://www.rfc-editor.org/rfc/rfc3339.txt). If no timestamp is
+provided, the timestamp of the PutEvents call is used.
 
 
 

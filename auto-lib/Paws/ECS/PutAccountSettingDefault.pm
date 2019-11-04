@@ -81,9 +81,11 @@ resource ID for your Amazon ECS tasks is affected. If
 C<containerInstanceLongArnFormat> is specified, the ARN and resource ID
 for your Amazon ECS container instances is affected. If
 C<awsvpcTrunking> is specified, the ENI limit for your Amazon ECS
-container instances is affected.
+container instances is affected. If C<containerInsights> is specified,
+the default setting for CloudWatch Container Insights for your clusters
+is affected.
 
-Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">
+Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">, C<"containerInsights">
 
 =head2 B<REQUIRED> Value => Str
 

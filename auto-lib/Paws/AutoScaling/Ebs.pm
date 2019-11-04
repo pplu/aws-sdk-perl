@@ -76,28 +76,47 @@ BlockDeviceMapping.
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the volume is deleted on instance termination. The
-default value is C<true>.
+  Indicates whether the volume is deleted on instance termination. For
+Amazon EC2 Auto Scaling, the default value is C<true>.
 
 
 =head2 Encrypted => Bool
 
   Specifies whether the volume should be encrypted. Encrypted EBS volumes
-must be attached to instances that support Amazon EBS encryption.
-Volumes that are created from encrypted snapshots are automatically
-encrypted. There is no way to create an encrypted volume from an
-unencrypted snapshot or an unencrypted volume from an encrypted
-snapshot. If your AMI uses encrypted volumes, you can only launch it on
-supported instance types. For more information, see Amazon EBS
-Encryption
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+can only be attached to instances that support Amazon EBS encryption.
+For more information, see Supported Instance Types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
+If your AMI uses encrypted volumes, you can also only launch it on
+supported instance types.
+
+If you are creating a volume from a snapshot, you cannot specify an
+encryption value. Volumes that are created from encrypted snapshots are
+automatically encrypted, and volumes that are created from unencrypted
+snapshots are automatically unencrypted. By default, encrypted
+snapshots use the AWS managed CMK that is used for EBS encryption, but
+you can specify a custom CMK when you create the snapshot. The ability
+to encrypt a snapshot during copying also allows you to apply a new CMK
+to an already-encrypted snapshot. Volumes restored from the resulting
+copy are only accessible using the new CMK.
+
+Enabling encryption by default
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default)
+results in all EBS volumes being encrypted with the AWS managed CMK or
+a customer managed CMK, whether or not the snapshot was encrypted.
+
+For more information, see Using Encryption with EBS-Backed AMIs
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html)
+in the I<Amazon EC2 User Guide for Linux Instances> and Required CMK
+Key Policy for Use with Encrypted Volumes
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/key-policy-requirements-EBS-encryption.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 Iops => Int
 
   The number of I/O operations per second (IOPS) to provision for the
-volume. For more information, see Amazon EBS Volume Types
+volume. The maximum ratio of IOPS to volume size (in GiB) is 50:1. For
+more information, see Amazon EBS Volume Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -107,18 +126,21 @@ Conditional: This parameter is required when the volume type is C<io1>.
 
 =head2 SnapshotId => Str
 
-  The ID of the snapshot. This parameter is optional if you specify a
-volume size.
+  The snapshot ID of the volume to use.
+
+Conditional: This parameter is optional if you specify a volume size.
+If you specify both C<SnapshotId> and C<VolumeSize>, C<VolumeSize> must
+be equal or greater than the size of the snapshot.
 
 
 =head2 VolumeSize => Int
 
-  The volume size, in GiB.
+  The volume size, in Gibibytes (GiB).
 
-Constraints: 1-1,024 for C<standard>, 4-16,384 for C<io1>, 1-16,384 for
-C<gp2>, and 500-16,384 for C<st1> and C<sc1>. If you specify a
-snapshot, the volume size must be equal to or larger than the snapshot
-size.
+This can be a number from 1-1,024 for C<standard>, 4-16,384 for C<io1>,
+1-16,384 for C<gp2>, and 500-16,384 for C<st1> and C<sc1>. If you
+specify a snapshot, the volume size must be equal to or larger than the
+snapshot size.
 
 Default: If you create a volume from a snapshot and you don't specify a
 volume size, the default is the snapshot size.

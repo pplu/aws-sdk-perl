@@ -39,13 +39,13 @@ Paws::Glue::GetDevEndpointsResponse
 
 =head2 DevEndpoints => ArrayRef[Glue_DevEndpoint]
 
-A list of DevEndpoint definitions.
+A list of C<DevEndpoint> definitions.
 
 
 =head2 NextToken => Str
 
-A continuation token, if not all DevEndpoint definitions have yet been
-returned.
+A continuation token, if not all C<DevEndpoint> definitions have yet
+been returned.
 
 
 =head2 _request_id => Str

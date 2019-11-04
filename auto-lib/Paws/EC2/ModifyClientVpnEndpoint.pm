@@ -1,53 +1,19 @@
 
 package Paws::EC2::ModifyClientVpnEndpoint;
-  use Moo;
-  use Types::Standard qw/Str Bool/;
-  use Paws::EC2::Types qw/EC2_ConnectionLogOptions EC2_DnsServersOptionsModifyStructure/;
-  has ClientVpnEndpointId => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has ConnectionLogOptions => (is => 'ro', isa => EC2_ConnectionLogOptions, predicate => 1);
-  has Description => (is => 'ro', isa => Str, predicate => 1);
-  has DnsServers => (is => 'ro', isa => EC2_DnsServersOptionsModifyStructure, predicate => 1);
-  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
-  has ServerCertificateArn => (is => 'ro', isa => Str, predicate => 1);
+  use Moose;
+  has ClientVpnEndpointId => (is => 'ro', isa => 'Str', required => 1);
+  has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogOptions');
+  has Description => (is => 'ro', isa => 'Str');
+  has DnsServers => (is => 'ro', isa => 'Paws::EC2::DnsServersOptionsModifyStructure');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has ServerCertificateArn => (is => 'ro', isa => 'Str');
+  has SplitTunnel => (is => 'ro', isa => 'Bool');
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'ModifyClientVpnEndpoint');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::ModifyClientVpnEndpointResult');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'DryRun' => {
-                             'type' => 'Bool'
-                           },
-               'ConnectionLogOptions' => {
-                                           'class' => 'Paws::EC2::ConnectionLogOptions',
-                                           'type' => 'EC2_ConnectionLogOptions'
-                                         },
-               'DnsServers' => {
-                                 'class' => 'Paws::EC2::DnsServersOptionsModifyStructure',
-                                 'type' => 'EC2_DnsServersOptionsModifyStructure'
-                               },
-               'ClientVpnEndpointId' => {
-                                          'type' => 'Str'
-                                        },
-               'Description' => {
-                                  'type' => 'Str'
-                                },
-               'ServerCertificateArn' => {
-                                           'type' => 'Str'
-                                         }
-             },
-  'IsRequired' => {
-                    'ClientVpnEndpointId' => 1
-                  }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyClientVpnEndpoint');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::ModifyClientVpnEndpointResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -81,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL
+      SplitTunnel          => 1,             # OPTIONAL
     );
 
     # Results:
@@ -100,7 +67,7 @@ The ID of the Client VPN endpoint to modify.
 
 
 
-=head2 ConnectionLogOptions => EC2_ConnectionLogOptions
+=head2 ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>
 
 Information about the client connection logging options.
 
@@ -137,7 +104,7 @@ A brief description of the Client VPN endpoint.
 
 
 
-=head2 DnsServers => EC2_DnsServersOptionsModifyStructure
+=head2 DnsServers => L<Paws::EC2::DnsServersOptionsModifyStructure>
 
 Information about the DNS servers to be used by Client VPN connections.
 A Client VPN endpoint can have up to two DNS servers.
@@ -157,6 +124,17 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The ARN of the server certificate to be used. The server certificate
 must be provisioned in AWS Certificate Manager (ACM).
+
+
+
+=head2 SplitTunnel => Bool
+
+Indicates whether the VPN is split-tunnel.
+
+For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
+Client VPN Endpoint
+(https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/split-tunnel-vpn.html)
+in the I<AWS Client VPN Administrator Guide>.
 
 
 

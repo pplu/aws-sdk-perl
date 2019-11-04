@@ -204,6 +204,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
 =item [DeploymentMode => Str]
 
+=item [EncryptionOptions => L<Paws::MQ::EncryptionOptions>]
+
 =item [EngineType => Str]
 
 =item [EngineVersion => Str]

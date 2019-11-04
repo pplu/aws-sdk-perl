@@ -73,8 +73,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The resource ID for which you want to remove tags. Use the ID of the
-resource. Here are some examples:
+The ID of the resource from which you want to remove tags. For example:
 
 ManagedInstance: mi-012345abcde
 
@@ -85,18 +84,18 @@ PatchBaseline: pb-012345abcde
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the name of the managed instance in
-the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+managed instances. Specify the name of the managed instance in the
+following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-The type of resource of which you want to remove a tag.
+The type of resource from which you want to remove a tag.
 
 The ManagedInstance type for this API action is only for on-premises
-managed instances. You must specify the name of the managed instance in
-the following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
+managed instances. Specify the name of the managed instance in the
+following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
 Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">, C<"OpsItem">
 

@@ -1,104 +1,30 @@
-# Generated from json/callargs_class.tt
 
 package Paws::Glue::CreateJob;
-  use Moo;
-  use Types::Standard qw/Str Int Num/;
-  use Paws::Glue::Types qw/Glue_ConnectionsList Glue_TagsMap Glue_ExecutionProperty Glue_JobCommand Glue_NotificationProperty Glue_GenericMap/;
-  has AllocatedCapacity => (is => 'ro', isa => Int, predicate => 1);
-  has Command => (is => 'ro', isa => Glue_JobCommand, required => 1, predicate => 1);
-  has Connections => (is => 'ro', isa => Glue_ConnectionsList, predicate => 1);
-  has DefaultArguments => (is => 'ro', isa => Glue_GenericMap, predicate => 1);
-  has Description => (is => 'ro', isa => Str, predicate => 1);
-  has ExecutionProperty => (is => 'ro', isa => Glue_ExecutionProperty, predicate => 1);
-  has LogUri => (is => 'ro', isa => Str, predicate => 1);
-  has MaxCapacity => (is => 'ro', isa => Num, predicate => 1);
-  has MaxRetries => (is => 'ro', isa => Int, predicate => 1);
-  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has NotificationProperty => (is => 'ro', isa => Glue_NotificationProperty, predicate => 1);
-  has NumberOfWorkers => (is => 'ro', isa => Int, predicate => 1);
-  has Role => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has SecurityConfiguration => (is => 'ro', isa => Str, predicate => 1);
-  has Tags => (is => 'ro', isa => Glue_TagsMap, predicate => 1);
-  has Timeout => (is => 'ro', isa => Int, predicate => 1);
-  has WorkerType => (is => 'ro', isa => Str, predicate => 1);
+  use Moose;
+  has AllocatedCapacity => (is => 'ro', isa => 'Int');
+  has Command => (is => 'ro', isa => 'Paws::Glue::JobCommand', required => 1);
+  has Connections => (is => 'ro', isa => 'Paws::Glue::ConnectionsList');
+  has DefaultArguments => (is => 'ro', isa => 'Paws::Glue::GenericMap');
+  has Description => (is => 'ro', isa => 'Str');
+  has ExecutionProperty => (is => 'ro', isa => 'Paws::Glue::ExecutionProperty');
+  has GlueVersion => (is => 'ro', isa => 'Str');
+  has LogUri => (is => 'ro', isa => 'Str');
+  has MaxCapacity => (is => 'ro', isa => 'Num');
+  has MaxRetries => (is => 'ro', isa => 'Int');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NotificationProperty => (is => 'ro', isa => 'Paws::Glue::NotificationProperty');
+  has NumberOfWorkers => (is => 'ro', isa => 'Int');
+  has Role => (is => 'ro', isa => 'Str', required => 1);
+  has SecurityConfiguration => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
+  has Timeout => (is => 'ro', isa => 'Int');
+  has WorkerType => (is => 'ro', isa => 'Str');
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateJob');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::Glue::CreateJobResponse');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'WorkerType' => {
-                                 'type' => 'Str'
-                               },
-               'NumberOfWorkers' => {
-                                      'type' => 'Int'
-                                    },
-               'ExecutionProperty' => {
-                                        'class' => 'Paws::Glue::ExecutionProperty',
-                                        'type' => 'Glue_ExecutionProperty'
-                                      },
-               'NotificationProperty' => {
-                                           'class' => 'Paws::Glue::NotificationProperty',
-                                           'type' => 'Glue_NotificationProperty'
-                                         },
-               'SecurityConfiguration' => {
-                                            'type' => 'Str'
-                                          },
-               'LogUri' => {
-                             'type' => 'Str'
-                           },
-               'MaxCapacity' => {
-                                  'type' => 'Num'
-                                },
-               'Connections' => {
-                                  'class' => 'Paws::Glue::ConnectionsList',
-                                  'type' => 'Glue_ConnectionsList'
-                                },
-               'Role' => {
-                           'type' => 'Str'
-                         },
-               'DefaultArguments' => {
-                                       'class' => 'Paws::Glue::GenericMap',
-                                       'type' => 'Glue_GenericMap'
-                                     },
-               'MaxRetries' => {
-                                 'type' => 'Int'
-                               },
-               'Command' => {
-                              'class' => 'Paws::Glue::JobCommand',
-                              'type' => 'Glue_JobCommand'
-                            },
-               'AllocatedCapacity' => {
-                                        'type' => 'Int'
-                                      },
-               'Tags' => {
-                           'class' => 'Paws::Glue::TagsMap',
-                           'type' => 'Glue_TagsMap'
-                         },
-               'Description' => {
-                                  'type' => 'Str'
-                                },
-               'Name' => {
-                           'type' => 'Str'
-                         },
-               'Timeout' => {
-                              'type' => 'Int'
-                            }
-             },
-  'IsRequired' => {
-                    'Command' => 1,
-                    'Role' => 1,
-                    'Name' => 1
-                  }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateJob');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glue::CreateJobResponse');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -139,19 +65,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionProperty => {
         MaxConcurrentRuns => 1,                      # OPTIONAL
       },    # OPTIONAL
-      LogUri               => 'MyUriString',    # OPTIONAL
-      MaxCapacity          => 1,                # OPTIONAL
-      MaxRetries           => 1,                # OPTIONAL
+      GlueVersion          => 'MyGlueVersionString',    # OPTIONAL
+      LogUri               => 'MyUriString',            # OPTIONAL
+      MaxCapacity          => 1,                        # OPTIONAL
+      MaxRetries           => 1,                        # OPTIONAL
       NotificationProperty => {
-        NotifyDelayAfter => 1,                  # min: 1; OPTIONAL
+        NotifyDelayAfter => 1,                          # min: 1; OPTIONAL
       },    # OPTIONAL
       NumberOfWorkers       => 1,                 # OPTIONAL
       SecurityConfiguration => 'MyNameString',    # OPTIONAL
       Tags                  => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
-      Timeout    => 1,                 # OPTIONAL
-      WorkerType => 'MyNameString',    # OPTIONAL
+      Timeout    => 1,             # OPTIONAL
+      WorkerType => 'Standard',    # OPTIONAL
     );
 
     # Results:
@@ -177,19 +104,19 @@ Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 
-=head2 B<REQUIRED> Command => Glue_JobCommand
+=head2 B<REQUIRED> Command => L<Paws::Glue::JobCommand>
 
 The C<JobCommand> that executes this job.
 
 
 
-=head2 Connections => Glue_ConnectionsList
+=head2 Connections => L<Paws::Glue::ConnectionsList>
 
 The connections used for this job.
 
 
 
-=head2 DefaultArguments => Glue_GenericMap
+=head2 DefaultArguments => L<Paws::Glue::GenericMap>
 
 The default arguments for this job.
 
@@ -214,10 +141,26 @@ Description of the job being defined.
 
 
 
-=head2 ExecutionProperty => Glue_ExecutionProperty
+=head2 ExecutionProperty => L<Paws::Glue::ExecutionProperty>
 
 An C<ExecutionProperty> specifying the maximum number of concurrent
 runs allowed for this job.
+
+
+
+=head2 GlueVersion => Str
+
+Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for jobs of type Spark.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
+
+Jobs that are created without specifying a Glue version default to Glue
+0.9.
 
 
 
@@ -273,7 +216,7 @@ account.
 
 
 
-=head2 NotificationProperty => Glue_NotificationProperty
+=head2 NotificationProperty => L<Paws::Glue::NotificationProperty>
 
 Specifies configuration properties of a job notification.
 
@@ -303,7 +246,7 @@ job.
 
 
 
-=head2 Tags => Glue_TagsMap
+=head2 Tags => L<Paws::Glue::TagsMap>
 
 The tags to use with this job. You may use tags to limit access to the
 job. For more information about tags in AWS Glue, see AWS Tags in AWS
@@ -347,7 +290,7 @@ recommend this worker type for memory-intensive jobs.
 =back
 
 
-
+Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
 
 
 =head1 SEE ALSO

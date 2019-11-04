@@ -1,39 +1,12 @@
-# Generated from default/object.tt
 package Paws::Glue::JobBookmarkEntry;
-  use Moo;
-  use Types::Standard qw/Int Str/;
-  use Paws::Glue::Types qw//;
-  has Attempt => (is => 'ro', isa => Int);
-  has JobBookmark => (is => 'ro', isa => Str);
-  has JobName => (is => 'ro', isa => Str);
-  has Run => (is => 'ro', isa => Int);
-  has Version => (is => 'ro', isa => Int);
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'Version' => {
-                              'type' => 'Int'
-                            },
-               'Attempt' => {
-                              'type' => 'Int'
-                            },
-               'Run' => {
-                          'type' => 'Int'
-                        },
-               'JobBookmark' => {
-                                  'type' => 'Str'
-                                },
-               'JobName' => {
-                              'type' => 'Str'
-                            }
-             }
-}
-;
-    return $Params_map;
-  }
-
-
+  use Moose;
+  has Attempt => (is => 'ro', isa => 'Int');
+  has JobBookmark => (is => 'ro', isa => 'Str');
+  has JobName => (is => 'ro', isa => 'Str');
+  has PreviousRunId => (is => 'ro', isa => 'Str');
+  has Run => (is => 'ro', isa => 'Int');
+  has RunId => (is => 'ro', isa => 'Str');
+  has Version => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -64,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobBo
 
 =head1 DESCRIPTION
 
-Defines a point which a job can resume processing.
+Defines a point that a job can resume processing.
 
 =head1 ATTRIBUTES
 
@@ -81,7 +54,12 @@ Defines a point which a job can resume processing.
 
 =head2 JobName => Str
 
-  Name of the job in question.
+  The name of the job in question.
+
+
+=head2 PreviousRunId => Str
+
+  The unique run identifier associated with the previous job run..
 
 
 =head2 Run => Int
@@ -89,9 +67,14 @@ Defines a point which a job can resume processing.
   The run ID number.
 
 
+=head2 RunId => Str
+
+  The unique run identifier associated with this job run.
+
+
 =head2 Version => Int
 
-  Version of the job.
+  The version of the job.
 
 
 

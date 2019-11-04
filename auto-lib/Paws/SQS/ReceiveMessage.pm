@@ -96,8 +96,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 
 =head2 AttributeNames => ArrayRef[Str|Undef]
 
-A list of s that need to be returned along with each message. These
-attributes include:
+A list of attributes that need to be returned along with each message.
+These attributes include:
 
 =over
 
@@ -255,7 +255,7 @@ During a visibility timeout, subsequent calls with the same
 C<ReceiveRequestAttemptId> return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it resets
 the visibility timeout. For more information, see Visibility Timeout
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 If a caller of the C<ReceiveMessage> action still processes messages
@@ -292,7 +292,7 @@ C<A-Z>, C<0-9>) and punctuation
 
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
 ReceiveRequestAttemptId Request Parameter
-(http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
 in the I<Amazon Simple Queue Service Developer Guide>.
 
 

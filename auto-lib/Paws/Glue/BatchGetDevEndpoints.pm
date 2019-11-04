@@ -66,8 +66,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 B<REQUIRED> DevEndpointNames => ArrayRef[Str|Undef]
 
-The list of DevEndpoint names, which may be the names returned from the
-C<ListDevEndpoint> operation.
+The list of C<DevEndpoint> names, which might be the names returned
+from the C<ListDevEndpoint> operation.
 
 
 

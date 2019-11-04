@@ -1,42 +1,16 @@
 
 package Paws::EC2::DescribeRegions;
-  use Moo;
-  use Types::Standard qw/Str Bool ArrayRef Undef/;
-  use Paws::EC2::Types qw/EC2_Filter/;
-  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
-  has Filters => (is => 'ro', isa => ArrayRef[EC2_Filter], predicate => 1);
-  has RegionNames => (is => 'ro', isa => ArrayRef[Str|Undef], predicate => 1);
+  use Moose;
+  has AllRegions => (is => 'ro', isa => 'Bool');
+  has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
+  has RegionNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'RegionName' );
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'DescribeRegions');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::DescribeRegionsResult');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'DryRun' => {
-                             'type' => 'Bool'
-                           },
-               'RegionNames' => {
-                                  'type' => 'ArrayRef[Str|Undef]'
-                                },
-               'Filters' => {
-                              'class' => 'Paws::EC2::Filter',
-                              'type' => 'ArrayRef[EC2_Filter]'
-                            }
-             },
-  'NameInRequest' => {
-                       'DryRun' => 'dryRun',
-                       'RegionNames' => 'RegionName',
-                       'Filters' => 'Filter'
-                     }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRegions');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeRegionsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -71,6 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
+=head2 AllRegions => Bool
+
+Indicates whether to display all Regions, including Regions that are
+disabled for your account.
+
+
+
 =head2 DryRun => Bool
 
 Checks whether you have the required permissions for the action,
@@ -80,7 +61,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 Filters => ArrayRef[EC2_Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
 The filters.
 
@@ -102,7 +83,8 @@ C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =head2 RegionNames => ArrayRef[Str|Undef]
 
-The names of the Regions.
+The names of the Regions. You can specify any Regions, whether they are
+enabled and disabled for your account.
 
 
 

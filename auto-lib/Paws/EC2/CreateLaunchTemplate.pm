@@ -1,49 +1,18 @@
 
 package Paws::EC2::CreateLaunchTemplate;
-  use Moo;
-  use Types::Standard qw/Str Bool/;
-  use Paws::EC2::Types qw/EC2_RequestLaunchTemplateData/;
-  has ClientToken => (is => 'ro', isa => Str, predicate => 1);
-  has DryRun => (is => 'ro', isa => Bool, predicate => 1);
-  has LaunchTemplateData => (is => 'ro', isa => EC2_RequestLaunchTemplateData, required => 1, predicate => 1);
-  has LaunchTemplateName => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has VersionDescription => (is => 'ro', isa => Str, predicate => 1);
+  use Moose;
+  has ClientToken => (is => 'ro', isa => 'Str');
+  has DryRun => (is => 'ro', isa => 'Bool');
+  has LaunchTemplateData => (is => 'ro', isa => 'Paws::EC2::RequestLaunchTemplateData', required => 1);
+  has LaunchTemplateName => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  has VersionDescription => (is => 'ro', isa => 'Str');
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'CreateLaunchTemplate');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::EC2::CreateLaunchTemplateResult');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'DryRun' => {
-                             'type' => 'Bool'
-                           },
-               'ClientToken' => {
-                                  'type' => 'Str'
-                                },
-               'VersionDescription' => {
-                                         'type' => 'Str'
-                                       },
-               'LaunchTemplateData' => {
-                                         'class' => 'Paws::EC2::RequestLaunchTemplateData',
-                                         'type' => 'EC2_RequestLaunchTemplateData'
-                                       },
-               'LaunchTemplateName' => {
-                                         'type' => 'Str'
-                                       }
-             },
-  'IsRequired' => {
-                    'LaunchTemplateData' => 1,
-                    'LaunchTemplateName' => 1
-                  }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLaunchTemplate');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateLaunchTemplateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -196,8 +165,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         UserData => 'MyString',
       },
       LaunchTemplateName => 'MyLaunchTemplateName',
-      ClientToken        => 'MyString',                # OPTIONAL
-      DryRun             => 1,                         # OPTIONAL
+      ClientToken        => 'MyString',               # OPTIONAL
+      DryRun             => 1,                        # OPTIONAL
+      TagSpecifications  => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, launch-template, natgateway, network-acl, network-interface, reserved-instances, route-table, security-group, snapshot, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],        # OPTIONAL
       VersionDescription => 'MyVersionDescription',    # OPTIONAL
     );
 
@@ -231,7 +214,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> LaunchTemplateData => EC2_RequestLaunchTemplateData
+=head2 B<REQUIRED> LaunchTemplateData => L<Paws::EC2::RequestLaunchTemplateData>
 
 The information for the launch template.
 
@@ -240,6 +223,12 @@ The information for the launch template.
 =head2 B<REQUIRED> LaunchTemplateName => Str
 
 A name for the launch template.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the launch template during creation.
 
 
 

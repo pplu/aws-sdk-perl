@@ -62,9 +62,13 @@ This class has no description
 =head2 ResourceType => Str
 
   The type of resource to tag. Currently, the resource types that support
-tagging on creation are C<fleet>, C<dedicated-host>, C<instance>,
-C<snapshot>, and C<volume>. To tag a resource after it has been
-created, see CreateTags.
+tagging on creation are: C<capacity-reservation> |
+C<client-vpn-endpoint> | C<dedicated-host> | C<fleet> | C<instance> |
+C<launch-template> | C<snapshot> | C<transit-gateway> |
+C<transit-gateway-attachment> | C<transit-gateway-route-table> |
+C<volume>.
+
+To tag a resource after it has been created, see CreateTags.
 
 
 =head2 Tags => ArrayRef[EC2_Tag]

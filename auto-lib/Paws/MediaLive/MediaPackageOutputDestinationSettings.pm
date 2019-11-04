@@ -51,7 +51,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::
 
 =head1 DESCRIPTION
 
-Media Package Output Destination Settings
+MediaPackage Output Destination Settings
 
 =head1 ATTRIBUTES
 

@@ -66,7 +66,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for MP4 Container
+Settings for MP4 container. You can create audio-only AAC outputs with
+this container.
 
 =head1 ATTRIBUTES
 

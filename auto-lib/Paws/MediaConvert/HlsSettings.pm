@@ -1,46 +1,11 @@
-# Generated from default/object.tt
 package Paws::MediaConvert::HlsSettings;
-  use Moo;
-  use Types::Standard qw/Str/;
-  use Paws::MediaConvert::Types qw//;
-  has AudioGroupId => (is => 'ro', isa => Str);
-  has AudioRenditionSets => (is => 'ro', isa => Str);
-  has AudioTrackType => (is => 'ro', isa => Str);
-  has IFrameOnlyManifest => (is => 'ro', isa => Str);
-  has SegmentModifier => (is => 'ro', isa => Str);
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'AudioGroupId' => {
-                                   'type' => 'Str'
-                                 },
-               'SegmentModifier' => {
-                                      'type' => 'Str'
-                                    },
-               'IFrameOnlyManifest' => {
-                                         'type' => 'Str'
-                                       },
-               'AudioTrackType' => {
-                                     'type' => 'Str'
-                                   },
-               'AudioRenditionSets' => {
-                                         'type' => 'Str'
-                                       }
-             },
-  'NameInRequest' => {
-                       'AudioGroupId' => 'audioGroupId',
-                       'SegmentModifier' => 'segmentModifier',
-                       'IFrameOnlyManifest' => 'iFrameOnlyManifest',
-                       'AudioTrackType' => 'audioTrackType',
-                       'AudioRenditionSets' => 'audioRenditionSets'
-                     }
-}
-;
-    return $Params_map;
-  }
-
-
+  use Moose;
+  has AudioGroupId => (is => 'ro', isa => 'Str', request_name => 'audioGroupId', traits => ['NameInRequest']);
+  has AudioOnlyContainer => (is => 'ro', isa => 'Str', request_name => 'audioOnlyContainer', traits => ['NameInRequest']);
+  has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
+  has AudioTrackType => (is => 'ro', isa => 'Str', request_name => 'audioTrackType', traits => ['NameInRequest']);
+  has IFrameOnlyManifest => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyManifest', traits => ['NameInRequest']);
+  has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -79,6 +44,16 @@ Settings for HLS output groups
 =head2 AudioGroupId => Str
 
   Specifies the group to which the audio Rendition belongs.
+
+
+=head2 AudioOnlyContainer => Str
+
+  Use this setting only in audio-only outputs. Choose MPEG-2 Transport
+Stream (M2TS) to create a file in an MPEG2-TS container. Keep the
+default value Automatic (AUTOMATIC) to create an audio-only file in a
+raw container. Regardless of the value that you specify here, if this
+output has video, the service will place the output into an MPEG2-TS
+container.
 
 
 =head2 AudioRenditionSets => Str

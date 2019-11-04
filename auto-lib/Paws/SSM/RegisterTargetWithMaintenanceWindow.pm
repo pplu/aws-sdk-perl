@@ -78,7 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',
       Targets      => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 128; OPTIONAL
+          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
@@ -132,15 +132,15 @@ window.
 
 The type of target being registered with the maintenance window.
 
-Valid values are: C<"INSTANCE">
+Valid values are: C<"INSTANCE">, C<"RESOURCE_GROUP">
 
 =head2 B<REQUIRED> Targets => ArrayRef[SSM_Target]
 
 The targets to register with the maintenance window. In other words,
 the instances to run commands on when the maintenance window runs.
 
-You can specify targets using either instance IDs or tags that have
-been applied to instances.
+You can specify targets using instance IDs, resource group names, or
+tags that have been applied to instances.
 
 B<Example 1>: Specify instance IDs
 
@@ -153,6 +153,19 @@ C<Key=tag:I<my-tag-key>,Values=I<my-tag-value-1>,I<my-tag-value-2>>
 B<Example 3>: Use tag-keys applied to instances
 
 C<Key=tag-key,Values=I<my-tag-key-1>,I<my-tag-key-2>>
+
+B<Example 4>: Use resource group names
+
+C<Key=resource-groups:Name,Values=I<resource-group-name>>
+
+B<Example 5>: Use filters for resource group types
+
+C<Key=resource-groups:ResourceTypeFilters,Values=I<resource-type-1>,I<resource-type-2>>
+
+For C<Key=resource-groups:ResourceTypeFilters>, specify resource types
+in the following format
+
+C<Key=resource-groups:ResourceTypeFilters,Values=I<AWS::EC2::INSTANCE>,I<AWS::EC2::VPC>>
 
 For more information about these examples formats, including the best
 use case for each one, see Examples: Register Targets with a

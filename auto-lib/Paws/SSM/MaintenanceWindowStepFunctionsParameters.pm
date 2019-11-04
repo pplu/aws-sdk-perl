@@ -52,7 +52,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Mainte
 
 =head1 DESCRIPTION
 
-The parameters for a STEP_FUNCTION task.
+The parameters for a STEP_FUNCTIONS task.
 
 For information about specifying and updating task parameters, see
 RegisterTaskWithMaintenanceWindow and UpdateMaintenanceWindowTask.
@@ -78,12 +78,12 @@ for C<TaskParameters> and C<LoggingInfo>.
 
 =head2 Input => Str
 
-  The inputs for the STEP_FUNCTION task.
+  The inputs for the STEP_FUNCTIONS task.
 
 
 =head2 Name => Str
 
-  The name of the STEP_FUNCTION task.
+  The name of the STEP_FUNCTIONS task.
 
 
 

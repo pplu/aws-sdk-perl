@@ -1,57 +1,20 @@
-# Generated from json/callargs_class.tt
 
 package Paws::CloudWatchEvents::PutRule;
-  use Moo;
-  use Types::Standard qw/Str ArrayRef/;
-  use Paws::CloudWatchEvents::Types qw/CloudWatchEvents_Tag/;
-  has Description => (is => 'ro', isa => Str, predicate => 1);
-  has EventPattern => (is => 'ro', isa => Str, predicate => 1);
-  has Name => (is => 'ro', isa => Str, required => 1, predicate => 1);
-  has RoleArn => (is => 'ro', isa => Str, predicate => 1);
-  has ScheduleExpression => (is => 'ro', isa => Str, predicate => 1);
-  has State => (is => 'ro', isa => Str, predicate => 1);
-  has Tags => (is => 'ro', isa => ArrayRef[CloudWatchEvents_Tag], predicate => 1);
+  use Moose;
+  has Description => (is => 'ro', isa => 'Str');
+  has EventBusName => (is => 'ro', isa => 'Str');
+  has EventPattern => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str');
+  has ScheduleExpression => (is => 'ro', isa => 'Str');
+  has State => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchEvents::Tag]');
 
-  use MooX::ClassAttribute;
+  use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => Str, is => 'ro', default => 'PutRule');
-  class_has _returns => (isa => Str, is => 'ro', default => 'Paws::CloudWatchEvents::PutRuleResponse');
-  class_has _result_key => (isa => Str, is => 'ro');
-
-    sub params_map {
-    our $Params_map ||= {
-  'types' => {
-               'RoleArn' => {
-                              'type' => 'Str'
-                            },
-               'ScheduleExpression' => {
-                                         'type' => 'Str'
-                                       },
-               'Tags' => {
-                           'class' => 'Paws::CloudWatchEvents::Tag',
-                           'type' => 'ArrayRef[CloudWatchEvents_Tag]'
-                         },
-               'State' => {
-                            'type' => 'Str'
-                          },
-               'Name' => {
-                           'type' => 'Str'
-                         },
-               'Description' => {
-                                  'type' => 'Str'
-                                },
-               'EventPattern' => {
-                                   'type' => 'Str'
-                                 }
-             },
-  'IsRequired' => {
-                    'Name' => 1
-                  }
-}
-;
-    return $Params_map;
-  }
-
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRule');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchEvents::PutRuleResponse');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +26,7 @@ Paws::CloudWatchEvents::PutRule - Arguments for method PutRule on L<Paws::CloudW
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method PutRule on the
-L<Amazon CloudWatch Events|Paws::CloudWatchEvents> service. Use the attributes of this class
+L<Amazon EventBridge|Paws::CloudWatchEvents> service. Use the attributes of this class
 as arguments to method PutRule.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRule.
@@ -74,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutRuleResponse = $events->PutRule(
       Name               => 'MyRuleName',
       Description        => 'MyRuleDescription',       # OPTIONAL
+      EventBusName       => 'MyEventBusName',          # OPTIONAL
       EventPattern       => 'MyEventPattern',          # OPTIONAL
       RoleArn            => 'MyRoleArn',               # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
@@ -105,17 +69,24 @@ A description of the rule.
 
 
 
+=head2 EventBusName => Str
+
+The event bus to associate with this rule. If you omit this, the
+default event bus is used.
+
+
+
 =head2 EventPattern => Str
 
-The event pattern. For more information, see Events and Event Patterns
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html)
-in the I<Amazon CloudWatch Events User Guide>.
+The event pattern. For more information, see Event Patterns
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
+in the I<Amazon EventBridge User Guide>.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the rule that you are creating or updating.
+The name of the rule that you're creating or updating.
 
 
 
@@ -128,8 +99,8 @@ rule.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression. For example, "cron(0 20 * * ? *)" or "rate(5
-minutes)".
+The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
+C<"rate(5 minutes)">.
 
 
 
@@ -139,7 +110,7 @@ Indicates whether the rule is enabled or disabled.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
-=head2 Tags => ArrayRef[CloudWatchEvents_Tag]
+=head2 Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
 
 The list of key-value pairs to associate with the rule.
 

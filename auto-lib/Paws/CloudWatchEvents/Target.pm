@@ -102,13 +102,13 @@ Targets are the resources to be invoked when a rule is triggered. For a
 complete list of services and resources that can be set as a target,
 see PutTargets.
 
-If you are setting the event bus of another account as the target, and
+If you're setting the event bus of another account as the target and
 that account granted permission to your account through an organization
-instead of directly by the account ID, then you must specify a
-C<RoleArn> with proper permissions in the C<Target> structure. For more
+instead of directly by the account ID, you must specify a C<RoleArn>
+with proper permissions in the C<Target> structure. For more
 information, see Sending and Receiving Events Between AWS Accounts
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEvents-CrossAccountEventDelivery.html)
-in the I<Amazon CloudWatch Events User Guide>.
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html)
+in the I<Amazon EventBridge User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -128,7 +128,7 @@ the I<AWS Batch User Guide>.
 
 =head2 EcsParameters => CloudWatchEvents_EcsParameters
 
-  Contains the Amazon ECS task definition and task count to be used, if
+  Contains the Amazon ECS task definition and task count to be used if
 the event target is an Amazon ECS task. For more information about
 Amazon ECS tasks, see Task Definitions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
@@ -166,8 +166,8 @@ target.
 
 =head2 KinesisParameters => CloudWatchEvents_KinesisParameters
 
-  The custom parameter you can use to control the shard assignment, when
-the target is a Kinesis data stream. If you do not include this
+  The custom parameter that you can use to control the shard assignment
+when the target is a Kinesis data stream. If you don't include this
 parameter, the default is to use the C<eventId> as the partition key.
 
 

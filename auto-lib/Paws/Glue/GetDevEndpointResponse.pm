@@ -35,7 +35,7 @@ Paws::Glue::GetDevEndpointResponse
 
 =head2 DevEndpoint => Glue_DevEndpoint
 
-A DevEndpoint definition.
+A C<DevEndpoint> definition.
 
 
 =head2 _request_id => Str

@@ -98,7 +98,8 @@ C<StepScaling> and not supported otherwise.
 Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
 to complete before executing the policy.
 
-This parameter is not supported if the policy type is C<StepScaling>.
+This parameter is not supported if the policy type is C<StepScaling> or
+C<TargetTrackingScaling>.
 
 For more information, see Scaling Cooldowns
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)

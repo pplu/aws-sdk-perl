@@ -72,13 +72,16 @@ Details of the described attack.
 
 =head2 AttackLayer => Str
 
-  The type of DDoS event that was observed. C<NETWORK> indicates layer 3
-and layer 4 events and C<APPLICATION> indicates layer 7 events.
+  The type of distributed denial of service (DDoS) event that was
+observed. C<NETWORK> indicates layer 3 and layer 4 events and
+C<APPLICATION> indicates layer 7 events.
 
 
 =head2 AttackPropertyIdentifier => Str
 
-  Defines the DDoS attack property information that is provided.
+  Defines the DDoS attack property information that is provided. The
+C<WORDPRESS_PINGBACK_REFLECTOR> and C<WORDPRESS_PINGBACK_SOURCE> values
+are valid only for WordPress reflective pingback DDoS attacks.
 
 
 =head2 TopContributors => ArrayRef[Shield_Contributor]

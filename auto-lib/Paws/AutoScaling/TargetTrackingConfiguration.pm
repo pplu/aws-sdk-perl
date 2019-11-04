@@ -73,7 +73,7 @@ Amazon EC2 Auto Scaling.
 
 =head2 CustomizedMetricSpecification => AutoScaling_CustomizedMetricSpecification
 
-  A customized metric. You can specify either a predefined metric or a
+  A customized metric. You must specify either a predefined metric or a
 customized metric.
 
 
@@ -83,12 +83,12 @@ customized metric.
 disabled. If scaling in is disabled, the target tracking scaling policy
 doesn't remove instances from the Auto Scaling group. Otherwise, the
 target tracking scaling policy can remove instances from the Auto
-Scaling group. The default is disabled.
+Scaling group. The default is C<false>.
 
 
 =head2 PredefinedMetricSpecification => AutoScaling_PredefinedMetricSpecification
 
-  A predefined metric. You can specify either a predefined metric or a
+  A predefined metric. You must specify either a predefined metric or a
 customized metric.
 
 
