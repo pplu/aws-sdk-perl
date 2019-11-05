@@ -115,7 +115,6 @@ package Paws::Net::RestJsonCaller;
 
     $self->_to_header_params($request, $call);
 
-    my $data = '';
     if ($call->can('_stream_param')) {
       my $param_name = $call->_stream_param;
       if (Scalar::Util::blessed($call->$param_name)){
@@ -135,8 +134,6 @@ package Paws::Net::RestJsonCaller;
       my $data = $self->_to_jsoncaller_params($call);
       $request->content(encode_json($data)) if (keys %$data);
     }
-    $data = ref $data ? encode_json($data) : $data;
-    $request->content($data);
     
     $request->method($call->_api_method);
 
