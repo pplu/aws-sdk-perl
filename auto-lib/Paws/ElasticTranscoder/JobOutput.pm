@@ -21,6 +21,7 @@ package Paws::ElasticTranscoder::JobOutput;
   has ThumbnailPattern => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::JobWatermark]');
   has Width => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

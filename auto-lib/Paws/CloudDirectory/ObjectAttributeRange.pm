@@ -2,6 +2,7 @@ package Paws::CloudDirectory::ObjectAttributeRange;
   use Moose;
   has AttributeKey => (is => 'ro', isa => 'Paws::CloudDirectory::AttributeKey');
   has Range => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValueRange');
+
 1;
 
 ### main pod documentation begin ###

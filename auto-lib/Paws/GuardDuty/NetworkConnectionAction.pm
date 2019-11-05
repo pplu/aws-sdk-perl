@@ -6,6 +6,7 @@ package Paws::GuardDuty::NetworkConnectionAction;
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
   has RemotePortDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemotePortDetails', request_name => 'remotePortDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

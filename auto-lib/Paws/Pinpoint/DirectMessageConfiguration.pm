@@ -8,7 +8,11 @@ package Paws::Pinpoint::DirectMessageConfiguration;
   has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::EmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::GCMMessage');
   has SMSMessage => (is => 'ro', isa => 'Paws::Pinpoint::SMSMessage');
+<<<<<<< HEAD
   has VoiceMessage => (is => 'ro', isa => 'Paws::Pinpoint::VoiceMessage');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::S3::LifecycleConfiguration;
   use Moose;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::S3::Rule]', request_name => 'Rule', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

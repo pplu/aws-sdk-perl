@@ -2,6 +2,7 @@ package Paws::CognitoIdp::AccountTakeoverActionType;
   use Moose;
   has EventAction => (is => 'ro', isa => 'Str', required => 1);
   has Notify => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

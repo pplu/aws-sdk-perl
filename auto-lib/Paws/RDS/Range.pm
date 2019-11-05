@@ -3,6 +3,7 @@ package Paws::RDS::Range;
   has From => (is => 'ro', isa => 'Int');
   has Step => (is => 'ro', isa => 'Int');
   has To => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

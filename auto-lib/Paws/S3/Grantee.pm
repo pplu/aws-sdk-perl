@@ -5,6 +5,7 @@ package Paws::S3::Grantee;
   has ID => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', request_name => 'xsi:type', traits => ['NameInRequest'], required => 1);
   has URI => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

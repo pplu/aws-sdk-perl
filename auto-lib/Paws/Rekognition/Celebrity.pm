@@ -5,6 +5,7 @@ package Paws::Rekognition::Celebrity;
   has MatchConfidence => (is => 'ro', isa => 'Num');
   has Name => (is => 'ro', isa => 'Str');
   has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

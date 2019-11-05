@@ -1,7 +1,11 @@
 package Paws::ServiceDiscovery::NamespaceProperties;
   use Moose;
   has DnsProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::DnsProperties');
+<<<<<<< HEAD
   has HttpProperties => (is => 'ro', isa => 'Paws::ServiceDiscovery::HttpProperties');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

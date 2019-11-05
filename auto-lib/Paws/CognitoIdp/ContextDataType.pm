@@ -5,6 +5,7 @@ package Paws::CognitoIdp::ContextDataType;
   has IpAddress => (is => 'ro', isa => 'Str', required => 1);
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
   has ServerPath => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::OpsWorks::RdsDbInstance;
   has RdsDbInstanceArn => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

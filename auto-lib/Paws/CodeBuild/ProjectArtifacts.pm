@@ -1,7 +1,10 @@
 package Paws::CodeBuild::ProjectArtifacts;
   use Moose;
+<<<<<<< HEAD
   has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has NamespaceType => (is => 'ro', isa => 'Str', request_name => 'namespaceType', traits => ['NameInRequest']);
@@ -9,6 +12,7 @@ package Paws::CodeBuild::ProjectArtifacts;
   has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
@@ -28,14 +32,22 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::ProjectArtifacts object:
 
+<<<<<<< HEAD
   $service_obj->Method(Att1 => { ArtifactIdentifier => $value, ..., Type => $value  });
+=======
+  $service_obj->Method(Att1 => { Location => $value, ..., Type => $value  });
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::ProjectArtifacts object:
 
   $result = $service_obj->Method(...);
+<<<<<<< HEAD
   $result->Att1->ArtifactIdentifier
+=======
+  $result->Att1->Location
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head1 DESCRIPTION
 
@@ -44,6 +56,7 @@ Information about the build output artifacts for the build project.
 =head1 ATTRIBUTES
 
 
+<<<<<<< HEAD
 =head2 ArtifactIdentifier => Str
 
   An identifier for this artifact definition.
@@ -57,6 +70,8 @@ Service (Amazon S3). If this is set with another artifacts type, an
 invalidInputException is thrown.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 Location => Str
 
   Information about the build output artifact location:

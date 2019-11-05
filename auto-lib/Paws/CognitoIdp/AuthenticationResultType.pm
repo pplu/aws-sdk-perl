@@ -6,6 +6,7 @@ package Paws::CognitoIdp::AuthenticationResultType;
   has NewDeviceMetadata => (is => 'ro', isa => 'Paws::CognitoIdp::NewDeviceMetadataType');
   has RefreshToken => (is => 'ro', isa => 'Str');
   has TokenType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

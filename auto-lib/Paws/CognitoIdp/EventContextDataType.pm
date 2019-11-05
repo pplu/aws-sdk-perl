@@ -5,6 +5,7 @@ package Paws::CognitoIdp::EventContextDataType;
   has DeviceName => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

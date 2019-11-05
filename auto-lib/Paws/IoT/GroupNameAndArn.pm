@@ -2,6 +2,7 @@ package Paws::IoT::GroupNameAndArn;
   use Moose;
   has GroupArn => (is => 'ro', isa => 'Str', request_name => 'groupArn', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

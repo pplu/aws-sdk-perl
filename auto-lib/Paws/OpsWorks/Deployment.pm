@@ -12,6 +12,7 @@ package Paws::OpsWorks::Deployment;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

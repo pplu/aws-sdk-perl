@@ -2,6 +2,7 @@ package Paws::IoT::RepublishAction;
   use Moose;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Topic => (is => 'ro', isa => 'Str', request_name => 'topic', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

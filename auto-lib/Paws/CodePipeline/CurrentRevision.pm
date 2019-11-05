@@ -4,6 +4,7 @@ package Paws::CodePipeline::CurrentRevision;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Str', request_name => 'revision', traits => ['NameInRequest'], required => 1);
   has RevisionSummary => (is => 'ro', isa => 'Str', request_name => 'revisionSummary', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

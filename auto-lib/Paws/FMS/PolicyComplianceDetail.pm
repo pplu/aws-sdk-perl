@@ -7,6 +7,7 @@ package Paws::FMS::PolicyComplianceDetail;
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyOwner => (is => 'ro', isa => 'Str');
   has Violators => (is => 'ro', isa => 'ArrayRef[Paws::FMS::ComplianceViolator]');
+
 1;
 
 ### main pod documentation begin ###

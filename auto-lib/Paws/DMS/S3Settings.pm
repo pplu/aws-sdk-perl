@@ -17,6 +17,7 @@ package Paws::DMS::S3Settings;
   has RowGroupLength => (is => 'ro', isa => 'Int');
   has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::GameLift::IpPermission;
   has IpRange => (is => 'ro', isa => 'Str', required => 1);
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
   has ToPort => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

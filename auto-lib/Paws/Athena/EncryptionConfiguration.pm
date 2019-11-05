@@ -2,6 +2,7 @@ package Paws::Athena::EncryptionConfiguration;
   use Moose;
   has EncryptionOption => (is => 'ro', isa => 'Str', required => 1);
   has KmsKey => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

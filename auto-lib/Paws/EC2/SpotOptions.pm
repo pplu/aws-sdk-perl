@@ -2,11 +2,14 @@ package Paws::EC2::SpotOptions;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str', request_name => 'instanceInterruptionBehavior', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int', request_name => 'instancePoolsToUseCount', traits => ['NameInRequest']);
   has MaxTotalPrice => (is => 'ro', isa => 'Str', request_name => 'maxTotalPrice', traits => ['NameInRequest']);
   has MinTargetCapacity => (is => 'ro', isa => 'Int', request_name => 'minTargetCapacity', traits => ['NameInRequest']);
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool', request_name => 'singleAvailabilityZone', traits => ['NameInRequest']);
   has SingleInstanceType => (is => 'ro', isa => 'Bool', request_name => 'singleInstanceType', traits => ['NameInRequest']);
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +29,11 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotOptions object:
 
+<<<<<<< HEAD
   $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., SingleInstanceType => $value  });
+=======
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstanceInterruptionBehavior => $value  });
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head3 Results returned from an API call
 
@@ -45,7 +52,7 @@ This class has no description
 =head2 AllocationStrategy => Str
 
   Indicates how to allocate the target capacity across the Spot pools
-specified by the Spot Fleet request. The default is C<lowest-price>.
+specified by the Spot Fleet request. The default is C<lowestPrice>.
 
 
 =head2 InstanceInterruptionBehavior => Str
@@ -54,6 +61,7 @@ specified by the Spot Fleet request. The default is C<lowest-price>.
 C<terminate>.
 
 
+<<<<<<< HEAD
 =head2 InstancePoolsToUseCount => Int
 
   The number of Spot pools across which to allocate your target Spot
@@ -88,6 +96,8 @@ Availability Zone.
 Instances in the fleet.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head1 SEE ALSO
 

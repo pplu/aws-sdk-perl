@@ -143,11 +143,18 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
+<<<<<<< HEAD
 specify a health check grace period of up to 2,147,483,647 seconds.
 During that time, the ECS service scheduler ignores health check
 status. This grace period can prevent the ECS service scheduler from
 marking tasks as unhealthy and stopping them before they have time to
 come up.
+=======
+specify a health check grace period of up to 1,800 seconds during which
+the ECS service scheduler ignores health check status. This grace
+period can prevent the ECS service scheduler from marking tasks as
+unhealthy and stopping them before they have time to come up.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 
@@ -324,14 +331,21 @@ Valid values are: C<"REPLICA">, C<"DAEMON">
 =head2 B<REQUIRED> ServiceName => Str
 
 The name of your service. Up to 255 letters (uppercase and lowercase),
+<<<<<<< HEAD
 numbers, and hyphens are allowed. Service names must be unique within a
 cluster, but you can have similarly named services in multiple clusters
 within a Region or across multiple Regions.
+=======
+numbers, hyphens, and underscores are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a region or across multiple regions.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
+<<<<<<< HEAD
 The details of the service discovery registries to assign to this
 service. For more information, see Service Discovery
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
@@ -340,6 +354,11 @@ Service discovery is supported for Fargate tasks if you are using
 platform version v1.1.0 or later. For more information, see AWS Fargate
 Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html).
+=======
+The details of the service discovery registries you want to assign to
+this service. For more information, see Service Discovery
+(http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 

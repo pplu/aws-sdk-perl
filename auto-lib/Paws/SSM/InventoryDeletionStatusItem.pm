@@ -7,6 +7,7 @@ package Paws::SSM::InventoryDeletionStatusItem;
   has LastStatusMessage => (is => 'ro', isa => 'Str');
   has LastStatusUpdateTime => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

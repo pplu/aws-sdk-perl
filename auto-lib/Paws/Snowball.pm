@@ -85,11 +85,6 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::ListClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListCompatibleImages {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Snowball::ListCompatibleImages', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub ListJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::ListJobs', @_);
@@ -223,7 +218,7 @@ package Paws::Snowball;
   }
 
 
-  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListClusterJobs ListClusters ListCompatibleImages ListJobs UpdateCluster UpdateJob / }
+  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListClusterJobs ListClusters ListJobs UpdateCluster UpdateJob / }
 
 1;
 
@@ -252,13 +247,23 @@ Paws::Snowball - Perl Interface to AWS Amazon Import/Export Snowball
 =head1 DESCRIPTION
 
 AWS Snowball is a petabyte-scale data transport solution that uses
-secure devices to transfer large amounts of data between your
+secure appliances to transfer large amounts of data between your
 on-premises data centers and Amazon Simple Storage Service (Amazon S3).
+<<<<<<< HEAD
 The commands described here provide access to the same functionality
 that is available in the AWS Snowball Management Console, which enables
 you to create and manage jobs for Snowball and Snowball Edge devices.
 To transfer data locally with a device, you'll need to use the Snowball
 client or the Amazon S3 API adapter for Snowball.
+=======
+The Snowball commands described here provide access to the same
+functionality that is available in the AWS Snowball Management Console,
+which enables you to create and manage jobs for Snowball. To transfer
+data locally with a Snowball appliance, you'll need to use the Snowball
+client or the Amazon S3 API adapter for Snowball. For more information,
+see the User Guide
+(http://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30>
 
@@ -298,7 +303,7 @@ Returns: a L<Paws::Snowball::CancelJobResult> instance
 
 Cancels the specified job. You can only cancel a job before its
 C<JobState> value changes to C<PreparingAppliance>. Requesting the
-C<ListJobs> or C<DescribeJob> action returns a job's C<JobState> as
+C<ListJobs> or C<DescribeJob> action will return a job's C<JobState> as
 part of the response element data returned.
 
 
@@ -594,6 +599,7 @@ length. Each C<ClusterListEntry> object contains a cluster's state, a
 cluster's ID, and other important status information.
 
 
+<<<<<<< HEAD
 =head2 ListCompatibleImages
 
 =over
@@ -618,6 +624,8 @@ Instances
 in the I<AWS Snowball Developer Guide>.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 ListJobs
 
 =over

@@ -27,7 +27,7 @@ C<USD>.
 Valid values are: C<"USD">
 =head2 Purchase => ArrayRef[L<Paws::EC2::Purchase>]
 
-The purchase information of the Dedicated Host reservation and the
+The purchase information of the Dedicated Host Reservation and the
 Dedicated Hosts associated with it.
 
 

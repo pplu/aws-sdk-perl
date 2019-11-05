@@ -1,6 +1,7 @@
 package Paws::S3::InventoryDestination;
   use Moose;
   has S3BucketDestination => (is => 'ro', isa => 'Paws::S3::InventoryS3BucketDestination', required => 1);
+
 1;
 
 ### main pod documentation begin ###

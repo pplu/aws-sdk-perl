@@ -4,6 +4,7 @@ package Paws::CloudDirectory::FacetAttribute;
   has AttributeReference => (is => 'ro', isa => 'Paws::CloudDirectory::FacetAttributeReference');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RequiredBehavior => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Glacier::OutputLocation;
   use Moose;
   has S3 => (is => 'ro', isa => 'Paws::Glacier::S3Location');
+
 1;
 
 ### main pod documentation begin ###

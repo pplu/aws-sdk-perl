@@ -2,6 +2,7 @@ package Paws::ServerlessRepo::ApplicationVersionPage;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::VersionSummary]', request_name => 'versions', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

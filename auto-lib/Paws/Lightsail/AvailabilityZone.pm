@@ -2,6 +2,7 @@ package Paws::Lightsail::AvailabilityZone;
   use Moose;
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has ZoneName => (is => 'ro', isa => 'Str', request_name => 'zoneName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

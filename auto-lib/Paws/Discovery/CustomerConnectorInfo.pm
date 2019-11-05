@@ -7,6 +7,7 @@ package Paws::Discovery::CustomerConnectorInfo;
   has TotalConnectors => (is => 'ro', isa => 'Int', request_name => 'totalConnectors', traits => ['NameInRequest'], required => 1);
   has UnhealthyConnectors => (is => 'ro', isa => 'Int', request_name => 'unhealthyConnectors', traits => ['NameInRequest'], required => 1);
   has UnknownConnectors => (is => 'ro', isa => 'Int', request_name => 'unknownConnectors', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

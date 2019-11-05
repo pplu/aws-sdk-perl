@@ -3,6 +3,7 @@ package Paws::Snowball::JobLogs;
   has JobCompletionReportURI => (is => 'ro', isa => 'Str');
   has JobFailureLogURI => (is => 'ro', isa => 'Str');
   has JobSuccessLogURI => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

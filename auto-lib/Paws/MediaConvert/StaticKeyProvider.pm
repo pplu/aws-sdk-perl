@@ -2,8 +2,14 @@ package Paws::MediaConvert::StaticKeyProvider;
   use Moose;
   has KeyFormat => (is => 'ro', isa => 'Str', request_name => 'keyFormat', traits => ['NameInRequest']);
   has KeyFormatVersions => (is => 'ro', isa => 'Str', request_name => 'keyFormatVersions', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+=======
+  has StaticKeyValue => (is => 'ro', isa => 'Str', request_name => 'staticKeyValue', traits => ['NameInRequest'], required => 1);
+  has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

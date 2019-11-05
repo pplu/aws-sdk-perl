@@ -3,7 +3,12 @@ package Paws::DynamoDB::CreateGlobalSecondaryIndexAction;
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]', required => 1);
   has Projection => (is => 'ro', isa => 'Paws::DynamoDB::Projection', required => 1);
+<<<<<<< HEAD
   has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput');
+=======
+  has ProvisionedThroughput => (is => 'ro', isa => 'Paws::DynamoDB::ProvisionedThroughput', required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

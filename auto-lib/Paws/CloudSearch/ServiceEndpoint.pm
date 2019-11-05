@@ -1,6 +1,7 @@
 package Paws::CloudSearch::ServiceEndpoint;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

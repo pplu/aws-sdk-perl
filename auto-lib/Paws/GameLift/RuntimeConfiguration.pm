@@ -3,6 +3,7 @@ package Paws::GameLift::RuntimeConfiguration;
   has GameSessionActivationTimeoutSeconds => (is => 'ro', isa => 'Int');
   has MaxConcurrentGameSessionActivations => (is => 'ro', isa => 'Int');
   has ServerProcesses => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::ServerProcess]');
+
 1;
 
 ### main pod documentation begin ###

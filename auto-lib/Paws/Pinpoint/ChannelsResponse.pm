@@ -1,9 +1,14 @@
 
 package Paws::Pinpoint::ChannelsResponse;
   use Moose;
+<<<<<<< HEAD
   has Channels => (is => 'ro', isa => 'Paws::Pinpoint::MapOfChannelResponse', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+  has Channels => (is => 'ro', isa => 'Paws::Pinpoint::MapOfChannelResponse');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

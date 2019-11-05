@@ -6,6 +6,7 @@ package Paws::RedShift::RestoreStatus;
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
   has SnapshotSizeInMegaBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

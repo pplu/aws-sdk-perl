@@ -6,6 +6,7 @@ package Paws::MediaConvert::ColorCorrector;
   has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
   has Hue => (is => 'ro', isa => 'Int', request_name => 'hue', traits => ['NameInRequest']);
   has Saturation => (is => 'ro', isa => 'Int', request_name => 'saturation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

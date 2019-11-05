@@ -6,6 +6,7 @@ package Paws::ServiceCatalog::ProvisionedProductPlanSummary;
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
   has ProvisionProductId => (is => 'ro', isa => 'Str');
   has ProvisionProductName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

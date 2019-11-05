@@ -4,6 +4,7 @@ package Paws::Rekognition::BoundingBox;
   has Left => (is => 'ro', isa => 'Num');
   has Top => (is => 'ro', isa => 'Num');
   has Width => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

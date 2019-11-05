@@ -1,6 +1,7 @@
 package Paws::Greengrass::CoreDefinitionVersion;
   use Moose;
   has Cores => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Core]');
+
 1;
 
 ### main pod documentation begin ###

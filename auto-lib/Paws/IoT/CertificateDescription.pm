@@ -12,7 +12,11 @@ package Paws::IoT::CertificateDescription;
   has PreviousOwnedBy => (is => 'ro', isa => 'Str', request_name => 'previousOwnedBy', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', request_name => 'transferData', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Validity => (is => 'ro', isa => 'Paws::IoT::CertificateValidity', request_name => 'validity', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

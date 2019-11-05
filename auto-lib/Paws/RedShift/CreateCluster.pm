@@ -19,8 +19,11 @@ package Paws::RedShift::CreateCluster;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has NodeType => (is => 'ro', isa => 'Str', required => 1);
@@ -78,8 +81,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
+<<<<<<< HEAD
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
       ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
       NumberOfNodes                    => 1,                      # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
@@ -383,6 +389,7 @@ you want to use to encrypt data in the cluster.
 
 
 
+<<<<<<< HEAD
 =head2 MaintenanceTrackName => Str
 
 An optional parameter for the name of the maintenance track for the
@@ -401,6 +408,8 @@ The value must be either -1 or an integer between 1 and 3,653.
 
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 B<REQUIRED> MasterUsername => Str
 
 The user name associated with the master user account for the cluster

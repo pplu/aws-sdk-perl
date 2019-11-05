@@ -5,6 +5,7 @@ package Paws::ApiGateway::SdkConfigurationProperty;
   has FriendlyName => (is => 'ro', isa => 'Str', request_name => 'friendlyName', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Required => (is => 'ro', isa => 'Bool', request_name => 'required', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

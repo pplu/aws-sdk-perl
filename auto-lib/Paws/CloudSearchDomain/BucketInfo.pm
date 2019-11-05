@@ -1,6 +1,7 @@
 package Paws::CloudSearchDomain::BucketInfo;
   use Moose;
   has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Bucket]', request_name => 'buckets', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

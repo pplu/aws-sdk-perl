@@ -6,6 +6,7 @@ package Paws::DAX::Node;
   has NodeId => (is => 'ro', isa => 'Str');
   has NodeStatus => (is => 'ro', isa => 'Str');
   has ParameterGroupStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

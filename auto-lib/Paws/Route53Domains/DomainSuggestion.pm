@@ -2,6 +2,7 @@ package Paws::Route53Domains::DomainSuggestion;
   use Moose;
   has Availability => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

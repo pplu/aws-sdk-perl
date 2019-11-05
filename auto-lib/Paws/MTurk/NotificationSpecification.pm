@@ -4,6 +4,7 @@ package Paws::MTurk::NotificationSpecification;
   has EventTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has Transport => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

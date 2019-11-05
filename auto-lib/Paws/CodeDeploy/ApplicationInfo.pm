@@ -6,6 +6,7 @@ package Paws::CodeDeploy::ApplicationInfo;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has GitHubAccountName => (is => 'ro', isa => 'Str', request_name => 'gitHubAccountName', traits => ['NameInRequest']);
   has LinkedToGitHub => (is => 'ro', isa => 'Bool', request_name => 'linkedToGitHub', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

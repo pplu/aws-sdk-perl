@@ -3,6 +3,7 @@ package Paws::Firehose::CloudWatchLoggingOptions;
   has Enabled => (is => 'ro', isa => 'Bool');
   has LogGroupName => (is => 'ro', isa => 'Str');
   has LogStreamName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

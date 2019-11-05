@@ -4,7 +4,10 @@ package Paws::Pinpoint::MessageBody;
   has Message => (is => 'ro', isa => 'Str');
   has RequestID => (is => 'ro', isa => 'Str');
 
+<<<<<<< HEAD
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Rekognition::Emotion;
   use Moose;
   has Confidence => (is => 'ro', isa => 'Num');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

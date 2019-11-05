@@ -5,6 +5,7 @@ package Paws::ElasticTranscoder::CaptionSource;
   has Label => (is => 'ro', isa => 'Str');
   has Language => (is => 'ro', isa => 'Str');
   has TimeOffset => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

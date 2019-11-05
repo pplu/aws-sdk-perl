@@ -9,6 +9,7 @@ package Paws::Glue::Connection;
   has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str');
   has PhysicalConnectionRequirements => (is => 'ro', isa => 'Paws::Glue::PhysicalConnectionRequirements');
+
 1;
 
 ### main pod documentation begin ###

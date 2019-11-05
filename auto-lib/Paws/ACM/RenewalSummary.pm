@@ -2,8 +2,12 @@ package Paws::ACM::RenewalSummary;
   use Moose;
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]', required => 1);
   has RenewalStatus => (is => 'ro', isa => 'Str', required => 1);
+<<<<<<< HEAD
   has RenewalStatusReason => (is => 'ro', isa => 'Str');
   has UpdatedAt => (is => 'ro', isa => 'Str', required => 1);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

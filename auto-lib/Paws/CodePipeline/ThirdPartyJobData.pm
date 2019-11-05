@@ -8,6 +8,7 @@ package Paws::CodePipeline::ThirdPartyJobData;
   has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
   has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Artifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
   has PipelineContext => (is => 'ro', isa => 'Paws::CodePipeline::PipelineContext', request_name => 'pipelineContext', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

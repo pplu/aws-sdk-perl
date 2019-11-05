@@ -1,7 +1,8 @@
 
 package Paws::S3::GetBucketCorsOutput;
   use Moose;
-  has CORSRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::CORSRule]', traits => ['NameInRequest'], request_name => 'CORSRule');
+  has CORSRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::CORSRule]', request_name => 'CORSRule', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

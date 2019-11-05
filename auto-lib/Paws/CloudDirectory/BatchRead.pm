@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SchemaArn     => 'MyArn',
                 TypedLinkName => 'MyTypedLinkName',
 
-              },    # OPTIONAL
+              },
 
             },
 
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SchemaFacet => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },    # OPTIONAL
+            },
 
           },    # OPTIONAL
           GetObjectInformation => {
@@ -129,9 +129,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
+<<<<<<< HEAD
             },                                      # OPTIONAL
             MaxResults => 1,                        # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',            # OPTIONAL
+=======
+            },
+            MaxResults => 1,                           # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',               # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
           },    # OPTIONAL
           ListIndex => {
             IndexReference => {
@@ -178,9 +184,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FacetFilter => {
               FacetName => 'MyFacetName',                 # min: 1, max: 64
               SchemaArn => 'MyArn',
-            },    # OPTIONAL
-            MaxResults => 1,                # min: 1; OPTIONAL
-            NextToken  => 'MyNextToken',    # OPTIONAL
+            },
+            MaxResults => 1,                              # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',                  # OPTIONAL
           },    # OPTIONAL
           ListObjectChildren => {
             ObjectReference => {
@@ -244,9 +250,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SchemaArn     => 'MyArn',
               TypedLinkName => 'MyTypedLinkName',
 
+<<<<<<< HEAD
             },                                      # OPTIONAL
             MaxResults => 1,                        # min: 1; OPTIONAL
             NextToken  => 'MyNextToken',            # OPTIONAL
+=======
+            },
+            MaxResults => 1,                           # min: 1; OPTIONAL
+            NextToken  => 'MyNextToken',               # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
           },    # OPTIONAL
           ListPolicyAttachments => {
             PolicyReference => {

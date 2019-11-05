@@ -3,6 +3,7 @@ package Paws::OpsWorksCM::AccountAttribute;
   has Maximum => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has Used => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

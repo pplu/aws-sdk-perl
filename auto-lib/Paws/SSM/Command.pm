@@ -23,6 +23,7 @@ package Paws::SSM::Command;
   has StatusDetails => (is => 'ro', isa => 'Str');
   has TargetCount => (is => 'ro', isa => 'Int');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+
 1;
 
 ### main pod documentation begin ###

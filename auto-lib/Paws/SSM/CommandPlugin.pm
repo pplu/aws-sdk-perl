@@ -12,6 +12,7 @@ package Paws::SSM::CommandPlugin;
   has StandardOutputUrl => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusDetails => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

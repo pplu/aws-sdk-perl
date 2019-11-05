@@ -16,6 +16,7 @@ package Paws::AppStream::Image;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::AppStream::ImageStateChangeReason');
   has Visibility => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

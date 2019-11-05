@@ -15,6 +15,7 @@ package Paws::ElasticTranscoder::VideoParameters;
   has Resolution => (is => 'ro', isa => 'Str');
   has SizingPolicy => (is => 'ro', isa => 'Str');
   has Watermarks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::PresetWatermark]');
+
 1;
 
 ### main pod documentation begin ###

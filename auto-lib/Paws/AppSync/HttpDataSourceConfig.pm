@@ -2,6 +2,7 @@ package Paws::AppSync::HttpDataSourceConfig;
   use Moose;
   has AuthorizationConfig => (is => 'ro', isa => 'Paws::AppSync::AuthorizationConfig', request_name => 'authorizationConfig', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Batch::JobTimeout;
   use Moose;
   has AttemptDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'attemptDurationSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

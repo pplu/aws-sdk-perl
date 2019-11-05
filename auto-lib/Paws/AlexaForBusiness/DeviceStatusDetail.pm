@@ -1,7 +1,11 @@
 package Paws::AlexaForBusiness::DeviceStatusDetail;
   use Moose;
   has Code => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has Feature => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

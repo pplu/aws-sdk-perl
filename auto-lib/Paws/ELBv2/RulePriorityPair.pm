@@ -2,6 +2,7 @@ package Paws::ELBv2::RulePriorityPair;
   use Moose;
   has Priority => (is => 'ro', isa => 'Int');
   has RuleArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

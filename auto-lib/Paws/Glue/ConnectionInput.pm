@@ -6,6 +6,7 @@ package Paws::Glue::ConnectionInput;
   has MatchCriteria => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalConnectionRequirements => (is => 'ro', isa => 'Paws::Glue::PhysicalConnectionRequirements');
+
 1;
 
 ### main pod documentation begin ###

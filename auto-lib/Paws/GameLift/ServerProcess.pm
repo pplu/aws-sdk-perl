@@ -3,6 +3,7 @@ package Paws::GameLift::ServerProcess;
   has ConcurrentExecutions => (is => 'ro', isa => 'Int', required => 1);
   has LaunchPath => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

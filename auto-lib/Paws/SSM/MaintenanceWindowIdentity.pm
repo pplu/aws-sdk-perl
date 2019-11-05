@@ -11,6 +11,7 @@ package Paws::SSM::MaintenanceWindowIdentity;
   has ScheduleTimezone => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

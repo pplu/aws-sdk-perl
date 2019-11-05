@@ -3,6 +3,7 @@ package Paws::SNS::MessageAttributeValue;
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

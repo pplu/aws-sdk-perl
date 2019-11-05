@@ -9,6 +9,7 @@ package Paws::DS::DirectoryLimits;
   has ConnectedDirectoriesCurrentCount => (is => 'ro', isa => 'Int');
   has ConnectedDirectoriesLimit => (is => 'ro', isa => 'Int');
   has ConnectedDirectoriesLimitReached => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

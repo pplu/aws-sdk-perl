@@ -4,6 +4,7 @@ package Paws::CostExplorer::ReservationUtilizationGroup;
   has Key => (is => 'ro', isa => 'Str');
   has Utilization => (is => 'ro', isa => 'Paws::CostExplorer::ReservationAggregates');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

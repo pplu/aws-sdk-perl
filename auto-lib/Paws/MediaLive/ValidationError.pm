@@ -2,6 +2,7 @@ package Paws::MediaLive::ValidationError;
   use Moose;
   has ElementPath => (is => 'ro', isa => 'Str', request_name => 'elementPath', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

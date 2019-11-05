@@ -2,6 +2,7 @@ package Paws::WAFRegional::SqlInjectionMatchSetUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
   has SqlInjectionMatchTuple => (is => 'ro', isa => 'Paws::WAFRegional::SqlInjectionMatchTuple', required => 1);
+
 1;
 
 ### main pod documentation begin ###

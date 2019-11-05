@@ -9,6 +9,7 @@ package Paws::CodeBuild::ProjectSource;
   has ReportBuildStatus => (is => 'ro', isa => 'Bool', request_name => 'reportBuildStatus', traits => ['NameInRequest']);
   has SourceIdentifier => (is => 'ro', isa => 'Str', request_name => 'sourceIdentifier', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

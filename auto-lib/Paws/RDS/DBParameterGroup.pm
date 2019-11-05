@@ -4,6 +4,7 @@ package Paws::RDS::DBParameterGroup;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str');
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

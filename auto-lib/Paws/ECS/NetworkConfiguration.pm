@@ -1,6 +1,7 @@
 package Paws::ECS::NetworkConfiguration;
   use Moose;
   has AwsvpcConfiguration => (is => 'ro', isa => 'Paws::ECS::AwsVpcConfiguration', request_name => 'awsvpcConfiguration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -39,8 +40,6 @@ An object representing the network configuration for a task or service.
 =head2 AwsvpcConfiguration => L<Paws::ECS::AwsVpcConfiguration>
 
   The VPC subnets and security groups associated with a task.
-
-All specified subnets and security groups must be from the same VPC.
 
 
 

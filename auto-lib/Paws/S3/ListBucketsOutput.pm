@@ -1,8 +1,9 @@
 
 package Paws::S3::ListBucketsOutput;
   use Moose;
-  has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::S3::Bucket]');
+  has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::S3::Bucket]', request_name => 'Bucket', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

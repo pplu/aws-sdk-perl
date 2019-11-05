@@ -3,6 +3,7 @@ package Paws::IoT::IotAnalyticsAction;
   has ChannelArn => (is => 'ro', isa => 'Str', request_name => 'channelArn', traits => ['NameInRequest']);
   has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

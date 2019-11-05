@@ -15,7 +15,11 @@ package Paws::IoT::Action;
   has Salesforce => (is => 'ro', isa => 'Paws::IoT::SalesforceAction', request_name => 'salesforce', traits => ['NameInRequest']);
   has Sns => (is => 'ro', isa => 'Paws::IoT::SnsAction', request_name => 'sns', traits => ['NameInRequest']);
   has Sqs => (is => 'ro', isa => 'Paws::IoT::SqsAction', request_name => 'sqs', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has StepFunctions => (is => 'ro', isa => 'Paws::IoT::StepFunctionsAction', request_name => 'stepFunctions', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MediaLive::OutputDestination;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has MediaPackageSettings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaPackageOutputDestinationSettings]', request_name => 'mediaPackageSettings', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestinationSettings]', request_name => 'settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

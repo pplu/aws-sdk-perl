@@ -3,6 +3,7 @@ package Paws::ELBv2::TargetDescription;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

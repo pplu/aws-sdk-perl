@@ -2,6 +2,7 @@ package Paws::MediaConvert::OutputDetail;
   use Moose;
   has DurationInMs => (is => 'ro', isa => 'Int', request_name => 'durationInMs', traits => ['NameInRequest']);
   has VideoDetails => (is => 'ro', isa => 'Paws::MediaConvert::VideoDetail', request_name => 'videoDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

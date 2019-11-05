@@ -3,6 +3,7 @@ package Paws::MediaLive::Mp2Settings;
   has Bitrate => (is => 'ro', isa => 'Num', request_name => 'bitrate', traits => ['NameInRequest']);
   has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Num', request_name => 'sampleRate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

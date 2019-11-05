@@ -2,6 +2,7 @@ package Paws::KinesisVideoArchivedMedia::TimestampRange;
   use Moose;
   has EndTimestamp => (is => 'ro', isa => 'Str', required => 1);
   has StartTimestamp => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

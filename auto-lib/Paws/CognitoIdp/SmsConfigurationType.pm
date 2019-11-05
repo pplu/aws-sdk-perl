@@ -2,6 +2,7 @@ package Paws::CognitoIdp::SmsConfigurationType;
   use Moose;
   has ExternalId => (is => 'ro', isa => 'Str');
   has SnsCallerArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

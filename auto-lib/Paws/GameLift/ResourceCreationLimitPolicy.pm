@@ -2,6 +2,7 @@ package Paws::GameLift::ResourceCreationLimitPolicy;
   use Moose;
   has NewGameSessionsPerCreator => (is => 'ro', isa => 'Int');
   has PolicyPeriodInMinutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

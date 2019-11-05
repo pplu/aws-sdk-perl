@@ -2,7 +2,8 @@
 package Paws::S3::PutBucketLifecycleConfiguration;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
-  has LifecycleConfiguration => (is => 'ro', isa => 'Paws::S3::BucketLifecycleConfiguration');
+  has LifecycleConfiguration => (is => 'ro', isa => 'Paws::S3::BucketLifecycleConfiguration', traits => ['ParamInBody']);
+
 
   use MooseX::ClassAttribute;
 
@@ -12,6 +13,7 @@ package Paws::S3::PutBucketLifecycleConfiguration;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

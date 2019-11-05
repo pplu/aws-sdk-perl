@@ -3,6 +3,7 @@ package Paws::XRay::Alias;
   has Name => (is => 'ro', isa => 'Str');
   has Names => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

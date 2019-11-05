@@ -7,6 +7,7 @@ package Paws::Lightsail::MetricDatapoint;
   has Sum => (is => 'ro', isa => 'Num', request_name => 'sum', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
   has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

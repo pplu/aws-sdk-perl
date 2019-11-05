@@ -2,7 +2,7 @@
 package Paws::S3::ListObjectVersionsOutput;
   use Moose;
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
-  has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]', traits => ['NameInRequest'], request_name => 'DeleteMarker');
+  has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]', request_name => 'DeleteMarker', traits => ['NameInRequest']);
   has Delimiter => (is => 'ro', isa => 'Str');
   has EncodingType => (is => 'ro', isa => 'Str');
   has IsTruncated => (is => 'ro', isa => 'Bool');
@@ -13,7 +13,8 @@ package Paws::S3::ListObjectVersionsOutput;
   has NextVersionIdMarker => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has VersionIdMarker => (is => 'ro', isa => 'Str');
-  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectVersion]', traits => ['NameInRequest'], request_name => 'Version');
+  has Versions => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectVersion]', request_name => 'Version', traits => ['NameInRequest']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

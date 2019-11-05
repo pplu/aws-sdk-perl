@@ -1,8 +1,9 @@
 
 package Paws::S3::GetBucketAclOutput;
   use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['NameInRequest'], request_name => 'AccessControlList');
+  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', request_name => 'AccessControlList', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

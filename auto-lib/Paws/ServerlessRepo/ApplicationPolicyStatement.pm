@@ -3,6 +3,7 @@ package Paws::ServerlessRepo::ApplicationPolicyStatement;
   has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
   has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principals', traits => ['NameInRequest'], required => 1);
   has StatementId => (is => 'ro', isa => 'Str', request_name => 'statementId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

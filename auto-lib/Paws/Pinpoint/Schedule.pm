@@ -7,6 +7,7 @@ package Paws::Pinpoint::Schedule;
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
   has StartTime => (is => 'ro', isa => 'Str', required => 1);
   has Timezone => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

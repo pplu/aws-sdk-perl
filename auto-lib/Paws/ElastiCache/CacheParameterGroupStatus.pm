@@ -3,6 +3,7 @@ package Paws::ElastiCache::CacheParameterGroupStatus;
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'CacheNodeId', traits => ['NameInRequest']);
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has ParameterApplyStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,7 +10,11 @@ package Paws::IAM::RoleDetail;
   has RoleId => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
   has RolePolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
+<<<<<<< HEAD
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

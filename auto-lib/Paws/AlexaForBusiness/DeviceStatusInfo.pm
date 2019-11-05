@@ -2,6 +2,7 @@ package Paws::AlexaForBusiness::DeviceStatusInfo;
   use Moose;
   has ConnectionStatus => (is => 'ro', isa => 'Str');
   has DeviceStatusDetails => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::DeviceStatusDetail]');
+
 1;
 
 ### main pod documentation begin ###

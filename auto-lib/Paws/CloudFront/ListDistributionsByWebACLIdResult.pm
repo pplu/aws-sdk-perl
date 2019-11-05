@@ -1,10 +1,9 @@
 
 package Paws::CloudFront::ListDistributionsByWebACLIdResult;
   use Moose;
-  has DistributionList => (is => 'ro', isa => 'Paws::CloudFront::DistributionList');
+  has DistributionList => (is => 'ro', isa => 'Paws::CloudFront::DistributionList', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'DistributionList');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

@@ -2,6 +2,7 @@ package Paws::ECS::VolumeFrom;
   use Moose;
   has ReadOnly => (is => 'ro', isa => 'Bool', request_name => 'readOnly', traits => ['NameInRequest']);
   has SourceContainer => (is => 'ro', isa => 'Str', request_name => 'sourceContainer', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

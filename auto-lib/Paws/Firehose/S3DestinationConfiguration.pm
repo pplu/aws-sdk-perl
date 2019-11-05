@@ -8,6 +8,7 @@ package Paws::Firehose::S3DestinationConfiguration;
   has ErrorOutputPrefix => (is => 'ro', isa => 'Str');
   has Prefix => (is => 'ro', isa => 'Str');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

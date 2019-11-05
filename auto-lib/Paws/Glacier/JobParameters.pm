@@ -10,6 +10,7 @@ package Paws::Glacier::JobParameters;
   has SNSTopic => (is => 'ro', isa => 'Str');
   has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

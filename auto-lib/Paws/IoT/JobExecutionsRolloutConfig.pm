@@ -2,6 +2,7 @@ package Paws::IoT::JobExecutionsRolloutConfig;
   use Moose;
   has ExponentialRate => (is => 'ro', isa => 'Paws::IoT::ExponentialRolloutRate', request_name => 'exponentialRate', traits => ['NameInRequest']);
   has MaximumPerMinute => (is => 'ro', isa => 'Int', request_name => 'maximumPerMinute', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

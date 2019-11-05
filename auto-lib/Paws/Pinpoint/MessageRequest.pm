@@ -3,8 +3,13 @@ package Paws::Pinpoint::MessageRequest;
   has Addresses => (is => 'ro', isa => 'Paws::Pinpoint::MapOfAddressConfiguration');
   has Context => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string');
   has Endpoints => (is => 'ro', isa => 'Paws::Pinpoint::MapOfEndpointSendConfiguration');
+<<<<<<< HEAD
   has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration', required => 1);
   has TraceId => (is => 'ro', isa => 'Str');
+=======
+  has MessageConfiguration => (is => 'ro', isa => 'Paws::Pinpoint::DirectMessageConfiguration');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

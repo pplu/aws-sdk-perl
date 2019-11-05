@@ -5,6 +5,7 @@ package Paws::Pinpoint::MessageResult;
   has StatusCode => (is => 'ro', isa => 'Int', required => 1);
   has StatusMessage => (is => 'ro', isa => 'Str');
   has UpdatedToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

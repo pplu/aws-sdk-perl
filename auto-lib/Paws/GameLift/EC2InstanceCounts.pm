@@ -7,6 +7,7 @@ package Paws::GameLift::EC2InstanceCounts;
   has MINIMUM => (is => 'ro', isa => 'Int');
   has PENDING => (is => 'ro', isa => 'Int');
   has TERMINATING => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

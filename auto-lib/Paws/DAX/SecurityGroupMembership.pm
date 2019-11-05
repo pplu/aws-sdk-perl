@@ -2,6 +2,7 @@ package Paws::DAX::SecurityGroupMembership;
   use Moose;
   has SecurityGroupIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

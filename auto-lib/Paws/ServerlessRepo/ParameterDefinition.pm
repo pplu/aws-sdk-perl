@@ -13,6 +13,7 @@ package Paws::ServerlessRepo::ParameterDefinition;
   has NoEcho => (is => 'ro', isa => 'Bool', request_name => 'noEcho', traits => ['NameInRequest']);
   has ReferencedByResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'referencedByResources', traits => ['NameInRequest'], required => 1);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

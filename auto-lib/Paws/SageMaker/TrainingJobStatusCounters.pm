@@ -5,6 +5,7 @@ package Paws::SageMaker::TrainingJobStatusCounters;
   has NonRetryableError => (is => 'ro', isa => 'Int');
   has RetryableError => (is => 'ro', isa => 'Int');
   has Stopped => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

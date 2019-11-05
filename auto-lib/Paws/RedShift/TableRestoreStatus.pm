@@ -14,6 +14,7 @@ package Paws::RedShift::TableRestoreStatus;
   has TargetDatabaseName => (is => 'ro', isa => 'Str');
   has TargetSchemaName => (is => 'ro', isa => 'Str');
   has TotalDataInMegaBytes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

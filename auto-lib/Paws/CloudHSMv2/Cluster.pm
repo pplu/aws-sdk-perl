@@ -13,6 +13,7 @@ package Paws::CloudHSMv2::Cluster;
   has StateMessage => (is => 'ro', isa => 'Str');
   has SubnetMapping => (is => 'ro', isa => 'Paws::CloudHSMv2::ExternalSubnetMapping');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

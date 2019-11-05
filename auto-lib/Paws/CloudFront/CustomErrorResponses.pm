@@ -2,6 +2,7 @@ package Paws::CloudFront::CustomErrorResponses;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::CustomErrorResponse]', request_name => 'CustomErrorResponse', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

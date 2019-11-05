@@ -11,6 +11,7 @@ package Paws::Firehose::RedshiftDestinationUpdate;
   has S3BackupUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has Username => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

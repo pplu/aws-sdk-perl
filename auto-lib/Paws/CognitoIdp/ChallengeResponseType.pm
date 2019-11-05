@@ -2,6 +2,7 @@ package Paws::CognitoIdp::ChallengeResponseType;
   use Moose;
   has ChallengeName => (is => 'ro', isa => 'Str');
   has ChallengeResponse => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

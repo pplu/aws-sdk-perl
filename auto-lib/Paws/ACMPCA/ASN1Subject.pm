@@ -14,6 +14,7 @@ package Paws::ACMPCA::ASN1Subject;
   has State => (is => 'ro', isa => 'Str');
   has Surname => (is => 'ro', isa => 'Str');
   has Title => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -12,6 +12,7 @@ package Paws::EMR::Instance;
   has PublicDnsName => (is => 'ro', isa => 'Str');
   has PublicIpAddress => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Paws::EMR::InstanceStatus');
+
 1;
 
 ### main pod documentation begin ###

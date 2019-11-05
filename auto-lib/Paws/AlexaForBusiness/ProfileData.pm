@@ -8,6 +8,7 @@ package Paws::AlexaForBusiness::ProfileData;
   has TemperatureUnit => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
   has WakeWord => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

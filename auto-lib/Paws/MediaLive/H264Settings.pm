@@ -37,6 +37,7 @@ package Paws::MediaLive::H264Settings;
   has Syntax => (is => 'ro', isa => 'Str', request_name => 'syntax', traits => ['NameInRequest']);
   has TemporalAq => (is => 'ro', isa => 'Str', request_name => 'temporalAq', traits => ['NameInRequest']);
   has TimecodeInsertion => (is => 'ro', isa => 'Str', request_name => 'timecodeInsertion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MTurk::Locale;
   use Moose;
   has Country => (is => 'ro', isa => 'Str', required => 1);
   has Subdivision => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

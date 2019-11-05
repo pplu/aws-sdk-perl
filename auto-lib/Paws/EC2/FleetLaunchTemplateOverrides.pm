@@ -3,8 +3,11 @@ package Paws::EC2::FleetLaunchTemplateOverrides;
   has AvailabilityZone => (is => 'ro', isa => 'Str', request_name => 'availabilityZone', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has MaxPrice => (is => 'ro', isa => 'Str', request_name => 'maxPrice', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Placement => (is => 'ro', isa => 'Paws::EC2::PlacementResponse', request_name => 'placement', traits => ['NameInRequest']);
   has Priority => (is => 'ro', isa => 'Num', request_name => 'priority', traits => ['NameInRequest']);
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
   has WeightedCapacity => (is => 'ro', isa => 'Num', request_name => 'weightedCapacity', traits => ['NameInRequest']);
 1;
@@ -58,6 +61,7 @@ This class has no description
 Instance.
 
 
+<<<<<<< HEAD
 =head2 Placement => L<Paws::EC2::PlacementResponse>
 
   The location where the instance launched, if applicable.
@@ -73,6 +77,8 @@ starting at C<0>. The lower the number, the higher the priority. If no
 number is set, the override has the lowest priority.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 SubnetId => Str
 
   The ID of the subnet in which to launch the instances.

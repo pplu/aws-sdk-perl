@@ -2,7 +2,12 @@ package Paws::MediaConvert::CaptionSelector;
   use Moose;
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest']);
+=======
+  has SourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::CaptionSourceSettings', request_name => 'sourceSettings', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

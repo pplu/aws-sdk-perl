@@ -2,8 +2,14 @@ package Paws::MediaConvert::OutputGroup;
   use Moose;
   has CustomName => (is => 'ro', isa => 'Str', request_name => 'customName', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest']);
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest']);
+=======
+  has OutputGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputGroupSettings', request_name => 'outputGroupSettings', traits => ['NameInRequest'], required => 1);
+  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

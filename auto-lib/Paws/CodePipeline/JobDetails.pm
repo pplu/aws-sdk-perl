@@ -3,6 +3,7 @@ package Paws::CodePipeline::JobDetails;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has Data => (is => 'ro', isa => 'Paws::CodePipeline::JobData', request_name => 'data', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

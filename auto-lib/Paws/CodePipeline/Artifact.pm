@@ -3,6 +3,7 @@ package Paws::CodePipeline::Artifact;
   has Location => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Str', request_name => 'revision', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

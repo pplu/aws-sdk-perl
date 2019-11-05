@@ -12,6 +12,7 @@ package Paws::IAM::ManagedPolicyDetail;
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyVersionList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
   has UpdateDate => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

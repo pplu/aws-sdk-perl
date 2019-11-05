@@ -159,6 +159,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SampleRate => 1,         # min: 8000, max: 192000; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
+<<<<<<< HEAD
+=======
+            AudioSourceName => 'My__string',
+            AudioType       => 1,              # max: 255
+            AudioTypeControl =>
+              'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
             CustomLanguageCode =>
               'My__stringMin3Max3PatternAZaZ3',    # min: 3, max: 3; OPTIONAL
             LanguageCode => 'ENG'
@@ -189,6 +196,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'My__stringMin3Max3PatternAZaZ3',     # min: 3, max: 3; OPTIONAL
             DestinationSettings => {
               BurninDestinationSettings => {
+<<<<<<< HEAD
                 Alignment => 'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
                 BackgroundColor =>
                   'NONE',    # values: NONE, BLACK, WHITE; OPTIONAL
@@ -205,6 +213,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 OutlineSize   => 1,       # max: 10; OPTIONAL
                 ShadowColor   => 'NONE',  # values: NONE, BLACK, WHITE; OPTIONAL
                 ShadowOpacity => 1,       # max: 255; OPTIONAL
+=======
+                Alignment   => 'CENTERED',    # values: CENTERED, LEFT
+                FontOpacity => 1,             # max: 255
+                OutlineColor =>
+                  'BLACK',    # values: BLACK, WHITE, YELLOW, RED, GREEN, BLUE
+                OutlineSize => 1,    # max: 10
+                BackgroundColor =>
+                  'NONE',            # values: NONE, BLACK, WHITE; OPTIONAL
+                BackgroundOpacity => 1,        # max: 255
+                FontColor         => 'WHITE'
+                ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
+                FontResolution => 1,      # min: 96, max: 600; OPTIONAL
+                FontSize       => 1,      # max: 96; OPTIONAL
+                ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
+                ShadowOpacity  => 1,      # max: 255
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                 ShadowXOffset =>
                   1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 ShadowYOffset =>
@@ -217,6 +241,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               DestinationType => 'BURN_IN'
               , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
               DvbSubDestinationSettings => {
+<<<<<<< HEAD
                 Alignment => 'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
                 BackgroundColor =>
                   'NONE',    # values: NONE, BLACK, WHITE; OPTIONAL
@@ -233,6 +258,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 OutlineSize   => 1,       # max: 10; OPTIONAL
                 ShadowColor   => 'NONE',  # values: NONE, BLACK, WHITE; OPTIONAL
                 ShadowOpacity => 1,       # max: 255; OPTIONAL
+=======
+                Alignment   => 'CENTERED',    # values: CENTERED, LEFT
+                FontOpacity => 1,             # max: 255
+                OutlineColor =>
+                  'BLACK',    # values: BLACK, WHITE, YELLOW, RED, GREEN, BLUE
+                OutlineSize => 1,    # max: 10
+                BackgroundColor =>
+                  'NONE',            # values: NONE, BLACK, WHITE; OPTIONAL
+                BackgroundOpacity => 1,        # max: 255
+                FontColor         => 'WHITE'
+                ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
+                FontResolution => 1,      # min: 96, max: 600; OPTIONAL
+                FontSize       => 1,      # max: 96; OPTIONAL
+                ShadowColor    => 'NONE', # values: NONE, BLACK, WHITE; OPTIONAL
+                ShadowOpacity  => 1,      # max: 255
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                 ShadowXOffset =>
                   1,    # min: -2147483648, max: 2147483647; OPTIONAL
                 ShadowYOffset =>
@@ -567,19 +608,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ColorMetadata => 'IGNORE',    # values: IGNORE, INSERT; OPTIONAL
           Crop          => {
+<<<<<<< HEAD
             Height => 1,                # min: 2, max: 2147483647; OPTIONAL
             Width  => 1,                # min: 2, max: 2147483647; OPTIONAL
             X      => 1,                # max: 2147483647; OPTIONAL
             Y      => 1,                # max: 2147483647; OPTIONAL
+=======
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
           },    # OPTIONAL
           DropFrameTimecode => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
           FixedAfd          => 1,          # max: 15; OPTIONAL
           Height            => 1,          # min: 32, max: 2160; OPTIONAL
           Position          => {
+<<<<<<< HEAD
             Height => 1,                   # min: 2, max: 2147483647; OPTIONAL
             Width  => 1,                   # min: 2, max: 2147483647; OPTIONAL
             X      => 1,                   # max: 2147483647; OPTIONAL
             Y      => 1,                   # max: 2147483647; OPTIONAL
+=======
+            Height => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Width  => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            X      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+            Y      => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
           },    # OPTIONAL
           RespondToAfd => 'NONE', # values: NONE, RESPOND, PASSTHROUGH; OPTIONAL
           ScalingBehavior =>
@@ -594,6 +651,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: NONE, FORCE_601, FORCE_709, FORCE_HDR10, FORCE_HLG_2020; OPTIONAL
               Contrast      => 1,    # min: 1, max: 100; OPTIONAL
               Hdr10Metadata => {
+<<<<<<< HEAD
+=======
+                MaxContentLightLevel      => 1,    # max: 65535; OPTIONAL
+                MaxFrameAverageLightLevel => 1,    # max: 65535; OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                 BluePrimaryX              => 1,    # max: 50000; OPTIONAL
                 BluePrimaryY              => 1,    # max: 50000; OPTIONAL
                 GreenPrimaryX             => 1,    # max: 50000; OPTIONAL
@@ -626,6 +688,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FadeOut  => 1,    # max: 2147483647; OPTIONAL
                   Height   => 1,    # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
+<<<<<<< HEAD
                     'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
                   ,                 # min: 14; OPTIONAL
                   ImageX  => 1,     # max: 2147483647; OPTIONAL
@@ -634,6 +697,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Opacity => 1,     # max: 100; OPTIONAL
                   StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
                   Width => 1,    # max: 2147483647; OPTIONAL
+=======
+                    'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA',    # min: 14
+                  ImageX   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  ImageY   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Layer    => 1,   # max: 99
+                  Opacity  => 1,   # max: 100; OPTIONAL
+                  Duration => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeIn   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  FadeOut  => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  Height   => 1,   # min: -2147483648, max: 2147483647; OPTIONAL
+                  StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
+                  Width => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                 },
                 ...
               ],                 # OPTIONAL

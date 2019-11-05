@@ -3,7 +3,11 @@ package Paws::S3::InputSerialization;
   has CompressionType => (is => 'ro', isa => 'Str');
   has CSV => (is => 'ro', isa => 'Paws::S3::CSVInput');
   has JSON => (is => 'ro', isa => 'Paws::S3::JSONInput');
+<<<<<<< HEAD
   has Parquet => (is => 'ro', isa => 'Paws::S3::ParquetInput');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

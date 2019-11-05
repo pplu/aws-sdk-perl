@@ -10,6 +10,7 @@ package Paws::IAM::PasswordPolicy;
   has RequireNumbers => (is => 'ro', isa => 'Bool');
   has RequireSymbols => (is => 'ro', isa => 'Bool');
   has RequireUppercaseCharacters => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

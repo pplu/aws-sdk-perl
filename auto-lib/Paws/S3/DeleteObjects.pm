@@ -2,12 +2,17 @@
 package Paws::S3::DeleteObjects;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+<<<<<<< HEAD
   has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
   has Delete => (is => 'ro', isa => 'Paws::S3::Delete', required => 1);
+=======
+  has Delete => (is => 'ro', isa => 'Paws::S3::Delete', traits => ['ParamInBody'], required => 1);
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -17,6 +22,7 @@ package Paws::S3::DeleteObjects;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::DeleteObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

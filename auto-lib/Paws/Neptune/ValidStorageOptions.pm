@@ -4,6 +4,7 @@ package Paws::Neptune::ValidStorageOptions;
   has ProvisionedIops => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Range]', request_name => 'Range', traits => ['NameInRequest']);
   has StorageSize => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::Range]', request_name => 'Range', traits => ['NameInRequest']);
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

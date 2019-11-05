@@ -2,6 +2,7 @@ package Paws::Support::RecentCaseCommunications;
   use Moose;
   has Communications => (is => 'ro', isa => 'ArrayRef[Paws::Support::Communication]', request_name => 'communications', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

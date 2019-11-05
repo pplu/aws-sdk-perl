@@ -1,6 +1,7 @@
 
 package Paws::S3::CopyObjectOutput;
   use Moose;
+<<<<<<< HEAD
   has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult');
   has CopySourceVersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-version-id');
   has Expiration => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-expiration');
@@ -11,6 +12,18 @@ package Paws::S3::CopyObjectOutput;
   has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
+=======
+  has CopyObjectResult => (is => 'ro', isa => 'Paws::S3::CopyObjectResult', traits => ['ParamInBody']);
+  has CopySourceVersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-version-id', traits => ['ParamInHeader']);
+  has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
+  has VersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-version-id', traits => ['ParamInHeader']);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

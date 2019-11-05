@@ -4,6 +4,7 @@ package Paws::ECR::Image;
   has ImageManifest => (is => 'ro', isa => 'Str', request_name => 'imageManifest', traits => ['NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,11 +1,15 @@
 package Paws::CodeBuild::BuildArtifacts;
   use Moose;
+<<<<<<< HEAD
   has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Md5sum => (is => 'ro', isa => 'Str', request_name => 'md5sum', traits => ['NameInRequest']);
   has OverrideArtifactName => (is => 'ro', isa => 'Bool', request_name => 'overrideArtifactName', traits => ['NameInRequest']);
   has Sha256sum => (is => 'ro', isa => 'Str', request_name => 'sha256sum', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +29,22 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeBuild::BuildArtifacts object:
 
+<<<<<<< HEAD
   $service_obj->Method(Att1 => { ArtifactIdentifier => $value, ..., Sha256sum => $value  });
+=======
+  $service_obj->Method(Att1 => { Location => $value, ..., Sha256sum => $value  });
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::BuildArtifacts object:
 
   $result = $service_obj->Method(...);
+<<<<<<< HEAD
   $result->Att1->ArtifactIdentifier
+=======
+  $result->Att1->Location
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head1 DESCRIPTION
 
@@ -41,6 +53,7 @@ Information about build output artifacts.
 =head1 ATTRIBUTES
 
 
+<<<<<<< HEAD
 =head2 ArtifactIdentifier => Str
 
   An identifier for this artifact definition.
@@ -52,6 +65,8 @@ Information about build output artifacts.
 disabled.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 Location => Str
 
   Information about the location of the build artifacts.

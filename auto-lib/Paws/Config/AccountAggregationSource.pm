@@ -3,6 +3,7 @@ package Paws::Config::AccountAggregationSource;
   has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has AllAwsRegions => (is => 'ro', isa => 'Bool');
   has AwsRegions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Rekognition::Landmark;
   has Type => (is => 'ro', isa => 'Str');
   has X => (is => 'ro', isa => 'Num');
   has Y => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

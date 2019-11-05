@@ -2,6 +2,7 @@ package Paws::WorkDocs::StorageRuleType;
   use Moose;
   has StorageAllocatedInBytes => (is => 'ro', isa => 'Int');
   has StorageType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

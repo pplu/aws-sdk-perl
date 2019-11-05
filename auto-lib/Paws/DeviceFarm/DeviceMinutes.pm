@@ -3,6 +3,7 @@ package Paws::DeviceFarm::DeviceMinutes;
   has Metered => (is => 'ro', isa => 'Num', request_name => 'metered', traits => ['NameInRequest']);
   has Total => (is => 'ro', isa => 'Num', request_name => 'total', traits => ['NameInRequest']);
   has Unmetered => (is => 'ro', isa => 'Num', request_name => 'unmetered', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::EMR::EbsConfiguration;
   use Moose;
   has EbsBlockDeviceConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDeviceConfig]');
   has EbsOptimized => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

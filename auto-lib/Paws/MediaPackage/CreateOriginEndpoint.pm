@@ -98,6 +98,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
+<<<<<<< HEAD
         ManifestLayout         => 'FULL',    # values: FULL, COMPACT; OPTIONAL
         ManifestWindowSeconds  => 1,         # OPTIONAL
         MinBufferTimeSeconds   => 1,         # OPTIONAL
@@ -105,6 +106,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PeriodTriggers         => [
           'ADS', ...                         # values: ADS
         ],                                   # OPTIONAL
+=======
+        ManifestWindowSeconds  => 1,         # OPTIONAL
+        MinBufferTimeSeconds   => 1,         # OPTIONAL
+        MinUpdatePeriodSeconds => 1,         # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
         SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'

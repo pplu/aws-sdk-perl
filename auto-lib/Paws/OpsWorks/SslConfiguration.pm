@@ -3,6 +3,7 @@ package Paws::OpsWorks::SslConfiguration;
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has Chain => (is => 'ro', isa => 'Str');
   has PrivateKey => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodeCommit::RepositoryNameIdPair;
   use Moose;
   has RepositoryId => (is => 'ro', isa => 'Str', request_name => 'repositoryId', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

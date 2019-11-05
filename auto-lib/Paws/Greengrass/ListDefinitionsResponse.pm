@@ -2,6 +2,7 @@ package Paws::Greengrass::ListDefinitionsResponse;
   use Moose;
   has Definitions => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::DefinitionInformation]');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MediaConvert::NoiseReducerSpatialFilterSettings;
   has PostFilterSharpenStrength => (is => 'ro', isa => 'Int', request_name => 'postFilterSharpenStrength', traits => ['NameInRequest']);
   has Speed => (is => 'ro', isa => 'Int', request_name => 'speed', traits => ['NameInRequest']);
   has Strength => (is => 'ro', isa => 'Int', request_name => 'strength', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

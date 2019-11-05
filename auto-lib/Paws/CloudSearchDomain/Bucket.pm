@@ -2,6 +2,7 @@ package Paws::CloudSearchDomain::Bucket;
   use Moose;
   has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

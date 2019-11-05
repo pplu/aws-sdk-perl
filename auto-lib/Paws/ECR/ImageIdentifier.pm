@@ -2,6 +2,7 @@ package Paws::ECR::ImageIdentifier;
   use Moose;
   has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
   has ImageTag => (is => 'ro', isa => 'Str', request_name => 'imageTag', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

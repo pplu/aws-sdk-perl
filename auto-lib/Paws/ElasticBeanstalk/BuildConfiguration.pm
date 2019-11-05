@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::BuildConfiguration;
   has ComputeType => (is => 'ro', isa => 'Str');
   has Image => (is => 'ro', isa => 'Str', required => 1);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

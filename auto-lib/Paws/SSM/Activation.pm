@@ -9,7 +9,11 @@ package Paws::SSM::Activation;
   has IamRole => (is => 'ro', isa => 'Str');
   has RegistrationLimit => (is => 'ro', isa => 'Int');
   has RegistrationsCount => (is => 'ro', isa => 'Int');
+<<<<<<< HEAD
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Tag]');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

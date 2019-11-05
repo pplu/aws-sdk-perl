@@ -3,6 +3,7 @@ package Paws::S3::AnalyticsConfiguration;
   has Filter => (is => 'ro', isa => 'Paws::S3::AnalyticsFilter');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has StorageClassAnalysis => (is => 'ro', isa => 'Paws::S3::StorageClassAnalysis', required => 1);
+
 1;
 
 ### main pod documentation begin ###

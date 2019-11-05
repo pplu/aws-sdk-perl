@@ -2,6 +2,7 @@ package Paws::KinesisAnalytics::MappingParameters;
   use Moose;
   has CSVMappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalytics::CSVMappingParameters');
   has JSONMappingParameters => (is => 'ro', isa => 'Paws::KinesisAnalytics::JSONMappingParameters');
+
 1;
 
 ### main pod documentation begin ###

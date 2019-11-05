@@ -2,6 +2,7 @@ package Paws::CloudFront::Origins;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::Origin]', request_name => 'Origin', traits => ['NameInRequest'], required => 1);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

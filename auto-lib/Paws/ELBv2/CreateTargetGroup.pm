@@ -74,11 +74,17 @@ enabled and cannot be disabled.
 =head2 HealthCheckIntervalSeconds => Int
 
 The approximate amount of time, in seconds, between health checks of an
+<<<<<<< HEAD
 individual target. For HTTP and HTTPS health checks, the range is
 5E<ndash>300 seconds. For TCP health checks, the supported values are
 10 and 30 seconds. If the target type is C<instance> or C<ip>, the
 default is 30 seconds. If the target type is C<lambda>, the default is
 35 seconds.
+=======
+individual target. For Application Load Balancers, the range is 5 to
+300 seconds. For Network Load Balancers, the supported values are 10 or
+30 seconds. The default is 30 seconds.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 
@@ -111,11 +117,18 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UD
 =head2 HealthCheckTimeoutSeconds => Int
 
 The amount of time, in seconds, during which no response from a target
+<<<<<<< HEAD
 means a failed health check. For target groups with a protocol of HTTP
 or HTTPS, the default is 5 seconds. For target groups with a protocol
 of TCP or TLS, this value must be 6 seconds for HTTP health checks and
 10 seconds for TCP and HTTPS health checks. If the target type is
 C<lambda>, the default is 30 seconds.
+=======
+means a failed health check. For Application Load Balancers, the range
+is 2 to 60 seconds and the default is 5 seconds. For Network Load
+Balancers, this is 10 seconds for TCP and HTTPS health checks and 6
+seconds for HTTP health checks.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 
@@ -167,6 +180,7 @@ Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UD
 =head2 TargetType => Str
 
 The type of target that you must specify when registering targets with
+<<<<<<< HEAD
 this target group. You can't specify targets for a target group using
 more than one target type.
 
@@ -191,6 +205,12 @@ specify publicly routable IP addresses.
 C<lambda> - The target groups contains a single Lambda function.
 
 =back
+=======
+this target group. The possible values are C<instance> (targets are
+specified by instance ID) or C<ip> (targets are specified by IP
+address). The default is C<instance>. Note that you can't specify
+targets for a target group using both instance IDs and IP addresses.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 Valid values are: C<"instance">, C<"ip">, C<"lambda">

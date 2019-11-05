@@ -5,6 +5,7 @@ package Paws::CloudFormation::StackSetOperationSummary;
   has EndTimestamp => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

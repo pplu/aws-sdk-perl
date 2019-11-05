@@ -7,6 +7,7 @@ package Paws::SQS::Message;
   has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodyAttributeMap', request_name => 'MessageAttribute', traits => ['NameInRequest']);
   has MessageId => (is => 'ro', isa => 'Str');
   has ReceiptHandle => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Rekognition::PersonMatch;
   has FaceMatches => (is => 'ro', isa => 'ArrayRef[Paws::Rekognition::FaceMatch]');
   has Person => (is => 'ro', isa => 'Paws::Rekognition::PersonDetail');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

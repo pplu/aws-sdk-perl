@@ -2,6 +2,7 @@ package Paws::Snowball::LambdaResource;
   use Moose;
   has EventTriggers => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::EventTriggerDefinition]');
   has LambdaArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

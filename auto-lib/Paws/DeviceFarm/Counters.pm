@@ -7,6 +7,7 @@ package Paws::DeviceFarm::Counters;
   has Stopped => (is => 'ro', isa => 'Int', request_name => 'stopped', traits => ['NameInRequest']);
   has Total => (is => 'ro', isa => 'Int', request_name => 'total', traits => ['NameInRequest']);
   has Warned => (is => 'ro', isa => 'Int', request_name => 'warned', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Polly::LexiconDescription;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::Polly::LexiconAttributes');
   has Name => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

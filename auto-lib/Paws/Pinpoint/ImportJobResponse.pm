@@ -12,7 +12,12 @@ package Paws::Pinpoint::ImportJobResponse;
   has TotalFailures => (is => 'ro', isa => 'Int');
   has TotalPieces => (is => 'ro', isa => 'Int');
   has TotalProcessed => (is => 'ro', isa => 'Int');
+<<<<<<< HEAD
   has Type => (is => 'ro', isa => 'Str', required => 1);
+=======
+  has Type => (is => 'ro', isa => 'Str');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -2,7 +2,11 @@ package Paws::MQ::BrokerInstance;
   use Moose;
   has ConsoleURL => (is => 'ro', isa => 'Str', request_name => 'consoleURL', traits => ['NameInRequest']);
   has Endpoints => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'endpoints', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

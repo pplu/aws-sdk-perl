@@ -18,7 +18,11 @@ package Paws::Glue::Job;
   has Role => (is => 'ro', isa => 'Str');
   has SecurityConfiguration => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
+<<<<<<< HEAD
   has WorkerType => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

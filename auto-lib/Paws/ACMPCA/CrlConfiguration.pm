@@ -4,6 +4,7 @@ package Paws::ACMPCA::CrlConfiguration;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has ExpirationInDays => (is => 'ro', isa => 'Int');
   has S3BucketName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

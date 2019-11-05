@@ -9,7 +9,11 @@ package Paws::IoTAnalytics::Dataset;
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has VersioningConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::VersioningConfiguration', request_name => 'versioningConfiguration', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

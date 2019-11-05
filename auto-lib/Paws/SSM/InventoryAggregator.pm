@@ -2,7 +2,11 @@ package Paws::SSM::InventoryAggregator;
   use Moose;
   has Aggregators => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryAggregator]');
   has Expression => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::SSM::InventoryGroup]');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

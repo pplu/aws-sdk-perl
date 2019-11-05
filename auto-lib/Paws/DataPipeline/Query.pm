@@ -1,6 +1,7 @@
 package Paws::DataPipeline::Query;
   use Moose;
   has Selectors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Selector]', request_name => 'selectors', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

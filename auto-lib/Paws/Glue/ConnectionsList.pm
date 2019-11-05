@@ -1,6 +1,7 @@
 package Paws::Glue::ConnectionsList;
   use Moose;
   has Connections => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

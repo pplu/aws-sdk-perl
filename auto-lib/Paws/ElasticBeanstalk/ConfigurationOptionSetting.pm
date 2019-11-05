@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionSetting;
   has OptionName => (is => 'ro', isa => 'Str');
   has ResourceName => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

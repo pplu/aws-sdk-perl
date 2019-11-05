@@ -1,6 +1,7 @@
 package Paws::S3::OutputLocation;
   use Moose;
   has S3 => (is => 'ro', isa => 'Paws::S3::S3Location');
+
 1;
 
 ### main pod documentation begin ###

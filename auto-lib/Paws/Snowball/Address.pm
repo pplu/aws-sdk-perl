@@ -14,6 +14,7 @@ package Paws::Snowball::Address;
   has Street1 => (is => 'ro', isa => 'Str');
   has Street2 => (is => 'ro', isa => 'Str');
   has Street3 => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

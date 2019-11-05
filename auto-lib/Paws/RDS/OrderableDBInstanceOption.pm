@@ -23,6 +23,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has SupportsStorageAutoscaling => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

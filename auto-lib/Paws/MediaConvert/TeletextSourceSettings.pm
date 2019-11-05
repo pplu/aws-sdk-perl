@@ -1,6 +1,7 @@
 package Paws::MediaConvert::TeletextSourceSettings;
   use Moose;
   has PageNumber => (is => 'ro', isa => 'Str', request_name => 'pageNumber', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

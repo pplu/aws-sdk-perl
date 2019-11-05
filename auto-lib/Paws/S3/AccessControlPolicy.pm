@@ -1,7 +1,8 @@
 package Paws::S3::AccessControlPolicy;
   use Moose;
-  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', request_name => 'Grant', request_name => 'AccessControlList', traits => ['NameInRequest','NameInRequest']);
+  has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', request_name => 'AccessControlList', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Inspector::TimestampRange;
   use Moose;
   has BeginDate => (is => 'ro', isa => 'Str', request_name => 'beginDate', traits => ['NameInRequest']);
   has EndDate => (is => 'ro', isa => 'Str', request_name => 'endDate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

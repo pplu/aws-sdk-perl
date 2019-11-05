@@ -5,6 +5,7 @@ package Paws::CodePipeline::PipelineContext;
   has PipelineExecutionId => (is => 'ro', isa => 'Str', request_name => 'pipelineExecutionId', traits => ['NameInRequest']);
   has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Paws::CodePipeline::StageContext', request_name => 'stage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

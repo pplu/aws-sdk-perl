@@ -2,6 +2,7 @@ package Paws::EMR::EbsBlockDeviceConfig;
   use Moose;
   has VolumeSpecification => (is => 'ro', isa => 'Paws::EMR::VolumeSpecification', required => 1);
   has VolumesPerInstance => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

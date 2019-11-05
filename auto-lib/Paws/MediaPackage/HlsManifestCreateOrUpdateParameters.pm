@@ -9,6 +9,7 @@ package Paws::MediaPackage::HlsManifestCreateOrUpdateParameters;
   has PlaylistType => (is => 'ro', isa => 'Str', request_name => 'playlistType', traits => ['NameInRequest']);
   has PlaylistWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'playlistWindowSeconds', traits => ['NameInRequest']);
   has ProgramDateTimeIntervalSeconds => (is => 'ro', isa => 'Int', request_name => 'programDateTimeIntervalSeconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

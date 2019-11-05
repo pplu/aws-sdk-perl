@@ -6,6 +6,7 @@ package Paws::ServiceCatalog::ProvisioningArtifactParameter;
   has ParameterConstraints => (is => 'ro', isa => 'Paws::ServiceCatalog::ParameterConstraints');
   has ParameterKey => (is => 'ro', isa => 'Str');
   has ParameterType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

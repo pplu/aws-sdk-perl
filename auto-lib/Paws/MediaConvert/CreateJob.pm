@@ -62,7 +62,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'My__string' => {
                 AudioSelectorNames => [
                   'My__stringMin1', ...    # min: 1; OPTIONAL
+<<<<<<< HEAD
                 ],                         # OPTIONAL
+=======
+                ],
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
               },
             },    # OPTIONAL
             AudioSelectors => {
@@ -642,8 +647,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 CaptionDescriptions => [
                   {
                     CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+<<<<<<< HEAD
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                     DestinationSettings => {
                       BurninDestinationSettings => {
                         Alignment =>

@@ -4,6 +4,7 @@ package Paws::ES::EBSOptions;
   has Iops => (is => 'ro', isa => 'Int');
   has VolumeSize => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

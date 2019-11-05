@@ -98,11 +98,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
+<<<<<<< HEAD
 [HTTPS and TLS listeners] The default certificate for the listener. You
 must provide exactly one certificate. Set C<CertificateArn> to the
 certificate ARN but do not set C<IsDefault>.
 
 To create a certificate list for the listener, use
+=======
+[HTTPS listeners] The default SSL server certificate. You must provide
+exactly one certificate. To create a certificate list, use
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 AddListenerCertificates.
 
 
@@ -110,13 +115,14 @@ AddListenerCertificates.
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions for the default rule. The rule must include one forward
-action or one or more fixed-response actions.
+action.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application
 Load Balancer. The protocol of the target group must be TCP, TLS, UDP,
 or TCP_UDP for a Network Load Balancer.
 
+<<<<<<< HEAD
 [HTTPS listeners] If the action type is C<authenticate-oidc>, you
 authenticate users through an identity provider that is OpenID Connect
 (OIDC) compliant.
@@ -129,6 +135,14 @@ redirect specified client requests from one URL to another.
 
 [Application Load Balancer] If the action type is C<fixed-response>,
 you drop specified client requests and return a custom HTTP response.
+=======
+If the action type is C<authenticate-oidc>, you can use an identity
+provider that is OpenID Connect (OIDC) compliant to authenticate users
+as they access your application.
+
+If the action type is C<authenticate-cognito>, you can use Amazon
+Cognito to authenticate users as they access your application.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 

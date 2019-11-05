@@ -3,6 +3,7 @@ package Paws::DeviceFarm::CPU;
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has Clock => (is => 'ro', isa => 'Num', request_name => 'clock', traits => ['NameInRequest']);
   has Frequency => (is => 'ro', isa => 'Str', request_name => 'frequency', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

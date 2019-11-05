@@ -2,6 +2,7 @@ package Paws::Lightsail::PasswordData;
   use Moose;
   has Ciphertext => (is => 'ro', isa => 'Str', request_name => 'ciphertext', traits => ['NameInRequest']);
   has KeyPairName => (is => 'ro', isa => 'Str', request_name => 'keyPairName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

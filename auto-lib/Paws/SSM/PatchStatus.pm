@@ -3,6 +3,7 @@ package Paws::SSM::PatchStatus;
   has ApprovalDate => (is => 'ro', isa => 'Str');
   has ComplianceLevel => (is => 'ro', isa => 'Str');
   has DeploymentStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

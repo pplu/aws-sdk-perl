@@ -3,6 +3,7 @@ package Paws::CloudFront::GeoRestriction;
   has Items => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Location', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
   has RestrictionType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

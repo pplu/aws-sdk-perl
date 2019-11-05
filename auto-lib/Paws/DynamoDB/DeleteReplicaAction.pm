@@ -1,6 +1,7 @@
 package Paws::DynamoDB::DeleteReplicaAction;
   use Moose;
   has RegionName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

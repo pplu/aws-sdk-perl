@@ -3,6 +3,7 @@ package Paws::MQ::UpdateUserInput;
   has ConsoleAccess => (is => 'ro', isa => 'Bool', request_name => 'consoleAccess', traits => ['NameInRequest']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

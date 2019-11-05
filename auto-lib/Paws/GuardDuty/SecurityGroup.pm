@@ -2,6 +2,7 @@ package Paws::GuardDuty::SecurityGroup;
   use Moose;
   has GroupId => (is => 'ro', isa => 'Str', request_name => 'groupId', traits => ['NameInRequest']);
   has GroupName => (is => 'ro', isa => 'Str', request_name => 'groupName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

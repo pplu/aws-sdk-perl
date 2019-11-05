@@ -2,6 +2,7 @@ package Paws::RDS::DBSnapshotAttribute;
   use Moose;
   has AttributeName => (is => 'ro', isa => 'Str');
   has AttributeValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'AttributeValue', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,17 @@
 package Paws::MediaConvert::Rectangle;
   use Moose;
+<<<<<<< HEAD
   has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest']);
   has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest']);
   has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest']);
   has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest']);
+=======
+  has Height => (is => 'ro', isa => 'Int', request_name => 'height', traits => ['NameInRequest'], required => 1);
+  has Width => (is => 'ro', isa => 'Int', request_name => 'width', traits => ['NameInRequest'], required => 1);
+  has X => (is => 'ro', isa => 'Int', request_name => 'x', traits => ['NameInRequest'], required => 1);
+  has Y => (is => 'ro', isa => 'Int', request_name => 'y', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

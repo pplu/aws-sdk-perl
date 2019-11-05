@@ -5,7 +5,12 @@ package Paws::MediaConvert::OutputGroupSettings;
   has FileGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileGroupSettings', request_name => 'fileGroupSettings', traits => ['NameInRequest']);
   has HlsGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsGroupSettings', request_name => 'hlsGroupSettings', traits => ['NameInRequest']);
   has MsSmoothGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::MsSmoothGroupSettings', request_name => 'msSmoothGroupSettings', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+=======
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

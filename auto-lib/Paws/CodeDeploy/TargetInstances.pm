@@ -3,6 +3,7 @@ package Paws::CodeDeploy::TargetInstances;
   has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'autoScalingGroups', traits => ['NameInRequest']);
   has Ec2TagSet => (is => 'ro', isa => 'Paws::CodeDeploy::EC2TagSet', request_name => 'ec2TagSet', traits => ['NameInRequest']);
   has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', request_name => 'tagFilters', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

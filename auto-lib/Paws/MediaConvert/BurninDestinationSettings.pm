@@ -17,6 +17,7 @@ package Paws::MediaConvert::BurninDestinationSettings;
   has TeletextSpacing => (is => 'ro', isa => 'Str', request_name => 'teletextSpacing', traits => ['NameInRequest']);
   has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
   has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

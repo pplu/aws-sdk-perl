@@ -6,6 +6,7 @@ package Paws::CognitoIdp::NotifyConfigurationType;
   has NoActionEmail => (is => 'ro', isa => 'Paws::CognitoIdp::NotifyEmailType');
   has ReplyTo => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

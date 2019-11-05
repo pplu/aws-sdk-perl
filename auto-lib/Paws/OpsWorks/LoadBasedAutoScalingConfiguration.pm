@@ -4,6 +4,7 @@ package Paws::OpsWorks::LoadBasedAutoScalingConfiguration;
   has Enable => (is => 'ro', isa => 'Bool');
   has LayerId => (is => 'ro', isa => 'Str');
   has UpScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
+
 1;
 
 ### main pod documentation begin ###

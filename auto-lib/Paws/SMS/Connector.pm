@@ -10,6 +10,7 @@ package Paws::SMS::Connector;
   has VmManagerId => (is => 'ro', isa => 'Str', request_name => 'vmManagerId', traits => ['NameInRequest']);
   has VmManagerName => (is => 'ro', isa => 'Str', request_name => 'vmManagerName', traits => ['NameInRequest']);
   has VmManagerType => (is => 'ro', isa => 'Str', request_name => 'vmManagerType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchGetLinkAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::AttributeKeyAndValue]');
+
 1;
 
 ### main pod documentation begin ###

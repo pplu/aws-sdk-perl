@@ -5,6 +5,7 @@ package Paws::CodePipeline::ActionState;
   has EntityUrl => (is => 'ro', isa => 'Str', request_name => 'entityUrl', traits => ['NameInRequest']);
   has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution', request_name => 'latestExecution', traits => ['NameInRequest']);
   has RevisionUrl => (is => 'ro', isa => 'Str', request_name => 'revisionUrl', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

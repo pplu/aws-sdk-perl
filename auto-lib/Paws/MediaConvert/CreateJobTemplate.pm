@@ -624,8 +624,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 CaptionDescriptions => [
                   {
                     CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+<<<<<<< HEAD
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
                     DestinationSettings => {
                       BurninDestinationSettings => {
                         Alignment =>
@@ -1165,7 +1168,146 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },
               ...
+<<<<<<< HEAD
             ],        # OPTIONAL
+=======
+            ],
+            CustomName => 'My__string',
+            Name       => 'My__string',
+          },
+          ...
+        ],
+        AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
+        AvailBlanking => {
+          AvailBlankingImage =>
+            'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14; OPTIONAL
+        },    # OPTIONAL
+        Inputs => [
+          {
+            AudioSelectorGroups => {
+              'My__string' => {
+                AudioSelectorNames => [
+                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                ],
+
+              },
+            },    # OPTIONAL
+            AudioSelectors => {
+              'My__string' => {
+                CustomLanguageCode =>
+                  'My__stringMin3Max3PatternAZaZ3',   # min: 3, max: 3; OPTIONAL
+                DefaultSelection =>
+                  'DEFAULT',    # values: DEFAULT, NOT_DEFAULT; OPTIONAL
+                ExternalAudioFileInput =>
+'My__stringPatternS3MM2VVMMPPEEGGAAVVIIMMPP4FFLLVVMMPPTTMMPPGGMM4VVTTRRPPFF4VVMM2TTSSTTSS264HH264MMKKVVMMOOVVMMTTSSMM2TTWWMMVVAASSFFVVOOBB3GGPP3GGPPPPMMXXFFDDIIVVXXXXVVIIDDRRAAWWDDVVGGXXFFMM1VV3GG2VVMMFFMM3UU8LLCCHHGGXXFFMMPPEEGG2MMXXFFMMPPEEGG2MMXXFFHHDDWWAAVVYY4MMAAAACCAAIIFFFFMMPP2AACC3EECC3DDTTSSEE'
+                ,               # OPTIONAL
+                LanguageCode => 'ENG'
+                , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
+                Offset => 1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                Pids   => [
+                  1, ...        # min: 1, max: 2147483647; OPTIONAL
+                ],              # OPTIONAL
+                ProgramSelection => 1,    # max: 8; OPTIONAL
+                RemixSettings    => {
+                  ChannelMapping => {
+                    OutputChannels => [
+                      {
+                        InputChannels => [
+                          1, ...          # min: -60, max: 6
+                        ],
+
+                      },
+                      ...
+                    ],
+
+                  },
+                  ChannelsIn  => 1,       # min: 1, max: 16
+                  ChannelsOut => 1,       # min: 1, max: 8; OPTIONAL
+
+                },    # OPTIONAL
+                SelectorType =>
+                  'PID',    # values: PID, TRACK, LANGUAGE_CODE; OPTIONAL
+                Tracks => [
+                  1, ...    # min: 1, max: 2147483647; OPTIONAL
+                ],          # OPTIONAL
+              },
+            },    # OPTIONAL
+            CaptionSelectors => {
+              'My__string' => {
+                SourceSettings => {
+                  SourceType => 'ANCILLARY'
+                  , # values: ANCILLARY, DVB_SUB, EMBEDDED, SCC, TTML, STL, SRT, TELETEXT, NULL_SOURCE
+                  AncillarySourceSettings => {
+                    SourceAncillaryChannelNumber =>
+                      1,    # min: 1, max: 4; OPTIONAL
+                  },    # OPTIONAL
+                  DvbSubSourceSettings => {
+                    Pid => 1,    # min: 1, max: 2147483647; OPTIONAL
+                  },    # OPTIONAL
+                  EmbeddedSourceSettings => {
+                    Convert608To708 =>
+                      'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
+                    Source608ChannelNumber => 1,    # min: 1, max: 4; OPTIONAL
+                    Source608TrackNumber   => 1,    # min: 1, max: 1; OPTIONAL
+                  },    # OPTIONAL
+                  FileSourceSettings => {
+                    SourceFile =>
+'My__stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTSmiSMI'
+                    ,    # min: 14
+                    Convert608To708 =>
+                      'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
+                    TimeDelta =>
+                      1,    # min: -2147483648, max: 2147483647; OPTIONAL
+                  },    # OPTIONAL
+                  TeletextSourceSettings => {
+                    PageNumber => 'My__stringMin3Max3Pattern1809aFAF09aEAE'
+                    ,    # min: 3, max: 3; OPTIONAL
+                  },    # OPTIONAL
+                },
+                CustomLanguageCode =>
+                  'My__stringMin3Max3PatternAZaZ3',   # min: 3, max: 3; OPTIONAL
+                LanguageCode => 'ENG'
+                , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
+              },
+            },    # OPTIONAL
+            DeblockFilter => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
+            DenoiseFilter => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
+            FilterEnable  => 'AUTO',    # values: AUTO, DISABLE, FORCE; OPTIONAL
+            FilterStrength => 1,        # min: -5, max: 5; OPTIONAL
+            InputClippings => [
+              {
+                EndTimecode => 'My__stringPattern010920405090509092', # OPTIONAL
+                StartTimecode =>
+                  'My__stringPattern010920405090509092',              # OPTIONAL
+              },
+              ...
+            ],                                                        # OPTIONAL
+            ProgramNumber => 1,    # min: 1, max: 2147483647; OPTIONAL
+            PsiControl => 'IGNORE_PSI',  # values: IGNORE_PSI, USE_PSI; OPTIONAL
+            TimecodeSource => 'EMBEDDED'
+            ,    # values: EMBEDDED, ZEROBASED, SPECIFIEDSTART; OPTIONAL
+            VideoSelector => {
+              ColorSpace => 'FOLLOW'
+              ,    # values: FOLLOW, REC_601, REC_709, HDR10, HLG_2020; OPTIONAL
+              ColorSpaceUsage => 'FORCE',    # values: FORCE, FALLBACK; OPTIONAL
+              Hdr10Metadata   => {
+                MaxContentLightLevel      => 1,    # max: 65535; OPTIONAL
+                MaxFrameAverageLightLevel => 1,    # max: 65535; OPTIONAL
+                BluePrimaryX              => 1,    # max: 50000; OPTIONAL
+                BluePrimaryY              => 1,    # max: 50000; OPTIONAL
+                GreenPrimaryX             => 1,    # max: 50000; OPTIONAL
+                GreenPrimaryY             => 1,    # max: 50000; OPTIONAL
+                MaxLuminance              => 1,    # max: 2147483647; OPTIONAL
+                MinLuminance              => 1,    # max: 2147483647; OPTIONAL
+                RedPrimaryX               => 1,    # max: 50000; OPTIONAL
+                RedPrimaryY               => 1,    # max: 50000; OPTIONAL
+                WhitePointX               => 1,    # max: 50000; OPTIONAL
+                WhitePointY               => 1,    # max: 50000; OPTIONAL
+              },    # OPTIONAL
+              Pid           => 1,  # min: 1, max: 2147483647; OPTIONAL
+              ProgramNumber => 1,  # min: -2147483648, max: 2147483647; OPTIONAL
+            },    # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
           },
           ...
         ],            # OPTIONAL
@@ -1179,8 +1321,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TimedMetadataInsertion => {
           Id3Insertions => [
             {
+<<<<<<< HEAD
               Id3      => 'My__stringPatternAZaZ0902',              # OPTIONAL
               Timecode => 'My__stringPattern010920405090509092',    # OPTIONAL
+=======
+              Id3      => 'My__stringPatternAZaZ0902',
+              Timecode => 'My__stringPattern010920405090509092',    # OPTIONAL
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
             },
             ...
           ],                                                        # OPTIONAL

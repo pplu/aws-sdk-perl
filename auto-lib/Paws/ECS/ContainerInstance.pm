@@ -16,6 +16,7 @@ package Paws::ECS::ContainerInstance;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
   has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', request_name => 'versionInfo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +57,7 @@ registered with a cluster.
 
   This parameter returns C<true> if the agent is connected to Amazon ECS.
 Registered instances with an agent that may be unhealthy or stopped
-return C<false>. Only instances connected to an agent can accept
+return C<false>. Instances without a connected agent can't accept
 placement requests.
 
 
@@ -68,8 +69,12 @@ requested, this value is C<NULL>.
 
 =head2 Attachments => ArrayRef[L<Paws::ECS::Attachment>]
 
+<<<<<<< HEAD
   The resources attached to a container instance, such as elastic network
 interfaces.
+=======
+  The Elastic Network Interfaces associated with the container instance.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
@@ -82,7 +87,7 @@ PutAttributes operation.
 =head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instance. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the Region of the
+contains the C<arn:aws:ecs> namespace, followed by the region of the
 container instance, the AWS account ID of the container instance owner,
 the C<container-instance> namespace, and then the container instance
 ID. For example,

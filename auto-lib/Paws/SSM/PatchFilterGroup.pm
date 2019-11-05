@@ -1,6 +1,7 @@
 package Paws::SSM::PatchFilterGroup;
   use Moose;
   has PatchFilters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::PatchFilter]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::IoT::ThingTypeDefinition;
   has ThingTypeMetadata => (is => 'ro', isa => 'Paws::IoT::ThingTypeMetadata', request_name => 'thingTypeMetadata', traits => ['NameInRequest']);
   has ThingTypeName => (is => 'ro', isa => 'Str', request_name => 'thingTypeName', traits => ['NameInRequest']);
   has ThingTypeProperties => (is => 'ro', isa => 'Paws::IoT::ThingTypeProperties', request_name => 'thingTypeProperties', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

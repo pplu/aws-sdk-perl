@@ -3,6 +3,7 @@ package Paws::IoT::KinesisAction;
   has PartitionKey => (is => 'ro', isa => 'Str', request_name => 'partitionKey', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

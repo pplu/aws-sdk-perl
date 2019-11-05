@@ -8,6 +8,7 @@ package Paws::WorkDocs::DocumentMetadata;
   has ModifiedTimestamp => (is => 'ro', isa => 'Str');
   has ParentFolderId => (is => 'ro', isa => 'Str');
   has ResourceState => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

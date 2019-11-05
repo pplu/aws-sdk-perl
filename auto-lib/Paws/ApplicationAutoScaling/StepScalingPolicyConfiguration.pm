@@ -5,6 +5,7 @@ package Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration;
   has MetricAggregationType => (is => 'ro', isa => 'Str');
   has MinAdjustmentMagnitude => (is => 'ro', isa => 'Int');
   has StepAdjustments => (is => 'ro', isa => 'ArrayRef[Paws::ApplicationAutoScaling::StepAdjustment]');
+
 1;
 
 ### main pod documentation begin ###

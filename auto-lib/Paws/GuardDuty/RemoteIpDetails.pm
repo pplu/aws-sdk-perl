@@ -5,6 +5,7 @@ package Paws::GuardDuty::RemoteIpDetails;
   has GeoLocation => (is => 'ro', isa => 'Paws::GuardDuty::GeoLocation', request_name => 'geoLocation', traits => ['NameInRequest']);
   has IpAddressV4 => (is => 'ro', isa => 'Str', request_name => 'ipAddressV4', traits => ['NameInRequest']);
   has Organization => (is => 'ro', isa => 'Paws::GuardDuty::Organization', request_name => 'organization', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

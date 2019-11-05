@@ -8,6 +8,7 @@ package Paws::MTurk::ReviewActionDetail;
   has Status => (is => 'ro', isa => 'Str');
   has TargetId => (is => 'ro', isa => 'Str');
   has TargetType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

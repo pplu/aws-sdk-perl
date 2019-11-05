@@ -3,6 +3,7 @@ package Paws::CodeCommit::Target;
   has DestinationReference => (is => 'ro', isa => 'Str', request_name => 'destinationReference', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest'], required => 1);
   has SourceReference => (is => 'ro', isa => 'Str', request_name => 'sourceReference', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

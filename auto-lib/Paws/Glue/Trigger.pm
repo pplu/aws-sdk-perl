@@ -8,7 +8,11 @@ package Paws::Glue::Trigger;
   has Schedule => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has WorkflowName => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MediaLive::InputLossBehavior;
   has InputLossImageSlate => (is => 'ro', isa => 'Paws::MediaLive::InputLocation', request_name => 'inputLossImageSlate', traits => ['NameInRequest']);
   has InputLossImageType => (is => 'ro', isa => 'Str', request_name => 'inputLossImageType', traits => ['NameInRequest']);
   has RepeatFrameMsec => (is => 'ro', isa => 'Int', request_name => 'repeatFrameMsec', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::MTurk::NotifyWorkersFailureStatus;
   has NotifyWorkersFailureCode => (is => 'ro', isa => 'Str');
   has NotifyWorkersFailureMessage => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

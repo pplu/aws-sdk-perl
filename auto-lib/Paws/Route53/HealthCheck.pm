@@ -6,6 +6,7 @@ package Paws::Route53::HealthCheck;
   has HealthCheckVersion => (is => 'ro', isa => 'Int', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has LinkedService => (is => 'ro', isa => 'Paws::Route53::LinkedService');
+
 1;
 
 ### main pod documentation begin ###

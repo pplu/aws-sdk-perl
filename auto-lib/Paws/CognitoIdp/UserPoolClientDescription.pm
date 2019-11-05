@@ -3,6 +3,7 @@ package Paws::CognitoIdp::UserPoolClientDescription;
   has ClientId => (is => 'ro', isa => 'Str');
   has ClientName => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::MQ::ListConfigurationRevisionsOutput;
   has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has Revisions => (is => 'ro', isa => 'ArrayRef[Paws::MQ::ConfigurationRevision]', request_name => 'revisions', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

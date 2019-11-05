@@ -1,6 +1,7 @@
 package Paws::Glue::ExecutionProperty;
   use Moose;
   has MaxConcurrentRuns => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

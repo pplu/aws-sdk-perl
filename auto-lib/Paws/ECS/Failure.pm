@@ -2,6 +2,7 @@ package Paws::ECS::Failure;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

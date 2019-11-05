@@ -3,6 +3,7 @@ package Paws::IoT::PolicyVersion;
   has CreateDate => (is => 'ro', isa => 'Str', request_name => 'createDate', traits => ['NameInRequest']);
   has IsDefaultVersion => (is => 'ro', isa => 'Bool', request_name => 'isDefaultVersion', traits => ['NameInRequest']);
   has VersionId => (is => 'ro', isa => 'Str', request_name => 'versionId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

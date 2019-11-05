@@ -4,6 +4,7 @@ package Paws::SSM::InstanceAssociation;
   has AssociationVersion => (is => 'ro', isa => 'Str');
   has Content => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

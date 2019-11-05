@@ -2,6 +2,7 @@ package Paws::S3::InventoryEncryption;
   use Moose;
   has SSEKMS => (is => 'ro', isa => 'Paws::S3::SSEKMS', request_name => 'SSE-KMS', traits => ['NameInRequest']);
   has SSES3 => (is => 'ro', isa => 'Paws::S3::SSES3', request_name => 'SSE-S3', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::DynamoDB::ContinuousBackupsDescription;
   use Moose;
   has ContinuousBackupsStatus => (is => 'ro', isa => 'Str', required => 1);
   has PointInTimeRecoveryDescription => (is => 'ro', isa => 'Paws::DynamoDB::PointInTimeRecoveryDescription');
+
 1;
 
 ### main pod documentation begin ###

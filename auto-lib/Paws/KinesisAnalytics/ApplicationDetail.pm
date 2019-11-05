@@ -12,6 +12,7 @@ package Paws::KinesisAnalytics::ApplicationDetail;
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
   has OutputDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::OutputDescription]');
   has ReferenceDataSourceDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalytics::ReferenceDataSourceDescription]');
+
 1;
 
 ### main pod documentation begin ###

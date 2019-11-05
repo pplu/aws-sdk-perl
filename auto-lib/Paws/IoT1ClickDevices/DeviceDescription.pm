@@ -7,6 +7,7 @@ package Paws::IoT1ClickDevices::DeviceDescription;
   has RemainingLife => (is => 'ro', isa => 'Num', request_name => 'remainingLife', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::IoT1ClickDevices::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::IoT::JobExecutionSummary;
   has QueuedAt => (is => 'ro', isa => 'Str', request_name => 'queuedAt', traits => ['NameInRequest']);
   has StartedAt => (is => 'ro', isa => 'Str', request_name => 'startedAt', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

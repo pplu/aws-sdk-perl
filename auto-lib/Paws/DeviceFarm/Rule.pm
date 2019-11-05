@@ -3,6 +3,7 @@ package Paws::DeviceFarm::Rule;
   has Attribute => (is => 'ro', isa => 'Str', request_name => 'attribute', traits => ['NameInRequest']);
   has Operator => (is => 'ro', isa => 'Str', request_name => 'operator', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

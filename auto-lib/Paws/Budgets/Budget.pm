@@ -10,6 +10,7 @@ package Paws::Budgets::Budget;
   has PlannedBudgetLimits => (is => 'ro', isa => 'Paws::Budgets::PlannedBudgetLimits');
   has TimePeriod => (is => 'ro', isa => 'Paws::Budgets::TimePeriod');
   has TimeUnit => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

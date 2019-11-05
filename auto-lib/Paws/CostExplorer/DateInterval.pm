@@ -2,6 +2,7 @@ package Paws::CostExplorer::DateInterval;
   use Moose;
   has End => (is => 'ro', isa => 'Str', required => 1);
   has Start => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

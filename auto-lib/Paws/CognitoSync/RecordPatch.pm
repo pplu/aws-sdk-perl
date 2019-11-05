@@ -5,6 +5,7 @@ package Paws::CognitoSync::RecordPatch;
   has Op => (is => 'ro', isa => 'Str', required => 1);
   has SyncCount => (is => 'ro', isa => 'Int', required => 1);
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

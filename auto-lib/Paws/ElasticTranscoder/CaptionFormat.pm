@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::CaptionFormat;
   has Encryption => (is => 'ro', isa => 'Paws::ElasticTranscoder::Encryption');
   has Format => (is => 'ro', isa => 'Str');
   has Pattern => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

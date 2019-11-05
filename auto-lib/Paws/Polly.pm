@@ -29,29 +29,14 @@ package Paws::Polly;
     my $call_object = $self->new_with_coercions('Paws::Polly::GetLexicon', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetSpeechSynthesisTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Polly::GetSpeechSynthesisTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub ListLexicons {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Polly::ListLexicons', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListSpeechSynthesisTasks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Polly::ListSpeechSynthesisTasks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub PutLexicon {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Polly::PutLexicon', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StartSpeechSynthesisTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Polly::StartSpeechSynthesisTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SynthesizeSpeech {
@@ -131,7 +116,7 @@ package Paws::Polly;
   }
 
 
-  sub operations { qw/DeleteLexicon DescribeVoices GetLexicon GetSpeechSynthesisTask ListLexicons ListSpeechSynthesisTasks PutLexicon StartSpeechSynthesisTask SynthesizeSpeech / }
+  sub operations { qw/DeleteLexicon DescribeVoices GetLexicon ListLexicons PutLexicon SynthesizeSpeech / }
 
 1;
 
@@ -251,25 +236,6 @@ AWS Region. For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
-=head2 GetSpeechSynthesisTask
-
-=over
-
-=item TaskId => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::Polly::GetSpeechSynthesisTask>
-
-Returns: a L<Paws::Polly::GetSpeechSynthesisTaskOutput> instance
-
-Retrieves a specific SpeechSynthesisTask object based on its TaskID.
-This object contains information about the given speech synthesis task,
-including the status of the task, and a link to the S3 bucket
-containing the output of the task.
-
-
 =head2 ListLexicons
 
 =over
@@ -286,28 +252,6 @@ Returns: a L<Paws::Polly::ListLexiconsOutput> instance
 Returns a list of pronunciation lexicons stored in an AWS Region. For
 more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
-
-
-=head2 ListSpeechSynthesisTasks
-
-=over
-
-=item [MaxResults => Int]
-
-=item [NextToken => Str]
-
-=item [Status => Str]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::Polly::ListSpeechSynthesisTasks>
-
-Returns: a L<Paws::Polly::ListSpeechSynthesisTasksOutput> instance
-
-Returns a list of SpeechSynthesisTask objects ordered by their creation
-date. This operation can filter the tasks by their status, for example,
-allowing users to list only tasks that are completed.
 
 
 =head2 PutLexicon
@@ -335,6 +279,7 @@ For more information, see Managing Lexicons
 (http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
+<<<<<<< HEAD
 =head2 StartSpeechSynthesisTask
 
 =over
@@ -378,6 +323,8 @@ SpeechSynthesisTask object, which will include an identifier of this
 task as well as the current status.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 SynthesizeSpeech
 
 =over

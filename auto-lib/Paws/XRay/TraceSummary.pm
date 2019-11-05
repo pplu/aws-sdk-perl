@@ -20,6 +20,7 @@ package Paws::XRay::TraceSummary;
   has Revision => (is => 'ro', isa => 'Int');
   has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::XRay::TraceUser]');
+
 1;
 
 ### main pod documentation begin ###

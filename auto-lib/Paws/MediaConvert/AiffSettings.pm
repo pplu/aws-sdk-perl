@@ -3,6 +3,7 @@ package Paws::MediaConvert::AiffSettings;
   has BitDepth => (is => 'ro', isa => 'Int', request_name => 'bitDepth', traits => ['NameInRequest']);
   has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

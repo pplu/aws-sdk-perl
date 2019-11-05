@@ -27,7 +27,11 @@ package Paws::ECS::Service;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has TaskSets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskSet]', request_name => 'taskSets', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###
@@ -150,7 +154,7 @@ interface, not an Amazon EC2 instance.
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
   The VPC subnet and security group configuration for tasks that receive
-their own elastic network interface by using the C<awsvpc> networking
+their own Elastic Network Interface by using the C<awsvpc> networking
 mode.
 
 
@@ -233,7 +237,7 @@ Fargate tasks do not support the C<DAEMON> scheduling strategy.
 =head2 ServiceArn => Str
 
   The ARN that identifies the service. The ARN contains the
-C<arn:aws:ecs> namespace, followed by the Region of the service, the
+C<arn:aws:ecs> namespace, followed by the region of the service, the
 AWS account ID of the service owner, the C<service> namespace, and then
 the service name. For example,
 C<arn:aws:ecs:region:012345678910:service/my-service>.
@@ -242,9 +246,15 @@ C<arn:aws:ecs:region:012345678910:service/my-service>.
 =head2 ServiceName => Str
 
   The name of your service. Up to 255 letters (uppercase and lowercase),
+<<<<<<< HEAD
 numbers, and hyphens are allowed. Service names must be unique within a
 cluster, but you can have similarly named services in multiple clusters
 within a Region or across multiple Regions.
+=======
+numbers, hyphens, and underscores are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a region or across multiple regions.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]

@@ -4,6 +4,7 @@ package Paws::MediaConvert::WavSettings;
   has Channels => (is => 'ro', isa => 'Int', request_name => 'channels', traits => ['NameInRequest']);
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::CloudSearch::DoubleArrayOptions;
   has ReturnEnabled => (is => 'ro', isa => 'Bool');
   has SearchEnabled => (is => 'ro', isa => 'Bool');
   has SourceFields => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

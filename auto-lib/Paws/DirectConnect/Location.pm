@@ -3,7 +3,11 @@ package Paws::DirectConnect::Location;
   has AvailablePortSpeeds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availablePortSpeeds', traits => ['NameInRequest']);
   has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
   has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -2,9 +2,14 @@
 package Paws::S3::PutBucketLogging;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+<<<<<<< HEAD
   has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+=======
+  has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', traits => ['ParamInBody'], required => 1);
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+
 
   use MooseX::ClassAttribute;
 
@@ -14,6 +19,7 @@ package Paws::S3::PutBucketLogging;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

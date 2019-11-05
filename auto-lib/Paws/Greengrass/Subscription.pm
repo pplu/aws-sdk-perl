@@ -4,6 +4,7 @@ package Paws::Greengrass::Subscription;
   has Source => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
   has Target => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

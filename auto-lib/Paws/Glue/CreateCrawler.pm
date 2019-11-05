@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $CreateCrawlerResponse = $glue->CreateCrawler(
+<<<<<<< HEAD
       Name    => 'MyNameString',
       Role    => 'MyRole',
       Targets => {
@@ -53,23 +54,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                                     # OPTIONAL
         DynamoDBTargets => [ { Path => 'MyPath', }, ... ],    # OPTIONAL
+=======
+      DatabaseName => 'MyDatabaseName',
+      Name         => 'MyNameString',
+      Role         => 'MyRole',
+      Targets      => {
+        DynamoDBTargets => [
+          {
+            Path => 'MyPath',    # OPTIONAL
+          },
+          ...
+        ],                       # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
         JdbcTargets => [
           {
-            ConnectionName => 'MyConnectionName',             # OPTIONAL
-            Exclusions     => [ 'MyPath', ... ],              # OPTIONAL
-            Path           => 'MyPath',
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [ 'MyPath', ... ],                  # OPTIONAL
-            Path => 'MyPath',
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
       },
       Classifiers => [
+<<<<<<< HEAD
         'MyNameString', ...                                   # min: 1, max: 255
       ],                                                      # OPTIONAL
       Configuration => 'MyCrawlerConfiguration',              # OPTIONAL
@@ -78,6 +96,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DatabaseName       => 'MyDatabaseName',                 # OPTIONAL
       Description        => 'MyDescriptionString',            # OPTIONAL
       Schedule           => 'MyCronExpression',               # OPTIONAL
+=======
+        'MyNameString', ...                          # min: 1, max: 255
+      ],                                             # OPTIONAL
+      Configuration      => 'MyCrawlerConfiguration',    # OPTIONAL
+      Description        => 'MyDescriptionString',       # OPTIONAL
+      Schedule           => 'MyCronExpression',          # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL

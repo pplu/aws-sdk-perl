@@ -3,6 +3,7 @@ package Paws::WAF::XssMatchSet;
   has Name => (is => 'ro', isa => 'Str');
   has XssMatchSetId => (is => 'ro', isa => 'Str', required => 1);
   has XssMatchTuples => (is => 'ro', isa => 'ArrayRef[Paws::WAF::XssMatchTuple]', required => 1);
+
 1;
 
 ### main pod documentation begin ###

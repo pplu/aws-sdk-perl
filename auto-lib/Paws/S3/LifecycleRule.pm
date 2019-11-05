@@ -9,6 +9,7 @@ package Paws::S3::LifecycleRule;
   has Prefix => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has Transitions => (is => 'ro', isa => 'ArrayRef[Paws::S3::Transition]', request_name => 'Transition', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

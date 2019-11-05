@@ -16,6 +16,7 @@ package Paws::Lightsail::LoadBalancer;
   has SupportCode => (is => 'ro', isa => 'Str', request_name => 'supportCode', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TlsCertificateSummaries => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateSummary]', request_name => 'tlsCertificateSummaries', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

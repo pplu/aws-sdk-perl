@@ -1,6 +1,7 @@
 package Paws::ECR::DescribeImagesFilter;
   use Moose;
   has TagStatus => (is => 'ro', isa => 'Str', request_name => 'tagStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

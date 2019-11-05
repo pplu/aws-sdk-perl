@@ -18,6 +18,7 @@ package Paws::DynamoDB::TableDescription;
   has TableName => (is => 'ro', isa => 'Str');
   has TableSizeBytes => (is => 'ro', isa => 'Int');
   has TableStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

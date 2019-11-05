@@ -2,6 +2,7 @@ package Paws::CodeBuild::PhaseContext;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', request_name => 'message', traits => ['NameInRequest']);
   has StatusCode => (is => 'ro', isa => 'Str', request_name => 'statusCode', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

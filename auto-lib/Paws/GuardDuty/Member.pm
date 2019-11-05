@@ -7,6 +7,7 @@ package Paws::GuardDuty::Member;
   has MasterId => (is => 'ro', isa => 'Str', request_name => 'masterId', traits => ['NameInRequest'], required => 1);
   has RelationshipStatus => (is => 'ro', isa => 'Str', request_name => 'relationshipStatus', traits => ['NameInRequest'], required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

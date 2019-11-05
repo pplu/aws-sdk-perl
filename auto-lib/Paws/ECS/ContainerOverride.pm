@@ -6,7 +6,11 @@ package Paws::ECS::ContainerOverride;
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Int', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

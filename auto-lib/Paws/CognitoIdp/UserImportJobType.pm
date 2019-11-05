@@ -13,6 +13,7 @@ package Paws::CognitoIdp::UserImportJobType;
   has StartDate => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

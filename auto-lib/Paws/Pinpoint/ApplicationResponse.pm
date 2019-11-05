@@ -1,12 +1,18 @@
 
 package Paws::Pinpoint::ApplicationResponse;
   use Moose;
+<<<<<<< HEAD
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+  has Id => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

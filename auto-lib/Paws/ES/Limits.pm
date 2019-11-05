@@ -3,6 +3,7 @@ package Paws::ES::Limits;
   has AdditionalLimits => (is => 'ro', isa => 'ArrayRef[Paws::ES::AdditionalLimit]');
   has InstanceLimits => (is => 'ro', isa => 'Paws::ES::InstanceLimits');
   has StorageTypes => (is => 'ro', isa => 'ArrayRef[Paws::ES::StorageType]');
+
 1;
 
 ### main pod documentation begin ###

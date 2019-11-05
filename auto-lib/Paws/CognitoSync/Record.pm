@@ -6,6 +6,7 @@ package Paws::CognitoSync::Record;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has SyncCount => (is => 'ro', isa => 'Int');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

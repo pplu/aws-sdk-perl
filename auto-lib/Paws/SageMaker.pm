@@ -85,6 +85,7 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub CreateTransformJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::CreateTransformJob', @_);
@@ -105,6 +106,8 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteCodeRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DeleteEndpoint', @_);
@@ -210,6 +213,7 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub DescribeTransformJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::DescribeTransformJob', @_);
@@ -240,6 +244,8 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListCompilationJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub ListEndpointConfigs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListEndpointConfigs', @_);
@@ -305,6 +311,7 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTrainingJobsForHyperParameterTuningJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub ListTransformJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::ListTransformJobs', @_);
@@ -325,6 +332,8 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::Search', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub StartNotebookInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartNotebookInstance', @_);
@@ -355,6 +364,7 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTrainingJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub StopTransformJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StopTransformJob', @_);
@@ -365,6 +375,8 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateCodeRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub UpdateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::UpdateEndpoint', @_);
@@ -743,6 +755,7 @@ package Paws::SageMaker;
     my $result = $self->ListTrainingJobsForHyperParameterTuningJob(@_);
     my $next_result = $result;
 
+<<<<<<< HEAD
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->ListTrainingJobsForHyperParameterTuningJob(@_, NextToken => $next_result->NextToken);
@@ -831,6 +844,9 @@ package Paws::SageMaker;
 
 
   sub operations { qw/AddTags CreateAlgorithm CreateCodeRepository CreateCompilationJob CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateLabelingJob CreateModel CreateModelPackage CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob CreateTransformJob CreateWorkteam DeleteAlgorithm DeleteCodeRepository DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteModelPackage DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DeleteWorkteam DescribeAlgorithm DescribeCodeRepository DescribeCompilationJob DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeLabelingJob DescribeModel DescribeModelPackage DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeWorkteam GetSearchSuggestions ListAlgorithms ListCodeRepositories ListCompilationJobs ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListLabelingJobs ListLabelingJobsForWorkteam ListModelPackages ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListWorkteams RenderUiTemplate Search StartNotebookInstance StopCompilationJob StopHyperParameterTuningJob StopLabelingJob StopNotebookInstance StopTrainingJob StopTransformJob UpdateCodeRepository UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdateWorkteam / }
+=======
+  sub operations { qw/AddTags CreateEndpoint CreateEndpointConfig CreateHyperParameterTuningJob CreateModel CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePresignedNotebookInstanceUrl CreateTrainingJob DeleteEndpoint DeleteEndpointConfig DeleteModel DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeleteTags DescribeEndpoint DescribeEndpointConfig DescribeHyperParameterTuningJob DescribeModel DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribeTrainingJob ListEndpointConfigs ListEndpoints ListHyperParameterTuningJobs ListModels ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob StartNotebookInstance StopHyperParameterTuningJob StopNotebookInstance StopTrainingJob UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig / }
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 1;
 
@@ -1579,6 +1595,7 @@ For more information about Amazon SageMaker, see How It Works
 (https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 
 
+<<<<<<< HEAD
 =head2 CreateTransformJob
 
 =over
@@ -1716,6 +1733,8 @@ Returns: nothing
 Deletes the specified Git repository from your account.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 DeleteEndpoint
 
 =over
@@ -2096,6 +2115,7 @@ Returns: a L<Paws::SageMaker::DescribeTrainingJobResponse> instance
 Returns information about a training job.
 
 
+<<<<<<< HEAD
 =head2 DescribeTransformJob
 
 =over
@@ -2249,6 +2269,8 @@ information about a particular model compilation job you have created,
 use DescribeCompilationJob.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 ListEndpointConfigs
 
 =over
@@ -2645,6 +2667,7 @@ Gets a list of TrainingJobSummary objects that describe the training
 jobs that a hyperparameter tuning job launched.
 
 
+<<<<<<< HEAD
 =head2 ListTransformJobs
 
 =over
@@ -2758,6 +2781,8 @@ You can query against the following value types: numerical, text,
 Booleans, and timestamps.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 StartNotebookInstance
 
 =over
@@ -2821,9 +2846,9 @@ that the tuning job launched.
 
 All model artifacts output from the training jobs are stored in Amazon
 Simple Storage Service (Amazon S3). All data that the training jobs
-write to Amazon CloudWatch Logs are still available in CloudWatch.
-After the tuning job moves to the C<Stopped> state, it releases all
-reserved resources for the tuning job.
+write toAmazon CloudWatch Logs are still available in CloudWatch. After
+the tuning job moves to the C<Stopped> state, it releases all reserved
+resources for the tuning job.
 
 
 =head2 StopLabelingJob
@@ -2893,6 +2918,7 @@ the status of the job to C<Stopping>. After Amazon SageMaker stops the
 job, it sets the status to C<Stopped>.
 
 
+<<<<<<< HEAD
 =head2 StopTransformJob
 
 =over
@@ -2933,6 +2959,8 @@ Returns: a L<Paws::SageMaker::UpdateCodeRepositoryOutput> instance
 Updates the specified Git repository with the specified values.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 UpdateEndpoint
 
 =over

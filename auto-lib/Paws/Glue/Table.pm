@@ -16,6 +16,7 @@ package Paws::Glue::Table;
   has UpdateTime => (is => 'ro', isa => 'Str');
   has ViewExpandedText => (is => 'ro', isa => 'Str');
   has ViewOriginalText => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

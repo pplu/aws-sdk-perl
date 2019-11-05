@@ -2,6 +2,7 @@ package Paws::Health::EventAggregate;
   use Moose;
   has AggregateValue => (is => 'ro', isa => 'Str', request_name => 'aggregateValue', traits => ['NameInRequest']);
   has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

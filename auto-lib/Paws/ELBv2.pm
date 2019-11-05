@@ -729,7 +729,7 @@ Returns: a L<Paws::ELBv2::DeleteListenerOutput> instance
 Deletes the specified listener.
 
 Alternatively, your listener is deleted when you delete the load
-balancer to which it is attached, using DeleteLoadBalancer.
+balancer it is attached to using DeleteLoadBalancer.
 
 
 =head2 DeleteLoadBalancer
@@ -1316,6 +1316,11 @@ Returns: a L<Paws::ELBv2::SetIpAddressTypeOutput> instance
 Sets the type of IP addresses used by the subnets of the specified
 Application Load Balancer or Network Load Balancer.
 
+<<<<<<< HEAD
+=======
+Note that Network Load Balancers must use C<ipv4>.
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head2 SetRulePriorities
 
@@ -1356,7 +1361,8 @@ Associates the specified security groups with the specified Application
 Load Balancer. The specified security groups override the previously
 associated security groups.
 
-You can't specify a security group for a Network Load Balancer.
+Note that you can't specify a security group for a Network Load
+Balancer.
 
 
 =head2 SetSubnets
@@ -1380,7 +1386,7 @@ Enables the Availability Zone for the specified public subnets for the
 specified Application Load Balancer. The specified subnets replace the
 previously enabled subnets.
 
-You can't change the subnets for a Network Load Balancer.
+Note that you can't change the subnets for a Network Load Balancer.
 
 
 

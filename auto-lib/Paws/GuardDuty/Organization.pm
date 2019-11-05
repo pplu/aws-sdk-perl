@@ -4,6 +4,7 @@ package Paws::GuardDuty::Organization;
   has AsnOrg => (is => 'ro', isa => 'Str', request_name => 'asnOrg', traits => ['NameInRequest']);
   has Isp => (is => 'ro', isa => 'Str', request_name => 'isp', traits => ['NameInRequest']);
   has Org => (is => 'ro', isa => 'Str', request_name => 'org', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

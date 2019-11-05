@@ -1,10 +1,9 @@
 
 package Paws::S3::GetBucketMetricsConfigurationOutput;
   use Moose;
-  has MetricsConfiguration => (is => 'ro', isa => 'Paws::S3::MetricsConfiguration');
+  has MetricsConfiguration => (is => 'ro', isa => 'Paws::S3::MetricsConfiguration', traits => ['ParamInBody']);
 
-  use MooseX::ClassAttribute;
-  class_has _payload => (is => 'ro', default => 'MetricsConfiguration');
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

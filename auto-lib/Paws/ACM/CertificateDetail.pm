@@ -26,6 +26,7 @@ package Paws::ACM::CertificateDetail;
   has Subject => (is => 'ro', isa => 'Str');
   has SubjectAlternativeNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MobileHub::ProjectSummary;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has ProjectId => (is => 'ro', isa => 'Str', request_name => 'projectId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

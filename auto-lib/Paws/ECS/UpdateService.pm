@@ -125,12 +125,16 @@ new service deployment.
 
 =head2 PlatformVersion => Str
 
+<<<<<<< HEAD
 The platform version on which your tasks in the service are running. A
 platform version is only specified for tasks using the Fargate launch
 type. If one is not specified, the C<LATEST> platform version is used
 by default. For more information, see AWS Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+=======
+The platform version you want to update your service to run.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 

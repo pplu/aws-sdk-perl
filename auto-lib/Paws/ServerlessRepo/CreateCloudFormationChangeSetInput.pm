@@ -10,8 +10,12 @@ package Paws::ServerlessRepo::CreateCloudFormationChangeSetInput;
   has RollbackConfiguration => (is => 'ro', isa => 'Paws::ServerlessRepo::RollbackConfiguration', request_name => 'rollbackConfiguration', traits => ['NameInRequest']);
   has SemanticVersion => (is => 'ro', isa => 'Str', request_name => 'semanticVersion', traits => ['NameInRequest']);
   has StackName => (is => 'ro', isa => 'Str', request_name => 'stackName', traits => ['NameInRequest'], required => 1);
+<<<<<<< HEAD
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServerlessRepo::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has TemplateId => (is => 'ro', isa => 'Str', request_name => 'templateId', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

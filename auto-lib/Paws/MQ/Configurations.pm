@@ -3,6 +3,7 @@ package Paws::MQ::Configurations;
   has Current => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'current', traits => ['NameInRequest']);
   has History => (is => 'ro', isa => 'ArrayRef[Paws::MQ::ConfigurationId]', request_name => 'history', traits => ['NameInRequest']);
   has Pending => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'pending', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

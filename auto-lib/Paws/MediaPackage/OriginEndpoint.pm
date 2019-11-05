@@ -14,6 +14,7 @@ package Paws::MediaPackage::OriginEndpoint;
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'timeDelaySeconds', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'whitelist', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

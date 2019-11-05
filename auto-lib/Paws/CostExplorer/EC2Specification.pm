@@ -1,6 +1,7 @@
 package Paws::CostExplorer::EC2Specification;
   use Moose;
   has OfferingClass => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

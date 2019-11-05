@@ -46,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codebuild = Paws->service('CodeBuild');
     my $CreateProjectOutput = $codebuild->CreateProject(
       Artifacts => {
+<<<<<<< HEAD
         Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
         ArtifactIdentifier   => 'MyString',   # OPTIONAL
         EncryptionDisabled   => 1,            # OPTIONAL
@@ -55,6 +56,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         OverrideArtifactName => 1,            # OPTIONAL
         Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
         Path                 => 'MyString',   # OPTIONAL
+=======
+        Type     => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Location => 'MyString',        # OPTIONAL
+        Name     => 'MyString',        # OPTIONAL
+        NamespaceType => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
+        Packaging     => 'NONE',       # values: NONE, ZIP; OPTIONAL
+        Path          => 'MyString',   # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
       },
       Environment => {
         ComputeType => 'BUILD_GENERAL1_SMALL'

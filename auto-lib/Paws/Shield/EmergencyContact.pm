@@ -1,6 +1,7 @@
 package Paws::Shield::EmergencyContact;
   use Moose;
   has EmailAddress => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

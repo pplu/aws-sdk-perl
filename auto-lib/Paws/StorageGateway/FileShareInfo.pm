@@ -5,6 +5,7 @@ package Paws::StorageGateway::FileShareInfo;
   has FileShareStatus => (is => 'ro', isa => 'Str');
   has FileShareType => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

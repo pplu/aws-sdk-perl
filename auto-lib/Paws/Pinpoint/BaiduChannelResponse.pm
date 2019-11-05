@@ -11,6 +11,7 @@ package Paws::Pinpoint::BaiduChannelResponse;
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str', required => 1);
   has Version => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::ELB::HealthCheck;
   has Target => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int', required => 1);
   has UnhealthyThreshold => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

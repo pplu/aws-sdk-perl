@@ -5,6 +5,7 @@ package Paws::Discovery::ConfigurationTag;
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
   has TimeOfCreation => (is => 'ro', isa => 'Str', request_name => 'timeOfCreation', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

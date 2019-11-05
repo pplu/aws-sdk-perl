@@ -2,6 +2,7 @@ package Paws::CloudDirectory::ObjectAttributeAction;
   use Moose;
   has ObjectAttributeActionType => (is => 'ro', isa => 'Str');
   has ObjectAttributeUpdateValue => (is => 'ro', isa => 'Paws::CloudDirectory::TypedAttributeValue');
+
 1;
 
 ### main pod documentation begin ###

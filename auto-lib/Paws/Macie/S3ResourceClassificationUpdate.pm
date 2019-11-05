@@ -3,6 +3,7 @@ package Paws::Macie::S3ResourceClassificationUpdate;
   has BucketName => (is => 'ro', isa => 'Str', request_name => 'bucketName', traits => ['NameInRequest'], required => 1);
   has ClassificationTypeUpdate => (is => 'ro', isa => 'Paws::Macie::ClassificationTypeUpdate', request_name => 'classificationTypeUpdate', traits => ['NameInRequest'], required => 1);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

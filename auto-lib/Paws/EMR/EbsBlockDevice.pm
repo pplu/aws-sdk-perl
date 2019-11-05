@@ -2,6 +2,7 @@ package Paws::EMR::EbsBlockDevice;
   use Moose;
   has Device => (is => 'ro', isa => 'Str');
   has VolumeSpecification => (is => 'ro', isa => 'Paws::EMR::VolumeSpecification');
+
 1;
 
 ### main pod documentation begin ###

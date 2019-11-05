@@ -2,6 +2,7 @@ package Paws::KMS::Tag;
   use Moose;
   has TagKey => (is => 'ro', isa => 'Str', required => 1);
   has TagValue => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

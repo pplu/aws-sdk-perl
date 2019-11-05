@@ -10,6 +10,7 @@ package Paws::DirectConnect::DirectConnectGatewayAssociation;
   has VirtualGatewayId => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayId', traits => ['NameInRequest']);
   has VirtualGatewayOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayOwnerAccount', traits => ['NameInRequest']);
   has VirtualGatewayRegion => (is => 'ro', isa => 'Str', request_name => 'virtualGatewayRegion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

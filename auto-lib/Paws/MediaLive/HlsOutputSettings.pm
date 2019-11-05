@@ -3,6 +3,7 @@ package Paws::MediaLive::HlsOutputSettings;
   has HlsSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsSettings', request_name => 'hlsSettings', traits => ['NameInRequest'], required => 1);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
   has SegmentModifier => (is => 'ro', isa => 'Str', request_name => 'segmentModifier', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

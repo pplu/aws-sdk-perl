@@ -2,6 +2,7 @@ package Paws::IAM::PolicyUser;
   use Moose;
   has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

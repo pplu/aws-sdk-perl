@@ -1,8 +1,12 @@
 package Paws::DynamoDB::Capacity;
   use Moose;
   has CapacityUnits => (is => 'ro', isa => 'Num');
+<<<<<<< HEAD
   has ReadCapacityUnits => (is => 'ro', isa => 'Num');
   has WriteCapacityUnits => (is => 'ro', isa => 'Num');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

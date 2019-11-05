@@ -10,6 +10,7 @@ package Paws::GameLift::PlayerSession;
   has Port => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TerminationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

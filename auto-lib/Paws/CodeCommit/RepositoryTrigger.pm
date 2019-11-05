@@ -5,6 +5,7 @@ package Paws::CodeCommit::RepositoryTrigger;
   has DestinationArn => (is => 'ro', isa => 'Str', request_name => 'destinationArn', traits => ['NameInRequest'], required => 1);
   has Events => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'events', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

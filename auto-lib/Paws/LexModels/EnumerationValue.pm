@@ -2,6 +2,7 @@ package Paws::LexModels::EnumerationValue;
   use Moose;
   has Synonyms => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'synonyms', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', request_name => 'value', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

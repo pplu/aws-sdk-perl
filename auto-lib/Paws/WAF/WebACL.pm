@@ -6,6 +6,7 @@ package Paws::WAF::WebACL;
   has Rules => (is => 'ro', isa => 'ArrayRef[Paws::WAF::ActivatedRule]', required => 1);
   has WebACLArn => (is => 'ro', isa => 'Str');
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

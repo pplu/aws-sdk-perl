@@ -1,17 +1,26 @@
 
 package Paws::S3::CreateMultipartUploadOutput;
   use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-date');
-  has AbortRuleId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-abort-rule-id');
-  has Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'Bucket');
+  has AbortDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-abort-date', traits => ['ParamInHeader']);
+  has AbortRuleId => (is => 'ro', isa => 'Str', header_name => 'x-amz-abort-rule-id', traits => ['ParamInHeader']);
+  has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption');
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5');
   has SSEKMSEncryptionContext => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-context');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-aws-kms-key-id');
+=======
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has UploadId => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

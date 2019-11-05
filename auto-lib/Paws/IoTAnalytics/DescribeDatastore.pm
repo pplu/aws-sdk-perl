@@ -2,7 +2,6 @@
 package Paws::IoTAnalytics::DescribeDatastore;
   use Moose;
   has DatastoreName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datastoreName', required => 1);
-  has IncludeStatistics => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'includeStatistics');
 
   use MooseX::ClassAttribute;
 
@@ -30,13 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $DescribeDatastoreResponse = $iotanalytics->DescribeDatastore(
-      DatastoreName     => 'MyDatastoreName',
-      IncludeStatistics => 1,                   # OPTIONAL
+      DatastoreName => 'MyDatastoreName',
+
     );
 
     # Results:
-    my $Datastore  = $DescribeDatastoreResponse->Datastore;
-    my $Statistics = $DescribeDatastoreResponse->Statistics;
+    my $Datastore = $DescribeDatastoreResponse->Datastore;
 
     # Returns a L<Paws::IoTAnalytics::DescribeDatastoreResponse> object.
 
@@ -52,6 +50,7 @@ The name of the data store
 
 
 
+<<<<<<< HEAD
 =head2 IncludeStatistics => Bool
 
 If true, additional statistical information about the datastore is
@@ -59,6 +58,8 @@ included in the response.
 
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head1 SEE ALSO
 

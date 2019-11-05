@@ -8,6 +8,7 @@ package Paws::IAM::User;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

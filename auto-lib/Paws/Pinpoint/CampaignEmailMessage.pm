@@ -3,7 +3,12 @@ package Paws::Pinpoint::CampaignEmailMessage;
   has Body => (is => 'ro', isa => 'Str');
   has FromAddress => (is => 'ro', isa => 'Str');
   has HtmlBody => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has Title => (is => 'ro', isa => 'Str', required => 1);
+=======
+  has Title => (is => 'ro', isa => 'Str');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -6,7 +6,11 @@ package Paws::MediaConvert::CaptionSourceSettings;
   has FileSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::FileSourceSettings', request_name => 'fileSourceSettings', traits => ['NameInRequest']);
   has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has TrackSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TrackSourceSettings', request_name => 'trackSourceSettings', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

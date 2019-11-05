@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListObjectChildrenResponse;
   use Moose;
   has Children => (is => 'ro', isa => 'Paws::CloudDirectory::LinkNameToObjectIdentifierMap');
   has NextToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::AutoScaling::PredefinedMetricSpecification;
   use Moose;
   has PredefinedMetricType => (is => 'ro', isa => 'Str', required => 1);
   has ResourceLabel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

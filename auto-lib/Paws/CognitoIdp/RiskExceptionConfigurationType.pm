@@ -2,6 +2,7 @@ package Paws::CognitoIdp::RiskExceptionConfigurationType;
   use Moose;
   has BlockedIPRangeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SkippedIPRangeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::MediaConvert::HlsCaptionLanguageMapping;
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has LanguageDescription => (is => 'ro', isa => 'Str', request_name => 'languageDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

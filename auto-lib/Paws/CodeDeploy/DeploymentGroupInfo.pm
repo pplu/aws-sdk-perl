@@ -21,6 +21,7 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
   has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'targetRevision', traits => ['NameInRequest']);
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', request_name => 'triggerConfigurations', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

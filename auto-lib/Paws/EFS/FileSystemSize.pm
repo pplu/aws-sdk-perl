@@ -2,8 +2,12 @@ package Paws::EFS::FileSystemSize;
   use Moose;
   has Timestamp => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Int', required => 1);
+<<<<<<< HEAD
   has ValueInIA => (is => 'ro', isa => 'Int');
   has ValueInStandard => (is => 'ro', isa => 'Int');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

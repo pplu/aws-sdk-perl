@@ -18,6 +18,7 @@ package Paws::CognitoIdp::UserPoolClientType;
   has SupportedIdentityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has UserPoolId => (is => 'ro', isa => 'Str');
   has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

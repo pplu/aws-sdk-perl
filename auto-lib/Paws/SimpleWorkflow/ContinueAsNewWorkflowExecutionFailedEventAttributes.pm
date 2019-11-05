@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttribute
   use Moose;
   has Cause => (is => 'ro', isa => 'Str', request_name => 'cause', traits => ['NameInRequest'], required => 1);
   has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', request_name => 'decisionTaskCompletedEventId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

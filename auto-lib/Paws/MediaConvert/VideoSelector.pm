@@ -5,7 +5,11 @@ package Paws::MediaConvert::VideoSelector;
   has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
   has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Rotate => (is => 'ro', isa => 'Str', request_name => 'rotate', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

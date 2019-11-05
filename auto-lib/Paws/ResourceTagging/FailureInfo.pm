@@ -3,6 +3,7 @@ package Paws::ResourceTagging::FailureInfo;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

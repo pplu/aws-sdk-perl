@@ -2,6 +2,7 @@ package Paws::Firehose::ProcessingConfiguration;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has Processors => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::Processor]');
+
 1;
 
 ### main pod documentation begin ###

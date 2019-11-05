@@ -1,6 +1,7 @@
 package Paws::S3::EncryptionConfiguration;
   use Moose;
   has ReplicaKmsKeyID => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

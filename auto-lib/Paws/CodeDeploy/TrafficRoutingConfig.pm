@@ -3,6 +3,7 @@ package Paws::CodeDeploy::TrafficRoutingConfig;
   has TimeBasedCanary => (is => 'ro', isa => 'Paws::CodeDeploy::TimeBasedCanary', request_name => 'timeBasedCanary', traits => ['NameInRequest']);
   has TimeBasedLinear => (is => 'ro', isa => 'Paws::CodeDeploy::TimeBasedLinear', request_name => 'timeBasedLinear', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

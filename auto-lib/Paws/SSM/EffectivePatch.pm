@@ -2,6 +2,7 @@ package Paws::SSM::EffectivePatch;
   use Moose;
   has Patch => (is => 'ro', isa => 'Paws::SSM::Patch');
   has PatchStatus => (is => 'ro', isa => 'Paws::SSM::PatchStatus');
+
 1;
 
 ### main pod documentation begin ###

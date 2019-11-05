@@ -2,6 +2,7 @@ package Paws::CloudDirectory::SchemaFacet;
   use Moose;
   has FacetName => (is => 'ro', isa => 'Str');
   has SchemaArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

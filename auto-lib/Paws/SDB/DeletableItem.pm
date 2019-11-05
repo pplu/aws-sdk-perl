@@ -2,6 +2,7 @@ package Paws::SDB::DeletableItem;
   use Moose;
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]', request_name => 'Attribute', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'ItemName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

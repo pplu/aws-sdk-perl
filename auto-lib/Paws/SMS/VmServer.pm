@@ -5,6 +5,7 @@ package Paws::SMS::VmServer;
   has VmName => (is => 'ro', isa => 'Str', request_name => 'vmName', traits => ['NameInRequest']);
   has VmPath => (is => 'ro', isa => 'Str', request_name => 'vmPath', traits => ['NameInRequest']);
   has VmServerAddress => (is => 'ro', isa => 'Paws::SMS::VmServerAddress', request_name => 'vmServerAddress', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

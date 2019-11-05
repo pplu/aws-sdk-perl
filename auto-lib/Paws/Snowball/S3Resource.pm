@@ -2,6 +2,7 @@ package Paws::Snowball::S3Resource;
   use Moose;
   has BucketArn => (is => 'ro', isa => 'Str');
   has KeyRange => (is => 'ro', isa => 'Paws::Snowball::KeyRange');
+
 1;
 
 ### main pod documentation begin ###

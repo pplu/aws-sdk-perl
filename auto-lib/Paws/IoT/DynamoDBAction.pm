@@ -10,6 +10,7 @@ package Paws::IoT::DynamoDBAction;
   has RangeKeyValue => (is => 'ro', isa => 'Str', request_name => 'rangeKeyValue', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has TableName => (is => 'ro', isa => 'Str', request_name => 'tableName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

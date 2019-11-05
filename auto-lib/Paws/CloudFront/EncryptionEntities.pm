@@ -2,6 +2,7 @@ package Paws::CloudFront::EncryptionEntities;
   use Moose;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::CloudFront::EncryptionEntity]', request_name => 'EncryptionEntity', traits => ['NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

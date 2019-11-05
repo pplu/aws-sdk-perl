@@ -4,6 +4,7 @@ package Paws::MediaConvert::TimecodeConfig;
   has Source => (is => 'ro', isa => 'Str', request_name => 'source', traits => ['NameInRequest']);
   has Start => (is => 'ro', isa => 'Str', request_name => 'start', traits => ['NameInRequest']);
   has TimestampOffset => (is => 'ro', isa => 'Str', request_name => 'timestampOffset', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

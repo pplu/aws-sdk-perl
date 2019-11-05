@@ -7,6 +7,7 @@ package Paws::Config::AggregateEvaluationResult;
   has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str');
   has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier');
   has ResultRecordedTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

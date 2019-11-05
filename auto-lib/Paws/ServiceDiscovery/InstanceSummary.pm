@@ -2,6 +2,7 @@ package Paws::ServiceDiscovery::InstanceSummary;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has Id => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

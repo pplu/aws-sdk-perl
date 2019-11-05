@@ -1,6 +1,7 @@
 package Paws::IAM::OrganizationsDecisionDetail;
   use Moose;
   has AllowedByOrganizations => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

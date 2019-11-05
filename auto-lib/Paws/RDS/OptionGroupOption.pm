@@ -16,6 +16,7 @@ package Paws::RDS::OptionGroupOption;
   has RequiresAutoMinorEngineVersionUpgrade => (is => 'ro', isa => 'Bool');
   has SupportsOptionVersionDowngrade => (is => 'ro', isa => 'Bool');
   has VpcOnly => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

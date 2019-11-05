@@ -8,6 +8,7 @@ package Paws::ServiceDiscovery::NamespaceSummary;
   has Properties => (is => 'ro', isa => 'Paws::ServiceDiscovery::NamespaceProperties');
   has ServiceCount => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

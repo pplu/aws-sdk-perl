@@ -5,6 +5,7 @@ package Paws::CloudFormation::StackSetOperationPreferences;
   has MaxConcurrentCount => (is => 'ro', isa => 'Int');
   has MaxConcurrentPercentage => (is => 'ro', isa => 'Int');
   has RegionOrder => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

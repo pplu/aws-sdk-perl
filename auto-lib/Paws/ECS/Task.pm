@@ -29,6 +29,7 @@ package Paws::ECS::Task;
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', request_name => 'taskDefinitionArn', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -98,12 +99,20 @@ status.
 
 =head2 Cpu => Str
 
+<<<<<<< HEAD
   The number of CPU units used by the task as expressed in a task
 definition. It can be expressed as an integer using CPU units, for
 example C<1024>. It can also be expressed as a string using vCPUs, for
 example C<1 vCPU> or C<1 vcpu>. String values are converted to an
 integer indicating the CPU units when the task definition is
 registered.
+=======
+  The number of CPU units used by the task. It can be expressed as an
+integer using CPU units, for example C<1024>, or as a string using
+vCPUs, for example C<1 vCPU> or C<1 vcpu>, in a task definition but is
+converted to an integer indicating the CPU units when the task
+definition is registered.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 If you are using the EC2 launch type, this field is optional. Supported
 values are between C<128> CPU units (C<0.125> vCPUs) and C<10240> CPU
@@ -201,11 +210,18 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 Memory => Str
 
+<<<<<<< HEAD
   The amount of memory (in MiB) used by the task as expressed in a task
 definition. It can be expressed as an integer using MiB, for example
 C<1024>. It can also be expressed as a string using GB, for example
 C<1GB> or C<1 GB>. String values are converted to an integer indicating
 the MiB when the task definition is registered.
+=======
+  The amount of memory (in MiB) used by the task. It can be expressed as
+an integer using MiB, for example C<1024>, or as a string using GB, for
+example C<1GB> or C<1 GB>, in a task definition but is converted to an
+integer indicating the MiB when the task definition is registered.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 If you are using the EC2 launch type, this field is optional.
 
@@ -301,7 +317,11 @@ from the C<RUNNING> state to the C<STOPPED> state).
 
 =head2 StoppingAt => Str
 
+<<<<<<< HEAD
   The Unix timestamp for when the task stops (transitions from the
+=======
+  The Unix time stamp for when the task will stop (transitions from the
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 C<RUNNING> state to C<STOPPED>).
 
 

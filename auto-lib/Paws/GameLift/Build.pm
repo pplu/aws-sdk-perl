@@ -7,6 +7,7 @@ package Paws::GameLift::Build;
   has SizeOnDisk => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

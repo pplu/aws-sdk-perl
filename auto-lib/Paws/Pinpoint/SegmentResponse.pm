@@ -14,7 +14,10 @@ package Paws::Pinpoint::SegmentResponse;
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Int');
 
+<<<<<<< HEAD
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

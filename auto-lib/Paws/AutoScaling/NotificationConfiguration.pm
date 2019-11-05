@@ -3,6 +3,7 @@ package Paws::AutoScaling::NotificationConfiguration;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has NotificationType => (is => 'ro', isa => 'Str');
   has TopicARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

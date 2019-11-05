@@ -7,6 +7,7 @@ package Paws::SSM::ResourceDataSyncItem;
   has S3Destination => (is => 'ro', isa => 'Paws::SSM::ResourceDataSyncS3Destination');
   has SyncCreatedTime => (is => 'ro', isa => 'Str');
   has SyncName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -10,6 +10,7 @@ package Paws::StorageGateway::Tape;
   has TapeStatus => (is => 'ro', isa => 'Str');
   has TapeUsedInBytes => (is => 'ro', isa => 'Int');
   has VTLDevice => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

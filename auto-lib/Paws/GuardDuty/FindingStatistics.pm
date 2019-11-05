@@ -1,6 +1,11 @@
 package Paws::GuardDuty::FindingStatistics;
   use Moose;
+<<<<<<< HEAD
   has CountBySeverity => (is => 'ro', isa => 'Paws::GuardDuty::CountBySeverity', request_name => 'countBySeverity', traits => ['NameInRequest']);
+=======
+  has CountBySeverity => (is => 'ro', isa => 'Paws::GuardDuty::__mapOfCountBySeverityFindingStatistic', request_name => 'countBySeverity', traits => ['NameInRequest']);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

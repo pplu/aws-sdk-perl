@@ -1,6 +1,7 @@
 package Paws::Firehose::SourceDescription;
   use Moose;
   has KinesisStreamSourceDescription => (is => 'ro', isa => 'Paws::Firehose::KinesisStreamSourceDescription');
+
 1;
 
 ### main pod documentation begin ###

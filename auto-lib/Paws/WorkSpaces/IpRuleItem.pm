@@ -2,6 +2,7 @@ package Paws::WorkSpaces::IpRuleItem;
   use Moose;
   has IpRule => (is => 'ro', isa => 'Str', request_name => 'ipRule', traits => ['NameInRequest']);
   has RuleDesc => (is => 'ro', isa => 'Str', request_name => 'ruleDesc', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

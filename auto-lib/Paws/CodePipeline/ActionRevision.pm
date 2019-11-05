@@ -3,6 +3,7 @@ package Paws::CodePipeline::ActionRevision;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest'], required => 1);
   has RevisionChangeId => (is => 'ro', isa => 'Str', request_name => 'revisionChangeId', traits => ['NameInRequest'], required => 1);
   has RevisionId => (is => 'ro', isa => 'Str', request_name => 'revisionId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

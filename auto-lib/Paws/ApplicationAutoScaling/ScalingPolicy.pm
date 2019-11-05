@@ -10,6 +10,7 @@ package Paws::ApplicationAutoScaling::ScalingPolicy;
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has StepScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration');
   has TargetTrackingScalingPolicyConfiguration => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::TargetTrackingScalingPolicyConfiguration');
+
 1;
 
 ### main pod documentation begin ###

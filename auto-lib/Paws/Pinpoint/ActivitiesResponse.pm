@@ -1,10 +1,15 @@
 
 package Paws::Pinpoint::ActivitiesResponse;
   use Moose;
+<<<<<<< HEAD
   has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+  has Item => (is => 'ro', isa => 'ArrayRef[Paws::Pinpoint::ActivityResponse]');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

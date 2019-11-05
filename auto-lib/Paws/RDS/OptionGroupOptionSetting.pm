@@ -8,6 +8,7 @@ package Paws::RDS::OptionGroupOptionSetting;
   has MinimumEngineVersionPerAllowedValue => (is => 'ro', isa => 'ArrayRef[Paws::RDS::MinimumEngineVersionPerAllowedValue]', request_name => 'MinimumEngineVersionPerAllowedValue', traits => ['NameInRequest']);
   has SettingDescription => (is => 'ro', isa => 'Str');
   has SettingName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

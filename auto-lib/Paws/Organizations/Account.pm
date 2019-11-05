@@ -7,6 +7,7 @@ package Paws::Organizations::Account;
   has JoinedTimestamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

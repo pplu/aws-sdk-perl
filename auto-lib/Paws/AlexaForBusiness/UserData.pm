@@ -6,6 +6,7 @@ package Paws::AlexaForBusiness::UserData;
   has FirstName => (is => 'ro', isa => 'Str');
   has LastName => (is => 'ro', isa => 'Str');
   has UserArn => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

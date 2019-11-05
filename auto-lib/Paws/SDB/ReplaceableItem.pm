@@ -1,7 +1,8 @@
 package Paws::SDB::ReplaceableItem;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::ReplaceableAttribute]', request_name => 'Attribute', request_name => 'Attribute', traits => ['NameInRequest','NameInRequest'], required => 1);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::ReplaceableAttribute]', request_name => 'Attribute', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', request_name => 'ItemName', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

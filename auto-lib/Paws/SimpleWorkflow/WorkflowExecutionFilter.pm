@@ -1,6 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowExecutionFilter;
   use Moose;
   has WorkflowId => (is => 'ro', isa => 'Str', request_name => 'workflowId', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

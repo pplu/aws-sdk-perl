@@ -7,7 +7,11 @@ package Paws::Athena::QueryExecution;
   has StatementType => (is => 'ro', isa => 'Str');
   has Statistics => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatistics');
   has Status => (is => 'ro', isa => 'Paws::Athena::QueryExecutionStatus');
+<<<<<<< HEAD
   has WorkGroup => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

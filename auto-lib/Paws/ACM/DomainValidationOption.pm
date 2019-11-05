@@ -2,6 +2,7 @@ package Paws::ACM::DomainValidationOption;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ValidationDomain => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

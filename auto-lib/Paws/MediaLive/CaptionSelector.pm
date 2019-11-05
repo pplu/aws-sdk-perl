@@ -3,6 +3,7 @@ package Paws::MediaLive::CaptionSelector;
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has SelectorSettings => (is => 'ro', isa => 'Paws::MediaLive::CaptionSelectorSettings', request_name => 'selectorSettings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

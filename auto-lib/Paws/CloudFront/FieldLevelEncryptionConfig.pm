@@ -4,6 +4,7 @@ package Paws::CloudFront::FieldLevelEncryptionConfig;
   has Comment => (is => 'ro', isa => 'Str');
   has ContentTypeProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::ContentTypeProfileConfig');
   has QueryArgProfileConfig => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfileConfig');
+
 1;
 
 ### main pod documentation begin ###

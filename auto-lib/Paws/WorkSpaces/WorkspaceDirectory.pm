@@ -13,6 +13,7 @@ package Paws::WorkSpaces::WorkspaceDirectory;
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
   has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

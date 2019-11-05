@@ -1,8 +1,13 @@
 package Paws::DynamoDB::SSESpecification;
   use Moose;
+<<<<<<< HEAD
   has Enabled => (is => 'ro', isa => 'Bool');
   has KMSMasterKeyId => (is => 'ro', isa => 'Str');
   has SSEType => (is => 'ro', isa => 'Str');
+=======
+  has Enabled => (is => 'ro', isa => 'Bool', required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

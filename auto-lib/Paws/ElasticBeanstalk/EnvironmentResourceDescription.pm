@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::EnvironmentResourceDescription;
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::LoadBalancer]');
   has Queues => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Queue]');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::Trigger]');
+
 1;
 
 ### main pod documentation begin ###

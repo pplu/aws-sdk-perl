@@ -16,6 +16,7 @@ package Paws::DMS::TableStatistics;
   has ValidationState => (is => 'ro', isa => 'Str');
   has ValidationStateDetails => (is => 'ro', isa => 'Str');
   has ValidationSuspendedRecords => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

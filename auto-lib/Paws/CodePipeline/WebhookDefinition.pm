@@ -6,6 +6,7 @@ package Paws::CodePipeline::WebhookDefinition;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has TargetAction => (is => 'ro', isa => 'Str', request_name => 'targetAction', traits => ['NameInRequest'], required => 1);
   has TargetPipeline => (is => 'ro', isa => 'Str', request_name => 'targetPipeline', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

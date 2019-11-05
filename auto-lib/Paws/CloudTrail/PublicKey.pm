@@ -4,6 +4,7 @@ package Paws::CloudTrail::PublicKey;
   has ValidityEndTime => (is => 'ro', isa => 'Str');
   has ValidityStartTime => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::SageMaker::StoppingCondition;
   use Moose;
   has MaxRuntimeInSeconds => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

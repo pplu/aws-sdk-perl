@@ -2,6 +2,7 @@ package Paws::MediaLive::AudioChannelMapping;
   use Moose;
   has InputChannelLevels => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputChannelLevel]', request_name => 'inputChannelLevels', traits => ['NameInRequest'], required => 1);
   has OutputChannel => (is => 'ro', isa => 'Int', request_name => 'outputChannel', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

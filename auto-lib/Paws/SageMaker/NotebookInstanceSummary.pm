@@ -10,6 +10,7 @@ package Paws::SageMaker::NotebookInstanceSummary;
   has NotebookInstanceName => (is => 'ro', isa => 'Str', required => 1);
   has NotebookInstanceStatus => (is => 'ro', isa => 'Str');
   has Url => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

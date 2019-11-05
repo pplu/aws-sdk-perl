@@ -7,6 +7,7 @@ package Paws::CognitoIdp::UICustomizationType;
   has ImageUrl => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has UserPoolId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

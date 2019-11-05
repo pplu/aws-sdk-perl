@@ -3,6 +3,7 @@ package Paws::CloudFront::ContentTypeProfile;
   has ContentType => (is => 'ro', isa => 'Str', required => 1);
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has ProfileId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

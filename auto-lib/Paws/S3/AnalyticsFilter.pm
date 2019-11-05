@@ -3,6 +3,7 @@ package Paws::S3::AnalyticsFilter;
   has And => (is => 'ro', isa => 'Paws::S3::AnalyticsAndOperator');
   has Prefix => (is => 'ro', isa => 'Str');
   has Tag => (is => 'ro', isa => 'Paws::S3::Tag');
+
 1;
 
 ### main pod documentation begin ###

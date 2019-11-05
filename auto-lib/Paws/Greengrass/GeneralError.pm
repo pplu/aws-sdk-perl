@@ -2,6 +2,7 @@ package Paws::Greengrass::GeneralError;
   use Moose;
   has ErrorDetails => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::ErrorDetail]');
   has Message => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

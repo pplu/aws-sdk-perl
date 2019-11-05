@@ -1,6 +1,7 @@
 package Paws::EMR::InstanceFleetProvisioningSpecifications;
   use Moose;
   has SpotSpecification => (is => 'ro', isa => 'Paws::EMR::SpotProvisioningSpecification', required => 1);
+
 1;
 
 ### main pod documentation begin ###

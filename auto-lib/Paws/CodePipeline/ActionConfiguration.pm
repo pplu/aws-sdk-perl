@@ -1,6 +1,7 @@
 package Paws::CodePipeline::ActionConfiguration;
   use Moose;
   has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

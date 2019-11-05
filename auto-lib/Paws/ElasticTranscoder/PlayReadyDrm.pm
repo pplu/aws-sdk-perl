@@ -6,6 +6,7 @@ package Paws::ElasticTranscoder::PlayReadyDrm;
   has KeyId => (is => 'ro', isa => 'Str');
   has KeyMd5 => (is => 'ro', isa => 'Str');
   has LicenseAcquisitionUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::Batch::ComputeEnvironmentOrder;
   use Moose;
   has ComputeEnvironment => (is => 'ro', isa => 'Str', request_name => 'computeEnvironment', traits => ['NameInRequest'], required => 1);
   has Order => (is => 'ro', isa => 'Int', request_name => 'order', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

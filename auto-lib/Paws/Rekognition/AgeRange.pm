@@ -2,6 +2,7 @@ package Paws::Rekognition::AgeRange;
   use Moose;
   has High => (is => 'ro', isa => 'Int');
   has Low => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

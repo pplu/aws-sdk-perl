@@ -4,6 +4,7 @@ package Paws::MediaConvert::FrameCaptureSettings;
   has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
   has MaxCaptures => (is => 'ro', isa => 'Int', request_name => 'maxCaptures', traits => ['NameInRequest']);
   has Quality => (is => 'ro', isa => 'Int', request_name => 'quality', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

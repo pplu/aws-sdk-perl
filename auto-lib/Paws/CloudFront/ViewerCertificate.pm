@@ -7,6 +7,7 @@ package Paws::CloudFront::ViewerCertificate;
   has IAMCertificateId => (is => 'ro', isa => 'Str');
   has MinimumProtocolVersion => (is => 'ro', isa => 'Str');
   has SSLSupportMethod => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

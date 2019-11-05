@@ -15,6 +15,7 @@ package Paws::Batch::ComputeResource;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Batch::TagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

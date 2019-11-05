@@ -1,8 +1,9 @@
 
 package Paws::S3::GetObjectOutput;
   use Moose;
-  has AcceptRanges => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'accept-ranges');
+  has AcceptRanges => (is => 'ro', isa => 'Str', header_name => 'accept-ranges', traits => ['ParamInHeader']);
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
+<<<<<<< HEAD
   has CacheControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Cache-Control');
   has ContentDisposition => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Disposition');
   has ContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Encoding');
@@ -32,6 +33,35 @@ package Paws::S3::GetObjectOutput;
   has TagCount => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'x-amz-tagging-count');
   has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-version-id');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-website-redirect-location');
+=======
+  has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
+  has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
+  has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
+  has ContentLanguage => (is => 'ro', isa => 'Str', header_name => 'Content-Language', traits => ['ParamInHeader']);
+  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
+  has ContentRange => (is => 'ro', isa => 'Str', header_name => 'Content-Range', traits => ['ParamInHeader']);
+  has ContentType => (is => 'ro', isa => 'Str', header_name => 'Content-Type', traits => ['ParamInHeader']);
+  has DeleteMarker => (is => 'ro', isa => 'Bool', header_name => 'x-amz-delete-marker', traits => ['ParamInHeader']);
+  has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
+  has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
+  has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
+  has LastModified => (is => 'ro', isa => 'Str', header_name => 'Last-Modified', traits => ['ParamInHeader']);
+  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata', header_prefix => 'x-amz-meta-', traits => ['ParamInHeaders']);
+  has MissingMeta => (is => 'ro', isa => 'Int', header_name => 'x-amz-missing-meta', traits => ['ParamInHeader']);
+  has PartsCount => (is => 'ro', isa => 'Int', header_name => 'x-amz-mp-parts-count', traits => ['ParamInHeader']);
+  has ReplicationStatus => (is => 'ro', isa => 'Str', header_name => 'x-amz-replication-status', traits => ['ParamInHeader']);
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+  has Restore => (is => 'ro', isa => 'Str', header_name => 'x-amz-restore', traits => ['ParamInHeader']);
+  has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
+  has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
+  has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has SSEKMSKeyId => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption-aws-kms-key-id', traits => ['ParamInHeader']);
+  has StorageClass => (is => 'ro', isa => 'Str', header_name => 'x-amz-storage-class', traits => ['ParamInHeader']);
+  has TagCount => (is => 'ro', isa => 'Int', header_name => 'x-amz-tagging-count', traits => ['ParamInHeader']);
+  has VersionId => (is => 'ro', isa => 'Str', header_name => 'x-amz-version-id', traits => ['ParamInHeader']);
+  has WebsiteRedirectLocation => (is => 'ro', isa => 'Str', header_name => 'x-amz-website-redirect-location', traits => ['ParamInHeader']);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');

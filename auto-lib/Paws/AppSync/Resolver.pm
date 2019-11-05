@@ -8,6 +8,7 @@ package Paws::AppSync::Resolver;
   has ResolverArn => (is => 'ro', isa => 'Str', request_name => 'resolverArn', traits => ['NameInRequest']);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
   has TypeName => (is => 'ro', isa => 'Str', request_name => 'typeName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

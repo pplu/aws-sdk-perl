@@ -400,6 +400,7 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetPatchBaselineForPatchGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub GetServiceSetting {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::GetServiceSetting', @_);
@@ -410,6 +411,8 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::LabelParameterVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub ListAssociations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListAssociations', @_);
@@ -830,6 +833,7 @@ package Paws::SSM;
     my $result = $self->DescribeInstanceInformation(@_);
     my $next_result = $result;
 
+<<<<<<< HEAD
     if (not defined $callback) {
       while ($next_result->NextToken) {
         $next_result = $self->DescribeInstanceInformation(@_, NextToken => $next_result->NextToken);
@@ -843,6 +847,11 @@ package Paws::SSM;
       }
       $callback->($_ => 'InstanceInformationList') foreach (@{ $result->InstanceInformationList });
     }
+=======
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument CreateMaintenanceWindow CreatePatchBaseline CreateResourceDataSync DeleteActivation DeleteAssociation DeleteDocument DeleteInventory DeleteMaintenanceWindow DeleteParameter DeleteParameters DeletePatchBaseline DeleteResourceDataSync DeregisterManagedInstance DeregisterPatchBaselineForPatchGroup DeregisterTargetFromMaintenanceWindow DeregisterTaskFromMaintenanceWindow DescribeActivations DescribeAssociation DescribeAssociationExecutions DescribeAssociationExecutionTargets DescribeAutomationExecutions DescribeAutomationStepExecutions DescribeAvailablePatches DescribeDocument DescribeDocumentPermission DescribeEffectiveInstanceAssociations DescribeEffectivePatchesForPatchBaseline DescribeInstanceAssociationsStatus DescribeInstanceInformation DescribeInstancePatches DescribeInstancePatchStates DescribeInstancePatchStatesForPatchGroup DescribeInventoryDeletions DescribeMaintenanceWindowExecutions DescribeMaintenanceWindowExecutionTaskInvocations DescribeMaintenanceWindowExecutionTasks DescribeMaintenanceWindows DescribeMaintenanceWindowTargets DescribeMaintenanceWindowTasks DescribeParameters DescribePatchBaselines DescribePatchGroups DescribePatchGroupState GetAutomationExecution GetCommandInvocation GetDefaultPatchBaseline GetDeployablePatchSnapshotForInstance GetDocument GetInventory GetInventorySchema GetMaintenanceWindow GetMaintenanceWindowExecution GetMaintenanceWindowExecutionTask GetMaintenanceWindowExecutionTaskInvocation GetMaintenanceWindowTask GetParameter GetParameterHistory GetParameters GetParametersByPath GetPatchBaseline GetPatchBaselineForPatchGroup ListAssociations ListAssociationVersions ListCommandInvocations ListCommands ListComplianceItems ListComplianceSummaries ListDocuments ListDocumentVersions ListInventoryEntries ListResourceComplianceSummaries ListResourceDataSync ListTagsForResource ModifyDocumentPermission PutComplianceItems PutInventory PutParameter RegisterDefaultPatchBaseline RegisterPatchBaselineForPatchGroup RegisterTargetWithMaintenanceWindow RegisterTaskWithMaintenanceWindow RemoveTagsFromResource SendAutomationSignal SendCommand StartAssociationsOnce StartAutomationExecution StopAutomationExecution UpdateAssociation UpdateAssociationStatus UpdateDocument UpdateDocumentDefaultVersion UpdateMaintenanceWindow UpdateMaintenanceWindowTarget UpdateMaintenanceWindowTask UpdateManagedInstanceRole UpdatePatchBaseline / }
+
+1;
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
     return undef
   }
@@ -4044,6 +4053,7 @@ Returns: a L<Paws::SSM::RegisterPatchBaselineForPatchGroupResult> instance
 Registers a patch baseline for a patch group.
 
 
+<<<<<<< HEAD
 =head2 RegisterTargetWithMaintenanceWindow
 
 =over
@@ -4053,6 +4063,9 @@ Registers a patch baseline for a patch group.
 =item Targets => ArrayRef[L<Paws::SSM::Target>]
 
 =item WindowId => Str
+=======
+=head2 ListAssociations
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =item [ClientToken => Str]
 

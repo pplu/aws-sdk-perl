@@ -3,6 +3,7 @@ package Paws::Config::ConfigurationRecorder;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RecordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup', request_name => 'recordingGroup', traits => ['NameInRequest']);
   has RoleARN => (is => 'ro', isa => 'Str', request_name => 'roleARN', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

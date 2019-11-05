@@ -2,6 +2,7 @@ package Paws::XRay::TraceUser;
   use Moose;
   has ServiceIds => (is => 'ro', isa => 'ArrayRef[Paws::XRay::ServiceId]');
   has UserName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

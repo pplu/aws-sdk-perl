@@ -4,6 +4,7 @@ package Paws::CodePipeline::PipelineSummary;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Updated => (is => 'ro', isa => 'Str', request_name => 'updated', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

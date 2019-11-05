@@ -6,6 +6,7 @@ package Paws::Pinpoint::EndpointLocation;
   has Longitude => (is => 'ro', isa => 'Num');
   has PostalCode => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

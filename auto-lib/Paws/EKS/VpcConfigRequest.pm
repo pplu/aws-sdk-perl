@@ -3,7 +3,12 @@ package Paws::EKS::VpcConfigRequest;
   has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
   has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
+=======
+  has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

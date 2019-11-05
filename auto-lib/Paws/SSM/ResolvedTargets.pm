@@ -2,6 +2,7 @@ package Paws::SSM::ResolvedTargets;
   use Moose;
   has ParameterValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Truncated => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

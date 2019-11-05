@@ -5,6 +5,7 @@ package Paws::DataPipeline::PipelineDescription;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

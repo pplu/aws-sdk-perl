@@ -6,7 +6,6 @@ package Paws::CodeBuild::Build;
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
-  has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
@@ -26,6 +25,7 @@ package Paws::CodeBuild::Build;
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has TimeoutInMinutes => (is => 'ro', isa => 'Int', request_name => 'timeoutInMinutes', traits => ['NameInRequest']);
   has VpcConfig => (is => 'ro', isa => 'Paws::CodeBuild::VpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -120,6 +120,7 @@ C<TIMED_OUT>: The build timed out.
   The current build phase.
 
 
+<<<<<<< HEAD
 =head2 EncryptionKey => Str
 
   The AWS Key Management Service (AWS KMS) customer master key (CMK) to
@@ -132,6 +133,8 @@ You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 available, the CMK's alias (using the format C<alias/I<alias-name> >).
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 EndTime => Str
 
   When the build process ended, expressed in Unix time format.

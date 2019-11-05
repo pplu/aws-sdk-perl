@@ -24,6 +24,7 @@ package Paws::DS::DirectoryDescription;
   has StageReason => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
+
 1;
 
 ### main pod documentation begin ###

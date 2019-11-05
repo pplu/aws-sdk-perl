@@ -8,6 +8,7 @@ package Paws::CodeBuild::ProjectEnvironment;
   has PrivilegedMode => (is => 'ro', isa => 'Bool', request_name => 'privilegedMode', traits => ['NameInRequest']);
   has RegistryCredential => (is => 'ro', isa => 'Paws::CodeBuild::RegistryCredential', request_name => 'registryCredential', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

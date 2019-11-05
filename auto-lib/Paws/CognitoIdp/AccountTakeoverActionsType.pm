@@ -3,6 +3,7 @@ package Paws::CognitoIdp::AccountTakeoverActionsType;
   has HighAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
   has LowAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
   has MediumAction => (is => 'ro', isa => 'Paws::CognitoIdp::AccountTakeoverActionType');
+
 1;
 
 ### main pod documentation begin ###

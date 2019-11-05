@@ -3,6 +3,7 @@ package Paws::DeviceFarm::CustomerArtifactPaths;
   has AndroidPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'androidPaths', traits => ['NameInRequest']);
   has DeviceHostPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'deviceHostPaths', traits => ['NameInRequest']);
   has IosPaths => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'iosPaths', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::Athena::Datum;
   use Moose;
   has VarCharValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

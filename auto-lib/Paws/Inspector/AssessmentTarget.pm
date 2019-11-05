@@ -5,6 +5,7 @@ package Paws::Inspector::AssessmentTarget;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'resourceGroupArn', traits => ['NameInRequest']);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

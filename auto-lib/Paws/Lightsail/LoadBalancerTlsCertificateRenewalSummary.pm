@@ -2,6 +2,7 @@ package Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary;
   use Moose;
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::LoadBalancerTlsCertificateDomainValidationOption]', request_name => 'domainValidationOptions', traits => ['NameInRequest']);
   has RenewalStatus => (is => 'ro', isa => 'Str', request_name => 'renewalStatus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

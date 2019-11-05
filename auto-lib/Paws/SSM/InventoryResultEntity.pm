@@ -2,6 +2,7 @@ package Paws::SSM::InventoryResultEntity;
   use Moose;
   has Data => (is => 'ro', isa => 'Paws::SSM::InventoryResultItemMap');
   has Id => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Support::TrustedAdvisorCheckRefreshStatus;
   has CheckId => (is => 'ro', isa => 'Str', request_name => 'checkId', traits => ['NameInRequest'], required => 1);
   has MillisUntilNextRefreshable => (is => 'ro', isa => 'Int', request_name => 'millisUntilNextRefreshable', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

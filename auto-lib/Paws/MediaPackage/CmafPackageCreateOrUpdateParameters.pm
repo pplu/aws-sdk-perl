@@ -5,6 +5,7 @@ package Paws::MediaPackage::CmafPackageCreateOrUpdateParameters;
   has SegmentDurationSeconds => (is => 'ro', isa => 'Int', request_name => 'segmentDurationSeconds', traits => ['NameInRequest']);
   has SegmentPrefix => (is => 'ro', isa => 'Str', request_name => 'segmentPrefix', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

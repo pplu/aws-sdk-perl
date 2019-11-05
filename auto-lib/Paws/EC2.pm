@@ -2174,6 +2174,7 @@ package Paws::EC2;
   sub DescribeAllImportImageTasks {
     my $self = shift;
 
+<<<<<<< HEAD
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeImportImageTasks(@_);
     my $next_result = $result;
@@ -2288,6 +2289,12 @@ package Paws::EC2;
   }
   sub DescribeAllInternetGateways {
     my $self = shift;
+=======
+Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing
+capacity in the AWS Cloud. Using Amazon EC2 eliminates the need to
+invest in hardware up front, so you can develop and deploy applications
+faster.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->DescribeInternetGateways(@_);
@@ -7426,6 +7433,9 @@ the AMI creation process. When you deregister an instance store-backed
 AMI, it doesn't affect the files that you uploaded to Amazon S3 when
 you created the AMI.
 
+For more information, see Creating an Instance Store-Backed Windows AMI
+(http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_InstanceStoreBacked_WinAMI.html).
+
 
 =head2 DescribeAccountAttributes
 
@@ -7860,8 +7870,12 @@ I<AWS Site-to-Site VPN User Guide>.
 
 =item [NextToken => Str]
 
+<<<<<<< HEAD
 
 =back
+=======
+=item [ReplaceUnhealthyInstances => Bool]
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 Each argument is described in detail in: L<Paws::EC2::DescribeDhcpOptions>
 
@@ -10303,12 +10317,26 @@ I<AWS Site-to-Site VPN User Guide>.
 
 Each argument is described in detail in: L<Paws::EC2::DetachClassicLinkVpc>
 
+<<<<<<< HEAD
 Returns: a L<Paws::EC2::DetachClassicLinkVpcResult> instance
 
 Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 instance has been unlinked, the VPC security groups are no longer
 associated with it. An instance is automatically unlinked from a VPC
 when it's stopped.
+=======
+Describes the Dedicated Host Reservations that are available to
+purchase.
+
+The results describe all the Dedicated Host Reservation offerings,
+including offerings that may not match the instance family and region
+of your Dedicated Hosts. When purchasing an offering, ensure that the
+the instance family and region of the offering matches that of the
+Dedicated Host/s it will be associated with. For an overview of
+supported instance types, see Dedicated Hosts Overview
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 DetachInternetGateway
@@ -10328,9 +10356,14 @@ Each argument is described in detail in: L<Paws::EC2::DetachInternetGateway>
 
 Returns: nothing
 
+<<<<<<< HEAD
 Detaches an internet gateway from a VPC, disabling connectivity between
 the internet and the VPC. The VPC must not contain any running
 instances with Elastic IP addresses or public IPv4 addresses.
+=======
+Describes Dedicated Host Reservations which are associated with
+Dedicated Hosts in your account.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 DetachNetworkInterface
@@ -10350,7 +10383,14 @@ Each argument is described in detail in: L<Paws::EC2::DetachNetworkInterface>
 
 Returns: nothing
 
+<<<<<<< HEAD
 Detaches a network interface from an instance.
+=======
+The results describe only the Dedicated Hosts in the region you're
+currently using. All listed instances consume capacity on your
+Dedicated Host. Dedicated Hosts that have recently been released will
+be listed with the state C<released>.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 DetachVolume
@@ -13071,12 +13111,23 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceIamInstanceProfileA
 
 Returns: a L<Paws::EC2::ReplaceIamInstanceProfileAssociationResult> instance
 
+<<<<<<< HEAD
 Replaces an IAM instance profile for the specified running instance.
 You can use this action to change the IAM instance profile that's
 associated with an instance without having to disassociate the existing
 IAM instance profile first.
 
 Use DescribeIamInstanceProfileAssociations to get the association ID.
+=======
+Modify the auto-placement setting of a Dedicated Host. When
+auto-placement is enabled, AWS will place instances that you launch
+with a tenancy of C<host>, but without targeting a specific host ID,
+onto any available Dedicated Host in your account which has
+auto-placement enabled. When auto-placement is disabled, you need to
+provide a host ID if you want the instance to launch onto a specific
+host. If no host ID is provided, the instance will be launched onto a
+suitable host which has auto-placement enabled.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 ReplaceNetworkAclAssociation
@@ -14036,6 +14087,7 @@ terminated.
 Terminated instances remain visible after termination (for
 approximately one hour).
 
+<<<<<<< HEAD
 By default, Amazon EC2 deletes all EBS volumes that were attached when
 the instance launched. Volumes attached after instance launch continue
 running.
@@ -14051,6 +14103,15 @@ the differences between stopping and terminating instances, see
 Instance Lifecycle
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+=======
+Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
+SUSE Linux Enterprise Server (SLES), use the EC2 billing product code
+associated with an AMI to verify the subscription status for package
+updates. Creating an AMI from an EBS snapshot does not maintain this
+billing code, and subsequent instances launched from such an AMI will
+not be able to connect to package update infrastructure. To create an
+AMI that must retain billing codes, see CreateImage.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 For more information about troubleshooting, see Troubleshooting
 Terminating Your Instance
@@ -14133,6 +14194,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Each argument is described in detail in: L<Paws::EC2::UpdateSecurityGroupRuleDescriptionsEgress>
 
+<<<<<<< HEAD
 Returns: a L<Paws::EC2::UpdateSecurityGroupRuleDescriptionsEgressResult> instance
 
 [VPC only] Updates the description of an egress (outbound) security
@@ -14142,6 +14204,21 @@ description to a rule that did not have one previously.
 You specify the description as part of the IP permissions structure.
 You can remove a description for a security group rule by omitting the
 description parameter in the request.
+=======
+When you no longer want to use an On-Demand Dedicated Host it can be
+released. On-Demand billing is stopped and the host goes into
+C<released> state. The host ID of Dedicated Hosts that have been
+released can no longer be specified in another request, e.g.,
+ModifyHosts. You must stop or terminate all instances on a host before
+it can be released.
+
+When Dedicated Hosts are released, it make take some time for them to
+stop counting toward your limit and you may receive capacity errors
+when trying to allocate new Dedicated hosts. Try waiting a few minutes,
+and then try again.
+
+Released hosts will still appear in a DescribeHosts response.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 UpdateSecurityGroupRuleDescriptionsIngress

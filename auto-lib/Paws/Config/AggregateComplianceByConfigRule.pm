@@ -4,6 +4,7 @@ package Paws::Config::AggregateComplianceByConfigRule;
   has AwsRegion => (is => 'ro', isa => 'Str');
   has Compliance => (is => 'ro', isa => 'Paws::Config::Compliance');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::CloudWatchEvents::BatchParameters;
   has JobDefinition => (is => 'ro', isa => 'Str', required => 1);
   has JobName => (is => 'ro', isa => 'Str', required => 1);
   has RetryStrategy => (is => 'ro', isa => 'Paws::CloudWatchEvents::BatchRetryStrategy');
+
 1;
 
 ### main pod documentation begin ###

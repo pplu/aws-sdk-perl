@@ -2,6 +2,7 @@ package Paws::GuardDuty::PortProbeDetail;
   use Moose;
   has LocalPortDetails => (is => 'ro', isa => 'Paws::GuardDuty::LocalPortDetails', request_name => 'localPortDetails', traits => ['NameInRequest']);
   has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

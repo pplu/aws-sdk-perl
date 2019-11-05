@@ -5,6 +5,7 @@ package Paws::DLM::PolicyDetails;
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Schedules => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Schedule]');
   has TargetTags => (is => 'ro', isa => 'ArrayRef[Paws::DLM::Tag]');
+
 1;
 
 ### main pod documentation begin ###

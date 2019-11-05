@@ -3,6 +3,7 @@ package Paws::CodeCommit::BlobMetadata;
   has BlobId => (is => 'ro', isa => 'Str', request_name => 'blobId', traits => ['NameInRequest']);
   has Mode => (is => 'ro', isa => 'Str', request_name => 'mode', traits => ['NameInRequest']);
   has Path => (is => 'ro', isa => 'Str', request_name => 'path', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

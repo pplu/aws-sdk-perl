@@ -52,6 +52,7 @@ package Paws::Neptune::DBInstance;
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::Neptune::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

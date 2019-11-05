@@ -6,6 +6,7 @@ package Paws::Firehose::ParquetSerDe;
   has MaxPaddingBytes => (is => 'ro', isa => 'Int');
   has PageSizeBytes => (is => 'ro', isa => 'Int');
   has WriterVersion => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

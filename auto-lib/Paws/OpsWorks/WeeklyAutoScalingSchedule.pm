@@ -7,6 +7,7 @@ package Paws::OpsWorks::WeeklyAutoScalingSchedule;
   has Thursday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
   has Tuesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
   has Wednesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
+
 1;
 
 ### main pod documentation begin ###

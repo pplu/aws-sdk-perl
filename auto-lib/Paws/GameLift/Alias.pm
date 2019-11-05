@@ -7,6 +7,7 @@ package Paws::GameLift::Alias;
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::GuardDuty::LocalPortDetails;
   use Moose;
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has PortName => (is => 'ro', isa => 'Str', request_name => 'portName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

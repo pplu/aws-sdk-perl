@@ -71,10 +71,17 @@ Host.
 
 =head2 ClientToken => Str
 
+<<<<<<< HEAD
   Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+=======
+  Unique, case-sensitive identifier you provide to ensure idempotency of
+the request. For more information, see How to Ensure Idempotency
+(http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 =head2 HostId => Str

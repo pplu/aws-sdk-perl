@@ -52,8 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Timestamp         => '1970-01-01T01:00:00',    # OPTIONAL
           Unit              => 'Seconds'
           , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
+<<<<<<< HEAD
           Value  => 1,
           Values => [ 1, ... ],    # OPTIONAL
+=======
+          Value => 1,
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
         },
         ...
       ],

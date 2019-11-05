@@ -3,6 +3,7 @@ package Paws::CognitoIdp::AdminCreateUserConfigType;
   has AllowAdminCreateUserOnly => (is => 'ro', isa => 'Bool');
   has InviteMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::MessageTemplateType');
   has UnusedAccountValidityDays => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

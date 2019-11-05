@@ -1,7 +1,12 @@
 package Paws::Pinpoint::CreateApplicationRequest;
   use Moose;
+<<<<<<< HEAD
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
+=======
+  has Name => (is => 'ro', isa => 'Str');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

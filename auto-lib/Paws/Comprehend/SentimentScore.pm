@@ -4,6 +4,7 @@ package Paws::Comprehend::SentimentScore;
   has Negative => (is => 'ro', isa => 'Num');
   has Neutral => (is => 'ro', isa => 'Num');
   has Positive => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

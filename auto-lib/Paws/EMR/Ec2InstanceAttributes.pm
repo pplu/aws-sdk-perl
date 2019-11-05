@@ -11,6 +11,7 @@ package Paws::EMR::Ec2InstanceAttributes;
   has RequestedEc2AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RequestedEc2SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

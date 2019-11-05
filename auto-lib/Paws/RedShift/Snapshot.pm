@@ -15,9 +15,12 @@ package Paws::RedShift::Snapshot;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has EstimatedSecondsToCompletion => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRemainingDays => (is => 'ro', isa => 'Int');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has MasterUsername => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -33,6 +36,7 @@ package Paws::RedShift::Snapshot;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has TotalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###
@@ -163,6 +167,7 @@ was used to encrypt data in the cluster from which the snapshot was
 taken.
 
 
+<<<<<<< HEAD
 =head2 MaintenanceTrackName => Str
 
   The name of the maintenance track for the snapshot.
@@ -182,6 +187,8 @@ period.
 The value must be either -1 or an integer between 1 and 3,653.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 MasterUsername => Str
 
   The master user name for the cluster.

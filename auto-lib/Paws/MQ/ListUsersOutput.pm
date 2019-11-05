@@ -4,6 +4,7 @@ package Paws::MQ::ListUsersOutput;
   has MaxResults => (is => 'ro', isa => 'Int', request_name => 'maxResults', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
   has Users => (is => 'ro', isa => 'ArrayRef[Paws::MQ::UserSummary]', request_name => 'users', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

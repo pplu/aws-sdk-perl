@@ -15,7 +15,11 @@ package Paws::SSM::InstancePatchState;
   has OwnerInformation => (is => 'ro', isa => 'Str');
   has PatchGroup => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotId => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has UnreportedNotApplicableCount => (is => 'ro', isa => 'Int');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

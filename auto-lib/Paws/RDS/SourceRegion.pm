@@ -3,6 +3,7 @@ package Paws::RDS::SourceRegion;
   has Endpoint => (is => 'ro', isa => 'Str');
   has RegionName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

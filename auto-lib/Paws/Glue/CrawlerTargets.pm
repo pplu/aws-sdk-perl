@@ -4,6 +4,7 @@ package Paws::Glue::CrawlerTargets;
   has DynamoDBTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::DynamoDBTarget]');
   has JdbcTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JdbcTarget]');
   has S3Targets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Target]');
+
 1;
 
 ### main pod documentation begin ###

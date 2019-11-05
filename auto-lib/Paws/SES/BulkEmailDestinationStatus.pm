@@ -3,6 +3,7 @@ package Paws::SES::BulkEmailDestinationStatus;
   has Error => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

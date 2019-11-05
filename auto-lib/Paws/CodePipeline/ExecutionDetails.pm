@@ -3,6 +3,7 @@ package Paws::CodePipeline::ExecutionDetails;
   has ExternalExecutionId => (is => 'ro', isa => 'Str', request_name => 'externalExecutionId', traits => ['NameInRequest']);
   has PercentComplete => (is => 'ro', isa => 'Int', request_name => 'percentComplete', traits => ['NameInRequest']);
   has Summary => (is => 'ro', isa => 'Str', request_name => 'summary', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

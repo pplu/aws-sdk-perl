@@ -4,6 +4,7 @@ package Paws::ImportExport::Job;
   has IsCanceled => (is => 'ro', isa => 'Bool');
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

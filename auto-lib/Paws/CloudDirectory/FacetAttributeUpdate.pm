@@ -2,6 +2,7 @@ package Paws::CloudDirectory::FacetAttributeUpdate;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has Attribute => (is => 'ro', isa => 'Paws::CloudDirectory::FacetAttribute');
+
 1;
 
 ### main pod documentation begin ###

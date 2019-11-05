@@ -3,6 +3,7 @@ package Paws::DynamoDB::GlobalSecondaryIndexUpdate;
   has Create => (is => 'ro', isa => 'Paws::DynamoDB::CreateGlobalSecondaryIndexAction');
   has Delete => (is => 'ro', isa => 'Paws::DynamoDB::DeleteGlobalSecondaryIndexAction');
   has Update => (is => 'ro', isa => 'Paws::DynamoDB::UpdateGlobalSecondaryIndexAction');
+
 1;
 
 ### main pod documentation begin ###

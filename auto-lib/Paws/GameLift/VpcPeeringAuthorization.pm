@@ -5,6 +5,7 @@ package Paws::GameLift::VpcPeeringAuthorization;
   has GameLiftAwsAccountId => (is => 'ro', isa => 'Str');
   has PeerVpcAwsAccountId => (is => 'ro', isa => 'Str');
   has PeerVpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

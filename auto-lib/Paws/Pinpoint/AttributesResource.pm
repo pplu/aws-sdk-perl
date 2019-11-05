@@ -2,7 +2,12 @@ package Paws::Pinpoint::AttributesResource;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', required => 1);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+<<<<<<< HEAD
   has AttributeType => (is => 'ro', isa => 'Str', required => 1);
+=======
+  has AttributeType => (is => 'ro', isa => 'Str');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes;
   has ScheduledEventId => (is => 'ro', isa => 'Int', request_name => 'scheduledEventId', traits => ['NameInRequest'], required => 1);
   has StartedEventId => (is => 'ro', isa => 'Int', request_name => 'startedEventId', traits => ['NameInRequest'], required => 1);
   has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

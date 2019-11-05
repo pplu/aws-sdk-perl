@@ -3,6 +3,7 @@ package Paws::S3::Stats;
   has BytesProcessed => (is => 'ro', isa => 'Int');
   has BytesReturned => (is => 'ro', isa => 'Int');
   has BytesScanned => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

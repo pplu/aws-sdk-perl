@@ -1,6 +1,7 @@
 package Paws::MigrationHub::ProgressUpdateStreamSummary;
   use Moose;
   has ProgressUpdateStreamName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

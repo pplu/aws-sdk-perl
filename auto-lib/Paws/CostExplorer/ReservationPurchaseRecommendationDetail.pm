@@ -19,6 +19,7 @@ package Paws::CostExplorer::ReservationPurchaseRecommendationDetail;
   has RecommendedNumberOfInstancesToPurchase => (is => 'ro', isa => 'Str');
   has RecurringStandardMonthlyCost => (is => 'ro', isa => 'Str');
   has UpfrontCost => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

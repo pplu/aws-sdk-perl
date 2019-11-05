@@ -2,6 +2,7 @@ package Paws::GuardDuty::PortProbeAction;
   use Moose;
   has Blocked => (is => 'ro', isa => 'Bool', request_name => 'blocked', traits => ['NameInRequest']);
   has PortProbeDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::PortProbeDetail]', request_name => 'portProbeDetails', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::Route53::GetTrafficPolicyInstance;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', uri_name => 'Id', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetTrafficPolicyInstance');
@@ -11,6 +12,7 @@ package Paws::Route53::GetTrafficPolicyInstance;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetTrafficPolicyInstanceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

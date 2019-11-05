@@ -3,6 +3,7 @@ package Paws::ServiceCatalog::ResourceTargetDefinition;
   has Attribute => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has RequiresRecreation => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

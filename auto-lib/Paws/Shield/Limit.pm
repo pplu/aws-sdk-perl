@@ -2,6 +2,7 @@ package Paws::Shield::Limit;
   use Moose;
   has Max => (is => 'ro', isa => 'Int');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

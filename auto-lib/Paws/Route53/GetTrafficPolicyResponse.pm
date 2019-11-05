@@ -3,6 +3,7 @@ package Paws::Route53::GetTrafficPolicyResponse;
   use Moose;
   has TrafficPolicy => (is => 'ro', isa => 'Paws::Route53::TrafficPolicy', required => 1);
 
+
   has _request_id => (is => 'ro', isa => 'Str');
 1;
 

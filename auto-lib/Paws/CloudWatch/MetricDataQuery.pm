@@ -5,6 +5,7 @@ package Paws::CloudWatch::MetricDataQuery;
   has Label => (is => 'ro', isa => 'Str');
   has MetricStat => (is => 'ro', isa => 'Paws::CloudWatch::MetricStat');
   has ReturnData => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

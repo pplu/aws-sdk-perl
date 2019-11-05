@@ -2,6 +2,7 @@ package Paws::Budgets::Subscriber;
   use Moose;
   has Address => (is => 'ro', isa => 'Str', required => 1);
   has SubscriptionType => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

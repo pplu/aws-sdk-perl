@@ -2,7 +2,8 @@
 package Paws::Route53::ListQueryLoggingConfigsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has QueryLoggingConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::QueryLoggingConfig]', required => 1);
+  has QueryLoggingConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::QueryLoggingConfig]', request_name => 'QueryLoggingConfig', traits => ['NameInRequest'], required => 1);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

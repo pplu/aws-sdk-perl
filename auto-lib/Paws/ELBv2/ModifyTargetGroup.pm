@@ -69,9 +69,12 @@ The approximate amount of time, in seconds, between health checks of an
 individual target. For Application Load Balancers, the range is 5 to
 300 seconds. For Network Load Balancers, the supported values are 10 or
 30 seconds.
+<<<<<<< HEAD
 
 If the protocol of the target group is TCP, you can't modify this
 setting.
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 
 

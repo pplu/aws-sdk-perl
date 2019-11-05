@@ -6,6 +6,7 @@ package Paws::CloudWatch::MetricDataResult;
   has StatusCode => (is => 'ro', isa => 'Str');
   has Timestamps => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Values => (is => 'ro', isa => 'ArrayRef[Num]');
+
 1;
 
 ### main pod documentation begin ###

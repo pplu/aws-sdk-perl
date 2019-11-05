@@ -8,6 +8,7 @@ package Paws::Inspector::AgentPreview;
   has Ipv4Address => (is => 'ro', isa => 'Str', request_name => 'ipv4Address', traits => ['NameInRequest']);
   has KernelVersion => (is => 'ro', isa => 'Str', request_name => 'kernelVersion', traits => ['NameInRequest']);
   has OperatingSystem => (is => 'ro', isa => 'Str', request_name => 'operatingSystem', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

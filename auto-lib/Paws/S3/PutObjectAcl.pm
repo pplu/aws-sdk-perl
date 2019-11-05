@@ -1,7 +1,7 @@
 
 package Paws::S3::PutObjectAcl;
   use Moose;
-  has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy');
+  has AccessControlPolicy => (is => 'ro', isa => 'Paws::S3::AccessControlPolicy', traits => ['ParamInBody']);
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
@@ -15,6 +15,7 @@ package Paws::S3::PutObjectAcl;
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectAcl');
@@ -23,6 +24,7 @@ package Paws::S3::PutObjectAcl;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

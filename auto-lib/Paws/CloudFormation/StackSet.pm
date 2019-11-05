@@ -11,6 +11,7 @@ package Paws::CloudFormation::StackSet;
   has Status => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str', decode_as => 'JSON', method => 'Template', traits => ['JSONAttribute']);
+
 1;
 
 ### main pod documentation begin ###

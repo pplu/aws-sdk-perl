@@ -5,6 +5,7 @@ package Paws::DeviceFarm::ScheduleRunTest;
   has TestPackageArn => (is => 'ro', isa => 'Str', request_name => 'testPackageArn', traits => ['NameInRequest']);
   has TestSpecArn => (is => 'ro', isa => 'Str', request_name => 'testSpecArn', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchReadOperationResponse;
   use Moose;
   has ExceptionResponse => (is => 'ro', isa => 'Paws::CloudDirectory::BatchReadException');
   has SuccessfulResponse => (is => 'ro', isa => 'Paws::CloudDirectory::BatchReadSuccessfulResponse');
+
 1;
 
 ### main pod documentation begin ###

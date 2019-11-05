@@ -1,6 +1,7 @@
 package Paws::GuardDuty::City;
   use Moose;
   has CityName => (is => 'ro', isa => 'Str', request_name => 'cityName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

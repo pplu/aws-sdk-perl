@@ -2,6 +2,7 @@ package Paws::GuardDuty::ProductCode;
   use Moose;
   has Code => (is => 'ro', isa => 'Str', request_name => 'code', traits => ['NameInRequest']);
   has ProductType => (is => 'ro', isa => 'Str', request_name => 'productType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

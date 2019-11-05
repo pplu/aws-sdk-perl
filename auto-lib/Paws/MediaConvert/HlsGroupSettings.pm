@@ -24,6 +24,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   has TimedMetadataId3Frame => (is => 'ro', isa => 'Str', request_name => 'timedMetadataId3Frame', traits => ['NameInRequest']);
   has TimedMetadataId3Period => (is => 'ro', isa => 'Int', request_name => 'timedMetadataId3Period', traits => ['NameInRequest']);
   has TimestampDeltaMilliseconds => (is => 'ro', isa => 'Int', request_name => 'timestampDeltaMilliseconds', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

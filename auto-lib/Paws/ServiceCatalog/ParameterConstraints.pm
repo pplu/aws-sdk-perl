@@ -1,6 +1,7 @@
 package Paws::ServiceCatalog::ParameterConstraints;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

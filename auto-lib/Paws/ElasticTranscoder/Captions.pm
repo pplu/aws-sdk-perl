@@ -3,6 +3,7 @@ package Paws::ElasticTranscoder::Captions;
   has CaptionFormats => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CaptionFormat]');
   has CaptionSources => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::CaptionSource]');
   has MergePolicy => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

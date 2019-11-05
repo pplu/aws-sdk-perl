@@ -3,6 +3,7 @@ package Paws::Health::EventTypeFilter;
   has EventTypeCategories => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCategories', traits => ['NameInRequest']);
   has EventTypeCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'eventTypeCodes', traits => ['NameInRequest']);
   has Services => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'services', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

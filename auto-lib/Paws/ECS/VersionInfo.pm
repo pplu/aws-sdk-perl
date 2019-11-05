@@ -3,6 +3,7 @@ package Paws::ECS::VersionInfo;
   has AgentHash => (is => 'ro', isa => 'Str', request_name => 'agentHash', traits => ['NameInRequest']);
   has AgentVersion => (is => 'ro', isa => 'Str', request_name => 'agentVersion', traits => ['NameInRequest']);
   has DockerVersion => (is => 'ro', isa => 'Str', request_name => 'dockerVersion', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

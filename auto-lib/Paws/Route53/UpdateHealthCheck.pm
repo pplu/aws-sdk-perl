@@ -2,8 +2,12 @@
 package Paws::Route53::UpdateHealthCheck;
   use Moose;
   has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
+<<<<<<< HEAD
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Disabled => (is => 'ro', isa => 'Bool');
+=======
+  has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ChildHealthCheck', traits => ['NameInRequest']);
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
@@ -14,10 +18,11 @@ package Paws::Route53::UpdateHealthCheck;
   has Inverted => (is => 'ro', isa => 'Bool');
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has ResetElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'Region', traits => ['NameInRequest']);
+  has ResetElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ResettableElementName', traits => ['NameInRequest']);
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
+
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +31,8 @@ package Paws::Route53::UpdateHealthCheck;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::UpdateHealthCheckResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-  
+  class_has _top_level_element => (isa => 'Str', is => 'ro', default => 'UpdateHealthCheckRequest');
+  class_has _top_level_namespace => (isa => 'Str', is => 'ro', default => 'https://route53.amazonaws.com/doc/2013-04-01/');  
 1;
 
 ### main pod documentation begin ###

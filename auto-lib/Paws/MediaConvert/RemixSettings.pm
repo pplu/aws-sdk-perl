@@ -1,8 +1,15 @@
 package Paws::MediaConvert::RemixSettings;
   use Moose;
+<<<<<<< HEAD
   has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest']);
   has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest']);
   has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest']);
+=======
+  has ChannelMapping => (is => 'ro', isa => 'Paws::MediaConvert::ChannelMapping', request_name => 'channelMapping', traits => ['NameInRequest'], required => 1);
+  has ChannelsIn => (is => 'ro', isa => 'Int', request_name => 'channelsIn', traits => ['NameInRequest'], required => 1);
+  has ChannelsOut => (is => 'ro', isa => 'Int', request_name => 'channelsOut', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

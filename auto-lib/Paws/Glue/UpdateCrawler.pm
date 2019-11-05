@@ -56,6 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       TablePrefix => 'MyTablePrefix',    # OPTIONAL
       Targets     => {
+<<<<<<< HEAD
         CatalogTargets => [
           {
             DatabaseName => 'MyNameString',    # min: 1, max: 255
@@ -67,21 +68,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],                                     # OPTIONAL
         DynamoDBTargets => [ { Path => 'MyPath', }, ... ],    # OPTIONAL
+=======
+        DynamoDBTargets => [
+          {
+            Path => 'MyPath',            # OPTIONAL
+          },
+          ...
+        ],                               # OPTIONAL
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
         JdbcTargets => [
           {
-            ConnectionName => 'MyConnectionName',             # OPTIONAL
-            Exclusions     => [ 'MyPath', ... ],              # OPTIONAL
-            Path           => 'MyPath',
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [ 'MyPath', ... ],                  # OPTIONAL
-            Path => 'MyPath',
+            Exclusions => [
+              'MyPath', ...                          # OPTIONAL
+            ],                                       # OPTIONAL
+            Path => 'MyPath',                        # OPTIONAL
           },
           ...
-        ],                                                    # OPTIONAL
+        ],                                           # OPTIONAL
       },    # OPTIONAL
     );
 

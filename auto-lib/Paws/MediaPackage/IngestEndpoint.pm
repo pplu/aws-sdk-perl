@@ -4,6 +4,7 @@ package Paws::MediaPackage::IngestEndpoint;
   has Password => (is => 'ro', isa => 'Str', request_name => 'password', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::ELBv2::Cipher;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

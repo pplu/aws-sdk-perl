@@ -3,6 +3,7 @@ package Paws::GameLift::EC2InstanceLimit;
   has CurrentInstances => (is => 'ro', isa => 'Int');
   has EC2InstanceType => (is => 'ro', isa => 'Str');
   has InstanceLimit => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

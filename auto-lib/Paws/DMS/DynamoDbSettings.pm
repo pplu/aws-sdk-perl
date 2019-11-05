@@ -1,6 +1,7 @@
 package Paws::DMS::DynamoDbSettings;
   use Moose;
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

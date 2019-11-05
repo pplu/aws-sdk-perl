@@ -8,6 +8,7 @@ package Paws::S3::ObjectVersion;
   has Size => (is => 'ro', isa => 'Int');
   has StorageClass => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

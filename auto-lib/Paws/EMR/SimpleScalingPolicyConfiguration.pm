@@ -3,6 +3,7 @@ package Paws::EMR::SimpleScalingPolicyConfiguration;
   has AdjustmentType => (is => 'ro', isa => 'Str');
   has CoolDown => (is => 'ro', isa => 'Int');
   has ScalingAdjustment => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -27,16 +27,20 @@ package Paws::ECS::ContainerDefinition;
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has PseudoTerminal => (is => 'ro', isa => 'Bool', request_name => 'pseudoTerminal', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has RepositoryCredentials => (is => 'ro', isa => 'Paws::ECS::RepositoryCredentials', request_name => 'repositoryCredentials', traits => ['NameInRequest']);
   has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
   has StartTimeout => (is => 'ro', isa => 'Int', request_name => 'startTimeout', traits => ['NameInRequest']);
   has StopTimeout => (is => 'ro', isa => 'Int', request_name => 'stopTimeout', traits => ['NameInRequest']);
   has SystemControls => (is => 'ro', isa => 'ArrayRef[Paws::ECS::SystemControl]', request_name => 'systemControls', traits => ['NameInRequest']);
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has VolumesFrom => (is => 'ro', isa => 'ArrayRef[Paws::ECS::VolumeFrom]', request_name => 'volumesFrom', traits => ['NameInRequest']);
   has WorkingDirectory => (is => 'ro', isa => 'Str', request_name => 'workingDirectory', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -311,9 +315,16 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 =head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
 
   A list of hostnames and IP address mappings to append to the
+<<<<<<< HEAD
 C</etc/hosts> file on the container. This parameter maps to
 C<ExtraHosts> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
+=======
+C</etc/hosts> file on the container. If using the Fargate launch type,
+this may be used to list non-Fargate hosts you want the container to
+talk to. This parameter maps to C<ExtraHosts> in the Create a container
+(https://docs.docker.com/engine/reference/api/docker_remote_api_v1.27/#create-a-container)
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--add-host>
 option to docker run (https://docs.docker.com/engine/reference/run/).
@@ -607,8 +618,7 @@ the container port in the port mapping.
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>
 section of a container description for a selected task in the Amazon
-ECS console. The assignments are also visible in the C<networkBindings>
-section DescribeTasks responses.
+ECS console, or the C<networkBindings> section DescribeTasks responses.
 
 
 =head2 Privileged => Bool
@@ -648,6 +658,7 @@ option to docker run (https://docs.docker.com/engine/reference/run/).
 This parameter is not supported for Windows containers.
 
 
+<<<<<<< HEAD
 =head2 RepositoryCredentials => L<Paws::ECS::RepositoryCredentials>
 
   The private repository authentication credentials to use.
@@ -743,6 +754,8 @@ that use the C<host> network mode, it changes the container instance's
 namespaced kernel parameters as well as the containers.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
 
   A list of C<ulimits> to set in the container. This parameter maps to

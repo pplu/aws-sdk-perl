@@ -13,9 +13,12 @@ package Paws::RedShift::ModifyCluster;
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NewClusterIdentifier => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -61,9 +64,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnhancedVpcRouting               => 1,                      # OPTIONAL
       HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
+<<<<<<< HEAD
       KmsKeyId                         => 'MyString',             # OPTIONAL
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
       ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
       MasterUserPassword               => 'MyString',             # OPTIONAL
       NewClusterIdentifier             => 'MyString',             # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
@@ -246,6 +252,7 @@ keys in an HSM.
 
 
 
+<<<<<<< HEAD
 =head2 KmsKeyId => Str
 
 The AWS Key Management Service (KMS) key ID of the encryption key that
@@ -277,6 +284,8 @@ The default value is -1.
 
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 MasterUserPassword => Str
 
 The new password for the cluster master user. This change is

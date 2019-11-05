@@ -8,6 +8,7 @@ package Paws::Glue::Partition;
   has StorageDescriptor => (is => 'ro', isa => 'Paws::Glue::StorageDescriptor');
   has TableName => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

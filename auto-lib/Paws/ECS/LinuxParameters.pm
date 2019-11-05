@@ -5,6 +5,7 @@ package Paws::ECS::LinuxParameters;
   has InitProcessEnabled => (is => 'ro', isa => 'Bool', request_name => 'initProcessEnabled', traits => ['NameInRequest']);
   has SharedMemorySize => (is => 'ro', isa => 'Int', request_name => 'sharedMemorySize', traits => ['NameInRequest']);
   has Tmpfs => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tmpfs]', request_name => 'tmpfs', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

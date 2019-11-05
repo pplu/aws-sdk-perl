@@ -7,6 +7,7 @@ package Paws::CloudFormation::ResourceChange;
   has Replacement => (is => 'ro', isa => 'Str');
   has ResourceType => (is => 'ro', isa => 'Str');
   has Scope => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

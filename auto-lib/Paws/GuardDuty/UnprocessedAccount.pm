@@ -2,6 +2,7 @@ package Paws::GuardDuty::UnprocessedAccount;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest'], required => 1);
   has Result => (is => 'ro', isa => 'Str', request_name => 'result', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

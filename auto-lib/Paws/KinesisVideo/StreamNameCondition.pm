@@ -2,6 +2,7 @@ package Paws::KinesisVideo::StreamNameCondition;
   use Moose;
   has ComparisonOperator => (is => 'ro', isa => 'Str');
   has ComparisonValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

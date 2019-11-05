@@ -10,6 +10,7 @@ package Paws::ElasticTranscoder::PresetWatermark;
   has Target => (is => 'ro', isa => 'Str');
   has VerticalAlign => (is => 'ro', isa => 'Str');
   has VerticalOffset => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

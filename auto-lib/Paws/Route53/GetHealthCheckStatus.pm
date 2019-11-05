@@ -3,6 +3,7 @@ package Paws::Route53::GetHealthCheckStatus;
   use Moose;
   has HealthCheckId => (is => 'ro', isa => 'Str', uri_name => 'HealthCheckId', traits => ['ParamInURI'], required => 1);
 
+
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetHealthCheckStatus');
@@ -11,6 +12,7 @@ package Paws::Route53::GetHealthCheckStatus;
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetHealthCheckStatusResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
   
+    
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::CodePipeline::ArtifactLocation;
   use Moose;
   has S3Location => (is => 'ro', isa => 'Paws::CodePipeline::S3ArtifactLocation', request_name => 's3Location', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

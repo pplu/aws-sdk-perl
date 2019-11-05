@@ -29,6 +29,7 @@ package Paws::CognitoIdp::UserPoolType;
   has UserPoolAddOns => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolAddOnsType');
   has UserPoolTags => (is => 'ro', isa => 'Paws::CognitoIdp::UserPoolTagsType');
   has VerificationMessageTemplate => (is => 'ro', isa => 'Paws::CognitoIdp::VerificationMessageTemplateType');
+
 1;
 
 ### main pod documentation begin ###

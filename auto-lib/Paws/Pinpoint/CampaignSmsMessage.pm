@@ -3,6 +3,7 @@ package Paws::Pinpoint::CampaignSmsMessage;
   has Body => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -82,11 +82,8 @@ request token, Amazon Comprehend generates one.
 
 =head2 B<REQUIRED> DataAccessRoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that grants Amazon Comprehend read access to your
-input data. For more information, see
-https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
-(https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions).
+The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
+role that grants Amazon Comprehend read access to your input data.
 
 
 

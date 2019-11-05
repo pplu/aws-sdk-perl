@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchListObjectParentPathsResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has PathToObjectIdentifiersList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::PathToObjectIdentifiers]');
+
 1;
 
 ### main pod documentation begin ###

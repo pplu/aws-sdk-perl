@@ -4,6 +4,7 @@ package Paws::WAF::ByteMatchTuple;
   has PositionalConstraint => (is => 'ro', isa => 'Str', required => 1);
   has TargetString => (is => 'ro', isa => 'Str', required => 1);
   has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

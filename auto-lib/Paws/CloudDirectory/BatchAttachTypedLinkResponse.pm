@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::BatchAttachTypedLinkResponse;
   use Moose;
   has TypedLinkSpecifier => (is => 'ro', isa => 'Paws::CloudDirectory::TypedLinkSpecifier');
+
 1;
 
 ### main pod documentation begin ###

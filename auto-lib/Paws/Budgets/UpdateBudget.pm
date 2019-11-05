@@ -39,18 +39,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
           Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-        },    # OPTIONAL
+        },
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
           ForecastedSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
         CostFilters => {
           'MyGenericString' => [

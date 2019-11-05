@@ -4,6 +4,7 @@ package Paws::IAM::PolicyVersion;
   has Document => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
   has IsDefaultVersion => (is => 'ro', isa => 'Bool');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,6 +7,7 @@ package Paws::CodePipeline::ListWebhookItem;
   has LastTriggered => (is => 'ro', isa => 'Str', request_name => 'lastTriggered', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

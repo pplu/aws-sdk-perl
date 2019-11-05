@@ -6,6 +6,7 @@ package Paws::Batch::ContainerOverrides;
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

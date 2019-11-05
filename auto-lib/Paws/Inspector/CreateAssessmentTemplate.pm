@@ -80,7 +80,8 @@ correspond to a particular assessment target must be unique.
 
 =head2 B<REQUIRED> DurationInSeconds => Int
 
-The duration of the assessment run in seconds.
+The duration of the assessment run in seconds. The default value is
+3600 seconds (one hour).
 
 
 

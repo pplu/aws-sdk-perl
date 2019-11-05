@@ -2,6 +2,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes;
   use Moose;
   has ChildPolicy => (is => 'ro', isa => 'Str', request_name => 'childPolicy', traits => ['NameInRequest'], required => 1);
   has TimeoutType => (is => 'ro', isa => 'Str', request_name => 'timeoutType', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

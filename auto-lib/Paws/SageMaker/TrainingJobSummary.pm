@@ -6,6 +6,7 @@ package Paws::SageMaker::TrainingJobSummary;
   has TrainingJobArn => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

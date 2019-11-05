@@ -6,6 +6,7 @@ package Paws::Config::EvaluationResult;
   has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier');
   has ResultRecordedTime => (is => 'ro', isa => 'Str');
   has ResultToken => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

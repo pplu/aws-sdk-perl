@@ -3,6 +3,7 @@ package Paws::IoT::SnsAction;
   has MessageFormat => (is => 'ro', isa => 'Str', request_name => 'messageFormat', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has TargetArn => (is => 'ro', isa => 'Str', request_name => 'targetArn', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

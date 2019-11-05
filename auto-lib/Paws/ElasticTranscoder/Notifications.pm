@@ -4,6 +4,7 @@ package Paws::ElasticTranscoder::Notifications;
   has Error => (is => 'ro', isa => 'Str');
   has Progressing => (is => 'ro', isa => 'Str');
   has Warning => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

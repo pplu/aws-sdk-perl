@@ -18,6 +18,7 @@ package Paws::AppStream::Fleet;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has State => (is => 'ro', isa => 'Str', required => 1);
   has VpcConfig => (is => 'ro', isa => 'Paws::AppStream::VpcConfig');
+
 1;
 
 ### main pod documentation begin ###

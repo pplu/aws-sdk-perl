@@ -3,6 +3,7 @@ package Paws::CognitoIdentity::RoleMapping;
   has AmbiguousRoleResolution => (is => 'ro', isa => 'Str');
   has RulesConfiguration => (is => 'ro', isa => 'Paws::CognitoIdentity::RulesConfigurationType');
   has Type => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

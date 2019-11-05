@@ -3,6 +3,7 @@ package Paws::CloudWatchLogs::MetricFilterMatchRecord;
   has EventMessage => (is => 'ro', isa => 'Str', request_name => 'eventMessage', traits => ['NameInRequest']);
   has EventNumber => (is => 'ro', isa => 'Int', request_name => 'eventNumber', traits => ['NameInRequest']);
   has ExtractedValues => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExtractedValues', request_name => 'extractedValues', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

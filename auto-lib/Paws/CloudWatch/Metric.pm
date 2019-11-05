@@ -3,6 +3,7 @@ package Paws::CloudWatch::Metric;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

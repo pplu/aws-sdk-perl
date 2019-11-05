@@ -4,6 +4,7 @@ package Paws::StorageGateway::ChapInfo;
   has SecretToAuthenticateInitiator => (is => 'ro', isa => 'Str');
   has SecretToAuthenticateTarget => (is => 'ro', isa => 'Str');
   has TargetARN => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

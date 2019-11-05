@@ -3,6 +3,7 @@ package Paws::Route53::DelegationSet;
   has CallerReference => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has NameServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'NameServer', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

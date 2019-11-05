@@ -26,8 +26,11 @@ package Paws::RedShift::Cluster;
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
@@ -43,6 +46,7 @@ package Paws::RedShift::Cluster;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroup', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -351,6 +355,7 @@ used by the cluster to access other AWS services.
 used to encrypt data in the cluster.
 
 
+<<<<<<< HEAD
 =head2 MaintenanceTrackName => Str
 
   The name of the maintenance track for the cluster.
@@ -365,6 +370,8 @@ the retention period of existing snapshots.
 The value must be either -1 or an integer between 1 and 3,653.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 MasterUsername => Str
 
   The master user name for the cluster. This name is used to connect to

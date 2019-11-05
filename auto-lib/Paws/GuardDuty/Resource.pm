@@ -3,6 +3,7 @@ package Paws::GuardDuty::Resource;
   has AccessKeyDetails => (is => 'ro', isa => 'Paws::GuardDuty::AccessKeyDetails', request_name => 'accessKeyDetails', traits => ['NameInRequest']);
   has InstanceDetails => (is => 'ro', isa => 'Paws::GuardDuty::InstanceDetails', request_name => 'instanceDetails', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

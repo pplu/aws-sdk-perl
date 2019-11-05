@@ -8,6 +8,7 @@ package Paws::ELBv2::RuleCondition;
   has QueryStringConfig => (is => 'ro', isa => 'Paws::ELBv2::QueryStringConditionConfig');
   has SourceIpConfig => (is => 'ro', isa => 'Paws::ELBv2::SourceIpConditionConfig');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###
@@ -120,10 +121,17 @@ C<host-header> and C<path-pattern> conditions. Otherwise, you can use
 C<HostHeaderConfig> for C<host-header> conditions and
 C<PathPatternConfig> for C<path-pattern> conditions.
 
+<<<<<<< HEAD
 If C<Field> is C<host-header>, you can specify a single host name (for
 example, my.example.com). A host name is case insensitive, can be up to
 128 characters in length, and can contain any of the following
 characters.
+=======
+If the field name is C<host-header>, you can specify a single host name
+(for example, my.example.com). A host name is case insensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =over
 
@@ -145,10 +153,17 @@ A-Z, a-z, 0-9
 
 =back
 
+<<<<<<< HEAD
 If C<Field> is C<path-pattern>, you can specify a single path pattern
 (for example, /img/*). A path pattern is case-sensitive, can be up to
 128 characters in length, and can contain any of the following
 characters.
+=======
+If the field name is C<path-pattern>, you can specify a single path
+pattern (for example, /img/*). A path pattern is case sensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =over
 

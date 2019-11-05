@@ -3,6 +3,7 @@ package Paws::Glue::TableVersionError;
   has ErrorDetail => (is => 'ro', isa => 'Paws::Glue::ErrorDetail');
   has TableName => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

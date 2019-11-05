@@ -3,6 +3,7 @@ package Paws::Firehose::OpenXJsonSerDe;
   has CaseInsensitive => (is => 'ro', isa => 'Bool');
   has ColumnToJsonKeyMappings => (is => 'ro', isa => 'Paws::Firehose::ColumnToJsonKeyMappings');
   has ConvertDotsInJsonKeysToUnderscores => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

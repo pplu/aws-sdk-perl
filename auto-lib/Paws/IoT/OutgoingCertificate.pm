@@ -6,6 +6,7 @@ package Paws::IoT::OutgoingCertificate;
   has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
   has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
   has TransferredTo => (is => 'ro', isa => 'Str', request_name => 'transferredTo', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

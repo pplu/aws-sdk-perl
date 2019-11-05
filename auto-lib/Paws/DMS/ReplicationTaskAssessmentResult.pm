@@ -7,6 +7,7 @@ package Paws::DMS::ReplicationTaskAssessmentResult;
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationTaskLastAssessmentDate => (is => 'ro', isa => 'Str');
   has S3ObjectUrl => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

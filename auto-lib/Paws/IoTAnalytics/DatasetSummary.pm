@@ -5,7 +5,11 @@ package Paws::IoTAnalytics::DatasetSummary;
   has DatasetName => (is => 'ro', isa => 'Str', request_name => 'datasetName', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', request_name => 'triggers', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

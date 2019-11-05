@@ -5,6 +5,7 @@ package Paws::IoT::TopicRuleListItem;
   has RuleDisabled => (is => 'ro', isa => 'Bool', request_name => 'ruleDisabled', traits => ['NameInRequest']);
   has RuleName => (is => 'ro', isa => 'Str', request_name => 'ruleName', traits => ['NameInRequest']);
   has TopicPattern => (is => 'ro', isa => 'Str', request_name => 'topicPattern', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

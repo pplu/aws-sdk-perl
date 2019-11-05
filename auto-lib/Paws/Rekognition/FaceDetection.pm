@@ -2,6 +2,7 @@ package Paws::Rekognition::FaceDetection;
   use Moose;
   has Face => (is => 'ro', isa => 'Paws::Rekognition::FaceDetail');
   has Timestamp => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

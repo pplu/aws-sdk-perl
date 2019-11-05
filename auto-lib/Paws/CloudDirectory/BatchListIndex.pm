@@ -4,6 +4,7 @@ package Paws::CloudDirectory::BatchListIndex;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has RangesOnIndexedValues => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::ObjectAttributeRange]');
+
 1;
 
 ### main pod documentation begin ###

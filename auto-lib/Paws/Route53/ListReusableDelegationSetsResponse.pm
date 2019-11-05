@@ -1,11 +1,12 @@
 
 package Paws::Route53::ListReusableDelegationSetsResponse;
   use Moose;
-  has DelegationSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::DelegationSet]', required => 1);
+  has DelegationSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::DelegationSet]', request_name => 'DelegationSet', traits => ['NameInRequest'], required => 1);
   has IsTruncated => (is => 'ro', isa => 'Bool', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Str', required => 1);
   has NextMarker => (is => 'ro', isa => 'Str');
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

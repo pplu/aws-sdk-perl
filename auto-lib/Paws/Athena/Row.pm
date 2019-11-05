@@ -1,6 +1,7 @@
 package Paws::Athena::Row;
   use Moose;
   has Data => (is => 'ro', isa => 'ArrayRef[Paws::Athena::Datum]');
+
 1;
 
 ### main pod documentation begin ###

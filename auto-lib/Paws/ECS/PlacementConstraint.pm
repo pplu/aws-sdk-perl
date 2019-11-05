@@ -2,6 +2,7 @@ package Paws::ECS::PlacementConstraint;
   use Moose;
   has Expression => (is => 'ro', isa => 'Str', request_name => 'expression', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###
@@ -42,8 +43,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 Expression => Str
 
-  A cluster query language expression to apply to the constraint. You
-cannot specify an expression if the constraint type is
+  A cluster query language expression to apply to the constraint. Note
+you cannot specify an expression if the constraint type is
 C<distinctInstance>. For more information, see Cluster Query Language
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html)
 in the I<Amazon Elastic Container Service Developer Guide>.

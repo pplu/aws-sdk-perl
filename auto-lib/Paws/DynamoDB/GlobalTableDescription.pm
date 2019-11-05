@@ -5,6 +5,7 @@ package Paws::DynamoDB::GlobalTableDescription;
   has GlobalTableName => (is => 'ro', isa => 'Str');
   has GlobalTableStatus => (is => 'ro', isa => 'Str');
   has ReplicationGroup => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ReplicaDescription]');
+
 1;
 
 ### main pod documentation begin ###

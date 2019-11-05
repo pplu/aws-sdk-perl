@@ -3,6 +3,7 @@ package Paws::CloudTrail::EventSelector;
   has DataResources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::DataResource]');
   has IncludeManagementEvents => (is => 'ro', isa => 'Bool');
   has ReadWriteType => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

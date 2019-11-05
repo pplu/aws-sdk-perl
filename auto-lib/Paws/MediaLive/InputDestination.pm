@@ -3,7 +3,11 @@ package Paws::MediaLive::InputDestination;
   has Ip => (is => 'ro', isa => 'Str', request_name => 'ip', traits => ['NameInRequest']);
   has Port => (is => 'ro', isa => 'Str', request_name => 'port', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Vpc => (is => 'ro', isa => 'Paws::MediaLive::InputDestinationVpc', request_name => 'vpc', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

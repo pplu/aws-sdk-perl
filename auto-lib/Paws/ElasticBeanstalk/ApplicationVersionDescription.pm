@@ -10,6 +10,7 @@ package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has Status => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

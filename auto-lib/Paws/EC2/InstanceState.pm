@@ -39,6 +39,7 @@ This class has no description
 
 =head2 Code => Int
 
+<<<<<<< HEAD
   The state of the instance as a 16-bit unsigned integer.
 
 The high byte is all of the bits between 2^8 and (2^16)-1, which equals
@@ -50,6 +51,10 @@ decimal values between 0 and 255.
 
 The valid values for instance-state-code will all be in the range of
 the low byte and they are:
+=======
+  The low byte represents the state. The high byte is an opaque internal
+value and should be ignored.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =over
 

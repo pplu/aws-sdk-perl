@@ -5,6 +5,7 @@ package Paws::OpsWorks::Recipes;
   has Setup => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Shutdown => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Undeploy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+
 1;
 
 ### main pod documentation begin ###

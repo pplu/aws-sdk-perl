@@ -1507,7 +1507,7 @@ task definition with the C<networkMode> parameter. The available
 network modes correspond to those described in Network settings
 (https://docs.docker.com/engine/reference/run/#/network-settings) in
 the Docker run reference. If you specify the C<awsvpc> network mode,
-the task is allocated an elastic network interface, and you must
+the task is allocated an Elastic Network Interface, and you must
 specify a NetworkConfiguration when you create a service or run a task
 with the task definition. For more information, see Task Networking
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html)
@@ -1581,7 +1581,7 @@ Confirm the state of the resource before you run a command to modify
 it. Run the DescribeTasks command using an exponential backoff
 algorithm to ensure that you allow enough time for the previous command
 to propagate through the system. To do this, run the DescribeTasks
-command repeatedly, starting with a couple of seconds of wait time and
+command repeatedly, starting with a couple of seconds of wait time, and
 increasing gradually up to five minutes of wait time.
 
 =item *

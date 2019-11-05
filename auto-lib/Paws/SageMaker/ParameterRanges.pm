@@ -3,6 +3,7 @@ package Paws::SageMaker::ParameterRanges;
   has CategoricalParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::CategoricalParameterRange]');
   has ContinuousParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ContinuousParameterRange]');
   has IntegerParameterRanges => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::IntegerParameterRange]');
+
 1;
 
 ### main pod documentation begin ###

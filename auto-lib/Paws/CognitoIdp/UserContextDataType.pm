@@ -1,6 +1,7 @@
 package Paws::CognitoIdp::UserContextDataType;
   use Moose;
   has EncodedData => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

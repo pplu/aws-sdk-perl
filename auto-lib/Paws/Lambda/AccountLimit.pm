@@ -5,6 +5,7 @@ package Paws::Lambda::AccountLimit;
   has ConcurrentExecutions => (is => 'ro', isa => 'Int');
   has TotalCodeSize => (is => 'ro', isa => 'Int');
   has UnreservedConcurrentExecutions => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

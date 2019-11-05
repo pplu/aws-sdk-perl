@@ -11,6 +11,7 @@ package Paws::WorkDocs::FolderMetadata;
   has ResourceState => (is => 'ro', isa => 'Str');
   has Signature => (is => 'ro', isa => 'Str');
   has Size => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -15,8 +15,11 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -68,8 +71,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
       IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
       KmsKeyId                         => 'MyString',             # OPTIONAL
+<<<<<<< HEAD
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
       ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
       NodeType                         => 'MyString',             # OPTIONAL
       OwnerAccount                     => 'MyString',             # OPTIONAL
       Port                             => 1,                      # OPTIONAL
@@ -269,6 +275,7 @@ shared snapshot.
 
 
 
+<<<<<<< HEAD
 =head2 MaintenanceTrackName => Str
 
 The name of the maintenance track for the restored cluster. When you
@@ -291,6 +298,8 @@ The value must be either -1 or an integer between 1 and 3,653.
 
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 NodeType => Str
 
 The node type that the restored cluster will be provisioned with.

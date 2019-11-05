@@ -16,6 +16,7 @@ package Paws::GameLift::GameSession;
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
   has TerminationTime => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

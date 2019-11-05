@@ -7,6 +7,7 @@ package Paws::Lightsail::InstancePortInfo;
   has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

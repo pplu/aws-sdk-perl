@@ -1,6 +1,5 @@
 package Paws::Comprehend::KeyPhrasesDetectionJobProperties;
   use Moose;
-  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::InputDataConfig');
   has JobId => (is => 'ro', isa => 'Str');
@@ -10,8 +9,12 @@ package Paws::Comprehend::KeyPhrasesDetectionJobProperties;
   has Message => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::OutputDataConfig');
   has SubmitTime => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has VolumeKmsKeyId => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::Comprehend::VpcConfig');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###
@@ -31,26 +34,24 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Comprehend::KeyPhrasesDetectionJobProperties object:
 
+<<<<<<< HEAD
   $service_obj->Method(Att1 => { DataAccessRoleArn => $value, ..., VpcConfig => $value  });
+=======
+  $service_obj->Method(Att1 => { EndTime => $value, ..., SubmitTime => $value  });
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend::KeyPhrasesDetectionJobProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DataAccessRoleArn
+  $result->Att1->EndTime
 
 =head1 DESCRIPTION
 
 Provides information about a key phrases detection job.
 
 =head1 ATTRIBUTES
-
-
-=head2 DataAccessRoleArn => Str
-
-  The Amazon Resource Name (ARN) that gives Amazon Comprehend read access
-to your input data.
 
 
 =head2 EndTime => Str

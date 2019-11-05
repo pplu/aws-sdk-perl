@@ -11,6 +11,7 @@ package Paws::FMS::Policy;
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
   has ResourceTypeList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityServicePolicyData => (is => 'ro', isa => 'Paws::FMS::SecurityServicePolicyData', required => 1);
+
 1;
 
 ### main pod documentation begin ###

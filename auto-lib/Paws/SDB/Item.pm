@@ -3,6 +3,7 @@ package Paws::SDB::Item;
   has AlternateNameEncoding => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]', request_name => 'Attribute', traits => ['NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

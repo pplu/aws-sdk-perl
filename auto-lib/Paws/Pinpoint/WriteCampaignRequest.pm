@@ -14,6 +14,7 @@ package Paws::Pinpoint::WriteCampaignRequest;
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TreatmentDescription => (is => 'ro', isa => 'Str');
   has TreatmentName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

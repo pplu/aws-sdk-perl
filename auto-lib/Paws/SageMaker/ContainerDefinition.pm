@@ -4,7 +4,11 @@ package Paws::SageMaker::ContainerDefinition;
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
   has Image => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has ModelPackageName => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

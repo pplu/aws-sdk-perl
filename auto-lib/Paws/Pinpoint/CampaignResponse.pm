@@ -24,7 +24,10 @@ package Paws::Pinpoint::CampaignResponse;
   has TreatmentName => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Int');
 
+<<<<<<< HEAD
   has _request_id => (is => 'ro', isa => 'Str');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

@@ -11,6 +11,7 @@ package Paws::CloudWatchEvents::Target;
   has RoleArn => (is => 'ro', isa => 'Str');
   has RunCommandParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::RunCommandParameters');
   has SqsParameters => (is => 'ro', isa => 'Paws::CloudWatchEvents::SqsParameters');
+
 1;
 
 ### main pod documentation begin ###

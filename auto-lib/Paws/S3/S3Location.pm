@@ -8,6 +8,7 @@ package Paws::S3::S3Location;
   has StorageClass => (is => 'ro', isa => 'Str');
   has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging');
   has UserMetadata => (is => 'ro', isa => 'ArrayRef[Paws::S3::MetadataEntry]', request_name => 'MetadataEntry', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

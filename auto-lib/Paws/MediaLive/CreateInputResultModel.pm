@@ -1,6 +1,7 @@
 package Paws::MediaLive::CreateInputResultModel;
   use Moose;
   has Input => (is => 'ro', isa => 'Paws::MediaLive::Input', request_name => 'input', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

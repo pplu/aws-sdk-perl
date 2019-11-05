@@ -1,6 +1,7 @@
 package Paws::DynamoDB::PointInTimeRecoverySpecification;
   use Moose;
   has PointInTimeRecoveryEnabled => (is => 'ro', isa => 'Bool', required => 1);
+
 1;
 
 ### main pod documentation begin ###

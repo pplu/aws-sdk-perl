@@ -77,7 +77,44 @@ redirect specified client requests from one URL to another.
 [Application Load Balancer] If the action type is C<fixed-response>,
 you drop specified client requests and return a custom HTTP response.
 
+<<<<<<< HEAD
 
+=======
+=head2 Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
+
+The conditions. Each condition specifies a field name and a single
+value.
+
+If the field name is C<host-header>, you can specify a single host name
+(for example, my.example.com). A host name is case insensitive, can be
+up to 128 characters in length, and can contain any of the following
+characters. Note that you can include up to three wildcard characters.
+
+=over
+
+=item *
+
+A-Z, a-z, 0-9
+
+=item *
+
+- .
+
+=item *
+
+* (matches 0 or more characters)
+
+=item *
+
+? (matches exactly 1 character)
+
+=back
+
+If the field name is C<path-pattern>, you can specify a single path
+pattern. A path pattern is case sensitive, can be up to 128 characters
+in length, and can contain any of the following characters. Note that
+you can include up to three wildcard characters.
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head2 Conditions => ArrayRef[L<Paws::ELBv2::RuleCondition>]
 

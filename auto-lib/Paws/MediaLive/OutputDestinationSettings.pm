@@ -4,6 +4,7 @@ package Paws::MediaLive::OutputDestinationSettings;
   has StreamName => (is => 'ro', isa => 'Str', request_name => 'streamName', traits => ['NameInRequest']);
   has Url => (is => 'ro', isa => 'Str', request_name => 'url', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

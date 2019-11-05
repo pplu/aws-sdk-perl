@@ -1,8 +1,15 @@
 package Paws::MediaConvert::DvbNitSettings;
   use Moose;
+<<<<<<< HEAD
   has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest']);
   has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest']);
   has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest']);
+=======
+  has NetworkId => (is => 'ro', isa => 'Int', request_name => 'networkId', traits => ['NameInRequest'], required => 1);
+  has NetworkName => (is => 'ro', isa => 'Str', request_name => 'networkName', traits => ['NameInRequest'], required => 1);
+  has NitInterval => (is => 'ro', isa => 'Int', request_name => 'nitInterval', traits => ['NameInRequest'], required => 1);
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

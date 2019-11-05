@@ -3,6 +3,7 @@ package Paws::WorkDocs::Principal;
   has Id => (is => 'ro', isa => 'Str');
   has Roles => (is => 'ro', isa => 'ArrayRef[Paws::WorkDocs::PermissionInfo]');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

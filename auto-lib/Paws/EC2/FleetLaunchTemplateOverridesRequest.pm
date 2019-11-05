@@ -3,8 +3,11 @@ package Paws::EC2::FleetLaunchTemplateOverridesRequest;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
   has MaxPrice => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement');
   has Priority => (is => 'ro', isa => 'Num');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   has SubnetId => (is => 'ro', isa => 'Str');
   has WeightedCapacity => (is => 'ro', isa => 'Num');
 1;
@@ -58,6 +61,7 @@ This class has no description
 Instance.
 
 
+<<<<<<< HEAD
 =head2 Placement => L<Paws::EC2::Placement>
 
   The location where the instance launched, if applicable.
@@ -73,6 +77,8 @@ starting at C<0>. The lower the number, the higher the priority. If no
 number is set, the launch template override has the lowest priority.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 SubnetId => Str
 
   The ID of the subnet in which to launch the instances.

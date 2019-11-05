@@ -3,6 +3,7 @@ package Paws::DynamoDB::PointInTimeRecoveryDescription;
   has EarliestRestorableDateTime => (is => 'ro', isa => 'Str');
   has LatestRestorableDateTime => (is => 'ro', isa => 'Str');
   has PointInTimeRecoveryStatus => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -5,6 +5,7 @@ package Paws::MQ::DescribeUserOutput;
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'groups', traits => ['NameInRequest']);
   has Pending => (is => 'ro', isa => 'Paws::MQ::UserPendingChanges', request_name => 'pending', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

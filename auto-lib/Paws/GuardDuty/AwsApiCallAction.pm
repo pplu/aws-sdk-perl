@@ -5,6 +5,7 @@ package Paws::GuardDuty::AwsApiCallAction;
   has DomainDetails => (is => 'ro', isa => 'Paws::GuardDuty::DomainDetails', request_name => 'domainDetails', traits => ['NameInRequest']);
   has RemoteIpDetails => (is => 'ro', isa => 'Paws::GuardDuty::RemoteIpDetails', request_name => 'remoteIpDetails', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MQ::ListBrokersOutput;
   use Moose;
   has BrokerSummaries => (is => 'ro', isa => 'ArrayRef[Paws::MQ::BrokerSummary]', request_name => 'brokerSummaries', traits => ['NameInRequest']);
   has NextToken => (is => 'ro', isa => 'Str', request_name => 'nextToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

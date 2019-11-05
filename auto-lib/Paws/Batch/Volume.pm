@@ -2,6 +2,7 @@ package Paws::Batch::Volume;
   use Moose;
   has Host => (is => 'ro', isa => 'Paws::Batch::Host', request_name => 'host', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

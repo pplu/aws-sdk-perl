@@ -9,6 +9,7 @@ package Paws::LexModels::Slot;
   has SlotType => (is => 'ro', isa => 'Str', request_name => 'slotType', traits => ['NameInRequest']);
   has SlotTypeVersion => (is => 'ro', isa => 'Str', request_name => 'slotTypeVersion', traits => ['NameInRequest']);
   has ValueElicitationPrompt => (is => 'ro', isa => 'Paws::LexModels::Prompt', request_name => 'valueElicitationPrompt', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::DatasetAction;
   has ActionName => (is => 'ro', isa => 'Str', request_name => 'actionName', traits => ['NameInRequest']);
   has ContainerAction => (is => 'ro', isa => 'Paws::IoTAnalytics::ContainerDatasetAction', request_name => 'containerAction', traits => ['NameInRequest']);
   has QueryAction => (is => 'ro', isa => 'Paws::IoTAnalytics::SqlQueryDatasetAction', request_name => 'queryAction', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

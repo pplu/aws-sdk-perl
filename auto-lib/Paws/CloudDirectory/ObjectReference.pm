@@ -1,6 +1,7 @@
 package Paws::CloudDirectory::ObjectReference;
   use Moose;
   has Selector => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

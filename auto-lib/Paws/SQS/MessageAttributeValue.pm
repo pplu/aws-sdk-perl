@@ -1,10 +1,11 @@
 package Paws::SQS::MessageAttributeValue;
   use Moose;
-  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'BinaryListValue', request_name => 'BinaryListValue', traits => ['NameInRequest','NameInRequest']);
+  has BinaryListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'BinaryListValue', traits => ['NameInRequest']);
   has BinaryValue => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str', required => 1);
-  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'StringListValue', request_name => 'StringListValue', traits => ['NameInRequest','NameInRequest']);
+  has StringListValues => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'StringListValue', traits => ['NameInRequest']);
   has StringValue => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

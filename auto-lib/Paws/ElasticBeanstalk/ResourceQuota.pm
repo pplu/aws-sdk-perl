@@ -1,6 +1,7 @@
 package Paws::ElasticBeanstalk::ResourceQuota;
   use Moose;
   has Maximum => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

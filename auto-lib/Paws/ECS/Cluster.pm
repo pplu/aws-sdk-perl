@@ -9,7 +9,11 @@ package Paws::ECS::Cluster;
   has Settings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ClusterSetting]', request_name => 'settings', traits => ['NameInRequest']);
   has Statistics => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'statistics', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+<<<<<<< HEAD
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###
@@ -58,7 +62,7 @@ state. You can view these services with ListServices.
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) that identifies the cluster. The ARN
-contains the C<arn:aws:ecs> namespace, followed by the Region of the
+contains the C<arn:aws:ecs> namespace, followed by the region of the
 cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
 C<arn:aws:ecs:region:012345678910:cluster/test>.

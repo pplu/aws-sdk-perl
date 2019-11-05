@@ -8,6 +8,7 @@ package Paws::ElasticBeanstalk::CPUUtilization;
   has SoftIRQ => (is => 'ro', isa => 'Num');
   has System => (is => 'ro', isa => 'Num');
   has User => (is => 'ro', isa => 'Num');
+
 1;
 
 ### main pod documentation begin ###

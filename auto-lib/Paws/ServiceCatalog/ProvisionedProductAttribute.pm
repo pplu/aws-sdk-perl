@@ -15,6 +15,7 @@ package Paws::ServiceCatalog::ProvisionedProductAttribute;
   has Type => (is => 'ro', isa => 'Str');
   has UserArn => (is => 'ro', isa => 'Str');
   has UserArnSession => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

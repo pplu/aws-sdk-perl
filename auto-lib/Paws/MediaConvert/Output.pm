@@ -8,6 +8,7 @@ package Paws::MediaConvert::Output;
   has OutputSettings => (is => 'ro', isa => 'Paws::MediaConvert::OutputSettings', request_name => 'outputSettings', traits => ['NameInRequest']);
   has Preset => (is => 'ro', isa => 'Str', request_name => 'preset', traits => ['NameInRequest']);
   has VideoDescription => (is => 'ro', isa => 'Paws::MediaConvert::VideoDescription', request_name => 'videoDescription', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

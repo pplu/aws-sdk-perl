@@ -25,6 +25,7 @@ package Paws::EMR::Cluster;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Tag]');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
   has VisibleToAllUsers => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

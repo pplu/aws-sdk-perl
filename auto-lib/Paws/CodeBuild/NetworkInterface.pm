@@ -2,6 +2,7 @@ package Paws::CodeBuild::NetworkInterface;
   use Moose;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

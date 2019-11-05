@@ -4,6 +4,7 @@ package Paws::CloudDirectory::Directory;
   has DirectoryArn => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

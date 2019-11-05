@@ -6,6 +6,7 @@ package Paws::S3::MultipartUpload;
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -35,6 +35,7 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::BatchDetectSentiment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub BatchDetectSyntax {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::BatchDetectSyntax', @_);
@@ -70,6 +71,8 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDocumentClassifier', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub DescribeDominantLanguageDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeDominantLanguageDetectionJob', @_);
@@ -120,6 +123,7 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectSentiment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+<<<<<<< HEAD
   sub DetectSyntax {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectSyntax', @_);
@@ -135,6 +139,8 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDocumentClassifiers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
   sub ListDominantLanguageDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListDominantLanguageDetectionJobs', @_);
@@ -427,7 +433,11 @@ package Paws::Comprehend;
   }
 
 
+<<<<<<< HEAD
   sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax CreateDocumentClassifier CreateEntityRecognizer DeleteDocumentClassifier DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource / }
+=======
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment DescribeDominantLanguageDetectionJob DescribeEntitiesDetectionJob DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment ListDominantLanguageDetectionJobs ListEntitiesDetectionJobs ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTopicsDetectionJobs StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob / }
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 1;
 
@@ -542,6 +552,7 @@ prevailing sentiment, C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or
 C<NEGATIVE>, in each one.
 
 
+<<<<<<< HEAD
 =head2 BatchDetectSyntax
 
 =over
@@ -714,6 +725,8 @@ Returns: a L<Paws::Comprehend::DescribeDocumentClassifierResponse> instance
 Gets the properties associated with a document classifier.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 DescribeDominantLanguageDetectionJob
 
 =over
@@ -892,6 +905,7 @@ Inspects text and returns an inference of the prevailing sentiment
 (C<POSITIVE>, C<NEUTRAL>, C<MIXED>, or C<NEGATIVE>).
 
 
+<<<<<<< HEAD
 =head2 DetectSyntax
 
 =over
@@ -952,6 +966,8 @@ Returns: a L<Paws::Comprehend::ListDocumentClassifiersResponse> instance
 Gets a list of the document classifiers that you have created.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =head2 ListDominantLanguageDetectionJobs
 
 =over
@@ -1302,17 +1318,15 @@ Returns: a L<Paws::Comprehend::StopDominantLanguageDetectionJobResponse> instanc
 
 Stops a dominant language detection job in progress.
 
-If the job state is C<IN_PROGRESS> the job is marked for termination
-and put into the C<STOP_REQUESTED> state. If the job completes before
-it can be stopped, it is put into the C<COMPLETED> state; otherwise the
-job is stopped and put into the C<STOPPED> state.
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
 
 If the job is in the C<COMPLETED> or C<FAILED> state when you call the
-C<StopDominantLanguageDetectionJob> operation, the operation returns a
-400 Internal Request Exception.
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
 
-When a job is stopped, any documents already processed are written to
-the output location.
+When a job is stopped, any document that has already been processed
+will be written to the output location.
 
 
 =head2 StopEntitiesDetectionJob
@@ -1330,17 +1344,15 @@ Returns: a L<Paws::Comprehend::StopEntitiesDetectionJobResponse> instance
 
 Stops an entities detection job in progress.
 
-If the job state is C<IN_PROGRESS> the job is marked for termination
-and put into the C<STOP_REQUESTED> state. If the job completes before
-it can be stopped, it is put into the C<COMPLETED> state; otherwise the
-job is stopped and put into the C<STOPPED> state.
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
 
 If the job is in the C<COMPLETED> or C<FAILED> state when you call the
-C<StopDominantLanguageDetectionJob> operation, the operation returns a
-400 Internal Request Exception.
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
 
-When a job is stopped, any documents already processed are written to
-the output location.
+When a job is stopped, any document that has already been processed
+will be written to the output location.
 
 
 =head2 StopKeyPhrasesDetectionJob
@@ -1358,17 +1370,15 @@ Returns: a L<Paws::Comprehend::StopKeyPhrasesDetectionJobResponse> instance
 
 Stops a key phrases detection job in progress.
 
-If the job state is C<IN_PROGRESS> the job is marked for termination
-and put into the C<STOP_REQUESTED> state. If the job completes before
-it can be stopped, it is put into the C<COMPLETED> state; otherwise the
-job is stopped and put into the C<STOPPED> state.
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
 
 If the job is in the C<COMPLETED> or C<FAILED> state when you call the
-C<StopDominantLanguageDetectionJob> operation, the operation returns a
-400 Internal Request Exception.
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
 
-When a job is stopped, any documents already processed are written to
-the output location.
+When a job is stopped, any document that has already been processed
+will be written to the output location.
 
 
 =head2 StopSentimentDetectionJob
@@ -1386,17 +1396,15 @@ Returns: a L<Paws::Comprehend::StopSentimentDetectionJobResponse> instance
 
 Stops a sentiment detection job in progress.
 
-If the job state is C<IN_PROGRESS> the job is marked for termination
-and put into the C<STOP_REQUESTED> state. If the job completes before
-it can be stopped, it is put into the C<COMPLETED> state; otherwise the
-job is be stopped and put into the C<STOPPED> state.
+If the job state is C<IN_PROGRESS> the job will be marked for
+termination and put into the C<STOPPING> state.
 
 If the job is in the C<COMPLETED> or C<FAILED> state when you call the
-C<StopDominantLanguageDetectionJob> operation, the operation returns a
-400 Internal Request Exception.
+C<StopDominantLanguageDetectionJob> operation, the operation will
+return a 400 Internal Request Exception.
 
-When a job is stopped, any documents already processed are written to
-the output location.
+When a job is stopped, any document that has already been processed
+will be written to the output location.
 
 
 =head2 StopTrainingDocumentClassifier

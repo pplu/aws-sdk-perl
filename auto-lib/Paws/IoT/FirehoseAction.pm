@@ -3,6 +3,7 @@ package Paws::IoT::FirehoseAction;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', request_name => 'deliveryStreamName', traits => ['NameInRequest'], required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Separator => (is => 'ro', isa => 'Str', request_name => 'separator', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

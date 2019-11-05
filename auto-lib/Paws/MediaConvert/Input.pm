@@ -18,6 +18,7 @@ package Paws::MediaConvert::Input;
   has SupplementalImps => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supplementalImps', traits => ['NameInRequest']);
   has TimecodeSource => (is => 'ro', isa => 'Str', request_name => 'timecodeSource', traits => ['NameInRequest']);
   has VideoSelector => (is => 'ro', isa => 'Paws::MediaConvert::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

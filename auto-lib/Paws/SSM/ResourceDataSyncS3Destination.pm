@@ -5,6 +5,7 @@ package Paws::SSM::ResourceDataSyncS3Destination;
   has Prefix => (is => 'ro', isa => 'Str');
   has Region => (is => 'ro', isa => 'Str', required => 1);
   has SyncFormat => (is => 'ro', isa => 'Str', required => 1);
+
 1;
 
 ### main pod documentation begin ###

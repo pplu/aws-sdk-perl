@@ -10,6 +10,7 @@ package Paws::EMR::InstanceFleet;
   has Status => (is => 'ro', isa => 'Paws::EMR::InstanceFleetStatus');
   has TargetOnDemandCapacity => (is => 'ro', isa => 'Int');
   has TargetSpotCapacity => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

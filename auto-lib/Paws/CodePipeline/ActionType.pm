@@ -5,6 +5,7 @@ package Paws::CodePipeline::ActionType;
   has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'inputArtifactDetails', traits => ['NameInRequest'], required => 1);
   has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', request_name => 'outputArtifactDetails', traits => ['NameInRequest'], required => 1);
   has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', request_name => 'settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration;
   use Moose;
   has BillingMethod => (is => 'ro', isa => 'Str', request_name => 'billingMethod', traits => ['NameInRequest']);
   has VpceConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'vpceConfigurationArns', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

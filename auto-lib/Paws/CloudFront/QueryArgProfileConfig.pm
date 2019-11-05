@@ -2,6 +2,7 @@ package Paws::CloudFront::QueryArgProfileConfig;
   use Moose;
   has ForwardWhenQueryArgProfileIsUnknown => (is => 'ro', isa => 'Bool', required => 1);
   has QueryArgProfiles => (is => 'ro', isa => 'Paws::CloudFront::QueryArgProfiles');
+
 1;
 
 ### main pod documentation begin ###

@@ -8,6 +8,7 @@ package Paws::CloudWatchLogs::LogStream;
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has StoredBytes => (is => 'ro', isa => 'Int', request_name => 'storedBytes', traits => ['NameInRequest']);
   has UploadSequenceToken => (is => 'ro', isa => 'Str', request_name => 'uploadSequenceToken', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

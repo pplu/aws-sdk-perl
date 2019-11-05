@@ -14,6 +14,7 @@ package Paws::GameLift::MatchmakingConfiguration;
   has NotificationTarget => (is => 'ro', isa => 'Str');
   has RequestTimeoutSeconds => (is => 'ro', isa => 'Int');
   has RuleSetName => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

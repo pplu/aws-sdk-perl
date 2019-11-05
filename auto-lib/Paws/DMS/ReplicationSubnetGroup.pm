@@ -5,6 +5,7 @@ package Paws::DMS::ReplicationSubnetGroup;
   has SubnetGroupStatus => (is => 'ro', isa => 'Str');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Subnet]');
   has VpcId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

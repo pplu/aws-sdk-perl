@@ -21,6 +21,7 @@ package Paws::Batch::ContainerDetail;
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
   has Vcpus => (is => 'ro', isa => 'Int', request_name => 'vcpus', traits => ['NameInRequest']);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Volume]', request_name => 'volumes', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -9,6 +9,7 @@ package Paws::Route53::TrafficPolicyInstance;
   has TrafficPolicyType => (is => 'ro', isa => 'Str', required => 1);
   has TrafficPolicyVersion => (is => 'ro', isa => 'Int', required => 1);
   has TTL => (is => 'ro', isa => 'Int', required => 1);
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::MediaLive::InputSecurityGroupWhitelistRequest;
   use Moose;
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
   has WhitelistRules => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputWhitelistRuleCidr]', request_name => 'whitelistRules', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

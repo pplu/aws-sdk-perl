@@ -2,6 +2,7 @@ package Paws::CloudDirectory::BatchLookupPolicyResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has PolicyToPathList => (is => 'ro', isa => 'ArrayRef[Paws::CloudDirectory::PolicyToPath]');
+
 1;
 
 ### main pod documentation begin ###

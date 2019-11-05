@@ -1,6 +1,7 @@
 package Paws::S3::StatsEvent;
   use Moose;
   has Details => (is => 'ro', isa => 'Paws::S3::Stats');
+
 1;
 
 ### main pod documentation begin ###

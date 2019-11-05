@@ -4,6 +4,7 @@ package Paws::MQ::DescribeConfigurationRevisionOutput;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Data => (is => 'ro', isa => 'Str', request_name => 'data', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

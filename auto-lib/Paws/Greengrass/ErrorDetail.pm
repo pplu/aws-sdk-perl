@@ -2,6 +2,7 @@ package Paws::Greengrass::ErrorDetail;
   use Moose;
   has DetailedErrorCode => (is => 'ro', isa => 'Str');
   has DetailedErrorMessage => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

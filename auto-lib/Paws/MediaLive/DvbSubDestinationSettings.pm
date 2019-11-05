@@ -17,6 +17,7 @@ package Paws::MediaLive::DvbSubDestinationSettings;
   has TeletextGridControl => (is => 'ro', isa => 'Str', request_name => 'teletextGridControl', traits => ['NameInRequest']);
   has XPosition => (is => 'ro', isa => 'Int', request_name => 'xPosition', traits => ['NameInRequest']);
   has YPosition => (is => 'ro', isa => 'Int', request_name => 'yPosition', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::DMS::SupportedEndpointType;
   has EngineDisplayName => (is => 'ro', isa => 'Str');
   has EngineName => (is => 'ro', isa => 'Str');
   has SupportsCDC => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

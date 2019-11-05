@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::ValidationMessage;
   has Namespace => (is => 'ro', isa => 'Str');
   has OptionName => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

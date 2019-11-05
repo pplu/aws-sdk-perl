@@ -199,11 +199,6 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterSubnetGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeClusterTracks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterTracks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub DescribeClusterVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeClusterVersions', @_);
@@ -906,6 +901,7 @@ package Paws::RedShift;
   sub GetAllReservedNodeExchangeOfferings {
     my $self = shift;
 
+<<<<<<< HEAD
     my $callback = shift @_ if (ref($_[0]) eq 'CODE');
     my $result = $self->GetReservedNodeExchangeOfferings(@_);
     my $next_result = $result;
@@ -929,6 +925,9 @@ package Paws::RedShift;
 
 
   sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+=======
+  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 1;
 
@@ -1217,10 +1216,13 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [KmsKeyId => Str]
 
+<<<<<<< HEAD
 =item [MaintenanceTrackName => Str]
 
 =item [ManualSnapshotRetentionPeriod => Int]
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =item [NumberOfNodes => Int]
 
 =item [Port => Int]
@@ -2081,26 +2083,6 @@ are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterTracks
-
-=over
-
-=item [MaintenanceTrackName => Str]
-
-=item [Marker => Str]
-
-=item [MaxRecords => Int]
-
-
-=back
-
-Each argument is described in detail in: L<Paws::RedShift::DescribeClusterTracks>
-
-Returns: a L<Paws::RedShift::TrackListMessage> instance
-
-Returns a list of all the available maintenance tracks.
-
-
 =head2 DescribeClusterVersions
 
 =over
@@ -2752,8 +2734,8 @@ Each argument is described in detail in: L<Paws::RedShift::GetReservedNodeExchan
 
 Returns: a L<Paws::RedShift::GetReservedNodeExchangeOfferingsOutputMessage> instance
 
-Returns an array of DC2 ReservedNodeOfferings that matches the payment
-type, term, and usage price of the given DC1 reserved node.
+Returns an array of ReservedNodeOfferings which is filtered by payment
+type, term, and instance type.
 
 
 =head2 ModifyCluster
@@ -2784,12 +2766,15 @@ type, term, and usage price of the given DC1 reserved node.
 
 =item [HsmConfigurationIdentifier => Str]
 
+<<<<<<< HEAD
 =item [KmsKeyId => Str]
 
 =item [MaintenanceTrackName => Str]
 
 =item [ManualSnapshotRetentionPeriod => Int]
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =item [MasterUserPassword => Str]
 
 =item [NewClusterIdentifier => Str]
@@ -3228,10 +3213,13 @@ cluster.
 
 =item [KmsKeyId => Str]
 
+<<<<<<< HEAD
 =item [MaintenanceTrackName => Str]
 
 =item [ManualSnapshotRetentionPeriod => Int]
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 =item [NodeType => Str]
 
 =item [OwnerAccount => Str]

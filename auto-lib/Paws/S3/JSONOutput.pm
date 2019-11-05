@@ -1,6 +1,7 @@
 package Paws::S3::JSONOutput;
   use Moose;
   has RecordDelimiter => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

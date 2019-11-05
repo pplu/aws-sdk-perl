@@ -1,8 +1,9 @@
 
 package Paws::S3::RestoreObjectOutput;
   use Moose;
-  has RequestCharged => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-charged');
-  has RestoreOutputPath => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-restore-output-path');
+  has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
+  has RestoreOutputPath => (is => 'ro', isa => 'Str', header_name => 'x-amz-restore-output-path', traits => ['ParamInHeader']);
+
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;

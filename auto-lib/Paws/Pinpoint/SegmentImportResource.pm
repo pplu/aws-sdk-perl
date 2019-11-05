@@ -1,11 +1,20 @@
 package Paws::Pinpoint::SegmentImportResource;
   use Moose;
   has ChannelCounts => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__integer');
+<<<<<<< HEAD
   has ExternalId => (is => 'ro', isa => 'Str', required => 1);
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has S3Url => (is => 'ro', isa => 'Str', required => 1);
   has Size => (is => 'ro', isa => 'Int', required => 1);
+=======
+  has ExternalId => (is => 'ro', isa => 'Str');
+  has Format => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
+  has S3Url => (is => 'ro', isa => 'Str');
+  has Size => (is => 'ro', isa => 'Int');
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

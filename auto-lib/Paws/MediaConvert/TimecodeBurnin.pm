@@ -3,6 +3,7 @@ package Paws::MediaConvert::TimecodeBurnin;
   has FontSize => (is => 'ro', isa => 'Int', request_name => 'fontSize', traits => ['NameInRequest']);
   has Position => (is => 'ro', isa => 'Str', request_name => 'position', traits => ['NameInRequest']);
   has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

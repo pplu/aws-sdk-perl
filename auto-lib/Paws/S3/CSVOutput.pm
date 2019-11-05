@@ -5,6 +5,7 @@ package Paws::S3::CSVOutput;
   has QuoteEscapeCharacter => (is => 'ro', isa => 'Str');
   has QuoteFields => (is => 'ro', isa => 'Str');
   has RecordDelimiter => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

@@ -2,6 +2,7 @@ package Paws::DynamoDB::ReplicaUpdate;
   use Moose;
   has Create => (is => 'ro', isa => 'Paws::DynamoDB::CreateReplicaAction');
   has Delete => (is => 'ro', isa => 'Paws::DynamoDB::DeleteReplicaAction');
+
 1;
 
 ### main pod documentation begin ###

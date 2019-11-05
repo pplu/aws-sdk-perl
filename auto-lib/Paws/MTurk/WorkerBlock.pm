@@ -2,6 +2,7 @@ package Paws::MTurk::WorkerBlock;
   use Moose;
   has Reason => (is => 'ro', isa => 'Str');
   has WorkerId => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

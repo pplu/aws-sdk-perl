@@ -3,6 +3,7 @@ package Paws::EMR::ClusterStatus;
   has State => (is => 'ro', isa => 'Str');
   has StateChangeReason => (is => 'ro', isa => 'Paws::EMR::ClusterStateChangeReason');
   has Timeline => (is => 'ro', isa => 'Paws::EMR::ClusterTimeline');
+
 1;
 
 ### main pod documentation begin ###

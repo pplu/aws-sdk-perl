@@ -36,7 +36,6 @@ my $upload_output = $glacier->InitiateMultipartUpload(
   PartSize => 1048576,
  );
 
-
 TODO: {
   local $TODO = 'Remove when the uploadid is sorted';
   ok($upload_output->UploadId, 'Glacier InitiateMultipartUpload returned an uploadId');

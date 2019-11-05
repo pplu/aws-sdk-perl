@@ -5,6 +5,7 @@ package Paws::IoT::TransferData;
   has RejectReason => (is => 'ro', isa => 'Str', request_name => 'rejectReason', traits => ['NameInRequest']);
   has TransferDate => (is => 'ro', isa => 'Str', request_name => 'transferDate', traits => ['NameInRequest']);
   has TransferMessage => (is => 'ro', isa => 'Str', request_name => 'transferMessage', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

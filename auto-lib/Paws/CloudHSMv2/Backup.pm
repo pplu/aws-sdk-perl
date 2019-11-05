@@ -5,10 +5,14 @@ package Paws::CloudHSMv2::Backup;
   has ClusterId => (is => 'ro', isa => 'Str');
   has CopyTimestamp => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has DeleteTimestamp => (is => 'ro', isa => 'Str');
   has SourceBackup => (is => 'ro', isa => 'Str');
   has SourceCluster => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

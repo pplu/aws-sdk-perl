@@ -6,6 +6,7 @@ package Paws::MediaConvert::ContainerSettings;
   has M3u8Settings => (is => 'ro', isa => 'Paws::MediaConvert::M3u8Settings', request_name => 'm3u8Settings', traits => ['NameInRequest']);
   has MovSettings => (is => 'ro', isa => 'Paws::MediaConvert::MovSettings', request_name => 'movSettings', traits => ['NameInRequest']);
   has Mp4Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp4Settings', request_name => 'mp4Settings', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

@@ -4,6 +4,7 @@ package Paws::IAM::Statement;
   has SourcePolicyId => (is => 'ro', isa => 'Str');
   has SourcePolicyType => (is => 'ro', isa => 'Str');
   has StartPosition => (is => 'ro', isa => 'Paws::IAM::Position');
+
 1;
 
 ### main pod documentation begin ###

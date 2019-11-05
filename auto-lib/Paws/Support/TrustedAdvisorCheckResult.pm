@@ -6,6 +6,7 @@ package Paws::Support::TrustedAdvisorCheckResult;
   has ResourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', request_name => 'resourcesSummary', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###

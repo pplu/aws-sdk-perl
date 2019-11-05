@@ -2,6 +2,7 @@ package Paws::CodeDeploy::RevisionInfo;
   use Moose;
   has GenericRevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', request_name => 'genericRevisionInfo', traits => ['NameInRequest']);
   has RevisionLocation => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'revisionLocation', traits => ['NameInRequest']);
+
 1;
 
 ### main pod documentation begin ###

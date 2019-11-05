@@ -7,6 +7,7 @@ package Paws::S3::RestoreRequest;
   has SelectParameters => (is => 'ro', isa => 'Paws::S3::SelectParameters');
   has Tier => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
+
 1;
 
 ### main pod documentation begin ###

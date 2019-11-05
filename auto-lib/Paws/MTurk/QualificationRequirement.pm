@@ -6,6 +6,7 @@ package Paws::MTurk::QualificationRequirement;
   has LocaleValues => (is => 'ro', isa => 'ArrayRef[Paws::MTurk::Locale]');
   has QualificationTypeId => (is => 'ro', isa => 'Str', required => 1);
   has RequiredToPreview => (is => 'ro', isa => 'Bool');
+
 1;
 
 ### main pod documentation begin ###

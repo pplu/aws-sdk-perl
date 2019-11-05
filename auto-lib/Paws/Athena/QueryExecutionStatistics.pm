@@ -2,6 +2,7 @@ package Paws::Athena::QueryExecutionStatistics;
   use Moose;
   has DataScannedInBytes => (is => 'ro', isa => 'Int');
   has EngineExecutionTimeInMillis => (is => 'ro', isa => 'Int');
+
 1;
 
 ### main pod documentation begin ###

@@ -7,7 +7,11 @@ package Paws::Inspector::AssetAttributes;
   has Ipv4Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv4Addresses', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has SchemaVersion => (is => 'ro', isa => 'Int', request_name => 'schemaVersion', traits => ['NameInRequest'], required => 1);
+<<<<<<< HEAD
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+=======
+
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###

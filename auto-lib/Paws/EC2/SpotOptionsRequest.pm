@@ -2,11 +2,14 @@ package Paws::EC2::SpotOptionsRequest;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
+<<<<<<< HEAD
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
   has MaxTotalPrice => (is => 'ro', isa => 'Str');
   has MinTargetCapacity => (is => 'ro', isa => 'Int');
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
   has SingleInstanceType => (is => 'ro', isa => 'Bool');
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +29,11 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::SpotOptionsRequest object:
 
+<<<<<<< HEAD
   $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., SingleInstanceType => $value  });
+=======
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., InstanceInterruptionBehavior => $value  });
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head3 Results returned from an API call
 
@@ -54,6 +61,7 @@ specified by the Spot Fleet request. The default is C<lowestPrice>.
 C<terminate>.
 
 
+<<<<<<< HEAD
 =head2 InstancePoolsToUseCount => Int
 
   The number of Spot pools across which to allocate your target Spot
@@ -88,6 +96,8 @@ Availability Zone.
 Instances in the fleet.
 
 
+=======
+>>>>>>> 186ed52fd2853f25b0e1410d04060db03e2f042c
 
 =head1 SEE ALSO
 

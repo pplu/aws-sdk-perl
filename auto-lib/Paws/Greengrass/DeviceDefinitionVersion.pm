@@ -1,6 +1,7 @@
 package Paws::Greengrass::DeviceDefinitionVersion;
   use Moose;
   has Devices => (is => 'ro', isa => 'ArrayRef[Paws::Greengrass::Device]');
+
 1;
 
 ### main pod documentation begin ###

@@ -1,6 +1,7 @@
 package Paws::S3::CORSConfiguration;
   use Moose;
   has CORSRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::CORSRule]', request_name => 'CORSRule', traits => ['NameInRequest'], required => 1);
+
 1;
 
 ### main pod documentation begin ###
