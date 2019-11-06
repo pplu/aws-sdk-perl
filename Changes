@@ -1,4 +1,10 @@
 0.42 
+ - Fix issues with generating correct XML for Route53 methods
+ - Fix double-encoding in URIs (requires URI::Template upgrade)
+ - Fix Glacier/RestJson return values in headers (eg UploadId for InitiateMultipartUpload)
+ - Fix non-encoding of JSON payload body objects for Glacier
+ - Fix MD5 errors with empty content
+ - Add several tests for the above fixes
 
 
 0.41 11 Jul 2019
@@ -33,12 +39,6 @@
    up installation (Grinzz)
  - MojoAsyncCaller is working correctly (leonerd, bork1n)
  - Fix failing tests when AWS_CONFIG_FILE env var is set in the test environment (stevecaldwell77)
- - Fix issues with generating correct XML for Route53 methods
- - Fix double-encoding in URIs (requires URI::Template upgrade)
- - Fix Glacier/RestJson return values in headers (eg UploadId for InitiateMultipartUpload)
- - Fix non-encoding of JSON payload body objects for Glacier
- - Fix MD5 errors with empty content
- - Add several tests for the above fixes
  - API updates for any service up to the date of release
  - Fix: SNS CheckIfPhoneNumberIsOptedOut CheckIfPhoneNumberIsOptedOut ListPhoneNumbersOptedOut
         were not working correctly
