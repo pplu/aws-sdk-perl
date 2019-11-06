@@ -52,4 +52,18 @@ package Paws::API::Attribute::Trait::Flatten;
   use Moose::Util;
   Moose::Util::meta_attribute_alias('Flatten');
 
+package Paws::API::Attribute::Trait::XMLAtribute;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('XMLAtribute');
+  has xml_attribute_name=> (is => 'ro', isa => 'Str');
+
+package Paws::API::Attribute::Trait::ListNameInRequest;
+  use Moose::Role;
+  use Moose::Util;
+  Moose::Util::meta_attribute_alias('ListNameInRequest');
+  has list_request_name => (is => 'ro', isa => 'Str');
+
+  #response_name
+
 1;

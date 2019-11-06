@@ -149,42 +149,63 @@ package Paws::Net::RestXmlCaller;
     return $str;
   }
 
+  sub _to_xml_attributes {
+    my ($self, $value) = @_;
+	return ""
+	  unless(ref($value) and $value->can('_xml_attributes'));
+
+     my $attributes = $value->_xml_attributes();
+
+     my $xml_attributes = ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+                          .  join ('',map { sprintf ' %s="%s"',$value->meta->get_attribute($_)->xml_attribute_name(),$value->$_
+                           } @{$attributes});
+     return $xml_attributes;
+
+  }
   sub _to_xml {
     my ($self, $value) = @_;
-
     my $xml = '';
+
     foreach my $attribute ($value->meta->get_all_attributes) {
       my $att_name = $attribute->name;
       next if (not $attribute->has_value($value));
+	  next if ($attribute->does('XMLAtribute'));
       if (Moose::Util::find_meta($attribute->type_constraint->name)) {
         if ($attribute->does('NameInRequest')) {
           my $location = $attribute->request_name;
-          $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute->get_value($value)), $location;
+          $xml .= sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($value)), $self->_to_xml($attribute->get_value($value)), $location;
         } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
+          $xml .= sprintf '<%s%s>%s</%s>',$att_name,  $self->_to_xml_attributes($attribute->get_value($value)), $self->_to_xml($attribute->get_value($value)), $att_name;
         }
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
       
 		  my $location = $attribute->request_name;
-
-		  $xml .= ( join '', map { sprintf '<%s>%s</%s>', $location, $_, $location } @{ $attribute->get_value($value) } );
+          
+		  $xml .= ( join '', map { sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($_)), $_, $location } @{ $attribute->get_value($value) }); 
           
           $xml .= "<${att_name}>".$xml ."</${att_name}>"
 		    unless($attribute->does('Flatten'));
       
 	  } elsif ($attribute->type_constraint =~ m/^ArrayRef\[(.*?\:\:.*)\]/) { #assume it's an array of Paws API objects
-		  my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
-
-          $xml .=  ( join '', map { sprintf '<%s>%s</%s>', $location, $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
-		  $xml ="<$att_name>$xml</$att_name>"
-		    if( $attribute->does('NameInRequest')
-			  and !$attribute->does('Flatten'));
+		  if ($attribute->does('ListNameInRequest')) {
+             my $location = $attribute->request_name();
+			 my $list_name =  $attribute->list_request_name();
+             $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,   $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
+             $xml ="<$list_name>$xml</$list_name>"
+		  }
+		  else {
+		     my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
+             $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
+		     $xml ="<$att_name>$xml</$att_name>"
+		       if( $attribute->does('NameInRequest')
+			       and !$attribute->does('Flatten'));
+		     }
       } else {
         if ($attribute->does('NameInRequest')) {
           my $location = $attribute->request_name;
-          $xml .=  sprintf '<%s>%s</%s>', $location, $attribute->get_value($value), $location;
+          $xml .=  sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($value)), $attribute->get_value($value), $location;
         } else {
-          $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
+          $xml .= sprintf '<%s%s>%s</%s>',$att_name,  $self->_to_xml_attributes($attribute->get_value($value)), $attribute->get_value($value), $att_name;
         }
       }
     }
@@ -270,7 +291,7 @@ package Paws::Net::RestXmlCaller;
     }
 
     $self->_to_header_params($request, $call);
-    $self->sign($request);
+	$self->sign($request);
     return $request;
   }
 1;
