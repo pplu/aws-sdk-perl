@@ -15,6 +15,7 @@ package Paws::Net::RestXMLResponse;
       KeyAttr       => '',
       SuppressEmpty => undef,
     );
+
     return $xml->parse_string($data);
   }
 
@@ -31,7 +32,7 @@ package Paws::Net::RestXMLResponse;
     my ($self, $call_object, $response) = @_;
 
     my $struct = eval { $self->unserialize_response( $response->content ) };
-    if ($@){
+	if ($@){
       return Paws::Exception->new(
         message => $@,
         code => exists($struct->{Code})?$struct->{Code}:'InvalidContent',
@@ -134,7 +135,6 @@ package Paws::Net::RestXMLResponse;
       return $self->handle_response_strtonativemap($class, $result);
     } else {
     foreach my $att ($class->meta->get_attribute_list) {
-
       next if (not my $meta = $class->meta->get_attribute($att));
       my $key = $meta->does('NameInRequest') ? $meta->request_name :
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
@@ -150,8 +150,10 @@ package Paws::Net::RestXMLResponse;
 
       # Free-form paramaters passed in the HTTP headers
 	  #
-
-      if ( $meta->does('ParamInStatus')){
+      if ($meta->does("XMLAtribute")){
+          $args{ $key } =  $result->{$meta->xml_attribute_name()};
+      }
+      elsif ( $meta->does('ParamInStatus')){
 		  $key = $meta->response_name;
           $args{ $meta->name } = $result->{$key};
 	  } elsif ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
@@ -313,7 +315,7 @@ package Paws::Net::RestXMLResponse;
         $unserialized_struct->{$ret_class->_payload} = $content;
 	  } else {
         $unserialized_struct = eval { $self->unserialize_response( $content ) };
-        if ($@){
+		if ($@){
           return Paws::Exception->new(
             message => $@,
             code => 'InvalidContent',

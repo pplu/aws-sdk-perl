@@ -156,7 +156,7 @@ package Paws::Net::RestXmlCaller;
 
      my $attributes = $value->_xml_attributes();
 
-     my $xml_attributes = ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+     my $xml_attributes = ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
                           .  join ('',map { sprintf ' %s="%s"',$value->meta->get_attribute($_)->xml_attribute_name(),$value->$_
                            } @{$attributes});
      return $xml_attributes;
@@ -165,7 +165,6 @@ package Paws::Net::RestXmlCaller;
   sub _to_xml {
     my ($self, $value) = @_;
     my $xml = '';
-
     foreach my $attribute ($value->meta->get_all_attributes) {
       my $att_name = $attribute->name;
       next if (not $attribute->has_value($value));
@@ -178,11 +177,8 @@ package Paws::Net::RestXmlCaller;
           $xml .= sprintf '<%s%s>%s</%s>',$att_name,  $self->_to_xml_attributes($attribute->get_value($value)), $self->_to_xml($attribute->get_value($value)), $att_name;
         }
       } elsif ($attribute->type_constraint eq 'ArrayRef[Str|Undef]') {
-      
 		  my $location = $attribute->request_name;
-          
-		  $xml .= ( join '', map { sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($_)), $_, $location } @{ $attribute->get_value($value) }); 
-          
+           $xml .= ( join '', map {                   sprintf '<%s>%s</%s>',$location,  $_, $location } @{ $attribute->get_value($value) }); 
           $xml .= "<${att_name}>".$xml ."</${att_name}>"
 		    unless($attribute->does('Flatten'));
       
@@ -192,6 +188,8 @@ package Paws::Net::RestXmlCaller;
 			 my $list_name =  $attribute->list_request_name();
              $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,   $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
              $xml ="<$list_name>$xml</$list_name>"
+			    if ( $location ne $list_name);
+
 		  }
 		  else {
 		     my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
@@ -280,7 +278,7 @@ package Paws::Net::RestXmlCaller;
     $request->method($call->_api_method);
 
     if (my $xml_body = $self->_to_xml_body($call)){
-      $request->content($xml_body);
+		$request->content($xml_body);
     }
 
     if ($call->can('_stream_param')) {
@@ -292,6 +290,7 @@ package Paws::Net::RestXmlCaller;
 
     $self->_to_header_params($request, $call);
 	$self->sign($request);
-    return $request;
+
+	return $request;
   }
 1;
