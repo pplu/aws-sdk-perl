@@ -1,0 +1,4 @@
+---
+Bucket: oneoffpaws
+AccelerateConfiguration:
+  Status: Suspended
