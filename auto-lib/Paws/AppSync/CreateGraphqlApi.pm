@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogConfig => {
         CloudWatchLogsRoleArn => 'MyString',
         FieldLogLevel         => 'NONE',       # values: NONE, ERROR, ALL
-
+        ExcludeVerboseContent => 1,            # OPTIONAL
       },    # OPTIONAL
       OpenIDConnectConfig => {
         Issuer   => 'MyString',

@@ -1,6 +1,7 @@
 package Paws::AppSync::LogConfig;
   use Moose;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str', request_name => 'cloudWatchLogsRoleArn', traits => ['NameInRequest'], required => 1);
+  has ExcludeVerboseContent => (is => 'ro', isa => 'Bool', request_name => 'excludeVerboseContent', traits => ['NameInRequest']);
   has FieldLogLevel => (is => 'ro', isa => 'Str', request_name => 'fieldLogLevel', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -41,6 +42,13 @@ The CloudWatch Logs configuration.
 
   The service role that AWS AppSync will assume to publish to Amazon
 CloudWatch logs in your account.
+
+
+=head2 ExcludeVerboseContent => Bool
+
+  Set to TRUE to exclude sections that contain information such as
+headers, context, and evaluated mapping templates, regardless of
+logging level.
 
 
 =head2 B<REQUIRED> FieldLogLevel => Str
