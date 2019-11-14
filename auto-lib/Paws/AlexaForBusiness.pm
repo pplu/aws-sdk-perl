@@ -1131,6 +1131,8 @@ Creates a network profile with the specified details.
 
 =item [ClientRequestToken => Str]
 
+=item [Locale => Str]
+
 =item [MaxVolumeLimit => Int]
 
 =item [PSTNEnabled => Bool]
@@ -1319,11 +1321,6 @@ When this action is called for a specified shared device, it allows
 authorized users to delete the device's entire previous history of
 voice input data and associated response data. This action can be
 called once every 24 hours for a specific shared device.
-
-When this action is called for a specified shared device, it allows
-authorized users to delete the device's entire previous history of
-voice input data. This action can be called once every 24 hours for a
-specific shared device.
 
 
 =head2 DeleteGatewayGroup
@@ -2670,6 +2667,8 @@ Updates a network profile by the network profile ARN.
 =item [DistanceUnit => Str]
 
 =item [IsDefault => Bool]
+
+=item [Locale => Str]
 
 =item [MaxVolumeLimit => Int]
 

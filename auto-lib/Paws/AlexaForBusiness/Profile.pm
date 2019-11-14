@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::Profile;
   has AddressBookArn => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str');
   has IsDefault => (is => 'ro', isa => 'Bool');
+  has Locale => (is => 'ro', isa => 'Str');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
   has ProfileArn => (is => 'ro', isa => 'Str');
   has ProfileName => (is => 'ro', isa => 'Str');
@@ -65,6 +66,11 @@ A room profile with attributes.
 =head2 IsDefault => Bool
 
   Retrieves if the profile is default or not.
+
+
+=head2 Locale => Str
+
+  The locale of a room profile.
 
 
 =head2 MaxVolumeLimit => Int

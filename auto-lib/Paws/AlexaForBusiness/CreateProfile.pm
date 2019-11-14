@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::CreateProfile;
   has Address => (is => 'ro', isa => 'Str', required => 1);
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has DistanceUnit => (is => 'ro', isa => 'Str', required => 1);
+  has Locale => (is => 'ro', isa => 'Str');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
   has ProfileName => (is => 'ro', isa => 'Str', required => 1);
   has PSTNEnabled => (is => 'ro', isa => 'Bool');
@@ -44,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Timezone           => 'MyTimezone',
       WakeWord           => 'ALEXA',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Locale             => 'MyDeviceLocale',          # OPTIONAL
       MaxVolumeLimit     => 1,                         # OPTIONAL
       PSTNEnabled        => 1,                         # OPTIONAL
       SetupModeDisabled  => 1,                         # OPTIONAL
@@ -77,6 +79,12 @@ The user-specified token that is used during the creation of a profile.
 The distance unit to be used by devices in the profile.
 
 Valid values are: C<"METRIC">, C<"IMPERIAL">
+
+=head2 Locale => Str
+
+The locale of the room profile.
+
+
 
 =head2 MaxVolumeLimit => Int
 
