@@ -6,14 +6,14 @@ package Paws::Net::RestXMLResponse;
   use Paws::Exception;
   use Data::Dumper;
   sub unserialize_response {
-    my ($self, $data) = @_;
+    my ($self, $data,$keep_root) = @_;
 
     return {} if (not defined $data or $data eq '');
-    
     my $xml = XML::Simple->new(
       ForceArray    => qr/^(?:item|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
+	  KeepRoot => $keep_root 
     );
 
     return $xml->parse_string($data);
@@ -21,7 +21,7 @@ package Paws::Net::RestXMLResponse;
 
   sub process {
     my ($self, $call_object, $response) = @_;
-	if ( $response->status >= 300 ) {
+    if ( $response->status >= 300 ) {
         return $self->error_to_exception($call_object, $response);
     } else {
         return $self->response_to_object($call_object, $response);
@@ -311,7 +311,7 @@ package Paws::Net::RestXMLResponse;
  
     my $unserialized_struct;
 
-    if ($ret_class->can('_stream_param')) {
+    if ($ret_class->can('_stream_param') or $ret_class->can('_payload')) {
       $unserialized_struct = {}
     } else {
       if (not defined $content or $content eq '') {
@@ -320,9 +320,9 @@ package Paws::Net::RestXMLResponse;
 		       and $headers->{'content-type'} eq 'application/json'
 	           and $ret_class->can('_payload')){
         $unserialized_struct->{$ret_class->_payload} = $content;
-	  } else {
+	    } else {
         $unserialized_struct = eval { $self->unserialize_response( $content ) };
-		if ($@){
+		    if ($@){
           return Paws::Exception->new(
             message => $@,
             code => 'InvalidContent',
@@ -350,6 +350,10 @@ package Paws::Net::RestXMLResponse;
       if ($ret_class->can('_stream_param')) {
         $unserialized_struct->{ $ret_class->_stream_param } = $content
       }
+	  if ($ret_class->can('_payload')) {
+        $unserialized_struct->{ $ret_class->_payload } = $content
+      }
+
 
       foreach my $key (keys %$headers){
         $unserialized_struct->{lc $key} = $headers->{$key};
