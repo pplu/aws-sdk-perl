@@ -7,6 +7,7 @@ package Paws::ApplicationAutoScaling::RegisterScalableTarget;
   has RoleARN => (is => 'ro', isa => 'Str');
   has ScalableDimension => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
+  has SuspendedState => (is => 'ro', isa => 'Paws::ApplicationAutoScaling::SuspendedState');
 
   use MooseX::ClassAttribute;
 
@@ -69,22 +70,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 MaxCapacity => Int
 
-The maximum value to scale to in response to a scale-out event. This
-parameter is required to register a scalable target.
+The maximum value to scale to in response to a scale-out event.
+C<MaxCapacity> is required to register a scalable target.
 
 
 
 =head2 MinCapacity => Int
 
-The minimum value to scale to in response to a scale-in event. This
-parameter is required to register a scalable target.
+The minimum value to scale to in response to a scale-in event.
+C<MinCapacity> is required to register a scalable target.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The identifier of the resource associated with the scalable target.
-This string consists of the resource type and unique identifier.
+The identifier of the resource that is associated with the scalable
+target. This string consists of the resource type and unique
+identifier.
 
 =over
 
@@ -96,8 +98,8 @@ C<service/default/sample-webapp>.
 
 =item *
 
-Spot fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot fleet request ID. Example:
+Spot Fleet request - The resource type is C<spot-fleet-request> and the
+unique identifier is the Spot Fleet request ID. Example:
 C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
 
 =item *
@@ -153,10 +155,9 @@ permissions to modify the scalable target on your behalf. For more
 information, see Service-Linked Roles for Application Auto Scaling
 (https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html).
 
-For resources that are not supported using a service-linked role, this
-parameter is required and must specify the ARN of an IAM role that
-allows Application Auto Scaling to modify the scalable target on your
-behalf.
+For Amazon EMR, this parameter is required, and it must specify the ARN
+of an IAM role that allows Application Auto Scaling to modify the
+scalable target on your behalf.
 
 
 
@@ -174,7 +175,7 @@ C<ecs:service:DesiredCount> - The desired task count of an ECS service.
 =item *
 
 C<ec2:spot-fleet-request:TargetCapacity> - The target capacity of a
-Spot fleet request.
+Spot Fleet request.
 
 =item *
 
@@ -232,10 +233,47 @@ Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:Targe
 The namespace of the AWS service that provides the resource or
 C<custom-resource> for a resource provided by your own application or
 service. For more information, see AWS Service Namespaces
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<Amazon Web Services General Reference>.
 
 Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">
+
+=head2 SuspendedState => L<Paws::ApplicationAutoScaling::SuspendedState>
+
+An embedded object that contains attributes and attribute values that
+are used to suspend and resume automatic scaling. Setting the value of
+an attribute to C<true> suspends the specified scaling activities.
+Setting it to C<false> (default) resumes the specified scaling
+activities.
+
+B<Suspension Outcomes>
+
+=over
+
+=item *
+
+For C<DynamicScalingInSuspended>, while a suspension is in effect, all
+scale-in activities that are triggered by a scaling policy are
+suspended.
+
+=item *
+
+For C<DynamicScalingOutSuspended>, while a suspension is in effect, all
+scale-out activities that are triggered by a scaling policy are
+suspended.
+
+=item *
+
+For C<ScheduledScalingSuspended>, while a suspension is in effect, all
+scaling activities that involve scheduled actions are suspended.
+
+=back
+
+For more information, see Suspend and Resume Application Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
+in the I<Application Auto Scaling User Guide>.
+
+
 
 
 =head1 SEE ALSO

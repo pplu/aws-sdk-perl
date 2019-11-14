@@ -43,8 +43,8 @@ Auto Scaling.
 
 =head2 AdjustmentType => Str
 
-  The adjustment type, which specifies how the C<ScalingAdjustment>
-parameter in a StepAdjustment is interpreted.
+  Specifies whether the C<ScalingAdjustment> value in a StepAdjustment is
+an absolute number or a percentage of the current capacity.
 
 
 =head2 Cooldown => Int
