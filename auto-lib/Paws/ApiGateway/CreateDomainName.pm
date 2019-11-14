@@ -49,6 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Types => [
           'REGIONAL', ...                     # values: REGIONAL, EDGE, PRIVATE
         ],                                    # OPTIONAL
+        VpcEndpointIds => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
       RegionalCertificateArn  => 'MyString',                       # OPTIONAL
       RegionalCertificateName => 'MyString',                       # OPTIONAL

@@ -55,6 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Name                     = $UpdateApiResponse->Name;
     my $ProtocolType             = $UpdateApiResponse->ProtocolType;
     my $RouteSelectionExpression = $UpdateApiResponse->RouteSelectionExpression;
+    my $Tags                     = $UpdateApiResponse->Tags;
     my $Version                  = $UpdateApiResponse->Version;
     my $Warnings                 = $UpdateApiResponse->Warnings;
 

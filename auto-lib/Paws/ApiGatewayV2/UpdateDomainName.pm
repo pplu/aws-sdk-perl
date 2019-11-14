@@ -54,6 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainName = $UpdateDomainNameResponse->DomainName;
     my $DomainNameConfigurations =
       $UpdateDomainNameResponse->DomainNameConfigurations;
+    my $Tags = $UpdateDomainNameResponse->Tags;
 
     # Returns a L<Paws::ApiGatewayV2::UpdateDomainNameResponse> object.
 
