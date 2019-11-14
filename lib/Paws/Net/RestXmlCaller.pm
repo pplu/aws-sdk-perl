@@ -7,7 +7,6 @@ package Paws::Net::RestXmlCaller;
   use URI::Escape;
   use Moose::Util;
   use Data::Dumper;
-
   use Paws::Net::RestXMLResponse;
 
   has response_to_object => (
@@ -92,7 +91,8 @@ package Paws::Net::RestXmlCaller;
 
 		   my $att_name = $attribute->name;
           $uri_template .= $joiner.$attribute->query_name."={".$att_name."}";
-   	      $vars->{ $att_name } = $call->$att_name
+   	      $vars->{ $att_name } = $call->$att_name;
+		  $joiner ='&';
       }
     }
 	foreach my $attribute ($call->meta->get_all_attributes)
@@ -302,6 +302,7 @@ package Paws::Net::RestXmlCaller;
     }
 
     $self->_to_header_params($request, $call);
+#	warn("JSP request=".Dumper($request));
 	$self->sign($request);
 	return $request;
   }

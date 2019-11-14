@@ -128,7 +128,6 @@ package Paws::Net::RestXMLResponse;
     my %args;
 
 
-
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
@@ -212,7 +211,7 @@ package Paws::Net::RestXMLResponse;
               # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
               # XML::Simple) but is required to create the Paws object. This is mostly due to the 
               # implementation of the new_from_result_struct sub 
-              my $att_class = $att_type->class;
+			  my $att_class = $att_type->class;
               eval {
                 $args{ $att } = $self->new_from_result_struct($att_class, $result);
                 1;
@@ -234,6 +233,14 @@ package Paws::Net::RestXMLResponse;
               $args{ $att } = $value;
             }
           }
+		  elsif (!$class->does('_payload') and exists($result->{content}) and $result->{content}){
+			  ######
+			  # Run into the same root node removed by XML::Simple again here
+			  # In this case any is is a string type so not an object and in this case 
+			  # the result of the parse is found on the 'content' key of the $result  hash-ref
+			  # so far only seend this with 1 AWs action 'GetBucketLocationOutput'
+             $args{ $att } = $result->{content};			 
+		  }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         my $value = $result->{ $att };
@@ -325,14 +332,13 @@ package Paws::Net::RestXMLResponse;
         }
       }
     }
-
     my $request_id = $headers->{'x-amz-request-id'} 
                       || $headers->{'x-amzn-requestid'}
                       || $unserialized_struct->{'requestId'} 
                       || $unserialized_struct->{'RequestId'} 
                       || $unserialized_struct->{'RequestID'}
                       || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
- 
+
     if ($call_object->_result_key){
       $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
     }
