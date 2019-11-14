@@ -93,6 +93,11 @@ includes a unit attribute.
 RECORD_TYPE - The different types of charges such as RI fees, usage
 costs, tax refunds, and credits.
 
+=item *
+
+RESOURCE_ID - The unique identifier of the resource. ResourceId is an
+opt-in feature only available for last 14 days for EC2-Compute Service.
+
 =back
 
 If you set the context to C<RESERVATIONS>, you can use the following
@@ -147,6 +152,40 @@ Instance (RI).
 =item *
 
 TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+
+=back
+
+If you set the context to C<SAVINGS_PLANS>, you can use the following
+dimensions for searching:
+
+=over
+
+=item *
+
+SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+
+=item *
+
+PAYMENT_OPTION - Payment option for the given Savings Plans (for
+example, All Upfront)
+
+=item *
+
+REGION - The AWS Region.
+
+=item *
+
+INSTANCE_TYPE_FAMILY - The family of instances (For example, C<m5>)
+
+=item *
+
+LINKED_ACCOUNT - The description in the attribute map that includes the
+full name of the member account. The value field contains the AWS ID of
+the member account.
+
+=item *
+
+SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
 
 =back
 

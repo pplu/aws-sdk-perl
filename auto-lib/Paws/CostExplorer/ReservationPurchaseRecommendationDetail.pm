@@ -112,7 +112,7 @@ in a month, as a percentage of your overall costs.
 =head2 EstimatedReservationCostForLookbackPeriod => Str
 
   How much AWS estimates that you would have spent for all usage during
-the specified historical period if you had had a reservation.
+the specified historical period if you had a reservation.
 
 
 =head2 InstanceDetails => L<Paws::CostExplorer::InstanceDetails>

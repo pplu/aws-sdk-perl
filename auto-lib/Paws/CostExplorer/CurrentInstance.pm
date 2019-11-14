@@ -7,6 +7,7 @@ package Paws::CostExplorer::CurrentInstance;
   has ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ResourceDetails');
   has ResourceId => (is => 'ro', isa => 'Str');
   has ResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::ResourceUtilization');
+  has SavingsPlansCoveredHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::TagValues]');
   has TotalRunningHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
 1;
@@ -79,6 +80,11 @@ for this instance.
 
   Utilization information of the current instance during the lookback
 period.
+
+
+=head2 SavingsPlansCoveredHoursInLookbackPeriod => Str
+
+  Number of hours during the lookback period covered by Savings Plans.
 
 
 =head2 Tags => ArrayRef[L<Paws::CostExplorer::TagValues>]

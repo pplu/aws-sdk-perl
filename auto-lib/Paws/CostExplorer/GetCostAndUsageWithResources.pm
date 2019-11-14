@@ -1,5 +1,5 @@
 
-package Paws::CostExplorer::GetCostAndUsage;
+package Paws::CostExplorer::GetCostAndUsageWithResources;
   use Moose;
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has Granularity => (is => 'ro', isa => 'Str');
@@ -10,8 +10,8 @@ package Paws::CostExplorer::GetCostAndUsage;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCostAndUsage');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetCostAndUsageResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCostAndUsageWithResources');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CostExplorer::GetCostAndUsageWithResourcesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -19,20 +19,21 @@ package Paws::CostExplorer::GetCostAndUsage;
 
 =head1 NAME
 
-Paws::CostExplorer::GetCostAndUsage - Arguments for method GetCostAndUsage on L<Paws::CostExplorer>
+Paws::CostExplorer::GetCostAndUsageWithResources - Arguments for method GetCostAndUsageWithResources on L<Paws::CostExplorer>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method GetCostAndUsage on the
+This class represents the parameters used for calling the method GetCostAndUsageWithResources on the
 L<AWS Cost Explorer Service|Paws::CostExplorer> service. Use the attributes of this class
-as arguments to method GetCostAndUsage.
+as arguments to method GetCostAndUsageWithResources.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCostAndUsage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCostAndUsageWithResources.
 
 =head1 SYNOPSIS
 
     my $ce = Paws->service('CostExplorer');
-    my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
+    my $GetCostAndUsageWithResourcesResponse =
+      $ce->GetCostAndUsageWithResources(
       TimePeriod => {
         End   => 'MyYearMonthDay',
         Start => 'MyYearMonthDay',
@@ -62,54 +63,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],                                     # OPTIONAL
       Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
       NextPageToken => 'MyNextPageToken',          # OPTIONAL
-    );
+      );
 
     # Results:
-    my $GroupDefinitions = $GetCostAndUsageResponse->GroupDefinitions;
-    my $NextPageToken    = $GetCostAndUsageResponse->NextPageToken;
-    my $ResultsByTime    = $GetCostAndUsageResponse->ResultsByTime;
+    my $GroupDefinitions =
+      $GetCostAndUsageWithResourcesResponse->GroupDefinitions;
+    my $NextPageToken = $GetCostAndUsageWithResourcesResponse->NextPageToken;
+    my $ResultsByTime = $GetCostAndUsageWithResourcesResponse->ResultsByTime;
 
-    # Returns a L<Paws::CostExplorer::GetCostAndUsageResponse> object.
+ # Returns a L<Paws::CostExplorer::GetCostAndUsageWithResourcesResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetCostAndUsage>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetCostAndUsageWithResources>
 
 =head1 ATTRIBUTES
 
 
 =head2 Filter => L<Paws::CostExplorer::Expression>
 
-Filters AWS costs by different dimensions. For example, you can specify
-C<SERVICE> and C<LINKED_ACCOUNT> and get the costs that are associated
-with that account's usage of that service. You can nest C<Expression>
-objects to define any combination of dimension filters. For more
-information, see Expression
+Filters Amazon Web Services costs by different dimensions. For example,
+you can specify C<SERVICE> and C<LINKED_ACCOUNT> and get the costs that
+are associated with that account's usage of that service. You can nest
+C<Expression> objects to define any combination of dimension filters.
+For more information, see Expression
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+
+The C<GetCostAndUsageWithResources> operation requires that you either
+group by or filter by a C<ResourceId>.
 
 
 
 =head2 Granularity => Str
 
-Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>, or C<HOURLY>.
-If C<Granularity> isn't set, the response object doesn't include the
-C<Granularity>, either C<MONTHLY> or C<DAILY>, or C<HOURLY>.
-
-The C<GetCostAndUsageRequest> operation supports only C<DAILY> and
-C<MONTHLY> granularities.
+Sets the AWS cost granularity to C<MONTHLY>, C<DAILY>, or C<HOURLY>. If
+C<Granularity> isn't set, the response object doesn't include the
+C<Granularity>, C<MONTHLY>, C<DAILY>, or C<HOURLY>.
 
 Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
-You can group AWS costs using up to two different groups, either
-dimensions, tag keys, or both.
-
-When you group by tag key, you get all tag values, including empty
-strings.
-
-Valid values are C<AZ>, C<INSTANCE_TYPE>, C<LEGAL_ENTITY_NAME>,
-C<LINKED_ACCOUNT>, C<OPERATION>, C<PLATFORM>, C<PURCHASE_TYPE>,
-C<SERVICE>, C<TAGS>, C<TENANCY>, and C<USAGE_TYPE>.
+You can group Amazon Web Services costs using up to two different
+groups: either dimensions, tag keys, or both.
 
 
 
@@ -125,14 +120,14 @@ C<NetUnblendedCost>, C<NormalizedUsageAmount>, C<UnblendedCost>, and
 C<UsageQuantity>.
 
 If you return the C<UsageQuantity> metric, the service aggregates all
-usage numbers without taking into account the units. For example, if
+usage numbers without taking the units into account. For example, if
 you aggregate C<usageQuantity> across all of Amazon EC2, the results
 aren't meaningful because Amazon EC2 compute hours and data transfer
 are measured in different units (for example, hours vs. GB). To get
 more meaningful C<UsageQuantity> metrics, filter by C<UsageType> or
 C<UsageTypeGroups>.
 
-C<Metrics> is required for C<GetCostAndUsage> requests.
+C<Metrics> is required for C<GetCostAndUsageWithResources> requests.
 
 
 
@@ -146,18 +141,20 @@ maximum page size.
 
 =head2 B<REQUIRED> TimePeriod => L<Paws::CostExplorer::DateInterval>
 
-Sets the start and end dates for retrieving AWS costs. The start date
-is inclusive, but the end date is exclusive. For example, if C<start>
-is C<2017-01-01> and C<end> is C<2017-05-01>, then the cost and usage
-data is retrieved from C<2017-01-01> up to and including C<2017-04-30>
-but not including C<2017-05-01>.
+Sets the start and end dates for retrieving Amazon Web Services costs.
+The range must be within the last 14 days (the start date cannot be
+earlier than 14 days ago). The start date is inclusive, but the end
+date is exclusive. For example, if C<start> is C<2017-01-01> and C<end>
+is C<2017-05-01>, then the cost and usage data is retrieved from
+C<2017-01-01> up to and including C<2017-04-30> but not including
+C<2017-05-01>.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method GetCostAndUsage in L<Paws::CostExplorer>
+This class forms part of L<Paws>, documenting arguments for method GetCostAndUsageWithResources in L<Paws::CostExplorer>
 
 =head1 BUGS and CONTRIBUTIONS
 

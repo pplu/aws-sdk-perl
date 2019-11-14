@@ -20,6 +20,11 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCostAndUsageWithResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostAndUsageWithResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCostForecast {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetCostForecast', @_);
@@ -50,6 +55,26 @@ package Paws::CostExplorer;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetRightsizingRecommendation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSavingsPlansCoverage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetSavingsPlansCoverage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSavingsPlansPurchaseRecommendation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetSavingsPlansPurchaseRecommendation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSavingsPlansUtilization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetSavingsPlansUtilization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSavingsPlansUtilizationDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetSavingsPlansUtilizationDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CostExplorer::GetTags', @_);
@@ -63,7 +88,7 @@ package Paws::CostExplorer;
   
 
 
-  sub operations { qw/GetCostAndUsage GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetTags GetUsageForecast / }
+  sub operations { qw/GetCostAndUsage GetCostAndUsageWithResources GetCostForecast GetDimensionValues GetReservationCoverage GetReservationPurchaseRecommendation GetReservationUtilization GetRightsizingRecommendation GetSavingsPlansCoverage GetSavingsPlansPurchaseRecommendation GetSavingsPlansUtilization GetSavingsPlansUtilizationDetails GetTags GetUsageForecast / }
 
 1;
 
@@ -150,6 +175,47 @@ dimensions, see the GetDimensionValues
 (http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
 operation. Master accounts in an organization in AWS Organizations have
 access to all member accounts.
+
+
+=head2 GetCostAndUsageWithResources
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+
+=item [Metrics => ArrayRef[Str|Undef]]
+
+=item [NextPageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetCostAndUsageWithResources>
+
+Returns: a L<Paws::CostExplorer::GetCostAndUsageWithResourcesResponse> instance
+
+Retrieves cost and usage metrics with resources for your account. You
+can specify which cost and usage-related metric, such as
+C<BlendedCosts> or C<UsageQuantity>, that you want the request to
+return. You can also filter and group your data by various dimensions,
+such as C<SERVICE> or C<AZ>, in a specific time range. For a complete
+list of valid dimensions, see the GetDimensionValues
+(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html)
+operation. Master accounts in an organization in AWS Organizations have
+access to all member accounts. This API is currently available for the
+Amazon Elastic Compute Cloud E<ndash> Compute service only.
+
+This is an opt-in only feature. You can enable this feature from the
+Cost Explorer Settings page. For information on how to access the
+Settings page, see Controlling Access for Cost Explorer
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html)
+in the I<AWS Billing and Cost Management User Guide>.
 
 
 =head2 GetCostForecast
@@ -397,6 +463,147 @@ instances, along with providing savings detail and metrics. For details
 on calculation and function, see Optimizing Your Cost with Rightsizing
 Recommendations
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-what-is.html).
+
+
+=head2 GetSavingsPlansCoverage
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+=item [GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]]
+
+=item [MaxResults => Int]
+
+=item [Metrics => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetSavingsPlansCoverage>
+
+Returns: a L<Paws::CostExplorer::GetSavingsPlansCoverageResponse> instance
+
+Retrieves the Savings Plans covered for your account. This enables you
+to see how much of your cost is covered by a Savings Plan. An
+organizationE<rsquo>s master account can see the coverage of the
+associated member accounts. For any time period, you can filter data
+for Savings Plans usage with the following dimensions:
+
+=over
+
+=item *
+
+C<LINKED_ACCOUNT>
+
+=item *
+
+C<REGION>
+
+=item *
+
+C<SERVICE>
+
+=item *
+
+C<INSTANCE_FAMILY>
+
+=back
+
+To determine valid values for a dimension, use the
+C<GetDimensionValues> operation.
+
+
+=head2 GetSavingsPlansPurchaseRecommendation
+
+=over
+
+=item LookbackPeriodInDays => Str
+
+=item PaymentOption => Str
+
+=item SavingsPlansType => Str
+
+=item TermInYears => Str
+
+=item [NextPageToken => Str]
+
+=item [PageSize => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetSavingsPlansPurchaseRecommendation>
+
+Returns: a L<Paws::CostExplorer::GetSavingsPlansPurchaseRecommendationResponse> instance
+
+Retrieves your request parameters, Savings Plan Recommendations Summary
+and Details.
+
+
+=head2 GetSavingsPlansUtilization
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [Granularity => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetSavingsPlansUtilization>
+
+Returns: a L<Paws::CostExplorer::GetSavingsPlansUtilizationResponse> instance
+
+Retrieves the Savings Plans utilization for your account across date
+ranges with daily or monthly granularity. Master accounts in an
+organization have access to member accounts. You can use
+C<GetDimensionValues> in C<SAVINGS_PLANS> to determine the possible
+dimension values.
+
+You cannot group by any dimension values for
+C<GetSavingsPlansUtilization>.
+
+
+=head2 GetSavingsPlansUtilizationDetails
+
+=over
+
+=item TimePeriod => L<Paws::CostExplorer::DateInterval>
+
+=item [Filter => L<Paws::CostExplorer::Expression>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CostExplorer::GetSavingsPlansUtilizationDetails>
+
+Returns: a L<Paws::CostExplorer::GetSavingsPlansUtilizationDetailsResponse> instance
+
+Retrieves attribute data along with aggregate utilization and savings
+data for a given time period. This doesn't support granular or grouped
+data (daily/monthly) in response. You can't retrieve data by dates in a
+single response similar to C<GetSavingsPlanUtilization>, but you have
+the option to make multiple calls to
+C<GetSavingsPlanUtilizationDetails> by providing individual dates. You
+can use C<GetDimensionValues> in C<SAVINGS_PLANS> to determine the
+possible dimension values.
+
+C<GetSavingsPlanUtilizationDetails> internally groups data by
+C<SavingsPlansArn>.
 
 
 =head2 GetTags

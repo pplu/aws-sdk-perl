@@ -80,7 +80,7 @@ C<{ "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
 
 For C<GetRightsizingRecommendation> action, a combination of OR and NOT
 is not supported. OR is not supported between different dimensions, or
-dimensions and tags. NOT operators aren't supported. Dimentions are
+dimensions and tags. NOT operators aren't supported. Dimensions are
 also limited to C<LINKED_ACCOUNT>, C<REGION>, or C<RIGHTSIZING_TYPE>.
 
 =head1 ATTRIBUTES

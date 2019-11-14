@@ -34,16 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $ce->GetRightsizingRecommendation(
       Service => 'MyGenericString',
       Filter  => {
-        And => [ <Expression>, ... ],    # OPTIONAL
+        And        => [ <Expression>, ... ],    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RIGHTSIZING_TYPE; OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key => 'MyTagKey',               # OPTIONAL
+          Key    => 'MyTagKey',            # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
@@ -88,7 +88,8 @@ response object.
 
 =head2 B<REQUIRED> Service => Str
 
-The specific service that you want recommendations for.
+The specific service that you want recommendations for. The only valid
+value for C<GetRightsizingRecommendation> is "C<AmazonEC2>".
 
 
 
