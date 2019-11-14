@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Tc
 
 =head1 DESCRIPTION
 
-An object representing the TCP routing specification for a route.
+An object that represents a TCP route type.
 
 =head1 ATTRIBUTES
 

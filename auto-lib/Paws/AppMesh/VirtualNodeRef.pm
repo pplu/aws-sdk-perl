@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing a virtual node returned by a list operation.
+An object that represents a virtual node returned by a list operation.
 
 =head1 ATTRIBUTES
 

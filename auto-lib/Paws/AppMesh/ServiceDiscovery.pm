@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Se
 
 =head1 DESCRIPTION
 
-An object representing the service discovery information for a virtual
-node.
+An object that represents the service discovery information for a
+virtual node.
 
 =head1 ATTRIBUTES
 

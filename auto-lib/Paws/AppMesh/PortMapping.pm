@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Po
 
 =head1 DESCRIPTION
 
-An object representing a virtual node or virtual router listener port
-mapping.
+An object that represents a port mapping.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +44,7 @@ mapping.
 
 =head2 B<REQUIRED> Protocol => Str
 
-  The protocol used for the port mapping.
+  The protocol used for the port mapping. Specify one protocol.
 
 
 

@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing the specification of a virtual router.
+An object that represents the specification of a virtual router.
 
 =head1 ATTRIBUTES
 
@@ -39,8 +39,7 @@ An object representing the specification of a virtual router.
 =head2 Listeners => ArrayRef[L<Paws::AppMesh::VirtualRouterListener>]
 
   The listeners that the virtual router is expected to receive inbound
-traffic from. Currently only one listener is supported per virtual
-router.
+traffic from. You can specify one listener.
 
 
 

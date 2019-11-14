@@ -31,17 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Tc
 
 =head1 DESCRIPTION
 
-An object representing the traffic distribution requirements for
-matched TCP requests.
+An object that represents the action to take if a match is determined.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> WeightedTargets => ArrayRef[L<Paws::AppMesh::WeightedTarget>]
 
-  The targets that traffic is routed to when a request matches the route.
-You can specify one or more targets and their relative weights to
-distribute traffic with.
+  An object that represents the targets that traffic is routed to when a
+request matches the route.
 
 
 

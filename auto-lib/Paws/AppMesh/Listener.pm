@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Li
 
 =head1 DESCRIPTION
 
-An object representing a listener for a virtual node.
+An object that represents a listener for a virtual node.
 
 =head1 ATTRIBUTES
 

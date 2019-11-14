@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Ac
 
 =head1 DESCRIPTION
 
-An object representing the access logging information for a virtual
+An object that represents the access logging information for a virtual
 node.
 
 =head1 ATTRIBUTES

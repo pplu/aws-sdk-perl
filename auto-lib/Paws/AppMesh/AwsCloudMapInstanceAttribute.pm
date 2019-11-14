@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Aw
 
 =head1 DESCRIPTION
 
-An object representing the AWS Cloud Map attribute information for your
-virtual node.
+An object that represents the AWS Cloud Map attribute information for
+your virtual node.
 
 =head1 ATTRIBUTES
 

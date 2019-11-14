@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing the status of a virtual service.
+An object that represents the status of a virtual service.
 
 =head1 ATTRIBUTES
 

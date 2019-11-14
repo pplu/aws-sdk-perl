@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Re
 
 =head1 DESCRIPTION
 
-An object representing metadata for a resource.
+An object that represents metadata for a resource.
 
 =head1 ATTRIBUTES
 

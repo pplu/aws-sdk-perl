@@ -1,4 +1,4 @@
-package Paws::AppMesh::HttpRouteAction;
+package Paws::AppMesh::GrpcRouteAction;
   use Moose;
   has WeightedTargets => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::WeightedTarget]', request_name => 'weightedTargets', traits => ['NameInRequest'], required => 1);
 1;
@@ -7,7 +7,7 @@ package Paws::AppMesh::HttpRouteAction;
 
 =head1 NAME
 
-Paws::AppMesh::HttpRouteAction
+Paws::AppMesh::GrpcRouteAction
 
 =head1 USAGE
 
@@ -18,13 +18,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::AppMesh::HttpRouteAction object:
+As an example, if Att1 is expected to be a Paws::AppMesh::GrpcRouteAction object:
 
   $service_obj->Method(Att1 => { WeightedTargets => $value, ..., WeightedTargets => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::HttpRouteAction object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::GrpcRouteAction object:
 
   $result = $service_obj->Method(...);
   $result->Att1->WeightedTargets

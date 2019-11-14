@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Me
 
 =head1 DESCRIPTION
 
-An object representing a service mesh returned by a list operation.
+An object that represents a service mesh returned by a list operation.
 
 =head1 ATTRIBUTES
 

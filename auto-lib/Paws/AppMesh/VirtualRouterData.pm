@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing a virtual router returned by a describe
+An object that represents a virtual router returned by a describe
 operation.
 
 =head1 ATTRIBUTES

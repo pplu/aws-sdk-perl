@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing a virtual service backend for a virtual node.
+An object that represents a virtual service backend for a virtual node.
 
 =head1 ATTRIBUTES
 

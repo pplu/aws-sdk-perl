@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Me
 
 =head1 DESCRIPTION
 
-An object representing the specification of a service mesh.
+An object that represents the specification of a service mesh.
 
 =head1 ATTRIBUTES
 

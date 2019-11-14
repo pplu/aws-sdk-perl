@@ -31,8 +31,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Dn
 
 =head1 DESCRIPTION
 
-An object representing the DNS service discovery information for your
-virtual node.
+An object that represents the DNS service discovery information for
+your virtual node.
 
 =head1 ATTRIBUTES
 

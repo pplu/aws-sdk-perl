@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Fi
 
 =head1 DESCRIPTION
 
-An object representing an access log file.
+An object that represents an access log file.
 
 =head1 ATTRIBUTES
 

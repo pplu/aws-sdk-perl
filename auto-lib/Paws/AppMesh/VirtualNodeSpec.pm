@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object representing the specification of a virtual node.
+An object that represents the specification of a virtual node.
 
 =head1 ATTRIBUTES
 
@@ -48,8 +48,7 @@ to.
 =head2 Listeners => ArrayRef[L<Paws::AppMesh::Listener>]
 
   The listeners that the virtual node is expected to receive inbound
-traffic from. Currently only one listener is supported per virtual
-node.
+traffic from. You can specify one listener.
 
 
 =head2 Logging => L<Paws::AppMesh::Logging>

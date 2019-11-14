@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Eg
 
 =head1 DESCRIPTION
 
-An object representing the egress filter rules for a service mesh.
+An object that represents the egress filter rules for a service mesh.
 
 =head1 ATTRIBUTES
 

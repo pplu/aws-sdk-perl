@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Ro
 
 =head1 DESCRIPTION
 
-An object representing the current status of a route.
+An object that represents the current status of a route.
 
 =head1 ATTRIBUTES
 
