@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Athena::Res
 The location in Amazon S3 where query results are stored and the
 encryption option, if any, used for query results. These are known as
 "client-side settings". If workgroup settings override client-side
-settings, then the query uses the location for the query results and
-the encryption configuration that are specified for the workgroup.
+settings, then the query uses the workgroup settings.
 
 =head1 ATTRIBUTES
 
@@ -57,14 +56,15 @@ Settings Override Client-Side Settings
 =head2 OutputLocation => Str
 
   The location in Amazon S3 where your query results are stored, such as
-C<s3://path/to/query/bucket/>. For more information, see Queries and
-Query Result Files.
-(https://docs.aws.amazon.com/athena/latest/ug/querying.html) If
+C<s3://path/to/query/bucket/>. To run the query, you must specify the
+query results location using one of the ways: either for individual
+queries using either this setting (client-side), or in the workgroup,
+using WorkGroupConfiguration. If none of them is set, Athena issues an
+error that no output location is provided. For more information, see
+Query Results
+(https://docs.aws.amazon.com/athena/latest/ug/querying.html). If
 workgroup settings override client-side settings, then the query uses
-the location for the query results and the encryption configuration
-that are specified for the workgroup. The "workgroup settings override"
-is specified in EnforceWorkGroupConfiguration (true/false) in the
-WorkGroupConfiguration. See
+the settings specified for the workgroup. See
 WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 
 

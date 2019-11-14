@@ -3,6 +3,7 @@ package Paws::Athena::WorkGroupConfiguration;
   has BytesScannedCutoffPerQuery => (is => 'ro', isa => 'Int');
   has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
   has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
+  has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
   has ResultConfiguration => (is => 'ro', isa => 'Paws::Athena::ResultConfiguration');
 1;
 
@@ -38,9 +39,9 @@ The configuration of the workgroup, which includes the location in
 Amazon S3 where query results are stored, the encryption option, if
 any, used for query results, whether the Amazon CloudWatch Metrics are
 enabled for the workgroup and whether workgroup settings override query
-settings, and the data usage limit for the amount of data scanned per
-query, if it is specified. The workgroup settings override is specified
-in EnforceWorkGroupConfiguration (true/false) in the
+settings, and the data usage limits for the amount of data scanned per
+query or per workgroup. The workgroup settings override is specified in
+EnforceWorkGroupConfiguration (true/false) in the
 WorkGroupConfiguration. See
 WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 
@@ -67,11 +68,29 @@ information, see Workgroup Settings Override Client-Side Settings
 workgroup.
 
 
+=head2 RequesterPaysEnabled => Bool
+
+  If set to C<true>, allows members assigned to a workgroup to reference
+Amazon S3 Requester Pays buckets in queries. If set to C<false>,
+workgroup members cannot query data from Requester Pays buckets, and
+queries that retrieve data from Requester Pays buckets cause an error.
+The default is C<false>. For more information about Requester Pays
+buckets, see Requester Pays Buckets
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
+
+
 =head2 ResultConfiguration => L<Paws::Athena::ResultConfiguration>
 
   The configuration for the workgroup, which includes the location in
 Amazon S3 where query results are stored and the encryption option, if
-any, used for query results.
+any, used for query results. To run the query, you must specify the
+query results location using one of the ways: either in the workgroup
+using this setting, or for individual queries (client-side), using
+ResultConfiguration$OutputLocation. If none of them is set, Athena
+issues an error that no output location is provided. For more
+information, see Query Results
+(https://docs.aws.amazon.com/athena/latest/ug/querying.html).
 
 
 

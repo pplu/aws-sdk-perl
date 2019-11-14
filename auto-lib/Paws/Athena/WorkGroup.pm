@@ -56,9 +56,9 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 Amazon S3 where query results are stored, the encryption configuration,
 if any, used for query results; whether the Amazon CloudWatch Metrics
 are enabled for the workgroup; whether workgroup settings override
-client-side settings; and the data usage limit for the amount of data
-scanned per query, if it is specified. The workgroup settings override
-is specified in EnforceWorkGroupConfiguration (true/false) in the
+client-side settings; and the data usage limits for the amount of data
+scanned per query or per workgroup. The workgroup settings override is
+specified in EnforceWorkGroupConfiguration (true/false) in the
 WorkGroupConfiguration. See
 WorkGroupConfiguration$EnforceWorkGroupConfiguration.
 

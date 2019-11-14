@@ -430,10 +430,22 @@ Each argument is described in detail in: L<Paws::Athena::GetQueryResults>
 
 Returns: a L<Paws::Athena::GetQueryResultsOutput> instance
 
-Returns the results of a single query execution specified by
-C<QueryExecutionId> if you have access to the workgroup in which the
-query ran. This request does not execute the query but returns results.
-Use StartQueryExecution to run a query.
+Streams the results of a single query execution specified by
+C<QueryExecutionId> from the Athena query results location in Amazon
+S3. For more information, see Query Results
+(https://docs.aws.amazon.com/athena/latest/ug/querying.html) in the
+I<Amazon Athena User Guide>. This request does not execute the query
+but returns results. Use StartQueryExecution to run a query.
+
+To stream query results successfully, the IAM principal with permission
+to call C<GetQueryResults> also must have permissions to the Amazon S3
+C<GetObject> action for the Athena query results location.
+
+IAM principals with permission to the Amazon S3 C<GetObject> action for
+the query results location are able to retrieve query results from
+Amazon S3 even if permission to the C<GetQueryResults> action is
+denied. To restrict user or role access, ensure that Amazon S3
+permissions to the Athena query location are denied.
 
 
 =head2 GetWorkGroup

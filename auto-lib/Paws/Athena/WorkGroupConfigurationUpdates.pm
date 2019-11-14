@@ -4,6 +4,7 @@ package Paws::Athena::WorkGroupConfigurationUpdates;
   has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
   has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has RemoveBytesScannedCutoffPerQuery => (is => 'ro', isa => 'Bool');
+  has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
   has ResultConfigurationUpdates => (is => 'ro', isa => 'Paws::Athena::ResultConfigurationUpdates');
 1;
 
@@ -70,6 +71,18 @@ CloudWatch.
 
   Indicates that the data usage control limit per query is removed.
 WorkGroupConfiguration$BytesScannedCutoffPerQuery
+
+
+=head2 RequesterPaysEnabled => Bool
+
+  If set to C<true>, allows members assigned to a workgroup to specify
+Amazon S3 Requester Pays buckets in queries. If set to C<false>,
+workgroup members cannot query data from Requester Pays buckets, and
+queries that retrieve data from Requester Pays buckets cause an error.
+The default is C<false>. For more information about Requester Pays
+buckets, see Requester Pays Buckets
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html)
+in the I<Amazon Simple Storage Service Developer Guide>.
 
 
 =head2 ResultConfigurationUpdates => L<Paws::Athena::ResultConfigurationUpdates>

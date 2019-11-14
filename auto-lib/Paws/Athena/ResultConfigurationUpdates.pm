@@ -48,8 +48,7 @@ location and encryption configuration for the query results.
 =head2 OutputLocation => Str
 
   The location in Amazon S3 where your query results are stored, such as
-C<s3://path/to/query/bucket/>. For more information, see Queries and
-Query Result Files.
+C<s3://path/to/query/bucket/>. For more information, see Query Results
 (https://docs.aws.amazon.com/athena/latest/ug/querying.html) If
 workgroup settings override client-side settings, then the query uses
 the location for the query results and the encryption configuration
