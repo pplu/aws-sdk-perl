@@ -1,14 +1,15 @@
 
-package Paws::ApplicationInsights::CreateApplication;
+package Paws::ApplicationInsights::UpdateApplication;
   use Moose;
   has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
   has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
+  has RemoveSNSTopic => (is => 'ro', isa => 'Bool');
   has ResourceGroupName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateApplication');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationInsights::CreateApplicationResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateApplication');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApplicationInsights::UpdateApplicationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -16,32 +17,33 @@ package Paws::ApplicationInsights::CreateApplication;
 
 =head1 NAME
 
-Paws::ApplicationInsights::CreateApplication - Arguments for method CreateApplication on L<Paws::ApplicationInsights>
+Paws::ApplicationInsights::UpdateApplication - Arguments for method UpdateApplication on L<Paws::ApplicationInsights>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateApplication on the
+This class represents the parameters used for calling the method UpdateApplication on the
 L<Amazon CloudWatch Application Insights|Paws::ApplicationInsights> service. Use the attributes of this class
-as arguments to method CreateApplication.
+as arguments to method UpdateApplication.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
 
 =head1 SYNOPSIS
 
     my $applicationinsights = Paws->service('ApplicationInsights');
-    my $CreateApplicationResponse = $applicationinsights->CreateApplication(
+    my $UpdateApplicationResponse = $applicationinsights->UpdateApplication(
       ResourceGroupName  => 'MyResourceGroupName',
       OpsCenterEnabled   => 1,                         # OPTIONAL
       OpsItemSNSTopicArn => 'MyOpsItemSNSTopicArn',    # OPTIONAL
+      RemoveSNSTopic     => 1,                         # OPTIONAL
     );
 
     # Results:
-    my $ApplicationInfo = $CreateApplicationResponse->ApplicationInfo;
+    my $ApplicationInfo = $UpdateApplicationResponse->ApplicationInfo;
 
-    # Returns a L<Paws::ApplicationInsights::CreateApplicationResponse> object.
+    # Returns a L<Paws::ApplicationInsights::UpdateApplicationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/applicationinsights/CreateApplication>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/applicationinsights/UpdateApplication>
 
 =head1 ATTRIBUTES
 
@@ -61,6 +63,13 @@ the opsItem.
 
 
 
+=head2 RemoveSNSTopic => Bool
+
+Disassociates the SNS topic from the opsItem created for detected
+problems.
+
+
+
 =head2 B<REQUIRED> ResourceGroupName => Str
 
 The name of the resource group.
@@ -70,7 +79,7 @@ The name of the resource group.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateApplication in L<Paws::ApplicationInsights>
+This class forms part of L<Paws>, documenting arguments for method UpdateApplication in L<Paws::ApplicationInsights>
 
 =head1 BUGS and CONTRIBUTIONS
 

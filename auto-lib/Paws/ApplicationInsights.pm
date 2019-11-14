@@ -85,6 +85,11 @@ package Paws::ApplicationInsights;
     my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::ListProblems', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::UpdateApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateComponent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApplicationInsights::UpdateComponent', @_);
@@ -98,7 +103,7 @@ package Paws::ApplicationInsights;
   
 
 
-  sub operations { qw/CreateApplication CreateComponent DeleteApplication DeleteComponent DescribeApplication DescribeComponent DescribeComponentConfiguration DescribeComponentConfigurationRecommendation DescribeObservation DescribeProblem DescribeProblemObservations ListApplications ListComponents ListProblems UpdateComponent UpdateComponentConfiguration / }
+  sub operations { qw/CreateApplication CreateComponent DeleteApplication DeleteComponent DescribeApplication DescribeComponent DescribeComponentConfiguration DescribeComponentConfigurationRecommendation DescribeObservation DescribeProblem DescribeProblemObservations ListApplications ListComponents ListProblems UpdateApplication UpdateComponent UpdateComponentConfiguration / }
 
 1;
 
@@ -155,6 +160,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =over
 
 =item ResourceGroupName => Str
+
+=item [OpsCenterEnabled => Bool]
+
+=item [OpsItemSNSTopicArn => Str]
 
 
 =back
@@ -406,6 +415,28 @@ Each argument is described in detail in: L<Paws::ApplicationInsights::ListProble
 Returns: a L<Paws::ApplicationInsights::ListProblemsResponse> instance
 
 Lists the problems with your application.
+
+
+=head2 UpdateApplication
+
+=over
+
+=item ResourceGroupName => Str
+
+=item [OpsCenterEnabled => Bool]
+
+=item [OpsItemSNSTopicArn => Str]
+
+=item [RemoveSNSTopic => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ApplicationInsights::UpdateApplication>
+
+Returns: a L<Paws::ApplicationInsights::UpdateApplicationResponse> instance
+
+Updates the application.
 
 
 =head2 UpdateComponent

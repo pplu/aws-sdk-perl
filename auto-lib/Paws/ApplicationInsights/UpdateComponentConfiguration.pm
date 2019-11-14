@@ -79,7 +79,7 @@ The name of the resource group.
 =head2 Tier => Str
 
 The tier of the application component. Supported tiers include
-C<DOT_NET_WORKER>, C<DOT_NET_WEB_TIER>, C<SQL_SERVER>, and C<DEFAULT>.
+C<DOT_NET_WORKER>, C<DOT_NET_WEB>, C<SQL_SERVER>, and C<DEFAULT>.
 
 
 

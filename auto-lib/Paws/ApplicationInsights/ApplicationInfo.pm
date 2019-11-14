@@ -1,6 +1,8 @@
 package Paws::ApplicationInsights::ApplicationInfo;
   use Moose;
   has LifeCycle => (is => 'ro', isa => 'Str');
+  has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
+  has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
   has Remarks => (is => 'ro', isa => 'Str');
   has ResourceGroupName => (is => 'ro', isa => 'Str');
 1;
@@ -43,10 +45,22 @@ Describes the status of the application.
   The lifecycle of the application.
 
 
+=head2 OpsCenterEnabled => Bool
+
+  Indicates whether Application Insights will create opsItems for any
+problem detected by Application Insights for an application.
+
+
+=head2 OpsItemSNSTopicArn => Str
+
+  The SNS topic provided to Application Insights that is associated to
+the created opsItems to receive SNS notifications for opsItem updates.
+
+
 =head2 Remarks => Str
 
-  The issues on the user side that are blocking Application Insights from
-fully monitoring the application.
+  The issues on the user side that block Application Insights from
+successfully monitoring an application.
 
 
 =head2 ResourceGroupName => Str
