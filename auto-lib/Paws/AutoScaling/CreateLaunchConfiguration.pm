@@ -63,26 +63,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 AssociatePublicIpAddress => Bool
 
-Used for groups that launch instances into a virtual private cloud
-(VPC). Specifies whether to assign a public IP address to each
-instance. For more information, see Launching Auto Scaling Instances in
-a VPC
+For Auto Scaling groups that are running in a virtual private cloud
+(VPC), specifies whether to assign a public IP address to the group's
+instances. If you specify C<true>, each instance in the Auto Scaling
+group receives a unique public IP address. For more information, see
+Launching Auto Scaling Instances in a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-If you specify this parameter, be sure to specify at least one subnet
-when you create your group.
+If you specify this parameter, you must specify at least one subnet for
+C<VPCZoneIdentifier> when you create your group.
 
-Default: If the instance is launched into a default subnet, the default
-is to assign a public IP address. If the instance is launched into a
-nondefault subnet, the default is not to assign a public IP address.
+If the instance is launched into a default subnet, the default is to
+assign a public IP address, unless you disabled the option to assign a
+public IP address on the subnet. If the instance is launched into a
+nondefault subnet, the default is not to assign a public IP address,
+unless you enabled the option to assign a public IP address on the
+subnet.
 
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
-One or more mappings that specify how block devices are exposed to the
-instance. For more information, see Block Device Mapping
+A block device mapping, which specifies the block devices for the
+instance. You can specify virtual devices and EBS volumes. For more
+information, see Block Device Mapping
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -91,13 +96,15 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =head2 ClassicLinkVPCId => Str
 
 The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
-to. This parameter is supported only if you are launching EC2-Classic
-instances. For more information, see ClassicLink
+to. For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Linking
 EC2-Classic Instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+This parameter can only be used if you are launching EC2-Classic
+instances.
 
 
 
@@ -111,34 +118,35 @@ EC2-Classic Instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-Conditional: This parameter is required if you specify a
-ClassicLink-enabled VPC, and is not supported otherwise.
+If you specify the C<ClassicLinkVPCId> parameter, you must specify this
+parameter.
 
 
 
 =head2 EbsOptimized => Bool
 
-Indicates whether the instance is optimized for Amazon EBS I/O. By
-default, the instance is not optimized for EBS I/O. The optimization
-provides dedicated throughput to Amazon EBS and an optimized
-configuration stack to provide optimal I/O performance. This
-optimization is not available with all instance types. Additional usage
-charges apply. For more information, see Amazon EBS-Optimized Instances
+Specifies whether the launch configuration is optimized for EBS I/O
+(C<true>) or not (C<false>). The optimization provides dedicated
+throughput to Amazon EBS and an optimized configuration stack to
+provide optimal I/O performance. This optimization is not available
+with all instance types. Additional fees are incurred when you enable
+EBS optimization for an instance type that is not EBS-optimized by
+default. For more information, see Amazon EBS-Optimized Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
+
+The default value is C<false>.
 
 
 
 =head2 IamInstanceProfile => Str
 
 The name or the Amazon Resource Name (ARN) of the instance profile
-associated with the IAM role for the instance.
+associated with the IAM role for the instance. The instance profile
+contains the IAM role.
 
-EC2 instances launched with an IAM role automatically have AWS security
-credentials available. You can use IAM roles with Amazon EC2 Auto
-Scaling to automatically enable applications running on your EC2
-instances to securely access other AWS resources. For more information,
-see IAM Role for Applications That Run on Amazon EC2 Instances
+For more information, see IAM Role for Applications That Run on Amazon
+EC2 Instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -146,14 +154,12 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 ImageId => Str
 
-The ID of the Amazon Machine Image (AMI) to use to launch your EC2
-instances.
-
-If you do not specify C<InstanceId>, you must specify C<ImageId>.
-
-For more information, see Finding an AMI
+The ID of the Amazon Machine Image (AMI) that was assigned during
+registration. For more information, see Finding an AMI
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
+
+If you do not specify C<InstanceId>, you must specify C<ImageId>.
 
 
 
@@ -179,14 +185,24 @@ and C<InstanceType>.
 
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
-Enables detailed monitoring (C<true>) or basic monitoring (C<false>)
-for the Auto Scaling instances. The default value is C<true>.
+Controls whether instances in this group are launched with detailed
+(C<true>) or basic (C<false>) monitoring.
+
+The default value is C<true> (enabled).
+
+When detailed monitoring is enabled, Amazon CloudWatch generates
+metrics every minute and your account is charged a fee. When you
+disable detailed monitoring, CloudWatch generates metrics every 5
+minutes. For more information, see Configure Monitoring for Auto
+Scaling Instances
+(https://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html#enable-as-instance-metrics)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
 =head2 InstanceType => Str
 
-The instance type of the EC2 instance.
+Specifies the instance type of the EC2 instance.
 
 For information about available instance types, see Available Instance
 Types
@@ -221,15 +237,16 @@ Region per account.
 
 =head2 PlacementTenancy => Str
 
-The tenancy of the instance. An instance with a tenancy of C<dedicated>
-runs on single-tenant hardware and can only be launched into a VPC.
+The tenancy of the instance. An instance with C<dedicated> tenancy runs
+on isolated, single-tenant hardware and can only be launched into a
+VPC.
 
-To launch Dedicated Instances into a shared tenancy VPC (a VPC with the
+To launch dedicated instances into a shared tenancy VPC (a VPC with the
 instance placement tenancy attribute set to C<default>), you must set
 the value of this parameter to C<dedicated>.
 
-If you specify C<PlacementTenancy>, be sure to specify at least one
-subnet when you create your group.
+If you specify C<PlacementTenancy>, you must specify at least one
+subnet for C<VPCZoneIdentifier> when you create your group.
 
 For more information, see Instance Placement Tenancy
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy)
@@ -241,24 +258,24 @@ Valid values: C<default> | C<dedicated>
 
 =head2 RamdiskId => Str
 
-The ID of the RAM disk associated with the AMI.
+The ID of the RAM disk to select.
 
 
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-One or more security groups with which to associate the instances.
+A list that contains the security groups to assign to the instances in
+the Auto Scaling group.
 
-If your instances are launched in EC2-Classic, you can either specify
-security group names or the security group IDs. For more information,
-see Amazon EC2 Security Groups
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
-
-If your instances are launched into a VPC, specify security group IDs.
-For more information, see Security Groups for Your VPC
+[EC2-VPC] Specify the security group IDs. For more information, see
+Security Groups for Your VPC
 (https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
+
+[EC2-Classic] Specify either the security group names or the security
+group IDs. For more information, see Amazon EC2 Security Groups
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html)
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 
 
@@ -271,12 +288,20 @@ see Launching Spot Instances in Your Auto Scaling Group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
+If a Spot price is set, then the Auto Scaling group will only launch
+instances when the Spot price has been met, regardless of the setting
+in the Auto Scaling group's C<DesiredCapacity>.
+
+When you change your Spot price by creating a new launch configuration,
+running instances will continue to run as long as the Spot price for
+those running instances is higher than the current Spot market price.
+
 
 
 =head2 UserData => Str
 
-The user data to make available to the launched EC2 instances. For more
-information, see Instance Metadata and User Data
+The Base64-encoded user data to make available to the launched EC2
+instances. For more information, see Instance Metadata and User Data
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 

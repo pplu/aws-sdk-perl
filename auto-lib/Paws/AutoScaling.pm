@@ -548,9 +548,9 @@ Paws::AutoScaling - Perl Interface to AWS Auto Scaling
 Amazon EC2 Auto Scaling
 
 Amazon EC2 Auto Scaling is designed to automatically launch or
-terminate EC2 instances based on user-defined policies, schedules, and
-health checks. Use this service with AWS Auto Scaling, Amazon
-CloudWatch, and Elastic Load Balancing.
+terminate EC2 instances based on user-defined scaling policies,
+scheduled actions, and health checks. Use this service with AWS Auto
+Scaling, Amazon CloudWatch, and Elastic Load Balancing.
 
 For more information, including information about granting IAM users
 required permissions for Amazon EC2 Auto Scaling actions, see the
@@ -1710,8 +1710,7 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using using
-RecordLifecycleActionHeartbeat.
+the instance in a pending state using RecordLifecycleActionHeartbeat.
 
 =item 5.
 
@@ -1796,10 +1795,15 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
-Creates or updates a policy for an Auto Scaling group. To update an
-existing policy, use the existing policy name and set the parameters to
-change. Any existing parameter not changed in an update to an existing
-policy is not changed in this update request.
+Creates or updates a scaling policy for an Auto Scaling group. To
+update an existing scaling policy, use the existing policy name and set
+the parameters to change. Any existing parameter not changed in an
+update to an existing policy is not changed in this update request.
+
+For more information about using scaling policies to scale your Auto
+Scaling group automatically, see Dynamic Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 PutScheduledUpdateGroupAction
@@ -2103,8 +2107,8 @@ effect on any scaling activities after this call returns. Scaling
 activities that are currently in progress aren't affected.
 
 If you associate a new launch configuration or template with an Auto
-Scaling group, all new instances will get the updated configuration,
-but existing instances continue to run with the configuration that they
+Scaling group, all new instances will get the updated configuration.
+Existing instances continue to run with the configuration that they
 were originally launched with. When you update a group to specify a
 mixed instances policy instead of a launch configuration or template,
 existing instances may be replaced to match the new purchasing options

@@ -115,8 +115,8 @@ The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
 service. The default value is C<0>.
 
-For more information, see Health Checks for Auto Scaling Instances
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
+For more information, see Health Check Grace Period
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 Conditional: This parameter is required if you are adding an C<ELB>
@@ -153,6 +153,10 @@ The launch template and version to use to specify the updates. If you
 specify C<LaunchTemplate> in your update request, you can't specify
 C<LaunchConfigurationName> or C<MixedInstancesPolicy>.
 
+For more information, see LaunchTemplateSpecification
+(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html)
+in the I<Amazon EC2 Auto Scaling API Reference>.
+
 
 
 =head2 MaxSize => Int
@@ -175,8 +179,10 @@ In your call to C<UpdateAutoScalingGroup>, you can make changes to the
 policy that is specified. All optional parameters are left unchanged if
 not specified.
 
-For more information, see Auto Scaling Groups with Multiple Instance
-Types and Purchase Options
+For more information, see MixedInstancesPolicy
+(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html)
+in the I<Amazon EC2 Auto Scaling API Reference> and Auto Scaling Groups
+with Multiple Instance Types and Purchase Options
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 

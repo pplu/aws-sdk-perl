@@ -98,7 +98,7 @@ C<"2019-06-01T00:00:00Z">.
 
 =head2 Time => Str
 
-  This parameter is deprecated.
+  This parameter is no longer used.
 
 
 

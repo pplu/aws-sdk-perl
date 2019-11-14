@@ -41,8 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 Describes a lifecycle hook, which tells Amazon EC2 Auto Scaling that
 you want to perform an action whenever it launches instances or
-whenever it terminates instances. Used in response to
-DescribeLifecycleHooks.
+terminates instances. Used in response to DescribeLifecycleHooks.
 
 =head1 ATTRIBUTES
 

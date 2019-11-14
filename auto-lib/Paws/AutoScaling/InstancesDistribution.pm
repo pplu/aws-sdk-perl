@@ -85,21 +85,31 @@ Instances.
 
 =head2 SpotAllocationStrategy => Str
 
-  Indicates how to allocate Spot capacity across Spot pools.
+  Indicates how to allocate instances across Spot Instance pools.
 
-The only valid value is C<lowest-price>, which is also the default
-value. The Auto Scaling group selects the cheapest Spot pools and
-evenly allocates your Spot capacity across the number of Spot pools
-that you specify.
+If the allocation strategy is C<lowest-price>, the Auto Scaling group
+launches instances using the Spot pools with the lowest price, and
+evenly allocates your instances across the number of Spot pools that
+you specify. If the allocation strategy is C<capacity-optimized>, the
+Auto Scaling group launches instances using Spot pools that are
+optimally chosen based on the available Spot capacity.
+
+The default Spot allocation strategy for calls that you make through
+the API, the AWS CLI, or the AWS SDKs is C<lowest-price>. The default
+Spot allocation strategy for the AWS Management Console is
+C<capacity-optimized>.
+
+Valid values: C<lowest-price> | C<capacity-optimized>
 
 
 =head2 SpotInstancePools => Int
 
-  The number of Spot pools to use to allocate your Spot capacity. The
-Spot pools are determined from the different instance types in the
-Overrides array of LaunchTemplate. The range is 1E<ndash>20.
+  The number of Spot Instance pools across which to allocate your Spot
+Instances. The Spot pools are determined from the different instance
+types in the Overrides array of LaunchTemplate. The range is
+1E<ndash>20. The default value is C<2>.
 
-The default value is C<2>.
+Valid only when the Spot allocation strategy is C<lowest-price>.
 
 
 =head2 SpotMaxPrice => Str

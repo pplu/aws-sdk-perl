@@ -123,7 +123,7 @@ returns an error message.
 
 =head2 Time => Str
 
-This parameter is deprecated.
+This parameter is no longer used.
 
 
 

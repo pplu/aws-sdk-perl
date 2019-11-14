@@ -40,11 +40,11 @@ Types and Purchase Options
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-You can create a mixed instances policy for a new Auto Scaling group
-(CreateAutoScalingGroup), or you can create it for an existing group by
-updating the group (UpdateAutoScalingGroup) to specify
-C<MixedInstancesPolicy> as the top-level parameter instead of a launch
-configuration or template.
+You can create a mixed instances policy for a new Auto Scaling group,
+or you can create it for an existing group by updating the group to
+specify C<MixedInstancesPolicy> as the top-level parameter instead of a
+launch configuration or template. For more information, see
+CreateAutoScalingGroup and UpdateAutoScalingGroup.
 
 =head1 ATTRIBUTES
 

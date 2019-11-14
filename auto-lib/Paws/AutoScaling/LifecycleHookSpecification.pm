@@ -70,8 +70,7 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using using
-RecordLifecycleActionHeartbeat.
+the instance in a pending state using RecordLifecycleActionHeartbeat.
 
 =item 5.
 
