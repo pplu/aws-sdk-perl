@@ -65,7 +65,8 @@ an Amplify App.
 
 =head2 B<REQUIRED> EnableAutoSubDomain => Bool
 
-  Enables automated creation of Subdomains for branches.
+  Enables automated creation of Subdomains for branches. (Currently not
+supported)
 
 
 =head2 B<REQUIRED> StatusReason => Str

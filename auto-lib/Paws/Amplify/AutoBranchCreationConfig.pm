@@ -4,8 +4,10 @@ package Paws::Amplify::AutoBranchCreationConfig;
   has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest']);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest']);
+  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest']);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest']);
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest']);
+  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'pullRequestEnvironmentName', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest']);
 1;
 
@@ -62,6 +64,11 @@ Structure with auto branch creation config.
   Enables Basic Auth for the auto created branch.
 
 
+=head2 EnablePullRequestPreview => Bool
+
+  Enables Pull Request Preview for auto created branch.
+
+
 =head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
   Environment Variables for the auto created branch.
@@ -70,6 +77,11 @@ Structure with auto branch creation config.
 =head2 Framework => Str
 
   Framework for the auto created branch.
+
+
+=head2 PullRequestEnvironmentName => Str
+
+  The Amplify Environment name for the pull request.
 
 
 =head2 Stage => Str

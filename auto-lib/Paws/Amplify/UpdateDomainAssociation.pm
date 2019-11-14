@@ -70,7 +70,8 @@ Name of the domain.
 
 =head2 EnableAutoSubDomain => Bool
 
-Enables automated creation of Subdomains for branches.
+Enables automated creation of Subdomains for branches. (Currently not
+supported)
 
 
 

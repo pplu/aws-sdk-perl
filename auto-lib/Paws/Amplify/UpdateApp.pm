@@ -1,6 +1,7 @@
 
 package Paws::Amplify::UpdateApp;
   use Moose;
+  has AccessToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'accessToken');
   has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
   has AutoBranchCreationConfig => (is => 'ro', isa => 'Paws::Amplify::AutoBranchCreationConfig', traits => ['NameInRequest'], request_name => 'autoBranchCreationConfig');
   has AutoBranchCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoBranchCreationPatterns');
@@ -14,7 +15,9 @@ package Paws::Amplify::UpdateApp;
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has IamServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamServiceRoleArn');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has OauthToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'oauthToken');
   has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform');
+  has Repository => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repository');
 
   use MooseX::ClassAttribute;
 
@@ -43,17 +46,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $amplify = Paws->service('Amplify');
     my $UpdateAppResult = $amplify->UpdateApp(
       AppId                    => 'MyAppId',
+      AccessToken              => 'MyAccessToken',    # OPTIONAL
       AutoBranchCreationConfig => {
         BasicAuthCredentials => 'MyBasicAuthCredentials',  # max: 2000; OPTIONAL
-        BuildSpec            => 'MyBuildSpec',    # min: 1, max: 25000; OPTIONAL
-        EnableAutoBuild      => 1,                # OPTIONAL
-        EnableBasicAuth      => 1,                # OPTIONAL
-        EnvironmentVariables => {
-          'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
+        BuildSpec       => 'MyBuildSpec',    # min: 1, max: 25000; OPTIONAL
+        EnableAutoBuild => 1,                # OPTIONAL
+        EnableBasicAuth => 1,                # OPTIONAL
+        EnablePullRequestPreview => 1,       # OPTIONAL
+        EnvironmentVariables     => {
+          'MyEnvKey' => 'MyEnvValue',        # key: max: 255, value: max: 1000
         },    # OPTIONAL
         Framework => 'MyFramework',    # max: 255; OPTIONAL
-        Stage     => 'PRODUCTION'
-        ,    # values: PRODUCTION, BETA, DEVELOPMENT, EXPERIMENTAL; OPTIONAL
+        PullRequestEnvironmentName =>
+          'MyPullRequestEnvironmentName',    # max: 20; OPTIONAL
+        Stage => 'PRODUCTION'
+        , # values: PRODUCTION, BETA, DEVELOPMENT, EXPERIMENTAL, PULL_REQUEST; OPTIONAL
       },    # OPTIONAL
       AutoBranchCreationPatterns => [
         'MyAutoBranchCreationPattern', ...    # min: 1, max: 2048
@@ -65,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Source    => 'MySource',       # min: 1, max: 2048
           Target    => 'MyTarget',       # min: 1, max: 2048
           Condition => 'MyCondition',    # min: 1, max: 2048; OPTIONAL
-          Status    => 'MyStatus',       # min: 3, max: 3; OPTIONAL
+          Status    => 'MyStatus',       # min: 3, max: 7; OPTIONAL
         },
         ...
       ],                                 # OPTIONAL
@@ -78,7 +85,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       IamServiceRoleArn => 'MyServiceRoleArn',    # OPTIONAL
       Name              => 'MyName',              # OPTIONAL
+      OauthToken        => 'MyOauthToken',        # OPTIONAL
       Platform          => 'WEB',                 # OPTIONAL
+      Repository        => 'MyRepository',        # OPTIONAL
     );
 
     # Results:
@@ -92,6 +101,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 =head1 ATTRIBUTES
 
 
+=head2 AccessToken => Str
+
+Personal Access token for 3rd party source control system for an
+Amplify App, used to create webhook and read-only deploy key. Token is
+not stored.
+
+
+
 =head2 B<REQUIRED> AppId => Str
 
 Unique Id for an Amplify App.
@@ -100,7 +117,7 @@ Unique Id for an Amplify App.
 
 =head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
 
-Automated branch creation config for the Amplify App.
+Automated branch creation branchConfig for the Amplify App.
 
 
 
@@ -170,11 +187,25 @@ Name for an Amplify App.
 
 
 
+=head2 OauthToken => Str
+
+OAuth token for 3rd party source control system for an Amplify App,
+used to create webhook and read-only deploy key. OAuth token is not
+stored.
+
+
+
 =head2 Platform => Str
 
 Platform for an Amplify App.
 
 Valid values are: C<"WEB">
+
+=head2 Repository => Str
+
+Repository for an Amplify App
+
+
 
 
 =head1 SEE ALSO

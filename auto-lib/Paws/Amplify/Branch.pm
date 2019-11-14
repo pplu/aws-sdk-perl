@@ -2,6 +2,7 @@ package Paws::Amplify::Branch;
   use Moose;
   has ActiveJobId => (is => 'ro', isa => 'Str', request_name => 'activeJobId', traits => ['NameInRequest'], required => 1);
   has AssociatedResources => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'associatedResources', traits => ['NameInRequest']);
+  has BackendEnvironmentArn => (is => 'ro', isa => 'Str', request_name => 'backendEnvironmentArn', traits => ['NameInRequest']);
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
   has BranchArn => (is => 'ro', isa => 'Str', request_name => 'branchArn', traits => ['NameInRequest'], required => 1);
   has BranchName => (is => 'ro', isa => 'Str', request_name => 'branchName', traits => ['NameInRequest'], required => 1);
@@ -9,12 +10,16 @@ package Paws::Amplify::Branch;
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
   has CustomDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'customDomains', traits => ['NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
+  has DestinationBranch => (is => 'ro', isa => 'Str', request_name => 'destinationBranch', traits => ['NameInRequest']);
   has DisplayName => (is => 'ro', isa => 'Str', request_name => 'displayName', traits => ['NameInRequest'], required => 1);
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBuild', traits => ['NameInRequest'], required => 1);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
   has EnableNotification => (is => 'ro', isa => 'Bool', request_name => 'enableNotification', traits => ['NameInRequest'], required => 1);
+  has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', request_name => 'enablePullRequestPreview', traits => ['NameInRequest'], required => 1);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
   has Framework => (is => 'ro', isa => 'Str', request_name => 'framework', traits => ['NameInRequest'], required => 1);
+  has PullRequestEnvironmentName => (is => 'ro', isa => 'Str', request_name => 'pullRequestEnvironmentName', traits => ['NameInRequest']);
+  has SourceBranch => (is => 'ro', isa => 'Str', request_name => 'sourceBranch', traits => ['NameInRequest']);
   has Stage => (is => 'ro', isa => 'Str', request_name => 'stage', traits => ['NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Amplify::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has ThumbnailUrl => (is => 'ro', isa => 'Str', request_name => 'thumbnailUrl', traits => ['NameInRequest']);
@@ -66,6 +71,11 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   List of custom resources that are linked to this branch.
 
 
+=head2 BackendEnvironmentArn => Str
+
+  ARN for a Backend Environment, part of an Amplify App.
+
+
 =head2 BasicAuthCredentials => Str
 
   Basic Authorization credentials for a branch, part of an Amplify App.
@@ -101,6 +111,11 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Description for a branch, part of an Amplify App.
 
 
+=head2 DestinationBranch => Str
+
+  The destination branch if the branch is a pull request branch.
+
+
 =head2 B<REQUIRED> DisplayName => Str
 
   Display name for a branch, will use as the default domain prefix.
@@ -121,6 +136,11 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
   Enables notifications for a branch, part of an Amplify App.
 
 
+=head2 B<REQUIRED> EnablePullRequestPreview => Bool
+
+  Enables Pull Request Preview for this branch.
+
+
 =head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
   Environment Variables specific to a branch, part of an Amplify App.
@@ -129,6 +149,16 @@ Branch for an Amplify App, which maps to a 3rd party repository branch.
 =head2 B<REQUIRED> Framework => Str
 
   Framework for a branch, part of an Amplify App.
+
+
+=head2 PullRequestEnvironmentName => Str
+
+  The Amplify Environment name for the pull request.
+
+
+=head2 SourceBranch => Str
+
+  The source branch if the branch is a pull request branch.
 
 
 =head2 B<REQUIRED> Stage => Str

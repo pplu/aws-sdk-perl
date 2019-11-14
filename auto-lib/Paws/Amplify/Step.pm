@@ -9,6 +9,8 @@ package Paws::Amplify::Step;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
   has StepName => (is => 'ro', isa => 'Str', request_name => 'stepName', traits => ['NameInRequest'], required => 1);
+  has TestArtifactsUrl => (is => 'ro', isa => 'Str', request_name => 'testArtifactsUrl', traits => ['NameInRequest']);
+  has TestConfigUrl => (is => 'ro', isa => 'Str', request_name => 'testConfigUrl', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Amplify::Step object:
 
-  $service_obj->Method(Att1 => { ArtifactsUrl => $value, ..., StepName => $value  });
+  $service_obj->Method(Att1 => { ArtifactsUrl => $value, ..., TestConfigUrl => $value  });
 
 =head3 Results returned from an API call
 
@@ -89,6 +91,16 @@ build.
 =head2 B<REQUIRED> StepName => Str
 
   Name of the execution step.
+
+
+=head2 TestArtifactsUrl => Str
+
+  URL to the test artifact for the execution step.
+
+
+=head2 TestConfigUrl => Str
+
+  URL to the test config for the execution step.
 
 
 
