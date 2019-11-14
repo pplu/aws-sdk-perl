@@ -40,7 +40,8 @@ An object representing a container instance host device.
 
 =head2 ContainerPath => Str
 
-  The path inside the container at which to expose the host device.
+  The path inside the container at which to expose the host device. By
+default the C<hostPath> value is used.
 
 
 =head2 B<REQUIRED> HostPath => Str

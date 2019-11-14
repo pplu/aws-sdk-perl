@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Linu
 =head1 DESCRIPTION
 
 Linux-specific modifications that are applied to the container, such as
-Linux kernel capabilities.
+details for device mappings.
 
 =head1 ATTRIBUTES
 

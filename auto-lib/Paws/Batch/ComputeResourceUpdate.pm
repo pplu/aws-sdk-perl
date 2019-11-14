@@ -41,17 +41,18 @@ be updated.
 
 =head2 DesiredvCpus => Int
 
-  The desired number of EC2 vCPUS in the compute environment.
+  The desired number of Amazon EC2 vCPUS in the compute environment.
 
 
 =head2 MaxvCpus => Int
 
-  The maximum number of EC2 vCPUs that an environment can reach.
+  The maximum number of Amazon EC2 vCPUs that an environment can reach.
 
 
 =head2 MinvCpus => Int
 
-  The minimum number of EC2 vCPUs that an environment should maintain.
+  The minimum number of Amazon EC2 vCPUs that an environment should
+maintain.
 
 
 

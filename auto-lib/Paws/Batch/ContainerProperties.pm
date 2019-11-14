@@ -137,7 +137,7 @@ assume for AWS permissions.
 =head2 LinuxParameters => L<Paws::Batch::LinuxParameters>
 
   Linux-specific modifications that are applied to the container, such as
-Linux kernel capabilities.
+details for device mappings.
 
 
 =head2 Memory => Int

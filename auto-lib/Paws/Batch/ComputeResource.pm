@@ -1,5 +1,6 @@
 package Paws::Batch::ComputeResource;
   use Moose;
+  has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
   has BidPercentage => (is => 'ro', isa => 'Int', request_name => 'bidPercentage', traits => ['NameInRequest']);
   has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
   has Ec2KeyPair => (is => 'ro', isa => 'Str', request_name => 'ec2KeyPair', traits => ['NameInRequest']);
@@ -34,14 +35,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Batch::ComputeResource object:
 
-  $service_obj->Method(Att1 => { BidPercentage => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AllocationStrategy => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::ComputeResource object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BidPercentage
+  $result->Att1->AllocationStrategy
 
 =head1 DESCRIPTION
 
@@ -50,26 +51,45 @@ An object representing an AWS Batch compute resource.
 =head1 ATTRIBUTES
 
 
+=head2 AllocationStrategy => Str
+
+  The allocation strategy to use for the compute resource in case not
+enough instances of the best fitting instance type can be allocated.
+This could be due to availability of the instance type in the region or
+Amazon EC2 service limits
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html).
+If this is not specified, the default is C<BEST_FIT>, which will use
+only the best fitting instance type, waiting for additional capacity if
+it's not available. This allocation strategy keeps costs lower but can
+limit scaling. C<BEST_FIT_PROGRESSIVE> will select an additional
+instance type that is large enough to meet the requirements of the jobs
+in the queue, with a preference for an instance type with a lower cost.
+C<SPOT_CAPACITY_OPTIMIZED> is only available for Spot Instance compute
+resources and will select an additional instance type that is large
+enough to meet the requirements of the jobs in the queue, with a
+preference for an instance type that is less likely to be interrupted.
+
+
 =head2 BidPercentage => Int
 
   The maximum percentage that a Spot Instance price can be when compared
 with the On-Demand price for that instance type before instances are
 launched. For example, if your maximum percentage is 20%, then the Spot
-price must be below 20% of the current On-Demand price for that EC2
-instance. You always pay the lowest (market) price and never more than
-your maximum percentage. If you leave this field empty, the default
-value is 100% of the On-Demand price.
+price must be below 20% of the current On-Demand price for that Amazon
+EC2 instance. You always pay the lowest (market) price and never more
+than your maximum percentage. If you leave this field empty, the
+default value is 100% of the On-Demand price.
 
 
 =head2 DesiredvCpus => Int
 
-  The desired number of EC2 vCPUS in the compute environment.
+  The desired number of Amazon EC2 vCPUS in the compute environment.
 
 
 =head2 Ec2KeyPair => Str
 
-  The EC2 key pair that is used for instances launched in the compute
-environment.
+  The Amazon EC2 key pair that is used for instances launched in the
+compute environment.
 
 
 =head2 ImageId => Str
@@ -94,8 +114,8 @@ in the I<AWS Batch User Guide>.
 
   The instances types that may be launched. You can specify instance
 families to launch any instance type within those families (for
-example, C<c4> or C<p3>), or you can specify specific sizes within a
-family (such as C<c4.8xlarge>). You can also choose C<optimal> to pick
+example, C<c5> or C<p3>), or you can specify specific sizes within a
+family (such as C<c5.8xlarge>). You can also choose C<optimal> to pick
 instance types (from the C, M, and R instance families) on the fly that
 match the demand of your job queues.
 
@@ -114,13 +134,13 @@ in the I<AWS Batch User Guide>.
 
 =head2 B<REQUIRED> MaxvCpus => Int
 
-  The maximum number of EC2 vCPUs that an environment can reach.
+  The maximum number of Amazon EC2 vCPUs that an environment can reach.
 
 
 =head2 B<REQUIRED> MinvCpus => Int
 
-  The minimum number of EC2 vCPUs that an environment should maintain
-(even if the compute environment is C<DISABLED>).
+  The minimum number of Amazon EC2 vCPUs that an environment should
+maintain (even if the compute environment is C<DISABLED>).
 
 
 =head2 PlacementGroup => Str
@@ -138,8 +158,12 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-  The EC2 security group that is associated with instances launched in
-the compute environment.
+  The Amazon EC2 security groups associated with instances launched in
+the compute environment. One or more security groups must be specified,
+either in C<securityGroupIds> or using a launch template referenced in
+C<launchTemplate>. If security groups are specified using both
+C<securityGroupIds> and C<launchTemplate>, the values in
+C<securityGroupIds> will be used.
 
 
 =head2 SpotIamFleetRole => Str
@@ -170,7 +194,7 @@ valueE<mdash>for example, { "Name": "AWS Batch Instance - C4OnDemand"
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of compute environment: EC2 or SPOT.
+  The type of compute environment: C<EC2> or C<SPOT>.
 
 
 
