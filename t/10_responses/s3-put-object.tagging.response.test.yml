@@ -1,0 +1,10 @@
+---
+call: PutObjectTagging 
+service: S3
+tests:
+  - path: VersionId
+    op: eq
+    expected: null
+  - path: _request_id
+    op: eq
+    expected: "A3379DA02E1B7DD4"

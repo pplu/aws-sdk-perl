@@ -1,0 +1,12 @@
+---
+Bucket: oneoffpaws
+AccessControlPolicy:
+  Owner:
+    ID: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+    DisplayName: Nothing
+  Grants:
+    - Grantee:
+        Type: CanonicalUser
+        DisplayName: OwnerDisplayName
+        ID: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+      Permission: FULL_CONTROL
