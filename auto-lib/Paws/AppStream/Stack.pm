@@ -1,10 +1,12 @@
 package Paws::AppStream::Stack;
   use Moose;
+  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
   has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettingsResponse');
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EmbedHostDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has FeedbackURL => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
@@ -30,20 +32,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::Stack object:
 
-  $service_obj->Method(Att1 => { ApplicationSettings => $value, ..., UserSettings => $value  });
+  $service_obj->Method(Att1 => { AccessEndpoints => $value, ..., UserSettings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::Stack object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ApplicationSettings
+  $result->Att1->AccessEndpoints
 
 =head1 DESCRIPTION
 
 Describes a stack.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+
+  The list of virtual private cloud (VPC) interface endpoint objects.
+Users of the stack can connect to AppStream 2.0 only through the
+specified endpoints.
 
 
 =head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettingsResponse>
@@ -69,6 +78,13 @@ Describes a stack.
 =head2 DisplayName => Str
 
   The stack name to display.
+
+
+=head2 EmbedHostDomains => ArrayRef[Str|Undef]
+
+  The domains where AppStream 2.0 streaming sessions can be embedded in
+an iframe. You must approve the domains that you want to host embedded
+AppStream 2.0 streaming sessions.
 
 
 =head2 FeedbackURL => Str

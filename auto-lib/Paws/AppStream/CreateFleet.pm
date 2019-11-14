@@ -8,6 +8,7 @@ package Paws::AppStream::CreateFleet;
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetType => (is => 'ro', isa => 'Str');
+  has IamRoleArn => (is => 'ro', isa => 'Str');
   has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
@@ -58,6 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       EnableDefaultInternetAccess    => 1,              # OPTIONAL
       FleetType                      => 'ALWAYS_ON',    # OPTIONAL
+      IamRoleArn                     => 'MyArn',        # OPTIONAL
       IdleDisconnectTimeoutInSeconds => 1,              # OPTIONAL
       ImageArn                       => 'MyArn',        # OPTIONAL
       ImageName                      => 'MyString',     # OPTIONAL
@@ -152,6 +154,22 @@ streaming apps.
 
 
 Valid values are: C<"ALWAYS_ON">, C<"ON_DEMAND">
+
+=head2 IamRoleArn => Str
+
+The Amazon Resource Name (ARN) of the IAM role to apply to the fleet.
+To assume a role, a fleet instance calls the AWS Security Token Service
+(STS) C<AssumeRole> API operation and passes the ARN of the role to
+use. The operation creates a new session with temporary credentials.
+AppStream 2.0 retrieves the temporary credentials and creates the
+B<AppStream_Machine_Role> credential profile on the instance.
+
+For more information, see Using an IAM Role to Grant Permissions to
+Applications and Scripts Running on AppStream 2.0 Streaming Instances
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
+
+
 
 =head2 IdleDisconnectTimeoutInSeconds => Int
 
@@ -319,7 +337,7 @@ _ . : / = + \ - @
 
 For more information, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 

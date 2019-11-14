@@ -1,5 +1,6 @@
 package Paws::AppStream::ImageBuilder;
   use Moose;
+  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
   has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
@@ -7,6 +8,7 @@ package Paws::AppStream::ImageBuilder;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has IamRoleArn => (is => 'ro', isa => 'Str');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageBuilderErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -35,20 +37,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppStream::ImageBuilder object:
 
-  $service_obj->Method(Att1 => { AppstreamAgentVersion => $value, ..., VpcConfig => $value  });
+  $service_obj->Method(Att1 => { AccessEndpoints => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::AppStream::ImageBuilder object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AppstreamAgentVersion
+  $result->Att1->AccessEndpoints
 
 =head1 DESCRIPTION
 
 Describes a virtual machine that is used to create an image.
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+
+  The list of virtual private cloud (VPC) interface endpoint objects.
+Administrators can connect to the image builder only through the
+specified endpoints.
 
 
 =head2 AppstreamAgentVersion => Str
@@ -88,6 +97,21 @@ the image builder to a Microsoft Active Directory domain.
   Enables or disables default internet access for the image builder.
 
 
+=head2 IamRoleArn => Str
+
+  The ARN of the IAM role that is applied to the image builder. To assume
+a role, the image builder calls the AWS Security Token Service (STS)
+C<AssumeRole> API operation and passes the ARN of the role to use. The
+operation creates a new session with temporary credentials. AppStream
+2.0 retrieves the temporary credentials and creates the
+B<AppStream_Machine_Role> credential profile on the instance.
+
+For more information, see Using an IAM Role to Grant Permissions to
+Applications and Scripts Running on AppStream 2.0 Streaming Instances
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
+
+
 =head2 ImageArn => Str
 
   The ARN of the image from which this builder was created.
@@ -100,7 +124,93 @@ the image builder to a Microsoft Active Directory domain.
 
 =head2 InstanceType => Str
 
-  The instance type for the image builder.
+  The instance type for the image builder. The following instance types
+are available:
+
+=over
+
+=item *
+
+stream.standard.medium
+
+=item *
+
+stream.standard.large
+
+=item *
+
+stream.compute.large
+
+=item *
+
+stream.compute.xlarge
+
+=item *
+
+stream.compute.2xlarge
+
+=item *
+
+stream.compute.4xlarge
+
+=item *
+
+stream.compute.8xlarge
+
+=item *
+
+stream.memory.large
+
+=item *
+
+stream.memory.xlarge
+
+=item *
+
+stream.memory.2xlarge
+
+=item *
+
+stream.memory.4xlarge
+
+=item *
+
+stream.memory.8xlarge
+
+=item *
+
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics-pro.4xlarge
+
+=item *
+
+stream.graphics-pro.8xlarge
+
+=item *
+
+stream.graphics-pro.16xlarge
+
+=back
+
 
 
 =head2 B<REQUIRED> Name => Str

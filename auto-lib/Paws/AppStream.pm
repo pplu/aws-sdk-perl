@@ -521,6 +521,13 @@ without rewriting applications. AppStream 2.0 manages the AWS resources
 that are required to host and run your applications, scales
 automatically, and provides access to your users on demand.
 
+You can call the AppStream 2.0 API operations by using an interface VPC
+endpoint (interface endpoint). For more information, see Access
+AppStream 2.0 API Operations and CLI Commands Through an Interface VPC
+Endpoint
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
+
 To learn more about AppStream 2.0, see the following resources:
 
 =over
@@ -662,6 +669,8 @@ image builders to Microsoft Active Directory domains.
 
 =item [FleetType => Str]
 
+=item [IamRoleArn => Str]
+
 =item [IdleDisconnectTimeoutInSeconds => Int]
 
 =item [ImageArn => Str]
@@ -693,6 +702,8 @@ specified image.
 
 =item Name => Str
 
+=item [AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]]
+
 =item [AppstreamAgentVersion => Str]
 
 =item [Description => Str]
@@ -702,6 +713,8 @@ specified image.
 =item [DomainJoinInfo => L<Paws::AppStream::DomainJoinInfo>]
 
 =item [EnableDefaultInternetAccess => Bool]
+
+=item [IamRoleArn => Str]
 
 =item [ImageArn => Str]
 
@@ -749,11 +762,15 @@ Creates a URL to start an image builder streaming session.
 
 =item Name => Str
 
+=item [AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]]
+
 =item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
 
 =item [Description => Str]
 
 =item [DisplayName => Str]
+
+=item [EmbedHostDomains => ArrayRef[Str|Undef]]
 
 =item [FeedbackURL => Str]
 
@@ -1358,7 +1375,7 @@ You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 =head2 StartFleet
@@ -1454,7 +1471,7 @@ To disassociate tags from your resources, use UntagResource.
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 =head2 UntagResource
@@ -1479,7 +1496,7 @@ To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 =head2 UpdateDirectoryConfig
@@ -1524,6 +1541,8 @@ and image builders to Microsoft Active Directory domains.
 
 =item [EnableDefaultInternetAccess => Bool]
 
+=item [IamRoleArn => Str]
+
 =item [IdleDisconnectTimeoutInSeconds => Int]
 
 =item [ImageArn => Str]
@@ -1550,8 +1569,9 @@ Updates the specified fleet.
 If the fleet is in the C<STOPPED> state, you can update any attribute
 except the fleet name. If the fleet is in the C<RUNNING> state, you can
 update the C<DisplayName>, C<ComputeCapacity>, C<ImageARN>,
-C<ImageName>, and C<DisconnectTimeoutInSeconds> attributes. If the
-fleet is in the C<STARTING> or C<STOPPING> state, you can't update it.
+C<ImageName>, C<IdleDisconnectTimeoutInSeconds>, and
+C<DisconnectTimeoutInSeconds> attributes. If the fleet is in the
+C<STARTING> or C<STOPPING> state, you can't update it.
 
 
 =head2 UpdateImagePermissions
@@ -1580,6 +1600,8 @@ Adds or updates permissions for the specified private image.
 
 =item Name => Str
 
+=item [AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]]
+
 =item [ApplicationSettings => L<Paws::AppStream::ApplicationSettings>]
 
 =item [AttributesToDelete => ArrayRef[Str|Undef]]
@@ -1589,6 +1611,8 @@ Adds or updates permissions for the specified private image.
 =item [Description => Str]
 
 =item [DisplayName => Str]
+
+=item [EmbedHostDomains => ArrayRef[Str|Undef]]
 
 =item [FeedbackURL => Str]
 

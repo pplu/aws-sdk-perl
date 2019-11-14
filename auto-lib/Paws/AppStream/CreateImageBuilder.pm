@@ -1,11 +1,13 @@
 
 package Paws::AppStream::CreateImageBuilder;
   use Moose;
+  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
   has AppstreamAgentVersion => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has IamRoleArn => (is => 'ro', isa => 'Str');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -38,8 +40,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateImageBuilderResult = $appstream2->CreateImageBuilder(
-      InstanceType          => 'MyString',
-      Name                  => 'MyName',
+      InstanceType    => 'MyString',
+      Name            => 'MyName',
+      AccessEndpoints => [
+        {
+          EndpointType => 'STREAMING',    # values: STREAMING
+          VpceId       => 'MyString',     # min: 1
+        },
+        ...
+      ],                                  # OPTIONAL
       AppstreamAgentVersion => 'MyAppstreamAgentVersion',    # OPTIONAL
       Description           => 'MyDescription',              # OPTIONAL
       DisplayName           => 'MyDisplayName',              # OPTIONAL
@@ -49,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyOrganizationalUnitDistinguishedName',    # max: 2000; OPTIONAL
       },    # OPTIONAL
       EnableDefaultInternetAccess => 1,             # OPTIONAL
+      IamRoleArn                  => 'MyArn',       # OPTIONAL
       ImageArn                    => 'MyArn',       # OPTIONAL
       ImageName                   => 'MyString',    # OPTIONAL
       Tags                        => {
@@ -73,6 +83,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/appstream2/CreateImageBuilder>
 
 =head1 ATTRIBUTES
+
+
+=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+
+The list of interface VPC endpoint (interface endpoint) objects.
+Administrators can connect to the image builder only through the
+specified endpoints.
+
 
 
 =head2 AppstreamAgentVersion => Str
@@ -107,6 +125,23 @@ Enables or disables default internet access for the image builder.
 
 
 
+=head2 IamRoleArn => Str
+
+The Amazon Resource Name (ARN) of the IAM role to apply to the image
+builder. To assume a role, the image builder calls the AWS Security
+Token Service (STS) C<AssumeRole> API operation and passes the ARN of
+the role to use. The operation creates a new session with temporary
+credentials. AppStream 2.0 retrieves the temporary credentials and
+creates the B<AppStream_Machine_Role> credential profile on the
+instance.
+
+For more information, see Using an IAM Role to Grant Permissions to
+Applications and Scripts Running on AppStream 2.0 Streaming Instances
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
+
+
+
 =head2 ImageArn => Str
 
 The ARN of the public, private, or shared image to use.
@@ -121,7 +156,93 @@ The name of the image used to create the image builder.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-The instance type to use when launching the image builder.
+The instance type to use when launching the image builder. The
+following instance types are available:
+
+=over
+
+=item *
+
+stream.standard.medium
+
+=item *
+
+stream.standard.large
+
+=item *
+
+stream.compute.large
+
+=item *
+
+stream.compute.xlarge
+
+=item *
+
+stream.compute.2xlarge
+
+=item *
+
+stream.compute.4xlarge
+
+=item *
+
+stream.compute.8xlarge
+
+=item *
+
+stream.memory.large
+
+=item *
+
+stream.memory.xlarge
+
+=item *
+
+stream.memory.2xlarge
+
+=item *
+
+stream.memory.4xlarge
+
+=item *
+
+stream.memory.8xlarge
+
+=item *
+
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics-pro.4xlarge
+
+=item *
+
+stream.graphics-pro.8xlarge
+
+=item *
+
+stream.graphics-pro.16xlarge
+
+=back
+
 
 
 
@@ -146,7 +267,7 @@ If you do not specify a value, the value is set to an empty string.
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 

@@ -1,9 +1,11 @@
 
 package Paws::AppStream::CreateStack;
   use Moose;
+  has AccessEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::AccessEndpoint]');
   has ApplicationSettings => (is => 'ro', isa => 'Paws::AppStream::ApplicationSettings');
   has Description => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
+  has EmbedHostDomains => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has FeedbackURL => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has RedirectURL => (is => 'ro', isa => 'Str');
@@ -36,21 +38,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appstream2 = Paws->service('AppStream');
     my $CreateStackResult = $appstream2->CreateStack(
-      Name                => 'MyName',
+      Name            => 'MyName',
+      AccessEndpoints => [
+        {
+          EndpointType => 'STREAMING',    # values: STREAMING
+          VpceId       => 'MyString',     # min: 1; OPTIONAL
+        },
+        ...
+      ],                                  # OPTIONAL
       ApplicationSettings => {
         Enabled       => 1,
         SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
       },    # OPTIONAL
-      Description       => 'MyDescription',    # OPTIONAL
-      DisplayName       => 'MyDisplayName',    # OPTIONAL
-      FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL
-      RedirectURL       => 'MyRedirectURL',    # OPTIONAL
+      Description      => 'MyDescription',    # OPTIONAL
+      DisplayName      => 'MyDisplayName',    # OPTIONAL
+      EmbedHostDomains => [
+        'MyEmbedHostDomain', ...              # max: 128
+      ],                                      # OPTIONAL
+      FeedbackURL       => 'MyFeedbackURL',   # OPTIONAL
+      RedirectURL       => 'MyRedirectURL',   # OPTIONAL
       StorageConnectors => [
         {
           ConnectorType =>
             'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
           Domains => [
-            'MyDomain', ...    # max: 64
+            'MyDomain', ...    # min: 1, max: 64
           ],                   # max: 10; OPTIONAL
           ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
         },
@@ -81,6 +93,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head1 ATTRIBUTES
 
 
+=head2 AccessEndpoints => ArrayRef[L<Paws::AppStream::AccessEndpoint>]
+
+The list of interface VPC endpoint (interface endpoint) objects. Users
+of the stack can connect to AppStream 2.0 only through the specified
+endpoints.
+
+
+
 =head2 ApplicationSettings => L<Paws::AppStream::ApplicationSettings>
 
 The persistent application settings for users of a stack. When these
@@ -99,6 +119,14 @@ The description to display.
 =head2 DisplayName => Str
 
 The stack name to display.
+
+
+
+=head2 EmbedHostDomains => ArrayRef[Str|Undef]
+
+The domains where AppStream 2.0 streaming sessions can be embedded in
+an iframe. You must approve the domains that you want to host embedded
+AppStream 2.0 streaming sessions.
 
 
 
@@ -143,7 +171,7 @@ _ . : / = + \ - @
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html)
-in the I<Amazon AppStream 2.0 Developer Guide>.
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 

@@ -10,6 +10,7 @@ package Paws::AppStream::Fleet;
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
   has FleetErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::FleetError]');
   has FleetType => (is => 'ro', isa => 'Str');
+  has IamRoleArn => (is => 'ro', isa => 'Str');
   has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
@@ -55,7 +56,7 @@ Describes a fleet.
 
 =head2 B<REQUIRED> Arn => Str
 
-  The ARN for the fleet.
+  The Amazon Resource Name (ARN) for the fleet.
 
 
 =head2 B<REQUIRED> ComputeCapacityStatus => L<Paws::AppStream::ComputeCapacityStatus>
@@ -128,6 +129,21 @@ streaming apps.
 
 
 
+=head2 IamRoleArn => Str
+
+  The ARN of the IAM role that is applied to the fleet. To assume a role,
+the fleet instance calls the AWS Security Token Service (STS)
+C<AssumeRole> API operation and passes the ARN of the role to use. The
+operation creates a new session with temporary credentials. AppStream
+2.0 retrieves the temporary credentials and creates the
+B<AppStream_Machine_Role> credential profile on the instance.
+
+For more information, see Using an IAM Role to Grant Permissions to
+Applications and Scripts Running on AppStream 2.0 Streaming Instances
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
+
+
 =head2 IdleDisconnectTimeoutInSeconds => Int
 
   The amount of time that users can be idle (inactive) before they are
@@ -168,7 +184,93 @@ after 2 minutes of inactivity.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  The instance type to use when launching fleet instances.
+  The instance type to use when launching fleet instances. The following
+instance types are available:
+
+=over
+
+=item *
+
+stream.standard.medium
+
+=item *
+
+stream.standard.large
+
+=item *
+
+stream.compute.large
+
+=item *
+
+stream.compute.xlarge
+
+=item *
+
+stream.compute.2xlarge
+
+=item *
+
+stream.compute.4xlarge
+
+=item *
+
+stream.compute.8xlarge
+
+=item *
+
+stream.memory.large
+
+=item *
+
+stream.memory.xlarge
+
+=item *
+
+stream.memory.2xlarge
+
+=item *
+
+stream.memory.4xlarge
+
+=item *
+
+stream.memory.8xlarge
+
+=item *
+
+stream.graphics-design.large
+
+=item *
+
+stream.graphics-design.xlarge
+
+=item *
+
+stream.graphics-design.2xlarge
+
+=item *
+
+stream.graphics-design.4xlarge
+
+=item *
+
+stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics-pro.4xlarge
+
+=item *
+
+stream.graphics-pro.8xlarge
+
+=item *
+
+stream.graphics-pro.16xlarge
+
+=back
+
 
 
 =head2 MaxUserDurationInSeconds => Int

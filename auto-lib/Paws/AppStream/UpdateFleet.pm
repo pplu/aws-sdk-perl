@@ -9,6 +9,7 @@ package Paws::AppStream::UpdateFleet;
   has DisplayName => (is => 'ro', isa => 'Str');
   has DomainJoinInfo => (is => 'ro', isa => 'Paws::AppStream::DomainJoinInfo');
   has EnableDefaultInternetAccess => (is => 'ro', isa => 'Bool');
+  has IamRoleArn => (is => 'ro', isa => 'Str');
   has IdleDisconnectTimeoutInSeconds => (is => 'ro', isa => 'Int');
   has ImageArn => (is => 'ro', isa => 'Str');
   has ImageName => (is => 'ro', isa => 'Str');
@@ -44,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateFleetResult = $appstream2->UpdateFleet(
       AttributesToDelete => [
         'VPC_CONFIGURATION',
-        ... # values: VPC_CONFIGURATION, VPC_CONFIGURATION_SECURITY_GROUP_IDS, DOMAIN_JOIN_INFO
+        ... # values: VPC_CONFIGURATION, VPC_CONFIGURATION_SECURITY_GROUP_IDS, DOMAIN_JOIN_INFO, IAM_ROLE_ARN
       ],    # OPTIONAL
       ComputeCapacity => {
         DesiredInstances => 1,
@@ -60,6 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
       },    # OPTIONAL
       EnableDefaultInternetAccess    => 1,             # OPTIONAL
+      IamRoleArn                     => 'MyArn',       # OPTIONAL
       IdleDisconnectTimeoutInSeconds => 1,             # OPTIONAL
       ImageArn                       => 'MyArn',       # OPTIONAL
       ImageName                      => 'MyString',    # OPTIONAL
@@ -139,6 +141,22 @@ the fleet to a Microsoft Active Directory domain.
 =head2 EnableDefaultInternetAccess => Bool
 
 Enables or disables default internet access for the fleet.
+
+
+
+=head2 IamRoleArn => Str
+
+The Amazon Resource Name (ARN) of the IAM role to apply to the fleet.
+To assume a role, a fleet instance calls the AWS Security Token Service
+(STS) C<AssumeRole> API operation and passes the ARN of the role to
+use. The operation creates a new session with temporary credentials.
+AppStream 2.0 retrieves the temporary credentials and creates the
+B<AppStream_Machine_Role> credential profile on the instance.
+
+For more information, see Using an IAM Role to Grant Permissions to
+Applications and Scripts Running on AppStream 2.0 Streaming Instances
+(https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html)
+in the I<Amazon AppStream 2.0 Administration Guide>.
 
 
 
