@@ -91,6 +91,10 @@ The type of issue for the case. You can specify either
 "customer-service" or "technical." If you do not indicate a value, the
 default is "technical."
 
+Service limit increases are not supported by the Support API; you must
+submit service limit increase requests in Support Center
+(https://console.aws.amazon.com/support).
+
 
 
 =head2 Language => Str
@@ -112,9 +116,8 @@ The code for the AWS service returned by the call to DescribeServices.
 The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
-The availability of severity levels depends on each customer's support
-subscription. In other words, your subscription may not necessarily
-require the urgent level of response time.
+The availability of severity levels depends on the support plan for the
+account.
 
 
 

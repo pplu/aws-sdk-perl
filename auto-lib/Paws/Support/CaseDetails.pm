@@ -89,12 +89,16 @@ the service code defined in the call to DescribeServices.
 
 =item *
 
-B<severityCode. >The severity code assigned to the case. Contains one
-of the values returned by the call to DescribeSeverityLevels.
+B<severityCode.> The severity code assigned to the case. Contains one
+of the values returned by the call to DescribeSeverityLevels. The
+possible values are: C<low>, C<normal>, C<high>, C<urgent>, and
+C<critical>.
 
 =item *
 
-B<status.> The status of the case in the AWS Support Center.
+B<status.> The status of the case in the AWS Support Center. The
+possible values are: C<resolved>, C<pending-customer-action>,
+C<opened>, C<unassigned>, and C<work-in-progress>.
 
 =item *
 
@@ -156,7 +160,8 @@ communications.
 
 =head2 ServiceCode => Str
 
-  The code for the AWS service returned by the call to DescribeServices.
+  The code for the AWS service. You can get a list of codes and the
+corresponding service names by calling DescribeServices.
 
 
 =head2 SeverityCode => Str
@@ -167,7 +172,9 @@ DescribeSeverityLevels.
 
 =head2 Status => Str
 
-  The status of the case.
+  The status of the case. Valid values: C<resolved> |
+C<pending-customer-action> | C<opened> | C<unassigned> |
+C<work-in-progress>.
 
 
 =head2 Subject => Str

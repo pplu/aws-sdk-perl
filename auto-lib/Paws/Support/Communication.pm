@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Co
 
 A communication associated with an AWS Support case. The communication
 consists of the case ID, the message body, attachment information, the
-account email address, and the date and time of the communication.
+submitter of the communication, and the date and time of the
+communication.
 
 =head1 ATTRIBUTES
 
@@ -61,7 +62,11 @@ case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
 =head2 SubmittedBy => Str
 
-  The email address of the account that submitted the AWS Support case.
+  The identity of the account that submitted, or responded to, the
+support case. Customer entries include the role or IAM user as well as
+the email address. For example, "AdminRole (Role)
+E<lt>someone@example.comE<gt>. Entries from the AWS Support team
+display "Amazon Web Services," and do not show an email address.
 
 
 =head2 TimeCreated => Str
