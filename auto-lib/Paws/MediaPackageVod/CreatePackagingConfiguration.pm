@@ -117,6 +117,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url       => 'My__string',
 
           },
+          ConstantInitializationVector => 'My__string',
           EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
         },    # OPTIONAL
         SegmentDurationSeconds => 1,    # OPTIONAL
