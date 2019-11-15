@@ -76,22 +76,23 @@ following values:
 =item *
 
 C<Target.ResponseCodeMismatch> - The health checks did not return an
-expected HTTP code.
+expected HTTP code. Applies only to Application Load Balancers.
 
 =item *
 
-C<Target.Timeout> - The health check requests timed out.
+C<Target.Timeout> - The health check requests timed out. Applies only
+to Application Load Balancers.
 
 =item *
 
-C<Target.FailedHealthChecks> - The health checks failed because the
-connection to the target timed out, the target response was malformed,
-or the target failed the health check for an unknown reason.
+C<Target.FailedHealthChecks> - The load balancer received an error
+while establishing a connection to the target or the target response
+was malformed.
 
 =item *
 
 C<Elb.InternalError> - The health checks failed due to an internal
-error.
+error. Applies only to Application Load Balancers.
 
 =back
 
@@ -113,13 +114,13 @@ load balancer.
 
 =item *
 
-C<Target.IpUnusable> - The target IP address is reserved for use by a
-load balancer.
+C<Target.InvalidState> - The target is in the stopped or terminated
+state.
 
 =item *
 
-C<Target.InvalidState> - The target is in the stopped or terminated
-state.
+C<Target.IpUnusable> - The target IP address is reserved for use by a
+load balancer.
 
 =back
 
@@ -143,7 +144,12 @@ following value:
 =item *
 
 C<Target.HealthCheckDisabled> - Health checks are disabled for the
-target group.
+target group. Applies only to Application Load Balancers.
+
+=item *
+
+C<Elb.InternalError> - Target health is unavailable due to an internal
+error. Applies only to Network Load Balancers.
 
 =back
 

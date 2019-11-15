@@ -66,8 +66,9 @@ C<fixed-response>.
 
   The order for the action. This value is required for rules with
 multiple actions. The action with the lowest value for order is
-performed first. The final action to be performed must be a C<forward>
-or a C<fixed-response> action.
+performed first. The last action to be performed must be one of the
+following types of actions: a C<forward>, C<fixed-response>, or
+C<redirect>.
 
 
 =head2 RedirectConfig => L<Paws::ELBv2::RedirectActionConfig>
@@ -84,8 +85,7 @@ C<Type> is C<forward>.
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of action. Each rule must include exactly one of the following
-types of actions: C<forward>, C<fixed-response>, or C<redirect>.
+  The type of action.
 
 
 

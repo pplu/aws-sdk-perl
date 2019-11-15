@@ -68,7 +68,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::ELBv2::Action>]
 
 The actions. Each rule must include exactly one of the following types
-of actions: C<forward>, C<fixed-response>, or C<redirect>.
+of actions: C<forward>, C<fixed-response>, or C<redirect>, and it must
+be the last action to be performed.
 
 If the action type is C<forward>, you specify a target group. The
 protocol of the target group must be HTTP or HTTPS for an Application

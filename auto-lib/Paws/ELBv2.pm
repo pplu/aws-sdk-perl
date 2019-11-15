@@ -392,62 +392,17 @@ targets.
 
 Elastic Load Balancing supports the following types of load balancers:
 Application Load Balancers, Network Load Balancers, and Classic Load
-Balancers.
+Balancers. This reference covers Application Load Balancers and Network
+Load Balancers.
 
 An Application Load Balancer makes routing and load balancing decisions
 at the application layer (HTTP/HTTPS). A Network Load Balancer makes
 routing and load balancing decisions at the transport layer (TCP/TLS).
 Both Application Load Balancers and Network Load Balancers can route
 requests to one or more ports on each EC2 instance or container
-instance in your virtual private cloud (VPC).
-
-A Classic Load Balancer makes routing and load balancing decisions
-either at the transport layer (TCP/SSL) or the application layer
-(HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more
-information, see the Elastic Load Balancing User Guide
+instance in your virtual private cloud (VPC). For more information, see
+the Elastic Load Balancing User Guide
 (https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-
-This reference covers the 2015-12-01 API, which supports Application
-Load Balancers and Network Load Balancers. The 2012-06-01 API supports
-Classic Load Balancers.
-
-To get started, complete the following tasks:
-
-=over
-
-=item 1.
-
-Create a load balancer using CreateLoadBalancer.
-
-=item 2.
-
-Create a target group using CreateTargetGroup.
-
-=item 3.
-
-Register targets for the target group using RegisterTargets.
-
-=item 4.
-
-Create one or more listeners for your load balancer using
-CreateListener.
-
-=back
-
-To delete a load balancer and its related resources, complete the
-following tasks:
-
-=over
-
-=item 1.
-
-Delete the load balancer using DeleteLoadBalancer.
-
-=item 2.
-
-Delete the target group using DeleteTargetGroup.
-
-=back
 
 All Elastic Load Balancing operations are idempotent, which means that
 they complete at most one time. If you repeat an operation, it
@@ -474,7 +429,7 @@ Each argument is described in detail in: L<Paws::ELBv2::AddListenerCertificates>
 Returns: a L<Paws::ELBv2::AddListenerCertificatesOutput> instance
 
 Adds the specified SSL server certificate to the certificate list for
-the specified HTTPS listener.
+the specified HTTPS or TLS listener.
 
 If the certificate in already in the certificate list, the call is
 successful but the certificate is not added again.
@@ -857,7 +812,7 @@ Each argument is described in detail in: L<Paws::ELBv2::DescribeListenerCertific
 Returns: a L<Paws::ELBv2::DescribeListenerCertificatesOutput> instance
 
 Describes the default certificate and the certificate list for the
-specified HTTPS listener.
+specified HTTPS or TLS listener.
 
 If the default certificate is also in the certificate list, it appears
 twice in the results (once with C<IsDefault> set to true and once with
@@ -1268,7 +1223,7 @@ Each argument is described in detail in: L<Paws::ELBv2::RemoveListenerCertificat
 Returns: a L<Paws::ELBv2::RemoveListenerCertificatesOutput> instance
 
 Removes the specified certificate from the certificate list for the
-specified HTTPS listener.
+specified HTTPS or TLS listener.
 
 You can't remove the default certificate for a listener. To replace the
 default certificate, call ModifyListener.

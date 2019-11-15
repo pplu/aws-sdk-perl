@@ -103,7 +103,8 @@ target.
 
 =head2 Port => Int
 
-  The port on which the targets are listening.
+  The port on which the targets are listening. Not used if the target is
+a Lambda function.
 
 
 =head2 Protocol => Str

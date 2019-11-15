@@ -99,7 +99,7 @@ load balancers can route requests from clients over the internet.
 The nodes of an internal load balancer have only private IP addresses.
 The DNS name of an internal load balancer is publicly resolvable to the
 private IP addresses of the nodes. Therefore, internal load balancers
-can only route requests from clients with access to the VPC for the
+can route requests only from clients with access to the VPC for the
 load balancer.
 
 The default is an Internet-facing load balancer.
@@ -123,7 +123,8 @@ Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
 [Network Load Balancers] You can specify subnets from one or more
-Availability Zones. You can specify one Elastic IP address per subnet.
+Availability Zones. You can specify one Elastic IP address per subnet
+if you need static IP addresses for your load balancer.
 
 
 

@@ -83,6 +83,13 @@ The valid range is 1-4000 seconds. The default is 60 seconds.
 
 =item *
 
+C<routing.http.drop_invalid_header_fields.enabled> - Indicates whether
+HTTP headers with invalid header fields are removed by the load
+balancer (C<true>) or routed to targets (C<false>). The default is
+C<true>.
+
+=item *
+
 C<routing.http2.enabled> - Indicates whether HTTP/2 is enabled. The
 value is C<true> or C<false>. The default is C<true>.
 

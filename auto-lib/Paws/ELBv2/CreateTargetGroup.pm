@@ -208,7 +208,8 @@ If the target type is C<lambda>, the default is 2.
 =head2 VpcId => Str
 
 The identifier of the virtual private cloud (VPC). If the target is a
-Lambda function, this parameter does not apply.
+Lambda function, this parameter does not apply. Otherwise, this
+parameter is required.
 
 
 

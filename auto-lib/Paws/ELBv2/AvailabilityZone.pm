@@ -40,12 +40,14 @@ Information about an Availability Zone.
 
 =head2 LoadBalancerAddresses => ArrayRef[L<Paws::ELBv2::LoadBalancerAddress>]
 
-  [Network Load Balancers] The static IP address.
+  [Network Load Balancers] If you need static IP addresses for your load
+balancer, you can specify one Elastic IP address per Availability Zone
+when you create the load balancer.
 
 
 =head2 SubnetId => Str
 
-  The ID of the subnet.
+  The ID of the subnet. You can specify one subnet per Availability Zone.
 
 
 =head2 ZoneName => Str

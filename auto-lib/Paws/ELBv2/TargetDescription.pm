@@ -71,7 +71,8 @@ of the Lambda function.
 
 =head2 Port => Int
 
-  The port on which the target is listening.
+  The port on which the target is listening. Not used if the target is a
+Lambda function.
 
 
 
