@@ -3,6 +3,7 @@ package Paws::DLM::LifecyclePolicySummary;
   has Description => (is => 'ro', isa => 'Str');
   has PolicyId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::LifecyclePolicySummary object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,11 @@ Summary information about a lifecycle policy.
 =head2 State => Str
 
   The activation state of the lifecycle policy.
+
+
+=head2 Tags => L<Paws::DLM::TagMap>
+
+  The tags.
 
 
 

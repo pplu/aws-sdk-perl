@@ -5,6 +5,7 @@ package Paws::DLM::CreateLifecyclePolicy;
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
   has PolicyDetails => (is => 'ro', isa => 'Paws::DLM::PolicyDetails', required => 1);
   has State => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::DLM::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -47,9 +48,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CopyTags   => 1,         # OPTIONAL
             CreateRule => {
-              Interval     => 1,                    # min: 1
-              IntervalUnit => 'HOURS',              # values: HOURS
-              Times        => [ 'MyTime', ... ],    # max: 1; OPTIONAL
+              Interval     => 1,          # min: 1
+              IntervalUnit => 'HOURS',    # values: HOURS
+              Times        => [
+                'MyTime', ...             # min: 5, max: 5
+              ],                          # max: 1; OPTIONAL
             },    # OPTIONAL
             Name       => 'MyScheduleName',    # max: 500; OPTIONAL
             RetainRule => {
@@ -58,34 +61,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             TagsToAdd => [
               {
-                Key   => 'MyString',
-                Value => 'MyString',
+                Key   => 'MyString',    # max: 500
+                Value => 'MyString',    # max: 500
 
               },
               ...
-            ],    # max: 50; OPTIONAL
+            ],                          # max: 50; OPTIONAL
             VariableTags => [
               {
-                Key   => 'MyString',
-                Value => 'MyString',
+                Key   => 'MyString',    # max: 500
+                Value => 'MyString',    # max: 500
 
               },
               ...
-            ],    # max: 50; OPTIONAL
+            ],                          # max: 50; OPTIONAL
           },
           ...
-        ],        # min: 1, max: 1; OPTIONAL
+        ],                              # min: 1, max: 1; OPTIONAL
         TargetTags => [
           {
-            Key   => 'MyString',
-            Value => 'MyString',
+            Key   => 'MyString',        # max: 500
+            Value => 'MyString',        # max: 500
 
           },
           ...
-        ],        # min: 1, max: 50; OPTIONAL
+        ],                              # min: 1, max: 50; OPTIONAL
       },
       State => 'ENABLED',
-
+      Tags  => {
+        'MyTagKey' => 'MyTagValue',     # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -117,8 +122,6 @@ operations specified by the lifecycle policy.
 
 The configuration details of the lifecycle policy.
 
-Target tags cannot be re-used across lifecycle policies.
-
 
 
 =head2 B<REQUIRED> State => Str
@@ -126,6 +129,12 @@ Target tags cannot be re-used across lifecycle policies.
 The desired activation state of the lifecycle policy after creation.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
+
+=head2 Tags => L<Paws::DLM::TagMap>
+
+The tags to apply to the lifecycle policy during creation.
+
+
 
 
 =head1 SEE ALSO
