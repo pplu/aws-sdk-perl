@@ -180,12 +180,39 @@ for the AWS account
 
 =back
 
-To make full use of the resource groups tagging API operations, you
-might need additional IAM permissions, including permission to access
-the resources of individual services as well as permission to view and
-apply tags to those resources. For more information, see Obtaining
-Permissions for Resource Groups and Tag Editor
-(http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-resource-groups.html).
+To use resource groups tagging API operations, you must add the
+following permissions to your IAM policy:
+
+=over
+
+=item *
+
+C<tag:GetResources>
+
+=item *
+
+C<tag:TagResources>
+
+=item *
+
+C<tag:UntagResources>
+
+=item *
+
+C<tag:GetTagKeys>
+
+=item *
+
+C<tag:GetTagValues>
+
+=back
+
+You'll also need permissions to access the resources of individual
+services so that you can tag and untag those resources.
+
+For more information on IAM policies, see Managing IAM Policies
+(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)
+in the I<IAM User Guide>.
 
 You can use the Resource Groups Tagging API to tag resources for the
 following AWS services.
@@ -210,11 +237,19 @@ AWS AppSync
 
 =item *
 
+AWS App Mesh
+
+=item *
+
 Amazon Athena
 
 =item *
 
 Amazon Aurora
+
+=item *
+
+AWS Backup
 
 =item *
 
@@ -259,6 +294,14 @@ Amazon CloudWatch Logs
 =item *
 
 AWS CodeBuild
+
+=item *
+
+AWS CodeCommit
+
+=item *
+
+AWS CodePipeline
 
 =item *
 
