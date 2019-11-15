@@ -221,10 +221,10 @@ plan causes a C<SubscriptionRequiredException>.
 
 For authentication of requests, AWS Health uses the Signature Version 4
 Signing Process
-(http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
 See the AWS Health User Guide
-(http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
+(https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
 for information about how to use the API.
 
 B<Service Endpoint>

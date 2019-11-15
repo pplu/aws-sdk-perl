@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],                        # min: 1, max: 6; OPTIONAL
         EventTypeCategories => [
           'issue',
-          ... # values: issue, accountNotification, scheduledChangemin: 3, max: 255
+          ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
         EventTypeCodes => [
           'MyeventType', ...    # min: 3, max: 100
