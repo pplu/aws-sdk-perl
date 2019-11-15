@@ -53,14 +53,16 @@ C<arn:aws:budgetservice::AccountId:budget/budgetName>
 
 =head2 BudgetLimit => L<Paws::Budgets::Spend>
 
-  The total amount of cost, usage, RI utilization, or RI coverage that
-you want to track with your budget.
+  The total amount of cost, usage, RI utilization, RI coverage, Savings
+Plans utilization, or Savings Plans coverage that you want to track
+with your budget.
 
 C<BudgetLimit> is required for cost or usage budgets, but optional for
-RI utilization or coverage budgets. RI utilization or coverage budgets
-default to C<100>, which is the only valid value for RI utilization or
-coverage budgets. You can't use C<BudgetLimit> with
-C<PlannedBudgetLimits> for C<CreateBudget> and C<UpdateBudget> actions.
+RI or Savings Plans utilization or coverage budgets. RI and Savings
+Plans utilization or coverage budgets default to C<100>, which is the
+only valid value for RI or Savings Plans utilization or coverage
+budgets. You can't use C<BudgetLimit> with C<PlannedBudgetLimits> for
+C<CreateBudget> and C<UpdateBudget> actions.
 
 
 =head2 B<REQUIRED> BudgetName => Str
@@ -71,8 +73,8 @@ C<:> and C<\> characters aren't allowed in C<BudgetName>.
 
 =head2 B<REQUIRED> BudgetType => Str
 
-  Whether this budget tracks costs, usage, RI utilization, or RI
-coverage.
+  Whether this budget tracks costs, usage, RI utilization, RI coverage,
+Savings Plans utilization, or Savings Plans coverage.
 
 
 =head2 CalculatedSpend => L<Paws::Budgets::CalculatedSpend>
@@ -116,8 +118,9 @@ Amazon Elasticsearch Service
 
   The types of costs that are included in this C<COST> budget.
 
-C<USAGE>, C<RI_UTILIZATION>, and C<RI_COVERAGE> budgets do not have
-C<CostTypes>.
+C<USAGE>, C<RI_UTILIZATION>, C<RI_COVERAGE>,
+C<Savings_Plans_Utilization>, and C<Savings_Plans_Coverage> budgets do
+not have C<CostTypes>.
 
 
 =head2 LastUpdatedTime => Str
@@ -186,8 +189,9 @@ notifications and subscribers.
 =head2 B<REQUIRED> TimeUnit => Str
 
   The length of time until a budget resets the actual and forecasted
-spend. C<DAILY> is available only for C<RI_UTILIZATION> and
-C<RI_COVERAGE> budgets.
+spend. C<DAILY> is available only for C<RI_UTILIZATION>,
+C<RI_COVERAGE>, C<Savings_Plans_Utilization>, and
+C<Savings_Plans_Coverage> budgets.
 
 
 

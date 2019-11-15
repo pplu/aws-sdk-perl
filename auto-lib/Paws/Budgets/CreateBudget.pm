@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountId => 'MyAccountId',
       Budget    => {
         BudgetName => 'MyBudgetName',    # min: 1, max: 100
-        BudgetType =>
-          'USAGE',    # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE
+        BudgetType => 'USAGE'
+        , # values: USAGE, COST, RI_UTILIZATION, RI_COVERAGE, SAVINGS_PLANS_UTILIZATION, SAVINGS_PLANS_COVERAGE
         TimeUnit    => 'DAILY',    # values: DAILY, MONTHLY, QUARTERLY, ANNUALLY
         BudgetLimit => {
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
