@@ -1,5 +1,6 @@
 package Paws::ElastiCache::ProcessedUpdateAction;
   use Moose;
+  has CacheClusterId => (is => 'ro', isa => 'Str');
   has ReplicationGroupId => (is => 'ro', isa => 'Str');
   has ServiceUpdateName => (is => 'ro', isa => 'Str');
   has UpdateActionStatus => (is => 'ro', isa => 'Str');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ProcessedUpdateAction object:
 
-  $service_obj->Method(Att1 => { ReplicationGroupId => $value, ..., UpdateActionStatus => $value  });
+  $service_obj->Method(Att1 => { CacheClusterId => $value, ..., UpdateActionStatus => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::ProcessedUpdateAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ReplicationGroupId
+  $result->Att1->CacheClusterId
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,11 @@ Update action that has been processed for the corresponding apply/stop
 request
 
 =head1 ATTRIBUTES
+
+
+=head2 CacheClusterId => Str
+
+  The ID of the cache cluster
 
 
 =head2 ReplicationGroupId => Str

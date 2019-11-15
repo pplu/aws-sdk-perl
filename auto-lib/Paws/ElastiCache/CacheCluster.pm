@@ -2,6 +2,7 @@ package Paws::ElastiCache::CacheCluster;
   use Moose;
   has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
+  has AuthTokenLastModifiedDate => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str');
@@ -69,7 +70,7 @@ cluster is created. To enable at-rest encryption on a cluster you must
 set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 
@@ -80,6 +81,11 @@ Default: C<false>
 commands.
 
 Default: C<false>
+
+
+=head2 AuthTokenLastModifiedDate => Str
+
+  The date the auth token was last modified
 
 
 =head2 AutoMinorVersionUpgrade => Bool
@@ -383,7 +389,7 @@ must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 

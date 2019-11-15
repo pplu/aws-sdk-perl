@@ -1,5 +1,8 @@
 package Paws::ElastiCache::UpdateAction;
   use Moose;
+  has CacheClusterId => (is => 'ro', isa => 'Str');
+  has CacheNodeUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeUpdateStatus]', request_name => 'CacheNodeUpdateStatus', traits => ['NameInRequest']);
+  has Engine => (is => 'ro', isa => 'Str');
   has EstimatedUpdateTime => (is => 'ro', isa => 'Str');
   has NodeGroupUpdateStatus => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupUpdateStatus]', request_name => 'NodeGroupUpdateStatus', traits => ['NameInRequest']);
   has NodesUpdated => (is => 'ro', isa => 'Str');
@@ -33,20 +36,36 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::UpdateAction object:
 
-  $service_obj->Method(Att1 => { EstimatedUpdateTime => $value, ..., UpdateActionStatusModifiedDate => $value  });
+  $service_obj->Method(Att1 => { CacheClusterId => $value, ..., UpdateActionStatusModifiedDate => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::UpdateAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EstimatedUpdateTime
+  $result->Att1->CacheClusterId
 
 =head1 DESCRIPTION
 
 The status of the service update for a specific replication group
 
 =head1 ATTRIBUTES
+
+
+=head2 CacheClusterId => Str
+
+  The ID of the cache cluster
+
+
+=head2 CacheNodeUpdateStatus => ArrayRef[L<Paws::ElastiCache::CacheNodeUpdateStatus>]
+
+  The status of the service update on the cache node
+
+
+=head2 Engine => Str
+
+  The Elasticache engine to which the update applies. Either Redis or
+Memcached
 
 
 =head2 EstimatedUpdateTime => Str

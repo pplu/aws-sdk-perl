@@ -2,6 +2,8 @@
 package Paws::ElastiCache::ModifyReplicationGroup;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AuthToken => (is => 'ro', isa => 'Str');
+  has AuthTokenUpdateStrategy => (is => 'ro', isa => 'Str');
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has CacheNodeType => (is => 'ro', isa => 'Str');
@@ -47,6 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModifyReplicationGroupResult = $elasticache->ModifyReplicationGroup(
       ReplicationGroupId          => 'MyString',
       ApplyImmediately            => 1,                      # OPTIONAL
+      AuthToken                   => 'MyString',             # OPTIONAL
+      AuthTokenUpdateStrategy     => 'SET',                  # OPTIONAL
       AutoMinorVersionUpgrade     => 1,                      # OPTIONAL
       AutomaticFailoverEnabled    => 1,                      # OPTIONAL
       CacheNodeType               => 'MyString',             # OPTIONAL
@@ -92,6 +96,56 @@ Valid values: C<true> | C<false>
 Default: C<false>
 
 
+
+=head2 AuthToken => Str
+
+Reserved parameter. The password used to access a password protected
+server. This parameter must be specified with the
+C<auth-token-update-strategy > parameter. Password constraints:
+
+=over
+
+=item *
+
+Must be only printable ASCII characters
+
+=item *
+
+Must be at least 16 characters and no more than 128 characters in
+length
+
+=item *
+
+Cannot contain any of the following characters: '/', '"', or '@', '%'
+
+=back
+
+For more information, see AUTH password at AUTH
+(http://redis.io/commands/AUTH).
+
+
+
+=head2 AuthTokenUpdateStrategy => Str
+
+Specifies the strategy to use to update the AUTH token. This parameter
+must be specified with the C<auth-token> parameter. Possible values:
+
+=over
+
+=item *
+
+Rotate
+
+=item *
+
+Set
+
+=back
+
+For more information, see Authenticating Users with Redis AUTH
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+
+Valid values are: C<"SET">, C<"ROTATE">
 
 =head2 AutomaticFailoverEnabled => Bool
 

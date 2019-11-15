@@ -1,5 +1,6 @@
 package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
   use Moose;
+  has AuthTokenStatus => (is => 'ro', isa => 'Str');
   has AutomaticFailoverStatus => (is => 'ro', isa => 'Str');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has Resharding => (is => 'ro', isa => 'Paws::ElastiCache::ReshardingStatus');
@@ -22,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ReplicationGroupPendingModifiedValues object:
 
-  $service_obj->Method(Att1 => { AutomaticFailoverStatus => $value, ..., Resharding => $value  });
+  $service_obj->Method(Att1 => { AuthTokenStatus => $value, ..., Resharding => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache::ReplicationGroupPendingModifiedValues object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AutomaticFailoverStatus
+  $result->Att1->AuthTokenStatus
 
 =head1 DESCRIPTION
 
@@ -37,6 +38,11 @@ The settings to be applied to the Redis replication group, either
 immediately or during the next maintenance window.
 
 =head1 ATTRIBUTES
+
+
+=head2 AuthTokenStatus => Str
+
+  The auth token status
 
 
 =head2 AutomaticFailoverStatus => Str

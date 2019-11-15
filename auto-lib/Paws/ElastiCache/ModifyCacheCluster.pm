@@ -2,6 +2,8 @@
 package Paws::ElastiCache::ModifyCacheCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has AuthToken => (is => 'ro', isa => 'Str');
+  has AuthTokenUpdateStrategy => (is => 'ro', isa => 'Str');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
@@ -47,6 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CacheClusterId             => 'MyString',
       AZMode                     => 'single-az',            # OPTIONAL
       ApplyImmediately           => 1,                      # OPTIONAL
+      AuthToken                  => 'MyString',             # OPTIONAL
+      AuthTokenUpdateStrategy    => 'SET',                  # OPTIONAL
       AutoMinorVersionUpgrade    => 1,                      # OPTIONAL
       CacheNodeIdsToRemove       => [ 'MyString', ... ],    # OPTIONAL
       CacheNodeType              => 'MyString',             # OPTIONAL
@@ -94,6 +98,56 @@ Default: C<false>
 
 
 
+=head2 AuthToken => Str
+
+Reserved parameter. The password used to access a password protected
+server. This parameter must be specified with the C<auth-token-update>
+parameter. Password constraints:
+
+=over
+
+=item *
+
+Must be only printable ASCII characters
+
+=item *
+
+Must be at least 16 characters and no more than 128 characters in
+length
+
+=item *
+
+Cannot contain any of the following characters: '/', '"', or '@', '%'
+
+=back
+
+For more information, see AUTH password at AUTH
+(http://redis.io/commands/AUTH).
+
+
+
+=head2 AuthTokenUpdateStrategy => Str
+
+Specifies the strategy to use to update the AUTH token. This parameter
+must be specified with the C<auth-token> parameter. Possible values:
+
+=over
+
+=item *
+
+Rotate
+
+=item *
+
+Set
+
+=back
+
+For more information, see Authenticating Users with Redis AUTH
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+
+Valid values are: C<"SET">, C<"ROTATE">
+
 =head2 AutoMinorVersionUpgrade => Bool
 
 This parameter is currently disabled.
@@ -116,10 +170,6 @@ specified, existing Memcached nodes remain in their current
 Availability Zone.
 
 Only newly created nodes are located in different Availability Zones.
-For instructions on how to move existing Memcached nodes to different
-Availability Zones, see the B<Availability Zone Considerations> section
-of Cache Node Considerations for Memcached
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
 
 Valid values are: C<"single-az">, C<"cross-az">
 
@@ -232,7 +282,7 @@ current Availability Zone. Only newly created nodes can be located in
 different Availability Zones. For guidance on how to move existing
 Memcached nodes to different Availability Zones, see the B<Availability
 Zone Considerations> section of Cache Node Considerations for Memcached
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNode.Memcached.html).
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html).
 
 B<Impact of new add/remove requests upon pending requests>
 

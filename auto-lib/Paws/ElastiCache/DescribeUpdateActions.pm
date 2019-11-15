@@ -1,6 +1,8 @@
 
 package Paws::ElastiCache::DescribeUpdateActions;
   use Moose;
+  has CacheClusterIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Engine => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has ReplicationGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -35,6 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $elasticache = Paws->service('ElastiCache');
     my $UpdateActionsMessage = $elasticache->DescribeUpdateActions(
+      CacheClusterIds     => [ 'MyString', ... ],    # OPTIONAL
+      Engine              => 'MyString',             # OPTIONAL
       Marker              => 'MyString',             # OPTIONAL
       MaxRecords          => 1,                      # OPTIONAL
       ReplicationGroupIds => [ 'MyString', ... ],    # OPTIONAL
@@ -63,6 +67,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/DescribeUpdateActions>
 
 =head1 ATTRIBUTES
+
+
+=head2 CacheClusterIds => ArrayRef[Str|Undef]
+
+The cache cluster IDs
+
+
+
+=head2 Engine => Str
+
+The Elasticache engine to which the update applies. Either Redis or
+Memcached
+
 
 
 =head2 Marker => Str

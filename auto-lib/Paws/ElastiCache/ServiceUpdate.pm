@@ -55,12 +55,14 @@ the recommended apply-by date has expired.
 
 =head2 Engine => Str
 
-  The Redis engine to which the service update applies
+  The Elasticache engine to which the update applies. Either Redis or
+Memcached
 
 
 =head2 EngineVersion => Str
 
-  The Redis engine version to which the service update applies
+  The Elasticache engine version to which the update applies. Either
+Redis or Memcached engine version
 
 
 =head2 EstimatedUpdateTime => Str

@@ -34,6 +34,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::BatchStopUpdateAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CompleteMigration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CompleteMigration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopySnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CopySnapshot', @_);
@@ -237,6 +242,11 @@ package Paws::ElastiCache;
   sub RevokeCacheSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartMigration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::StartMigration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TestFailover {
@@ -569,7 +579,7 @@ package Paws::ElastiCache;
   }
 
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress BatchApplyUpdateAction BatchStopUpdateAction CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeServiceUpdates DescribeSnapshots DescribeUpdateActions IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress TestFailover / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress BatchApplyUpdateAction BatchStopUpdateAction CompleteMigration CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeServiceUpdates DescribeSnapshots DescribeUpdateActions IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress StartMigration TestFailover / }
 
 1;
 
@@ -676,9 +686,11 @@ region to an ElastiCache cluster in another region.
 
 =over
 
-=item ReplicationGroupIds => ArrayRef[Str|Undef]
-
 =item ServiceUpdateName => Str
+
+=item [CacheClusterIds => ArrayRef[Str|Undef]]
+
+=item [ReplicationGroupIds => ArrayRef[Str|Undef]]
 
 
 =back
@@ -696,9 +708,11 @@ applying them, see Applying Service Updates
 
 =over
 
-=item ReplicationGroupIds => ArrayRef[Str|Undef]
-
 =item ServiceUpdateName => Str
+
+=item [CacheClusterIds => ArrayRef[Str|Undef]]
+
+=item [ReplicationGroupIds => ArrayRef[Str|Undef]]
 
 
 =back
@@ -712,6 +726,24 @@ stopping them, see Stopping Service Updates
 (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html).
 
 
+=head2 CompleteMigration
+
+=over
+
+=item ReplicationGroupId => Str
+
+=item [Force => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::CompleteMigration>
+
+Returns: a L<Paws::ElastiCache::CompleteMigrationResponse> instance
+
+Complete the migration of data.
+
+
 =head2 CopySnapshot
 
 =over
@@ -719,6 +751,8 @@ stopping them, see Stopping Service Updates
 =item SourceSnapshotName => Str
 
 =item TargetSnapshotName => Str
+
+=item [KmsKeyId => Str]
 
 =item [TargetBucket => Str]
 
@@ -802,7 +836,7 @@ on the S3 Bucket.
 B<Solution:> Add List and Read permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 in the ElastiCache User Guide.
 
 =item *
@@ -813,7 +847,7 @@ B<Error Message: > ElastiCache has not been granted WRITE permissions
 B<Solution:> Add Upload/Delete permissions on the bucket. For more
 information, see Step 2: Grant ElastiCache Access to Your Amazon S3
 Bucket
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 in the ElastiCache User Guide.
 
 =item *
@@ -823,7 +857,7 @@ permissions %s on the S3 Bucket.
 
 B<Solution:> Add View Permissions on the bucket. For more information,
 see Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access.html)
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
 in the ElastiCache User Guide.
 
 =back
@@ -1015,6 +1049,8 @@ Virtual Private Cloud (Amazon VPC).
 
 =item [EngineVersion => Str]
 
+=item [KmsKeyId => Str]
+
 =item [NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]]
 
 =item [NotificationTopicArn => Str]
@@ -1063,7 +1099,7 @@ others are read-only replicas. Writes to the primary are asynchronously
 propagated to the replicas.
 
 A Redis (cluster mode enabled) replication group is a collection of 1
-to 15 node groups (shards). Each node group (shard) has one read/write
+to 90 node groups (shards). Each node group (shard) has one read/write
 primary node and up to 5 read-only replica nodes. Writes to the primary
 are asynchronously propagated to the replicas. Redis (cluster mode
 enabled) replication groups partition the data across node groups
@@ -1090,6 +1126,8 @@ This operation is valid for Redis only.
 =item SnapshotName => Str
 
 =item [CacheClusterId => Str]
+
+=item [KmsKeyId => Str]
 
 =item [ReplicationGroupId => Str]
 
@@ -1648,6 +1686,10 @@ This operation is valid for Redis only.
 
 =over
 
+=item [CacheClusterIds => ArrayRef[Str|Undef]]
+
+=item [Engine => Str]
+
 =item [Marker => Str]
 
 =item [MaxRecords => Int]
@@ -1715,12 +1757,12 @@ Each argument is described in detail in: L<Paws::ElastiCache::ListAllowedNodeTyp
 Returns: a L<Paws::ElastiCache::AllowedNodeTypeModificationsMessage> instance
 
 Lists all available node types that you can scale your Redis cluster's
-or replication group's current node type up to.
+or replication group's current node type.
 
 When you use the C<ModifyCacheCluster> or C<ModifyReplicationGroup>
-operations to scale up your cluster or replication group, the value of
-the C<CacheNodeType> parameter must be one of the node types returned
-by this operation.
+operations to scale your cluster or replication group, the value of the
+C<CacheNodeType> parameter must be one of the node types returned by
+this operation.
 
 
 =head2 ListTagsForResource
@@ -1756,6 +1798,10 @@ resource. For more information, see Monitoring Costs with Tags
 =item CacheClusterId => Str
 
 =item [ApplyImmediately => Bool]
+
+=item [AuthToken => Str]
+
+=item [AuthTokenUpdateStrategy => Str]
 
 =item [AutoMinorVersionUpgrade => Bool]
 
@@ -1846,6 +1892,10 @@ Modifies an existing cache subnet group.
 =item ReplicationGroupId => Str
 
 =item [ApplyImmediately => Bool]
+
+=item [AuthToken => Str]
+
+=item [AuthTokenUpdateStrategy => Str]
 
 =item [AutomaticFailoverEnabled => Bool]
 
@@ -2059,6 +2109,24 @@ Returns: a L<Paws::ElastiCache::RevokeCacheSecurityGroupIngressResult> instance
 Revokes ingress from a cache security group. Use this operation to
 disallow access from an Amazon EC2 security group that had been
 previously authorized.
+
+
+=head2 StartMigration
+
+=over
+
+=item CustomerNodeEndpointList => ArrayRef[L<Paws::ElastiCache::CustomerNodeEndpoint>]
+
+=item ReplicationGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::StartMigration>
+
+Returns: a L<Paws::ElastiCache::StartMigrationResponse> instance
+
+Start the migration of data.
 
 
 =head2 TestFailover
@@ -2324,9 +2392,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ElastiCache::DescribeSnapshotsListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllUpdateActions(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
+=head2 DescribeAllUpdateActions(sub { },[CacheClusterIds => ArrayRef[Str|Undef], Engine => Str, Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
 
-=head2 DescribeAllUpdateActions([Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
+=head2 DescribeAllUpdateActions([CacheClusterIds => ArrayRef[Str|Undef], Engine => Str, Marker => Str, MaxRecords => Int, ReplicationGroupIds => ArrayRef[Str|Undef], ServiceUpdateName => Str, ServiceUpdateStatus => ArrayRef[Str|Undef], ServiceUpdateTimeRange => L<Paws::ElastiCache::TimeRangeFilter>, ShowNodeLevelUpdateStatus => Bool, UpdateActionStatus => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

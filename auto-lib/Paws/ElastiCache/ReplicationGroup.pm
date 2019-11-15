@@ -2,11 +2,13 @@ package Paws::ElastiCache::ReplicationGroup;
   use Moose;
   has AtRestEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has AuthTokenEnabled => (is => 'ro', isa => 'Bool');
+  has AuthTokenLastModifiedDate => (is => 'ro', isa => 'Str');
   has AutomaticFailover => (is => 'ro', isa => 'Str');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has ClusterEnabled => (is => 'ro', isa => 'Bool');
   has ConfigurationEndpoint => (is => 'ro', isa => 'Paws::ElastiCache::Endpoint');
   has Description => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has MemberClusters => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ClusterId', traits => ['NameInRequest']);
   has NodeGroups => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroup]', request_name => 'NodeGroup', traits => ['NameInRequest']);
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroupPendingModifiedValues');
@@ -60,7 +62,7 @@ cluster is created. To enable encryption at-rest on a cluster you must
 set C<AtRestEncryptionEnabled> to C<true> when you create a cluster.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 
@@ -71,6 +73,11 @@ Default: C<false>
 commands.
 
 Default: C<false>
+
+
+=head2 AuthTokenLastModifiedDate => Str
+
+  The date the auth token was last modified
 
 
 =head2 AutomaticFailover => Str
@@ -123,6 +130,11 @@ configuration endpoint to connect to this replication group.
 =head2 Description => Str
 
   The user supplied description of the replication group.
+
+
+=head2 KmsKeyId => Str
+
+  The ID of the KMS key used to encrypt the disk in the cluster.
 
 
 =head2 MemberClusters => ArrayRef[Str|Undef]
@@ -197,7 +209,7 @@ must set C<TransitEncryptionEnabled> to C<true> when you create a
 cluster.
 
 B<Required:> Only available when creating a replication group in an
-Amazon VPC using redis version C<3.2.6> or C<4.x>.
+Amazon VPC using redis version C<3.2.6>, C<4.x> or later.
 
 Default: C<false>
 

@@ -1,7 +1,8 @@
 
 package Paws::ElastiCache::BatchApplyUpdateAction;
   use Moose;
-  has ReplicationGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has CacheClusterIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ReplicationGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ServiceUpdateName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $elasticache = Paws->service('ElastiCache');
     my $UpdateActionResultsMessage = $elasticache->BatchApplyUpdateAction(
-      ReplicationGroupIds => [ 'MyString', ... ],
       ServiceUpdateName   => 'MyString',
-
+      CacheClusterIds     => [ 'MyString', ... ],    # OPTIONAL
+      ReplicationGroupIds => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -48,7 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> ReplicationGroupIds => ArrayRef[Str|Undef]
+=head2 CacheClusterIds => ArrayRef[Str|Undef]
+
+The cache cluster IDs
+
+
+
+=head2 ReplicationGroupIds => ArrayRef[Str|Undef]
 
 The replication group IDs
 

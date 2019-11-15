@@ -9,6 +9,7 @@ package Paws::ElastiCache::Snapshot;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeSnapshots => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeSnapshot]', request_name => 'NodeSnapshot', traits => ['NameInRequest']);
   has NumCacheNodes => (is => 'ro', isa => 'Int');
   has NumNodeGroups => (is => 'ro', isa => 'Int');
@@ -240,6 +241,11 @@ source cluster.
 
   The version of the cache engine version that is used by the source
 cluster.
+
+
+=head2 KmsKeyId => Str
+
+  The ID of the KMS key used to encrypt the snapshot.
 
 
 =head2 NodeSnapshots => ArrayRef[L<Paws::ElastiCache::NodeSnapshot>]
