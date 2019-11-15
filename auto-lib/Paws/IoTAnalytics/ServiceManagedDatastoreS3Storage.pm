@@ -31,7 +31,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 =head1 DESCRIPTION
 
 Use this to store data store data in an S3 bucket managed by the AWS
-IoT Analytics service.
+IoT Analytics service. The choice of service-managed or
+customer-managed S3 storage cannot be changed after creation of the
+data store.
 
 =head1 ATTRIBUTES
 

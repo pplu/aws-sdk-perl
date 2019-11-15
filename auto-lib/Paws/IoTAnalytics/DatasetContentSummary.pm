@@ -1,5 +1,6 @@
 package Paws::IoTAnalytics::DatasetContentSummary;
   use Moose;
+  has CompletionTime => (is => 'ro', isa => 'Str', request_name => 'completionTime', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has ScheduleTime => (is => 'ro', isa => 'Str', request_name => 'scheduleTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Paws::IoTAnalytics::DatasetContentStatus', request_name => 'status', traits => ['NameInRequest']);
@@ -23,20 +24,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTAnalytics::DatasetContentSummary object:
 
-  $service_obj->Method(Att1 => { CreationTime => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { CompletionTime => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytics::DatasetContentSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreationTime
+  $result->Att1->CompletionTime
 
 =head1 DESCRIPTION
 
 Summary information about data set contents.
 
 =head1 ATTRIBUTES
+
+
+=head2 CompletionTime => Str
+
+  The time the dataset content status was updated to SUCCEEDED or FAILED.
 
 
 =head2 CreationTime => Str

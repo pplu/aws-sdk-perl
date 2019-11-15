@@ -45,9 +45,10 @@ Used to store channel data in an S3 bucket that you manage.
 
 =head2 KeyPrefix => Str
 
-  The prefix used to create the keys of the channel data objects. Each
-object in an Amazon S3 bucket has a key that is its unique identifier
-within the bucket (each object in a bucket has exactly one key).
+  [Optional] The prefix used to create the keys of the channel data
+objects. Each object in an Amazon S3 bucket has a key that is its
+unique identifier within the bucket (each object in a bucket has
+exactly one key). The prefix must end with a '/'.
 
 
 =head2 RoleArn => Str
