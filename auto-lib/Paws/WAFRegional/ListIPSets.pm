@@ -54,12 +54,10 @@ value that you can use to get another batch of C<IPSet> objects.
 
 =head2 NextMarker => Str
 
-If you specify a value for C<Limit> and you have more C<IPSets> than
-the value of C<Limit>, AWS WAF returns a C<NextMarker> value in the
-response that allows you to list another group of C<IPSets>. For the
-second and subsequent C<ListIPSets> requests, specify the value of
-C<NextMarker> from the previous response to get information about
-another batch of C<IPSets>.
+AWS WAF returns a C<NextMarker> value in the response that allows you
+to list another group of C<IPSets>. For the second and subsequent
+C<ListIPSets> requests, specify the value of C<NextMarker> from the
+previous response to get information about another batch of C<IPSets>.
 
 
 
