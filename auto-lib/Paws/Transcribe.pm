@@ -242,13 +242,15 @@ criteria are specified, returns the entire list of vocabularies.
 
 =item Media => L<Paws::Transcribe::Media>
 
-=item MediaFormat => Str
-
 =item TranscriptionJobName => Str
+
+=item [MediaFormat => Str]
 
 =item [MediaSampleRateHertz => Int]
 
 =item [OutputBucketName => Str]
+
+=item [OutputEncryptionKMSKeyId => Str]
 
 =item [Settings => L<Paws::Transcribe::Settings>]
 

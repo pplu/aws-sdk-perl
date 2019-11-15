@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transcribe:
 
 =head1 DESCRIPTION
 
-Provides a summary of information about a transcription job. .
+Provides a summary of information about a transcription job.
 
 =head1 ATTRIBUTES
 
