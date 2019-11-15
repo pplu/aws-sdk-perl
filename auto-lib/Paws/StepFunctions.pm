@@ -302,6 +302,14 @@ polling from the activity.
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
 
+C<CreateActivity> is an idempotent API. Subsequent requests
+wonE<rsquo>t create a duplicate resource if it was already created.
+C<CreateActivity>'s idempotency check is based on the activity C<name>.
+If a following request has different C<tags> values, Step Functions
+will ignore these differences and treat it as an idempotent request of
+the previous. In this case, C<tags> will not be updated, even if they
+are different.
+
 
 =head2 CreateStateMachine
 
@@ -330,6 +338,14 @@ JSON-based, structured language.
 
 This operation is eventually consistent. The results are best effort
 and may not reflect very recent updates and changes.
+
+C<CreateStateMachine> is an idempotent API. Subsequent requests
+wonE<rsquo>t create a duplicate resource if it was already created.
+C<CreateStateMachine>'s idempotency check is based on the state machine
+C<name> and C<definition>. If a following request has a different
+C<roleArn> or C<tags>, Step Functions will ignore these differences and
+treat it as an idempotent request of the previous. In this case,
+C<roleArn> and C<tags> will not be updated, even if they are different.
 
 
 =head2 DeleteActivity
@@ -616,6 +632,9 @@ Returns: a L<Paws::StepFunctions::ListTagsForResourceOutput> instance
 
 List tags for a given resource.
 
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
+
 
 =head2 SendTaskFailure
 
@@ -634,8 +653,9 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskFailure>
 
 Returns: a L<Paws::StepFunctions::SendTaskFailureOutput> instance
 
-Used by workers to report that the task identified by the C<taskToken>
-failed.
+Used by activity workers and task states using the callback
+(https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+pattern to report that the task identified by the C<taskToken> failed.
 
 
 =head2 SendTaskHeartbeat
@@ -651,20 +671,25 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskHeartbea
 
 Returns: a L<Paws::StepFunctions::SendTaskHeartbeatOutput> instance
 
-Used by workers to report to the service that the task represented by
-the specified C<taskToken> is still making progress. This action resets
-the C<Heartbeat> clock. The C<Heartbeat> threshold is specified in the
-state machine's Amazon States Language definition. This action does not
-in itself create an event in the execution history. However, if the
-task times out, the execution history contains an C<ActivityTimedOut>
-event.
+Used by activity workers and task states using the callback
+(https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+pattern to report to Step Functions that the task represented by the
+specified C<taskToken> is still making progress. This action resets the
+C<Heartbeat> clock. The C<Heartbeat> threshold is specified in the
+state machine's Amazon States Language definition
+(C<HeartbeatSeconds>). This action does not in itself create an event
+in the execution history. However, if the task times out, the execution
+history contains an C<ActivityTimedOut> entry for activities, or a
+C<TaskTimedOut> entry for for tasks using the job run
+(https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync)
+or callback
+(https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+pattern.
 
 The C<Timeout> of a task, defined in the state machine's Amazon States
 Language definition, is its maximum allowed duration, regardless of the
-number of SendTaskHeartbeat requests received.
-
-This operation is only useful for long-lived tasks to report the
-liveliness of the task.
+number of SendTaskHeartbeat requests received. Use C<HeartbeatSeconds>
+to configure the timeout interval for heartbeats.
 
 
 =head2 SendTaskSuccess
@@ -682,7 +707,9 @@ Each argument is described in detail in: L<Paws::StepFunctions::SendTaskSuccess>
 
 Returns: a L<Paws::StepFunctions::SendTaskSuccessOutput> instance
 
-Used by workers to report that the task identified by the C<taskToken>
+Used by activity workers and task states using the callback
+(https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
+pattern to report that the task identified by the C<taskToken>
 completed successfully.
 
 
@@ -748,6 +775,16 @@ Each argument is described in detail in: L<Paws::StepFunctions::TagResource>
 Returns: a L<Paws::StepFunctions::TagResourceOutput> instance
 
 Add a tag to a Step Functions resource.
+
+An array of key-value pairs. For more information, see Using Cost
+Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>, and Controlling
+Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
 
 
 =head2 UntagResource

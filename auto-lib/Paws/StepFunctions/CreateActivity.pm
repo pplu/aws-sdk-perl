@@ -65,7 +65,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 
@@ -91,6 +91,16 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 =head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
 
 The list of tags to add to a resource.
+
+An array of key-value pairs. For more information, see Using Cost
+Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>, and Controlling
+Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
 
 
 

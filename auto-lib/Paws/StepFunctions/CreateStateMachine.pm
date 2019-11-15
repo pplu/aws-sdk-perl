@@ -73,7 +73,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 
@@ -106,6 +106,16 @@ machine.
 =head2 Tags => ArrayRef[L<Paws::StepFunctions::Tag>]
 
 Tags to be added when creating a state machine.
+
+An array of key-value pairs. For more information, see Using Cost
+Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>, and Controlling
+Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
 
 
 

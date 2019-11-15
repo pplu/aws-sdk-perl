@@ -56,7 +56,7 @@ A name must I<not> contain:
 
 =item *
 
-whitespace
+white space
 
 =item *
 

@@ -35,6 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 Tags are key-value pairs that can be associated with Step Functions
 state machines and activities.
 
+An array of key-value pairs. For more information, see Using Cost
+Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+in the I<AWS Billing and Cost Management User Guide>, and Controlling
+Access Using IAM Tags
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html).
+
+Tags may only contain Unicode letters, digits, white space, or these
+symbols: C<_ . : / = + - @>.
+
 =head1 ATTRIBUTES
 
 

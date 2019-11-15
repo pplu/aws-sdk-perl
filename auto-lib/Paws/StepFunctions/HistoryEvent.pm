@@ -18,6 +18,11 @@ package Paws::StepFunctions::HistoryEvent;
   has LambdaFunctionStartFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionStartFailedEventDetails', request_name => 'lambdaFunctionStartFailedEventDetails', traits => ['NameInRequest']);
   has LambdaFunctionSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionSucceededEventDetails', request_name => 'lambdaFunctionSucceededEventDetails', traits => ['NameInRequest']);
   has LambdaFunctionTimedOutEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::LambdaFunctionTimedOutEventDetails', request_name => 'lambdaFunctionTimedOutEventDetails', traits => ['NameInRequest']);
+  has MapIterationAbortedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationAbortedEventDetails', traits => ['NameInRequest']);
+  has MapIterationFailedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationFailedEventDetails', traits => ['NameInRequest']);
+  has MapIterationStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationStartedEventDetails', traits => ['NameInRequest']);
+  has MapIterationSucceededEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapIterationEventDetails', request_name => 'mapIterationSucceededEventDetails', traits => ['NameInRequest']);
+  has MapStateStartedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::MapStateStartedEventDetails', request_name => 'mapStateStartedEventDetails', traits => ['NameInRequest']);
   has PreviousEventId => (is => 'ro', isa => 'Int', request_name => 'previousEventId', traits => ['NameInRequest']);
   has StateEnteredEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateEnteredEventDetails', request_name => 'stateEnteredEventDetails', traits => ['NameInRequest']);
   has StateExitedEventDetails => (is => 'ro', isa => 'Paws::StepFunctions::StateExitedEventDetails', request_name => 'stateExitedEventDetails', traits => ['NameInRequest']);
@@ -157,6 +162,31 @@ during an execution.
 =head2 LambdaFunctionTimedOutEventDetails => L<Paws::StepFunctions::LambdaFunctionTimedOutEventDetails>
 
   
+
+
+=head2 MapIterationAbortedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+
+  Contains details about an iteration of a Map state that was aborted.
+
+
+=head2 MapIterationFailedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+
+  Contains details about an iteration of a Map state that failed.
+
+
+=head2 MapIterationStartedEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+
+  Contains details about an iteration of a Map state that was started.
+
+
+=head2 MapIterationSucceededEventDetails => L<Paws::StepFunctions::MapIterationEventDetails>
+
+  Contains details about an iteration of a Map state that succeeded.
+
+
+=head2 MapStateStartedEventDetails => L<Paws::StepFunctions::MapStateStartedEventDetails>
+
+  Contains details about Map state that was started.
 
 
 =head2 PreviousEventId => Int

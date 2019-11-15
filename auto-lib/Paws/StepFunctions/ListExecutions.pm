@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $states = Paws->service('StepFunctions');
     my $ListExecutionsOutput = $states->ListExecutions(
       StateMachineArn => 'MyArn',
-      MaxResults      => 1,                # OPTIONAL
-      NextToken       => 'MyPageToken',    # OPTIONAL
-      StatusFilter    => 'RUNNING',        # OPTIONAL
+      MaxResults      => 1,                              # OPTIONAL
+      NextToken       => 'MyListExecutionsPageToken',    # OPTIONAL
+      StatusFilter    => 'RUNNING',                      # OPTIONAL
     );
 
     # Results:
