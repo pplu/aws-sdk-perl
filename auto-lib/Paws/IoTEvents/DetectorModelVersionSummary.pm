@@ -4,6 +4,7 @@ package Paws::IoTEvents::DetectorModelVersionSummary;
   has DetectorModelArn => (is => 'ro', isa => 'Str', request_name => 'detectorModelArn', traits => ['NameInRequest']);
   has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
   has DetectorModelVersion => (is => 'ro', isa => 'Str', request_name => 'detectorModelVersion', traits => ['NameInRequest']);
+  has EvaluationMethod => (is => 'ro', isa => 'Str', request_name => 'evaluationMethod', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -60,6 +61,14 @@ Information about the detector model version.
 =head2 DetectorModelVersion => Str
 
   The ID of the detector model version.
+
+
+=head2 EvaluationMethod => Str
+
+  When set to C<SERIAL>, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to
+C<BATCH>, variables are updated and events performed only after all
+event conditions are evaluated.
 
 
 =head2 LastUpdateTime => Str

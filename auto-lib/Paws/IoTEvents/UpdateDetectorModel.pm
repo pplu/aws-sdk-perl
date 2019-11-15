@@ -4,6 +4,7 @@ package Paws::IoTEvents::UpdateDetectorModel;
   has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', traits => ['NameInRequest'], request_name => 'detectorModelDefinition', required => 1);
   has DetectorModelDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelDescription');
   has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorModelName', required => 1);
+  has EvaluationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'evaluationMethod');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
 
   use MooseX::ClassAttribute;
@@ -272,6 +273,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetectorModelName        => 'MyDetectorModelName',
       RoleArn                  => 'MyAmazonResourceName',
       DetectorModelDescription => 'MyDetectorModelDescription',    # OPTIONAL
+      EvaluationMethod         => 'BATCH',                         # OPTIONAL
     );
 
     # Results:
@@ -303,6 +305,15 @@ A brief description of the detector model.
 The name of the detector model that is updated.
 
 
+
+=head2 EvaluationMethod => Str
+
+When set to C<SERIAL>, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to
+C<BATCH>, variables are updated and events performed only after all
+event conditions are evaluated.
+
+Valid values are: C<"BATCH">, C<"SERIAL">
 
 =head2 B<REQUIRED> RoleArn => Str
 

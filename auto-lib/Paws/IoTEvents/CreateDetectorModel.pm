@@ -4,6 +4,7 @@ package Paws::IoTEvents::CreateDetectorModel;
   has DetectorModelDefinition => (is => 'ro', isa => 'Paws::IoTEvents::DetectorModelDefinition', traits => ['NameInRequest'], request_name => 'detectorModelDefinition', required => 1);
   has DetectorModelDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelDescription');
   has DetectorModelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorModelName', required => 1);
+  has EvaluationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'evaluationMethod');
   has Key => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'key');
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTEvents::Tag]', traits => ['NameInRequest'], request_name => 'tags');
@@ -274,6 +275,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetectorModelName        => 'MyDetectorModelName',
       RoleArn                  => 'MyAmazonResourceName',
       DetectorModelDescription => 'MyDetectorModelDescription',    # OPTIONAL
+      EvaluationMethod         => 'BATCH',                         # OPTIONAL
       Key                      => 'MyAttributeJsonPath',           # OPTIONAL
       Tags                     => [
         {
@@ -315,14 +317,23 @@ The name of the detector model.
 
 
 
+=head2 EvaluationMethod => Str
+
+When set to C<SERIAL>, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to
+C<BATCH>, variables are updated and events performed only after all
+event conditions are evaluated.
+
+Valid values are: C<"BATCH">, C<"SERIAL">
+
 =head2 Key => Str
 
-The input attribute key used to identify a device or system in order to
-create a detector (an instance of the detector model) and then to route
-each input received to the appropriate detector (instance). This
-parameter uses a JSON-path expression to specify the attribute-value
-pair in the message payload of each input that is used to identify the
-device associated with the input.
+The input attribute key used to identify a device or system to create a
+detector (an instance of the detector model) and then to route each
+input received to the appropriate detector (instance). This parameter
+uses a JSON-path expression to specify the attribute-value pair in the
+message payload of each input that is used to identify the device
+associated with the input.
 
 
 

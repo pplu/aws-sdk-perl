@@ -5,6 +5,7 @@ package Paws::IoTEvents::DetectorModelConfiguration;
   has DetectorModelDescription => (is => 'ro', isa => 'Str', request_name => 'detectorModelDescription', traits => ['NameInRequest']);
   has DetectorModelName => (is => 'ro', isa => 'Str', request_name => 'detectorModelName', traits => ['NameInRequest']);
   has DetectorModelVersion => (is => 'ro', isa => 'Str', request_name => 'detectorModelVersion', traits => ['NameInRequest']);
+  has EvaluationMethod => (is => 'ro', isa => 'Str', request_name => 'evaluationMethod', traits => ['NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', request_name => 'key', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
@@ -69,14 +70,22 @@ Information about how the detector model is configured.
   The version of the detector model.
 
 
+=head2 EvaluationMethod => Str
+
+  When set to C<SERIAL>, variables are updated and event conditions
+evaluated in the order that the events are defined. When set to
+C<BATCH>, variables are updated and events performed only after all
+event conditions are evaluated.
+
+
 =head2 Key => Str
 
-  The input attribute key used to identify a device or system in order to
-create a detector (an instance of the detector model) and then to route
-each input received to the appropriate detector (instance). This
-parameter uses a JSON-path expression to specify the attribute-value
-pair in the message payload of each input that is used to identify the
-device associated with the input.
+  The input attribute key used to identify a device or system to create a
+detector (an instance of the detector model) and then to route each
+input received to the appropriate detector (instance). This parameter
+uses a JSON-path expression to specify the attribute-value pair in the
+message payload of each input that is used to identify the device
+associated with the input.
 
 
 =head2 LastUpdateTime => Str

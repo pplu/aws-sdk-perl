@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTEvents::
 =head1 DESCRIPTION
 
 Sends information about the detector model instance and the event which
-triggered the action to an AWS SQS queue.
+triggered the action to an Amazon SQS queue.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  The URL of the SQS queue where the data is written.
+  The URL of the Amazon SQS queue where the data is written.
 
 
 =head2 UseBase64 => Bool

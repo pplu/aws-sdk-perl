@@ -53,7 +53,7 @@ An action to be performed when the C<"condition"> is TRUE.
 =head2 Firehose => L<Paws::IoTEvents::FirehoseAction>
 
   Sends information about the detector model instance and the event which
-triggered the action to a Kinesis Data Firehose stream.
+triggered the action to a Kinesis Data Firehose delivery stream.
 
 
 =head2 IotEvents => L<Paws::IoTEvents::IotEventsAction>
@@ -70,7 +70,7 @@ broker.
 
 =head2 Lambda => L<Paws::IoTEvents::LambdaAction>
 
-  Calls a Lambda function, passing in information about the detector
+  Calls an AWS Lambda function, passing in information about the detector
 model instance and the event which triggered the action.
 
 
@@ -97,7 +97,7 @@ model instance and the event which triggered the action.
 =head2 Sqs => L<Paws::IoTEvents::SqsAction>
 
   Sends information about the detector model instance and the event which
-triggered the action to an AWS SQS queue.
+triggered the action to an Amazon SQS queue.
 
 
 

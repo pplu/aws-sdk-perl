@@ -147,6 +147,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =item [DetectorModelDescription => Str]
 
+=item [EvaluationMethod => Str]
+
 =item [Key => Str]
 
 =item [Tags => ArrayRef[L<Paws::IoTEvents::Tag>]]
@@ -409,6 +411,8 @@ Removes the given tags (metadata) from the resource.
 =item RoleArn => Str
 
 =item [DetectorModelDescription => Str]
+
+=item [EvaluationMethod => Str]
 
 
 =back
