@@ -2,6 +2,7 @@ package Paws::Firehose::ElasticsearchDestinationDescription;
   use Moose;
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchBufferingHints');
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
+  has ClusterEndpoint => (is => 'ro', isa => 'Str');
   has DomainARN => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexRotationPeriod => (is => 'ro', isa => 'Str');
@@ -56,11 +57,21 @@ The destination description in Amazon ES.
   The Amazon CloudWatch logging options.
 
 
+=head2 ClusterEndpoint => Str
+
+  The endpoint to use when communicating with the cluster. Kinesis Data
+Firehose uses either this C<ClusterEndpoint> or the C<DomainARN> field
+to send data to Amazon ES.
+
+
 =head2 DomainARN => Str
 
   The ARN of the Amazon ES domain. For more information, see Amazon
 Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+
+Kinesis Data Firehose uses either C<ClusterEndpoint> or C<DomainARN> to
+send data to Amazon ES.
 
 
 =head2 IndexName => Str
@@ -103,7 +114,9 @@ Namespaces
 
 =head2 TypeName => Str
 
-  The Elasticsearch type name.
+  The Elasticsearch type name. This applies to Elasticsearch 6.x and
+lower versions. For Elasticsearch 7.x, there's no value for
+C<TypeName>.
 
 
 

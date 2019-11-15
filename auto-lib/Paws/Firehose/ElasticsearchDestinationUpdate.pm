@@ -2,6 +2,7 @@ package Paws::Firehose::ElasticsearchDestinationUpdate;
   use Moose;
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchBufferingHints');
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
+  has ClusterEndpoint => (is => 'ro', isa => 'Str');
   has DomainARN => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
   has IndexRotationPeriod => (is => 'ro', isa => 'Str');
@@ -56,6 +57,12 @@ C<ElasticsearchBufferingHints> object default values are used.
   The CloudWatch logging options for your delivery stream.
 
 
+=head2 ClusterEndpoint => Str
+
+  The endpoint to use when communicating with the cluster. Specify either
+this C<ClusterEndpoint> or the C<DomainARN> field.
+
+
 =head2 DomainARN => Str
 
   The ARN of the Amazon ES domain. The IAM role must have permissions for
@@ -64,6 +71,8 @@ C<DescribeElasticsearchDomainConfig> after assuming the IAM role
 specified in C<RoleARN>. For more information, see Amazon Resource
 Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+
+Specify either C<ClusterEndpoint> or C<DomainARN>.
 
 
 =head2 IndexName => Str
@@ -76,7 +85,7 @@ Names (ARNs) and AWS Service Namespaces
   The Elasticsearch index rotation period. Index rotation appends a
 timestamp to C<IndexName> to facilitate the expiration of old data. For
 more information, see Index Rotation for the Amazon ES Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
+(https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-index-rotation).
 Default value is C<OneDay>.
 
 
@@ -97,7 +106,7 @@ documents to Amazon ES. The default value is 300 (5 minutes).
 Data Firehose for calling the Amazon ES Configuration API and for
 indexing documents. For more information, see Grant Kinesis Data
 Firehose Access to an Amazon S3 Destination
-(http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
+(https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3)
 and Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
@@ -113,6 +122,12 @@ and Amazon Resource Names (ARNs) and AWS Service Namespaces
 one type per index. If you try to specify a new type for an existing
 index that already has another type, Kinesis Data Firehose returns an
 error during runtime.
+
+If you upgrade Elasticsearch from 6.x to 7.x and donE<rsquo>t update
+your delivery stream, Kinesis Data Firehose still delivers data to
+Elasticsearch with the old index name and type name. If you want to
+update your delivery stream with a new index name, provide an empty
+string for C<TypeName>.
 
 
 

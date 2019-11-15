@@ -43,7 +43,7 @@ Describes a C<COPY> command for Amazon Redshift.
   Optional parameters to use with the Amazon Redshift C<COPY> command.
 For more information, see the "Optional Parameters" section of Amazon
 Redshift COPY command
-(http://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html). Some
+(https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html). Some
 possible examples that would apply to Kinesis Data Firehose are as
 follows:
 
@@ -64,7 +64,7 @@ C<JSON 's3://mybucket/jsonpaths.txt'> - data is in JSON format, and the
 path specified is the format of the data.
 
 For more examples, see Amazon Redshift COPY command examples
-(http://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html).
+(https://docs.aws.amazon.com/redshift/latest/dg/r_COPY_command_examples.html).
 
 
 =head2 DataTableColumns => Str

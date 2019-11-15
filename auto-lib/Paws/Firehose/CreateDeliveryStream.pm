@@ -39,7 +39,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeliveryStreamName                    => 'MyDeliveryStreamName',
       DeliveryStreamType                    => 'DirectPut',           # OPTIONAL
       ElasticsearchDestinationConfiguration => {
-        DomainARN       => 'MyElasticsearchDomainARN',    # min: 1, max: 512
         IndexName       => 'MyElasticsearchIndexName',    # min: 1, max: 80
         RoleARN         => 'MyRoleARN',                   # min: 1, max: 512
         S3Configuration => {
@@ -67,7 +66,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # OPTIONAL
           Prefix            => 'MyPrefix',               # OPTIONAL
         },
-        TypeName       => 'MyElasticsearchTypeName',     # min: 1, max: 100
         BufferingHints => {
           IntervalInSeconds => 1,    # min: 60, max: 900; OPTIONAL
           SizeInMBs         => 1,    # min: 1, max: 100; OPTIONAL
@@ -77,8 +75,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           LogGroupName  => 'MyLogGroupName',     # OPTIONAL
           LogStreamName => 'MyLogStreamName',    # OPTIONAL
         },    # OPTIONAL
+        ClusterEndpoint =>
+          'MyElasticsearchClusterEndpoint',    # min: 1, max: 512; OPTIONAL
+        DomainARN => 'MyElasticsearchDomainARN',    # min: 1, max: 512; OPTIONAL
         IndexRotationPeriod => 'NoRotation'
-        ,     # values: NoRotation, OneHour, OneDay, OneWeek, OneMonth; OPTIONAL
+        ,    # values: NoRotation, OneHour, OneDay, OneWeek, OneMonth; OPTIONAL
         ProcessingConfiguration => {
           Enabled    => 1,    # OPTIONAL
           Processors => [
@@ -103,6 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         S3BackupMode => 'FailedDocumentsOnly'
         ,     # values: FailedDocumentsOnly, AllDocuments; OPTIONAL
+        TypeName => 'MyElasticsearchTypeName',    # max: 100; OPTIONAL
       },    # OPTIONAL
       ExtendedS3DestinationConfiguration => {
         BucketARN      => 'MyBucketARN',    # min: 1, max: 2048

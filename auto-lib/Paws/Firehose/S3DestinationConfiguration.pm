@@ -81,18 +81,17 @@ no encryption.
 
   A prefix that Kinesis Data Firehose evaluates and adds to failed
 records before writing them to S3. This prefix appears immediately
-following the bucket name.
+following the bucket name. For information about how to specify this
+prefix, see Custom Prefixes for Amazon S3 Objects
+(https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
 
 
 =head2 Prefix => Str
 
   The "YYYY/MM/DD/HH" time format prefix is automatically used for
-delivered Amazon S3 files. You can specify an extra prefix to be added
-in front of the time format prefix. If the prefix ends with a slash, it
-appears as a folder in the S3 bucket. For more information, see Amazon
-S3 Object Name Format
-(http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name)
-in the I<Amazon Kinesis Data Firehose Developer Guide>.
+delivered Amazon S3 files. You can also specify a custom prefix, as
+described in Custom Prefixes for Amazon S3 Objects
+(https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html).
 
 
 =head2 B<REQUIRED> RoleARN => Str
