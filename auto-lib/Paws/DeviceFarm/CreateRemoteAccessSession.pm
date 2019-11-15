@@ -70,6 +70,9 @@ devices on the same client, you should pass the same C<clientId> value
 in each call to C<CreateRemoteAccessSession>. This is required only if
 C<remoteDebugEnabled> is set to C<true>.
 
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 
 
 =head2 Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>
@@ -139,6 +142,9 @@ create a remote access session.
 Set to C<true> if you want to access devices remotely for debugging in
 your remote access session.
 
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 
 
 =head2 RemoteRecordAppArn => Str
@@ -169,9 +175,12 @@ I<AWS Device Farm FAQs>.
 
 =head2 SshPublicKey => Str
 
-The public key of the C<ssh> key pair you want to use for connecting to
-remote devices in your remote debugging session. This is only required
-if C<remoteDebugEnabled> is set to C<true>.
+I<Ignored.> The public key of the C<ssh> key pair you want to use for
+connecting to remote devices in your remote debugging session. This is
+only required if C<remoteDebugEnabled> is set to C<true>.
+
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
 
 
 

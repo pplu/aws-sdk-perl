@@ -189,6 +189,9 @@ device.
   This flag is set to C<true> if remote debugging is enabled for the
 device.
 
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
 

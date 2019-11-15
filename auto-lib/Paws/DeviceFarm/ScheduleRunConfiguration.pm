@@ -47,7 +47,8 @@ states, auxiliary apps, and network profiles.
 
 =head2 AuxiliaryApps => ArrayRef[Str|Undef]
 
-  A list of auxiliary apps for the run.
+  A list of Upload ARNs for app packages that will be installed alongside
+your app.
 
 
 =head2 BillingMethod => Str

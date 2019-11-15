@@ -74,6 +74,9 @@ devices, see AWS Device Farm terminology
   Unique identifier of your client for the remote access session. Only
 returned if remote debugging is enabled for the remote access session.
 
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 
 =head2 Created => Str
 
@@ -96,6 +99,9 @@ returned if remote debugging is enabled for the remote access session.
   Unique device identifier for the remote device. Only returned if remote
 debugging is enabled for the remote access session.
 
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 
 =head2 Endpoint => Str
 
@@ -107,6 +113,9 @@ debugging is enabled for the remote access session.
   IP address of the EC2 host where you need to connect to remotely debug
 devices. Only returned if remote debugging is enabled for the remote
 access session.
+
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
 
 
 =head2 InstanceArn => Str
@@ -156,6 +165,9 @@ mode.
 
   This flag is set to C<true> if remote debugging is enabled for the
 remote access session.
+
+I<Remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
 
 
 =head2 RemoteRecordAppArn => Str

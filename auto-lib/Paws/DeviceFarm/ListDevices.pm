@@ -105,7 +105,9 @@ Valid values are "TRUE" or "FALSE".
 =item *
 
 REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote
-debugging. Valid values are "TRUE" or "FALSE".
+debugging. Valid values are "TRUE" or "FALSE". I<This attribute will be
+ignored, as remote debugging is no longer supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
 
 =item *
 

@@ -132,6 +132,10 @@ Whether the device is enabled for remote debugging. Valid values are
 
 I<Supported operators>: C<EQUALS>
 
+I<This filter will be ignored, as remote debugging is no longer
+supported
+(https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html).>
+
 =back
 
 
