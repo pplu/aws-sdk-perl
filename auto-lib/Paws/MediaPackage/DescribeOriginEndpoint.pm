@@ -43,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Id           = $DescribeOriginEndpointResponse->Id;
     my $ManifestName = $DescribeOriginEndpointResponse->ManifestName;
     my $MssPackage   = $DescribeOriginEndpointResponse->MssPackage;
+    my $Origination  = $DescribeOriginEndpointResponse->Origination;
     my $StartoverWindowSeconds =
       $DescribeOriginEndpointResponse->StartoverWindowSeconds;
     my $Tags             = $DescribeOriginEndpointResponse->Tags;

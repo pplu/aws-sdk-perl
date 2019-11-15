@@ -8,6 +8,7 @@ package Paws::MediaPackage::UpdateOriginEndpoint;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
   has ManifestName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'manifestName');
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
+  has Origination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'origination');
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startoverWindowSeconds');
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeDelaySeconds');
   has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'whitelist');
@@ -171,6 +172,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      Origination            => 'ALLOW',                  # OPTIONAL
       StartoverWindowSeconds => 1,                        # OPTIONAL
       TimeDelaySeconds       => 1,                        # OPTIONAL
       Whitelist              => [ 'My__string', ... ],    # OPTIONAL
@@ -186,6 +188,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Id           = $UpdateOriginEndpointResponse->Id;
     my $ManifestName = $UpdateOriginEndpointResponse->ManifestName;
     my $MssPackage   = $UpdateOriginEndpointResponse->MssPackage;
+    my $Origination  = $UpdateOriginEndpointResponse->Origination;
     my $StartoverWindowSeconds =
       $UpdateOriginEndpointResponse->StartoverWindowSeconds;
     my $Tags             = $UpdateOriginEndpointResponse->Tags;
@@ -242,6 +245,16 @@ A short string that will be appended to the end of the Endpoint URL.
 
 
 
+
+=head2 Origination => Str
+
+Control whether origination of video is allowed for this
+OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested,
+pursuant to any other form of access control. If set to DENY, the
+OriginEndpoint may not be requested. This can be helpful for Live to
+VOD harvesting, or for temporarily disabling origination
+
+Valid values are: C<"ALLOW">, C<"DENY">
 
 =head2 StartoverWindowSeconds => Int
 

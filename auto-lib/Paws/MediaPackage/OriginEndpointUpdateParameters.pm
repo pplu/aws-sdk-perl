@@ -6,6 +6,7 @@ package Paws::MediaPackage::OriginEndpointUpdateParameters;
   has HlsPackage => (is => 'ro', isa => 'Paws::MediaPackage::HlsPackage', request_name => 'hlsPackage', traits => ['NameInRequest']);
   has ManifestName => (is => 'ro', isa => 'Str', request_name => 'manifestName', traits => ['NameInRequest']);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackage::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
+  has Origination => (is => 'ro', isa => 'Str', request_name => 'origination', traits => ['NameInRequest']);
   has StartoverWindowSeconds => (is => 'ro', isa => 'Int', request_name => 'startoverWindowSeconds', traits => ['NameInRequest']);
   has TimeDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'timeDelaySeconds', traits => ['NameInRequest']);
   has Whitelist => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'whitelist', traits => ['NameInRequest']);
@@ -72,6 +73,15 @@ Configuration parameters for updating an existing OriginEndpoint.
 =head2 MssPackage => L<Paws::MediaPackage::MssPackage>
 
   
+
+
+=head2 Origination => Str
+
+  Control whether origination of video is allowed for this
+OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested,
+pursuant to any other form of access control. If set to DENY, the
+OriginEndpoint may not be requested. This can be helpful for Live to
+VOD harvesting, or for temporarily disabling origination
 
 
 =head2 StartoverWindowSeconds => Int

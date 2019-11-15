@@ -19,6 +19,11 @@ package Paws::MediaPackage;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::CreateChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateHarvestJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::CreateHarvestJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateOriginEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::CreateOriginEndpoint', @_);
@@ -39,6 +44,11 @@ package Paws::MediaPackage;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::DescribeChannel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeHarvestJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::DescribeHarvestJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOriginEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::DescribeOriginEndpoint', @_);
@@ -47,6 +57,11 @@ package Paws::MediaPackage;
   sub ListChannels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::ListChannels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListHarvestJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::ListHarvestJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListOriginEndpoints {
@@ -113,6 +128,29 @@ package Paws::MediaPackage;
 
     return undef
   }
+  sub ListAllHarvestJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListHarvestJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListHarvestJobs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->HarvestJobs }, @{ $next_result->HarvestJobs };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'HarvestJobs') foreach (@{ $result->HarvestJobs });
+        $result = $self->ListHarvestJobs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'HarvestJobs') foreach (@{ $result->HarvestJobs });
+    }
+
+    return undef
+  }
   sub ListAllOriginEndpoints {
     my $self = shift;
 
@@ -138,7 +176,7 @@ package Paws::MediaPackage;
   }
 
 
-  sub operations { qw/CreateChannel CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeOriginEndpoint ListChannels ListOriginEndpoints ListTagsForResource RotateChannelCredentials RotateIngestEndpointCredentials TagResource UntagResource UpdateChannel UpdateOriginEndpoint / }
+  sub operations { qw/CreateChannel CreateHarvestJob CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeHarvestJob DescribeOriginEndpoint ListChannels ListHarvestJobs ListOriginEndpoints ListTagsForResource RotateChannelCredentials RotateIngestEndpointCredentials TagResource UntagResource UpdateChannel UpdateOriginEndpoint / }
 
 1;
 
@@ -193,6 +231,30 @@ Returns: a L<Paws::MediaPackage::CreateChannelResponse> instance
 Creates a new Channel.
 
 
+=head2 CreateHarvestJob
+
+=over
+
+=item EndTime => Str
+
+=item Id => Str
+
+=item OriginEndpointId => Str
+
+=item S3Destination => L<Paws::MediaPackage::S3Destination>
+
+=item StartTime => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::CreateHarvestJob>
+
+Returns: a L<Paws::MediaPackage::CreateHarvestJobResponse> instance
+
+Creates a new HarvestJob record.
+
+
 =head2 CreateOriginEndpoint
 
 =over
@@ -212,6 +274,8 @@ Creates a new Channel.
 =item [ManifestName => Str]
 
 =item [MssPackage => L<Paws::MediaPackage::MssPackage>]
+
+=item [Origination => Str]
 
 =item [StartoverWindowSeconds => Int]
 
@@ -279,6 +343,22 @@ Returns: a L<Paws::MediaPackage::DescribeChannelResponse> instance
 Gets details about a Channel.
 
 
+=head2 DescribeHarvestJob
+
+=over
+
+=item Id => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::DescribeHarvestJob>
+
+Returns: a L<Paws::MediaPackage::DescribeHarvestJobResponse> instance
+
+Gets details about an existing HarvestJob.
+
+
 =head2 DescribeOriginEndpoint
 
 =over
@@ -311,6 +391,28 @@ Each argument is described in detail in: L<Paws::MediaPackage::ListChannels>
 Returns: a L<Paws::MediaPackage::ListChannelsResponse> instance
 
 Returns a collection of Channels.
+
+
+=head2 ListHarvestJobs
+
+=over
+
+=item [IncludeChannelId => Str]
+
+=item [IncludeStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::ListHarvestJobs>
+
+Returns: a L<Paws::MediaPackage::ListHarvestJobsResponse> instance
+
+Returns a collection of HarvestJob records.
 
 
 =head2 ListOriginEndpoints
@@ -458,6 +560,8 @@ Updates an existing Channel.
 
 =item [MssPackage => L<Paws::MediaPackage::MssPackage>]
 
+=item [Origination => Str]
+
 =item [StartoverWindowSeconds => Int]
 
 =item [TimeDelaySeconds => Int]
@@ -490,6 +594,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Channels, passing the object as the first parameter, and the string 'Channels' as the second parameter 
 
 If not, it will return a a L<Paws::MediaPackage::ListChannelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllHarvestJobs(sub { },[IncludeChannelId => Str, IncludeStatus => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllHarvestJobs([IncludeChannelId => Str, IncludeStatus => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - HarvestJobs, passing the object as the first parameter, and the string 'HarvestJobs' as the second parameter 
+
+If not, it will return a a L<Paws::MediaPackage::ListHarvestJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllOriginEndpoints(sub { },[ChannelId => Str, MaxResults => Int, NextToken => Str])
