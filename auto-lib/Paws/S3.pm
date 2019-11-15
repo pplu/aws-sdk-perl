@@ -2758,6 +2758,8 @@ Restores an archived copy of an object back into Amazon S3
 
 =item [RequestProgress => L<Paws::S3::RequestProgress>]
 
+=item [ScanRange => L<Paws::S3::ScanRange>]
+
 =item [SSECustomerAlgorithm => Str]
 
 =item [SSECustomerKey => Str]
