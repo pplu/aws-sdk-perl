@@ -85,65 +85,73 @@ The desired data set type.
 
 =item * B<customer_subscriber_hourly_monthly_subscriptions>
 
-From 2014-07-21 to present: Available daily by 5:00 PM Pacific Time.
+From 2014-07-21 to present: Available daily by 24:00 UTC.
 
 =item * B<customer_subscriber_annual_subscriptions>
 
-From 2014-07-21 to present: Available daily by 5:00 PM Pacific Time.
+From 2014-07-21 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_usage_by_instance_type>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_fees>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_free_trial_conversions>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_new_instances>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_new_product_subscribers>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<daily_business_canceled_product_subscribers>
 
-From 2015-01-26 to present: Available daily by 5:00 PM Pacific Time.
+From 2015-01-26 to present: Available daily by 24:00 UTC.
 
 =item * B<monthly_revenue_billing_and_revenue_data>
 
 From 2015-02 to 2017-06: Available monthly on the 4th day of the month
-by 5:00pm Pacific Time. Data includes metered transactions (e.g.
-hourly) from two months prior.
+by 24:00 UTC. Data includes metered transactions (e.g. hourly) from two
+months prior.
 
 From 2017-07 to present: Available monthly on the 15th day of the month
-by 5:00pm Pacific Time. Data includes metered transactions (e.g.
-hourly) from one month prior.
+by 24:00 UTC. Data includes metered transactions (e.g. hourly) from one
+month prior.
 
 =item * B<monthly_revenue_annual_subscriptions>
 
 From 2015-02 to 2017-06: Available monthly on the 4th day of the month
-by 5:00pm Pacific Time. Data includes up-front software charges (e.g.
-annual) from one month prior.
+by 24:00 UTC. Data includes up-front software charges (e.g. annual)
+from one month prior.
 
 From 2017-07 to present: Available monthly on the 15th day of the month
-by 5:00pm Pacific Time. Data includes up-front software charges (e.g.
-annual) from one month prior.
+by 24:00 UTC. Data includes up-front software charges (e.g. annual)
+from one month prior.
+
+=item * B<monthly_revenue_field_demonstration_usage>
+
+From 2018-03-15 to present: Available monthly on the 15th day of the
+month by 24:00 UTC.
+
+=item * B<monthly_revenue_flexible_payment_schedule>
+
+From 2018-11-15 to present: Available monthly on the 15th day of the
+month by 24:00 UTC.
 
 =item * B<disbursed_amount_by_product>
 
-From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
-Time.
+From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
 
 =item * B<disbursed_amount_by_product_with_uncollected_funds>
 
-From 2012-04-19 to 2015-01-25: Available every 30 days by 5:00 PM
-Pacific Time.
+From 2012-04-19 to 2015-01-25: Available every 30 days by 24:00 UTC.
 
 From 2015-01-26 to present: This data set was split into three data
 sets: disbursed_amount_by_product,
@@ -152,63 +160,67 @@ disbursed_amount_by_age_of_disbursed_funds.
 
 =item * B<disbursed_amount_by_instance_hours>
 
-From 2012-09-04 to present: Available every 30 days by 5:00 PM Pacific
-Time.
+From 2012-09-04 to present: Available every 30 days by 24:00 UTC.
 
 =item * B<disbursed_amount_by_customer_geo>
 
-From 2012-04-19 to present: Available every 30 days by 5:00 PM Pacific
-Time.
+From 2012-04-19 to present: Available every 30 days by 24:00 UTC.
 
 =item * B<disbursed_amount_by_age_of_uncollected_funds>
 
-From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
-Time.
+From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
 
 =item * B<disbursed_amount_by_age_of_disbursed_funds>
 
-From 2015-01-26 to present: Available every 30 days by 5:00 PM Pacific
-Time.
+From 2015-01-26 to present: Available every 30 days by 24:00 UTC.
+
+=item * B<disbursed_amount_by_age_of_past_due_funds>
+
+From 2018-04-07 to present: Available every 30 days by 24:00 UTC.
+
+=item * B<disbursed_amount_by_uncollected_funds_breakdown>
+
+From 2019-10-04 to present: Available every 30 days by 24:00 UTC.
 
 =item * B<customer_profile_by_industry>
 
-From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
 
 From 2017-06-30 to present: This data set is no longer available.
 
 =item * B<customer_profile_by_revenue>
 
-From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
 
 From 2017-06-30 to present: This data set is no longer available.
 
 =item * B<customer_profile_by_geography>
 
-From 2015-10-01 to 2017-06-29: Available daily by 5:00 PM Pacific Time.
+From 2015-10-01 to 2017-06-29: Available daily by 24:00 UTC.
 
 From 2017-06-30 to present: This data set is no longer available.
 
 =item * B<sales_compensation_billed_revenue>
 
 From 2016-12 to 2017-06: Available monthly on the 4th day of the month
-by 5:00pm Pacific Time. Data includes metered transactions (e.g.
-hourly) from two months prior, and up-front software charges (e.g.
-annual) from one month prior.
+by 24:00 UTC. Data includes metered transactions (e.g. hourly) from two
+months prior, and up-front software charges (e.g. annual) from one
+month prior.
 
 From 2017-06 to present: Available monthly on the 15th day of the month
-by 5:00pm Pacific Time. Data includes metered transactions (e.g.
-hourly) from one month prior, and up-front software charges (e.g.
-annual) from one month prior.
+by 24:00 UTC. Data includes metered transactions (e.g. hourly) from one
+month prior, and up-front software charges (e.g. annual) from one month
+prior.
 
 =item * B<us_sales_and_use_tax_records>
 
 From 2017-02-15 to present: Available monthly on the 15th day of the
-month by 5:00 PM Pacific Time.
+month by 24:00 UTC.
 
 =back
 
 
-Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_product_with_uncollected_funds">, C<"disbursed_amount_by_instance_hours">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">, C<"sales_compensation_billed_revenue">, C<"us_sales_and_use_tax_records">
+Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"monthly_revenue_field_demonstration_usage">, C<"monthly_revenue_flexible_payment_schedule">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_product_with_uncollected_funds">, C<"disbursed_amount_by_instance_hours">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"disbursed_amount_by_age_of_past_due_funds">, C<"disbursed_amount_by_uncollected_funds_breakdown">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">, C<"sales_compensation_billed_revenue">, C<"us_sales_and_use_tax_records">
 
 =head2 B<REQUIRED> DestinationS3BucketName => Str
 
