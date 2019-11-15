@@ -5,6 +5,7 @@ package Paws::Lambda::CreateEventSourceMapping;
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventSourceArn => (is => 'ro', isa => 'Str', required => 1);
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
   has StartingPosition => (is => 'ro', isa => 'Str');
   has StartingPositionTimestamp => (is => 'ro', isa => 'Str');
 
@@ -34,12 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     my $EventSourceMappingConfiguration = $lambda->CreateEventSourceMapping(
-      EventSourceArn            => 'MyArn',
-      FunctionName              => 'MyFunctionName',
-      BatchSize                 => 1,                        # OPTIONAL
-      Enabled                   => 1,                        # OPTIONAL
-      StartingPosition          => 'TRIM_HORIZON',           # OPTIONAL
-      StartingPositionTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
+      EventSourceArn                 => 'MyArn',
+      FunctionName                   => 'MyFunctionName',
+      BatchSize                      => 1,                        # OPTIONAL
+      Enabled                        => 1,                        # OPTIONAL
+      MaximumBatchingWindowInSeconds => 1,                        # OPTIONAL
+      StartingPosition               => 'TRIM_HORIZON',           # OPTIONAL
+      StartingPositionTimestamp      => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
     # Results:
@@ -49,6 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $LastModified   = $EventSourceMappingConfiguration->LastModified;
     my $LastProcessingResult =
       $EventSourceMappingConfiguration->LastProcessingResult;
+    my $MaximumBatchingWindowInSeconds =
+      $EventSourceMappingConfiguration->MaximumBatchingWindowInSeconds;
     my $State = $EventSourceMappingConfiguration->State;
     my $StateTransitionReason =
       $EventSourceMappingConfiguration->StateTransitionReason;
@@ -144,6 +148,12 @@ B<Partial ARN> - C<123456789012:function:MyFunction>.
 
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.
+
+
+
+=head2 MaximumBatchingWindowInSeconds => Int
+
+
 
 
 

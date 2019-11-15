@@ -524,6 +524,8 @@ version and the percentage of invocation requests that it receives.
 
 =item [Enabled => Bool]
 
+=item [MaximumBatchingWindowInSeconds => Int]
+
 =item [StartingPosition => Str]
 
 =item [StartingPositionTimestamp => Str]
@@ -1387,6 +1389,8 @@ Updates the configuration of a Lambda function alias
 =item [Enabled => Bool]
 
 =item [FunctionName => Str]
+
+=item [MaximumBatchingWindowInSeconds => Int]
 
 
 =back

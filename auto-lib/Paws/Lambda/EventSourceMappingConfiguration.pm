@@ -6,6 +6,7 @@ package Paws::Lambda::EventSourceMappingConfiguration;
   has FunctionArn => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
   has LastProcessingResult => (is => 'ro', isa => 'Str');
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
   has State => (is => 'ro', isa => 'Str');
   has StateTransitionReason => (is => 'ro', isa => 'Str');
   has UUID => (is => 'ro', isa => 'Str');
@@ -45,6 +46,11 @@ The date that the event source mapping was last updated.
 =head2 LastProcessingResult => Str
 
 The result of the last AWS Lambda invocation of your Lambda function.
+
+
+=head2 MaximumBatchingWindowInSeconds => Int
+
+
 
 
 =head2 State => Str

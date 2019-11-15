@@ -4,6 +4,7 @@ package Paws::Lambda::UpdateEventSourceMapping;
   has BatchSize => (is => 'ro', isa => 'Int');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
+  has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
   has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
@@ -119,6 +120,12 @@ B<Partial ARN> - C<123456789012:function:MyFunction>.
 
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.
+
+
+
+=head2 MaximumBatchingWindowInSeconds => Int
+
+
 
 
 
