@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateServerResponse = $transfer->UpdateServer(
       ServerId        => 'MyServerId',
       EndpointDetails => {
-        VpcEndpointId => 'MyVpcEndpointId',    # OPTIONAL
+        VpcEndpointId => 'MyVpcEndpointId',    # min: 22, max: 22; OPTIONAL
       },    # OPTIONAL
       EndpointType            => 'PUBLIC',       # OPTIONAL
       HostKey                 => 'MyHostKey',    # OPTIONAL
       IdentityProviderDetails => {
-        InvocationRole => 'MyRole',              # OPTIONAL
-        Url            => 'MyUrl',               # OPTIONAL
+        InvocationRole => 'MyRole',              # min: 20, max: 2048; OPTIONAL
+        Url            => 'MyUrl',               # max: 255; OPTIONAL
       },    # OPTIONAL
       LoggingRole => 'MyNullableRole',    # OPTIONAL
     );
@@ -81,8 +81,11 @@ my-new-server-key>.
 
 If you aren't planning to migrate existing users from an existing SFTP
 server to a new AWS SFTP server, don't update the host key.
-Accidentally changing a server's host key can be disruptive. For more
-information, see change-host-key in the I<AWS SFTP User Guide.>
+Accidentally changing a server's host key can be disruptive.
+
+For more information, see
+"https://docs.aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key"
+in the I<AWS SFTP User Guide.>
 
 
 

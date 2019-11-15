@@ -41,10 +41,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::D
 
 =head1 DESCRIPTION
 
-Describe the properties of the server that was specified. Information
-returned includes: the server Amazon Resource Name (ARN), the
-authentication configuration and type, the logging role, server Id and
-state, and assigned tags or metadata.
+Describes the properties of the server that was specified. Information
+returned includes the following: the server Amazon Resource Name (ARN),
+the authentication configuration and type, the logging role, the server
+ID and state, and assigned tags or metadata.
 
 =head1 ATTRIBUTES
 
@@ -70,8 +70,8 @@ accessible over the public internet.
 
 =head2 HostKeyFingerprint => Str
 
-  This value contains the Message-Digest Algorithm (MD5) hash of the
-server's host key. This value is equivalent to the output of
+  This value contains the message-digest algorithm (MD5) hash of the
+server's host key. This value is equivalent to the output of the
 C<ssh-keygen -l -E md5 -f my-new-server-key> command.
 
 
@@ -85,8 +85,8 @@ server is C<SERVICE_MANAGED>E<gt>.
 =head2 IdentityProviderType => Str
 
   This property defines the mode of authentication method enabled for
-this service. A value of C<SERVICE_MANAGED>, means that you are using
-this Server to store and access SFTP user credentials within the
+this service. A value of C<SERVICE_MANAGED> means that you are using
+this server to store and access SFTP user credentials within the
 service. A value of C<API_GATEWAY> indicates that you have integrated
 an API Gateway endpoint that will be invoked for authenticating your
 user into the service.
@@ -96,12 +96,13 @@ user into the service.
 
   This property is an AWS Identity and Access Management (IAM) entity
 that allows the server to turn on Amazon CloudWatch logging for Amazon
-S3 events. When set, user activity can be view in your CloudWatch logs.
+S3 events. When set, user activity can be viewed in your CloudWatch
+logs.
 
 
 =head2 ServerId => Str
 
-  This property is a unique system assigned identifier for the SFTP
+  This property is a unique system-assigned identifier for the SFTP
 server that you instantiate.
 
 
@@ -112,7 +113,7 @@ value of C<ONLINE> indicates that the server can accept jobs and
 transfer files. A C<State> value of C<OFFLINE> means that the server
 cannot perform file transfer operations.
 
-The states of C<STARTING> and C<STOPPING> indicated that the server is
+The states of C<STARTING> and C<STOPPING> indicate that the server is
 in an intermediate state, either not fully able to respond, or not
 fully offline. The values of C<START_FAILED> or C<STOP_FAILED> can
 indicate an error condition.

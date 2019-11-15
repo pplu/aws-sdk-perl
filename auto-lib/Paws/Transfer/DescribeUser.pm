@@ -56,8 +56,8 @@ user assigned.
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user assigned to one or more servers. User names are
-part of the sign-in credentials to use the AWS Transfer service and
-perform file transfer tasks.
+part of the sign-in credentials to use the AWS Transfer for SFTP
+service and perform file transfer tasks.
 
 
 

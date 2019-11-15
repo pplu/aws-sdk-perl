@@ -57,9 +57,9 @@ accessible over the public internet.
 =head2 IdentityProviderType => Str
 
   The authentication method used to validate a user for the server that
-was specified. listed. This can include Secure Shell (SSH), user name
-and password combinations, or your own custom authentication method.
-Valid values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
+was specified. This can include Secure Shell (SSH), user name and
+password combinations, or your own custom authentication method. Valid
+values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
 
 
 =head2 LoggingRole => Str
@@ -81,7 +81,7 @@ that was described. A value of C<ONLINE>E<gt> indicates that the server
 can accept jobs and transfer files. A C<State> value of C<OFFLINE>
 means that the server cannot perform file transfer operations.
 
-The states of C<STARTING> and C<STOPPING> indicated that the server is
+The states of C<STARTING> and C<STOPPING> indicate that the server is
 in an intermediate state, either not fully able to respond, or not
 fully offline. The values of C<START_FAILED> or C<STOP_FAILED> can
 indicate an error condition.

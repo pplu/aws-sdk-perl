@@ -25,7 +25,7 @@ This value is the ARN you specified to list the tags of.
 
 When you can get additional results from the C<ListTagsForResource>
 call, a C<NextToken> parameter is returned in the output. You can then
-pass in a subsequent command the C<NextToken> parameter to continue
+pass in a subsequent command to the C<NextToken> parameter to continue
 listing additional tags.
 
 
@@ -33,7 +33,7 @@ listing additional tags.
 
 Key-value pairs that are assigned to a resource, usually for the
 purpose of grouping and searching for items. Tags are metadata that you
-define that you can use for any purpose.
+define.
 
 
 =head2 _request_id => Str

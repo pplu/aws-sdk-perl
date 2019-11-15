@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::I
 =head1 DESCRIPTION
 
 Returns information related to the type of user authentication that is
-in use for a server's users. A server can only have one method of
+in use for a server's users. A server can have only one method of
 authentication.
 
 =head1 ATTRIBUTES
@@ -41,14 +41,14 @@ authentication.
 
 =head2 InvocationRole => Str
 
-  The C<Role> parameter provides the type of C<InvocationRole> used to
-authenticate the user account.
+  The C<InvocationRole> parameter provides the type of C<InvocationRole>
+used to authenticate the user account.
 
 
 =head2 Url => Str
 
-  The C<IdentityProviderDetail> parameter contains the location of the
-service endpoint used to authenticate users.
+  The C<Url> parameter provides contains the location of the service
+endpoint used to authenticate users.
 
 
 
