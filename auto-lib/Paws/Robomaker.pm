@@ -539,13 +539,13 @@ Creates a version of a robot application.
 
 =item Name => Str
 
-=item RenderingEngine => L<Paws::Robomaker::RenderingEngine>
-
 =item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
 =item SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
 
 =item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
+
+=item [RenderingEngine => L<Paws::Robomaker::RenderingEngine>]
 
 =item [Tags => L<Paws::Robomaker::TagMap>]
 
@@ -587,7 +587,11 @@ Creates a simulation application with a specific revision id.
 
 =item [ClientRequestToken => Str]
 
+=item [DataSources => ArrayRef[L<Paws::Robomaker::DataSourceConfig>]]
+
 =item [FailureBehavior => Str]
+
+=item [LoggingConfig => L<Paws::Robomaker::LoggingConfig>]
 
 =item [OutputLocation => L<Paws::Robomaker::OutputLocation>]
 
@@ -1073,8 +1077,6 @@ Updates a robot application.
 
 =item Application => Str
 
-=item RenderingEngine => L<Paws::Robomaker::RenderingEngine>
-
 =item RobotSoftwareSuite => L<Paws::Robomaker::RobotSoftwareSuite>
 
 =item SimulationSoftwareSuite => L<Paws::Robomaker::SimulationSoftwareSuite>
@@ -1082,6 +1084,8 @@ Updates a robot application.
 =item Sources => ArrayRef[L<Paws::Robomaker::SourceConfig>]
 
 =item [CurrentRevisionId => Str]
+
+=item [RenderingEngine => L<Paws::Robomaker::RenderingEngine>]
 
 
 =back

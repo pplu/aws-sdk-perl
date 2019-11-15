@@ -1,6 +1,7 @@
 package Paws::Robomaker::SimulationJobSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has DataSourceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dataSourceNames', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RobotApplicationNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'robotApplicationNames', traits => ['NameInRequest']);
@@ -44,6 +45,11 @@ Summary information for a simulation job.
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the simulation job.
+
+
+=head2 DataSourceNames => ArrayRef[Str|Undef]
+
+  The names of the data sources.
 
 
 =head2 LastUpdatedAt => Str

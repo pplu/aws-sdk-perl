@@ -2,8 +2,10 @@
 package Paws::Robomaker::CreateSimulationJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DataSourceConfig]', traits => ['NameInRequest'], request_name => 'dataSources');
   has FailureBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureBehavior');
   has IamRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamRole', required => 1);
+  has LoggingConfig => (is => 'ro', isa => 'Paws::Robomaker::LoggingConfig', traits => ['NameInRequest'], request_name => 'loggingConfig');
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxJobDurationInSeconds', required => 1);
   has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', traits => ['NameInRequest'], request_name => 'outputLocation');
   has RobotApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationConfig]', traits => ['NameInRequest'], request_name => 'robotApplications');
@@ -40,10 +42,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IamRole                 => 'MyIamRole',
       MaxJobDurationInSeconds => 1,
       ClientRequestToken      => 'MyClientRequestToken',    # OPTIONAL
-      FailureBehavior         => 'Fail',                    # OPTIONAL
-      OutputLocation          => {
-        S3Bucket => 'MyS3Bucket',    # min: 3, max: 63; OPTIONAL
-        S3Prefix => 'MyS3Key',       # min: 1, max: 1024; OPTIONAL
+      DataSources             => [
+        {
+          Name     => 'MyName',                             # min: 1, max: 255
+          S3Bucket => 'MyS3Bucket',                         # min: 3, max: 63
+          S3Keys   => [
+            'MyS3Key', ...                                  # min: 1, max: 1024
+          ],                                                # min: 1, max: 100
+
+        },
+        ...
+      ],                                                    # OPTIONAL
+      FailureBehavior => 'Fail',                            # OPTIONAL
+      LoggingConfig   => {
+        RecordAllRosTopics => 1,
+
+      },                                                    # OPTIONAL
+      OutputLocation => {
+        S3Bucket => 'MyS3Bucket',                           # min: 3, max: 63
+        S3Prefix => 'MyS3Key',                              # min: 1, max: 1024
       },    # OPTIONAL
       RobotApplications => [
         {
@@ -55,6 +72,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyEnvironmentVariableKey' => 'MyEnvironmentVariableValue'
               ,    # key: min: 1, max: 1024, value: min: 1, max: 1024
             },    # max: 16; OPTIONAL
+            PortForwardingConfig => {
+              PortMappings => [
+                {
+                  ApplicationPort  => 1,    # min: 1024, max: 65535
+                  JobPort          => 1,    # min: 1, max: 65535
+                  EnableOnPublicIp => 1,    # OPTIONAL
+                },
+                ...
+              ],                            # max: 10; OPTIONAL
+            },    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
         },
@@ -70,6 +97,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyEnvironmentVariableKey' => 'MyEnvironmentVariableValue'
               ,    # key: min: 1, max: 1024, value: min: 1, max: 1024
             },    # max: 16; OPTIONAL
+            PortForwardingConfig => {
+              PortMappings => [
+                {
+                  ApplicationPort  => 1,    # min: 1024, max: 65535
+                  JobPort          => 1,    # min: 1, max: 65535
+                  EnableOnPublicIp => 1,    # OPTIONAL
+                },
+                ...
+              ],                            # max: 10; OPTIONAL
+            },    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
         },
@@ -79,20 +116,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       VpcConfig => {
-        Subnets        => [ 'MyGenericString', ... ], # min: 1, max: 16
-        AssignPublicIp => 1,                          # OPTIONAL
-        SecurityGroups => [ 'MyGenericString', ... ], # min: 1, max: 5; OPTIONAL
+        Subnets => [
+          'MyNonEmptyString', ...    # min: 1
+        ],                           # min: 1, max: 16
+        AssignPublicIp => 1,         # OPTIONAL
+        SecurityGroups => [
+          'MyNonEmptyString', ...    # min: 1
+        ],                           # min: 1, max: 5; OPTIONAL
       },    # OPTIONAL
     );
 
     # Results:
     my $Arn                = $CreateSimulationJobResponse->Arn;
     my $ClientRequestToken = $CreateSimulationJobResponse->ClientRequestToken;
+    my $DataSources        = $CreateSimulationJobResponse->DataSources;
     my $FailureBehavior    = $CreateSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $CreateSimulationJobResponse->FailureCode;
     my $IamRole            = $CreateSimulationJobResponse->IamRole;
     my $LastStartedAt      = $CreateSimulationJobResponse->LastStartedAt;
     my $LastUpdatedAt      = $CreateSimulationJobResponse->LastUpdatedAt;
+    my $LoggingConfig      = $CreateSimulationJobResponse->LoggingConfig;
     my $MaxJobDurationInSeconds =
       $CreateSimulationJobResponse->MaxJobDurationInSeconds;
     my $OutputLocation    = $CreateSimulationJobResponse->OutputLocation;
@@ -120,6 +163,15 @@ idempotency of the request.
 
 
 
+=head2 DataSources => ArrayRef[L<Paws::Robomaker::DataSourceConfig>]
+
+The data sources for the simulation job.
+
+There is a limit of 100 files and a combined size of 25GB for all
+C<DataSourceConfig> objects.
+
+
+
 =head2 FailureBehavior => Str
 
 The failure behavior the simulation job.
@@ -144,6 +196,12 @@ Valid values are: C<"Fail">, C<"Continue">
 The IAM role name that allows the simulation instance to call the AWS
 APIs that are specified in its associated policies on your behalf. This
 is how credentials are passed in to your simulation job.
+
+
+
+=head2 LoggingConfig => L<Paws::Robomaker::LoggingConfig>
+
+The logging configuration.
 
 
 

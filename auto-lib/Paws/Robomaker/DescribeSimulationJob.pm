@@ -36,15 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Arn                = $DescribeSimulationJobResponse->Arn;
     my $ClientRequestToken = $DescribeSimulationJobResponse->ClientRequestToken;
+    my $DataSources        = $DescribeSimulationJobResponse->DataSources;
     my $FailureBehavior    = $DescribeSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $DescribeSimulationJobResponse->FailureCode;
     my $FailureReason      = $DescribeSimulationJobResponse->FailureReason;
     my $IamRole            = $DescribeSimulationJobResponse->IamRole;
     my $LastStartedAt      = $DescribeSimulationJobResponse->LastStartedAt;
     my $LastUpdatedAt      = $DescribeSimulationJobResponse->LastUpdatedAt;
+    my $LoggingConfig      = $DescribeSimulationJobResponse->LoggingConfig;
     my $MaxJobDurationInSeconds =
       $DescribeSimulationJobResponse->MaxJobDurationInSeconds;
     my $Name              = $DescribeSimulationJobResponse->Name;
+    my $NetworkInterface  = $DescribeSimulationJobResponse->NetworkInterface;
     my $OutputLocation    = $DescribeSimulationJobResponse->OutputLocation;
     my $RobotApplications = $DescribeSimulationJobResponse->RobotApplications;
     my $SimulationApplications =

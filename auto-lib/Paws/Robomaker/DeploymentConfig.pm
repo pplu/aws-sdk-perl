@@ -1,7 +1,9 @@
 package Paws::Robomaker::DeploymentConfig;
   use Moose;
   has ConcurrentDeploymentPercentage => (is => 'ro', isa => 'Int', request_name => 'concurrentDeploymentPercentage', traits => ['NameInRequest']);
+  has DownloadConditionFile => (is => 'ro', isa => 'Paws::Robomaker::S3Object', request_name => 'downloadConditionFile', traits => ['NameInRequest']);
   has FailureThresholdPercentage => (is => 'ro', isa => 'Int', request_name => 'failureThresholdPercentage', traits => ['NameInRequest']);
+  has RobotDeploymentTimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'robotDeploymentTimeoutInSeconds', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Robomaker::DeploymentConfig object:
 
-  $service_obj->Method(Att1 => { ConcurrentDeploymentPercentage => $value, ..., FailureThresholdPercentage => $value  });
+  $service_obj->Method(Att1 => { ConcurrentDeploymentPercentage => $value, ..., RobotDeploymentTimeoutInSeconds => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,10 +44,22 @@ Information about a deployment configuration.
   The percentage of robots receiving the deployment at the same time.
 
 
+=head2 DownloadConditionFile => L<Paws::Robomaker::S3Object>
+
+  The download condition file.
+
+
 =head2 FailureThresholdPercentage => Int
 
   The percentage of deployments that need to fail before stopping
 deployment.
+
+
+=head2 RobotDeploymentTimeoutInSeconds => Int
+
+  The amount of time, in seconds, to wait for deployment to a single
+robot to complete. Choose a time between 1 minute and 7 days. The
+default is 5 hours.
 
 
 

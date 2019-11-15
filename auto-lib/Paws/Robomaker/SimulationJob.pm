@@ -2,14 +2,17 @@ package Paws::Robomaker::SimulationJob;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
+  has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DataSource]', request_name => 'dataSources', traits => ['NameInRequest']);
   has FailureBehavior => (is => 'ro', isa => 'Str', request_name => 'failureBehavior', traits => ['NameInRequest']);
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has IamRole => (is => 'ro', isa => 'Str', request_name => 'iamRole', traits => ['NameInRequest']);
   has LastStartedAt => (is => 'ro', isa => 'Str', request_name => 'lastStartedAt', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
+  has LoggingConfig => (is => 'ro', isa => 'Paws::Robomaker::LoggingConfig', request_name => 'loggingConfig', traits => ['NameInRequest']);
   has MaxJobDurationInSeconds => (is => 'ro', isa => 'Int', request_name => 'maxJobDurationInSeconds', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has NetworkInterface => (is => 'ro', isa => 'Paws::Robomaker::NetworkInterface', request_name => 'networkInterface', traits => ['NameInRequest']);
   has OutputLocation => (is => 'ro', isa => 'Paws::Robomaker::OutputLocation', request_name => 'outputLocation', traits => ['NameInRequest']);
   has RobotApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::RobotApplicationConfig]', request_name => 'robotApplications', traits => ['NameInRequest']);
   has SimulationApplications => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SimulationApplicationConfig]', request_name => 'simulationApplications', traits => ['NameInRequest']);
@@ -62,6 +65,11 @@ Information about a simulation job.
   A unique identifier for this C<SimulationJob> request.
 
 
+=head2 DataSources => ArrayRef[L<Paws::Robomaker::DataSource>]
+
+  The data sources for the simulation job.
+
+
 =head2 FailureBehavior => Str
 
   The failure behavior the simulation job.
@@ -109,6 +117,11 @@ last started.
 last updated.
 
 
+=head2 LoggingConfig => L<Paws::Robomaker::LoggingConfig>
+
+  The logging configuration.
+
+
 =head2 MaxJobDurationInSeconds => Int
 
   The maximum simulation job duration in seconds. The value must be 8
@@ -118,6 +131,11 @@ days (691,200 seconds) or less.
 =head2 Name => Str
 
   The name of the simulation job.
+
+
+=head2 NetworkInterface => L<Paws::Robomaker::NetworkInterface>
+
+  Information about a network interface.
 
 
 =head2 OutputLocation => L<Paws::Robomaker::OutputLocation>

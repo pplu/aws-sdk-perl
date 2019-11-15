@@ -2,7 +2,7 @@
 package Paws::Robomaker::CreateSimulationApplication;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RenderingEngine => (is => 'ro', isa => 'Paws::Robomaker::RenderingEngine', traits => ['NameInRequest'], request_name => 'renderingEngine', required => 1);
+  has RenderingEngine => (is => 'ro', isa => 'Paws::Robomaker::RenderingEngine', traits => ['NameInRequest'], request_name => 'renderingEngine');
   has RobotSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::RobotSoftwareSuite', traits => ['NameInRequest'], request_name => 'robotSoftwareSuite', required => 1);
   has SimulationSoftwareSuite => (is => 'ro', isa => 'Paws::Robomaker::SimulationSoftwareSuite', traits => ['NameInRequest'], request_name => 'simulationSoftwareSuite', required => 1);
   has Sources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::SourceConfig]', traits => ['NameInRequest'], request_name => 'sources', required => 1);
@@ -35,17 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $robomaker = Paws->service('Robomaker');
     my $CreateSimulationApplicationResponse =
       $robomaker->CreateSimulationApplication(
-      Name            => 'MyName',
-      RenderingEngine => {
-        Name    => 'OGRE',                            # values: OGRE; OPTIONAL
-        Version => 'MyRenderingEngineVersionType',    # OPTIONAL
-      },
+      Name               => 'MyName',
       RobotSoftwareSuite => {
-        Name    => 'ROS',        # values: ROS; OPTIONAL
-        Version => 'Kinetic',    # values: Kinetic; OPTIONAL
+        Name    => 'ROS',        # values: ROS, ROS2; OPTIONAL
+        Version => 'Kinetic',    # values: Kinetic, Melodic, Dashing; OPTIONAL
       },
       SimulationSoftwareSuite => {
-        Name => 'Gazebo',        # values: Gazebo; OPTIONAL
+        Name => 'Gazebo',        # values: Gazebo, RosbagPlay; OPTIONAL
         Version => 'MySimulationSoftwareSuiteVersionType',    # OPTIONAL
       },
       Sources => [
@@ -56,8 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
+      RenderingEngine => {
+        Name    => 'OGRE',                            # values: OGRE; OPTIONAL
+        Version => 'MyRenderingEngineVersionType',    # OPTIONAL
+      },    # OPTIONAL
       Tags => {
-        'MyTagKey' => 'MyTagValue',     # key: min: 1, max: 128, value: max: 256
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       );
 
@@ -89,7 +89,7 @@ The name of the simulation application.
 
 
 
-=head2 B<REQUIRED> RenderingEngine => L<Paws::Robomaker::RenderingEngine>
+=head2 RenderingEngine => L<Paws::Robomaker::RenderingEngine>
 
 The rendering engine for the simulation application.
 

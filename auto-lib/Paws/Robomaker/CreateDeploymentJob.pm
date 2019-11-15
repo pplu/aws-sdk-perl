@@ -55,7 +55,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Fleet            => 'MyArn',
       DeploymentConfig => {
         ConcurrentDeploymentPercentage => 1,    # min: 1, max: 100; OPTIONAL
-        FailureThresholdPercentage     => 1,    # min: 1, max: 100; OPTIONAL
+        DownloadConditionFile          => {
+          Bucket => 'MyS3Bucket',               # min: 3, max: 63
+          Key    => 'MyS3Key',                  # min: 1, max: 1024
+          Etag   => 'MyS3Etag',                 # OPTIONAL
+        },    # OPTIONAL
+        FailureThresholdPercentage      => 1,    # min: 1, max: 100; OPTIONAL
+        RobotDeploymentTimeoutInSeconds => 1,    # OPTIONAL
       },    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
