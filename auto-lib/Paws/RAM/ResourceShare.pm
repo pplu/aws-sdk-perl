@@ -46,7 +46,7 @@ Describes a resource share.
 
 =head2 AllowExternalPrincipals => Bool
 
-  Indicates whether principals outside your organization can be
+  Indicates whether principals outside your AWS organization can be
 associated with a resource share.
 
 

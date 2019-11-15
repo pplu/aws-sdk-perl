@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ram
 
 =head2 AllowExternalPrincipals => Bool
 
-Indicates whether principals outside your organization can be
+Indicates whether principals outside your AWS organization can be
 associated with a resource share.
 
 

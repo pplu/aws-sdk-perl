@@ -1,8 +1,8 @@
 
-package Paws::RAM::GetResourceShareAssociationsResponse;
+package Paws::RAM::ListPendingInvitationResourcesResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
-  has ResourceShareAssociations => (is => 'ro', isa => 'ArrayRef[Paws::RAM::ResourceShareAssociation]', traits => ['NameInRequest'], request_name => 'resourceShareAssociations');
+  has Resources => (is => 'ro', isa => 'ArrayRef[Paws::RAM::Resource]', traits => ['NameInRequest'], request_name => 'resources');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -11,7 +11,7 @@ package Paws::RAM::GetResourceShareAssociationsResponse;
 
 =head1 NAME
 
-Paws::RAM::GetResourceShareAssociationsResponse
+Paws::RAM::ListPendingInvitationResourcesResponse
 
 =head1 ATTRIBUTES
 
@@ -22,9 +22,9 @@ The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
 
 
-=head2 ResourceShareAssociations => ArrayRef[L<Paws::RAM::ResourceShareAssociation>]
+=head2 Resources => ArrayRef[L<Paws::RAM::Resource>]
 
-Information about the associations.
+Information about the resources included the resource share.
 
 
 =head2 _request_id => Str

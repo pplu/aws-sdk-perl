@@ -60,7 +60,9 @@ Describes an invitation to join a resource share.
 
 =head2 ResourceShareAssociations => ArrayRef[L<Paws::RAM::ResourceShareAssociation>]
 
-  The resources associated with the resource share.
+  To view the resources associated with a pending resource share
+invitation, use ListPendingInvitationResources
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_ListPendingInvitationResources.html).
 
 
 =head2 ResourceShareInvitationArn => Str

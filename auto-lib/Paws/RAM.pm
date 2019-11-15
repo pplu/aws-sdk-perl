@@ -64,6 +64,11 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::GetResourceShares', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPendingInvitationResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::ListPendingInvitationResources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPrincipals {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListPrincipals', @_);
@@ -235,7 +240,7 @@ package Paws::RAM;
   }
 
 
-  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare CreateResourceShare DeleteResourceShare DisassociateResourceShare EnableSharingWithAwsOrganization GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPrincipals ListResources RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
+  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare CreateResourceShare DeleteResourceShare DisassociateResourceShare EnableSharingWithAwsOrganization GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPrincipals ListResources RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
 
 1;
 
@@ -266,32 +271,12 @@ Paws::RAM - Perl Interface to AWS AWS Resource Access Manager
 Use AWS Resource Access Manager to share AWS resources between AWS
 accounts. To share a resource, you create a resource share, associate
 the resource with the resource share, and specify the principals that
-can access the resource. The following principals are supported:
+can access the resources associated with the resource share. The
+following principals are supported: AWS accounts, organizational units
+(OU) from AWS Organizations, and organizations from AWS Organizations.
 
-=over
-
-=item *
-
-The ID of an AWS account
-
-=item *
-
-The Amazon Resource Name (ARN) of an OU from AWS Organizations
-
-=item *
-
-The Amazon Resource Name (ARN) of an organization from AWS
-Organizations
-
-=back
-
-If you specify an AWS account that doesn't exist in the same
-organization as the account that owns the resource share, the owner of
-the specified account receives an invitation to accept the resource
-share. After the owner accepts the invitation, they can access the
-resources in the resource share. An administrator of the specified
-account can use IAM policies to restrict access resources in the
-resource share.
+For more information, see the AWS Resource Access Manager User Guide
+(https://docs.aws.amazon.com/ram/latest/userguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ram-2018-01-04>
 
@@ -417,7 +402,9 @@ Each argument is described in detail in: L<Paws::RAM::EnableSharingWithAwsOrgani
 
 Returns: a L<Paws::RAM::EnableSharingWithAwsOrganizationResponse> instance
 
-Enables resource sharing within your organization.
+Enables resource sharing within your AWS Organization.
+
+The caller must be the master account for the AWS Organization.
 
 
 =head2 GetResourcePolicies
@@ -439,7 +426,8 @@ Each argument is described in detail in: L<Paws::RAM::GetResourcePolicies>
 
 Returns: a L<Paws::RAM::GetResourcePoliciesResponse> instance
 
-Gets the policies for the specifies resources.
+Gets the policies for the specified resources that you own and have
+shared.
 
 
 =head2 GetResourceShareAssociations
@@ -467,7 +455,7 @@ Each argument is described in detail in: L<Paws::RAM::GetResourceShareAssociatio
 
 Returns: a L<Paws::RAM::GetResourceShareAssociationsResponse> instance
 
-Gets the associations for the specified resource share.
+Gets the resources or principals for the resource shares that you own.
 
 
 =head2 GetResourceShareInvitations
@@ -489,7 +477,7 @@ Each argument is described in detail in: L<Paws::RAM::GetResourceShareInvitation
 
 Returns: a L<Paws::RAM::GetResourceShareInvitationsResponse> instance
 
-Gets the specified invitations for resource sharing.
+Gets the invitations for resource sharing that you've received.
 
 
 =head2 GetResourceShares
@@ -517,7 +505,29 @@ Each argument is described in detail in: L<Paws::RAM::GetResourceShares>
 
 Returns: a L<Paws::RAM::GetResourceSharesResponse> instance
 
-Gets the specified resource shares or all of your resource shares.
+Gets the resource shares that you own or the resource shares that are
+shared with you.
+
+
+=head2 ListPendingInvitationResources
+
+=over
+
+=item ResourceShareInvitationArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::ListPendingInvitationResources>
+
+Returns: a L<Paws::RAM::ListPendingInvitationResourcesResponse> instance
+
+Lists the resources in a resource share that is shared with you but
+that the invitation is still pending for.
 
 
 =head2 ListPrincipals
@@ -545,7 +555,8 @@ Each argument is described in detail in: L<Paws::RAM::ListPrincipals>
 
 Returns: a L<Paws::RAM::ListPrincipalsResponse> instance
 
-Lists the principals with access to the specified resource.
+Lists the principals that you have shared resources with or the
+principals that have shared resources with you.
 
 
 =head2 ListResources
@@ -573,7 +584,8 @@ Each argument is described in detail in: L<Paws::RAM::ListResources>
 
 Returns: a L<Paws::RAM::ListResourcesResponse> instance
 
-Lists the resources that the specified principal can access.
+Lists the resources that you added to a resource shares or the
+resources that are shared with you.
 
 
 =head2 RejectResourceShareInvitation
@@ -609,7 +621,7 @@ Each argument is described in detail in: L<Paws::RAM::TagResource>
 
 Returns: a L<Paws::RAM::TagResourceResponse> instance
 
-Adds the specified tags to the specified resource share.
+Adds the specified tags to the specified resource share that you own.
 
 
 =head2 UntagResource
@@ -627,7 +639,8 @@ Each argument is described in detail in: L<Paws::RAM::UntagResource>
 
 Returns: a L<Paws::RAM::UntagResourceResponse> instance
 
-Removes the specified tags from the specified resource share.
+Removes the specified tags from the specified resource share that you
+own.
 
 
 =head2 UpdateResourceShare
@@ -649,7 +662,7 @@ Each argument is described in detail in: L<Paws::RAM::UpdateResourceShare>
 
 Returns: a L<Paws::RAM::UpdateResourceShareResponse> instance
 
-Updates the specified resource share.
+Updates the specified resource share that you own.
 
 
 

@@ -47,8 +47,8 @@ Describes a principal for use with AWS Resource Access Manager.
 
 =head2 External => Bool
 
-  Indicates whether the principal belongs to the same organization as the
-AWS account that owns the resource share.
+  Indicates whether the principal belongs to the same AWS organization as
+the AWS account that owns the resource share.
 
 
 =head2 Id => Str

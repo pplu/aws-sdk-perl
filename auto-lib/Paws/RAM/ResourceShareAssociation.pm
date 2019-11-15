@@ -6,6 +6,7 @@ package Paws::RAM::ResourceShareAssociation;
   has External => (is => 'ro', isa => 'Bool', request_name => 'external', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
   has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
+  has ResourceShareName => (is => 'ro', isa => 'Str', request_name => 'resourceShareName', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusMessage => (is => 'ro', isa => 'Str', request_name => 'statusMessage', traits => ['NameInRequest']);
 1;
@@ -62,8 +63,8 @@ account or the ARN of an OU or organization from AWS Organizations.
 
 =head2 External => Bool
 
-  Indicates whether the principal belongs to the same organization as the
-AWS account that owns the resource share.
+  Indicates whether the principal belongs to the same AWS organization as
+the AWS account that owns the resource share.
 
 
 =head2 LastUpdatedTime => Str
@@ -74,6 +75,11 @@ AWS account that owns the resource share.
 =head2 ResourceShareArn => Str
 
   The Amazon Resource Name (ARN) of the resource share.
+
+
+=head2 ResourceShareName => Str
+
+  The name of the resource share.
 
 
 =head2 Status => Str

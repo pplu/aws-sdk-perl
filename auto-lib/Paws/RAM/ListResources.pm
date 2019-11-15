@@ -98,6 +98,9 @@ The Amazon Resource Names (ARN) of the resource shares.
 
 The resource type.
 
+Valid values: C<route53resolver:ResolverRule> | C<ec2:TransitGateway> |
+C<ec2:Subnet> | C<license-manager:LicenseConfiguration>
+
 
 
 
