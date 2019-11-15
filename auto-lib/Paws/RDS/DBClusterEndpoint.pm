@@ -26,7 +26,8 @@ Paws::RDS::DBClusterEndpoint
 
 =head2 CustomEndpointType => Str
 
-The type associated with a custom endpoint. One of: C<READER>, C<ANY>.
+The type associated with a custom endpoint. One of: C<READER>,
+C<WRITER>, C<ANY>.
 
 
 =head2 DBClusterEndpointArn => Str

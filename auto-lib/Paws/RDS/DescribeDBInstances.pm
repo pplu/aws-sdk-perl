@@ -82,6 +82,23 @@ C<db-instance-id> - Accepts DB instance identifiers and DB instance
 Amazon Resource Names (ARNs). The results list will only include
 information about the DB instances identified by these ARNs.
 
+=item *
+
+C<dbi-resource-id> - Accepts DB instance resource identifiers. The
+results list will only include information about the DB instances
+identified by these DB instance resource identifiers.
+
+=item *
+
+C<domain> - Accepts Active Directory directory IDs. The results list
+will only include information about the DB instances associated with
+these domains.
+
+=item *
+
+C<engine> - Accepts engine names. The results list will only include
+information about the DB instances for these engines.
+
 =back
 
 
@@ -100,8 +117,8 @@ specified by C<MaxRecords>.
 
 The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
-token called a marker is included in the response so that the remaining
-results can be retrieved.
+token called a marker is included in the response so that you can
+retrieve the remaining results.
 
 Default: 100
 

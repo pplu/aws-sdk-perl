@@ -200,8 +200,8 @@ classes, and availability for your engine, see DB Instance Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
-Importing from Amazon S3 is not supported on the db.t2.micro DB
-instance class.
+Importing from Amazon S3 isn't supported on the db.t2.micro DB instance
+class.
 
 
 
@@ -242,8 +242,9 @@ Follow the naming rules specified in C<CreateDBInstance>.
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to associate with this DB instance.
-If this argument is omitted, the default parameter group for the
-specified engine is used.
+
+If you do not specify a value for C<DBParameterGroupName>, then the
+default C<DBParameterGroup> for the specified DB engine is used.
 
 
 
@@ -286,7 +287,13 @@ in the I<Amazon RDS User Guide>.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines,
+see CreateDBInstance.
+
+For more information about IAM database authentication, see IAM
+Database Authentication for MySQL and PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -321,7 +328,7 @@ versions, see C<CreateDBInstance>, or call C<DescribeDBEngineVersions>.
 
 The amount of Provisioned IOPS (input/output operations per second) to
 allocate initially for the DB instance. For information about valid
-Iops values, see see Amazon RDS Provisioned IOPS Storage to Improve
+Iops values, see Amazon RDS Provisioned IOPS Storage to Improve
 Performance
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS)
 in the I<Amazon RDS User Guide.>
@@ -545,7 +552,7 @@ instance class of the DB instance.
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address. For more information, see CreateDBInstance.
 

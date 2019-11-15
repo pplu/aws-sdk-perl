@@ -154,7 +154,7 @@ snapshots of the DB cluster. The default is not to copy them.
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The DB cluster identifier for the cluster being modified. This
-parameter is not case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints: This identifier must match the identifier of an existing
 DB cluster.
@@ -229,6 +229,10 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
+
 
 
 =head2 EngineVersion => Str
@@ -238,7 +242,23 @@ Changing this parameter results in an outage. The change is applied
 during the next maintenance window unless C<ApplyImmediately> is
 enabled.
 
-For a list of valid engine versions, use DescribeDBEngineVersions.
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query "DBEngineVersions[].EngineVersion">
 
 
 

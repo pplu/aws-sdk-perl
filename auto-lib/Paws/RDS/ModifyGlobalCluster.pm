@@ -57,7 +57,7 @@ protection is enabled.
 =head2 GlobalClusterIdentifier => Str
 
 The DB cluster identifier for the global cluster being modified. This
-parameter is not case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 

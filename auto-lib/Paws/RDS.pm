@@ -92,6 +92,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyOptionGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCustomAvailabilityZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CreateCustomAvailabilityZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateDBCluster', @_);
@@ -157,6 +162,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::CreateOptionGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCustomAvailabilityZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteCustomAvailabilityZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteDBCluster', @_);
@@ -217,6 +227,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DeleteInstallationMedia', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteOptionGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DeleteOptionGroup', @_);
@@ -230,6 +245,11 @@ package Paws::RDS;
   sub DescribeCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCustomAvailabilityZones {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeCustomAvailabilityZones', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterBacktracks {
@@ -347,6 +367,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeGlobalClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeInstallationMedia', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOptionGroupOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeOptionGroupOptions', @_);
@@ -395,6 +420,11 @@ package Paws::RDS;
   sub FailoverDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::FailoverDBCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportInstallationMedia {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ImportInstallationMedia', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -607,6 +637,29 @@ package Paws::RDS;
         $result = $self->DescribeCertificates(@_, Marker => $result->Marker);
       }
       $callback->($_ => 'Certificates') foreach (@{ $result->Certificates });
+    }
+
+    return undef
+  }
+  sub DescribeAllCustomAvailabilityZones {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCustomAvailabilityZones(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeCustomAvailabilityZones(@_, Marker => $next_result->Marker);
+        push @{ $result->CustomAvailabilityZones }, @{ $next_result->CustomAvailabilityZones };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'CustomAvailabilityZones') foreach (@{ $result->CustomAvailabilityZones });
+        $result = $self->DescribeCustomAvailabilityZones(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'CustomAvailabilityZones') foreach (@{ $result->CustomAvailabilityZones });
     }
 
     return undef
@@ -1071,6 +1124,29 @@ package Paws::RDS;
 
     return undef
   }
+  sub DescribeAllInstallationMedia {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstallationMedia(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeInstallationMedia(@_, Marker => $next_result->Marker);
+        push @{ $result->InstallationMedia }, @{ $next_result->InstallationMedia };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'InstallationMedia') foreach (@{ $result->InstallationMedia });
+        $result = $self->DescribeInstallationMedia(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'InstallationMedia') foreach (@{ $result->InstallationMedia });
+    }
+
+    return undef
+  }
   sub DescribeAllOptionGroupOptions {
     my $self = shift;
 
@@ -1257,7 +1333,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StopActivityStream StopDBCluster StopDBInstance / }
+  sub operations { qw/AddRoleToDBCluster AddRoleToDBInstance AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress BacktrackDBCluster CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateCustomAvailabilityZone CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster CreateOptionGroup DeleteCustomAvailabilityZone DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBInstanceAutomatedBackup DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DeleteInstallationMedia DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeCustomAvailabilityZones DescribeDBClusterBacktracks DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstanceAutomatedBackups DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeInstallationMedia DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DescribeSourceRegions DescribeValidDBInstanceModifications DownloadDBLogFilePortion FailoverDBCluster ImportInstallationMedia ListTagsForResource ModifyCurrentDBClusterCapacity ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshot ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveFromGlobalCluster RemoveRoleFromDBCluster RemoveRoleFromDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromS3 RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceFromS3 RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress StartActivityStream StartDBCluster StartDBInstance StopActivityStream StopDBCluster StopDBInstance / }
 
 1;
 
@@ -1289,7 +1365,7 @@ Amazon Relational Database Service
 
 Amazon Relational Database Service (Amazon RDS) is a web service that
 makes it easier to set up, operate, and scale a relational database in
-the cloud. It provides cost-efficient, resizable capacity for an
+the cloud. It provides cost-efficient, resizeable capacity for an
 industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
@@ -1662,6 +1738,12 @@ Authenticating Requests: Using Query Parameters (AWS Signature Version
 and Signature Version 4 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
+If you are using an AWS SDK tool or the AWS CLI, you can specify
+C<SourceRegion> (or C<--source-region> for the AWS CLI) instead of
+specifying C<PreSignedUrl> manually. Specifying C<SourceRegion>
+autogenerates a pre-signed URL that is a valid request for the
+operation that can be executed in the source AWS Region.
+
 =item *
 
 C<TargetDBClusterSnapshotIdentifier> - The identifier for the new copy
@@ -1774,6 +1856,35 @@ Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
 Copies the specified option group.
 
 
+=head2 CreateCustomAvailabilityZone
+
+=over
+
+=item CustomAvailabilityZoneName => Str
+
+=item [ExistingVpnId => Str]
+
+=item [NewVpnTunnelName => Str]
+
+=item [VpnTunnelOriginatorIP => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::CreateCustomAvailabilityZone>
+
+Returns: a L<Paws::RDS::CreateCustomAvailabilityZoneResult> instance
+
+Creates a custom Availability Zone (AZ).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+
+
 =head2 CreateDBCluster
 
 =over
@@ -1801,6 +1912,8 @@ Copies the specified option group.
 =item [DeletionProtection => Bool]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
+
+=item [EnableHttpEndpoint => Bool]
 
 =item [EnableIAMDatabaseAuthentication => Bool]
 
@@ -2086,9 +2199,15 @@ Creates a new DB instance.
 
 =item [DBInstanceClass => Str]
 
+=item [DBParameterGroupName => Str]
+
 =item [DBSubnetGroupName => Str]
 
 =item [DeletionProtection => Bool]
+
+=item [Domain => Str]
+
+=item [DomainIAMRoleName => Str]
 
 =item [EnableCloudwatchLogsExports => ArrayRef[Str|Undef]]
 
@@ -2378,6 +2497,29 @@ Returns: a L<Paws::RDS::CreateOptionGroupResult> instance
 Creates a new option group. You can create up to 20 option groups.
 
 
+=head2 DeleteCustomAvailabilityZone
+
+=over
+
+=item CustomAvailabilityZoneId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteCustomAvailabilityZone>
+
+Returns: a L<Paws::RDS::DeleteCustomAvailabilityZoneResult> instance
+
+Deletes a custom Availability Zone (AZ).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
+
+
 =head2 DeleteDBCluster
 
 =over
@@ -2658,6 +2800,23 @@ must already be detached or destroyed first.
 This action only applies to Aurora DB clusters.
 
 
+=head2 DeleteInstallationMedia
+
+=over
+
+=item InstallationMediaId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DeleteInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMedia> instance
+
+Deletes the installation medium for a DB engine that requires an
+on-premises customer provided license, such as Microsoft SQL Server.
+
+
 =head2 DeleteOptionGroup
 
 =over
@@ -2714,6 +2873,35 @@ Returns: a L<Paws::RDS::CertificateMessage> instance
 
 Lists the set of CA certificates provided by Amazon RDS for this AWS
 account.
+
+
+=head2 DescribeCustomAvailabilityZones
+
+=over
+
+=item [CustomAvailabilityZoneId => Str]
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeCustomAvailabilityZones>
+
+Returns: a L<Paws::RDS::CustomAvailabilityZoneMessage> instance
+
+Returns information about custom Availability Zones (AZs).
+
+A custom AZ is an on-premises AZ that is integrated with a VMware
+vSphere cluster.
+
+For more information about RDS on VMware, see the I<RDS on VMware User
+Guide.>
+(https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html)
 
 
 =head2 DescribeDBClusterBacktracks
@@ -3373,6 +3561,30 @@ in the I<Amazon Aurora User Guide.>
 This action only applies to Aurora DB clusters.
 
 
+=head2 DescribeInstallationMedia
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [InstallationMediaId => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::DescribeInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMediaMessage> instance
+
+Describes the available installation media for a DB engine that
+requires an on-premises customer provided license, such as Microsoft
+SQL Server.
+
+
 =head2 DescribeOptionGroupOptions
 
 =over
@@ -3486,6 +3698,8 @@ least one pending maintenance action.
 =item [Duration => Str]
 
 =item [Filters => ArrayRef[L<Paws::RDS::Filter>]]
+
+=item [LeaseId => Str]
 
 =item [Marker => Str]
 
@@ -3642,6 +3856,31 @@ For more information on Amazon Aurora, see What Is Amazon Aurora?
 in the I<Amazon Aurora User Guide.>
 
 This action only applies to Aurora DB clusters.
+
+
+=head2 ImportInstallationMedia
+
+=over
+
+=item CustomAvailabilityZoneId => Str
+
+=item Engine => Str
+
+=item EngineInstallationMediaPath => Str
+
+=item EngineVersion => Str
+
+=item OSInstallationMediaPath => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RDS::ImportInstallationMedia>
+
+Returns: a L<Paws::RDS::InstallationMedia> instance
+
+Imports the installation media for a DB engine that requires an
+on-premises customer provided license, such as SQL Server.
 
 
 =head2 ListTagsForResource
@@ -4612,8 +4851,8 @@ security group.
 
 If a DB cluster snapshot is specified, the target DB cluster is created
 from the source DB cluster restore point with the same configuration as
-the original source DB cluster, except that the new DB cluster is
-created with the default security group.
+the original source DB cluster. If you don't specify a security group,
+the new DB cluster is associated with the default security group.
 
 For more information on Amazon Aurora, see What Is Amazon Aurora?
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -5178,6 +5417,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::CertificateMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllCustomAvailabilityZones(sub { },[CustomAvailabilityZoneId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllCustomAvailabilityZones([CustomAvailabilityZoneId => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CustomAvailabilityZones, passing the object as the first parameter, and the string 'CustomAvailabilityZones' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::CustomAvailabilityZoneMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllDBClusterBacktracks(sub { },DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllDBClusterBacktracks(DBClusterIdentifier => Str, [BacktrackIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -5418,6 +5669,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllInstallationMedia(sub { },[Filters => ArrayRef[L<Paws::RDS::Filter>], InstallationMediaId => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllInstallationMedia([Filters => ArrayRef[L<Paws::RDS::Filter>], InstallationMediaId => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstallationMedia, passing the object as the first parameter, and the string 'InstallationMedia' as the second parameter 
+
+If not, it will return a a L<Paws::RDS::InstallationMediaMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllOptionGroupOptions(sub { },EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
 
 =head2 DescribeAllOptionGroupOptions(EngineName => Str, [Filters => ArrayRef[L<Paws::RDS::Filter>], MajorEngineVersion => Str, Marker => Str, MaxRecords => Int])
@@ -5466,9 +5729,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RDS::PendingMaintenanceActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances(sub { },[DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LeaseId => Str, Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
-=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
+=head2 DescribeAllReservedDBInstances([DBInstanceClass => Str, Duration => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], LeaseId => Str, Marker => Str, MaxRecords => Int, MultiAZ => Bool, OfferingType => Str, ProductDescription => Str, ReservedDBInstanceId => Str, ReservedDBInstancesOfferingId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

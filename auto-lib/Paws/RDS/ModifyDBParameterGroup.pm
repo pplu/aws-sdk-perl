@@ -60,7 +60,7 @@ Constraints:
 
 =item *
 
-If supplied, must match the name of an existing DBParameterGroup.
+If supplied, must match the name of an existing C<DBParameterGroup>.
 
 =back
 

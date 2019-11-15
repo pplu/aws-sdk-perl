@@ -54,7 +54,7 @@ Constraints:
 
 =item *
 
-Must match the name of an existing DBParameterGroup.
+Must match the name of an existing C<DBParameterGroup>.
 
 =back
 

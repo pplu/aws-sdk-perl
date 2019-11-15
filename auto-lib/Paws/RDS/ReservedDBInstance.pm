@@ -5,6 +5,7 @@ package Paws::RDS::ReservedDBInstance;
   has DBInstanceCount => (is => 'ro', isa => 'Int');
   has Duration => (is => 'ro', isa => 'Int');
   has FixedPrice => (is => 'ro', isa => 'Num');
+  has LeaseId => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OfferingType => (is => 'ro', isa => 'Str');
   has ProductDescription => (is => 'ro', isa => 'Str');
@@ -75,6 +76,15 @@ C<PurchaseReservedDBInstancesOffering> actions.
 =head2 FixedPrice => Num
 
   The fixed price charged for this reserved DB instance.
+
+
+=head2 LeaseId => Str
+
+  The unique identifier for the lease associated with the reserved DB
+instance.
+
+AWS Support might request the lease ID for an issue related to a
+reserved DB instance.
 
 
 =head2 MultiAZ => Bool

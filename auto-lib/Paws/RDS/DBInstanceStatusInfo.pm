@@ -42,7 +42,7 @@ Provides a list of status information for a DB instance.
 =head2 Message => Str
 
   Details of the error if there is an error for the instance. If the
-instance is not in an error state, this value is blank.
+instance isn't in an error state, this value is blank.
 
 
 =head2 Normal => Bool

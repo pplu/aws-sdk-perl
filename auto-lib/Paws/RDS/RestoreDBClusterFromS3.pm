@@ -256,6 +256,10 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
+
 
 
 =head2 B<REQUIRED> Engine => Str
@@ -270,13 +274,32 @@ Valid Values: C<aurora>, C<aurora-postgresql>
 
 The version number of the database engine to use.
 
+To list all of the available engine versions for C<aurora> (for MySQL
+5.6-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-mysql> (for
+MySQL 5.7-compatible Aurora), use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-mysql --query
+"DBEngineVersions[].EngineVersion">
+
+To list all of the available engine versions for C<aurora-postgresql>,
+use the following command:
+
+C<aws rds describe-db-engine-versions --engine aurora-postgresql
+--query "DBEngineVersions[].EngineVersion">
+
 B<Aurora MySQL>
 
-Example: C<5.6.10a>
+Example: C<5.6.10a>, C<5.6.mysql_aurora.1.19.2>, C<5.7.12>,
+C<5.7.mysql_aurora.2.04.5>
 
 B<Aurora PostgreSQL>
 
-Example: C<9.6.3>
+Example: C<9.6.3>, C<10.7>
 
 
 

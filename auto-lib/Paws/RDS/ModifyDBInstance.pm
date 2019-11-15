@@ -348,7 +348,7 @@ If supplied, must match existing DBSecurityGroups.
 =head2 DBSubnetGroupName => Str
 
 The new DB subnet group for the DB instance. You can use this parameter
-to move your DB instance to a different VPC. If your DB instance is not
+to move your DB instance to a different VPC. If your DB instance isn't
 in a VPC, you can also use this parameter to move your DB instance into
 a VPC. For more information, see Updating the VPC for a DB Instance
 (http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
@@ -377,10 +377,25 @@ information, see Deleting a DB Instance
 
 =head2 Domain => Str
 
-The Active Directory Domain to move the instance to. Specify C<none> to
-remove the instance from its current domain. The domain must be created
-prior to this operation. Currently only a Microsoft SQL Server instance
-can be created in a Active Directory Domain.
+The Active Directory directory ID to move the DB instance to. Specify
+C<none> to remove the instance from its current domain. The domain must
+be created prior to this operation. Currently, only Microsoft SQL
+Server and Oracle DB instances can be created in an Active Directory
+Domain.
+
+For Microsoft SQL Server DB instances, Amazon RDS can use Windows
+Authentication to authenticate users that connect to the DB instance.
+For more information, see Using Windows Authentication with an Amazon
+RDS DB Instance Running Microsoft SQL Server
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
+in the I<Amazon RDS User Guide>.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see Using Kerberos Authentication with Amazon RDS for
+Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -395,31 +410,13 @@ Service.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines,
+see CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-
-B<Amazon Aurora>
-
-Not applicable. Mapping AWS IAM accounts to database accounts is
-managed by the DB cluster. For more information, see
-C<ModifyDBCluster>.
-
-B<MySQL>
-
-=over
-
-=item *
-
-For MySQL 5.6, minor version 5.6.34 or higher
-
-=item *
-
-For MySQL 5.7, minor version 5.7.16 or higher
-
-=back
-
+For more information about IAM database authentication, see IAM
+Database Authentication for MySQL and PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -740,7 +737,7 @@ Valid Values: 0 - 15
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address.
 

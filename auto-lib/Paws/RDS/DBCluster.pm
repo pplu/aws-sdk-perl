@@ -118,7 +118,7 @@ session can handle these events either synchronously or asynchronously.
   For all database engines except Amazon Aurora, C<AllocatedStorage>
 specifies the allocated storage size in gibibytes (GiB). For Aurora,
 C<AllocatedStorage> always returns 1, because Aurora DB cluster storage
-size is not fixed, but instead automatically adjusts as needed.
+size isn't fixed, but instead automatically adjusts as needed.
 
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
@@ -289,7 +289,7 @@ cluster.
 =head2 EngineMode => Str
 
   The DB engine mode of the DB cluster, either C<provisioned>,
-C<serverless>, or C<parallelquery>.
+C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
 
 
 =head2 EngineVersion => Str

@@ -69,7 +69,7 @@ C<DescribeDBEngineVersions>.
 =head2 DefaultCharacterSet => L<Paws::RDS::CharacterSet>
 
   The default character set for new instances of this engine version, if
-the C<CharacterSetName> parameter of the CreateDBInstance API is not
+the C<CharacterSetName> parameter of the CreateDBInstance API isn't
 specified.
 
 

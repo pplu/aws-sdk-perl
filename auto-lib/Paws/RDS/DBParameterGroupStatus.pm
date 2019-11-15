@@ -70,7 +70,7 @@ C<RestoreDBInstanceFromDBSnapshot>
 
 =head2 DBParameterGroupName => Str
 
-  The name of the DP parameter group.
+  The name of the DB parameter group.
 
 
 =head2 ParameterApplyStatus => Str

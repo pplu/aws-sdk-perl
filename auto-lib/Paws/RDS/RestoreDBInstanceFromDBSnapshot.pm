@@ -190,8 +190,9 @@ engines.
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to associate with this DB instance.
-If this argument is omitted, the default DBParameterGroup for the
-specified engine is used.
+
+If you do not specify a value for C<DBParameterGroupName>, then the
+default C<DBParameterGroup> for the specified DB engine is used.
 
 Constraints:
 
@@ -263,7 +264,24 @@ information, see Deleting a DB Instance
 
 =head2 Domain => Str
 
-Specify the Active Directory Domain to restore the instance in.
+Specify the Active Directory directory ID to restore the DB instance
+in. The domain must be created prior to this operation. Currently, only
+Microsoft SQL Server and Oracle DB instances can be created in an
+Active Directory Domain.
+
+For Microsoft SQL Server DB instances, Amazon RDS can use Windows
+Authentication to authenticate users that connect to the DB instance.
+For more information, see Using Windows Authentication with an Amazon
+RDS DB Instance Running Microsoft SQL Server
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
+in the I<Amazon RDS User Guide>.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see Using Kerberos Authentication with Amazon RDS for
+Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -289,23 +307,13 @@ in the I<Amazon Aurora User Guide>.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines,
+see CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-
-=over
-
-=item *
-
-For MySQL 5.6, minor version 5.6.34 or higher
-
-=item *
-
-For MySQL 5.7, minor version 5.7.16 or higher
-
-=back
-
+For more information about IAM database authentication, see IAM
+Database Authentication for MySQL and PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -375,7 +383,7 @@ C<sqlserver-web>
 =head2 Iops => Int
 
 Specifies the amount of provisioned IOPS for the DB instance, expressed
-in I/O operations per second. If this parameter is not specified, the
+in I/O operations per second. If this parameter isn't specified, the
 IOPS value is taken from the backup. If this parameter is set to 0, the
 new instance is converted to a non-PIOPS instance. The conversion takes
 additional time, though your DB instance is available for connections
@@ -444,7 +452,7 @@ instance class of the DB instance.
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address. For more information, see CreateDBInstance.
 

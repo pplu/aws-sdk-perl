@@ -95,9 +95,9 @@ Can't end with a hyphen or contain two consecutive hyphens
 
 A value that indicates whether to skip the creation of a final DB
 cluster snapshot before the DB cluster is deleted. If skip is
-specified, no DB cluster snapshot is created. If skip is not specified,
+specified, no DB cluster snapshot is created. If skip isn't specified,
 a DB cluster snapshot is created before the DB cluster is deleted. By
-default, skip is not specified, and the DB cluster snapshot is created.
+default, skip isn't specified, and the DB cluster snapshot is created.
 By default, this parameter is disabled.
 
 You must specify a C<FinalDBSnapshotIdentifier> parameter if

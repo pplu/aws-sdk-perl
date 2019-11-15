@@ -76,7 +76,7 @@ C<256>.
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
 The DB cluster identifier for the cluster being modified. This
-parameter is not case-sensitive.
+parameter isn't case-sensitive.
 
 Constraints:
 
@@ -117,7 +117,7 @@ C<ForceApplyCapacityChange>, the default, sets the capacity to the
 specified value as soon as possible.
 
 C<RollbackCapacityChange> ignores the capacity change if a scaling
-point is not found in the timeout period.
+point isn't found in the timeout period.
 
 
 

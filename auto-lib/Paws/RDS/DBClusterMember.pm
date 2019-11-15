@@ -52,8 +52,8 @@ of the DB cluster.
 
 =head2 IsClusterWriter => Bool
 
-  A value that indicates whehter the cluster member is the primary
-instance for the DB cluster.
+  Value that is C<true> if the cluster member is the primary instance for
+the DB cluster and C<false> otherwise.
 
 
 =head2 PromotionTier => Int

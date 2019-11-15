@@ -461,7 +461,7 @@ DB instance with multi-AZ support.
 
 =head2 StatusInfos => ArrayRef[L<Paws::RDS::DBInstanceStatusInfo>]
 
-  The status of a Read Replica. If the instance is not a Read Replica,
+  The status of a Read Replica. If the instance isn't a Read Replica,
 this is blank.
 
 

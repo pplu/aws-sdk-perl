@@ -161,15 +161,16 @@ Default: The same DBInstanceClass as the original DB instance.
 
 The database name for the restored DB instance.
 
-This parameter is not used for the MySQL or MariaDB engines.
+This parameter isn't used for the MySQL or MariaDB engines.
 
 
 
 =head2 DBParameterGroupName => Str
 
 The name of the DB parameter group to associate with this DB instance.
-If this argument is omitted, the default DBParameterGroup for the
-specified engine is used.
+
+If you do not specify a value for C<DBParameterGroupName>, then the
+default C<DBParameterGroup> for the specified DB engine is used.
 
 Constraints:
 
@@ -219,7 +220,24 @@ information, see Deleting a DB Instance
 
 =head2 Domain => Str
 
-Specify the Active Directory Domain to restore the instance in.
+Specify the Active Directory directory ID to restore the DB instance
+in. The domain must be created prior to this operation. Currently, only
+Microsoft SQL Server and Oracle DB instances can be created in an
+Active Directory Domain.
+
+For Microsoft SQL Server DB instances, Amazon RDS can use Windows
+Authentication to authenticate users that connect to the DB instance.
+For more information, see Using Windows Authentication with an Amazon
+RDS DB Instance Running Microsoft SQL Server
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
+in the I<Amazon RDS User Guide>.
+
+For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
+authenticate users that connect to the DB instance. For more
+information, see Using Kerberos Authentication with Amazon RDS for
+Oracle
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -245,23 +263,13 @@ in the I<Amazon RDS User Guide>.
 
 A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+mapping is disabled. For information about the supported DB engines,
+see CreateDBInstance.
 
-You can enable IAM database authentication for the following database
-engines
-
-=over
-
-=item *
-
-For MySQL 5.6, minor version 5.6.34 or higher
-
-=item *
-
-For MySQL 5.7, minor version 5.7.16 or higher
-
-=back
-
+For more information about IAM database authentication, see IAM
+Database Authentication for MySQL and PostgreSQL
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon RDS User Guide.>
 
 
 
@@ -335,7 +343,7 @@ Constraints: Must be an integer greater than 1000.
 
 B<SQL Server>
 
-Setting the IOPS value for the SQL Server database engine is not
+Setting the IOPS value for the SQL Server database engine isn't
 supported.
 
 
@@ -393,7 +401,7 @@ instance class of the DB instance.
 A value that indicates whether the DB instance is publicly accessible.
 When the DB instance is publicly accessible, it is an Internet-facing
 instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance is not publicly accessible, it
+public IP address. When the DB instance isn't publicly accessible, it
 is an internal instance with a DNS name that resolves to a private IP
 address. For more information, see CreateDBInstance.
 
@@ -516,8 +524,8 @@ uses its default processor features.
 =head2 UseLatestRestorableTime => Bool
 
 A value that indicates whether the DB instance is restored from the
-latest backup time. By default, the DB instance is not restored from
-the latest backup time.
+latest backup time. By default, the DB instance isn't restored from the
+latest backup time.
 
 Constraints: Can't be specified if the C<RestoreTime> parameter is
 provided.

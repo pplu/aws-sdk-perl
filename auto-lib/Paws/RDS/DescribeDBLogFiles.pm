@@ -92,7 +92,7 @@ size.
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
+This parameter isn't currently supported.
 
 
 
@@ -108,8 +108,8 @@ marker, up to MaxRecords.
 
 The maximum number of records to include in the response. If more
 records exist than the specified MaxRecords value, a pagination token
-called a marker is included in the response so that the remaining
-results can be retrieved.
+called a marker is included in the response so you can retrieve the
+remaining results.
 
 
 

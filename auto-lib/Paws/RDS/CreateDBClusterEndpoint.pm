@@ -77,7 +77,7 @@ endpoint. This parameter is stored as a lowercase string.
 
 =head2 B<REQUIRED> EndpointType => Str
 
-The type of the endpoint. One of: C<READER>, C<ANY>.
+The type of the endpoint. One of: C<READER>, C<WRITER>, C<ANY>.
 
 
 

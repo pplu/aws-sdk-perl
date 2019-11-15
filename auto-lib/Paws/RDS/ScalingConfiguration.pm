@@ -94,7 +94,7 @@ C<ForceApplyCapacityChange> sets the capacity to the specified value as
 soon as possible.
 
 C<RollbackCapacityChange>, the default, ignores the capacity change if
-a scaling point is not found in the timeout period.
+a scaling point isn't found in the timeout period.
 
 If you specify C<ForceApplyCapacityChange>, connections that prevent
 Aurora Serverless from finding a scaling point might be dropped.

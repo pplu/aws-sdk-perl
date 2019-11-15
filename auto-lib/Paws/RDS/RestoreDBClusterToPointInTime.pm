@@ -182,6 +182,10 @@ A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
+For more information, see IAM Database Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
+in the I<Amazon Aurora User Guide.>
+
 
 
 =head2 KmsKeyId => Str
@@ -213,12 +217,12 @@ cluster.
 
 =item *
 
-If the DB cluster is not encrypted, then the restored DB cluster is not
+If the DB cluster isn't encrypted, then the restored DB cluster isn't
 encrypted.
 
 =back
 
-If C<DBClusterIdentifier> refers to a DB cluster that is not encrypted,
+If C<DBClusterIdentifier> refers to a DB cluster that isn't encrypted,
 then the restore request is rejected.
 
 
@@ -256,7 +260,7 @@ Must be before the latest restorable time for the DB instance
 
 =item *
 
-Must be specified if C<UseLatestRestorableTime> parameter is not
+Must be specified if C<UseLatestRestorableTime> parameter isn't
 provided
 
 =item *
@@ -327,7 +331,7 @@ Must match the identifier of an existing DBCluster.
 =head2 UseLatestRestorableTime => Bool
 
 A value that indicates whether to restore the DB cluster to the latest
-restorable backup time. By default, the DB cluster is not restored to
+restorable backup time. By default, the DB cluster isn't restored to
 the latest restorable backup time.
 
 Constraints: Can't be specified if C<RestoreToTime> parameter is
