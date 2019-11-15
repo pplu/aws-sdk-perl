@@ -1,7 +1,7 @@
 
 package Paws::SecurityHub::DescribeHub;
   use Moose;
-  has HubArn => (is => 'ro', isa => 'Str');
+  has HubArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'HubArn');
 
   use MooseX::ClassAttribute;
 

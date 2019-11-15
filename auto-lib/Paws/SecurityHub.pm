@@ -405,9 +405,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =over
 
-=item [InvitationId => Str]
+=item InvitationId => Str
 
-=item [MasterId => Str]
+=item MasterId => Str
 
 
 =back
@@ -563,7 +563,7 @@ operation.
 
 =over
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item AccountIds => ArrayRef[Str|Undef]
 
 
 =back
@@ -613,7 +613,7 @@ Deletes the insight specified by the C<InsightArn>.
 
 =over
 
-=item [AccountIds => ArrayRef[Str|Undef]]
+=item AccountIds => ArrayRef[Str|Undef]
 
 
 =back
