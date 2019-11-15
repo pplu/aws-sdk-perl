@@ -61,7 +61,7 @@ Running Mode
 =head2 RunningModeAutoStopTimeoutInMinutes => Int
 
   The time after a user logs off when WorkSpaces are automatically
-stopped. Configured in 60 minute intervals.
+stopped. Configured in 60-minute intervals.
 
 
 =head2 UserVolumeSizeGib => Int

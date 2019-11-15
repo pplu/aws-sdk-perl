@@ -110,6 +110,11 @@ package Paws::WorkSpaces;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspacesConnectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWorkspaceSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateIpGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DisassociateIpGroups', @_);
@@ -153,6 +158,11 @@ package Paws::WorkSpaces;
   sub RebuildWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebuildWorkspaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreWorkspace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RestoreWorkspace', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RevokeIpRules {
@@ -367,7 +377,7 @@ package Paws::WorkSpaces;
   }
 
 
-  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
+  sub operations { qw/AssociateIpGroups AuthorizeIpRules CopyWorkspaceImage CreateIpGroup CreateTags CreateWorkspaces DeleteIpGroup DeleteTags DeleteWorkspaceImage DescribeAccount DescribeAccountModifications DescribeClientProperties DescribeIpGroups DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaceImages DescribeWorkspaces DescribeWorkspacesConnectionStatus DescribeWorkspaceSnapshots DisassociateIpGroups ImportWorkspaceImage ListAvailableManagementCidrRanges ModifyAccount ModifyClientProperties ModifyWorkspaceProperties ModifyWorkspaceState RebootWorkspaces RebuildWorkspaces RestoreWorkspace RevokeIpRules StartWorkspaces StopWorkspaces TerminateWorkspaces UpdateRulesOfIpGroup / }
 
 1;
 
@@ -793,6 +803,22 @@ Returns: a L<Paws::WorkSpaces::DescribeWorkspacesConnectionStatusResult> instanc
 Describes the connection status of the specified WorkSpaces.
 
 
+=head2 DescribeWorkspaceSnapshots
+
+=over
+
+=item WorkspaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeWorkspaceSnapshots>
+
+Returns: a L<Paws::WorkSpaces::DescribeWorkspaceSnapshotsResult> instance
+
+Describes the snapshots for the specified WorkSpace.
+
+
 =head2 DisassociateIpGroups
 
 =over
@@ -992,6 +1018,33 @@ WorkSpace
 
 This operation is asynchronous and returns before the WorkSpaces have
 been completely rebuilt.
+
+
+=head2 RestoreWorkspace
+
+=over
+
+=item WorkspaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkSpaces::RestoreWorkspace>
+
+Returns: a L<Paws::WorkSpaces::RestoreWorkspaceResult> instance
+
+Restores the specified WorkSpace to its last known healthy state.
+
+You cannot restore a WorkSpace unless its state is C< AVAILABLE>,
+C<ERROR>, or C<UNHEALTHY>.
+
+Restoring a WorkSpace is a potentially destructive action that can
+result in the loss of data. For more information, see Restore a
+WorkSpace
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html).
+
+This operation is asynchronous and returns before the WorkSpace is
+completely restored.
 
 
 =head2 RevokeIpRules
