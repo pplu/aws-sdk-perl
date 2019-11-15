@@ -1,6 +1,7 @@
 package Paws::GameLift::Instance;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
+  has DnsName => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
@@ -49,6 +50,11 @@ instances.
   Time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
 "1469498468.057").
+
+
+=head2 DnsName => Str
+
+  
 
 
 =head2 FleetId => Str

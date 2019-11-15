@@ -71,7 +71,7 @@ must run on the same operating system. If an operating system is not
 specified when creating a build, Amazon GameLift uses the default value
 (WINDOWS_2012). This value cannot be changed later.
 
-Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">
+Valid values are: C<"WINDOWS_2012">, C<"AMAZON_LINUX">, C<"AMAZON_LINUX_2">
 
 =head2 StorageLocation => L<Paws::GameLift::S3Location>
 

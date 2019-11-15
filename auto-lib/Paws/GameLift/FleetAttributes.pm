@@ -1,6 +1,7 @@
 package Paws::GameLift::FleetAttributes;
   use Moose;
   has BuildId => (is => 'ro', isa => 'Str');
+  has CertificateConfiguration => (is => 'ro', isa => 'Paws::GameLift::CertificateConfiguration');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has FleetArn => (is => 'ro', isa => 'Str');
@@ -151,6 +152,11 @@ StopFleetActions
 =head2 BuildId => Str
 
   Unique identifier for a build.
+
+
+=head2 CertificateConfiguration => L<Paws::GameLift::CertificateConfiguration>
+
+  
 
 
 =head2 CreationTime => Str

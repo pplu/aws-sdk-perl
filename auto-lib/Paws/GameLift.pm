@@ -1088,6 +1088,8 @@ DeleteBuild
 
 =item [BuildId => Str]
 
+=item [CertificateConfiguration => L<Paws::GameLift::CertificateConfiguration>]
+
 =item [Description => Str]
 
 =item [EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>]]

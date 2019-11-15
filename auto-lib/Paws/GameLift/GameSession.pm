@@ -3,6 +3,7 @@ package Paws::GameLift::GameSession;
   has CreationTime => (is => 'ro', isa => 'Str');
   has CreatorId => (is => 'ro', isa => 'Str');
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
+  has DnsName => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionData => (is => 'ro', isa => 'Str');
@@ -124,6 +125,11 @@ sessions a player can create.
 =head2 CurrentPlayerSessionCount => Int
 
   Number of players currently in the game session.
+
+
+=head2 DnsName => Str
+
+  
 
 
 =head2 FleetId => Str

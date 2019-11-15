@@ -1,5 +1,6 @@
 package Paws::GameLift::GameSessionConnectionInfo;
   use Moose;
+  has DnsName => (is => 'ro', isa => 'Str');
   has GameSessionArn => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has MatchedPlayerSessions => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::MatchedPlayerSession]');
@@ -23,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::GameSessionConnectionInfo object:
 
-  $service_obj->Method(Att1 => { GameSessionArn => $value, ..., Port => $value  });
+  $service_obj->Method(Att1 => { DnsName => $value, ..., Port => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::GameSessionConnectionInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GameSessionArn
+  $result->Att1->DnsName
 
 =head1 DESCRIPTION
 
@@ -43,6 +44,11 @@ to the MatchmakingTicket, which can be retrieved by calling
 DescribeMatchmaking.
 
 =head1 ATTRIBUTES
+
+
+=head2 DnsName => Str
+
+  
 
 
 =head2 GameSessionArn => Str

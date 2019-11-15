@@ -1,5 +1,6 @@
 package Paws::GameLift::GameSessionPlacement;
   use Moose;
+  has DnsName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionArn => (is => 'ro', isa => 'Str');
@@ -36,14 +37,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::GameSessionPlacement object:
 
-  $service_obj->Method(Att1 => { EndTime => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { DnsName => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::GameSessionPlacement object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EndTime
+  $result->Att1->DnsName
 
 =head1 DESCRIPTION
 
@@ -71,6 +72,11 @@ StopGameSessionPlacement
 
 
 =head1 ATTRIBUTES
+
+
+=head2 DnsName => Str
+
+  
 
 
 =head2 EndTime => Str
