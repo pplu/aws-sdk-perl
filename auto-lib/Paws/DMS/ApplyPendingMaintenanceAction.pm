@@ -58,7 +58,7 @@ The pending maintenance action to apply to this resource.
 =head2 B<REQUIRED> OptInType => Str
 
 A value that specifies the type of opt-in request, or undoes an opt-in
-request. An opt-in request of type C<immediate> cannot be undone.
+request. You can't undo an opt-in request of type C<immediate>.
 
 Valid values:
 

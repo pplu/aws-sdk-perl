@@ -1,7 +1,12 @@
 package Paws::DMS::ReplicationTaskStats;
   use Moose;
   has ElapsedTimeMillis => (is => 'ro', isa => 'Int');
+  has FreshStartDate => (is => 'ro', isa => 'Str');
+  has FullLoadFinishDate => (is => 'ro', isa => 'Str');
   has FullLoadProgressPercent => (is => 'ro', isa => 'Int');
+  has FullLoadStartDate => (is => 'ro', isa => 'Str');
+  has StartDate => (is => 'ro', isa => 'Str');
+  has StopDate => (is => 'ro', isa => 'Str');
   has TablesErrored => (is => 'ro', isa => 'Int');
   has TablesLoaded => (is => 'ro', isa => 'Int');
   has TablesLoading => (is => 'ro', isa => 'Int');
@@ -46,9 +51,37 @@ This class has no description
   The elapsed time of the task, in milliseconds.
 
 
+=head2 FreshStartDate => Str
+
+  The date the replication task was started either with a fresh start or
+a target reload.
+
+
+=head2 FullLoadFinishDate => Str
+
+  The date the replication task full load was completed.
+
+
 =head2 FullLoadProgressPercent => Int
 
   The percent complete for the full load migration task.
+
+
+=head2 FullLoadStartDate => Str
+
+  The date the the replication task full load was started.
+
+
+=head2 StartDate => Str
+
+  The date the replication task was started either with a fresh start or
+a resume. For more information, see StartReplicationTaskType
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_StartReplicationTask.html#DMS-StartReplicationTask-request-StartReplicationTaskType).
+
+
+=head2 StopDate => Str
+
+  The date the replication task was stopped.
 
 
 =head2 TablesErrored => Int

@@ -72,6 +72,14 @@ Checkpoint Example: --cdc-start-position
 LSN Example: --cdc-start-position
 E<ldquo>mysql-bin-changelog.000024:373E<rdquo>
 
+When you use this task setting with a source PostgreSQL database, a
+logical replication slot should already be created and associated with
+the source endpoint. You can verify this by setting the C<slotName>
+extra connection attribute to the name of this logical replication
+slot. For more information, see Extra Connection Attributes When Using
+PostgreSQL as a Source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib).
+
 
 
 =head2 CdcStartTime => Str
@@ -99,9 +107,8 @@ Commit time example: --cdc-stop-position E<ldquo>commit_time:
 
 =head2 MigrationType => Str
 
-The migration type.
-
-Valid values: full-load | cdc | full-load-and-cdc
+The migration type. Valid values: C<full-load> | C<cdc> |
+C<full-load-and-cdc>
 
 Valid values are: C<"full-load">, C<"cdc">, C<"full-load-and-cdc">
 
@@ -146,10 +153,9 @@ settings.
 =head2 TableMappings => Str
 
 When using the AWS CLI or boto3, provide the path of the JSON file that
-contains the table mappings. Precede the path with "file://". When
-working with the DMS API, provide the JSON as the parameter value.
-
-For example, --table-mappings file://mappingfile.json
+contains the table mappings. Precede the path with C<file://>. When
+working with the DMS API, provide the JSON as the parameter value, for
+example: C<--table-mappings file://mappingfile.json>
 
 
 

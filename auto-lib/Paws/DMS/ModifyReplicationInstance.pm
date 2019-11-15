@@ -73,12 +73,12 @@ replication instance.
 =head2 AllowMajorVersionUpgrade => Bool
 
 Indicates that major version upgrades are allowed. Changing this
-parameter does not result in an outage and the change is asynchronously
-applied as soon as possible.
+parameter does not result in an outage, and the change is
+asynchronously applied as soon as possible.
 
-Constraints: This parameter must be set to true when specifying a value
-for the C<EngineVersion> parameter that is a different major version
-than the replication instance's current version.
+This parameter must be set to C<true> when specifying a value for the
+C<EngineVersion> parameter that is a different major version than the
+replication instance's current version.
 
 
 
@@ -109,9 +109,9 @@ The engine version number of the replication instance.
 
 =head2 MultiAZ => Bool
 
-Specifies if the replication instance is a Multi-AZ deployment. You
-cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
-is set to C<true>.
+Specifies whether the replication instance is a Multi-AZ deployment.
+You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+parameter is set to C<true>.
 
 
 

@@ -134,12 +134,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EncodingType =>
           'plain',   # values: plain, plain-dictionary, rle-dictionary; OPTIONAL
         EncryptionMode => 'sse-s3',    # values: sse-s3, sse-kms; OPTIONAL
-        ExternalTableDefinition => 'MyString',
+        ExternalTableDefinition       => 'MyString',
+        IncludeOpForFullLoad          => 1,            # OPTIONAL
+        ParquetTimestampInMillisecond => 1,            # OPTIONAL
         ParquetVersion =>
           'parquet-1-0',    # values: parquet-1-0, parquet-2-0; OPTIONAL
         RowGroupLength               => 1,            # OPTIONAL
         ServerSideEncryptionKmsKeyId => 'MyString',
         ServiceAccessRoleArn         => 'MyString',
+        TimestampColumnName          => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL
@@ -182,31 +185,31 @@ The name of the endpoint database.
 The settings in JSON format for the DMS transfer type of source
 endpoint.
 
-Possible attributes include the following:
+Possible settings include the following:
 
 =over
 
 =item *
 
-C<serviceAccessRoleArn> - The IAM role that has permission to access
+C<ServiceAccessRoleArn> - The IAM role that has permission to access
 the Amazon S3 bucket.
 
 =item *
 
-C<bucketName> - The name of the S3 bucket to use.
+C<BucketName> - The name of the S3 bucket to use.
 
 =item *
 
-C<compressionType> - An optional parameter to use GZIP to compress the
+C<CompressionType> - An optional parameter to use GZIP to compress the
 target files. To use GZIP, set this value to C<NONE> (the default). To
 keep the files uncompressed, don't use this value.
 
 =back
 
-Shorthand syntax for these attributes is as follows:
+Shorthand syntax for these settings is as follows:
 C<ServiceAccessRoleArn=string,BucketName=string,CompressionType=string>
 
-JSON syntax for these attributes is as follows: C<{
+JSON syntax for these settings is as follows: C<{
 "ServiceAccessRoleArn": "string", "BucketName": "string",
 "CompressionType": "none"|"gzip" }>
 
@@ -242,14 +245,14 @@ with a hyphen or contain two consecutive hyphens.
 
 =head2 B<REQUIRED> EndpointType => Str
 
-The type of endpoint.
+The type of endpoint. Valid values are C<source> and C<target>.
 
 Valid values are: C<"source">, C<"target">
 
 =head2 B<REQUIRED> EngineName => Str
 
 The type of engine for the endpoint. Valid values, depending on the
-C<EndPointType> value, include C<mysql>, C<oracle>, C<postgres>,
+C<EndpointType> value, include C<mysql>, C<oracle>, C<postgres>,
 C<mariadb>, C<aurora>, C<aurora-postgresql>, C<redshift>, C<s3>,
 C<db2>, C<azuredb>, C<sybase>, C<dynamodb>, C<mongodb>, and
 C<sqlserver>.
@@ -264,7 +267,13 @@ The external table definition.
 
 =head2 ExtraConnectionAttributes => Str
 
-Additional attributes associated with the connection.
+Additional attributes associated with the connection. Each attribute is
+specified as a name-value pair associated by an equal sign (=).
+Multiple attributes are separated by a semicolon (;) with no additional
+white space. For information on the attributes available for connecting
+your source or target endpoint, see Working with AWS DMS Endpoints
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Endpoints.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -273,18 +282,21 @@ Additional attributes associated with the connection.
 Settings in JSON format for the target Amazon Kinesis Data Streams
 endpoint. For more information about the available settings, see Using
 Object Mapping to Migrate Data to a Kinesis Data Stream
-(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
-) in the I<AWS Database Migration User Guide.>
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping)
+in the I<AWS Database Migration User Guide.>
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use to encrypt the connection parameters.
+An AWS KMS key identifier that is used to encrypt the connection
+parameters for the endpoint.
+
 If you don't specify a value for the C<KmsKeyId> parameter, then AWS
-DMS uses your default encryption key. AWS KMS creates the default
-encryption key for your AWS account. Your AWS account has a different
-default encryption key for each AWS Region.
+DMS uses your default encryption key.
+
+AWS KMS creates the default encryption key for your AWS account. Your
+AWS account has a different default encryption key for each AWS Region.
 
 
 
@@ -343,14 +355,13 @@ want to use to create the endpoint.
 =head2 SslMode => Str
 
 The Secure Sockets Layer (SSL) mode to use for the SSL connection. The
-SSL mode can be one of four values: C<none>, C<require>, C<verify-ca>,
-C<verify-full>. The default value is C<none>.
+default is C<none>
 
 Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
 
 =head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
 
-Tags to be added to the endpoint.
+One or more tags to be assigned to the endpoint.
 
 
 

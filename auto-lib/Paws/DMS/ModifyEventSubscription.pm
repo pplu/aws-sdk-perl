@@ -77,7 +77,7 @@ topic and subscribe to it.
 The type of AWS DMS resource that generates the events you want to
 subscribe to.
 
-Valid values: replication-instance | migration-task
+Valid values: replication-instance | replication-task
 
 
 

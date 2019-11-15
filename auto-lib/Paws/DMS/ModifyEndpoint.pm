@@ -133,12 +133,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EncodingType =>
           'plain',   # values: plain, plain-dictionary, rle-dictionary; OPTIONAL
         EncryptionMode => 'sse-s3',    # values: sse-s3, sse-kms; OPTIONAL
-        ExternalTableDefinition => 'MyString',
+        ExternalTableDefinition       => 'MyString',
+        IncludeOpForFullLoad          => 1,            # OPTIONAL
+        ParquetTimestampInMillisecond => 1,            # OPTIONAL
         ParquetVersion =>
           'parquet-1-0',    # values: parquet-1-0, parquet-2-0; OPTIONAL
         RowGroupLength               => 1,            # OPTIONAL
         ServerSideEncryptionKmsKeyId => 'MyString',
         ServiceAccessRoleArn         => 'MyString',
+        TimestampColumnName          => 'MyString',
       },    # OPTIONAL
       ServerName           => 'MyString',    # OPTIONAL
       ServiceAccessRoleArn => 'MyString',    # OPTIONAL
@@ -243,16 +246,16 @@ with a hyphen or contain two consecutive hyphens.
 
 =head2 EndpointType => Str
 
-The type of endpoint.
+The type of endpoint. Valid values are C<source> and C<target>.
 
 Valid values are: C<"source">, C<"target">
 
 =head2 EngineName => Str
 
 The type of engine for the endpoint. Valid values, depending on the
-EndPointType, include mysql, oracle, postgres, mariadb, aurora,
-aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase,
-dynamodb, mongodb, and sqlserver.
+EndpointType, include mysql, oracle, postgres, mariadb, aurora,
+aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb,
+mongodb, and sqlserver.
 
 
 
@@ -274,8 +277,8 @@ parameter, pass the empty string ("") as an argument.
 Settings in JSON format for the target Amazon Kinesis Data Streams
 endpoint. For more information about the available settings, see Using
 Object Mapping to Migrate Data to a Kinesis Data Stream
-(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
-) in the I<AWS Database Migration User Guide.>
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping)
+in the I<AWS Database Migration User Guide.>
 
 
 
@@ -333,12 +336,8 @@ use to modify the endpoint.
 
 =head2 SslMode => Str
 
-The SSL mode to be used.
-
-SSL mode can be one of four values: none, require, verify-ca,
-verify-full.
-
-The default value is none.
+The SSL mode used to connect to the endpoint. The default value is
+C<none>.
 
 Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
 

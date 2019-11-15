@@ -55,8 +55,9 @@ This class has no description
 =head2 CdcStartPosition => Str
 
   Indicates when you want a change data capture (CDC) operation to start.
-Use either CdcStartPosition or CdcStartTime to specify when you want a
-CDC operation to start. Specifying both values results in an error.
+Use either C<CdcStartPosition> or C<CdcStartTime> to specify when you
+want the CDC operation to start. Specifying both values results in an
+error.
 
 The value can be in date, checkpoint, or LSN/SCN format.
 

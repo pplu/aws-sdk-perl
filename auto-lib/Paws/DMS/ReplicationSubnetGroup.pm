@@ -42,7 +42,7 @@ This class has no description
 
 =head2 ReplicationSubnetGroupDescription => Str
 
-  The description of the replication subnet group.
+  A description for the replication subnet group.
 
 
 =head2 ReplicationSubnetGroupIdentifier => Str

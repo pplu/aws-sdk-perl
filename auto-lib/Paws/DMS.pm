@@ -55,6 +55,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DeleteCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DeleteConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DeleteEndpoint', @_);
@@ -547,7 +552,7 @@ package Paws::DMS;
   }
 
 
-  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribePendingMaintenanceActions DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteConnection DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribePendingMaintenanceActions DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
 
 1;
 
@@ -783,6 +788,15 @@ Returns: a L<Paws::DMS::CreateReplicationInstanceResponse> instance
 
 Creates the replication instance using the specified parameters.
 
+AWS DMS requires that your account have certain roles with appropriate
+permissions before you can create a replication instance. For
+information on the required roles, see Creating the IAM Roles to Use
+With the AWS CLI and AWS DMS API
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html).
+For information on the required permissions, see IAM Permissions Needed
+to Use AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html).
+
 
 =head2 CreateReplicationSubnetGroup
 
@@ -857,6 +871,24 @@ Each argument is described in detail in: L<Paws::DMS::DeleteCertificate>
 Returns: a L<Paws::DMS::DeleteCertificateResponse> instance
 
 Deletes the specified certificate.
+
+
+=head2 DeleteConnection
+
+=over
+
+=item EndpointArn => Str
+
+=item ReplicationInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DeleteConnection>
+
+Returns: a L<Paws::DMS::DeleteConnectionResponse> instance
+
+Deletes the connection between a replication instance and an endpoint.
 
 
 =head2 DeleteEndpoint
@@ -956,11 +988,14 @@ Each argument is described in detail in: L<Paws::DMS::DescribeAccountAttributes>
 
 Returns: a L<Paws::DMS::DescribeAccountAttributesResponse> instance
 
-Lists all of the AWS DMS attributes for a customer account. The
-attributes include AWS DMS quotas for the account, such as the number
-of replication instances allowed. The description for a quota includes
-the quota name, current usage toward that quota, and the quota's
-maximum value.
+Lists all of the AWS DMS attributes for a customer account. These
+attributes include AWS DMS quotas for the account and a unique account
+identifier in a particular DMS region. DMS quotas include a list of
+resource quotas supported by the account, such as the number of
+replication instances allowed. The description for each resource quota,
+includes the quota name, current usage toward that quota, and the
+quota's maximum value. DMS uses the unique account identifier to name
+each artifact used by DMS in the given region.
 
 This command does not take any parameters.
 

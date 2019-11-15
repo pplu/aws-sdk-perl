@@ -98,18 +98,21 @@ the Free DMS program.
 
 =head2 KmsKeyId => Str
 
-  The AWS KMS key identifier that is used to encrypt the content on the
-replication instance. If you don't specify a value for the C<KmsKeyId>
-parameter, then AWS DMS uses your default encryption key. AWS KMS
-creates the default encryption key for your AWS account. Your AWS
-account has a different default encryption key for each AWS Region.
+  An AWS KMS key identifier that is used to encrypt the data on the
+replication instance.
+
+If you don't specify a value for the C<KmsKeyId> parameter, then AWS
+DMS uses your default encryption key.
+
+AWS KMS creates the default encryption key for your AWS account. Your
+AWS account has a different default encryption key for each AWS Region.
 
 
 =head2 MultiAZ => Bool
 
-  Specifies if the replication instance is a Multi-AZ deployment. You
-cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
-is set to C<true>.
+  Specifies whether the replication instance is a Multi-AZ deployment.
+You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+parameter is set to C<true>.
 
 
 =head2 PendingModifiedValues => L<Paws::DMS::ReplicationPendingModifiedValues>
@@ -177,7 +180,7 @@ Example: C<myrepinstance>
 
 =head2 ReplicationInstancePrivateIpAddresses => ArrayRef[Str|Undef]
 
-  The private IP address of the replication instance.
+  One or more private IP addresses for the replication instance.
 
 
 =head2 ReplicationInstancePublicIpAddress => Str
@@ -187,7 +190,7 @@ Example: C<myrepinstance>
 
 =head2 ReplicationInstancePublicIpAddresses => ArrayRef[Str|Undef]
 
-  The public IP address of the replication instance.
+  One or more public IP addresses for the replication instance.
 
 
 =head2 ReplicationInstanceStatus => Str

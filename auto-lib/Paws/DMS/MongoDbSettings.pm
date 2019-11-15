@@ -55,13 +55,13 @@ endpoint.
 Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1
 
 DEFAULT E<ndash> For MongoDB version 2.x, use MONGODB_CR. For MongoDB
-version 3.x, use SCRAM_SHA_1. This attribute is not used when
+version 3.x, use SCRAM_SHA_1. This setting is not used when
 authType=No.
 
 
 =head2 AuthSource => Str
 
-  The MongoDB database name. This attribute is not used when
+  The MongoDB database name. This setting is not used when
 C<authType=NO>.
 
 The default is admin.
@@ -85,15 +85,15 @@ can be empty.
 =head2 DocsToInvestigate => Str
 
   Indicates the number of documents to preview to determine the document
-organization. Use this attribute when C<NestingLevel> is set to ONE.
+organization. Use this setting when C<NestingLevel> is set to ONE.
 
 Must be a positive value greater than 0. Default value is 1000.
 
 
 =head2 ExtractDocId => Str
 
-  Specifies the document ID. Use this attribute when C<NestingLevel> is
-set to NONE.
+  Specifies the document ID. Use this setting when C<NestingLevel> is set
+to NONE.
 
 Default value is false.
 

@@ -80,8 +80,7 @@ The end time for the events to be listed.
 
 =head2 EventCategories => ArrayRef[Str|Undef]
 
-A list of event categories for a source type that you want to subscribe
-to.
+A list of event categories for the source type that you've chosen.
 
 
 
@@ -114,9 +113,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SourceIdentifier => Str
 
-The identifier of the event source. An identifier must begin with a
-letter and must contain only ASCII letters, digits, and hyphens. It
-cannot end with a hyphen or contain two consecutive hyphens.
+The identifier of an event source.
 
 
 
@@ -124,7 +121,7 @@ cannot end with a hyphen or contain two consecutive hyphens.
 
 The type of AWS DMS resource that generates events.
 
-Valid values: replication-instance | migration-task
+Valid values: replication-instance | replication-task
 
 Valid values are: C<"replication-instance">
 

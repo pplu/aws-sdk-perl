@@ -62,25 +62,26 @@ This class has no description
 
 =head2 AcceptAnyDate => Bool
 
-  Allows any date format, including invalid formats such as 00/00/00
-00:00:00, to be loaded without generating an error. You can choose TRUE
-or FALSE (default).
+  A value that indicates to allow any date format, including invalid
+formats such as 00/00/00 00:00:00, to be loaded without generating an
+error. You can choose C<true> or C<false> (the default).
 
 This parameter applies only to TIMESTAMP and DATE columns. Always use
 ACCEPTANYDATE with the DATEFORMAT parameter. If the date format for the
-data does not match the DATEFORMAT specification, Amazon Redshift
+data doesn't match the DATEFORMAT specification, Amazon Redshift
 inserts a NULL value into that field.
 
 
 =head2 AfterConnectScript => Str
 
-  Code to run after connecting. This should be the code, not a filename.
+  Code to run after connecting. This parameter should contain the code
+itself, not the name of a file containing the code.
 
 
 =head2 BucketFolder => Str
 
-  The location where the CSV files are stored before being uploaded to
-the S3 bucket.
+  The location where the comma-separated value (.csv) files are stored
+before being uploaded to the S3 bucket.
 
 
 =head2 BucketName => Str
@@ -90,23 +91,23 @@ the S3 bucket.
 
 =head2 ConnectionTimeout => Int
 
-  Sets the amount of time to wait (in milliseconds) before timing out,
-beginning from when you initially establish a connection.
+  A value that sets the amount of time to wait (in milliseconds) before
+timing out, beginning from when you initially establish a connection.
 
 
 =head2 DatabaseName => Str
 
-  The name of the Amazon Redshift data warehouse (service) you are
+  The name of the Amazon Redshift data warehouse (service) that you are
 working with.
 
 
 =head2 DateFormat => Str
 
-  The date format you are using. Valid values are C<auto>
+  The date format that you are using. Valid values are C<auto>
 (case-sensitive), your date format string enclosed in quotes, or NULL.
-If this is left unset (NULL), it defaults to a format of 'YYYY-MM-DD'.
-Using C<auto> recognizes most strings, even some that are not supported
-when you use a date format string.
+If this parameter is left unset (NULL), it defaults to a format of
+'YYYY-MM-DD'. Using C<auto> recognizes most strings, even some that
+aren't supported when you use a date format string.
 
 If your date and time values use formats different from each other, set
 this to C<auto>.
@@ -114,43 +115,44 @@ this to C<auto>.
 
 =head2 EmptyAsNull => Bool
 
-  Specifies whether AWS DMS should migrate empty CHAR and VARCHAR fields
-as NULL. A value of TRUE sets empty CHAR and VARCHAR fields to null.
-The default is FALSE.
+  A value that specifies whether AWS DMS should migrate empty CHAR and
+VARCHAR fields as NULL. A value of C<true> sets empty CHAR and VARCHAR
+fields to null. The default is C<false>.
 
 
 =head2 EncryptionMode => Str
 
-  The type of server side encryption you want to use for your data. This
-is part of the endpoint settings or the extra connections attributes
-for Amazon S3. You can choose either SSE_S3 (default) or SSE_KMS. To
-use SSE_S3, create an IAM role with a policy that allows
+  The type of server-side encryption that you want to use for your data.
+This encryption type is part of the endpoint settings or the extra
+connections attributes for Amazon S3. You can choose either C<SSE_S3>
+(the default) or C<SSE_KMS>. To use C<SSE_S3>, create an AWS Identity
+and Access Management (IAM) role with a policy that allows
 C<"arn:aws:s3:::*"> to use the following actions: C<"s3:PutObject",
-"s3:ListBucket">.
+"s3:ListBucket">
 
 
 =head2 FileTransferUploadStreams => Int
 
-  Specifies the number of threads used to upload a single file. This
-accepts a value between 1 and 64. It defaults to 10.
+  The number of threads used to upload a single file. This parameter
+accepts a value from 1 through 64. It defaults to 10.
 
 
 =head2 LoadTimeout => Int
 
-  Sets the amount of time to wait (in milliseconds) before timing out,
+  The amount of time to wait (in milliseconds) before timing out,
 beginning from when you begin loading.
 
 
 =head2 MaxFileSize => Int
 
-  Specifies the maximum size (in KB) of any CSV file used to transfer
-data to Amazon Redshift. This accepts a value between 1 and 1048576. It
-defaults to 32768 KB (32 MB).
+  The maximum size (in KB) of any .csv file used to transfer data to
+Amazon Redshift. This accepts a value from 1 through 1,048,576. It
+defaults to 32,768 KB (32 MB).
 
 
 =head2 Password => Str
 
-  The password for the user named in the username property.
+  The password for the user named in the C<username> property.
 
 
 =head2 Port => Int
@@ -160,20 +162,23 @@ defaults to 32768 KB (32 MB).
 
 =head2 RemoveQuotes => Bool
 
-  Removes surrounding quotation marks from strings in the incoming data.
-All characters within the quotation marks, including delimiters, are
-retained. Choose TRUE to remove quotation marks. The default is FALSE.
+  A value that specifies to remove surrounding quotation marks from
+strings in the incoming data. All characters within the quotation
+marks, including delimiters, are retained. Choose C<true> to remove
+quotation marks. The default is C<false>.
 
 
 =head2 ReplaceChars => Str
 
-  Replaces invalid characters specified in C<ReplaceInvalidChars>,
-substituting the specified value instead. The default is "?".
+  A value that specifies to replaces the invalid characters specified in
+C<ReplaceInvalidChars>, substituting the specified characters instead.
+The default is C<"?">.
 
 
 =head2 ReplaceInvalidChars => Str
 
-  A list of chars you want to replace. Use with C<ReplaceChars>.
+  A list of characters that you want to replace. Use with
+C<ReplaceChars>.
 
 
 =head2 ServerName => Str
@@ -183,41 +188,45 @@ substituting the specified value instead. The default is "?".
 
 =head2 ServerSideEncryptionKmsKeyId => Str
 
-  If you are using SSE_KMS for the C<EncryptionMode>, provide the KMS Key
-ID. The key you use needs an attached policy that enables IAM user
-permissions and allows use of the key.
+  The AWS KMS key ID. If you are using C<SSE_KMS> for the
+C<EncryptionMode>, provide this key ID. The key that you use needs an
+attached policy that enables IAM user permissions and allows use of the
+key.
 
 
 =head2 ServiceAccessRoleArn => Str
 
-  The ARN of the role that has access to the Redshift service.
+  The Amazon Resource Name (ARN) of the IAM role that has access to the
+Amazon Redshift service.
 
 
 =head2 TimeFormat => Str
 
-  The time format you want to use. Valid values are C<auto>
-(case-sensitive), 'timeformat_string', 'epochsecs', or
-'epochmillisecs'. It defaults to 10. Using C<auto> recognizes most
-strings, even some that are not supported when you use a time format
+  The time format that you want to use. Valid values are C<auto>
+(case-sensitive), C<'timeformat_string'>, C<'epochsecs'>, or
+C<'epochmillisecs'>. It defaults to 10. Using C<auto> recognizes most
+strings, even some that aren't supported when you use a time format
 string.
 
 If your date and time values use formats different from each other, set
-this to C<auto>.
+this parameter to C<auto>.
 
 
 =head2 TrimBlanks => Bool
 
-  Removes the trailing white space characters from a VARCHAR string. This
-parameter applies only to columns with a VARCHAR data type. Choose TRUE
-to remove unneeded white space. The default is FALSE.
+  A value that specifies to remove the trailing white space characters
+from a VARCHAR string. This parameter applies only to columns with a
+VARCHAR data type. Choose C<true> to remove unneeded white space. The
+default is C<false>.
 
 
 =head2 TruncateColumns => Bool
 
-  Truncates data in columns to the appropriate number of characters, so
-that it fits in the column. Applies only to columns with a VARCHAR or
-CHAR data type, and rows with a size of 4 MB or less. Choose TRUE to
-truncate data. The default is FALSE.
+  A value that specifies to truncate data in columns to the appropriate
+number of characters, so that the data fits in the column. This
+parameter applies only to columns with a VARCHAR or CHAR data type, and
+rows with a size of 4 MB or less. Choose C<true> to truncate data. The
+default is C<false>.
 
 
 =head2 Username => Str
@@ -228,7 +237,8 @@ truncate data. The default is FALSE.
 =head2 WriteBufferSize => Int
 
   The size of the write buffer to use in rows. Valid values range from 1
-to 2048. Defaults to 1024. Use this setting to tune performance.
+through 2,048. The default is 1,024. Use this setting to tune
+performance.
 
 
 

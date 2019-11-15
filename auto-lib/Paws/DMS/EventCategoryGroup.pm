@@ -39,8 +39,7 @@ This class has no description
 
 =head2 EventCategories => ArrayRef[Str|Undef]
 
-  A list of event categories for a C<SourceType> that you want to
-subscribe to.
+  A list of event categories from a source type that you've chosen.
 
 
 =head2 SourceType => Str
@@ -48,7 +47,7 @@ subscribe to.
   The type of AWS DMS resource that generates events.
 
 Valid values: replication-instance | replication-server |
-security-group | migration-task
+security-group | replication-task
 
 
 

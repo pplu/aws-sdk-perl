@@ -80,7 +80,7 @@ subscription.
   The type of AWS DMS resource that generates events.
 
 Valid values: replication-instance | replication-server |
-security-group | migration-task
+security-group | replication-task
 
 
 =head2 Status => Str

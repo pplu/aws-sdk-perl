@@ -46,8 +46,8 @@ This class has no description
 
   The Amazon Resource Name (ARN) of the DMS resource that the pending
 maintenance action applies to. For information about creating an ARN,
-see Constructing an Amazon Resource Name (ARN)
-(https://docs.aws.amazon.com/dms/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN)
+see Constructing an Amazon Resource Name (ARN) for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Introduction.AWS.ARN.html)
 in the DMS documentation.
 
 

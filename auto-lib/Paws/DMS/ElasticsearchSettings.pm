@@ -41,7 +41,7 @@ This class has no description
 
 =head2 B<REQUIRED> EndpointUri => Str
 
-  The endpoint for the ElasticSearch cluster.
+  The endpoint for the Elasticsearch cluster.
 
 
 =head2 ErrorRetryDuration => Int

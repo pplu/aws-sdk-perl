@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 ReplicationSubnetGroupDescription => Str
 
-The description of the replication instance subnet group.
+A description for the replication instance subnet group.
 
 
 

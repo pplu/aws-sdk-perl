@@ -66,6 +66,14 @@ Checkpoint Example: --cdc-start-position
 LSN Example: --cdc-start-position
 E<ldquo>mysql-bin-changelog.000024:373E<rdquo>
 
+When you use this task setting with a source PostgreSQL database, a
+logical replication slot should already be created and associated with
+the source endpoint. You can verify this by setting the C<slotName>
+extra connection attribute to the name of this logical replication
+slot. For more information, see Extra Connection Attributes When Using
+PostgreSQL as a Source for AWS DMS
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html#CHAP_Source.PostgreSQL.ConnectionAttrib).
+
 
 
 =head2 CdcStartTime => Str

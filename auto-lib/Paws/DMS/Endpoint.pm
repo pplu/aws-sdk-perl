@@ -74,31 +74,31 @@ This class has no description
   The settings in JSON format for the DMS transfer type of source
 endpoint.
 
-Possible attributes include the following:
+Possible settings include the following:
 
 =over
 
 =item *
 
-C<serviceAccessRoleArn> - The IAM role that has permission to access
+C<ServiceAccessRoleArn> - The IAM role that has permission to access
 the Amazon S3 bucket.
 
 =item *
 
-C<bucketName> - The name of the S3 bucket to use.
+C<BucketName> - The name of the S3 bucket to use.
 
 =item *
 
-C<compressionType> - An optional parameter to use GZIP to compress the
+C<CompressionType> - An optional parameter to use GZIP to compress the
 target files. To use GZIP, set this value to C<NONE> (the default). To
 keep the files uncompressed, don't use this value.
 
 =back
 
-Shorthand syntax for these attributes is as follows:
+Shorthand syntax for these settings is as follows:
 C<ServiceAccessRoleArn=string,BucketName=string,CompressionType=string>
 
-JSON syntax for these attributes is as follows: C<{
+JSON syntax for these settings is as follows: C<{
 "ServiceAccessRoleArn": "string", "BucketName": "string",
 "CompressionType": "none"|"gzip" }>
 
@@ -130,7 +130,7 @@ with a hyphen or contain two consecutive hyphens.
 
 =head2 EndpointType => Str
 
-  The type of endpoint.
+  The type of endpoint. Valid values are C<source> and C<target>.
 
 
 =head2 EngineDisplayName => Str
@@ -142,10 +142,9 @@ MySQL."
 
 =head2 EngineName => Str
 
-  The database engine name. Valid values, depending on the EndPointType,
+  The database engine name. Valid values, depending on the EndpointType,
 include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql,
-redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
-sqlserver.
+redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
 
 
 =head2 ExternalId => Str
@@ -173,11 +172,14 @@ information, see the C<KinesisSettings> structure.
 
 =head2 KmsKeyId => Str
 
-  The AWS KMS key identifier that is used to encrypt the content on the
-replication instance. If you don't specify a value for the C<KmsKeyId>
-parameter, then AWS DMS uses your default encryption key. AWS KMS
-creates the default encryption key for your AWS account. Your AWS
-account has a different default encryption key for each AWS Region.
+  An AWS KMS key identifier that is used to encrypt the connection
+parameters for the endpoint.
+
+If you don't specify a value for the C<KmsKeyId> parameter, then AWS
+DMS uses your default encryption key.
+
+AWS KMS creates the default encryption key for your AWS account. Your
+AWS account has a different default encryption key for each AWS Region.
 
 
 =head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
@@ -193,7 +195,7 @@ the C<MongoDbSettings> structure.
 
 =head2 RedshiftSettings => L<Paws::DMS::RedshiftSettings>
 
-  Settings for the Amazon Redshift endpoint
+  Settings for the Amazon Redshift endpoint.
 
 
 =head2 S3Settings => L<Paws::DMS::S3Settings>
@@ -214,12 +216,8 @@ C<S3Settings> structure.
 
 =head2 SslMode => Str
 
-  The SSL mode used to connect to the endpoint.
-
-SSL mode can be one of four values: none, require, verify-ca,
-verify-full.
-
-The default value is none.
+  The SSL mode used to connect to the endpoint. The default value is
+C<none>.
 
 
 =head2 Status => Str

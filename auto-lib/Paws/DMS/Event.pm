@@ -57,18 +57,14 @@ This class has no description
 
 =head2 SourceIdentifier => Str
 
-  The identifier of the event source. An identifier must begin with a
-letter and must contain only ASCII letters, digits, and hyphens; it
-cannot end with a hyphen or contain two consecutive hyphens.
-
-Constraints:replication instance, endpoint, migration task
+  The identifier of an event source.
 
 
 =head2 SourceType => Str
 
   The type of AWS DMS resource that generates events.
 
-Valid values: replication-instance | endpoint | migration-task
+Valid values: replication-instance | endpoint | replication-task
 
 
 

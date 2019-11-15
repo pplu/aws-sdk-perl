@@ -76,13 +76,13 @@ Example: C<mySubnetgroup>
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
-The EC2 subnet IDs for the subnet group.
+One or more subnet IDs to be assigned to the subnet group.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
 
-The tag to be assigned to the subnet group.
+One or more tags to be assigned to the subnet group.
 
 
 

@@ -41,7 +41,7 @@ This class has no description
 
 =head2 EndpointType => Str
 
-  The type of endpoint.
+  The type of endpoint. Valid values are C<source> and C<target>.
 
 
 =head2 EngineDisplayName => Str
@@ -53,10 +53,9 @@ MySQL."
 
 =head2 EngineName => Str
 
-  The database engine name. Valid values, depending on the EndPointType,
+  The database engine name. Valid values, depending on the EndpointType,
 include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql,
-redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
-sqlserver.
+redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
 
 
 =head2 SupportsCDC => Bool

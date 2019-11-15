@@ -6,6 +6,7 @@ package Paws::DMS::OrderableReplicationInstance;
   has IncludedAllocatedStorage => (is => 'ro', isa => 'Int');
   has MaxAllocatedStorage => (is => 'ro', isa => 'Int');
   has MinAllocatedStorage => (is => 'ro', isa => 'Int');
+  has ReleaseStatus => (is => 'ro', isa => 'Str');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
 1;
@@ -45,7 +46,7 @@ This class has no description
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-  List of availability zones for this replication instance.
+  List of Availability Zones for this replication instance.
 
 
 =head2 DefaultAllocatedStorage => Int
@@ -75,6 +76,16 @@ the replication instance.
 
   The minimum amount of storage (in gigabytes) that can be allocated for
 the replication instance.
+
+
+=head2 ReleaseStatus => Str
+
+  The value returned when the specified C<EngineVersion> of the
+replication instance is in Beta or test mode. This indicates some
+features might not work as expected.
+
+AWS DMS supports the C<ReleaseStatus> parameter in versions 3.1.4 and
+later.
 
 
 =head2 ReplicationInstanceClass => Str

@@ -52,9 +52,9 @@ replication instance.
 
 =head2 MultiAZ => Bool
 
-  Specifies if the replication instance is a Multi-AZ deployment. You
-cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
-is set to C<true>.
+  Specifies whether the replication instance is a Multi-AZ deployment.
+You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+parameter is set to C<true>.
 
 
 =head2 ReplicationInstanceClass => Str
