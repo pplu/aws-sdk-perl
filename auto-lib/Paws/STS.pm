@@ -9,6 +9,7 @@ package Paws::STS;
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'IDPCommunicationError' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
@@ -771,16 +772,16 @@ credentials that are created using STS operations. If the account in
 the response belongs to you, you can sign in as the root user and
 review your root user access keys. Then, you can pull a credentials
 report
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report)
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
 to learn which IAM user owns the keys. To learn who requested the
 temporary credentials for an C<ASIA> access key, view the STS events in
 your CloudTrail logs
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration).
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html).
 
 This operation does not indicate the state of the access key. The key
 might be active, inactive, or deleted. Active keys might not have
-permissions to perform an operation. Providing a deleted keys might
-return an error that the key doesn't exist.
+permissions to perform an operation. Providing a deleted access key
+might return an error that the key doesn't exist.
 
 
 =head2 GetCallerIdentity
@@ -794,8 +795,17 @@ Each argument is described in detail in: L<Paws::STS::GetCallerIdentity>
 
 Returns: a L<Paws::STS::GetCallerIdentityResponse> instance
 
-Returns details about the IAM identity whose credentials are used to
-call the API.
+Returns details about the IAM user or role whose credentials are used
+to call the operation.
+
+No permissions are required to perform this operation. If an
+administrator adds a policy to your IAM user or role that explicitly
+denies access to the C<sts:GetCallerIdentity> action, you can still
+perform this operation. Permissions are not required because the same
+information is returned when an IAM user or role is denied access. To
+view an example response, see I Am Not Authorized to Perform:
+iam:DeleteVirtualMFADevice
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa).
 
 
 =head2 GetFederationToken

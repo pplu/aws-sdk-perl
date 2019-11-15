@@ -133,7 +133,9 @@ policies to use as managed session policies. The plain text that you
 use for both inline and managed session policies shouldn't exceed 2048
 characters. You can provide up to 10 managed policy ARNs. For more
 information about ARNs, see Amazon Resource Names (ARNs) and AWS
-Service Namespaces in the AWS General Reference.
+Service Namespaces
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the AWS General Reference.
 
 This parameter is optional. However, if you do not pass any session
 policies, then the resulting federated user session has no permissions.
