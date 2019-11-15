@@ -1,5 +1,6 @@
 package Paws::RDSData::Field;
   use Moose;
+  has ArrayValue => (is => 'ro', isa => 'Paws::RDSData::ArrayValue', request_name => 'arrayValue', traits => ['NameInRequest']);
   has BlobValue => (is => 'ro', isa => 'Str', request_name => 'blobValue', traits => ['NameInRequest']);
   has BooleanValue => (is => 'ro', isa => 'Bool', request_name => 'booleanValue', traits => ['NameInRequest']);
   has DoubleValue => (is => 'ro', isa => 'Num', request_name => 'doubleValue', traits => ['NameInRequest']);
@@ -25,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDSData::Field object:
 
-  $service_obj->Method(Att1 => { BlobValue => $value, ..., StringValue => $value  });
+  $service_obj->Method(Att1 => { ArrayValue => $value, ..., StringValue => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Field object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->BlobValue
+  $result->Att1->ArrayValue
 
 =head1 DESCRIPTION
 
 Contains a value.
 
 =head1 ATTRIBUTES
+
+
+=head2 ArrayValue => L<Paws::RDSData::ArrayValue>
+
+  An array of values.
 
 
 =head2 BlobValue => Str

@@ -86,6 +86,10 @@ for Aurora Serverless
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 in the I<Amazon Aurora User Guide>.
 
+If you have questions or comments related to the Data API, send email
+to Rds-data-api-feedback@amazon.com
+(mailto:Rds-data-api-feedback@amazon.com).
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-data-2018-08-01>
 
 
@@ -149,16 +153,7 @@ Returns: a L<Paws::RDSData::BeginTransactionResponse> instance
 
 Starts a SQL transaction.
 
-A transaction can run for a maximum of 24 hours. A transaction is
-terminated and rolled back automatically after 24 hours.
-
-A transaction times out if no calls use its transaction ID in three
-minutes. If a transaction times out before it's committed, it's rolled
-back automatically.
-
-DDL statements inside a transaction cause an implicit commit. We
-recommend that you run each DDL statement in a separate
-C<ExecuteStatement> call with C<continueAfterTimeout> enabled.
+ <important> <p>A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.</p> <p>A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.</p> <p>DDL statements inside a transaction cause an implicit commit. We recommend that you run each DDL statement in a separate <code>ExecuteStatement</code> call with <code>continueAfterTimeout</code> enabled.</p> </important>
 
 
 =head2 CommitTransaction
@@ -226,6 +221,8 @@ C<ExecuteStatement> operation.
 =item [IncludeResultMetadata => Bool]
 
 =item [Parameters => ArrayRef[L<Paws::RDSData::SqlParameter>]]
+
+=item [ResultSetOptions => L<Paws::RDSData::ResultSetOptions>]
 
 =item [Schema => Str]
 

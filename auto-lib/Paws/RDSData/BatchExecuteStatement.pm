@@ -44,6 +44,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name  => 'MyParameterName',    # OPTIONAL
             Value => {
+              ArrayValue => {
+                ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
+                BooleanValues => [
+                  1, ...                                   # OPTIONAL
+                ],                                         # OPTIONAL
+                DoubleValues => [
+                  1, ...                                   # OPTIONAL
+                ],                                         # OPTIONAL
+                LongValues => [
+                  1, ...                                   # OPTIONAL
+                ],                                         # OPTIONAL
+                StringValues => [
+                  'MyString', ...                          # OPTIONAL
+                ],                                         # OPTIONAL
+              },    # OPTIONAL
               BlobValue    => 'BlobBlob',    # OPTIONAL
               BooleanValue => 1,             # OPTIONAL
               DoubleValue  => 1,             # OPTIONAL

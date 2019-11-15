@@ -42,6 +42,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDSData::Va
 
 Contains the value of a column.
 
+ <important> <p>This data type is deprecated.</p> </important>
+
 =head1 ATTRIBUTES
 
 

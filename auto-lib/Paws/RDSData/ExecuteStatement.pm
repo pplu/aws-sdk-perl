@@ -6,6 +6,7 @@ package Paws::RDSData::ExecuteStatement;
   has IncludeResultMetadata => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResultMetadata');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RDSData::SqlParameter]', traits => ['NameInRequest'], request_name => 'parameters');
   has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn', required => 1);
+  has ResultSetOptions => (is => 'ro', isa => 'Paws::RDSData::ResultSetOptions', traits => ['NameInRequest'], request_name => 'resultSetOptions');
   has Schema => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'schema');
   has SecretArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'secretArn', required => 1);
   has Sql => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sql', required => 1);
@@ -47,16 +48,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name  => 'MyParameterName',              # OPTIONAL
           Value => {
-            BlobValue    => 'BlobBlob',            # OPTIONAL
-            BooleanValue => 1,                     # OPTIONAL
-            DoubleValue  => 1,                     # OPTIONAL
-            IsNull       => 1,                     # OPTIONAL
-            LongValue    => 1,                     # OPTIONAL
-            StringValue  => 'MyString',            # OPTIONAL
+            ArrayValue => {
+              ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
+              BooleanValues => [
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
+              DoubleValues => [
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
+              LongValues => [
+                1, ...                                   # OPTIONAL
+              ],                                         # OPTIONAL
+              StringValues => [
+                'MyString', ...                          # OPTIONAL
+              ],                                         # OPTIONAL
+            },    # OPTIONAL
+            BlobValue    => 'BlobBlob',    # OPTIONAL
+            BooleanValue => 1,             # OPTIONAL
+            DoubleValue  => 1,             # OPTIONAL
+            IsNull       => 1,             # OPTIONAL
+            LongValue    => 1,             # OPTIONAL
+            StringValue  => 'MyString',    # OPTIONAL
           },    # OPTIONAL
         },
         ...
       ],        # OPTIONAL
+      ResultSetOptions => {
+        DecimalReturnType =>
+          'DOUBLE_OR_LONG',    # values: DOUBLE_OR_LONG, STRING; OPTIONAL
+      },    # OPTIONAL
       Schema        => 'MyDbName',    # OPTIONAL
       TransactionId => 'MyId',        # OPTIONAL
     );
@@ -110,6 +130,12 @@ The parameters for the SQL statement.
 =head2 B<REQUIRED> ResourceArn => Str
 
 The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
+
+
+
+=head2 ResultSetOptions => L<Paws::RDSData::ResultSetOptions>
+
+Options that control how the result set is returned.
 
 
 

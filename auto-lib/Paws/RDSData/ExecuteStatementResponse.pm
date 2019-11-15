@@ -27,6 +27,8 @@ Metadata for the columns included in the results.
 
 Values for fields generated during the request.
 
+ <note> <p>The <code>generatedFields</code> data isn't supported by Aurora PostgreSQL. To get the values of generated fields, use the <code>RETURNING</code> clause. For more information, see <a href="https://www.postgresql.org/docs/10/dml-returning.html">Returning Data From Modified Rows</a> in the PostgreSQL documentation.</p> </note>
+
 
 =head2 NumberOfRecordsUpdated => Int
 
