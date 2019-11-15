@@ -17,7 +17,7 @@ Paws::Rekognition::DetectModerationLabelsResponse
 
 =head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ModerationLabel>]
 
-Array of detected Moderation labels and the time, in millseconds from
+Array of detected Moderation labels and the time, in milliseconds from
 the start of the video, they were detected.
 
 

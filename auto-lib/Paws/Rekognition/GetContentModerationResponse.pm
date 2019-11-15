@@ -21,12 +21,12 @@ Paws::Rekognition::GetContentModerationResponse
 
 =head2 JobStatus => Str
 
-The current status of the content moderation job.
+The current status of the unsafe content analysis job.
 
 Valid values are: C<"IN_PROGRESS">, C<"SUCCEEDED">, C<"FAILED">
 =head2 ModerationLabels => ArrayRef[L<Paws::Rekognition::ContentModerationDetection>]
 
-The detected moderation labels and the time(s) they were detected.
+The detected unsafe content labels and the time(s) they were detected.
 
 
 =head2 ModerationModelVersion => Str
@@ -39,7 +39,7 @@ detect unsafe content.
 
 If the response is truncated, Amazon Rekognition Video returns this
 token that you can use in the subsequent request to retrieve the next
-set of moderation labels.
+set of unsafe content labels.
 
 
 =head2 StatusMessage => Str

@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Information about a moderation label detection in a stored video.
+Information about an unsafe content label detection in a stored video.
 
 =head1 ATTRIBUTES
 
 
 =head2 ModerationLabel => L<Paws::Rekognition::ModerationLabel>
 
-  The moderation label detected by in the stored video.
+  The unsafe content label detected by in the stored video.
 
 
 =head2 Timestamp => Int
 
-  Time, in milliseconds from the beginning of the video, that the
-moderation label was detected.
+  Time, in milliseconds from the beginning of the video, that the unsafe
+content label was detected.
 
 
 

@@ -680,11 +680,10 @@ Each argument is described in detail in: L<Paws::Rekognition::DetectModerationLa
 
 Returns: a L<Paws::Rekognition::DetectModerationLabelsResponse> instance
 
-Detects explicit or suggestive adult content in a specified JPEG or PNG
-format image. Use C<DetectModerationLabels> to moderate images
-depending on your requirements. For example, you might want to filter
-images that contain nudity, but not images containing suggestive
-content.
+Detects unsafe content in a specified JPEG or PNG format image. Use
+C<DetectModerationLabels> to moderate images depending on your
+requirements. For example, you might want to filter images that contain
+nudity, but not images containing suggestive content.
 
 To filter images, use the labels returned by C<DetectModerationLabels>
 to determine which types of content are appropriate.
@@ -861,25 +860,24 @@ Each argument is described in detail in: L<Paws::Rekognition::GetContentModerati
 
 Returns: a L<Paws::Rekognition::GetContentModerationResponse> instance
 
-Gets the content moderation analysis results for a Amazon Rekognition
-Video analysis started by StartContentModeration.
+Gets the unsafe content analysis results for a Amazon Rekognition Video
+analysis started by StartContentModeration.
 
-Content moderation analysis of a video is an asynchronous operation.
-You start analysis by calling StartContentModeration which returns a
-job identifier (C<JobId>). When analysis finishes, Amazon Rekognition
-Video publishes a completion status to the Amazon Simple Notification
-Service topic registered in the initial call to
-C<StartContentModeration>. To get the results of the content moderation
-analysis, first check that the status value published to the Amazon SNS
-topic is C<SUCCEEDED>. If so, call C<GetContentModeration> and pass the
-job identifier (C<JobId>) from the initial call to
-C<StartContentModeration>.
+Unsafe content analysis of a video is an asynchronous operation. You
+start analysis by calling StartContentModeration which returns a job
+identifier (C<JobId>). When analysis finishes, Amazon Rekognition Video
+publishes a completion status to the Amazon Simple Notification Service
+topic registered in the initial call to C<StartContentModeration>. To
+get the results of the unsafe content analysis, first check that the
+status value published to the Amazon SNS topic is C<SUCCEEDED>. If so,
+call C<GetContentModeration> and pass the job identifier (C<JobId>)
+from the initial call to C<StartContentModeration>.
 
 For more information, see Working with Stored Videos in the Amazon
 Rekognition Devlopers Guide.
 
-C<GetContentModeration> returns detected content moderation labels, and
-the time they are detected, in an array, C<ModerationLabels>, of
+C<GetContentModeration> returns detected unsafe content labels, and the
+time they are detected, in an array, C<ModerationLabels>, of
 ContentModerationDetection objects.
 
 By default, the moderated labels are returned sorted by time, in
@@ -1530,21 +1528,20 @@ Each argument is described in detail in: L<Paws::Rekognition::StartContentModera
 
 Returns: a L<Paws::Rekognition::StartContentModerationResponse> instance
 
-Starts asynchronous detection of explicit or suggestive adult content
-in a stored video.
+Starts asynchronous detection of unsafe content in a stored video.
 
 Amazon Rekognition Video can moderate content in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
 of the video. C<StartContentModeration> returns a job identifier
 (C<JobId>) which you use to get the results of the analysis. When
-content moderation analysis is finished, Amazon Rekognition Video
-publishes a completion status to the Amazon Simple Notification Service
-topic that you specify in C<NotificationChannel>.
+unsafe content analysis is finished, Amazon Rekognition Video publishes
+a completion status to the Amazon Simple Notification Service topic
+that you specify in C<NotificationChannel>.
 
-To get the results of the content moderation analysis, first check that
-the status value published to the Amazon SNS topic is C<SUCCEEDED>. If
-so, call GetContentModeration and pass the job identifier (C<JobId>)
-from the initial call to C<StartContentModeration>.
+To get the results of the unsafe content analysis, first check that the
+status value published to the Amazon SNS topic is C<SUCCEEDED>. If so,
+call GetContentModeration and pass the job identifier (C<JobId>) from
+the initial call to C<StartContentModeration>.
 
 For more information, see Detecting Unsafe Content in the Amazon
 Rekognition Developer Guide.

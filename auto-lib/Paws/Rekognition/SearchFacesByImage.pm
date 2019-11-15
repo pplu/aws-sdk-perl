@@ -70,7 +70,7 @@ ID of the collection to search.
 
 (Optional) Specifies the minimum confidence in the face match to
 return. For example, don't return any matches where confidence in
-matches is less than 70%.
+matches is less than 70%. The default value is 80%.
 
 
 

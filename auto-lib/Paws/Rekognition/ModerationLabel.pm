@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-Provides information about a single type of moderated content found in
-an image or video. Each type of moderated content has a label within a
+Provides information about a single type of unsafe content found in an
+image or video. Each type of moderated content has a label within a
 hierarchical taxonomy. For more information, see Detecting Unsafe
 Content in the Amazon Rekognition Developer Guide.
 
@@ -53,7 +53,7 @@ confidence value greater than or equal to 50 percent.
 
 =head2 Name => Str
 
-  The label name for the type of content detected in the image.
+  The label name for the type of unsafe content detected in the image.
 
 
 =head2 ParentName => Str
