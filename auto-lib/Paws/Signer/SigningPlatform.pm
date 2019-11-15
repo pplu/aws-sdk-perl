@@ -39,52 +39,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Sig
 =head1 DESCRIPTION
 
 Contains information about the signing configurations and parameters
-that is used to perform an AWS Signer job.
+that is used to perform a code signing job.
 
 =head1 ATTRIBUTES
 
 
 =head2 Category => Str
 
-  The category of an AWS Signer platform.
+  The category of a code signing platform.
 
 
 =head2 DisplayName => Str
 
-  The display name of an AWS Signer platform.
+  The display name of a code signing platform.
 
 
 =head2 MaxSizeInMB => Int
 
-  The maximum size (in MB) of code that can be signed by a AWS Signer
+  The maximum size (in MB) of code that can be signed by a code signing
 platform.
 
 
 =head2 Partner => Str
 
-  Any partner entities linked to an AWS Signer platform.
+  Any partner entities linked to a code signing platform.
 
 
 =head2 PlatformId => Str
 
-  The ID of an AWS Signer platform.
+  The ID of a code signing; platform.
 
 
 =head2 SigningConfiguration => L<Paws::Signer::SigningConfiguration>
 
-  The configuration of an AWS Signer platform. This includes the
+  The configuration of a code signing platform. This includes the
 designated hash algorithm and encryption algorithm of a signing
 platform.
 
 
 =head2 SigningImageFormat => L<Paws::Signer::SigningImageFormat>
 
-  The signing image format that is used by an AWS Signer platform.
+  
 
 
 =head2 Target => Str
 
-  The types of targets that can be signed by an AWS Signer platform.
+  The types of targets that can be signed by a code signing platform.
 
 
 

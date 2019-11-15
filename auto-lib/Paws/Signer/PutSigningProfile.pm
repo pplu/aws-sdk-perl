@@ -6,6 +6,7 @@ package Paws::Signer::PutSigningProfile;
   has ProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'profileName', required => 1);
   has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', traits => ['NameInRequest'], request_name => 'signingMaterial', required => 1);
   has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', traits => ['NameInRequest'], request_name => 'signingParameters');
+  has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       SigningParameters =>
         { 'MySigningParameterKey' => 'MySigningParameterValue', },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -91,6 +95,12 @@ with the new signing profile.
 
 Map of key-value pairs for signing. These can include any information
 that you want to use during signing.
+
+
+
+=head2 Tags => L<Paws::Signer::TagMap>
+
+Tags to be associated with the signing profile being created.
 
 
 

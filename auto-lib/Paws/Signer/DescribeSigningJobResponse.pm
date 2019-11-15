@@ -65,8 +65,8 @@ The IAM principal that requested the signing job.
 
 =head2 SignedObject => L<Paws::Signer::SignedObject>
 
-Name of the S3 bucket where the signed code image is saved by AWS
-Signer.
+Name of the S3 bucket where the signed code image is saved by code
+signing.
 
 
 =head2 SigningMaterial => L<Paws::Signer::SigningMaterial>

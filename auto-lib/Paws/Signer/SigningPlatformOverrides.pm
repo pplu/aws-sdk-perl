@@ -31,15 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Sig
 
 =head1 DESCRIPTION
 
-Any overrides that are applied to the signing configuration of an AWS
-Signer platform.
+Any overrides that are applied to the signing configuration of a code
+signing platform.
 
 =head1 ATTRIBUTES
 
 
 =head2 SigningConfiguration => L<Paws::Signer::SigningConfigurationOverrides>
 
-  
+  A signing configuration that overrides the default encryption or hash
+algorithm of a signing job.
 
 
 

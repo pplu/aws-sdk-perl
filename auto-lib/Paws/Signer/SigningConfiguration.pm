@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Sig
 
 =head1 DESCRIPTION
 
-The configuration of an AWS Signer operation.
+The configuration of a code signing operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> EncryptionAlgorithmOptions => L<Paws::Signer::EncryptionAlgorithmOptions>
 
-  The encryption algorithm options that are available for an AWS Signer
+  The encryption algorithm options that are available for a code signing
 job.
 
 
 =head2 B<REQUIRED> HashAlgorithmOptions => L<Paws::Signer::HashAlgorithmOptions>
 
-  The hash algorithm options that are available for an AWS Signer job.
+  The hash algorithm options that are available for a a code signing job.
 
 
 

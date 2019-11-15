@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::S3S
 
 =head1 DESCRIPTION
 
-The S3 bucket name and key where AWS Signer saved your signed code
+The S3 bucket name and key where code signing saved your signed code
 image.
 
 =head1 ATTRIBUTES

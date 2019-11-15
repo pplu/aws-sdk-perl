@@ -1,10 +1,12 @@
 package Paws::Signer::SigningProfile;
   use Moose;
+  has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has PlatformId => (is => 'ro', isa => 'Str', request_name => 'platformId', traits => ['NameInRequest']);
   has ProfileName => (is => 'ro', isa => 'Str', request_name => 'profileName', traits => ['NameInRequest']);
   has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', request_name => 'signingMaterial', traits => ['NameInRequest']);
   has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', request_name => 'signingParameters', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', request_name => 'tags', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,21 +26,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Signer::SigningProfile object:
 
-  $service_obj->Method(Att1 => { PlatformId => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::SigningProfile object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->PlatformId
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Contains information about the ACM certificates and AWS Signer
-configuration parameters that can be used by a given AWS Signer user.
+Contains information about the ACM certificates and code signing
+configuration parameters that can be used by a given code signing user.
 
 =head1 ATTRIBUTES
+
+
+=head2 Arn => Str
+
+  Amazon Resource Name (ARN) for the signing profile.
 
 
 =head2 PlatformId => Str
@@ -48,7 +55,7 @@ configuration parameters that can be used by a given AWS Signer user.
 
 =head2 ProfileName => Str
 
-  The name of the AWS Signer profile.
+  The name of the signing profile.
 
 
 =head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
@@ -58,12 +65,17 @@ configuration parameters that can be used by a given AWS Signer user.
 
 =head2 SigningParameters => L<Paws::Signer::SigningParameters>
 
-  The parameters that are available for use by an AWS Signer user.
+  The parameters that are available for use by a code signing user.
 
 
 =head2 Status => Str
 
-  The status of an AWS Signer profile.
+  The status of a code signing profile.
+
+
+=head2 Tags => L<Paws::Signer::TagMap>
+
+  A list of tags associated with the signing profile.
 
 
 

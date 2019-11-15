@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Enc
 
 =head1 DESCRIPTION
 
-The encryption algorithm options that are available to an AWS Signer
+The encryption algorithm options that are available to a code signing
 job.
 
 =head1 ATTRIBUTES
@@ -40,13 +40,13 @@ job.
 
 =head2 B<REQUIRED> AllowedValues => ArrayRef[Str|Undef]
 
-  The set of accepted encryption algorithms that are allowed in an AWS
-Signer job.
+  The set of accepted encryption algorithms that are allowed in a code
+signing job.
 
 
 =head2 B<REQUIRED> DefaultValue => Str
 
-  The default encryption algorithm that is used by an AWS Signer job.
+  The default encryption algorithm that is used by a code signing job.
 
 
 

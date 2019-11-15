@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Signer::Has
 
 =head1 DESCRIPTION
 
-The hash algorithms that are available to an AWS Signer job.
+The hash algorithms that are available to a code signing job.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AllowedValues => ArrayRef[Str|Undef]
 
-  The set of accepted hash algorithms allowed in an AWS Signer job.
+  The set of accepted hash algorithms allowed in a code signing job.
 
 
 =head2 B<REQUIRED> DefaultValue => Str
 
-  The default hash algorithm that is used in an AWS Signer job.
+  The default hash algorithm that is used in a code signing job.
 
 
 
