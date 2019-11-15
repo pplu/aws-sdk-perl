@@ -21,7 +21,7 @@ Paws::OpsWorksCM::DescribeEvents - Arguments for method DescribeEvents on L<Paws
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeEvents on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method DescribeEvents.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.

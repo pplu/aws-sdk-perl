@@ -20,7 +20,7 @@ Paws::OpsWorksCM::CreateBackup - Arguments for method CreateBackup on L<Paws::Op
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateBackup on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method CreateBackup.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBackup.

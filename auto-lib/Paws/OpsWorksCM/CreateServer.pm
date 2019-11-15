@@ -4,6 +4,9 @@ package Paws::OpsWorksCM::CreateServer;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BackupId => (is => 'ro', isa => 'Str');
   has BackupRetentionCount => (is => 'ro', isa => 'Int');
+  has CustomCertificate => (is => 'ro', isa => 'Str');
+  has CustomDomain => (is => 'ro', isa => 'Str');
+  has CustomPrivateKey => (is => 'ro', isa => 'Str');
   has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineAttributes => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorksCM::EngineAttribute]');
@@ -35,7 +38,7 @@ Paws::OpsWorksCM::CreateServer - Arguments for method CreateServer on L<Paws::Op
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method CreateServer on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method CreateServer.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateServer.
@@ -51,22 +54,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AssociatePublicIpAddress => 1,                        # OPTIONAL
       BackupId                 => 'MyBackupId',             # OPTIONAL
       BackupRetentionCount     => 1,                        # OPTIONAL
+      CustomCertificate        => 'MyCustomCertificate',    # OPTIONAL
+      CustomDomain             => 'MyCustomDomain',         # OPTIONAL
+      CustomPrivateKey         => 'MyCustomPrivateKey',     # OPTIONAL
       DisableAutomatedBackup   => 1,                        # OPTIONAL
       Engine                   => 'MyString',               # OPTIONAL
       EngineAttributes         => [
         {
-          Name  => 'MyEngineAttributeName',                 # OPTIONAL
-          Value => 'MyEngineAttributeValue',                # OPTIONAL
+          Name  => 'MyEngineAttributeName',     # max: 10000; OPTIONAL
+          Value => 'MyEngineAttributeValue',    # max: 10000; OPTIONAL
         },
         ...
-      ],                                                    # OPTIONAL
+      ],                                        # OPTIONAL
       EngineModel                => 'MyString',                  # OPTIONAL
       EngineVersion              => 'MyString',                  # OPTIONAL
       KeyPair                    => 'MyKeyPair',                 # OPTIONAL
       PreferredBackupWindow      => 'MyTimeWindowDefinition',    # OPTIONAL
       PreferredMaintenanceWindow => 'MyTimeWindowDefinition',    # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],         # OPTIONAL
-      SubnetIds                  => [ 'MyString', ... ],         # OPTIONAL
+      SecurityGroupIds           => [
+        'MyString', ...                                          # max: 10000
+      ],                                                         # OPTIONAL
+      SubnetIds => [
+        'MyString', ...                                          # max: 10000
+      ],                                                         # OPTIONAL
     );
 
     # Results:
@@ -99,6 +109,69 @@ the backup represented by BackupId.
 The number of automated backups that you want to keep. Whenever a new
 backup is created, AWS OpsWorks CM deletes the oldest backups if this
 number is exceeded. The default value is C<1>.
+
+
+
+=head2 CustomCertificate => Str
+
+A PEM-formatted HTTPS certificate. The value can be be a single,
+self-signed certificate, or a certificate chain. If you specify a
+custom certificate, you must also specify values for C<CustomDomain>
+and C<CustomPrivateKey>. The following are requirements for the
+C<CustomCertificate> value:
+
+=over
+
+=item *
+
+You can provide either a self-signed, custom certificate, or the full
+certificate chain.
+
+=item *
+
+The certificate must be a valid X509 certificate, or a certificate
+chain in PEM format.
+
+=item *
+
+The certificate must be valid at the time of upload. A certificate
+can't be used before its validity period begins (the certificate's
+C<NotBefore> date), or after it expires (the certificate's C<NotAfter>
+date).
+
+=item *
+
+The certificateE<rsquo>s common name or subject alternative names
+(SANs), if present, must match the value of C<CustomDomain>.
+
+=item *
+
+The certificate must match the value of C<CustomPrivateKey>.
+
+=back
+
+
+
+
+=head2 CustomDomain => Str
+
+An optional public endpoint of a server, such as
+C<https://aws.my-company.com>. To access the server, create a CNAME DNS
+record in your preferred DNS service that points the custom domain to
+the endpoint that is generated when the server is created (the value of
+the CreateServer Endpoint attribute). You cannot access the server by
+using the generated C<Endpoint> value if the server is using a custom
+domain. If you specify a custom domain, you must also specify values
+for C<CustomCertificate> and C<CustomPrivateKey>.
+
+
+
+=head2 CustomPrivateKey => Str
+
+A private key in PEM format for connecting to the server by using
+HTTPS. The private key must not be encrypted; it cannot be protected by
+a password or passphrase. If you specify a custom private key, you must
+also specify values for C<CustomDomain> and C<CustomCertificate>.
 
 
 

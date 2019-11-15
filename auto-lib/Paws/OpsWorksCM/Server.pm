@@ -4,6 +4,7 @@ package Paws::OpsWorksCM::Server;
   has BackupRetentionCount => (is => 'ro', isa => 'Int');
   has CloudFormationStackArn => (is => 'ro', isa => 'Str');
   has CreatedAt => (is => 'ro', isa => 'Str');
+  has CustomDomain => (is => 'ro', isa => 'Str');
   has DisableAutomatedBackup => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -78,6 +79,13 @@ Describes a configuration management server.
   Time stamp of server creation. Example C<2016-07-29T13:38:47.520Z>
 
 
+=head2 CustomDomain => Str
+
+  An optional public endpoint of a server, such as
+C<https://aws.my-company.com>. You cannot access the server by using
+the C<Endpoint> value if the server has a C<CustomDomain> specified.
+
+
 =head2 DisableAutomatedBackup => Bool
 
   Disables automated backups. The number of stored backups is dependent
@@ -87,7 +95,9 @@ on the value of PreferredBackupCount.
 =head2 Endpoint => Str
 
   A DNS name that can be used to access the engine. Example:
-C<myserver-asdfghjkl.us-east-1.opsworks.io>
+C<myserver-asdfghjkl.us-east-1.opsworks.io>. You cannot access the
+server by using the C<Endpoint> value if the server has a
+C<CustomDomain> specified.
 
 
 =head2 Engine => Str

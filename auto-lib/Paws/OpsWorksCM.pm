@@ -175,7 +175,7 @@ package Paws::OpsWorksCM;
 
 =head1 NAME
 
-Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks for Chef Automate
+Paws::OpsWorksCM - Perl Interface to AWS AWS OpsWorks CM
 
 =head1 SYNOPSIS
 
@@ -398,6 +398,12 @@ request are not valid.
 
 =item [BackupRetentionCount => Int]
 
+=item [CustomCertificate => Str]
+
+=item [CustomDomain => Str]
+
+=item [CustomPrivateKey => Str]
+
 =item [DisableAutomatedBackup => Bool]
 
 =item [Engine => Str]
@@ -456,6 +462,10 @@ By default, your server is accessible from any IP address. We recommend
 that you update your security group rules to allow access from known IP
 addresses and address ranges only. To edit security group rules, open
 Security Groups in the navigation pane of the EC2 management console.
+
+To specify your own domain for a server, and provide your own
+self-signed or CA-signed certificate and private key, specify values
+for C<CustomDomain>, C<CustomCertificate>, and C<CustomPrivateKey>.
 
 
 =head2 DeleteBackup

@@ -21,7 +21,7 @@ Paws::OpsWorksCM::DescribeServers - Arguments for method DescribeServers on L<Pa
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method DescribeServers on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method DescribeServers.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServers.

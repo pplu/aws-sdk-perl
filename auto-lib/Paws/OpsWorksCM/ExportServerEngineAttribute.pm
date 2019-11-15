@@ -21,7 +21,7 @@ Paws::OpsWorksCM::ExportServerEngineAttribute - Arguments for method ExportServe
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ExportServerEngineAttribute on the
-L<AWS OpsWorks for Chef Automate|Paws::OpsWorksCM> service. Use the attributes of this class
+L<AWS OpsWorks CM|Paws::OpsWorksCM> service. Use the attributes of this class
 as arguments to method ExportServerEngineAttribute.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExportServerEngineAttribute.
@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerName          => 'MyServerName',
       InputAttributes     => [
         {
-          Name  => 'MyEngineAttributeName',     # OPTIONAL
-          Value => 'MyEngineAttributeValue',    # OPTIONAL
+          Name  => 'MyEngineAttributeName',     # max: 10000; OPTIONAL
+          Value => 'MyEngineAttributeValue',    # max: 10000; OPTIONAL
         },
         ...
       ],                                        # OPTIONAL
