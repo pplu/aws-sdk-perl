@@ -1,6 +1,7 @@
 package Paws::ECR::Repository;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', request_name => 'imageScanningConfiguration', traits => ['NameInRequest']);
   has ImageTagMutability => (is => 'ro', isa => 'Str', request_name => 'imageTagMutability', traits => ['NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
   has RepositoryArn => (is => 'ro', isa => 'Str', request_name => 'repositoryArn', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ An object representing a repository.
 
   The date and time, in JavaScript date format, when the repository was
 created.
+
+
+=head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+
+  
 
 
 =head2 ImageTagMutability => Str

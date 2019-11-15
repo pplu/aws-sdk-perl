@@ -2,6 +2,8 @@ package Paws::ECR::ImageDetail;
   use Moose;
   has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
   has ImagePushedAt => (is => 'ro', isa => 'Str', request_name => 'imagePushedAt', traits => ['NameInRequest']);
+  has ImageScanFindingsSummary => (is => 'ro', isa => 'Paws::ECR::ImageScanFindingsSummary', request_name => 'imageScanFindingsSummary', traits => ['NameInRequest']);
+  has ImageScanStatus => (is => 'ro', isa => 'Paws::ECR::ImageScanStatus', request_name => 'imageScanStatus', traits => ['NameInRequest']);
   has ImageSizeInBytes => (is => 'ro', isa => 'Int', request_name => 'imageSizeInBytes', traits => ['NameInRequest']);
   has ImageTags => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'imageTags', traits => ['NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
@@ -51,6 +53,16 @@ operation.
 
   The date and time, expressed in standard JavaScript date format, at
 which the current image was pushed to the repository.
+
+
+=head2 ImageScanFindingsSummary => L<Paws::ECR::ImageScanFindingsSummary>
+
+  A summary of the last completed image scan.
+
+
+=head2 ImageScanStatus => L<Paws::ECR::ImageScanStatus>
+
+  The current state of the scan.
 
 
 =head2 ImageSizeInBytes => Int

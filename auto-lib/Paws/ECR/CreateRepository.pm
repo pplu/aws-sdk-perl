@@ -1,6 +1,7 @@
 
 package Paws::ECR::CreateRepository;
   use Moose;
+  has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', traits => ['NameInRequest'], request_name => 'imageScanningConfiguration' );
   has ImageTagMutability => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'imageTagMutability' );
   has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECR::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
@@ -44,6 +45,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr/CreateRepository>
 
 =head1 ATTRIBUTES
+
+
+=head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+
+The image scanning configuration for the repository. This setting
+determines whether images are scanned for known vulnerabilities after
+being pushed to the repository.
+
 
 
 =head2 ImageTagMutability => Str

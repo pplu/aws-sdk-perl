@@ -60,6 +60,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::DescribeImages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeImageScanFindings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DescribeImageScanFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DescribeRepositories', @_);
@@ -110,6 +115,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutImageScanningConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutImageScanningConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutImageTagMutability {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutImageTagMutability', @_);
@@ -123,6 +133,11 @@ package Paws::ECR;
   sub SetRepositoryPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::SetRepositoryPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartImageScan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::StartImageScan', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartLifecyclePolicyPreview {
@@ -169,6 +184,29 @@ package Paws::ECR;
 
     return undef
   }
+  sub DescribeAllImageScanFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeImageScanFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeImageScanFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->imageScanFindings->findings }, @{ $next_result->imageScanFindings->findings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'imageScanFindings.findings') foreach (@{ $result->imageScanFindings->findings });
+        $result = $self->DescribeImageScanFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'imageScanFindings.findings') foreach (@{ $result->imageScanFindings->findings });
+    }
+
+    return undef
+  }
   sub DescribeAllRepositories {
     my $self = shift;
 
@@ -188,6 +226,29 @@ package Paws::ECR;
         $result = $self->DescribeRepositories(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'repositories') foreach (@{ $result->repositories });
+    }
+
+    return undef
+  }
+  sub GetAllLifecyclePolicyPreview {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetLifecyclePolicyPreview(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetLifecyclePolicyPreview(@_, nextToken => $next_result->nextToken);
+        push @{ $result->previewResults }, @{ $next_result->previewResults };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'previewResults') foreach (@{ $result->previewResults });
+        $result = $self->GetLifecyclePolicyPreview(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'previewResults') foreach (@{ $result->previewResults });
     }
 
     return undef
@@ -217,7 +278,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageTagMutability PutLifecyclePolicy SetRepositoryPolicy StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeImageScanFindings DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageScanningConfiguration PutImageTagMutability PutLifecyclePolicy SetRepositoryPolicy StartImageScan StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -372,6 +433,8 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 =item RepositoryName => Str
 
+=item [ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>]
+
 =item [ImageTagMutability => Str]
 
 =item [Tags => ArrayRef[L<Paws::ECR::Tag>]]
@@ -383,7 +446,11 @@ Each argument is described in detail in: L<Paws::ECR::CreateRepository>
 
 Returns: a L<Paws::ECR::CreateRepositoryResponse> instance
 
-Creates an image repository.
+Creates an Amazon Elastic Container Registry (Amazon ECR) repository,
+where users can push and pull Docker images. For more information, see
+Amazon ECR Repositories
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
+in the I<Amazon Elastic Container Registry User Guide>.
 
 
 =head2 DeleteLifecyclePolicy
@@ -474,6 +541,30 @@ layers before pushing them to a V2 Docker registry. The output of the
 C<docker images> command shows the uncompressed image size, so it may
 return a larger image size than the image sizes returned by
 DescribeImages.
+
+
+=head2 DescribeImageScanFindings
+
+=over
+
+=item ImageId => L<Paws::ECR::ImageIdentifier>
+
+=item RepositoryName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RegistryId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::DescribeImageScanFindings>
+
+Returns: a L<Paws::ECR::DescribeImageScanFindingsResponse> instance
+
+Describes the image scan findings for the specified image.
 
 
 =head2 DescribeRepositories
@@ -707,6 +798,26 @@ for general use by customers for pulling and pushing images. In most
 cases, you should use the C<docker> CLI to pull, tag, and push images.
 
 
+=head2 PutImageScanningConfiguration
+
+=over
+
+=item ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::PutImageScanningConfiguration>
+
+Returns: a L<Paws::ECR::PutImageScanningConfigurationResponse> instance
+
+Updates the image scanning configuration for a repository.
+
+
 =head2 PutImageTagMutability
 
 =over
@@ -724,7 +835,12 @@ Each argument is described in detail in: L<Paws::ECR::PutImageTagMutability>
 
 Returns: a L<Paws::ECR::PutImageTagMutabilityResponse> instance
 
-Updates the image tag mutability settings for a repository.
+Updates the image tag mutability settings for a repository. When a
+repository is configured with tag immutability, all image tags within
+the repository will be prevented them from being overwritten. For more
+information, see Image Tag Mutability
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)
+in the I<Amazon Elastic Container Registry User Guide>.
 
 
 =head2 PutLifecyclePolicy
@@ -771,6 +887,30 @@ Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 Applies a repository policy on a specified repository to control access
 permissions. For more information, see Amazon ECR Repository Policies
 (https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+in the I<Amazon Elastic Container Registry User Guide>.
+
+
+=head2 StartImageScan
+
+=over
+
+=item ImageId => L<Paws::ECR::ImageIdentifier>
+
+=item RepositoryName => Str
+
+=item [RegistryId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::StartImageScan>
+
+Returns: a L<Paws::ECR::StartImageScanResponse> instance
+
+Starts an image vulnerability scan. An image scan can only be started
+once per day on an individual image. This limit includes if an image
+was scanned on initial push. For more information, see Image Scanning
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
 in the I<Amazon Elastic Container Registry User Guide>.
 
 
@@ -881,6 +1021,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ECR::DescribeImagesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllImageScanFindings(sub { },ImageId => L<Paws::ECR::ImageIdentifier>, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 DescribeAllImageScanFindings(ImageId => L<Paws::ECR::ImageIdentifier>, RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - imageScanFindings.findings, passing the object as the first parameter, and the string 'imageScanFindings.findings' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::DescribeImageScanFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllRepositories(sub { },[MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllRepositories([MaxResults => Int, NextToken => Str, RegistryId => Str, RepositoryNames => ArrayRef[Str|Undef]])
@@ -891,6 +1043,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - repositories, passing the object as the first parameter, and the string 'repositories' as the second parameter 
 
 If not, it will return a a L<Paws::ECR::DescribeRepositoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllLifecyclePolicyPreview(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+=head2 GetAllLifecyclePolicyPreview(RepositoryName => Str, [Filter => L<Paws::ECR::LifecyclePolicyPreviewFilter>, ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>], MaxResults => Int, NextToken => Str, RegistryId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - previewResults, passing the object as the first parameter, and the string 'previewResults' as the second parameter 
+
+If not, it will return a a L<Paws::ECR::GetLifecyclePolicyPreviewResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllImages(sub { },RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
