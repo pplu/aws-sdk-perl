@@ -277,8 +277,15 @@ Paws::ES - Perl Interface to AWS Amazon Elasticsearch Service
 
 Amazon Elasticsearch Configuration Service
 
-Use the Amazon Elasticsearch configuration API to create, configure,
+Use the Amazon Elasticsearch Configuration API to create, configure,
 and manage Elasticsearch domains.
+
+For sample code that uses the Configuration API, see the Amazon
+Elasticsearch Service Developer Guide
+(https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html).
+The guide also contains sample code for sending signed HTTP requests to
+the Elasticsearch APIs
+(https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html).
 
 The endpoint for configuration service requests is region-specific:
 es.I<region>.amazonaws.com. For example, es.us-east-1.amazonaws.com.
@@ -342,6 +349,8 @@ and when the C<UpdateStatus> is in the C<PENDING_UPDATE> state.
 =item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
 
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+
+=item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
 
 =item [EBSOptions => L<Paws::ES::EBSOptions>]
 
@@ -724,6 +733,8 @@ Schedules a service software update for an Amazon ES domain.
 =item [AdvancedOptions => L<Paws::ES::AdvancedOptions>]
 
 =item [CognitoOptions => L<Paws::ES::CognitoOptions>]
+
+=item [DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>]
 
 =item [EBSOptions => L<Paws::ES::EBSOptions>]
 

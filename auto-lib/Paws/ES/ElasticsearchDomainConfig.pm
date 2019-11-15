@@ -3,6 +3,7 @@ package Paws::ES::ElasticsearchDomainConfig;
   has AccessPolicies => (is => 'ro', isa => 'Paws::ES::AccessPoliciesStatus');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptionsStatus');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptionsStatus');
+  has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptionsStatus');
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptionsStatus');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfigStatus');
   has ElasticsearchVersion => (is => 'ro', isa => 'Paws::ES::ElasticsearchVersionStatus');
@@ -64,6 +65,11 @@ for more information.
   The C<CognitoOptions> for the specified domain. For more information,
 see Amazon Cognito Authentication for Kibana
 (http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html).
+
+
+=head2 DomainEndpointOptions => L<Paws::ES::DomainEndpointOptionsStatus>
+
+  Specifies the C<DomainEndpointOptions> for the Elasticsearch domain.
 
 
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>

@@ -6,6 +6,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
+  has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
   has DomainId => (is => 'ro', isa => 'Str', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
@@ -93,6 +94,11 @@ domain is complete. C<False> if domain creation is still in progress.
 received for the domain but resource cleanup is still in progress.
 C<False> if the domain has not been deleted. Once domain deletion is
 complete, the status of the domain is no longer returned.
+
+
+=head2 DomainEndpointOptions => L<Paws::ES::DomainEndpointOptions>
+
+  The current status of the Elasticsearch domain's endpoint options.
 
 
 =head2 B<REQUIRED> DomainId => Str
