@@ -38,8 +38,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FMS::Policy
 =head1 DESCRIPTION
 
 Indicates whether the account is compliant with the specified policy.
-An account is considered non-compliant if it includes resources that
-are not protected by the policy.
+An account is considered noncompliant if it includes resources that are
+not protected by the policy, for AWS WAF and Shield Advanced policies,
+or that are noncompliant with the policy, for security group policies.
 
 =head1 ATTRIBUTES
 
@@ -52,14 +53,14 @@ are not protected by the policy.
 =head2 IssueInfoMap => L<Paws::FMS::IssueInfoMap>
 
   Details about problems with dependent services, such as AWS WAF or AWS
-Config, that are causing a resource to be non-compliant. The details
+Config, that are causing a resource to be noncompliant. The details
 include the name of the dependent service and the error message
 received that indicates the problem with the service.
 
 
 =head2 LastUpdated => Str
 
-  Time stamp of the last update to the C<EvaluationResult> objects.
+  Timestamp of the last update to the C<EvaluationResult> objects.
 
 
 =head2 MemberAccount => Str

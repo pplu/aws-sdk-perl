@@ -62,9 +62,9 @@ E<ldquo>accountID2E<rdquo>]}>.
 =head2 B<REQUIRED> ExcludeResourceTags => Bool
 
   If set to C<True>, resources with the tags that are specified in the
-C<ResourceTag> array are not protected by the policy. If set to
+C<ResourceTag> array are not in scope of the policy. If set to
 C<False>, and the C<ResourceTag> array is not null, only resources with
-the specified tags are associated with the policy.
+the specified tags are in scope of the policy.
 
 
 =head2 IncludeMap => L<Paws::FMS::CustomerPolicyScopeMap>
@@ -111,11 +111,17 @@ resources.
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of resource to protect with the policy. This is in the format
-shown in AWS Resource Types Reference
+  The type of resource protected by or in scope of the policy. This is in
+the format shown in the AWS Resource Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
-C<AWS::CloudFront::Distribution>.
+For AWS WAF and Shield Advanced, examples include
+C<AWS::ElasticLoadBalancingV2::LoadBalancer> and
+C<AWS::CloudFront::Distribution>. For a security group common policy,
+valid values are C<AWS::EC2::NetworkInterface> and
+C<AWS::EC2::Instance>. For a security group content audit policy, valid
+values are C<AWS::EC2::SecurityGroup>, C<AWS::EC2::NetworkInterface>,
+and C<AWS::EC2::Instance>. For a security group usage audit policy, the
+value is C<AWS::EC2::SecurityGroup>.
 
 
 =head2 ResourceTypeList => ArrayRef[Str|Undef]

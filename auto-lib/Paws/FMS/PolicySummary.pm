@@ -64,18 +64,24 @@ resources.
 
 =head2 ResourceType => Str
 
-  The type of resource to protect with the policy. This is in the format
-shown in AWS Resource Types Reference
+  The type of resource protected by or in scope of the policy. This is in
+the format shown in the AWS Resource Types Reference
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-For example: C<AWS::ElasticLoadBalancingV2::LoadBalancer> or
-C<AWS::CloudFront::Distribution>.
+For AWS WAF and Shield Advanced, examples include
+C<AWS::ElasticLoadBalancingV2::LoadBalancer> and
+C<AWS::CloudFront::Distribution>. For a security group common policy,
+valid values are C<AWS::EC2::NetworkInterface> and
+C<AWS::EC2::Instance>. For a security group content audit policy, valid
+values are C<AWS::EC2::SecurityGroup>, C<AWS::EC2::NetworkInterface>,
+and C<AWS::EC2::Instance>. For a security group usage audit policy, the
+value is C<AWS::EC2::SecurityGroup>.
 
 
 =head2 SecurityServiceType => Str
 
   The service that the policy is using to protect the resources. This
-specifies the type of policy that is created, either a WAF policy or
-Shield Advanced policy.
+specifies the type of policy that is created, either an AWS WAF policy,
+a Shield Advanced policy, or a security group policy.
 
 
 

@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FMS::Evalua
 =head1 DESCRIPTION
 
 Describes the compliance status for the account. An account is
-considered non-compliant if it includes resources that are not
-protected by the specified policy.
+considered noncompliant if it includes resources that are not protected
+by the specified policy or that don't comply with the policy.
 
 =head1 ATTRIBUTES
 
@@ -48,15 +48,18 @@ policy.
 
 =head2 EvaluationLimitExceeded => Bool
 
-  Indicates that over 100 resources are non-compliant with the AWS
+  Indicates that over 100 resources are noncompliant with the AWS
 Firewall Manager policy.
 
 
 =head2 ViolatorCount => Int
 
-  Number of resources that are non-compliant with the specified policy. A
-resource is considered non-compliant if it is not associated with the
-specified policy.
+  The number of resources that are noncompliant with the specified
+policy. For AWS WAF and Shield Advanced policies, a resource is
+considered noncompliant if it is not associated with the policy. For
+security group policies, a resource is considered noncompliant if it
+doesn't comply with the rules of the policy and remediation is disabled
+or not possible.
 
 
 

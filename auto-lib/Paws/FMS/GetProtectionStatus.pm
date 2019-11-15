@@ -58,8 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms
 =head2 EndTime => Str
 
 The end of the time period to query for the attacks. This is a
-C<timestamp> type. The sample request above indicates a number type
-because the default used by AWS Firewall Manager is Unix time in
+C<timestamp> type. The request syntax listing indicates a C<number>
+type because the default used by AWS Firewall Manager is Unix time in
 seconds. However, any valid C<timestamp> format is allowed.
 
 
@@ -84,8 +84,8 @@ details for.
 
 If you specify a value for C<MaxResults> and you have more objects than
 the number that you specify for C<MaxResults>, AWS Firewall Manager
-returns a C<NextToken> value in the response that allows you to list
-another group of objects. For the second and subsequent
+returns a C<NextToken> value in the response, which you can use to
+retrieve another group of objects. For the second and subsequent
 C<GetProtectionStatus> requests, specify the value of C<NextToken> from
 the previous response to get information about another batch of
 objects.
@@ -101,8 +101,8 @@ The ID of the policy for which you want to get the attack information.
 =head2 StartTime => Str
 
 The start of the time period to query for the attacks. This is a
-C<timestamp> type. The sample request above indicates a number type
-because the default used by AWS Firewall Manager is Unix time in
+C<timestamp> type. The request syntax listing indicates a C<number>
+type because the default used by AWS Firewall Manager is Unix time in
 seconds. However, any valid C<timestamp> format is allowed.
 
 

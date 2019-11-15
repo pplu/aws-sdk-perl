@@ -8,6 +8,7 @@ package Paws::FMS::IssueInfoMap;
 
   has AWSCONFIG => (is => 'ro', isa => 'Str');
   has AWSSHIELD_ADVANCED => (is => 'ro', isa => 'Str');
+  has AWSVPC => (is => 'ro', isa => 'Str');
   has AWSWAF => (is => 'ro', isa => 'Str');
 1;
 
@@ -48,6 +49,9 @@ This class has no description
 
 
 =head2 AWSSHIELD_ADVANCED => Str
+
+
+=head2 AWSVPC => Str
 
 
 =head2 AWSWAF => Str
