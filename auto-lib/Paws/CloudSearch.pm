@@ -80,6 +80,11 @@ package Paws::CloudSearch;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeAvailabilityOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDomainEndpointOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeDomainEndpointOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDomains {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::DescribeDomains', @_);
@@ -125,6 +130,11 @@ package Paws::CloudSearch;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateAvailabilityOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDomainEndpointOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateDomainEndpointOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateScalingParameters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateScalingParameters', @_);
@@ -138,7 +148,7 @@ package Paws::CloudSearch;
   
 
 
-  sub operations { qw/BuildSuggesters CreateDomain DefineAnalysisScheme DefineExpression DefineIndexField DefineSuggester DeleteAnalysisScheme DeleteDomain DeleteExpression DeleteIndexField DeleteSuggester DescribeAnalysisSchemes DescribeAvailabilityOptions DescribeDomains DescribeExpressions DescribeIndexFields DescribeScalingParameters DescribeServiceAccessPolicies DescribeSuggesters IndexDocuments ListDomainNames UpdateAvailabilityOptions UpdateScalingParameters UpdateServiceAccessPolicies / }
+  sub operations { qw/BuildSuggesters CreateDomain DefineAnalysisScheme DefineExpression DefineIndexField DefineSuggester DeleteAnalysisScheme DeleteDomain DeleteExpression DeleteIndexField DeleteSuggester DescribeAnalysisSchemes DescribeAvailabilityOptions DescribeDomainEndpointOptions DescribeDomains DescribeExpressions DescribeIndexFields DescribeScalingParameters DescribeServiceAccessPolicies DescribeSuggesters IndexDocuments ListDomainNames UpdateAvailabilityOptions UpdateDomainEndpointOptions UpdateScalingParameters UpdateServiceAccessPolicies / }
 
 1;
 
@@ -474,6 +484,28 @@ changes. For more information, see Configuring Availability Options
 in the I<Amazon CloudSearch Developer Guide>.
 
 
+=head2 DescribeDomainEndpointOptions
+
+=over
+
+=item DomainName => Str
+
+=item [Deployed => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudSearch::DescribeDomainEndpointOptions>
+
+Returns: a L<Paws::CloudSearch::DescribeDomainEndpointOptionsResponse> instance
+
+Returns the domain's endpoint options, specifically whether all
+requests to the domain must arrive over HTTPS. For more information,
+see Configuring Domain Endpoint Options
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
+in the I<Amazon CloudSearch Developer Guide>.
+
+
 =head2 DescribeDomains
 
 =over
@@ -678,6 +710,28 @@ event of a service disruption. Changes to the Multi-AZ option can take
 about half an hour to become active. For more information, see
 Configuring Availability Options
 (http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html)
+in the I<Amazon CloudSearch Developer Guide>.
+
+
+=head2 UpdateDomainEndpointOptions
+
+=over
+
+=item DomainEndpointOptions => L<Paws::CloudSearch::DomainEndpointOptions>
+
+=item DomainName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudSearch::UpdateDomainEndpointOptions>
+
+Returns: a L<Paws::CloudSearch::UpdateDomainEndpointOptionsResponse> instance
+
+Updates the domain's endpoint options, specifically whether all
+requests to the domain must arrive over HTTPS. For more information,
+see Configuring Domain Endpoint Options
+(http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html)
 in the I<Amazon CloudSearch Developer Guide>.
 
 
