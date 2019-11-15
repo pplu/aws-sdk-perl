@@ -126,7 +126,7 @@ The message to convey to the user. The message can come from the bot's
 configuration or from a Lambda function.
 
 If the intent is not configured with a Lambda function, or if the
-Lambda function returned C<Delegate> as the C<dialogAction.type> its
+Lambda function returned C<Delegate> as the C<dialogAction.type> in its
 response, Amazon Lex decides on the next course of action and selects
 an appropriate message from the bot's configuration based on the
 current interaction context. For example, if Amazon Lex isn't able to
@@ -179,7 +179,8 @@ information.
 =head2 Slots => Str
 
 Map of zero or more intent slots (name/value pairs) Amazon Lex detected
-from the user input during the conversation.
+from the user input during the conversation. The field is base-64
+encoded.
 
 Amazon Lex creates a resolution list containing likely values for a
 slot. The value that it returns is determined by the
