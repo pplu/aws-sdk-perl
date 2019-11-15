@@ -50,7 +50,7 @@ created, in timestamp format.
 =head2 Name => Str
 
   The name of an artifact. This name might be system-generated, such as
-"MyApp", or might be defined by the user when an action is created.
+"MyApp", or defined by the user when an action is created.
 
 
 =head2 RevisionChangeIdentifier => Str

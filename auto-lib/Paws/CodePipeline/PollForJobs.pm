@@ -74,7 +74,7 @@ A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an
 action type with a queryable property, you must supply that property as
 a key in the map. Only jobs whose action configuration matches the
-mapped value will be returned.
+mapped value are returned.
 
 
 

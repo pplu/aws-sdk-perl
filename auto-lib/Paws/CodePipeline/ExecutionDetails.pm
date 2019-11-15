@@ -48,7 +48,7 @@ worker in any external systems, such as AWS CodeDeploy.
 =head2 PercentComplete => Int
 
   The percentage of work completed on the action, represented on a scale
-of zero to one hundred percent.
+of 0 to 100 percent.
 
 
 =head2 Summary => Str

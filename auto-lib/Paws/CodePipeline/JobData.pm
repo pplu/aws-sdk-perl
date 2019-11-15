@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-Represents additional information about a job required for a job worker
-to complete the job.
+Represents other information about a job required for a job worker to
+complete the job.
 
 =head1 ATTRIBUTES
 
@@ -65,8 +65,8 @@ CodePipeline.
 
 =head2 ContinuationToken => Str
 
-  A system-generated token, such as a AWS CodeDeploy deployment ID, that
-a job requires in order to continue the job asynchronously.
+  A system-generated token, such as a AWS CodeDeploy deployment ID,
+required by a job to continue the job asynchronously.
 
 
 =head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
@@ -89,7 +89,7 @@ artifact store, such as an AWS Key Management Service (AWS KMS) key.
 
   Represents information about a pipeline to a job worker.
 
-Includes C<pipelineArn> and C<pipelineExecutionId> for Custom jobs.
+Includes C<pipelineArn> and C<pipelineExecutionId> for custom jobs.
 
 
 

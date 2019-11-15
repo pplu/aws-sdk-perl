@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-Represents the context of an action within the stage of a pipeline to a
-job worker.
+Represents the context of an action in the stage of a pipeline to a job
+worker.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ execution.
 
 =head2 Name => Str
 
-  The name of the action within the context of a job.
+  The name of the action in the context of a job.
 
 
 

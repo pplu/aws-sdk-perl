@@ -19,8 +19,8 @@ Paws::CodePipeline::ListTagsForResourceOutput
 
 If the amount of returned information is significantly large, an
 identifier is also returned and can be used in a subsequent API call to
-return the next page of the list. However, the ListTagsforResource call
-lists all available tags in one call and does not use pagination.
+return the next page of the list. The ListTagsforResource call lists
+all available tags in one call and does not use pagination.
 
 
 =head2 Tags => ArrayRef[L<Paws::CodePipeline::Tag>]

@@ -46,8 +46,8 @@ created, in timestamp format.
 
 =head2 B<REQUIRED> RevisionChangeId => Str
 
-  The unique identifier of the change that set the state to this
-revision, for example a deployment ID or timestamp.
+  The unique identifier of the change that set the state to this revision
+(for example, a deployment ID or timestamp).
 
 
 =head2 B<REQUIRED> RevisionId => Str

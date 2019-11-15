@@ -46,7 +46,7 @@ Represents information about a job.
 
 =head2 Data => L<Paws::CodePipeline::JobData>
 
-  Additional data about a job.
+  Other data about a job.
 
 
 =head2 Id => Str

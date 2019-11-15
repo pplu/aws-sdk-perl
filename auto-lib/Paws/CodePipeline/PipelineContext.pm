@@ -46,8 +46,7 @@ fields are not populated for ThirdParty action jobs.
 
 =head2 Action => L<Paws::CodePipeline::ActionContext>
 
-  The context of an action to a job worker within the stage of a
-pipeline.
+  The context of an action to a job worker in the stage of a pipeline.
 
 
 =head2 PipelineArn => Str

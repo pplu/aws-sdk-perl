@@ -4,6 +4,7 @@ package Paws::CodePipeline::ActionDeclaration;
   has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
   has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Namespace => (is => 'ro', isa => 'Str', request_name => 'namespace', traits => ['NameInRequest']);
   has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]', request_name => 'outputArtifacts', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
@@ -45,12 +46,30 @@ Represents information about an action declaration.
 
 =head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
-  The configuration information for the action type.
+  Specifies the action type and the provider of the action.
 
 
 =head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
-  The action declaration's configuration.
+  The action's configuration. These are key-value pairs that specify
+input values for an action. For more information, see Action Structure
+Requirements in CodePipeline
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).
+For the list of configuration properties for the AWS CloudFormation
+action type in CodePipeline, see Configuration Properties Reference
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html)
+in the I<AWS CloudFormation User Guide>. For template snippets with
+examples, see Using Parameter Override Functions with CodePipeline
+Pipelines
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-parameter-override-functions.html)
+in the I<AWS CloudFormation User Guide>.
+
+The values can be represented in either JSON or YAML format. For
+example, the JSON configuration item format is as follows:
+
+I<JSON:>
+
+C<"Configuration" : { Key : Value },>
 
 
 =head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
@@ -62,6 +81,12 @@ or build artifact.
 =head2 B<REQUIRED> Name => Str
 
   The action declaration's name.
+
+
+=head2 Namespace => Str
+
+  The variable namespace associated with the action. All variables
+produced as output by this action fall under this namespace.
 
 
 =head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
@@ -77,8 +102,8 @@ or build artifact.
 
 =head2 RoleArn => Str
 
-  The ARN of the IAM service role that will perform the declared action.
-This is assumed through the roleArn for the pipeline.
+  The ARN of the IAM service role that performs the declared action. This
+is assumed through the roleArn for the pipeline.
 
 
 =head2 RunOrder => Int

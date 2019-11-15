@@ -5,6 +5,7 @@ package Paws::CodePipeline::PipelineExecutionSummary;
   has SourceRevisions => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::SourceRevision]', request_name => 'sourceRevisions', traits => ['NameInRequest']);
   has StartTime => (is => 'ro', isa => 'Str', request_name => 'startTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Trigger => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionTrigger', request_name => 'trigger', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineExecutionSummary object:
 
-  $service_obj->Method(Att1 => { LastUpdateTime => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { LastUpdateTime => $value, ..., Trigger => $value  });
 
 =head3 Results returned from an API call
 
@@ -89,6 +90,12 @@ Failed: The pipeline execution was not completed successfully.
 
 =back
 
+
+
+=head2 Trigger => L<Paws::CodePipeline::ExecutionTrigger>
+
+  The interaction or event that started a pipeline execution, such as
+automated change detection or a C<StartPipelineExecution> API call.
 
 
 

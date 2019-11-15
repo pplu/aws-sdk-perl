@@ -47,16 +47,20 @@ pipeline.
   Represents information about the Amazon S3 bucket where artifacts are
 stored for the pipeline.
 
+You must include either C<artifactStore> or C<artifactStores> in your
+pipeline, but you cannot use both. If you create a cross-region action
+in your pipeline, you must use C<artifactStores>.
+
 
 =head2 ArtifactStores => L<Paws::CodePipeline::ArtifactStoreMap>
 
-  A mapping of C<artifactStore> objects and their corresponding regions.
-There must be an artifact store for the pipeline region and for each
-cross-region action within the pipeline. You can only use either
-C<artifactStore> or C<artifactStores>, not both.
+  A mapping of C<artifactStore> objects and their corresponding AWS
+Regions. There must be an artifact store for the pipeline Region and
+for each cross-region action in the pipeline.
 
-If you create a cross-region action in your pipeline, you must use
-C<artifactStores>.
+You must include either C<artifactStore> or C<artifactStores> in your
+pipeline, but you cannot use both. If you create a cross-region action
+in your pipeline, you must use C<artifactStores>.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -79,8 +83,7 @@ actions with an C<actionRoleArn>.
 =head2 Version => Int
 
   The version number of the pipeline. A new pipeline always has a version
-number of 1. This number is automatically incremented when a pipeline
-is updated.
+number of 1. This number is incremented when a pipeline is updated.
 
 
 

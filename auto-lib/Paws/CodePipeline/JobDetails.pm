@@ -45,8 +45,8 @@ Represents information about the details of a job.
 
 =head2 Data => L<Paws::CodePipeline::JobData>
 
-  Represents additional information about a job required for a job worker
-to complete the job.
+  Represents other information about a job required for a job worker to
+complete the job.
 
 
 =head2 Id => Str

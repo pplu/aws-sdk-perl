@@ -53,7 +53,7 @@ artifacts from one stage to another.
 
 =head2 B<REQUIRED> Reason => Str
 
-The reason given to the user why a stage is disabled, such as waiting
+The reason given to the user that a stage is disabled, such as waiting
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.
 
@@ -68,9 +68,9 @@ transition of artifacts.
 
 =head2 B<REQUIRED> TransitionType => Str
 
-Specifies whether artifacts will be prevented from transitioning into
-the stage and being processed by the actions in that stage (inbound),
-or prevented from transitioning from the stage after they have been
+Specifies whether artifacts are prevented from transitioning into the
+stage and being processed by the actions in that stage (inbound), or
+prevented from transitioning from the stage after they have been
 processed by the actions in that stage (outbound).
 
 Valid values are: C<"Inbound">, C<"Outbound">

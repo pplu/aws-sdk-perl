@@ -39,7 +39,7 @@ test or build artifact.
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the artifact to be worked on, for example, "My App".
+  The name of the artifact to be worked on (for example, "My App").
 
 The input artifact of an action must exactly match the output artifact
 declared in a preceding action, but the input artifact does not have to

@@ -59,10 +59,10 @@ next stage (outbound).
 
 =head2 B<REQUIRED> TransitionType => Str
 
-Specifies whether artifacts will be allowed to enter the stage and be
-processed by the actions in that stage (inbound) or whether
-already-processed artifacts will be allowed to transition to the next
-stage (outbound).
+Specifies whether artifacts are allowed to enter the stage and be
+processed by the actions in that stage (inbound) or whether already
+processed artifacts are allowed to transition to the next stage
+(outbound).
 
 Valid values are: C<"Inbound">, C<"Outbound">
 

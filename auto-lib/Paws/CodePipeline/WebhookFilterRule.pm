@@ -40,24 +40,23 @@ your URL.
 
 =head2 B<REQUIRED> JsonPath => Str
 
-  A JsonPath expression that will be applied to the body/payload of the
+  A JsonPath expression that is applied to the body/payload of the
 webhook. The value selected by the JsonPath expression must match the
-value specified in the C<MatchEquals> field, otherwise the request will
-be ignored. For more information about JsonPath expressions, see Java
-JsonPath implementation (https://github.com/json-path/JsonPath) in
-GitHub.
+value specified in the C<MatchEquals> field. Otherwise, the request is
+ignored. For more information, see Java JsonPath implementation
+(https://github.com/json-path/JsonPath) in GitHub.
 
 
 =head2 MatchEquals => Str
 
   The value selected by the C<JsonPath> expression must match what is
-supplied in the C<MatchEquals> field, otherwise the request will be
+supplied in the C<MatchEquals> field. Otherwise, the request is
 ignored. Properties from the target action configuration can be
 included as placeholders in this value by surrounding the action
-configuration key with curly braces. For example, if the value supplied
-here is "refs/heads/{Branch}" and the target action has an action
-configuration property called "Branch" with a value of "master", the
-C<MatchEquals> value will be evaluated as "refs/heads/master". For a
+configuration key with curly brackets. For example, if the value
+supplied here is "refs/heads/{Branch}" and the target action has an
+action configuration property called "Branch" with a value of "master",
+the C<MatchEquals> value is evaluated as "refs/heads/master". For a
 list of action configuration properties for built-in action types, see
 Pipeline Structure Reference Action Requirements
 (https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#action-requirements).

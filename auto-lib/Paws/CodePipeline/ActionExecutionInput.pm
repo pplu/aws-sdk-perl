@@ -3,7 +3,9 @@ package Paws::CodePipeline::ActionExecutionInput;
   has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', request_name => 'actionTypeId', traits => ['NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', request_name => 'configuration', traits => ['NameInRequest']);
   has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ArtifactDetail]', request_name => 'inputArtifacts', traits => ['NameInRequest']);
+  has Namespace => (is => 'ro', isa => 'Str', request_name => 'namespace', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
+  has ResolvedConfiguration => (is => 'ro', isa => 'Paws::CodePipeline::ResolvedActionConfigurationMap', request_name => 'resolvedConfiguration', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
 1;
 
@@ -56,9 +58,21 @@ Input information used for an action execution.
 execution.
 
 
+=head2 Namespace => Str
+
+  The variable namespace associated with the action. All variables
+produced as output by this action fall under this namespace.
+
+
 =head2 Region => Str
 
   The AWS Region for the action, such as us-east-1.
+
+
+=head2 ResolvedConfiguration => L<Paws::CodePipeline::ResolvedActionConfigurationMap>
+
+  Configuration data for an action execution with all variable references
+replaced with their real values for the execution.
 
 
 =head2 RoleArn => Str

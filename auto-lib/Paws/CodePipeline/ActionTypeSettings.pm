@@ -44,16 +44,16 @@ Returns information about the settings for an action type.
   The URL returned to the AWS CodePipeline console that provides a deep
 link to the resources of the external system, such as the configuration
 page for an AWS CodeDeploy deployment group. This link is provided as
-part of the action display within the pipeline.
+part of the action display in the pipeline.
 
 
 =head2 ExecutionUrlTemplate => Str
 
   The URL returned to the AWS CodePipeline console that contains a link
-to the top-level landing page for the external system, such as console
-page for AWS CodeDeploy. This link is shown on the pipeline view page
-in the AWS CodePipeline console and provides a link to the execution
-entity of the external action.
+to the top-level landing page for the external system, such as the
+console page for AWS CodeDeploy. This link is shown on the pipeline
+view page in the AWS CodePipeline console and provides a link to the
+execution entity of the external action.
 
 
 =head2 RevisionUrlTemplate => Str

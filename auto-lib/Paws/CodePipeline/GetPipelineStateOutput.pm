@@ -32,7 +32,7 @@ The name of the pipeline for which you want to get the state.
 
 The version number of the pipeline.
 
-A newly-created pipeline is always assigned a version number of C<1>.
+A newly created pipeline is always assigned a version number of C<1>.
 
 
 =head2 StageStates => ArrayRef[L<Paws::CodePipeline::StageState>]

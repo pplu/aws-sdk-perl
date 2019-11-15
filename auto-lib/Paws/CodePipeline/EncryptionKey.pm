@@ -40,8 +40,12 @@ artifact store, such as an AWS Key Management Service (AWS KMS) key.
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID used to identify the key. For an AWS KMS key, this is the key ID
-or key ARN.
+  The ID used to identify the key. For an AWS KMS key, you can use the
+key ID, the key ARN, or the alias ARN.
+
+Aliases are recognized only in the account that created the customer
+master key (CMK). For cross-account actions, you can only use the key
+ID or key ARN to identify the key.
 
 
 =head2 B<REQUIRED> Type => Str

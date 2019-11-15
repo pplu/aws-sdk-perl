@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-A response to a C<PollForThirdPartyJobs >request returned by AWS
-CodePipeline when there is a job to be worked upon by a partner action.
+A response to a C<PollForThirdPartyJobs> request returned by AWS
+CodePipeline when there is a job to be worked on by a partner action.
 
 =head1 ATTRIBUTES
 

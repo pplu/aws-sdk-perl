@@ -43,7 +43,7 @@ Represents information about a webhook and its definition.
 
 =head2 B<REQUIRED> Authentication => Str
 
-  Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+  Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
 
 =over
 
@@ -56,12 +56,13 @@ Developer website.
 
 =item *
 
-IP will reject webhooks trigger requests unless they originate from an
-IP within the IP range whitelisted in the authentication configuration.
+IP rejects webhooks trigger requests unless they originate from an IP
+address in the IP range whitelisted in the authentication
+configuration.
 
 =item *
 
-UNAUTHENTICATED will accept all webhook trigger requests regardless of
+UNAUTHENTICATED accepts all webhook trigger requests regardless of
 origin.
 
 =back

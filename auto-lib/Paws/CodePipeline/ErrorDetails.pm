@@ -39,7 +39,7 @@ Represents information about an error in AWS CodePipeline.
 
 =head2 Code => Str
 
-  The system ID or error number code of the error.
+  The system ID or number code of the error.
 
 
 =head2 Message => Str
