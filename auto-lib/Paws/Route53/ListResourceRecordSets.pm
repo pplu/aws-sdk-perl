@@ -81,10 +81,10 @@ resource record sets.
 
 =head2 StartRecordIdentifier => Str
 
-I<Weighted resource record sets only:> If results were truncated for a
-given DNS name and type, specify the value of C<NextRecordIdentifier>
-from the previous response to get the next resource record set that has
-the current DNS name and type.
+I<Resource record sets that have a routing policy other than simple:>
+If results were truncated for a given DNS name and type, specify the
+value of C<NextRecordIdentifier> from the previous response to get the
+next resource record set that has the current DNS name and type.
 
 
 
