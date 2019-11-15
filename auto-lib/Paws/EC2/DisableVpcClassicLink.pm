@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DisableVpcClassicLinkResult = $ec2->DisableVpcClassicLink(
-      VpcId  => 'MyString',
-      DryRun => 1,            # OPTIONAL
+      VpcId  => 'MyVpcId',
+      DryRun => 1,           # OPTIONAL
     );
 
     # Results:

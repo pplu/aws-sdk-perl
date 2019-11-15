@@ -74,6 +74,11 @@ C<ec2.us-east-1.amazonaws.com>).
 
 =item *
 
+C<opt-in-status> - The opt-in status of the Region
+(C<opt-in-not-required> | C<opted-in> | C<not-opted-in>).
+
+=item *
+
 C<region-name> - The name of the Region (for example, C<us-east-1>).
 
 =back

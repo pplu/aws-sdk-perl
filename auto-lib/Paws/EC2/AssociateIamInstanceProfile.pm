@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Arn  => 'MyString',    # OPTIONAL
         Name => 'MyString',    # OPTIONAL
       },
-      InstanceId => 'MyString',
+      InstanceId => 'MyInstanceId',
 
     );
 

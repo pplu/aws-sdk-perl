@@ -8,6 +8,7 @@ package Paws::EC2::FlowLog;
   has FlowLogStatus => (is => 'ro', isa => 'Str', request_name => 'flowLogStatus', traits => ['NameInRequest']);
   has LogDestination => (is => 'ro', isa => 'Str', request_name => 'logDestination', traits => ['NameInRequest']);
   has LogDestinationType => (is => 'ro', isa => 'Str', request_name => 'logDestinationType', traits => ['NameInRequest']);
+  has LogFormat => (is => 'ro', isa => 'Str', request_name => 'logFormat', traits => ['NameInRequest']);
   has LogGroupName => (is => 'ro', isa => 'Str', request_name => 'logGroupName', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has TrafficType => (is => 'ro', isa => 'Str', request_name => 'trafficType', traits => ['NameInRequest']);
@@ -98,6 +99,11 @@ which the data is published.
   Specifies the type of destination to which the flow log data is
 published. Flow log data can be published to CloudWatch Logs or Amazon
 S3.
+
+
+=head2 LogFormat => Str
+
+  The format of the flow log record.
 
 
 =head2 LogGroupName => Str

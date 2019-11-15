@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CapacityReservationId => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },
-      InstanceId => 'MyString',
-      DryRun     => 1,            # OPTIONAL
+      InstanceId => 'MyInstanceId',
+      DryRun     => 1,                # OPTIONAL
       );
 
     # Results:

@@ -91,7 +91,7 @@ specify a volume size, the default is the snapshot size.
 IOPS SSD, Throughput Optimized HDD for C<st1>, Cold HDD for C<sc1>, or
 C<standard> for Magnetic.
 
-Default: C<standard>
+Default: C<gp2>
 
 
 

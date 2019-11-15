@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DisassociateClientVpnTargetNetworkResult =
       $ec2->DisassociateClientVpnTargetNetwork(
       AssociationId       => 'MyString',
-      ClientVpnEndpointId => 'MyString',
-      DryRun              => 1,            # OPTIONAL
+      ClientVpnEndpointId => 'MyClientVpnEndpointId',
+      DryRun              => 1,                         # OPTIONAL
       );
 
     # Results:

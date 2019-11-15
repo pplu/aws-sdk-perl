@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $EnableVpcClassicLinkDnsSupportResult =
       $ec2->EnableVpcClassicLinkDnsSupport(
-      VpcId => 'MyString',    # OPTIONAL
+      VpcId => 'MyVpcId',    # OPTIONAL
       );
 
     # Results:

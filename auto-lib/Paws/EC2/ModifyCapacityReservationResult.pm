@@ -17,7 +17,8 @@ Paws::EC2::ModifyCapacityReservationResult
 
 =head2 Return => Bool
 
-Information about the Capacity Reservation.
+Returns C<true> if the request succeeds; otherwise, it returns an
+error.
 
 
 =head2 _request_id => Str

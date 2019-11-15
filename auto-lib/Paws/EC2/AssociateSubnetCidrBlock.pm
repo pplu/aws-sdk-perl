@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $AssociateSubnetCidrBlockResult = $ec2->AssociateSubnetCidrBlock(
       Ipv6CidrBlock => 'MyString',
-      SubnetId      => 'MyString',
+      SubnetId      => 'MySubnetId',
 
     );
 

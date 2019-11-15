@@ -1,6 +1,7 @@
 
 package Paws::EC2::ModifyVpnConnection;
   use Moose;
+  has CustomerGatewayId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
   has TransitGatewayId => (is => 'ro', isa => 'Str');
   has VpnConnectionId => (is => 'ro', isa => 'Str', required => 1);
@@ -31,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyVpnConnectionResult = $ec2->ModifyVpnConnection(
-      VpnConnectionId  => 'MyString',
-      DryRun           => 1,             # OPTIONAL
-      TransitGatewayId => 'MyString',    # OPTIONAL
-      VpnGatewayId     => 'MyString',    # OPTIONAL
+      VpnConnectionId   => 'MyVpnConnectionId',
+      CustomerGatewayId => 'MyCustomerGatewayId',    # OPTIONAL
+      DryRun            => 1,                        # OPTIONAL
+      TransitGatewayId  => 'MyTransitGatewayId',     # OPTIONAL
+      VpnGatewayId      => 'MyVpnGatewayId',         # OPTIONAL
     );
 
     # Results:
@@ -46,6 +48,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyVpnConnection>
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomerGatewayId => Str
+
+The ID of the customer gateway at your end of the VPN connection.
+
 
 
 =head2 DryRun => Bool

@@ -6,6 +6,7 @@ package Paws::EC2::CreateFlowLogs;
   has DryRun => (is => 'ro', isa => 'Bool');
   has LogDestination => (is => 'ro', isa => 'Str');
   has LogDestinationType => (is => 'ro', isa => 'Str');
+  has LogFormat => (is => 'ro', isa => 'Str');
   has LogGroupName => (is => 'ro', isa => 'Str');
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
@@ -44,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun                   => 1,                     # OPTIONAL
       LogDestination           => 'MyString',            # OPTIONAL
       LogDestinationType       => 'cloud-watch-logs',    # OPTIONAL
+      LogFormat                => 'MyString',            # OPTIONAL
       LogGroupName             => 'MyString',            # OPTIONAL
     );
 
@@ -122,6 +124,24 @@ C<DeliverLogsPermissionArn> or C<LogGroupName>.
 Default: C<cloud-watch-logs>
 
 Valid values are: C<"cloud-watch-logs">, C<"s3">
+
+=head2 LogFormat => Str
+
+The fields to include in the flow log record, in the order in which
+they should appear. For a list of available fields, see Flow Log
+Records
+(https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records).
+If you omit this parameter, the flow log is created using the default
+format. If you specify this parameter, you must specify at least one
+field.
+
+Specify the fields using the C<${field-id}> format, separated by
+spaces. For the AWS CLI, use single quotation marks (' ') to surround
+the parameter value.
+
+Only applicable to flow logs that are published to an Amazon S3 bucket.
+
+
 
 =head2 LogGroupName => Str
 

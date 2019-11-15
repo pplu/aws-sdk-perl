@@ -60,7 +60,7 @@ This class has no description
 
 =head2 AvailabilityZoneId => Str
 
-  
+  The Availability Zone ID of the Capacity Reservation.
 
 
 =head2 AvailableInstanceCount => Int
@@ -71,7 +71,7 @@ launched in the Capacity Reservation.
 
 =head2 CapacityReservationArn => Str
 
-  
+  The Amazon Resource Name (ARN) of the Capacity Reservation.
 
 
 =head2 CapacityReservationId => Str
@@ -167,7 +167,7 @@ capacity.
 
 =head2 OwnerId => Str
 
-  
+  The ID of the AWS account that owns the Capacity Reservation.
 
 
 =head2 State => Str
@@ -184,13 +184,13 @@ available for your use.
 
 =item *
 
-C<cancelled> - The Capacity Reservation expired automatically at the
-date and time specified in your request. The reserved capacity is no
-longer available for your use.
+C<expired> - The Capacity Reservation expired automatically at the date
+and time specified in your request. The reserved capacity is no longer
+available for your use.
 
 =item *
 
-C<expired> - The Capacity Reservation was manually cancelled. The
+C<cancelled> - The Capacity Reservation was manually cancelled. The
 reserved capacity is no longer available for your use.
 
 =item *
@@ -237,8 +237,8 @@ hardware that is dedicated to a single AWS account.
 
 =head2 TotalInstanceCount => Int
 
-  The number of instances for which the Capacity Reservation reserves
-capacity.
+  The total number of instances for which the Capacity Reservation
+reserves capacity.
 
 
 

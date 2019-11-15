@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DeleteFpgaImageResult = $ec2->DeleteFpgaImage(
-      FpgaImageId => 'MyString',
-      DryRun      => 1,            # OPTIONAL
+      FpgaImageId => 'MyFpgaImageId',
+      DryRun      => 1,                 # OPTIONAL
     );
 
     # Results:

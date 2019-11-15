@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $RevokeClientVpnIngressResult = $ec2->RevokeClientVpnIngress(
-      ClientVpnEndpointId => 'MyString',
+      ClientVpnEndpointId => 'MyClientVpnEndpointId',
       TargetNetworkCidr   => 'MyString',
-      AccessGroupId       => 'MyString',    # OPTIONAL
-      DryRun              => 1,             # OPTIONAL
-      RevokeAllGroups     => 1,             # OPTIONAL
+      AccessGroupId       => 'MyString',                # OPTIONAL
+      DryRun              => 1,                         # OPTIONAL
+      RevokeAllGroups     => 1,                         # OPTIONAL
     );
 
     # Results:

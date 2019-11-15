@@ -39,12 +39,14 @@ This class has no description
 
 =head2 AccountId => Str
 
-  
+  The ID of the AWS account that is making use of the Capacity
+Reservation.
 
 
 =head2 UsedInstanceCount => Int
 
-  
+  The number of instances the AWS account currently has in the Capacity
+Reservation.
 
 
 

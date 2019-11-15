@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ImportClientVpnClientCertificateRevocationListResult =
       $ec2->ImportClientVpnClientCertificateRevocationList(
       CertificateRevocationList => 'MyString',
-      ClientVpnEndpointId       => 'MyString',
-      DryRun                    => 1,            # OPTIONAL
+      ClientVpnEndpointId       => 'MyClientVpnEndpointId',
+      DryRun                    => 1,                         # OPTIONAL
       );
 
     # Results:

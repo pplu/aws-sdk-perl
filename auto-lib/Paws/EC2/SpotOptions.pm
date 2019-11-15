@@ -44,8 +44,19 @@ This class has no description
 
 =head2 AllocationStrategy => Str
 
-  Indicates how to allocate the target capacity across the Spot pools
-specified by the Spot Fleet request. The default is C<lowest-price>.
+  Indicates how to allocate the target Spot Instance capacity across the
+Spot Instance pools specified by the EC2 Fleet.
+
+If the allocation strategy is C<lowest-price>, EC2 Fleet launches
+instances from the Spot Instance pools with the lowest price. This is
+the default allocation strategy.
+
+If the allocation strategy is C<diversified>, EC2 Fleet launches
+instances from all the Spot Instance pools that you specify.
+
+If the allocation strategy is C<capacity-optimized>, EC2 Fleet launches
+instances from Spot Instance pools with optimal capacity for the number
+of instances that are launching.
 
 
 =head2 InstanceInterruptionBehavior => Str
@@ -58,7 +69,7 @@ C<terminate>.
 
   The number of Spot pools across which to allocate your target Spot
 capacity. Valid only when B<AllocationStrategy> is set to
-C<lowestPrice>. EC2 Fleet selects the cheapest Spot pools and evenly
+C<lowest-price>. EC2 Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
 that you specify.
 

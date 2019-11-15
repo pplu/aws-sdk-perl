@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $CreateNetworkInterfacePermissionResult =
       $ec2->CreateNetworkInterfacePermission(
-      NetworkInterfaceId => 'MyString',
+      NetworkInterfaceId => 'MyNetworkInterfaceId',
       Permission         => 'INSTANCE-ATTACH',
-      AwsAccountId       => 'MyString',          # OPTIONAL
-      AwsService         => 'MyString',          # OPTIONAL
-      DryRun             => 1,                   # OPTIONAL
+      AwsAccountId       => 'MyString',               # OPTIONAL
+      AwsService         => 'MyString',               # OPTIONAL
+      DryRun             => 1,                        # OPTIONAL
       );
 
     # Results:

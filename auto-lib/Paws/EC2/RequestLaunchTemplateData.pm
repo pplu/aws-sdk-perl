@@ -130,8 +130,7 @@ Additional usage charges apply when using an EBS-optimized instance.
 parameter is valid only if the instance meets the hibernation
 prerequisites
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
-Hibernation is currently supported only for Amazon Linux. For more
-information, see Hibernate Your Instance
+For more information, see Hibernate Your Instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 

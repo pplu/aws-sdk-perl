@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DeleteClientVpnRouteResult = $ec2->DeleteClientVpnRoute(
-      ClientVpnEndpointId  => 'MyString',
+      ClientVpnEndpointId  => 'MyClientVpnEndpointId',
       DestinationCidrBlock => 'MyString',
-      DryRun               => 1,             # OPTIONAL
-      TargetVpcSubnetId    => 'MyString',    # OPTIONAL
+      DryRun               => 1,                         # OPTIONAL
+      TargetVpcSubnetId    => 'MyString',                # OPTIONAL
     );
 
     # Results:

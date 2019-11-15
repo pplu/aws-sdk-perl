@@ -59,8 +59,19 @@ This class has no description
 
 =head2 AllocationStrategy => Str
 
-  Indicates how to allocate the target capacity across the Spot pools
-specified by the Spot Fleet request. The default is C<lowestPrice>.
+  Indicates how to allocate the target Spot Instance capacity across the
+Spot Instance pools specified by the Spot Fleet request.
+
+If the allocation strategy is C<lowestPrice>, Spot Fleet launches
+instances from the Spot Instance pools with the lowest price. This is
+the default allocation strategy.
+
+If the allocation strategy is C<diversified>, Spot Fleet launches
+instances from all the Spot Instance pools that you specify.
+
+If the allocation strategy is C<capacityOptimized>, Spot Fleet launches
+instances from Spot Instance pools with optimal capacity for the number
+of instances that are launching.
 
 
 =head2 ClientToken => Str

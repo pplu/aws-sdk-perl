@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcEndpointResult = $ec2->ModifyVpcEndpoint(
-      VpcEndpointId          => 'MyString',
+      VpcEndpointId          => 'MyVpcEndpointId',
       AddRouteTableIds       => [ 'MyString', ... ],    # OPTIONAL
       AddSecurityGroupIds    => [ 'MyString', ... ],    # OPTIONAL
       AddSubnetIds           => [ 'MyString', ... ],    # OPTIONAL
@@ -95,9 +95,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 PolicyDocument => Str
 
 A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format. If this parameter is not
-specified, we attach a default policy that allows full access to the
-service.
+The policy must be in valid JSON format.
 
 
 

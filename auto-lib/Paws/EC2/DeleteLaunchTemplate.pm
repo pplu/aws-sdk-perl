@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DeleteLaunchTemplateResult = $ec2->DeleteLaunchTemplate(
       DryRun             => 1,                         # OPTIONAL
-      LaunchTemplateId   => 'MyString',                # OPTIONAL
+      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
     );
 

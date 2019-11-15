@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name          => 'MyString',
       SourceImageId => 'MyString',
       SourceRegion  => 'MyString',
-      ClientToken   => 'MyString',    # OPTIONAL
-      Description   => 'MyString',    # OPTIONAL
-      DryRun        => 1,             # OPTIONAL
-      Encrypted     => 1,             # OPTIONAL
-      KmsKeyId      => 'MyString',    # OPTIONAL
+      ClientToken   => 'MyString',      # OPTIONAL
+      Description   => 'MyString',      # OPTIONAL
+      DryRun        => 1,               # OPTIONAL
+      Encrypted     => 1,               # OPTIONAL
+      KmsKeyId      => 'MyKmsKeyId',    # OPTIONAL
     );
 
     # Results:

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $GetConsoleScreenshotResult = $ec2->GetConsoleScreenshot(
-      InstanceId => 'MyString',
-      DryRun     => 1,            # OPTIONAL
-      WakeUp     => 1,            # OPTIONAL
+      InstanceId => 'MyInstanceId',
+      DryRun     => 1,                # OPTIONAL
+      WakeUp     => 1,                # OPTIONAL
     );
 
     # Results:

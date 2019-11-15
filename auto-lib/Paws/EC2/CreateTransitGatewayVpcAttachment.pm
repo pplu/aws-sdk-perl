@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateTransitGatewayVpcAttachmentResult =
       $ec2->CreateTransitGatewayVpcAttachment(
       SubnetIds        => [ 'MyString', ... ],
-      TransitGatewayId => 'MyString',
-      VpcId            => 'MyString',
-      DryRun           => 1,                     # OPTIONAL
+      TransitGatewayId => 'MyTransitGatewayId',
+      VpcId            => 'MyVpcId',
+      DryRun           => 1,                      # OPTIONAL
       Options          => {
         DnsSupport  => 'enable',    # values: enable, disable; OPTIONAL
         Ipv6Support => 'enable',    # values: enable, disable; OPTIONAL

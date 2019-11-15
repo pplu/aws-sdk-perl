@@ -1,6 +1,7 @@
 package Paws::EC2::CustomerGateway;
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Str', request_name => 'bgpAsn', traits => ['NameInRequest']);
+  has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has CustomerGatewayId => (is => 'ro', isa => 'Str', request_name => 'customerGatewayId', traits => ['NameInRequest']);
   has IpAddress => (is => 'ro', isa => 'Str', request_name => 'ipAddress', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ This class has no description
 
   The customer gateway's Border Gateway Protocol (BGP) Autonomous System
 Number (ASN).
+
+
+=head2 CertificateArn => Str
+
+  The Amazon Resource Name (ARN) for the customer gateway certificate.
 
 
 =head2 CustomerGatewayId => Str

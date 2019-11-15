@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionNotificationArn => 'MyString',
       ClientToken               => 'MyString',            # OPTIONAL
       DryRun                    => 1,                     # OPTIONAL
-      ServiceId                 => 'MyString',            # OPTIONAL
-      VpcEndpointId             => 'MyString',            # OPTIONAL
+      ServiceId                 => 'MyServiceId',         # OPTIONAL
+      VpcEndpointId             => 'MyVpcEndpointId',     # OPTIONAL
       );
 
     # Results:

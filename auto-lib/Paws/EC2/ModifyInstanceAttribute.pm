@@ -43,22 +43,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     $ec2->ModifyInstanceAttribute(
-      InstanceId          => 'MyString',
+      InstanceId          => 'MyInstanceId',
       Attribute           => 'instanceType',    # OPTIONAL
       BlockDeviceMappings => [
         {
-          DeviceName => 'MyString',
+          DeviceName => 'MyString',             # OPTIONAL
           Ebs        => {
-            DeleteOnTermination => 1,            # OPTIONAL
-            VolumeId            => 'MyString',
+            DeleteOnTermination => 1,             # OPTIONAL
+            VolumeId            => 'MyString',    # OPTIONAL
           },    # OPTIONAL
-          NoDevice    => 'MyString',
-          VirtualName => 'MyString',
+          NoDevice    => 'MyString',    # OPTIONAL
+          VirtualName => 'MyString',    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],                                # OPTIONAL
       DisableApiTermination => {
-        Value => 1,    # OPTIONAL
+        Value => 1,                     # OPTIONAL
       },    # OPTIONAL
       DryRun       => 1,    # OPTIONAL
       EbsOptimized => {
@@ -67,17 +67,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnaSupport => {
         Value => 1,    # OPTIONAL
       },    # OPTIONAL
-      Groups                            => [ 'MyString', ... ],       # OPTIONAL
-      InstanceInitiatedShutdownBehavior => { Value => 'MyString', },  # OPTIONAL
-      InstanceType                      => { Value => 'MyString', },  # OPTIONAL
-      Kernel                            => { Value => 'MyString', },  # OPTIONAL
-      Ramdisk                           => { Value => 'MyString', },  # OPTIONAL
-      SourceDestCheck                   => {
-        Value => 1,                                                   # OPTIONAL
+      Groups => [
+        'MyString', ...    # OPTIONAL
+      ],                   # OPTIONAL
+      InstanceInitiatedShutdownBehavior => {
+        Value => 'MyString',    # OPTIONAL
       },    # OPTIONAL
-      SriovNetSupport => { Value => 'MyString', },    # OPTIONAL
+      InstanceType => {
+        Value => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      Kernel => {
+        Value => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      Ramdisk => {
+        Value => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
+      SourceDestCheck => {
+        Value => 1,    # OPTIONAL
+      },    # OPTIONAL
+      SriovNetSupport => {
+        Value => 'MyString',    # OPTIONAL
+      },    # OPTIONAL
       UserData => {
-        Value => 'BlobBlob',                          # OPTIONAL
+        Value => 'BlobBlob',    # OPTIONAL
       },    # OPTIONAL
       Value => 'MyString',    # OPTIONAL
     );

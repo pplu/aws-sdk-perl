@@ -52,10 +52,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3Key    => 'MyString',     # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      DryRun    => 1,             # OPTIONAL
-      Encrypted => 1,             # OPTIONAL
-      KmsKeyId  => 'MyString',    # OPTIONAL
-      RoleName  => 'MyString',    # OPTIONAL
+      DryRun    => 1,               # OPTIONAL
+      Encrypted => 1,               # OPTIONAL
+      KmsKeyId  => 'MyKmsKeyId',    # OPTIONAL
+      RoleName  => 'MyString',      # OPTIONAL
     );
 
     # Results:

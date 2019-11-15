@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyInstanceEventStartTimeResult = $ec2->ModifyInstanceEventStartTime(
       InstanceEventId => 'MyString',
-      InstanceId      => 'MyString',
+      InstanceId      => 'MyInstanceId',
       NotBefore       => '1970-01-01T01:00:00',
       DryRun          => 1,                       # OPTIONAL
     );

@@ -207,11 +207,7 @@ The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
 Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
 Cold HDD, or C<standard> for Magnetic volumes.
 
-Defaults: If no volume type is specified, the default is C<standard> in
-us-east-1, eu-west-1, eu-central-1, us-west-2, us-west-1, sa-east-1,
-ap-northeast-1, ap-northeast-2, ap-southeast-1, ap-southeast-2,
-ap-south-1, us-gov-west-1, and cn-north-1. In all other Regions, EBS
-defaults to C<gp2>.
+Default: C<gp2>
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 

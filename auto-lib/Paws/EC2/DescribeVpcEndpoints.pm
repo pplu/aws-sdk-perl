@@ -86,8 +86,9 @@ C<vpc-endpoint-id>: The ID of the endpoint.
 
 =item *
 
-C<vpc-endpoint-state>: The state of the endpoint. (C<pending> |
-C<available> | C<deleting> | C<deleted>)
+C<vpc-endpoint-state> - The state of the endpoint (C<pendingAcceptance>
+| C<pending> | C<available> | C<deleting> | C<deleted> | C<rejected> |
+C<failed>).
 
 =item *
 

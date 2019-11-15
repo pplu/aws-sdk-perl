@@ -29,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DeleteTrafficMirrorFilterResult = $ec2->DeleteTrafficMirrorFilter(
-      TrafficMirrorFilterId => 'MyString',
-      DryRun                => 1,            # OPTIONAL
+      TrafficMirrorFilterId => 'MyTrafficMirrorFilterId',
+      DryRun                => 1,                           # OPTIONAL
     );
 
     # Results:

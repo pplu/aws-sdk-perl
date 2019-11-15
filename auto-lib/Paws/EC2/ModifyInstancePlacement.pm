@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyInstancePlacementResult = $ec2->ModifyInstancePlacement(
-      InstanceId      => 'MyString',
-      Affinity        => 'default',      # OPTIONAL
-      GroupName       => 'MyString',     # OPTIONAL
-      HostId          => 'MyString',     # OPTIONAL
-      PartitionNumber => 1,              # OPTIONAL
-      Tenancy         => 'dedicated',    # OPTIONAL
+      InstanceId      => 'MyInstanceId',
+      Affinity        => 'default',                 # OPTIONAL
+      GroupName       => 'MyPlacementGroupName',    # OPTIONAL
+      HostId          => 'MyHostId',                # OPTIONAL
+      PartitionNumber => 1,                         # OPTIONAL
+      Tenancy         => 'dedicated',               # OPTIONAL
     );
 
     # Results:

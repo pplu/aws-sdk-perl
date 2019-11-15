@@ -60,6 +60,31 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 Specifies whether to force a detachment.
 
+=over
+
+=item *
+
+Use the C<Force> parameter only as a last resort to detach a network
+interface from a failed instance.
+
+=item *
+
+If you use the C<Force> parameter to detach a network interface, you
+might not be able to attach a different network interface to the same
+index on the instance without first stopping and starting the instance.
+
+=item *
+
+If you force the detachment of a network interface, the instance
+metadata
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+might not get updated. This means that the attributes associated with
+the detached network interface might still be visible. The instance
+metadata will get updated when you stop and start the instance.
+
+=back
+
+
 
 
 

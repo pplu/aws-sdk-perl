@@ -163,8 +163,8 @@ A brief description of the Client VPN endpoint.
 
 Information about the DNS servers to be used for DNS resolution. A
 Client VPN endpoint can have up to two DNS servers. If no DNS server is
-specified, the DNS address of the VPC that is to be associated with
-Client VPN endpoint is used as the DNS server.
+specified, the DNS address configured on the device is used for the DNS
+server.
 
 
 
@@ -188,7 +188,7 @@ Certificate Manager User Guide
 =head2 SplitTunnel => Bool
 
 Indicates whether split-tunnel is enabled on the AWS Client VPN
-endpoint endpoint.
+endpoint.
 
 By default, split-tunnel on a VPN endpoint is disabled.
 

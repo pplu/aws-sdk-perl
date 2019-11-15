@@ -45,6 +45,10 @@ This class has no description
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the EBS volume is deleted on instance termination.
+For more information, see Preserving Amazon EBS Volumes on Instance
+Termination
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination)
+in the Amazon Elastic Compute Cloud User Guide.
 
 
 =head2 Encrypted => Bool
@@ -124,10 +128,10 @@ be equal to or larger than the snapshot size.
 
 =head2 VolumeType => Str
 
-  The volume type. If you set the type to C<io1>, you must also set the
-B<Iops> property.
+  The volume type. If you set the type to C<io1>, you must also specify
+the IOPS that the volume supports.
 
-Default: C<standard>
+Default: C<gp2>
 
 
 

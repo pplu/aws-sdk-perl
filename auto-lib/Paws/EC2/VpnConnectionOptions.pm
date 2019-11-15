@@ -1,6 +1,7 @@
 package Paws::EC2::VpnConnectionOptions;
   use Moose;
   has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
+  has TunnelOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TunnelOption]', request_name => 'tunnelOptionSet', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::VpnConnectionOptions object:
 
-  $service_obj->Method(Att1 => { StaticRoutesOnly => $value, ..., StaticRoutesOnly => $value  });
+  $service_obj->Method(Att1 => { StaticRoutesOnly => $value, ..., TunnelOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,6 +41,11 @@ This class has no description
 
   Indicates whether the VPN connection uses static routes only. Static
 routes must be used for devices that don't support BGP.
+
+
+=head2 TunnelOptions => ArrayRef[L<Paws::EC2::TunnelOption>]
+
+  Indicates the VPN tunnel options.
 
 
 

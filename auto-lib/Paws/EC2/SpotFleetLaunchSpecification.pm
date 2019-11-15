@@ -60,7 +60,7 @@ This class has no description
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  One or more block devices that are mapped to the Spot instances. You
+  One or more block devices that are mapped to the Spot Instances. You
 can't specify both a snapshot ID and an encryption value. This is
 because only blank volumes can be encrypted on creation. If a snapshot
 is the basis for a volume, it is not blank and its encryption status is
@@ -146,9 +146,9 @@ divide the Spot price by the value of C<WeightedCapacity>.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances. To specify
+  The IDs of the subnets in which to launch the instances. To specify
 multiple subnets, separate them using commas; for example,
-"subnet-a61dafcf, subnet-65ea5f08".
+"subnet-1234abcdeexample1, subnet-0987cdef6example2".
 
 
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::SpotFleetTagSpecification>]

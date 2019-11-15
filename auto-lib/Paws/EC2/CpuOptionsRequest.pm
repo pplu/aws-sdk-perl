@@ -44,9 +44,9 @@ This class has no description
 
 =head2 ThreadsPerCore => Int
 
-  The number of threads per CPU core. To disable Intel Hyper-Threading
-Technology for the instance, specify a value of C<1>. Otherwise,
-specify the default value of C<2>.
+  The number of threads per CPU core. To disable multithreading for the
+instance, specify a value of C<1>. Otherwise, specify the default value
+of C<2>.
 
 
 

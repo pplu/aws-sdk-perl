@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyTransitGatewayVpcAttachmentResult =
       $ec2->ModifyTransitGatewayVpcAttachment(
-      TransitGatewayAttachmentId => 'MyString',
-      AddSubnetIds               => [ 'MyString', ... ],    # OPTIONAL
-      DryRun                     => 1,                      # OPTIONAL
+      TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',
+      AddSubnetIds               => [ 'MyString', ... ],              # OPTIONAL
+      DryRun                     => 1,                                # OPTIONAL
       Options                    => {
         DnsSupport  => 'enable',    # values: enable, disable; OPTIONAL
         Ipv6Support => 'enable',    # values: enable, disable; OPTIONAL

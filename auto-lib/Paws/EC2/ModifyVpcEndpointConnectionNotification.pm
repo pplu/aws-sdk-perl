@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcEndpointConnectionNotificationResult =
       $ec2->ModifyVpcEndpointConnectionNotification(
-      ConnectionNotificationId  => 'MyString',
-      ConnectionEvents          => [ 'MyString', ... ],    # OPTIONAL
-      ConnectionNotificationArn => 'MyString',             # OPTIONAL
-      DryRun                    => 1,                      # OPTIONAL
+      ConnectionNotificationId  => 'MyConnectionNotificationId',
+      ConnectionEvents          => [ 'MyString', ... ],            # OPTIONAL
+      ConnectionNotificationArn => 'MyString',                     # OPTIONAL
+      DryRun                    => 1,                              # OPTIONAL
       );
 
     # Results:

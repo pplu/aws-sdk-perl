@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $GetCapacityReservationUsageResult = $ec2->GetCapacityReservationUsage(
-      CapacityReservationId => 'MyString',
-      DryRun                => 1,             # OPTIONAL
-      MaxResults            => 1,             # OPTIONAL
-      NextToken             => 'MyString',    # OPTIONAL
+      CapacityReservationId => 'MyCapacityReservationId',
+      DryRun                => 1,                           # OPTIONAL
+      MaxResults            => 1,                           # OPTIONAL
+      NextToken             => 'MyString',                  # OPTIONAL
     );
 
     # Results:
@@ -59,25 +59,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> CapacityReservationId => Str
 
-
+The ID of the Capacity Reservation.
 
 
 
 =head2 DryRun => Bool
 
-
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
 =head2 MaxResults => Int
 
+The maximum number of results to return for the request in a single
+page. The remaining results can be seen by sending another request with
+the returned nextToken value.
 
+Valid range: Minimum value of 1. Maximum value of 1000.
 
 
 
 =head2 NextToken => Str
 
-
+The token to retrieve the next page of results.
 
 
 

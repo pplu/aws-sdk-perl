@@ -33,21 +33,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateVpnConnectionResult = $ec2->CreateVpnConnection(
-      CustomerGatewayId => 'MyString',
+      CustomerGatewayId => 'MyCustomerGatewayId',
       Type              => 'MyString',
-      DryRun            => 1,            # OPTIONAL
+      DryRun            => 1,                       # OPTIONAL
       Options           => {
         StaticRoutesOnly => 1,
         TunnelOptions    => [
           {
-            PreSharedKey     => 'MyString',
-            TunnelInsideCidr => 'MyString',
+            DPDTimeoutSeconds => 1,                                   # OPTIONAL
+            IKEVersions       => [ { Value => 'MyString', }, ... ],   # OPTIONAL
+            Phase1DHGroupNumbers => [
+              {
+                Value => 1,                                           # OPTIONAL
+              },
+              ...
+            ],                                                        # OPTIONAL
+            Phase1EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
+            ,                                                         # OPTIONAL
+            Phase1IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
+            ,                                                         # OPTIONAL
+            Phase1LifetimeSeconds => 1,                               # OPTIONAL
+            Phase2DHGroupNumbers  => [
+              {
+                Value => 1,                                           # OPTIONAL
+              },
+              ...
+            ],                                                        # OPTIONAL
+            Phase2EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
+            ,                                                         # OPTIONAL
+            Phase2IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
+            ,                                                         # OPTIONAL
+            Phase2LifetimeSeconds  => 1,                              # OPTIONAL
+            PreSharedKey           => 'MyString',
+            RekeyFuzzPercentage    => 1,                              # OPTIONAL
+            RekeyMarginTimeSeconds => 1,                              # OPTIONAL
+            ReplayWindowSize       => 1,                              # OPTIONAL
+            TunnelInsideCidr       => 'MyString',
           },
           ...
-        ],                               # OPTIONAL
+        ],                                                            # OPTIONAL
       },    # OPTIONAL
-      TransitGatewayId => 'MyString',    # OPTIONAL
-      VpnGatewayId     => 'MyString',    # OPTIONAL
+      TransitGatewayId => 'MyTransitGatewayId',    # OPTIONAL
+      VpnGatewayId     => 'MyVpnGatewayId',        # OPTIONAL
     );
 
     # Results:

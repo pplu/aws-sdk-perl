@@ -90,7 +90,8 @@ The Availability Zone in which to create the Capacity Reservation.
 
 =head2 AvailabilityZoneId => Str
 
-
+The ID of the Availability Zone in which to create the Capacity
+Reservation.
 
 
 

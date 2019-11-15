@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $RejectVpcEndpointConnectionsResult = $ec2->RejectVpcEndpointConnections(
-      ServiceId      => 'MyString',
+      ServiceId      => 'MyServiceId',
       VpcEndpointIds => [ 'MyString', ... ],
       DryRun         => 1,                     # OPTIONAL
     );

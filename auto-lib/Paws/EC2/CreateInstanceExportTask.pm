@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateInstanceExportTaskResult = $ec2->CreateInstanceExportTask(
-      InstanceId     => 'MyString',
-      Description    => 'MyString',    # OPTIONAL
+      InstanceId     => 'MyInstanceId',
+      Description    => 'MyString',       # OPTIONAL
       ExportToS3Task => {
-        ContainerFormat => 'ova',        # values: ova; OPTIONAL
-        DiskImageFormat => 'VMDK',       # values: VMDK, RAW, VHD; OPTIONAL
+        ContainerFormat => 'ova',         # values: ova; OPTIONAL
+        DiskImageFormat => 'VMDK',        # values: VMDK, RAW, VHD; OPTIONAL
         S3Bucket        => 'MyString',
         S3Prefix        => 'MyString',
       },    # OPTIONAL

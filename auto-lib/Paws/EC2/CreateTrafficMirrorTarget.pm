@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CreateTrafficMirrorTargetResult = $ec2->CreateTrafficMirrorTarget(
-      ClientToken            => 'MyString',    # OPTIONAL
-      Description            => 'MyString',    # OPTIONAL
-      DryRun                 => 1,             # OPTIONAL
-      NetworkInterfaceId     => 'MyString',    # OPTIONAL
-      NetworkLoadBalancerArn => 'MyString',    # OPTIONAL
+      ClientToken            => 'MyString',                # OPTIONAL
+      Description            => 'MyString',                # OPTIONAL
+      DryRun                 => 1,                         # OPTIONAL
+      NetworkInterfaceId     => 'MyNetworkInterfaceId',    # OPTIONAL
+      NetworkLoadBalancerArn => 'MyString',                # OPTIONAL
       TagSpecifications      => [
         {
           ResourceType => 'client-vpn-endpoint'

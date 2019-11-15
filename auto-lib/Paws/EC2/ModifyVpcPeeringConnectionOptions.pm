@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcPeeringConnectionOptionsResult =
       $ec2->ModifyVpcPeeringConnectionOptions(
-      VpcPeeringConnectionId           => 'MyString',
+      VpcPeeringConnectionId           => 'MyVpcPeeringConnectionId',
       AccepterPeeringConnectionOptions => {
         AllowDnsResolutionFromRemoteVpc            => 1,    # OPTIONAL
         AllowEgressFromLocalClassicLinkToRemoteVpc => 1,    # OPTIONAL

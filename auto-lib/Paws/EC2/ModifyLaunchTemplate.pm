@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken        => 'MyString',                # OPTIONAL
       DefaultVersion     => 'MyString',                # OPTIONAL
       DryRun             => 1,                         # OPTIONAL
-      LaunchTemplateId   => 'MyString',                # OPTIONAL
+      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
       LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
     );
 

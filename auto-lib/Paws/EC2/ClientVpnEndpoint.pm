@@ -114,7 +114,7 @@ endpoint.
 =head2 SplitTunnel => Bool
 
   Indicates whether split-tunnel is enabled in the AWS Client VPN
-endpoint endpoint.
+endpoint.
 
 For information about split-tunnel VPN endpoints, see Split-Tunnel AWS
 Client VPN Endpoint

@@ -40,12 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyTrafficMirrorFilterRuleResult =
       $ec2->ModifyTrafficMirrorFilterRule(
-      TrafficMirrorFilterRuleId => 'MyString',
-      Description               => 'MyString',    # OPTIONAL
-      DestinationCidrBlock      => 'MyString',    # OPTIONAL
+      TrafficMirrorFilterRuleId => 'MyTrafficMirrorFilterRuleId',
+      Description               => 'MyString',                      # OPTIONAL
+      DestinationCidrBlock      => 'MyString',                      # OPTIONAL
       DestinationPortRange      => {
-        FromPort => 1,                            # OPTIONAL
-        ToPort   => 1,                            # OPTIONAL
+        FromPort => 1,                                              # OPTIONAL
+        ToPort   => 1,                                              # OPTIONAL
       },    # OPTIONAL
       DryRun       => 1,    # OPTIONAL
       Protocol     => 1,    # OPTIONAL

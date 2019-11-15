@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $AttachVpnGatewayResult = $ec2->AttachVpnGateway(
-      VpcId        => 'MyString',
-      VpnGatewayId => 'MyString',
-      DryRun       => 1,            # OPTIONAL
+      VpcId        => 'MyVpcId',
+      VpnGatewayId => 'MyVpnGatewayId',
+      DryRun       => 1,                  # OPTIONAL
     );
 
     # Results:

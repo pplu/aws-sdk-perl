@@ -545,6 +545,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeletePlacementGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteQueuedReservedInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteQueuedReservedInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRoute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteRoute', @_);
@@ -763,6 +768,11 @@ package Paws::EC2;
   sub DescribeElasticGpus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeElasticGpus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeExportImageTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeExportImageTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeExportTasks {
@@ -1290,6 +1300,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ExportClientVpnClientConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExportImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ExportImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ExportTransitGatewayRoutes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ExportTransitGatewayRoutes', @_);
@@ -1555,6 +1570,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpnTunnelCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnTunnelCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyVpnTunnelOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnTunnelOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MonitorInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MonitorInstances', @_);
@@ -1728,6 +1753,11 @@ package Paws::EC2;
   sub SearchTransitGatewayRoutes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::SearchTransitGatewayRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendDiagnosticInterrupt {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::SendDiagnosticInterrupt', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartInstances {
@@ -3372,7 +3402,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportTransitGatewayRoutes GetCapacityReservationUsage GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetCapacityReservationUsage GetConsoleOutput GetConsoleScreenshot GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3413,7 +3443,7 @@ To learn more, see the following resources:
 
 =item *
 
-Amazon EC2: Amazon EC2 product page (http://aws.amazon.com/ec2), Amazon
+Amazon EC2: AmazonEC2 product page (http://aws.amazon.com/ec2), Amazon
 EC2 documentation (http://aws.amazon.com/documentation/ec2)
 
 =item *
@@ -4753,11 +4783,13 @@ trac to specic resources or networks.
 
 =item BgpAsn => Int
 
-=item PublicIp => Str
-
 =item Type => Str
 
+=item [CertificateArn => Str]
+
 =item [DryRun => Bool]
+
+=item [PublicIp => Str]
 
 
 =back
@@ -4771,7 +4803,7 @@ customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual
 private gateway.) You must provide the Internet-routable IP address of
 the customer gateway's external interface. The IP address must be
-static and may be behind a device performing network address
+static and can be behind a device performing network address
 translation (NAT).
 
 For devices that use Border Gateway Protocol (BGP), you can also
@@ -5017,6 +5049,8 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [LogDestinationType => Str]
 
+=item [LogFormat => Str]
+
 =item [LogGroupName => Str]
 
 
@@ -5061,6 +5095,8 @@ the I<Amazon Virtual Private Cloud User Guide>.
 =item [LogsStorageLocation => L<Paws::EC2::StorageLocation>]
 
 =item [Name => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5737,7 +5773,7 @@ Creates crash-consistent snapshots of multiple EBS volumes and stores
 the data in S3. Volumes are chosen by specifying an instance. Any
 attached volumes will produce one snapshot each that is
 crash-consistent across the instance. Boot volumes can be excluded by
-changing the paramaters.
+changing the parameters.
 
 
 =head2 CreateSpotDatafeedSubscription
@@ -5876,10 +5912,13 @@ A Traffic Mirror filter is a set of rules that defines the traffic to
 mirror.
 
 By default, no traffic is mirrored. To mirror traffic, use
-CreateTrafficMirrorFilterRule to add Traffic Mirror rules to the
-filter. The rules you add define what traffic gets mirrored. You can
-also use ModifyTrafficMirrorFilterNetworkServices to mirror supported
-network services.
+CreateTrafficMirrorFilterRule
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.htm)
+to add Traffic Mirror rules to the filter. The rules you add define
+what traffic gets mirrored. You can also use
+ModifyTrafficMirrorFilterNetworkServices
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html)
+to mirror supported network services.
 
 
 =head2 CreateTrafficMirrorFilterRule
@@ -5917,7 +5956,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateTrafficMirrorFilterR
 
 Returns: a L<Paws::EC2::CreateTrafficMirrorFilterRuleResult> instance
 
-Creates a Traffic Mirror rule.
+Creates a Traffic Mirror filter rule.
 
 A Traffic Mirror rule defines the Traffic Mirror source traffic to
 mirror.
@@ -5967,8 +6006,9 @@ The Traffic Mirror source and the Traffic Mirror target (monitoring
 appliances) can be in the same VPC, or in a different VPC connected via
 VPC peering or a transit gateway.
 
-By default, no traffic is mirrored. Use CreateTrafficMirrorFilter to
-create filter rules that specify the traffic to mirror.
+By default, no traffic is mirrored. Use CreateTrafficMirrorFilter
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm)
+to create filter rules that specify the traffic to mirror.
 
 
 =head2 CreateTrafficMirrorTarget
@@ -6005,7 +6045,8 @@ A Traffic Mirror target can be a network interface, or a Network Load
 Balancer.
 
 To use the target in a Traffic Mirror session, use
-CreateTrafficMirrorSession.
+CreateTrafficMirrorSession
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.htm).
 
 
 =head2 CreateTransitGateway
@@ -6408,7 +6449,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
 Creates a VPN connection between an existing virtual private gateway
-and a VPN customer gateway. The supported connection types is
+and a VPN customer gateway. The supported connection type is
 C<ipsec.1>.
 
 The response includes information that you need to give to your network
@@ -6857,6 +6898,24 @@ in the placement group before you can delete the placement group. For
 more information, see Placement Groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DeleteQueuedReservedInstances
+
+=over
+
+=item ReservedInstancesIds => ArrayRef[Str|Undef]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteQueuedReservedInstances>
+
+Returns: a L<Paws::EC2::DeleteQueuedReservedInstancesResult> instance
+
+Deletes the queued purchases for the specified Reserved Instances.
 
 
 =head2 DeleteRoute
@@ -7923,6 +7982,31 @@ Elastic Graphics
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html).
 
 
+=head2 DescribeExportImageTasks
+
+=over
+
+=item [DryRun => Bool]
+
+=item [ExportImageTaskIds => ArrayRef[Str|Undef]]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeExportImageTasks>
+
+Returns: a L<Paws::EC2::DescribeExportImageTasksResult> instance
+
+Describes the specified export image tasks or all your export image
+tasks.
+
+
 =head2 DescribeExportTasks
 
 =over
@@ -7936,7 +8020,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
-Describes the specified export tasks or all your export tasks.
+Describes the specified export instance tasks or all your export
+instance tasks.
 
 
 =head2 DescribeFleetHistory
@@ -10887,6 +10972,38 @@ information clients need to establish a connection with the Client VPN
 endpoint.
 
 
+=head2 ExportImage
+
+=over
+
+=item DiskImageFormat => Str
+
+=item ImageId => Str
+
+=item S3ExportLocation => L<Paws::EC2::ExportTaskS3LocationRequest>
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [RoleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ExportImage>
+
+Returns: a L<Paws::EC2::ExportImageResult> instance
+
+Exports an Amazon Machine Image (AMI) to a VM file. For more
+information, see Exporting a VM Directory from an Amazon Machine Image
+(AMI)
+(https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html)
+in the I<VM Import/Export User Guide>.
+
+
 =head2 ExportTransitGatewayRoutes
 
 =over
@@ -10930,7 +11047,11 @@ Each argument is described in detail in: L<Paws::EC2::GetCapacityReservationUsag
 
 Returns: a L<Paws::EC2::GetCapacityReservationUsageResult> instance
 
-
+Gets usage information about a Capacity Reservation. If the Capacity
+Reservation is shared, it shows usage information for the Capacity
+Reservation owner and each AWS account that is currently using the
+shared capacity. If the Capacity Reservation is not shared, it shows
+only the Capacity Reservation owner's usage.
 
 
 =head2 GetConsoleOutput
@@ -11520,7 +11641,36 @@ Returns: a L<Paws::EC2::ModifyFleetResult> instance
 
 Modifies the specified EC2 Fleet.
 
+You can only modify an EC2 Fleet request of type C<maintain>.
+
 While the EC2 Fleet is being modified, it is in the C<modifying> state.
+
+To scale up your EC2 Fleet, increase its target capacity. The EC2 Fleet
+launches the additional Spot Instances according to the allocation
+strategy for the EC2 Fleet request. If the allocation strategy is
+C<lowest-price>, the EC2 Fleet launches instances using the Spot
+Instance pool with the lowest price. If the allocation strategy is
+C<diversified>, the EC2 Fleet distributes the instances across the Spot
+Instance pools. If the allocation strategy is C<capacity-optimized>,
+EC2 Fleet launches instances from Spot Instance pools with optimal
+capacity for the number of instances that are launching.
+
+To scale down your EC2 Fleet, decrease its target capacity. First, the
+EC2 Fleet cancels any open requests that exceed the new target
+capacity. You can request that the EC2 Fleet terminate Spot Instances
+until the size of the fleet no longer exceeds the new target capacity.
+If the allocation strategy is C<lowest-price>, the EC2 Fleet terminates
+the instances with the highest price per unit. If the allocation
+strategy is C<capacity-optimized>, the EC2 Fleet terminates the
+instances in the Spot Instance pools that have the least available Spot
+Instance capacity. If the allocation strategy is C<diversified>, the
+EC2 Fleet terminates instances across the Spot Instance pools.
+Alternatively, you can request that the EC2 Fleet keep the fleet at its
+current size, but not replace any Spot Instances that are interrupted
+or that you terminate manually.
+
+If you are finished with your EC2 Fleet for now, but will use it again
+later, you can set the target capacity to 0.
 
 
 =head2 ModifyFpgaImageAttribute
@@ -12024,7 +12174,8 @@ Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of
 create volume permissions, but you cannot do both in a single
 operation. If you need to both add and remove account IDs for a
-snapshot, you must use multiple operations.
+snapshot, you must use multiple operations. You can make up to 500
+modifications to a snapshot in a single operation.
 
 Encrypted snapshots and snapshots with AWS Marketplace product codes
 cannot be made public. Snapshots encrypted with your default CMK cannot
@@ -12066,9 +12217,12 @@ To scale up your Spot Fleet, increase its target capacity. The Spot
 Fleet launches the additional Spot Instances according to the
 allocation strategy for the Spot Fleet request. If the allocation
 strategy is C<lowestPrice>, the Spot Fleet launches instances using the
-Spot pool with the lowest price. If the allocation strategy is
+Spot Instance pool with the lowest price. If the allocation strategy is
 C<diversified>, the Spot Fleet distributes the instances across the
-Spot pools.
+Spot Instance pools. If the allocation strategy is
+C<capacityOptimized>, Spot Fleet launches instances from Spot Instance
+pools with optimal capacity for the number of instances that are
+launching.
 
 To scale down your Spot Fleet, decrease its target capacity. First, the
 Spot Fleet cancels any open requests that exceed the new target
@@ -12076,10 +12230,13 @@ capacity. You can request that the Spot Fleet terminate Spot Instances
 until the size of the fleet no longer exceeds the new target capacity.
 If the allocation strategy is C<lowestPrice>, the Spot Fleet terminates
 the instances with the highest price per unit. If the allocation
-strategy is C<diversified>, the Spot Fleet terminates instances across
-the Spot pools. Alternatively, you can request that the Spot Fleet keep
-the fleet at its current size, but not replace any Spot Instances that
-are interrupted or that you terminate manually.
+strategy is C<capacityOptimized>, the Spot Fleet terminates the
+instances in the Spot Instance pools that have the least available Spot
+Instance capacity. If the allocation strategy is C<diversified>, the
+Spot Fleet terminates instances across the Spot Instance pools.
+Alternatively, you can request that the Spot Fleet keep the fleet at
+its current size, but not replace any Spot Instances that are
+interrupted or that you terminate manually.
 
 If you are finished with your Spot Fleet for now, but will use it again
 later, you can set the target capacity to 0.
@@ -12135,8 +12292,8 @@ When you no longer want to mirror network services, use
 C<RemoveNetworkServices> to remove the network services from the
 Traffic Mirror filter.
 
-FFor information about filter rule properties, see Network Services
-(https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html#traffic-mirroring-network-services)
+For information about filter rule properties, see Network Services
+(https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html)
 in the I<Traffic Mirroring User Guide >.
 
 
@@ -12566,6 +12723,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item VpnConnectionId => Str
 
+=item [CustomerGatewayId => Str]
+
 =item [DryRun => Bool]
 
 =item [TransitGatewayId => Str]
@@ -12579,7 +12738,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpnConnection>
 
 Returns: a L<Paws::EC2::ModifyVpnConnectionResult> instance
 
-Modifies the target gateway of a AWS Site-to-Site VPN connection. The
+Modifies the target gateway of an AWS Site-to-Site VPN connection. The
 following migration options are available:
 
 =over
@@ -12634,6 +12793,54 @@ After you perform this operation, the AWS VPN endpoint's IP addresses
 on the AWS side and the tunnel options remain intact. Your s2slong;
 connection will be temporarily unavailable for approximately 10 minutes
 while we provision the new endpoints
+
+
+=head2 ModifyVpnTunnelCertificate
+
+=over
+
+=item VpnConnectionId => Str
+
+=item VpnTunnelOutsideIpAddress => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpnTunnelCertificate>
+
+Returns: a L<Paws::EC2::ModifyVpnTunnelCertificateResult> instance
+
+Modifies the VPN tunnel endpoint certificate.
+
+
+=head2 ModifyVpnTunnelOptions
+
+=over
+
+=item TunnelOptions => L<Paws::EC2::ModifyVpnTunnelOptionsSpecification>
+
+=item VpnConnectionId => Str
+
+=item VpnTunnelOutsideIpAddress => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpnTunnelOptions>
+
+Returns: a L<Paws::EC2::ModifyVpnTunnelOptionsResult> instance
+
+Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN
+connection. You can modify multiple options for a tunnel in a single
+request, but you can only modify one tunnel at a time. For more
+information, see Site-to-Site VPN Tunnel Options for Your Site-to-Site
+VPN Connection
+(https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html) in the
+I<AWS Site-to-Site VPN User Guide>.
 
 
 =head2 MonitorInstances
@@ -12765,6 +12972,8 @@ reservation being purchased and charged to your account.
 
 =item [LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>]
 
+=item [PurchaseTime => Str]
+
 
 =back
 
@@ -12780,6 +12989,10 @@ Use DescribeReservedInstancesOfferings to get a list of Reserved
 Instance offerings that match your specifications. After you've
 purchased a Reserved Instance, you can check for your new Reserved
 Instance with DescribeReservedInstances.
+
+To queue a purchase for a future date and time, specify a purchase
+time. If you do not specify a purchase time, the default is the current
+time.
 
 For more information, see Reserved Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html)
@@ -12904,18 +13117,35 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 You can't register an image where a secondary (non-root) snapshot has
 AWS Marketplace product codes.
 
-Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
-SUSE Linux Enterprise Server (SLES), use the EC2 billing product code
-associated with an AMI to verify the subscription status for package
-updates. Creating an AMI from an EBS snapshot does not maintain this
-billing code, and instances launched from such an AMI are not able to
-connect to package update infrastructure. If you purchase a Reserved
-Instance offering for one of these Linux distributions and launch
-instances using an AMI that does not contain the required billing code,
-your Reserved Instance is not applied to these instances.
+Windows and some Linux distributions, such as Red Hat Enterprise Linux
+(RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing
+product code associated with an AMI to verify the subscription status
+for package updates. To create a new AMI for operating systems that
+require a billing product code, do the following:
 
-To create an AMI for operating systems that require a billing code, see
-CreateImage.
+=over
+
+=item 1.
+
+Launch an instance from an existing AMI with that billing product code.
+
+=item 2.
+
+Customize the instance.
+
+=item 3.
+
+Create a new AMI from the instance using CreateImage to preserve the
+billing product code association.
+
+=back
+
+If you purchase a Reserved Instance to apply to an On-Demand Instance
+that was launched from an AMI with a billing product code, make sure
+that the Reserved Instance has the matching billing product code. If
+you purchase a Reserved Instance without the matching billing product
+code, the Reserved Instance will not be applied to the On-Demand
+Instance.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -13302,9 +13532,9 @@ You can submit a single request that includes multiple launch
 specifications that vary by instance type, AMI, Availability Zone, or
 subnet.
 
-By default, the Spot Fleet requests Spot Instances in the Spot pool
-where the price per unit is the lowest. Each launch specification can
-include its own instance weighting that reflects the value of the
+By default, the Spot Fleet requests Spot Instances in the Spot Instance
+pool where the price per unit is the lowest. Each launch specification
+can include its own instance weighting that reflects the value of the
 instance type to your application workload.
 
 Alternatively, you can specify that the Spot Fleet distribute the
@@ -13866,6 +14096,45 @@ Each argument is described in detail in: L<Paws::EC2::SearchTransitGatewayRoutes
 Returns: a L<Paws::EC2::SearchTransitGatewayRoutesResult> instance
 
 Searches for routes in the specified transit gateway route table.
+
+
+=head2 SendDiagnosticInterrupt
+
+=over
+
+=item InstanceId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::SendDiagnosticInterrupt>
+
+Returns: nothing
+
+Sends a diagnostic interrupt to the specified Amazon EC2 instance to
+trigger a I<kernel panic> (on Linux instances), or a I<blue
+screen>/I<stop error> (on Windows instances). For instances based on
+Intel and AMD processors, the interrupt is received as a I<non-maskable
+interrupt> (NMI).
+
+In general, the operating system crashes and reboots when a kernel
+panic or stop error is triggered. The operating system can also be
+configured to perform diagnostic tasks, such as generating a memory
+dump file, loading a secondary kernel, or obtaining a call trace.
+
+Before sending a diagnostic interrupt to your instance, ensure that its
+operating system is configured to perform the required diagnostic
+tasks.
+
+For more information about configuring your operating system to
+generate a crash dump when a kernel panic or stop error occurs, see
+Send a Diagnostic Interrupt
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html)
+(Linux instances) or Send a Diagnostic Interrupt
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html)
+(Windows instances).
 
 
 =head2 StartInstances

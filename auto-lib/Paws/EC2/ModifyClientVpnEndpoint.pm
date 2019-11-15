@@ -34,16 +34,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyClientVpnEndpointResult = $ec2->ModifyClientVpnEndpoint(
-      ClientVpnEndpointId  => 'MyString',
+      ClientVpnEndpointId  => 'MyClientVpnEndpointId',
       ConnectionLogOptions => {
-        CloudwatchLogGroup  => 'MyString',
-        CloudwatchLogStream => 'MyString',
-        Enabled             => 1,            # OPTIONAL
+        CloudwatchLogGroup  => 'MyString',    # OPTIONAL
+        CloudwatchLogStream => 'MyString',    # OPTIONAL
+        Enabled             => 1,             # OPTIONAL
       },    # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       DnsServers  => {
-        CustomDnsServers => [ 'MyString', ... ],    # OPTIONAL
-        Enabled => 1,                               # OPTIONAL
+        CustomDnsServers => [
+          'MyString', ...           # OPTIONAL
+        ],                          # OPTIONAL
+        Enabled => 1,               # OPTIONAL
       },    # OPTIONAL
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL

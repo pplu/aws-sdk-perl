@@ -36,18 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $ModifyTrafficMirrorSessionResult = $ec2->ModifyTrafficMirrorSession(
-      TrafficMirrorSessionId => 'MyString',
-      Description            => 'MyString',    # OPTIONAL
-      DryRun                 => 1,             # OPTIONAL
-      PacketLength           => 1,             # OPTIONAL
+      TrafficMirrorSessionId => 'MyTrafficMirrorSessionId',
+      Description            => 'MyString',                   # OPTIONAL
+      DryRun                 => 1,                            # OPTIONAL
+      PacketLength           => 1,                            # OPTIONAL
       RemoveFields           => [
         'packet-length',
         ...    # values: packet-length, description, virtual-network-id
       ],       # OPTIONAL
-      SessionNumber         => 1,             # OPTIONAL
-      TrafficMirrorFilterId => 'MyString',    # OPTIONAL
-      TrafficMirrorTargetId => 'MyString',    # OPTIONAL
-      VirtualNetworkId      => 1,             # OPTIONAL
+      SessionNumber         => 1,                            # OPTIONAL
+      TrafficMirrorFilterId => 'MyTrafficMirrorFilterId',    # OPTIONAL
+      TrafficMirrorTargetId => 'MyTrafficMirrorTargetId',    # OPTIONAL
+      VirtualNetworkId      => 1,                            # OPTIONAL
     );
 
     # Results:
