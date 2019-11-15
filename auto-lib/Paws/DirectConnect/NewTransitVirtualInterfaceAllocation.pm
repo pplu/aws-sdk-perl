@@ -39,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head1 DESCRIPTION
 
-Information about a transit virtual interface.
+Information about a transit virtual interface to be provisioned on a
+connection.
 
 =head1 ATTRIBUTES
 
@@ -59,10 +60,13 @@ Information about a transit virtual interface.
   The autonomous system (AS) number for Border Gateway Protocol (BGP)
 configuration.
 
+The valid values are 1-2147483647.
+
 
 =head2 AuthKey => Str
 
-  The authentication key for BGP configuration.
+  The authentication key for BGP configuration. This string has a minimum
+length of 6 characters and and a maximun lenth of 80 characters.
 
 
 =head2 CustomerAddress => Str
@@ -73,12 +77,12 @@ configuration.
 =head2 Mtu => Int
 
   The maximum transmission unit (MTU), in bytes. The supported values are
-1500 and 8500. The default value is 1500.
+1500 and 9001. The default value is 1500.
 
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-  Any tags assigned to the transit virtual interface.
+  The tags associated with the transitive virtual interface.
 
 
 =head2 VirtualInterfaceName => Str

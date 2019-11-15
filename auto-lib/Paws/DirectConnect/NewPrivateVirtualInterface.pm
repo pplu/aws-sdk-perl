@@ -61,6 +61,8 @@ Information about a private virtual interface.
   The autonomous system (AS) number for Border Gateway Protocol (BGP)
 configuration.
 
+The valid values are 1-2147483647.
+
 
 =head2 AuthKey => Str
 
@@ -86,7 +88,7 @@ length of 6 characters and and a maximun lenth of 80 characters.
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-  Any tags assigned to the private virtual interface.
+  The tags associated with the private virtual interface.
 
 
 =head2 VirtualGatewayId => Str

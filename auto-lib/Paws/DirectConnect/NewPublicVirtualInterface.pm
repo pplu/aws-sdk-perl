@@ -59,6 +59,8 @@ Information about a public virtual interface.
   The autonomous system (AS) number for Border Gateway Protocol (BGP)
 configuration.
 
+The valid values are 1-2147483647.
+
 
 =head2 AuthKey => Str
 
@@ -79,7 +81,7 @@ to public virtual interfaces.
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-  Any tags assigned to the public virtual interface.
+  The tags associated with the public virtual interface.
 
 
 =head2 B<REQUIRED> VirtualInterfaceName => Str

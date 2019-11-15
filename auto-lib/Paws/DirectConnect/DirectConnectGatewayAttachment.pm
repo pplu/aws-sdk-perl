@@ -75,7 +75,7 @@ interface is stopped.
 
 =head2 AttachmentType => Str
 
-  The interface type.
+  The type of attachment.
 
 
 =head2 DirectConnectGatewayId => Str

@@ -7,6 +7,7 @@ package Paws::DirectConnect::CreateLag;
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' , required => 1);
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' , required => 1);
+  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -46,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                            # OPTIONAL
       ConnectionId => 'MyConnectionId',    # OPTIONAL
+      ProviderName => 'MyProviderName',    # OPTIONAL
       Tags         => [
         {
           Key   => 'MyTagKey',             # min: 1, max: 128
@@ -70,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
+    my $ProviderName            = $Lag->ProviderName;
     my $Region                  = $Lag->Region;
     my $Tags                    = $Lag->Tags;
 
@@ -83,12 +86,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dir
 
 =head2 ChildConnectionTags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-The tags to assign to the child connections of the LAG. Only newly
-created child connections as the result of creating a LAG connection
-are assigned the provided tags. The tags are not assigned to an
-existing connection that is provided via the
-E<ldquo>connectionIdE<rdquo> parameter that will be migrated to the
-LAG.
+The tags to associate with the automtically created LAGs.
 
 
 
@@ -125,9 +123,15 @@ the LAG.
 
 
 
+=head2 ProviderName => Str
+
+The name of the service provider associated with the LAG.
+
+
+
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-The tags to assign to the link aggregation group (LAG).
+The tags to associate with the LAG.
 
 
 

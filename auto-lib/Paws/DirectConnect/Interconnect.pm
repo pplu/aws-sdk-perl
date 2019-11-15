@@ -12,6 +12,7 @@ package Paws::DirectConnect::Interconnect;
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
@@ -120,6 +121,11 @@ The time of the most recent call to DescribeLoa for this connection.
 The location of the connection.
 
 
+=head2 ProviderName => Str
+
+The name of the service provider associated with the interconnect.
+
+
 =head2 Region => Str
 
 The AWS Region where the connection is located.
@@ -127,7 +133,7 @@ The AWS Region where the connection is located.
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-Any tags assigned to the interconnect.
+The tags associated with the interconnect.
 
 
 =head2 _request_id => Str

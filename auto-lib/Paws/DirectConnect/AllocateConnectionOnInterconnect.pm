@@ -54,6 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Location             = $Connection->Location;
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
+    my $ProviderName         = $Connection->ProviderName;
     my $Region               = $Connection->Region;
     my $Tags                 = $Connection->Tags;
     my $Vlan                 = $Connection->Vlan;

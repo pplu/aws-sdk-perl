@@ -14,6 +14,7 @@ package Paws::DirectConnect::Connection;
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
+  has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' );
@@ -146,6 +147,11 @@ The name of the AWS Direct Connect service provider associated with the
 connection.
 
 
+=head2 ProviderName => Str
+
+The name of the service provider associated with the connection.
+
+
 =head2 Region => Str
 
 The AWS Region where the connection is located.
@@ -153,7 +159,7 @@ The AWS Region where the connection is located.
 
 =head2 Tags => ArrayRef[L<Paws::DirectConnect::Tag>]
 
-Any tags assigned to the connection.
+The tags associated with the connection.
 
 
 =head2 Vlan => Int

@@ -1,6 +1,7 @@
 package Paws::DirectConnect::Location;
   use Moose;
   has AvailablePortSpeeds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availablePortSpeeds', traits => ['NameInRequest']);
+  has AvailableProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availableProviders', traits => ['NameInRequest']);
   has LocationCode => (is => 'ro', isa => 'Str', request_name => 'locationCode', traits => ['NameInRequest']);
   has LocationName => (is => 'ro', isa => 'Str', request_name => 'locationName', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest']);
@@ -42,6 +43,11 @@ Information about an AWS Direct Connect location.
 =head2 AvailablePortSpeeds => ArrayRef[Str|Undef]
 
   The available port speeds for the location.
+
+
+=head2 AvailableProviders => ArrayRef[Str|Undef]
+
+  The name of the service provider for the location.
 
 
 =head2 LocationCode => Str
