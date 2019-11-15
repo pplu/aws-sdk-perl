@@ -52,7 +52,7 @@ Provides summary information about a labeling job.
   The Amazon Resource Name (ARN) of the Lambda function used to
 consolidate the annotations from individual workers into a label for a
 data object. For more information, see Annotation Consolidation
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html).
 
 
 =head2 B<REQUIRED> CreationTime => Str

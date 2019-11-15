@@ -94,6 +94,10 @@ C<arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation>
 
 C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass>
 
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition>
+
 =back
 
 B<US East (Ohio) (us-east-2):>
@@ -115,6 +119,10 @@ C<arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation>
 =item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition>
 
 =back
 
@@ -138,6 +146,36 @@ C<arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation>
 
 C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass>
 
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<Canada (Central) (ca-central-1):>
+
+=over
+
+=item *
+
+C<arn:awslambda:ca-central-1:918755190332:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:ca-central-1:918755190332:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:ca-central-1:918755190332:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition>
+
 =back
 
 B<EU (Ireland) (eu-west-1):>
@@ -159,6 +197,62 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation>
 =item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<EU (London) (eu-west-2):>
+
+=over
+
+=item *
+
+C<arn:awslambda:eu-west-2:487402164563:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:eu-west-2:487402164563:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:eu-west-2:487402164563:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<EU Frankfurt (eu-central-1):>
+
+=over
+
+=item *
+
+C<arn:awslambda:eu-central-1:203001061592:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:eu-central-1:203001061592:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:eu-central-1:203001061592:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition>
 
 =back
 
@@ -182,9 +276,91 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation>
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
 
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition>
+
 =back
 
-B<Asia Pacific (Sydney) (ap-southeast-1):>
+B<Asia Pacific (Seoul) (ap-northeast-2):>
+
+=over
+
+=item *
+
+C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<Asia Pacific (Mumbai) (ap-south-1):>
+
+=over
+
+=item *
+
+C<arn:awslambda:ap-south-1:565803892007:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:ap-south-1:565803892007:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:ap-south-1:565803892007:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<Asia Pacific (Singapore) (ap-southeast-1):>
+
+=over
+
+=item *
+
+C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-BoundingBox>
+
+=item *
+
+C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:awslambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition>
+
+=back
+
+B<Asia Pacific (Sydney) (ap-southeast-2):>
 
 =over
 
@@ -204,19 +380,26 @@ C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation>
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
 
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition>
+
 =back
 
 
 
 =head2 PublicWorkforceTaskPrice => L<Paws::SageMaker::PublicWorkforceTaskPrice>
 
-  The price that you pay for each task performed by a public worker.
+  The price that you pay for each task performed by an Amazon Mechanical
+Turk worker.
 
 
 =head2 TaskAvailabilityLifetimeInSeconds => Int
 
-  The length of time that a task remains available for labelling by human
-workers.
+  The length of time that a task remains available for labeling by human
+workers. B<If you choose the Amazon Mechanical Turk workforce, the
+maximum is 12 hours (43200)>. For private and vendor workforces, the
+maximum is as listed.
 
 
 =head2 B<REQUIRED> TaskDescription => Str

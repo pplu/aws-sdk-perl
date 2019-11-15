@@ -66,7 +66,8 @@ Provides details about a labeling work team.
 
 =head2 NotificationConfiguration => L<Paws::SageMaker::NotificationConfiguration>
 
-  
+  Configures SNS notifications of available or expiring work items for
+work teams.
 
 
 =head2 ProductListingIds => ArrayRef[Str|Undef]

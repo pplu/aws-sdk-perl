@@ -2,7 +2,9 @@
 package Paws::SageMaker::CreateTrainingJob;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
+  has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has HyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
@@ -49,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # max: 20; OPTIONAL
+        ],                                     # max: 40; OPTIONAL
         TrainingImage => 'MyAlgorithmImage',   # max: 255; OPTIONAL
       },
       OutputDataConfig => {
@@ -59,17 +61,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceConfig => {
         InstanceCount => 1,                    # min: 1
         InstanceType  => 'ml.m4.xlarge'
-        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
         VolumeSizeInGB => 1,               # min: 1
         VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
       RoleArn           => 'MyRoleArn',
       StoppingCondition => {
-        MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
+        MaxRuntimeInSeconds  => 1,         # min: 1; OPTIONAL
+        MaxWaitTimeInSeconds => 1,         # min: 1; OPTIONAL
       },
-      TrainingJobName                       => 'MyTrainingJobName',
-      EnableInterContainerTrafficEncryption => 1,                     # OPTIONAL
-      EnableNetworkIsolation                => 1,                     # OPTIONAL
+      TrainingJobName  => 'MyTrainingJobName',
+      CheckpointConfig => {
+        S3Uri     => 'MyS3Uri',            # max: 1024
+        LocalPath => 'MyDirectoryPath',    # max: 4096; OPTIONAL
+      },    # OPTIONAL
+      EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+      EnableManagedSpotTraining             => 1,    # OPTIONAL
+      EnableNetworkIsolation                => 1,    # OPTIONAL
       HyperParameters                       => {
         'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
       },    # OPTIONAL
@@ -77,6 +85,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           ChannelName => 'MyChannelName',    # min: 1, max: 64
           DataSource  => {
+            FileSystemDataSource => {
+              DirectoryPath        => 'MyDirectoryPath',   # max: 4096; OPTIONAL
+              FileSystemAccessMode => 'rw',                # values: rw, ro
+              FileSystemId         => 'MyFileSystemId',    # min: 11
+              FileSystemType => 'EFS',    # values: EFS, FSxLustre
+
+            },    # OPTIONAL
             S3DataSource => {
               S3DataType => 'ManifestFile'
               ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
@@ -142,6 +157,13 @@ Algorithms with Amazon SageMaker
 
 
 
+=head2 CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>
+
+Contains information about the output location for managed spot
+training checkpoint data.
+
+
+
 =head2 EnableInterContainerTrafficEncryption => Bool
 
 To encrypt all communications between ML compute instances in
@@ -152,6 +174,22 @@ instances, especially if you use a deep learning algorithm in
 distributed training. For more information, see Protect Communications
 Between ML Compute Instances in a Distributed Training Job
 (https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html).
+
+
+
+=head2 EnableManagedSpotTraining => Bool
+
+To train models using managed spot training, choose C<True>. Managed
+spot training provides a fully managed and scalable infrastructure for
+training machine learning models. this option is useful when training
+jobs can be interrupted and when there is flexibility when the training
+job is run.
+
+The complete and intermediate results of jobs are stored in an Amazon
+S3 bucket, and can be used as a starting point to train models
+incrementally. Amazon SageMaker provides metrics and logs in
+CloudWatch. They can be used to see when managed spot training jobs are
+running, interrupted, resumed, or completed.
 
 
 
@@ -191,20 +229,23 @@ C<InputDataConfig> describes the input data and its location.
 Algorithms can accept input data from one or more channels. For
 example, an algorithm might have two channels of input data,
 C<training_data> and C<validation_data>. The configuration for each
-channel provides the S3 location where the input data is stored. It
-also provides information about the stored data: the MIME type,
-compression method, and whether the data is wrapped in RecordIO format.
+channel provides the S3, EFS, or FSx location where the input data is
+stored. It also provides information about the stored data: the MIME
+type, compression method, and whether the data is wrapped in RecordIO
+format.
 
 Depending on the input mode that the algorithm supports, Amazon
 SageMaker either copies input data files from an S3 bucket to a local
 directory in the Docker container, or makes it available as input
-streams.
+streams. For example, if you specify an EFS location, input data files
+will be made available as input streams. They do not need to be
+downloaded.
 
 
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::SageMaker::OutputDataConfig>
 
-Specifies the path to the S3 bucket where you want to store model
+Specifies the path to the S3 location where you want to store model
 artifacts. Amazon SageMaker creates subfolders for the artifacts.
 
 

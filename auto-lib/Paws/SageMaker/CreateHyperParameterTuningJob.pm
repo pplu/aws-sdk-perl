@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                      # max: 20; OPTIONAL
+          ],                                      # max: 40; OPTIONAL
           TrainingImage => 'MyAlgorithmImage',    # max: 255; OPTIONAL
         },
         OutputDataConfig => {
@@ -109,20 +109,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceConfig => {
           InstanceCount => 1,                     # min: 1
           InstanceType  => 'ml.m4.xlarge'
-          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
           VolumeSizeInGB => 1,               # min: 1
           VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
         },
         RoleArn           => 'MyRoleArn',    # min: 20, max: 2048
         StoppingCondition => {
-          MaxRuntimeInSeconds => 1,          # min: 1; OPTIONAL
+          MaxRuntimeInSeconds  => 1,         # min: 1; OPTIONAL
+          MaxWaitTimeInSeconds => 1,         # min: 1; OPTIONAL
         },
+        CheckpointConfig => {
+          S3Uri     => 'MyS3Uri',            # max: 1024
+          LocalPath => 'MyDirectoryPath',    # max: 4096
+        },    # OPTIONAL
         EnableInterContainerTrafficEncryption => 1,    # OPTIONAL
+        EnableManagedSpotTraining             => 1,    # OPTIONAL
         EnableNetworkIsolation                => 1,    # OPTIONAL
         InputDataConfig                       => [
           {
             ChannelName => 'MyChannelName',            # min: 1, max: 64
             DataSource  => {
+              FileSystemDataSource => {
+                DirectoryPath        => 'MyDirectoryPath',    # max: 4096
+                FileSystemAccessMode => 'rw',                 # values: rw, ro
+                FileSystemId         => 'MyFileSystemId',     # min: 11
+                FileSystemType => 'EFS',    # values: EFS, FSxLustre
+
+              },    # OPTIONAL
               S3DataSource => {
                 S3DataType => 'ManifestFile'
                 ,    # values: ManifestFile, S3Prefix, AugmentedManifestFile
@@ -209,7 +222,7 @@ unique within the same AWS account and AWS Region. The name must have {
 An array of key-value pairs. You can use tags to categorize your AWS
 resources in different ways, for example, by purpose, owner, or
 environment. For more information, see AWS Tagging Strategies
-(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+(https://docs.aws.amazon.com/https:/aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 
 Tags that you specify for the tuning job are also added to all training
 jobs that the tuning job launches.

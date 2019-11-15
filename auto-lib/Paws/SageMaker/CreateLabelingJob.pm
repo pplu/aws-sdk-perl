@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         NumberOfHumanWorkersPerDataObject => 1,    # min: 1, max: 9
-        PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',    # max: 2048
-        TaskDescription        => 'MyTaskDescription',      # min: 1, max: 255
-        TaskTimeLimitInSeconds => 1,                        # min: 1, max: 28800
-        TaskTitle              => 'MyTaskTitle',            # min: 1, max: 128
+        PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',   # max: 2048
+        TaskDescription        => 'MyTaskDescription',     # min: 1, max: 255
+        TaskTimeLimitInSeconds => 1,                       # min: 30, max: 28800
+        TaskTitle              => 'MyTaskTitle',           # min: 1, max: 128
         UiConfig               => {
-          UiTemplateS3Uri => 'MyS3Uri',                     # max: 1024
+          UiTemplateS3Uri => 'MyS3Uri',                    # max: 1024
 
         },
         WorkteamArn            => 'MyWorkteamArn', # max: 256
@@ -228,7 +228,7 @@ conditions to control the cost of data labeling.
 
 An array of key/value pairs. For more information, see Using Cost
 Allocation Tags
-(http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 in the I<AWS Billing and Cost Management User Guide>.
 
 

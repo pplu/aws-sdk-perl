@@ -1,6 +1,7 @@
 package Paws::SageMaker::StoppingCondition;
   use Moose;
   has MaxRuntimeInSeconds => (is => 'ro', isa => 'Int');
+  has MaxWaitTimeInSeconds => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::StoppingCondition object:
 
-  $service_obj->Method(Att1 => { MaxRuntimeInSeconds => $value, ..., MaxRuntimeInSeconds => $value  });
+  $service_obj->Method(Att1 => { MaxRuntimeInSeconds => $value, ..., MaxWaitTimeInSeconds => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,8 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Specifies a limit to how long a model training or compilation job can
-run. When the job reaches the time limit, Amazon SageMaker ends the
-training or compilation job. Use this API to cap model training costs.
+run. It also specifies how long you are willing to wait for a managed
+spot training job to complete. When the job reaches the time limit,
+Amazon SageMaker ends the training or compilation job. Use this API to
+cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
 signal, which delays job termination for 120 seconds. Algorithms can
@@ -61,6 +64,15 @@ maximum runtime is sufficient for the training job to complete.
 compilation job can run. If job does not complete during this time,
 Amazon SageMaker ends the job. If value is not specified, default value
 is 1 day. The maximum value is 28 days.
+
+
+=head2 MaxWaitTimeInSeconds => Int
+
+  The maximum length of time, in seconds, how long you are willing to
+wait for a managed spot training job to complete. It is the amount of
+time spent waiting for Spot capacity plus the amount of time the
+training job runs. It must be equal to or greater than
+C<MaxRuntimeInSeconds>.
 
 
 

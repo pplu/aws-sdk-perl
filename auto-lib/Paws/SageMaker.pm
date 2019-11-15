@@ -951,7 +951,7 @@ independently from the lifecycle of any notebook instances it is
 associated with.
 
 The repository can be hosted either in AWS CodeCommit
-(http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+(https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository.
 
 
@@ -1076,9 +1076,8 @@ download model artifacts from the S3 path you provided. AWS STS is
 activated in your IAM user account by default. If you previously
 deactivated AWS STS for a region, you need to reactivate AWS STS for
 that region. For more information, see Activating and Deactivating AWS
-STS i an AWS Region
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-in the I<AWS Identity and Access Management User Guide>.
+STS i an AWS Region in the I<AWS Identity and Access Management User
+Guide>.
 
 
 =head2 CreateEndpointConfig
@@ -1216,12 +1215,12 @@ data objects that need to be labeled by a human. Automated data
 labeling uses I<active learning> to determine if a data object can be
 labeled by machine or if it needs to be sent to a human worker. For
 more information, see Using Automated Data Labeling
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-automated-labeling.html).
 
 The data objects to be labeled are contained in an Amazon S3 bucket.
 You create a I<manifest file> that describes the location of each
 object. For more information, see Using Input and Output Data
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html).
 
 The output can be used as the manifest file for another labeling job or
 as training data for your machine learning models.
@@ -1396,7 +1395,8 @@ notebook instance, assuming that the security groups allow it.
 =back
 
 After creating the notebook instance, Amazon SageMaker returns its
-Amazon Resource Name (ARN).
+Amazon Resource Name (ARN). You can't change the name of a notebook
+instance after you create it.
 
 After Amazon SageMaker creates the notebook instance, you can connect
 to the Jupyter server and work in Jupyter notebooks. For example, you
@@ -1499,7 +1499,11 @@ to the AWS console sign-in page.
 
 =item TrainingJobName => Str
 
+=item [CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>]
+
 =item [EnableInterContainerTrafficEncryption => Bool]
+
+=item [EnableManagedSpotTraining => Bool]
 
 =item [EnableNetworkIsolation => Bool]
 
@@ -1547,12 +1551,12 @@ SageMaker, see Algorithms
 
 =item *
 
-C<InputDataConfig> - Describes the training dataset and the Amazon S3
-location where it is stored.
+C<InputDataConfig> - Describes the training dataset and the Amazon S3,
+EFS, or FSx location where it is stored.
 
 =item *
 
-C<OutputDataConfig> - Identifies the Amazon S3 location where you want
+C<OutputDataConfig> - Identifies the Amazon S3 bucket where you want
 Amazon SageMaker to save the results of model training.
 
 =item *
@@ -1563,6 +1567,13 @@ training, you specify more than one instance.
 
 =item *
 
+C<EnableManagedSpotTraining> - Optimize the cost of training machine
+learning models by up to 80% by using Amazon EC2 Spot instances. For
+more information, see Managed Spot Training
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
+
+=item *
+
 C<RoleARN> - The Amazon Resource Number (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You must
 grant this role the necessary permissions so that Amazon SageMaker can
@@ -1570,8 +1581,10 @@ successfully complete model training.
 
 =item *
 
-C<StoppingCondition> - Sets a time limit for training. Use this
-parameter to cap model training costs.
+C<StoppingCondition> - To help cap training costs, use
+C<MaxRuntimeInSeconds> to set a time limit for training. Use
+C<MaxWaitTimeInSeconds> to specify how long you are willing to to wait
+for a managed spot training job to complete.
 
 =back
 

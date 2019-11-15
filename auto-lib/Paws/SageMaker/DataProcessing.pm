@@ -33,23 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The data structure used to combine the input data and transformed data
-from the batch transform output into a joined dataset and to store it
-in an output file. It also contains information on how to filter the
-input data and the joined dataset. For more information, see Batch
-Transform I/O Join
-(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html).
+The data structure used to specify the data to be used for inference in
+a batch transform job and to associate the data that is relevant to the
+prediction results in the output. The input filter provided allows you
+to exclude input data that is not needed for inference in a batch
+transform job. The output filter provided allows you to include input
+data relevant to interpreting the predictions in the output from the
+job. For more information, see Associate Prediction Results with their
+Corresponding Input Records
+(https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 InputFilter => Str
 
-  A JSONPath expression used to select a portion of the input data to
-pass to the algorithm. Use the C<InputFilter> parameter to exclude
-fields, such as an ID column, from the input. If you want Amazon
-SageMaker to pass the entire input dataset to the algorithm, accept the
-default value C<$>.
+  A JSONPath
+(https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html#data-processing-operators)
+expression used to select a portion of the input data to pass to the
+algorithm. Use the C<InputFilter> parameter to exclude fields, such as
+an ID column, from the input. If you want Amazon SageMaker to pass the
+entire input dataset to the algorithm, accept the default value C<$>.
 
 Examples: C<"$">, C<"$[1:]">, C<"$.features">
 
@@ -60,10 +64,7 @@ Examples: C<"$">, C<"$[1:]">, C<"$.features">
 valid values are C<None> and C<Input> The default value is C<None>
 which specifies not to join the input with the transformed data. If you
 want the batch transform job to join the original input data with the
-transformed data, set C<JoinSource> to C<Input>. To join input and
-output, the batch transform job must satisfy the Requirements for Using
-Batch Transform I/O Join
-(http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html#batch-transform-io-join-requirements).
+transformed data, set C<JoinSource> to C<Input>.
 
 For JSON or JSONLines objects, such as a JSON array, Amazon SageMaker
 adds the transformed data to the input JSON object in an attribute
@@ -81,13 +82,15 @@ transformed data and the output is a CSV file.
 
 =head2 OutputFilter => Str
 
-  A JSONPath expression used to select a portion of the joined dataset to
-save in the output file for a batch transform job. If you want Amazon
-SageMaker to store the entire input dataset in the output file, leave
-the default value, C<$>. If you specify indexes that aren't within the
-dimension size of the joined dataset, you get an error.
+  A JSONPath
+(https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html#data-processing-operators)
+expression used to select a portion of the joined dataset to save in
+the output file for a batch transform job. If you want Amazon SageMaker
+to store the entire input dataset in the output file, leave the default
+value, C<$>. If you specify indexes that aren't within the dimension
+size of the joined dataset, you get an error.
 
-Examples: C<"$">, C<"$[0,5:]">, C<"$.['id','SageMakerOutput']">
+Examples: C<"$">, C<"$[0,5:]">, C<"$['id','SageMakerOutput']">
 
 
 

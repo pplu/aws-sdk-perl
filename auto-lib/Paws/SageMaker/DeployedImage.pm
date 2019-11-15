@@ -42,7 +42,7 @@ C<ProductionVariant>, the path resolves to a path of the form
 C<registry/repository[@digest]>. A digest is a hash value that
 identifies a specific version of an image. For information about Amazon
 ECR paths, see Pulling an Image
-(http://docs.aws.amazon.com//AmazonECR/latest/userguide/docker-pull-ecr-image.html)
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html)
 in the I<Amazon ECR User Guide>.
 
 =head1 ATTRIBUTES

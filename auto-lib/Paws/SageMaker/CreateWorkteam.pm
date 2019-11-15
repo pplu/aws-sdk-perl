@@ -80,7 +80,7 @@ A description of the work team.
 A list of C<MemberDefinition> objects that contains objects that
 identify the Amazon Cognito user pool that makes up the work team. For
 more information, see Amazon Cognito User Pools
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
 
 All of the C<CognitoMemberDefinition> objects that make up the member
 definition must have the same C<ClientId> and C<UserPool> values.
@@ -96,7 +96,13 @@ items.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
+An array of key-value pairs.
 
+For more information, see Resource Tag
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
+and Using Cost Allocation Tags
+(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+in the I< AWS Billing and Cost Management User Guide>.
 
 
 

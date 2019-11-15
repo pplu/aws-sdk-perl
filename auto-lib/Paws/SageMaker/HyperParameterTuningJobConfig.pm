@@ -65,7 +65,7 @@ hyperparameter values to use for the training job it launches. To use
 the Bayesian search stategy, set this to C<Bayesian>. To randomly
 search, set it to C<Random>. For information about search strategies,
 see How Hyperparameter Tuning Works
-(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
 
 
 =head2 TrainingJobEarlyStoppingType => Str
@@ -87,7 +87,7 @@ Amazon SageMaker stops training jobs launched by the hyperparameter
 tuning job when they are unlikely to perform better than previously
 completed training jobs. For more information, see Stop Training Jobs
 Early
-(http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-early-stopping.html).
 
 =back
 

@@ -62,7 +62,7 @@ floating-point values between this value and C<MaxValue>for tuning.
   The scale that hyperparameter tuning uses to search the hyperparameter
 range. For information about choosing a hyperparameter scale, see
 Hyperparameter Scaling
-(http://docs.aws.amazon.com//sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
 One of the following values:
 
 =over

@@ -63,7 +63,7 @@ If the transform job failed, C<FailureReason> describes why it failed.
 A transform job creates a log file, which includes error messages, and
 stores it as an Amazon S3 object. For more information, see Log Amazon
 SageMaker Events with Amazon CloudWatch
-(http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
 
 
 =head2 LabelingJobArn => Str

@@ -49,9 +49,7 @@ variant weights.
   The size of the Elastic Inference (EI) instance to use for the
 production variant. EI instances provide on-demand GPU computing for
 inference. For more information, see Using Elastic Inference in Amazon
-SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html). For
-more information, see Using Elastic Inference in Amazon SageMaker
-(http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 
 
 =head2 B<REQUIRED> InitialInstanceCount => Int

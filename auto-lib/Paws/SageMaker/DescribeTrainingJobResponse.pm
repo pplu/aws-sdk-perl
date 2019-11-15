@@ -2,8 +2,11 @@
 package Paws::SageMaker::DescribeTrainingJobResponse;
   use Moose;
   has AlgorithmSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmSpecification', required => 1);
+  has BillableTimeInSeconds => (is => 'ro', isa => 'Int');
+  has CheckpointConfig => (is => 'ro', isa => 'Paws::SageMaker::CheckpointConfig');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
+  has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
@@ -23,6 +26,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has TrainingJobName => (is => 'ro', isa => 'Str', required => 1);
   has TrainingJobStatus => (is => 'ro', isa => 'Str', required => 1);
   has TrainingStartTime => (is => 'ro', isa => 'Str');
+  has TrainingTimeInSeconds => (is => 'ro', isa => 'Int');
   has TuningJobArn => (is => 'ro', isa => 'Str');
   has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::VpcConfig');
 
@@ -43,6 +47,21 @@ Information about the algorithm used for training, and algorithm
 metadata.
 
 
+=head2 BillableTimeInSeconds => Int
+
+The billable time in seconds.
+
+You can calculate the savings from using managed spot training using
+the formula C<(1 - BillableTimeInSeconds / TrainingTimeInSeconds) *
+100>. For example, if C<BillableTimeInSeconds> is 100 and
+C<TrainingTimeInSeconds> is 500, the savings is 80%.
+
+
+=head2 CheckpointConfig => L<Paws::SageMaker::CheckpointConfig>
+
+
+
+
 =head2 B<REQUIRED> CreationTime => Str
 
 A timestamp that indicates when the training job was created.
@@ -56,6 +75,12 @@ security for distributed training, but training might take longer. How
 long it takes depends on the amount of communication between compute
 instances, especially if you use a deep learning algorithms in
 distributed training.
+
+
+=head2 EnableManagedSpotTraining => Bool
+
+A Boolean indicating whether managed spot training is enabled (C<True>)
+or not (C<False>).
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -161,6 +186,11 @@ C<Training> - Training is in progress.
 
 =item *
 
+C<Interrupted> - The job stopped because the managed spot training
+instances were interrupted.
+
+=item *
+
 C<Uploading> - Training is complete and the model artifacts are being
 uploaded to the S3 location.
 
@@ -196,6 +226,11 @@ C<DescribeTrainingJobResponse>.
 
 C<MaxRuntimeExceeded> - The job stopped because it exceeded the maximum
 allowed runtime.
+
+=item *
+
+C<MaxWaitTmeExceeded> - The job stopped because it exceeded the maximum
+allowed wait time.
 
 =item *
 
@@ -236,7 +271,7 @@ C<DownloadingTrainingImage>
 =back
 
 
-Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">
+Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">, C<"Interrupted">, C<"MaxWaitTimeExceeded">
 =head2 SecondaryStatusTransitions => ArrayRef[L<Paws::SageMaker::SecondaryStatusTransition>]
 
 A history of all of the secondary statuses that the training job has
@@ -245,8 +280,9 @@ transitioned through.
 
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-Specifies a limit to how long a model training job can run. When the
-job reaches the time limit, Amazon SageMaker ends the training job. Use
+Specifies a limit to how long a model training job can run. It also
+specifies the maximum time to wait for a spot instance. When the job
+reaches the time limit, Amazon SageMaker ends the training job. Use
 this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
@@ -316,6 +352,11 @@ You are billed for the time interval between this time and the value of
 C<TrainingEndTime>. The start time in CloudWatch Logs might be later
 than this time. The difference is due to the time it takes to download
 the training data and to the size of the training container.
+
+
+=head2 TrainingTimeInSeconds => Int
+
+The training time in seconds.
 
 
 =head2 TuningJobArn => Str

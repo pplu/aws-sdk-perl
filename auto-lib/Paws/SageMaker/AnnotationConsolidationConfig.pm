@@ -64,6 +64,18 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox>
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox>
 
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox>
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox>
+
 =item *
 
 I<Image classification> - Uses a variant of the Expectation
@@ -81,6 +93,18 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass>
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass>
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass>
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass>
 
 =item *
 
@@ -100,6 +124,18 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation>
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation>
 
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation>
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation>
+
 =item *
 
 I<Text classification> - Uses a variant of the Expectation Maximization
@@ -118,10 +154,51 @@ C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass>
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass>
 
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass>
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass>
+
+=item *
+
+I<Named entity eecognition> - Groups similar selections and calculates
+aggregate boundaries, resolving to most-assigned label.
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition>
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition>
+
 =back
 
 For more information, see Annotation Consolidation
-(http://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html).
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html).
 
 
 

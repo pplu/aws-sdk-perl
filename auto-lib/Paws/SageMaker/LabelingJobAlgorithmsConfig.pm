@@ -73,6 +73,12 @@ I<Object detection>
 
 C<arn:aws:sagemaker:I<region>:027400017018:labeling-job-algorithm-specification/object-detection>
 
+=item *
+
+I<Semantic Segmentation>
+
+C<arn:aws:sagemaker:I<region>:027400017018:labeling-job-algorithm-specification/semantic-segmentation>
+
 =back
 
 

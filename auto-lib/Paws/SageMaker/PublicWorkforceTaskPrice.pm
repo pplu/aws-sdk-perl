@@ -35,7 +35,8 @@ Defines the amount of money paid to an Amazon Mechanical Turk worker
 for each task performed.
 
 Use one of the following prices for bounding box tasks. Prices are in
-US dollars.
+US dollars and should be based on the complexity of the task; the
+longer it takes in your initial testing, the more you should offer.
 
 =over
 
@@ -197,7 +198,8 @@ are in US dollars.
 
 =head2 AmountInUsd => L<Paws::SageMaker::USD>
 
-  Defines the amount of money paid to a worker in United States dollars.
+  Defines the amount of money paid to an Amazon Mechanical Turk worker in
+United States dollars.
 
 
 
