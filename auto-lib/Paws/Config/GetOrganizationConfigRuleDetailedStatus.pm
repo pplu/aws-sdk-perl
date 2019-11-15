@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $config = Paws->service('Config');
     my $GetOrganizationConfigRuleDetailedStatusResponse =
       $config->GetOrganizationConfigRuleDetailedStatus(
-      OrganizationConfigRuleName => 'MyStringWithCharLimit64',
+      OrganizationConfigRuleName => 'MyOrganizationConfigRuleName',
       Filters                    => {
         AccountId               => 'MyAccountId',        # OPTIONAL
         MemberAccountRuleStatus => 'CREATE_SUCCESSFUL'
-        , # values: CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS; OPTIONAL
+        , # values: CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, UPDATE_SUCCESSFUL, UPDATE_FAILED, UPDATE_IN_PROGRESS, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS; OPTIONAL
       },    # OPTIONAL
       Limit     => 1,             # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL
@@ -58,25 +58,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =head2 Filters => L<Paws::Config::StatusDetailFilters>
 
-
+A C<StatusDetailFilters> object.
 
 
 
 =head2 Limit => Int
 
-
+The maximum number of C<OrganizationConfigRuleDetailedStatus> returned
+on each page. If you do not specify a number, AWS Config uses the
+default. The default is 100.
 
 
 
 =head2 NextToken => Str
 
-
+The C<nextToken> string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
 
-
+The name of organization config rule for which you want status details
+for member accounts.
 
 
 

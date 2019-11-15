@@ -68,7 +68,7 @@ The region authorized to collect aggregated data.
 
 =head2 Tags => ArrayRef[L<Paws::Config::Tag>]
 
-
+An array of tag object.
 
 
 

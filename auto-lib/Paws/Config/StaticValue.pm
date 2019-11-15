@@ -1,6 +1,6 @@
 package Paws::Config::StaticValue;
   use Moose;
-  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ The static value of the resource.
 =head1 ATTRIBUTES
 
 
-=head2 Values => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
   A list of values. For example, the ARN of the assumed role.
 

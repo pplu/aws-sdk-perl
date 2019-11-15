@@ -70,6 +70,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteRemediationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteRemediationExceptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRetentionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteRetentionConfiguration', @_);
@@ -158,6 +163,11 @@ package Paws::Config;
   sub DescribeRemediationConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DescribeRemediationExceptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRemediationExecutionStatus {
@@ -278,6 +288,11 @@ package Paws::Config;
   sub PutRemediationConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::PutRemediationConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRemediationExceptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::PutRemediationExceptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutRetentionConfiguration {
@@ -714,7 +729,7 @@ package Paws::Config;
   }
 
 
-  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutRemediationConfigurations PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
+  sub operations { qw/BatchGetAggregateResourceConfig BatchGetResourceConfig DeleteAggregationAuthorization DeleteConfigRule DeleteConfigurationAggregator DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeleteOrganizationConfigRule DeletePendingAggregationRequest DeleteRemediationConfiguration DeleteRemediationExceptions DeleteRetentionConfiguration DeliverConfigSnapshot DescribeAggregateComplianceByConfigRules DescribeAggregationAuthorizations DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationAggregators DescribeConfigurationAggregatorSourcesStatus DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus DescribeOrganizationConfigRules DescribeOrganizationConfigRuleStatuses DescribePendingAggregationRequests DescribeRemediationConfigurations DescribeRemediationExceptions DescribeRemediationExecutionStatus DescribeRetentionConfigurations GetAggregateComplianceDetailsByConfigRule GetAggregateConfigRuleComplianceSummary GetAggregateDiscoveredResourceCounts GetAggregateResourceConfig GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetDiscoveredResourceCounts GetOrganizationConfigRuleDetailedStatus GetResourceConfigHistory ListAggregateDiscoveredResources ListDiscoveredResources ListTagsForResource PutAggregationAuthorization PutConfigRule PutConfigurationAggregator PutConfigurationRecorder PutDeliveryChannel PutEvaluations PutOrganizationConfigRule PutRemediationConfigurations PutRemediationExceptions PutRetentionConfiguration SelectResourceConfig StartConfigRulesEvaluation StartConfigurationRecorder StartRemediationExecution StopConfigurationRecorder TagResource UntagResource / }
 
 1;
 
@@ -981,7 +996,13 @@ Each argument is described in detail in: L<Paws::Config::DeleteOrganizationConfi
 
 Returns: nothing
 
+Deletes the specified organization config rule and all of its
+evaluation results from all member accounts in that organization. Only
+a master account can delete an organization config rule.
 
+AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the
+deletion is complete. You cannot update a rule while it is in this
+state.
 
 
 =head2 DeletePendingAggregationRequest
@@ -1019,6 +1040,25 @@ Each argument is described in detail in: L<Paws::Config::DeleteRemediationConfig
 Returns: a L<Paws::Config::DeleteRemediationConfigurationResponse> instance
 
 Deletes the remediation configuration.
+
+
+=head2 DeleteRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DeleteRemediationExceptions>
+
+Returns: a L<Paws::Config::DeleteRemediationExceptionsResponse> instance
+
+Deletes one or more remediation exceptions mentioned in the resource
+keys.
 
 
 =head2 DeleteRetentionConfiguration
@@ -1097,7 +1137,7 @@ Returns a list of compliant and noncompliant rules with the number of
 resources for compliant and noncompliant rules.
 
 The results can return an empty result page, but if you have a
-nextToken, the results are displayed on the next page.
+C<nextToken>, the results are displayed on the next page.
 
 
 =head2 DescribeAggregationAuthorizations
@@ -1425,7 +1465,14 @@ Each argument is described in detail in: L<Paws::Config::DescribeOrganizationCon
 
 Returns: a L<Paws::Config::DescribeOrganizationConfigRulesResponse> instance
 
+Returns a list of organization config rules.
 
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization config rule names. It is only applicable, when you request
+all the organization config rules.
+
+Only a master account can call this API.
 
 
 =head2 DescribeOrganizationConfigRuleStatuses
@@ -1445,7 +1492,19 @@ Each argument is described in detail in: L<Paws::Config::DescribeOrganizationCon
 
 Returns: a L<Paws::Config::DescribeOrganizationConfigRuleStatusesResponse> instance
 
+Provides organization config rule deployment status for an
+organization.
 
+The status is not considered successful until organization config rule
+is successfully deployed in all the member accounts with an exception
+of excluded accounts.
+
+When you specify the limit and the next token, you receive a paginated
+response. Limit and next token are not applicable if you specify
+organization config rule names. It is only applicable, when you request
+all the organization config rules.
+
+Only a master account can call this API.
 
 
 =head2 DescribePendingAggregationRequests
@@ -1480,6 +1539,38 @@ Each argument is described in detail in: L<Paws::Config::DescribeRemediationConf
 Returns: a L<Paws::Config::DescribeRemediationConfigurationsResponse> instance
 
 Returns the details of one or more remediation configurations.
+
+
+=head2 DescribeRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item [Limit => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::DescribeRemediationExceptions>
+
+Returns: a L<Paws::Config::DescribeRemediationExceptionsResponse> instance
+
+Returns the details of one or more remediation exceptions. A detailed
+view of a remediation exception for a set of resources that includes an
+explanation of an exception and the time when the exception will be
+deleted. When you specify the limit and the next token, you receive a
+paginated response.
+
+When you specify the limit and the next token, you receive a paginated
+response.
+
+Limit and next token are not applicable if you request resources in
+batch. It is only applicable, when you request all resources.
 
 
 =head2 DescribeRemediationExecutionStatus
@@ -1562,7 +1653,7 @@ were evaluated by the rule, when each resource was last evaluated, and
 whether each resource complies with the rule.
 
 The results can return an empty result page. But if you have a
-nextToken, the results are displayed on the next page.
+C<nextToken>, the results are displayed on the next page.
 
 
 =head2 GetAggregateConfigRuleComplianceSummary
@@ -1833,7 +1924,10 @@ Each argument is described in detail in: L<Paws::Config::GetOrganizationConfigRu
 
 Returns: a L<Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse> instance
 
+Returns detailed status for each member account within an organization
+for a given organization config rule.
 
+Only a master account can call this API.
 
 
 =head2 GetResourceConfigHistory
@@ -2185,7 +2279,32 @@ Each argument is described in detail in: L<Paws::Config::PutOrganizationConfigRu
 
 Returns: a L<Paws::Config::PutOrganizationConfigRuleResponse> instance
 
+Adds or updates organization config rule for your entire organization
+evaluating whether your AWS resources comply with your desired
+configurations. Only a master account can create or update an
+organization config rule.
 
+This API enables organization service access through the
+C<EnableAWSServiceAccess> action and creates a service linked role
+C<AWSServiceRoleForConfigMultiAccountSetup> in the master account of
+your organization. The service linked role is created only when the
+role does not exist in the master account. AWS Config verifies the
+existence of role with C<GetRole> action.
+
+You can use this action to create both custom AWS Config rules and AWS
+managed Config rules. If you are adding a new custom AWS Config rule,
+you must first create AWS Lambda function in the master account that
+the rule invokes to evaluate your resources. When you use the
+C<PutOrganizationConfigRule> action to add the rule to AWS Config, you
+must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
+the function. If you are adding an AWS managed Config rule, specify the
+rule's identifier for the C<RuleIdentifier> key.
+
+The maximum number of organization config rules that AWS Config
+supports is 150.
+
+Specify either C<OrganizationCustomRuleMetadata> or
+C<OrganizationManagedRuleMetadata>.
 
 
 =head2 PutRemediationConfigurations
@@ -2207,6 +2326,31 @@ C<RemediationConfiguration> object for the AWS Config rule. The AWS
 Config rule must already exist for you to add a remediation
 configuration. The target (SSM document) must exist and have
 permissions to use the target.
+
+
+=head2 PutRemediationExceptions
+
+=over
+
+=item ConfigRuleName => Str
+
+=item ResourceKeys => ArrayRef[L<Paws::Config::RemediationExceptionResourceKey>]
+
+=item [ExpirationTime => Str]
+
+=item [Message => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Config::PutRemediationExceptions>
+
+Returns: a L<Paws::Config::PutRemediationExceptionsResponse> instance
+
+A remediation exception is when a specific resource is no longer
+considered for auto-remediation. This API adds a new exception or
+updates an exisiting exception for a specific resource with a specific
+AWS Config rule.
 
 
 =head2 PutRetentionConfiguration

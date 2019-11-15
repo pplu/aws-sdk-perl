@@ -35,34 +35,96 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Org
 
 =head1 DESCRIPTION
 
-This class has no description
+Returns the status for an organization config rule in an organization.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-  
+  An error code that is returned when organization config rule creation
+or deletion has failed.
 
 
 =head2 ErrorMessage => Str
 
-  
+  An error message indicating that organization config rule creation or
+deletion failed due to an error.
 
 
 =head2 LastUpdateTime => Str
 
-  
+  The timestamp of the last update.
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
 
-  
+  The name that you assign to organization config rule.
 
 
 =head2 B<REQUIRED> OrganizationRuleStatus => Str
 
-  
+  Indicates deployment status of an organization config rule. When master
+account calls PutOrganizationConfigRule action for the first time,
+config rule status is created in all the member accounts. When master
+account calls PutOrganizationConfigRule action for the second time,
+config rule status is updated in all the member accounts. Additionally,
+config rule status is updated when one or more member accounts join or
+leave an organization. Config rule status is deleted when the master
+account deletes OrganizationConfigRule in all the member accounts and
+disables service access for C<config-multiaccountsetup.amazonaws.com>.
+
+AWS Config sets the state of the rule to:
+
+=over
+
+=item *
+
+C<CREATE_SUCCESSFUL> when an organization config rule has been
+successfully created in all the member accounts.
+
+=item *
+
+C<CREATE_IN_PROGRESS> when an organization config rule creation is in
+progress.
+
+=item *
+
+C<CREATE_FAILED> when an organization config rule creation failed in
+one or more member accounts within that organization.
+
+=item *
+
+C<DELETE_FAILED> when an organization config rule deletion failed in
+one or more member accounts within that organization.
+
+=item *
+
+C<DELETE_IN_PROGRESS> when an organization config rule deletion is in
+progress.
+
+=item *
+
+C<DELETE_SUCCESSFUL> when an organization config rule has been
+successfully deleted from all the member accounts.
+
+=item *
+
+C<UPDATE_SUCCESSFUL> when an organization config rule has been
+successfully updated in all the member accounts.
+
+=item *
+
+C<UPDATE_IN_PROGRESS> when an organization config rule update is in
+progress.
+
+=item *
+
+C<UPDATE_FAILED> when an organization config rule update failed in one
+or more member accounts within that organization.
+
+=back
+
 
 
 

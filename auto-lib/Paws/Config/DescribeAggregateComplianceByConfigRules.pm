@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AwsRegion      => 'MyAwsRegion',    # min: 1, max: 64; OPTIONAL
         ComplianceType => 'COMPLIANT'
         , # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA; OPTIONAL
-        ConfigRuleName => 'MyConfigRuleName',    # min: 1, max: 64; OPTIONAL
+        ConfigRuleName => 'MyConfigRuleName',    # min: 1, max: 128; OPTIONAL
       },    # OPTIONAL
       Limit     => 1,                # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL
@@ -80,7 +80,7 @@ default is maximum. If you specify 0, AWS Config uses the default.
 
 =head2 NextToken => Str
 
-The nextToken string returned on a previous page that you use to get
+The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
 

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $config = Paws->service('Config');
     my $DescribeConfigRulesResponse = $config->DescribeConfigRules(
       ConfigRuleNames => [
-        'MyStringWithCharLimit64', ...    # min: 1, max: 64
-      ],                                  # OPTIONAL
-      NextToken => 'MyString',            # OPTIONAL
+        'MyConfigRuleName', ...    # min: 1, max: 128
+      ],                           # OPTIONAL
+      NextToken => 'MyString',     # OPTIONAL
     );
 
     # Results:

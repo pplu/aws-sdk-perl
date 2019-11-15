@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $config = Paws->service('Config');
     $config->DeleteOrganizationConfigRule(
-      OrganizationConfigRuleName => 'MyStringWithCharLimit64',
+      OrganizationConfigRuleName => 'MyOrganizationConfigRuleName',
 
     );
 
@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/con
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
 
-
+The name of organization config rule that you want to delete.
 
 
 

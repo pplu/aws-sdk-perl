@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeConfigRuleEvaluationStatusResponse =
       $config->DescribeConfigRuleEvaluationStatus(
       ConfigRuleNames => [
-        'MyStringWithCharLimit64', ...    # min: 1, max: 64
-      ],                                  # OPTIONAL
-      Limit     => 1,                     # OPTIONAL
-      NextToken => 'MyString',            # OPTIONAL
+        'MyConfigRuleName', ...    # min: 1, max: 128
+      ],                           # OPTIONAL
+      Limit     => 1,              # OPTIONAL
+      NextToken => 'MyString',     # OPTIONAL
       );
 
     # Results:

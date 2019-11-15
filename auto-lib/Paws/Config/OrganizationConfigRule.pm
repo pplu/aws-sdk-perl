@@ -36,39 +36,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Org
 
 =head1 DESCRIPTION
 
-This class has no description
+An organization config rule that has information about config rules
+that AWS Config creates in member accounts.
 
 =head1 ATTRIBUTES
 
 
 =head2 ExcludedAccounts => ArrayRef[Str|Undef]
 
-  
+  A comma-separated list of accounts excluded from organization config
+rule.
 
 
 =head2 LastUpdateTime => Str
 
-  
+  The timestamp of the last update.
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleArn => Str
 
-  
+  The Amazon Resource Name (ARN) of organization config rule.
 
 
 =head2 B<REQUIRED> OrganizationConfigRuleName => Str
 
-  
+  The name that you assign to organization config rule.
 
 
 =head2 OrganizationCustomRuleMetadata => L<Paws::Config::OrganizationCustomRuleMetadata>
 
-  
+  An C<OrganizationCustomRuleMetadata> object.
 
 
 =head2 OrganizationManagedRuleMetadata => L<Paws::Config::OrganizationManagedRuleMetadata>
 
-  
+  An C<OrganizationManagedRuleMetadata> object.
 
 
 

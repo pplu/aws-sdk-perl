@@ -87,7 +87,7 @@ An OrganizationAggregationSource object.
 
 =head2 Tags => ArrayRef[L<Paws::Config::Tag>]
 
-
+An array of tag object.
 
 
 

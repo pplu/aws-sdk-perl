@@ -17,12 +17,13 @@ Paws::Config::GetOrganizationConfigRuleDetailedStatusResponse
 
 =head2 NextToken => Str
 
-
+The C<nextToken> string returned on a previous page that you use to get
+the next page of results in a paginated response.
 
 
 =head2 OrganizationConfigRuleDetailedStatus => ArrayRef[L<Paws::Config::MemberAccountStatus>]
 
-
+A list of C<MemberAccountStatus> objects.
 
 
 =head2 _request_id => Str
