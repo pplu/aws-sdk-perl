@@ -191,12 +191,14 @@ nor is it possible to retrieve it using either the C<GetLexicon> or
 C<ListLexicon> APIs.
 
 For more information, see Managing Lexicons
-(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+(https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 DescribeVoices
 
 =over
+
+=item [Engine => Str]
 
 =item [IncludeAdditionalLanguageCodes => Bool]
 
@@ -248,7 +250,7 @@ Returns: a L<Paws::Polly::GetLexiconOutput> instance
 
 Returns the content of the specified pronunciation lexicon stored in an
 AWS Region. For more information, see Managing Lexicons
-(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+(https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 GetSpeechSynthesisTask
@@ -285,7 +287,7 @@ Returns: a L<Paws::Polly::ListLexiconsOutput> instance
 
 Returns a list of pronunciation lexicons stored in an AWS Region. For
 more information, see Managing Lexicons
-(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+(https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 ListSpeechSynthesisTasks
@@ -332,7 +334,7 @@ might take some time before the lexicon is available to the
 SynthesizeSpeech operation.
 
 For more information, see Managing Lexicons
-(http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
+(https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
 
 
 =head2 StartSpeechSynthesisTask
@@ -346,6 +348,8 @@ For more information, see Managing Lexicons
 =item Text => Str
 
 =item VoiceId => Str
+
+=item [Engine => Str]
 
 =item [LanguageCode => Str]
 
@@ -388,6 +392,8 @@ task as well as the current status.
 
 =item VoiceId => Str
 
+=item [Engine => Str]
+
 =item [LanguageCode => Str]
 
 =item [LexiconNames => ArrayRef[Str|Undef]]
@@ -410,7 +416,7 @@ input must be valid, well-formed SSML. Some alphabets might not be
 available with all the voices (for example, Cyrillic might not be read
 at all by English voices) unless phoneme mapping is used. For more
 information, see How it Works
-(http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
+(https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html).
 
 
 
@@ -419,9 +425,9 @@ information, see How it Works
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 DescribeAllVoices(sub { },[IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices(sub { },[Engine => Str, IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
-=head2 DescribeAllVoices([IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
+=head2 DescribeAllVoices([Engine => Str, IncludeAdditionalLanguageCodes => Bool, LanguageCode => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

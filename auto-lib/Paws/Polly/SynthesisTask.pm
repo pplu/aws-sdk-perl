@@ -1,6 +1,7 @@
 package Paws::Polly::SynthesisTask;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
+  has Engine => (is => 'ro', isa => 'Str');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LexiconNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OutputFormat => (is => 'ro', isa => 'Str');
@@ -55,6 +56,13 @@ task.
   Timestamp for the time the synthesis task was started.
 
 
+=head2 Engine => Str
+
+  Specifies the engine (C<standard> or C<neural>) for Amazon Polly to use
+when processing input text for speech synthesis. Using a voice that is
+not supported for the engine selected will result in an error.
+
+
 =head2 LanguageCode => Str
 
   Optional language code for a synthesis task. This is only necessary if
@@ -98,8 +106,9 @@ will be json.
 
   The audio frequency specified in Hz.
 
-The valid values for mp3 and ogg_vorbis are "8000", "16000", and
-"22050". The default value is "22050".
+The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050",
+and "24000". The default value for standard voices is "22050". The
+default value for neural voices is "24000".
 
 Valid values for pcm are "8000" and "16000" The default value is
 "16000".

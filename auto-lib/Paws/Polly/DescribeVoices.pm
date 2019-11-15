@@ -1,6 +1,7 @@
 
 package Paws::Polly::DescribeVoices;
   use Moose;
+  has Engine => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Engine');
   has IncludeAdditionalLanguageCodes => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'IncludeAdditionalLanguageCodes');
   has LanguageCode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'LanguageCode');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
@@ -48,6 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 
 =head1 ATTRIBUTES
 
+
+=head2 Engine => Str
+
+Specifies the engine (C<standard> or C<neural>) used by Amazon Polly
+when processing input text for speech synthesis.
+
+Valid values are: C<"standard">, C<"neural">
 
 =head2 IncludeAdditionalLanguageCodes => Bool
 

@@ -6,6 +6,7 @@ package Paws::Polly::Voice;
   has LanguageCode => (is => 'ro', isa => 'Str');
   has LanguageName => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has SupportedEngines => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Polly::Voice object:
 
-  $service_obj->Method(Att1 => { AdditionalLanguageCodes => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { AdditionalLanguageCodes => $value, ..., SupportedEngines => $value  });
 
 =head3 Results returned from an API call
 
@@ -77,6 +78,12 @@ calling the C<SynthesizeSpeech> operation.
 
   Name of the voice (for example, Salli, Kendra, etc.). This provides a
 human readable voice name that you might display in your application.
+
+
+=head2 SupportedEngines => ArrayRef[Str|Undef]
+
+  Specifies which engines (C<standard> or C<neural>) that are supported
+by a given voice.
 
 
 
