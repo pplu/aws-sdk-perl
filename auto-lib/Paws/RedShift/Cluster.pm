@@ -23,6 +23,8 @@ package Paws::RedShift::Cluster;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has EnhancedVpcRouting => (is => 'ro', isa => 'Bool');
+  has ExpectedNextSnapshotScheduleTime => (is => 'ro', isa => 'Str');
+  has ExpectedNextSnapshotScheduleTimeStatus => (is => 'ro', isa => 'Str');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
   has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]', request_name => 'ClusterIamRole', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -30,6 +32,7 @@ package Paws::RedShift::Cluster;
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
+  has NextMaintenanceWindowStartTime => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PendingActions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -330,6 +333,32 @@ If this option is C<true>, enhanced VPC routing is enabled.
 Default: false
 
 
+=head2 ExpectedNextSnapshotScheduleTime => Str
+
+  The date and time when the next snapshot is expected to be taken for
+clusters with a valid snapshot schedule and backups enabled.
+
+
+=head2 ExpectedNextSnapshotScheduleTimeStatus => Str
+
+  The status of next expected snapshot for clusters having a valid
+snapshot schedule and backups enabled. Possible values are the
+following:
+
+=over
+
+=item *
+
+OnTrack - The next snapshot is expected to be taken on time.
+
+=item *
+
+Pending - The next snapshot is pending to be taken.
+
+=back
+
+
+
 =head2 HsmStatus => L<Paws::RedShift::HsmStatus>
 
   A value that reports whether the Amazon Redshift cluster has finished
@@ -374,6 +403,11 @@ the database that is specified in the B<DBName> parameter.
 =head2 ModifyStatus => Str
 
   The status of a modify operation, if any, initiated for the cluster.
+
+
+=head2 NextMaintenanceWindowStartTime => Str
+
+  The date and time in UTC when system maintenance can begin.
 
 
 =head2 NodeType => Str

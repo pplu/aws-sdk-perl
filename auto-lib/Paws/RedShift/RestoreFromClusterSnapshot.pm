@@ -18,6 +18,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has MaintenanceTrackName => (is => 'ro', isa => 'Str');
   has ManualSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has NodeType => (is => 'ro', isa => 'Str');
+  has NumberOfNodes => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -71,6 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaintenanceTrackName             => 'MyString',             # OPTIONAL
       ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
       NodeType                         => 'MyString',             # OPTIONAL
+      NumberOfNodes                    => 1,                      # OPTIONAL
       OwnerAccount                     => 'MyString',             # OPTIONAL
       Port                             => 1,                      # OPTIONAL
       PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
@@ -308,6 +310,12 @@ dc2.8large cluster. For more information about node types, see About
 Clusters and Nodes
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes)
 in the I<Amazon Redshift Cluster Management Guide>.
+
+
+
+=head2 NumberOfNodes => Int
+
+The number of nodes specified when provisioning the restored cluster.
 
 
 

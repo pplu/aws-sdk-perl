@@ -244,6 +244,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeLoggingStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeNodeConfigurationOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeNodeConfigurationOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOrderableClusterOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeOrderableClusterOptions', @_);
@@ -742,6 +747,29 @@ package Paws::RedShift;
 
     return undef
   }
+  sub DescribeAllNodeConfigurationOptions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNodeConfigurationOptions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeNodeConfigurationOptions(@_, Marker => $next_result->Marker);
+        push @{ $result->NodeConfigurationOptionList }, @{ $next_result->NodeConfigurationOptionList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'NodeConfigurationOptionList') foreach (@{ $result->NodeConfigurationOptionList });
+        $result = $self->DescribeNodeConfigurationOptions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'NodeConfigurationOptionList') foreach (@{ $result->NodeConfigurationOptionList });
+    }
+
+    return undef
+  }
   sub DescribeAllOrderableClusterOptions {
     my $self = shift;
 
@@ -928,7 +956,7 @@ package Paws::RedShift;
   }
 
 
-  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeNodeConfigurationOptions DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -2333,6 +2361,33 @@ Describes whether information, such as queries and connection attempts,
 is being logged for the specified Amazon Redshift cluster.
 
 
+=head2 DescribeNodeConfigurationOptions
+
+=over
+
+=item ActionType => Str
+
+=item [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [OwnerAccount => Str]
+
+=item [SnapshotIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeNodeConfigurationOptions>
+
+Returns: a L<Paws::RedShift::NodeConfigurationOptionsMessage> instance
+
+Returns properties of possible node configurations such as node type,
+number of nodes, and disk usage for the specified action type.
+
+
 =head2 DescribeOrderableClusterOptions
 
 =over
@@ -2507,8 +2562,8 @@ Each argument is described in detail in: L<Paws::RedShift::DescribeStorage>
 
 Returns: a L<Paws::RedShift::CustomerStorageMessage> instance
 
-Returns the total amount of snapshot usage and provisioned storage for
-a user in megabytes.
+Returns the total amount of snapshot usage and provisioned storage in
+megabytes.
 
 
 =head2 DescribeTableRestoreStatus
@@ -3234,6 +3289,8 @@ cluster.
 
 =item [NodeType => Str]
 
+=item [NumberOfNodes => Int]
+
 =item [OwnerAccount => Str]
 
 =item [Port => Int]
@@ -3560,6 +3617,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - HsmConfigurations, passing the object as the first parameter, and the string 'HsmConfigurations' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::HsmConfigurationMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNodeConfigurationOptions(sub { },ActionType => Str, [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
+
+=head2 DescribeAllNodeConfigurationOptions(ActionType => Str, [Filters => ArrayRef[L<Paws::RedShift::NodeConfigurationOptionsFilter>], Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NodeConfigurationOptionList, passing the object as the first parameter, and the string 'NodeConfigurationOptionList' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::NodeConfigurationOptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllOrderableClusterOptions(sub { },[ClusterVersion => Str, Marker => Str, MaxRecords => Int, NodeType => Str])
