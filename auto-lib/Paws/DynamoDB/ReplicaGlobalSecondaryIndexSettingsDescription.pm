@@ -75,7 +75,7 @@ C<ACTIVE> - The global secondary index is ready for use.
 
 =head2 ProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
 
-  Autoscaling settings for a global secondary index replica's read
+  Auto scaling settings for a global secondary index replica's read
 capacity units.
 
 
@@ -87,7 +87,7 @@ before DynamoDB returns a C<ThrottlingException>.
 
 =head2 ProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
 
-  AutoScaling settings for a global secondary index replica's write
+  Auto scaling settings for a global secondary index replica's write
 capacity units.
 
 

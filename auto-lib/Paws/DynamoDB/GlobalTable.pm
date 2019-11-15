@@ -44,7 +44,7 @@ Represents the properties of a global table.
 
 =head2 ReplicationGroup => ArrayRef[L<Paws::DynamoDB::Replica>]
 
-  The regions where the global table has replicas.
+  The Regions where the global table has replicas.
 
 
 

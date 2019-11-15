@@ -68,7 +68,7 @@ unpredictable workloads.
 
 =head2 ItemCount => Int
 
-  Number of items in the table. Please note this is an approximate value.
+  Number of items in the table. Note that this is an approximate value.
 
 
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
@@ -103,7 +103,7 @@ unpredictable workloads.
 
 =head2 TableSizeBytes => Int
 
-  Size of the table in bytes. Please note this is an approximate value.
+  Size of the table in bytes. Note that this is an approximate value.
 
 
 

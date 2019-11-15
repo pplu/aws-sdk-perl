@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::W
 Represents an operation to perform - either C<DeleteItem> or
 C<PutItem>. You can only request one of these operations, not both, in
 a single C<WriteRequest>. If you do need to perform both of these
-operations, you will need to provide two separate C<WriteRequest>
-objects.
+operations, you need to provide two separate C<WriteRequest> objects.
 
 =head1 ATTRIBUTES
 

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 =head1 DESCRIPTION
 
 Represents a request to perform a check that an item exists or to check
-the condition of specific attributes of the item..
+the condition of specific attributes of the item.
 
 =head1 ATTRIBUTES
 

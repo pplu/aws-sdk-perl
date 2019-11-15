@@ -47,7 +47,7 @@ all other indexes on this table.
 
 =head2 ProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
 
-  Autoscaling settings for managing a global secondary index replica's
+  Auto scaling settings for managing a global secondary index replica's
 read capacity units.
 
 

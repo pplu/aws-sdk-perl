@@ -63,7 +63,7 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB' usage of an internal
+The term "hash attribute" derives from DynamoDB's usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 

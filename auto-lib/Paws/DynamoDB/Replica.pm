@@ -38,7 +38,7 @@ Represents the properties of a replica.
 
 =head2 RegionName => Str
 
-  The region where the replica needs to be created.
+  The Region where the replica needs to be created.
 
 
 

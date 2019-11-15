@@ -51,12 +51,13 @@ Contains details for the restore.
 
 =head2 SourceBackupArn => Str
 
-  ARN of the backup from which the table was restored.
+  The Amazon Resource Name (ARN) of the backup from which the table was
+restored.
 
 
 =head2 SourceTableArn => Str
 
-  ARN of the source table of the backup that is being restored.
+  The ARN of the source table of the backup that is being restored.
 
 
 

@@ -34,22 +34,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Get => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],                                     # OPTIONAL
+                L => [ <AttributeValue>, ... ],        # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
                 N  => 'MyNumberAttributeValue',    # OPTIONAL
                 NS => [
                   'MyNumberAttributeValue', ...    # OPTIONAL
                 ],                                 # OPTIONAL
-                NULL => 1,                         # OPTIONAL
-                S    => 'MyStringAttributeValue',  # OPTIONAL
-                SS   => [
-                  'MyStringAttributeValue', ...    # OPTIONAL
-                ],                                 # OPTIONAL
+                NULL => 1,                                    # OPTIONAL
+                S    => 'MyStringAttributeValue',
+                SS   => [ 'MyStringAttributeValue', ... ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255

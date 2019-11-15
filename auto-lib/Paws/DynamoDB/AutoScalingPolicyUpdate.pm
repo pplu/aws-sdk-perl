@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head1 DESCRIPTION
 
-Represents the autoscaling policy to be modified.
+Represents the auto scaling policy to be modified.
 
 =head1 ATTRIBUTES
 

@@ -41,7 +41,7 @@ table.
 
 =head2 KMSMasterKeyArn => Str
 
-  The KMS customer master key (CMK) ARN used for the KMS encryption.
+  The KMS customer master key (CMK) ARN used for the AWS KMS encryption.
 
 
 =head2 SSEType => Str
@@ -52,9 +52,9 @@ table.
 
 =item *
 
-C<KMS> - Server-side encryption which uses AWS Key Management Service.
-Key is stored in your account and is managed by AWS KMS (KMS charges
-apply).
+C<KMS> - Server-side encryption that uses AWS Key Management Service.
+The key is stored in your account and is managed by AWS KMS (AWS KMS
+charges apply).
 
 =back
 

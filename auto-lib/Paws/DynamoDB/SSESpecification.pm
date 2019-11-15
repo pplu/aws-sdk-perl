@@ -49,11 +49,11 @@ set to AWS owned CMK.
 
 =head2 KMSMasterKeyId => Str
 
-  The KMS Customer Master Key (CMK) which should be used for the KMS
+  The KMS customer master key (CMK) that should be used for the AWS KMS
 encryption. To specify a CMK, use its key ID, Amazon Resource Name
 (ARN), alias name, or alias ARN. Note that you should only provide this
-parameter if the key is different from the default DynamoDB Customer
-Master Key alias/aws/dynamodb.
+parameter if the key is different from the default DynamoDB customer
+master key alias/aws/dynamodb.
 
 
 =head2 SSEType => Str
@@ -64,9 +64,9 @@ Master Key alias/aws/dynamodb.
 
 =item *
 
-C<KMS> - Server-side encryption which uses AWS Key Management Service.
-Key is stored in your account and is managed by AWS KMS (KMS charges
-apply).
+C<KMS> - Server-side encryption that uses AWS Key Management Service.
+The key is stored in your account and is managed by AWS KMS (AWS KMS
+charges apply).
 
 =back
 

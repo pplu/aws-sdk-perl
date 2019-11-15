@@ -96,10 +96,17 @@ scoped to a given partition key value. Each element is composed of:
 
 C<Backfilling> - If true, then the index is currently in the
 backfilling phase. Backfilling occurs only when a new global secondary
-index is added to the table; it is the process by which DynamoDB
+index is added to the table. It is the process by which DynamoDB
 populates the new index with data from the table. (This attribute does
 not appear for indexes that were created during a C<CreateTable>
 operation.)
+
+You can delete an index that is being created during the C<Backfilling>
+phase when C<IndexStatus> is set to CREATING and C<Backfilling> is
+true. You can't delete the index that is being created when
+C<IndexStatus> is set to CREATING and C<Backfilling> is false. (This
+attribute does not appear for indexes that were created during a
+C<CreateTable> operation.)
 
 =item *
 
@@ -171,7 +178,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 
@@ -272,15 +279,15 @@ three elements is guaranteed to be unique:
 
 =item *
 
-the AWS customer ID.
+AWS customer ID
 
 =item *
 
-the table name.
+Table name
 
 =item *
 
-the C<StreamLabel>.
+C<StreamLabel>
 
 =back
 
@@ -330,7 +337,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::R
 
 =head1 DESCRIPTION
 
-Represents the settings for a global table in a region that will be
+Represents the settings for a global table in a Region that will be
 modified.
 
 =head1 ATTRIBUTES
@@ -42,7 +42,7 @@ modified.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The region of the replica to be added.
+  The Region of the replica to be added.
 
 
 =head2 ReplicaGlobalSecondaryIndexSettingsUpdate => ArrayRef[L<Paws::DynamoDB::ReplicaGlobalSecondaryIndexSettingsUpdate>]
@@ -53,7 +53,7 @@ that will be modified.
 
 =head2 ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
 
-  Autoscaling settings for managing a global table replica's read
+  Auto scaling settings for managing a global table replica's read
 capacity units.
 
 

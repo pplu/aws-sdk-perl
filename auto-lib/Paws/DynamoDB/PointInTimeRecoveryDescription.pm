@@ -40,9 +40,8 @@ The description of the point in time settings applied to the table.
 
 =head2 EarliestRestorableDateTime => Str
 
-  Specifies the earliest point in time you can restore your table to. It
-You can restore your table to any point in time during the last 35
-days.
+  Specifies the earliest point in time you can restore your table to. You
+can restore your table to any point in time during the last 35 days.
 
 
 =head2 LatestRestorableDateTime => Str

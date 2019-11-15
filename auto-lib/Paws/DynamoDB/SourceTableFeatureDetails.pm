@@ -44,7 +44,7 @@ backup was created. For example, LSIs, GSIs, streams, TTL.
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexInfo>]
 
   Represents the GSI properties for the table when the backup was
-created. It includes the IndexName, KeySchema, Projection and
+created. It includes the IndexName, KeySchema, Projection, and
 ProvisionedThroughput for the GSIs on the table at the time of backup.
 
 

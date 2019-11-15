@@ -56,7 +56,7 @@ before another scale in activity can start. The cooldown period is used
 to block subsequent scale in requests until it has expired. You should
 scale in conservatively to protect your application's availability.
 However, if another alarm triggers a scale out policy during the
-cooldown period after a scale-in, application autoscaling scales out
+cooldown period after a scale-in, application auto scaling scales out
 your scalable target immediately.
 
 

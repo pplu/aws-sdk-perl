@@ -38,7 +38,7 @@ Represents a replica to be added.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The region of the replica to be added.
+  The Region of the replica to be added.
 
 
 

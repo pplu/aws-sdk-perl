@@ -38,7 +38,7 @@ Contains the details of the replica.
 
 =head2 RegionName => Str
 
-  The name of the region.
+  The name of the Region.
 
 
 

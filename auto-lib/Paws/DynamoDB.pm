@@ -1479,6 +1479,14 @@ querying a global secondary index.
 
 =item TargetTableName => Str
 
+=item [BillingModeOverride => Str]
+
+=item [GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+
+=item [LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
+
 
 =back
 
@@ -1532,6 +1540,14 @@ Time to Live (TTL) settings
 =item SourceTableName => Str
 
 =item TargetTableName => Str
+
+=item [BillingModeOverride => Str]
+
+=item [GlobalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]]
+
+=item [LocalSecondaryIndexOverride => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]]
+
+=item [ProvisionedThroughputOverride => L<Paws::DynamoDB::ProvisionedThroughput>]
 
 =item [RestoreDateTime => Str]
 
@@ -1740,24 +1756,6 @@ account and Region. A call to C<TransactGetItems> cannot retrieve items
 from tables in more than one AWS account or Region. The aggregate size
 of the items in the transaction cannot exceed 4 MB.
 
-All AWS Regions and AWS GovCloud (US) support up to 25 items per
-transaction with up to 4 MB of data, except the following AWS Regions:
-
-=over
-
-=item *
-
-China (Beijing)
-
-=item *
-
-China (Ningxia)
-
-=back
-
-The China (Beijing) and China (Ningxia) Regions support up to 10 items
-per transaction with up to 4 MB of data.
-
 DynamoDB rejects the entire C<TransactGetItems> request if any of the
 following is true:
 
@@ -1810,24 +1808,6 @@ tables, but not in different AWS accounts or Regions, and no two
 actions can target the same item. For example, you cannot both
 C<ConditionCheck> and C<Update> the same item. The aggregate size of
 the items in the transaction cannot exceed 4 MB.
-
-All AWS Regions and AWS GovCloud (US) support up to 25 items per
-transaction with up to 4 MB of data, except the following AWS Regions:
-
-=over
-
-=item *
-
-China (Beijing)
-
-=item *
-
-China (Ningxia)
-
-=back
-
-The China (Beijing) and China (Ningxia) Regions support up to 10 items
-per transaction with up to 4 MB of data.
 
 The actions are completed atomically so that either all of them
 succeed, or all of them fail. They are defined by the following

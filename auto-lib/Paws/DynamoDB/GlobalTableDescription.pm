@@ -83,7 +83,7 @@ C<ACTIVE> - The global table is ready for use.
 
 =head2 ReplicationGroup => ArrayRef[L<Paws::DynamoDB::ReplicaDescription>]
 
-  The regions where the global table has replicas.
+  The Regions where the global table has replicas.
 
 
 

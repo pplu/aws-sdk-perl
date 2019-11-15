@@ -38,7 +38,7 @@ Represents a replica to be removed.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The region of the replica to be removed.
+  The Region of the replica to be removed.
 
 
 

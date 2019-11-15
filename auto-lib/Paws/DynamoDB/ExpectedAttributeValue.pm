@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::E
 =head1 DESCRIPTION
 
 Represents a condition to be compared with an attribute value. This
-condition can be used with C<DeleteItem>, C<PutItem> or C<UpdateItem>
+condition can be used with C<DeleteItem>, C<PutItem>, or C<UpdateItem>
 operations; if the comparison evaluates to true, the operation
 succeeds; if not, the operation fails. You can use
 C<ExpectedAttributeValue> in one of two different ways:

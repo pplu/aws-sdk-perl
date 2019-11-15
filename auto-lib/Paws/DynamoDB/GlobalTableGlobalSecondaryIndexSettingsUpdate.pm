@@ -47,7 +47,7 @@ all other indexes on this table.
 
 =head2 ProvisionedWriteCapacityAutoScalingSettingsUpdate => L<Paws::DynamoDB::AutoScalingSettingsUpdate>
 
-  AutoScaling settings for managing a global secondary index's write
+  Auto scaling settings for managing a global secondary index's write
 capacity units.
 
 

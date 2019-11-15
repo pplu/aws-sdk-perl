@@ -45,7 +45,7 @@ Represents the properties of a replica.
 
 =head2 B<REQUIRED> RegionName => Str
 
-  The region name of the replica.
+  The Region name of the replica.
 
 
 =head2 ReplicaBillingModeSummary => L<Paws::DynamoDB::BillingModeSummary>
@@ -60,7 +60,7 @@ Represents the properties of a replica.
 
 =head2 ReplicaProvisionedReadCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
 
-  Autoscaling settings for a global table replica's read capacity units.
+  Auto scaling settings for a global table replica's read capacity units.
 
 
 =head2 ReplicaProvisionedReadCapacityUnits => Int
@@ -74,7 +74,8 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 ReplicaProvisionedWriteCapacityAutoScalingSettings => L<Paws::DynamoDB::AutoScalingSettingsDescription>
 
-  AutoScaling settings for a global table replica's write capacity units.
+  Auto scaling settings for a global table replica's write capacity
+units.
 
 
 =head2 ReplicaProvisionedWriteCapacityUnits => Int
@@ -88,25 +89,25 @@ in the I<Amazon DynamoDB Developer Guide>.
 
 =head2 ReplicaStatus => Str
 
-  The current state of the region:
+  The current state of the Region:
 
 =over
 
 =item *
 
-C<CREATING> - The region is being created.
+C<CREATING> - The Region is being created.
 
 =item *
 
-C<UPDATING> - The region is being updated.
+C<UPDATING> - The Region is being updated.
 
 =item *
 
-C<DELETING> - The region is being deleted.
+C<DELETING> - The Region is being deleted.
 
 =item *
 
-C<ACTIVE> - The region is ready for use.
+C<ACTIVE> - The Region is ready for use.
 
 =back
 

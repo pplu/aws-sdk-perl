@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head1 DESCRIPTION
 
-Represents the autoscaling settings to be modified for a global table
+Represents the auto scaling settings to be modified for a global table
 or global secondary index.
 
 =head1 ATTRIBUTES
@@ -43,12 +43,12 @@ or global secondary index.
 
 =head2 AutoScalingDisabled => Bool
 
-  Disabled autoscaling for this global table or global secondary index.
+  Disabled auto scaling for this global table or global secondary index.
 
 
 =head2 AutoScalingRoleArn => Str
 
-  Role ARN used for configuring autoscaling policy.
+  Role ARN used for configuring auto scaling policy.
 
 
 =head2 MaximumUnits => Int

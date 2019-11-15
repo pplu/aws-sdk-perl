@@ -64,7 +64,7 @@ index.
 =item *
 
 C<INCLUDE> - Only the specified table attributes are projected into the
-index. The list of projected attributes are in C<NonKeyAttributes>.
+index. The list of projected attributes is in C<NonKeyAttributes>.
 
 =item *
 

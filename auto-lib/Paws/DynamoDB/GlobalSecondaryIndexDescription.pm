@@ -54,6 +54,11 @@ can be added to the index, DynamoDB will do so. After all items have
 been processed, the backfilling operation is complete and
 C<Backfilling> is false.
 
+You can delete an index that is being created during the C<Backfilling>
+phase when C<IndexStatus> is set to CREATING and C<Backfilling> is
+true. You can't delete the index that is being created when
+C<IndexStatus> is set to CREATING and C<Backfilling> is false.
+
 For indexes that were created during a C<CreateTable> operation, the
 C<Backfilling> attribute does not appear in the C<DescribeTable>
 output.
@@ -127,7 +132,7 @@ C<RANGE> - sort key
 =back
 
 The partition key of an item is also known as its I<hash attribute>.
-The term "hash attribute" derives from DynamoDB' usage of an internal
+The term "hash attribute" derives from DynamoDB's usage of an internal
 hash function to evenly distribute data items across partitions, based
 on their partition key values.
 
