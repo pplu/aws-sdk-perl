@@ -393,6 +393,8 @@ L<Paws::CodePipeline>
 
 L<Paws::CodeStar>
 
+L<Paws::CodeStarNotifications>
+
 L<Paws::CognitoIdentity>
 
 L<Paws::CognitoIdp>
@@ -410,6 +412,8 @@ L<Paws::Connect>
 L<Paws::CostExplorer>
 
 L<Paws::CUR>
+
+L<Paws::DataExchange>
 
 L<Paws::DataPipeline>
 
@@ -471,6 +475,10 @@ L<Paws::Firehose>
 
 L<Paws::FMS>
 
+L<Paws::Forecast>
+
+L<Paws::ForecastQuery>
+
 L<Paws::FSX>
 
 L<Paws::GameLift>
@@ -529,6 +537,8 @@ L<Paws::KinesisVideoMedia>
 
 L<Paws::KMS>
 
+L<Paws::LakeFormation>
+
 L<Paws::Lambda>
 
 L<Paws::LexModels>
@@ -544,6 +554,8 @@ L<Paws::MachineLearning>
 L<Paws::Macie>
 
 L<Paws::ManagedBlockchain>
+
+L<Paws::MarketplaceCatalog>
 
 L<Paws::MarketplaceCommerceAnalytics>
 
@@ -603,6 +615,10 @@ L<Paws::Polly>
 
 L<Paws::Pricing>
 
+L<Paws::QLDB>
+
+L<Paws::QLDBSession>
+
 L<Paws::Quicksight>
 
 L<Paws::RAM>
@@ -635,6 +651,8 @@ L<Paws::SageMaker>
 
 L<Paws::SageMakerRuntime>
 
+L<Paws::SavingsPlans>
+
 L<Paws::SDB>
 
 L<Paws::SecretsManager>
@@ -652,6 +670,8 @@ L<Paws::ServiceQuotas>
 L<Paws::SES>
 
 L<Paws::SES>
+
+L<Paws::SESv2>
 
 L<Paws::Shield>
 
@@ -672,6 +692,10 @@ L<Paws::SNS>
 L<Paws::SQS>
 
 L<Paws::SSM>
+
+L<Paws::SSO>
+
+L<Paws::SSOOidc>
 
 L<Paws::StepFunctions>
 
@@ -698,6 +722,8 @@ L<Paws::WorkDocs>
 L<Paws::WorkLink>
 
 L<Paws::WorkMail>
+
+L<Paws::WorkMailMessageFlow>
 
 L<Paws::WorkSpaces>
 

@@ -1,5 +1,14 @@
 0.42 
-
+ - New API: CodeStarNotifications
+New API: DataExchange
+New API: Forecast
+New API: LakeFormation
+New API: MarketplaceCatalog
+New API: QLDB
+New API: SESv2
+New API: SSO
+New API: SavingsPlans
+New API: WorkMailMessageFlow
 
 0.41 11 Jul 2019
  - V3 signature module has been deprecated, as all APIs use V4 signatures. Dependencies have been removed
