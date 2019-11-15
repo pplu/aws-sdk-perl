@@ -1,5 +1,6 @@
 package Paws::MediaConnect::ListedEntitlement;
   use Moose;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
   has EntitlementName => (is => 'ro', isa => 'Str', request_name => 'entitlementName', traits => ['NameInRequest'], required => 1);
 1;
@@ -21,20 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::ListedEntitlement object:
 
-  $service_obj->Method(Att1 => { EntitlementArn => $value, ..., EntitlementName => $value  });
+  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., EntitlementName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConnect::ListedEntitlement object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EntitlementArn
+  $result->Att1->DataTransferSubscriberFeePercent
 
 =head1 DESCRIPTION
 
 An entitlement that has been granted to you from other AWS accounts.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataTransferSubscriberFeePercent => Int
+
+  Percentage from 0-100 of the data transfer cost to be billed to the
+subscriber.
 
 
 =head2 B<REQUIRED> EntitlementArn => Str

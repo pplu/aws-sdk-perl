@@ -1,5 +1,6 @@
 package Paws::MediaConnect::Source;
   use Moose;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has Decryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'decryption', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
@@ -28,20 +29,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::Source object:
 
-  $service_obj->Method(Att1 => { Decryption => $value, ..., WhitelistCidr => $value  });
+  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., WhitelistCidr => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConnect::Source object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Decryption
+  $result->Att1->DataTransferSubscriberFeePercent
 
 =head1 DESCRIPTION
 
 The settings for the source of the flow.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataTransferSubscriberFeePercent => Int
+
+  Percentage from 0-100 of the data transfer cost to be billed to the
+subscriber.
 
 
 =head2 Decryption => L<Paws::MediaConnect::Encryption>
@@ -91,7 +98,7 @@ originator and the ARN is generated as part of the originator's flow.
 =head2 WhitelistCidr => Str
 
   The range of IP addresses that should be allowed to contribute content
-to your source. These IP addresses should in the form of a Classless
+to your source. These IP addresses should be in the form of a Classless
 Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
 
 

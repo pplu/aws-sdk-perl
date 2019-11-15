@@ -32,9 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GrantFlowEntitlementsResponse = $mediaconnect->GrantFlowEntitlements(
       Entitlements => [
         {
-          Subscribers => [ 'My__string', ... ],
-          Description => 'My__string',
-          Encryption  => {
+          Subscribers                      => [ 'My__string', ... ],
+          DataTransferSubscriberFeePercent => 1,                      # OPTIONAL
+          Description                      => 'My__string',
+          Encryption                       => {
             Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
             ConstantInitializationVector => 'My__string',

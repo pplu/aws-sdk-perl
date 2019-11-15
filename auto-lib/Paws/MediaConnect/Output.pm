@@ -1,5 +1,6 @@
 package Paws::MediaConnect::Output;
   use Moose;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
@@ -28,20 +29,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::Output object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Transport => $value  });
+  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., Transport => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConnect::Output object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->DataTransferSubscriberFeePercent
 
 =head1 DESCRIPTION
 
 The settings for an output.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataTransferSubscriberFeePercent => Int
+
+  Percentage from 0-100 of the data transfer cost to be billed to the
+subscriber.
 
 
 =head2 Description => Str

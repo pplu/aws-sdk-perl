@@ -1,5 +1,6 @@
 package Paws::MediaConnect::Entitlement;
   use Moose;
+  has DataTransferSubscriberFeePercent => (is => 'ro', isa => 'Int', request_name => 'dataTransferSubscriberFeePercent', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest'], required => 1);
@@ -24,20 +25,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::Entitlement object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Subscribers => $value  });
+  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., Subscribers => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConnect::Entitlement object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->DataTransferSubscriberFeePercent
 
 =head1 DESCRIPTION
 
 The settings for a flow entitlement.
 
 =head1 ATTRIBUTES
+
+
+=head2 DataTransferSubscriberFeePercent => Int
+
+  Percentage from 0-100 of the data transfer cost to be billed to the
+subscriber.
 
 
 =head2 Description => Str

@@ -1,6 +1,7 @@
 
 package Paws::MediaConnect::UpdateFlowOutput;
   use Moose;
+  has CidrAllowList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'cidrAllowList');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Destination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destination');
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'encryption');
@@ -9,6 +10,7 @@ package Paws::MediaConnect::UpdateFlowOutput;
   has OutputArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'outputArn', required => 1);
   has Port => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'port');
   has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol');
+  has RemoteId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'remoteId');
   has SmoothingLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'smoothingLatency');
   has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
 
@@ -38,12 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediaconnect = Paws->service('MediaConnect');
     my $UpdateFlowOutputResponse = $mediaconnect->UpdateFlowOutput(
-      FlowArn     => 'My__string',
-      OutputArn   => 'My__string',
-      Description => 'My__string',    # OPTIONAL
-      Destination => 'My__string',    # OPTIONAL
-      Encryption  => {
-        Algorithm => 'aes128',        # values: aes128, aes192, aes256; OPTIONAL
+      FlowArn       => 'My__string',
+      OutputArn     => 'My__string',
+      CidrAllowList => [ 'My__string', ... ],    # OPTIONAL
+      Description   => 'My__string',             # OPTIONAL
+      Destination   => 'My__string',             # OPTIONAL
+      Encryption    => {
+        Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
         ConstantInitializationVector => 'My__string',
         DeviceId                     => 'My__string',
         KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
@@ -56,6 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxLatency       => 1,               # OPTIONAL
       Port             => 1,               # OPTIONAL
       Protocol         => 'zixi-push',     # OPTIONAL
+      RemoteId         => 'My__string',    # OPTIONAL
       SmoothingLatency => 1,               # OPTIONAL
       StreamId         => 'My__string',    # OPTIONAL
     );
@@ -70,6 +74,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mediaconnect/UpdateFlowOutput>
 
 =head1 ATTRIBUTES
+
+
+=head2 CidrAllowList => ArrayRef[Str|Undef]
+
+The range of IP addresses that should be allowed to initiate output
+requests to this flow. These IP addresses should be in the form of a
+Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+
 
 
 =head2 Description => Str
@@ -120,11 +132,18 @@ The port to use when content is distributed to this output.
 
 The protocol to use for the output.
 
-Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">
+Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">
+
+=head2 RemoteId => Str
+
+The remote ID for the Zixi-pull stream.
+
+
 
 =head2 SmoothingLatency => Int
 
-The smoothing latency in milliseconds for RTP and RTP-FEC streams.
+The smoothing latency in milliseconds for RIST, RTP, and RTP-FEC
+streams.
 
 
 
