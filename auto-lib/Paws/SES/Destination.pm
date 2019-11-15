@@ -50,17 +50,17 @@ in RFC3492 (https://tools.ietf.org/html/rfc3492.html).
 
 =head2 BccAddresses => ArrayRef[Str|Undef]
 
-  The BCC: field(s) of the message.
+  The recipients to place on the BCC: line of the message.
 
 
 =head2 CcAddresses => ArrayRef[Str|Undef]
 
-  The CC: field(s) of the message.
+  The recipients to place on the CC: line of the message.
 
 
 =head2 ToAddresses => ArrayRef[Str|Undef]
 
-  The To: field(s) of the message.
+  The recipients to place on the To: line of the message.
 
 
 

@@ -45,7 +45,7 @@ Amazon SES Developer Guide
 
 =head2 B<REQUIRED> Scope => Str
 
-  The name of the RuleSet that is being stopped.
+  The scope of the StopAction. The only acceptable value is C<RuleSet>.
 
 
 =head2 TopicArn => Str
