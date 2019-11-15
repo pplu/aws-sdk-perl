@@ -17,7 +17,7 @@ Paws::Chime::UpdateVoiceConnectorResponse
 
 =head2 VoiceConnector => L<Paws::Chime::VoiceConnector>
 
-The Amazon Chime Voice Connector details.
+The updated Amazon Chime Voice Connector details.
 
 
 =head2 _request_id => Str

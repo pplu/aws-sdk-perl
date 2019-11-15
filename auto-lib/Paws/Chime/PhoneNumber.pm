@@ -1,6 +1,8 @@
 package Paws::Chime::PhoneNumber;
   use Moose;
   has Associations => (is => 'ro', isa => 'ArrayRef[Paws::Chime::PhoneNumberAssociation]');
+  has CallingName => (is => 'ro', isa => 'Str');
+  has CallingNameStatus => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'Paws::Chime::PhoneNumberCapabilities');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has DeletionTimestamp => (is => 'ro', isa => 'Str');
@@ -49,6 +51,16 @@ Chime Voice Connector.
 =head2 Associations => ArrayRef[L<Paws::Chime::PhoneNumberAssociation>]
 
   The phone number associations.
+
+
+=head2 CallingName => Str
+
+  The outbound calling name associated with the phone number.
+
+
+=head2 CallingNameStatus => Str
+
+  The outbound calling name status.
 
 
 =head2 Capabilities => L<Paws::Chime::PhoneNumberCapabilities>

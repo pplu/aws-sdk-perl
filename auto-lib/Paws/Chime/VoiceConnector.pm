@@ -1,5 +1,6 @@
 package Paws::Chime::VoiceConnector;
   use Moose;
+  has AwsRegion => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutboundHostName => (is => 'ro', isa => 'Str');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Chime::VoiceConnector object:
 
-  $service_obj->Method(Att1 => { CreatedTimestamp => $value, ..., VoiceConnectorId => $value  });
+  $service_obj->Method(Att1 => { AwsRegion => $value, ..., VoiceConnectorId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::VoiceConnector object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreatedTimestamp
+  $result->Att1->AwsRegion
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,12 @@ The Amazon Chime Voice Connector configuration, including outbound host
 name and encryption settings.
 
 =head1 ATTRIBUTES
+
+
+=head2 AwsRegion => Str
+
+  The AWS Region in which the Amazon Chime Voice Connector is created.
+Default: C<us-east-1>.
 
 
 =head2 CreatedTimestamp => Str

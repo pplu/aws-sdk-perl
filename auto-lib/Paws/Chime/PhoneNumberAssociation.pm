@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::Phon
 =head1 DESCRIPTION
 
 The phone number associations, such as Amazon Chime account ID, Amazon
-Chime user ID, or Amazon Chime Voice Connector ID.
+Chime user ID, Amazon Chime Voice Connector ID, or Amazon Chime Voice
+Connector group ID.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +47,9 @@ Chime user ID, or Amazon Chime Voice Connector ID.
 
 =head2 Name => Str
 
-  Defines the association with an Amazon Chime account ID, user ID, or
-Amazon Chime Voice Connector ID.
+  Defines the association with an Amazon Chime account ID, user ID,
+Amazon Chime Voice Connector ID, or Amazon Chime Voice Connector group
+ID.
 
 
 =head2 Value => Str

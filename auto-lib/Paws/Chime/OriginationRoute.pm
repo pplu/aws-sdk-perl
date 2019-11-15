@@ -37,14 +37,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::Orig
 
 Origination routes define call distribution properties for your SIP
 hosts to receive inbound calls using your Amazon Chime Voice Connector.
-Limit: 10 origination routes per Amazon Chime Voice Connector.
+Limit: Ten origination routes for each Amazon Chime Voice Connector.
 
 =head1 ATTRIBUTES
 
 
 =head2 Host => Str
 
-  The FODN or IP address to contact for origination traffic.
+  The FQDN or IP address to contact for origination traffic.
 
 
 =head2 Port => Int

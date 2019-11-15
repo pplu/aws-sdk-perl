@@ -1,6 +1,7 @@
 
 package Paws::Chime::UpdatePhoneNumber;
   use Moose;
+  has CallingName => (is => 'ro', isa => 'Str');
   has PhoneNumberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'phoneNumberId', required => 1);
   has ProductType => (is => 'ro', isa => 'Str');
 
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $chime = Paws->service('Chime');
     my $UpdatePhoneNumberResponse = $chime->UpdatePhoneNumber(
       PhoneNumberId => 'MyString',
+      CallingName   => 'MyCallingName',      # OPTIONAL
       ProductType   => 'BusinessCalling',    # OPTIONAL
     );
 
@@ -43,6 +45,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chime/UpdatePhoneNumber>
 
 =head1 ATTRIBUTES
+
+
+=head2 CallingName => Str
+
+The outbound calling name associated with the phone number.
+
 
 
 =head2 B<REQUIRED> PhoneNumberId => Str

@@ -43,12 +43,13 @@ your Amazon Chime Voice Connector.
 
 =head2 CallingRegions => ArrayRef[Str|Undef]
 
-  The countries to which calls are allowed.
+  The countries to which calls are allowed, in ISO 3166-1 alpha-2 format.
+Required.
 
 
 =head2 CidrAllowedList => ArrayRef[Str|Undef]
 
-  The IP addresses allowed to make calls, in CIDR format.
+  The IP addresses allowed to make calls, in CIDR format. Required.
 
 
 =head2 CpsLimit => Int

@@ -19,6 +19,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::AssociatePhoneNumbersWithVoiceConnector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociatePhoneNumbersWithVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociatePhoneNumberWithUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::AssociatePhoneNumberWithUser', @_);
@@ -69,6 +74,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateVoiceConnector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateVoiceConnectorGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAccount', @_);
@@ -89,9 +99,19 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVoiceConnectorStreamingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorStreamingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVoiceConnectorTermination {
@@ -112,6 +132,11 @@ package Paws::Chime;
   sub DisassociatePhoneNumbersFromVoiceConnector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DisassociatePhoneNumbersFromVoiceConnector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociatePhoneNumbersFromVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAccount {
@@ -149,6 +174,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetPhoneNumberOrder', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPhoneNumberSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetPhoneNumberSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetUser', @_);
@@ -164,9 +194,24 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVoiceConnectorLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorLoggingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVoiceConnectorStreamingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorStreamingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetVoiceConnectorTermination {
@@ -209,6 +254,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListVoiceConnectorGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListVoiceConnectorGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVoiceConnectors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListVoiceConnectors', @_);
@@ -229,9 +279,19 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutEventsConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutVoiceConnectorLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorLoggingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutVoiceConnectorStreamingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorStreamingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutVoiceConnectorTermination {
@@ -289,6 +349,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdatePhoneNumber', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdatePhoneNumberSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdatePhoneNumberSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateUser', @_);
@@ -302,6 +367,11 @@ package Paws::Chime;
   sub UpdateVoiceConnector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateVoiceConnector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateVoiceConnectorGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateVoiceConnectorGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -353,7 +423,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumberWithUser BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateBot CreatePhoneNumberOrder CreateVoiceConnector DeleteAccount DeleteEventsConfiguration DeletePhoneNumber DeleteVoiceConnector DeleteVoiceConnectorOrigination DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector GetAccount GetAccountSettings GetBot GetEventsConfiguration GetGlobalSettings GetPhoneNumber GetPhoneNumberOrder GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorOrigination GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListBots ListPhoneNumberOrders ListPhoneNumbers ListUsers ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorOrigination PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdateUser UpdateUserSettings UpdateVoiceConnector / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateBot CreatePhoneNumberOrder CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteEventsConfiguration DeletePhoneNumber DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup GetAccount GetAccountSettings GetBot GetEventsConfiguration GetGlobalSettings GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListBots ListPhoneNumberOrders ListPhoneNumbers ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
 
 1;
 
@@ -444,6 +514,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =item [E164PhoneNumbers => ArrayRef[Str|Undef]]
 
+=item [ForceAssociate => Bool]
+
 
 =back
 
@@ -451,8 +523,29 @@ Each argument is described in detail in: L<Paws::Chime::AssociatePhoneNumbersWit
 
 Returns: a L<Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorResponse> instance
 
-Associates a phone number with the specified Amazon Chime Voice
+Associates phone numbers with the specified Amazon Chime Voice
 Connector.
+
+
+=head2 AssociatePhoneNumbersWithVoiceConnectorGroup
+
+=over
+
+=item VoiceConnectorGroupId => Str
+
+=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+
+=item [ForceAssociate => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroup>
+
+Returns: a L<Paws::Chime::AssociatePhoneNumbersWithVoiceConnectorGroupResponse> instance
+
+Associates phone numbers with the specified Amazon Chime Voice
+Connector group.
 
 
 =head2 AssociatePhoneNumberWithUser
@@ -572,10 +665,17 @@ Each argument is described in detail in: L<Paws::Chime::BatchUpdatePhoneNumber>
 
 Returns: a L<Paws::Chime::BatchUpdatePhoneNumberResponse> instance
 
-Updates phone number product types. Choose from Amazon Chime Business
-Calling and Amazon Chime Voice Connector product types. For toll-free
-numbers, you can use only the Amazon Chime Voice Connector product
-type.
+Updates phone number product types or calling names. You can update one
+attribute at a time for each C<UpdatePhoneNumberRequestItem>. For
+example, you can update either the product type or the calling name.
+
+For product types, choose from Amazon Chime Business Calling and Amazon
+Chime Voice Connector. For toll-free numbers, you must use the Amazon
+Chime Voice Connector product type.
+
+Updates to outbound calling names can take up to 72 hours to complete.
+Pending updates to outbound calling names must be complete before you
+can request another update.
 
 
 =head2 BatchUpdateUser
@@ -656,7 +756,7 @@ Returns: a L<Paws::Chime::CreatePhoneNumberOrderResponse> instance
 
 Creates an order for phone numbers to be provisioned. Choose from
 Amazon Chime Business Calling and Amazon Chime Voice Connector product
-types. For toll-free numbers, you can use only the Amazon Chime Voice
+types. For toll-free numbers, you must use the Amazon Chime Voice
 Connector product type.
 
 
@@ -668,6 +768,8 @@ Connector product type.
 
 =item RequireEncryption => Bool
 
+=item [AwsRegion => Str]
+
 
 =back
 
@@ -676,10 +778,38 @@ Each argument is described in detail in: L<Paws::Chime::CreateVoiceConnector>
 Returns: a L<Paws::Chime::CreateVoiceConnectorResponse> instance
 
 Creates an Amazon Chime Voice Connector under the administrator's AWS
-account. Enabling CreateVoiceConnectorRequest$RequireEncryption
-configures your Amazon Chime Voice Connector to use TLS transport for
-SIP signaling and Secure RTP (SRTP) for media. Inbound calls use TLS
-transport, and unencrypted outbound calls are blocked.
+account. You can choose to create an Amazon Chime Voice Connector in a
+specific AWS Region.
+
+Enabling CreateVoiceConnectorRequest$RequireEncryption configures your
+Amazon Chime Voice Connector to use TLS transport for SIP signaling and
+Secure RTP (SRTP) for media. Inbound calls use TLS transport, and
+unencrypted outbound calls are blocked.
+
+
+=head2 CreateVoiceConnectorGroup
+
+=over
+
+=item Name => Str
+
+=item [VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateVoiceConnectorGroup>
+
+Returns: a L<Paws::Chime::CreateVoiceConnectorGroupResponse> instance
+
+Creates an Amazon Chime Voice Connector group under the administrator's
+AWS account. You can associate up to three existing Amazon Chime Voice
+Connectors with the Amazon Chime Voice Connector group by including
+C<VoiceConnectorItems> in the request.
+
+You can include Amazon Chime Voice Connectors from different AWS
+Regions in your group. This creates a fault tolerant mechanism for
+fallback in case of availability events.
 
 
 =head2 DeleteAccount
@@ -765,8 +895,26 @@ Each argument is described in detail in: L<Paws::Chime::DeleteVoiceConnector>
 Returns: nothing
 
 Deletes the specified Amazon Chime Voice Connector. Any phone numbers
-assigned to the Amazon Chime Voice Connector must be unassigned from it
-before it can be deleted.
+associated with the Amazon Chime Voice Connector must be disassociated
+from it before it can be deleted.
+
+
+=head2 DeleteVoiceConnectorGroup
+
+=over
+
+=item VoiceConnectorGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteVoiceConnectorGroup>
+
+Returns: nothing
+
+Deletes the specified Amazon Chime Voice Connector group. Any
+C<VoiceConnectorItems> and phone numbers associated with the group must
+be removed before it can be deleted.
 
 
 =head2 DeleteVoiceConnectorOrigination
@@ -784,6 +932,23 @@ Returns: nothing
 
 Deletes the origination settings for the specified Amazon Chime Voice
 Connector.
+
+
+=head2 DeleteVoiceConnectorStreamingConfiguration
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteVoiceConnectorStreamingConfiguration>
+
+Returns: nothing
+
+Deletes the streaming configuration for the specified Amazon Chime
+Voice Connector.
 
 
 =head2 DeleteVoiceConnectorTermination
@@ -856,8 +1021,27 @@ Each argument is described in detail in: L<Paws::Chime::DisassociatePhoneNumbers
 
 Returns: a L<Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorResponse> instance
 
-Disassociates the specified phone number from the specified Amazon
+Disassociates the specified phone numbers from the specified Amazon
 Chime Voice Connector.
+
+
+=head2 DisassociatePhoneNumbersFromVoiceConnectorGroup
+
+=over
+
+=item VoiceConnectorGroupId => Str
+
+=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroup>
+
+Returns: a L<Paws::Chime::DisassociatePhoneNumbersFromVoiceConnectorGroupResponse> instance
+
+Disassociates the specified phone numbers from the specified Amazon
+Chime Voice Connector group.
 
 
 =head2 GetAccount
@@ -988,6 +1172,23 @@ creation timestamp, phone numbers in E.164 format, product type, and
 order status.
 
 
+=head2 GetPhoneNumberSettings
+
+=over
+
+=item  => 
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetPhoneNumberSettings>
+
+Returns: a L<Paws::Chime::GetPhoneNumberSettingsResponse> instance
+
+Retrieves the phone number settings for the administrator's AWS
+account, such as the default outbound calling name.
+
+
 =head2 GetUser
 
 =over
@@ -1046,6 +1247,41 @@ Retrieves details for the specified Amazon Chime Voice Connector, such
 as timestamps, name, outbound host, and encryption requirements.
 
 
+=head2 GetVoiceConnectorGroup
+
+=over
+
+=item VoiceConnectorGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorGroup>
+
+Returns: a L<Paws::Chime::GetVoiceConnectorGroupResponse> instance
+
+Retrieves details for the specified Amazon Chime Voice Connector group,
+such as timestamps, name, and associated C<VoiceConnectorItems>.
+
+
+=head2 GetVoiceConnectorLoggingConfiguration
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorLoggingConfiguration>
+
+Returns: a L<Paws::Chime::GetVoiceConnectorLoggingConfigurationResponse> instance
+
+Retrieves the logging configuration details for the specified Amazon
+Chime Voice Connector. Shows whether SIP message logs are enabled for
+sending to Amazon CloudWatch Logs.
+
+
 =head2 GetVoiceConnectorOrigination
 
 =over
@@ -1061,6 +1297,25 @@ Returns: a L<Paws::Chime::GetVoiceConnectorOriginationResponse> instance
 
 Retrieves origination setting details for the specified Amazon Chime
 Voice Connector.
+
+
+=head2 GetVoiceConnectorStreamingConfiguration
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorStreamingConfiguration>
+
+Returns: a L<Paws::Chime::GetVoiceConnectorStreamingConfigurationResponse> instance
+
+Retrieves the streaming configuration details for the specified Amazon
+Chime Voice Connector. Shows whether media streaming is enabled for
+sending to Amazon Kinesis, and shows the retention period for the
+Amazon Kinesis data, in hours.
 
 
 =head2 GetVoiceConnectorTermination
@@ -1207,7 +1462,8 @@ Each argument is described in detail in: L<Paws::Chime::ListPhoneNumbers>
 Returns: a L<Paws::Chime::ListPhoneNumbersResponse> instance
 
 Lists the phone numbers for the specified Amazon Chime account, Amazon
-Chime user, or Amazon Chime Voice Connector.
+Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
+Connector group.
 
 
 =head2 ListUsers
@@ -1232,6 +1488,25 @@ Returns: a L<Paws::Chime::ListUsersResponse> instance
 Lists the users that belong to the specified Amazon Chime account. You
 can specify an email address to list only the user that the email
 address belongs to.
+
+
+=head2 ListVoiceConnectorGroups
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListVoiceConnectorGroups>
+
+Returns: a L<Paws::Chime::ListVoiceConnectorGroupsResponse> instance
+
+Lists the Amazon Chime Voice Connector groups for the administrator's
+AWS account.
 
 
 =head2 ListVoiceConnectors
@@ -1313,6 +1588,26 @@ events sent by Amazon Chime. Choose either an HTTPS endpoint or a
 Lambda function ARN. For more information, see Bot.
 
 
+=head2 PutVoiceConnectorLoggingConfiguration
+
+=over
+
+=item LoggingConfiguration => L<Paws::Chime::LoggingConfiguration>
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutVoiceConnectorLoggingConfiguration>
+
+Returns: a L<Paws::Chime::PutVoiceConnectorLoggingConfigurationResponse> instance
+
+Adds a logging configuration for the specified Amazon Chime Voice
+Connector. The logging configuration specifies whether SIP message logs
+are enabled for sending to Amazon CloudWatch Logs.
+
+
 =head2 PutVoiceConnectorOrigination
 
 =over
@@ -1330,6 +1625,27 @@ Returns: a L<Paws::Chime::PutVoiceConnectorOriginationResponse> instance
 
 Adds origination settings for the specified Amazon Chime Voice
 Connector.
+
+
+=head2 PutVoiceConnectorStreamingConfiguration
+
+=over
+
+=item StreamingConfiguration => L<Paws::Chime::StreamingConfiguration>
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutVoiceConnectorStreamingConfiguration>
+
+Returns: a L<Paws::Chime::PutVoiceConnectorStreamingConfigurationResponse> instance
+
+Adds a streaming configuration for the specified Amazon Chime Voice
+Connector. The streaming configuration specifies whether media
+streaming is enabled for sending to Amazon Kinesis, and sets the
+retention period for the Amazon Kinesis data, in hours.
 
 
 =head2 PutVoiceConnectorTermination
@@ -1542,6 +1858,8 @@ settings.
 
 =item PhoneNumberId => Str
 
+=item [CallingName => Str]
+
 =item [ProductType => Str]
 
 
@@ -1551,9 +1869,36 @@ Each argument is described in detail in: L<Paws::Chime::UpdatePhoneNumber>
 
 Returns: a L<Paws::Chime::UpdatePhoneNumberResponse> instance
 
-Updates phone number details, such as product type, for the specified
-phone number ID. For toll-free numbers, you can use only the Amazon
-Chime Voice Connector product type.
+Updates phone number details, such as product type or calling name, for
+the specified phone number ID. You can update one phone number detail
+at a time. For example, you can update either the product type or the
+calling name in one action.
+
+For toll-free numbers, you must use the Amazon Chime Voice Connector
+product type.
+
+Updates to outbound calling names can take up to 72 hours to complete.
+Pending updates to outbound calling names must be complete before you
+can request another update.
+
+
+=head2 UpdatePhoneNumberSettings
+
+=over
+
+=item CallingName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdatePhoneNumberSettings>
+
+Returns: nothing
+
+Updates the phone number settings for the administrator's AWS account,
+such as the default outbound calling name. You can update the default
+outbound calling name once every seven days. Outbound calling names can
+take up to 72 hours to be updated.
 
 
 =head2 UpdateUser
@@ -1616,6 +1961,27 @@ Each argument is described in detail in: L<Paws::Chime::UpdateVoiceConnector>
 Returns: a L<Paws::Chime::UpdateVoiceConnectorResponse> instance
 
 Updates details for the specified Amazon Chime Voice Connector.
+
+
+=head2 UpdateVoiceConnectorGroup
+
+=over
+
+=item Name => Str
+
+=item VoiceConnectorGroupId => Str
+
+=item VoiceConnectorItems => ArrayRef[L<Paws::Chime::VoiceConnectorItem>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateVoiceConnectorGroup>
+
+Returns: a L<Paws::Chime::UpdateVoiceConnectorGroupResponse> instance
+
+Updates details for the specified Amazon Chime Voice Connector group,
+such as the name and Amazon Chime Voice Connector priority ranking.
 
 
 

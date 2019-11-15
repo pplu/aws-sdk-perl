@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::Phon
 
 =head1 DESCRIPTION
 
-The phone number capabilities, such as enabled inbound and outbound
-calling and text messaging.
+The phone number capabilities for Amazon Chime Business Calling phone
+numbers, such as enabled inbound and outbound calling and text
+messaging.
 
 =head1 ATTRIBUTES
 

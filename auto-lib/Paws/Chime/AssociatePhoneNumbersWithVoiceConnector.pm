@@ -2,6 +2,7 @@
 package Paws::Chime::AssociatePhoneNumbersWithVoiceConnector;
   use Moose;
   has E164PhoneNumbers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ForceAssociate => (is => 'ro', isa => 'Bool');
   has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $chime->AssociatePhoneNumbersWithVoiceConnector(
       VoiceConnectorId => 'MyNonEmptyString',
       E164PhoneNumbers => [ 'MyE164PhoneNumber', ... ],    # OPTIONAL
+      ForceAssociate   => 1,                               # OPTIONAL
       );
 
     # Results:
@@ -50,6 +52,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head2 E164PhoneNumbers => ArrayRef[Str|Undef]
 
 List of phone numbers, in E.164 format.
+
+
+
+=head2 ForceAssociate => Bool
+
+If true, associates the provided phone numbers with the provided Amazon
+Chime Voice Connector and removes any previously existing associations.
+If false, does not associate any phone numbers that have previously
+existing associations.
 
 
 
