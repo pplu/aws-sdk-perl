@@ -58,15 +58,23 @@ the related AWS resource.
 
 =item *
 
+C<CREATING>: The environment is in the process of being created.
+
+=item *
+
 C<CREATED>: The environment was successfully created.
 
 =item *
 
-C<DELETE_FAILED>: The environment failed to delete.
+C<CREATE_FAILED>: The environment failed to be created.
 
 =item *
 
 C<DELETING>: The environment is in the process of being deleted.
+
+=item *
+
+C<DELETE_FAILED>: The environment failed to delete.
 
 =back
 
