@@ -268,6 +268,8 @@ C<MyArtifacts/MyArtifact.zip>.
 C<CODEPIPELINE>: The build project has build output generated through
 AWS CodePipeline.
 
+The C<CODEPIPELINE> type is not supported for C<secondaryArtifacts>.
+
 =item *
 
 C<NO_ARTIFACTS>: The build project does not produce any build output.

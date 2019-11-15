@@ -69,6 +69,9 @@ C<BUILD_GENERAL1_LARGE>: Use up to 15 GB memory and 8 vCPUs for builds.
 
 =back
 
+For more information, see Build Environment Compute Types
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+in the I<AWS CodeBuild User Guide.>
 
 
 =head2 EnvironmentVariables => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
@@ -129,15 +132,13 @@ you must use CODEBUILD credentials.
 =head2 PrivilegedMode => Bool
 
   Enables running the Docker daemon inside a Docker container. Set to
-true only if the build project is be used to build Docker images, and
-the specified build environment image is not provided by AWS CodeBuild
-with Docker support. Otherwise, all associated builds that attempt to
-interact with the Docker daemon fail. You must also start the Docker
-daemon so that builds can interact with it. One way to do this is to
-initialize the Docker daemon during the install phase of your build
-spec by running the following build commands. (Do not run these
-commands if the specified build environment image is provided by AWS
-CodeBuild with Docker support.)
+true only if the build project is used to build Docker images.
+Otherwise, a build that attempts to interact with the Docker daemon
+fails. The default setting is C<false>.
+
+You can initialize the Docker daemon during the install phase of your
+build by adding one of the following sets of commands to the install
+phase of your buildspec file:
 
 If the operating system's base image is Ubuntu Linux:
 

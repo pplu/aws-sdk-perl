@@ -83,10 +83,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name  => 'MyNonEmptyString',                           # min: 1
           Value => 'MyString',                                   # OPTIONAL
-          Type => 'PLAINTEXT',    # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+          Type  => 'PLAINTEXT'
+          ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],       # OPTIONAL
       GitCloneDepthOverride       => 1,    # OPTIONAL
       GitSubmodulesConfigOverride => {
         FetchSubmodules => 1,              # OPTIONAL
@@ -335,6 +336,9 @@ Set to true to report to your source provider the status of a build's
 start and completion. If you use this option with a source provider
 other than GitHub, GitHub Enterprise, or Bitbucket, an
 invalidInputException is thrown.
+
+The status of a build triggered by a webhook is always reported to your
+source provider.
 
 
 

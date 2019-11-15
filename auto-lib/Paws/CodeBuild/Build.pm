@@ -3,12 +3,14 @@ package Paws::CodeBuild::Build;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::BuildArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
   has BuildComplete => (is => 'ro', isa => 'Bool', request_name => 'buildComplete', traits => ['NameInRequest']);
+  has BuildNumber => (is => 'ro', isa => 'Int', request_name => 'buildNumber', traits => ['NameInRequest']);
   has BuildStatus => (is => 'ro', isa => 'Str', request_name => 'buildStatus', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has EndTime => (is => 'ro', isa => 'Str', request_name => 'endTime', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', request_name => 'environment', traits => ['NameInRequest']);
+  has ExportedEnvironmentVariables => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::ExportedEnvironmentVariable]', request_name => 'exportedEnvironmentVariables', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has Initiator => (is => 'ro', isa => 'Str', request_name => 'initiator', traits => ['NameInRequest']);
   has Logs => (is => 'ro', isa => 'Paws::CodeBuild::LogsLocation', request_name => 'logs', traits => ['NameInRequest']);
@@ -76,6 +78,14 @@ Information about a build.
   Whether the build is complete. True if complete; otherwise, false.
 
 
+=head2 BuildNumber => Int
+
+  The number of the build. For each project, the C<buildNumber> of its
+first build is C<1>. The C<buildNumber> of each subsequent build is
+incremented by C<1>. If a build is deleted, the C<buildNumber> of other
+builds does not change.
+
+
 =head2 BuildStatus => Str
 
   The current status of the build. Valid values include:
@@ -140,6 +150,11 @@ available, the CMK's alias (using the format C<alias/I<alias-name> >).
 =head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
 
   Information about the build environment for this build.
+
+
+=head2 ExportedEnvironmentVariables => ArrayRef[L<Paws::CodeBuild::ExportedEnvironmentVariable>]
+
+  A list of exported environment variables for this build.
 
 
 =head2 Id => Str

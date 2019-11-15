@@ -67,13 +67,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name  => 'MyNonEmptyString',       # min: 1
             Value => 'MyString',               # OPTIONAL
-            Type => 'PLAINTEXT',  # values: PLAINTEXT, PARAMETER_STORE; OPTIONAL
+            Type  => 'PLAINTEXT'
+            ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
           },
           ...
-        ],                        # OPTIONAL
+        ],       # OPTIONAL
         ImagePullCredentialsType =>
-          'CODEBUILD',            # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
-        PrivilegedMode     => 1,  # OPTIONAL
+          'CODEBUILD',    # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
+        PrivilegedMode     => 1,    # OPTIONAL
         RegistryCredential => {
           Credential         => 'MyNonEmptyString',    # min: 1
           CredentialProvider => 'SECRETS_MANAGER',     # values: SECRETS_MANAGER

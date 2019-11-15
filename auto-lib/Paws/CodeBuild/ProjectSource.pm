@@ -159,6 +159,9 @@ source provider. This option is valid only when your source provider is
 GitHub, GitHub Enterprise, or Bitbucket. If this is set and you use a
 different source provider, an invalidInputException is thrown.
 
+The status of a build triggered by a webhook is always reported to your
+source provider.
+
 
 =head2 SourceIdentifier => Str
 
@@ -188,6 +191,11 @@ action of a pipeline in AWS CodePipeline.
 =item *
 
 C<GITHUB>: The source code is in a GitHub repository.
+
+=item *
+
+C<GITHUB_ENTERPRISE>: The source code is in a GitHub Enterprise
+repository.
 
 =item *
 

@@ -59,6 +59,11 @@ Systems Manager Parameter Store.
 
 C<PLAINTEXT>: An environment variable in plaintext format.
 
+=item *
+
+C<SECRETS_MANAGER>: An environment variable stored in AWS Secrets
+Manager.
+
 =back
 
 
