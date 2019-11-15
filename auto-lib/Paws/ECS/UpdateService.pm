@@ -98,11 +98,11 @@ should ignore unhealthy Elastic Load Balancing target health checks
 after a task has first started. This is only valid if your service is
 configured to use a load balancer. If your service's tasks take a while
 to start and respond to Elastic Load Balancing health checks, you can
-specify a health check grace period of up to 1,800 seconds. During that
-time, the ECS service scheduler ignores the Elastic Load Balancing
-health check status. This grace period can prevent the ECS service
-scheduler from marking tasks as unhealthy and stopping them before they
-have time to come up.
+specify a health check grace period of up to 2,147,483,647 seconds.
+During that time, the ECS service scheduler ignores the Elastic Load
+Balancing health check status. This grace period can prevent the ECS
+service scheduler from marking tasks as unhealthy and stopping them
+before they have time to come up.
 
 
 

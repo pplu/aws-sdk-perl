@@ -33,14 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 =head1 DESCRIPTION
 
 An object representing a constraint on task placement in the task
-definition.
+definition. For more information, see Task Placement Constraints
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 If you are using the Fargate launch type, task placement constraints
 are not supported.
-
-For more information, see Task Placement Constraints
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -55,10 +53,8 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 Type => Str
 
-  The type of constraint. The C<DistinctInstance> constraint ensures that
-each task in a particular group is running on a different container
-instance. The C<MemberOf> constraint restricts selection to be from a
-group of valid candidates.
+  The type of constraint. The C<MemberOf> constraint restricts selection
+to be from a group of valid candidates.
 
 
 

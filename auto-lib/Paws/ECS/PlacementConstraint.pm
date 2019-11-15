@@ -37,6 +37,9 @@ information, see Task Placement Constraints
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
+If you are using the Fargate launch type, task placement constraints
+are not supported.
+
 =head1 ATTRIBUTES
 
 
@@ -54,8 +57,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
   The type of constraint. Use C<distinctInstance> to ensure that each
 task in a particular group is running on a different container
 instance. Use C<memberOf> to restrict the selection to a group of valid
-candidates. The value C<distinctInstance> is not supported in task
-definitions.
+candidates.
 
 
 

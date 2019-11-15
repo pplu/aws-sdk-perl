@@ -210,6 +210,11 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateClusterSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateClusterSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateContainerAgent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
@@ -422,7 +427,7 @@ package Paws::ECS;
   }
 
 
-  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
+  sub operations { qw/CreateCluster CreateService CreateTaskSet DeleteAccountSetting DeleteAttributes DeleteCluster DeleteService DeleteTaskSet DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DescribeTaskSets DiscoverPollEndpoint ListAccountSettings ListAttributes ListClusters ListContainerInstances ListServices ListTagsForResource ListTaskDefinitionFamilies ListTaskDefinitions ListTasks PutAccountSetting PutAccountSettingDefault PutAttributes RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitAttachmentStateChanges SubmitContainerStateChange SubmitTaskStateChange TagResource UntagResource UpdateClusterSettings UpdateContainerAgent UpdateContainerInstancesState UpdateService UpdateServicePrimaryTaskSet UpdateTaskSet / }
 
 1;
 
@@ -563,13 +568,14 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
 
 Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below the
-C<desiredCount>, Amazon ECS spawns another copy of the task in the
+C<desiredCount>, Amazon ECS runs another copy of the task in the
 specified cluster. To update an existing service, see UpdateService.
 
 In addition to maintaining the desired count of tasks in your service,
-you can optionally run your service behind a load balancer. The load
-balancer distributes traffic across the tasks that are associated with
-the service. For more information, see Service Load Balancing
+you can optionally run your service behind one or more load balancers.
+The load balancers distribute traffic across the tasks that are
+associated with the service. For more information, see Service Load
+Balancing
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -821,13 +827,13 @@ information, see UpdateService.
 When you delete a service, if there are still running tasks that
 require cleanup, the service status moves from C<ACTIVE> to
 C<DRAINING>, and the service is no longer visible in the console or in
-the ListServices API operation. After the tasks have stopped, then the
-service status moves from C<DRAINING> to C<INACTIVE>. Services in the
-C<DRAINING> or C<INACTIVE> status can still be viewed with the
-DescribeServices API operation. However, in the future, C<INACTIVE>
-services may be cleaned up and purged from Amazon ECS record keeping,
-and DescribeServices calls on those services return a
-C<ServiceNotFoundException> error.
+the ListServices API operation. After all tasks have transitioned to
+either C<STOPPING> or C<STOPPED> status, the service status moves from
+C<DRAINING> to C<INACTIVE>. Services in the C<DRAINING> or C<INACTIVE>
+status can still be viewed with the DescribeServices API operation.
+However, in the future, C<INACTIVE> services may be cleaned up and
+purged from Amazon ECS record keeping, and DescribeServices calls on
+those services return a C<ServiceNotFoundException> error.
 
 If you attempt to create a new service with the same name as an
 existing service in either C<ACTIVE> or C<DRAINING> status, you receive
@@ -1333,10 +1339,13 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSetting>
 
 Returns: a L<Paws::ECS::PutAccountSettingResponse> instance
 
-Modifies an account setting. If you change the account setting for the
-root user, the default settings for all of the IAM users and roles for
-which no individual account setting has been specified are reset. For
-more information, see Account Settings
+Modifies an account setting. Account settings are set on a per-Region
+basis.
+
+If you change the account setting for the root user, the default
+settings for all of the IAM users and roles for which no individual
+account setting has been specified are reset. For more information, see
+Account Settings
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -1385,7 +1394,8 @@ Each argument is described in detail in: L<Paws::ECS::PutAccountSettingDefault>
 Returns: a L<Paws::ECS::PutAccountSettingDefaultResponse> instance
 
 Modifies an account setting for all IAM users on an account for whom no
-individual account setting has been specified.
+individual account setting has been specified. Account settings are set
+on a per-Region basis.
 
 
 =head2 PutAttributes
@@ -1458,6 +1468,8 @@ becomes available to place containers on.
 =item [Cpu => Str]
 
 =item [ExecutionRoleArn => Str]
+
+=item [InferenceAccelerators => ArrayRef[L<Paws::ECS::InferenceAccelerator>]]
 
 =item [IpcMode => Str]
 
@@ -1704,6 +1716,8 @@ Sent to acknowledge that an attachment changed states.
 
 =item [Reason => Str]
 
+=item [RuntimeId => Str]
+
 =item [Status => Str]
 
 =item [Task => Str]
@@ -1793,6 +1807,24 @@ Each argument is described in detail in: L<Paws::ECS::UntagResource>
 Returns: a L<Paws::ECS::UntagResourceResponse> instance
 
 Deletes specified tags from a resource.
+
+
+=head2 UpdateClusterSettings
+
+=over
+
+=item Cluster => Str
+
+=item Settings => ArrayRef[L<Paws::ECS::ClusterSetting>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECS::UpdateClusterSettings>
+
+Returns: a L<Paws::ECS::UpdateClusterSettingsResponse> instance
+
+Modifies the settings to use for a cluster.
 
 
 =head2 UpdateContainerAgent

@@ -2,8 +2,10 @@ package Paws::ECS::ContainerStateChange;
   use Moose;
   has ContainerName => (is => 'ro', isa => 'Str', request_name => 'containerName', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has RuntimeId => (is => 'ro', isa => 'Str', request_name => 'runtimeId', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 1;
 
@@ -51,6 +53,11 @@ An object representing a change in state for a container.
 container exiting.
 
 
+=head2 ImageDigest => Str
+
+  The container image SHA 256 digest.
+
+
 =head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
 
   Any network bindings associated with the container.
@@ -59,6 +66,11 @@ container exiting.
 =head2 Reason => Str
 
   The reason for the state change.
+
+
+=head2 RuntimeId => Str
+
+  The ID of the Docker container.
 
 
 =head2 Status => Str

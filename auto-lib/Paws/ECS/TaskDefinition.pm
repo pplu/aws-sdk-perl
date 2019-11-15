@@ -176,11 +176,15 @@ the Fargate launch type.
 
 =head2 Memory => Str
 
-  The amount (in MiB) of memory used by the task. If using the EC2 launch
-type, this field is optional and any value can be used. If using the
-Fargate launch type, this field is required and you must use one of the
-following values, which determines your range of valid values for the
-C<cpu> parameter:
+  The amount (in MiB) of memory used by the task.
+
+If using the EC2 launch type, this field is optional and any value can
+be used. If a task-level memory value is specified then the
+container-level memory value is optional.
+
+If using the Fargate launch type, this field is required and you must
+use one of the following values, which determines your range of valid
+values for the C<cpu> parameter:
 
 =over
 
@@ -264,7 +268,7 @@ I<Docker run reference>.
   The process namespace to use for the containers in the task. The valid
 values are C<host> or C<task>. If C<host> is specified, then all
 containers within the tasks that specified the C<host> PID mode on the
-same container instance share the same IPC resources with the host
+same container instance share the same process namespace with the host
 Amazon EC2 instance. If C<task> is specified, all containers within the
 specified task share the same process namespace. If no value is
 specified, the default is a private namespace. For more information,
@@ -335,9 +339,10 @@ deregistered previous revisions in this family.
 
 =head2 TaskRoleArn => Str
 
-  The Amazon Resource Name (ARN) of an AWS Identity and Access Management
-(IAM) role that grants containers in the task permission to call AWS
-APIs on your behalf. For more information, see Amazon ECS Task Role
+  The short name or full Amazon Resource Name (ARN) of the AWS Identity
+and Access Management (IAM) role that grants containers in the task
+permission to call AWS APIs on your behalf. For more information, see
+Amazon ECS Task Role
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_IAM_role.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 

@@ -183,11 +183,6 @@ status.
 All tasks are reporting a healthy status from the load balancers,
 service discovery, and container health checks.
 
-If a C<healthCheckGracePeriodSeconds> value was set when the service
-was created, you may see a C<STEADY_STATE> reached since unhealthy
-Elastic Load Balancing target health checks will be ignored until it
-expires.
-
 =back
 
 If any of those conditions are not met, the stability status returns

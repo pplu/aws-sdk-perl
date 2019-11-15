@@ -124,6 +124,10 @@ The deployment controller to use for the service.
 The number of instantiations of the specified task definition to place
 and keep running on your cluster.
 
+This is required if C<schedulingStrategy> is C<REPLICA> or is not
+specified. If C<schedulingStrategy> is C<DAEMON> then this is not
+required.
+
 
 
 =head2 EnableECSManagedTags => Bool
@@ -162,11 +166,19 @@ Valid values are: C<"EC2">, C<"FARGATE">
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
-A load balancer object representing the load balancer to use with your
-service.
+A load balancer object representing the load balancers to use with your
+service. For more information, see Service Load Balancing
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
-If the service is using the C<ECS> deployment controller, you are
-limited to one load balancer or target group.
+If the service is using the rolling update (C<ECS>) deployment
+controller and using either an Application Load Balancer or Network
+Load Balancer, you can specify multiple target groups to attach to the
+service. The service-linked role is required for services that make use
+of multiple target groups. For more information, see Using
+Service-Linked Roles for Amazon ECS
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 If the service is using the C<CODE_DEPLOY> deployment controller, the
 service is required to use either an Application Load Balancer or
@@ -186,18 +198,18 @@ port specified in the service definition are immutable. If you are
 using the C<CODE_DEPLOY> deployment controller, these values can be
 changed when updating the service.
 
-For Classic Load Balancers, this object must contain the load balancer
-name, the container name (as it appears in a container definition), and
-the container port to access from the load balancer. When a task from
-this service is placed on a container instance, the container instance
-is registered with the load balancer specified here.
-
 For Application Load Balancers and Network Load Balancers, this object
 must contain the load balancer target group ARN, the container name (as
 it appears in a container definition), and the container port to access
 from the load balancer. When a task from this service is placed on a
 container instance, the container instance and port combination is
 registered as a target in the target group specified here.
+
+For Classic Load Balancers, this object must contain the load balancer
+name, the container name (as it appears in a container definition), and
+the container port to access from the load balancer. When a task from
+this service is placed on a container instance, the container instance
+is registered with the load balancer specified here.
 
 Services with tasks that use the C<awsvpc> network mode (for example,
 those with the Fargate launch type) only support Application Load
@@ -269,9 +281,10 @@ load balancer object with the C<loadBalancers> parameter.
 If your account has already created the Amazon ECS service-linked role,
 that role is used by default for your service unless you specify a role
 here. The service-linked role is required if your task definition uses
-the C<awsvpc> network mode, in which case you should not specify a role
-here. For more information, see Using Service-Linked Roles for Amazon
-ECS
+the C<awsvpc> network mode or if the service is configured to use
+service discovery, an external deployment controller, or multiple
+target groups in which case you should not specify a role here. For
+more information, see Using Service-Linked Roles for Amazon ECS
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -348,8 +361,51 @@ Platform Versions
 The metadata that you apply to the service to help you categorize and
 organize them. Each tag consists of a key and an optional value, both
 of which you define. When a service is deleted, the tags are deleted as
-well. Tag keys can have a maximum character length of 128 characters,
-and tag values can have a maximum length of 256 characters.
+well.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case-sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for either keys or values as it is reserved for AWS
+use. You cannot edit or delete tag keys or values with this prefix.
+Tags with this prefix do not count against your tags per resource
+limit.
+
+=back
+
 
 
 

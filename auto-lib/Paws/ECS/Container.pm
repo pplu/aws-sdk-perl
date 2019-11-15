@@ -5,6 +5,8 @@ package Paws::ECS::Container;
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
   has GpuIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'gpuIds', traits => ['NameInRequest']);
   has HealthStatus => (is => 'ro', isa => 'Str', request_name => 'healthStatus', traits => ['NameInRequest']);
+  has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
+  has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Str', request_name => 'memoryReservation', traits => ['NameInRequest']);
@@ -12,6 +14,7 @@ package Paws::ECS::Container;
   has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', request_name => 'networkBindings', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
+  has RuntimeId => (is => 'ro', isa => 'Str', request_name => 'runtimeId', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
 1;
 
@@ -77,6 +80,19 @@ for this container in its task definition, then it reports the health
 status as C<UNKNOWN>.
 
 
+=head2 Image => Str
+
+  The image used for the container.
+
+
+=head2 ImageDigest => Str
+
+  The container image manifest digest.
+
+The C<imageDigest> is only returned if the container is using an image
+hosted in Amazon ECR, otherwise it is omitted.
+
+
 =head2 LastStatus => Str
 
   The last known status of the container.
@@ -111,6 +127,11 @@ status as C<UNKNOWN>.
 
   A short (255 max characters) human-readable string to provide
 additional details about a running or stopped container.
+
+
+=head2 RuntimeId => Str
+
+  The ID of the Docker container.
 
 
 =head2 TaskArn => Str

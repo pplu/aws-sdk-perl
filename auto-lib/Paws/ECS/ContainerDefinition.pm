@@ -12,6 +12,7 @@ package Paws::ECS::ContainerDefinition;
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
   has Essential => (is => 'ro', isa => 'Bool', request_name => 'essential', traits => ['NameInRequest']);
   has ExtraHosts => (is => 'ro', isa => 'ArrayRef[Paws::ECS::HostEntry]', request_name => 'extraHosts', traits => ['NameInRequest']);
+  has FirelensConfiguration => (is => 'ro', isa => 'Paws::ECS::FirelensConfiguration', request_name => 'firelensConfiguration', traits => ['NameInRequest']);
   has HealthCheck => (is => 'ro', isa => 'Paws::ECS::HealthCheck', request_name => 'healthCheck', traits => ['NameInRequest']);
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
@@ -322,6 +323,15 @@ This parameter is not supported for Windows containers or tasks that
 use the C<awsvpc> network mode.
 
 
+=head2 FirelensConfiguration => L<Paws::ECS::FirelensConfiguration>
+
+  The FireLens configuration for the container. This is used to specify
+and configure a log router for container logs. For more information,
+see Custom Log Routing
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
 =head2 HealthCheck => L<Paws::ECS::HealthCheck>
 
   The health check command and associated configuration parameters for
@@ -446,13 +456,6 @@ This parameter is not supported for Windows containers.
 
   The log configuration specification for the container.
 
-For tasks using the Fargate launch type, the supported log drivers are
-C<awslogs> and C<splunk>.
-
-For tasks using the EC2 launch type, the supported log drivers are
-C<awslogs>, C<syslog>, C<gelf>, C<fluentd>, C<splunk>, C<journald>, and
-C<json-file>.
-
 This parameter maps to C<LogConfig> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
@@ -501,13 +504,12 @@ section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--memory> option
 to docker run (https://docs.docker.com/engine/reference/run/).
 
-If your containers are part of a task using the Fargate launch type,
-this field is optional.
+If using the Fargate launch type, this parameter is optional.
 
-For containers that are part of a task using the EC2 launch type, you
-must specify a non-zero integer for one or both of C<memory> or
-C<memoryReservation> in container definitions. If you specify both,
-C<memory> must be greater than C<memoryReservation>. If you specify
+If using the EC2 launch type, you must specify either a task-level
+memory value or a container-level memory value. If you specify both a
+container-level C<memory> and C<memoryReservation> value, C<memory>
+must be greater than C<memoryReservation>. If you specify
 C<memoryReservation>, then that value is subtracted from the available
 memory resources for the container instance on which the container is
 placed. Otherwise, the value of C<memory> is used.
@@ -532,12 +534,13 @@ section of the Docker Remote API
 C<--memory-reservation> option to docker run
 (https://docs.docker.com/engine/reference/run/).
 
-You must specify a non-zero integer for one or both of C<memory> or
-C<memoryReservation> in container definitions. If you specify both,
-C<memory> must be greater than C<memoryReservation>. If you specify
-C<memoryReservation>, then that value is subtracted from the available
-memory resources for the container instance on which the container is
-placed. Otherwise, the value of C<memory> is used.
+If a task-level memory value is not specified, you must specify a
+non-zero integer for one or both of C<memory> or C<memoryReservation>
+in a container definition. If you specify both, C<memory> must be
+greater than C<memoryReservation>. If you specify C<memoryReservation>,
+then that value is subtracted from the available memory resources for
+the container instance on which the container is placed. Otherwise, the
+value of C<memory> is used.
 
 For example, if your container normally uses 128 MiB of memory, but
 occasionally bursts to 256 MiB of memory for short periods of time, you
@@ -669,13 +672,14 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 StartTimeout => Int
 
-  Time duration to wait before giving up on resolving dependencies for a
-container. For example, you specify two containers in a task definition
-with containerA having a dependency on containerB reaching a
-C<COMPLETE>, C<SUCCESS>, or C<HEALTHY> status. If a C<startTimeout>
-value is specified for containerB and it does not reach the desired
-status within that time then containerA will give up and not start.
-This results in the task transitioning to a C<STOPPED> state.
+  Time duration (in seconds) to wait before giving up on resolving
+dependencies for a container. For example, you specify two containers
+in a task definition with containerA having a dependency on containerB
+reaching a C<COMPLETE>, C<SUCCESS>, or C<HEALTHY> status. If a
+C<startTimeout> value is specified for containerB and it does not reach
+the desired status within that time then containerA will give up and
+not start. This results in the task transitioning to a C<STOPPED>
+state.
 
 For tasks using the EC2 launch type, the container instances require at
 least version 1.26.0 of the container agent to enable a container start
@@ -699,11 +703,11 @@ platform version 1.3.0 or later.
 
 =head2 StopTimeout => Int
 
-  Time duration to wait before the container is forcefully killed if it
-doesn't exit normally on its own. For tasks using the Fargate launch
-type, the max C<stopTimeout> value is 2 minutes. This parameter is
-available for tasks using the Fargate launch type in the Ohio
-(us-east-2) region only and the task or service requires platform
+  Time duration (in seconds) to wait before the container is forcefully
+killed if it doesn't exit normally on its own. For tasks using the
+Fargate launch type, the max C<stopTimeout> value is 2 minutes. This
+parameter is available for tasks using the Fargate launch type in the
+Ohio (us-east-2) region only and the task or service requires platform
 version 1.3.0 or later.
 
 For tasks using the EC2 launch type, the stop timeout value for the
