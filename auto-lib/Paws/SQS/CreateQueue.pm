@@ -3,6 +3,7 @@ package Paws::SQS::CreateQueue;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', traits => ['NameInRequest'], request_name => 'Attribute' );
   has QueueName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::SQS::TagMap', traits => ['NameInRequest'], request_name => 'Tag' );
 
   use MooseX::ClassAttribute;
 
@@ -256,6 +257,52 @@ A FIFO queue name must end with the C<.fifo> suffix.
 =back
 
 Queue URLs and names are case-sensitive.
+
+
+
+=head2 Tags => L<Paws::SQS::TagMap>
+
+Add cost allocation tags to the specified Amazon SQS queue. For an
+overview, see Tagging Your Amazon SQS Queues
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
+in the I<Amazon Simple Queue Service Developer Guide>.
+
+When you use queue tags, keep the following guidelines in mind:
+
+=over
+
+=item *
+
+Adding more than 50 tags to a queue isn't recommended.
+
+=item *
+
+Tags don't have any semantic meaning. Amazon SQS interprets tags as
+character strings.
+
+=item *
+
+Tags are case-sensitive.
+
+=item *
+
+A new tag with a key identical to that of an existing tag overwrites
+the existing tag.
+
+=back
+
+For a full list of tag restrictions, see Limits Related to Queues
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+in the I<Amazon Simple Queue Service Developer Guide>.
+
+To be able to tag a queue on creation, you must have the
+C<sqs:CreateQueue> and C<sqs:TagQueue> permissions.
+
+Cross-account permissions don't apply to this action. For more
+information, see Grant Cross-Account Permissions to a Role and a User
+Name
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+in the I<Amazon Simple Queue Service Developer Guide>.
 
 
 

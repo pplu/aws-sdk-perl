@@ -6,6 +6,7 @@ package Paws::SQS::SendMessage;
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
+  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', traits => ['NameInRequest'], request_name => 'MessageSystemAttribute' );
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -45,15 +46,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StringValue      => 'MyString',
         },
       },    # OPTIONAL
-      MessageDeduplicationId => 'MyString',    # OPTIONAL
-      MessageGroupId         => 'MyString',    # OPTIONAL
+      MessageDeduplicationId  => 'MyString',    # OPTIONAL
+      MessageGroupId          => 'MyString',    # OPTIONAL
+      MessageSystemAttributes => {
+        'AWSTraceHeader' => {
+          DataType         => 'MyString',
+          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+          BinaryValue      => 'BlobBinary',
+          StringListValues => [ 'MyString', ... ],      # OPTIONAL
+          StringValue      => 'MyString',
+        },    # key: values: AWSTraceHeader
+      },    # OPTIONAL
     );
 
     # Results:
     my $MD5OfMessageAttributes = $SendMessageResult->MD5OfMessageAttributes;
     my $MD5OfMessageBody       = $SendMessageResult->MD5OfMessageBody;
-    my $MessageId              = $SendMessageResult->MessageId;
-    my $SequenceNumber         = $SendMessageResult->SequenceNumber;
+    my $MD5OfMessageSystemAttributes =
+      $SendMessageResult->MD5OfMessageSystemAttributes;
+    my $MessageId      = $SendMessageResult->MessageId;
+    my $SequenceNumber = $SendMessageResult->SequenceNumber;
 
     # Returns a L<Paws::SQS::SendMessageResult> object.
 
@@ -221,6 +233,29 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
+
+
+
+=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
+
+The message system attribute to send. Each message system attribute
+consists of a C<Name>, C<Type>, and C<Value>.
+
+=over
+
+=item *
+
+Currently, the only supported message system attribute is
+C<AWSTraceHeader>. Its type must be C<String> and its value must be a
+correctly formatted AWS X-Ray trace string.
+
+=item *
+
+The size of a message system attribute doesn't count towards the total
+size of a message.
+
+=back
+
 
 
 

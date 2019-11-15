@@ -465,6 +465,8 @@ C<&Attribute.2=second>
 
 =item [Attributes => L<Paws::SQS::QueueAttributeMap>]
 
+=item [Tags => L<Paws::SQS::TagMap>]
+
 
 =back
 
@@ -956,6 +958,8 @@ C<SetQueueAttributes> actions in your IAM policy.
 
 =item [MessageGroupId => Str]
 
+=item [MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>]
+
 
 =back
 
@@ -1114,13 +1118,6 @@ Tags are case-sensitive.
 
 A new tag with a key identical to that of an existing tag overwrites
 the existing tag.
-
-=item *
-
-Tagging actions are limited to 5 TPS per AWS account. If your
-application requires a higher throughput, file a technical support
-request
-(https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
 
 =back
 

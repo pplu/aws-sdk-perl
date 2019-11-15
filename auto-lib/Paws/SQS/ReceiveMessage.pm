@@ -81,6 +81,10 @@ been received from the queue but not deleted.
 
 =item *
 
+C<AWSTraceHeader> - Returns the AWS X-Ray trace header string.
+
+=item *
+
 C<SenderId>
 
 =over

@@ -3,6 +3,7 @@ package Paws::SQS::SendMessageBatchResultEntry;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
   has MD5OfMessageBody => (is => 'ro', isa => 'Str', required => 1);
+  has MD5OfMessageSystemAttributes => (is => 'ro', isa => 'Str');
   has MessageId => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str');
 1;
@@ -61,6 +62,15 @@ digest. For information about MD5, see RFC1321
 use this attribute to verify that Amazon SQS received the message
 correctly. Amazon SQS URL-decodes the message before creating the MD5
 digest. For information about MD5, see RFC1321
+(https://www.ietf.org/rfc/rfc1321.txt).
+
+
+=head2 MD5OfMessageSystemAttributes => Str
+
+  An MD5 digest of the non-URL-encoded message system attribute string.
+You can use this attribute to verify that Amazon SQS received the
+message correctly. Amazon SQS URL-decodes the message before creating
+the MD5 digest. For information about MD5, see RFC1321
 (https://www.ietf.org/rfc/rfc1321.txt).
 
 

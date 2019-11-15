@@ -6,6 +6,7 @@ package Paws::SQS::SendMessageBatchRequestEntry;
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has MessageDeduplicationId => (is => 'ro', isa => 'Str');
   has MessageGroupId => (is => 'ro', isa => 'Str');
+  has MessageSystemAttributes => (is => 'ro', isa => 'Paws::SQS::MessageBodySystemAttributeMap', request_name => 'MessageSystemAttribute', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SQS::SendMessageBatchRequestEntry object:
 
-  $service_obj->Method(Att1 => { DelaySeconds => $value, ..., MessageGroupId => $value  });
+  $service_obj->Method(Att1 => { DelaySeconds => $value, ..., MessageSystemAttributes => $value  });
 
 =head3 Results returned from an API call
 
@@ -197,6 +198,28 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
+
+
+=head2 MessageSystemAttributes => L<Paws::SQS::MessageBodySystemAttributeMap>
+
+  The message system attribute to send Each message system attribute
+consists of a C<Name>, C<Type>, and C<Value>.
+
+=over
+
+=item *
+
+Currently, the only supported message system attribute is
+C<AWSTraceHeader>. Its type must be C<String> and its value must be a
+correctly formatted AWS X-Ray trace string.
+
+=item *
+
+The size of a message system attribute doesn't count towards the total
+size of a message.
+
+=back
+
 
 
 

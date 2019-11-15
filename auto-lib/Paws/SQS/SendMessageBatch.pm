@@ -43,8 +43,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               StringValue      => 'MyString',
             },
           },    # OPTIONAL
-          MessageDeduplicationId => 'MyString',
-          MessageGroupId         => 'MyString',
+          MessageDeduplicationId  => 'MyString',
+          MessageGroupId          => 'MyString',
+          MessageSystemAttributes => {
+            'AWSTraceHeader' => {
+              DataType         => 'MyString',
+              BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+              BinaryValue      => 'BlobBinary',
+              StringListValues => [ 'MyString', ... ],      # OPTIONAL
+              StringValue      => 'MyString',
+            },    # key: values: AWSTraceHeader
+          },    # OPTIONAL
         },
         ...
       ],
