@@ -94,6 +94,11 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateBrokerCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateBrokerStorage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerStorage', @_);
@@ -222,7 +227,7 @@ package Paws::Kafka;
   }
 
 
-  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerStorage UpdateClusterConfiguration / }
+  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration / }
 
 1;
 
@@ -563,6 +568,26 @@ Returns: nothing
 
 Removes the tags associated with the keys that are provided in the
 query.
+
+
+=head2 UpdateBrokerCount
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item TargetNumberOfBrokerNodes => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateBrokerCount>
+
+Returns: a L<Paws::Kafka::UpdateBrokerCountResponse> instance
+
+Updates the number of broker nodes in the cluster.
 
 
 =head2 UpdateBrokerStorage

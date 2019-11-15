@@ -71,8 +71,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InCluster => 1,    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      EnhancedMonitoring => 'DEFAULT',              # OPTIONAL
-      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
+      EnhancedMonitoring => 'DEFAULT',                            # OPTIONAL
+      Tags               => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
