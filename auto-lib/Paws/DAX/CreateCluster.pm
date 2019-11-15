@@ -77,10 +77,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
 
-The Availability Zones (AZs) in which the cluster nodes will be
-created. All nodes belonging to the cluster are placed in these
-Availability Zones. Use this parameter if you want to distribute the
-nodes across multiple AZs.
+The Availability Zones (AZs) in which the cluster nodes will reside
+after the cluster has been created or updated. If provided, the length
+of this list must equal the C<ReplicationFactor> parameter. If you omit
+this parameter, DAX will spread the nodes across Availability Zones for
+the highest availability.
 
 
 
@@ -196,7 +197,10 @@ randomly selected day of the week.
 The number of nodes in the DAX cluster. A replication factor of 1 will
 create a single-node cluster, without any read replicas. For additional
 fault tolerance, you can create a multiple node cluster with one or
-more read replicas. To do this, set I<ReplicationFactor> to 2 or more.
+more read replicas. To do this, set C<ReplicationFactor> to a number
+between 3 (one primary and two read replicas) and 10 (one primary and
+nine read replicas). C<If the AvailabilityZones> parameter is provided,
+its length must equal the C<ReplicationFactor>.
 
 AWS recommends that you have at least two read replicas per cluster.
 

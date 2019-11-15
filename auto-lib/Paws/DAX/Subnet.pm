@@ -41,7 +41,7 @@ and used with DAX.
 
 =head2 SubnetAvailabilityZone => Str
 
-  The Availability Zone (AZ) for subnet subnet.
+  The Availability Zone (AZ) for the subnet.
 
 
 =head2 SubnetIdentifier => Str
