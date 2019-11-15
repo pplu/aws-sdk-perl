@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the port for the local connection.
 
 =head1 ATTRIBUTES
 

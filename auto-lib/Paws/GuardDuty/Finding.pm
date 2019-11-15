@@ -45,87 +45,84 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-  AWS account ID where the activity occurred that prompted GuardDuty to
-generate a finding.
+  The ID of the account in which the finding was generated.
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The ARN of a finding described by the action.
+  The ARN for the finding.
 
 
 =head2 Confidence => Num
 
-  The confidence level of a finding.
+  The confidence score for the finding.
 
 
 =head2 B<REQUIRED> CreatedAt => Str
 
-  The time stamp at which a finding was generated.
+  The time and date at which the finding was created.
 
 
 =head2 Description => Str
 
-  The description of a finding.
+  The description of the finding.
 
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier that corresponds to a finding described by the action.
+  The ID of the finding.
 
 
 =head2 Partition => Str
 
-  The AWS resource partition.
+  The partition associated with the finding.
 
 
 =head2 B<REQUIRED> Region => Str
 
-  The AWS region where the activity occurred that prompted GuardDuty to
-generate a finding.
+  The Region in which the finding was generated.
 
 
 =head2 B<REQUIRED> Resource => L<Paws::GuardDuty::Resource>
 
-  The AWS resource associated with the activity that prompted GuardDuty
-to generate a finding.
+  
 
 
 =head2 B<REQUIRED> SchemaVersion => Str
 
-  Findings' schema version.
+  The version of the schema used for the finding.
 
 
 =head2 Service => L<Paws::GuardDuty::Service>
 
-  Additional information assigned to the generated finding by GuardDuty.
+  
 
 
 =head2 B<REQUIRED> Severity => Num
 
-  The severity of a finding.
+  The severity of the finding.
 
 
 =head2 Title => Str
 
-  The title of a finding.
+  The title for the finding.
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of a finding described by the action.
+  The type of the finding.
 
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-  The time stamp at which a finding was last updated.
+  The time and date at which the finding was laste updated.
 
 
 

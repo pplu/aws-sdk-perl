@@ -6,6 +6,7 @@ package Paws::GuardDuty::Service;
   has DetectorId => (is => 'ro', isa => 'Str', request_name => 'detectorId', traits => ['NameInRequest']);
   has EventFirstSeen => (is => 'ro', isa => 'Str', request_name => 'eventFirstSeen', traits => ['NameInRequest']);
   has EventLastSeen => (is => 'ro', isa => 'Str', request_name => 'eventLastSeen', traits => ['NameInRequest']);
+  has Evidence => (is => 'ro', isa => 'Paws::GuardDuty::Evidence', request_name => 'evidence', traits => ['NameInRequest']);
   has ResourceRole => (is => 'ro', isa => 'Str', request_name => 'resourceRole', traits => ['NameInRequest']);
   has ServiceName => (is => 'ro', isa => 'Str', request_name => 'serviceName', traits => ['NameInRequest']);
   has UserFeedback => (is => 'ro', isa => 'Str', request_name => 'userFeedback', traits => ['NameInRequest']);
@@ -39,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the service.
 
 =head1 ATTRIBUTES
 
@@ -74,6 +75,11 @@ generate this finding.
 
   Last seen timestamp of the activity that prompted GuardDuty to generate
 this finding.
+
+
+=head2 Evidence => L<Paws::GuardDuty::Evidence>
+
+  An evidence object associated with the service.
 
 
 =head2 ResourceRole => Str

@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Continas information about the member account
 
 =head1 ATTRIBUTES
 

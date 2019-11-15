@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the Master account and invitation.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-  Master account ID
+  The ID of the account used as the Master account.
 
 
 =head2 InvitationId => Str
@@ -52,7 +52,7 @@ account.
 
 =head2 InvitedAt => Str
 
-  Timestamp at which the invitation was sent
+  Timestamp at which the invitation was sent.
 
 
 =head2 RelationshipStatus => Str

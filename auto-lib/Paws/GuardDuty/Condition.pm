@@ -42,20 +42,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-This class has no description
+Contains information about the condition.
 
 =head1 ATTRIBUTES
 
 
 =head2 Eq => ArrayRef[Str|Undef]
 
-  Represents the equal condition to be applied to a single field when
-querying for findings.
+  Deprecated. Represents the equal condition to be applied to a single
+field when querying for findings.
 
 
 =head2 Equals => ArrayRef[Str|Undef]
 
-  
+  Represents an B<equal> condition to be applied to a single field when
+querying for findings.
 
 
 =head2 GreaterThan => Int
@@ -72,14 +73,14 @@ field when querying for findings.
 
 =head2 Gt => Int
 
-  Represents a greater than condition to be applied to a single field
-when querying for findings.
+  Deprecated. Represents a greater than condition to be applied to a
+single field when querying for findings.
 
 
 =head2 Gte => Int
 
-  Represents a greater than equal condition to be applied to a single
-field when querying for findings.
+  Deprecated. Represents a greater than equal condition to be applied to
+a single field when querying for findings.
 
 
 =head2 LessThan => Int
@@ -96,25 +97,26 @@ when querying for findings.
 
 =head2 Lt => Int
 
-  Represents a less than condition to be applied to a single field when
-querying for findings.
+  Deprecated. Represents a less than condition to be applied to a single
+field when querying for findings.
 
 
 =head2 Lte => Int
 
-  Represents a less than equal condition to be applied to a single field
-when querying for findings.
+  Deprecated. Represents a less than equal condition to be applied to a
+single field when querying for findings.
 
 
 =head2 Neq => ArrayRef[Str|Undef]
 
-  Represents the not equal condition to be applied to a single field when
-querying for findings.
+  Deprecated. Represents the not equal condition to be applied to a
+single field when querying for findings.
 
 
 =head2 NotEquals => ArrayRef[Str|Undef]
 
-  
+  Represents an B<not equal> condition to be applied to a single field
+when querying for findings.
 
 
 

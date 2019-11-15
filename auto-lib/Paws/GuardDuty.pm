@@ -489,8 +489,10 @@ Each argument is described in detail in: L<Paws::GuardDuty::ArchiveFindings>
 
 Returns: a L<Paws::GuardDuty::ArchiveFindingsResponse> instance
 
-Archives Amazon GuardDuty findings specified by the list of finding
-IDs.
+Archives GuardDuty findings specified by the list of finding IDs.
+
+Only the master account can archive findings. Member accounts do not
+have permission to archive findings from their accounts.
 
 
 =head2 CreateDetector
@@ -512,9 +514,10 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateDetector>
 
 Returns: a L<Paws::GuardDuty::CreateDetectorResponse> instance
 
-Creates a single Amazon GuardDuty detector. A detector is an object
-that represents the GuardDuty service. A detector must be created in
-order for GuardDuty to become operational.
+Creates a single Amazon GuardDuty detector. A detector is a resource
+that represents the GuardDuty service. To start using GuardDuty, you
+must create a detector in each region that you enable the service. You
+can have only one detector per account per region.
 
 
 =head2 CreateFilter
@@ -927,8 +930,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetMasterAccount>
 
 Returns: a L<Paws::GuardDuty::GetMasterAccountResponse> instance
 
-Provides the details for the GuardDuty master account to the current
-GuardDuty member account.
+Provides the details for the GuardDuty master account associated with
+the current GuardDuty member account.
 
 
 =head2 GetMembers
