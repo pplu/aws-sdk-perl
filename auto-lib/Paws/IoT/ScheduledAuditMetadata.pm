@@ -56,7 +56,7 @@ C<frequency> is "WEEKLY" or "BIWEEKLY").
 
 =head2 Frequency => Str
 
-  How often the scheduled audit takes place.
+  How often the scheduled audit occurs.
 
 
 =head2 ScheduledAuditArn => Str

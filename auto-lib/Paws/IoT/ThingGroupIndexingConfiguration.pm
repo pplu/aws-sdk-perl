@@ -1,5 +1,7 @@
 package Paws::IoT::ThingGroupIndexingConfiguration;
   use Moose;
+  has CustomFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'customFields', traits => ['NameInRequest']);
+  has ManagedFields => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Field]', request_name => 'managedFields', traits => ['NameInRequest']);
   has ThingGroupIndexingMode => (is => 'ro', isa => 'Str', request_name => 'thingGroupIndexingMode', traits => ['NameInRequest'], required => 1);
 1;
 
@@ -20,20 +22,31 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::ThingGroupIndexingConfiguration object:
 
-  $service_obj->Method(Att1 => { ThingGroupIndexingMode => $value, ..., ThingGroupIndexingMode => $value  });
+  $service_obj->Method(Att1 => { CustomFields => $value, ..., ThingGroupIndexingMode => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingGroupIndexingConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ThingGroupIndexingMode
+  $result->Att1->CustomFields
 
 =head1 DESCRIPTION
 
 Thing group indexing configuration.
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomFields => ArrayRef[L<Paws::IoT::Field>]
+
+  Contains custom field names and their data type.
+
+
+=head2 ManagedFields => ArrayRef[L<Paws::IoT::Field>]
+
+  Contains fields that are indexed and whose types are already known by
+the Fleet Indexing service.
 
 
 =head2 B<REQUIRED> ThingGroupIndexingMode => Str

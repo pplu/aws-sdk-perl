@@ -45,13 +45,13 @@ The audits that were performed.
 
 =head2 TaskStatus => Str
 
-  The status of this audit: one of "IN_PROGRESS", "COMPLETED", "FAILED"
+  The status of this audit. One of "IN_PROGRESS", "COMPLETED", "FAILED",
 or "CANCELED".
 
 
 =head2 TaskType => Str
 
-  The type of this audit: one of "ON_DEMAND_AUDIT_TASK" or
+  The type of this audit. One of "ON_DEMAND_AUDIT_TASK" or
 "SCHEDULED_AUDIT_TASK".
 
 

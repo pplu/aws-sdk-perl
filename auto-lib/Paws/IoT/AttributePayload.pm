@@ -54,7 +54,8 @@ registry, instead of overwriting them.
 To remove an attribute, call C<UpdateThing> with an empty attribute
 value.
 
-The C<merge> attribute is only valid when calling C<UpdateThing>.
+The C<merge> attribute is only valid when calling C<UpdateThing> or
+C<UpdateThingGroup>.
 
 
 

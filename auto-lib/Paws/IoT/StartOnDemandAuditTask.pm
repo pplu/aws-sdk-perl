@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 Which checks are performed during the audit. The checks you specify
 must be enabled for your account or an exception occurs. Use
-C<DescribeAccountAuditConfiguration> to see the list of all checks
+C<DescribeAccountAuditConfiguration> to see the list of all checks,
 including those that are enabled or C<UpdateAccountAuditConfiguration>
 to select which checks are enabled.
 

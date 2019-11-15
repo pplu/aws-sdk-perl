@@ -25,7 +25,7 @@ C<null> if there are no additional results.
 =head2 ViolationEvents => ArrayRef[L<Paws::IoT::ViolationEvent>]
 
 The security profile violation alerts issued for this account during
-the given time frame, potentially filtered by security profile,
+the given time period, potentially filtered by security profile,
 behavior violated, or thing (device) violating.
 
 

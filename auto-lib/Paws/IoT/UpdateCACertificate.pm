@@ -79,7 +79,7 @@ Information about the registration configuration.
 
 =head2 RemoveAutoRegistration => Bool
 
-If true, remove auto registration.
+If true, removes auto registration.
 
 
 

@@ -43,7 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal, such as a certificate or other credential.
+The principal, which can be a certificate ARN (as returned from the
+CreateCertificate operation) or an Amazon Cognito ID.
 
 
 

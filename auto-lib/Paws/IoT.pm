@@ -54,6 +54,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::AttachThingPrincipal', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelAuditMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CancelAuditMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelAuditTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CancelAuditTask', @_);
@@ -107,6 +112,11 @@ package Paws::IoT;
   sub CreateKeysAndCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateKeysAndCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMitigationAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateMitigationAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateOTAUpdate {
@@ -204,6 +214,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteJobExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMitigationAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteMitigationAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteOTAUpdate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteOTAUpdate', @_);
@@ -279,6 +294,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAccountAuditConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAuditFinding {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditFinding', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAuditMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAuditTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditTask', @_);
@@ -332,6 +357,11 @@ package Paws::IoT;
   sub DescribeJobExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMitigationAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeMitigationAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRoleAlias {
@@ -404,6 +434,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::EnableTopicRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCardinality {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetCardinality', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetEffectivePolicies {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetEffectivePolicies', @_);
@@ -427,6 +462,11 @@ package Paws::IoT;
   sub GetOTAUpdate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetOTAUpdate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPercentiles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetPercentiles', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPolicy {
@@ -472,6 +512,16 @@ package Paws::IoT;
   sub ListAuditFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAuditMitigationActionsExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditMitigationActionsExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAuditMitigationActionsTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditMitigationActionsTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAuditTasks {
@@ -522,6 +572,11 @@ package Paws::IoT;
   sub ListJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMitigationActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListMitigationActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListOTAUpdates {
@@ -724,6 +779,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::SetV2LoggingOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartAuditMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::StartAuditMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOnDemandAuditTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::StartOnDemandAuditTask', @_);
@@ -807,6 +867,11 @@ package Paws::IoT;
   sub UpdateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMitigationAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateMitigationAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRoleAlias {
@@ -1703,7 +1768,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -1915,8 +1980,8 @@ Each argument is described in detail in: L<Paws::IoT::AttachSecurityProfile>
 Returns: a L<Paws::IoT::AttachSecurityProfileResponse> instance
 
 Associates a Device Defender security profile with a thing group or
-with this account. Each thing group or account can have up to five
-security profiles associated with it.
+this account. Each thing group or account can have up to five security
+profiles associated with it.
 
 
 =head2 AttachThingPrincipal
@@ -1937,6 +2002,23 @@ Returns: a L<Paws::IoT::AttachThingPrincipalResponse> instance
 Attaches the specified principal to the specified thing. A principal
 can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 identities or federated identities.
+
+
+=head2 CancelAuditMitigationActionsTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CancelAuditMitigationActionsTask>
+
+Returns: a L<Paws::IoT::CancelAuditMitigationActionsTaskResponse> instance
+
+Cancels a mitigation action task that is in progress. If the task is
+not in progress, an InvalidRequestException occurs.
 
 
 =head2 CancelAuditTask
@@ -2232,6 +2314,30 @@ B<Note> This is the only time AWS IoT issues the private key for this
 certificate, so it is important to keep it in a secure location.
 
 
+=head2 CreateMitigationAction
+
+=over
+
+=item ActionName => Str
+
+=item ActionParams => L<Paws::IoT::MitigationActionParams>
+
+=item RoleArn => Str
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateMitigationAction>
+
+Returns: a L<Paws::IoT::CreateMitigationActionResponse> instance
+
+Defines an action that can be applied to audit findings by using
+StartAuditMitigationActionsTask. Each mitigation action can apply only
+one type of change.
+
+
 =head2 CreateOTAUpdate
 
 =over
@@ -2411,11 +2517,7 @@ Returns: a L<Paws::IoT::CreateStreamResponse> instance
 Creates a stream for delivering one or more large files in chunks over
 MQTT. A stream transports data bytes in chunks or blocks packaged as
 MQTT messages from a source like S3. You can have one or more files
-associated with a stream. The total size of a file associated with the
-stream cannot exceed more than 2 MB. The stream will be created with
-version 0. If a stream is created with the same streamID as a stream
-that existed and was deleted within last 90 days, we will resurrect
-that old stream by incrementing the version by 1.
+associated with a stream.
 
 
 =head2 CreateThing
@@ -2600,10 +2702,11 @@ Returns: nothing
 
 Deletes the specified certificate.
 
-A certificate cannot be deleted if it has a policy attached to it or if
-its status is set to ACTIVE. To delete a certificate, first use the
-DetachPrincipalPolicy API to detach all policies. Next, use the
-UpdateCertificate API to set the certificate to the INACTIVE status.
+A certificate cannot be deleted if it has a policy or IoT thing
+attached to it or if its status is set to ACTIVE. To delete a
+certificate, first use the DetachPrincipalPolicy API to detach all
+policies. Next, use the UpdateCertificate API to set the certificate to
+the INACTIVE status.
 
 
 =head2 DeleteDynamicThingGroup
@@ -2671,6 +2774,22 @@ Each argument is described in detail in: L<Paws::IoT::DeleteJobExecution>
 Returns: nothing
 
 Deletes a job execution.
+
+
+=head2 DeleteMitigationAction
+
+=over
+
+=item ActionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteMitigationAction>
+
+Returns: a L<Paws::IoT::DeleteMitigationActionResponse> instance
+
+Deletes a defined mitigation action from your AWS account.
 
 
 =head2 DeleteOTAUpdate
@@ -2949,6 +3068,43 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 
 
+=head2 DescribeAuditFinding
+
+=over
+
+=item FindingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeAuditFinding>
+
+Returns: a L<Paws::IoT::DescribeAuditFindingResponse> instance
+
+Gets information about a single audit finding. Properties include the
+reason for noncompliance, the severity of the issue, and when the audit
+that returned the finding was started.
+
+
+=head2 DescribeAuditMitigationActionsTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeAuditMitigationActionsTask>
+
+Returns: a L<Paws::IoT::DescribeAuditMitigationActionsTaskResponse> instance
+
+Gets information about an audit mitigation task that is used to apply
+mitigation actions to a set of audit findings. Properties include the
+actions being applied, the audit checks to which they're being applied,
+the task status, and aggregated task statistics.
+
+
 =head2 DescribeAuditTask
 
 =over
@@ -3123,6 +3279,22 @@ Each argument is described in detail in: L<Paws::IoT::DescribeJobExecution>
 Returns: a L<Paws::IoT::DescribeJobExecutionResponse> instance
 
 Describes a job execution.
+
+
+=head2 DescribeMitigationAction
+
+=over
+
+=item ActionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeMitigationAction>
+
+Returns: a L<Paws::IoT::DescribeMitigationActionResponse> instance
+
+Gets information about a mitigation action.
 
 
 =head2 DescribeRoleAlias
@@ -3365,6 +3537,29 @@ Returns: nothing
 Enables the rule.
 
 
+=head2 GetCardinality
+
+=over
+
+=item QueryString => Str
+
+=item [AggregationField => Str]
+
+=item [IndexName => Str]
+
+=item [QueryVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::GetCardinality>
+
+Returns: a L<Paws::IoT::GetCardinalityResponse> instance
+
+Returns the number of things with distinct values for the aggregation
+field.
+
+
 =head2 GetEffectivePolicies
 
 =over
@@ -3450,6 +3645,33 @@ Returns: a L<Paws::IoT::GetOTAUpdateResponse> instance
 Gets an OTA update.
 
 
+=head2 GetPercentiles
+
+=over
+
+=item QueryString => Str
+
+=item [AggregationField => Str]
+
+=item [IndexName => Str]
+
+=item [Percents => ArrayRef[Num]]
+
+=item [QueryVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::GetPercentiles>
+
+Returns: a L<Paws::IoT::GetPercentilesResponse> instance
+
+Returns the percentile values for the aggregation field. The results
+from GetPercentiles is an approximation. The default percentile
+groupings are: 1,5,25,50,75,95,99. You can specify custom percentile
+grouping using the percents argument to the GetPercentiles API.
+
+
 =head2 GetPolicy
 
 =over
@@ -3519,7 +3741,10 @@ Each argument is described in detail in: L<Paws::IoT::GetStatistics>
 
 Returns: a L<Paws::IoT::GetStatisticsResponse> instance
 
-Gets statistics about things that match the specified query.
+Gets statistics returns the count, average, sum, minimum, maximum,
+sumOfSquares, variance, and standard deviation for the specified
+aggregated field. If the aggregation field is of type String, only the
+count statistic is returned.
 
 
 =head2 GetTopicRule
@@ -3625,6 +3850,59 @@ Returns: a L<Paws::IoT::ListAuditFindingsResponse> instance
 Lists the findings (results) of a Device Defender audit or of the
 audits performed during a specified time period. (Findings are retained
 for 180 days.)
+
+
+=head2 ListAuditMitigationActionsExecutions
+
+=over
+
+=item FindingId => Str
+
+=item TaskId => Str
+
+=item [ActionStatus => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListAuditMitigationActionsExecutions>
+
+Returns: a L<Paws::IoT::ListAuditMitigationActionsExecutionsResponse> instance
+
+Gets the status of audit mitigation action tasks that were executed.
+
+
+=head2 ListAuditMitigationActionsTasks
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [AuditTaskId => Str]
+
+=item [FindingId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TaskStatus => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListAuditMitigationActionsTasks>
+
+Returns: a L<Paws::IoT::ListAuditMitigationActionsTasksResponse> instance
+
+Gets a list of audit mitigation action tasks that match the specified
+filters.
 
 
 =head2 ListAuditTasks
@@ -3850,6 +4128,27 @@ Each argument is described in detail in: L<Paws::IoT::ListJobs>
 Returns: a L<Paws::IoT::ListJobsResponse> instance
 
 Lists jobs.
+
+
+=head2 ListMitigationActions
+
+=over
+
+=item [ActionType => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListMitigationActions>
+
+Returns: a L<Paws::IoT::ListMitigationActionsResponse> instance
+
+Gets a list of all mitigation actions that match the specified filter
+criteria.
 
 
 =head2 ListOTAUpdates
@@ -4423,7 +4722,7 @@ Returns: a L<Paws::IoT::ListViolationEventsResponse> instance
 
 Lists the Device Defender security profile violations discovered during
 the given time period. You can use filters to limit the results to
-those alerts issued for a particular security profile, behavior or
+those alerts issued for a particular security profile, behavior, or
 thing (device).
 
 
@@ -4498,7 +4797,13 @@ Each argument is described in detail in: L<Paws::IoT::RegisterThing>
 
 Returns: a L<Paws::IoT::RegisterThingResponse> instance
 
-Provisions a thing.
+Provisions a thing in the device registry. RegisterThing calls other
+AWS IoT control plane APIs. These calls might exceed your account level
+AWS IoT Throttling Limits
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot)
+and cause throttle errors. Please contact AWS Customer Support
+(https://console.aws.amazon.com/support/home) to raise your throttling
+limits if necessary.
 
 
 =head2 RejectCertificateTransfer
@@ -4710,6 +5015,29 @@ Each argument is described in detail in: L<Paws::IoT::SetV2LoggingOptions>
 Returns: nothing
 
 Sets the logging options for the V2 logging service.
+
+
+=head2 StartAuditMitigationActionsTask
+
+=over
+
+=item AuditCheckToActionsMapping => L<Paws::IoT::AuditCheckToActionsMapping>
+
+=item ClientRequestToken => Str
+
+=item Target => L<Paws::IoT::AuditMitigationActionsTaskTarget>
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::StartAuditMitigationActionsTask>
+
+Returns: a L<Paws::IoT::StartAuditMitigationActionsTaskResponse> instance
+
+Starts a task that applies a set of mitigation actions to the specified
+target.
 
 
 =head2 StartOnDemandAuditTask
@@ -5087,6 +5415,26 @@ Returns: nothing
 Updates supported fields of the specified job.
 
 
+=head2 UpdateMitigationAction
+
+=over
+
+=item ActionName => Str
+
+=item [ActionParams => L<Paws::IoT::MitigationActionParams>]
+
+=item [RoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateMitigationAction>
+
+Returns: a L<Paws::IoT::UpdateMitigationActionResponse> instance
+
+Updates the definition for the specified mitigation action.
+
+
 =head2 UpdateRoleAlias
 
 =over
@@ -5128,7 +5476,7 @@ Each argument is described in detail in: L<Paws::IoT::UpdateScheduledAudit>
 
 Returns: a L<Paws::IoT::UpdateScheduledAuditResponse> instance
 
-Updates a scheduled audit, including what checks are performed and how
+Updates a scheduled audit, including which checks are performed and how
 often the audit takes place.
 
 

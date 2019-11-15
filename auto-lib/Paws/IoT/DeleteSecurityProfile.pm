@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 The expected version of the security profile. A new version is
 generated whenever the security profile is updated. If you specify a
-value that is different than the actual version, a
+value that is different from the actual version, a
 C<VersionConflictException> is thrown.
 
 

@@ -39,7 +39,7 @@ table to which the message data will be written.
 
 =head2 B<REQUIRED> TableName => Str
 
-  The table where the message data will be written
+  The table where the message data will be written.
 
 
 

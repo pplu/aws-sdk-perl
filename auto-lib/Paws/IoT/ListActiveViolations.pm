@@ -32,10 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListActiveViolationsResponse = $iot->ListActiveViolations(
-      MaxResults          => 1,                          # OPTIONAL
-      NextToken           => 'MyNextToken',              # OPTIONAL
-      SecurityProfileName => 'MySecurityProfileName',    # OPTIONAL
-      ThingName           => 'MyThingName',              # OPTIONAL
+      MaxResults          => 1,                              # OPTIONAL
+      NextToken           => 'MyNextToken',                  # OPTIONAL
+      SecurityProfileName => 'MySecurityProfileName',        # OPTIONAL
+      ThingName           => 'MyDeviceDefenderThingName',    # OPTIONAL
     );
 
     # Results:

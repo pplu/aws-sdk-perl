@@ -66,7 +66,7 @@ The token for the next set of results.
 
 =head2 Recursive => Bool
 
-If true, return child groups as well.
+If true, return child groups too.
 
 
 

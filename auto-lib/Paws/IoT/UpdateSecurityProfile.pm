@@ -104,7 +104,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
 A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's C<behaviors> but it is
+retained for any metric used in the profile's C<behaviors>, but it is
 also retained for any metric specified here.
 
 
@@ -126,14 +126,14 @@ an alert.
 
 If true, delete all C<additionalMetricsToRetain> defined for this
 security profile. If any C<additionalMetricsToRetain> are defined in
-the current invocation an exception occurs.
+the current invocation, an exception occurs.
 
 
 
 =head2 DeleteAlertTargets => Bool
 
 If true, delete all C<alertTargets> defined for this security profile.
-If any C<alertTargets> are defined in the current invocation an
+If any C<alertTargets> are defined in the current invocation, an
 exception occurs.
 
 
@@ -141,7 +141,7 @@ exception occurs.
 =head2 DeleteBehaviors => Bool
 
 If true, delete all C<behaviors> defined for this security profile. If
-any C<behaviors> are defined in the current invocation an exception
+any C<behaviors> are defined in the current invocation, an exception
 occurs.
 
 
@@ -150,7 +150,7 @@ occurs.
 
 The expected version of the security profile. A new version is
 generated whenever the security profile is updated. If you specify a
-value that is different than the actual version, a
+value that is different from the actual version, a
 C<VersionConflictException> is thrown.
 
 

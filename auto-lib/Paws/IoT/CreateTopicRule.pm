@@ -105,7 +105,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Republish => {
               RoleArn => 'MyAwsArn',
               Topic   => 'MyTopicPattern',
-
+              Qos     => 1,                  # max: 1; OPTIONAL
             },    # OPTIONAL
             S3 => {
               BucketName => 'MyBucketName',
@@ -211,7 +211,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Republish => {
             RoleArn => 'MyAwsArn',
             Topic   => 'MyTopicPattern',
-
+            Qos     => 1,                  # max: 1; OPTIONAL
           },    # OPTIONAL
           S3 => {
             BucketName => 'MyBucketName',

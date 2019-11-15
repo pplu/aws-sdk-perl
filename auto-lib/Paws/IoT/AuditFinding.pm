@@ -1,6 +1,7 @@
 package Paws::IoT::AuditFinding;
   use Moose;
   has CheckName => (is => 'ro', isa => 'Str', request_name => 'checkName', traits => ['NameInRequest']);
+  has FindingId => (is => 'ro', isa => 'Str', request_name => 'findingId', traits => ['NameInRequest']);
   has FindingTime => (is => 'ro', isa => 'Str', request_name => 'findingTime', traits => ['NameInRequest']);
   has NonCompliantResource => (is => 'ro', isa => 'Paws::IoT::NonCompliantResource', request_name => 'nonCompliantResource', traits => ['NameInRequest']);
   has ReasonForNonCompliance => (is => 'ro', isa => 'Str', request_name => 'reasonForNonCompliance', traits => ['NameInRequest']);
@@ -49,6 +50,12 @@ The findings (results) of the audit.
   The audit check that generated this result.
 
 
+=head2 FindingId => Str
+
+  A unique identifier for this set of audit findings. This identifier is
+used to apply mitigation tasks to one or more sets of findings.
+
+
 =head2 FindingTime => Str
 
   The time the result (finding) was discovered.
@@ -56,17 +63,17 @@ The findings (results) of the audit.
 
 =head2 NonCompliantResource => L<Paws::IoT::NonCompliantResource>
 
-  The resource that was found to be non-compliant with the audit check.
+  The resource that was found to be noncompliant with the audit check.
 
 
 =head2 ReasonForNonCompliance => Str
 
-  The reason the resource was non-compliant.
+  The reason the resource was noncompliant.
 
 
 =head2 ReasonForNonComplianceCode => Str
 
-  A code which indicates the reason that the resource was non-compliant.
+  A code that indicates the reason that the resource was noncompliant.
 
 
 =head2 RelatedResources => ArrayRef[L<Paws::IoT::RelatedResource>]
@@ -81,7 +88,7 @@ The findings (results) of the audit.
 
 =head2 TaskId => Str
 
-  The ID of the audit that generated this result (finding)
+  The ID of the audit that generated this result (finding).
 
 
 =head2 TaskStartTime => Str

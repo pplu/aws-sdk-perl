@@ -1,5 +1,6 @@
 package Paws::IoT::RepublishAction;
   use Moose;
+  has Qos => (is => 'ro', isa => 'Int', request_name => 'qos', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest'], required => 1);
   has Topic => (is => 'ro', isa => 'Str', request_name => 'topic', traits => ['NameInRequest'], required => 1);
 1;
@@ -21,20 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::RepublishAction object:
 
-  $service_obj->Method(Att1 => { RoleArn => $value, ..., Topic => $value  });
+  $service_obj->Method(Att1 => { Qos => $value, ..., Topic => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::RepublishAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->RoleArn
+  $result->Att1->Qos
 
 =head1 DESCRIPTION
 
 Describes an action to republish to another topic.
 
 =head1 ATTRIBUTES
+
+
+=head2 Qos => Int
+
+  The Quality of Service (QoS) level to use when republishing messages.
+The default value is 0.
 
 
 =head2 B<REQUIRED> RoleArn => Str

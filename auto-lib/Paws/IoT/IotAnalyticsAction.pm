@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::IotAna
 
 =head1 DESCRIPTION
 
-Sends messge data to an AWS IoT Analytics channel.
+Sends message data to an AWS IoT Analytics channel.
 
 =head1 ATTRIBUTES
 

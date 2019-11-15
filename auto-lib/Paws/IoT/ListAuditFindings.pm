@@ -95,7 +95,7 @@ The token for the next set of results.
 
 =head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
 
-Information identifying the non-compliant resource.
+Information identifying the noncompliant resource.
 
 
 

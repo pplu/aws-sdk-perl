@@ -40,12 +40,12 @@ Information about a related resource.
 
 =head2 AdditionalInfo => L<Paws::IoT::StringMap>
 
-  Additional information about the resource.
+  Other information about the resource.
 
 
 =head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
 
-  Information identifying the resource.
+  Information that identifies the resource.
 
 
 =head2 ResourceType => Str

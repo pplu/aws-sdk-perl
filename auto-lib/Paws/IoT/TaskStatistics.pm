@@ -54,7 +54,7 @@ Statistics for the checks performed during the audit.
 
 =head2 FailedChecks => Int
 
-  The number of checks
+  The number of checks.
 
 
 =head2 InProgressChecks => Int
@@ -64,7 +64,7 @@ Statistics for the checks performed during the audit.
 
 =head2 NonCompliantChecks => Int
 
-  The number of checks that found non-compliant resources.
+  The number of checks that found noncompliant resources.
 
 
 =head2 TotalChecks => Int

@@ -43,32 +43,32 @@ Information about the audit check.
 
 =head2 CheckCompliant => Bool
 
-  True if the check completed and found all resources compliant.
+  True if the check is complete and found all resources compliant.
 
 
 =head2 CheckRunStatus => Str
 
-  The completion status of this check, one of "IN_PROGRESS",
+  The completion status of this check. One of "IN_PROGRESS",
 "WAITING_FOR_DATA_COLLECTION", "CANCELED", "COMPLETED_COMPLIANT",
 "COMPLETED_NON_COMPLIANT", or "FAILED".
 
 
 =head2 ErrorCode => Str
 
-  The code of any error encountered when performing this check during
-this audit. One of "INSUFFICIENT_PERMISSIONS", or
+  The code of any error encountered when this check is performed during
+this audit. One of "INSUFFICIENT_PERMISSIONS" or
 "AUDIT_CHECK_DISABLED".
 
 
 =head2 Message => Str
 
-  The message associated with any error encountered when performing this
-check during this audit.
+  The message associated with any error encountered when this check is
+performed during this audit.
 
 
 =head2 NonCompliantResourcesCount => Int
 
-  The number of resources that the check found non-compliant.
+  The number of resources that were found noncompliant during the check.
 
 
 =head2 TotalResourcesCount => Int

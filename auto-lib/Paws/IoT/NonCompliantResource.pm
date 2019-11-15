@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::NonCom
 
 =head1 DESCRIPTION
 
-Information about the resource that was non-compliant with the audit
+Information about the resource that was noncompliant with the audit
 check.
 
 =head1 ATTRIBUTES
@@ -41,17 +41,17 @@ check.
 
 =head2 AdditionalInfo => L<Paws::IoT::StringMap>
 
-  Additional information about the non-compliant resource.
+  Other information about the noncompliant resource.
 
 
 =head2 ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
 
-  Information identifying the non-compliant resource.
+  Information that identifies the noncompliant resource.
 
 
 =head2 ResourceType => Str
 
-  The type of the non-compliant resource.
+  The type of the noncompliant resource.
 
 
 

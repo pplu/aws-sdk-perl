@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Resour
 
 =head1 DESCRIPTION
 
-Information identifying the non-compliant resource.
+Information that identifies the noncompliant resource.
 
 =head1 ATTRIBUTES
 
@@ -58,7 +58,7 @@ Information identifying the non-compliant resource.
 
 =head2 CognitoIdentityPoolId => Str
 
-  The ID of the Cognito Identity Pool.
+  The ID of the Amazon Cognito identity pool.
 
 
 =head2 DeviceCertificateId => Str
