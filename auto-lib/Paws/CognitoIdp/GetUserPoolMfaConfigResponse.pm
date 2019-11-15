@@ -18,7 +18,25 @@ Paws::CognitoIdp::GetUserPoolMfaConfigResponse
 
 =head2 MfaConfiguration => Str
 
-The multi-factor (MFA) configuration.
+The multi-factor (MFA) configuration. Valid values include:
+
+=over
+
+=item *
+
+C<OFF> MFA will not be used for any users.
+
+=item *
+
+C<ON> MFA is required for all users to sign in.
+
+=item *
+
+C<OPTIONAL> MFA will be required only for individual users who have an
+MFA factor enabled.
+
+=back
+
 
 Valid values are: C<"OFF">, C<"ON">, C<"OPTIONAL">
 =head2 SmsMfaConfiguration => L<Paws::CognitoIdp::SmsMfaConfigType>

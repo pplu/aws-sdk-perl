@@ -11,6 +11,7 @@ package Paws::CognitoIdp::CreateUserPoolClient;
   has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GenerateSecret => (is => 'ro', isa => 'Bool');
   has LogoutURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has PreventUserExistenceErrors => (is => 'ro', isa => 'Str');
   has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has SupportedIdentityProviders => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -63,22 +64,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
       ExplicitAuthFlows  => [
         'ADMIN_NO_SRP_AUTH',
-        ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH
+        ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH
       ],    # OPTIONAL
       GenerateSecret => 1,    # OPTIONAL
       LogoutURLs     => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
       ],                            # OPTIONAL
-      ReadAttributes => [
-        'MyClientPermissionType', ...    # min: 1, max: 2048
-      ],                                 # OPTIONAL
-      RefreshTokenValidity       => 1,   # OPTIONAL
+      PreventUserExistenceErrors => 'LEGACY',    # OPTIONAL
+      ReadAttributes             => [
+        'MyClientPermissionType', ...            # min: 1, max: 2048
+      ],                                         # OPTIONAL
+      RefreshTokenValidity       => 1,           # OPTIONAL
       SupportedIdentityProviders => [
-        'MyProviderNameType', ...        # min: 1, max: 32
-      ],                                 # OPTIONAL
+        'MyProviderNameType', ...                # min: 1, max: 32
+      ],                                         # OPTIONAL
       WriteAttributes => [
-        'MyClientPermissionType', ...    # min: 1, max: 2048
-      ],                                 # OPTIONAL
+        'MyClientPermissionType', ...            # min: 1, max: 2048
+      ],                                         # OPTIONAL
     );
 
     # Results:
@@ -113,7 +115,9 @@ when interacting with Cognito user pools.
 =head2 AllowedOAuthScopes => ArrayRef[Str|Undef]
 
 A list of allowed C<OAuth> scopes. Currently supported values are
-C<"phone">, C<"email">, C<"openid">, and C<"Cognito">.
+C<"phone">, C<"email">, C<"openid">, and C<"Cognito">. In addition to
+these values, custom scopes created in Resource Servers are also
+supported.
 
 
 
@@ -196,7 +200,43 @@ App callback URLs such as myapp://example are also supported.
 
 =head2 ExplicitAuthFlows => ArrayRef[Str|Undef]
 
-The explicit authentication flows.
+The authentication flows that are supported by the user pool clients.
+Flow names without the C<ALLOW_> prefix are deprecated in favor of new
+names with the C<ALLOW_> prefix. Note that values with C<ALLOW_> prefix
+cannot be used along with values without C<ALLOW_> prefix.
+
+Valid values include:
+
+=over
+
+=item *
+
+C<ALLOW_ADMIN_USER_PASSWORD_AUTH>: Enable admin based user password
+authentication flow C<ADMIN_USER_PASSWORD_AUTH>. This setting replaces
+the C<ADMIN_NO_SRP_AUTH> setting. With this authentication flow,
+Cognito receives the password in the request instead of using the SRP
+(Secure Remote Password protocol) protocol to verify passwords.
+
+=item *
+
+C<ALLOW_CUSTOM_AUTH>: Enable Lambda trigger based authentication.
+
+=item *
+
+C<ALLOW_USER_PASSWORD_AUTH>: Enable user password-based authentication.
+In this flow, Cognito receives the password in the request instead of
+using the SRP protocol to verify passwords.
+
+=item *
+
+C<ALLOW_USER_SRP_AUTH>: Enable SRP based authentication.
+
+=item *
+
+C<ALLOW_REFRESH_TOKEN_AUTH>: Enable authflow to refresh tokens.
+
+=back
+
 
 
 
@@ -212,6 +252,77 @@ pool client being created.
 A list of allowed logout URLs for the identity providers.
 
 
+
+=head2 PreventUserExistenceErrors => Str
+
+Use this setting to choose which errors and responses are returned by
+Cognito APIs during authentication, account confirmation, and password
+recovery when the user does not exist in the user pool. When set to
+C<ENABLED> and the user does not exist, authentication returns an error
+indicating either the username or password was incorrect, and account
+confirmation and password recovery return a response indicating a code
+was sent to a simulated destination. When set to C<LEGACY>, those APIs
+will return a C<UserNotFoundException> exception if the user does not
+exist in the user pool.
+
+Valid values include:
+
+=over
+
+=item *
+
+C<ENABLED> - This prevents user existence-related errors.
+
+=item *
+
+C<LEGACY> - This represents the old behavior of Cognito where user
+existence related errors are not prevented.
+
+=back
+
+This setting affects the behavior of following APIs:
+
+=over
+
+=item *
+
+AdminInitiateAuth
+
+=item *
+
+AdminRespondToAuthChallenge
+
+=item *
+
+InitiateAuth
+
+=item *
+
+RespondToAuthChallenge
+
+=item *
+
+ForgotPassword
+
+=item *
+
+ConfirmForgotPassword
+
+=item *
+
+ConfirmSignUp
+
+=item *
+
+ResendConfirmationCode
+
+=back
+
+After January 1st 2020, the value of C<PreventUserExistenceErrors> will
+default to C<ENABLED> for newly created user pool clients if no value
+is provided.
+
+Valid values are: C<"LEGACY">, C<"ENABLED">
 
 =head2 ReadAttributes => ArrayRef[Str|Undef]
 

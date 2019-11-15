@@ -45,25 +45,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 B<REQUIRED> Password => Str
 
-
+The password for the user.
 
 
 
 =head2 Permanent => Bool
 
-
+C<True> if the password is permanent, C<False> if it is temporary.
 
 
 
 =head2 B<REQUIRED> Username => Str
 
-
+The user name of the user whose password you wish to set.
 
 
 
 =head2 B<REQUIRED> UserPoolId => Str
 
-
+The user pool ID for the user pool where you want to set the user's
+password.
 
 
 

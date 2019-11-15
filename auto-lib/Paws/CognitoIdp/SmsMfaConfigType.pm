@@ -40,7 +40,10 @@ type.
 
 =head2 SmsAuthenticationMessage => Str
 
-  The SMS authentication message.
+  The SMS authentication message that will be sent to users with the code
+they need to sign in. The message must contain the
+E<lsquo>{####}E<rsquo> placeholder, which will be replaced with the
+code. If the message is not included, and default message will be used.
 
 
 =head2 SmsConfiguration => L<Paws::CognitoIdp::SmsConfigurationType>

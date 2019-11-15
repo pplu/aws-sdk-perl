@@ -32,20 +32,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-Specifies the different settings for multi-factor authentication (MFA).
+I<This data type is no longer supported.> You can use it only for SMS
+MFA configurations. You can't use it for TOTP software token MFA
+configurations.
+
+To set either type of MFA configuration, use the
+AdminSetUserMFAPreference or SetUserMFAPreference actions.
+
+To look up information about either type of MFA configuration, use the
+AdminGetUserResponse$UserMFASettingList or
+GetUserResponse$UserMFASettingList responses.
 
 =head1 ATTRIBUTES
 
 
 =head2 AttributeName => Str
 
-  The attribute name of the MFA option type.
+  The attribute name of the MFA option type. The only valid value is
+C<phone_number>.
 
 
 =head2 DeliveryMedium => Str
 
-  The delivery medium (email message or SMS message) to send the MFA
-code.
+  The delivery medium to send the MFA code. You can use this parameter to
+set only the C<SMS> delivery medium value.
 
 
 

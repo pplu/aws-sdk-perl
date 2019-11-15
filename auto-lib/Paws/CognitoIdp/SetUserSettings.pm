@@ -54,7 +54,8 @@ The access token for the set user settings request.
 
 =head2 B<REQUIRED> MFAOptions => ArrayRef[L<Paws::CognitoIdp::MFAOptionType>]
 
-Specifies the options for MFA (e.g., email or phone number).
+You can use this parameter only to set an SMS configuration that uses
+SMS for delivery.
 
 
 

@@ -44,7 +44,7 @@ The type used for enabling software token MFA at the user level.
 
 =head2 PreferredMfa => Bool
 
-  The preferred MFA method.
+  Specifies whether software token MFA is the preferred MFA method.
 
 
 

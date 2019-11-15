@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp:
 
 =head1 DESCRIPTION
 
-The SMS multi-factor authentication (MFA) settings type.
+The type used for enabling SMS MFA at the user level.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ The SMS multi-factor authentication (MFA) settings type.
 
 =head2 PreferredMfa => Bool
 
-  The preferred MFA method.
+  Specifies whether SMS is the preferred MFA method.
 
 
 

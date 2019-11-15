@@ -49,7 +49,7 @@ profiles. Set to C<False> if users can sign themselves up via an app.
   The message template to be used for the welcome message to new users.
 
 See also Customizing User Invitation Messages
-(http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization).
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization).
 
 
 =head2 UnusedAccountValidityDays => Int

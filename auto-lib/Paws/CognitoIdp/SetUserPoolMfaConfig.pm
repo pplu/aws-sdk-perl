@@ -63,7 +63,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 MfaConfiguration => Str
 
-The MFA configuration.
+The MFA configuration. Valid values include:
+
+=over
+
+=item *
+
+C<OFF> MFA will not be used for any users.
+
+=item *
+
+C<ON> MFA is required for all users to sign in.
+
+=item *
+
+C<OPTIONAL> MFA will be required only for individual users who have an
+MFA factor enabled.
+
+=back
+
 
 Valid values are: C<"OFF">, C<"ON">, C<"OPTIONAL">
 
