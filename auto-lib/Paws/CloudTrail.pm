@@ -40,6 +40,11 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetEventSelectors', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTrail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTrailStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrailStatus', @_);
@@ -53,6 +58,11 @@ package Paws::CloudTrail;
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudTrail::ListTrails', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub LookupEvents {
@@ -132,6 +142,29 @@ package Paws::CloudTrail;
 
     return undef
   }
+  sub ListAllTrails {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTrails(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTrails(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Trails }, @{ $next_result->Trails };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Trails') foreach (@{ $result->Trails });
+        $result = $self->ListTrails(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Trails') foreach (@{ $result->Trails });
+    }
+
+    return undef
+  }
   sub LookupAllEvents {
     my $self = shift;
 
@@ -157,7 +190,7 @@ package Paws::CloudTrail;
   }
 
 
-  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetTrailStatus ListPublicKeys ListTags LookupEvents PutEventSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
+  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetEventSelectors GetTrail GetTrailStatus ListPublicKeys ListTags ListTrails LookupEvents PutEventSelectors RemoveTags StartLogging StopLogging UpdateTrail / }
 
 1;
 
@@ -207,7 +240,7 @@ about the AWS SDKs, including how to download and install them, see the
 Tools for Amazon Web Services page (http://aws.amazon.com/tools/).
 
 See the AWS CloudTrail User Guide
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 for information about the data that is included with each AWS API call
 listed in the log files.
 
@@ -231,12 +264,13 @@ Each argument is described in detail in: L<Paws::CloudTrail::AddTags>
 
 Returns: a L<Paws::CloudTrail::AddTagsResponse> instance
 
-Adds one or more tags to a trail, up to a limit of 50. Tags must be
-unique per trail. Overwrites an existing tag's value when a new value
-is specified for an existing tag key. If you specify a key without a
+Adds one or more tags to a trail, up to a limit of 50. Overwrites an
+existing tag's value when a new value is specified for an existing tag
+key. Tag key names must be unique for a trail; you cannot have two keys
+with the same name but different values. If you specify a key without a
 value, the tag will be created with the specified key and a value of
-null. You can tag a trail that applies to all regions only from the
-region in which the trail was created (that is, from its home region).
+null. You can tag a trail that applies to all AWS Regions only from the
+Region in which the trail was created (also known as its home region).
 
 
 =head2 CreateTrail
@@ -265,6 +299,8 @@ region in which the trail was created (that is, from its home region).
 
 =item [SnsTopicName => Str]
 
+=item [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]]
+
 
 =back
 
@@ -273,8 +309,7 @@ Each argument is described in detail in: L<Paws::CloudTrail::CreateTrail>
 Returns: a L<Paws::CloudTrail::CreateTrailResponse> instance
 
 Creates a trail that specifies the settings for delivery of log data to
-an Amazon S3 bucket. A maximum of five trails can exist in a region,
-irrespective of the region in which they were created.
+an Amazon S3 bucket.
 
 
 =head2 DeleteTrail
@@ -311,8 +346,8 @@ Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 
 Returns: a L<Paws::CloudTrail::DescribeTrailsResponse> instance
 
-Retrieves settings for the trail associated with the current region for
-your account.
+Retrieves settings for one or more trails associated with the current
+region for your account.
 
 
 =head2 GetEventSelectors
@@ -351,8 +386,24 @@ AWS Lambda functions that you are logging for data events.
 =back
 
 For more information, see Logging Data and Management Events for Trails
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
 in the I<AWS CloudTrail User Guide>.
+
+
+=head2 GetTrail
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudTrail::GetTrail>
+
+Returns: a L<Paws::CloudTrail::GetTrailResponse> instance
+
+Returns settings information for a specified trail.
 
 
 =head2 GetTrailStatus
@@ -421,6 +472,22 @@ Returns: a L<Paws::CloudTrail::ListTagsResponse> instance
 Lists the tags for the trail in the current region.
 
 
+=head2 ListTrails
+
+=over
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudTrail::ListTrails>
+
+Returns: a L<Paws::CloudTrail::ListTrailsResponse> instance
+
+Lists trails that are in the current account.
+
+
 =head2 LookupEvents
 
 =over
@@ -444,8 +511,8 @@ Returns: a L<Paws::CloudTrail::LookupEventsResponse> instance
 
 Looks up management events
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events)
-captured by CloudTrail. Events for a region can be looked up in that
-region during the last 90 days. Lookup supports the following
+captured by CloudTrail. You can look up events that occurred in a
+region within the last 90 days. Lookup supports the following
 attributes:
 
 =over
@@ -558,7 +625,7 @@ C<InvalidHomeRegionException> is thrown.
 
 You can configure up to five event selectors for each trail. For more
 information, see Logging Data and Management Events for Trails
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
 and Limits in AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
@@ -695,6 +762,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ResourceTagList, passing the object as the first parameter, and the string 'ResourceTagList' as the second parameter 
 
 If not, it will return a a L<Paws::CloudTrail::ListTagsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTrails(sub { },[NextToken => Str])
+
+=head2 ListAllTrails([NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Trails, passing the object as the first parameter, and the string 'Trails' as the second parameter 
+
+If not, it will return a a L<Paws::CloudTrail::ListTrailsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 LookupAllEvents(sub { },[EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])

@@ -50,10 +50,10 @@ Auto Scaling Group or "i-1234567" for an EC2 Instance.
   The type of a resource referenced by the event returned. When the
 resource type cannot be determined, null is returned. Some examples of
 resource types are: B<Instance> for EC2, B<Trail> for CloudTrail,
-B<DBInstance> for RDS, and B<AccessKey> for IAM. For a list of resource
-types supported for event lookup, see Resource Types Supported for
-Event Lookup
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/lookup_supported_resourcetypes.html).
+B<DBInstance> for RDS, and B<AccessKey> for IAM. To learn more about
+how to look up and filter events by the resource types supported for a
+service, see Filtering CloudTrail Events
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events-console.html#filtering-cloudtrail-events).
 
 
 

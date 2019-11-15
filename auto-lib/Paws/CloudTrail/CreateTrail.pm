@@ -12,6 +12,7 @@ package Paws::CloudTrail::CreateTrail;
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
+  has TagsList => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -49,6 +50,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KmsKeyId                   => 'MyString',    # OPTIONAL
       S3KeyPrefix                => 'MyString',    # OPTIONAL
       SnsTopicName               => 'MyString',    # OPTIONAL
+      TagsList                   => [
+        {
+          Key   => 'MyString',
+          Value => 'MyString',
+        },
+        ...
+      ],                                           # OPTIONAL
     );
 
     # Results:
@@ -120,7 +128,9 @@ such as IAM to the log files.
 =head2 IsMultiRegionTrail => Bool
 
 Specifies whether the trail is created in the current region or in all
-regions. The default is false.
+regions. The default is false, which creates a trail only in the region
+where you are signed in. As a best practice, consider creating trails
+that log events in all regions.
 
 
 
@@ -204,7 +214,7 @@ Not be in IP address format (for example, 192.168.5.4)
 
 Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
 
 
 
@@ -213,7 +223,7 @@ log files. See Amazon S3 Bucket Naming Requirements
 Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html).
 The maximum length is 200 characters.
 
 
@@ -222,6 +232,12 @@ The maximum length is 200 characters.
 
 Specifies the name of the Amazon SNS topic defined for notification of
 log file delivery. The maximum length is 256 characters.
+
+
+
+=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
+
+
 
 
 

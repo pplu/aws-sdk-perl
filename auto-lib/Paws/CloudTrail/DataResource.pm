@@ -44,7 +44,7 @@ exceed 250 across all selectors.
 
 The following example demonstrates how logging works when you configure
 logging of all data events for an S3 bucket named C<bucket-1>. In this
-example, the CloudTrail user spcified an empty prefix, and the option
+example, the CloudTrail user specified an empty prefix, and the option
 to log both C<Read> and C<Write> data events.
 
 =over
@@ -131,13 +131,6 @@ a bucket that belongs to another AWS account.
 
 =item *
 
-To log data events for all objects in all S3 buckets that include
-I<my-bucket> in their names, specify the prefix as
-C<aws:s3:::my-bucket>. The trail logs data events for all objects in
-all buckets whose name contains a match for I<my-bucket>.
-
-=item *
-
 To log data events for all objects in an S3 bucket, specify the bucket
 and an empty object prefix such as C<arn:aws:s3:::bucket-1/>. The trail
 logs data events for all objects in this S3 bucket.
@@ -160,12 +153,11 @@ a function that belongs to another AWS account.
 
 =item *
 
-To log data eents for a specific Lambda function, specify the function
+To log data events for a specific Lambda function, specify the function
 ARN.
 
-Lambda function ARNs are exact. Unlike S3, you cannot use matching. For
-example, if you specify a function ARN
-I<arn:aws:lambda:us-west-2:111111111111:function:helloworld>, data
+Lambda function ARNs are exact. For example, if you specify a function
+ARN I<arn:aws:lambda:us-west-2:111111111111:function:helloworld>, data
 events will only be logged for
 I<arn:aws:lambda:us-west-2:111111111111:function:helloworld>. They will
 not be logged for

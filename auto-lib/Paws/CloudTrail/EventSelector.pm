@@ -56,7 +56,7 @@ event selector, but the total number of data resources cannot exceed
 you configure resource logging for all data events.
 
 For more information, see Data Events
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)
 and Limits in AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
 in the I<AWS CloudTrail User Guide>.
@@ -68,7 +68,7 @@ in the I<AWS CloudTrail User Guide>.
 for your trail.
 
 For more information, see Management Events
-(http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events)
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events)
 in the I<AWS CloudTrail User Guide>.
 
 By default, the value is C<true>.
