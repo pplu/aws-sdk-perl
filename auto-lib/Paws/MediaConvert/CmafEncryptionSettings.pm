@@ -3,6 +3,7 @@ package Paws::MediaConvert::CmafEncryptionSettings;
   has ConstantInitializationVector => (is => 'ro', isa => 'Str', request_name => 'constantInitializationVector', traits => ['NameInRequest']);
   has EncryptionMethod => (is => 'ro', isa => 'Str', request_name => 'encryptionMethod', traits => ['NameInRequest']);
   has InitializationVectorInManifest => (is => 'ro', isa => 'Str', request_name => 'initializationVectorInManifest', traits => ['NameInRequest']);
+  has SpekeKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::SpekeKeyProviderCmaf', request_name => 'spekeKeyProvider', traits => ['NameInRequest']);
   has StaticKeyProvider => (is => 'ro', isa => 'Paws::MediaConvert::StaticKeyProvider', request_name => 'staticKeyProvider', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 1;
@@ -49,17 +50,24 @@ will follow the segment number by default.
 
 =head2 EncryptionMethod => Str
 
-  Encrypts the segments with the given encryption scheme. Leave blank to
-disable. Selecting 'Disabled' in the web interface also disables
-encryption.
+  Specify the encryption scheme that you want the service to use when
+encrypting your CMAF segments. Choose AES-CBC subsample (SAMPLE-AES) or
+AES_CTR (AES-CTR).
 
 
 =head2 InitializationVectorInManifest => Str
 
-  The Initialization Vector is a 128-bit number used in conjunction with
-the key for encrypting blocks. If set to INCLUDE, Initialization Vector
-is listed in the manifest. Otherwise Initialization Vector is not in
-the manifest.
+  When you use DRM with CMAF outputs, choose whether the service writes
+the 128-bit encryption initialization vector in the HLS and DASH
+manifests.
+
+
+=head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProviderCmaf>
+
+  If your output group type is CMAF, use these settings when doing DRM
+encryption with a SPEKE-compliant key provider. If your output group
+type is HLS, DASH, or Microsoft Smooth, use the SpekeKeyProvider
+settings instead.
 
 
 =head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
@@ -69,7 +77,10 @@ the manifest.
 
 =head2 Type => Str
 
-  Indicates which type of key provider is used for encryption.
+  Specify whether your DRM encryption key is static or from a key
+provider that follows the SPEKE standard. For more information about
+SPEKE, see
+https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
 
 
 

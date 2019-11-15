@@ -1,6 +1,7 @@
 package Paws::MediaConvert::Job;
   use Moose;
   has AccelerationSettings => (is => 'ro', isa => 'Paws::MediaConvert::AccelerationSettings', request_name => 'accelerationSettings', traits => ['NameInRequest']);
+  has AccelerationStatus => (is => 'ro', isa => 'Str', request_name => 'accelerationStatus', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has BillingTagsSource => (is => 'ro', isa => 'Str', request_name => 'billingTagsSource', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
@@ -10,11 +11,14 @@ package Paws::MediaConvert::Job;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has JobPercentComplete => (is => 'ro', isa => 'Int', request_name => 'jobPercentComplete', traits => ['NameInRequest']);
   has JobTemplate => (is => 'ro', isa => 'Str', request_name => 'jobTemplate', traits => ['NameInRequest']);
+  has Messages => (is => 'ro', isa => 'Paws::MediaConvert::JobMessages', request_name => 'messages', traits => ['NameInRequest']);
   has OutputGroupDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroupDetail]', request_name => 'outputGroupDetails', traits => ['NameInRequest']);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
   has RetryCount => (is => 'ro', isa => 'Int', request_name => 'retryCount', traits => ['NameInRequest']);
   has Role => (is => 'ro', isa => 'Str', request_name => 'role', traits => ['NameInRequest'], required => 1);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
+  has SimulateReservedQueue => (is => 'ro', isa => 'Str', request_name => 'simulateReservedQueue', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
   has Timing => (is => 'ro', isa => 'Paws::MediaConvert::Timing', request_name => 'timing', traits => ['NameInRequest']);
@@ -60,6 +64,23 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
   Accelerated transcoding can significantly speed up jobs with long,
 visually complex content.
+
+
+=head2 AccelerationStatus => Str
+
+  Describes whether the current job is running with accelerated
+transcoding. For jobs that have Acceleration (AccelerationMode) set to
+DISABLED, AccelerationStatus is always NOT_APPLICABLE. For jobs that
+have Acceleration (AccelerationMode) set to ENABLED or PREFERRED,
+AccelerationStatus is one of the other states. AccelerationStatus is
+IN_PROGRESS initially, while the service determines whether the input
+files and job settings are compatible with accelerated transcoding. If
+they are, AcclerationStatus is ACCELERATED. If your input files and job
+settings aren't compatible with accelerated transcoding, the service
+either fails your job or runs it without accelerated transcoding,
+depending on how you set Acceleration (AccelerationMode). When the
+service runs your job without accelerated transcoding,
+AccelerationStatus is NOT_ACCELERATED.
 
 
 =head2 Arn => Str
@@ -122,9 +143,20 @@ those cases, jobPercentComplete returns a null value.
 job template.
 
 
+=head2 Messages => L<Paws::MediaConvert::JobMessages>
+
+  Provides messages from the service about jobs that you have already
+successfully submitted.
+
+
 =head2 OutputGroupDetails => ArrayRef[L<Paws::MediaConvert::OutputGroupDetail>]
 
   List of output group details
+
+
+=head2 Priority => Int
+
+  Relative priority on the job.
 
 
 =head2 Queue => Str
@@ -151,6 +183,15 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>
 
   JobSettings contains all the transcode settings for a job.
+
+
+=head2 SimulateReservedQueue => Str
+
+  Enable this setting when you run a test job to estimate how many
+reserved transcoding slots (RTS) you need. When this is enabled,
+MediaConvert runs your job from an on-demand queue with similar
+performance to what you will see with one RTS in a reserved queue. This
+setting is disabled by default.
 
 
 =head2 Status => Str

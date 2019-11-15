@@ -76,9 +76,11 @@ language for rendering the captions text.
 
 =head2 LanguageDescription => Str
 
-  Human readable information to indicate captions available for players
-(eg. English, or Spanish). Alphanumeric characters, spaces, and
-underscore are legal.
+  Specify a label for this set of output captions. For example,
+"English", "Director commentary", or "track_2". For streaming outputs,
+MediaConvert passes this information into destination manifests for
+display on the end-viewer's player device. For outputs in other output
+groups, the service ignores this setting.
 
 
 

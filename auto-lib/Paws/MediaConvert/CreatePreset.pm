@@ -83,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               AiffSettings => {
                 BitDepth   => 1,    # min: 16, max: 24; OPTIONAL
-                Channels   => 1,    # min: 1, max: 2; OPTIONAL
+                Channels   => 1,    # min: 1, max: 64; OPTIONAL
                 SampleRate => 1,    # min: 8000, max: 192000; OPTIONAL
               },    # OPTIONAL
               Codec => 'AAC'
@@ -154,7 +154,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               WavSettings => {
                 BitDepth   => 1,         # min: 16, max: 24; OPTIONAL
-                Channels   => 1,         # min: 1, max: 8; OPTIONAL
+                Channels   => 1,         # min: 1, max: 64; OPTIONAL
                 Format     => 'RIFF',    # values: RIFF, RF64; OPTIONAL
                 SampleRate => 1,         # min: 8000, max: 192000; OPTIONAL
               },    # OPTIONAL
@@ -176,8 +176,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ...
                 ],              # OPTIONAL
               },    # OPTIONAL
-              ChannelsIn  => 1,    # min: 1, max: 16; OPTIONAL
-              ChannelsOut => 1,    # min: 1, max: 8; OPTIONAL
+              ChannelsIn  => 1,    # min: 1, max: 64; OPTIONAL
+              ChannelsOut => 1,    # min: 1, max: 64; OPTIONAL
             },    # OPTIONAL
             StreamName => 'My__stringPatternWS',    # OPTIONAL
           },
@@ -215,7 +215,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 YPosition => 1,    # max: 2147483647; OPTIONAL
               },    # OPTIONAL
               DestinationType => 'BURN_IN'
-              , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
+              , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, IMSC, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
               DvbSubDestinationSettings => {
                 Alignment => 'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
                 BackgroundColor =>
@@ -246,6 +246,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Destination608ChannelNumber => 1,    # min: 1, max: 4; OPTIONAL
                 Destination708ServiceNumber => 1,    # min: 1, max: 6; OPTIONAL
               },    # OPTIONAL
+              ImscDestinationSettings => {
+                StylePassthrough =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+              },    # OPTIONAL
               SccDestinationSettings => {
                 Framerate => 'FRAMERATE_23_97'
                 , # values: FRAMERATE_23_97, FRAMERATE_24, FRAMERATE_29_97_DROPFRAME, FRAMERATE_29_97_NON_DROPFRAME; OPTIONAL
@@ -253,6 +257,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TeletextDestinationSettings => {
                 PageNumber => 'My__stringMin3Max3Pattern1809aFAF09aEAE'
                 ,    # min: 3, max: 3; OPTIONAL
+                PageTypes => [
+                  'PAGE_TYPE_INITIAL',
+                  ... # values: PAGE_TYPE_INITIAL, PAGE_TYPE_SUBTITLE, PAGE_TYPE_ADDL_INFO, PAGE_TYPE_PROGRAM_SCHEDULE, PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE
+                ],    # OPTIONAL
               },    # OPTIONAL
               TtmlDestinationSettings => {
                 StylePassthrough =>
@@ -429,19 +437,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               RepeatPps => 'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
-              SceneChangeDetect =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
-              Slices   => 1,               # min: 1, max: 32; OPTIONAL
-              SlowPal  => 'DISABLED',      # values: DISABLED, ENABLED; OPTIONAL
-              Softness => 1,               # max: 128; OPTIONAL
+              SceneChangeDetect => 'DISABLED'
+              ,    # values: DISABLED, ENABLED, TRANSITION_DETECTION; OPTIONAL
+              Slices   => 1,             # min: 1, max: 32; OPTIONAL
+              SlowPal  => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              Softness => 1,             # max: 128; OPTIONAL
               SpatialAdaptiveQuantization =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
-              Syntax   => 'DEFAULT',       # values: DEFAULT, RP2027; OPTIONAL
-              Telecine => 'NONE',          # values: NONE, SOFT, HARD; OPTIONAL
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+              Syntax   => 'DEFAULT',     # values: DEFAULT, RP2027; OPTIONAL
+              Telecine => 'NONE',        # values: NONE, SOFT, HARD; OPTIONAL
               TemporalAdaptiveQuantization =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
               UnregisteredSeiTimecode =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
             },    # OPTIONAL
             H265Settings => {
               AdaptiveQuantization =>
@@ -487,8 +495,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RateControlMode => 'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
               SampleAdaptiveOffsetFilterMode =>
                 'DEFAULT',    # values: DEFAULT, ADAPTIVE, OFF; OPTIONAL
-              SceneChangeDetect =>
-                'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              SceneChangeDetect => 'DISABLED'
+              ,    # values: DISABLED, ENABLED, TRANSITION_DETECTION; OPTIONAL
               Slices  => 1,             # min: 1, max: 32; OPTIONAL
               SlowPal => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
               SpatialAdaptiveQuantization =>
@@ -574,7 +582,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           DropFrameTimecode => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
           FixedAfd          => 1,          # max: 15; OPTIONAL
-          Height            => 1,          # min: 32, max: 2160; OPTIONAL
+          Height            => 1,          # min: 32, max: 4096; OPTIONAL
           Position          => {
             Height => 1,                   # min: 2, max: 2147483647; OPTIONAL
             Width  => 1,                   # min: 2, max: 2147483647; OPTIONAL
@@ -626,7 +634,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FadeOut  => 1,    # max: 2147483647; OPTIONAL
                   Height   => 1,    # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
-                    'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
+                    'My__stringMin14PatternHttpHttpsS3BmpBMPPngPNGTgaTGA'
                   ,                 # min: 14; OPTIONAL
                   ImageX  => 1,     # max: 2147483647; OPTIONAL
                   ImageY  => 1,     # max: 2147483647; OPTIONAL
@@ -640,7 +648,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             NoiseReducer => {
               Filter => 'BILATERAL'
-              , # values: BILATERAL, MEAN, GAUSSIAN, LANCZOS, SHARPEN, CONSERVE, SPATIAL; OPTIONAL
+              , # values: BILATERAL, MEAN, GAUSSIAN, LANCZOS, SHARPEN, CONSERVE, SPATIAL, TEMPORAL; OPTIONAL
               FilterSettings => {
                 Strength => 1,    # max: 3; OPTIONAL
               },    # OPTIONAL
@@ -648,6 +656,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 PostFilterSharpenStrength => 1,    # max: 3; OPTIONAL
                 Speed                     => 1,    # min: -2, max: 3; OPTIONAL
                 Strength                  => 1,    # max: 16; OPTIONAL
+              },    # OPTIONAL
+              TemporalFilterSettings => {
+                AggressiveMode => 1,    # max: 4; OPTIONAL
+                Speed          => 1,    # min: -1, max: 3; OPTIONAL
+                Strength       => 1,    # max: 16; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             TimecodeBurnin => {

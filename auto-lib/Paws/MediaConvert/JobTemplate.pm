@@ -7,6 +7,7 @@ package Paws::MediaConvert::JobTemplate;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
   has StatusUpdateInterval => (is => 'ro', isa => 'Str', request_name => 'statusUpdateInterval', traits => ['NameInRequest']);
@@ -82,6 +83,11 @@ visually complex content.
 
   A name you create for each job template. Each name must be unique
 within your account.
+
+
+=head2 Priority => Int
+
+  Relative priority on the job.
 
 
 =head2 Queue => Str

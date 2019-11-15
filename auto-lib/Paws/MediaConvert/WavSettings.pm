@@ -48,9 +48,9 @@ encoding quality for this audio track.
 
 =head2 Channels => Int
 
-  Set Channels to specify the number of channels in this output audio
-track. With WAV, valid values 1, 2, 4, and 8. In the console, these
-values are Mono, Stereo, 4-Channel, and 8-Channel, respectively.
+  Specify the number of channels in this output audio track. Valid values
+are 1 and even numbers up to 64. For example, 1, 2, 4, 6, and so on, up
+to 64.
 
 
 =head2 Format => Str

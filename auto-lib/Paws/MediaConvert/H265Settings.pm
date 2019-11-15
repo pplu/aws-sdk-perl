@@ -197,18 +197,20 @@ megabits as 5000000.
 
 =head2 InterlaceMode => Str
 
-  Use Interlace mode (InterlaceMode) to choose the scan line type for the
-output. * Top Field First (TOP_FIELD) and Bottom Field First
-(BOTTOM_FIELD) produce interlaced output with the entire output having
-the same field polarity (top or bottom first). * Follow, Default Top
-(FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use
-the same field polarity as the source. Therefore, behavior depends on
-the input scan type. - If the source is interlaced, the output will be
-interlaced with the same polarity as the source (it will follow the
-source). The output could therefore be a mix of "top field first" and
-"bottom field first". - If the source is progressive, the output will
-be interlaced with "top field first" or "bottom field first" polarity,
-depending on which of the Follow options you chose.
+  Choose the scan line type for the output. Choose Progressive
+(PROGRESSIVE) to create a progressive output, regardless of the scan
+type of your input. Choose Top Field First (TOP_FIELD) or Bottom Field
+First (BOTTOM_FIELD) to create an output that's interlaced with the
+same field polarity throughout. Choose Follow, Default Top
+(FOLLOW_TOP_FIELD) or Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) to
+create an interlaced output with the same field polarity as the source.
+If the source is interlaced, the output will be interlaced with the
+same polarity as the source (it will follow the source). The output
+could therefore be a mix of "top field first" and "bottom field first".
+If the source is progressive, your output will be interlaced with "top
+field first" or "bottom field first" polarity, depending on which of
+the Follow options you chose. If you don't choose a value, the service
+will default to Progressive (PROGRESSIVE).
 
 
 =head2 MaxBitrate => Int
@@ -286,7 +288,12 @@ dynamically selects best strength based on content
 
 =head2 SceneChangeDetect => Str
 
-  Scene change detection (inserts I-frames on scene changes).
+  Enable this setting to insert I-frames at scene changes that the
+service automatically detects. This improves video quality and is
+enabled by default. If this output uses QVBR, choose Transition
+detection (TRANSITION_DETECTION) for further video quality improvement.
+For more information about QVBR, see
+https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
 
 
 =head2 Slices => Int
@@ -353,18 +360,17 @@ message.
 
 =head2 WriteMp4PackagingType => Str
 
-  Use this setting only for outputs encoded with H.265 that are in CMAF
-or DASH output groups. If you include writeMp4PackagingType in your
-JSON job specification for other outputs, your video might not work
-properly with downstream systems and video players. If the location of
-parameter set NAL units don't matter in your workflow, ignore this
-setting. The service defaults to marking your output as HEV1. Choose
-HVC1 to mark your output as HVC1. This makes your output compliant with
-this specification: ISO IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15
-3rd Edition. For these outputs, the service stores parameter set NAL
-units in the sample headers but not in the samples directly. Keep the
-default HEV1 to mark your output as HEV1. For these outputs, the
-service writes parameter set NAL units directly into the samples.
+  If the location of parameter set NAL units doesn't matter in your
+workflow, ignore this setting. Use this setting in your CMAF, DASH, or
+file MP4 output. For file MP4 outputs, choosing HVC1 can create video
+that doesn't work properly with some downstream systems and video
+players. Choose HVC1 to mark your output as HVC1. This makes your
+output compliant with the following specification: ISO IECJTC1 SC29
+N13798 Text ISO/IEC FDIS 14496-15 3rd Edition. For these outputs, the
+service stores parameter set NAL units in the sample headers but not in
+the samples directly. The service defaults to marking your output as
+HEV1. For these outputs, the service writes parameter set NAL units
+directly into the samples.
 
 
 

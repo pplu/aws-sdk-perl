@@ -7,6 +7,7 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
+  has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has WriteSegmentTimelineInRepresentation => (is => 'ro', isa => 'Str', request_name => 'writeSegmentTimelineInRepresentation', traits => ['NameInRequest']);
@@ -94,6 +95,17 @@ the creation of many output files as in other output types.
 smooth playout.
 
 
+=head2 MpdProfile => Str
+
+  Specify whether your DASH profile is on-demand or main. When you choose
+Main profile (MAIN_PROFILE), the service signals
+urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When
+you choose On-demand (ON_DEMAND_PROFILE), the service signals
+urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you
+choose On-demand, you must also set the output group setting Segment
+control (SegmentControl) to Single file (SINGLE_FILE).
+
+
 =head2 SegmentControl => Str
 
   When set to SINGLE_FILE, a single output file is generated, which is
@@ -112,14 +124,13 @@ the creation of many output files as in other output types.
 
 =head2 WriteSegmentTimelineInRepresentation => Str
 
-  When you enable Precise segment duration in manifests
-(writeSegmentTimelineInRepresentation), your DASH manifest shows
-precise segment durations. The segment duration information appears
-inside the SegmentTimeline element, inside SegmentTemplate at the
-Representation level. When this feature isn't enabled, the segment
-durations in your DASH manifest are approximate. The segment duration
-information appears in the duration attribute of the SegmentTemplate
-element.
+  If you get an HTTP error in the 400 range when you play back your DASH
+output, enable this setting and run your transcoding job again. When
+you enable this setting, the service writes precise segment durations
+in the DASH manifest. The segment duration information appears inside
+the SegmentTimeline element, inside SegmentTemplate at the
+Representation level. When you don't enable this setting, the service
+writes approximate segment durations in your DASH manifest.
 
 
 

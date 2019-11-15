@@ -37,8 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Source settings (SourceSettings) contains the group of settings for
-captions in the input.
+If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml
+file, specify the URI of the input captions source file. If your input
+captions are IMSC in an IMF package, use TrackSourceSettings instead of
+FileSoureSettings.
 
 =head1 ATTRIBUTES
 
@@ -60,7 +62,10 @@ captions in the input.
 
 =head2 FileSourceSettings => L<Paws::MediaConvert::FileSourceSettings>
 
-  Settings for File-based Captions in Source
+  If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an
+xml file, specify the URI of the input caption source file. If your
+caption source is IMSC in an IMF package, use TrackSourceSettings
+instead of FileSoureSettings.
 
 
 =head2 SourceType => Str
@@ -76,8 +81,10 @@ The service cannot auto-detect caption format.
 
 =head2 TrackSourceSettings => L<Paws::MediaConvert::TrackSourceSettings>
 
-  Settings specific to caption sources that are specfied by track number.
-Sources include IMSC in IMF.
+  Settings specific to caption sources that are specified by track
+number. Currently, this is only IMSC captions in an IMF package. If
+your caption source is IMSC 1.1 in a separate xml file, use
+FileSourceSettings instead of TrackSourceSettings.
 
 
 

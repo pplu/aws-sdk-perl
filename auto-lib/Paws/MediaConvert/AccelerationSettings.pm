@@ -41,7 +41,8 @@ Elemental MediaConvert User Guide.
 
 =head2 B<REQUIRED> Mode => Str
 
-  Acceleration configuration for the job.
+  Specify the conditions when the service will run your job with
+accelerated transcoding.
 
 
 

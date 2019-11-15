@@ -4,6 +4,7 @@ package Paws::MediaConvert::CaptionDestinationSettings;
   has DestinationType => (is => 'ro', isa => 'Str', request_name => 'destinationType', traits => ['NameInRequest']);
   has DvbSubDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DvbSubDestinationSettings', request_name => 'dvbSubDestinationSettings', traits => ['NameInRequest']);
   has EmbeddedDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::EmbeddedDestinationSettings', request_name => 'embeddedDestinationSettings', traits => ['NameInRequest']);
+  has ImscDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::ImscDestinationSettings', request_name => 'imscDestinationSettings', traits => ['NameInRequest']);
   has SccDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::SccDestinationSettings', request_name => 'sccDestinationSettings', traits => ['NameInRequest']);
   has TeletextDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextDestinationSettings', request_name => 'teletextDestinationSettings', traits => ['NameInRequest']);
   has TtmlDestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::TtmlDestinationSettings', request_name => 'ttmlDestinationSettings', traits => ['NameInRequest']);
@@ -53,8 +54,8 @@ caption data is Embedded or Teletext.
 
   Specify the format for this set of captions on this output. The default
 format is embedded without SCTE-20. Other options are embedded with
-SCTE-20, burn-in, DVB-sub, SCC, SRT, teletext, TTML, and web-VTT. If
-you are using SCTE-20, choose SCTE-20 plus embedded
+SCTE-20, burn-in, DVB-sub, IMSC, SCC, SRT, teletext, TTML, and web-VTT.
+If you are using SCTE-20, choose SCTE-20 plus embedded
 (SCTE20_PLUS_EMBEDDED) to create an output that complies with the
 SCTE-43 spec. To create a non-compliant output where the embedded
 captions come first, choose Embedded plus SCTE-20
@@ -70,6 +71,11 @@ captions come first, choose Embedded plus SCTE-20
 
   Settings specific to embedded/ancillary caption outputs, including
 608/708 Channel destination number.
+
+
+=head2 ImscDestinationSettings => L<Paws::MediaConvert::ImscDestinationSettings>
+
+  Settings specific to IMSC caption outputs.
 
 
 =head2 SccDestinationSettings => L<Paws::MediaConvert::SccDestinationSettings>

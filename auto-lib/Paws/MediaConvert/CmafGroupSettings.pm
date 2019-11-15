@@ -11,6 +11,7 @@ package Paws::MediaConvert::CmafGroupSettings;
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
+  has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
   has SegmentControl => (is => 'ro', isa => 'Str', request_name => 'segmentControl', traits => ['NameInRequest']);
   has SegmentLength => (is => 'ro', isa => 'Int', request_name => 'segmentLength', traits => ['NameInRequest']);
   has StreamInfResolution => (is => 'ro', isa => 'Str', request_name => 'streamInfResolution', traits => ['NameInRequest']);
@@ -134,6 +135,17 @@ length that you specify with the previous segment. For example, your
 segment length is 3 seconds and your final segment is .5 seconds
 without a minimum final segment length; when you set the minimum final
 segment length to 1, your final segment is 3.5 seconds.
+
+
+=head2 MpdProfile => Str
+
+  Specify whether your DASH profile is on-demand or main. When you choose
+Main profile (MAIN_PROFILE), the service signals
+urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When
+you choose On-demand (ON_DEMAND_PROFILE), the service signals
+urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you
+choose On-demand, you must also set the output group setting Segment
+control (SegmentControl) to Single file (SINGLE_FILE).
 
 
 =head2 SegmentControl => Str

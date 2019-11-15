@@ -5,6 +5,7 @@ package Paws::MediaConvert::UpdateJobTemplate;
   has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority');
   has Queue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'queue');
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobTemplateSettings', traits => ['NameInRequest'], request_name => 'settings');
   has StatusUpdateInterval => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusUpdateInterval');
@@ -37,17 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateJobTemplateResponse = $mediaconvert->UpdateJobTemplate(
       Name                 => 'My__string',
       AccelerationSettings => {
-        Mode => 'DISABLED',    # values: DISABLED, ENABLED
+        Mode => 'DISABLED',    # values: DISABLED, ENABLED, PREFERRED
 
       },    # OPTIONAL
       Category    => 'My__string',    # OPTIONAL
       Description => 'My__string',    # OPTIONAL
+      Priority    => 1,               # OPTIONAL
       Queue       => 'My__string',    # OPTIONAL
       Settings    => {
         AdAvailOffset => 1,           # min: -1000, max: 1000; OPTIONAL
         AvailBlanking => {
           AvailBlankingImage =>
-            'My__stringMin14PatternS3BmpBMPPngPNG',    # min: 14; OPTIONAL
+            'My__stringMin14PatternHttpHttpsS3BmpBMPPngPNG', # min: 14; OPTIONAL
         },    # OPTIONAL
         Esam => {
           ManifestConfirmConditionNotification => {
@@ -66,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioSelectorGroups => {
               'My__string' => {
                 AudioSelectorNames => [
-                  'My__stringMin1', ...    # min: 1; OPTIONAL
+                  'My__stringMin1', ...    # min: 1
                 ],                         # OPTIONAL
               },
             },    # OPTIONAL
@@ -77,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 DefaultSelection =>
                   'DEFAULT',    # values: DEFAULT, NOT_DEFAULT; OPTIONAL
                 ExternalAudioFileInput =>
-'My__stringPatternS3MM2VVMMPPEEGGAAVVIIMMPP4FFLLVVMMPPTTMMPPGGMM4VVTTRRPPFF4VVMM2TTSSTTSS264HH264MMKKVVMMOOVVMMTTSSMM2TTWWMMVVAASSFFVVOOBB3GGPP3GGPPPPMMXXFFDDIIVVXXXXVVIIDDRRAAWWDDVVGGXXFFMM1VV3GG2VVMMFFMM3UU8LLCCHHGGXXFFMMPPEEGG2MMXXFFMMPPEEGG2MMXXFFHHDDWWAAVVYY4MMAAAACCAAIIFFFFMMPP2AACC3EECC3DDTTSSEE'
+'My__stringPatternHttpHttpsS3MM2VVMMPPEEGGMMPP3AAVVIIMMPP4FFLLVVMMPPTTMMPPGGMM4VVTTRRPPFF4VVMM2TTSSTTSS264HH264MMKKVVMMOOVVMMTTSSMM2TTWWMMVVAASSFFVVOOBB3GGPP3GGPPPPMMXXFFDDIIVVXXXXVVIIDDRRAAWWDDVVGGXXFFMM1VV3GG2VVMMFFMM3UU8LLCCHHGGXXFFMMPPEEGG2MMXXFFMMPPEEGG2MMXXFFHHDDWWAAVVYY4MMAAAACCAAIIFFFFMMPP2AACC3EECC3DDTTSSEE'
                 ,               # OPTIONAL
                 LanguageCode => 'ENG'
                 , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
@@ -97,8 +99,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ...
                     ],                    # OPTIONAL
                   },    # OPTIONAL
-                  ChannelsIn  => 1,    # min: 1, max: 16; OPTIONAL
-                  ChannelsOut => 1,    # min: 1, max: 8; OPTIONAL
+                  ChannelsIn  => 1,    # min: 1, max: 64; OPTIONAL
+                  ChannelsOut => 1,    # min: 1, max: 64; OPTIONAL
                 },    # OPTIONAL
                 SelectorType =>
                   'PID',    # values: PID, TRACK, LANGUAGE_CODE; OPTIONAL
@@ -115,8 +117,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: ENG, SPA, FRA, DEU, GER, ZHO, ARA, HIN, JPN, RUS, POR, ITA, URD, VIE, KOR, PAN, ABK, AAR, AFR, AKA, SQI, AMH, ARG, HYE, ASM, AVA, AVE, AYM, AZE, BAM, BAK, EUS, BEL, BEN, BIH, BIS, BOS, BRE, BUL, MYA, CAT, KHM, CHA, CHE, NYA, CHU, CHV, COR, COS, CRE, HRV, CES, DAN, DIV, NLD, DZO, ENM, EPO, EST, EWE, FAO, FIJ, FIN, FRM, FUL, GLA, GLG, LUG, KAT, ELL, GRN, GUJ, HAT, HAU, HEB, HER, HMO, HUN, ISL, IDO, IBO, IND, INA, ILE, IKU, IPK, GLE, JAV, KAL, KAN, KAU, KAS, KAZ, KIK, KIN, KIR, KOM, KON, KUA, KUR, LAO, LAT, LAV, LIM, LIN, LIT, LUB, LTZ, MKD, MLG, MSA, MAL, MLT, GLV, MRI, MAR, MAH, MON, NAU, NAV, NDE, NBL, NDO, NEP, SME, NOR, NOB, NNO, OCI, OJI, ORI, ORM, OSS, PLI, FAS, POL, PUS, QUE, QAA, RON, ROH, RUN, SMO, SAG, SAN, SRD, SRB, SNA, III, SND, SIN, SLK, SLV, SOM, SOT, SUN, SWA, SSW, SWE, TGL, TAH, TGK, TAM, TAT, TEL, THA, BOD, TIR, TON, TSO, TSN, TUR, TUK, TWI, UIG, UKR, UZB, VEN, VOL, WLN, CYM, FRY, WOL, XHO, YID, YOR, ZHA, ZUL, ORJ, QPC, TNG; OPTIONAL
                 SourceSettings => {
                   AncillarySourceSettings => {
+                    Convert608To708 =>
+                      'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
                     SourceAncillaryChannelNumber =>
-                      1,    # min: 1, max: 4; OPTIONAL
+                      1,              # min: 1, max: 4; OPTIONAL
+                    TerminateCaptions =>
+                      'END_OF_INPUT', # values: END_OF_INPUT, DISABLED; OPTIONAL
                   },    # OPTIONAL
                   DvbSubSourceSettings => {
                     Pid => 1,    # min: 1, max: 2147483647; OPTIONAL
@@ -126,12 +132,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
                     Source608ChannelNumber => 1,    # min: 1, max: 4; OPTIONAL
                     Source608TrackNumber   => 1,    # min: 1, max: 1; OPTIONAL
+                    TerminateCaptions =>
+                      'END_OF_INPUT', # values: END_OF_INPUT, DISABLED; OPTIONAL
                   },    # OPTIONAL
                   FileSourceSettings => {
                     Convert608To708 =>
                       'UPCONVERT',    # values: UPCONVERT, DISABLED; OPTIONAL
                     SourceFile =>
-'My__stringMin14PatternS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTSmiSMI'
+'My__stringMin14PatternHttpHttpsS3SccSCCTtmlTTMLDfxpDFXPStlSTLSrtSRTXmlXMLSmiSMI'
                     ,                 # min: 14; OPTIONAL
                     TimeDelta =>
                       1,    # min: -2147483648, max: 2147483647; OPTIONAL
@@ -166,7 +174,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   FadeOut  => 1,        # max: 2147483647; OPTIONAL
                   Height   => 1,        # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
-                    'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
+                    'My__stringMin14PatternHttpHttpsS3BmpBMPPngPNGTgaTGA'
                   ,                     # min: 14; OPTIONAL
                   ImageX  => 1,         # max: 2147483647; OPTIONAL
                   ImageY  => 1,         # max: 2147483647; OPTIONAL
@@ -196,6 +204,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PsiControl => 'IGNORE_PSI',  # values: IGNORE_PSI, USE_PSI; OPTIONAL
             TimecodeSource => 'EMBEDDED'
             ,    # values: EMBEDDED, ZEROBASED, SPECIFIEDSTART; OPTIONAL
+            TimecodeStart => 'My__stringMin11Max11Pattern01D20305D205D'
+            ,    # min: 11, max: 11; OPTIONAL
             VideoSelector => {
               ColorSpace => 'FOLLOW'
               ,    # values: FOLLOW, REC_601, REC_709, HDR10, HLG_2020; OPTIONAL
@@ -227,7 +237,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FramerateDenominator => 1,    # min: 1, max: 17895697; OPTIONAL
             FramerateNumerator   => 1,    # min: 1, max: 2147483640; OPTIONAL
           },    # OPTIONAL
-          Input => 'My__stringMin14Max1285PatternS3Mov09Png'
+          Input => 'My__stringMin14Max1285PatternHttpHttpsS3Mov09Png'
           ,     # min: 14, max: 1285; OPTIONAL
           InsertionMode => 'MOV',    # values: MOV, PNG; OPTIONAL
           Offset        => {
@@ -269,9 +279,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     'My__stringMin32Max32Pattern09aFAF32'
                   ,    # min: 32, max: 32; OPTIONAL
                   EncryptionMethod =>
-                    'SAMPLE_AES',    # values: SAMPLE_AES; OPTIONAL
+                    'SAMPLE_AES',    # values: SAMPLE_AES, AES_CTR; OPTIONAL
                   InitializationVectorInManifest =>
                     'INCLUDE',       # values: INCLUDE, EXCLUDE; OPTIONAL
+                  SpekeKeyProvider => {
+                    CertificateArn =>
+                      'My__stringPatternArnAwsUsGovAcm',    # OPTIONAL
+                    DashSignaledSystemIds => [
+'My__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12',
+                      ...                                   # min: 36, max: 36
+                    ],                                      # OPTIONAL
+                    HlsSignaledSystemIds => [
+'My__stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12',
+                      ...                                   # min: 36, max: 36
+                    ],                                      # OPTIONAL
+                    ResourceId => 'My__stringPatternW',     # OPTIONAL
+                    Url        => 'My__stringPatternHttps', # OPTIONAL
+                  },    # OPTIONAL
                   StaticKeyProvider => {
                     KeyFormat =>
                       'My__stringPatternIdentityAZaZ26AZaZ09163',    # OPTIONAL
@@ -279,7 +303,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     StaticKeyValue    => 'My__stringPatternAZaZ0932', # OPTIONAL
                     Url               => 'My__string',
                   },    # OPTIONAL
-                  Type => 'STATIC_KEY',    # values: STATIC_KEY; OPTIONAL
+                  Type => 'SPEKE',    # values: SPEKE, STATIC_KEY; OPTIONAL
                 },    # OPTIONAL
                 FragmentLength => 1,    # min: 1, max: 2147483647; OPTIONAL
                 ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
@@ -287,6 +311,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'FLOATING_POINT',  # values: FLOATING_POINT, INTEGER; OPTIONAL
                 MinBufferTime         => 1,    # max: 2147483647; OPTIONAL
                 MinFinalSegmentLength => 1,    # OPTIONAL
+                MpdProfile => 'MAIN_PROFILE'
+                ,    # values: MAIN_PROFILE, ON_DEMAND_PROFILE; OPTIONAL
                 SegmentControl => 'SINGLE_FILE'
                 ,    # values: SINGLE_FILE, SEGMENTED_FILES; OPTIONAL
                 SegmentLength => 1,    # min: 1, max: 2147483647; OPTIONAL
@@ -328,7 +354,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FragmentLength => 1,    # min: 1, max: 2147483647; OPTIONAL
                 HbbtvCompliance =>
                   'HBBTV_1_5',          # values: HBBTV_1_5, NONE; OPTIONAL
-                MinBufferTime  => 1,              # max: 2147483647; OPTIONAL
+                MinBufferTime => 1,               # max: 2147483647; OPTIONAL
+                MpdProfile    => 'MAIN_PROFILE'
+                ,    # values: MAIN_PROFILE, ON_DEMAND_PROFILE; OPTIONAL
                 SegmentControl => 'SINGLE_FILE'
                 ,    # values: SINGLE_FILE, SEGMENTED_FILES; OPTIONAL
                 SegmentLength => 1,    # min: 1, max: 2147483647; OPTIONAL
@@ -525,7 +553,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                       AiffSettings => {
                         BitDepth   => 1,    # min: 16, max: 24; OPTIONAL
-                        Channels   => 1,    # min: 1, max: 2; OPTIONAL
+                        Channels   => 1,    # min: 1, max: 64; OPTIONAL
                         SampleRate => 1,    # min: 8000, max: 192000; OPTIONAL
                       },    # OPTIONAL
                       Codec => 'AAC'
@@ -598,7 +626,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                       WavSettings => {
                         BitDepth   => 1,      # min: 16, max: 24; OPTIONAL
-                        Channels   => 1,      # min: 1, max: 8; OPTIONAL
+                        Channels   => 1,      # min: 1, max: 64; OPTIONAL
                         Format     => 'RIFF', # values: RIFF, RF64; OPTIONAL
                         SampleRate => 1,      # min: 8000, max: 192000; OPTIONAL
                       },    # OPTIONAL
@@ -620,8 +648,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           ...
                         ],              # OPTIONAL
                       },    # OPTIONAL
-                      ChannelsIn  => 1,    # min: 1, max: 16; OPTIONAL
-                      ChannelsOut => 1,    # min: 1, max: 8; OPTIONAL
+                      ChannelsIn  => 1,    # min: 1, max: 64; OPTIONAL
+                      ChannelsOut => 1,    # min: 1, max: 64; OPTIONAL
                     },    # OPTIONAL
                     StreamName => 'My__stringPatternWS',    # OPTIONAL
                   },
@@ -629,7 +657,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],                                          # OPTIONAL
                 CaptionDescriptions => [
                   {
-                    CaptionSelectorName => 'My__stringMin1',  # min: 1; OPTIONAL
+                    CaptionSelectorName => 'My__stringMin1',    # min: 1
                     CustomLanguageCode => 'My__stringMin3Max3PatternAZaZ3'
                     ,    # min: 3, max: 3; OPTIONAL
                     DestinationSettings => {
@@ -662,7 +690,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         YPosition => 1,    # max: 2147483647; OPTIONAL
                       },    # OPTIONAL
                       DestinationType => 'BURN_IN'
-                      , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
+                      , # values: BURN_IN, DVB_SUB, EMBEDDED, EMBEDDED_PLUS_SCTE20, IMSC, SCTE20_PLUS_EMBEDDED, SCC, SRT, SMI, TELETEXT, TTML, WEBVTT; OPTIONAL
                       DvbSubDestinationSettings => {
                         Alignment =>
                           'CENTERED',    # values: CENTERED, LEFT; OPTIONAL
@@ -697,6 +725,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Destination708ServiceNumber =>
                           1,    # min: 1, max: 6; OPTIONAL
                       },    # OPTIONAL
+                      ImscDestinationSettings => {
+                        StylePassthrough =>
+                          'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                      },    # OPTIONAL
                       SccDestinationSettings => {
                         Framerate => 'FRAMERATE_23_97'
                         , # values: FRAMERATE_23_97, FRAMERATE_24, FRAMERATE_29_97_DROPFRAME, FRAMERATE_29_97_NON_DROPFRAME; OPTIONAL
@@ -704,6 +736,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       TeletextDestinationSettings => {
                         PageNumber => 'My__stringMin3Max3Pattern1809aFAF09aEAE'
                         ,    # min: 3, max: 3; OPTIONAL
+                        PageTypes => [
+                          'PAGE_TYPE_INITIAL',
+                          ... # values: PAGE_TYPE_INITIAL, PAGE_TYPE_SUBTITLE, PAGE_TYPE_ADDL_INFO, PAGE_TYPE_PROGRAM_SCHEDULE, PAGE_TYPE_HEARING_IMPAIRED_SUBTITLE
+                        ],    # OPTIONAL
                       },    # OPTIONAL
                       TtmlDestinationSettings => {
                         StylePassthrough =>
@@ -833,7 +869,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },    # OPTIONAL
                 Extension      => 'My__string',
-                NameModifier   => 'My__stringMin1',    # min: 1; OPTIONAL
+                NameModifier   => 'My__stringMin1',    # min: 1
                 OutputSettings => {
                   HlsSettings => {
                     AudioGroupId => 'My__string',
@@ -916,9 +952,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
                       RepeatPps =>
                         'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                      SceneChangeDetect =>
-                        'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                      Slices => 1,     # min: 1, max: 32; OPTIONAL
+                      SceneChangeDetect => 'DISABLED'
+                      , # values: DISABLED, ENABLED, TRANSITION_DETECTION; OPTIONAL
+                      Slices => 1,    # min: 1, max: 32; OPTIONAL
                       SlowPal =>
                         'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                       Softness => 1,   # max: 128; OPTIONAL
@@ -983,9 +1019,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'VBR',    # values: VBR, CBR, QVBR; OPTIONAL
                       SampleAdaptiveOffsetFilterMode =>
                         'DEFAULT',    # values: DEFAULT, ADAPTIVE, OFF; OPTIONAL
-                      SceneChangeDetect =>
-                        'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                      Slices => 1,     # min: 1, max: 32; OPTIONAL
+                      SceneChangeDetect => 'DISABLED'
+                      , # values: DISABLED, ENABLED, TRANSITION_DETECTION; OPTIONAL
+                      Slices => 1,    # min: 1, max: 32; OPTIONAL
                       SlowPal =>
                         'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                       SpatialAdaptiveQuantization =>
@@ -1082,7 +1118,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DropFrameTimecode =>
                     'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                   FixedAfd => 1,   # max: 15; OPTIONAL
-                  Height   => 1,   # min: 32, max: 2160; OPTIONAL
+                  Height   => 1,   # min: 32, max: 4096; OPTIONAL
                   Position => {
                     Height => 1,    # min: 2, max: 2147483647; OPTIONAL
                     Width  => 1,    # min: 2, max: 2147483647; OPTIONAL
@@ -1135,7 +1171,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           FadeOut  => 1,    # max: 2147483647; OPTIONAL
                           Height   => 1,    # max: 2147483647; OPTIONAL
                           ImageInserterInput =>
-                            'My__stringMin14PatternS3BmpBMPPngPNGTgaTGA'
+'My__stringMin14PatternHttpHttpsS3BmpBMPPngPNGTgaTGA'
                           ,                 # min: 14; OPTIONAL
                           ImageX  => 1,     # max: 2147483647; OPTIONAL
                           ImageY  => 1,     # max: 2147483647; OPTIONAL
@@ -1150,7 +1186,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                     NoiseReducer => {
                       Filter => 'BILATERAL'
-                      , # values: BILATERAL, MEAN, GAUSSIAN, LANCZOS, SHARPEN, CONSERVE, SPATIAL; OPTIONAL
+                      , # values: BILATERAL, MEAN, GAUSSIAN, LANCZOS, SHARPEN, CONSERVE, SPATIAL, TEMPORAL; OPTIONAL
                       FilterSettings => {
                         Strength => 1,    # max: 3; OPTIONAL
                       },    # OPTIONAL
@@ -1158,6 +1194,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         PostFilterSharpenStrength => 1,    # max: 3; OPTIONAL
                         Speed    => 1,    # min: -2, max: 3; OPTIONAL
                         Strength => 1,    # max: 16; OPTIONAL
+                      },    # OPTIONAL
+                      TemporalFilterSettings => {
+                        AggressiveMode => 1,    # max: 4; OPTIONAL
+                        Speed          => 1,    # min: -1, max: 3; OPTIONAL
+                        Strength       => 1,    # max: 16; OPTIONAL
                       },    # OPTIONAL
                     },    # OPTIONAL
                     TimecodeBurnin => {
@@ -1230,6 +1271,16 @@ The new description for the job template, if you are changing it.
 =head2 B<REQUIRED> Name => Str
 
 The name of the job template you are modifying
+
+
+
+=head2 Priority => Int
+
+Specify the relative priority for this job. In any given queue, the
+service begins processing the job with the highest value first. When
+more than one job has the same priority, the service begins processing
+the job that you submitted first. If you don't specify a priority, the
+service uses the default value 0.
 
 
 

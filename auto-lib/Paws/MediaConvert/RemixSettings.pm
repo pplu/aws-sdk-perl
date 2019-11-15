@@ -61,7 +61,7 @@ be different.
 =head2 ChannelsOut => Int
 
   Specify the number of channels in this output after remixing. Valid
-values: 1, 2, 4, 6, 8
+values: 1, 2, 4, 6, 8... 64. (1 and even numbers to 64.)
 
 
 

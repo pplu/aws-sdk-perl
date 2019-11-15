@@ -81,8 +81,8 @@ keep this setting blank.
 
 =head2 ImageInserterInput => Str
 
-  Specify the Amazon S3 location of the image that you want to overlay on
-the video. Use a PNG or TGA file.
+  Specify the HTTP, HTTPS, or Amazon S3 location of the image that you
+want to overlay on the video. Use a PNG or TGA file.
 
 
 =head2 ImageX => Int

@@ -296,7 +296,12 @@ define Rate control mode.
 
 =head2 SceneChangeDetect => Str
 
-  Scene change detection (inserts I-frames on scene changes).
+  Enable this setting to insert I-frames at scene changes that the
+service automatically detects. This improves video quality and is
+enabled by default. If this output uses QVBR, choose Transition
+detection (TRANSITION_DETECTION) for further video quality improvement.
+For more information about QVBR, see
+https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
 
 
 =head2 Slices => Int

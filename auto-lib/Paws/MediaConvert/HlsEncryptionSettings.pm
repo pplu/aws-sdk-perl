@@ -73,7 +73,10 @@ protection.
 
 =head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
 
-  Settings for use with a SPEKE key provider
+  If your output group type is HLS, DASH, or Microsoft Smooth, use these
+settings when doing DRM encryption with a SPEKE-compliant key provider.
+If your output group type is CMAF, use the SpekeKeyProviderCmaf
+settings instead.
 
 
 =head2 StaticKeyProvider => L<Paws::MediaConvert::StaticKeyProvider>
@@ -83,7 +86,10 @@ protection.
 
 =head2 Type => Str
 
-  Indicates which type of key provider is used for encryption.
+  Specify whether your DRM encryption key is static or from a key
+provider that follows the SPEKE standard. For more information about
+SPEKE, see
+https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
 
 
 

@@ -3,6 +3,7 @@ package Paws::MediaConvert::NoiseReducer;
   has Filter => (is => 'ro', isa => 'Str', request_name => 'filter', traits => ['NameInRequest']);
   has FilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerFilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has SpatialFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerSpatialFilterSettings', request_name => 'spatialFilterSettings', traits => ['NameInRequest']);
+  has TemporalFilterSettings => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducerTemporalFilterSettings', request_name => 'temporalFilterSettings', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::NoiseReducer object:
 
-  $service_obj->Method(Att1 => { Filter => $value, ..., SpatialFilterSettings => $value  });
+  $service_obj->Method(Att1 => { Filter => $value, ..., TemporalFilterSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,11 +47,11 @@ Noise reducer filter (NoiseReducerFilter).
 
   Use Noise reducer filter (NoiseReducerFilter) to select one of the
 following spatial image filtering functions. To use this setting, you
-must also enable Noise reducer (NoiseReducer). * Bilateral is an edge
-preserving noise reduction filter. * Mean (softest), Gaussian, Lanczos,
-and Sharpen (sharpest) are convolution filters. * Conserve is a min/max
-noise reduction filter. * Spatial is a frequency-domain filter based on
-JND principles.
+must also enable Noise reducer (NoiseReducer). * Bilateral preserves
+edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and
+Sharpen (sharpest) do convolution filtering. * Conserve does min/max
+noise reduction. * Spatial does frequency-domain filtering based on JND
+principles. * Temporal optimizes video quality for complex motion.
 
 
 =head2 FilterSettings => L<Paws::MediaConvert::NoiseReducerFilterSettings>
@@ -61,6 +62,11 @@ JND principles.
 =head2 SpatialFilterSettings => L<Paws::MediaConvert::NoiseReducerSpatialFilterSettings>
 
   Noise reducer filter settings for spatial filter.
+
+
+=head2 TemporalFilterSettings => L<Paws::MediaConvert::NoiseReducerTemporalFilterSettings>
+
+  Noise reducer filter settings for temporal filter.
 
 
 

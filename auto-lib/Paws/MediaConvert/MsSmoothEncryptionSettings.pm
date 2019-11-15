@@ -39,7 +39,10 @@ specify the value SpekeKeyProvider.
 
 =head2 SpekeKeyProvider => L<Paws::MediaConvert::SpekeKeyProvider>
 
-  Settings for use with a SPEKE key provider
+  If your output group type is HLS, DASH, or Microsoft Smooth, use these
+settings when doing DRM encryption with a SPEKE-compliant key provider.
+If your output group type is CMAF, use the SpekeKeyProviderCmaf
+settings instead.
 
 
 

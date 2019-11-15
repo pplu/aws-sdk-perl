@@ -47,9 +47,9 @@ encoding quality for this audio track.
 
 =head2 Channels => Int
 
-  Set Channels to specify the number of channels in this output audio
-track. Choosing Mono in the console will give you 1 output channel;
-choosing Stereo will give you 2. In the API, valid values are 1 and 2.
+  Specify the number of channels in this output audio track. Valid values
+are 1 and even numbers up to 64. For example, 1, 2, 4, 6, and so on, up
+to 64.
 
 
 =head2 SampleRate => Int

@@ -31,8 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings specific to caption sources that are specfied by track number.
-Sources include IMSC in IMF.
+Settings specific to caption sources that are specified by track
+number. Currently, this is only IMSC captions in an IMF package. If
+your caption source is IMSC 1.1 in a separate xml file, use
+FileSourceSettings instead of TrackSourceSettings.
 
 =head1 ATTRIBUTES
 
