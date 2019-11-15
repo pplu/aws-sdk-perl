@@ -86,8 +86,8 @@ return (\u000D)
 
 =back
 
-Upon success, the response includes the same trust policy as a
-URL-encoded JSON string.
+Upon success, the response includes the same trust policy in JSON
+format.
 
 
 

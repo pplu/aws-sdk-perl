@@ -39,7 +39,7 @@ supports multiple values) to use in the simulation. This information is
 used when evaluating the C<Condition> elements of the input policies.
 
 This data type is used as an input parameter to C< SimulateCustomPolicy
-> and C< SimulateCustomPolicy >.
+> and C< SimulatePrincipalPolicy >.
 
 =head1 ATTRIBUTES
 
