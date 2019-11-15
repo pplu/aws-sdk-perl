@@ -41,8 +41,9 @@ may have only a single video selector.
 
 =head2 ColorSpace => Str
 
-  Specifies the colorspace of an input. This setting works in tandem with
-colorSpaceConversion to determine if any conversion will be performed.
+  Specifies the color space of an input. This setting works in tandem
+with colorSpaceUsage and a video description's colorSpaceSettingsChoice
+to determine if any conversion will be performed.
 
 
 =head2 ColorSpaceUsage => Str

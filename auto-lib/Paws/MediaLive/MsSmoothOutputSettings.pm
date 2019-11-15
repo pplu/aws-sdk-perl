@@ -1,5 +1,6 @@
 package Paws::MediaLive::MsSmoothOutputSettings;
   use Moose;
+  has H265PackagingType => (is => 'ro', isa => 'Str', request_name => 'h265PackagingType', traits => ['NameInRequest']);
   has NameModifier => (is => 'ro', isa => 'Str', request_name => 'nameModifier', traits => ['NameInRequest']);
 1;
 
@@ -20,20 +21,27 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::MsSmoothOutputSettings object:
 
-  $service_obj->Method(Att1 => { NameModifier => $value, ..., NameModifier => $value  });
+  $service_obj->Method(Att1 => { H265PackagingType => $value, ..., NameModifier => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MediaLive::MsSmoothOutputSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->NameModifier
+  $result->Att1->H265PackagingType
 
 =head1 DESCRIPTION
 
 Ms Smooth Output Settings
 
 =head1 ATTRIBUTES
+
+
+=head2 H265PackagingType => Str
+
+  Only applicable when this output is referencing an H.265 video
+description. Specifies whether MP4 segments should be packaged as HEV1
+or HVC1.
 
 
 =head2 NameModifier => Str
