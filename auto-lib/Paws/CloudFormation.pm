@@ -676,6 +676,8 @@ back to it, causing the update rollback to fail.
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
 
+=item [ResourcesToImport => ArrayRef[L<Paws::CloudFormation::ResourceToImport>]]
+
 =item [ResourceTypes => ArrayRef[Str|Undef]]
 
 =item [RoleARN => Str]
@@ -712,9 +714,11 @@ stack.
 To create a change set for a stack that doesn't exist, for the
 C<ChangeSetType> parameter, specify C<CREATE>. To create a change set
 for an existing stack, specify C<UPDATE> for the C<ChangeSetType>
-parameter. After the C<CreateChangeSet> call successfully completes,
-AWS CloudFormation starts creating the change set. To check the status
-of the change set or to review it, use the DescribeChangeSet action.
+parameter. To create a change set for an import operation, specify
+C<IMPORT> for the C<ChangeSetType> parameter. After the
+C<CreateChangeSet> call successfully completes, AWS CloudFormation
+starts creating the change set. To check the status of the change set
+or to review it, use the DescribeChangeSet action.
 
 When you are satisfied with the changes the change set will make,
 execute the change set by using the ExecuteChangeSet action. AWS
@@ -1853,11 +1857,14 @@ Returns: a L<Paws::CloudFormation::UpdateTerminationProtectionOutput> instance
 Updates termination protection for the specified stack. If a user
 attempts to delete a stack with termination protection enabled, the
 operation fails and the stack remains unchanged. For more information,
-see Protecting a Stack From Being Deleted in the I<AWS CloudFormation
-User Guide>.
+see Protecting a Stack From Being Deleted
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+in the I<AWS CloudFormation User Guide>.
 
-For nested stacks, termination protection is set on the root stack and
-cannot be changed directly on the nested stack.
+For nested stacks
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+termination protection is set on the root stack and cannot be changed
+directly on the nested stack.
 
 
 =head2 ValidateTemplate

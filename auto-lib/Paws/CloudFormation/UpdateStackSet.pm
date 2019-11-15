@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                             # OPTIONAL
       Regions => [ 'MyRegion', ... ],                # OPTIONAL
-      Tags => [
+      Tags    => [
         {
           Key   => 'MyTagKey',                       # min: 1, max: 128
           Value => 'MyTagValue',                     # min: 1, max: 256
@@ -134,7 +134,7 @@ previously.
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicity acknowledge that your stack template
+In some cases, you must explicitly acknowledge that your stack template
 contains certain capabilities in order for AWS CloudFormation to update
 the stack set and its associated stack instances.
 

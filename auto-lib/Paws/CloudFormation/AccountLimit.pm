@@ -32,8 +32,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-The AccountLimit data type. For more information about account limits,
-see AWS CloudFormation Limits
+The AccountLimit data type.
+
+CloudFormation has the following limits per account:
+
+=over
+
+=item *
+
+Number of concurrent resources
+
+=item *
+
+Number of stacks
+
+=item *
+
+Number of stack outputs
+
+=back
+
+For more information about these account limits, and other
+CloudFormation limits, see AWS CloudFormation Limits
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html)
 in the I<AWS CloudFormation User Guide>.
 
@@ -43,6 +63,9 @@ in the I<AWS CloudFormation User Guide>.
 =head2 Name => Str
 
   The name of the account limit.
+
+Values: C<ConcurrentResourcesLimit> | C<StackLimit> |
+C<StackOutputsLimit>
 
 
 =head2 Value => Int

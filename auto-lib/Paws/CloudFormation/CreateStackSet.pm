@@ -94,7 +94,7 @@ in the I<AWS CloudFormation User Guide>.
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
-In some cases, you must explicity acknowledge that your stack set
+In some cases, you must explicitly acknowledge that your stack set
 template contains certain capabilities in order for AWS CloudFormation
 to create the stack set and related stack instances.
 

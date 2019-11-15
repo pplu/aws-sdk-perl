@@ -7,6 +7,7 @@ package Paws::CloudFormation::GetTemplateSummaryOutput;
   has Description => (is => 'ro', isa => 'Str');
   has Metadata => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ParameterDeclaration]');
+  has ResourceIdentifierSummaries => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::ResourceIdentifierSummary]');
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Version => (is => 'ro', isa => 'Str');
 
@@ -61,6 +62,15 @@ The value that is defined for the C<Metadata> property of the template.
 
 A list of parameter declarations that describe various properties for
 each parameter.
+
+
+=head2 ResourceIdentifierSummaries => ArrayRef[L<Paws::CloudFormation::ResourceIdentifierSummary>]
+
+A list of resource identifier summaries that describe the target
+resources of an import operation and the properties you can provide
+during the import to identify the target resources. For example,
+C<BucketName> is a possible identifier property for an
+C<AWS::S3::Bucket> resource.
 
 
 =head2 ResourceTypes => ArrayRef[Str|Undef]
