@@ -8,6 +8,7 @@ package Paws::Glue::CreateDevEndpointResponse;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has RoleArn => (is => 'ro', isa => 'Str');
@@ -34,6 +35,29 @@ Paws::Glue::CreateDevEndpointResponse
 =head2 Arguments => L<Paws::Glue::MapValue>
 
 The map of arguments used to configure this C<DevEndpoint>.
+
+Valid arguments are:
+
+=over
+
+=item *
+
+C<"--enable-glue-datacatalog": "">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "3">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "2">
+
+=back
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
 
 
 =head2 AvailabilityZone => Str
@@ -66,6 +90,13 @@ loaded in your C<DevEndpoint>.
 =head2 FailureReason => Str
 
 The reason for a current failure in this C<DevEndpoint>.
+
+
+=head2 GlueVersion => Str
+
+Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for running your ETL scripts on development endpoints.
 
 
 =head2 NumberOfNodes => Int

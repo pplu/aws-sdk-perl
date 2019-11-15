@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::UserD
 
 =head1 DESCRIPTION
 
-A structure used to create or updata a user-defined function.
+A structure used to create or update a user-defined function.
 
 =head1 ATTRIBUTES
 

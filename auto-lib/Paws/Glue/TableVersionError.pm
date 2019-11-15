@@ -40,7 +40,7 @@ An error record for table-version operations.
 
 =head2 ErrorDetail => L<Paws::Glue::ErrorDetail>
 
-  Detail about the error.
+  The details about the error.
 
 
 =head2 TableName => Str

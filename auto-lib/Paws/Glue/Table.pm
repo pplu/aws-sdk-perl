@@ -4,6 +4,7 @@ package Paws::Glue::Table;
   has CreateTime => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has IsRegisteredWithLakeFormation => (is => 'ro', isa => 'Bool');
   has LastAccessTime => (is => 'ro', isa => 'Str');
   has LastAnalyzedTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -53,45 +54,51 @@ Represents a collection of related data organized in columns and rows.
 
 =head2 CreatedBy => Str
 
-  Person or entity who created the table.
+  The person or entity who created the table.
 
 
 =head2 CreateTime => Str
 
-  Time when the table definition was created in the Data Catalog.
+  The time when the table definition was created in the Data Catalog.
 
 
 =head2 DatabaseName => Str
 
-  Name of the metadata database where the table metadata resides. For
-Hive compatibility, this must be all lowercase.
+  The name of the database where the table metadata resides. For Hive
+compatibility, this must be all lowercase.
 
 
 =head2 Description => Str
 
-  Description of the table.
+  A description of the table.
+
+
+=head2 IsRegisteredWithLakeFormation => Bool
+
+  Indicates whether the table has been registered with AWS Lake
+Formation.
 
 
 =head2 LastAccessTime => Str
 
-  Last time the table was accessed. This is usually taken from HDFS, and
-may not be reliable.
+  The last time that the table was accessed. This is usually taken from
+HDFS, and might not be reliable.
 
 
 =head2 LastAnalyzedTime => Str
 
-  Last time column statistics were computed for this table.
+  The last time that column statistics were computed for this table.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the table. For Hive compatibility, this must be entirely
+  The table name. For Hive compatibility, this must be entirely
 lowercase.
 
 
 =head2 Owner => Str
 
-  Owner of the table.
+  The owner of the table.
 
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
@@ -104,16 +111,16 @@ lowercase.
   A list of columns by which the table is partitioned. Only primitive
 types are supported as partition keys.
 
-When creating a table used by Athena, and you do not specify any
-C<partitionKeys>, you must at least set the value of C<partitionKeys>
-to an empty list. For example:
+When you create a table used by Amazon Athena, and you do not specify
+any C<partitionKeys>, you must at least set the value of
+C<partitionKeys> to an empty list. For example:
 
 C<"PartitionKeys": []>
 
 
 =head2 Retention => Int
 
-  Retention time for this table.
+  The retention time for this table.
 
 
 =head2 StorageDescriptor => L<Paws::Glue::StorageDescriptor>
@@ -129,7 +136,7 @@ of this table.
 
 =head2 UpdateTime => Str
 
-  Last time the table was updated.
+  The last time that the table was updated.
 
 
 =head2 ViewExpandedText => Str

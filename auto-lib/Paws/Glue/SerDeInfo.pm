@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::SerDe
 
 =head1 DESCRIPTION
 
-Information about a serialization/deserialization program (SerDe) which
+Information about a serialization/deserialization program (SerDe) that
 serves as an extractor and loader.
 
 =head1 ATTRIBUTES
@@ -51,7 +51,7 @@ serves as an extractor and loader.
 
 =head2 SerializationLibrary => Str
 
-  Usually the class that implements the SerDe. An example is:
+  Usually the class that implements the SerDe. An example is
 C<org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe>.
 
 

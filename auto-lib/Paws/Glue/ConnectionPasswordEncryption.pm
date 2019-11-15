@@ -44,7 +44,7 @@ is also enabled.
 
 This encryption requires that you set AWS KMS key permissions to enable
 or restrict access on the password key according to your security
-requirements. For example, you might want only admin users to have
+requirements. For example, you might want only administrators to have
 decrypt permission on the password key.
 
 =head1 ATTRIBUTES

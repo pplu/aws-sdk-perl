@@ -50,8 +50,7 @@ Represents a slice of table data.
 
 =head2 DatabaseName => Str
 
-  The name of the catalog database where the table in question is
-located.
+  The name of the catalog database in which to create the partition.
 
 
 =head2 LastAccessTime => Str
@@ -78,7 +77,7 @@ stored.
 
 =head2 TableName => Str
 
-  The name of the table in question.
+  The name of the database table in which to create the partition.
 
 
 =head2 Values => ArrayRef[Str|Undef]

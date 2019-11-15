@@ -59,6 +59,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 The map of arguments to add the map of arguments used to configure the
 C<DevEndpoint>.
 
+Valid arguments are:
+
+=over
+
+=item *
+
+C<"--enable-glue-datacatalog": "">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "3">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "2">
+
+=back
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
+
 
 
 =head2 AddPublicKeys => ArrayRef[Str|Undef]

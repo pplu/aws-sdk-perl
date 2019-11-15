@@ -42,35 +42,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Table
 
 =head1 DESCRIPTION
 
-Structure used to create or update the table.
+A structure used to define a table.
 
 =head1 ATTRIBUTES
 
 
 =head2 Description => Str
 
-  Description of the table.
+  A description of the table.
 
 
 =head2 LastAccessTime => Str
 
-  Last time the table was accessed.
+  The last time that the table was accessed.
 
 
 =head2 LastAnalyzedTime => Str
 
-  Last time column statistics were computed for this table.
+  The last time that column statistics were computed for this table.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the table. For Hive compatibility, this is folded to lowercase
+  The table name. For Hive compatibility, this is folded to lowercase
 when it is stored.
 
 
 =head2 Owner => Str
 
-  Owner of the table.
+  The table owner.
 
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
@@ -83,16 +83,16 @@ when it is stored.
   A list of columns by which the table is partitioned. Only primitive
 types are supported as partition keys.
 
-When creating a table used by Athena, and you do not specify any
-C<partitionKeys>, you must at least set the value of C<partitionKeys>
-to an empty list. For example:
+When you create a table used by Amazon Athena, and you do not specify
+any C<partitionKeys>, you must at least set the value of
+C<partitionKeys> to an empty list. For example:
 
 C<"PartitionKeys": []>
 
 
 =head2 Retention => Int
 
-  Retention time for this table.
+  The retention time for this table.
 
 
 =head2 StorageDescriptor => L<Paws::Glue::StorageDescriptor>

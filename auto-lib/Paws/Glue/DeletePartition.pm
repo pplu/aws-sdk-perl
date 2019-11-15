@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partition to be deleted resides.
-If none is supplied, the AWS account ID is used by default.
+If none is provided, the AWS account ID is used by default.
 
 
 
@@ -67,7 +67,7 @@ The values that define the partition.
 
 =head2 B<REQUIRED> TableName => Str
 
-The name of the table where the partition to be deleted is located.
+The name of the table that contains the partition to be deleted.
 
 
 

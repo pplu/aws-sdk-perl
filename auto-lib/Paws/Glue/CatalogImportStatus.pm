@@ -40,7 +40,7 @@ A structure containing migration status information.
 
 =head2 ImportCompleted => Bool
 
-  True if the migration has completed, or False otherwise.
+  C<True> if the migration has completed, or C<False> otherwise.
 
 
 =head2 ImportedBy => Str

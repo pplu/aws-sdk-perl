@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Skewe
 
 =head1 DESCRIPTION
 
-Specifies skewed values in a table. Skewed are ones that occur with
-very high frequency.
+Specifies skewed values in a table. Skewed values are those that occur
+with very high frequency.
 
 =head1 ATTRIBUTES
 

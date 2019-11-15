@@ -59,7 +59,7 @@ Defines a point that a job can resume processing.
 
 =head2 PreviousRunId => Str
 
-  The unique run identifier associated with the previous job run..
+  The unique run identifier associated with the previous job run.
 
 
 =head2 Run => Int
@@ -69,7 +69,7 @@ Defines a point that a job can resume processing.
 
 =head2 RunId => Str
 
-  The unique run identifier associated with this job run.
+  The run ID number.
 
 
 =head2 Version => Int

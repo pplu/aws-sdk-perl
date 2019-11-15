@@ -39,7 +39,7 @@ Specifies a version of a table.
 
 =head2 Table => L<Paws::Glue::Table>
 
-  The table in question
+  The table in question.
 
 
 =head2 VersionId => Str

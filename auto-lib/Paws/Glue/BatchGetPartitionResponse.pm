@@ -22,7 +22,7 @@ A list of the requested partitions.
 
 =head2 UnprocessedKeys => ArrayRef[L<Paws::Glue::PartitionValueList>]
 
-A list of the partition values in the request for which partions were
+A list of the partition values in the request for which partitions were
 not returned.
 
 

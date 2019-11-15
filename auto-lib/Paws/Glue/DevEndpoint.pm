@@ -7,6 +7,7 @@ package Paws::Glue::DevEndpoint;
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has LastModifiedTimestamp => (is => 'ro', isa => 'Str');
   has LastUpdateStatus => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
@@ -64,8 +65,28 @@ transform, and load (ETL) scripts.
 
   A map of arguments used to configure the C<DevEndpoint>.
 
-Currently, only C<"--enable-glue-datacatalog": ""> is supported as a
-valid argument.
+Valid arguments are:
+
+=over
+
+=item *
+
+C<"--enable-glue-datacatalog": "">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "3">
+
+=item *
+
+C<"GLUE_PYTHON_VERSION": "2">
+
+=back
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
 
 
 =head2 AvailabilityZone => Str
@@ -106,6 +127,26 @@ currently supported.
 =head2 FailureReason => Str
 
   The reason for a current failure in this C<DevEndpoint>.
+
+
+=head2 GlueVersion => Str
+
+  Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for running your ETL scripts on development endpoints.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
+
+Development endpoints that are created without specifying a Glue
+version default to Glue 0.9.
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
 
 
 =head2 LastModifiedTimestamp => Str
@@ -226,6 +267,9 @@ recommend this worker type for memory-intensive jobs.
 
 =back
 
+Known issue: when a development endpoint is created with the C<G.2X>
+C<WorkerType> configuration, the Spark drivers for the development
+endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk.
 
 
 =head2 YarnEndpointAddress => Str

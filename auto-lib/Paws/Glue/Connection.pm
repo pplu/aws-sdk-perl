@@ -77,8 +77,8 @@ encryption settings, this field stores the encrypted password.
 
 =item *
 
-C<JDBC_DRIVER_JAR_URI> - The Amazon S3 path of the JAR file that
-contains the JDBC driver to use.
+C<JDBC_DRIVER_JAR_URI> - The Amazon Simple Storage Service (Amazon S3)
+path of the JAR file that contains the JDBC driver to use.
 
 =item *
 
@@ -94,7 +94,7 @@ C<JDBC_ENGINE_VERSION> - The version of the JDBC engine to use.
 
 =item *
 
-C<CONFIG_FILES> - (Reserved for future use).
+C<CONFIG_FILES> - (Reserved for future use.)
 
 =item *
 
@@ -107,8 +107,34 @@ C<JDBC_CONNECTION_URL> - The URL for the JDBC connection.
 =item *
 
 C<JDBC_ENFORCE_SSL> - A Boolean string (true, false) specifying whether
-Secure Sockets Layer (SSL) with hostname matching will be enforced for
-the JDBC connection on the client. The default is false.
+Secure Sockets Layer (SSL) with hostname matching is enforced for the
+JDBC connection on the client. The default is false.
+
+=item *
+
+C<CUSTOM_JDBC_CERT> - An Amazon S3 location specifying the customer's
+root certificate. AWS Glue uses this root certificate to validate the
+customerE<rsquo>s certificate when connecting to the customer database.
+AWS Glue only handles X.509 certificates. The certificate provided must
+be DER-encoded and supplied in Base64 encoding PEM format.
+
+=item *
+
+C<SKIP_CUSTOM_JDBC_CERT_VALIDATION> - By default, this is C<false>. AWS
+Glue validates the Signature algorithm and Subject Public Key Algorithm
+for the customer certificate. The only permitted algorithms for the
+Signature algorithm are SHA256withRSA, SHA384withRSA or SHA512withRSA.
+For the Subject Public Key Algorithm, the key length must be at least
+2048. You can set the value of this property to C<true> to skip AWS
+GlueE<rsquo>s validation of the customer certificate.
+
+=item *
+
+C<CUSTOM_JDBC_CERT_STRING> - A custom JDBC certificate string which is
+used for domain match or distinguished name match to prevent a
+man-in-the-middle attack. In Oracle database, this is used as the
+C<SSL_SERVER_CERT_DN>; in Microsoft SQL Server, this is used as the
+C<hostNameInCertificate>.
 
 =back
 

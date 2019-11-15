@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Resou
 
 =head1 DESCRIPTION
 
-URIs for function resources.
+The URIs for function resources.
 
 =head1 ATTRIBUTES
 

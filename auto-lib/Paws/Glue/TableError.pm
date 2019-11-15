@@ -39,12 +39,12 @@ An error record for table operations.
 
 =head2 ErrorDetail => L<Paws::Glue::ErrorDetail>
 
-  Detail about the error.
+  The details about the error.
 
 
 =head2 TableName => Str
 
-  Name of the table. For Hive compatibility, this must be entirely
+  The name of the table. For Hive compatibility, this must be entirely
 lowercase.
 
 

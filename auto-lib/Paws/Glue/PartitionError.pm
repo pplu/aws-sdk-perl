@@ -39,7 +39,7 @@ Contains information about a partition error.
 
 =head2 ErrorDetail => L<Paws::Glue::ErrorDetail>
 
-  Details about the partition error.
+  The details about the partition error.
 
 
 =head2 PartitionValues => ArrayRef[Str|Undef]

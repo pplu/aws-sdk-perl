@@ -30,7 +30,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $CreateDatabaseResponse = $glue->CreateDatabase(
       DatabaseInput => {
-        Name        => 'MyNameString',           # min: 1, max: 255
+        Name                          => 'MyNameString',    # min: 1, max: 255
+        CreateTableDefaultPermissions => [
+          {
+            Permissions => [
+              'ALL',
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+            ],    # OPTIONAL
+            Principal => {
+              DataLakePrincipalIdentifier =>
+                'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
         Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
         LocationUri => 'MyURI',                  # min: 1, max: 1024; OPTIONAL
         Parameters  => {
@@ -50,14 +63,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which to create the database. If none is
-supplied, the AWS account ID is used by default.
+provided, the AWS account ID is used by default.
 
 
 
 =head2 B<REQUIRED> DatabaseInput => L<Paws::Glue::DatabaseInput>
 
-A C<DatabaseInput> object defining the metadata database to create in
-the catalog.
+The metadata for the database.
 
 
 

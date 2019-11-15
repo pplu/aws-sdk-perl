@@ -16,7 +16,7 @@ Paws::Glue::BatchCreatePartitionResponse
 
 =head2 Errors => ArrayRef[L<Paws::Glue::PartitionError>]
 
-Errors encountered when trying to create the requested partitions.
+The errors encountered when trying to create the requested partitions.
 
 
 =head2 _request_id => Str

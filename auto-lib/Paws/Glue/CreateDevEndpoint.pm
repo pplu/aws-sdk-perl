@@ -5,6 +5,7 @@ package Paws::Glue::CreateDevEndpoint;
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
   has ExtraJarsS3Path => (is => 'ro', isa => 'Str');
   has ExtraPythonLibsS3Path => (is => 'ro', isa => 'Str');
+  has GlueVersion => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has PublicKey => (is => 'ro', isa => 'Str');
@@ -46,6 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Arguments       => { 'MyGenericString' => 'MyGenericString', }, # OPTIONAL
       ExtraJarsS3Path => 'MyGenericString',                           # OPTIONAL
       ExtraPythonLibsS3Path => 'MyGenericString',                     # OPTIONAL
+      GlueVersion           => 'MyGlueVersionString',                 # OPTIONAL
       NumberOfNodes         => 1,                                     # OPTIONAL
       NumberOfWorkers       => 1,                                     # OPTIONAL
       PublicKey             => 'MyGenericString',                     # OPTIONAL
@@ -68,6 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ExtraPythonLibsS3Path =
       $CreateDevEndpointResponse->ExtraPythonLibsS3Path;
     my $FailureReason   = $CreateDevEndpointResponse->FailureReason;
+    my $GlueVersion     = $CreateDevEndpointResponse->GlueVersion;
     my $NumberOfNodes   = $CreateDevEndpointResponse->NumberOfNodes;
     my $NumberOfWorkers = $CreateDevEndpointResponse->NumberOfWorkers;
     my $RoleArn         = $CreateDevEndpointResponse->RoleArn;
@@ -119,6 +122,27 @@ You can only use pure Python libraries with a C<DevEndpoint>. Libraries
 that rely on C extensions, such as the pandas
 (http://pandas.pydata.org/) Python data analysis library, are not yet
 supported.
+
+
+
+=head2 GlueVersion => Str
+
+Glue version determines the versions of Apache Spark and Python that
+AWS Glue supports. The Python version indicates the version supported
+for running your ETL scripts on development endpoints.
+
+For more information about the available AWS Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
+
+Development endpoints that are created without specifying a Glue
+version default to Glue 0.9.
+
+You can specify a version of Python support for development endpoints
+by using the C<Arguments> parameter in the C<CreateDevEndpoint> or
+C<UpdateDevEndpoint> APIs. If no arguments are provided, the version
+defaults to Python 2.
 
 
 
@@ -224,6 +248,9 @@ recommend this worker type for memory-intensive jobs.
 
 =back
 
+Known issue: when a development endpoint is created with the C<G.2X>
+C<WorkerType> configuration, the Spark drivers for the development
+endpoint will run on 4 vCPU, 16 GB of memory, and a 64 GB disk.
 
 Valid values are: C<"Standard">, C<"G.1X">, C<"G.2X">
 

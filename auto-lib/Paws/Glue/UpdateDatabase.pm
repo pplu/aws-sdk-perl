@@ -31,7 +31,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $UpdateDatabaseResponse = $glue->UpdateDatabase(
       DatabaseInput => {
-        Name        => 'MyNameString',           # min: 1, max: 255
+        Name                          => 'MyNameString',    # min: 1, max: 255
+        CreateTableDefaultPermissions => [
+          {
+            Permissions => [
+              'ALL',
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+            ],    # OPTIONAL
+            Principal => {
+              DataLakePrincipalIdentifier =>
+                'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],        # OPTIONAL
         Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
         LocationUri => 'MyURI',                  # min: 1, max: 1024; OPTIONAL
         Parameters  => {
@@ -52,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which the metadata database resides. If
-none is supplied, the AWS account ID is used by default.
+none is provided, the AWS account ID is used by default.
 
 
 

@@ -60,7 +60,7 @@ columns in the table.
 
 =head2 Compressed => Bool
 
-  True if the data in the table is compressed, or False if not.
+  C<True> if the data in the table is compressed, or C<False> if not.
 
 
 =head2 InputFormat => Str
@@ -71,7 +71,7 @@ C<TextInputFormat>, or a custom format.
 
 =head2 Location => Str
 
-  The physical location of the table. By default this takes the form of
+  The physical location of the table. By default, this takes the form of
 the warehouse location, followed by the database location in the
 warehouse, followed by the table name.
 
@@ -89,18 +89,18 @@ C<IgnoreKeyTextOutputFormat>, or a custom format.
 
 =head2 Parameters => L<Paws::Glue::ParametersMap>
 
-  User-supplied properties in key-value form.
+  The user-supplied properties in key-value form.
 
 
 =head2 SerdeInfo => L<Paws::Glue::SerDeInfo>
 
-  Serialization/deserialization (SerDe) information.
+  The serialization/deserialization (SerDe) information.
 
 
 =head2 SkewedInfo => L<Paws::Glue::SkewedInfo>
 
-  Information about values that appear very frequently in a column
-(skewed values).
+  The information about values that appear frequently in a column (skewed
+values).
 
 
 =head2 SortColumns => ArrayRef[L<Paws::Glue::Order>]
@@ -110,7 +110,8 @@ C<IgnoreKeyTextOutputFormat>, or a custom format.
 
 =head2 StoredAsSubDirectories => Bool
 
-  True if the table data is stored in subdirectories, or False if not.
+  C<True> if the table data is stored in subdirectories, or C<False> if
+not.
 
 
 

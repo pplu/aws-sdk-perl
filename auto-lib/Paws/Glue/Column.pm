@@ -2,6 +2,7 @@ package Paws::Glue::Column;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
   has Type => (is => 'ro', isa => 'Str');
 1;
 
@@ -40,7 +41,7 @@ A column in a C<Table>.
 
 =head2 Comment => Str
 
-  Free-form text comment.
+  A free-form text comment.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -48,9 +49,14 @@ A column in a C<Table>.
   The name of the C<Column>.
 
 
+=head2 Parameters => L<Paws::Glue::ParametersMap>
+
+  These key-value pairs define properties associated with the column.
+
+
 =head2 Type => Str
 
-  The datatype of data in the C<Column>.
+  The data type of the C<Column>.
 
 
 

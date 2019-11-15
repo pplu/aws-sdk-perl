@@ -43,30 +43,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         PartitionKeys => [
           {
-            Name    => 'MyNameString',          # min: 1, max: 255
-            Comment => 'MyCommentString',       # max: 255; OPTIONAL
-            Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+            Name       => 'MyNameString',       # min: 1, max: 255
+            Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+            Parameters => {
+              'MyKeyString' => 'MyParametersMapValue'
+              ,    # key: min: 1, max: 255, value: max: 512000
+            },    # OPTIONAL
+            Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
-        Retention         => 1,                 # OPTIONAL
+        ],                                   # OPTIONAL
+        Retention         => 1,              # OPTIONAL
         StorageDescriptor => {
           BucketColumns => [
-            'MyNameString', ...                 # min: 1, max: 255
-          ],                                    # OPTIONAL
+            'MyNameString', ...              # min: 1, max: 255
+          ],                                 # OPTIONAL
           Columns => [
             {
-              Name    => 'MyNameString',          # min: 1, max: 255
-              Comment => 'MyCommentString',       # max: 255; OPTIONAL
-              Type    => 'MyColumnTypeString',    # max: 131072; OPTIONAL
+              Name       => 'MyNameString',       # min: 1, max: 255
+              Comment    => 'MyCommentString',    # max: 255; OPTIONAL
+              Parameters => {
+                'MyKeyString' => 'MyParametersMapValue'
+                ,    # key: min: 1, max: 255, value: max: 512000
+              },    # OPTIONAL
+              Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
             },
             ...
-          ],                                      # OPTIONAL
-          Compressed      => 1,                   # OPTIONAL
-          InputFormat     => 'MyFormatString',    # max: 128; OPTIONAL
-          Location        => 'MyLocationString',  # max: 2056; OPTIONAL
-          NumberOfBuckets => 1,                   # OPTIONAL
-          OutputFormat    => 'MyFormatString',    # max: 128; OPTIONAL
+          ],                                   # OPTIONAL
+          Compressed      => 1,                     # OPTIONAL
+          InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
+          Location        => 'MyLocationString',    # max: 2056; OPTIONAL
+          NumberOfBuckets => 1,                     # OPTIONAL
+          OutputFormat    => 'MyFormatString',      # max: 128; OPTIONAL
           Parameters      => {
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000

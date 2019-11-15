@@ -7,6 +7,8 @@ package Paws::Glue::ConnectionProperties;
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has CONFIG_FILES => (is => 'ro', isa => 'Str');
+  has CUSTOM_JDBC_CERT => (is => 'ro', isa => 'Str');
+  has CUSTOM_JDBC_CERT_STRING => (is => 'ro', isa => 'Str');
   has ENCRYPTED_PASSWORD => (is => 'ro', isa => 'Str');
   has HOST => (is => 'ro', isa => 'Str');
   has INSTANCE_ID => (is => 'ro', isa => 'Str');
@@ -18,6 +20,7 @@ package Paws::Glue::ConnectionProperties;
   has JDBC_ENGINE_VERSION => (is => 'ro', isa => 'Str');
   has PASSWORD => (is => 'ro', isa => 'Str');
   has PORT => (is => 'ro', isa => 'Str');
+  has SKIP_CUSTOM_JDBC_CERT_VALIDATION => (is => 'ro', isa => 'Str');
   has USERNAME => (is => 'ro', isa => 'Str');
 1;
 
@@ -57,6 +60,12 @@ This class has no description
 =head2 CONFIG_FILES => Str
 
 
+=head2 CUSTOM_JDBC_CERT => Str
+
+
+=head2 CUSTOM_JDBC_CERT_STRING => Str
+
+
 =head2 ENCRYPTED_PASSWORD => Str
 
 
@@ -88,6 +97,9 @@ This class has no description
 
 
 =head2 PORT => Str
+
+
+=head2 SKIP_CUSTOM_JDBC_CERT_VALIDATION => Str
 
 
 =head2 USERNAME => Str

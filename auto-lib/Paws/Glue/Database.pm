@@ -1,5 +1,6 @@
 package Paws::Glue::Database;
   use Moose;
+  has CreateTableDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PrincipalPermissions]');
   has CreateTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has LocationUri => (is => 'ro', isa => 'Str');
@@ -24,21 +25,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::Database object:
 
-  $service_obj->Method(Att1 => { CreateTime => $value, ..., Parameters => $value  });
+  $service_obj->Method(Att1 => { CreateTableDefaultPermissions => $value, ..., Parameters => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Database object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreateTime
+  $result->Att1->CreateTableDefaultPermissions
 
 =head1 DESCRIPTION
 
-The C<Database> object represents a logical grouping of tables that may
-reside in a Hive metastore or an RDBMS.
+The C<Database> object represents a logical grouping of tables that
+might reside in a Hive metastore or an RDBMS.
 
 =head1 ATTRIBUTES
+
+
+=head2 CreateTableDefaultPermissions => ArrayRef[L<Paws::Glue::PrincipalPermissions>]
+
+  Creates a set of default permissions on the table for principals.
 
 
 =head2 CreateTime => Str
@@ -48,7 +54,7 @@ reside in a Hive metastore or an RDBMS.
 
 =head2 Description => Str
 
-  Description of the database.
+  A description of the database.
 
 
 =head2 LocationUri => Str
@@ -58,7 +64,7 @@ reside in a Hive metastore or an RDBMS.
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the database. For Hive compatibility, this is folded to
+  The name of the database. For Hive compatibility, this is folded to
 lowercase when it is stored.
 
 
