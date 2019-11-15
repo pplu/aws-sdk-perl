@@ -5,12 +5,14 @@ package Paws::EKS::Cluster;
   has ClientRequestToken => (is => 'ro', isa => 'Str', request_name => 'clientRequestToken', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Endpoint => (is => 'ro', isa => 'Str', request_name => 'endpoint', traits => ['NameInRequest']);
+  has Identity => (is => 'ro', isa => 'Paws::EKS::Identity', request_name => 'identity', traits => ['NameInRequest']);
   has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
   has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigResponse', request_name => 'resourcesVpcConfig', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 1;
 
@@ -73,6 +75,11 @@ idempotency of the request.
   The endpoint for your Kubernetes API server.
 
 
+=head2 Identity => L<Paws::EKS::Identity>
+
+  The identity provider information for the cluster.
+
+
 =head2 Logging => L<Paws::EKS::Logging>
 
   The logging configuration for your cluster.
@@ -112,6 +119,13 @@ operations on your behalf.
 =head2 Status => Str
 
   The current status of the cluster.
+
+
+=head2 Tags => L<Paws::EKS::TagMap>
+
+  The metadata that you apply to the cluster to assist with
+categorization and organization. Each tag consists of a key and an
+optional value, both of which you define.
 
 
 =head2 Version => Str

@@ -6,6 +6,7 @@ package Paws::EKS::CreateCluster;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigRequest', traits => ['NameInRequest'], request_name => 'resourcesVpcConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -54,6 +55,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],        # OPTIONAL
+      },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       Version => 'MyString',    # OPTIONAL
     );
@@ -118,6 +122,14 @@ permissions for Amazon EKS to make calls to other AWS API operations on
 your behalf. For more information, see Amazon EKS Service IAM Role
 (https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
 in the I< I<Amazon EKS User Guide> >.
+
+
+
+=head2 Tags => L<Paws::EKS::TagMap>
+
+The metadata to apply to the cluster to assist with categorization and
+organization. Each tag consists of a key and an optional value, both of
+which you define.
 
 
 

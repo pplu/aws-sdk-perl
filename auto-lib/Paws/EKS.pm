@@ -39,9 +39,24 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListUpdates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListUpdates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateClusterConfig {
@@ -103,7 +118,7 @@ package Paws::EKS;
   }
 
 
-  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListUpdates UpdateClusterConfig UpdateClusterVersion / }
+  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion / }
 
 1;
 
@@ -163,6 +178,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 =item [ClientRequestToken => Str]
 
 =item [Logging => L<Paws::EKS::Logging>]
+
+=item [Tags => L<Paws::EKS::TagMap>]
 
 =item [Version => Str]
 
@@ -313,6 +330,22 @@ Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListTagsForResource>
+
+Returns: a L<Paws::EKS::ListTagsForResourceResponse> instance
+
+List the tags for an Amazon EKS resource.
+
+
 =head2 ListUpdates
 
 =over
@@ -332,6 +365,45 @@ Returns: a L<Paws::EKS::ListUpdatesResponse> instance
 
 Lists the updates associated with an Amazon EKS cluster in your AWS
 account, in the specified Region.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::EKS::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::TagResource>
+
+Returns: a L<Paws::EKS::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource are not specified in the
+request parameters, they are not changed. When a resource is deleted,
+the tags associated with that resource are deleted as well.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UntagResource>
+
+Returns: a L<Paws::EKS::UntagResourceResponse> instance
+
+Deletes specified tags from a resource.
 
 
 =head2 UpdateClusterConfig
