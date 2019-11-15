@@ -12,6 +12,8 @@ package Paws::Personalize::SolutionVersion;
   has SolutionConfig => (is => 'ro', isa => 'Paws::Personalize::SolutionConfig', request_name => 'solutionConfig', traits => ['NameInRequest']);
   has SolutionVersionArn => (is => 'ro', isa => 'Str', request_name => 'solutionVersionArn', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has TrainingHours => (is => 'ro', isa => 'Num', request_name => 'trainingHours', traits => ['NameInRequest']);
+  has TrainingMode => (is => 'ro', isa => 'Str', request_name => 'trainingMode', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Personalize::SolutionVersion object:
 
-  $service_obj->Method(Att1 => { CreationDateTime => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { CreationDateTime => $value, ..., TrainingMode => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,7 +70,7 @@ training the model.
 
 =head2 FailureReason => Str
 
-  If training a solution version fails, the reason behind the failure.
+  If training a solution version fails, the reason for the failure.
 
 
 =head2 LastUpdatedDateTime => Str
@@ -78,9 +80,9 @@ training the model.
 
 =head2 PerformAutoML => Bool
 
-  When true, Amazon Personalize performs a search for the most optimal
-recipe according to the solution configuration. When false (the
-default), Amazon Personalize uses C<recipeArn>.
+  When true, Amazon Personalize searches for the most optimal recipe
+according to the solution configuration. When false (the default),
+Amazon Personalize uses C<recipeArn>.
 
 
 =head2 PerformHPO => Bool
@@ -119,10 +121,43 @@ A solution version can be in one of the following states:
 
 =item *
 
-CREATE PENDING E<gt> CREATE IN_PROGRESS E<gt> ACTIVE -or- CREATE FAILED
+CREATE PENDING
+
+=item *
+
+CREATE IN_PROGRESS
+
+=item *
+
+ACTIVE
+
+=item *
+
+CREATE FAILED
 
 =back
 
+
+
+=head2 TrainingHours => Num
+
+  The time used to train the model. You are billed for the time it takes
+to train a model. This field is visible only after Amazon Personalize
+successfully trains a model.
+
+
+=head2 TrainingMode => Str
+
+  The scope of training used to create the solution version. The C<FULL>
+option trains the solution version based on the entirety of the input
+solution's training data, while the C<UPDATE> option processes only the
+training data that has changed since the creation of the last solution
+version. Choose C<UPDATE> when you want to start recommending items
+added to the dataset without retraining the model.
+
+The C<UPDATE> option can only be used after you've created a solution
+version with the C<FULL> option and the training solution uses the
+native-recipe-hrnn-coldstart.
 
 
 

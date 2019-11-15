@@ -2,6 +2,7 @@
 package Paws::Personalize::CreateSolutionVersion;
   use Moose;
   has SolutionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'solutionArn' , required => 1);
+  has TrainingMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trainingMode' );
 
   use MooseX::ClassAttribute;
 
@@ -28,8 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $personalize = Paws->service('Personalize');
     my $CreateSolutionVersionResponse = $personalize->CreateSolutionVersion(
-      SolutionArn => 'MyArn',
-
+      SolutionArn  => 'MyArn',
+      TrainingMode => 'FULL',    # OPTIONAL
     );
 
     # Results:
@@ -49,6 +50,22 @@ The Amazon Resource Name (ARN) of the solution containing the training
 configuration information.
 
 
+
+=head2 TrainingMode => Str
+
+The scope of training to be performed when creating the solution
+version. The C<FULL> option trains the solution version based on the
+entirety of the input solution's training data, while the C<UPDATE>
+option processes only the data that has changed in comparison to the
+input solution. Choose C<UPDATE> when you want to incrementally update
+your solution version instead of creating an entirely new one.
+
+The C<UPDATE> option can only be used when you already have an active
+solution version created from the input solution using the C<FULL>
+option and the input solution was trained with the
+native-recipe-hrnn-coldstart recipe.
+
+Valid values are: C<"FULL">, C<"UPDATE">
 
 
 =head1 SEE ALSO

@@ -15,6 +15,11 @@ package Paws::Personalize;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub CreateBatchInferenceJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::CreateBatchInferenceJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCampaign {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::CreateCampaign', @_);
@@ -90,6 +95,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeAlgorithm', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeBatchInferenceJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeBatchInferenceJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeCampaign {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::DescribeCampaign', @_);
@@ -145,6 +155,11 @@ package Paws::Personalize;
     my $call_object = $self->new_with_coercions('Paws::Personalize::GetSolutionMetrics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListBatchInferenceJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Personalize::ListBatchInferenceJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCampaigns {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Personalize::ListCampaigns', @_);
@@ -196,6 +211,29 @@ package Paws::Personalize;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBatchInferenceJobs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBatchInferenceJobs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBatchInferenceJobs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->batchInferenceJobs }, @{ $next_result->batchInferenceJobs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'batchInferenceJobs') foreach (@{ $result->batchInferenceJobs });
+        $result = $self->ListBatchInferenceJobs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'batchInferenceJobs') foreach (@{ $result->batchInferenceJobs });
+    }
+
+    return undef
+  }
   sub ListAllCampaigns {
     my $self = shift;
 
@@ -405,7 +443,7 @@ package Paws::Personalize;
   }
 
 
-  sub operations { qw/CreateCampaign CreateDataset CreateDatasetGroup CreateDatasetImportJob CreateEventTracker CreateSchema CreateSolution CreateSolutionVersion DeleteCampaign DeleteDataset DeleteDatasetGroup DeleteEventTracker DeleteSchema DeleteSolution DescribeAlgorithm DescribeCampaign DescribeDataset DescribeDatasetGroup DescribeDatasetImportJob DescribeEventTracker DescribeFeatureTransformation DescribeRecipe DescribeSchema DescribeSolution DescribeSolutionVersion GetSolutionMetrics ListCampaigns ListDatasetGroups ListDatasetImportJobs ListDatasets ListEventTrackers ListRecipes ListSchemas ListSolutions ListSolutionVersions UpdateCampaign / }
+  sub operations { qw/CreateBatchInferenceJob CreateCampaign CreateDataset CreateDatasetGroup CreateDatasetImportJob CreateEventTracker CreateSchema CreateSolution CreateSolutionVersion DeleteCampaign DeleteDataset DeleteDatasetGroup DeleteEventTracker DeleteSchema DeleteSolution DescribeAlgorithm DescribeBatchInferenceJob DescribeCampaign DescribeDataset DescribeDatasetGroup DescribeDatasetImportJob DescribeEventTracker DescribeFeatureTransformation DescribeRecipe DescribeSchema DescribeSolution DescribeSolutionVersion GetSolutionMetrics ListBatchInferenceJobs ListCampaigns ListDatasetGroups ListDatasetImportJobs ListDatasets ListEventTrackers ListRecipes ListSchemas ListSolutions ListSolutionVersions UpdateCampaign / }
 
 1;
 
@@ -440,6 +478,34 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 
 
 =head1 METHODS
+
+=head2 CreateBatchInferenceJob
+
+=over
+
+=item JobInput => L<Paws::Personalize::BatchInferenceJobInput>
+
+=item JobName => Str
+
+=item JobOutput => L<Paws::Personalize::BatchInferenceJobOutput>
+
+=item RoleArn => Str
+
+=item SolutionVersionArn => Str
+
+=item [NumResults => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::CreateBatchInferenceJob>
+
+Returns: a L<Paws::Personalize::CreateBatchInferenceJobResponse> instance
+
+Creates a batch inference job. The operation can handle up to 50
+million records and the input file must be in JSON format. For more
+information, see recommendations-batch.
+
 
 =head2 CreateCampaign
 
@@ -999,6 +1065,8 @@ DescribeSolutionVersion
 
 =item SolutionArn => Str
 
+=item [TrainingMode => Str]
+
 
 =back
 
@@ -1210,6 +1278,24 @@ Each argument is described in detail in: L<Paws::Personalize::DescribeAlgorithm>
 Returns: a L<Paws::Personalize::DescribeAlgorithmResponse> instance
 
 Describes the given algorithm.
+
+
+=head2 DescribeBatchInferenceJob
+
+=over
+
+=item BatchInferenceJobArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::DescribeBatchInferenceJob>
+
+Returns: a L<Paws::Personalize::DescribeBatchInferenceJobResponse> instance
+
+Gets the properties of a batch inference job including name, Amazon
+Resource Name (ARN), status, input and output configurations, and the
+ARN of the solution version used to generate the recommendations.
 
 
 =head2 DescribeCampaign
@@ -1439,6 +1525,27 @@ Each argument is described in detail in: L<Paws::Personalize::GetSolutionMetrics
 Returns: a L<Paws::Personalize::GetSolutionMetricsResponse> instance
 
 Gets the metrics for the specified solution version.
+
+
+=head2 ListBatchInferenceJobs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SolutionVersionArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Personalize::ListBatchInferenceJobs>
+
+Returns: a L<Paws::Personalize::ListBatchInferenceJobsResponse> instance
+
+Gets a list of the batch inference jobs that have been performed off of
+a solution version.
 
 
 =head2 ListCampaigns
@@ -1680,6 +1787,18 @@ For more information on campaigns, see CreateCampaign.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllBatchInferenceJobs(sub { },[MaxResults => Int, NextToken => Str, SolutionVersionArn => Str])
+
+=head2 ListAllBatchInferenceJobs([MaxResults => Int, NextToken => Str, SolutionVersionArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - batchInferenceJobs, passing the object as the first parameter, and the string 'batchInferenceJobs' as the second parameter 
+
+If not, it will return a a L<Paws::Personalize::ListBatchInferenceJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllCampaigns(sub { },[MaxResults => Int, NextToken => Str, SolutionArn => Str])
 

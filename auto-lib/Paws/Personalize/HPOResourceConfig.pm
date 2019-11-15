@@ -40,12 +40,14 @@ Describes the resource configuration for hyperparameter optimization
 
 =head2 MaxNumberOfTrainingJobs => Str
 
-  The maximum number of training jobs.
+  The maximum number of training jobs when you create a solution version.
+The maximum value for C<maxNumberOfTrainingJobs> is C<40>.
 
 
 =head2 MaxParallelTrainingJobs => Str
 
-  The maximum number of parallel training jobs.
+  The maximum number of parallel training jobs when you create a solution
+version. The maximum value for C<maxParallelTrainingJobs> is C<10>.
 
 
 

@@ -64,9 +64,7 @@ used for training a model.
 
 =head2 HpoConfig => L<Paws::Personalize::HPOConfig>
 
-  Describes the properties for hyperparameter optimization (HPO). For use
-with the bring-your-own-recipe feature. Not used with Amazon
-Personalize predefined recipes.
+  Describes the properties for hyperparameter optimization (HPO).
 
 
 
