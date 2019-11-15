@@ -33,25 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Us
 
 =head1 DESCRIPTION
 
-A C<UserSummary> object that contains Information about a user,
-including ARN, Id, and user name.
+Contains summary information about a user.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN for the user account.
+  The Amazon Resource Name (ARN) of the user account.
 
 
 =head2 Id => Str
 
-  The identifier for the user account.
+  The identifier of the user account.
 
 
 =head2 Username => Str
 
-  The Amazon Connect user name for the user account.
+  The Amazon Connect user name of the user account.
 
 
 

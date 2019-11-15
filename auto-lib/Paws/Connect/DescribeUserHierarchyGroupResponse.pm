@@ -17,7 +17,7 @@ Paws::Connect::DescribeUserHierarchyGroupResponse
 
 =head2 HierarchyGroup => L<Paws::Connect::HierarchyGroup>
 
-Returns a C<HierarchyGroup> object.
+Information about the hierarchy group.
 
 
 =head2 _request_id => Str

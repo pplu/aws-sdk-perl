@@ -35,40 +35,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-A C<HierarchyStructure> object that contains information about the
-hierarchy group structure.
+Contains information about a hierarchy structure.
 
 =head1 ATTRIBUTES
 
 
 =head2 LevelFive => L<Paws::Connect::HierarchyLevel>
 
-  A C<HierarchyLevel> object that contains information about the
-hierarchy group level.
+  Information about level five.
 
 
 =head2 LevelFour => L<Paws::Connect::HierarchyLevel>
 
-  A C<HierarchyLevel> object that contains information about the
-hierarchy group level.
+  Information about level four.
 
 
 =head2 LevelOne => L<Paws::Connect::HierarchyLevel>
 
-  A C<HierarchyLevel> object that contains information about the
-hierarchy group level.
+  Information about level one.
 
 
 =head2 LevelThree => L<Paws::Connect::HierarchyLevel>
 
-  A C<HierarchyLevel> object that contains information about the
-hierarchy group level.
+  Information about level three.
 
 
 =head2 LevelTwo => L<Paws::Connect::HierarchyLevel>
 
-  A C<HierarchyLevel> object that contains information about the
-hierarchy group level.
+  Information about level two.
 
 
 

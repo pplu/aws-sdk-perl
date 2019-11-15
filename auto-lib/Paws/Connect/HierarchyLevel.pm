@@ -33,25 +33,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-A C<HierarchyLevel> object that contains information about the levels
-in a hierarchy group, including ARN, Id, and Name.
+Contains information about a hierarchy level.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN for the hierarchy group level.
+  The Amazon Resource Name (ARN) of the hierarchy level.
 
 
 =head2 Id => Str
 
-  The identifier for the hierarchy group level.
+  The identifier of the hierarchy level.
 
 
 =head2 Name => Str
 
-  The name of the hierarchy group level.
+  The name of the hierarchy level.
 
 
 

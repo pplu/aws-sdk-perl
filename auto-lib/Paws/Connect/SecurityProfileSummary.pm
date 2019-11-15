@@ -33,15 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Se
 
 =head1 DESCRIPTION
 
-A C<SecurityProfileSummary> object that contains information about a
-security profile, including ARN, Id, Name.
+Contains information about a security profile.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN of the security profile.
+  The Amazon Resource Name (ARN) of the security profile.
 
 
 =head2 Id => Str

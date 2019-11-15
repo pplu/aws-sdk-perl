@@ -33,29 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Us
 
 =head1 DESCRIPTION
 
-A C<UserIdentityInfo> object that contains information about the user's
-identity, including email address, first name, and last name.
+Contains information about the identity of a user.
 
 =head1 ATTRIBUTES
 
 
 =head2 Email => Str
 
-  The email address added to the user account. If you are using SAML for
-identity management and include this parameter, an
-C<InvalidRequestException> is returned.
+  The email address. If you are using SAML for identity management and
+include this parameter, an error is returned.
 
 
 =head2 FirstName => Str
 
-  The first name used in the user account. This is required if you are
-using Amazon Connect or SAML for identity management.
+  The first name. This is required if you are using Amazon Connect or
+SAML for identity management.
 
 
 =head2 LastName => Str
 
-  The last name used in the user account. This is required if you are
-using Amazon Connect or SAML for identity management.
+  The last name. This is required if you are using Amazon Connect or SAML
+for identity management.
 
 
 

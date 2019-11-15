@@ -32,21 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Di
 
 =head1 DESCRIPTION
 
-A C<Dimensions> object that includes the Channel and Queue for the
-metric.
+Contains information about the dimensions for a set of metrics.
 
 =head1 ATTRIBUTES
 
 
 =head2 Channel => Str
 
-  The channel used for grouping and filters. Only VOICE is supported.
+  The channel used for grouping and filters.
 
 
 =head2 Queue => L<Paws::Connect::QueueReference>
 
-  A C<QueueReference> object used as one part of dimension for the
-metrics results.
+  Information about the queue for which metrics are returned.
 
 
 

@@ -33,15 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-A C<HierarchyGroupSummary> object that contains information about the
-hierarchy group, including ARN, Id, and Name.
+Contains summary information about a hierarchy group.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN for the hierarchy group.
+  The Amazon Resource Name (ARN) of the hierarchy group.
 
 
 =head2 Id => Str

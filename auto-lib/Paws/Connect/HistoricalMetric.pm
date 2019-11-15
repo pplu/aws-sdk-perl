@@ -34,15 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-A C<HistoricalMetric> object that contains the Name, Unit, Statistic,
-and Threshold for the metric.
+Contains information about a historical metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-  The name of the historical metric.
+  The name of the metric.
 
 
 =head2 Statistic => Str

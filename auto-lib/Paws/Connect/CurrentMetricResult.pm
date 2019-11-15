@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Cu
 
 =head1 DESCRIPTION
 
-A C<CurrentMetricResult> object.
+Contains information about a set of real-time metrics.
 
 =head1 ATTRIBUTES
 
 
 =head2 Collections => ArrayRef[L<Paws::Connect::CurrentMetricData>]
 
-  The C<Collections> for the C<CurrentMetricResult> object.
+  The set of metrics.
 
 
 =head2 Dimensions => L<Paws::Connect::Dimensions>
 
-  The C<Dimensions> for the C<CurrentMetricResult> object.
+  The dimensions for the metrics.
 
 
 

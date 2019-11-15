@@ -1,5 +1,5 @@
 
-package Paws::Connect::ListUsers;
+package Paws::Connect::ListHoursOfOperations;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'InstanceId', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
@@ -7,43 +7,44 @@ package Paws::Connect::ListUsers;
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListUsers');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/users-summary/{InstanceId}');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListHoursOfOperations');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/hours-of-operations-summary/{InstanceId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::ListUsersResponse');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Connect::ListHoursOfOperationsResponse');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Connect::ListUsers - Arguments for method ListUsers on L<Paws::Connect>
+Paws::Connect::ListHoursOfOperations - Arguments for method ListHoursOfOperations on L<Paws::Connect>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListUsers on the
+This class represents the parameters used for calling the method ListHoursOfOperations on the
 L<Amazon Connect Service|Paws::Connect> service. Use the attributes of this class
-as arguments to method ListUsers.
+as arguments to method ListHoursOfOperations.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUsers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHoursOfOperations.
 
 =head1 SYNOPSIS
 
     my $connect = Paws->service('Connect');
-    my $ListUsersResponse = $connect->ListUsers(
+    my $ListHoursOfOperationsResponse = $connect->ListHoursOfOperations(
       InstanceId => 'MyInstanceId',
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:
-    my $NextToken       = $ListUsersResponse->NextToken;
-    my $UserSummaryList = $ListUsersResponse->UserSummaryList;
+    my $HoursOfOperationSummaryList =
+      $ListHoursOfOperationsResponse->HoursOfOperationSummaryList;
+    my $NextToken = $ListHoursOfOperationsResponse->NextToken;
 
-    # Returns a L<Paws::Connect::ListUsersResponse> object.
+    # Returns a L<Paws::Connect::ListHoursOfOperationsResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect/ListUsers>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/connect/ListHoursOfOperations>
 
 =head1 ATTRIBUTES
 
@@ -71,7 +72,7 @@ results.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListUsers in L<Paws::Connect>
+This class forms part of L<Paws>, documenting arguments for method ListHoursOfOperations in L<Paws::Connect>
 
 =head1 BUGS and CONTRIBUTIONS
 

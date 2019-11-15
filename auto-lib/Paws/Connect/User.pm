@@ -8,6 +8,7 @@ package Paws::Connect::User;
   has PhoneConfig => (is => 'ro', isa => 'Paws::Connect::UserPhoneConfig');
   has RoutingProfileId => (is => 'ro', isa => 'Str');
   has SecurityProfileIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tags => (is => 'ro', isa => 'Paws::Connect::TagMap');
   has Username => (is => 'ro', isa => 'Str');
 1;
 
@@ -39,26 +40,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Us
 
 =head1 DESCRIPTION
 
-A C<User> object that contains information about a user account in your
-Amazon Connect instance, including configuration settings.
+Contains information about a user account for a Amazon Connect
+instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN of the user account.
+  The Amazon Resource Name (ARN) of the user account.
 
 
 =head2 DirectoryUserId => Str
 
-  The directory Id for the user account in the existing directory used
-for identity management.
+  The identifier of the user account in the directory used for identity
+management.
 
 
 =head2 HierarchyGroupId => Str
 
-  The identifier for the hierarchy group assigned to the user.
+  The identifier of the hierarchy group for the user.
 
 
 =head2 Id => Str
@@ -68,22 +69,27 @@ for identity management.
 
 =head2 IdentityInfo => L<Paws::Connect::UserIdentityInfo>
 
-  A C<UserIdentityInfo> object.
+  Information about the user identity.
 
 
 =head2 PhoneConfig => L<Paws::Connect::UserPhoneConfig>
 
-  A C<UserPhoneConfig> object.
+  Information about the phone configuration for the user.
 
 
 =head2 RoutingProfileId => Str
 
-  The identifier of the routing profile assigned to the user.
+  The identifier of the routing profile for the user.
 
 
 =head2 SecurityProfileIds => ArrayRef[Str|Undef]
 
-  The identifier(s) for the security profile assigned to the user.
+  The identifiers of the security profiles for the user.
+
+
+=head2 Tags => L<Paws::Connect::TagMap>
+
+  The tags.
 
 
 =head2 Username => Str

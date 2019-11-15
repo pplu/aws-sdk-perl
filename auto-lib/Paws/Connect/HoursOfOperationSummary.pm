@@ -1,9 +1,7 @@
-package Paws::Connect::HierarchyGroup;
+package Paws::Connect::HoursOfOperationSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
-  has HierarchyPath => (is => 'ro', isa => 'Paws::Connect::HierarchyPath');
   has Id => (is => 'ro', isa => 'Str');
-  has LevelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -11,7 +9,7 @@ package Paws::Connect::HierarchyGroup;
 
 =head1 NAME
 
-Paws::Connect::HierarchyGroup
+Paws::Connect::HoursOfOperationSummary
 
 =head1 USAGE
 
@@ -22,47 +20,38 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Connect::HierarchyGroup object:
+As an example, if Att1 is expected to be a Paws::Connect::HoursOfOperationSummary object:
 
   $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::HierarchyGroup object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::HoursOfOperationSummary object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Contains information about a hierarchy group.
+Contains summary information about hours of operation for a contact
+center.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of the hierarchy group.
-
-
-=head2 HierarchyPath => L<Paws::Connect::HierarchyPath>
-
-  Information about the levels in the hierarchy group.
+  The Amazon Resource Name (ARN) of the hours of operation.
 
 
 =head2 Id => Str
 
-  The identifier of the hierarchy group.
-
-
-=head2 LevelId => Str
-
-  The identifier of the level in the hierarchy group.
+  The identifier of the hours of operation.
 
 
 =head2 Name => Str
 
-  The name of the hierarchy group.
+  The name of the hours of operation.
 
 
 

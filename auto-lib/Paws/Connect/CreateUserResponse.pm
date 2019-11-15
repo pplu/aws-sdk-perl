@@ -18,12 +18,12 @@ Paws::Connect::CreateUserResponse
 
 =head2 UserArn => Str
 
-The Amazon Resource Name (ARN) of the user account created.
+The Amazon Resource Name (ARN) of the user account.
 
 
 =head2 UserId => Str
 
-The unique identifier for the user account in Amazon Connect
+The identifier of the user account.
 
 
 =head2 _request_id => Str

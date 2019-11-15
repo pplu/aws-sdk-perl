@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-A C<HistoricalMetricData> object than contains a C<Metric> and a
-C<Value>.
+Contains the data for a historical metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 Metric => L<Paws::Connect::HistoricalMetric>
 
-  A C<HistoricalMetric> object.
+  Information about the metric.
 
 
 =head2 Value => Num
 
-  The C<Value> of the metric.
+  The value of the metric.
 
 
 

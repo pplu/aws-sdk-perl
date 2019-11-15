@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Cu
 
 =head1 DESCRIPTION
 
-A C<CurrentMetricData> object.
+Contains the data for a real-time metric.
 
 =head1 ATTRIBUTES
 
 
 =head2 Metric => L<Paws::Connect::CurrentMetric>
 
-  The metric in a C<CurrentMetricData> object.
+  Information about the metric.
 
 
 =head2 Value => Num
 
-  The value of the metric in the CurrentMetricData object.
+  The value of the metric.
 
 
 

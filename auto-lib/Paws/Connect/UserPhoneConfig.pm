@@ -34,20 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Us
 
 =head1 DESCRIPTION
 
-A C<UserPhoneConfig> object that contains information about the user
-phone configuration settings.
+Contains information about the phone configuration settings for a user.
 
 =head1 ATTRIBUTES
 
 
 =head2 AfterContactWorkTimeLimit => Int
 
-  The After Call Work (ACW) timeout setting, in seconds, for the user.
+  The After Call Work (ACW) timeout setting, in seconds.
 
 
 =head2 AutoAccept => Bool
 
-  The Auto accept setting for the user, Yes or No.
+  The Auto accept setting.
 
 
 =head2 DeskPhoneNumber => Str
@@ -57,7 +56,7 @@ phone configuration settings.
 
 =head2 B<REQUIRED> PhoneType => Str
 
-  The phone type selected for the user, either Soft phone or Desk phone.
+  The phone type.
 
 
 

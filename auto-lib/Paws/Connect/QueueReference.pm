@@ -32,20 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Qu
 
 =head1 DESCRIPTION
 
-A QueueReference object that contains the the QueueId and ARN for the
-queue resource for which metrics are returned.
+Contains information about a queue resource for which metrics are
+returned.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The Amazon Resource Name (ARN) of queue.
+  The Amazon Resource Name (ARN) of the queue.
 
 
 =head2 Id => Str
 
-  The ID of the queue associated with the metrics returned.
+  The identifier of the queue.
 
 
 

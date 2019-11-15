@@ -18,14 +18,13 @@ Paws::Connect::ListSecurityProfilesResponse
 
 =head2 NextToken => Str
 
-A string returned in the response. Use the value returned in the
-response as the value of the NextToken in a subsequent request to
-retrieve the next set of results.
+If there are additional results, this is the token for the next set of
+results.
 
 
 =head2 SecurityProfileSummaryList => ArrayRef[L<Paws::Connect::SecurityProfileSummary>]
 
-An array of C<SecurityProfileSummary> objects.
+Information about the security profiles.
 
 
 =head2 _request_id => Str

@@ -32,8 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Cu
 
 =head1 DESCRIPTION
 
-A C<CurrentMetric> object that contains the Name and Unit for the
-metric.
+Contains information about a real-time metric.
 
 =head1 ATTRIBUTES
 

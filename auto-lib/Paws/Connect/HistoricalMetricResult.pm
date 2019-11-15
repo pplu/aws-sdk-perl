@@ -32,19 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Hi
 
 =head1 DESCRIPTION
 
-The metrics data returned from a C<GetMetricData> operation.
+Contains information about the historical metrics retrieved.
 
 =head1 ATTRIBUTES
 
 
 =head2 Collections => ArrayRef[L<Paws::Connect::HistoricalMetricData>]
 
-  A list of C<HistoricalMetricData> objects.
+  The set of metrics.
 
 
 =head2 Dimensions => L<Paws::Connect::Dimensions>
 
-  The C<Dimensions> for the metrics.
+  The dimension for the metrics.
 
 
 

@@ -32,22 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Th
 
 =head1 DESCRIPTION
 
-A C<Threshold> object that includes a comparison and C<ThresholdValue>
-to compare to. Used with service level metrics.
+Contains information about the threshold for service level metrics.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comparison => Str
 
-  The Threshold to use to compare service level metrics to. Only "Less
-than" (LT) comparisons are supported.
+  The type of comparison. Only "less than" (LT) comparisons are
+supported.
 
 
 =head2 ThresholdValue => Num
 
-  The value of the threshold to compare the metric to. Only "Less than"
-(LT) comparisons are supported.
+  The threshold value to compare.
 
 
 

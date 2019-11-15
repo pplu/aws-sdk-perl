@@ -18,24 +18,18 @@ Paws::Connect::GetMetricDataResponse
 
 =head2 MetricResults => ArrayRef[L<Paws::Connect::HistoricalMetricResult>]
 
-A list of C<HistoricalMetricResult> objects, organized by
-C<Dimensions>, which is the ID of the resource specified in the
-C<Filters> used for the request. The metrics are combined with the
-metrics included in C<Collections>, which is a list of
-C<HisotricalMetricData> objects.
+Information about the historical metrics.
 
-If no C<Grouping> is specified in the request, C<Collections> includes
-summary data for the C<HistoricalMetrics>.
+If no grouping is specified, a summary of metric data is returned.
 
 
 =head2 NextToken => Str
 
-A string returned in the response. Use the value returned in the
-response as the value of the NextToken in a subsequent request to
-retrieve the next set of results.
+If there are additional results, this is the token for the next set of
+results.
 
 The token expires after 5 minutes from the time it is created.
-Subsequent requests that use the NextToken must use the same request
+Subsequent requests that use the token must use the same request
 parameters as the request that generated the token.
 
 

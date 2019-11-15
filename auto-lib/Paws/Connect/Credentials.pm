@@ -34,20 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Cr
 
 =head1 DESCRIPTION
 
-The credentials to use for federation.
+Contains credentials to use for federation.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessToken => Str
 
-  An access token generated for a federated user to access Amazon Connect
+  An access token generated for a federated user to access Amazon
+Connect.
 
 
 =head2 AccessTokenExpiration => Str
 
   A token generated with an expiration time for the session a user is
-logged in to Amazon Connect
+logged in to Amazon Connect.
 
 
 =head2 RefreshToken => Str

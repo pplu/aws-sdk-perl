@@ -33,15 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Ro
 
 =head1 DESCRIPTION
 
-A C<RoutingProfileSummary> object that contains information about a
-routing profile, including ARN, Id, and Name.
+Contains summary information about a routing profile.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-  The ARN of the routing profile.
+  The Amazon Resource Name (ARN) of the routing profile.
 
 
 =head2 Id => Str
