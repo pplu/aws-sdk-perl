@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::UpdateGatewayInformation;
   use Moose;
+  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has GatewayName => (is => 'ro', isa => 'Str');
   has GatewayTimezone => (is => 'ro', isa => 'Str');
@@ -50,6 +51,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/storagegateway/UpdateGatewayInformation>
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLogGroupARN => Str
+
+The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
+you want to use to monitor and log events in the gateway.
+
+For more information, see What Is Amazon CloudWatch Logs?
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html).
+
 
 
 =head2 B<REQUIRED> GatewayARN => Str

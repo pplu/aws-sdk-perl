@@ -69,16 +69,15 @@ The name of the domain that you want the gateway to join.
 =head2 B<REQUIRED> GatewayARN => Str
 
 The Amazon Resource Name (ARN) of the gateway. Use the C<ListGateways>
-operation to return a list of gateways for your account and region.
+operation to return a list of gateways for your account and AWS Region.
 
 
 
 =head2 OrganizationalUnit => Str
 
-The organizational unit (OU) is a container with an Active Directory
-that can hold users, groups, computers, and other OUs and this
-parameter specifies the OU that the gateway will join within the AD
-domain.
+The organizational unit (OU) is a container in an Active Directory that
+can hold users, groups, computers, and other OUs and this parameter
+specifies the OU that the gateway will join within the AD domain.
 
 
 

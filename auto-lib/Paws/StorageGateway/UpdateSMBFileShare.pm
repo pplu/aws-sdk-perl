@@ -72,10 +72,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 AdminUserList => ArrayRef[Str|Undef]
 
-A list of users or groups in the Active Directory that have
-administrator rights to the file share. A group must be prefixed with
-the @ character. For example C<@group1>. Can only be set if
-Authentication is set to C<ActiveDirectory>.
+A list of users in the Active Directory that have administrator rights
+to the file share. A group must be prefixed with the @ character. For
+example C<@group1>. Can only be set if Authentication is set to
+C<ActiveDirectory>.
 
 
 

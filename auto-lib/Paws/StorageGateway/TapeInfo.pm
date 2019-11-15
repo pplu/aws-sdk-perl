@@ -44,7 +44,7 @@ Describes a virtual tape.
 =head2 GatewayARN => Str
 
   The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
-operation to return a list of gateways for your account and region.
+operation to return a list of gateways for your account and AWS Region.
 
 
 =head2 PoolId => Str

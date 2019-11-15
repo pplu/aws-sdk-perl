@@ -1,6 +1,7 @@
 
 package Paws::StorageGateway::DescribeGatewayInformationOutput;
   use Moose;
+  has CloudWatchLogGroupARN => (is => 'ro', isa => 'Str');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Ec2InstanceRegion => (is => 'ro', isa => 'Str');
   has GatewayARN => (is => 'ro', isa => 'Str');
@@ -24,6 +25,12 @@ package Paws::StorageGateway::DescribeGatewayInformationOutput;
 Paws::StorageGateway::DescribeGatewayInformationOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLogGroupARN => Str
+
+The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
+was used to monitor and log events in the gateway.
 
 
 =head2 Ec2InstanceId => Str
