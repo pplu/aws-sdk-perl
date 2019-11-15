@@ -45,8 +45,8 @@ Information about a trigger for a repository.
   The branches that will be included in the trigger configuration. If you
 specify an empty array, the trigger will apply to all branches.
 
-While no content is required in the array, you must include the array
-itself.
+Although no content is required in the array, you must include the
+array itself.
 
 
 =head2 CustomData => Str
@@ -58,14 +58,13 @@ the information sent to the target of the trigger.
 =head2 B<REQUIRED> DestinationArn => Str
 
   The ARN of the resource that is the target for a trigger. For example,
-the ARN of a topic in Amazon Simple Notification Service (SNS).
+the ARN of a topic in Amazon SNS.
 
 
 =head2 B<REQUIRED> Events => ArrayRef[Str|Undef]
 
   The repository events that will cause the trigger to run actions in
-another service, such as sending a notification through Amazon Simple
-Notification Service (SNS).
+another service, such as sending a notification through Amazon SNS.
 
 The valid value "all" cannot be used with any other values.
 

@@ -20,6 +20,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchDescribeMergeConflicts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetCommits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetCommits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetRepositories', @_);
@@ -444,7 +449,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/BatchDescribeMergeConflicts BatchGetRepositories CreateBranch CreateCommit CreatePullRequest CreateRepository CreateUnreferencedMergeCommit DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribeMergeConflicts DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchDescribeMergeConflicts BatchGetCommits BatchGetRepositories CreateBranch CreateCommit CreatePullRequest CreateRepository CreateUnreferencedMergeCommit DeleteBranch DeleteCommentContent DeleteFile DeleteRepository DescribeMergeConflicts DescribePullRequestEvents GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetRepository GetRepositoryTriggers ListBranches ListPullRequests ListRepositories ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateComment UpdateDefaultBranch UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -580,6 +585,11 @@ and branch.
 Commits, by calling the following:
 
 =over
+
+=item *
+
+BatchGetCommits, which returns information about one or more commits in
+a repository
 
 =item *
 
@@ -836,6 +846,25 @@ Returns: a L<Paws::CodeCommit::BatchDescribeMergeConflictsOutput> instance
 Returns information about one or more merge conflicts in the attempted
 merge of two commit specifiers using the squash or three-way merge
 strategy.
+
+
+=head2 BatchGetCommits
+
+=over
+
+=item CommitIds => ArrayRef[Str|Undef]
+
+=item RepositoryName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::BatchGetCommits>
+
+Returns: a L<Paws::CodeCommit::BatchGetCommitsOutput> instance
+
+Returns information about the contents of one or more commits in a
+repository.
 
 
 =head2 BatchGetRepositories
