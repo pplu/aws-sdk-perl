@@ -1,12 +1,13 @@
 
-package Paws::CUR::PutReportDefinition;
+package Paws::CUR::ModifyReportDefinition;
   use Moose;
   has ReportDefinition => (is => 'ro', isa => 'Paws::CUR::ReportDefinition', required => 1);
+  has ReportName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutReportDefinition');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CUR::PutReportDefinitionResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyReportDefinition');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CUR::ModifyReportDefinitionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -14,20 +15,20 @@ package Paws::CUR::PutReportDefinition;
 
 =head1 NAME
 
-Paws::CUR::PutReportDefinition - Arguments for method PutReportDefinition on L<Paws::CUR>
+Paws::CUR::ModifyReportDefinition - Arguments for method ModifyReportDefinition on L<Paws::CUR>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method PutReportDefinition on the
+This class represents the parameters used for calling the method ModifyReportDefinition on the
 L<AWS Cost and Usage Report Service|Paws::CUR> service. Use the attributes of this class
-as arguments to method PutReportDefinition.
+as arguments to method ModifyReportDefinition.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutReportDefinition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyReportDefinition.
 
 =head1 SYNOPSIS
 
     my $cur = Paws->service('CUR');
-    my $PutReportDefinitionResponse = $cur->PutReportDefinition(
+    my $ModifyReportDefinitionResponse = $cur->ModifyReportDefinition(
       ReportDefinition => {
         AdditionalSchemaElements => [
           'RESOURCES', ...    # values: RESOURCES
@@ -47,26 +48,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReportVersioning     => 'CREATE_NEW_REPORT'
         ,    # values: CREATE_NEW_REPORT, OVERWRITE_REPORT; OPTIONAL
       },
+      ReportName => 'MyReportName',
 
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur/PutReportDefinition>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur/ModifyReportDefinition>
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ReportDefinition => L<Paws::CUR::ReportDefinition>
 
-Represents the output of the PutReportDefinition operation. The content
-consists of the detailed metadata and data file information.
+
+
+
+
+=head2 B<REQUIRED> ReportName => Str
+
+
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method PutReportDefinition in L<Paws::CUR>
+This class forms part of L<Paws>, documenting arguments for method ModifyReportDefinition in L<Paws::CUR>
 
 =head1 BUGS and CONTRIBUTIONS
 
