@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                 },
                 ...
-              ],                                         # min: 1, max: 1000
+              ],    # min: 1, max: 1000; OPTIONAL
               RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
               RecordFormatUpdate   => {
                 RecordFormatType  => 'JSON',                 # values: JSON, CSV
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                 },    # OPTIONAL
-              },
+              },    # OPTIONAL
             },    # OPTIONAL
             KinesisFirehoseInputUpdate => {
               ResourceARNUpdate =>
@@ -132,9 +132,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                 },
                 ...
-              ],                                         # min: 1, max: 1000
+              ],    # min: 1, max: 1000; OPTIONAL
               RecordFormat => {
-                RecordFormatType  => 'JSON',             # values: JSON, CSV
+                RecordFormatType  => 'JSON',    # values: JSON, CSV
                 MappingParameters => {
                   CSVMappingParameters => {
                     RecordColumnDelimiter => 'MyRecordColumnDelimiter', # min: 1
@@ -146,7 +146,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                 },    # OPTIONAL
-              },
+              },    # OPTIONAL
               RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
             },    # OPTIONAL
             S3ReferenceDataSourceUpdate => {

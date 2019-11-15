@@ -42,7 +42,7 @@ that is used to preprocess the records in the stream.
 =head2 ResourceARNUpdate => Str
 
   The Amazon Resource Name (ARN) of the new AWS Lambda
-(https://docs.aws.amazon.com/ambda/) function that is used to
+(https://docs.aws.amazon.com/lambda/) function that is used to
 preprocess the records in the stream.
 
 To specify an earlier version of the Lambda function than the latest,

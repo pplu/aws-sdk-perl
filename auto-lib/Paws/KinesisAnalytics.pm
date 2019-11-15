@@ -697,7 +697,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::ListTagsForRe
 
 Returns: a L<Paws::KinesisAnalytics::ListTagsForResourceResponse> instance
 
-Retrieves the list of key-value tags assigned to the application.
+Retrieves the list of key-value tags assigned to the application. For
+more information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 
 
 =head2 StartApplication
@@ -790,7 +792,9 @@ Returns: a L<Paws::KinesisAnalytics::TagResourceResponse> instance
 
 Adds one or more key-value tags to a Kinesis Analytics application.
 Note that the maximum number of application tags includes system tags.
-The maximum number of user-defined application tags is 50.
+The maximum number of user-defined application tags is 50. For more
+information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 
 
 =head2 UntagResource
@@ -808,7 +812,9 @@ Each argument is described in detail in: L<Paws::KinesisAnalytics::UntagResource
 
 Returns: a L<Paws::KinesisAnalytics::UntagResourceResponse> instance
 
-Removes one or more tags from a Kinesis Analytics application.
+Removes one or more tags from a Kinesis Analytics application. For more
+information, see Using Tagging
+(https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
 
 
 =head2 UpdateApplication
