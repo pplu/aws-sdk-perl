@@ -1,5 +1,6 @@
 package Paws::Lightsail::Instance;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOn]', request_name => 'addOns', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has BlueprintId => (is => 'ro', isa => 'Str', request_name => 'blueprintId', traits => ['NameInRequest']);
   has BlueprintName => (is => 'ro', isa => 'Str', request_name => 'blueprintName', traits => ['NameInRequest']);
@@ -38,20 +39,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lightsail::Instance object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { AddOns => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::Instance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AddOns
 
 =head1 DESCRIPTION
 
 Describes an instance (a virtual private server).
 
 =head1 ATTRIBUTES
+
+
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOn>]
+
+  An array of objects representing the add-ons enabled on the instance.
 
 
 =head2 Arn => Str

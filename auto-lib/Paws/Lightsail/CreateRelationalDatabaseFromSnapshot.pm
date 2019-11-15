@@ -146,7 +146,7 @@ C<true>.
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 

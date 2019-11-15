@@ -75,7 +75,7 @@ C<1479816991.349>).
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>
 
-  The region and Availability Zone.
+  The AWS Region and Availability Zone.
 
 
 =head2 OperationDetails => Str

@@ -68,7 +68,7 @@ Constraints:
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 
@@ -110,7 +110,8 @@ Parameter to specify if the log should start from head or tail. If
 C<true> is specified, the log event starts from the head of the log. If
 C<false> is specified, the log event starts from the tail of the log.
 
-Default: C<false>
+For PostgreSQL, the default value of C<false> is the only option
+available.
 
 
 
@@ -124,7 +125,7 @@ Constraints:
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 

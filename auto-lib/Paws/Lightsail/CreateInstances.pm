@@ -1,6 +1,7 @@
 
 package Paws::Lightsail::CreateInstances;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOnRequest]', traits => ['NameInRequest'], request_name => 'addOns' );
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' , required => 1);
   has BlueprintId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'blueprintId' , required => 1);
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
@@ -39,16 +40,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       BlueprintId      => 'MyNonEmptyString',
       BundleId         => 'MyNonEmptyString',
       InstanceNames    => [ 'Mystring', ... ],
-      CustomImageName  => 'MyResourceName',      # OPTIONAL
-      KeyPairName      => 'MyResourceName',      # OPTIONAL
-      Tags             => [
+      AddOns           => [
         {
-          Key   => 'MyTagKey',                   # OPTIONAL
-          Value => 'MyTagValue',                 # OPTIONAL
+          AddOnType                => 'AutoSnapshot',    # values: AutoSnapshot
+          AutoSnapshotAddOnRequest => {
+            SnapshotTimeOfDay => 'MyTimeOfDay',          # OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      UserData => 'Mystring',                    # OPTIONAL
+      ],        # OPTIONAL
+      CustomImageName => 'MyResourceName',    # OPTIONAL
+      KeyPairName     => 'MyResourceName',    # OPTIONAL
+      Tags            => [
+        {
+          Key   => 'MyTagKey',                # OPTIONAL
+          Value => 'MyTagValue',              # OPTIONAL
+        },
+        ...
+      ],                                      # OPTIONAL
+      UserData => 'Mystring',                 # OPTIONAL
     );
 
     # Results:
@@ -60,6 +70,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail/CreateInstances>
 
 =head1 ATTRIBUTES
+
+
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]
+
+An array of objects representing the add-ons to enable for the new
+instance.
+
 
 
 =head2 B<REQUIRED> AvailabilityZone => Str
@@ -76,8 +93,14 @@ to your request.
 =head2 B<REQUIRED> BlueprintId => Str
 
 The ID for a virtual private server image (e.g., C<app_wordpress_4_4>
-or C<app_lamp_7_0>). Use the get blueprints operation to return a list
-of available images (or I<blueprints>).
+or C<app_lamp_7_0>). Use the C<get blueprints> operation to return a
+list of available images (or I<blueprints>).
+
+Use active blueprints when creating new instances. Inactive blueprints
+are listed to support customers with existing instances and are not
+necessarily available to create new instances. Blueprints are marked
+inactive when they become outdated due to operating system updates or
+new application releases.
 
 
 

@@ -125,6 +125,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateRelationalDatabaseSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAutoSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteAutoSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDisk', @_);
@@ -200,9 +205,19 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachStaticIp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableAddOn {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DisableAddOn', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DownloadDefaultKeyPair {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DownloadDefaultKeyPair', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableAddOn {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::EnableAddOn', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ExportSnapshot {
@@ -213,6 +228,11 @@ package Paws::Lightsail;
   sub GetActiveNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetActiveNames', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAutoSnapshots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetAutoSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBlueprints {
@@ -983,7 +1003,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCloudFormationStack CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteKnownHostKeys DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DownloadDefaultKeyPair ExportSnapshot GetActiveNames GetBlueprints GetBundles GetCloudFormationStackRecords GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource UnpeerVpc UntagResource UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
+  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCloudFormationStack CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteAutoSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteKnownHostKeys DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DisableAddOn DownloadDefaultKeyPair EnableAddOn ExportSnapshot GetActiveNames GetAutoSnapshots GetBlueprints GetBundles GetCloudFormationStackRecords GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource UnpeerVpc UntagResource UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
 
 1;
 
@@ -1069,8 +1089,8 @@ Attaches a block storage disk to a running or stopped Lightsail
 instance and exposes it to the instance with the specified disk name.
 
 The C<attach disk> operation supports tag-based access control via
-resource tags applied to the resource identified by diskName. For more
-information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<disk name>. For
+more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1096,7 +1116,8 @@ the health check status is available.
 
 The C<attach instances to load balancer> operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the Lightsail Dev Guide
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1121,15 +1142,14 @@ Layer (SSL).
 
 Once you create and validate your certificate, you can attach it to
 your load balancer. You can also use this API to rotate the
-certificates on your account. Use the
-C<AttachLoadBalancerTlsCertificate> operation with the non-attached
-certificate, and it will replace the existing one and become the
-attached certificate.
+certificates on your account. Use the C<attach load balancer tls
+certificate> operation with the non-attached certificate, and it will
+replace the existing one and become the attached certificate.
 
 The C<attach load balancer tls certificate> operation supports
 tag-based access control via resource tags applied to the resource
-identified by loadBalancerName. For more information, see the Lightsail
-Dev Guide
+identified by C<load balancer name>. For more information, see the
+Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1170,7 +1190,7 @@ Closes the public ports on a specific Amazon Lightsail instance.
 
 The C<close instance public ports> operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceName. For more information, see the Lightsail Dev Guide
+C<instance name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1180,9 +1200,15 @@ instanceName. For more information, see the Lightsail Dev Guide
 
 =item SourceRegion => Str
 
-=item SourceSnapshotName => Str
-
 =item TargetSnapshotName => Str
+
+=item [RestoreDate => Str]
+
+=item [SourceResourceName => Str]
+
+=item [SourceSnapshotName => Str]
+
+=item [UseLatestRestorableAutoSnapshot => Bool]
 
 
 =back
@@ -1191,8 +1217,22 @@ Each argument is described in detail in: L<Paws::Lightsail::CopySnapshot>
 
 Returns: a L<Paws::Lightsail::CopySnapshotResult> instance
 
-Copies an instance or disk snapshot from one AWS Region to another in
-Amazon Lightsail.
+Copies a manual instance or disk snapshot as another manual snapshot,
+or copies an automatic instance or disk snapshot as a manual snapshot.
+This operation can also be used to copy a manual or automatic snapshot
+of an instance or a disk from one AWS Region to another in Amazon
+Lightsail.
+
+When copying a I<manual snapshot>, be sure to define the C<source
+region>, C<source snapshot name>, and C<target snapshot name>
+parameters.
+
+When copying an I<automatic snapshot>, be sure to define the C<source
+region>, C<source resource name>, C<target snapshot name>, and either
+the C<restore date> or the C<use latest restorable auto snapshot>
+parameters.
+
+Database snapshots cannot be copied at this time.
 
 
 =head2 CreateCloudFormationStack
@@ -1229,6 +1269,8 @@ export snapshot record.
 
 =item SizeInGb => Int
 
+=item [AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]]
+
 =item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
 
 
@@ -1238,11 +1280,8 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDisk>
 
 Returns: a L<Paws::Lightsail::CreateDiskResult> instance
 
-Creates a block storage disk that can be attached to a Lightsail
-instance in the same Availability Zone (e.g., C<us-east-2a>). The disk
-is created in the regional endpoint that you send the HTTP request to.
-For more information, see Regions and Availability Zones in Lightsail
-(https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+Creates a block storage disk that can be attached to an Amazon
+Lightsail instance in the same Availability Zone (e.g., C<us-east-2a>).
 
 The C<create disk> operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide
@@ -1257,11 +1296,19 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item DiskName => Str
 
-=item DiskSnapshotName => Str
-
 =item SizeInGb => Int
 
+=item [AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]]
+
+=item [DiskSnapshotName => Str]
+
+=item [RestoreDate => Str]
+
+=item [SourceDiskName => Str]
+
 =item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+
+=item [UseLatestRestorableAutoSnapshot => Bool]
 
 
 =back
@@ -1270,17 +1317,14 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDiskFromSnapsh
 
 Returns: a L<Paws::Lightsail::CreateDiskFromSnapshotResult> instance
 
-Creates a block storage disk from a disk snapshot that can be attached
-to a Lightsail instance in the same Availability Zone (e.g.,
-C<us-east-2a>). The disk is created in the regional endpoint that you
-send the HTTP request to. For more information, see Regions and
-Availability Zones in Lightsail
-(https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail).
+Creates a block storage disk from a manual or automatic snapshot of a
+disk. The resulting disk can be attached to an Amazon Lightsail
+instance in the same Availability Zone (e.g., C<us-east-2a>).
 
 The C<create disk from snapshot> operation supports tag-based access
 control via request tags and resource tags applied to the resource
-identified by diskSnapshotName. For more information, see the Lightsail
-Dev Guide
+identified by C<disk snapshot name>. For more information, see the
+Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1375,8 +1419,8 @@ Address (A), canonical name (CNAME), mail exchanger (MX), name server
 (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 
 The C<create domain entry> operation supports tag-based access control
-via resource tags applied to the resource identified by domainName. For
-more information, see the Lightsail Dev Guide
+via resource tags applied to the resource identified by C<domain name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1391,6 +1435,8 @@ more information, see the Lightsail Dev Guide
 =item BundleId => Str
 
 =item InstanceNames => ArrayRef[Str|Undef]
+
+=item [AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]]
 
 =item [CustomImageName => Str]
 
@@ -1407,13 +1453,7 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstances>
 
 Returns: a L<Paws::Lightsail::CreateInstancesResult> instance
 
-Creates one or more Amazon Lightsail virtual private servers, or
-I<instances>. Create instances using active blueprints. Inactive
-blueprints are listed to support customers with existing instances but
-are not necessarily available for launch of new instances. Blueprints
-are marked inactive when they become outdated due to operating system
-updates or new application releases. Use the get blueprints operation
-to return a list of available blueprints.
+Creates one or more Amazon Lightsail instances.
 
 The C<create instances> operation supports tag-based access control via
 request tags. For more information, see the Lightsail Dev Guide
@@ -1430,13 +1470,21 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item InstanceNames => ArrayRef[Str|Undef]
 
-=item InstanceSnapshotName => Str
+=item [AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]]
 
 =item [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>]
 
+=item [InstanceSnapshotName => Str]
+
 =item [KeyPairName => Str]
 
+=item [RestoreDate => Str]
+
+=item [SourceInstanceName => Str]
+
 =item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+
+=item [UseLatestRestorableAutoSnapshot => Bool]
 
 =item [UserData => Str]
 
@@ -1447,13 +1495,13 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateInstancesFromS
 
 Returns: a L<Paws::Lightsail::CreateInstancesFromSnapshotResult> instance
 
-Uses a specific snapshot as a blueprint for creating one or more new
-instances that are based on that identical configuration.
+Creates one or more new instances from a manual or automatic snapshot
+of an instance.
 
 The C<create instances from snapshot> operation supports tag-based
 access control via request tags and resource tags applied to the
-resource identified by instanceSnapshotName. For more information, see
-the Lightsail Dev Guide
+resource identified by C<instance snapshot name>. For more information,
+see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1574,8 +1622,8 @@ TLS is just an updated, more secure version of Secure Socket Layer
 
 The C<create load balancer tls certificate> operation supports
 tag-based access control via resource tags applied to the resource
-identified by loadBalancerName. For more information, see the Lightsail
-Dev Guide
+identified by C<load balancer name>. For more information, see the
+Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1690,11 +1738,31 @@ Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
+=head2 DeleteAutoSnapshot
+
+=over
+
+=item Date => Str
+
+=item ResourceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteAutoSnapshot>
+
+Returns: a L<Paws::Lightsail::DeleteAutoSnapshotResult> instance
+
+Deletes an automatic snapshot for an instance or disk.
+
+
 =head2 DeleteDisk
 
 =over
 
 =item DiskName => Str
+
+=item [ForceDeleteAddOns => Bool]
 
 
 =back
@@ -1709,8 +1777,8 @@ C<available> state (not attached to a Lightsail instance).
 The disk may remain in the C<deleting> state for several minutes.
 
 The C<delete disk> operation supports tag-based access control via
-resource tags applied to the resource identified by diskName. For more
-information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<disk name>. For
+more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1738,8 +1806,8 @@ snapshots will have access to all the information needed to restore the
 disk.
 
 The C<delete disk snapshot> operation supports tag-based access control
-via resource tags applied to the resource identified by
-diskSnapshotName. For more information, see the Lightsail Dev Guide
+via resource tags applied to the resource identified by C<disk snapshot
+name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1759,7 +1827,7 @@ Returns: a L<Paws::Lightsail::DeleteDomainResult> instance
 Deletes the specified domain recordset and all of its domain records.
 
 The C<delete domain> operation supports tag-based access control via
-resource tags applied to the resource identified by domainName. For
+resource tags applied to the resource identified by C<domain name>. For
 more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
@@ -1782,8 +1850,8 @@ Returns: a L<Paws::Lightsail::DeleteDomainEntryResult> instance
 Deletes a specific domain entry.
 
 The C<delete domain entry> operation supports tag-based access control
-via resource tags applied to the resource identified by domainName. For
-more information, see the Lightsail Dev Guide
+via resource tags applied to the resource identified by C<domain name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1793,6 +1861,8 @@ more information, see the Lightsail Dev Guide
 
 =item InstanceName => Str
 
+=item [ForceDeleteAddOns => Bool]
+
 
 =back
 
@@ -1800,12 +1870,11 @@ Each argument is described in detail in: L<Paws::Lightsail::DeleteInstance>
 
 Returns: a L<Paws::Lightsail::DeleteInstanceResult> instance
 
-Deletes a specific Amazon Lightsail virtual private server, or
-I<instance>.
+Deletes an Amazon Lightsail instance.
 
 The C<delete instance> operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
-more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<instance name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1827,7 +1896,8 @@ I<instance>).
 
 The C<delete instance snapshot> operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceSnapshotName. For more information, see the Lightsail Dev Guide
+C<instance snapshot name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1847,8 +1917,8 @@ Returns: a L<Paws::Lightsail::DeleteKeyPairResult> instance
 Deletes a specific SSH key pair.
 
 The C<delete key pair> operation supports tag-based access control via
-resource tags applied to the resource identified by keyPairName. For
-more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<key pair name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1897,8 +1967,8 @@ create a new load balancer, create a new certificate, and verify domain
 ownership again.
 
 The C<delete load balancer> operation supports tag-based access control
-via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the Lightsail Dev Guide
+via resource tags applied to the resource identified by C<load balancer
+name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1924,8 +1994,8 @@ balancer.
 
 The C<delete load balancer tls certificate> operation supports
 tag-based access control via resource tags applied to the resource
-identified by loadBalancerName. For more information, see the Lightsail
-Dev Guide
+identified by C<load balancer name>. For more information, see the
+Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1995,8 +2065,8 @@ sure to unmount any file systems on the device within your operating
 system before stopping the instance and detaching the disk.
 
 The C<detach disk> operation supports tag-based access control via
-resource tags applied to the resource identified by diskName. For more
-information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<disk name>. For
+more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -2022,7 +2092,8 @@ they are detached from the load balancer.
 
 The C<detach instances from load balancer> operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the Lightsail Dev Guide
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -2043,6 +2114,26 @@ Detaches a static IP from the Amazon Lightsail instance to which it is
 attached.
 
 
+=head2 DisableAddOn
+
+=over
+
+=item AddOnType => Str
+
+=item ResourceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DisableAddOn>
+
+Returns: a L<Paws::Lightsail::DisableAddOnResult> instance
+
+Disables an add-on for an Amazon Lightsail resource. For more
+information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+
 =head2 DownloadDefaultKeyPair
 
 
@@ -2055,6 +2146,26 @@ Each argument is described in detail in: L<Paws::Lightsail::DownloadDefaultKeyPa
 Returns: a L<Paws::Lightsail::DownloadDefaultKeyPairResult> instance
 
 Downloads the default SSH key pair from the user's account.
+
+
+=head2 EnableAddOn
+
+=over
+
+=item AddOnRequest => L<Paws::Lightsail::AddOnRequest>
+
+=item ResourceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::EnableAddOn>
+
+Returns: a L<Paws::Lightsail::EnableAddOnResult> instance
+
+Enables or modifies an add-on for an Amazon Lightsail resource. For
+more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
 
 
 =head2 ExportSnapshot
@@ -2083,8 +2194,8 @@ Amazon Web Services Region in Amazon EC2 as the source Lightsail
 snapshot.
 
 The C<export snapshot> operation supports tag-based access control via
-resource tags applied to the resource identified by sourceSnapshotName.
-For more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<source snapshot
+name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 Use the C<get instance snapshots> or C<get disk snapshots> operations
@@ -2107,6 +2218,24 @@ Returns: a L<Paws::Lightsail::GetActiveNamesResult> instance
 Returns the names of all active (not deleted) resources.
 
 
+=head2 GetAutoSnapshots
+
+=over
+
+=item ResourceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetAutoSnapshots>
+
+Returns: a L<Paws::Lightsail::GetAutoSnapshotsResult> instance
+
+Returns the available automatic snapshots for the specified resource
+name. For more information, see the Lightsail Dev Guide
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+
 =head2 GetBlueprints
 
 =over
@@ -2123,10 +2252,16 @@ Each argument is described in detail in: L<Paws::Lightsail::GetBlueprints>
 Returns: a L<Paws::Lightsail::GetBlueprintsResult> instance
 
 Returns the list of available instance images, or I<blueprints>. You
-can use a blueprint to create a new virtual private server already
-running a specific operating system, as well as a preinstalled app or
-development stack. The software each instance is running depends on the
-blueprint image you choose.
+can use a blueprint to create a new instance already running a specific
+operating system, as well as a preinstalled app or development stack.
+The software each instance is running depends on the blueprint image
+you choose.
+
+Use active blueprints when creating new instances. Inactive blueprints
+are listed to support customers with existing instances and are not
+necessarily available to create new instances. Blueprints are marked
+inactive when they become outdated due to operating system updates or
+new application releases.
 
 
 =head2 GetBundles
@@ -2332,7 +2467,7 @@ private server, or I<instance>.
 
 The C<get instance access details> operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceName. For more information, see the Lightsail Dev Guide
+C<instance name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -2783,7 +2918,7 @@ Returns: a L<Paws::Lightsail::GetRelationalDatabaseMasterUserPasswordResult> ins
 Returns the current, previous, or pending versions of the master user
 password for a Lightsail database.
 
-The C<asdf> operation GetRelationalDatabaseMasterUserPassword supports
+The C<GetRelationalDatabaseMasterUserPassword> operation supports
 tag-based access control via resource tags applied to the resource
 identified by relationalDatabaseName.
 
@@ -2976,7 +3111,7 @@ Adds public ports to an Amazon Lightsail instance.
 
 The C<open instance public ports> operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceName. For more information, see the Lightsail Dev Guide
+C<instance name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3015,7 +3150,7 @@ request.
 
 The C<put instance public ports> operation supports tag-based access
 control via resource tags applied to the resource identified by
-instanceName. For more information, see the Lightsail Dev Guide
+C<instance name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3035,8 +3170,8 @@ Returns: a L<Paws::Lightsail::RebootInstanceResult> instance
 Restarts a specific instance.
 
 The C<reboot instance> operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
-more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<instance name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3101,8 +3236,8 @@ instance. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
 
 The C<start instance> operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
-more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<instance name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3153,8 +3288,8 @@ instance. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
 
 The C<stop instance> operation supports tag-based access control via
-resource tags applied to the resource identified by instanceName. For
-more information, see the Lightsail Dev Guide
+resource tags applied to the resource identified by C<instance name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3191,6 +3326,8 @@ Guide
 
 =item Tags => ArrayRef[L<Paws::Lightsail::Tag>]
 
+=item [ResourceArn => Str]
+
 
 =back
 
@@ -3206,7 +3343,7 @@ information about tags, see the Lightsail Dev Guide
 
 The C<tag resource> operation supports tag-based access control via
 request tags and resource tags applied to the resource identified by
-resourceName. For more information, see the Lightsail Dev Guide
+C<resource name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3232,6 +3369,8 @@ Attempts to unpeer the Lightsail VPC from the user's default VPC.
 
 =item TagKeys => ArrayRef[Str|Undef]
 
+=item [ResourceArn => Str]
+
 
 =back
 
@@ -3244,7 +3383,7 @@ specified Amazon Lightsail resource.
 
 The C<untag resource> operation supports tag-based access control via
 request tags and resource tags applied to the resource identified by
-resourceName. For more information, see the Lightsail Dev Guide
+C<resource name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3266,8 +3405,8 @@ Returns: a L<Paws::Lightsail::UpdateDomainEntryResult> instance
 Updates a domain recordset after it is created.
 
 The C<update domain entry> operation supports tag-based access control
-via resource tags applied to the resource identified by domainName. For
-more information, see the Lightsail Dev Guide
+via resource tags applied to the resource identified by C<domain name>.
+For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3293,7 +3432,8 @@ update one attribute at a time.
 
 The C<update load balancer attribute> operation supports tag-based
 access control via resource tags applied to the resource identified by
-loadBalancerName. For more information, see the Lightsail Dev Guide
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 

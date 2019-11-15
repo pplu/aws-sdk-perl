@@ -116,7 +116,7 @@ Example: C<16:00-16:30>
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 
@@ -158,7 +158,7 @@ Must be at least 30 minutes.
 
 =item *
 
-Specified in Universal Coordinated Time (UTC).
+Specified in Coordinated Universal Time (UTC).
 
 =item *
 

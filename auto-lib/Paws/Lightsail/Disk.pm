@@ -1,5 +1,6 @@
 package Paws::Lightsail::Disk;
   use Moose;
+  has AddOns => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::AddOn]', request_name => 'addOns', traits => ['NameInRequest']);
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has AttachedTo => (is => 'ro', isa => 'Str', request_name => 'attachedTo', traits => ['NameInRequest']);
   has AttachmentState => (is => 'ro', isa => 'Str', request_name => 'attachmentState', traits => ['NameInRequest']);
@@ -35,20 +36,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lightsail::Disk object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { AddOns => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::Disk object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Arn
+  $result->Att1->AddOns
 
 =head1 DESCRIPTION
 
-Describes a system disk or an block storage disk.
+Describes a system disk or a block storage disk.
 
 =head1 ATTRIBUTES
+
+
+=head2 AddOns => ArrayRef[L<Paws::Lightsail::AddOn>]
+
+  An array of objects representing the add-ons enabled on the disk.
 
 
 =head2 Arn => Str

@@ -6,6 +6,7 @@ package Paws::Lightsail::DiskSnapshot;
   has FromDiskName => (is => 'ro', isa => 'Str', request_name => 'fromDiskName', traits => ['NameInRequest']);
   has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
   has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
+  has IsFromAutoSnapshot => (is => 'ro', isa => 'Bool', request_name => 'isFromAutoSnapshot', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
@@ -81,6 +82,12 @@ disk (system volume) snapshot was created.
 
   The unique name of the source instance from which the disk (system
 volume) snapshot was created.
+
+
+=head2 IsFromAutoSnapshot => Bool
+
+  A Boolean value indicating whether the snapshot was created from an
+automatic snapshot.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>

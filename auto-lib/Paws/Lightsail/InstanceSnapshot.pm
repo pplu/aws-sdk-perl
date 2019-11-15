@@ -7,6 +7,7 @@ package Paws::Lightsail::InstanceSnapshot;
   has FromBundleId => (is => 'ro', isa => 'Str', request_name => 'fromBundleId', traits => ['NameInRequest']);
   has FromInstanceArn => (is => 'ro', isa => 'Str', request_name => 'fromInstanceArn', traits => ['NameInRequest']);
   has FromInstanceName => (is => 'ro', isa => 'Str', request_name => 'fromInstanceName', traits => ['NameInRequest']);
+  has IsFromAutoSnapshot => (is => 'ro', isa => 'Bool', request_name => 'isFromAutoSnapshot', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Paws::Lightsail::ResourceLocation', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
@@ -45,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 
 =head1 DESCRIPTION
 
-Describes the snapshot of the virtual private server, or I<instance>.
+Describes an instance snapshot.
 
 =head1 ATTRIBUTES
 
@@ -89,6 +90,12 @@ C<arn:aws:lightsail:us-east-2:123456789101:Instance/64b8404c-ccb1-430b-8daf-1234
 =head2 FromInstanceName => Str
 
   The instance from which the snapshot was created.
+
+
+=head2 IsFromAutoSnapshot => Bool
+
+  A Boolean value indicating whether the snapshot was created from an
+automatic snapshot.
 
 
 =head2 Location => L<Paws::Lightsail::ResourceLocation>

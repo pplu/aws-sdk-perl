@@ -1,5 +1,5 @@
 
-package Paws::Lightsail::DeleteDiskResult;
+package Paws::Lightsail::EnableAddOnResult;
   use Moose;
   has Operations => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Operation]', traits => ['NameInRequest'], request_name => 'operations' );
 
@@ -9,7 +9,7 @@ package Paws::Lightsail::DeleteDiskResult;
 
 =head1 NAME
 
-Paws::Lightsail::DeleteDiskResult
+Paws::Lightsail::EnableAddOnResult
 
 =head1 ATTRIBUTES
 
