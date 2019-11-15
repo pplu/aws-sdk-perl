@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdentity::IdentityPool;
   use Moose;
+  has AllowClassicFlow => (is => 'ro', isa => 'Bool');
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
@@ -20,6 +21,15 @@ package Paws::CognitoIdentity::IdentityPool;
 Paws::CognitoIdentity::IdentityPool
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowClassicFlow => Bool
+
+Enables or disables the Basic (Classic) authentication flow. For more
+information, see Identity Pools (Federated Identities) Authentication
+Flow
+(https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html)
+in the I<Amazon Cognito Developer Guide>.
 
 
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool

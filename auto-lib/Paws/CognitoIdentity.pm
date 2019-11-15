@@ -209,6 +209,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/cognito/>
 
 =item IdentityPoolName => Str
 
+=item [AllowClassicFlow => Bool]
+
 =item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
 
 =item [DeveloperProviderName => Str]
@@ -229,8 +231,7 @@ Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentity
 Returns: a L<Paws::CognitoIdentity::IdentityPool> instance
 
 Creates a new identity pool. The identity pool is a store of user
-identity information that is specific to your AWS account. The limit on
-identity pools is 60 per account. The keys for
+identity information that is specific to your AWS account. The keys for
 C<SupportedLoginProviders> are as follows:
 
 =over
@@ -638,7 +639,7 @@ You must use AWS Developer credentials to call this API.
 
 =item ResourceArn => Str
 
-=item [Tags => L<Paws::CognitoIdentity::IdentityPoolTagsType>]
+=item Tags => L<Paws::CognitoIdentity::IdentityPoolTagsType>
 
 
 =back
@@ -727,7 +728,7 @@ This is a public API. You do not need any credentials to call this API.
 
 =item ResourceArn => Str
 
-=item [TagKeys => ArrayRef[Str|Undef]]
+=item TagKeys => ArrayRef[Str|Undef]
 
 
 =back
@@ -749,6 +750,8 @@ can use this action up to 5 times per second, per account
 =item IdentityPoolId => Str
 
 =item IdentityPoolName => Str
+
+=item [AllowClassicFlow => Bool]
 
 =item [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]]
 
