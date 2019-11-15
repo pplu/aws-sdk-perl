@@ -2,6 +2,7 @@ package Paws::GlobalAccelerator::Accelerator;
   use Moose;
   has AcceleratorArn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
+  has DnsName => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has IpAddressType => (is => 'ro', isa => 'Str');
   has IpSets => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::IpSet]');
@@ -56,9 +57,25 @@ balancers.
   The date and time that the accelerator was created.
 
 
+=head2 DnsName => Str
+
+  The Domain Name System (DNS) name that Global Accelerator creates that
+points to your accelerator's static IP addresses.
+
+The naming convention for the DNS name is: a lower case letter a,
+followed by a 16-bit random hex string, followed by
+.awsglobalaccelerator.com. For example:
+a1234567890abcdef.awsglobalaccelerator.com.
+
+For more information about the default DNS name, see Support for DNS
+Addressing in Global Accelerator
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/about-accelerators.html#about-accelerators.dns-addressing)
+in the I<AWS Global Accelerator Developer Guide>.
+
+
 =head2 Enabled => Bool
 
-  Indicates whether theaccelerator is enabled. The value is true or
+  Indicates whether the accelerator is enabled. The value is true or
 false. The default value is true.
 
 If the value is set to true, the accelerator cannot be deleted. If set
@@ -72,7 +89,8 @@ to false, accelerator can be deleted.
 
 =head2 IpSets => ArrayRef[L<Paws::GlobalAccelerator::IpSet>]
 
-  IP address set associated with the accelerator.
+  The static IP addresses that Global Accelerator associates with the
+accelerator.
 
 
 =head2 LastModifiedTime => Str
@@ -82,9 +100,8 @@ to false, accelerator can be deleted.
 
 =head2 Name => Str
 
-  The name of the accelerator. The name can have a maximum of 32
-characters, must contain only alphanumeric characters or hyphens (-),
-and must not begin or end with a hyphen.
+  The name of the accelerator. The name must contain only alphanumeric
+characters or hyphens (-), and must not begin or end with a hyphen.
 
 
 =head2 Status => Str

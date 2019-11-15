@@ -1,5 +1,6 @@
 package Paws::GlobalAccelerator::EndpointConfiguration;
   use Moose;
+  has ClientIPPreservationEnabled => (is => 'ro', isa => 'Bool');
   has EndpointId => (is => 'ro', isa => 'Str');
   has Weight => (is => 'ro', isa => 'Int');
 1;
@@ -21,20 +22,37 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GlobalAccelerator::EndpointConfiguration object:
 
-  $service_obj->Method(Att1 => { EndpointId => $value, ..., Weight => $value  });
+  $service_obj->Method(Att1 => { ClientIPPreservationEnabled => $value, ..., Weight => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::GlobalAccelerator::EndpointConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EndpointId
+  $result->Att1->ClientIPPreservationEnabled
 
 =head1 DESCRIPTION
 
 A complex type for endpoints.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClientIPPreservationEnabled => Bool
+
+  Indicates whether client IP address preservation is enabled for an
+Application Load Balancer endpoint. The value is true or false. The
+default value is true for new accelerators.
+
+If the value is set to true, the client's IP address is preserved in
+the C<X-Forwarded-For> request header as traffic travels to
+applications on the Application Load Balancer endpoint fronted by the
+accelerator.
+
+For more information, see Viewing Client IP Addresses in AWS Global
+Accelerator
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html)
+in the I<AWS Global Accelerator Developer Guide>.
 
 
 =head2 EndpointId => Str
