@@ -5,7 +5,9 @@ package Paws::MQ::UpdateBroker;
   has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
+  has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
   has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
 
   use MooseX::ClassAttribute;
 
@@ -39,20 +41,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Id       => 'My__string',
         Revision => 1,                           # OPTIONAL
       },    # OPTIONAL
-      EngineVersion => 'My__string',    # OPTIONAL
-      Logs          => {
+      EngineVersion    => 'My__string',    # OPTIONAL
+      HostInstanceType => 'My__string',    # OPTIONAL
+      Logs             => {
         Audit   => 1,
         General => 1,
-      },                                # OPTIONAL
+      },                                   # OPTIONAL
+      SecurityGroups => [ 'My__string', ... ],    # OPTIONAL
     );
 
     # Results:
     my $AutoMinorVersionUpgrade =
       $UpdateBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerId      = $UpdateBrokerResponse->BrokerId;
-    my $Configuration = $UpdateBrokerResponse->Configuration;
-    my $EngineVersion = $UpdateBrokerResponse->EngineVersion;
-    my $Logs          = $UpdateBrokerResponse->Logs;
+    my $BrokerId         = $UpdateBrokerResponse->BrokerId;
+    my $Configuration    = $UpdateBrokerResponse->Configuration;
+    my $EngineVersion    = $UpdateBrokerResponse->EngineVersion;
+    my $HostInstanceType = $UpdateBrokerResponse->HostInstanceType;
+    my $Logs             = $UpdateBrokerResponse->Logs;
+    my $SecurityGroups   = $UpdateBrokerResponse->SecurityGroups;
 
     # Returns a L<Paws::MQ::UpdateBrokerResponse> object.
 
@@ -93,9 +99,24 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
 
+=head2 HostInstanceType => Str
+
+The host instance type of the broker to upgrade to. For a list of
+supported instance types, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+
+
+
 =head2 Logs => L<Paws::MQ::Logs>
 
 Enables Amazon CloudWatch logging for brokers.
+
+
+
+=head2 SecurityGroups => ArrayRef[Str|Undef]
+
+The list of security groups (1 minimum, 5 maximum) that authorize
+connections to brokers.
 
 
 

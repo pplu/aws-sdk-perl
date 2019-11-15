@@ -583,7 +583,11 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item [EngineVersion => Str]
 
+=item [HostInstanceType => Str]
+
 =item [Logs => L<Paws::MQ::Logs>]
+
+=item [SecurityGroups => ArrayRef[Str|Undef]]
 
 
 =back

@@ -127,8 +127,8 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  The list of rules (1 minimum, 125 maximum) that authorize connections
-to brokers.
+  The list of security groups (1 minimum, 5 maximum) that authorize
+connections to brokers.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]

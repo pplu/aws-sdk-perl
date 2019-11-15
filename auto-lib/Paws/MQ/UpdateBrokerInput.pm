@@ -3,7 +3,9 @@ package Paws::MQ::UpdateBrokerInput;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', request_name => 'autoMinorVersionUpgrade', traits => ['NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', request_name => 'configuration', traits => ['NameInRequest']);
   has EngineVersion => (is => 'ro', isa => 'Str', request_name => 'engineVersion', traits => ['NameInRequest']);
+  has HostInstanceType => (is => 'ro', isa => 'Str', request_name => 'hostInstanceType', traits => ['NameInRequest']);
   has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', request_name => 'logs', traits => ['NameInRequest']);
+  has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MQ::UpdateBrokerInput object:
 
-  $service_obj->Method(Att1 => { AutoMinorVersionUpgrade => $value, ..., Logs => $value  });
+  $service_obj->Method(Att1 => { AutoMinorVersionUpgrade => $value, ..., SecurityGroups => $value  });
 
 =head3 Results returned from an API call
 
@@ -58,9 +60,22 @@ versions, see
 https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
+=head2 HostInstanceType => Str
+
+  The host instance type of the broker to upgrade to. For a list of
+supported instance types, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+
+
 =head2 Logs => L<Paws::MQ::Logs>
 
   Enables Amazon CloudWatch logging for brokers.
+
+
+=head2 SecurityGroups => ArrayRef[Str|Undef]
+
+  The list of security groups (1 minimum, 5 maximum) that authorize
+connections to brokers.
 
 
 

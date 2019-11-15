@@ -16,6 +16,8 @@ package Paws::MQ::DescribeBrokerOutput;
   has Logs => (is => 'ro', isa => 'Paws::MQ::LogsSummary', request_name => 'logs', traits => ['NameInRequest']);
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', request_name => 'maintenanceWindowStartTime', traits => ['NameInRequest']);
   has PendingEngineVersion => (is => 'ro', isa => 'Str', request_name => 'pendingEngineVersion', traits => ['NameInRequest']);
+  has PendingHostInstanceType => (is => 'ro', isa => 'Str', request_name => 'pendingHostInstanceType', traits => ['NameInRequest']);
+  has PendingSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'pendingSecurityGroups', traits => ['NameInRequest']);
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', request_name => 'publiclyAccessible', traits => ['NameInRequest']);
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroups', traits => ['NameInRequest']);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnetIds', traits => ['NameInRequest']);
@@ -149,6 +151,19 @@ engine versions, see
 https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 
 
+=head2 PendingHostInstanceType => Str
+
+  The host instance type of the broker to upgrade to. For a list of
+supported instance types, see
+https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+
+
+=head2 PendingSecurityGroups => ArrayRef[Str|Undef]
+
+  The list of pending security groups to authorize connections to
+brokers.
+
+
 =head2 PubliclyAccessible => Bool
 
   Required. Enables connections from applications outside of the VPC that
@@ -157,7 +172,7 @@ hosts the broker's subnets.
 
 =head2 SecurityGroups => ArrayRef[Str|Undef]
 
-  Required. The list of rules (1 minimum, 125 maximum) that authorize
+  The list of security groups (1 minimum, 5 maximum) that authorize
 connections to brokers.
 
 
