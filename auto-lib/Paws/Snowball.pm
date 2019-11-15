@@ -75,6 +75,11 @@ package Paws::Snowball;
     my $call_object = $self->new_with_coercions('Paws::Snowball::GetSnowballUsage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSoftwareUpdates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Snowball::GetSoftwareUpdates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListClusterJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Snowball::ListClusterJobs', @_);
@@ -223,7 +228,7 @@ package Paws::Snowball;
   }
 
 
-  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage ListClusterJobs ListClusters ListCompatibleImages ListJobs UpdateCluster UpdateJob / }
+  sub operations { qw/CancelCluster CancelJob CreateAddress CreateCluster CreateJob DescribeAddress DescribeAddresses DescribeCluster DescribeJob GetJobManifest GetJobUnlockCode GetSnowballUsage GetSoftwareUpdates ListClusterJobs ListClusters ListCompatibleImages ListJobs UpdateCluster UpdateJob / }
 
 1;
 
@@ -254,11 +259,13 @@ Paws::Snowball - Perl Interface to AWS Amazon Import/Export Snowball
 AWS Snowball is a petabyte-scale data transport solution that uses
 secure devices to transfer large amounts of data between your
 on-premises data centers and Amazon Simple Storage Service (Amazon S3).
-The commands described here provide access to the same functionality
-that is available in the AWS Snowball Management Console, which enables
-you to create and manage jobs for Snowball and Snowball Edge devices.
-To transfer data locally with a device, you'll need to use the Snowball
-client or the Amazon S3 API adapter for Snowball.
+The Snowball commands described here provide access to the same
+functionality that is available in the AWS Snowball Management Console,
+which enables you to create and manage jobs for Snowball. To transfer
+data locally with a Snowball device, you'll need to use the Snowball
+client or the Amazon S3 API adapter for Snowball. For more information,
+see the User Guide
+(https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/snowball-2016-06-30>
 
@@ -552,6 +559,23 @@ at one time is 1. If you want to increase your service limit, contact
 AWS Support.
 
 
+=head2 GetSoftwareUpdates
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Snowball::GetSoftwareUpdates>
+
+Returns: a L<Paws::Snowball::GetSoftwareUpdatesResult> instance
+
+Returns an Amazon S3 presigned URL for an update file associated with a
+specified C<JobId>.
+
+
 =head2 ListClusterJobs
 
 =over
@@ -611,11 +635,10 @@ Returns: a L<Paws::Snowball::ListCompatibleImagesResult> instance
 
 This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be
-supported for use on C<EDGE>, C<EDGE_C>, and C<EDGE_CG> devices. For
-more information on compatible AMIs, see Using Amazon EC2 Compute
-Instances
-(http://docs.aws.amazon.com/snowball/latest/developer-guide/using-ec2.html)
-in the I<AWS Snowball Developer Guide>.
+supported for use on a Snowball Edge device. Currently, supported AMIs
+are based on the CentOS 7 (x86_64) - with Updates HVM, Ubuntu Server
+14.04 LTS (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available
+on the AWS Marketplace.
 
 
 =head2 ListJobs

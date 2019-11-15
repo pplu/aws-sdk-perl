@@ -97,7 +97,7 @@ The updated C<JobResource> object, or the updated JobResource object.
 
 The new role Amazon Resource Name (ARN) that you want to associate with
 this job. To create a role ARN, use the CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)AWS
 Identity and Access Management (IAM) API action.
 
 

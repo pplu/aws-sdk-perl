@@ -122,7 +122,7 @@ Valid values are: C<"IMPORT">, C<"EXPORT">, C<"LOCAL_USE">
 
 The C<KmsKeyARN> that you want to associate with this job.
 C<KmsKeyARN>s are created using the CreateKey
-(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
 AWS Key Management Service (KMS) API action.
 
 
@@ -154,7 +154,7 @@ are UTF-8 binary sorted.
 
 The C<RoleARN> that you want to associate with this job. C<RoleArn>s
 are created using the CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 AWS Identity and Access Management (IAM) API action.
 
 
@@ -203,8 +203,8 @@ Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this job. The only supported
-device types for cluster jobs are C<EDGE>, C<EDGE_C>, and C<EDGE_CG>.
+The type of AWS Snowball device to use for this job. Currently, the
+only supported device type for cluster jobs is C<EDGE>.
 
 Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
 

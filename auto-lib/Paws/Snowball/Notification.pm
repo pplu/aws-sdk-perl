@@ -62,12 +62,12 @@ C<NotifyAll> set to true.
   The new SNS C<TopicArn> that you want to associate with this job. You
 can create Amazon Resource Names (ARNs) for topics by using the
 CreateTopic
-(http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html) Amazon
-SNS API action.
+(https://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html)
+Amazon SNS API action.
 
 You can subscribe email addresses to an Amazon SNS topic through the
 AWS Management Console, or by using the Subscribe
-(http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) AWS
+(https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) AWS
 Simple Notification Service (SNS) API action.
 
 

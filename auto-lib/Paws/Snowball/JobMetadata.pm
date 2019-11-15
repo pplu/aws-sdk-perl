@@ -120,7 +120,7 @@ you.
   The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS
 KMS) key associated with this job. This ARN was created using the
 CreateKey
-(http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
+(https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
 API action in AWS KMS.
 
 
@@ -143,7 +143,7 @@ imported into.
 
   The role ARN associated with this job. This ARN was created using the
 CreateRole
-(http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+(https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 API action in AWS Identity and Access Management (IAM).
 
 

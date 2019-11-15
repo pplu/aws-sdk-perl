@@ -47,7 +47,7 @@ the AWS Cloud and on the device.
 
 =head2 SnowballAmiId => Str
 
-  The ID of the AMI on the supported device.
+  The ID of the AMI on the Snowball Edge device.
 
 
 
