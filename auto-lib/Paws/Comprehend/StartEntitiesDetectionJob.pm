@@ -121,7 +121,7 @@ Comprehend: English ("en"), Spanish ("es"), French ("fr"), German
 recognition is used, this parameter is ignored and the language used
 for training the model is used instead.
 
-Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
 

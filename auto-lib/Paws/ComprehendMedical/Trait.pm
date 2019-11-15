@@ -44,8 +44,8 @@ Provides contextual information about the extracted entity.
 
 =head2 Score => Num
 
-  The level of confidence that Comprehend Medical has in the accuracy of
-this trait.
+  The level of confidence that Amazon Comprehend Medical has in the
+accuracy of this trait.
 
 
 

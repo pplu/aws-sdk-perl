@@ -47,7 +47,7 @@ specific item on the list of entity types.
 
 =head2 NumberOfTrainMentions => Int
 
-  indicates the number of times the given entity name was seen in the
+  Indicates the number of times the given entity type was seen in the
 training data.
 
 

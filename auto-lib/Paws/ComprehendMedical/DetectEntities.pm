@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Entities           = $DetectEntitiesResponse->Entities;
+    my $ModelVersion       = $DetectEntitiesResponse->ModelVersion;
     my $PaginationToken    = $DetectEntitiesResponse->PaginationToken;
     my $UnmappedAttributes = $DetectEntitiesResponse->UnmappedAttributes;
 

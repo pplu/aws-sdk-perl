@@ -1,5 +1,5 @@
 
-package Paws::ComprehendMedical::DetectEntitiesResponse;
+package Paws::ComprehendMedical::DetectEntitiesV2Response;
   use Moose;
   has Entities => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::Entity]', required => 1);
   has ModelVersion => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,7 @@ package Paws::ComprehendMedical::DetectEntitiesResponse;
 
 =head1 NAME
 
-Paws::ComprehendMedical::DetectEntitiesResponse
+Paws::ComprehendMedical::DetectEntitiesV2Response
 
 =head1 ATTRIBUTES
 
@@ -22,9 +22,8 @@ Paws::ComprehendMedical::DetectEntitiesResponse
 The collection of medical entities extracted from the input text and
 their associated information. For each entity, the response provides
 the entity text, the entity category, where the entity text begins and
-ends, and the level of confidence that Amazon Comprehend Medical has in
-the detection and analysis. Attributes and traits of the entity are
-also returned.
+ends, and the level of confidence in the detection and analysis.
+Attributes and traits of the entity are also returned.
 
 
 =head2 B<REQUIRED> ModelVersion => Str
@@ -36,15 +35,14 @@ model used for a particular batch of documents.
 
 =head2 PaginationToken => Str
 
-If the result of the previous request to C<DetectEntities> was
-truncated, include the C<PaginationToken> to fetch the next page of
-entities.
+If the result to the C<DetectEntitiesV2> operation was truncated,
+include the C<PaginationToken> to fetch the next page of entities.
 
 
 =head2 UnmappedAttributes => ArrayRef[L<Paws::ComprehendMedical::UnmappedAttribute>]
 
-Attributes extracted from the input text that we were unable to relate
-to an entity.
+Attributes extracted from the input text that couldn't be related to an
+entity.
 
 
 =head2 _request_id => Str

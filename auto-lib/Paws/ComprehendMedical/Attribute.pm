@@ -69,14 +69,14 @@ identifier.
 
 =head2 RelationshipScore => Num
 
-  The level of confidence that Comprehend Medical has that this attribute
-is correctly related to this entity.
+  The level of confidence that Amazon Comprehend Medical has that this
+attribute is correctly related to this entity.
 
 
 =head2 Score => Num
 
-  The level of confidence that Comprehend Medical has that the segment of
-text is correctly recognized as an attribute.
+  The level of confidence that Amazon Comprehend Medical has that the
+segment of text is correctly recognized as an attribute.
 
 
 =head2 Text => Str

@@ -75,8 +75,8 @@ identifier.
 
 =head2 Score => Num
 
-  The level of confidence that Comprehend Medical has in the accuracy of
-the detection.
+  The level of confidence that Amazon Comprehend Medical has in the
+accuracy of the detection.
 
 
 =head2 Text => Str

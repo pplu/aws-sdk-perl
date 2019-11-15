@@ -53,7 +53,7 @@ languages supported by Amazon Comprehend: German ("de"), English
 ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
 ("pt"). All documents must be in the same language.
 
-Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">
+Valid values are: C<"en">, C<"es">, C<"fr">, C<"de">, C<"it">, C<"pt">, C<"ar">, C<"hi">, C<"ja">, C<"ko">, C<"zh">, C<"zh-TW">
 
 =head2 B<REQUIRED> Text => Str
 
