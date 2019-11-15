@@ -72,14 +72,9 @@ into the master node as a user named "hadoop".
 
 =head2 Ec2SubnetId => Str
 
-  To launch the cluster in Amazon VPC, set this parameter to the
-identifier of the Amazon VPC subnet where you want the cluster to
-launch. If you do not specify this value, the cluster is launched in
-the normal AWS cloud, outside of a VPC.
-
-Amazon VPC currently does not support cluster compute quadruple extra
-large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge
-instance type for nodes of a cluster launched in a VPC.
+  Set this parameter to the identifier of the Amazon VPC subnet where you
+want the cluster to launch. If you do not specify this value, and your
+account supports EC2-Classic, the cluster launches in EC2-Classic.
 
 
 =head2 EmrManagedMasterSecurityGroup => Str
@@ -120,7 +115,7 @@ which to launch EC2 cluster instances. Subnets must exist within the
 same VPC. Amazon EMR chooses the EC2 subnet with the best fit from
 among the list of C<RequestedEc2SubnetIds>, and then launches all
 cluster instances within that Subnet. If this value is not specified,
-and the account and region support EC2-Classic networks, the cluster
+and the account and Region support EC2-Classic networks, the cluster
 launches instances in the EC2-Classic network and uses
 C<RequestedEc2AvailabilityZones> instead of this setting. If
 EC2-Classic is not supported, and no Subnet is specified, Amazon EMR

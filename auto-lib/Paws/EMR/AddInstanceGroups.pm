@@ -51,23 +51,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                   Market => 'ON_DEMAND',    # values: ON_DEMAND, SPOT; OPTIONAL
                 },
-                Name    => 'MyString',
+                Name    => 'MyString',      # OPTIONAL
                 Trigger => {
                   CloudWatchAlarmDefinition => {
                     ComparisonOperator => 'GREATER_THAN_OR_EQUAL'
                     , # values: GREATER_THAN_OR_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_OR_EQUAL
-                    MetricName => 'MyString',
+                    MetricName => 'MyString',    # OPTIONAL
                     Period     => 1,
                     Threshold  => 1,
                     Dimensions => [
                       {
-                        Key   => 'MyString',
-                        Value => 'MyString',
+                        Key   => 'MyString',     # OPTIONAL
+                        Value => 'MyString',     # OPTIONAL
                       },
                       ...
-                    ],    # OPTIONAL
+                    ],                           # OPTIONAL
                     EvaluationPeriods => 1,
-                    Namespace         => 'MyString',
+                    Namespace         => 'MyString',      # OPTIONAL
                     Statistic         => 'SAMPLE_COUNT'
                     , # values: SAMPLE_COUNT, AVERAGE, SUM, MINIMUM, MAXIMUM; OPTIONAL
                     Unit => 'NONE'
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
 
                 },
-                Description => 'MyString',
+                Description => 'MyString',    # OPTIONAL
               },
               ...
             ],
@@ -84,25 +84,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           BidPrice       => 'MyXmlStringMaxLen256',    # max: 256; OPTIONAL
           Configurations => [
             {
-              Classification => 'MyString',
+              Classification => 'MyString',            # OPTIONAL
               Configurations => <ConfigurationList>,
-              Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+              Properties     => {
+                'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+              },    # OPTIONAL
             },
             ...
-          ],                                                      # OPTIONAL
+          ],        # OPTIONAL
           EbsConfiguration => {
             EbsBlockDeviceConfigs => [
               {
                 VolumeSpecification => {
                   SizeInGB   => 1,
-                  VolumeType => 'MyString',
+                  VolumeType => 'MyString',    # OPTIONAL
                   Iops       => 1,
                 },
                 VolumesPerInstance => 1,
               },
               ...
-            ],                                                    # OPTIONAL
-            EbsOptimized => 1,                                    # OPTIONAL
+            ],                                 # OPTIONAL
+            EbsOptimized => 1,                 # OPTIONAL
           },    # OPTIONAL
           Market => 'ON_DEMAND',             # values: ON_DEMAND, SPOT; OPTIONAL
           Name   => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL

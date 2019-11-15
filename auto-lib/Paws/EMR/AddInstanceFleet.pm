@@ -39,25 +39,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
             Configurations                      => [
               {
-                Classification => 'MyString',
+                Classification => 'MyString',            # OPTIONAL
                 Configurations => <ConfigurationList>,
-                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+                Properties     => {
+                  'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+                },    # OPTIONAL
               },
               ...
-            ],                                                      # OPTIONAL
+            ],        # OPTIONAL
             EbsConfiguration => {
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
                     SizeInGB   => 1,
-                    VolumeType => 'MyString',
+                    VolumeType => 'MyString',    # OPTIONAL
                     Iops       => 1,
                   },
                   VolumesPerInstance => 1,
                 },
                 ...
-              ],                                                    # OPTIONAL
-              EbsOptimized => 1,                                    # OPTIONAL
+              ],                                 # OPTIONAL
+              EbsOptimized => 1,                 # OPTIONAL
             },    # OPTIONAL
             WeightedCapacity => 1,
           },

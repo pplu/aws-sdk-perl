@@ -138,7 +138,9 @@ flow this value is empty.
 
 =head2 VisibleToAllUsers => Bool
 
-  Specifies whether the cluster is visible to all IAM users of the AWS
+  I<This member will be deprecated.>
+
+Specifies whether the cluster is visible to all IAM users of the AWS
 account associated with the cluster. If this value is set to C<true>,
 all IAM users of that AWS account can view and (if they have the proper
 policy permissions set) manage the cluster. If it is set to C<false>,

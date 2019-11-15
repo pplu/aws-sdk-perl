@@ -50,6 +50,8 @@ Identifiers of the job flows to receive the new visibility setting.
 
 =head2 B<REQUIRED> VisibleToAllUsers => Bool
 
+I<This member will be deprecated.>
+
 Whether the specified clusters are visible to all IAM users of the AWS
 account associated with the cluster. If this value is set to True, all
 IAM users of that AWS account can view and, if they have the proper IAM

@@ -118,6 +118,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeStep', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBlockPublicAccessConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::GetBlockPublicAccessConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBootstrapActions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListBootstrapActions', @_);
@@ -166,6 +171,11 @@ package Paws::EMR;
   sub PutAutoScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::PutAutoScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBlockPublicAccessConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::PutBlockPublicAccessConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveAutoScalingPolicy {
@@ -362,7 +372,7 @@ package Paws::EMR;
   }
 
 
-  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep GetBlockPublicAccessConfiguration ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 
 1;
 
@@ -663,6 +673,24 @@ Returns: a L<Paws::EMR::DescribeStepOutput> instance
 Provides more detail about the cluster step.
 
 
+=head2 GetBlockPublicAccessConfiguration
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::EMR::GetBlockPublicAccessConfiguration>
+
+Returns: a L<Paws::EMR::GetBlockPublicAccessConfigurationOutput> instance
+
+Returns the Amazon EMR block public access configuration for your AWS
+account in the current Region. For more information see Configure Block
+Public Access for Amazon EMR
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+in the I<Amazon EMR Management Guide>.
+
+
 =head2 ListBootstrapActions
 
 =over
@@ -891,6 +919,26 @@ terminates EC2 instances in response to the value of a CloudWatch
 metric.
 
 
+=head2 PutBlockPublicAccessConfiguration
+
+=over
+
+=item BlockPublicAccessConfiguration => L<Paws::EMR::BlockPublicAccessConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::PutBlockPublicAccessConfiguration>
+
+Returns: a L<Paws::EMR::PutBlockPublicAccessConfigurationOutput> instance
+
+Creates or updates an Amazon EMR block public access configuration for
+your AWS account in the current Region. For more information see
+Configure Block Public Access for Amazon EMR
+(https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
+in the I<Amazon EMR Management Guide>.
+
+
 =head2 RemoveAutoScalingPolicy
 
 =over
@@ -1078,6 +1126,8 @@ in the I<Amazon EMR Management Guide>.
 Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
 Returns: nothing
+
+I<This member will be deprecated.>
 
 Sets whether all AWS Identity and Access Management (IAM) users under
 your account can access the specified clusters (job flows). This action
