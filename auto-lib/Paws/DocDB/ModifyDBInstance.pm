@@ -3,6 +3,7 @@ package Paws::DocDB::ModifyDBInstance;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has NewDBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -37,6 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DBInstanceIdentifier       => 'MyString',
       ApplyImmediately           => 1,             # OPTIONAL
       AutoMinorVersionUpgrade    => 1,             # OPTIONAL
+      CACertificateIdentifier    => 'MyString',    # OPTIONAL
       DBInstanceClass            => 'MyString',    # OPTIONAL
       NewDBInstanceIdentifier    => 'MyString',    # OPTIONAL
       PreferredMaintenanceWindow => 'MyString',    # OPTIONAL
@@ -78,6 +80,13 @@ change is asynchronously applied as soon as possible. An outage results
 if this parameter is set to C<true> during the maintenance window, and
 a newer minor version is available, and Amazon DocumentDB has enabled
 automatic patching for that engine version.
+
+
+
+=head2 CACertificateIdentifier => Str
+
+Indicates the certificate that needs to be associated with the
+instance.
 
 
 

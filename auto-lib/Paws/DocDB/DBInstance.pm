@@ -3,6 +3,7 @@ package Paws::DocDB::DBInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
+  has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBInstanceArn => (is => 'ro', isa => 'Str');
   has DBInstanceClass => (is => 'ro', isa => 'Str');
@@ -75,6 +76,11 @@ located in.
 
   Specifies the number of days for which automatic DB snapshots are
 retained.
+
+
+=head2 CACertificateIdentifier => Str
+
+  The identifier of the CA certificate for this DB instance.
 
 
 =head2 DBClusterIdentifier => Str
@@ -187,11 +193,8 @@ primary instance.
 
 =head2 PubliclyAccessible => Bool
 
-  Specifies the availability options for the DB instance. A value of
-C<true> specifies an internet-facing instance with a publicly
-resolvable DNS name, which resolves to a public IP address. A value of
-C<false> specifies an internal instance with a DNS name that resolves
-to a private IP address.
+  Not supported. Amazon DocumentDB does not currently support public
+endpoints. The value of C<PubliclyAccessible> is always C<false>.
 
 
 =head2 StatusInfos => ArrayRef[L<Paws::DocDB::DBInstanceStatusInfo>]
@@ -202,7 +205,7 @@ this is blank.
 
 =head2 StorageEncrypted => Bool
 
-  Specifies whether the DB instance is encrypted.
+  Specifies whether or not the DB instance is encrypted.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::DocDB::VpcSecurityGroupMembership>]

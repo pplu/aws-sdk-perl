@@ -102,6 +102,11 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DeleteDBSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBClusterParameterGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeDBClusterParameterGroups', @_);
@@ -378,7 +383,7 @@ package Paws::DocDB;
   }
 
 
-  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup RebootDBInstance RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -772,6 +777,29 @@ Deletes a DB subnet group.
 
 The specified database subnet group must not be associated with any DB
 instances.
+
+
+=head2 DescribeCertificates
+
+=over
+
+=item [CertificateIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::DescribeCertificates>
+
+Returns: a L<Paws::DocDB::CertificateMessage> instance
+
+Returns a list of certificate authority (CA) certificates provided by
+Amazon RDS for this AWS account.
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -1279,6 +1307,8 @@ can't use C<all> as a value for that parameter in this case.
 =item [ApplyImmediately => Bool]
 
 =item [AutoMinorVersionUpgrade => Bool]
+
+=item [CACertificateIdentifier => Str]
 
 =item [DBInstanceClass => Str]
 

@@ -167,7 +167,8 @@ Valid values: 0-15
 
 =head2 Tags => ArrayRef[L<Paws::DocDB::Tag>]
 
-The tags to be assigned to the DB instance.
+The tags to be assigned to the DB instance. You can assign up to 10
+tags to an instance.
 
 
 

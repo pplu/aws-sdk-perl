@@ -43,7 +43,7 @@ Detailed information about a DB subnet group.
 
 =head2 DBSubnetGroupArn => Str
 
-  The Amazon Resource Identifier (ARN) for the DB subnet group.
+  The Amazon Resource Name (ARN) for the DB subnet group.
 
 
 =head2 DBSubnetGroupDescription => Str
