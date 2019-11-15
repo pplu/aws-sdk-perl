@@ -88,6 +88,9 @@ in the I<Amazon EventBridge User Guide>.
 
 The name of the rule that you're creating or updating.
 
+A rule can't have the same name as another rule in the same Region or
+on the same event bus.
+
 
 
 =head2 RoleArn => Str

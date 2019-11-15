@@ -4,6 +4,7 @@ package Paws::CloudWatch::MetricDataQuery;
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Label => (is => 'ro', isa => 'Str');
   has MetricStat => (is => 'ro', isa => 'Paws::CloudWatch::MetricStat');
+  has Period => (is => 'ro', isa => 'Int');
   has ReturnData => (is => 'ro', isa => 'Bool');
 1;
 
@@ -113,6 +114,22 @@ performing a math expression on returned data.
 
 Within one MetricDataQuery object, you must specify either
 C<Expression> or C<MetricStat> but not both.
+
+
+=head2 Period => Int
+
+  The granularity, in seconds, of the returned data points. For metrics
+with regular resolution, a period can be as short as one minute (60
+seconds) and must be a multiple of 60. For high-resolution metrics that
+are collected at intervals of less than one minute, the period can be
+1, 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are
+those metrics stored by a C<PutMetricData> operation that includes a
+C<StorageResolution of 1 second>.
+
+Use this field only when you are performing a C<GetMetricData>
+operation, and only when you are specifying the C<Expression> field. Do
+not use this field with a C<PutMetricAlarm> operation or when you are
+specifying a C<MetricStat> in a C<GetMetricData> operation.
 
 
 =head2 ReturnData => Bool

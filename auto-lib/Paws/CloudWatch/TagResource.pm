@@ -49,16 +49,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the CloudWatch resource that you're adding tags to. For more
-information on ARN format, see Example ARNs
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-cloudwatch)
-in the I<Amazon Web Services General Reference>.
+The ARN of the CloudWatch alarm that you're adding tags to. The ARN
+format is
+C<arn:aws:cloudwatch:I<Region>:I<account-id>:alarm:I<alarm-name>>
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CloudWatch::Tag>]
 
-The list of key-value pairs to associate with the resource.
+The list of key-value pairs to associate with the alarm.
 
 
 

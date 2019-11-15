@@ -43,14 +43,16 @@ Represents an event to be submitted.
 
 =head2 Detail => Str
 
-  A valid JSON string. There is no other schema imposed. The JSON string
+  A valid JSON object. There is no other schema imposed. The JSON object
 can contain fields and nested subobjects.
+
+This field is required.
 
 
 =head2 DetailType => Str
 
   Free-form string used to decide which fields to expect in the event
-detail.
+detail. This field is required.
 
 
 =head2 EventBusName => Str

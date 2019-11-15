@@ -97,6 +97,9 @@ If the value is true, the earliest log events are returned first. If
 the value is false, the latest log events are returned first. The
 default value is false.
 
+If you are using C<nextToken> in this operation, you must specify
+C<true> for C<startFromHead>.
+
 
 
 =head2 StartTime => Int

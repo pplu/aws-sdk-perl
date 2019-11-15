@@ -313,8 +313,8 @@ Each argument is described in detail in: L<Paws::CloudWatch::DeleteAlarms>
 
 Returns: nothing
 
-Deletes the specified alarms. In the event of an error, no alarms are
-deleted.
+Deletes the specified alarms. You can delete up to 50 alarms in one
+operation. In the event of an error, no alarms are deleted.
 
 
 =head2 DeleteAnomalyDetector
@@ -600,6 +600,14 @@ with 1-minute resolution. After 15 days, this data is still available,
 but is aggregated and retrievable only with a resolution of 5 minutes.
 After 63 days, the data is further aggregated and is available with a
 resolution of 1 hour.
+
+If you omit C<Unit> in your request, all data that was collected with
+any unit is returned, along with the corresponding units that were
+specified when the data was reported to CloudWatch. If you specify a
+unit, the operation returns only data data that was collected with that
+unit specified. If you specify a unit that does not match the data
+collected, the results of the operation are null. CloudWatch does not
+perform unit conversions.
 
 
 =head2 GetMetricStatistics
@@ -1130,19 +1138,21 @@ Each argument is described in detail in: L<Paws::CloudWatch::TagResource>
 Returns: a L<Paws::CloudWatch::TagResourceOutput> instance
 
 Assigns one or more tags (key-value pairs) to the specified CloudWatch
-resource. Tags can help you organize and categorize your resources. You
-can also use them to scope user permissions, by granting a user
-permission to access or change only resources with certain tag values.
-In CloudWatch, alarms can be tagged.
+resource. Currently, the only CloudWatch resources that can be tagged
+are alarms.
+
+Tags can help you organize and categorize your resources. You can also
+use them to scope user permissions, by granting a user permission to
+access or change only resources with certain tag values.
 
 Tags don't have any semantic meaning to AWS and are interpreted
 strictly as strings of characters.
 
-You can use the C<TagResource> action with a resource that already has
-tags. If you specify a new tag key for the resource, this tag is
-appended to the list of tags associated with the resource. If you
-specify a tag key that is already associated with the resource, the new
-tag value that you specify replaces the previous value for that tag.
+You can use the C<TagResource> action with an alarm that already has
+tags. If you specify a new tag key for the alarm, this tag is appended
+to the list of tags associated with the alarm. If you specify a tag key
+that is already associated with the alarm, the new tag value that you
+specify replaces the previous value for that tag.
 
 You can associate as many as 50 tags with a resource.
 

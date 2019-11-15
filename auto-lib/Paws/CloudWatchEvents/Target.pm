@@ -80,7 +80,9 @@ in the I<Amazon EC2 Container Service Developer Guide>.
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the target.
+  A name for the target. Use a string that will help you identify the
+target. Each target associated with a rule must have an C<Id> unique
+for that rule.
 
 
 =head2 Input => Str

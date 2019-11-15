@@ -592,6 +592,9 @@ the same S3 bucket. To separate out log data for each export task, you
 can specify a prefix to be used as the Amazon S3 key prefix for all
 exported objects.
 
+Exporting to S3 buckets that are encrypted with AES-256 is supported.
+Exporting to S3 buckets encrypted with SSE-KMS is not supported.
+
 
 =head2 CreateLogGroup
 
@@ -1164,8 +1167,7 @@ Each argument is described in detail in: L<Paws::CloudWatchLogs::GetQueryResults
 
 Returns: a L<Paws::CloudWatchLogs::GetQueryResultsResponse> instance
 
-Returns the results from the specified query. If the query is in
-progress, partial results of that current execution are returned.
+Returns the results from the specified query.
 
 Only the fields requested in the query are returned, along with a
 C<@ptr> field which is the identifier for the log record. You can use
@@ -1173,6 +1175,11 @@ the value of C<@ptr> in a operation to get the full log record.
 
 C<GetQueryResults> does not start a query execution. To run a query,
 use .
+
+If the value of the C<Status> field in the output is C<Running>, this
+operation returns only partial results. If you see a value of
+C<Scheduled> or C<Running> for the status, you can retry the operation
+later to see the final results.
 
 
 =head2 ListTagsLogGroup
@@ -1211,15 +1218,14 @@ Returns: a L<Paws::CloudWatchLogs::PutDestinationResponse> instance
 Creates or updates a destination. A destination encapsulates a physical
 resource (such as an Amazon Kinesis stream) and enables you to
 subscribe to a real-time stream of log events for a different account,
-ingested using PutLogEvents. Currently, the only supported physical
-resource is a Kinesis stream belonging to the same account as the
-destination.
+ingested using PutLogEvents. A destination can be an Amazon Kinesis
+stream, Amazon Kinesis Data Firehose strea, or an AWS Lambda function.
 
-Through an access policy, a destination controls what is written to its
-Kinesis stream. By default, C<PutDestination> does not set any access
-policy with the destination, which means a cross-account user cannot
-call PutSubscriptionFilter against this destination. To enable this,
-the destination owner must call PutDestinationPolicy after
+Through an access policy, a destination controls what is written to it.
+By default, C<PutDestination> does not set any access policy with the
+destination, which means a cross-account user cannot call
+PutSubscriptionFilter against this destination. To enable this, the
+destination owner must call PutDestinationPolicy after
 C<PutDestination>.
 
 
@@ -1449,13 +1455,15 @@ associate a second filter with a log group.
 
 =item EndTime => Int
 
-=item LogGroupName => Str
-
 =item QueryString => Str
 
 =item StartTime => Int
 
 =item [Limit => Int]
+
+=item [LogGroupName => Str]
+
+=item [LogGroupNames => ArrayRef[Str|Undef]]
 
 
 =back

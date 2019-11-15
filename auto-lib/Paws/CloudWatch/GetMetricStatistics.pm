@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                  # OPTIONAL
       ExtendedStatistics => [ 'MyExtendedStatistic', ... ],    # OPTIONAL
-      Statistics => [
+      Statistics         => [
         'SampleCount', ... # values: SampleCount, Average, Sum, Minimum, Maximum
       ],                   # OPTIONAL
       Unit => 'Seconds',   # OPTIONAL
@@ -207,10 +207,13 @@ C<ExtendedStatistics>, but not both.
 
 =head2 Unit => Str
 
-The unit for a given metric. Metrics may be reported in multiple units.
-Not supplying a unit results in all units being returned. If you
-specify only a unit that the metric does not report, the results of the
-call are null.
+The unit for a given metric. If you omit C<Unit>, all data that was
+collected with any unit is returned, along with the corresponding units
+that were specified when the data was reported to CloudWatch. If you
+specify a unit, the operation returns only data data that was collected
+with that unit specified. If you specify a unit that does not match the
+data collected, the results of the operation are null. CloudWatch does
+not perform unit conversions.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

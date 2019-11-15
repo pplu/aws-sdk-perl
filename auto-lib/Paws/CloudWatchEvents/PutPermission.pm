@@ -91,8 +91,9 @@ to your default event bus.
 If you specify "*" without specifying C<Condition>, avoid creating
 rules that might match undesirable events. To create more secure rules,
 make sure that the event pattern for each rule contains an C<account>
-field with a specific account ID to receive events from. Rules with an
-account field don't match any events sent from other accounts.
+field with a specific account ID to receive events from. Rules that
+have an account field match events sent only from accounts that are
+listed in the rule's C<account> field.
 
 
 
