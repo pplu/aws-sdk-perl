@@ -83,7 +83,7 @@ The name of the group.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-Tag(s) to add to the new resource
+Tag(s) to add to the new resource.
 
 
 

@@ -67,12 +67,12 @@ updated.
 
 =head2 LatestVersion => Str
 
-  The latest version of the definition.
+  The ID of the latest version associated with the definition.
 
 
 =head2 LatestVersionArn => Str
 
-  The ARN of the latest version of the definition.
+  The ARN of the latest version associated with the definition.
 
 
 =head2 Name => Str
@@ -82,7 +82,7 @@ updated.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-  The tags for the definition.
+  Tag(s) attached to the resource arn.
 
 
 

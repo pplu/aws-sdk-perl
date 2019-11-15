@@ -2,12 +2,12 @@
 package Paws::Greengrass::CreateSoftwareUpdateJob;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
-  has S3UrlSignerRole => (is => 'ro', isa => 'Str');
-  has SoftwareToUpdate => (is => 'ro', isa => 'Str');
+  has S3UrlSignerRole => (is => 'ro', isa => 'Str', required => 1);
+  has SoftwareToUpdate => (is => 'ro', isa => 'Str', required => 1);
   has UpdateAgentLogLevel => (is => 'ro', isa => 'Str');
-  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
-  has UpdateTargetsArchitecture => (is => 'ro', isa => 'Str');
-  has UpdateTargetsOperatingSystem => (is => 'ro', isa => 'Str');
+  has UpdateTargets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has UpdateTargetsArchitecture => (is => 'ro', isa => 'Str', required => 1);
+  has UpdateTargetsOperatingSystem => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,18 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $CreateSoftwareUpdateJobResponse = $greengrass->CreateSoftwareUpdateJob(
-      AmznClientToken              => 'My__string',             # OPTIONAL
-      S3UrlSignerRole              => 'MyS3UrlSignerRole',      # OPTIONAL
-      SoftwareToUpdate             => 'core',                   # OPTIONAL
-      UpdateAgentLogLevel          => 'NONE',                   # OPTIONAL
-      UpdateTargets                => [ 'My__string', ... ],    # OPTIONAL
-      UpdateTargetsArchitecture    => 'armv7l',                 # OPTIONAL
-      UpdateTargetsOperatingSystem => 'ubuntu',                 # OPTIONAL
+      S3UrlSignerRole              => 'MyS3UrlSignerRole',
+      SoftwareToUpdate             => 'core',
+      UpdateTargets                => [ 'My__string', ... ],
+      UpdateTargetsArchitecture    => 'armv6l',
+      UpdateTargetsOperatingSystem => 'ubuntu',
+      AmznClientToken              => 'My__string',            # OPTIONAL
+      UpdateAgentLogLevel          => 'NONE',                  # OPTIONAL
     );
 
     # Results:
     my $IotJobArn = $CreateSoftwareUpdateJobResponse->IotJobArn;
     my $IotJobId  = $CreateSoftwareUpdateJobResponse->IotJobId;
+    my $PlatformSoftwareVersion =
+      $CreateSoftwareUpdateJobResponse->PlatformSoftwareVersion;
 
     # Returns a L<Paws::Greengrass::CreateSoftwareUpdateJobResponse> object.
 
@@ -62,13 +64,13 @@ A client token used to correlate requests and responses.
 
 
 
-=head2 S3UrlSignerRole => Str
+=head2 B<REQUIRED> S3UrlSignerRole => Str
 
 
 
 
 
-=head2 SoftwareToUpdate => Str
+=head2 B<REQUIRED> SoftwareToUpdate => Str
 
 
 
@@ -80,19 +82,19 @@ Valid values are: C<"core">, C<"ota_agent">
 
 Valid values are: C<"NONE">, C<"TRACE">, C<"DEBUG">, C<"VERBOSE">, C<"INFO">, C<"WARN">, C<"ERROR">, C<"FATAL">
 
-=head2 UpdateTargets => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> UpdateTargets => ArrayRef[Str|Undef]
 
 
 
 
 
-=head2 UpdateTargetsArchitecture => Str
+=head2 B<REQUIRED> UpdateTargetsArchitecture => Str
 
 
 
-Valid values are: C<"armv7l">, C<"x86_64">, C<"aarch64">
+Valid values are: C<"armv6l">, C<"armv7l">, C<"x86_64">, C<"aarch64">, C<"openwrt">
 
-=head2 UpdateTargetsOperatingSystem => Str
+=head2 B<REQUIRED> UpdateTargetsOperatingSystem => Str
 
 
 

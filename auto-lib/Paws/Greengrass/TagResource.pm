@@ -2,7 +2,7 @@
 package Paws::Greengrass::TagResource;
   use Moose;
   has ResourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resource-arn', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string', traits => ['NameInRequest'], request_name => 'tags', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -31,8 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $greengrass = Paws->service('Greengrass');
     $greengrass->TagResource(
       ResourceArn => 'My__string',
-      Tags        => { 'My__string' => 'My__string', },
-
+      Tags        => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -47,9 +46,9 @@ The Amazon Resource Name (ARN) of the resource.
 
 
 
-=head2 B<REQUIRED> Tags => L<Paws::Greengrass::__mapOf__string>
+=head2 Tags => L<Paws::Greengrass::Tags>
 
-A map of the key-value pairs for the resource tag.
+
 
 
 

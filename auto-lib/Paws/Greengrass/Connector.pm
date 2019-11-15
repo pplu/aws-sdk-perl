@@ -1,7 +1,7 @@
 package Paws::Greengrass::Connector;
   use Moose;
-  has ConnectorArn => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
+  has ConnectorArn => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Greengrass::__mapOf__string');
 1;
 
@@ -40,12 +40,12 @@ protocols, AWS, and other cloud services.
 =head1 ATTRIBUTES
 
 
-=head2 ConnectorArn => Str
+=head2 B<REQUIRED> ConnectorArn => Str
 
   The ARN of the connector.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   A descriptive or arbitrary ID for the connector. This value must be
 unique within the connector definition version. Max length is 128

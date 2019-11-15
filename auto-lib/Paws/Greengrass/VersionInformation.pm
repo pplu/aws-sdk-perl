@@ -52,12 +52,12 @@ created.
 
 =head2 Id => Str
 
-  The ID of the version.
+  The ID of the parent definition that the version is associated with.
 
 
 =head2 Version => Str
 
-  The unique ID of the version.
+  The ID of the version.
 
 
 

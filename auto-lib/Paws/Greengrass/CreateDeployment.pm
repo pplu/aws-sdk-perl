@@ -3,7 +3,7 @@ package Paws::Greengrass::CreateDeployment;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has DeploymentId => (is => 'ro', isa => 'Str');
-  has DeploymentType => (is => 'ro', isa => 'Str');
+  has DeploymentType => (is => 'ro', isa => 'Str', required => 1);
   has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
   has GroupVersionId => (is => 'ro', isa => 'Str');
 
@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $CreateDeploymentResponse = $greengrass->CreateDeployment(
+      DeploymentType  => 'NewDeployment',
       GroupId         => 'My__string',
-      AmznClientToken => 'My__string',       # OPTIONAL
-      DeploymentId    => 'My__string',       # OPTIONAL
-      DeploymentType  => 'NewDeployment',    # OPTIONAL
-      GroupVersionId  => 'My__string',       # OPTIONAL
+      AmznClientToken => 'My__string',      # OPTIONAL
+      DeploymentId    => 'My__string',      # OPTIONAL
+      GroupVersionId  => 'My__string',      # OPTIONAL
     );
 
     # Results:
@@ -64,7 +64,7 @@ The ID of the deployment if you wish to redeploy a previous deployment.
 
 
 
-=head2 DeploymentType => Str
+=head2 B<REQUIRED> DeploymentType => Str
 
 The type of deployment. When used for ''CreateDeployment'', only
 ''NewDeployment'' and ''Redeployment'' are valid.

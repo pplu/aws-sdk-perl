@@ -68,10 +68,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 AdditionalStagingLabelsToDownload => [ 'My__string', ... ]
                 ,    # OPTIONAL
               },    # OPTIONAL
-            },    # OPTIONAL
+            },
+
           },
           ...
-        ],        # OPTIONAL
+        ],          # OPTIONAL
       },    # OPTIONAL
       Name => 'My__string',                         # OPTIONAL
       Tags => { 'My__string' => 'My__string', },    # OPTIONAL
@@ -116,7 +117,7 @@ The name of the resource definition.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-Tag(s) to add to the new resource
+Tag(s) to add to the new resource.
 
 
 

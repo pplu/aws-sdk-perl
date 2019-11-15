@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Source  => 'My__string',
             Subject => 'My__string',
             Target  => 'My__string',
+
           },
           ...
         ],                                # OPTIONAL
@@ -89,7 +90,7 @@ The name of the subscription definition.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-Tag(s) to add to the new resource
+Tag(s) to add to the new resource.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Greengrass::AssociateServiceRoleToAccount;
   use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $greengrass = Paws->service('Greengrass');
     my $AssociateServiceRoleToAccountResponse =
       $greengrass->AssociateServiceRoleToAccount(
-      RoleArn => 'My__string',    # OPTIONAL
+      RoleArn => 'My__string',
+
       );
 
     # Results:
@@ -44,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gre
 =head1 ATTRIBUTES
 
 
-=head2 RoleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
 The ARN of the service role you wish to associate with your account.
 

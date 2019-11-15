@@ -62,7 +62,12 @@ The ID of the Lambda function definition.
 
 =head2 B<REQUIRED> FunctionDefinitionVersionId => Str
 
-The ID of the function definition version.
+The ID of the function definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation''
+object, which is returned by ''ListFunctionDefinitionVersions''
+requests. If the version is the last one that was associated with a
+function definition, the value also maps to the ''LatestVersion''
+property of the corresponding ''DefinitionInformation'' object.
 
 
 

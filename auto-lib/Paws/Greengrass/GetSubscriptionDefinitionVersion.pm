@@ -69,7 +69,12 @@ The ID of the subscription definition.
 
 =head2 B<REQUIRED> SubscriptionDefinitionVersionId => Str
 
-The ID of the subscription definition version.
+The ID of the subscription definition version. This value maps to the
+''Version'' property of the corresponding ''VersionInformation''
+object, which is returned by ''ListSubscriptionDefinitionVersions''
+requests. If the version is the last one that was associated with a
+subscription definition, the value also maps to the ''LatestVersion''
+property of the corresponding ''DefinitionInformation'' object.
 
 
 

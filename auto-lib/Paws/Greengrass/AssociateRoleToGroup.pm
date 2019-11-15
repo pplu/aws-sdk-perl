@@ -2,7 +2,7 @@
 package Paws::Greengrass::AssociateRoleToGroup;
   use Moose;
   has GroupId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'GroupId', required => 1);
-  has RoleArn => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $greengrass = Paws->service('Greengrass');
     my $AssociateRoleToGroupResponse = $greengrass->AssociateRoleToGroup(
       GroupId => 'My__string',
-      RoleArn => 'My__string',    # OPTIONAL
+      RoleArn => 'My__string',
+
     );
 
     # Results:
@@ -51,9 +52,10 @@ The ID of the Greengrass group.
 
 
 
-=head2 RoleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
-The ARN of the role you wish to associate with this group.
+The ARN of the role you wish to associate with this group. The
+existence of the role is not validated.
 
 
 

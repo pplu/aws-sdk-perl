@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CertificateArn => 'My__string',
             Id             => 'My__string',
-            SyncShadow     => 1,              # OPTIONAL
             ThingArn       => 'My__string',
+            SyncShadow     => 1,              # OPTIONAL
           },
           ...
         ],                                    # OPTIONAL
@@ -86,7 +86,7 @@ The name of the device definition.
 
 =head2 Tags => L<Paws::Greengrass::Tags>
 
-Tag(s) to add to the new resource
+Tag(s) to add to the new resource.
 
 
 

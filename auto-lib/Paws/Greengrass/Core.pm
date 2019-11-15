@@ -1,9 +1,9 @@
 package Paws::Greengrass::Core;
   use Moose;
-  has CertificateArn => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str');
+  has CertificateArn => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', required => 1);
   has SyncShadow => (is => 'ro', isa => 'Bool');
-  has ThingArn => (is => 'ro', isa => 'Str');
+  has ThingArn => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -39,12 +39,12 @@ Information about a core.
 =head1 ATTRIBUTES
 
 
-=head2 CertificateArn => Str
+=head2 B<REQUIRED> CertificateArn => Str
 
   The ARN of the certificate associated with the core.
 
 
-=head2 Id => Str
+=head2 B<REQUIRED> Id => Str
 
   A descriptive or arbitrary ID for the core. This value must be unique
 within the core definition version. Max length is 128 characters with
@@ -57,7 +57,7 @@ pattern ''[a-zA-Z0-9:_-]+''.
 cloud.
 
 
-=head2 ThingArn => Str
+=head2 B<REQUIRED> ThingArn => Str
 
   The ARN of the thing which is the core.
 

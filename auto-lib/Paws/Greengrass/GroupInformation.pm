@@ -65,12 +65,12 @@ updated.
 
 =head2 LatestVersion => Str
 
-  The latest version of the group.
+  The ID of the latest version associated with the group.
 
 
 =head2 LatestVersionArn => Str
 
-  The ARN of the latest version of the group.
+  The ARN of the latest version associated with the group.
 
 
 =head2 Name => Str

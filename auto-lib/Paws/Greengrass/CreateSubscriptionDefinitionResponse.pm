@@ -45,12 +45,12 @@ updated.
 
 =head2 LatestVersion => Str
 
-The latest version of the definition.
+The ID of the latest version associated with the definition.
 
 
 =head2 LatestVersionArn => Str
 
-The ARN of the latest version of the definition.
+The ARN of the latest version associated with the definition.
 
 
 =head2 Name => Str

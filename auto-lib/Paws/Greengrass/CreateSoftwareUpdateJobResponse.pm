@@ -3,6 +3,7 @@ package Paws::Greengrass::CreateSoftwareUpdateJobResponse;
   use Moose;
   has IotJobArn => (is => 'ro', isa => 'Str');
   has IotJobId => (is => 'ro', isa => 'Str');
+  has PlatformSoftwareVersion => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -24,6 +25,12 @@ The IoT Job ARN corresponding to this update.
 =head2 IotJobId => Str
 
 The IoT Job Id corresponding to this update.
+
+
+=head2 PlatformSoftwareVersion => Str
+
+The software version installed on the device or devices after the
+update.
 
 
 =head2 _request_id => Str
