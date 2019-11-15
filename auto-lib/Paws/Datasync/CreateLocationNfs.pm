@@ -109,9 +109,9 @@ for all of the files that you want DataSync allow read access for all
 users. Doing either enables the agent to read the files. For the agent
 to access directories, you must additionally enable all execute access.
 
-For information about NFS export configuration, see
-"http://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/s1-nfs-server-config-exports.html"
-(18.7. The /etc/exports Configuration File).
+For information about NFS export configuration, see 18.7. The
+/etc/exports Configuration File in the Red Hat Enterprise Linux
+documentation.
 
 
 

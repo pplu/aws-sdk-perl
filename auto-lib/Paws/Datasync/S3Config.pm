@@ -34,9 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::S
 The Amazon Resource Name (ARN) of the AWS Identity and Access
 Management (IAM) role that is used to access an Amazon S3 bucket.
 
-For detailed information about using such a role, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location"
-(Creating a Location for Amazon S3) in the I<AWS DataSync User Guide>.
+For detailed information about using such a role, see Creating a
+Location for Amazon S3 in the I<AWS DataSync User Guide>.
 
 =head1 ATTRIBUTES
 

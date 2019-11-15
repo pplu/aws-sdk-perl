@@ -1,14 +1,13 @@
-package Paws::Datasync::EndpointOptions;
+package Paws::Datasync::SmbMountOptions;
   use Moose;
-  has Fips => (is => 'ro', isa => 'Bool');
-  has PrivateLink => (is => 'ro', isa => 'Bool');
+  has Version => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::Datasync::EndpointOptions
+Paws::Datasync::SmbMountOptions
 
 =head1 USAGE
 
@@ -19,32 +18,31 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Datasync::EndpointOptions object:
+As an example, if Att1 is expected to be a Paws::Datasync::SmbMountOptions object:
 
-  $service_obj->Method(Att1 => { Fips => $value, ..., PrivateLink => $value  });
+  $service_obj->Method(Att1 => { Version => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::EndpointOptions object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::SmbMountOptions object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Fips
+  $result->Att1->Version
 
 =head1 DESCRIPTION
 
-This class has no description
+Represents the mount options that are available for DataSync to access
+an SMB location.
 
 =head1 ATTRIBUTES
 
 
-=head2 Fips => Bool
+=head2 Version => Str
 
-  
-
-
-=head2 PrivateLink => Bool
-
-  
+  The specific SMB version that you want DataSync to use to mount your
+SMB share. If you don't specify a version, DataSync defaults to
+C<AUTOMATIC>. That is, DataSync automatically selects a version based
+on negotiation with the SMB server.
 
 
 

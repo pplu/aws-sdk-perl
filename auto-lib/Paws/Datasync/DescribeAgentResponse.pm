@@ -3,7 +3,7 @@ package Paws::Datasync::DescribeAgentResponse;
   use Moose;
   has AgentArn => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
-  has EndpointOptions => (is => 'ro', isa => 'Paws::Datasync::EndpointOptions');
+  has EndpointType => (is => 'ro', isa => 'Str');
   has LastConnectionTime => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has PrivateLinkConfig => (is => 'ro', isa => 'Paws::Datasync::PrivateLinkConfig');
@@ -31,11 +31,13 @@ The time that the agent was activated (that is, created in your
 account).
 
 
-=head2 EndpointOptions => L<Paws::Datasync::EndpointOptions>
+=head2 EndpointType => Str
 
+The type of endpoint that your agent is connected to. If the endpoint
+is a VPC endpoint, the agent is not accessible over the public
+Internet.
 
-
-
+Valid values are: C<"PUBLIC">, C<"PRIVATE_LINK">
 =head2 LastConnectionTime => Str
 
 The time that the agent last connected to DataSyc.
@@ -48,7 +50,8 @@ The name of the agent.
 
 =head2 PrivateLinkConfig => L<Paws::Datasync::PrivateLinkConfig>
 
-
+The subnet and the security group that DataSync used to access a VPC
+endpoint.
 
 
 =head2 Status => Str

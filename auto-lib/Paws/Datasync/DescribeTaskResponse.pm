@@ -5,12 +5,14 @@ package Paws::Datasync::DescribeTaskResponse;
   has CreationTime => (is => 'ro', isa => 'Str');
   has CurrentTaskExecutionArn => (is => 'ro', isa => 'Str');
   has DestinationLocationArn => (is => 'ro', isa => 'Str');
+  has DestinationNetworkInterfaceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorDetail => (is => 'ro', isa => 'Str');
   has Excludes => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::FilterRule]');
   has Name => (is => 'ro', isa => 'Str');
   has Options => (is => 'ro', isa => 'Paws::Datasync::Options');
   has SourceLocationArn => (is => 'ro', isa => 'Str');
+  has SourceNetworkInterfaceArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Status => (is => 'ro', isa => 'Str');
   has TaskArn => (is => 'ro', isa => 'Str');
 
@@ -30,10 +32,8 @@ Paws::Datasync::DescribeTaskResponse
 The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 was used to monitor and log events in the task.
 
-For more information on these groups, see
-"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-(Working with Log Groups and Log Streams) in the I<Amazon CloudWatch
-UserGuide>.
+For more information on these groups, see Working with Log Groups and
+Log Streams in the I<Amazon CloudWatch User Guide>.
 
 
 =head2 CreationTime => Str
@@ -52,6 +52,12 @@ files.
 The Amazon Resource Name (ARN) of the AWS storage resource's location.
 
 
+=head2 DestinationNetworkInterfaceArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network
+Interface) that was created for your subnet.
+
+
 =head2 ErrorCode => Str
 
 Errors that AWS DataSync encountered during execution of the task. You
@@ -66,10 +72,10 @@ execution. You can use this information to help troubleshoot issues.
 
 =head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-Specifies that the task excludes files in the transfer based on the
-specified pattern in the filter. Transfers all files in the
-taskE<rsquo>s subdirectory, except files that match the filter that is
-set.
+A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by "|" (that is, a
+pipe), for example: C<"/folder1|/folder2">
 
 
 =head2 Name => Str
@@ -94,15 +100,20 @@ specifying the overriding C<OverrideOptions> value to operation.
 The Amazon Resource Name (ARN) of the source file system's location.
 
 
+=head2 SourceNetworkInterfaceArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Name (ARN) of the source ENIs (Elastic Network
+Interface) that was created for your subnet.
+
+
 =head2 Status => Str
 
 The status of the task that was described.
 
 For detailed information about task execution statuses, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-tasks.html#understand-task-creation-statuses"
-(Understanding Task Statuses).
+Understanding Task Statuses in the I<AWS DataSync User Guide.>
 
-Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"RUNNING">, C<"UNAVAILABLE">
+Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"QUEUED">, C<"RUNNING">, C<"UNAVAILABLE">
 =head2 TaskArn => Str
 
 The Amazon Resource Name (ARN) of the task that was described.

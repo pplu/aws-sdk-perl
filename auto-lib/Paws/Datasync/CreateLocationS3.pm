@@ -3,6 +3,7 @@ package Paws::Datasync::CreateLocationS3;
   use Moose;
   has S3BucketArn => (is => 'ro', isa => 'Str', required => 1);
   has S3Config => (is => 'ro', isa => 'Paws::Datasync::S3Config', required => 1);
+  has S3StorageClass => (is => 'ro', isa => 'Str');
   has Subdirectory => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TagListEntry]');
 
@@ -36,8 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BucketAccessRoleArn => 'MyIamRoleArn',    # max: 2048
 
       },
-      Subdirectory => 'MySubdirectory',           # OPTIONAL
-      Tags         => [
+      S3StorageClass => 'STANDARD',               # OPTIONAL
+      Subdirectory   => 'MySubdirectory',         # OPTIONAL
+      Tags           => [
         {
           Key   => 'MyTagKey',                    # min: 1, max: 256
           Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
@@ -68,6 +70,18 @@ The Amazon Resource Name (ARN) of the Amazon S3 bucket.
 
 
 
+
+=head2 S3StorageClass => Str
+
+The Amazon S3 storage class that you want to store your files in when
+this location is used as a task destination. For more information about
+S3 storage classes, see Amazon S3 Storage Classes
+(https://aws.amazon.com/s3/storage-classes/) in the I<Amazon Simple
+Storage Service Developer Guide>. Some storage classes have behaviors
+that can affect your S3 storage cost. For detailed information, see
+using-storage-classes.
+
+Valid values are: C<"STANDARD">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
 
 =head2 Subdirectory => Str
 

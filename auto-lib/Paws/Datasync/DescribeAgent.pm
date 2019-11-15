@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AgentArn           = $DescribeAgentResponse->AgentArn;
     my $CreationTime       = $DescribeAgentResponse->CreationTime;
-    my $EndpointOptions    = $DescribeAgentResponse->EndpointOptions;
+    my $EndpointType       = $DescribeAgentResponse->EndpointType;
     my $LastConnectionTime = $DescribeAgentResponse->LastConnectionTime;
     my $Name               = $DescribeAgentResponse->Name;
     my $PrivateLinkConfig  = $DescribeAgentResponse->PrivateLinkConfig;

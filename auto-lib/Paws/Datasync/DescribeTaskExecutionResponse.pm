@@ -54,10 +54,10 @@ transferred.
 
 =head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-Specifies that the task execution excludes files from the transfer
-based on the specified pattern in the filter. Transfers all files in
-the taskE<rsquo>s subdirectory, except files that match the filter that
-is set.
+A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by "|" (that is, a
+pipe), for example: C<"/folder1|/folder2">
 
 
 =head2 FilesTransferred => Int
@@ -76,9 +76,10 @@ indicator for a correct file number or to monitor your task execution.
 
 =head2 Includes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-Specifies that the task execution excludes files in the transfer based
-on the specified pattern in the filter. When multiple include filters
-are set, they are interpreted as an OR.
+A list of filter rules that determines which files to include when
+running a task. The list should contain a single filter string that
+consists of the patterns to include. The patterns are delimited by "|"
+(that is, a pipe), for example: C<"/folder1|/folder2">
 
 
 =head2 Options => L<Paws::Datasync::Options>
@@ -101,10 +102,9 @@ The time that the task execution was started.
 The status of the task execution.
 
 For detailed information about task execution statuses, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/working-with-tasks.html#understand-task-creation-statuses"
-(Understanding Task Statuses).
+Understanding Task Statuses in the I<AWS DataSync User Guide.>
 
-Valid values are: C<"LAUNCHING">, C<"PREPARING">, C<"TRANSFERRING">, C<"VERIFYING">, C<"SUCCESS">, C<"ERROR">
+Valid values are: C<"QUEUED">, C<"LAUNCHING">, C<"PREPARING">, C<"TRANSFERRING">, C<"VERIFYING">, C<"SUCCESS">, C<"ERROR">
 =head2 TaskExecutionArn => Str
 
 The Amazon Resource Name (ARN) of the task execution that was

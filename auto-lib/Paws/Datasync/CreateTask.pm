@@ -51,13 +51,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BytesPerSecond => 1,           # min: -1; OPTIONAL
         Gid   => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         Mtime => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
+        OverwriteMode => 'ALWAYS',    # values: ALWAYS, NEVER; OPTIONAL
         PosixPermissions =>
-          'NONE',           # values: NONE, BEST_EFFORT, PRESERVE; OPTIONAL
+          'NONE',    # values: NONE, BEST_EFFORT, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
+        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
         Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
-        ,                 # values: POINT_IN_TIME_CONSISTENT, NONE; OPTIONAL
+        , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -84,14 +86,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 is used to monitor and log events in the task.
 
-For more information on these groups, see
-"https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-(Working with Log Groups and Log Streams) in the I<Amazon CloudWatch
-User Guide>.
+For more information on these groups, see Working with Log Groups and
+Log Streams in the I<Amazon CloudWatch User Guide.>
 
-For more information about how to useCloudWatchLogs with DataSync, see
-"https://docs.aws.amazon.com/datasync/latest/userguide/monitor-datasync.html"
-(Monitoring Your Task)
+For more information about how to use CloudWatch Logs with DataSync,
+see Monitoring Your Task in the I<AWS DataSync User Guide.>
 
 
 
@@ -103,9 +102,10 @@ The Amazon Resource Name (ARN) of an AWS storage resource's location.
 
 =head2 Excludes => ArrayRef[L<Paws::Datasync::FilterRule>]
 
-A filter that determines which files to exclude from a task based on
-the specified pattern. Transfers all files in the taskE<rsquo>s
-subdirectory, except files that match the filter that is set.
+A list of filter rules that determines which files to exclude from a
+task. The list should contain a single filter string that consists of
+the patterns to exclude. The patterns are delimited by "|" (that is, a
+pipe), for example, C<"/folder1|/folder2">
 
 
 

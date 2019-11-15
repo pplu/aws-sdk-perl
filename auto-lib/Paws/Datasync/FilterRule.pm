@@ -32,22 +32,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::F
 
 =head1 DESCRIPTION
 
-A pattern that determines which files to include in the transfer or
-which files to exclude.
+Specifies which files, folders and objects to include or exclude when
+transferring files from source to destination.
 
 =head1 ATTRIBUTES
 
 
 =head2 FilterType => Str
 
-  Specifies the type of filter rule pattern to apply. DataSync only
-supports the SIMPLE_PATTERN rule type.
+  The type of filter rule to apply. AWS DataSync only supports the
+SIMPLE_PATTERN rule type.
 
 
 =head2 Value => Str
 
-  A pattern that defines the filter. The filter might include or exclude
-files is a transfer.
+  A single filter string that consists of the patterns to include or
+exclude. The patterns are delimited by "|" (that is, a pipe), for
+example: C</folder1|/folder2>
 
 
 
