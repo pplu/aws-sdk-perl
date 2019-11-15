@@ -38,13 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Key => 'SourceUrl',    # values: SourceUrl, S3FileUrl; OPTIONAL
+          Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
-            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
-          ],                                   # min: 1, max: 1; OPTIONAL
+            'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
+          ],                                     # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],                                         # OPTIONAL
       DocumentFormat  => 'YAML',                     # OPTIONAL
       DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
       TargetType      => 'MyTargetType',             # OPTIONAL
@@ -84,7 +85,7 @@ Valid values are: C<"YAML">, C<"JSON">
 
 =head2 DocumentVersion => Str
 
-The version of the document that you want to update.
+(Required) The version of the document that you want to update.
 
 
 

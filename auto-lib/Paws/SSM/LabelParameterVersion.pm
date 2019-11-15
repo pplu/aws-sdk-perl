@@ -38,7 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $InvalidLabels = $LabelParameterVersionResult->InvalidLabels;
+    my $InvalidLabels    = $LabelParameterVersionResult->InvalidLabels;
+    my $ParameterVersion = $LabelParameterVersionResult->ParameterVersion;
 
     # Returns a L<Paws::SSM::LabelParameterVersionResult> object.
 
@@ -64,7 +65,7 @@ The parameter name on which you want to attach one or more labels.
 
 The specific version of the parameter on which you want to attach one
 or more labels. If no version is specified, the system attaches the
-label to the latest version.)
+label to the latest version.
 
 
 

@@ -39,25 +39,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDocumentName',
       Attachments => [
         {
-          Key    => 'SourceUrl',    # values: SourceUrl; OPTIONAL
+          Key => 'SourceUrl',    # values: SourceUrl, S3FileUrl; OPTIONAL
+          Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
-            'MyAttachmentsSourceValue', ...    # min: 1, max: 1024
-          ],                                   # min: 1, max: 1; OPTIONAL
+            'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
+          ],                                     # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
-      DocumentFormat => 'YAML',                # OPTIONAL
-      DocumentType   => 'Command',             # OPTIONAL
+      ],                                         # OPTIONAL
+      DocumentFormat => 'YAML',                  # OPTIONAL
+      DocumentType   => 'Command',               # OPTIONAL
       Tags           => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # min: 1, max: 256
+          Key   => 'MyTagKey',                   # min: 1, max: 128
+          Value => 'MyTagValue',                 # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
-      TargetType  => 'MyTargetType',           # OPTIONAL
-      VersionName => 'MyDocumentVersionName',  # OPTIONAL
+      ],                                         # OPTIONAL
+      TargetType  => 'MyTargetType',             # OPTIONAL
+      VersionName => 'MyDocumentVersionName',    # OPTIONAL
     );
 
     # Results:

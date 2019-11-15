@@ -84,10 +84,23 @@ C<Key=tag-key,Values=Name,Instance-Type,CostCenter>
 (Maintenance window targets only)
 C<Key=resource-groups:Name,Values=ProductionResourceGroup>
 
+This example demonstrates how to target all resources in the resource
+group B<ProductionResourceGroup> in your maintenance window.
+
 =item *
 
 (Maintenance window targets only)
 C<Key=resource-groups:ResourceTypeFilters,Values=I<AWS::EC2::INSTANCE>,I<AWS::EC2::VPC>>
+
+This example demonstrates how to target only Amazon EC2 instances and
+VPCs in your maintenance window.
+
+=item *
+
+(State Manager association targets only) C<Key=InstanceIds,Values=I<*>>
+
+This example demonstrates how to target all managed instances in the
+AWS Region where the association was created.
 
 =back
 

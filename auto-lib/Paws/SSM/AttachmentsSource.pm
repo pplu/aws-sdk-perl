@@ -1,6 +1,7 @@
 package Paws::SSM::AttachmentsSource;
   use Moose;
   has Key => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
@@ -32,22 +33,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Attach
 
 =head1 DESCRIPTION
 
-A key and value pair that identifies the location of an attachment to a
-document.
+Identifying information about a document attachment, including the file
+name and a key-value pair that identifies the location of an attachment
+to a document.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-  The key of a key and value pair that identifies the location of an
+  The key of a key-value pair that identifies the location of an
 attachment to a document.
+
+
+=head2 Name => Str
+
+  The name of the document attachment file.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-  The URL of the location of a document attachment, such as the URL of an
-Amazon S3 bucket.
+  The value of a key-value pair that identifies the location of an
+attachment to a document. The format is the URL of the location of a
+document attachment, such as the URL of an Amazon S3 bucket.
 
 
 

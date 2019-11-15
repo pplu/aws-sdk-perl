@@ -1847,6 +1847,14 @@ Returns: a L<Paws::SSM::CreateMaintenanceWindowResult> instance
 
 Creates a new maintenance window.
 
+The value you specify for C<Duration> determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for C<Cutoff>. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for C<Cutoff> is one hour, no maintenance window
+tasks can start after 5 PM.
+
 
 =head2 CreateOpsItem
 
@@ -4338,6 +4346,9 @@ the AWS CLI
 (http://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
 in the I<AWS Systems Manager User Guide>.
 
+AWS Tools for PowerShell usage: Start-SSMSession is not currently
+supported by AWS Tools for PowerShell on Windows local machines.
+
 
 =head2 StopAutomationExecution
 
@@ -4415,6 +4426,14 @@ Returns: a L<Paws::SSM::UpdateAssociationResult> instance
 Updates an association. You can update the association name and
 version, the document version, schedule, parameters, and Amazon S3
 output.
+
+In order to call this API action, your IAM user account, group, or role
+must be configured with permission to call the DescribeAssociation API
+action. If you don't have permission to call DescribeAssociation, then
+you receive the following error: C<An error occurred
+(AccessDeniedException) when calling the UpdateAssociation operation:
+User: E<lt>user_arnE<gt> is not authorized to perform:
+ssm:DescribeAssociation on resource: E<lt>resource_arnE<gt>>
 
 When you update an association, the association immediately runs
 against the specified targets.
@@ -4524,6 +4543,14 @@ Returns: a L<Paws::SSM::UpdateMaintenanceWindowResult> instance
 
 Updates an existing maintenance window. Only specified parameters are
 modified.
+
+The value you specify for C<Duration> determines the specific end time
+for the maintenance window based on the time it begins. No maintenance
+window tasks are permitted to start after the resulting endtime minus
+the number of hours you specify for C<Cutoff>. For example, if the
+maintenance window starts at 3 PM, the duration is three hours, and the
+value you specify for C<Cutoff> is one hour, no maintenance window
+tasks can start after 5 PM.
 
 
 =head2 UpdateMaintenanceWindowTarget

@@ -59,11 +59,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 Filters => ArrayRef[L<Paws::SSM::PatchOrchestratorFilter>]
 
-Each entry in the array is a structure containing:
-
-Key (string, between 1 and 128 characters)
-
-Values (array of strings, each string between 1 and 256 characters)
+An array of structures. Each entry in the array is a structure
+containing a Key, Value combination. Valid values for Key are
+C<Classification> | C<KBId> | C<Severity> | C<State>.
 
 
 

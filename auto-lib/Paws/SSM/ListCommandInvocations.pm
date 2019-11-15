@@ -77,7 +77,8 @@ and any command output. By default this is set to False.
 =head2 Filters => ArrayRef[L<Paws::SSM::CommandFilter>]
 
 (Optional) One or more filters. Use a filter to return a more specific
-list of results.
+list of results. Note that the C<DocumentName> filter is not supported
+for ListCommandInvocations.
 
 
 
