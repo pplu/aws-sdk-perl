@@ -599,141 +599,7 @@ Paws::Organizations - Perl Interface to AWS AWS Organizations
 
 =head1 DESCRIPTION
 
-AWS Organizations API Reference
-
-AWS Organizations is a web service that enables you to consolidate your
-multiple AWS accounts into an I<organization> and centrally manage your
-accounts and their resources.
-
-This guide provides descriptions of the Organizations API. For more
-information about using this service, see the AWS Organizations User
-Guide
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
-
-B<API Version>
-
-This version of the Organizations API Reference documents the
-Organizations API version 2016-11-28.
-
-As an alternative to using the API directly, you can use one of the AWS
-SDKs, which consist of libraries and sample code for various
-programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-and more). The SDKs provide a convenient way to create programmatic
-access to AWS Organizations. For example, the SDKs take care of
-cryptographically signing requests, managing errors, and retrying
-requests automatically. For more information about the AWS SDKs,
-including how to download and install them, see Tools for Amazon Web
-Services (http://aws.amazon.com/tools/).
-
-We recommend that you use the AWS SDKs to make programmatic API calls
-to Organizations. However, you also can use the Organizations Query API
-to make direct calls to the Organizations web service. To learn more
-about the Organizations Query API, see Making Query Requests
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html)
-in the I<AWS Organizations User Guide>. Organizations supports GET and
-POST requests for all actions. That is, the API does not require you to
-use GET for some actions and POST for others. However, GET requests are
-subject to the limitation size of a URL. Therefore, for operations that
-require larger sizes, use a POST request.
-
-B<Signing Requests>
-
-When you send HTTP requests to AWS, you must sign the requests so that
-AWS can identify who sent them. You sign requests with your AWS access
-key, which consists of an access key ID and a secret access key. We
-strongly recommend that you do not create an access key for your root
-account. Anyone who has the access key for your root account has
-unrestricted access to all the resources in your account. Instead,
-create an access key for an IAM user account that has administrative
-privileges. As another option, use AWS Security Token Service to
-generate temporary security credentials, and use those credentials to
-sign requests.
-
-To sign requests, we recommend that you use Signature Version 4
-(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
-If you have an existing application that uses Signature Version 2, you
-do not have to update it to use Signature Version 4. However, some
-operations now require Signature Version 4. The documentation for
-operations that require version 4 indicate this requirement.
-
-When you use the AWS Command Line Interface (AWS CLI) or one of the AWS
-SDKs to make requests to AWS, these tools automatically sign the
-requests for you with the access key that you specify when you
-configure the tools.
-
-In this release, each organization can have only one root. In a future
-release, a single organization will support multiple roots.
-
-B<Support and Feedback for AWS Organizations>
-
-We welcome your feedback. Send your comments to
-feedback-awsorganizations@amazon.com
-(mailto:feedback-awsorganizations@amazon.com) or post your feedback and
-questions in the AWS Organizations support forum
-(http://forums.aws.amazon.com/forum.jspa?forumID=219). For more
-information about the AWS support forums, see Forums Help
-(http://forums.aws.amazon.com/help.jspa).
-
-B<Endpoint to Call When Using the CLI or the AWS API>
-
-For the current release of Organizations, you must specify the
-C<us-east-1> region for all AWS API and CLI calls. You can do this in
-the CLI by using these parameters and commands:
-
-=over
-
-=item *
-
-Use the following parameter with each command to specify both the
-endpoint and its region:
-
-C<--endpoint-url https://organizations.us-east-1.amazonaws.com>
-
-=item *
-
-Use the default endpoint, but configure your default region with this
-command:
-
-C<aws configure set default.region us-east-1>
-
-=item *
-
-Use the following parameter with each command to specify the endpoint:
-
-C<--region us-east-1>
-
-=back
-
-For the various SDKs used to call the APIs, see the documentation for
-the SDK of interest to learn how to direct the requests to a specific
-endpoint. For more information, see Regions and Endpoints
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region)
-in the I<AWS General Reference>.
-
-B<How examples are presented>
-
-The JSON returned by the AWS Organizations service as response to your
-requests is returned as a single long string without line breaks or
-formatting whitespace. Both line breaks and whitespace are included in
-the examples in this guide to improve readability. When example input
-parameters also would result in long strings that would extend beyond
-the screen, we insert line breaks to enhance readability. You should
-always submit the input as a single JSON text string.
-
-B<Recording API Requests>
-
-AWS Organizations supports AWS CloudTrail, a service that records AWS
-API calls for your AWS account and delivers log files to an Amazon S3
-bucket. By using information collected by AWS CloudTrail, you can
-determine which requests were successfully made to Organizations, who
-made the request, when it was made, and so on. For more about AWS
-Organizations and its support for AWS CloudTrail, see Logging AWS
-Organizations Events with AWS CloudTrail
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration)
-in the I<AWS Organizations User Guide>. To learn more about CloudTrail,
-including how to turn it on and find your log files, see the AWS
-CloudTrail User Guide
-(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+AWS Organizations
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28>
 
@@ -828,34 +694,34 @@ influence for a policy depends on what you attach the policy to:
 =item *
 
 If you attach an SCP to a root, it affects all accounts in the
-organization
+organization.
 
 =item *
 
 If you attach an SCP to an OU, it affects all accounts in that OU and
-in any child OUs
+in any child OUs.
 
 =item *
 
 If you attach the policy directly to an account, it affects only that
-account
+account.
 
 =back
 
 SCPs are JSON policies that specify the maximum permissions for an
-organization or organizational unit (OU). When you attach one SCP to a
-higher level root or OU, and you also attach a different SCP to a child
-OU or to an account, the child policy can further restrict only the
-permissions that pass through the parent filter and are available to
-the child. An SCP that is attached to a child can't grant a permission
-that the paren't hasn't already granted. For example, imagine that the
-parent SCP allows permissions A, B, C, D, and E. The child SCP allows
-C, D, E, F, and G. The result is that the accounts affected by the
-child SCP are allowed to use only C, D, and E. They can't use A or B
-because the child OU filtered them out. They also can't use F and G
-because the parent OU filtered them out. They can't be granted back by
-the child SCP; child SCPs can only filter the permissions they receive
-from the parent SCP.
+organization or organizational unit (OU). You can attach one SCP to a
+higher level root or OU, and a different SCP to a child OU or to an
+account. The child policy can further restrict only the permissions
+that pass through the parent filter and are available to the child. An
+SCP that is attached to a child can't grant a permission that the
+parent hasn't already granted. For example, imagine that the parent SCP
+allows permissions A, B, C, D, and E. The child SCP allows C, D, E, F,
+and G. The result is that the accounts affected by the child SCP are
+allowed to use only C, D, and E. They can't use A or B because the
+child OU filtered them out. They also can't use F and G because the
+parent OU filtered them out. They can't be granted back by the child
+SCP; child SCPs can only filter the permissions they receive from the
+parent SCP.
 
 AWS Organizations attaches a default SCP named C<"FullAWSAccess> to
 every root, OU, and account. This default SCP allows all services and
@@ -947,7 +813,7 @@ in the I<AWS Organizations User Guide.>
 
 The user who calls the API to create an account must have the
 C<organizations:CreateAccount> permission. If you enabled all features
-in the organization, AWS Organizations will create the required
+in the organization, AWS Organizations creates the required
 service-linked role named C<AWSServiceRoleForOrganizations>. For more
 information, see AWS Organizations and Service-Linked Roles
 (http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
@@ -1528,7 +1394,8 @@ still attached, and specify C<"Effect": "Deny"> in the second SCP to
 override the C<"Effect": "Allow"> in the C<FullAWSAccess> policy (or
 any other attached SCP), you're using the authorization strategy of
 blacklisting
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist).
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist)
+.
 
 This operation can be called only from the organization's master
 account.
@@ -1604,14 +1471,19 @@ can attach policies of the specified type to that root or to any
 organizational unit (OU) or account in that root. You can undo this by
 using the EnablePolicyType operation.
 
+This is an asynchronous request that AWS performs in the background. If
+you disable a policy for a root, it still appears enabled for the
+organization if all features
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+are enabled for the organization. AWS recommends that you first use
+ListRoots to see the status of policy types for a specified root, and
+then use this operation.
+
 This operation can be called only from the organization's master
 account.
 
-If you disable a policy type for a root, it still shows as enabled for
-the organization if all features are enabled in that organization. Use
-ListRoots to see the status of policy types for a specified root. Use
-DescribeOrganization to see the status of policy types in the
-organization.
+To view the status of available policy types in the organization, use
+DescribeOrganization.
 
 
 =head2 EnableAllFeatures
@@ -1723,14 +1595,16 @@ root, you can attach policies of that type to the root, any
 organizational unit (OU), or account in that root. You can undo this by
 using the DisablePolicyType operation.
 
+This is an asynchronous request that AWS performs in the background.
+AWS recommends that you first use ListRoots to see the status of policy
+types for a specified root, and then use this operation.
+
 This operation can be called only from the organization's master
 account.
 
 You can enable a policy type in a root only if that policy type is
-available in the organization. Use DescribeOrganization to view the
-status of available policy types in the organization.
-
-To view the status of policy type in a root, use ListRoots.
+available in the organization. To view the status of available policy
+types in the organization, use DescribeOrganization.
 
 
 =head2 InviteAccountToOrganization
@@ -2246,6 +2120,9 @@ Lists tags for the specified resource.
 
 Currently, you can list tags on an account in AWS Organizations.
 
+This operation can be called only from the organization's master
+account.
+
 
 =head2 ListTargetsForPolicy
 
@@ -2363,6 +2240,9 @@ Adds one or more tags to the specified resource.
 
 Currently, you can tag and untag accounts in AWS Organizations.
 
+This operation can be called only from the organization's master
+account.
+
 
 =head2 UntagResource
 
@@ -2382,6 +2262,9 @@ Returns: nothing
 Removes a tag from the specified resource.
 
 Currently, you can tag and untag accounts in AWS Organizations.
+
+This operation can be called only from the organization's master
+account.
 
 
 =head2 UpdateOrganizationalUnit

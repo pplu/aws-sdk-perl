@@ -63,9 +63,9 @@ organizations in the AWS GovCloud (US) Region.
 =item *
 
 C<ALL>: In addition to all the features supported by the consolidated
-billing feature set, the master account can also apply any type of
-policy to any member account in the organization. For more information,
-see All features
+billing feature set, the master account can also apply any policy type
+to any member account in the organization. For more information, see
+All features
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
 in the I<AWS Organizations User Guide.>
 
