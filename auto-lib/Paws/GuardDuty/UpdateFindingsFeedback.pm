@@ -54,14 +54,14 @@ Additional feedback about the GuardDuty findings.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The ID of the detector that specifies the GuardDuty service whose
-findings you want to mark as useful or not useful.
+The ID of the detector associated with the findings to update feedback
+for.
 
 
 
 =head2 B<REQUIRED> Feedback => Str
 
-Valid values: USEFUL | NOT_USEFUL
+The feedback for the finding.
 
 Valid values are: C<"USEFUL">, C<"NOT_USEFUL">
 

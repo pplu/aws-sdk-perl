@@ -44,6 +44,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateMembers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreatePublishingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreatePublishingDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSampleFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::CreateSampleFindings', @_);
@@ -84,9 +89,19 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteMembers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePublishingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeletePublishingDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteThreatIntelSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteThreatIntelSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePublishingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DescribePublishingDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateFromMasterAccount {
@@ -179,6 +194,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListMembers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPublishingDestinations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListPublishingDestinations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListTagsForResource', @_);
@@ -232,6 +252,11 @@ package Paws::GuardDuty;
   sub UpdateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePublishingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdatePublishingDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateThreatIntelSet {
@@ -403,7 +428,7 @@ package Paws::GuardDuty;
   }
 
 
-  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeleteThreatIntelSet DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListTagsForResource ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers TagResource UnarchiveFindings UntagResource UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateThreatIntelSet / }
+  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreatePublishingDestination CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeletePublishingDestination DeleteThreatIntelSet DescribePublishingDestination DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListPublishingDestinations ListTagsForResource ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers TagResource UnarchiveFindings UntagResource UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdatePublishingDestination UpdateThreatIntelSet / }
 
 1;
 
@@ -575,9 +600,11 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateIPSet>
 
 Returns: a L<Paws::GuardDuty::CreateIPSetResponse> instance
 
-Creates a new IPSet - a list of trusted IP addresses that have been
-whitelisted for secure communication with AWS infrastructure and
-applications.
+Creates a new IPSet, called Trusted IP list in the consoler user
+interface. An IPSet is a list IP addresses trusted for secure
+communication with AWS infrastructure and applications. GuardDuty does
+not generate findings for IP addresses included in IPSets. Only users
+from the master account can use this operation.
 
 
 =head2 CreateMembers
@@ -600,6 +627,29 @@ of AWS account IDs. The current AWS account can then invite these
 members to manage GuardDuty in their accounts.
 
 
+=head2 CreatePublishingDestination
+
+=over
+
+=item DestinationProperties => L<Paws::GuardDuty::DestinationProperties>
+
+=item DestinationType => Str
+
+=item DetectorId => Str
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::CreatePublishingDestination>
+
+Returns: a L<Paws::GuardDuty::CreatePublishingDestinationResponse> instance
+
+Creates a publishing destination to send findings to. The resource to
+send findings to must exist before you use this operation.
+
+
 =head2 CreateSampleFindings
 
 =over
@@ -616,7 +666,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateSampleFindings
 Returns: a L<Paws::GuardDuty::CreateSampleFindingsResponse> instance
 
 Generates example findings of types specified by the list of finding
-types. If 'NULL' is specified for findingTypes, the API generates
+types. If 'NULL' is specified for C<findingTypes>, the API generates
 example findings of all supported finding types.
 
 
@@ -647,6 +697,7 @@ Returns: a L<Paws::GuardDuty::CreateThreatIntelSetResponse> instance
 
 Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 IP addresses. GuardDuty generates findings based on ThreatIntelSets.
+Only users of the master account can use this operation.
 
 
 =head2 DeclineInvitations
@@ -732,7 +783,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteIPSet>
 
 Returns: a L<Paws::GuardDuty::DeleteIPSetResponse> instance
 
-Deletes the IPSet specified by the IPSet ID.
+Deletes the IPSet specified by the C<ipSetId>. IPSets are called
+Trusted IP lists in the console user interface.
 
 
 =head2 DeleteMembers
@@ -754,6 +806,24 @@ Deletes GuardDuty member accounts (to the current GuardDuty master
 account) specified by the account IDs.
 
 
+=head2 DeletePublishingDestination
+
+=over
+
+=item DestinationId => Str
+
+=item DetectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DeletePublishingDestination>
+
+Returns: a L<Paws::GuardDuty::DeletePublishingDestinationResponse> instance
+
+Deletes the publishing definition with the specified C<destinationId>.
+
+
 =head2 DeleteThreatIntelSet
 
 =over
@@ -770,6 +840,25 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteThreatIntelSet
 Returns: a L<Paws::GuardDuty::DeleteThreatIntelSetResponse> instance
 
 Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
+
+
+=head2 DescribePublishingDestination
+
+=over
+
+=item DestinationId => Str
+
+=item DetectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DescribePublishingDestination>
+
+Returns: a L<Paws::GuardDuty::DescribePublishingDestinationResponse> instance
+
+Returns information about the publishing destination specified by the
+provided C<destinationId>.
 
 
 =head2 DisassociateFromMasterAccount
@@ -914,7 +1003,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetIPSet>
 
 Returns: a L<Paws::GuardDuty::GetIPSetResponse> instance
 
-Retrieves the IPSet specified by the IPSet ID.
+Retrieves the IPSet specified by the C<ipSetId>.
 
 
 =head2 GetMasterAccount
@@ -1097,6 +1186,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::ListIPSets>
 Returns: a L<Paws::GuardDuty::ListIPSetsResponse> instance
 
 Lists the IPSets of the GuardDuty service specified by the detector ID.
+If you use this operation from a member account, the IPSets returned
+are the IPSets from the associated master account.
 
 
 =head2 ListMembers
@@ -1120,6 +1211,27 @@ Returns: a L<Paws::GuardDuty::ListMembersResponse> instance
 
 Lists details about all member accounts for the current GuardDuty
 master account.
+
+
+=head2 ListPublishingDestinations
+
+=over
+
+=item DetectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::ListPublishingDestinations>
+
+Returns: a L<Paws::GuardDuty::ListPublishingDestinationsResponse> instance
+
+Returns a list of publishing destinations associated with the specified
+C<dectectorId>.
 
 
 =head2 ListTagsForResource
@@ -1159,7 +1271,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::ListThreatIntelSets>
 Returns: a L<Paws::GuardDuty::ListThreatIntelSetsResponse> instance
 
 Lists the ThreatIntelSets of the GuardDuty service specified by the
-detector ID.
+detector ID. If you use this operation from a member account, the
+ThreatIntelSets associated with the master account are returned.
 
 
 =head2 StartMonitoringMembers
@@ -1177,10 +1290,9 @@ Each argument is described in detail in: L<Paws::GuardDuty::StartMonitoringMembe
 
 Returns: a L<Paws::GuardDuty::StartMonitoringMembersResponse> instance
 
-Re-enables GuardDuty to monitor findings of the member accounts
-specified by the account IDs. A master GuardDuty account can run this
-command after disabling GuardDuty from monitoring these members'
-findings by running StopMonitoringMembers.
+Turns on GuardDuty monitoring of the specified member accounts. Use
+this operation to restart monitoring of accounts that you stopped
+monitoring with the C<StopMonitoringMembers> operation.
 
 
 =head2 StopMonitoringMembers
@@ -1198,10 +1310,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::StopMonitoringMember
 
 Returns: a L<Paws::GuardDuty::StopMonitoringMembersResponse> instance
 
-Disables GuardDuty from monitoring findings of the member accounts
-specified by the account IDs. After running this command, a master
-GuardDuty account can run StartMonitoringMembers to re-enable GuardDuty
-to monitor these membersE<rsquo> findings.
+Stops GuardDuty monitoring for the specified member accounnts. Use the
+C<StartMonitoringMembers> to restart monitoring for those accounts.
 
 
 =head2 TagResource
@@ -1237,8 +1347,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::UnarchiveFindings>
 
 Returns: a L<Paws::GuardDuty::UnarchiveFindingsResponse> instance
 
-Unarchives Amazon GuardDuty findings specified by the list of finding
-IDs.
+Unarchives GuardDuty findings specified by the C<findingIds>.
 
 
 =head2 UntagResource
@@ -1276,7 +1385,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::UpdateDetector>
 
 Returns: a L<Paws::GuardDuty::UpdateDetectorResponse> instance
 
-Updates an Amazon GuardDuty detector specified by the detectorId.
+Updates the Amazon GuardDuty detector specified by the detectorId.
 
 
 =head2 UpdateFilter
@@ -1324,7 +1433,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::UpdateFindingsFeedba
 
 Returns: a L<Paws::GuardDuty::UpdateFindingsFeedbackResponse> instance
 
-Marks specified Amazon GuardDuty findings as useful or not useful.
+Marks the specified GuardDuty findings as useful or not useful.
 
 
 =head2 UpdateIPSet
@@ -1349,6 +1458,27 @@ Each argument is described in detail in: L<Paws::GuardDuty::UpdateIPSet>
 Returns: a L<Paws::GuardDuty::UpdateIPSetResponse> instance
 
 Updates the IPSet specified by the IPSet ID.
+
+
+=head2 UpdatePublishingDestination
+
+=over
+
+=item DestinationId => Str
+
+=item DetectorId => Str
+
+=item [DestinationProperties => L<Paws::GuardDuty::DestinationProperties>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UpdatePublishingDestination>
+
+Returns: a L<Paws::GuardDuty::UpdatePublishingDestinationResponse> instance
+
+Updates information about the publishing destination specified by the
+C<destinationId>.
 
 
 =head2 UpdateThreatIntelSet

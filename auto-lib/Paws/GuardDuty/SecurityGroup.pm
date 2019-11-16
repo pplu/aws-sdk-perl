@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the security group.
+Contains information about the security groups associated with the EC2
+instance.
 
 =head1 ATTRIBUTES
 

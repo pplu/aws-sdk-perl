@@ -51,15 +51,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs of the GuardDuty member accounts whose findings
-you want the master account to monitor.
+A list of account IDs of the GuardDuty member accounts to start
+monitoring.
 
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account whom you want to
-re-enable to monitor members' findings.
+The unique ID of the detector of the GuardDuty master account
+associated with the member accounts to monitor.
 
 
 

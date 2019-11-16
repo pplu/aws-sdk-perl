@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the resource.
+Contains information about the AWS resource associated with the
+activity that prompted GuardDuty to generate a finding.
 
 =head1 ATTRIBUTES
 

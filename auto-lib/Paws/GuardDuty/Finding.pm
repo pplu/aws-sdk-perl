@@ -45,7 +45,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the finding.
+Contains information about the finding, which is generated when
+abnormal or suspicious activity is detected.
 
 =head1 ATTRIBUTES
 

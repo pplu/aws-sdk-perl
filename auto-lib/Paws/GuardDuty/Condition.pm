@@ -49,8 +49,8 @@ Contains information about the condition.
 
 =head2 Eq => ArrayRef[Str|Undef]
 
-  Deprecated. Represents the equal condition to be applied to a single
-field when querying for findings.
+  Represents the equal condition to be applied to a single field when
+querying for findings.
 
 
 =head2 Equals => ArrayRef[Str|Undef]
@@ -73,14 +73,14 @@ field when querying for findings.
 
 =head2 Gt => Int
 
-  Deprecated. Represents a greater than condition to be applied to a
-single field when querying for findings.
+  Represents a greater than condition to be applied to a single field
+when querying for findings.
 
 
 =head2 Gte => Int
 
-  Deprecated. Represents a greater than equal condition to be applied to
-a single field when querying for findings.
+  Represents a greater than equal condition to be applied to a single
+field when querying for findings.
 
 
 =head2 LessThan => Int
@@ -97,20 +97,20 @@ when querying for findings.
 
 =head2 Lt => Int
 
-  Deprecated. Represents a less than condition to be applied to a single
-field when querying for findings.
+  Represents a less than condition to be applied to a single field when
+querying for findings.
 
 
 =head2 Lte => Int
 
-  Deprecated. Represents a less than equal condition to be applied to a
-single field when querying for findings.
+  Represents a less than equal condition to be applied to a single field
+when querying for findings.
 
 
 =head2 Neq => ArrayRef[Str|Undef]
 
-  Deprecated. Represents the not equal condition to be applied to a
-single field when querying for findings.
+  Represents the not equal condition to be applied to a single field when
+querying for findings.
 
 
 =head2 NotEquals => ArrayRef[Str|Undef]

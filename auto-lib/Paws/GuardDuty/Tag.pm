@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the tag associated with the resource.
+Contains information about a tag associated with the Ec2 instance.
 
 =head1 ATTRIBUTES
 

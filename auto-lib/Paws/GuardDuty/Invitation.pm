@@ -34,25 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the invitation.
+Contains information about the invitation to become a member account.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-  Inviter account ID
+  The ID of the account from which the invitations was sent.
 
 
 =head2 InvitationId => Str
 
-  This value is used to validate the inviter account to the member
-account.
+  The ID of the invitation. This value is used to validate the inviter
+account to the member account.
 
 
 =head2 InvitedAt => Str
 
-  Timestamp at which the invitation was sent
+  Timestamp at which the invitation was sent.
 
 
 =head2 RelationshipStatus => Str

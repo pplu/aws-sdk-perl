@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the network connection.
+Contains information about the NETWORK_CONNECTION action described in
+the finding.
 
 =head1 ATTRIBUTES
 

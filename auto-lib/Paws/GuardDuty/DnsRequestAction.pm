@@ -31,14 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the DNS request.
+Contains information about the DNS_REQUEST action described in this
+finding.
 
 =head1 ATTRIBUTES
 
 
 =head2 Domain => Str
 
-  Domain information for the DNS request.
+  Domain information for the API request.
 
 
 

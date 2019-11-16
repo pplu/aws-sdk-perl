@@ -58,7 +58,7 @@ The unique ID of the detector the ipSet is associated with.
 
 =head2 B<REQUIRED> IpSetId => Str
 
-The unique ID of the ipSet you want to get.
+The unique ID of the IPSet to retrieve.
 
 
 

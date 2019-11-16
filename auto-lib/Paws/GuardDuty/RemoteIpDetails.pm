@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Continas information about the remote IP address.
+Continas information about the remote IP address of the connection.
 
 =head1 ATTRIBUTES
 

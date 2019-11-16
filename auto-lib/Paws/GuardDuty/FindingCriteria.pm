@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains finding criteria information.
+Contains information about the criteria used for querying findings.
 
 =head1 ATTRIBUTES
 
