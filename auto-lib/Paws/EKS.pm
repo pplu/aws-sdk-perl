@@ -19,14 +19,29 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::CreateCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateNodegroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::CreateNodegroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DeleteCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteNodegroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DeleteNodegroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeNodegroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeNodegroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeUpdate {
@@ -37,6 +52,11 @@ package Paws::EKS;
   sub ListClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListNodegroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListNodegroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -69,6 +89,16 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::UpdateClusterVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateNodegroupConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UpdateNodegroupConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateNodegroupVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UpdateNodegroupVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllClusters {
     my $self = shift;
@@ -89,6 +119,29 @@ package Paws::EKS;
         $result = $self->ListClusters(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'clusters') foreach (@{ $result->clusters });
+    }
+
+    return undef
+  }
+  sub ListAllNodegroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNodegroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListNodegroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->nodegroups }, @{ $next_result->nodegroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'nodegroups') foreach (@{ $result->nodegroups });
+        $result = $self->ListNodegroups(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'nodegroups') foreach (@{ $result->nodegroups });
     }
 
     return undef
@@ -118,7 +171,7 @@ package Paws::EKS;
   }
 
 
-  sub operations { qw/CreateCluster DeleteCluster DescribeCluster DescribeUpdate ListClusters ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion / }
+  sub operations { qw/CreateCluster CreateNodegroup DeleteCluster DeleteNodegroup DescribeCluster DescribeNodegroup DescribeUpdate ListClusters ListNodegroups ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion UpdateNodegroupConfig UpdateNodegroupVersion / }
 
 1;
 
@@ -239,6 +292,60 @@ and Launching Amazon EKS Worker Nodes
 in the I<Amazon EKS User Guide>.
 
 
+=head2 CreateNodegroup
+
+=over
+
+=item ClusterName => Str
+
+=item NodegroupName => Str
+
+=item NodeRole => Str
+
+=item Subnets => ArrayRef[Str|Undef]
+
+=item [AmiType => Str]
+
+=item [ClientRequestToken => Str]
+
+=item [DiskSize => Int]
+
+=item [InstanceTypes => ArrayRef[Str|Undef]]
+
+=item [Labels => L<Paws::EKS::LabelsMap>]
+
+=item [ReleaseVersion => Str]
+
+=item [RemoteAccess => L<Paws::EKS::RemoteAccessConfig>]
+
+=item [ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>]
+
+=item [Tags => L<Paws::EKS::TagMap>]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::CreateNodegroup>
+
+Returns: a L<Paws::EKS::CreateNodegroupResponse> instance
+
+Creates a managed worker node group for an Amazon EKS cluster. You can
+only create a node group for your cluster that is equal to the current
+Kubernetes version for the cluster. All node groups are created with
+the latest AMI release version for the respective minor Kubernetes
+version of the cluster.
+
+An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group
+and associated Amazon EC2 instances that are managed by AWS for an
+Amazon EKS cluster. Each node group uses a version of the Amazon
+EKS-optimized Amazon Linux 2 AMI. For more information, see Managed
+Node Groups
+(https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+in the I<Amazon EKS User Guide>.
+
+
 =head2 DeleteCluster
 
 =over
@@ -261,6 +368,27 @@ can have orphaned resources in your VPC that prevent you from being
 able to delete the VPC. For more information, see Deleting a Cluster
 (https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 in the I<Amazon EKS User Guide>.
+
+If you have managed node groups attached to the cluster, you must
+delete them first. For more information, see DeleteNodegroup.
+
+
+=head2 DeleteNodegroup
+
+=over
+
+=item ClusterName => Str
+
+=item NodegroupName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DeleteNodegroup>
+
+Returns: a L<Paws::EKS::DeleteNodegroupResponse> instance
+
+Deletes an Amazon EKS node group for a cluster.
 
 
 =head2 DescribeCluster
@@ -288,6 +416,24 @@ The API server endpoint and certificate authority data aren't available
 until the cluster reaches the C<ACTIVE> state.
 
 
+=head2 DescribeNodegroup
+
+=over
+
+=item ClusterName => Str
+
+=item NodegroupName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeNodegroup>
+
+Returns: a L<Paws::EKS::DescribeNodegroupResponse> instance
+
+Returns descriptive information about an Amazon EKS node group.
+
+
 =head2 DescribeUpdate
 
 =over
@@ -295,6 +441,8 @@ until the cluster reaches the C<ACTIVE> state.
 =item Name => Str
 
 =item UpdateId => Str
+
+=item [NodegroupName => Str]
 
 
 =back
@@ -304,7 +452,7 @@ Each argument is described in detail in: L<Paws::EKS::DescribeUpdate>
 Returns: a L<Paws::EKS::DescribeUpdateResponse> instance
 
 Returns descriptive information about an update against your Amazon EKS
-cluster.
+cluster or associated managed node group.
 
 When the status of the update is C<Succeeded>, the update is complete.
 If an update fails, the status is C<Failed>, and an error detail
@@ -328,6 +476,27 @@ Returns: a L<Paws::EKS::ListClustersResponse> instance
 
 Lists the Amazon EKS clusters in your AWS account in the specified
 Region.
+
+
+=head2 ListNodegroups
+
+=over
+
+=item ClusterName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListNodegroups>
+
+Returns: a L<Paws::EKS::ListNodegroupsResponse> instance
+
+Lists the Amazon EKS node groups associated with the specified cluster
+in your AWS account in the specified Region.
 
 
 =head2 ListTagsForResource
@@ -356,6 +525,8 @@ List the tags for an Amazon EKS resource.
 
 =item [NextToken => Str]
 
+=item [NodegroupName => Str]
+
 
 =back
 
@@ -363,8 +534,8 @@ Each argument is described in detail in: L<Paws::EKS::ListUpdates>
 
 Returns: a L<Paws::EKS::ListUpdatesResponse> instance
 
-Lists the updates associated with an Amazon EKS cluster in your AWS
-account, in the specified Region.
+Lists the updates associated with an Amazon EKS cluster or managed node
+group in your AWS account, in the specified Region.
 
 
 =head2 TagResource
@@ -385,7 +556,11 @@ Returns: a L<Paws::EKS::TagResourceResponse> instance
 Associates the specified tags to a resource with the specified
 C<resourceArn>. If existing tags on a resource are not specified in the
 request parameters, they are not changed. When a resource is deleted,
-the tags associated with that resource are deleted as well.
+the tags associated with that resource are deleted as well. Tags that
+you create for Amazon EKS resources do not propagate to any other
+resources associated with the cluster. For example, if you tag a
+cluster with this operation, that tag does not automatically propagate
+to the subnets and worker nodes associated with the cluster.
 
 
 =head2 UntagResource
@@ -486,6 +661,84 @@ minutes. During an update, the cluster status moves to C<UPDATING>
 complete (either C<Failed> or C<Successful>), the cluster status moves
 to C<Active>.
 
+If your cluster has managed node groups attached to it, all of your
+node groupsE<rsquo> Kubernetes versions must match the clusterE<rsquo>s
+Kubernetes version in order to update the cluster to a new Kubernetes
+version.
+
+
+=head2 UpdateNodegroupConfig
+
+=over
+
+=item ClusterName => Str
+
+=item NodegroupName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Labels => L<Paws::EKS::UpdateLabelsPayload>]
+
+=item [ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UpdateNodegroupConfig>
+
+Returns: a L<Paws::EKS::UpdateNodegroupConfigResponse> instance
+
+Updates an Amazon EKS managed node group configuration. Your node group
+continues to function during the update. The response output includes
+an update ID that you can use to track the status of your node group
+update with the DescribeUpdate API operation. Currently you can update
+the Kubernetes labels for a node group or the scaling configuration.
+
+
+=head2 UpdateNodegroupVersion
+
+=over
+
+=item ClusterName => Str
+
+=item NodegroupName => Str
+
+=item [ClientRequestToken => Str]
+
+=item [Force => Bool]
+
+=item [ReleaseVersion => Str]
+
+=item [Version => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UpdateNodegroupVersion>
+
+Returns: a L<Paws::EKS::UpdateNodegroupVersionResponse> instance
+
+Updates the Kubernetes version or AMI version of an Amazon EKS managed
+node group.
+
+You can update to the latest available AMI version of a node group's
+current Kubernetes version by not specifying a Kubernetes version in
+the request. You can update to the latest AMI version of your cluster's
+current Kubernetes version by specifying your cluster's Kubernetes
+version in the request. For more information, see Amazon EKS-Optimized
+Linux AMI Versions
+(https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
+in the I<Amazon EKS User Guide>.
+
+You cannot roll back a node group to an earlier Kubernetes version or
+AMI version.
+
+When a node in a managed node group is terminated due to a scaling
+action or update, the pods in that node are drained first. Amazon EKS
+attempts to drain the nodes gracefully and will fail if it is unable to
+do so. You can C<force> the update if Amazon EKS is unable to drain the
+nodes as a result of a pod disruption budget issue.
+
 
 
 
@@ -505,9 +758,21 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EKS::ListClustersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllUpdates(sub { },Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllNodegroups(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])
 
-=head2 ListAllUpdates(Name => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllNodegroups(ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - nodegroups, passing the object as the first parameter, and the string 'nodegroups' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListNodegroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllUpdates(sub { },Name => Str, [MaxResults => Int, NextToken => Str, NodegroupName => Str])
+
+=head2 ListAllUpdates(Name => Str, [MaxResults => Int, NextToken => Str, NodegroupName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

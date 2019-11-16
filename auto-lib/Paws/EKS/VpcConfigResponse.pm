@@ -1,5 +1,6 @@
 package Paws::EKS::VpcConfigResponse;
   use Moose;
+  has ClusterSecurityGroupId => (is => 'ro', isa => 'Str', request_name => 'clusterSecurityGroupId', traits => ['NameInRequest']);
   has EndpointPrivateAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPrivateAccess', traits => ['NameInRequest']);
   has EndpointPublicAccess => (is => 'ro', isa => 'Bool', request_name => 'endpointPublicAccess', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EKS::VpcConfigResponse object:
 
-  $service_obj->Method(Att1 => { EndpointPrivateAccess => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { ClusterSecurityGroupId => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::VpcConfigResponse object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EndpointPrivateAccess
+  $result->Att1->ClusterSecurityGroupId
 
 =head1 DESCRIPTION
 
@@ -39,6 +40,13 @@ An object representing an Amazon EKS cluster VPC configuration
 response.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterSecurityGroupId => Str
+
+  The cluster security group that was created by Amazon EKS for the
+cluster. Managed node groups use this security group for control plane
+to data plane communication.
 
 
 =head2 EndpointPrivateAccess => Bool

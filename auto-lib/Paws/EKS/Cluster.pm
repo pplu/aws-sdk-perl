@@ -125,7 +125,8 @@ operations on your behalf.
 
   The metadata that you apply to the cluster to assist with
 categorization and organization. Each tag consists of a key and an
-optional value, both of which you define.
+optional value, both of which you define. Cluster tags do not propagate
+to any other resources associated with the cluster.
 
 
 =head2 Version => Str

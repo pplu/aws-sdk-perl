@@ -2,6 +2,7 @@
 package Paws::EKS::DescribeUpdate;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nodegroupName');
   has UpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'updateId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $eks = Paws->service('EKS');
     my $DescribeUpdateResponse = $eks->DescribeUpdate(
-      Name     => 'MyString',
-      UpdateId => 'MyString',
-
+      Name          => 'MyString',
+      UpdateId      => 'MyString',
+      NodegroupName => 'MyString',    # OPTIONAL
     );
 
     # Results:
@@ -48,7 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the Amazon EKS cluster to update.
+The name of the Amazon EKS cluster associated with the update.
+
+
+
+=head2 NodegroupName => Str
+
+The name of the Amazon EKS node group associated with the update.
 
 
 

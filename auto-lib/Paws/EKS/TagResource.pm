@@ -46,7 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 =head2 B<REQUIRED> ResourceArn => Str
 
 The Amazon Resource Name (ARN) of the resource to which to add tags.
-Currently, the supported resources are Amazon EKS clusters.
+Currently, the supported resources are Amazon EKS clusters and managed
+node groups.
 
 
 

@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 The Amazon Resource Name (ARN) that identifies the resource for which
 to list the tags. Currently, the supported resources are Amazon EKS
-clusters.
+clusters and managed node groups.
 
 
 
