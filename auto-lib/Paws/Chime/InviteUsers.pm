@@ -54,7 +54,7 @@ The Amazon Chime account ID.
 
 =head2 B<REQUIRED> UserEmailList => ArrayRef[Str|Undef]
 
-The user email addresses to which to send the invite.
+The user email addresses to which to send the email invitation.
 
 
 

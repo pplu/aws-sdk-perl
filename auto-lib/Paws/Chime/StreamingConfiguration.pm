@@ -42,7 +42,7 @@ data, in hours.
 
 =head2 B<REQUIRED> DataRetentionInHours => Int
 
-  The retention period for the Amazon Kinesis data, in hours.
+  The retention period, in hours, for the Amazon Kinesis data.
 
 
 =head2 Disabled => Bool
