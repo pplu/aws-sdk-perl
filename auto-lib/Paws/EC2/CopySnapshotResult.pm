@@ -2,6 +2,7 @@
 package Paws::EC2::CopySnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest',]);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -18,6 +19,11 @@ Paws::EC2::CopySnapshotResult
 =head2 SnapshotId => Str
 
 The ID of the new snapshot.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+
 
 
 =head2 _request_id => Str

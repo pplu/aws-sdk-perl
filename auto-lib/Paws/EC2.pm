@@ -4610,6 +4610,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [PresignedUrl => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
