@@ -3,6 +3,7 @@ package Paws::EMR::Cluster;
   has Applications => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Application]');
   has AutoScalingRole => (is => 'ro', isa => 'Str');
   has AutoTerminate => (is => 'ro', isa => 'Bool');
+  has ClusterArn => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
   has CustomAmiId => (is => 'ro', isa => 'Str');
   has EbsRootVolumeSize => (is => 'ro', isa => 'Int');
@@ -77,6 +78,11 @@ instances in an instance group.
 
   Specifies whether the cluster should terminate after completing all
 steps.
+
+
+=head2 ClusterArn => Str
+
+  The Amazon Resource Name of the cluster.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
@@ -235,14 +241,15 @@ in the event of a cluster error.
 
 =head2 VisibleToAllUsers => Bool
 
-  I<This member will be deprecated.>
-
-Indicates whether the cluster is visible to all IAM users of the AWS
-account associated with the cluster. If this value is set to C<true>,
-all IAM users of that AWS account can view and manage the cluster if
-they have the proper policy permissions set. If this value is C<false>,
-only the IAM user that created the cluster can view and manage it. This
-value can be changed using the SetVisibleToAllUsers action.
+  Indicates whether the cluster is visible to all IAM users of the AWS
+account associated with the cluster. The default value, C<true>,
+indicates that all IAM users in the AWS account can perform cluster
+actions if they have the proper IAM policy permissions. If this value
+is C<false>, only the IAM user that created the cluster can perform
+actions. This value can be changed on a running cluster by using the
+SetVisibleToAllUsers action. You can override the default value of
+C<true> when you create a cluster by using the C<VisibleToAllUsers>
+parameter of the C<RunJobFlow> action.
 
 
 

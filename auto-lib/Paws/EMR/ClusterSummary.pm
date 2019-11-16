@@ -1,5 +1,6 @@
 package Paws::EMR::ClusterSummary;
   use Moose;
+  has ClusterArn => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NormalizedInstanceHours => (is => 'ro', isa => 'Int');
@@ -23,20 +24,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::ClusterSummary object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::ClusterSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Id
+  $result->Att1->ClusterArn
 
 =head1 DESCRIPTION
 
 The summary description of the cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterArn => Str
+
+  The Amazon Resource Name of the cluster.
 
 
 =head2 Id => Str

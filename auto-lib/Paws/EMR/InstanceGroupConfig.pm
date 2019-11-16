@@ -54,12 +54,10 @@ response to the value of a CloudWatch metric. See PutAutoScalingPolicy.
 
 =head2 BidPrice => Str
 
-  The maximum Spot price your are willing to pay for EC2 instances.
-
-An optional, nullable field that applies if the C<MarketType> for the
-instance group is specified as C<SPOT>. Specify the maximum spot price
-in USD. If the value is NULL and C<SPOT> is specified, the maximum Spot
-price is set equal to the On-Demand price.
+  The bid price for each EC2 Spot instance type as defined by
+C<InstanceType>. Expressed in USD. If neither C<BidPrice> nor
+C<BidPriceAsPercentageOfOnDemandPrice> is provided,
+C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]

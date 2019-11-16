@@ -59,9 +59,9 @@ value specified by C<Threshold>.
 
 =head2 EvaluationPeriods => Int
 
-  The number of periods, expressed in seconds using C<Period>, during
-which the alarm condition must exist before the alarm triggers
-automatic scaling activity. The default value is C<1>.
+  The number of periods, in five-minute increments, during which the
+alarm condition must exist before the alarm triggers automatic scaling
+activity. The default value is C<1>.
 
 
 =head2 B<REQUIRED> MetricName => Str

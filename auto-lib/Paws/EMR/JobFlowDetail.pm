@@ -138,14 +138,15 @@ flow this value is empty.
 
 =head2 VisibleToAllUsers => Bool
 
-  I<This member will be deprecated.>
-
-Specifies whether the cluster is visible to all IAM users of the AWS
-account associated with the cluster. If this value is set to C<true>,
-all IAM users of that AWS account can view and (if they have the proper
-policy permissions set) manage the cluster. If it is set to C<false>,
-only the IAM user that created the cluster can view and manage it. This
-value can be changed using the SetVisibleToAllUsers action.
+  Indicates whether the cluster is visible to all IAM users of the AWS
+account associated with the cluster. The default value, C<true>,
+indicates that all IAM users in the AWS account can perform cluster
+actions if they have the proper IAM policy permissions. If this value
+is C<false>, only the IAM user that created the cluster can perform
+actions. This value can be changed on a running cluster by using the
+SetVisibleToAllUsers action. You can override the default value of
+C<true> when you create a cluster by using the C<VisibleToAllUsers>
+parameter of the C<RunJobFlow> action.
 
 
 

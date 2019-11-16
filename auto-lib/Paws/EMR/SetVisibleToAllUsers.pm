@@ -44,19 +44,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str|Undef]
 
-Identifiers of the job flows to receive the new visibility setting.
+The unique identifier of the job flow (cluster).
 
 
 
 =head2 B<REQUIRED> VisibleToAllUsers => Bool
 
-I<This member will be deprecated.>
-
-Whether the specified clusters are visible to all IAM users of the AWS
-account associated with the cluster. If this value is set to True, all
-IAM users of that AWS account can view and, if they have the proper IAM
-policy permissions set, manage the clusters. If it is set to False,
-only the IAM user that created a cluster can view and manage it.
+A value of C<true> indicates that all IAM users in the AWS account can
+perform cluster actions if they have the proper IAM policy permissions.
+This is the default. A value of C<false> indicates that only the IAM
+user who created the cluster can perform actions.
 
 
 

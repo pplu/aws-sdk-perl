@@ -1,6 +1,7 @@
 
 package Paws::EMR::RunJobFlowOutput;
   use Moose;
+  has ClusterArn => (is => 'ro', isa => 'Str');
   has JobFlowId => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -12,6 +13,11 @@ package Paws::EMR::RunJobFlowOutput;
 Paws::EMR::RunJobFlowOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 ClusterArn => Str
+
+The Amazon Resource Name of the cluster.
 
 
 =head2 JobFlowId => Str

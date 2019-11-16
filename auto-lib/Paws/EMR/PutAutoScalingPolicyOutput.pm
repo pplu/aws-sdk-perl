@@ -2,6 +2,7 @@
 package Paws::EMR::PutAutoScalingPolicyOutput;
   use Moose;
   has AutoScalingPolicy => (is => 'ro', isa => 'Paws::EMR::AutoScalingPolicyDescription');
+  has ClusterArn => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
 
@@ -19,6 +20,11 @@ Paws::EMR::PutAutoScalingPolicyOutput
 =head2 AutoScalingPolicy => L<Paws::EMR::AutoScalingPolicyDescription>
 
 The automatic scaling policy definition.
+
+
+=head2 ClusterArn => Str
+
+The Amazon Resource Name of the cluster.
 
 
 =head2 ClusterId => Str

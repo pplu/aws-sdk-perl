@@ -847,7 +847,8 @@ Each argument is described in detail in: L<Paws::EMR::ListSteps>
 Returns: a L<Paws::EMR::ListStepsOutput> instance
 
 Provides a list of steps for the cluster in reverse order unless you
-specify stepIds with the request.
+specify C<stepIds> with the request of filter by C<StepStates>. You can
+specify a maximum of ten C<stepIDs>.
 
 
 =head2 ModifyInstanceFleet
@@ -1127,15 +1128,16 @@ Each argument is described in detail in: L<Paws::EMR::SetVisibleToAllUsers>
 
 Returns: nothing
 
-I<This member will be deprecated.>
-
-Sets whether all AWS Identity and Access Management (IAM) users under
-your account can access the specified clusters (job flows). This action
-works on running clusters. You can also set the visibility of a cluster
-when you launch it using the C<VisibleToAllUsers> parameter of
-RunJobFlow. The SetVisibleToAllUsers action can be called only by an
-IAM user who created the cluster or the AWS account that owns the
-cluster.
+Sets the Cluster$VisibleToAllUsers value, which determines whether the
+cluster is visible to all IAM users of the AWS account associated with
+the cluster. Only the IAM user who created the cluster or the AWS
+account root user can call this action. The default value, C<true>,
+indicates that all IAM users in the AWS account can perform cluster
+actions if they have the proper IAM policy permissions. If set to
+C<false>, only the IAM user that created the cluster can perform
+actions. This action works on running clusters. You can override the
+default C<true> setting when you create a cluster by using the
+C<VisibleToAllUsers> parameter with C<RunJobFlow>.
 
 
 =head2 TerminateJobFlows
