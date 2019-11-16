@@ -2,6 +2,7 @@
 package Paws::WorkSpaces::DescribeWorkspaceDirectories;
   use Moose;
   has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -30,8 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $workspaces = Paws->service('WorkSpaces');
     my $DescribeWorkspaceDirectoriesResult =
       $workspaces->DescribeWorkspaceDirectories(
-      DirectoryIds => [ 'MyDirectoryId', ... ],    # OPTIONAL
-      NextToken    => 'MyPaginationToken',         # OPTIONAL
+      DirectoryIds => [
+        'MyDirectoryId', ...    # min: 10, max: 65
+      ],                        # OPTIONAL
+      Limit     => 1,                      # OPTIONAL
+      NextToken => 'MyPaginationToken',    # OPTIONAL
       );
 
     # Results:
@@ -50,6 +54,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 
 The identifiers of the directories. If the value is null, all
 directories are retrieved.
+
+
+
+=head2 Limit => Int
+
+The maximum number of directories to return.
 
 
 

@@ -9,8 +9,11 @@ package Paws::WorkSpaces::WorkspaceDirectory;
   has IamRoleId => (is => 'ro', isa => 'Str');
   has IpGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipGroupIds', traits => ['NameInRequest']);
   has RegistrationCode => (is => 'ro', isa => 'Str');
+  has SelfservicePermissions => (is => 'ro', isa => 'Paws::WorkSpaces::SelfservicePermissions');
   has State => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Tenancy => (is => 'ro', isa => 'Str');
+  has WorkspaceAccessProperties => (is => 'ro', isa => 'Paws::WorkSpaces::WorkspaceAccessProperties');
   has WorkspaceCreationProperties => (is => 'ro', isa => 'Paws::WorkSpaces::DefaultWorkspaceCreationProperties');
   has WorkspaceSecurityGroupId => (is => 'ro', isa => 'Str');
 1;
@@ -43,8 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes an AWS Directory Service directory that is used with Amazon
-WorkSpaces.
+Describes a directory that is used with Amazon WorkSpaces.
 
 =head1 ATTRIBUTES
 
@@ -99,14 +101,33 @@ enter in their Amazon WorkSpaces client application to connect to the
 directory.
 
 
+=head2 SelfservicePermissions => L<Paws::WorkSpaces::SelfservicePermissions>
+
+  The default self-service permissions for WorkSpaces in the directory.
+
+
 =head2 State => Str
 
-  The state of the directory's registration with Amazon WorkSpaces
+  The state of the directory's registration with Amazon WorkSpaces.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
   The identifiers of the subnets used with the directory.
+
+
+=head2 Tenancy => Str
+
+  Specifies whether the directory is dedicated or shared. To use Bring
+Your Own License (BYOL), this value must be set to C<DEDICATED>. For
+more information, see Bring Your Own Windows Desktop Images
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+
+
+=head2 WorkspaceAccessProperties => L<Paws::WorkSpaces::WorkspaceAccessProperties>
+
+  The devices and operating systems that users can use to access
+Workspaces.
 
 
 =head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>

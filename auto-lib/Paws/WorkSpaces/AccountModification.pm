@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes a modification to the configuration of bring your own license
+Describes a modification to the configuration of Bring Your Own License
 (BYOL) for the specified account.
 
 =head1 ATTRIBUTES

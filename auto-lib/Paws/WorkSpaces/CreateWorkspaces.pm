@@ -31,16 +31,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Workspaces => [
         {
           BundleId                    => 'MyBundleId',
-          DirectoryId                 => 'MyDirectoryId',
-          UserName                    => 'MyUserName',      # min: 1, max: 63
-          RootVolumeEncryptionEnabled => 1,                 # OPTIONAL
+          DirectoryId                 => 'MyDirectoryId',    # min: 10, max: 65
+          UserName                    => 'MyUserName',       # min: 1, max: 63
+          RootVolumeEncryptionEnabled => 1,                  # OPTIONAL
           Tags                        => [
             {
-              Key   => 'MyTagKey',                          # min: 1, max: 127
-              Value => 'MyTagValue',                        # max: 255; OPTIONAL
+              Key   => 'MyTagKey',      # min: 1, max: 127
+              Value => 'MyTagValue',    # max: 255; OPTIONAL
             },
             ...
-          ],                                                # OPTIONAL
+          ],                            # OPTIONAL
           UserVolumeEncryptionEnabled => 1,                          # OPTIONAL
           VolumeEncryptionKey         => 'MyVolumeEncryptionKey',    # OPTIONAL
           WorkspaceProperties         => {

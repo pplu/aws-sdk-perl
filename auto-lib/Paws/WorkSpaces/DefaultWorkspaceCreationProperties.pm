@@ -3,6 +3,7 @@ package Paws::WorkSpaces::DefaultWorkspaceCreationProperties;
   has CustomSecurityGroupId => (is => 'ro', isa => 'Str');
   has DefaultOu => (is => 'ro', isa => 'Str');
   has EnableInternetAccess => (is => 'ro', isa => 'Bool');
+  has EnableMaintenanceMode => (is => 'ro', isa => 'Bool');
   has EnableWorkDocs => (is => 'ro', isa => 'Bool');
   has UserEnabledAsLocalAdministrator => (is => 'ro', isa => 'Bool');
 1;
@@ -35,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes the default values used to create a WorkSpace.
+Describes the default values that are used to create WorkSpaces. For
+more information, see Update Directory Details for Your WorkSpaces
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html).
 
 =head1 ATTRIBUTES
 
@@ -68,6 +71,13 @@ WorkSpaces
 (https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html).
 
 
+=head2 EnableMaintenanceMode => Bool
+
+  Specifies whether maintenance mode is enabled for WorkSpaces. For more
+information, see WorkSpace Maintenance
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html).
+
+
 =head2 EnableWorkDocs => Bool
 
   Specifies whether the directory is enabled for Amazon WorkDocs.
@@ -75,8 +85,8 @@ WorkSpaces
 
 =head2 UserEnabledAsLocalAdministrator => Bool
 
-  Specifies whether the WorkSpace user is an administrator on the
-WorkSpace.
+  Specifies whether WorkSpace users are local administrators on their
+WorkSpaces.
 
 
 

@@ -68,8 +68,8 @@ available directories.
 
 =head2 B<REQUIRED> UserName => Str
 
-  The username of the user for the WorkSpace. This username must exist in
-the AWS Directory Service directory for the WorkSpace.
+  The user name of the user for the WorkSpace. This user name must exist
+in the AWS Directory Service directory for the WorkSpace.
 
 
 =head2 UserVolumeEncryptionEnabled => Bool

@@ -76,8 +76,10 @@ Describes a WorkSpace image.
 =head2 RequiredTenancy => Str
 
   Specifies whether the image is running on dedicated hardware. When
-bring your own license (BYOL) is enabled, this value is set to
-DEDICATED.
+Bring Your Own License (BYOL) is enabled, this value is set to
+C<DEDICATED>. For more information, see Bring Your Own Windows Desktop
+Images
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 
 
 =head2 State => Str
