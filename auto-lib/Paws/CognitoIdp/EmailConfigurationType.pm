@@ -1,6 +1,8 @@
 package Paws::CognitoIdp::EmailConfigurationType;
   use Moose;
+  has ConfigurationSet => (is => 'ro', isa => 'Str');
   has EmailSendingAccount => (is => 'ro', isa => 'Str');
+  has From => (is => 'ro', isa => 'Str');
   has ReplyToEmailAddress => (is => 'ro', isa => 'Str');
   has SourceArn => (is => 'ro', isa => 'Str');
 1;
@@ -22,20 +24,49 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CognitoIdp::EmailConfigurationType object:
 
-  $service_obj->Method(Att1 => { EmailSendingAccount => $value, ..., SourceArn => $value  });
+  $service_obj->Method(Att1 => { ConfigurationSet => $value, ..., SourceArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIdp::EmailConfigurationType object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->EmailSendingAccount
+  $result->Att1->ConfigurationSet
 
 =head1 DESCRIPTION
 
 The email configuration type.
 
 =head1 ATTRIBUTES
+
+
+=head2 ConfigurationSet => Str
+
+  The set of configuration rules that can be applied to emails sent using
+Amazon SES. A configuration set is applied to an email by including a
+reference to the configuration set in the headers of the email. Once
+applied, all of the rules in that configuration set are applied to the
+email. Configuration sets can be used to apply the following types of
+rules to emails:
+
+=over
+
+=item *
+
+Event publishing E<ndash> Amazon SES can track the number of send,
+delivery, open, click, bounce, and complaint events for each email
+sent. Use event publishing to send information about these events to
+other AWS services such as SNS and CloudWatch.
+
+=item *
+
+IP pool management E<ndash> When leasing dedicated IP addresses with
+Amazon SES, you can create groups of IP addresses, called dedicated IP
+pools. You can then associate the dedicated IP pools with configuration
+sets.
+
+=back
+
 
 
 =head2 EmailSendingAccount => Str
@@ -88,6 +119,14 @@ in the I<Amazon Cognito Developer Guide>.
 
 =back
 
+
+
+=head2 From => Str
+
+  Identifies either the senderE<rsquo>s email address or the
+senderE<rsquo>s name with their email address. For example,
+C<testuser@example.com> or C<Test User E<lt>testuser@example.comE<gt>>.
+This address will appear before the body of the email.
 
 
 =head2 ReplyToEmailAddress => Str

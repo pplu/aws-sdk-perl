@@ -70,8 +70,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
       },    # OPTIONAL
       EmailConfiguration => {
+        ConfigurationSet => 'MySESConfigurationSet', # min: 1, max: 64; OPTIONAL
         EmailSendingAccount =>
           'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
+        From                => 'MyStringType',          # OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
         SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
