@@ -16,9 +16,12 @@ tests:
   - expected: PUT 
     op: eq
     path: method
-  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?accelerate
-    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: /oneoffpaws?accelerate
-    op: eq
+  - expected: accelerate
+    path: url
+  - expected: /oneoffpaws?
     path: uri
+  - expected: accelerate
+    path: uri
+        

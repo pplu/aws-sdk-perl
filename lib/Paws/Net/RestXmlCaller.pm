@@ -89,7 +89,9 @@ package Paws::Net::RestXmlCaller;
 
 	   if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
 
-		   my $att_name = $attribute->name;
+		  my $att_name = $attribute->name;
+		  next 
+		    unless(defined( $call->$att_name));
           $uri_template .= $joiner.$attribute->query_name."={".$att_name."}";
    	      $vars->{ $att_name } = $call->$att_name;
 		  $joiner ='&';
@@ -199,16 +201,17 @@ package Paws::Net::RestXmlCaller;
 		  if ($attribute->does('ListNameInRequest')) {
              my $location = $attribute->request_name();
 			 my $list_name =  $attribute->list_request_name();
-             $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,   $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
-             $xml ="<$list_name>$xml</$list_name>"
+			 my $temp_xml = ( join '', map { sprintf '<%s%s>%s</%s>',$location,   $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
+             $temp_xml ="<$list_name>$temp_xml</$list_name>"
 			    if ( $location ne $list_name);
-
+            $xml.=$temp_xml; 
 		  }
 		  else {
 		     my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $att_name;
              $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
 		     $xml ="<$att_name>$xml</$att_name>"
 		       if( $attribute->does('NameInRequest')
+				   and $location != $attribute->request_name
 			       and !$attribute->does('Flatten'));
 		     }
       } else {
@@ -246,7 +249,7 @@ package Paws::Net::RestXmlCaller;
              $xml .= sprintf '<%s xmlns="%s">%s</%s>', $location, $call->_namspace_uri(),$self->_to_xml($attribute_value), $location;
 		  }
 		  else {
-            $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+            $xml .= sprintf '<7%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
 		  }
         }
         else {
@@ -302,7 +305,7 @@ package Paws::Net::RestXmlCaller;
     }
 
     $self->_to_header_params($request, $call);
-#	warn("JSP request=".Dumper($request));
+	warn("JSP request=".Dumper($request));
 	$self->sign($request);
 	return $request;
   }

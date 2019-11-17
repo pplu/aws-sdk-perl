@@ -13,9 +13,6 @@ package [% inner_class %];
 	  [%- ELSE %]
 	     , list_request_name => '[% param_name %]'
 	  [% END %]  
-#      JSP  member.member.locationName [%  member.member.locationName %]
-#	  JSP  shape.members.${param_name}.locationName [% shape.members.${param_name}.locationName %]
-#	  JSP  param_name [% param_name %]
  [%- ELSE %]
   [%- IF (shape.members.${param_name}.locationName); traits.push('NameInRequest') %], request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
   [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]

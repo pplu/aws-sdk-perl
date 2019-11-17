@@ -3,11 +3,12 @@
 package [% c.api %]::[% op_name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
+    [% NEXT IF param_name == 'ContentMD5' %]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
   [%- traits = [] -%]
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (shape.members.$param_name.location == 'header') %], header_name => '[% shape.members.$param_name.locationName %]'
-    [%- IF (param_name == 'ContentMD5'); traits.push('AutoInHeader') %], auto => 'MD5'
+    [%- IF (param_name == 'ContentMD5s'); traits.push('AutoInHeader') %], auto => 'MD5'
     [%- ELSE; traits.push('ParamInHeader') %]
   [%- END %]
   [%- ELSIF (shape.members.$param_name.location == 'headers');     traits.push('ParamInHeaders') %], header_prefix => '[% shape.members.$param_name.locationName %]'
@@ -24,6 +25,8 @@ package [% c.api %]::[% op_name %];
   [%- IF (shape.members.$param_name.xmlNamespace) %] [% namspace_uri = shape.members.$param_name.xmlNamespace.uri %][% END %] 
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader'] );
+ 
   use MooseX::ClassAttribute;
   [%- IF namspace_uri %]
   class_has _namspace_uri => (isa => 'Str', is => 'ro', default => '[% namspace_uri %]');[% END %]

@@ -1,0 +1,19 @@
+---
+call: DeleteBucketTagging
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: DELETE
+    op: eq
+    path: method
+  - expected: /oneoffpaws? 
+    path: uri
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: tagging
+    path: uri
+  - expected: tagging
+    path: url

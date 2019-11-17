@@ -2,8 +2,7 @@
 call: GetPublicAccessBlock 
 service: S3
 tests:
-  - expected: 
-    op: eq
+  - op: eq
     path: content
   - expected: oneoffpaws 
     op: eq
@@ -12,9 +11,12 @@ tests:
   - expected: GET 
     op: eq
     path: method
-  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?publicAccessBlock
-    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: /oneoffpaws?publicAccessBlock
-    op: eq
+  - expected: publicAccessBlock
+    path: url
+  - expected: /oneoffpaws?
     path: uri
+  - expected: publicAccessBlock
+    path: uri
+

@@ -1,0 +1,19 @@
+---
+call: GetBucketTagging
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: GET
+    op: eq
+    path: method
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: https://s3.amazonaws.com/oneoffpaws? 
+    path: url
+  - expected: tagging
+    path: uri
+  - expected: tagging
+    path: url

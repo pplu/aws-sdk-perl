@@ -9,5 +9,5 @@ AnalyticsConfiguration:
           Format: CSV
           Bucket: arn:aws:s3:::cargotel-logs
       OutputSchemaVersion: V_1
-Bucket: dev.cargotel.paws
+Bucket: oneoffpaws
 Id: test1333

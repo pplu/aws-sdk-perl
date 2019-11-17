@@ -38,11 +38,22 @@ sub test_file {
   my ($file) = @_;
 #warn("test_file=$file");
   my $test_def_file = "$file.test.yml";
-  my $test = TestFromYaml->new(file => $test_def_file);
+  my ($test, $opts);
+  eval {
+    $test = TestFromYaml->new(file => $test_def_file);
 #warn("file=$file,   test_def_file=".$test_def_file);
-  my $opts = YAML::LoadFile($file);
+  };
+  die "YAML error: $@ in file $test_def_file"
+    if ($@);
+  eval {
+    $opts = YAML::LoadFile($file);
+  };
+  die "YAML error: $@ in file $file"
+    if ($@);
 #use Data::Dumper;
-#warn("file=".Dumper($opts));
+#warn("ops=".Dumper($opts));
+#warn("test=".Dumper($test));
+
 SKIP: {
     skip "$test_def_file is lacking service or call entry",1 if (not $test->service or not $test->method);
     local $TODO = "$test_def_file is TODO: " . $test->todo_reason if ($test->is_todo);
@@ -59,13 +70,13 @@ SKIP: {
 
 	my $call_method = $test->method;
     my $call_class = $service->meta->name . '::' . $call_method;
-#n	warn("call_method=$call_method, call_class=$call_class");
-	#Paws->load_class($call_class);
+#	warn("call_method=$call_method, call_class=$call_class");
+#Paws->load_class($call_class);
     my $res;
     my $passed = lives_ok {
       $res = $service->$call_method(%{$opts})
     } "Call " . $test->service . '->' . $test->method . " from $file";
-
+#warn("reqst=".Dumper($res ));
     if (not $passed or $TODO) {
       ok(0, "Can't test method access because something went horribly wrong in the call to $call_method");
       next;
@@ -77,29 +88,41 @@ SKIP: {
       my $got;
       my $path;
       if (defined $t->{path}){
+
         $path = $t->{path};
-		eval {
-		  if (exists($t->{key})){
-             my $hash =  $res->$path;
-			 $got     = $hash->{$t->{key}};
-		  }
-		  else {
-		     $got = $res->$path;
-	      }
-		};
-		if ($@) {
-		  my $message = $@;
-		  chomp $message;
-		  ok(0, "Exception accessing $t->{path}: $message");
+		if ($path eq 'url'){
+           my $url = $res->url;
+           ok(index($url,$t->{expected})!=-1,"Have ".$t->{expected}." in the URL");
+        }
+		elsif ($path eq 'uri'){
+           my $uri = $res->uri;
+		   ok(index($uri,$t->{expected})!=-1,"Have ".$t->{expected}." in the URI");
 		}
+		else {
+		  eval {
+		    if (exists($t->{key})){
+               my $hash = $res->$path;
+			   $got     = $hash->{$t->{key}};
+			   $path    = "Param Key  ".$t->{key};
+		    }
+		    else {
+		       $got = $res->$path;
+	        }
+		  };
+		  if ($@) {
+		    my $message = $@;
+		    chomp $message;
+		    ok(0, "Exception accessing $t->{path}: $message");
+		  }
+          if (not defined $got and not defined $t->{expected}){
+            ok(1, "Got undef on $path from result");
+          } else {
+            cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} from result");
+          }
+		}
+		
       } else {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
-      }
-
-      if (not defined $got and not defined $t->{expected}){
-        ok(1, "Got undef on $path from result");
-      } else {
-        cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
       }
     }
   }

@@ -1,5 +1,5 @@
 ---
-call: GetBucketAcl
+call: GetBucketCors
 service: S3
 tests:
   - expected: 
@@ -12,9 +12,12 @@ tests:
   - expected: GET 
     op: eq
     path: method
-  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?acl
-    op: eq
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
     path: url
-  - expected: /oneoffpaws?acl
-    op: eq
+  - expected: cors
+    path: url
+  - expected: /oneoffpaws?
     path: uri
+  - expected: cors
+    path: uri
+

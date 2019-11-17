@@ -1,0 +1,9 @@
+---
+Bucket: oneoffpaws
+Key: lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+Tagging:
+  TagSet:
+    - Key: Akey
+	  Value: a value
+	- Key: bkey
+	  Value: b value

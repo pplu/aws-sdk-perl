@@ -1,0 +1,11 @@
+---
+Bucket: dev.cargotel.paws.new
+CreateBucketConfiguration: 
+  LocationConstraint: us-east-1
+ACL: private
+GrantFullControl: emailAddress="full_control_1@amazon.com", emailAddress="full_control_2@amazon.com" 
+GrantRead: emailAddress="read_1@amazon.com", emailAddress="read_2@amazon.com"
+GrantReadACP: emailAddress="read_acp_1@amazon.com", emailAddress="read_acp_2@amazon.com"
+GrantWrite: emailAddress="write_1@amazon.com", emailAddress="write_2@amazon.com"
+GrantWriteACP: emailAddress="write_acp_1@amazon.com", emailAddress="write_acp_2@amazon.com"
+ObjectLockEnabledForBucket: 1

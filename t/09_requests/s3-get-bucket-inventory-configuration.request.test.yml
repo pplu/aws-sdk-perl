@@ -1,0 +1,27 @@
+---
+call: GetBucketInventoryConfiguration 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: Test_Inventory
+    op: eq
+    path: parameters
+    key: Id
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: Id=Test_Inventory
+    path: url
+  - expected: inventory=
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: Id=Test_Inventory
+    path: uri
+  - expected: inventory=
+    path: uri
