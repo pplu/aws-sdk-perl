@@ -1,0 +1,12 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+ObjectLockConfiguration:
+  ObjectLockEnabled: Enabled
+  Rule:
+    DefaultRetention:
+      Days: 1
+      Mode: GOVERNANCE
+      Years: 1
+  RequestPaye: requester
+  Token: MyObjectLockToken

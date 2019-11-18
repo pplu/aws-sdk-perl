@@ -1,0 +1,13 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+MFA: MyMFA
+RequestPayer: requester
+BypassGovernanceRetention: 1
+Delete:
+  Objects:
+    - Key: MyObjectKey
+      VersionId: MyObjectVersionId
+    - Key: MyObjectKey1
+      VersionId: MyObjectVersionId1
+  Quiet: 1

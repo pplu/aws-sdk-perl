@@ -1,0 +1,30 @@
+---
+Bucket: oneoffpaws
+CopySource: twooffpaws
+Key: Some Key
+ACL: private 
+CacheControl: MyCacheControl
+ContentDisposition: MyContentDisposition
+ContentEncoding: MyContentEncoding 
+ContentLanguage: MyContentLanguage 
+ContentType: MyContentType 
+Expires: 1970-01-01T01:00:00 
+GrantFullControl: MyGrantFullControl
+GrantRead: MyGrantRead 
+GrantReadACP: MyGrantReadACP
+GrantWriteACP: MyGrantWriteACP 
+Metadata: 
+  MyMetadataKey: MyMetadataValue
+ObjectLockLegalHoldStatus: ON
+ObjectLockMode: GOVERNANCE
+ObjectLockRetainUntilDate: 1970-01-01T01:00:00 
+RequestPayer: requester 
+SSECustomerAlgorithm: MySSECustomerAlgorithm
+SSECustomerKey: MySSECustomerKey
+SSECustomerKeyMD5: MySSECustomerKeyMD5 
+SSEKMSEncryptionContext: MySSEKMSEncryptionContext 
+SSEKMSKeyId: MySSEKMSKeyId 
+ServerSideEncryption: AES256
+StorageClass: STANDARD
+Tagging: MyTaggingHeader 
+WebsiteRedirectLocation: MyWebsiteRedirectLocation

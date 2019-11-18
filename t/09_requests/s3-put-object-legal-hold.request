@@ -1,0 +1,5 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+LegalHold:
+  Status: ON

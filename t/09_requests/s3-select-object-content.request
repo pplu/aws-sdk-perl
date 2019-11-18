@@ -1,0 +1,15 @@
+---
+Bucket: oneoffpaws
+Key: one/to/delete/image.jpg
+Expression: MyExpression
+ExpressionType: SQL
+InputSerialization:
+  CompressionType: NONE
+OutputSerialization:
+  CSV:
+    QuoteFields: ASNEEDED
+	RecordDelimiter: \n
+    FieldDelimiter: ,
+    QuoteCharacter: '
+    QuoteEscapeCharacter: "
+

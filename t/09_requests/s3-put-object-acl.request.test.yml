@@ -1,0 +1,55 @@
+---
+call: PutObjectAcl
+service: S3
+tests:
+  - expected: <AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><AccessControlList><Grant><Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><DisplayName>OwnerDisplayName</DisplayName><ID>852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID</ID></Grantee><Permission>FULL_CONTROL</Permission></Grant></AccessControlList><Owner><DisplayName>Nothing</DisplayName><ID>852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID</ID></Owner></AccessControlPolicy>
+     op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: Key
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - expected: FULL_CONTROL
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Grants.Grant.1.Permission
+  - expected: Nothing
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Owner.DisplayName
+  - expected: CanonicalUser
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Grants.Grant.1.Grantee.Type
+  - expected: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Grants.Grant.1.Grantee.ID
+  - expected: 852b113e7a2f25102679df27bb0ae12b3f85be6BucketOwnerCanonicalUserID
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Owner.ID
+  - expected: OwnerDisplayName
+    op: eq
+    path: parameters
+    key: AccessControlPolicy.Grants.Grant.1.Grantee.DisplayName
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg
+    path: url
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image.jpg?
+    path: uri
+    op: eq
+  - expected: acl
+    path: url
+    op: eq
+  - expected: acl
+    path: uri
+    op: eq
+

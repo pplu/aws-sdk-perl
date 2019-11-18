@@ -1,0 +1,67 @@
+---
+call: SelectObjectContent 
+service: S3
+tests:
+  - expected: <InputSerialization><CompressionType>NONE</CompressionType></InputSerialization><OutputSerialization><CSV><FieldDelimiter>,</FieldDelimiter><QuoteCharacter>"</QuoteCharacter><QuoteEscapeCharacter>"</QuoteEscapeCharacter><QuoteFields>ASNEEDED</QuoteFields><RecordDelimiter>\\n</RecordDelimiter></CSV></OutputSerialization>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - key: Expression 
+    expected: MyExpression
+    op: eq
+    path: parameters
+  - key: OutputSerialization.CSV.QuoteFields
+    expected: ASNEEDED
+    op: eq
+    path: parameters
+  - key: OutputSerialization.CSV.FieldDelimiter
+    expected: ,
+    op: eq
+    path: parameters
+  - key: Key
+    expected: one/to/delete/image.jpg
+    op: eq
+    path: parameters
+  - key: OutputSerialization.CSV.QuoteEscapeCharacter
+    expected: \"
+    op: eq
+    path: parameters
+  - key: ExpressionType
+    expected: SQL
+    op: eq
+    path: parameters
+  - key: OutputSerialization.CSV.QuoteCharacter
+    expected: \"
+    op: eq
+    path: parameters
+  - key: OutputSerialization.CSV.RecordDelimiter
+    expected: \\n
+    op: eq
+    path: parameters
+  - key: InputSerialization.CompressionType
+    expected: NONE
+    op: eq
+    path: parameters
+  - expected: POST
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/one/to/delete/image.jpg?
+    path: url
+    op: eq
+  - expected: /oneoffpaws/one/to/delete/image.jpg?
+    path: uri
+    op: eq
+  - expected: select
+    path: url
+    op: eq
+  - expected: select
+    path: uri
+    op: eq
+  - expected: select-type=2
+    path: uri
+    op: eq
+
+

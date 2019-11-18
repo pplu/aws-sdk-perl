@@ -1,0 +1,34 @@
+---
+call: PutBucketNotificationConfiguration 
+service: S3
+tests:
+  - expected: <NotificationConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><TopicConfiguration><Event>s3:ReducedRedundancyLostObject</Event><Id>My config</Id><Topic>arn:aws:sns:us-east-1:356671443308:s3notificationtopic2</Topic></TopicConfiguration></NotificationConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: My config 
+    op: eq
+    path: parameters
+    key: NotificationConfiguration.TopicConfigurations.TopicConfiguration.1.Id
+  - expected: s3:ReducedRedundancyLostObject
+    op: eq
+    path: parameters
+    key: NotificationConfiguration.TopicConfigurations.TopicConfiguration.1.Events.1
+  - expected: arn:aws:sns:us-east-1:356671443308:s3notificationtopic2<Paste>
+    op: eq
+    path: parameters
+    key: NotificationConfiguration.TopicConfigurations.TopicConfiguration.1.TopicArn
+  - expected: PUT 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: Notification
+    path: url
+  - expected: Notification
+    path: uri   
+  - expected: /oneoffpaws?
+    path: uri

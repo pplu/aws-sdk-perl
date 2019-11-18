@@ -1,0 +1,55 @@
+---
+call: ListParts
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: MyMultipartUploadId
+    op: eq
+    path: parameters
+    key: uploadId
+  - expected: Some Key
+    op: eq
+    path: parameters
+    key: Key
+  - expected: requester
+    op: eq
+    path: parameters
+    key: RequestPayer
+  - expected: 1
+    op: eq
+    path: parameters
+    key: max-parts
+  - expected: 1
+    op: eq
+    path: parameters
+    key: part-number-marker
+  - expected: GET
+    op: eq
+    path: method
+  - expected: https://s3.amazonaws.com/oneoffpaws/Some%20Key?
+    ep: eq
+    path: url
+  - expected: uploadId=MyMultipartUploadId
+    ep: eq
+    path: url
+  - expected: /dev.cargotel.paws/Some%20Key
+    ep: eq
+    path: uri
+  - expected: uploadId=MyMultipartUploadId
+    ep: eq
+    path: uri
+  - expected: max-parts=1 
+    ep: eq
+    path: uri
+  - expected: max-parts=1
+    ep: eq
+    path: url  
+  - expected: part-number-marker=1
+    ep: eq
+    path: uri
+  - expected: part-number-marker=1
+    ep: eq
+    path: url

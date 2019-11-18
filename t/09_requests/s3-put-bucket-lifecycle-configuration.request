@@ -1,6 +1,6 @@
 ---
 Bucket: oneoffpaws
-InventoryConfiguration:
+LifecycleConfiguration:
   Rules:
    - ID: rule1
      Filter:

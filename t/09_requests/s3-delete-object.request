@@ -1,0 +1,6 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+VersionId: my version id
+MFA: MyMFA
+RequestPayer: requester

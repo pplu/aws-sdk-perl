@@ -211,7 +211,7 @@ package Paws::Net::RestXmlCaller;
              $xml .=  ( join '', map { sprintf '<%s%s>%s</%s>',$location,  $self->_to_xml_attributes($attribute->get_value($_)), $self->_to_xml($_), $location } @{ $attribute->get_value($value) } );
 		     $xml ="<$att_name>$xml</$att_name>"
 		       if( $attribute->does('NameInRequest')
-				   and $location != $attribute->request_name
+				   and $location ne $attribute->request_name
 			       and !$attribute->does('Flatten'));
 		     }
       } else {
@@ -239,7 +239,6 @@ package Paws::Net::RestXmlCaller;
           not $attribute->type_constraint eq 'Paws::S3::Metadata'
          ) {
         my $attribute_value = $attribute->get_value($call);
-
         if ( ref $attribute_value ) {
           my $location = $attribute->does('NameInRequest') ? $attribute->request_name : $attribute->name;
           if ($attribute->does('Flatten')){
@@ -249,12 +248,14 @@ package Paws::Net::RestXmlCaller;
              $xml .= sprintf '<%s xmlns="%s">%s</%s>', $location, $call->_namspace_uri(),$self->_to_xml($attribute_value), $location;
 		  }
 		  else {
-            $xml .= sprintf '<7%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
+            $xml .= sprintf '<%s>%s</%s>', $location, $self->_to_xml($attribute_value), $location;
 		  }
         }
-        else {
-           $xml .= $attribute_value;
-        }
+		#else {
+		
+		#   $xml .= $attribute_value;
+
+		#}
       }
     }
     return undef if (not $xml);
@@ -305,7 +306,7 @@ package Paws::Net::RestXmlCaller;
     }
 
     $self->_to_header_params($request, $call);
-	warn("JSP request=".Dumper($request));
+#	warn("JSP request=".Dumper($request));
 	$self->sign($request);
 	return $request;
   }

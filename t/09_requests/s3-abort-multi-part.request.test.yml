@@ -1,0 +1,35 @@
+---
+call: AbortMultipartUpload 
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: AN Id
+    op: eq
+    path: parameters
+    key: uploadId
+  - expected: Some Key
+    op: eq
+    path: parameters
+    key: Key
+  - expected: requester
+    op: eq
+    path: parameters
+    key: RequestPayer
+  - expected: DELETE
+    op: eq
+    path: method
+  - expected: https://s3.amazonaws.com/oneoffpaws/Some%20Key?
+    ep: ew
+    path: url
+  - expected: uploadId=AN+Id
+    ep: ew
+    path: url
+  - expected: /dev.cargotel.paws/Some%20Key
+    ep: ew
+    path: uri
+  - expected:  uploadId=AN+Id
+    ep: ew
+    path: uri

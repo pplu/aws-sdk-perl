@@ -1,0 +1,9 @@
+---
+Bucket: oneoffpaws 
+Key: one/to/delete/image.jpg
+BypassGovernanceRetention: 1
+  RequestPayer: requester
+  Retention:
+    Mode: GOVERNANCE
+    RetainUntilDate: 1970-01-01T01:00:00
+  VersionId: MyObjectVersionId
