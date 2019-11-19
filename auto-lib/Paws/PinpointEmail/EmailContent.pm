@@ -2,6 +2,7 @@ package Paws::PinpointEmail::EmailContent;
   use Moose;
   has Raw => (is => 'ro', isa => 'Paws::PinpointEmail::RawMessage');
   has Simple => (is => 'ro', isa => 'Paws::PinpointEmail::Message');
+  has Template => (is => 'ro', isa => 'Paws::PinpointEmail::Template');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::PinpointEmail::EmailContent object:
 
-  $service_obj->Method(Att1 => { Raw => $value, ..., Simple => $value  });
+  $service_obj->Method(Att1 => { Raw => $value, ..., Template => $value  });
 
 =head3 Results returned from an API call
 
@@ -91,6 +92,11 @@ characters. This restriction is defined in RFC 5321
 
   The simple email message. The message consists of a subject and a
 message body.
+
+
+=head2 Template => L<Paws::PinpointEmail::Template>
+
+  The template to use for the email message.
 
 
 

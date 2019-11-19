@@ -55,6 +55,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
+        Template => {
+          TemplateArn  => 'MyTemplateArn',     # OPTIONAL
+          TemplateData => 'MyTemplateData',    # max: 262144; OPTIONAL
+        },    # OPTIONAL
       },
       FromEmailAddress => 'MyEmailAddress',
       ReportName       => 'MyReportName',     # OPTIONAL
