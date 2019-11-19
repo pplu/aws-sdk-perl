@@ -77,7 +77,7 @@ by using a linear scale.
 
 =item Logarithmic
 
-Hyperparemeter tuning searches the values in the hyperparameter range
+Hyperparameter tuning searches the values in the hyperparameter range
 by using a logarithmic scale.
 
 Logarithmic scaling works only for ranges that have only values greater

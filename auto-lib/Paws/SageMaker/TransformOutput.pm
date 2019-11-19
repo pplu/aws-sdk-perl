@@ -95,8 +95,8 @@ see KMS-Managed Encryption Keys
 in the I<Amazon Simple Storage Service Developer Guide.>
 
 The KMS key policy must grant permission to the IAM role that you
-specify in your C<CreateTramsformJob> request. For more information,
-see Using Key Policies in AWS KMS
+specify in your CreateModel request. For more information, see Using
+Key Policies in AWS KMS
 (http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 in the I<AWS Key Management Service Developer Guide>.
 

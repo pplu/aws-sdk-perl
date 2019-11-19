@@ -105,15 +105,17 @@ A manifest might look like this: C<s3://bucketname/example.manifest>
 The manifest is an S3 object which is a JSON file with the following
 format:
 
-C<[>
+The preceding JSON matches the following C<s3Uris>:
 
-C<{"prefix": "s3://customer_bucket/some/prefix/"},>
+C<[ {"prefix": "s3://customer_bucket/some/prefix/"},>
 
 C<"relative/path/to/custdata-1",>
 
 C<"relative/path/custdata-2",>
 
 C<...>
+
+C<"relative/path/custdata-N">
 
 C<]>
 
@@ -124,6 +126,8 @@ C<s3://customer_bucket/some/prefix/relative/path/to/custdata-1>
 C<s3://customer_bucket/some/prefix/relative/path/custdata-2>
 
 C<...>
+
+C<s3://customer_bucket/some/prefix/relative/path/custdata-N>
 
 The complete set of C<s3uris> in this manifest is the input data for
 the channel for this datasource. The object that each C<s3uris> points

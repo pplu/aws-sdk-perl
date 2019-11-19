@@ -3,6 +3,7 @@ package Paws::SageMaker::ContainerDefinition;
   has ContainerHostname => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
   has Image => (is => 'ro', isa => 'Str');
+  has Mode => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
   has ModelPackageName => (is => 'ro', isa => 'Str');
 1;
@@ -77,6 +78,12 @@ C<registry/repository[:tag]> and C<registry/repository[@digest]> image
 path formats. For more information, see Using Your Own Algorithms with
 Amazon SageMaker
 (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
+
+
+=head2 Mode => Str
+
+  Specifies whether the container hosts a single model or multiple
+models.
 
 
 =head2 ModelDataUrl => Str

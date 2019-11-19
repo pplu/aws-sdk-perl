@@ -43,7 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyEnvironmentKey' =>
               'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
           },    # max: 16; OPTIONAL
-          Image            => 'MyImage',        # max: 255; OPTIONAL
+          Image => 'MyImage',        # max: 255; OPTIONAL
+          Mode  => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
           ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
           ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
         },
@@ -56,7 +57,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyEnvironmentKey' =>
             'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
         },    # max: 16; OPTIONAL
-        Image            => 'MyImage',        # max: 255; OPTIONAL
+        Image => 'MyImage',        # max: 255; OPTIONAL
+        Mode  => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
         ModelDataUrl     => 'MyUrl',          # max: 1024; OPTIONAL
         ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
       },    # OPTIONAL

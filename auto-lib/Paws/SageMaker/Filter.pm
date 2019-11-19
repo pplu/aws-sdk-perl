@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A conditional statement for a search expression that includes a Boolean
-operator, a resource property, and a value.
+A conditional statement for a search expression that includes a
+resource property, a Boolean operator, and a value.
 
 If you don't specify an C<Operator> and a C<Value>, the filter searches
 for only the specified property. For example, defining a C<Filter> for
@@ -143,7 +143,8 @@ specified C<Value>. Not supported for text-based properties.
 =item Contains
 
 Only supported for text-based properties. The word-list of the property
-contains the specified C<Value>.
+contains the specified C<Value>. A C<SearchExpression> can include only
+one C<Contains> operator.
 
 =back
 

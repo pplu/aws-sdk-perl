@@ -106,8 +106,8 @@ inference request. A I<record> I< is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.>
 
-To enable the batch strategy, you must set C<SplitType> to C<Line>,
-C<RecordIO>, or C<TFRecord>.
+To enable the batch strategy, you must set the C<SplitType> property of
+the DataProcessing object to C<Line>, C<RecordIO>, or C<TFRecord>.
 
 To use only one record when making an HTTP invocation request to a
 container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to

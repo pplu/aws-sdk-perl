@@ -86,10 +86,10 @@ padding is removed if the value of C<BatchStrategy> is set to
 C<SingleRecord>. Padding is not removed if the value of
 C<BatchStrategy> is set to C<MultiRecord>.
 
-For more information about the RecordIO, see Data Format
-(http://mxnet.io/architecture/note_data_loading.html#data-format) in
-the MXNet documentation. For more information about the TFRecord, see
-Consuming TFRecord data
+For more information about C<RecordIO>, see Create a Dataset Using
+RecordIO (https://mxnet.apache.org/api/faq/recordio) in the MXNet
+documentation. For more information about C<TFRecord>, see Consuming
+TFRecord data
 (https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data) in
 the TensorFlow documentation.
 

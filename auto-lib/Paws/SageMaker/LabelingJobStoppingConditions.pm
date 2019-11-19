@@ -36,6 +36,9 @@ A set of conditions for stopping a labeling job. If any of the
 conditions are met, the job is automatically stopped. You can use these
 conditions to control the cost of data labeling.
 
+Labeling jobs fail after 30 days with an appropriate client error
+message.
+
 =head1 ATTRIBUTES
 
 

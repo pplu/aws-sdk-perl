@@ -82,19 +82,23 @@ The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 Amazon SageMaker uses to encrypt data on the storage volume attached to
 the ML compute instance that hosts the endpoint.
 
-Nitro-based instances do not support encryption with AWS KMS. If any of
-the models that you specify in the C<ProductionVariants> parameter use
-nitro-based instances, do not specify a value for the C<KmsKeyId>
-parameter. If you specify a value for C<KmsKeyId> when using any
-nitro-based instances, the call to C<CreateEndpointConfig> fails.
+Certain Nitro-based instances include local storage, dependent on the
+instance type. Local storage volumes are encrypted using a hardware
+module on the instance. You can't request a C<KmsKeyId> when using an
+instance type with local storage. If any of the models that you specify
+in the C<ProductionVariants> parameter use nitro-based instances with
+local storage, do not specify a value for the C<KmsKeyId> parameter. If
+you specify a value for C<KmsKeyId> when using any nitro-based
+instances with local storage, the call to C<CreateEndpointConfig>
+fails.
 
-For a list of nitro-based instances, see Nitro-based Instances
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances)
-in the I<Amazon Elastic Compute Cloud User Guide for Linux Instances>.
+For a list of instance types that support local instance storage, see
+Instance Store Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes).
 
-For more information about storage volumes on nitro-based instances,
-see Amazon EBS and NVMe on Linux Instances
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html).
+For more information about local instance storage encryption, see SSD
+Instance Store Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html).
 
 
 

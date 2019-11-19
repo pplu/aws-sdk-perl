@@ -87,7 +87,7 @@ than 0.
 
 =item ReverseLogarithmic
 
-Hyperparemeter tuning searches the values in the hyperparameter range
+Hyperparameter tuning searches the values in the hyperparameter range
 by using a reverse logarithmic scale.
 
 Reverse logarithmic scaling works only for ranges that are entirely

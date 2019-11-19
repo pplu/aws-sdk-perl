@@ -61,7 +61,7 @@ Examples: C<"$">, C<"$[1:]">, C<"$.features">
 =head2 JoinSource => Str
 
   Specifies the source of the data to join with the transformed data. The
-valid values are C<None> and C<Input> The default value is C<None>
+valid values are C<None> and C<Input>. The default value is C<None>,
 which specifies not to join the input with the transformed data. If you
 want the batch transform job to join the original input data with the
 transformed data, set C<JoinSource> to C<Input>.

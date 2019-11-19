@@ -1664,8 +1664,8 @@ transform job.
 
 =back
 
-For more information about how batch transformation works Amazon
-SageMaker, see How It Works
+For more information about how batch transformation works, see Batch
+Transform
 (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
 
 
